@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:uai",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 243,
+  "by_status": {
+    "included": 243
+  },
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/v216/",
+      "params": {},
+      "request_id": "b5e23faef9f52095a2742253e118317d04cb153c306ad9226d4aebab92cd985b",
+      "sha256": "84f57edf9f61bf6c294a3ad4a2a695f4d987499ebd111d5e299a5b270276e407",
+      "retrieved_at": "2026-11-03T05:33:11.645060+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

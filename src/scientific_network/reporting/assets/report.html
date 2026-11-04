@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="referrer" content="no-referrer">
+<title>AI Research Network — 2023 visual report</title>
+<!-- REPORT_STYLE -->
+</head>
+<body>
+<a class="skip" href="#network">Skip to network</a>
+<header class="topbar"><div class="brand"><svg viewBox="0 0 30 28" width="30" height="28" aria-hidden="true"><path d="M5 19L15 5L25 19Z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="19" r="3.5"/><circle cx="15" cy="5" r="3.5"/><circle cx="25" cy="19" r="3.5"/></svg><span>AI Research Network</span></div><nav aria-label="Report sections"><a href="#network">Network</a><a href="#coverage">Coverage</a><a href="#quality">Quality</a><a href="#provenance">Sources</a></nav><button id="print" type="button">Print / PDF</button></header>
+<main>
+<div class="title-row"><div><div class="context">Social Media Network Analysis for Business · 2023 editions</div><h1>International AI research network</h1><p id="lead"></p></div><div class="snapshot"><span id="snapshot-date"></span><strong>Diagnostic snapshot</strong><span id="synthetic"></span></div></div>
+<div class="summary" id="summary"></div>
+<section id="network" aria-labelledby="network-title">
+<div class="section-head"><div><h2 id="network-title">Explore the collected network</h2><p>Real entities and accepted relationships. Select a node to inspect its connections and evidence.</p></div><button type="button" id="download">Download report data</button></div>
+<div class="workspace">
+<div class="graph-panel">
+<div class="toolbar"><label>Projection<select id="projection"><option value="all">Full network</option><option value="factual">Factual relationships</option><option value="coauthors">Researcher coauthorship</option><option value="organizations">Organization collaboration</option></select></label><label>Conference<select id="venue"><option value="">All covered conferences</option></select></label><label class="search-label">Search nodes<input id="search" type="search" placeholder="Name, institution, paper or ID" autocomplete="off"></label></div>
+<div class="graph-meta"><span id="view-count" role="status" aria-live="polite"></span><div class="zoom"><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="fit" type="button">Fit</button><button id="reset" type="button">Reset</button></div></div>
+<div class="graph-frame"><svg id="graph" viewBox="0 0 1100 650" tabindex="0" role="group" aria-label="Interactive research network. Nodes are keyboard-focusable. Select a node with Enter."><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8a929b"/></marker></defs><g id="scene"><g id="edge-layer"></g><g id="node-layer"></g><g id="label-layer" aria-hidden="true"></g></g></svg><div id="empty-graph" class="empty" hidden>No matching nodes. Change the projection, conference or search.</div></div>
+<div id="legend" class="legend"></div><p id="projection-note" class="caption"></p><p class="caption interaction-note">Drag nodes or the background; use + / − to zoom. Layout distance does not measure relationship strength.</p>
+</div>
+<aside id="inspector" class="inspector" aria-labelledby="detail-title"><h3 id="detail-title">Entity &amp; evidence inspector</h3><div id="detail"></div></aside>
+</div>
+<div class="search-result-section"><details id="node-list"><summary>Browse visible entities <span id="list-count"></span></summary><div id="node-results"></div><button type="button" id="more-nodes" hidden>Show more entities</button></details></div>
+</section>
+<div class="two-columns">
+<section id="relationships" class="panel" aria-labelledby="relation-title"><h2 id="relation-title">What connects the network?</h2><p>Unique edges by predicate, separated by evidence class.</p><div id="relation-bars"></div><p class="caption">Factual edges alone count toward the 5,000-edge release requirement. Topic and derived edges are inventoried separately.</p></section>
+<section class="panel" aria-labelledby="collection-title"><h2 id="collection-title">From selected papers to usable evidence</h2><p>The diagnostic sample is deliberately staged across venues.</p><div id="collection-bars"></div><div id="collection-note" class="note"></div><div class="mini-heading">Node inventory</div><div id="node-inventory"></div></section>
+</div>
+<section id="coverage" aria-labelledby="coverage-title"><div class="section-head"><div><h2 id="coverage-title">Conference coverage</h2><p id="coverage-description"></p></div><button type="button" id="export-coverage">Export conference CSV</button></div>
+<div class="coverage-summary" id="scope-strip"></div>
+<div class="coverage-controls"><label>Find conference<input id="conference-search" type="search" placeholder="Conference name"></label><label>Edition status<select id="conference-status"><option value="all">All series</option><option value="covered">Covered editions</option><option value="unresolved">Unresolved sources</option><option value="none">No 2023 edition</option></select></label><span id="conference-count" role="status" aria-live="polite"></span></div>
+<div class="table-scroll"><table id="conference-table"><caption class="sr-only">Conference rosters and diagnostic processing counts</caption><thead><tr><th scope="col">Conference</th><th scope="col">2023 edition</th><th scope="col" class="num">Eligible roster</th><th scope="col" class="num">Selected</th><th scope="col" class="num">Acquired</th><th scope="col" class="num">Abstracts</th><th scope="col" class="num">Work matches</th><th scope="col" class="num">Parsed PDFs</th></tr></thead><tbody id="conference-rows"></tbody></table></div><p class="caption">A dash means the source roster is unavailable or there is no edition. A zero is a measured count. Roster size is separate from the diagnostic sample and graph size.</p></section>
+<div class="two-columns">
+<section id="quality" class="panel" aria-labelledby="quality-title"><h2 id="quality-title">Progress toward release</h2><p>Size and relationship inventory are measurable. Independent semantic accuracy remains unmeasured.</p><div id="gate-bars"></div><div class="accuracy"><strong>Semantic accuracy: not measured</strong><p>Structural checks and source hashes do not establish precision, recall or F1. The independent audit remains pending.</p></div></section>
+<section class="panel" aria-labelledby="topic-title"><h2 id="topic-title">Topics found in the diagnostic sample</h2><p id="topic-note"></p><div id="topic-bars"></div><p class="caption">Draft phrase baseline, uncalibrated. Papers may have multiple labels; a topic count is the number of distinct labeled papers. Abstentions remain outside this chart.</p></section>
+</div>
+<section id="provenance" aria-labelledby="provenance-title"><h2 id="provenance-title">Evidence, limits &amp; reproducibility</h2><div class="two-columns"><div><div id="verification" class="plain-block"></div><h3>Limits of this snapshot</h3><ul id="limitations"></ul><h3>Next research work</h3><p>Review byline conflicts and identity/affiliation evidence, annotate development topics for the new fields, and complete lawful source adapters for unresolved editions. Preserve the held-out samples.</p></div><div><h3>Snapshot identity</h3><dl id="versions"></dl><details><summary>Input hashes &amp; method versions</summary><div id="hashes"></div></details></div></div></section>
+<footer><strong>AI Research Network</strong><span>Standalone report · No live database connection · Geist under SIL OFL 1.1</span><span id="generated"></span></footer>
+</main>
+<noscript><p>This interactive HTML report needs JavaScript enabled in your browser. It uses only embedded data and makes no network requests.</p></noscript>
+<!-- REPORT_DATA -->
+<!-- REPORT_SCRIPT -->
+</body>
+</html>

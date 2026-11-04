@@ -1,0 +1,17 @@
+{
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "title": "AI Research Network — Project Plan",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "version_number": 3,
+  "saved_version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_dc845e124e8481919a70b754f9856173",
+  "deployment_id": "appgdep_6ae94768ec5c8191a299a7acfdd99c5b",
+  "deployment_status": "succeeded",
+  "source_commit_sha": "532bf27a85185a1a4ad847dc872aa500f4f2ddbf",
+  "published_at": "2026-11-03T02:31:20.022494+00:00",
+  "archive_content_hash": "sha256:917d70b94a839e6b045cd6aefb2d6a588cab0ec37597980271d6c79ea38a0ab7",
+  "source_snapshot": "docs/reference/sites-project-plan-2026-11-03.md",
+  "scope_registry": "configs/conference-scope.yaml",
+  "work_id": "WORK-2026-11-03-005",
+  "research_data_collection_performed": false
+}

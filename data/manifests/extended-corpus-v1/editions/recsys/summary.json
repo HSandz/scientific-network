@@ -1,0 +1,9 @@
+{
+  "venue_id": "venue:recsys",
+  "year": 2023,
+  "status": "unresolved_source",
+  "reason": "dl.acm.org: access/quota HTTP 403; collection stopped",
+  "records": 0,
+  "by_status": {},
+  "sources": []
+}

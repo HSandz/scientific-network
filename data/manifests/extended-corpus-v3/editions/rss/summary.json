@@ -1,0 +1,34 @@
+{
+  "venue_id": "venue:rss",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 112,
+  "by_status": {
+    "included": 112
+  },
+  "sources": [
+    {
+      "url": "https://roboticsproceedings.org/",
+      "params": {},
+      "request_id": "a1729fd3aeddaa1f5896e4795b7cf2dce3a3e16cfc561ffbd6880726f5724fcd",
+      "sha256": "0d61c8fe136b5eeb2422b37cd44ed5f090907a8c7659b32b8a613a7478713feb",
+      "retrieved_at": "2026-11-03T05:46:30.273117+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://roboticsproceedings.org/rss19/",
+      "params": {},
+      "request_id": "8641555151867edb4837b359bfe2d9afba382404b636a5bc31b42479263b5c2f",
+      "sha256": "0b826e0406a5e8eb50bc2bb1d402c67d90ff88aabd08c3393ec2ed9d19f9b949",
+      "retrieved_at": "2026-11-03T05:33:30.865547+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "venue_id": "venue:ijcai",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 851,
+  "by_status": {
+    "included": 639,
+    "excluded": 212
+  },
+  "sources": [
+    {
+      "url": "https://www.ijcai.org/proceedings/2023/",
+      "params": {},
+      "request_id": "1d46fced427885ae11ff78711f708094f9d0f38946673aa374fbf89a9d10582e",
+      "sha256": "afef6e5bedf3eae092ad23b24e2e74d4ea16548d79e799df0e6dac06101b0d15",
+      "retrieved_at": "2026-11-03T05:33:29.096582+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

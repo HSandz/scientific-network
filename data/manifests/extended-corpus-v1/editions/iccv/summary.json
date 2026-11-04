@@ -1,0 +1,26 @@
+{
+  "venue_id": "venue:iccv",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 2156,
+  "by_status": {
+    "included": 2155,
+    "excluded": 1
+  },
+  "sources": [
+    {
+      "url": "https://openaccess.thecvf.com/ICCV2023",
+      "params": {
+        "day": "all"
+      },
+      "request_id": "7a2dab84f3935488fb2af6765f9a1422351338dfd4421617fb49d0b8b60151f0",
+      "sha256": "ba112ee3d3bc0111322a32faa874aa9d9b74f7a074de99994cfb6a335f1c58ed",
+      "retrieved_at": "2026-11-03T05:39:04.665480+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

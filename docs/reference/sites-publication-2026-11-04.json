@@ -1,0 +1,23 @@
+{
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "version_number": 4,
+  "saved_version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_14d1474cf31881919e9a8c2e34d63c6e",
+  "deployment_id": "appgdep_6aeb45e058088191acb295438cc5dcaf",
+  "deployment_status": "succeeded",
+  "source_commit_sha": "0128fd4f453d62596ac3158fbeb7d6e416a46957",
+  "published_at": "2026-11-04T14:49:26.959584+00:00",
+  "archive_content_hash": "sha256:c6310589101574260ec8b34b8ba0f7a5f0189382d780f055682b5adc6ee03957",
+  "source_snapshot": "docs/reference/sites-project-plan-2026-11-04.md",
+  "report_snapshot": "docs/reference/sites-progress-report-2026-11-04.md",
+  "planning_registry": "configs/conference-scope-2021-2025.yaml",
+  "work_id": "WORK-2026-11-04-002",
+  "pipeline_implementation_performed": false,
+  "research_data_collection_performed": false,
+  "report_update_mode": "task_driven_versioned_publication_no_background_sync",
+  "loaded_graph_version": "pilot-topic-d512d7239923",
+  "local_candidate_graph_version": "pilot-topic-7e3c90189547",
+  "explorer_snapshot_unchanged": true
+}

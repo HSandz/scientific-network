@@ -1,0 +1,428 @@
+version: corpus-extended-v2
+status: authorized_staged_diagnostics
+scope: complete_main_conference_editions
+pilot:
+  new_papers_per_venue: 10
+  legacy_papers: 100
+  selection: first_ten_supplemental_development_groups
+editions:
+- venue_id: venue:neurips
+  name: NeurIPS
+  year: 2023
+  official_index: https://proceedings.neurips.cc/paper/2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - datasets_and_benchmarks
+  - workshop
+  - tutorial
+  - invited
+  legacy: true
+- venue_id: venue:icml
+  name: ICML
+  year: 2023
+  official_index: https://proceedings.mlr.press/v202/
+  volume: 202
+  include_tracks:
+  - main
+  exclude_tracks:
+  - workshop
+  - tutorial
+  - invited
+  legacy: true
+- venue_id: venue:iclr
+  name: ICLR
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://openreview.net/group?id=ICLR.cc
+  edition_status: unresolved_source
+  reason: 'api.openreview.net: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:aaai
+  name: AAAI
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://ojs.aaai.org/index.php/AAAI
+  edition_status: unresolved_source
+  reason: 'ojs.aaai.org: RemoteProtocolError'
+  source_probe_sha256: null
+- venue_id: venue:ijcai
+  name: IJCAI
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://www.ijcai.org/proceedings/2023/
+  adapter: ijcai
+- venue_id: venue:mlsys
+  name: MLSys
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.mlsys.org/paper_files/paper/2023
+  adapter: mlsys
+- venue_id: venue:cvpr
+  name: CVPR
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://openaccess.thecvf.com/CVPR2023
+  adapter: cvf
+  params:
+    day: all
+- venue_id: venue:iccv
+  name: ICCV
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://openaccess.thecvf.com/ICCV2023
+  adapter: cvf
+  params:
+    day: all
+- venue_id: venue:eccv
+  name: ECCV
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://www.ecva.net/papers.php
+  edition_status: no_2023_edition
+  reason: No edition in 2023; adjacent years excluded
+  source_probe_sha256: null
+- venue_id: venue:acmmm
+  name: ACM Multimedia
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3581783
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: ConnectError'
+  source_probe_sha256: null
+- venue_id: venue:miccai
+  name: MICCAI
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://conferences.miccai.org/2023/papers/
+  source_probe_sha256: e23d214e4926905ed3773d14caf72d14fa80a61f940c9ae3fb97530700abdb72
+  adapter: miccai
+- venue_id: venue:acl
+  name: ACL
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://aclanthology.org/2023.acl-long/
+  adapter: acl
+  collection: 2023.acl-long
+  pages:
+  - official_index: https://aclanthology.org/2023.acl-long/
+    collection: 2023.acl-long
+  - official_index: https://aclanthology.org/2023.acl-short/
+    collection: 2023.acl-short
+- venue_id: venue:emnlp
+  name: EMNLP
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://aclanthology.org/2023.emnlp-main/
+  adapter: acl
+  collection: 2023.emnlp-main
+- venue_id: venue:naacl
+  name: NAACL
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://aclanthology.org/venues/naacl/
+  edition_status: no_2023_edition
+  reason: No edition in 2023; adjacent years excluded
+  source_probe_sha256: null
+- venue_id: venue:eacl
+  name: EACL
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://aclanthology.org/2023.eacl-main/
+  adapter: acl
+  collection: 2023.eacl-main
+- venue_id: venue:coling
+  name: COLING
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://aclanthology.org/venues/coling/
+  edition_status: no_2023_edition
+  reason: No edition in 2023; adjacent years excluded
+  source_probe_sha256: null
+- venue_id: venue:kdd
+  name: KDD
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3580305
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: ConnectError'
+  source_probe_sha256: null
+- venue_id: venue:www
+  name: The Web Conference (WWW)
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3543507
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:sigir
+  name: SIGIR
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3539618
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:wsdm
+  name: WSDM
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3539597
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:recsys
+  name: RecSys
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3604915
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:cikm
+  name: CIKM
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://dl.acm.org/doi/proceedings/10.1145/3583780
+  edition_status: unresolved_source
+  reason: 'dl.acm.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:icdm
+  name: ICDM
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://icdm2023.cloud/
+  edition_status: unresolved_source
+  reason: 'icdm2023.cloud: ConnectError'
+  source_probe_sha256: null
+- venue_id: venue:sdm
+  name: SDM
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://epubs.siam.org/doi/book/10.1137/1.9781611977653
+  edition_status: unresolved_source
+  reason: 'epubs.siam.org: access/quota HTTP 403; collection stopped'
+  source_probe_sha256: null
+- venue_id: venue:aistats
+  name: AISTATS
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.mlr.press/v206/
+  adapter: pmlr
+  volume: 206
+  required_markers:
+  - '2023'
+  - Volume 206
+- venue_id: venue:uai
+  name: UAI
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.mlr.press/v216/
+  adapter: pmlr
+  volume: 216
+  required_markers:
+  - '2023'
+  - Volume 216
+- venue_id: venue:colt
+  name: COLT
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.mlr.press/v195/
+  adapter: pmlr
+  volume: 195
+  required_markers:
+  - '2023'
+  - Volume 195
+- venue_id: venue:icra
+  name: ICRA
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://www.icra2023.org/
+  edition_status: unresolved_source
+  reason: 'www.icra2023.org: HTTP 400'
+  source_probe_sha256: null
+- venue_id: venue:iros
+  name: IROS
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://ieee-iros.org/2023/
+  edition_status: unresolved_source
+  reason: 'ieee-iros.org: ConnectError'
+  source_probe_sha256: null
+- venue_id: venue:rss
+  name: 'Robotics: Science and Systems (RSS)'
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://roboticsproceedings.org/rss19/
+  adapter: rss
+  required_markers:
+  - 'Robotics: Science and Systems XIX'
+  edition_verification:
+    url: https://roboticsproceedings.org/
+    sha256: 0d61c8fe136b5eeb2422b37cd44ed5f090907a8c7659b32b8a613a7478713feb
+    required_text: 'Robotics: Science and Systems XIX July 10 - July 14, 2023'
+- venue_id: venue:corl
+  name: Conference on Robot Learning (CoRL)
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.mlr.press/v229/
+  adapter: pmlr
+  volume: 229
+  required_markers:
+  - '2023'
+  - Volume 229
+- venue_id: venue:aamas
+  name: AAMAS
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://www.ifaamas.org/Proceedings/aamas2023/forms/contents.htm
+  source_probe_sha256: 82b21c01479860be7727d12d945a3aca9a9407677c3dbec4452dae35aa026cd6
+  adapter: aamas
+- venue_id: venue:kr
+  name: KR
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://proceedings.kr.org/2023/
+  adapter: kr
+- venue_id: venue:icaps
+  name: ICAPS
+  year: 2023
+  include_tracks:
+  - main
+  exclude_tracks:
+  - nonresearch
+  official_index: https://ojs.aaai.org/index.php/ICAPS
+  edition_status: unresolved_source
+  reason: 'ojs.aaai.org: RemoteProtocolError'
+  source_probe_sha256: null
+exclude_statuses:
+- withdrawn
+- rejected
+- editorial
+- supplementary_only
+paper_identity: official_proceedings_record
+unknown_track_policy: review
+missing_enrichment_policy: retain_official_ledger_record
+citation_boundary:
+  analysis: core_to_core
+  optional_context_hops: 1
+  recursive_expansion: false
+  context_counts_toward_size: false
+retrieval:
+  timeout_seconds: 25
+  max_attempts: 2
+  respect_retry_after: true
+  stop_at_quota_limit: true
+  cache_by_content_hash: true
+  concurrency:
+    official_proceedings: 2
+    openalex: 1
+    pdf: 2
+  source_terms_checked_at: null
+pdf:
+  strategy: selective
+  header_endpoint: processHeaderDocument
+  reference_endpoint: processFulltextDocument
+  consolidate_header: 0
+  consolidate_citations: 0
+decision: D015
+collection_authorized: true
+legacy_manifest: data/manifests/corpus-v1/corpus_manifest.jsonl
+legacy_manifest_sha256: 730705b9c7dab2c0788e1e97bc6c8518eef1c63939101e773c25c26ffb78d4d3
+legacy_membership: data/manifests/splits-v1/membership.jsonl
+legacy_membership_sha256: ed5658f3c9137e0f22b0594b351b7b340ab581bf91873582ae12eabbb720441a
+legacy_acquisition: data/interim/pilot-v1/papers.json
+legacy_acquisition_sha256: d428b3c821d8fe543a75ad83cf970e6f0e10a012534eeee68a6f29e51b5378c8

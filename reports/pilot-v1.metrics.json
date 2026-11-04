@@ -1,0 +1,148 @@
+{
+  "work_id": "WORK-2026-11-03-004",
+  "recorded_date": "2026-11-03",
+  "timezone": "Asia/Bangkok",
+  "graph_version": "pilot-topic-0bb7f11a404e",
+  "is_synthetic": false,
+  "official_roster": {
+    "eligible_main": 5046,
+    "neurips_main": 3218,
+    "icml_main": 1828,
+    "excluded_datasets_benchmarks": 322
+  },
+  "frozen_split": {
+    "test": 120,
+    "development": 60,
+    "pilot": 100,
+    "held_out_pilot_overlap": 0
+  },
+  "database": {
+    "graph_version": "pilot-topic-0bb7f11a404e",
+    "inventory": {
+      "nodes": 154,
+      "edges": 211
+    },
+    "integrity_queries": 6,
+    "violations_by_query": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "replay_no_growth": true,
+    "version_conflict_rejected_without_data_change": true,
+    "semantic_accuracy": "not_measured"
+  },
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 4,
+      "Paper": 100,
+      "Researcher": 28,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "PUBLISHED_IN": 100,
+      "COAUTHORED_WITH": 8,
+      "HAS_TOPIC": 53,
+      "SUBTOPIC_OF": 16,
+      "AFFILIATED_WITH": 5,
+      "COLLABORATED_WITH": 1,
+      "AUTHORED": 28
+    },
+    "edges_by_evidence_kind": {
+      "observed": 133,
+      "derived": 9,
+      "inferred_topic": 53,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 100,
+    "resolved_core_researchers": 28,
+    "unique_core_factual_edges": 133
+  },
+  "coverage_by_venue": [
+    {
+      "venue": "venue:icml",
+      "papers": 50,
+      "official_author_paper_slots": 222,
+      "abstracts": 50,
+      "matched_works": 29,
+      "papers_with_tei_affiliations": 12,
+      "resolved_authorships": 15,
+      "affiliated_author_paper_pairs": 5,
+      "topic_labeled_papers": 19
+    },
+    {
+      "venue": "venue:neurips",
+      "papers": 50,
+      "official_author_paper_slots": 242,
+      "abstracts": 50,
+      "matched_works": 32,
+      "papers_with_tei_affiliations": 39,
+      "resolved_authorships": 13,
+      "affiliated_author_paper_pairs": 0,
+      "topic_labeled_papers": 21
+    }
+  ],
+  "affiliation_observations": 5,
+  "affiliated_author_paper_pairs": 5,
+  "extraction": {
+    "stage": "extract",
+    "input_sha256": "d428b3c821d8fe543a75ad83cf970e6f0e10a012534eeee68a6f29e51b5378c8",
+    "config_sha256": "35d32b64f1d611d991d79267ddb7ce5c80912fe1b229627a4211ccf4894d0361",
+    "method_version": "grobid-0.8.2-crf-xml-header-v2",
+    "by_status": {
+      "parsed": 100
+    },
+    "pdf_bytes": 437835764,
+    "median_pdf_bytes": 1619295.0,
+    "sum_record_elapsed_seconds": 736.93,
+    "papers_with_header_affiliations": 51,
+    "external_consolidation": false,
+    "independent_mapping_audit": "not_performed"
+  },
+  "review_reasons": {
+    "no_exact_title_year_complete_ordered_byline_match": 39,
+    "orcid_publication_not_corroborated": 138,
+    "no_unambiguous_corroborated_identifier": 121,
+    "printed_institution_needs_canonical_review": 16,
+    "pdf_author_alignment_missing_or_ambiguous": 1
+  },
+  "review_packet": {
+    "path": "data/annotations/pilot-affiliation-review-v1.csv",
+    "rows": 20,
+    "status_counts": {
+      "automatically_accepted_pending_human_review": 5,
+      "unresolved_institution_candidate": 15
+    },
+    "human_reviews_completed": 0
+  },
+  "source_hash_check": {
+    "distinct_source_objects_verified": 429,
+    "hash_mismatches": 0,
+    "semantic_accuracy": "not_measured"
+  },
+  "sha256": {
+    "data/processed/pilot-graph-v1.json": "f300f726b03fd0c06c714d1bf1b31941cba96b9df9ca592eb8940c1e965c4f5a",
+    "data/manifests/corpus-v1/corpus_manifest.jsonl": "730705b9c7dab2c0788e1e97bc6c8518eef1c63939101e773c25c26ffb78d4d3",
+    "data/manifests/splits-v1/membership.jsonl": "ed5658f3c9137e0f22b0594b351b7b340ab581bf91873582ae12eabbb720441a",
+    "data/interim/pilot-v1/papers.json": "d428b3c821d8fe543a75ad83cf970e6f0e10a012534eeee68a6f29e51b5378c8",
+    "data/interim/pilot-headers-v2/papers.json": "64d566848b8f92905ee535765ae281fe17f35b2beeef037a51c132dbdcf87c24",
+    "data/processed/pilot-resolved-v1/graph.json": "ec92edaa1ea574e7def7c9fa13fe9f701b14e05245e52d2848bdab27303b0fa5",
+    "configs/corpus.yaml": "35d32b64f1d611d991d79267ddb7ce5c80912fe1b229627a4211ccf4894d0361",
+    "configs/quality.yaml": "fd37163b6d8cd7302b1b1fcee128b97d8c32f059fd9f4126de37405f2ce65deb",
+    "configs/topics.yaml": "dadd9ddc125a8aca4c4d8c9ca408a5d1493934ab0630fce9b790b191c5bebe2d"
+  },
+  "methods": {
+    "roster": "official-roster-v1",
+    "acquisition": "pilot-acquire-v1",
+    "extraction": "grobid-0.8.2-crf-xml-header-v2",
+    "resolution": "orcid-public-work-pdf-affiliation-v2",
+    "topics": "literal-phrase-baseline-v1",
+    "derivations": "core-derivation-v1"
+  },
+  "semantic_accuracy": "not_measured",
+  "release_status": "pilot_not_certified"
+}

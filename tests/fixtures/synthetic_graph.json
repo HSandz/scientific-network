@@ -1,0 +1,781 @@
+{
+  "schema_version": "0.1.0",
+  "graph_version": "synthetic-v1",
+  "is_synthetic": true,
+  "nodes": [
+    {
+      "id": "researcher:a",
+      "label": "Researcher",
+      "name": "Invented Researcher A",
+      "properties": {
+        "resolution_status": "resolved"
+      }
+    },
+    {
+      "id": "researcher:b",
+      "label": "Researcher",
+      "name": "Invented Researcher B",
+      "properties": {
+        "resolution_status": "resolved"
+      }
+    },
+    {
+      "id": "researcher:c",
+      "label": "Researcher",
+      "name": "Invented Researcher C",
+      "properties": {
+        "resolution_status": "resolved"
+      }
+    },
+    {
+      "id": "researcher:d",
+      "label": "Researcher",
+      "name": "Invented Researcher D",
+      "properties": {
+        "resolution_status": "resolved"
+      }
+    },
+    {
+      "id": "researcher:e",
+      "label": "Researcher",
+      "name": "Invented Researcher E",
+      "properties": {
+        "resolution_status": "resolved"
+      }
+    },
+    {
+      "id": "organization:x",
+      "label": "Organization",
+      "name": "Invented Organization X",
+      "properties": {
+        "sector": "academia",
+        "normalization_policy": "synthetic-v1"
+      }
+    },
+    {
+      "id": "organization:y",
+      "label": "Organization",
+      "name": "Invented Organization Y",
+      "properties": {
+        "sector": "industry",
+        "normalization_policy": "synthetic-v1"
+      }
+    },
+    {
+      "id": "organization:z",
+      "label": "Organization",
+      "name": "Invented Organization Z",
+      "properties": {
+        "sector": "unknown",
+        "normalization_policy": "synthetic-v1"
+      }
+    },
+    {
+      "id": "venue:icml",
+      "label": "Venue",
+      "name": "ICML",
+      "properties": {}
+    },
+    {
+      "id": "topic:language-perception",
+      "label": "Topic",
+      "name": "Language and perception",
+      "properties": {
+        "level": "parent",
+        "taxonomy_version": "synthetic-taxonomy-v1"
+      }
+    },
+    {
+      "id": "topic:nlp-language-models",
+      "label": "Topic",
+      "name": "Natural language processing and language models",
+      "properties": {
+        "level": "leaf",
+        "taxonomy_version": "synthetic-taxonomy-v1"
+      }
+    },
+    {
+      "id": "paper:p1",
+      "label": "Paper",
+      "name": "Invented language-model study 1",
+      "properties": {
+        "year": 2023,
+        "official_url": "https://example.org/synthetic/p1",
+        "track": "main",
+        "is_core": true
+      }
+    },
+    {
+      "id": "paper:p2",
+      "label": "Paper",
+      "name": "Invented language-model study 2",
+      "properties": {
+        "year": 2023,
+        "official_url": "https://example.org/synthetic/p2",
+        "track": "main",
+        "is_core": true
+      }
+    },
+    {
+      "id": "paper:p3",
+      "label": "Paper",
+      "name": "Invented language-model study 3",
+      "properties": {
+        "year": 2023,
+        "official_url": "https://example.org/synthetic/p3",
+        "track": "main",
+        "is_core": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge:6ceb3da9bf5ad936f167ea9df819276fa4a4174e739a5c1938fe81fdb8505412",
+      "relation": "SUBTOPIC_OF",
+      "source_id": "topic:nlp-language-models",
+      "target_id": "topic:language-perception",
+      "evidence_kind": "curated_taxonomy",
+      "evidence_ids": [
+        "evidence:taxonomy"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:45ebb31c06dadee1a58b05c28ab6950de13f2e512d2cdf61ca972183dd5bec2c",
+      "relation": "PUBLISHED_IN",
+      "source_id": "paper:p1",
+      "target_id": "venue:icml",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p1"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:d7d2fde20243a83ca14df822ac605ba9e0141523743ba6febc7e782e67855ba2",
+      "relation": "HAS_TOPIC",
+      "source_id": "paper:p1",
+      "target_id": "topic:nlp-language-models",
+      "evidence_kind": "inferred_topic",
+      "evidence_ids": [
+        "evidence:topic-p1"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:bb07a7fc7723397c4008debc4f31a292a9ed08a35581df04fa3ec1bd6bfcf285",
+      "relation": "AUTHORED",
+      "source_id": "researcher:a",
+      "target_id": "paper:p1",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p1"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 1
+      }
+    },
+    {
+      "edge_id": "edge:dc8edc8c5a4db3aff674fd933dfe93dfc2d2ac677ceb2d57856f85e3629c49ff",
+      "relation": "AUTHORED",
+      "source_id": "researcher:b",
+      "target_id": "paper:p1",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p1"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 2
+      }
+    },
+    {
+      "edge_id": "edge:bf2d0f4a72377c5be6869c00544d7ae0cf5f882d9dc2309b77531e47829b10f4",
+      "relation": "PUBLISHED_IN",
+      "source_id": "paper:p2",
+      "target_id": "venue:icml",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:26cdcfb3b3d654d925b1f840ac9722cc0a3b58b69f7e89f2f344ed23baac10e1",
+      "relation": "HAS_TOPIC",
+      "source_id": "paper:p2",
+      "target_id": "topic:nlp-language-models",
+      "evidence_kind": "inferred_topic",
+      "evidence_ids": [
+        "evidence:topic-p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:dd07983a6e27148713cbc8f4d07b27f6d8fcaf826257db903ef1e526835ff8c2",
+      "relation": "AUTHORED",
+      "source_id": "researcher:a",
+      "target_id": "paper:p2",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 1
+      }
+    },
+    {
+      "edge_id": "edge:438ab885dfeef0b75fdd297cddc9a0cb4502579ef57aac57fcc18a5aa0885170",
+      "relation": "AUTHORED",
+      "source_id": "researcher:c",
+      "target_id": "paper:p2",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 2
+      }
+    },
+    {
+      "edge_id": "edge:caa41eb55da96cb40c830d18a82f2f8cf9649b3ac4358062f5b0c54ba5d2caf1",
+      "relation": "CITES",
+      "source_id": "paper:p2",
+      "target_id": "paper:p1",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:97b357fd0d0c3a15f52a5f9eb2a6ab2fcb01f23841faf9a65327c82b88c7bf9a",
+      "relation": "PUBLISHED_IN",
+      "source_id": "paper:p3",
+      "target_id": "venue:icml",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:dca7875316f1e601b04c677d48f25a906b076b0f4059d25c80ff5a65efa7f878",
+      "relation": "HAS_TOPIC",
+      "source_id": "paper:p3",
+      "target_id": "topic:nlp-language-models",
+      "evidence_kind": "inferred_topic",
+      "evidence_ids": [
+        "evidence:topic-p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:bb14da1543fab280ff6f278ee8023a771f3243cf96e6e43055f43b2acc90a779",
+      "relation": "AUTHORED",
+      "source_id": "researcher:d",
+      "target_id": "paper:p3",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 1
+      }
+    },
+    {
+      "edge_id": "edge:a7616e5eb38de8aaedf916af42455d1134530a3f09ab0d1bdabbe70f42b69752",
+      "relation": "AUTHORED",
+      "source_id": "researcher:e",
+      "target_id": "paper:p3",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 2
+      }
+    },
+    {
+      "edge_id": "edge:917a25b7cb04627ebf25f4d6c8f106a52f01b87e37dd7b574d888b7dcead785f",
+      "relation": "CITES",
+      "source_id": "paper:p3",
+      "target_id": "paper:p1",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {}
+    },
+    {
+      "edge_id": "edge:fb9730a49a98aee30e27d83281b2e03db6a36b3c44115a9697835317c02e7dba",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:a",
+      "target_id": "organization:x",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p1",
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "observed_years": [
+          2023
+        ],
+        "support_count": 2
+      }
+    },
+    {
+      "edge_id": "edge:25022a0645e59b3965c35086106aef4c6f745511e72fe5eb713bfaaeb870a303",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:b",
+      "target_id": "organization:y",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p1"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "observed_years": [
+          2023
+        ],
+        "support_count": 1
+      }
+    },
+    {
+      "edge_id": "edge:3685c06fa6950b82c0acede7c2576447c8ece304fd627939c9bdedf2ec3adc97",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:c",
+      "target_id": "organization:y",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p2"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "observed_years": [
+          2023
+        ],
+        "support_count": 1
+      }
+    },
+    {
+      "edge_id": "edge:20693aee41abad348c5cd9a00458bb252be2a3960446980490c9cd06dc4021da",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:d",
+      "target_id": "organization:x",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "observed_years": [
+          2023
+        ],
+        "support_count": 1
+      }
+    },
+    {
+      "edge_id": "edge:4e8028986e50355db4dc96f8616625916b3f7fbba7788a99c5df5ade535b907e",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:e",
+      "target_id": "organization:z",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:p3"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "observed_years": [
+          2023
+        ],
+        "support_count": 1
+      }
+    },
+    {
+      "edge_id": "edge:be6e9f4548d0f33a4ff39425d00fa77b791ec10fda6ff3662d683e08ae441c0f",
+      "relation": "COAUTHORED_WITH",
+      "source_id": "researcher:a",
+      "target_id": "researcher:b",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:coauthored_with:researcher:a:researcher:b"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 1,
+        "fractional_weight": 1.0
+      }
+    },
+    {
+      "edge_id": "edge:cfbc499fd6ab08d775328dbf14131711ed533962dba9f08ee6ee7d6ec5b4848e",
+      "relation": "COAUTHORED_WITH",
+      "source_id": "researcher:a",
+      "target_id": "researcher:c",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:coauthored_with:researcher:a:researcher:c"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 1,
+        "fractional_weight": 1.0
+      }
+    },
+    {
+      "edge_id": "edge:a34bc7be6335076573e36adbd3f3f51d2a92c7245ead1e31aa667cf807286bfd",
+      "relation": "COAUTHORED_WITH",
+      "source_id": "researcher:d",
+      "target_id": "researcher:e",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:coauthored_with:researcher:d:researcher:e"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 1,
+        "fractional_weight": 1.0
+      }
+    },
+    {
+      "edge_id": "edge:c8420e66f4cda63f18a8366dda00e49c2f7cb5eb4141cea24d5416898c583fa2",
+      "relation": "COLLABORATED_WITH",
+      "source_id": "organization:x",
+      "target_id": "organization:y",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:collaborated_with:organization:x:organization:y"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 2,
+        "fractional_weight": 2.0
+      }
+    },
+    {
+      "edge_id": "edge:1cd4a2c2304d2b703064d352d25bb9229f227295f909c9e0054aaefd855898d9",
+      "relation": "COLLABORATED_WITH",
+      "source_id": "organization:x",
+      "target_id": "organization:z",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:collaborated_with:organization:x:organization:z"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 1,
+        "fractional_weight": 1.0
+      }
+    },
+    {
+      "edge_id": "edge:55915ae77a16532d01135b38da4fe91b0dfcb25d2a7d419cc679b3b141601d65",
+      "relation": "RESEARCHES_TOPIC",
+      "source_id": "researcher:a",
+      "target_id": "topic:nlp-language-models",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:researches_topic:researcher:a:topic:nlp-language-models"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 2
+      }
+    },
+    {
+      "edge_id": "edge:2e36b34401a0efd34b19931b343a43781fc985cb86eb6c384f36ea8378930e7f",
+      "relation": "CONTRIBUTES_TO_TOPIC",
+      "source_id": "organization:x",
+      "target_id": "topic:nlp-language-models",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:contributes_to_topic:organization:x:topic:nlp-language-models"
+      ],
+      "method_version": "synthetic-example-v1",
+      "graph_version": "synthetic-v1",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 3
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:taxonomy",
+      "kind": "curated_taxonomy",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#Taxonomy"
+    },
+    {
+      "id": "evidence:p1",
+      "kind": "observed",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P1"
+    },
+    {
+      "id": "evidence:topic-p1",
+      "kind": "inferred_topic",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P1:Abstract",
+      "excerpt": "This invented paper studies language models."
+    },
+    {
+      "id": "evidence:p2",
+      "kind": "observed",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P2"
+    },
+    {
+      "id": "evidence:topic-p2",
+      "kind": "inferred_topic",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P2:Abstract",
+      "excerpt": "This invented paper studies language models."
+    },
+    {
+      "id": "evidence:p3",
+      "kind": "observed",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P3"
+    },
+    {
+      "id": "evidence:topic-p3",
+      "kind": "inferred_topic",
+      "source_url": "https://example.org/synthetic",
+      "retrieved_at": "2026-11-02T00:00:00Z",
+      "raw_sha256": "f516beedeae7bc56cbaf387baffe2bc5568ca2739258c05bfc738fc6f26de9bd",
+      "source_locator": "tests/fixtures/synthetic_source.txt#P3:Abstract",
+      "excerpt": "This invented paper studies language models."
+    },
+    {
+      "id": "evidence:coauthored_with:researcher:a:researcher:b",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:bb07a7fc7723397c4008debc4f31a292a9ed08a35581df04fa3ec1bd6bfcf285",
+        "edge:dc8edc8c5a4db3aff674fd933dfe93dfc2d2ac677ceb2d57856f85e3629c49ff"
+      ],
+      "support_paper_ids": [
+        "paper:p1"
+      ]
+    },
+    {
+      "id": "evidence:coauthored_with:researcher:a:researcher:c",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:438ab885dfeef0b75fdd297cddc9a0cb4502579ef57aac57fcc18a5aa0885170",
+        "edge:dd07983a6e27148713cbc8f4d07b27f6d8fcaf826257db903ef1e526835ff8c2"
+      ],
+      "support_paper_ids": [
+        "paper:p2"
+      ]
+    },
+    {
+      "id": "evidence:coauthored_with:researcher:d:researcher:e",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:a7616e5eb38de8aaedf916af42455d1134530a3f09ab0d1bdabbe70f42b69752",
+        "edge:bb14da1543fab280ff6f278ee8023a771f3243cf96e6e43055f43b2acc90a779"
+      ],
+      "support_paper_ids": [
+        "paper:p3"
+      ]
+    },
+    {
+      "id": "evidence:collaborated_with:organization:x:organization:y",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:25022a0645e59b3965c35086106aef4c6f745511e72fe5eb713bfaaeb870a303",
+        "edge:3685c06fa6950b82c0acede7c2576447c8ece304fd627939c9bdedf2ec3adc97",
+        "edge:438ab885dfeef0b75fdd297cddc9a0cb4502579ef57aac57fcc18a5aa0885170",
+        "edge:bb07a7fc7723397c4008debc4f31a292a9ed08a35581df04fa3ec1bd6bfcf285",
+        "edge:dc8edc8c5a4db3aff674fd933dfe93dfc2d2ac677ceb2d57856f85e3629c49ff",
+        "edge:dd07983a6e27148713cbc8f4d07b27f6d8fcaf826257db903ef1e526835ff8c2",
+        "edge:fb9730a49a98aee30e27d83281b2e03db6a36b3c44115a9697835317c02e7dba"
+      ],
+      "support_paper_ids": [
+        "paper:p1",
+        "paper:p2"
+      ]
+    },
+    {
+      "id": "evidence:collaborated_with:organization:x:organization:z",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:20693aee41abad348c5cd9a00458bb252be2a3960446980490c9cd06dc4021da",
+        "edge:4e8028986e50355db4dc96f8616625916b3f7fbba7788a99c5df5ade535b907e",
+        "edge:a7616e5eb38de8aaedf916af42455d1134530a3f09ab0d1bdabbe70f42b69752",
+        "edge:bb14da1543fab280ff6f278ee8023a771f3243cf96e6e43055f43b2acc90a779"
+      ],
+      "support_paper_ids": [
+        "paper:p3"
+      ]
+    },
+    {
+      "id": "evidence:researches_topic:researcher:a:topic:nlp-language-models",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:26cdcfb3b3d654d925b1f840ac9722cc0a3b58b69f7e89f2f344ed23baac10e1",
+        "edge:bb07a7fc7723397c4008debc4f31a292a9ed08a35581df04fa3ec1bd6bfcf285",
+        "edge:d7d2fde20243a83ca14df822ac605ba9e0141523743ba6febc7e782e67855ba2",
+        "edge:dd07983a6e27148713cbc8f4d07b27f6d8fcaf826257db903ef1e526835ff8c2"
+      ],
+      "support_paper_ids": [
+        "paper:p1",
+        "paper:p2"
+      ]
+    },
+    {
+      "id": "evidence:contributes_to_topic:organization:x:topic:nlp-language-models",
+      "kind": "derived",
+      "support_edge_ids": [
+        "edge:20693aee41abad348c5cd9a00458bb252be2a3960446980490c9cd06dc4021da",
+        "edge:26cdcfb3b3d654d925b1f840ac9722cc0a3b58b69f7e89f2f344ed23baac10e1",
+        "edge:bb07a7fc7723397c4008debc4f31a292a9ed08a35581df04fa3ec1bd6bfcf285",
+        "edge:bb14da1543fab280ff6f278ee8023a771f3243cf96e6e43055f43b2acc90a779",
+        "edge:d7d2fde20243a83ca14df822ac605ba9e0141523743ba6febc7e782e67855ba2",
+        "edge:dca7875316f1e601b04c677d48f25a906b076b0f4059d25c80ff5a65efa7f878",
+        "edge:dd07983a6e27148713cbc8f4d07b27f6d8fcaf826257db903ef1e526835ff8c2",
+        "edge:fb9730a49a98aee30e27d83281b2e03db6a36b3c44115a9697835317c02e7dba"
+      ],
+      "support_paper_ids": [
+        "paper:p1",
+        "paper:p2",
+        "paper:p3"
+      ]
+    }
+  ],
+  "affiliation_observations": [
+    {
+      "id": "affiliation:a:p1:x",
+      "researcher_id": "researcher:a",
+      "paper_id": "paper:p1",
+      "organization_id": "organization:x",
+      "evidence_ids": [
+        "evidence:p1"
+      ]
+    },
+    {
+      "id": "affiliation:b:p1:y",
+      "researcher_id": "researcher:b",
+      "paper_id": "paper:p1",
+      "organization_id": "organization:y",
+      "evidence_ids": [
+        "evidence:p1"
+      ]
+    },
+    {
+      "id": "affiliation:a:p2:x",
+      "researcher_id": "researcher:a",
+      "paper_id": "paper:p2",
+      "organization_id": "organization:x",
+      "evidence_ids": [
+        "evidence:p2"
+      ]
+    },
+    {
+      "id": "affiliation:c:p2:y",
+      "researcher_id": "researcher:c",
+      "paper_id": "paper:p2",
+      "organization_id": "organization:y",
+      "evidence_ids": [
+        "evidence:p2"
+      ]
+    },
+    {
+      "id": "affiliation:d:p3:x",
+      "researcher_id": "researcher:d",
+      "paper_id": "paper:p3",
+      "organization_id": "organization:x",
+      "evidence_ids": [
+        "evidence:p3"
+      ]
+    },
+    {
+      "id": "affiliation:e:p3:z",
+      "researcher_id": "researcher:e",
+      "paper_id": "paper:p3",
+      "organization_id": "organization:z",
+      "evidence_ids": [
+        "evidence:p3"
+      ]
+    }
+  ]
+}

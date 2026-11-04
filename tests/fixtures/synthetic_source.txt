@@ -1,0 +1,16 @@
+SYNTHETIC COURSE EXAMPLE — NOT COLLECTED DATA
+All people, organizations and papers below are invented.
+P1: Researcher A at Organization X; Researcher B at Organization Y.
+Title: Invented language-model study one.
+Abstract: This invented paper studies language models.
+Venue: ICML 2023 main conference. No citation in this example.
+P2: Researcher A at Organization X; Researcher C at Organization Y.
+Title: Invented language-model study two.
+Abstract: This invented paper studies language models.
+Venue: ICML 2023 main conference. Explicitly cites P1.
+P3: Researcher D at Organization X; Researcher E at Organization Z.
+Title: Invented language-model study three.
+Abstract: This invented paper studies language models.
+Venue: ICML 2023 main conference. Explicitly cites P1.
+Taxonomy: NLP and language models is a leaf of Language and perception.
+This is the miniature worked example from the plan, not the full taxonomy/corpus.

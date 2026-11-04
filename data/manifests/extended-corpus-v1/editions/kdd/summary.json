@@ -1,0 +1,9 @@
+{
+  "venue_id": "venue:kdd",
+  "year": 2023,
+  "status": "unresolved_source",
+  "reason": "dl.acm.org: ConnectError",
+  "records": 0,
+  "by_status": {},
+  "sources": []
+}

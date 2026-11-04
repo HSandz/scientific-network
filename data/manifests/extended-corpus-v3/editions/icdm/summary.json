@@ -1,0 +1,9 @@
+{
+  "venue_id": "venue:icdm",
+  "year": 2023,
+  "status": "unresolved_source",
+  "reason": "icdm2023.cloud: ConnectError",
+  "records": 0,
+  "by_status": {},
+  "sources": []
+}

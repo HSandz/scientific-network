@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:miccai",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 730,
+  "by_status": {
+    "included": 730
+  },
+  "sources": [
+    {
+      "url": "https://conferences.miccai.org/2023/papers/",
+      "params": {},
+      "request_id": "494e63ac70d3a1f5c63386d57e0e9bfd2aeeee78126f3c2a6fcf0629bd7a29e1",
+      "sha256": "e23d214e4926905ed3773d14caf72d14fa80a61f940c9ae3fb97530700abdb72",
+      "retrieved_at": "2026-11-03T05:34:11.991640+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

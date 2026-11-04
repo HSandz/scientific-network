@@ -1,0 +1,32 @@
+# Project documentation
+
+- [Current status and next steps](status.md)
+- [Task history and logging workflow](work-log/README.md)
+- [Work-entry template](templates/work-log.md)
+- [Project plan and acceptance criteria](project-plan.md)
+- [Expanded conference roster and track policy](conference-scope.md)
+- [Five-year 2021–2025 planning and temporal controls](five-year-scope.md)
+- [Shared Plan/Report Site and update workflow](sites-workflow.md)
+- [Latest publishable progress report](../reports/site-report.md)
+- [Setup and commands](setup.md)
+- [Expanded acquisition, protected splits and separate Neo4j workflow](extended-workflow.md)
+- [Historical pilot acquisition, NLP and Neo4j workflow](pilot-workflow.md)
+- [Measured expanded diagnostic results and limitations](../reports/extended-v1.md)
+- [Interactive HTML report](../reports/extended-v1.html) and [usage/regeneration](visual-report.md)
+- [Measured first-pilot results and limitations](../reports/pilot-v1.md)
+- [Graph schema and derivation](graph-schema.md)
+- [Data dictionary and storage](data-dictionary.md)
+- [Sources, collection and redistribution](source-policy.md)
+- [Annotation guide](annotation-guide.md)
+- [Independent evaluation protocol](evaluation.md)
+- [Implementation roadmap](roadmap.md)
+- [Team and contributions](team.md)
+- [Decision register](decisions.md)
+- [Captured original plan](reference/sites-project-plan-2026-11-02.txt)
+- [Current published Plan snapshot](reference/sites-project-plan-2026-11-04.md)
+- [Current published Report snapshot](reference/sites-progress-report-2026-11-04.md)
+- [Verified unified Site publication](reference/sites-publication-2026-11-04.json)
+- [Final report outline](../reports/final-report/outline.md)
+
+The original plan is a specification. The roadmap and measured reports determine
+what has actually been implemented and achieved.

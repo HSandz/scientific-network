@@ -1,0 +1,24 @@
+{
+  "venue_id": "venue:eacl",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 281,
+  "by_status": {
+    "excluded": 1,
+    "included": 280
+  },
+  "sources": [
+    {
+      "url": "https://aclanthology.org/2023.eacl-main/",
+      "params": {},
+      "request_id": "7ce9e0541a8d82b80b6a6639339fd3db62f204cee2a087c3fc55a7f6b5b5633e",
+      "sha256": "bf795590904af2d84a77c990d9e742717e0fa2a0a1435f7403e3ca51c86c8b78",
+      "retrieved_at": "2026-11-03T05:39:45.394908+00:00",
+      "status": 200,
+      "attempts": 2,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:mlsys",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 46,
+  "by_status": {
+    "included": 46
+  },
+  "sources": [
+    {
+      "url": "https://proceedings.mlsys.org/paper_files/paper/2023",
+      "params": {},
+      "request_id": "775c3b6054ca4bec2e62d5f296d8bdebf051eb4c981808d953683f570de18c2d",
+      "sha256": "6701f3da50c5cf183426badfe8bac09a2a7fa912a2845a0fa4db81383bab05ef",
+      "retrieved_at": "2026-11-03T05:33:17.075608+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

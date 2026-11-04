@@ -1,0 +1,8 @@
+{
+  "venue_id": "venue:rss",
+  "year": 2023,
+  "status": "blocked",
+  "reason": "source does not identify expected edition marker: 2023",
+  "records": 0,
+  "sources": []
+}

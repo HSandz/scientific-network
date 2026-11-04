@@ -1,0 +1,22 @@
+{
+  "stage": "split",
+  "seed": 20261102,
+  "manifest_sha256": "730705b9c7dab2c0788e1e97bc6c8518eef1c63939101e773c25c26ffb78d4d3",
+  "quality_sha256": "fd37163b6d8cd7302b1b1fcee128b97d8c32f059fd9f4126de37405f2ce65deb",
+  "corpus_config_sha256": "35d32b64f1d611d991d79267ddb7ce5c80912fe1b229627a4211ccf4894d0361",
+  "membership_sha256": "ed5658f3c9137e0f22b0594b351b7b340ab581bf91873582ae12eabbb720441a",
+  "by_venue_split": {
+    "venue:icml:pool": 1738,
+    "venue:icml:test": 60,
+    "venue:icml:development": 30,
+    "venue:neurips:pool": 3128,
+    "venue:neurips:development": 30,
+    "venue:neurips:test": 60
+  },
+  "pilot_by_venue": {
+    "venue:icml": 50,
+    "venue:neurips": 50
+  },
+  "held_out_pilot_overlap": 0,
+  "annotation_status": "reserved_unannotated"
+}

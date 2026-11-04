@@ -1,0 +1,245 @@
+{
+  "version": "source-review-v1",
+  "reviewed_input": "data/interim/extended-headers-v5/papers.json",
+  "reviewed_input_sha256": "37d1802e3a1a7372bfcdade8326e84963bced6caf2ea1c6b83df3e1e626efe91",
+  "prior_acquisition": "data/interim/extended-acquired-v3/papers.json",
+  "decisions": [
+    {
+      "decision_id": "source-review:2cab8dd666ab7cf5a21a1873afe915f8a7695db436180b4f785c4f4f15a78f75",
+      "paper_id": "paper:eacl:2023:2023.eacl-main.152",
+      "record_sha256": "36a0b76c1c1d4307cd1c44e5030997bfa3cfbdb1e97fbc3ce5a6303f48336a6c",
+      "disposition": "retain_source_byline",
+      "reason": "Visible publication byline agrees with frozen roster; PDF inspection found no substantive author-count/order conflict. Citation-name variants remain distinct evidence, not identity aliases.",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "supersedes_automated_failure_only": true,
+      "evidence": [
+        {
+          "url": "https://aclanthology.org/2023.eacl-main.152/",
+          "sha256": "9b1271145ddb459f60c5bff457c4687907e536cafc1bfd02c8ae3ac484d5fd17",
+          "retrieved_at": "2026-11-03T05:53:58.051242+00:00",
+          "locator": "p.lead a[href^=\"/people/\"]"
+        },
+        {
+          "url": "https://aclanthology.org/2023.eacl-main.152.pdf",
+          "sha256": "bad33637783ae84ae01e08fa6907da94a74188073a1755cd71b675767d5aefcc",
+          "retrieved_at": "2026-11-03T17:50:43.280751+00:00",
+          "locator": "PDF page 1, printed title and byline; visual/text inspection by Codex"
+        }
+      ],
+      "roster_authors": [
+        "Lihu Chen",
+        "Gael Varoquaux",
+        "Fabian M. Suchanek"
+      ],
+      "citation_authors": [
+        "Lihu Chen",
+        "Gaël Varoquaux",
+        "Fabian Suchanek"
+      ]
+    },
+    {
+      "decision_id": "source-review:f6351dee3d75661ae115a8fd433515f0ba2d2850e4f90b82b3c7c5e73d57ba6e",
+      "paper_id": "paper:eacl:2023:2023.eacl-main.280",
+      "record_sha256": "5352120ffc3528dfdc34e71e38eab0805bff83c98f9671cdbb34dcda38e916df",
+      "disposition": "withhold_core",
+      "reason": "PDF places Luis Chiruzzo before John E. Ortega, unlike frozen roster/visible page. Printed Gustavo A. Giménez-Lugo also differs. Publication-version/byline order requires adjudication; do not silently reorder the frozen record.",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "supersedes_automated_failure_only": true,
+      "evidence": [
+        {
+          "url": "https://aclanthology.org/2023.eacl-main.280/",
+          "sha256": "7fda5ba5b807dd4957072eb3ed3cfb8d35171c4423e8d34805db5257b5c1daa7",
+          "retrieved_at": "2026-11-03T05:54:15.954667+00:00",
+          "locator": "p.lead a[href^=\"/people/\"]"
+        },
+        {
+          "url": "https://aclanthology.org/2023.eacl-main.280.pdf",
+          "sha256": "40be31c1ed883e038ba94b121f2d3253797b9f07678868072d49d13c03589139",
+          "retrieved_at": "2026-11-03T17:50:46.026992+00:00",
+          "locator": "PDF page 1, printed title and byline; visual/text inspection by Codex"
+        }
+      ],
+      "roster_authors": [
+        "Abteen Ebrahimi",
+        "Arya D. McCarthy",
+        "Arturo Oncevay",
+        "John E. Ortega",
+        "Luis Chiruzzo",
+        "Gustavo Giménez-Lugo",
+        "Rolando Coto-Solano",
+        "Katharina Kann"
+      ],
+      "citation_authors": [
+        "Abteen Ebrahimi",
+        "Arya D. McCarthy",
+        "Arturo Oncevay",
+        "John E. Ortega",
+        "Luis Chiruzzo",
+        "Gustavo Giménez-Lugo",
+        "Rolando Coto-Solano",
+        "Katharina von der Wense"
+      ],
+      "observed_pdf_authors": [
+        "Abteen Ebrahimi",
+        "Arya D. McCarthy",
+        "Arturo Oncevay",
+        "Luis Chiruzzo",
+        "John E. Ortega",
+        "Gustavo A. Giménez-Lugo",
+        "Rolando Coto-Solano",
+        "Katharina Kann"
+      ]
+    },
+    {
+      "decision_id": "source-review:b8b58456c7a215c523e8ab1e78f7c101f6a145d0ad02ff1540642b84c59d9df5",
+      "paper_id": "paper:emnlp:2023:2023.emnlp-main.401",
+      "record_sha256": "4c73afb21bc9a4acc1b577ff862fc695943f769789cbc998812a12f580d95df9",
+      "disposition": "retain_source_byline",
+      "reason": "Visible publication byline agrees with frozen roster; PDF inspection found no substantive author-count/order conflict. Citation-name variants remain distinct evidence, not identity aliases.",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "supersedes_automated_failure_only": true,
+      "evidence": [
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.401/",
+          "sha256": "3b00f25298a9e9fb964b02a9d9cbcb8eb4ba1e4e3d3aea6bd5401f74cd7cb577",
+          "retrieved_at": "2026-11-03T05:54:42.358717+00:00",
+          "locator": "p.lead a[href^=\"/people/\"]"
+        },
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.401.pdf",
+          "sha256": "c987e5e5dc4b170ab68fe992eb1d314fb10a528796e2c1e5e04f332ee3c2990b",
+          "retrieved_at": "2026-11-03T17:50:48.111309+00:00",
+          "locator": "PDF page 1, printed title and byline; visual/text inspection by Codex"
+        }
+      ],
+      "roster_authors": [
+        "Leonie Weissweiler",
+        "Valentin Hofmann",
+        "Anjali Kantharuban",
+        "Anna Cai",
+        "Ritam Dutt",
+        "Amey Hengle",
+        "Anubha Kabra",
+        "Atharva Kulkarni",
+        "Abhishek Vijayakumar",
+        "Haofei Yu",
+        "Hinrich Schuetze",
+        "Kemal Oflazer",
+        "David Mortensen"
+      ],
+      "citation_authors": [
+        "Leonie Weissweiler",
+        "Valentin Hofmann",
+        "Anjali Kantharuban",
+        "Anna Cai",
+        "Ritam Dutt",
+        "Amey Hengle",
+        "Anubha Kabra",
+        "Atharva Kulkarni",
+        "Abhishek Vijayakumar",
+        "Haofei Yu",
+        "Hinrich Schütze",
+        "Kemal Oflazer",
+        "David R. Mortensen"
+      ]
+    },
+    {
+      "decision_id": "source-review:9aa09535360a516cee8212eeab5d5cdd3ab4fc1014bb274062f930fffa811b6e",
+      "paper_id": "paper:emnlp:2023:2023.emnlp-main.536",
+      "record_sha256": "0907aa056023c54a2ac3c21af59c435e3a8516067f6b30325c03d5e0ec226278",
+      "disposition": "retain_source_byline",
+      "reason": "Visible publication byline agrees with frozen roster; PDF inspection found no substantive author-count/order conflict. Citation-name variants remain distinct evidence, not identity aliases.",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "supersedes_automated_failure_only": true,
+      "evidence": [
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.536/",
+          "sha256": "bac118dba2ffaba1229f67b9fb5862b5faee47b1ee8725cce798c2507939acae",
+          "retrieved_at": "2026-11-03T05:54:49.456854+00:00",
+          "locator": "p.lead a[href^=\"/people/\"]"
+        },
+        {
+          "url": "https://aclanthology.org/2023.emnlp-main.536.pdf",
+          "sha256": "8da7ff7ebfcad77bc19f147ea1a376969ef56beb5b8bbf02cc5bf2249a36ea52",
+          "retrieved_at": "2026-11-03T17:50:52.051326+00:00",
+          "locator": "PDF page 1, printed title and byline; visual/text inspection by Codex"
+        }
+      ],
+      "roster_authors": [
+        "Tharindu Madusanka",
+        "Iqra Zahid",
+        "Hao Li",
+        "Ian Pratt-Hartmann",
+        "Riza Batista-Navarro"
+      ],
+      "citation_authors": [
+        "Tharindu Madusanka",
+        "Iqra Zahid",
+        "Hao Li",
+        "Ian Pratt-Hartmann",
+        "Riza Theresa Batista-Navarro"
+      ]
+    },
+    {
+      "decision_id": "source-review:41feef11d2e11bf92b2a54e18d6eaca812325b70319b776362d6265f83030965",
+      "paper_id": "paper:mlsys:2023:8e3e27d07b3f663b7f85c819b9692163",
+      "record_sha256": "196b9e2eb59b03fc525ea99286dfaf378d75f6e1491d5dd338d117fdcfe0e84c",
+      "disposition": "withhold_core",
+      "reason": "PDF lists nine authors including Yuhan Dong; frozen roster and detail metadata list eight, with a Chinese-script name in position six. Unicode parsing is fixed, but source/version conflict remains; no transliteration identity merge.",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "supersedes_automated_failure_only": true,
+      "evidence": [
+        {
+          "url": "https://proceedings.mlsys.org/paper_files/paper/2023/hash/8e3e27d07b3f663b7f85c819b9692163-Abstract-mlsys2023.html",
+          "sha256": "cfaf4192252bb82fe205264058d75389abafafbe28ebdb6013b04b87a806fa0a",
+          "retrieved_at": "2026-11-03T05:56:07.089880+00:00",
+          "locator": "meta[name=citation_author]"
+        },
+        {
+          "url": "https://proceedings.mlsys.org/paper_files/paper/2023/file/8e3e27d07b3f663b7f85c819b9692163-Paper-mlsys2023.pdf",
+          "sha256": "9fb94a277c5fde49a3c776c01164d8fae595e57f5397d9f2c21a8ab95ea89b3b",
+          "retrieved_at": "2026-11-03T17:50:55.474383+00:00",
+          "locator": "PDF page 1, printed title and byline; visual/text inspection by Codex"
+        }
+      ],
+      "roster_authors": [
+        "Ke Hong",
+        "Zhongming Yu",
+        "Guohao Dai",
+        "Xinhao Yang",
+        "Yaoxiu Lian",
+        "泽浩 刘",
+        "Ningyi Xu",
+        "Yu Wang"
+      ],
+      "citation_authors": [
+        "Ke Hong",
+        "Zhongming Yu",
+        "Guohao Dai",
+        "Xinhao Yang",
+        "Yaoxiu Lian",
+        "泽浩 刘",
+        "Ningyi Xu",
+        "Yu Wang"
+      ],
+      "observed_pdf_authors": [
+        "Ke Hong",
+        "Zhongming Yu",
+        "Guohao Dai",
+        "Xinhao Yang",
+        "Yaoxiu Lian",
+        "Zehao Liu",
+        "Ningyi Xu",
+        "Yuhan Dong",
+        "Yu Wang"
+      ]
+    }
+  ],
+  "semantic_accuracy": "not_measured",
+  "identity_or_affiliation_overrides": []
+}

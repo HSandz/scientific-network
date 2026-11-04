@@ -1,0 +1,34 @@
+{
+  "venue_id": "venue:acl",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 1077,
+  "by_status": {
+    "included": 1077
+  },
+  "sources": [
+    {
+      "url": "https://aclanthology.org/2023.acl-long/",
+      "params": {},
+      "request_id": "f747bcd04ce842e5103017e9464f15d0edff23b53efc242ddf28d04271e80425",
+      "sha256": "5109a96823afeb0744ce890b2ba4a8410d7ab6b9912a2f5b6c58aded1bab1108",
+      "retrieved_at": "2026-11-03T05:33:28.392924+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/2023.acl-short/",
+      "params": {},
+      "request_id": "ad6605a0193e1fd65e657a4cc742c028e1fbc446cc7e91e8eb64deada8940f64",
+      "sha256": "29e2a1451dcef956e3f1aea79db5a8b6dce0baf2234b58f9cf1784a3fb3f64c7",
+      "retrieved_at": "2026-11-03T05:39:22.455643+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

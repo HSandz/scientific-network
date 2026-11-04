@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:aistats",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 496,
+  "by_status": {
+    "included": 496
+  },
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/v206/",
+      "params": {},
+      "request_id": "f725d36d57e7442007467320516d4a4d72bc3377366478c8f43a62e7fb84473b",
+      "sha256": "02b2bb49877076dfe9bba3fb98ef7a95ca9c3c60dc439e2e28500fe38cba32f9",
+      "retrieved_at": "2026-11-03T05:33:11.694265+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

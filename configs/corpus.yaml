@@ -1,0 +1,48 @@
+version: corpus-v0.1
+status: pilot_candidate
+scope: complete_main_conference_editions
+pilot:
+  papers: 100
+  balanced_by_venue: true
+  include_difficult_layouts: true
+editions:
+  - venue_id: venue:neurips
+    name: NeurIPS
+    year: 2023
+    official_index: https://proceedings.neurips.cc/paper/2023
+    include_tracks: [main]
+    exclude_tracks: [datasets_and_benchmarks, workshop, tutorial, invited]
+  - venue_id: venue:icml
+    name: ICML
+    year: 2023
+    official_index: https://proceedings.mlr.press/v202/
+    volume: 202
+    include_tracks: [main]
+    exclude_tracks: [workshop, tutorial, invited]
+exclude_statuses: [withdrawn, rejected, editorial, supplementary_only]
+paper_identity: official_proceedings_record
+unknown_track_policy: review
+missing_enrichment_policy: retain_official_ledger_record
+citation_boundary:
+  analysis: core_to_core
+  optional_context_hops: 1
+  recursive_expansion: false
+  context_counts_toward_size: false
+retrieval:
+  timeout_seconds: 30
+  max_attempts: 4
+  respect_retry_after: true
+  stop_at_quota_limit: true
+  cache_by_content_hash: true
+  concurrency:
+    official_proceedings: 2
+    openalex: 1
+    pdf: 2
+  # Recheck current source terms and quotas before implementing acquisition.
+  source_terms_checked_at: null
+pdf:
+  strategy: selective
+  header_endpoint: processHeaderDocument
+  reference_endpoint: processFulltextDocument
+  consolidate_header: 0
+  consolidate_citations: 0

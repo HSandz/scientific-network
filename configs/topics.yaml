@@ -1,0 +1,137 @@
+version: taxonomy-v0.1
+status: draft_freeze_after_pilot
+model:
+  strategy: phrase_baseline_then_supported_embeddings
+  name: null
+  revision: null
+  thresholds: null
+  note: Select and pin a model revision and per-label thresholds on development data.
+parents:
+  - id: topic:language-perception
+    name: Language and perception
+  - id: topic:learning-representation
+    name: Learning and representation
+  - id: topic:decision-interaction
+    name: Decision and interaction
+  - id: topic:reliability-theory-systems
+    name: Reliability, theory and systems
+leaves:
+  - id: topic:nlp-language-models
+    parent_id: topic:language-perception
+    name: Natural language processing and language models
+    definition: Methods for understanding, generating or modeling natural language.
+    synonyms: [natural language processing, language model, machine translation]
+    include: [language modeling, text generation, linguistic understanding]
+    exclude: [a language model mentioned only in related work]
+  - id: topic:computer-vision
+    parent_id: topic:language-perception
+    name: Computer vision
+    definition: Methods for interpreting images, video or visual scenes.
+    synonyms: [computer vision, image recognition, visual understanding]
+    include: [image classification, object detection, segmentation]
+    exclude: [an image used solely to illustrate a nonvisual method]
+  - id: topic:multimodal
+    parent_id: topic:language-perception
+    name: Multimodal learning
+    definition: Learning that substantively combines or aligns multiple data modalities.
+    synonyms: [multimodal learning, vision-language, cross-modal]
+    include: [image-text alignment, audiovisual learning]
+    exclude: [a single-modality experiment mentioning other modalities]
+  - id: topic:retrieval-recommendation
+    parent_id: topic:language-perception
+    name: Information retrieval and recommendation
+    definition: Methods for retrieving, ranking or recommending relevant items.
+    synonyms: [information retrieval, recommender system, learning to rank]
+    include: [recommendation, document retrieval, search ranking]
+    exclude: [nearest-neighbor lookup used only as an implementation detail]
+  - id: topic:generative-modeling
+    parent_id: topic:learning-representation
+    name: Generative modeling
+    definition: Learning distributions to generate or reconstruct data samples.
+    synonyms: [generative model, diffusion model, normalizing flow]
+    include: [diffusion, adversarial generation, variational generation]
+    exclude: [data augmentation without a substantive generative contribution]
+  - id: topic:graph-ml
+    parent_id: topic:learning-representation
+    name: Graph machine learning
+    definition: Learning from graph-structured entities and relationships.
+    synonyms: [graph neural network, graph learning, graph representation]
+    include: [node prediction, graph representation, graph generation]
+    exclude: [the word graph referring only to a plot]
+  - id: topic:representation-learning
+    parent_id: topic:learning-representation
+    name: Representation learning
+    definition: Learning transferable or structured feature representations.
+    synonyms: [representation learning, self-supervised learning, contrastive learning]
+    include: [self-supervised objectives, transferable embeddings]
+    exclude: [using a pretrained embedding without studying representations]
+  - id: topic:probabilistic-bayesian
+    parent_id: topic:learning-representation
+    name: Probabilistic and Bayesian learning
+    definition: Probabilistic inference and Bayesian modeling as a central contribution.
+    synonyms: [Bayesian inference, probabilistic modeling, posterior inference]
+    include: [posterior approximation, probabilistic programs]
+    exclude: [reporting uncertainty bars without probabilistic methodology]
+  - id: topic:reinforcement-learning
+    parent_id: topic:decision-interaction
+    name: Reinforcement learning
+    definition: Learning policies from reward or feedback in sequential decisions.
+    synonyms: [reinforcement learning, policy optimization, offline RL]
+    include: [value learning, reward-driven policy learning]
+    exclude: [optimization described informally as a reward]
+  - id: topic:robotics-embodied
+    parent_id: topic:decision-interaction
+    name: Robotics and embodied AI
+    definition: Learning or reasoning for agents acting in physical or embodied environments.
+    synonyms: [robotics, embodied AI, robot manipulation]
+    include: [robot control, embodied navigation]
+    exclude: [a generic simulated control benchmark without embodied contribution]
+  - id: topic:multi-agent
+    parent_id: topic:decision-interaction
+    name: Multi-agent systems
+    definition: Interaction, cooperation or competition among multiple decision-making agents.
+    synonyms: [multi-agent learning, multiagent system, cooperative agents]
+    include: [multi-agent coordination, strategic interaction]
+    exclude: [an ensemble of predictors without interacting agents]
+  - id: topic:planning-reasoning
+    parent_id: topic:decision-interaction
+    name: Planning and reasoning
+    definition: Methods for structured inference, reasoning or goal-directed plan construction.
+    synonyms: [automated planning, logical reasoning, neuro-symbolic reasoning]
+    include: [planning, reasoning algorithms, symbolic inference]
+    exclude: [reasoning asserted only as motivation]
+  - id: topic:trustworthy-ml
+    parent_id: topic:reliability-theory-systems
+    name: Trustworthy machine learning
+    definition: Reliability, robustness, safety, fairness, privacy or interpretability of learning systems.
+    synonyms: [robustness, fairness, differential privacy, interpretability, AI safety]
+    include: [robustness, safety, privacy, fairness, explanation]
+    exclude: [a routine limitation statement about possible risks]
+  - id: topic:optimization-theory
+    parent_id: topic:reliability-theory-systems
+    name: Optimization and learning theory
+    definition: Optimization methods or formal theoretical properties of learning.
+    synonyms: [learning theory, convergence analysis, generalization bound]
+    include: [optimization algorithms, formal learning guarantees]
+    exclude: [using a standard optimizer without studying it]
+  - id: topic:efficient-systems
+    parent_id: topic:reliability-theory-systems
+    name: Efficient machine learning systems
+    definition: Methods improving training or inference computation, memory or system efficiency.
+    synonyms: [model compression, efficient inference, distributed training]
+    include: [compression, quantization, systems efficiency]
+    exclude: [reporting runtime without an efficiency contribution]
+  - id: topic:causal-inference
+    parent_id: topic:reliability-theory-systems
+    name: Causal inference
+    definition: Identifying or estimating causal structure, effects or interventions.
+    synonyms: [causal inference, causal discovery, treatment effect]
+    include: [causal discovery, intervention estimation, counterfactual inference]
+    exclude: [causal masking in a language model without causal inference]
+annotation:
+  min_labels_when_accepted: 1
+  max_labels: 3
+  allow_abstention: true
+  require_supporting_text: true
+  require_confusing_examples_before_freeze: true
+  ambiguous_tokens_are_not_labels: [graph, agent, causal, attention]

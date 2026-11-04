@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scientific-network"
+version = "0.1.0"
+description = "Evidence-backed international AI researcher network course project"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "beautifulsoup4>=4.12,<5",
+  "httpx>=0.28,<0.29",
+  "neo4j>=5.26,<6",
+  "networkx>=3.4,<4",
+  "numpy>=2.0,<3",
+  "pydantic>=2.10,<3",
+  "pyyaml>=6.0.2,<7",
+  "python-dotenv>=1.0,<2",
+  "pyarrow>=18,<24",
+]
+
+[project.optional-dependencies]
+analysis = ["pandas>=2.2,<3", "pyarrow>=18,<24", "matplotlib>=3.9,<4"]
+app = ["streamlit>=1.41,<2", "plotly>=6,<7"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10"]
+
+[project.scripts]
+research-network = "scientific_network.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scientific_network"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

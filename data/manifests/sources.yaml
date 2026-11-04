@@ -1,0 +1,20 @@
+version: source-register-v0.1
+status: configured_not_fetched
+sources:
+  - source_id: neurips-2023
+    role: official_scope_authority
+    url: https://proceedings.neurips.cc/paper/2023
+    track_verification: required_exclude_datasets_and_benchmarks
+  - source_id: icml-2023
+    role: official_scope_authority
+    url: https://proceedings.mlr.press/v202/
+    volume: 202
+  - source_id: openalex
+    role: enrichment_requires_verified_match
+    url: https://api.openalex.org/
+  - source_id: ror
+    role: organization_canonicalization_candidates
+    url: https://api.ror.org/
+  - source_id: openreview
+    role: public_identity_corroboration
+    url: https://openreview.net/

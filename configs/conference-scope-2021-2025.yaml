@@ -1,0 +1,759 @@
+version: conference-scope-2021-2025-v1
+status: planning_only_not_an_executable_corpus_config
+decision: D018
+implementation_authorized: false
+collection_authorized: false
+years:
+- 2021
+- 2022
+- 2023
+- 2024
+- 2025
+conference_series: 34
+venue_year_candidates: 170
+verified_edition_count: null
+historical_registry: configs/conference-scope.yaml
+historical_executable_config: configs/corpus-extended-v2.yaml
+historical_config_policy: Preserve all historical configs, manifests, assignments, graphs and measured
+  reports unchanged. No new pipeline run authorized.
+edition_policy: Review each venue-year independently. Conference edition year defines scope; publisher/API
+  dates do not substitute for it. Record verified, no-edition, excluded, unavailable and unresolved states.
+  Never infer five editions per series.
+selection_policy: Curated flagship AI and related subfield venues; not a universal ranking or all computer
+  science conferences.
+inclusion_policy: Complete official main archival research-paper rosters; archival full and short papers
+  where applicable. Verify each edition and track before collection.
+exclude:
+- workshop
+- tutorial
+- demo
+- doctoral_consortium
+- student_research_workshop
+- invited_talk
+- editorial
+- withdrawn
+- rejected
+- supplementary_only
+- findings
+- nonresearch_industry_track
+- datasets_and_benchmarks
+split_policy: Preserve all 5046 legacy and all frozen expanded assignments. Identify cross-year/cross-venue
+  versions before new enrichment; old test versions remain held out; exposed papers cannot become fresh
+  tests. No new split created.
+release_gates_policy: Unchanged global unique five-year targets, not multiplied by year. Deduplicate works
+  and people across years; compute yearly support separately.
+conferences:
+- venue_id: venue:neurips
+  name: NeurIPS
+  area: general_ai_ml
+  source_catalog: https://proceedings.neurips.cc/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:icml
+  name: ICML
+  area: general_ai_ml
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:iclr
+  name: ICLR
+  area: general_ai_ml
+  source_catalog: https://openreview.net/group?id=ICLR.cc
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:aaai
+  name: AAAI
+  area: general_ai_ml
+  source_catalog: https://ojs.aaai.org/index.php/AAAI
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:ijcai
+  name: IJCAI
+  area: general_ai_ml
+  source_catalog: https://www.ijcai.org/proceedings/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:mlsys
+  name: MLSys
+  area: general_ai_ml
+  source_catalog: https://proceedings.mlsys.org/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:cvpr
+  name: CVPR
+  area: vision_multimedia_medical_imaging
+  source_catalog: https://openaccess.thecvf.com/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:iccv
+  name: ICCV
+  area: vision_multimedia_medical_imaging
+  source_catalog: https://openaccess.thecvf.com/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:eccv
+  name: ECCV
+  area: vision_multimedia_medical_imaging
+  source_catalog: https://www.ecva.net/papers.php
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:acmmm
+  name: ACM Multimedia
+  area: vision_multimedia_medical_imaging
+  source_catalog: https://dl.acm.org/conference/mm
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:miccai
+  name: MICCAI
+  area: vision_multimedia_medical_imaging
+  source_catalog: https://www.miccai.org/index.php/publications/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:acl
+  name: ACL
+  area: natural_language_processing
+  source_catalog: https://aclanthology.org/venues/acl/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:emnlp
+  name: EMNLP
+  area: natural_language_processing
+  source_catalog: https://aclanthology.org/venues/emnlp/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:naacl
+  name: NAACL
+  area: natural_language_processing
+  source_catalog: https://aclanthology.org/venues/naacl/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:eacl
+  name: EACL
+  area: natural_language_processing
+  source_catalog: https://aclanthology.org/venues/eacl/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:coling
+  name: COLING
+  area: natural_language_processing
+  source_catalog: https://aclanthology.org/venues/coling/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:kdd
+  name: KDD
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/kdd
+  track_policy: research_track_only
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:www
+  name: The Web Conference (WWW)
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/www
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:sigir
+  name: SIGIR
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/sigir
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:wsdm
+  name: WSDM
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/wsdm
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:recsys
+  name: RecSys
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/recsys
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:cikm
+  name: CIKM
+  area: data_web_retrieval_recommendation
+  source_catalog: https://dl.acm.org/conference/cikm
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:icdm
+  name: ICDM
+  area: data_web_retrieval_recommendation
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:sdm
+  name: SDM
+  area: data_web_retrieval_recommendation
+  source_catalog: https://epubs.siam.org/conference/sdm
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:aistats
+  name: AISTATS
+  area: statistical_learning_uncertainty_theory
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:uai
+  name: UAI
+  area: statistical_learning_uncertainty_theory
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:colt
+  name: COLT
+  area: statistical_learning_uncertainty_theory
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:icra
+  name: ICRA
+  area: robotics_embodied_learning
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:iros
+  name: IROS
+  area: robotics_embodied_learning
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:rss
+  name: 'Robotics: Science and Systems (RSS)'
+  area: robotics_embodied_learning
+  source_catalog: https://www.roboticsproceedings.org/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:corl
+  name: Conference on Robot Learning (CoRL)
+  area: robotics_embodied_learning
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:aamas
+  name: AAMAS
+  area: agents_reasoning_planning
+  source_catalog: https://www.ifaamas.org/Proceedings/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:kr
+  name: KR
+  area: agents_reasoning_planning
+  source_catalog: https://proceedings.kr.org/
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+- venue_id: venue:icaps
+  name: ICAPS
+  area: agents_reasoning_planning
+  source_catalog: https://ojs.aaai.org/index.php/ICAPS
+  track_policy: main_archival_research_papers
+  edition_reviews:
+  - year: 2021
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2022
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2023
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2024
+    status: pending_edition_verification
+    source_verified_for_new_scope: false
+  - year: 2025
+    status: pending_edition_verification
+    source_verified_for_new_scope: false

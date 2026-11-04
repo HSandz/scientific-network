@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:kr",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 80,
+  "by_status": {
+    "included": 80
+  },
+  "sources": [
+    {
+      "url": "https://proceedings.kr.org/2023/",
+      "params": {},
+      "request_id": "2e653598f8686fcdaa2d424ba0d5c0fe8747d9295f0895062bc26552d41dab37",
+      "sha256": "6ffffe5dd0973135a06b13d0e56b1e8ca96e3c6977c43cca1ef7a87862028c0a",
+      "retrieved_at": "2026-11-03T05:33:31.069266+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

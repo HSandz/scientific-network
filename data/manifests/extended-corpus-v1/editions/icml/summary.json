@@ -1,0 +1,11 @@
+{
+  "venue_id": "venue:icml",
+  "year": 2023,
+  "status": "legacy_preserved",
+  "reason": "official_roster_parsed",
+  "records": 1828,
+  "by_status": {
+    "included": 1828
+  },
+  "sources": []
+}

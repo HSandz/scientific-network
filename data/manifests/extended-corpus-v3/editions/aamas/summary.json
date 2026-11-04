@@ -1,0 +1,24 @@
+{
+  "venue_id": "venue:aamas",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 528,
+  "by_status": {
+    "excluded": 284,
+    "included": 244
+  },
+  "sources": [
+    {
+      "url": "https://www.ifaamas.org/Proceedings/aamas2023/forms/contents.htm",
+      "params": {},
+      "request_id": "4f2437672fe08f5da17adb55901f3e7bffce8ca794ae6ce9f7612a261bbc7cb2",
+      "sha256": "c9d8c027b50b83fbaaef893211bc94faf6941c71a7040f201a3d2c9139c06451",
+      "retrieved_at": "2026-11-03T05:41:27.630603+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

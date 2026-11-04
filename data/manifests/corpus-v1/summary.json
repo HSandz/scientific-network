@@ -1,0 +1,17 @@
+{
+  "stage": "discover",
+  "parser_version": "official-roster-v1",
+  "config_sha256": "35d32b64f1d611d991d79267ddb7ce5c80912fe1b229627a4211ccf4894d0361",
+  "roster_records": 5368,
+  "by_venue_status": {
+    "venue:icml:included": 1828,
+    "venue:neurips:included": 3218,
+    "venue:neurips:excluded": 322
+  },
+  "by_track": {
+    "main": 5046,
+    "datasets_and_benchmarks": 322
+  },
+  "manifest_sha256": "730705b9c7dab2c0788e1e97bc6c8518eef1c63939101e773c25c26ffb78d4d3",
+  "review_required": 0
+}

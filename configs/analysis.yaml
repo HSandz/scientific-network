@@ -1,0 +1,43 @@
+version: analysis-v0.1
+status: proposed
+random_seed: 20261101
+projections:
+  researcher_collaboration:
+    node_label: Researcher
+    relation: COAUTHORED_WITH
+    directed: false
+    weight: fractional_weight
+  organization_collaboration:
+    node_label: Organization
+    relation: COLLABORATED_WITH
+    directed: false
+    weight: fractional_weight
+  core_citations:
+    node_label: Paper
+    relation: CITES
+    directed: true
+    core_only: true
+  paper_topics:
+    node_labels: [Paper, Topic]
+    relation: HAS_TOPIC
+    directed: false
+  organization_topics:
+    node_labels: [Organization, Topic]
+    relation: CONTRIBUTES_TO_TOPIC
+    directed: false
+communities:
+  preferred: leiden_gds
+  fallback: louvain_networkx
+  seeds: [17, 42, 101]
+  resolutions: [0.8, 1.2]
+betweenness:
+  approximate: true
+  sample_nodes: 256
+  weighted_distance: inverse_positive_strength
+robustness:
+  compare_top_k: 20
+  stricter_evidence_filter_status: must_freeze_before_final_analysis
+business_findings:
+  minimum_case_studies: 3
+  minimum_investigation_shortlists: 2
+  supporting_papers_per_finding: 2

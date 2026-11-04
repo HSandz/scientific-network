@@ -1,0 +1,23 @@
+{
+  "venue_id": "venue:corl",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 199,
+  "by_status": {
+    "included": 199
+  },
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/v229/",
+      "params": {},
+      "request_id": "0a8d7890248ff31a0ad529980f8279a281fdd373e9641dcc52af0d5d9a605cfd",
+      "sha256": "7411f1baa35bc2034af476079fc14dc7198aea1943979f832c0415e34eb91421",
+      "retrieved_at": "2026-11-03T05:33:12.855351+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

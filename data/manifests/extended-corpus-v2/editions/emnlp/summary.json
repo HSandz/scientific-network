@@ -1,0 +1,24 @@
+{
+  "venue_id": "venue:emnlp",
+  "year": 2023,
+  "status": "collected",
+  "reason": "official_roster_parsed",
+  "records": 1048,
+  "by_status": {
+    "excluded": 1,
+    "included": 1047
+  },
+  "sources": [
+    {
+      "url": "https://aclanthology.org/2023.emnlp-main/",
+      "params": {},
+      "request_id": "5e17808e9bb8b69146466ded23dfb20844adb3488ca7b97aa31153f3590480ae",
+      "sha256": "4c3f8e1c84825a46c4d61992cceb963162b68bf0fa9d34ac6ac2cc291972114f",
+      "retrieved_at": "2026-11-03T05:41:00.791863+00:00",
+      "status": 200,
+      "attempts": 2,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ]
+}

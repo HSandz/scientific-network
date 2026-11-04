@@ -1,0 +1,42 @@
+{
+  "stage": "discover",
+  "parser_version": "extended-official-roster-v1",
+  "config_sha256": "20dfeb206bf5e4e5490a56eb0cb5af9d8694709eefaf7fdac0eede5d38f25e0b",
+  "roster_records": 15738,
+  "by_venue_status": {
+    "venue:aamas:excluded": 284,
+    "venue:aamas:included": 244,
+    "venue:acl:excluded": 2,
+    "venue:acl:included": 1075,
+    "venue:aistats:included": 496,
+    "venue:colt:included": 164,
+    "venue:colt:excluded": 6,
+    "venue:corl:included": 199,
+    "venue:cvpr:included": 2353,
+    "venue:eacl:excluded": 1,
+    "venue:eacl:included": 280,
+    "venue:emnlp:excluded": 1,
+    "venue:emnlp:included": 1047,
+    "venue:iccv:included": 2155,
+    "venue:iccv:excluded": 1,
+    "venue:icml:included": 1828,
+    "venue:ijcai:included": 639,
+    "venue:ijcai:excluded": 212,
+    "venue:kr:included": 80,
+    "venue:miccai:included": 730,
+    "venue:mlsys:included": 46,
+    "venue:neurips:included": 3218,
+    "venue:neurips:excluded": 322,
+    "venue:rss:included": 112,
+    "venue:uai:included": 243
+  },
+  "edition_statuses": {
+    "legacy_preserved": 2,
+    "unresolved_source": 14,
+    "collected": 15,
+    "no_2023_edition": 3
+  },
+  "incomplete_editions": 14,
+  "manifest_sha256": "d6eeedd1f7b380484644b7d9f58adc0e54075f9f47cd9c123fcaa203521d2208",
+  "review_required": 0
+}

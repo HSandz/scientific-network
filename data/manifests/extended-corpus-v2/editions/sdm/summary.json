@@ -1,0 +1,9 @@
+{
+  "venue_id": "venue:sdm",
+  "year": 2023,
+  "status": "unresolved_source",
+  "reason": "epubs.siam.org: access/quota HTTP 403; collection stopped",
+  "records": 0,
+  "by_status": {},
+  "sources": []
+}

@@ -1,0 +1,37 @@
+{
+  "stage": "discover",
+  "parser_version": "extended-official-roster-v1",
+  "config_sha256": "2639a5fb9a3109bcad8b54e5de9db37b49267181aaa1e2b556606f7ae5947f5e",
+  "roster_records": 15427,
+  "by_venue_status": {
+    "venue:aamas:excluded": 284,
+    "venue:aamas:included": 244,
+    "venue:acl:included": 1077,
+    "venue:aistats:included": 496,
+    "venue:colt:included": 164,
+    "venue:colt:excluded": 6,
+    "venue:cvpr:included": 2353,
+    "venue:eacl:included": 281,
+    "venue:emnlp:included": 1048,
+    "venue:iccv:included": 2155,
+    "venue:iccv:excluded": 1,
+    "venue:icml:included": 1828,
+    "venue:ijcai:included": 639,
+    "venue:ijcai:excluded": 212,
+    "venue:kr:included": 80,
+    "venue:miccai:included": 730,
+    "venue:mlsys:included": 46,
+    "venue:neurips:included": 3218,
+    "venue:neurips:excluded": 322,
+    "venue:uai:included": 243
+  },
+  "edition_statuses": {
+    "legacy_preserved": 2,
+    "unresolved_source": 17,
+    "collected": 13,
+    "blocked": 2
+  },
+  "incomplete_editions": 19,
+  "manifest_sha256": "e43efe94fd92fa98e28bb8115e755b8460cbd7d72d330ab0d3ea174af95c467b",
+  "review_required": 0
+}

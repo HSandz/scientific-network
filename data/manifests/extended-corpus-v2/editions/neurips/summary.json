@@ -1,0 +1,12 @@
+{
+  "venue_id": "venue:neurips",
+  "year": 2023,
+  "status": "legacy_preserved",
+  "reason": "official_roster_parsed",
+  "records": 3540,
+  "by_status": {
+    "included": 3218,
+    "excluded": 322
+  },
+  "sources": []
+}
