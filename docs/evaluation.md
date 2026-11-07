@@ -1,5 +1,10 @@
 # Independent quality evaluation
 
+> **For the 11 Nov 2026 submission** the audit design is in the
+> [release plan](release-plan.md#24-accuracy-audit-configsquality-release-v1yaml)
+> (D040). The protocol below is the original proposal; its definitions of edge
+> correctness still apply.
+
 The current planned population is 2021–2025 (D018). All measured research results
 remain diagnostics; the P09 edge-audit packet tools are protocol tooling and do
 not produce an independent quality result without real reviewer inputs. Future

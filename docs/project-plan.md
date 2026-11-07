@@ -1,5 +1,9 @@
 # Project specification
 
+> **Current release plan:** [release-plan.md](release-plan.md) (D040, 8 Nov 2026).
+> The course brief, business questions and graph rules below still apply; the
+> dated execution updates are history.
+
 Current shared workspace: [AI Research Network — Plan & Report (2021–2025) (Sites)](https://ai-research-network-plan.hazy-tern-8113.chatgpt.site),
 published 1 November 2026, read 2 November 2026, Site version 2 at inspection.
 The [text snapshot](reference/sites-project-plan-2026-11-02.txt) preserves all 20

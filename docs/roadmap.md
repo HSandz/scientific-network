@@ -1,5 +1,8 @@
 # Implementation roadmap
 
+> **Current plan:** [release-plan.md](release-plan.md) (D040, 8 Nov 2026). The
+> iteration notes below are history.
+
 **Current instruction (D022): staged 2021–2025 collection authorized.**
 Official roster discovery v2, OJS recovery v7, and source-roster overlays v8/v9/v10,
 leakage triage, frozen diagnostic sampling, bounded metadata acquisition and
