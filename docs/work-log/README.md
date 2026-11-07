@@ -12,7 +12,8 @@ project completion. Dates use Asia/Bangkok (UTC+07:00).
 
 | ID | Task | Status | Outcome |
 | --- | --- | --- | --- |
-| [WORK-2026-11-08-023](2026-11-08-023-recsys-2025-browser-source-audit.md) | P01 RecSys 2025 browser source audit | in_progress | Testing official accepted-contribution and proceedings capture after local DNS failures; v10 and frozen assignments preserved |
+| [WORK-2026-11-08-024](2026-11-08-024-release-plan-reset.md) | Independent review and release plan reset | completed | D040 and [release plan](../release-plan.md): AAAI + IJCAI 2021–2025 graph via DOI-matched OpenAlex evidence, feasible audit; source closure stopped; AGENTS.md and status replaced (old status archived); no code or data changes |
+| [WORK-2026-11-08-023](2026-11-08-023-recsys-2025-browser-source-audit.md) | P01 RecSys 2025 browser source audit | cancelled | Stopped by the user; raw captures left unanalyzed in ignored run artifacts; superseded by D040; v10 unchanged |
 | [WORK-2026-11-08-022](2026-11-08-022-cikm-2025-browser-source-capture.md) | P01 CIKM 2025 browser source capture | partial | Captured five official pages; 827 accepted IDs versus 852 proceedings links, incomplete title/byline crosswalk and reuse terms; D039 keeps v10 unchanged; Sites helper failed before checkout, Site remains v18 |
 | [WORK-2026-11-08-021](2026-11-08-021-acmmm-2024-browser-source-review.md) | P01 ACM Multimedia 2024 browser source review | partial | Recaptured 1,149-ID file and call shell; full roster/reuse unresolved, D038 keeps edition unavailable; v10 and frozen assignments verified; Site helper failed before checkout |
 | [WORK-2026-11-07-020](2026-11-07-020-icdm-2025-offline-source-audit.md) | P01 ICDM 2025 accepted-list audit | partial | 175 accepted-page entries captured with response metadata; CFP short-track wording, incomplete program/proceedings join and reuse terms keep the edition unresolved; v10 and frozen assignments remain unchanged |

@@ -1,5 +1,11 @@
 # International AI Research Network
 
+> **Current direction (D040, 8 Nov 2026):** the submission graph covers AAAI and
+> IJCAI 2021–2025 (13,617 papers from roster v10), built from DOI-matched OpenAlex
+> evidence. Follow the [release plan](docs/release-plan.md) and the
+> [current status](docs/status.md). The status notes below describe earlier
+> iterations; they will be rewritten once release results exist.
+
 Course project for **Social Media Network Analysis for Business**. Construct an
 evidence-backed network of researchers, organizations, papers, topics, and venues
 across **major AI and related flagship conferences in 2021–2025**.

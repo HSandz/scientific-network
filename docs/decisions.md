@@ -22,6 +22,7 @@
 | D036 | 2026-11-07 | Keep ICDM 2021 unresolved pending proceedings reconciliation and reuse authorization | The official list has 197 IDs and the schedule's 42 additional IDs are in separately named workshop/PhD Panel events; IEEE Xplore returned HTTP 418 and source ownership/reuse terms remain unclear. No roster or frozen assignment change |
 | D037 | 2026-11-08 | Keep ICDM 2025 unresolved pending final proceedings reconciliation and reuse status | The hash-bound accepted list has 105 Regular and 70 Short entries, but the CFP's no-short-track language, incomplete program join, unavailable publisher index and unclear metadata reuse status leave final main-proceedings membership unresolved. No roster or frozen assignment change |
 | D038 | 2026-11-08 | Keep ACM Multimedia 2024 unavailable after browser-source follow-up | The official call clarifies length-neutral regular-paper review and says BNI acceptances appear in main proceedings, but the 1,149/1,150 count conflict, incomplete program join and unknown metadata reuse terms still prevent roster closure. No roster or frozen assignment change |
+| D040 | 2026-11-08 | Release reset for the 11 Nov submission: AAAI + IJCAI 2021–2025 graph from roster v10 with DOI-matched OpenAlex evidence, embedding topics and a feasible frozen audit; source closure stops | P01 cannot close by the deadline, the D009 pilot rules yield too little to form a network, and no release graph or report exists. See [D040](#d040--release-reset-for-the-11-november-submission-2026-11-08) and the [release plan](release-plan.md) |
 
 Add the rationale, evidence, scope impact and reviewer to subsequent material
 decisions. Preserve original requirements and old frozen audit results.
@@ -691,3 +692,47 @@ See [source corrections v12](../data/manifests/five-year-source-corrections-v12.
 and [WORK-022](work-log/2026-11-08-022-cikm-2025-browser-source-capture.md).
 This year-specific finding does not change earlier CIKM editions. Recorded by
 Codex under D022 and the user's proceed instruction.
+
+## D040 — Release reset for the 11 November submission (2026-11-08)
+
+Requested by the user after an independent review of the project state
+([WORK-2026-11-08-024](work-log/2026-11-08-024-release-plan-reset.md)); drafted by
+Claude. It applies until submission, and the [release plan](release-plan.md) holds
+the operational detail. The user may amend the defaults below before release-plan
+phase 1; record any amendment here with its date.
+
+- **Scope:** AAAI and IJCAI 2021–2025 main-track papers from roster v10 (13,617),
+  as one cumulative graph. Roster v10 is final and P01 source closure stops. Other
+  editions and the 62 incomplete candidates are reported as collected data and
+  coverage limits. D018's 34-series registry stays the long-term scope.
+- **Evidence:** works are matched by the DOI derived from the official URL, with
+  title and author-count agreement. A researcher is the OpenAlex author ID on a
+  name-compatible authorship (ORCID recorded, not required). Affiliation triples
+  come from that authorship's OpenAlex institutions with raw strings as evidence;
+  papers showing a paper-level institution list go to review. Citations link only
+  matched in-scope works. PDF/GROBID checks are optional. For this release this
+  supersedes D009's pilot identity and affiliation rule.
+- **Topics:** a frozen embedding classifier with abstention, compared with the
+  phrase baseline on 50 papers frozen before tuning (30 reserved IJCAI tests and
+  20 newly reserved AAAI papers).
+- **Audit:** `quality-release-v1`: 200 uniform edges plus 10 per relation type.
+  Each edge gets one review, split between two reviewers, plus a 50-edge overlap
+  both review. Report Wilson 95% intervals against the course requirement (>90%)
+  and the project target (≥95% with lower bound >90%). Size and coverage targets
+  are unchanged.
+- **Gates and process:** P00–P10, G01–G12, the P02 enrichment no-go (D029),
+  D022's enrichment preconditions and readiness receipts no longer block release
+  work; gates are reported as measured pass/fail. The Site is updated once, after
+  final results. All other integrity rules in `AGENTS.md`, historical artifacts
+  and held-out IDs are kept.
+- **Evidence for the change:**
+  - On the 2023 candidate, D009's rules resolved 85 of 1,206 author positions (7%)
+    and 36 affiliated author–paper pairs (3%); no researcher appeared on two papers.
+  - Thirteen source tasks after roster v10 changed no roster.
+  - Access issues block 40 ACM/SIAM, 15 IEEE and 5 ICLR candidates.
+  - Keyless OpenAlex checks on 8 Nov returned 24 of 24 derived AAAI/IJCAI DOIs,
+    with author IDs, institutions, raw affiliation strings and abstracts. Sampled
+    ICML papers were indexed only as arXiv records.
+- **Risks, disclosed in the report:** OpenAlex author disambiguation and
+  institution assignment errors (measured by the audit), the single-review design,
+  and the narrower venue coverage.

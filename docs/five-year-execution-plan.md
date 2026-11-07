@@ -1,5 +1,9 @@
 # Five-year execution plan — deadline 11 November 2026
 
+> **Superseded for the 11 Nov 2026 submission** by
+> [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08)
+> and the [release plan](release-plan.md). Kept as history.
+
 Planning revision: **6 November 2026, Asia/Bangkok (UTC+07:00)**. The user confirmed
 **11 November 2026** as the submission date; the time of day was not specified.
 Target submission-ready artifacts by **10 November, 18:00 +07:00**, leaving

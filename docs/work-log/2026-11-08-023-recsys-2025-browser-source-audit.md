@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress |
-| Recorded | 2026-11-08 01:55 +07:00 (Asia/Bangkok) |
+| Status | cancelled — superseded by D040 before analysis |
+| Recorded | 2026-11-08 01:55 +07:00 (Asia/Bangkok); closed 2026-11-08 03:10 +07:00 |
 | Work performed | 2026-11-08, Asia/Bangkok (UTC+07:00) |
 | Contributor | Codex |
 | Related task | [WORK-2026-11-08-022](2026-11-08-022-cikm-2025-browser-source-capture.md) |
@@ -22,6 +22,12 @@ source-use conditions reconcile. Preserve roster v10 and every frozen assignment
   and [WORK-011](2026-11-07-011-acm-siam-source-route-review.md).
 - No source capture, roster, split, enrichment, graph, or database operation has
   occurred at this checkpoint.
+- Closure note (2026-11-08 03:10 +07:00, recorded by Claude in WORK-2026-11-08-024):
+  the user stopped this session. Between 01:56 and 02:13 it saved raw RecSys 2025
+  accepted-contribution, call, program and program-at-a-glance captures in ignored
+  `reports/runs/WORK-2026-11-08-023/`. They were not analyzed, hash-bound into a
+  source-correction overlay or used. No tracked file changed after commit
+  `f565d87`; roster v10 is unchanged.
 
 ## Verification
 
@@ -41,10 +47,9 @@ established.
 
 ## Next step
 
-Capture the official accepted-contribution and proceedings routes with response
-metadata, inspect all categories, and perform aggregate-only reconciliation. Keep
-the edition `access_unavailable` if any route, track, record, or source-use
-condition remains open.
+None. Source closure stopped under [D040](../decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08);
+RecSys 2025 stays `access_unavailable` in v10. Continue with the
+[release plan](../release-plan.md).
 
 ## Corrections
 
