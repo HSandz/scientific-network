@@ -44,6 +44,30 @@ services:
       retries: 10
       start_period: 40s
 
+  # Isolated service for the D040 release graph (release plan section 8.4). Never
+  # share its volumes with the pilot (neo4j) or extended (neo4j-extended) services.
+  neo4j-five-year:
+    image: neo4j:5.26.12-community
+    profiles: ["five-year"]
+    ports:
+      - "127.0.0.1:7476:7474"
+      - "127.0.0.1:7689:7687"
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:?Set NEO4J_PASSWORD in ignored .env}"
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 1500m
+      NEO4J_server_memory_pagecache_size: 1G
+    volumes:
+      - neo4j-five-year-data:/data
+      - neo4j-five-year-logs:/logs
+      - ./queries:/workspace/queries:ro
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -a bolt://localhost:7687 -u neo4j -p \"$${NEO4J_AUTH#*/}\" 'RETURN 1' >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+
   grobid:
     image: grobid/grobid:0.8.2-crf
     profiles: ["nlp"]
@@ -56,3 +80,5 @@ volumes:
   neo4j-logs:
   neo4j-extended-data:
   neo4j-extended-logs:
+  neo4j-five-year-data:
+  neo4j-five-year-logs:

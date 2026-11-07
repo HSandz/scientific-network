@@ -1,0 +1,60 @@
+# Release quality config (D040; release plan sections 1 and 2.4).
+# Copy of configs/quality.yaml with the audit section replaced. Size and coverage
+# targets keep their quality.yaml values. Frozen before any graph exists; do not tune
+# against audit or test results.
+version: quality-release-v1
+status: frozen
+size:
+  min_domain_nodes: 2000
+  min_resolved_core_researchers: 2000
+  min_unique_factual_edges: 5000
+  required_relation_types: 10
+  factual_relations: [AUTHORED, AFFILIATED_WITH, PUBLISHED_IN, CITES]
+audit:
+  # Frame: all accepted edges of the frozen graph. One global uniform sample
+  # without replacement, reported separately from the per-type samples, which are
+  # never pooled into the global estimate (a type with fewer edges is a census).
+  review_design: split_with_overlap
+  global_sample_size: 200
+  per_type_sample_size: 10
+  random_seed: 20261101             # recorded here before any sampling
+  # Each sampled edge is reviewed once, split between reviewers A and B; overlap_sample_size
+  # global-sample edges are reviewed by both, and disagreements are adjudicated together.
+  # Reviewer names are in docs/team.md.
+  independent_reviewers: 2
+  reviewer_ids: [A, B]
+  overlap_sample_size: 50
+  confidence_level: 0.95
+  min_precision: 0.95               # project target, with the Wilson lower bound below
+  wilson_lower_bound_must_exceed: 0.90
+  course_point_estimate_must_exceed: 0.90
+  unverifiable_is_incorrect: true
+  supplement_is_separate: true
+  # Fallback if only one reviewer is available (state it in the report): 200 uniform
+  # edges plus 5 per type, no overlap.
+coverage_targets:
+  abstracts: 0.95
+  author_paper_affiliation_resolution: 0.80
+  topics_on_eligible_papers: 0.80
+component_precision_targets:
+  researcher_pairwise: 0.98
+  organization_resolution: 0.95
+  affiliation_triples: 0.95
+  topic_labels: 0.95
+  citation_targets: 0.98
+topics:
+  max_labels_per_paper: 3
+  allow_abstention: true
+  thresholds_calibrated: false      # set when tau and delta are chosen in Phase 5
+derived:
+  researcher_topic_min_distinct_papers: 2
+  organization_topic_min_distinct_papers: 3
+held_out:
+  # Release held-out IDs are the frozen five-year-splits-v1 membership plus the
+  # topic test set frozen in Phase 5 (release plan section 2.3). The sizes below are
+  # copied from quality.yaml for the historical split tooling only.
+  reserve_before_tuning: true
+  development_papers_per_venue: 30
+  test_papers_per_venue: 60
+  random_seed: 20261102
+  exclude_all_versions_from_development: true
