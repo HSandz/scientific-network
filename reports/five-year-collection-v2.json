@@ -1,0 +1,802 @@
+{
+  "work_id": "WORK-2026-11-06-003",
+  "snapshot_date": "2026-11-06",
+  "timezone": "Asia/Bangkok UTC+07:00",
+  "release_status": "partial_rosters_and_development_metadata_not_a_release_graph",
+  "discovery": {
+    "stage": "discover",
+    "config_sha256": "8389daad170cc3a766927926c319d0faa67162e6764f69d1a7628247afba67ed",
+    "method_version": "five-year-official-rosters-v2",
+    "scope": "2021-2025 official_rosters_only",
+    "candidate_editions": 170,
+    "roster_records": 78321,
+    "records_by_status": {
+      "excluded": 2666,
+      "included": 75655
+    },
+    "edition_statuses": {
+      "verified_eligible": 79,
+      "unresolved": 51,
+      "access_unavailable": 40
+    },
+    "by_year": {
+      "2021": 11063,
+      "2022": 12520,
+      "2023": 14480,
+      "2024": 17698,
+      "2025": 22560
+    },
+    "eligible_included_records": 75655,
+    "incomplete_editions": 91,
+    "review_required": 0,
+    "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+    "edition_ledger_sha256": "4817c2cd2fbd9027759149165d636b16e9b4df16a5b36eaddeb94e4e7dd504f1",
+    "canonical_work_count": null,
+    "resolved_researchers": null,
+    "semantic_accuracy": "not_measured",
+    "enrichment_status": "not_started_requires_leakage_reconciliation_and_frozen_design"
+  },
+  "reconciliation": {
+    "stage": "reconcile-rosters",
+    "method_version": "five-year-leakage-triage-v2",
+    "input_sha256": {
+      "data/manifests/five-year-roster-v2/corpus_manifest.jsonl": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+      "data/manifests/extended-corpus-v3/corpus_manifest.jsonl": "2e4c21bbd152b309a59ba7a16ed1d89f41ca009b7a2bfe715db670e1d046924b",
+      "data/manifests/extended-splits-v3/membership.jsonl": "7236103c7498e9bd58274598c648feb0f50ffbbda44eb8c5ac483ff60d27c0d4",
+      "data/manifests/five-year-roster-v2/summary.json": "4c8843202701b527a32a3ef57835fbce496d9c9513dfbacab4a64a6955a416bc"
+    },
+    "included_roster_records": 75655,
+    "actions": {
+      "pending_prospective_design": 61719,
+      "preserve_existing_assignment": 13935,
+      "quarantine_version_candidate": 1
+    },
+    "historical_assignments_preserved": 14909,
+    "new_splits_created": 0,
+    "canonical_works_merged": 0,
+    "enrichment_authorized_by_this_output": false,
+    "triage_sha256": "03188069e287500f225758dcb78ce0d0b15e2a6ad19a00afb374897c5fd0b50c",
+    "limitations": [
+      "Exact normalized title matches guard leakage but do not establish identity.",
+      "Alternate-title versions without shared identifiers require later review.",
+      "Edition completeness and independent prospective sampling still gate enrichment."
+    ]
+  },
+  "frozen_diagnostics": {
+    "stage": "freeze-diagnostics",
+    "method_version": "five-year-diagnostics-v1",
+    "input_sha256": {
+      "data/manifests/five-year-roster-v2/corpus_manifest.jsonl": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+      "data/manifests/five-year-roster-v2/edition-ledger.jsonl": "4817c2cd2fbd9027759149165d636b16e9b4df16a5b36eaddeb94e4e7dd504f1",
+      "data/manifests/five-year-reconciliation-v2/leakage-triage.jsonl": "03188069e287500f225758dcb78ce0d0b15e2a6ad19a00afb374897c5fd0b50c",
+      "configs/five-year-diagnostics-v1.yaml": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+      "data/manifests/extended-corpus-v3/corpus_manifest.jsonl": "2e4c21bbd152b309a59ba7a16ed1d89f41ca009b7a2bfe715db670e1d046924b",
+      "data/manifests/extended-splits-v3/membership.jsonl": "7236103c7498e9bd58274598c648feb0f50ffbbda44eb8c5ac483ff60d27c0d4",
+      "data/manifests/splits-v1/membership.jsonl": "ed5658f3c9137e0f22b0594b351b7b340ab581bf91873582ae12eabbb720441a"
+    },
+    "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+    "membership_sha256": "fdaa5e742c7c2e4a96c2d1d70df48103f758ec82fbbe01f8005adb4598aa674f",
+    "diagnostics_sha256": "cf68ac15e42861a17cccc7a8a7259e046e9a81e2c2a160e6dea7e25466042fe0",
+    "config_sha256": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+    "reserved_tests_sha256": "b6f9299c5568da8dc4f164d28e89e79cea565ed01a0eea8c5683dec5f035f190",
+    "historical_assignments_preserved": 14909,
+    "new_diagnostic_papers": 68,
+    "new_test_groups": 170,
+    "strata": 34,
+    "by_split": {
+      "pool": 74995,
+      "test": 1095,
+      "development": 538,
+      "review": 1
+    },
+    "seed": 20261106,
+    "held_out_diagnostic_overlap": 0,
+    "sample_status": "frozen_unannotated_development_diagnostics",
+    "inference_population": "new eligible singleton records within source-family/year strata; not full registry or release audit",
+    "work_identity": "provisional_per_official_record; unresolved versions quarantined; no title-based canonical merges"
+  },
+  "metadata": {
+    "stage": "acquire-diagnostics",
+    "method_version": "five-year-diagnostic-metadata-v1",
+    "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+    "membership_sha256": "fdaa5e742c7c2e4a96c2d1d70df48103f758ec82fbbe01f8005adb4598aa674f",
+    "diagnostics_sha256": "cf68ac15e42861a17cccc7a8a7259e046e9a81e2c2a160e6dea7e25466042fe0",
+    "config_sha256": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+    "selected_papers": 68,
+    "by_status": {
+      "acquired": 67,
+      "failed": 1
+    },
+    "work_matches": 36,
+    "abstracts_available": 67,
+    "by_year": {
+      "2022": 18,
+      "2024": 18,
+      "2025": 16,
+      "2021": 16
+    },
+    "by_venue": {
+      "venue:icml": 6,
+      "venue:mlsys": 8,
+      "venue:neurips": 8,
+      "venue:eccv": 4,
+      "venue:ijcai": 8,
+      "venue:kr": 8,
+      "venue:rss": 8,
+      "venue:acl": 4,
+      "venue:emnlp": 2,
+      "venue:cvpr": 7,
+      "venue:colt": 1,
+      "venue:aistats": 1,
+      "venue:coling": 2,
+      "venue:iccv": 1
+    },
+    "pdfs_downloaded": 0,
+    "held_out_papers_acquired": 0,
+    "semantic_accuracy": "not_measured",
+    "review_reasons": {},
+    "failure_reasons": {
+      "official roster/detail ordered byline mismatch": 1
+    },
+    "identity_resolution": "not_started",
+    "graph_import": "not_started",
+    "papers_sha256": "af4fb53e0623ccaca9a668fdbd68d8e2e162de779fa3161f59761cb6b0c0d8f2"
+  },
+  "strata": [
+    {
+      "stratum": "acl:2021",
+      "population": 2358,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0021204410517387615,
+      "diagnostic_probability": 0.0008481764206955047,
+      "pool_groups": 2351
+    },
+    {
+      "stratum": "acl:2022",
+      "population": 2601,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0019223375624759708,
+      "diagnostic_probability": 0.0007689350249903883,
+      "pool_groups": 2594
+    },
+    {
+      "stratum": "acl:2024",
+      "population": 2992,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0016711229946524064,
+      "diagnostic_probability": 0.0006684491978609625,
+      "pool_groups": 2985
+    },
+    {
+      "stratum": "acl:2025",
+      "population": 4983,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0010034115994380895,
+      "diagnostic_probability": 0.0004013646397752358,
+      "pool_groups": 4976
+    },
+    {
+      "stratum": "cvf:2021",
+      "population": 3272,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.001528117359413203,
+      "diagnostic_probability": 0.0006112469437652812,
+      "pool_groups": 3265
+    },
+    {
+      "stratum": "cvf:2022",
+      "population": 2074,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0024108003857280617,
+      "diagnostic_probability": 0.0009643201542912247,
+      "pool_groups": 2067
+    },
+    {
+      "stratum": "cvf:2024",
+      "population": 2716,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.001840942562592047,
+      "diagnostic_probability": 0.0007363770250368188,
+      "pool_groups": 2709
+    },
+    {
+      "stratum": "cvf:2025",
+      "population": 5572,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0008973438621679827,
+      "diagnostic_probability": 0.0003589375448671931,
+      "pool_groups": 5565
+    },
+    {
+      "stratum": "ecva:2022",
+      "population": 1645,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.00303951367781155,
+      "diagnostic_probability": 0.0012158054711246201,
+      "pool_groups": 1638
+    },
+    {
+      "stratum": "ecva:2024",
+      "population": 2387,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0020946795140343527,
+      "diagnostic_probability": 0.0008378718056137411,
+      "pool_groups": 2380
+    },
+    {
+      "stratum": "ijcai:2021",
+      "population": 586,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.008532423208191127,
+      "diagnostic_probability": 0.0034129692832764505,
+      "pool_groups": 579
+    },
+    {
+      "stratum": "ijcai:2022",
+      "population": 678,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.007374631268436578,
+      "diagnostic_probability": 0.0029498525073746312,
+      "pool_groups": 671
+    },
+    {
+      "stratum": "ijcai:2024",
+      "population": 789,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0063371356147021544,
+      "diagnostic_probability": 0.0025348542458808617,
+      "pool_groups": 782
+    },
+    {
+      "stratum": "ijcai:2025",
+      "population": 1014,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.004930966469428008,
+      "diagnostic_probability": 0.0019723865877712033,
+      "pool_groups": 1007
+    },
+    {
+      "stratum": "kr:2021",
+      "population": 75,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.06666666666666667,
+      "diagnostic_probability": 0.02666666666666667,
+      "pool_groups": 68
+    },
+    {
+      "stratum": "kr:2022",
+      "population": 43,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.11627906976744186,
+      "diagnostic_probability": 0.046511627906976744,
+      "pool_groups": 36
+    },
+    {
+      "stratum": "kr:2024",
+      "population": 66,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.07575757575757576,
+      "diagnostic_probability": 0.030303030303030304,
+      "pool_groups": 59
+    },
+    {
+      "stratum": "kr:2025",
+      "population": 55,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.09090909090909091,
+      "diagnostic_probability": 0.03636363636363636,
+      "pool_groups": 48
+    },
+    {
+      "stratum": "mlsys:2021",
+      "population": 52,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.09615384615384616,
+      "diagnostic_probability": 0.038461538461538464,
+      "pool_groups": 45
+    },
+    {
+      "stratum": "mlsys:2022",
+      "population": 51,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.09803921568627451,
+      "diagnostic_probability": 0.0392156862745098,
+      "pool_groups": 44
+    },
+    {
+      "stratum": "mlsys:2024",
+      "population": 37,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.13513513513513514,
+      "diagnostic_probability": 0.05405405405405406,
+      "pool_groups": 30
+    },
+    {
+      "stratum": "mlsys:2025",
+      "population": 61,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.08196721311475409,
+      "diagnostic_probability": 0.03278688524590164,
+      "pool_groups": 54
+    },
+    {
+      "stratum": "neurips:2021",
+      "population": 2334,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0021422450728363325,
+      "diagnostic_probability": 0.000856898029134533,
+      "pool_groups": 2327
+    },
+    {
+      "stratum": "neurips:2022",
+      "population": 2671,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0018719580681392737,
+      "diagnostic_probability": 0.0007487832272557095,
+      "pool_groups": 2664
+    },
+    {
+      "stratum": "neurips:2024",
+      "population": 4034,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0012394645513138325,
+      "diagnostic_probability": 0.0004957858205255329,
+      "pool_groups": 4027
+    },
+    {
+      "stratum": "neurips:2025",
+      "population": 5286,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0009458948164964056,
+      "diagnostic_probability": 0.00037835792659856227,
+      "pool_groups": 5279
+    },
+    {
+      "stratum": "pmlr:2021",
+      "population": 2148,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0023277467411545625,
+      "diagnostic_probability": 0.000931098696461825,
+      "pool_groups": 2141
+    },
+    {
+      "stratum": "pmlr:2022",
+      "population": 2314,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.00216076058772688,
+      "diagnostic_probability": 0.000864304235090752,
+      "pool_groups": 2307
+    },
+    {
+      "stratum": "pmlr:2024",
+      "population": 3781,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0013224014810896587,
+      "diagnostic_probability": 0.0005289605924358636,
+      "pool_groups": 3774
+    },
+    {
+      "stratum": "pmlr:2025",
+      "population": 4581,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.0010914647456887142,
+      "diagnostic_probability": 0.0004365858982754857,
+      "pool_groups": 4574
+    },
+    {
+      "stratum": "rss:2021",
+      "population": 92,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.05434782608695652,
+      "diagnostic_probability": 0.021739130434782608,
+      "pool_groups": 85
+    },
+    {
+      "stratum": "rss:2022",
+      "population": 74,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.06756756756756757,
+      "diagnostic_probability": 0.02702702702702703,
+      "pool_groups": 67
+    },
+    {
+      "stratum": "rss:2024",
+      "population": 134,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.03731343283582089,
+      "diagnostic_probability": 0.014925373134328358,
+      "pool_groups": 127
+    },
+    {
+      "stratum": "rss:2025",
+      "population": 163,
+      "test_groups": 5,
+      "development_diagnostics": 2,
+      "test_probability": 0.03067484662576687,
+      "diagnostic_probability": 0.012269938650306749,
+      "pool_groups": 156
+    }
+  ],
+  "by_year": [
+    {
+      "year": 2021,
+      "roster_records": 11063,
+      "included_records": 10917,
+      "eligible_editions": 16,
+      "other_candidates": 18
+    },
+    {
+      "year": 2022,
+      "roster_records": 12520,
+      "included_records": 12151,
+      "eligible_editions": 16,
+      "other_candidates": 18
+    },
+    {
+      "year": 2023,
+      "roster_records": 14480,
+      "included_records": 13935,
+      "eligible_editions": 15,
+      "other_candidates": 19
+    },
+    {
+      "year": 2024,
+      "roster_records": 17698,
+      "included_records": 16937,
+      "eligible_editions": 16,
+      "other_candidates": 18
+    },
+    {
+      "year": 2025,
+      "roster_records": 22560,
+      "included_records": 21715,
+      "eligible_editions": 16,
+      "other_candidates": 18
+    }
+  ],
+  "by_venue": [
+    {
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:aamas",
+      "name": "AAMAS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "roster_records": 5134,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:acmmm",
+      "name": "ACM Multimedia",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:aistats",
+      "name": "AISTATS",
+      "roster_records": 2573,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:cikm",
+      "name": "CIKM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:coling",
+      "name": "COLING",
+      "roster_records": 1391,
+      "edition_statuses": {
+        "unresolved": 3,
+        "verified_eligible": 2
+      }
+    },
+    {
+      "venue_id": "venue:colt",
+      "name": "COLT",
+      "roster_records": 826,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:corl",
+      "name": "Conference on Robot Learning (CoRL)",
+      "roster_records": 1089,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:cvpr",
+      "name": "CVPR",
+      "roster_records": 11674,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:eacl",
+      "name": "EACL",
+      "roster_records": 833,
+      "edition_statuses": {
+        "verified_eligible": 3,
+        "unresolved": 2
+      }
+    },
+    {
+      "venue_id": "venue:eccv",
+      "name": "ECCV",
+      "roster_records": 4032,
+      "edition_statuses": {
+        "unresolved": 3,
+        "verified_eligible": 2
+      }
+    },
+    {
+      "venue_id": "venue:emnlp",
+      "name": "EMNLP",
+      "roster_records": 5804,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:icaps",
+      "name": "ICAPS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:iccv",
+      "name": "ICCV",
+      "roster_records": 6469,
+      "edition_statuses": {
+        "verified_eligible": 3,
+        "unresolved": 2
+      }
+    },
+    {
+      "venue_id": "venue:icdm",
+      "name": "ICDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:iclr",
+      "name": "ICLR",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:icml",
+      "name": "ICML",
+      "roster_records": 10184,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:icra",
+      "name": "ICRA",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:ijcai",
+      "name": "IJCAI",
+      "roster_records": 4763,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:iros",
+      "name": "IROS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:kdd",
+      "name": "KDD",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:kr",
+      "name": "KR",
+      "roster_records": 389,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:miccai",
+      "name": "MICCAI",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:mlsys",
+      "name": "MLSys",
+      "roster_records": 247,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:naacl",
+      "name": "NAACL",
+      "roster_records": 2205,
+      "edition_statuses": {
+        "verified_eligible": 4,
+        "unresolved": 1
+      }
+    },
+    {
+      "venue_id": "venue:neurips",
+      "name": "NeurIPS",
+      "roster_records": 19024,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:recsys",
+      "name": "RecSys",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:rss",
+      "name": "Robotics: Science and Systems (RSS)",
+      "roster_records": 575,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:sdm",
+      "name": "SDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:sigir",
+      "name": "SIGIR",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:uai",
+      "name": "UAI",
+      "roster_records": 1109,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:wsdm",
+      "name": "WSDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:www",
+      "name": "The Web Conference (WWW)",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    }
+  ],
+  "openalex_quota_after": {
+    "daily_budget_usd": 1,
+    "daily_used_usd": 0.067,
+    "daily_remaining_usd": 0.933,
+    "prepaid_balance_usd": 0,
+    "prepaid_remaining_usd": 0,
+    "resets_at": "2026-11-07T00:00:00.000Z"
+  },
+  "services": {
+    "grobid": {
+      "http_status": 200,
+      "alive": true
+    },
+    "neo4j": {
+      "nodes": 154,
+      "edges": 211
+    }
+  },
+  "graph_status": "no_five_year_graph; historical_2023_graphs_unchanged",
+  "scientific_accuracy": "not_measured",
+  "code_sha256": {
+    "src/scientific_network/collect/five_year_v2.py": "0d7470bb6ae505c6cfbf596eaf15f123dcc8a08f839b474515e4143f2678d251",
+    "src/scientific_network/collect/reconcile.py": "ea1d681185d7d1f1a1bbc8e3ef390a62521ccca85c882d695d524ae723b59b0c",
+    "src/scientific_network/collect/diagnostics.py": "bbd06282399fdf607b6b6bb6c3a2b5d815e7d2c7cd8ef5916b5832a9682427ee",
+    "src/scientific_network/collect/diagnostic_acquire.py": "85d79b19b12d643144cb35f6e33aa0a51d59dc70d41ffe1291c29a0ebbc525d5"
+  },
+  "replay_validation": {
+    "discovery": "identical_summary; exit 1 for 91 scope gaps",
+    "sample": "byte_identical",
+    "metadata": "identical_summary; exit 1 for withheld byline",
+    "parquet": "corpus_manifest-complete.parquet retains union of optional fields; original mirror preserved",
+    "tests_passed": 120
+  }
+}

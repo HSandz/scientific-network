@@ -1,0 +1,64 @@
+{
+  "venue_id": "venue:colt",
+  "name": "COLT",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 163,
+  "by_status": {
+    "excluded": 1,
+    "included": 162
+  },
+  "routes": [
+    {
+      "venue_id": "venue:colt",
+      "name": "COLT",
+      "year": 2022,
+      "adapter": "pmlr",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.mlr.press/v178/",
+      "volume": 178,
+      "required_markers": [
+        "2022",
+        "Volume 178"
+      ],
+      "catalog_locator": "Volume 178 Proceedings of COLT 2022"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/",
+      "params": {},
+      "request_id": "86716e38d7eda879e48666d7b58364d18d75238dca6e4a017f8349eee81f782a",
+      "sha256": "d790ae9a4d93af0acb80293a90e0a45b6ed1b1be54d20bb87605647edf52167f",
+      "retrieved_at": "2026-11-06T08:04:20.166776+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v178/",
+      "params": {},
+      "request_id": "6c473d0a48382e2a8f5112cbd07b2cf72fc1afcf21230645497ad901364ee4c6",
+      "sha256": "f6627cb83a6acbb85a72e2c09b3f3c2da887d7259510f640f6c1471260c8cf36",
+      "retrieved_at": "2026-11-06T08:13:45.975097+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "c6c097624a095e35c12cea319e0a9ed8ff6735ec108906d23d579db28d4287ea",
+  "checked_at": "2026-11-06T08:13:46.667421+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

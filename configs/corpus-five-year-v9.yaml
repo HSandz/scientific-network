@@ -1,0 +1,12 @@
+workflow: five_year_source_closure_v9
+collection_authorized: true
+stage_boundary: official_rosters_only_no_enrichment_or_splits
+baseline:
+  config_path: configs/corpus-five-year-v8.yaml
+  config_sha256: 7f774651e92a37b4f7bdb8942339f2f5c04239848706d68b5573146364833e28
+  output_dir: data/manifests/five-year-roster-v8
+  summary_sha256: d9e9ed8ff750da18574e27360e1de892a57c954af6dd27dd778d4ca48b691b55
+source_corrections:
+  path: data/manifests/five-year-source-corrections-v7.json
+  sha256: 4b8cd0f6d1efa4d72a2f9b4925ead700f2da1e6f8e1b3166f064d8044462f519
+output_dir: data/manifests/five-year-roster-v9

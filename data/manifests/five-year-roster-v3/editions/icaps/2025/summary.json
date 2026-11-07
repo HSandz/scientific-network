@@ -1,0 +1,78 @@
+{
+  "venue_id": "venue:icaps",
+  "name": "ICAPS",
+  "year": 2025,
+  "status": "needs_review",
+  "reason": "unknown_issue_or_article_track",
+  "records": 52,
+  "by_status": {
+    "review": 48,
+    "excluded": 4
+  },
+  "routes": [
+    {
+      "year": 2025,
+      "title": "Proceedings of the Thirty-Fifth International Conference on Automated Planning and Scheduling",
+      "series": "Vol. 35 (2025)",
+      "official_index": "https://ojs.aaai.org/index.php/ICAPS/issue/view/663",
+      "adapter": "ojs",
+      "journal": "ICAPS",
+      "disposition": "collect",
+      "reason": "inspect_per_article_section",
+      "technical_number": null,
+      "catalog_url": "https://ojs.aaai.org/index.php/ICAPS/issue/archive",
+      "catalog_sha256": "ba51cacb0fcd5351dab64a0c7acdc9428a184d6b7da9aa142df3d572ee895db6",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/ICAPS/issue/view/663']",
+      "venue_id": "venue:icaps",
+      "name": "ICAPS",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/ICAPS",
+      "params": {},
+      "request_id": "15ab6a258de5f2c57b4ce29c0374bb26398a9779ca4de71155bce0e11a1a2553",
+      "sha256": "e84da2759f0fcbdb472673b89b2a3af5b8bacd99532185fbe82587008de61aa0",
+      "retrieved_at": "2026-11-06T08:14:05.851007+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/ICAPS/issue/archive",
+      "params": {},
+      "request_id": "5266955ad8573d7f2e29cc081c2a8603d7644e652cc7134b322e2df4d9be52ae",
+      "sha256": "ba51cacb0fcd5351dab64a0c7acdc9428a184d6b7da9aa142df3d572ee895db6",
+      "retrieved_at": "2026-11-06T16:16:05.595984+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/ICAPS/issue/view/663",
+      "params": {},
+      "request_id": "06c5774337efd7b318ed0196d4f34ab72412997cbb3930371eeae564fc927325",
+      "sha256": "0a695196a6c0c21b31b1fc7157932c34e90f4c0d2b431b8af14cbf02923ea016",
+      "retrieved_at": "2026-11-06T16:17:15.979301+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "archive_complete": true,
+  "roster_sha256": "2d31cf02c54d392b902ff00cc4d89accced97ca36c100eef4e59f552908f2cbe",
+  "checked_at": "2026-11-06T16:22:05.223643+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v3"
+}

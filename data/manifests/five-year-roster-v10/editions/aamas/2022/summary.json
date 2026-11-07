@@ -1,0 +1,45 @@
+{
+  "venue_id": "venue:aamas",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_research_section_roster_parsed_and_reconciled",
+  "records": 306,
+  "by_status": {
+    "included": 166,
+    "excluded": 140
+  },
+  "routes": [
+    {
+      "official_index": "https://www.ifaamas.org/Proceedings/aamas2022/forms/contents.htm",
+      "main_section": "Main Track",
+      "all_sections_reconciled": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ifaamas.org/Proceedings/aamas2022/forms/contents.htm",
+      "sha256": "771e392b50445055dee9b82ec24019fa3a16786622dbdb46c9cb92b1f0a98160",
+      "retrieved_at": "2026-11-07T01:15:11.167446+00:00",
+      "license": "IFAAMAS copyright; redistribution restricted"
+    }
+  ],
+  "official_policy_sources": [
+    {
+      "source_id": "aamas2022_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2022/",
+      "accessed_at": "2026-11-07T01:15:11.938778+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4327,
+      "sha256": "93f44a0ef2b5a45d3c9cea20f647fa3fef258faf54d68eebcb0dc1f0b1276fb5",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/93f44a0ef2b5a45d3c9cea20f647fa3fef258faf54d68eebcb0dc1f0b1276fb5",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    }
+  ],
+  "roster_sha256": "c32eb06f190c53f3535d22b470e30d76db207884773c3ecbd5840dfb24fffa04",
+  "method_version": "five-year-official-rosters-v8",
+  "checked_at": "2026-11-07T01:15:24+00:00",
+  "reviewer": "automated_source_contract_check_not_independent_scientific_review",
+  "rights": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published.",
+  "redistribution": "local_ignored_only; public per-record metadata not authorized"
+}

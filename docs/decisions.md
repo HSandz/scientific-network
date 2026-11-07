@@ -17,6 +17,11 @@
 | D013 | 2026-11-03 | Use an uncalibrated literal-phrase topic baseline with explicit abstention for the first pilot | Keeps evidence inspectable without downloading a model or consulting held-out papers. Draft taxonomy, exclusions/context rules and substantive-label accuracy require development annotation before freezing. No semantic accuracy claim |
 
 | D014 | 2026-11-03 | Expand the target from the NeurIPS/ICML examples to the explicit flagship AI/related venue registry, retaining 2023; planning only, collection paused | Explicit user correction authorizes a scope change. 34 series / 31 planned editions; ECCV, NAACL and COLING have no 2023 edition. Supersedes D001's venue boundary only; five labels, ten predicates and release gates remain. Preserve legacy configs/data/splits/reports; new adapters, cross-venue leakage controls, annotation budget and resource estimates precede a separately authorized run. See [scope policy](conference-scope.md). |
+| D032 | 2026-11-07 | Add count-reconciled MICCAI 2021/2023/2025 rosters; hold 2022/2024 unresolved | Preserve source/index counts separately, retain D015 byline requirements, do not redistribute per-record metadata; no scope, threshold, split or enrichment change |
+| D035 | 2026-11-07 | Keep ACM Multimedia 2024 unavailable pending complete roster and track/proceedings reconciliation | Official ID file has 1,149 unique numeric values while the research-track statistics report 1,150 acceptances; do not infer the missing record or track boundary. No roster, split, enrichment or graph change |
+| D036 | 2026-11-07 | Keep ICDM 2021 unresolved pending proceedings reconciliation and reuse authorization | The official list has 197 IDs and the schedule's 42 additional IDs are in separately named workshop/PhD Panel events; IEEE Xplore returned HTTP 418 and source ownership/reuse terms remain unclear. No roster or frozen assignment change |
+| D037 | 2026-11-08 | Keep ICDM 2025 unresolved pending final proceedings reconciliation and reuse status | The hash-bound accepted list has 105 Regular and 70 Short entries, but the CFP's no-short-track language, incomplete program join, unavailable publisher index and unclear metadata reuse status leave final main-proceedings membership unresolved. No roster or frozen assignment change |
+| D038 | 2026-11-08 | Keep ACM Multimedia 2024 unavailable after browser-source follow-up | The official call clarifies length-neutral regular-paper review and says BNI acceptances appear in main proceedings, but the 1,149/1,150 count conflict, incomplete program join and unknown metadata reuse terms still prevent roster closure. No roster or frozen assignment change |
 
 Add the rationale, evidence, scope impact and reviewer to subsequent material
 decisions. Preserve original requirements and old frozen audit results.
@@ -174,3 +179,515 @@ The current five-year target remains planning-only under D018. Task-driven Site
 updates remain required; no live Neo4j connection or background synchronization.
 See [Site workflow](sites-workflow.md) and
 [WORK-2026-11-04-003](work-log/2026-11-04-003-native-site-report.md).
+
+
+## D021 — Deadline-driven execution readiness, planning only (2026-11-06)
+
+The user accepted the proposed execution-plan task and confirmed **11 November
+2026** as the deadline, asking to ignore the remaining capacity/lecturer questions.
+Do not make those answers prerequisites or infer committed reviewer hours. Keep
+existing proposed accuracy interpretation and release gates; no new thresholds.
+Use internal cutoff proposals on 8–10 November, protect writing/evaluation time,
+and disclose partial delivery if independent evidence is insufficient. No claim
+that the five-year release or audit fits the remaining calendar.
+
+Produce a 170-row **planning** queue from the unchanged registry, with every
+candidate pending new-scope verification. Historical 2023 roster statuses remain
+context only. Estimate resources with explicitly hypothetical paper counts and
+review-time ranges; cached extraction timings are not cold benchmarks. Preserve
+all historical inputs/configs/splits/graphs and earlier reference snapshots.
+
+The user's “proceed” authorizes this plan and native Site updates, not E01–E09
+execution. D018's source-discovery/collection/pipeline/split/import pause remains.
+Future work needs a later explicit instruction. Use proposed new versions and
+isolated Neo4j storage rather than overwriting current snapshots. See
+[execution plan](five-year-execution-plan.md) and
+[WORK-2026-11-06-001](work-log/2026-11-06-001-five-year-execution-plan.md).
+
+## D022 — Authorized five-year staged collection (2026-11-06)
+
+The user explicitly requested “now start data collecting, based on the plan”.
+This supersedes D018's execution pause for necessary implementation and staged
+2021–2025 collection under the existing scope and gates. D018 remains the scope
+and reproducibility decision; the unchanged planning registry is a historical
+snapshot, not an executable config. No paid services, threshold relaxation or
+historical database replacement is authorized or required.
+
+Start E01–E03 with `configs/corpus-five-year-v1.yaml`, additive official catalog/
+roster adapters and `data/manifests/five-year-roster-v1/`. Every one of the 170
+candidates must retain a ledger record, including blocked sources, unsupported
+layouts, nonresearch exclusions and unresolved/missing routes. Missing links or
+HTTP failures do not prove that no edition existed. A retrieved catalog does not
+establish an eligible edition. Partial multi-page editions cannot enter sampling.
+Official year/track routes, hashes, retrieval dates and unknown rights stay explicit.
+
+This first executable version is **roster-only**. Cross-year/version and exposure
+reconciliation, a prospective frozen sampling design, new enrichment contracts,
+isolated graph import and independent evaluation remain required ordered work
+before their respective stages. Do not apply the historical split/acquisition
+implementation to the new config. Preserve all original IDs and frozen memberships;
+no names are merged and no new graph/release-quality claims follow from rosters.
+See [collection work entry](work-log/2026-11-06-002-five-year-collection.md).
+
+## D023 — Corrected roster contracts and prospective five-year diagnostics (2026-11-06)
+
+Continue D022 under the user's “proceed” instruction. Preserve roster/reconciliation
+v1 and every original/expanded assignment. Create roster v2 for source-layout fixes:
+NeurIPS position-track papers are outside main research; ECVA eligibility requires
+the edition accordion and paper path to agree; RSS years require official catalog
+edition/date evidence plus matching Roman numeral on the proceedings page. KR
+Full/Short Papers (2021) and Main Track count; named special/application tracks are
+excluded under the existing main-track policy. Unknown tracks still require review.
+These mappings implement the existing boundary, without relaxing gates.
+
+Freeze a bounded **development diagnostic** design before enrichment. Strata are
+source-adapter family × conference year among eligible, new, unexposed singleton
+leakage candidates. Reserve five test groups then two development diagnostics per
+stratum by a recorded seeded uniform permutation, or fail if a stratum cannot
+support it. All other new independent groups enter pool. Preserve the complete
+14,909 historical assignments unchanged; previously reserved/exposed records are
+not eligible for fresh tests. Quarantine ambiguous/changed/mixed-exposure groups.
+Record population, selection probabilities, manifest/config/ledger/triage hashes
+and seed. This is a layout/year coverage diagnostic with a reserved component test,
+not the final 600-edge audit or a representative all-venue semantic accuracy claim.
+
+Title similarity guards leakage but never proves a canonical merge. Preserve a
+provisional identity per official record and review same-title/identifier versions.
+Later provider-ID/version conflicts trigger quarantine, never a new test allocation
+or development exposure of old tests. Canonical work resolution and independent
+human scientific evaluation remain incomplete; disclose alternate-title detection
+limits. Metadata acquisition is bounded to the frozen development IDs and existing
+free API allowance, with immutable evidence and explicit failures. No graph import
+or historical DB replacement in this iteration. See task WORK-2026-11-06-003.
+
+## D024 — Frozen development PDF headers and source candidates (2026-11-06)
+
+Under D022 and the user's next “proceed”, implement bounded PDF/header extraction
+for exactly the 68 D023 development records, with every frozen input hash and
+held-out group checked before source access. Use a separate extraction config;
+do not modify the frozen sampling/metadata config. Preserve original acquisition
+and legacy PDF/TEI artifacts. Disable GROBID external consolidation and keep PDFs,
+TEI, full abstracts and source review observations local/ignored. Unknown rights
+do not grant redistribution; only aggregate measurements go to the public Site.
+
+A withheld metadata record may have its official PDF inspected for source-review
+evidence, without changing acquisition status, accepting aliases or admitting graph
+support. Record PDF/header title and complete ordered byline agreement separately.
+Header author names must be unique within the paper before proposing positional
+affiliation bindings. Exact printed institution matches may use only that author's
+complete matched provider authorship; never the paper-wide institution union.
+Deduplicate repeated printed observations and preserve every TEI locator.
+
+All resulting author–paper–organization records remain **review candidates**.
+GROBID nesting and metadata agreement are development evidence, not a verified
+printed-marker mapping, accepted person identity, independent semantic audit or
+graph edge. Public ORCID publication corroboration, canonical work/version review
+and source-specific marker verification are still required before acceptance.
+No model thresholds, edge semantics or release gates change. No new graph/import
+in this iteration. See WORK-2026-11-06-004.
+
+## D025 — Reviewed source overlays and public identifier corroboration (2026-11-06)
+
+Continue D022 under the user's “proceed” instruction with Docker restored. Keep
+the original 68 metadata/header records, two GROBID failures, every frozen test
+assignment and both databases unchanged. Create source corrections as explicit,
+input/PDF-hash-bound review records, never a global author alias or parser-score
+override. The printed COLT author blocks exclude the labelled editors; the RSS
+headers/markers are available through reviewed rendered pages despite unavailable
+machine-readable text. Label these as **printed-source reviews**, not successful
+GROBID/OCR parses. The MLSys printed byline corroborates the roster while its
+citation export abbreviates a name; preserve the original failed metadata status
+and attach the reviewed bibliographic observation in a new staging version.
+
+For the frozen development sample only, stage person/publication support using
+complete ordered provider authorships plus unambiguous stable ORCID/OpenAlex IDs
+and public ORCID work corroboration. A typed DOI match or Unicode-preserving exact
+title with publication-year corroboration is required; no name-only clustering.
+Quarantine shared provider works, historical/test version links, conflicting
+provider–ORCID crosswalks and contradictory source bylines. Preserve stable
+internal researcher IDs and all rejected/uncorroborated mentions with reasons.
+
+Accepted affiliation support additionally requires reviewed printed author/marker
+evidence and an exact institution match within that same provider authorship.
+Other TEI/metadata candidates remain review. Deduplicate support by paper and
+canonical institution; store triples before any aggregation. Accepted here means
+the implemented development evidence contract, not independently measured semantic
+accuracy. Global canonical work resolution, final human audit, graph materialization
+and isolated DB import remain subsequent work; no DB writes in this iteration.
+No release threshold, predicate, corpus boundary or model threshold changes.
+
+## D026 — Pregraph evidence closure without graph construction (2026-11-06)
+
+The user requests finishing remaining preparation before building the graph.
+Continue source inspection on the already frozen development sample, add
+input/PDF-bound reviewed bylines and author-specific printed affiliation mappings,
+and preserve all original failures, conflicts and frozen tests. Do not force
+acceptance when a source is missing or contradictory. A final withheld disposition
+closes a development triage action; it does not improve coverage or satisfy a gate.
+
+Stage canonical work crosswalks, citations, organization crosswalks and topic
+candidates before graph construction, with immutable input/output hashes, complete
+claim dispositions and explicit readiness gates. Shared provider/DOI/version links
+must be quarantined across the whole known roster, including reserved IDs, without
+acquiring held-out content. Title matches can guard leakage but never merge works.
+An accepted diagnostic singleton means no conflicting version in the known frame,
+not exhaustive global canonical identity or complete five-year coverage.
+
+Freeze a reproducible pregraph bundle only for the actual inspected population.
+Keep full-scope edition, enrichment, canonical-work and independent annotation gaps
+explicit and return nonzero for unmet full pregraph gates. No new graph JSON,
+node/edge materialization, derivations, Neo4j services/imports or DB writes in this
+task. Existing schema, release thresholds and ORCID/publication requirements stay
+unchanged. Topic phrase outputs remain uncalibrated review candidates; no independent
+accuracy, recall or F1 can be inferred from agent review or software tests.
+
+## D027 — Bounded official OJS source recovery with frozen leakage guards (2026-11-06)
+
+Under the user's instruction to proceed with source/evidence recovery, add a new
+roster-only v3 overlay for AAAI and ICAPS. Inherit the other 160 edition observations
+from the input-hashed v2 baseline without re-dating or retrying unavailable hosts.
+Preserve every prior manifest, development/test membership, reviewed support table,
+pregraph freeze and loaded graph. Do not expand enrichment or construct a graph.
+
+Follow the official journal's linked archive pages until the 2021 boundary is
+crossed or the archive ends, within a fixed page budget. Require monotonic year
+evidence, unique official issue URLs, complete AAAI technical/publication issue
+sequences, exact archive/issue heading agreement and complete article sections.
+Any missing page/issue, access failure or unknown track prevents edition eligibility.
+Stop journal retrieval after an access failure; do not bypass restrictions.
+
+AAAI main technical issues/sections qualify under the existing main-only policy;
+special/IAAI/EAAI/student/demo issues are recorded as excluded catalog routes and
+are not fetched. Their unobserved article counts remain unknown. ICAPS's explicit
+Main Track qualifies; separately labelled special/application tracks and editorial
+or position material are excluded. Unknown 2025 research categories remain review
+until official main-track corroboration; do not relabel them from their names alone.
+This operationalizes the existing boundary and does not expand eligible tracks.
+
+Run roster-only leakage triage using the union of historical and five-year roster
+evidence plus the current frozen membership (including all 170 new test groups).
+Hash-check every frozen input and verify earlier assignments match before source
+access. Equal titles quarantine candidate versions, never merge papers or people.
+No new split, canonical merge, accepted researcher/affiliation/topic, independent
+semantic score, graph artifact or DB write is produced by this recovery.
+
+Source inspection in this iteration identified four literal main-technical heading
+variants within archive-verified AAAI Technical Tracks issues: three 2021
+`AAAI Technical Track Focus Area on ...` sections (Neuro-Symbolic AI; AI Responses
+to the COVID-19 Pandemic; AI for Conference Organization and Delivery) and 2024's
+`Intelligent Robots (ROB)`. V5 recognizes only these exact edition-bound headings,
+retains their source/section locators and never repairs missing bylines this way.
+V3's older-archive-title failure and v4's conservative unknown-section results
+remain immutable. V4 stops after the first corroborated pre-2021 issue, avoiding
+parsing irrelevant older titles without guessing the year of any target issue.
+
+## D028 — Complete pregraph prerequisite plan; documentation only (2026-11-06)
+
+The user requested a Markdown plan for everything remaining before final graph
+construction and explicitly deferred implementation. The
+[pregraph completion plan](pregraph-completion-plan.md) organizes P00–P10 and
+twelve preparation gates around official scope closure, resource feasibility,
+prospective leakage-safe sampling, calibrated methods, population evidence,
+independent component review and reproducible accepted support tables/tooling.
+This records a planning sequence, not a newly implemented or passed capability.
+
+Retain D018/D022's 2021–2025 scope, existing schema, acceptance thresholds,
+corroboration rules and every historical/new frozen assignment. No source access,
+implementation, collection, new split, annotations, service operation, graph build
+or Site publication is authorized by this document-only iteration. Existing
+execution decisions remain historical context; a later instruction must initiate
+execution of this plan.
+
+An operationally closed access/review item is not successful scientific coverage.
+Diagnostic preparation v3 stays input-bound and not ready; a future release needs
+a genuine population-capable readiness evaluator and immutable new artifacts,
+not manually changed flags. Unmet evidence, resources or independent-review gates
+must be recorded as no-go, even if the deadline arrives. Actual final graph/import,
+uniform-edge audit, graph statistics/findings and final report results necessarily
+follow construction; prepare their tooling/protocols without claiming results now.
+
+## D029 — ICAPS 2025 roster correction and enrichment no-go (2026-11-07)
+
+Use a new roster-only v6 to resolve ICAPS 2025 using the official main technical
+call, the conference's topic-based track policy, and its accepted-paper page. The
+48 theoretical/algorithmic/modelling/tools OJS records match accepted publisher
+IDs and qualify as main research papers under the existing scope. Keep the three
+position papers excluded under the existing main archival research rule, and keep
+front matter excluded. Do not change the five-year boundary, schema, thresholds,
+or any older roster/config/frozen assignment. V1–v5 and the v2-bound diagnostic and
+pregraph artifacts remain unchanged.
+
+P01 remains incomplete with 81 edition gaps. For P02, do not begin broader paper,
+ORCID, PDF, model, or annotation enrichment until the canonical population, P03
+prospective frame, live free-resource limits, storage budget, and actual reviewer
+capacity can be measured. This is a current no-go, not a full-release cost estimate
+or a decision to reduce the release scope. See the [source triage](five-year-source-triage.md),
+[v6 measured report](../reports/five-year-source-recovery-v6.md), and
+[P02 feasibility checkpoint](../reports/five-year-pregraph-feasibility-v1.md).
+
+## D030 — Official route closure and COLING joint-edition mapping (2026-11-07)
+
+Apply authoritative edition-history evidence to the 11 previously unverified
+routes. Record ICCV 2022/2024, ECCV 2021/2023/2025, NAACL 2023, EACL 2022/2025,
+and COLING 2021/2023 as verified no-edition candidates. Add the complete official
+LREC-COLING 2024 proceedings roster to the in-scope COLING series. Every joint
+paper receives one primary series (`venue:coling`) and a crosswalk to the joint
+event and LREC co-host; do not duplicate LREC papers or add LREC as a new series.
+One volume-frontmatter record remains excluded. The edition evidence and source
+hashes are in [source corrections v5](../data/manifests/five-year-source-corrections-v5.json).
+
+This applies the current 34-series boundary and existing one-primary-venue rule;
+it does not change conference scope, track thresholds, graph semantics, or quality
+gates. Roster v7 remains roster-only: 30 unsupported-adapter editions and 40
+publisher-access editions remain gaps. Do not begin broader enrichment or graph
+construction; P02/P03 gates remain open. See the [v7 source report](../reports/five-year-source-recovery-v7.md)
+and [current source triage](five-year-source-triage.md).
+
+## D031 — AAMAS official roster closure and 2023 reconciliation hold (2026-11-07)
+
+Create a new roster-only v8 overlay for AAMAS 2021, 2022, 2024 and 2025. Apply
+D015's existing regular-research policy to the explicit official sections: Main
+Track (2021: 151; 2022: 166), Full Research Papers (2024: 230), and Research Paper
+Track (2025: 260). Keep other identified sections excluded. This is an application
+of the existing venue policy, not a track/scope or quality-threshold change.
+
+Keep AAMAS 2023 unresolved. Its official news page announces 237 full papers and
+221 extended abstracts, while the accepted-paper page lists 237 full papers and
+219 extended abstracts. A bounded exact-title reconciliation maps 225 of 237 full
+paper titles to the proceedings contents; 12 titles remain unmatched, and 35 of
+the exact-title matches have different author strings. Session/poster contents do
+not provide a reconciled boundary. Do not infer stable publication IDs, fill title
+differences, or promote the year from these partial joins.
+
+The IFAAMAS notices allow limited personal/classroom copying with attribution and
+require prior permission or a fee for republication/redistribution. Keep detailed
+rosters in the ignored local cache/output; publish only credited aggregate counts.
+No PDFs, enrichment requests, new splits, canonical merges, graph construction or
+database writes are part of v8. Preserve all v1–v7 outputs and the v2-bound
+diagnostic/pregraph artifacts. See [source correction v6](../data/manifests/five-year-source-corrections-v6.json),
+[v8 recovery report](../reports/five-year-source-recovery-v8.md), and
+[current source triage](five-year-source-triage.md).
+
+## D032 — MICCAI roster closure and unresolved edition counts (2026-11-07)
+
+Create a new roster-only v9 overlay on the immutable v8 baseline. Add MICCAI 2021
+(531), 2023 (730), and 2025 (1,027) from captured official conference/Society
+accepted-paper lists that match the year-specific Springer full-paper descriptions.
+The 2025 Society final acceptance update also reports 1,027. The 2021 and 2023
+lists expose titles and record identifiers without bylines; 2025 provides BibTeX
+names. Under D015, names/roster presence alone do not establish person identities
+or accepted graph claims, and authoritative detail bylines remain required before
+work matching or core-paper acceptance.
+
+Keep MICCAI 2022 unresolved: the official accepted-paper route returned HTTP 522;
+the Springer volume describes 574 revised full papers while its series index
+displays 576. Keep MICCAI 2024 unresolved: the Society list has 856 numbered
+records while Springer reports 857 accepted full papers. The series index also
+displays 857 for 2024. These catalog counters remain separate from accepted-paper
+counts; do not infer missing records or expand track scope. Source responses and
+aggregate dispositions are hash-bound in [source corrections v7](../data/manifests/five-year-source-corrections-v7.json).
+
+Captured pages establish official source/count findings, not permission to
+redistribute per-record roster metadata. Keep the detailed source captures and
+full rosters in ignored local storage; publish aggregate counts and official links
+only. Download no PDFs. Do not change the 2021–2025 boundary, existing track
+policy, schema, thresholds, frozen assignments, D022 collection gates, P02 no-go,
+or the v2-bound diagnostic/pregraph inputs. V9 adds 2,288 roster observations;
+the ledger has 97 eligible editions / 10 verified no-edition findings / 23
+unresolved roster/adapter editions / 40 access-unavailable editions. All 76,629
+frozen assignments, including 1,095 tests, remain guarded. See the [v9 recovery
+report](../reports/five-year-source-recovery-v9.md), [edition ledger](../reports/five-year-edition-ledger-v9.csv),
+and [source triage](five-year-source-triage.md). Requested by user; implemented by Codex.
+
+
+## D033 — MICCAI 2024 full-proceedings reconciliation (2026-11-07)
+
+Create a roster-only v10 overlay on immutable v9. The official MICCAI Society
+accepted-paper list contains 856 unique numbered research records. Reconcile it
+one-to-one against all 12 Springer main-proceedings volumes: 49 captured contents
+pages contain 857 unique chapters. The complete matching comprises 836 exact-title
+matches and 20 unique title-and-byline matches; the one remaining publisher chapter
+is a correction notice linked to an already-listed accepted paper. Exclude that
+nonresearch correction and include the 856 Society research records under the
+existing D015 policy. No guessed paper or new track is added.
+
+Bind the official pages, hashes, per-volume counts, rights caveat and matching
+metrics in [source corrections v8](../data/manifests/five-year-source-corrections-v8.json).
+Keep full captures and per-record rosters local and ignored; publish aggregate
+counts and official links only. Preserve all prior roster versions, the 76,629
+frozen assignments (including 1,095 tests), and the v2-bound diagnostic/pregraph
+inputs. V10 has 98 eligible editions, 10 verified no-edition findings, 22 unresolved
+roster/adapter editions and 40 access-unavailable editions; its 94,857 observations
+include 91,355 and exclude 3,502. P01 remains incomplete and P02 remains no-go for
+broader enrichment. No splits, enrichment, PDF downloads, graph writes or DB
+operations are part of D033. See the [v10 report](../reports/five-year-source-recovery-v10.md),
+[ledger](../reports/five-year-edition-ledger-v10.csv), and [source triage](five-year-source-triage.md).
+Requested by user; implemented by Codex.
+
+## D034 — MICCAI 2022 official route follow-up (2026-11-07)
+
+Keep MICCAI 2022 unresolved and ineligible under P01. The direct official Society
+accepted-paper index has 573 unique paper-detail records (the topic-category page
+has 572); the eight official Springer main-volume tables contain 576 chapter DOI
+records, while their set description states 574 revised full papers and the series
+index displays 576. A normalized-title join finds 558 unique exact-title pairs;
+15 accepted-index records and 18 publisher chapters remain outside that join,
+including three publisher correction titles. No byline adjudication was completed
+for the title differences, and the official program documents do not resolve the
+one-record count discrepancy. Do not infer a missing/duplicate paper, change track
+scope, or promote the edition from these counters.
+
+Hash-bind the official route and volume-page captures in [source corrections v9](../data/manifests/five-year-source-corrections-v9.json).
+Keep raw pages and program PDFs ignored; do not publish the per-record listings or
+download paper PDFs. Preserve v10 as the current roster, all frozen assignments,
+and the v2-bound diagnostic/pregraph inputs. P01 remains failed and P02 remains
+no-go for broader enrichment. See [source triage](five-year-source-triage.md)
+and [WORK-007](work-log/2026-11-07-007-miccai-2022-source-followup.md).
+Requested by user; implemented by Codex.
+
+## D035 — ACM Multimedia 2024 official-source hold (2026-11-07)
+
+Keep ACM Multimedia 2024 `access_unavailable` in roster v10. The locally captured
+official `accepted_papers.txt` contains 1,149 unique numeric values (5,497 bytes,
+SHA-256 `00441e7cd5f52a8030d6b5d316c66bae7707021fddb2a3647c3dd1e0d2c25fc2`).
+The official ACM Multimedia research-track statistics page reports 4,385
+submissions and 1,150 acceptances (26.20%) for 2024; its captured page is 43,256
+bytes, SHA-256 `1b3428b0a898f66dc92a5bd517f882d06dada0164d805cabae627107cda05a47`.
+The conference-hosted regular-papers URL returns a 7,508-byte JavaScript shell
+(SHA-256 `24131a90c6f898357a100157e932bbc6e8d2c0651c6075207bcad09e71eae544`)
+without the accepted records. The official file index also lists the full program
+and a separate Brave New Ideas call; Search-rendered text says BNI papers appear
+in the main proceedings, but those views are not locally hash-bound.
+
+The source does not explain the one-record difference, define the numeric-ID
+schema, resolve whether a separate archival track belongs in this roster, or
+provide a complete official accepted-to-proceedings crosswalk. Bulk metadata reuse
+terms are unverified. Do not guess a missing record, include or exclude a track
+from counts alone, or promote the edition. Keep the captures ignored under
+`reports/runs/WORK-2026-11-07-017/`; publish aggregate counts and official links
+only. All 42 v10 output hashes and all five configured frozen-input hashes were
+verified. The 76,629 assignments, including 1,095 tests, remain unchanged. P01
+still has 62 incomplete candidates; P02 remains no-go with one reviewer of
+unknown hours and a second independent reviewer unconfirmed. No scope, threshold,
+split, enrichment, PDF, graph or database change. See [source triage](five-year-source-triage.md#
+acm-multimedia-2024-official-source-follow-up-work-017) and
+[WORK-017](work-log/2026-11-07-017-p01-acmmm-2024-source-closure.md).
+Codex recorded this source hold; the user authorized continuation under D022.
+
+## D036 — ICDM 2021 official-source hold (2026-11-07)
+
+Keep ICDM 2021 unresolved and ineligible in roster v10. The official accepted list
+contains 197 unique DM IDs (98 Regular and 99 Short); all occur in the official
+schedule. The schedule contains 239 unique IDs, with the additional 42 occurring
+in separately named workshop events (40) and a separate PhD Panel event (2).
+The conference call states that accepted conference papers appear in IEEE
+Computer Society proceedings. The separate PhD Forum call accepts doctoral
+submissions and says those accepted papers appear in IEEE proceedings, but no
+record-level link was established between its proceedings and the two PhD Panel
+items. The direct local IEEE Xplore proceedings request returned HTTP 418; no
+bypass was attempted, and no complete proceedings crosswalk was captured.
+
+The University of Auckland copyright page distinguishes University-owned from
+third-party material. The captured conference pages do not state who owns or may
+authorize bulk reuse of the accepted-paper metadata, so reuse permission is not
+established. Do not infer a permission grant from hosting domain or public
+accessibility. Preserve the official counts and named event distinctions, but do
+not add the records to v11 or publish per-record metadata. Keep the 76,629 frozen
+assignments and all v10 artifacts unchanged. P01 remains partial; P02 remains
+no-go with one reported reviewer of unknown hours and a second independent
+reviewer unconfirmed. See [source triage](five-year-source-triage.md#icdm-2021-official-accepted-list-follow-up-work-018)
+and [WORK-018](work-log/2026-11-07-018-icdm-2021-source-closure.md). The
+source hold is recorded by Codex under the user's D022 continuation instruction.
+
+## D037 — ICDM 2025 accepted-list audit (2026-11-08)
+
+Keep ICDM 2025 unresolved in roster v10. Fresh direct captures of the official
+accepted-page, main call, BlueSky call and program routes returned HTTP 200 and
+are hash-bound in [source corrections v10](../data/manifests/five-year-source-corrections-v10.json).
+The accepted page has two complete, sequential tables with 105 Regular and 70
+Short entries (175 unique IDs). The main CFP says accepted conference papers go
+to IEEE Computer Society proceedings, conditions inclusion on registration and
+presentation, and states there is no separate short-paper submission track; the
+accepted-page Short Papers heading leaves the classification of those 70 entries
+unclear. The BlueSky call says its accepted papers appear in separate workshop
+proceedings.
+
+The official program capture contains 97 distinct DM IDs, 95 also on the accepted
+page; 94 accepted titles match program text after normalized exact-title
+comparison. This is not a complete publication crosswalk. The candidate IEEE
+Xplore proceedings route returned HTTP 418 to a direct HEAD request. No bypass was
+attempted. The captured pages provide no metadata license or bulk-reuse grant; a
+generic footer link points to University of Auckland copyright terms without
+establishing ownership or permission for this page's content. Keep detailed data
+in ignored local captures; publish only aggregate counts and official links.
+
+No v11 config or roster was created. V10 remains at 98 eligible / 10 verified
+no-edition / 22 unresolved / 40 access-unavailable editions, with 94,857
+observations (91,355 included; 3,502 excluded). All 76,629 frozen assignments,
+including 1,095 tests, remain unchanged. P01 remains incomplete and P02 remains
+no-go: one reviewer is reported, exact hours are unknown, and no second
+independent reviewer is confirmed. No split, enrichment, paper PDF, graph or
+database operation occurred. See [source triage](five-year-source-triage.md#icdm-2025-official-accepted-list-audit-work-020)
+and [WORK-020](work-log/2026-11-07-020-icdm-2025-offline-source-audit.md).
+This is a year-specific 2025 finding; D036 remains specific to ICDM 2021.
+Recorded by Codex under D022 and the user's proceed instruction.
+
+## D038 — ACM Multimedia 2024 browser-source follow-up (2026-11-08)
+
+Keep ACM Multimedia 2024 `access_unavailable` in roster v10 after WORK-021. The
+connected browser retrieved the conference-hosted accepted-ID file; its decoded
+5,497-byte body exactly matches WORK-017's hash
+`00441e7cd5f52a8030d6b5d316c66bae7707021fddb2a3647c3dd1e0d2c25fc2` and still
+contains 1,149 unique numeric IDs. A current local `curl` request failed with
+exit 6 because the host did not resolve.
+
+The official [regular-paper call](https://2024.acmmm.org/regular-papers) says
+there is no long/short distinction and all regular papers undergo the same review
+process. The separate [Brave New Idea call](https://2024.acmmm.org/files/MM24_BNI.pdf)
+says accepted BNI papers are full papers in the main proceedings, with a separate
+committee and review criteria. These call pages and the five-page
+[full program](https://2024.acmmm.org/files/MM24-Full_Program.pdf) were available
+as connected-browser/Search/MarkItDown rendered views, not locally hash-bound
+source captures. A diagnostic parse found only 63 explicit `Paper <id>` labels in
+the rendered program and did not produce a complete accepted-paper crosswalk.
+
+The existing research-track statistics still report 1,150 acceptances. The
+program and call views do not reconcile that count to the 1,149 accepted-ID file,
+and no applicable bulk metadata reuse terms were found. Do not infer the missing
+record, treat the program's visible labels as a complete roster, or create a new
+roster version. Preserve D035's original hold, v10, and all frozen assignments.
+No split, enrichment, paper PDF, graph or database operation occurred. See the
+[source triage](five-year-source-triage.md#acm-multimedia-2024-browser-source-follow-up-work-021)
+and [WORK-021](work-log/2026-11-08-021-acmmm-2024-browser-source-review.md).
+
+## D039 — CIKM 2025 browser-source audit (2026-11-08)
+
+Keep CIKM 2025 `access_unavailable` in roster v10 after WORK-022. Hash-bound browser
+captures cover the official accepted-paper page, proceedings page, and Full,
+Short, and Applied Research calls. The accepted page contains 827 unique IDs:
+436 Full Research, 185 Short Research, 93 Applied Research, 52 Resource, 37
+Demo, 11 PhD Symposium, and 13 Industry Day entries. The Full and Short
+categories are 621 candidate main-research records under the existing policy;
+the separate Applied Research call says it is unlike the Research Track, but no
+project-specific inclusion decision was made.
+
+The official proceedings page links to 852 unique ACM Digital Library records
+under one DOI collection. Normalized title comparison matches 789 accepted
+entries; exact title plus author-set comparison matches 697 overall and 531
+Full/Short entries. The proceedings page does not expose accepted-list IDs,
+38 accepted entries have no exact normalized proceedings title, and 63 publisher
+records have no exact normalized accepted title. Fuzzy/title/byline candidates
+were not adjudicated, so this is not a complete crosswalk. The Full and Short
+calls require an author to register and present accepted work on-site for
+proceedings inclusion. Their footer says all rights reserved; the captured pages
+do not provide a metadata license or bulk-reuse authorization.
+
+Do not create a roster v11 or change CIKM's disposition. Keep raw captures in
+ignored run artifacts and publish aggregate counts and official links only.
+Preserve v10, all 76,629 frozen assignments including 1,095 reserved tests, and
+the P02 no-go. No split, enrichment, PDF, graph, or database operation occurred.
+See [source corrections v12](../data/manifests/five-year-source-corrections-v12.json),
+[source triage](five-year-source-triage.md#cikm-2025-browser-source-capture-work-022),
+and [WORK-022](work-log/2026-11-08-022-cikm-2025-browser-source-capture.md).
+This year-specific finding does not change earlier CIKM editions. Recorded by
+Codex under D022 and the user's proceed instruction.

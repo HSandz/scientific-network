@@ -1,0 +1,59 @@
+{
+  "work_id": "WORK-2026-11-06-005",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "version_number": 12,
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_9341bc8be36881918b37e79aaf111a10",
+  "deployment_id": "appgdep_6aedf018112c81918b76587446ffa59f",
+  "deployment_status": "succeeded",
+  "published_at": "2026-11-06T15:20:15.429057+00:00",
+  "commit_sha": "de26a4f1c30b3808626e1d0bee7c35c7ea537ea2",
+  "archive_storage": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_00000000288c82119f45e69bab89c011",
+    "content_hash": "sha256:66aa69053aadf64e54309e8557f9559a76f88bde6495bc24828f962d32737a5e",
+    "size_bytes": 1638400,
+    "file_count": 23
+  },
+  "method_version": "five-year-public-corroboration-v1",
+  "config": "configs/five-year-corroboration-v1.yaml",
+  "report": "reports/five-year-corroboration-v1.metrics.json",
+  "measured": {
+    "selected_papers": 68,
+    "source_review_overlays": 5,
+    "source_eligible_papers": 49,
+    "public_orcid_responses": 84,
+    "accepted_researchers": 10,
+    "authorship_support": 11,
+    "affiliation_triples": 1,
+    "review_queue_rows": 345,
+    "tests_passed": 145,
+    "protected_artifacts_verified": 7645,
+    "source_objects_verified": 362,
+    "graph_imports": 0,
+    "semantic_accuracy": "not_measured"
+  },
+  "preserved": {
+    "plan_sections": 20,
+    "workspace_tabs": 2,
+    "graph_nodes": 399,
+    "graph_edges": 533,
+    "payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "checks": {
+    "native_report": true,
+    "embeds": 0,
+    "unique_ids": 265,
+    "local_browser_widths": [
+      390,
+      1440
+    ],
+    "console_errors": 0,
+    "downloads_http_status": 200,
+    "keyboard_tabs": "passed",
+    "hosted_browser": "passed",
+    "hosted_platform_iframes_outside_panels": 1
+  }
+}

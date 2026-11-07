@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:coling",
+  "name": "COLING",
+  "year": 2024,
+  "status": "unresolved",
+  "reason": "official_catalog_has_no_verified_edition_route",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/coling/",
+      "params": {},
+      "request_id": "6a11ec8895d8489988c287e164a184e8001bec3f33c64e8d0e4dc3b07b4ad85b",
+      "sha256": "a27dfd4cd8aa53dd65dd0be190da20efd81589e23efa77a66997946d9c2d3a8e",
+      "retrieved_at": "2026-11-06T08:13:30.782512+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:34.669052+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

@@ -1,0 +1,59 @@
+{
+  "venue_id": "venue:kr",
+  "name": "KR",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 91,
+  "by_status": {
+    "included": 66,
+    "excluded": 25
+  },
+  "routes": [
+    {
+      "venue_id": "venue:kr",
+      "name": "KR",
+      "year": 2024,
+      "adapter": "kr",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.kr.org/2024/",
+      "catalog_locator": "View issue"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.kr.org/",
+      "params": {},
+      "request_id": "a03ae82e30c4e1b0057acac84d122bb3e2f2d8805519b5428b47f684509b20f1",
+      "sha256": "83e2100ac939aaeef8f5a38550f99c5c16775025e6042e5349e50ec3452140ec",
+      "retrieved_at": "2026-11-06T08:13:51.482936+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.kr.org/2024/",
+      "params": {},
+      "request_id": "7c9e009e7ce3ac9433718225b219a20442df7e01e3f8105d81034ac819969086",
+      "sha256": "3f77a5d79a455e3509b4a9bcdce3335376d5726b9a561c41ebd6a7d33b9f2d07",
+      "retrieved_at": "2026-11-06T08:13:55.670463+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "0af54fcfed2844a2f91e0b7c95e3719af4e079b98a6237ab98c3fb24276d6ce0",
+  "checked_at": "2026-11-06T11:57:52.937363+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

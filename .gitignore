@@ -33,3 +33,13 @@ reports/figures/**
 *.dump
 models/
 volumes/
+# Five-year complete bibliographic rosters are rebuildable local data; track
+# input hashes, edition ledgers and summaries instead of large copied bylines.
+data/manifests/five-year-roster-v*/corpus_manifest.*
+data/manifests/five-year-roster-v*/corpus_manifest-complete.parquet
+data/manifests/five-year-roster-v*/editions/*/*/roster.*
+data/manifests/five-year-reconciliation-v*/leakage-triage.jsonl
+data/manifests/five-year-roster-v*/leakage-triage.jsonl
+# Full five-year membership is rebuilt from frozen inputs; retain small reserved
+# test/diagnostic IDs, probability frames and hashes in source control.
+data/manifests/five-year-splits-v*/membership.jsonl

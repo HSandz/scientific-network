@@ -1,16 +1,16 @@
 # Sources and collection policy
 
-## Expanded source families (planning only)
+## Expanded source families (D022 staged collection)
 
 The [2021–2025 scope registry](five-year-scope.md) retains PMLR/OpenReview, CVF/ECVA, ACL
 Anthology, AAAI/IJCAI, ACM/IEEE/SIAM/Springer and dedicated robotics/reasoning
 proceedings. All 170 venue–year candidates require independent edition/track
 verification; registry catalog URLs are leads, not verified edition rosters.
-No new source discovery, fetching or pipeline implementation is authorized now.
-D015 describes historical 2023 staging; D018 controls the current planning pause.
-Before future collection verify edition/track IDs, metadata routes, rights,
-quotas and lawful fallback access per family. No restricted publisher scraping
-or new data collection is authorized in this planning task.
+D022 authorizes staged official source/roster collection under a new executable
+config; it supersedes the D018 execution pause. Verify edition/track IDs, metadata
+routes, rights, quotas and lawful access per family. Catalog access alone is not
+roster verification. Restricted publisher access is recorded as unavailable,
+without bypassing access controls. See [collection workflow](five-year-collection.md).
 
 The two venue rows below describe the existing pilot; OpenAlex and scholarly
 search services enrich claims and cannot independently define corpus membership.

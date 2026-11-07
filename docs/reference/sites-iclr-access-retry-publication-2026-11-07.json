@@ -1,0 +1,74 @@
+{
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_bbd77316dc108191ab5dc340bc9509d8",
+  "version_number": 18,
+  "deployment_id": "appgdep_6aef1e56a83c81919521d919ad221669",
+  "deployed_at_utc": "2026-11-07T12:49:46.851509+00:00",
+  "verified_at_utc": "2026-11-07T12:52:00+00:00",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "site_status": "active",
+  "source_commit": "adfdc8cbd7054adbdc3e466a82b4a3534c2beeff",
+  "source_hashes": {
+    "plan_sha256": "d4dfc0b788e8ada595b71265d511656e5f11a35c848e2918498459dac4979271",
+    "report_sha256": "b2534df2aa30cac3487e6140fb7f2229be33c1f089ee38a9f48c7c610293fcc3",
+    "report_payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "local_archive": {
+    "sha256": "75d3472cd0c5bbb6969e078068ef11e0ad6d3dc49670b0181245ae93a19fbc5d",
+    "size_bytes": 422544
+  },
+  "archive_storage": {
+    "content_hash": "sha256:1c35a0e874f23dc4380a95ca9833adedf698e73e3ea6a74890fb0cc50919f283",
+    "size_bytes": 2037760,
+    "file_count": 34
+  },
+  "artifact_versions": {
+    "decision_context": ["D022", "D015", "D031"],
+    "source_scope": "ICLR 2021-2025 official access retry; no roster version created",
+    "roster": "configs/corpus-five-year-v10.yaml",
+    "method": "openreview-official-roster-access-check-v1",
+    "work_id": "WORK-2026-11-07-009"
+  },
+  "access_check": {
+    "venue_id": "ICLR.cc/2024/Conference",
+    "submission_invitation": "ICLR.cc/2024/Conference/-/Submission",
+    "group_response_status": 200,
+    "group_response_sha256": "7f13eee42eef63053f676520f7d68fdf030457cd7bb3dc92fb70d79db987cc5b",
+    "first_notes_page_status": 403,
+    "first_notes_page_sha256": "aa873c59e688f7399e7c1a3a18c6d067b7fe587520b8a94d671543dfb5816e55",
+    "failure": "ChallengeRequiredError; verification required",
+    "roster_captured": false,
+    "edition_disposition": "All five ICLR years remain unresolved"
+  },
+  "published_artifacts": [
+    "progress-report.md",
+    "five-year-source-recovery-v10.md",
+    "five-year-source-recovery-v10.metrics.json",
+    "five-year-edition-ledger-v10.csv",
+    "five-year-source-recovery-v9.md",
+    "five-year-edition-ledger-v9.csv"
+  ],
+  "preserved_historical_payload": {
+    "graph_version": "pilot-topic-d512d7239923",
+    "nodes": 399,
+    "edges": 533,
+    "sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "snapshots": {
+    "report": "sites-iclr-access-retry-report-2026-11-07.md"
+  },
+  "static_audit": "reports/runs/WORK-2026-11-07-009/site-static-audit.json",
+  "source_audit": "reports/runs/WORK-2026-11-07-009/openreview-route-audit.json",
+  "live_browser_qa": {
+    "report_tab_selected": true,
+    "iclr_access_limiter_visible": true,
+    "no_roster_claim_visible": true,
+    "plan_sections": 20,
+    "embedded_documents_in_panels": 0,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "cache_busting_query_used": true
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "stage": "discover",
+  "method_version": "five-year-official-rosters-v4",
+  "config_sha256": "c30201341a69b939627df3a18e9a8d6510c69775da5365c561ff4e8525a1aa9d",
+  "scope": "2021-2025 official_rosters_only",
+  "candidate_editions": 170,
+  "roster_records": 88608,
+  "records_by_status": {
+    "included": 85752,
+    "review": 98,
+    "excluded": 2758
+  },
+  "edition_statuses": {
+    "verified_eligible": 86,
+    "unresolved": 41,
+    "needs_review": 3,
+    "access_unavailable": 40
+  },
+  "by_year": {
+    "2021": 12794,
+    "2022": 13925,
+    "2023": 16138,
+    "2024": 20111,
+    "2025": 25640
+  },
+  "eligible_included_records": 81817,
+  "incomplete_editions": 84,
+  "review_required": 98,
+  "manifest_sha256": "01235b69085e0cde35d0d5e320e597c4c8479d032f0295d491baa56952e2d8f4",
+  "edition_ledger_sha256": "d4ca7240e836c80c684b3227c1e921676247b8ff0d5cfc2ed2000d91a2d67bc6",
+  "inherited_editions": 160,
+  "recovery_target_editions": 10,
+  "frozen_assignments_guarded": 76629,
+  "protected_test_assignments": 1095,
+  "leakage_actions": {
+    "pending_prospective_design": 10093,
+    "quarantine_version_candidate": 4,
+    "preserve_existing_assignment": 75655
+  },
+  "new_splits_created": 0,
+  "canonical_works_merged": 0,
+  "semantic_accuracy": "not_measured",
+  "enrichment_authorized_by_this_output": false,
+  "graph_construction_authorized": false,
+  "output_sha256": {
+    "corpus_manifest.jsonl": "01235b69085e0cde35d0d5e320e597c4c8479d032f0295d491baa56952e2d8f4",
+    "corpus_manifest-complete.parquet": "a417b2cb470c47e8cff3664c1bebbf24d120d3e83e0f0068820bb3f3f3590b7d",
+    "edition-ledger.jsonl": "d4ca7240e836c80c684b3227c1e921676247b8ff0d5cfc2ed2000d91a2d67bc6",
+    "leakage-triage.jsonl": "5ae09b2558ae0fea3902da3852c546cebf3ba3dc2dc998b25b25420fdada12b7",
+    "editions/aaai/2021/roster.jsonl": "97c6c6ee899b42b8652b687df0181241f5e756ce75e47b25f17273e62c4e25a2",
+    "editions/aaai/2021/summary.json": "feab8a1712346d628936517bd6b30cfa3f7eb423b66357860cbf54eb1b268094",
+    "editions/aaai/2022/roster.jsonl": "8fb79baa82b907ceb6cb0dbfc9fa826e072af7c2a9625e6b954b8713034dccda",
+    "editions/aaai/2022/summary.json": "7b3b4e1d9af29c7b86f74c752219adb1d2ab9d944c8f66c5f6eb49f85de6dd1f",
+    "editions/aaai/2023/roster.jsonl": "f1d62815b586171871837e948ca77586fdc7b91eff1c4003ef28cf41ac12b9ca",
+    "editions/aaai/2023/summary.json": "f81e67f23188877549fdd92210a87104ec4f97cbda4d13b9751ab1f20a2fe124",
+    "editions/aaai/2024/roster.jsonl": "b8b96ddc65ad50f9c44b4926b369a42cc8a6f908fadbbb8284ad70c832eb905f",
+    "editions/aaai/2024/summary.json": "4c4b283d2cbde90158c8563ed1d792f38f6f4da0f7100d3e92843567432f7064",
+    "editions/aaai/2025/roster.jsonl": "34366490a3056a4d931b1a3a018b24a9cefce7b8a54432ec3f5269f804199e18",
+    "editions/aaai/2025/summary.json": "133160f22bc4bac0a5d402964922e847b74204b739faa7e6fec20804796d53d3",
+    "editions/icaps/2021/roster.jsonl": "32110606b48c6d47c12e6a7e0b7e94844d5ba3b307c4d27ed9c8a08a46c74f9a",
+    "editions/icaps/2021/summary.json": "22d05443adf44ced8eaa246be6bcc55ab21b7be8a9dfbe3724ffdd9d262fd04a",
+    "editions/icaps/2022/roster.jsonl": "aba6dfaf7db3706a5a0567cf064acaa22167aa8dcc020e0cc9e71abb514be8bc",
+    "editions/icaps/2022/summary.json": "30b1e2573f0d18ee619932bf3af70c467ea5bb83bfb8e4fd06f12399886035d0",
+    "editions/icaps/2023/roster.jsonl": "91bd023045c9ba1cea195bb367907a359fbc5815c53e05d6f063ecc7ce02ad61",
+    "editions/icaps/2023/summary.json": "c265dfe47ebb62560d6b836792ac5de947e5456ef86c8ad5a1df838401bc878a",
+    "editions/icaps/2024/roster.jsonl": "3eee4bae2c57114801ec106214ef79e4a86c0f8b4b119062038b556ea2323461",
+    "editions/icaps/2024/summary.json": "a4b4f3e9d14625108a7496b207e050d6c50bbacbf371535a2ba86edb2b6705ee",
+    "editions/icaps/2025/roster.jsonl": "5e118cfa033d08795936d6eba452db8290b5e394d9f1dac939da01505f353282",
+    "editions/icaps/2025/summary.json": "0d30021ce5f283f3752b0eb6196c4597808fb0384e8d5e0b0657da75e7e6abea"
+  }
+}

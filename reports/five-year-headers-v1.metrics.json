@@ -1,0 +1,212 @@
+{
+  "work_id": "WORK-2026-11-06-004",
+  "snapshot_date": "2026-11-06",
+  "timezone": "Asia/Bangkok UTC+07:00",
+  "status": "development_headers_and_source_candidates_only",
+  "summary": {
+    "stage": "extract-diagnostics",
+    "method_version": "five-year-development-headers-v1",
+    "input_sha256": "af4fb53e0623ccaca9a668fdbd68d8e2e162de779fa3161f59761cb6b0c0d8f2",
+    "extraction_config_sha256": "a60de76dafbde0792504c24a65f0b383e9b7a8d3cd2f1e0760b83b6bf5e86548",
+    "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+    "config_sha256": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+    "membership_sha256": "fdaa5e742c7c2e4a96c2d1d70df48103f758ec82fbbe01f8005adb4598aa674f",
+    "diagnostics_sha256": "cf68ac15e42861a17cccc7a8a7259e046e9a81e2c2a160e6dea7e25466042fe0",
+    "reserved_tests_sha256": "b6f9299c5568da8dc4f164d28e89e79cea565ed01a0eea8c5683dec5f035f190",
+    "selected_papers": 68,
+    "by_status": {
+      "parsed": 66,
+      "review": 2
+    },
+    "review_reasons": {
+      "GROBID HTTP 500": 2
+    },
+    "pdfs_available": 68,
+    "pdf_bytes": 283508927,
+    "by_year": {
+      "2021": {
+        "parsed": 16
+      },
+      "2022": {
+        "parsed": 18
+      },
+      "2024": {
+        "parsed": 18
+      },
+      "2025": {
+        "parsed": 14,
+        "review": 2
+      }
+    },
+    "papers_with_header_affiliations": 47,
+    "roster_byline_agreements": 48,
+    "title_agreements": 62,
+    "candidate_binding_papers": 45,
+    "candidate_affiliation_observations": 255,
+    "exact_authorship_institution_candidates": 56,
+    "withheld_records_preserved": 1,
+    "held_out_papers_acquired": 0,
+    "accepted_identities": 0,
+    "accepted_affiliation_triples": 0,
+    "graph_imports": 0,
+    "external_consolidation": false,
+    "semantic_accuracy": "not_measured",
+    "independent_review": false,
+    "papers_sha256": "ce769d553056e1e8c2ed43d49b513645ee4e364bc4de116092247b7d91cc832c",
+    "source_review_sha256": "ded334896c4de3058f93418b16c0cf91463b99f92a497273bd52bb1d008d1b28"
+  },
+  "by_venue": [
+    {
+      "venue_id": "venue:acl",
+      "selected": 4,
+      "parsed": 4,
+      "candidate_binding_papers": 3,
+      "affiliation_candidates": 16
+    },
+    {
+      "venue_id": "venue:aistats",
+      "selected": 1,
+      "parsed": 1,
+      "candidate_binding_papers": 1,
+      "affiliation_candidates": 3
+    },
+    {
+      "venue_id": "venue:coling",
+      "selected": 2,
+      "parsed": 2,
+      "candidate_binding_papers": 2,
+      "affiliation_candidates": 5
+    },
+    {
+      "venue_id": "venue:colt",
+      "selected": 1,
+      "parsed": 1,
+      "candidate_binding_papers": 0,
+      "affiliation_candidates": 3
+    },
+    {
+      "venue_id": "venue:cvpr",
+      "selected": 7,
+      "parsed": 7,
+      "candidate_binding_papers": 5,
+      "affiliation_candidates": 28
+    },
+    {
+      "venue_id": "venue:eccv",
+      "selected": 4,
+      "parsed": 4,
+      "candidate_binding_papers": 3,
+      "affiliation_candidates": 13
+    },
+    {
+      "venue_id": "venue:emnlp",
+      "selected": 2,
+      "parsed": 2,
+      "candidate_binding_papers": 1,
+      "affiliation_candidates": 7
+    },
+    {
+      "venue_id": "venue:iccv",
+      "selected": 1,
+      "parsed": 1,
+      "candidate_binding_papers": 0,
+      "affiliation_candidates": 0
+    },
+    {
+      "venue_id": "venue:icml",
+      "selected": 6,
+      "parsed": 6,
+      "candidate_binding_papers": 4,
+      "affiliation_candidates": 18
+    },
+    {
+      "venue_id": "venue:ijcai",
+      "selected": 8,
+      "parsed": 8,
+      "candidate_binding_papers": 7,
+      "affiliation_candidates": 39
+    },
+    {
+      "venue_id": "venue:kr",
+      "selected": 8,
+      "parsed": 8,
+      "candidate_binding_papers": 8,
+      "affiliation_candidates": 30
+    },
+    {
+      "venue_id": "venue:mlsys",
+      "selected": 8,
+      "parsed": 8,
+      "candidate_binding_papers": 4,
+      "affiliation_candidates": 3
+    },
+    {
+      "venue_id": "venue:neurips",
+      "selected": 8,
+      "parsed": 8,
+      "candidate_binding_papers": 5,
+      "affiliation_candidates": 66
+    },
+    {
+      "venue_id": "venue:rss",
+      "selected": 8,
+      "parsed": 6,
+      "candidate_binding_papers": 2,
+      "affiliation_candidates": 24
+    }
+  ],
+  "independent_accuracy": "not_measured",
+  "graph_status": "historical_snapshots_unchanged; no_new_import",
+  "source_code_sha256": {
+    "src/scientific_network/preprocess/diagnostics.py": "46129f248a14289831861f4b7f5827a5c9d6944ddc4925180e82d23612cac32c",
+    "src/scientific_network/preprocess/tei.py": "1b34a636f613c93cc2782ae6c014d33600a96ef21a850e5a9063e13a49dc095b",
+    "src/scientific_network/preprocess/extract.py": "0301ac35550aa13b36f6a105809bfaa2532bb6cd3d4e1f5e559e5f654863f732"
+  },
+  "tests_passed": 130,
+  "replay_identical": true,
+  "integrity": {
+    "protected_files": 7297,
+    "protected_changed": [],
+    "verified_source_objects": 269,
+    "new_openalex_requests": 0,
+    "held_out_extraction_overlap": 0,
+    "historical_and_new_test_files_unchanged": true,
+    "extraction_replay_identical": true,
+    "tests_passed": 130,
+    "graph_writes": 0,
+    "post_service_checks": "unavailable_after_docker_daemon_stopped"
+  },
+  "services_before": {
+    "grobid": {
+      "http_status": 200,
+      "alive": true,
+      "image": "grobid/grobid:0.8.2-crf",
+      "image_id": "sha256:a1bfe7533e13ae9514d2b7d5e6cd2fff391c57d60bc3e48393471f90ad1718e0"
+    },
+    "neo4j": {
+      "http_status": 200,
+      "alive": true,
+      "nodes": 154,
+      "edges": 211
+    }
+  },
+  "services_after": {
+    "grobid": {
+      "status": "unavailable",
+      "reason": "ConnectError"
+    },
+    "neo4j": {
+      "status": "unavailable",
+      "reason": "ConnectError",
+      "post_counts": "not_available; pre_counts_154_nodes_211_edges; no_DB_writes_in_task"
+    },
+    "docker_daemon": "unavailable_after_collection"
+  },
+  "printed_development_review": {
+    "papers_inspected": 5,
+    "independent_review": false,
+    "accepted_identities": 0,
+    "accepted_affiliation_triples": 0,
+    "notes": "data/manifests/five-year-printed-review-v1.json"
+  }
+}

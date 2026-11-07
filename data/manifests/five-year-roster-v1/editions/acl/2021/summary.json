@@ -1,0 +1,87 @@
+{
+  "venue_id": "venue:acl",
+  "name": "ACL",
+  "year": 2021,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 712,
+  "by_status": {
+    "excluded": 4,
+    "included": 708
+  },
+  "routes": [
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "year": 2021,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2021.acl-long/",
+      "collection": "2021.acl-long",
+      "catalog_locator": "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)"
+    },
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "year": 2021,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2021.acl-short/",
+      "collection": "2021.acl-short",
+      "catalog_locator": "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 2: Short Papers)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/acl/",
+      "params": {},
+      "request_id": "060f4ada499b4b826b6828ea99613377eb9f3038940e6cdc592cb8b52b570395",
+      "sha256": "f399028d8eb51c5cf0c0f4c59a2a1a277f69684b663652ced4d86b82003a0d44",
+      "retrieved_at": "2026-11-06T08:04:22.662868+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2021.acl-long/",
+      "params": {},
+      "request_id": "277819af6b4f843fc47855c3f230af67c381e69bf3b07a6c9579d65d6819e3ab",
+      "sha256": "bb76fe5554137a5792628651a17c94cdb8e288a8c9b7aaef5210add8e33b8c31",
+      "retrieved_at": "2026-11-06T08:12:34.217027+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2021.acl-short/",
+      "params": {},
+      "request_id": "18814b863575dbcb77839409d85b1b74a9b568670668b9249fc9fc5359d0a375",
+      "sha256": "24e4cf5b9736e4331b5909036d972086bb2de73b49948281e1db63fab3c42cba",
+      "retrieved_at": "2026-11-06T08:12:37.139423+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e26c651a57b044c77b9b26fe5a7a22ead00f5d0d259226cde121c6a88ea737f9",
+  "checked_at": "2026-11-06T08:12:37.685239+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

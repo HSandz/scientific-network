@@ -1,0 +1,134 @@
+{
+  "work_id": "WORK-2026-11-07-004",
+  "recorded_at": "2026-11-07T09:36:44+07:00",
+  "decision_id": "D032",
+  "source_corrections_sha256": "4b8cd0f6d1efa4d72a2f9b4925ead700f2da1e6f8e1b3166f064d8044462f519",
+  "inherited_roster_artifacts_verified": 30,
+  "discovery": {
+    "stage": "discover",
+    "method_version": "five-year-official-rosters-v9",
+    "config_sha256": "8ce584885d45666a76b501cc41a77b0359707a10874394170a17b6b9fea5a50b",
+    "source_corrections_sha256": "4b8cd0f6d1efa4d72a2f9b4925ead700f2da1e6f8e1b3166f064d8044462f519",
+    "scope": "2021-2025 official_rosters_only",
+    "candidate_editions": 170,
+    "roster_records": 94000,
+    "records_by_status": {
+      "included": 90499,
+      "excluded": 3501
+    },
+    "edition_statuses": {
+      "verified_eligible": 97,
+      "unresolved": 23,
+      "verified_no_edition": 10,
+      "access_unavailable": 40
+    },
+    "by_year": {
+      "2021": 13629,
+      "2022": 14231,
+      "2023": 16868,
+      "2024": 22126,
+      "2025": 27146
+    },
+    "eligible_included_records": 90499,
+    "incomplete_editions": 63,
+    "review_required": 0,
+    "manifest_sha256": "381b0eade87bc8272b17e184eb27d2e5c773a41641eceb6a38ae6f964bff2b4b",
+    "edition_ledger_sha256": "b8139167f946aa7ae06a75bd4a4f23ff84fbef68ac3253685688295e2c9a6846",
+    "parent_method_version": "five-year-official-rosters-v8",
+    "parent_manifest_sha256": "7906b44786c2251cfe87d26347c93913efbf2c60c6d75f0e400ad15faebd55a2",
+    "parent_edition_ledger_sha256": "bbcff1ff7575633ec6b78439a20974d0db7c4ba2225466577ce251e68d8b3f6e",
+    "frozen_assignments_guarded": 76629,
+    "protected_test_assignments": 1095,
+    "leakage_actions": {
+      "pending_prospective_design": 14106,
+      "quarantine_version_candidate": 8,
+      "preserve_existing_assignment": 76385
+    },
+    "new_splits_created": 0,
+    "canonical_works_merged": 0,
+    "semantic_accuracy": "not_measured",
+    "enrichment_requests": 0,
+    "graph_writes": 0,
+    "pdfs_downloaded": 0,
+    "public_per_record_roster": false,
+    "enrichment_authorized_by_this_output": false,
+    "graph_construction_authorized": false,
+    "output_sha256": {
+      "corpus_manifest.jsonl": "381b0eade87bc8272b17e184eb27d2e5c773a41641eceb6a38ae6f964bff2b4b",
+      "corpus_manifest-complete.parquet": "c0ee6ba255d74a467f6f8417c5a586f76c245f4ec74392a66ec1b57a8eab7f7b",
+      "edition-ledger.jsonl": "b8139167f946aa7ae06a75bd4a4f23ff84fbef68ac3253685688295e2c9a6846",
+      "leakage-triage.jsonl": "f03bce7ba2a59e89342938b21f845490939da86699ca5242f3c5ca0581b7b954",
+      "editions/aaai/2021/roster.jsonl": "3d5a4d114ba77e8f0fa37f323d23225394a75d1a7ec1c12351e5d0006b6177f1",
+      "editions/aaai/2021/summary.json": "d396330af885590f7fb42d7e62340d476d2173eb53751cc6a401aed4c0b3723e",
+      "editions/aaai/2022/roster.jsonl": "1634ed386c34b793de7f24126474e29a0d6d5c41544ddd02c451a3d10111eaf7",
+      "editions/aaai/2022/summary.json": "91fedf7227c8c3e3dd87600940d536350bcc504352b56b9441f7f1774180c437",
+      "editions/aaai/2023/roster.jsonl": "dae613d9c4c7cf3a46beaf3f9b5521bbf648f291feda99447d3c21c0bcfc04d4",
+      "editions/aaai/2023/summary.json": "19ed62556a40e136c08a72aa6682356b8cf32bab330a597ecb48de47661ce7d6",
+      "editions/aaai/2024/roster.jsonl": "ab48c9a54b598e0fb9553ec97a3652e3a7d84c7898252b37d0491a8c2328bb65",
+      "editions/aaai/2024/summary.json": "991d423d5d568d155026049cb4bedb7a63253d18ae212e3d8f018f413723bb51",
+      "editions/aaai/2025/roster.jsonl": "529e0400a5952ef7c2e386ff403cc49f587098dfc5e4604fadc027c5d1b20af5",
+      "editions/aaai/2025/summary.json": "f1e1620881491d13129dfcbd8c84b45be11b8226b2774c041f9c931cc5f1f9f5",
+      "editions/aamas/2021/roster.jsonl": "853962213f69c42e7cd239801efbbcec2a1ee1a6c6473912983af2389be02c25",
+      "editions/aamas/2021/summary.json": "7f9f01e358cfbd65ac8977c4b298396718568b40010176f4de64e343dbbed288",
+      "editions/aamas/2022/roster.jsonl": "c32eb06f190c53f3535d22b470e30d76db207884773c3ecbd5840dfb24fffa04",
+      "editions/aamas/2022/summary.json": "950d3c11a832901c29f7f35c74260f74d35edd0fe67e50a2959d49dbf7c864e2",
+      "editions/aamas/2024/roster.jsonl": "5f3c60700c581719eb68a40fd75e4e6901e135cde23ee10d7a7abcf37506ff40",
+      "editions/aamas/2024/summary.json": "bc2a38be4e5911033179b18515bb297517a55943cd265c994be303a8f46c6a13",
+      "editions/aamas/2025/roster.jsonl": "94fb1335696e8dac7bcb8a8ccf1d8d07fa93c158767f2bdd42f9f2c19ca68daf",
+      "editions/aamas/2025/summary.json": "44f13a80b52a2fe8609eb05c1bb9a59999f1b35113363c8822301f08602c9d4b",
+      "editions/coling/2024/roster.jsonl": "da1a0ddce689145d45ee5489ac79545c95423904c77e930dcb2c4573aede3e68",
+      "editions/coling/2024/summary.json": "6fc90c33f6ddc1ec391747948a957fb1295dd2da4b38c7f6d7483b45e8b7d0e8",
+      "editions/icaps/2021/roster.jsonl": "8042d49d3ffb27a76ba1f61534b70dc10a26b524a77d20b24bcb51e2076d6746",
+      "editions/icaps/2021/summary.json": "595972c27b3b01c4451535c2461ef3fd55e0fa736253f0d1f510fffe7c5d82cb",
+      "editions/icaps/2022/roster.jsonl": "e78af0e43a41288ca2faab62527828b98fae2d4bfd890d1851c397094df479c6",
+      "editions/icaps/2022/summary.json": "f85a147c50def5ead11b7ab08d2d7b2b926c37cb69437c85605b49b8d11939c1",
+      "editions/icaps/2023/roster.jsonl": "7b98a5570e1e47944625d0819305e205a3b2d6b4266cb66269ebefb4ebe40143",
+      "editions/icaps/2023/summary.json": "6fec438f3ea68a30e65b6534eb07af5dfb604892826c9afed3daa66254ff9b4c",
+      "editions/icaps/2024/roster.jsonl": "62a9130927a35c888de8838f0abeb112722f9d59fe2e1434385c2ce761128ddb",
+      "editions/icaps/2024/summary.json": "726b025b944a567caba20eb838824685ca6fa2f5b355d4593205d58c428043bd",
+      "editions/icaps/2025/roster.jsonl": "658becb38b79a49e2363d20909551e80cf858c412c258a300d87639d0fcb7828",
+      "editions/icaps/2025/summary.json": "c685a97030b279874541e2ad723e32c6fe8cac40f100b98f35c1761b945e297a",
+      "editions/miccai/2021/roster.jsonl": "2927d5c8b1d080e4e9389de6d6ef485662e8fd8dae2838a963bef909009b7ba7",
+      "editions/miccai/2021/summary.json": "112ad779c9c9d604e7512e502078374790f554ac91c074acc8e2814a40fb65a8",
+      "editions/miccai/2023/roster.jsonl": "0dd8ca441de130b80a541f73f935dc61876d239ee22b7f588f497b1127461a33",
+      "editions/miccai/2023/summary.json": "9520ef43f3624578d482065e7b43c29e7fc4ffe1694b2eb9abf3222cf0b86408",
+      "editions/miccai/2025/roster.jsonl": "e449daeed85ac825d067df427a065208166c976d04f537754e698d4cbefc6cd6",
+      "editions/miccai/2025/summary.json": "1eba28f7f7558885a5153e8916bc9cc64143bfb020540ec6fee5a0fcfe85dcc1"
+    }
+  },
+  "miccai_count_reconciliation": {
+    "2021": {
+      "accepted_roster": 531,
+      "springer_full_papers": 531,
+      "springer_index_counter": 535,
+      "status": "eligible"
+    },
+    "2022": {
+      "official_accepted_list_http": 522,
+      "springer_full_papers": 574,
+      "springer_index_counter": 576,
+      "status": "unresolved"
+    },
+    "2023": {
+      "accepted_roster": 730,
+      "springer_full_papers": 730,
+      "springer_index_counter": 732,
+      "status": "eligible"
+    },
+    "2024": {
+      "society_list": 856,
+      "springer_full_papers": 857,
+      "springer_index_counter": 857,
+      "status": "unresolved"
+    },
+    "2025": {
+      "society_accepted_roster": 1027,
+      "society_final_acceptance": 1027,
+      "springer_full_papers": 1027,
+      "springer_index_counter": 1029,
+      "status": "eligible"
+    }
+  },
+  "no_enrichment_or_split_or_graph": true,
+  "independent_semantic_accuracy": "not_measured"
+}

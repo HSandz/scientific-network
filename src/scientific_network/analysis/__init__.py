@@ -1,6 +1,6 @@
-"""EDA, separate SNA projections, robustness and business findings.
+"""Versioned graph projections and descriptive analysis.
 
-TODO: missingness denominators, raw/fractional weights, seeded communities,
-approximate betweenness, directed citation PageRank, sector/topic portfolios,
-and case studies with at least two supporting papers and a material limitation.
+The initial ``analyze`` stage reports projection structure, weighted centrality
+and seeded Louvain communities. Evidence sensitivity, coverage/age analyses,
+figures and source-supported business findings remain separate pending work.
 """

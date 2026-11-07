@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:icra",
+  "name": "ICRA",
+  "year": 2023,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://ieeexplore.ieee.org/browse/conferences/title",
+      "params": {},
+      "request_id": "3dec0d6b0cac244fe3931e49c5eb893550082f3210620cac7b8e1e251ddf8aac",
+      "sha256": "68fda3d4714d9dba416d066284b5c38cdac1b4f7a2ac1b111387d9659d3b5eaf",
+      "retrieved_at": "2026-11-06T08:13:33.210156+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:46.738222+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

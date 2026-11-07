@@ -1,0 +1,32 @@
+{
+  "work_id": "WORK-2026-11-06-002",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "audience": "public",
+  "version_number": 7,
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_3706b8240a5c8191a01f14cc003e218e",
+  "deployment_id": "appgdep_6aed8dabe010819199fc14102152321a",
+  "status": "succeeded",
+  "published_at": "2026-11-06T08:20:15.893387+00:00",
+  "source_commit": "7f185d54f6433721702bbeb7d7383902424525c2",
+  "archive_storage": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_0000000090a482118ce91be0f9ca5be4",
+    "content_hash": "sha256:9cc8eb340fc9c50ee4763779810bba34362bf9e59d14f3dfae4ee728499baa75",
+    "size_bytes": 1587200,
+    "file_count": 19
+  },
+  "scope": "2021-2025",
+  "collection_config": "corpus-five-year-v1",
+  "collection_method": "five-year-official-rosters-v1",
+  "collection_summary": "reports/five-year-collection-v1.json",
+  "roster_records": 73714,
+  "eligible_editions": 67,
+  "eligible_included_records": 65523,
+  "graph_version": "pilot-topic-d512d7239923",
+  "graph_nodes": 399,
+  "graph_edges": 533,
+  "graph_scope": "historical_2023",
+  "native_report": true
+}

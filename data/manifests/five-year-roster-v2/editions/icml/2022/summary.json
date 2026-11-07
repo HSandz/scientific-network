@@ -1,0 +1,63 @@
+{
+  "venue_id": "venue:icml",
+  "name": "ICML",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 1233,
+  "by_status": {
+    "included": 1233
+  },
+  "routes": [
+    {
+      "venue_id": "venue:icml",
+      "name": "ICML",
+      "year": 2022,
+      "adapter": "pmlr",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.mlr.press/v162/",
+      "volume": 162,
+      "required_markers": [
+        "2022",
+        "Volume 162"
+      ],
+      "catalog_locator": "Volume 162 Proceedings of ICML 2022"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/",
+      "params": {},
+      "request_id": "86716e38d7eda879e48666d7b58364d18d75238dca6e4a017f8349eee81f782a",
+      "sha256": "d790ae9a4d93af0acb80293a90e0a45b6ed1b1be54d20bb87605647edf52167f",
+      "retrieved_at": "2026-11-06T08:04:20.166776+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v162/",
+      "params": {},
+      "request_id": "9326fd012f712fb86e52407d3a41b4c54298a56e2218ce425694af2b8555447c",
+      "sha256": "b1e88553275b68a4db9c57c8e9b028c67666e42d240162c74bddd70fd4c2a5f8",
+      "retrieved_at": "2026-11-06T08:09:22.393764+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "3b78065db9eff235f51381f0c63620345fabad67ffc254571ab2abcb139852dc",
+  "checked_at": "2026-11-06T11:53:11.463657+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

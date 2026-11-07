@@ -1,0 +1,399 @@
+{
+  "work_id": "WORK-2026-11-06-002",
+  "snapshot_date": "2026-11-06",
+  "timezone": "Asia/Bangkok UTC+07:00",
+  "release_status": "partial_roster_collection_not_a_release_graph",
+  "discovery": {
+    "stage": "discover",
+    "config_sha256": "9914ea3ca428047078ebe106d784ab8852f2761637fe43e8a52cf85cd14ba402",
+    "method_version": "five-year-official-rosters-v1",
+    "scope": "2021-2025 official_rosters_only",
+    "candidate_editions": 170,
+    "roster_records": 73714,
+    "records_by_status": {
+      "excluded": 2556,
+      "included": 70973,
+      "review": 185
+    },
+    "edition_statuses": {
+      "verified_eligible": 67,
+      "needs_review": 12,
+      "unresolved": 51,
+      "access_unavailable": 40
+    },
+    "by_year": {
+      "2021": 10971,
+      "2022": 10801,
+      "2023": 14368,
+      "2024": 15177,
+      "2025": 22397
+    },
+    "eligible_included_records": 65523,
+    "incomplete_editions": 103,
+    "review_required": 185,
+    "manifest_sha256": "7a039e31f6a83dc894d93a72e8160fb24603d71a1b02ca867f11e909e9a5dc68",
+    "edition_ledger_sha256": "5d2accecb5c1bc9e05e6824fb628ba759447638e0a518a29e2cede6d6662f6de",
+    "canonical_work_count": null,
+    "resolved_researchers": null,
+    "semantic_accuracy": "not_measured",
+    "enrichment_status": "not_started_requires_leakage_reconciliation_and_frozen_design"
+  },
+  "reconciliation": {
+    "stage": "reconcile-rosters",
+    "method_version": "five-year-leakage-triage-v1",
+    "input_sha256": {
+      "data/manifests/five-year-roster-v1/corpus_manifest.jsonl": "7a039e31f6a83dc894d93a72e8160fb24603d71a1b02ca867f11e909e9a5dc68",
+      "data/manifests/extended-corpus-v3/corpus_manifest.jsonl": "2e4c21bbd152b309a59ba7a16ed1d89f41ca009b7a2bfe715db670e1d046924b",
+      "data/manifests/extended-splits-v3/membership.jsonl": "7236103c7498e9bd58274598c648feb0f50ffbbda44eb8c5ac483ff60d27c0d4",
+      "data/manifests/five-year-roster-v1/summary.json": "e9e828dcb4484b7aa6b8bb5b10471766228ee01404fb74d24acf823292965eac"
+    },
+    "included_roster_records": 70973,
+    "actions": {
+      "pending_prospective_design": 57149,
+      "preserve_existing_assignment": 13823,
+      "quarantine_version_candidate": 1
+    },
+    "historical_assignments_preserved": 14909,
+    "new_splits_created": 0,
+    "canonical_works_merged": 0,
+    "enrichment_authorized_by_this_output": false,
+    "triage_sha256": "80b88f7ea46f8b5ab47cf427997481dd85c5fc82f77e71c3f1c4674da8da0248",
+    "limitations": [
+      "Exact normalized title matches guard leakage but do not establish identity.",
+      "Alternate-title versions without shared identifiers require later review.",
+      "Edition completeness and independent prospective sampling still gate enrichment."
+    ]
+  },
+  "by_year": [
+    {
+      "year": 2021,
+      "roster_records": 10971,
+      "included_records": 10750,
+      "eligible_included_records": 10750,
+      "eligible_editions": 14,
+      "other_candidates": 20
+    },
+    {
+      "year": 2022,
+      "roster_records": 10801,
+      "included_records": 10432,
+      "eligible_included_records": 10389,
+      "eligible_editions": 13,
+      "other_candidates": 21
+    },
+    {
+      "year": 2023,
+      "roster_records": 14368,
+      "included_records": 13823,
+      "eligible_included_records": 13823,
+      "eligible_editions": 14,
+      "other_candidates": 20
+    },
+    {
+      "year": 2024,
+      "roster_records": 15177,
+      "included_records": 14416,
+      "eligible_included_records": 14350,
+      "eligible_editions": 13,
+      "other_candidates": 21
+    },
+    {
+      "year": 2025,
+      "roster_records": 22397,
+      "included_records": 21552,
+      "eligible_included_records": 16211,
+      "eligible_editions": 13,
+      "other_candidates": 21
+    }
+  ],
+  "by_venue": [
+    {
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:aamas",
+      "name": "AAMAS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "roster_records": 5134,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:acmmm",
+      "name": "ACM Multimedia",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:aistats",
+      "name": "AISTATS",
+      "roster_records": 2573,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:cikm",
+      "name": "CIKM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:coling",
+      "name": "COLING",
+      "roster_records": 1391,
+      "edition_statuses": {
+        "unresolved": 3,
+        "verified_eligible": 2
+      }
+    },
+    {
+      "venue_id": "venue:colt",
+      "name": "COLT",
+      "roster_records": 826,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:corl",
+      "name": "Conference on Robot Learning (CoRL)",
+      "roster_records": 1089,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:cvpr",
+      "name": "CVPR",
+      "roster_records": 11674,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:eacl",
+      "name": "EACL",
+      "roster_records": 833,
+      "edition_statuses": {
+        "verified_eligible": 3,
+        "unresolved": 2
+      }
+    },
+    {
+      "venue_id": "venue:eccv",
+      "name": "ECCV",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 3,
+        "needs_review": 2
+      }
+    },
+    {
+      "venue_id": "venue:emnlp",
+      "name": "EMNLP",
+      "roster_records": 5804,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:icaps",
+      "name": "ICAPS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:iccv",
+      "name": "ICCV",
+      "roster_records": 6469,
+      "edition_statuses": {
+        "verified_eligible": 3,
+        "unresolved": 2
+      }
+    },
+    {
+      "venue_id": "venue:icdm",
+      "name": "ICDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:iclr",
+      "name": "ICLR",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:icml",
+      "name": "ICML",
+      "roster_records": 10184,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:icra",
+      "name": "ICRA",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:ijcai",
+      "name": "IJCAI",
+      "roster_records": 4763,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:iros",
+      "name": "IROS",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:kdd",
+      "name": "KDD",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:kr",
+      "name": "KR",
+      "roster_records": 389,
+      "edition_statuses": {
+        "needs_review": 4,
+        "verified_eligible": 1
+      }
+    },
+    {
+      "venue_id": "venue:miccai",
+      "name": "MICCAI",
+      "roster_records": 0,
+      "edition_statuses": {
+        "unresolved": 5
+      }
+    },
+    {
+      "venue_id": "venue:mlsys",
+      "name": "MLSys",
+      "roster_records": 247,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:naacl",
+      "name": "NAACL",
+      "roster_records": 2205,
+      "edition_statuses": {
+        "verified_eligible": 4,
+        "unresolved": 1
+      }
+    },
+    {
+      "venue_id": "venue:neurips",
+      "name": "NeurIPS",
+      "roster_records": 19024,
+      "edition_statuses": {
+        "verified_eligible": 4,
+        "needs_review": 1
+      }
+    },
+    {
+      "venue_id": "venue:recsys",
+      "name": "RecSys",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:rss",
+      "name": "Robotics: Science and Systems (RSS)",
+      "roster_records": 0,
+      "edition_statuses": {
+        "needs_review": 5
+      }
+    },
+    {
+      "venue_id": "venue:sdm",
+      "name": "SDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:sigir",
+      "name": "SIGIR",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:uai",
+      "name": "UAI",
+      "roster_records": 1109,
+      "edition_statuses": {
+        "verified_eligible": 5
+      }
+    },
+    {
+      "venue_id": "venue:wsdm",
+      "name": "WSDM",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    },
+    {
+      "venue_id": "venue:www",
+      "name": "The Web Conference (WWW)",
+      "roster_records": 0,
+      "edition_statuses": {
+        "access_unavailable": 5
+      }
+    }
+  ],
+  "graph_status": "historical_2023_graphs_unchanged_no_five_year_graph",
+  "api_requests": {
+    "openalex": 0,
+    "pdf_downloads": 0
+  },
+  "code_sha256": {
+    "src/scientific_network/collect/five_year.py": "d1240c0373781e4d696caf256466811235b1d196741194271777e8fd9e5fab2a",
+    "src/scientific_network/collect/reconcile.py": "207ed7d8f622957477cb26411cafe3187939661ae602326170ac417adfd87107"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "venue_id": "venue:acmmm",
+  "name": "ACM Multimedia",
+  "year": 2024,
+  "status": "access_unavailable",
+  "reason": "dl.acm.org: access/quota HTTP 403; collection stopped",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:12:27.244721+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

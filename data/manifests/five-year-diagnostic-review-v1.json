@@ -1,0 +1,12 @@
+{
+  "method_version": "five-year-diagnostic-triage-v1",
+  "paper_id": "paper:mlsys:2025:f37347375d8b54e3203e5d24aeb6c58c",
+  "status": "withheld",
+  "reason": "official roster uses expanded given name; citation_author metadata uses initial",
+  "evidence_url": "https://proceedings.mlsys.org/paper_files/paper/2025/hash/f37347375d8b54e3203e5d24aeb6c58c-Abstract-Conference.html",
+  "roster_source_sha256": "0275f888b8e9d4ddf8c1ed5ed9b32d43401c2bea05cb3b6aa2e637c3bb99406d",
+  "source_locator": "official roster ordered byline versus meta[name=citation_author]",
+  "decision": "requires printed/PID corroboration; no forced alias or author merge",
+  "acquisition_sha256": "af4fb53e0623ccaca9a668fdbd68d8e2e162de779fa3161f59761cb6b0c0d8f2",
+  "independent_scientific_audit": false
+}

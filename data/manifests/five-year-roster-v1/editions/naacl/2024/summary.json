@@ -1,0 +1,87 @@
+{
+  "venue_id": "venue:naacl",
+  "name": "NAACL",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 564,
+  "by_status": {
+    "excluded": 2,
+    "included": 562
+  },
+  "routes": [
+    {
+      "venue_id": "venue:naacl",
+      "name": "NAACL",
+      "year": 2024,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2024.naacl-long/",
+      "collection": "2024.naacl-long",
+      "catalog_locator": "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)"
+    },
+    {
+      "venue_id": "venue:naacl",
+      "name": "NAACL",
+      "year": 2024,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2024.naacl-short/",
+      "collection": "2024.naacl-short",
+      "catalog_locator": "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 2: Short Papers)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/naacl/",
+      "params": {},
+      "request_id": "5038e476b43162f226a80acb615e26c90e8083925b4e4c92946a02f02ced39e2",
+      "sha256": "9d417ffe33fbe432330fd36ac4ee136fc36288edf166da568cdb558b59b7e4e0",
+      "retrieved_at": "2026-11-06T08:13:03.504717+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2024.naacl-long/",
+      "params": {},
+      "request_id": "da7cd7323ddba13e245d28ff96611d15084973442b0c9b72dcf6708ae545bf9a",
+      "sha256": "ecd38b4b83149563fccb986531fc0f2c3a70b18990d2b3ac7834e3c2057e1052",
+      "retrieved_at": "2026-11-06T08:13:20.663139+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2024.naacl-short/",
+      "params": {},
+      "request_id": "f7716212af4b948448f0b569dfce1d1153de5a5241ae18626f2c2d537128da8c",
+      "sha256": "5e1d40085aeaaa13f61be0a53073bf271eadaf503eb475d48805e945b642bb7f",
+      "retrieved_at": "2026-11-06T08:13:23.560434+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "1499ea076a1f9e864d4bb11ec744e4e7eeb5cc081ba8050d8c95f2dde31eec48",
+  "checked_at": "2026-11-06T08:13:24.026305+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

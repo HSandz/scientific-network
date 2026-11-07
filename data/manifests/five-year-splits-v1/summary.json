@@ -1,0 +1,33 @@
+{
+  "stage": "freeze-diagnostics",
+  "method_version": "five-year-diagnostics-v1",
+  "input_sha256": {
+    "data/manifests/five-year-roster-v2/corpus_manifest.jsonl": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+    "data/manifests/five-year-roster-v2/edition-ledger.jsonl": "4817c2cd2fbd9027759149165d636b16e9b4df16a5b36eaddeb94e4e7dd504f1",
+    "data/manifests/five-year-reconciliation-v2/leakage-triage.jsonl": "03188069e287500f225758dcb78ce0d0b15e2a6ad19a00afb374897c5fd0b50c",
+    "configs/five-year-diagnostics-v1.yaml": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+    "data/manifests/extended-corpus-v3/corpus_manifest.jsonl": "2e4c21bbd152b309a59ba7a16ed1d89f41ca009b7a2bfe715db670e1d046924b",
+    "data/manifests/extended-splits-v3/membership.jsonl": "7236103c7498e9bd58274598c648feb0f50ffbbda44eb8c5ac483ff60d27c0d4",
+    "data/manifests/splits-v1/membership.jsonl": "ed5658f3c9137e0f22b0594b351b7b340ab581bf91873582ae12eabbb720441a"
+  },
+  "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+  "membership_sha256": "fdaa5e742c7c2e4a96c2d1d70df48103f758ec82fbbe01f8005adb4598aa674f",
+  "diagnostics_sha256": "cf68ac15e42861a17cccc7a8a7259e046e9a81e2c2a160e6dea7e25466042fe0",
+  "config_sha256": "ae1d90c8fd8655b120b83ca594f68a51c1c8b10b2f8315db917b6bbd2b94e4ac",
+  "reserved_tests_sha256": "b6f9299c5568da8dc4f164d28e89e79cea565ed01a0eea8c5683dec5f035f190",
+  "historical_assignments_preserved": 14909,
+  "new_diagnostic_papers": 68,
+  "new_test_groups": 170,
+  "strata": 34,
+  "by_split": {
+    "pool": 74995,
+    "test": 1095,
+    "development": 538,
+    "review": 1
+  },
+  "seed": 20261106,
+  "held_out_diagnostic_overlap": 0,
+  "sample_status": "frozen_unannotated_development_diagnostics",
+  "inference_population": "new eligible singleton records within source-family/year strata; not full registry or release audit",
+  "work_identity": "provisional_per_official_record; unresolved versions quarantined; no title-based canonical merges"
+}

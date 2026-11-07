@@ -1,0 +1,54 @@
+{
+  "work_id": "WORK-2026-11-06-006",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "version_number": 13,
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_90e41e7426d4819197c40a4f78f36294",
+  "deployment_id": "appgdep_6aedf67e87408191b9f59335882a856b",
+  "status": "succeeded",
+  "published_at": "2026-11-06T15:47:32.507041+00:00",
+  "commit_sha": "554f47576c3c51bf3d142b9563ace99b6bc45209",
+  "archive_storage": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_00000000f6bc8207bd8548def742ad75",
+    "content_hash": "sha256:fc129e22be28e8e8e437aa2f5b978682b8f2a352b566ed93063548bec16e279c",
+    "size_bytes": 1658880,
+    "file_count": 26
+  },
+  "method_version": "five-year-pregraph-readiness-v3",
+  "config": "configs/five-year-pregraph-v3.yaml",
+  "report": "reports/five-year-pregraph-v3.metrics.json",
+  "measured": {
+    "source_reviews": 19,
+    "source_accepted_papers": 55,
+    "source_withheld_papers": 13,
+    "accepted_researchers": 10,
+    "accepted_authorship_support": 11,
+    "accepted_affiliation_triples": 12,
+    "topic_candidates": 17,
+    "accepted_topic_labels": 0,
+    "tests_passed": 156,
+    "protected_artifacts_verified": 7895,
+    "source_objects_verified": 369,
+    "full_pregraph_ready": false,
+    "graph_construction_performed": false,
+    "graph_imports": 0
+  },
+  "preserved": {
+    "plan_sections": 20,
+    "tabs": 2,
+    "graph_nodes": 399,
+    "graph_edges": 533,
+    "payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "checks": {
+    "static_unique_ids": 266,
+    "embeds_in_build": 0,
+    "downloads_match": true,
+    "local_http_and_metrics": "passed",
+    "browser_interactive_qa": "incomplete: evaluation did not return; static/HTTP passed",
+    "hosted_http": "passed: native warning, 20 Plan sections, zero Report embeds and current aggregate"
+  }
+}

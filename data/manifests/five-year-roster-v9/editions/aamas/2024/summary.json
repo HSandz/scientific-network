@@ -1,0 +1,45 @@
+{
+  "venue_id": "venue:aamas",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_research_section_roster_parsed_and_reconciled",
+  "records": 460,
+  "by_status": {
+    "excluded": 230,
+    "included": 230
+  },
+  "routes": [
+    {
+      "official_index": "https://www.ifaamas.org/Proceedings/aamas2024/forms/contents.htm",
+      "main_section": "Full Research Papers",
+      "all_sections_reconciled": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ifaamas.org/Proceedings/aamas2024/forms/contents.htm",
+      "sha256": "0cc7bfbd736f46dfd1ee463e1aabe1c2890a76620df2612d664f11e9ca9f58be",
+      "retrieved_at": "2026-11-07T01:15:16.145264+00:00",
+      "license": "IFAAMAS copyright; redistribution restricted"
+    }
+  ],
+  "official_policy_sources": [
+    {
+      "source_id": "aamas2024_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2024/",
+      "accessed_at": "2026-11-07T01:15:16.929479+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4334,
+      "sha256": "4fb2f27fc7079cecf0711196eb0c42389d73968d77d1ff1d0cea69f2e54e5068",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/4fb2f27fc7079cecf0711196eb0c42389d73968d77d1ff1d0cea69f2e54e5068",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    }
+  ],
+  "roster_sha256": "5f3c60700c581719eb68a40fd75e4e6901e135cde23ee10d7a7abcf37506ff40",
+  "method_version": "five-year-official-rosters-v8",
+  "checked_at": "2026-11-07T01:15:24+00:00",
+  "reviewer": "automated_source_contract_check_not_independent_scientific_review",
+  "rights": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published.",
+  "redistribution": "local_ignored_only; public per-record metadata not authorized"
+}

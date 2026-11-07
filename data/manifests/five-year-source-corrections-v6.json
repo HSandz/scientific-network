@@ -1,0 +1,285 @@
+{
+  "version": "five-year-source-corrections-v6",
+  "decision_id": "D031",
+  "recorded_at": "2026-11-07T01:15:24+00:00",
+  "method_version": "five-year-aamas-rosters-v1",
+  "official_sources": [
+    {
+      "source_id": "aamas2021_contents",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2021/forms/contents.htm",
+      "accessed_at": "2026-11-07T01:15:09.087856+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 214232,
+      "sha256": "80f9518929dfcd98b8b6a1771ecd6444015e11f3a40098a47b35bea6850f3316",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/80f9518929dfcd98b8b6a1771ecd6444015e11f3a40098a47b35bea6850f3316",
+      "finding": "Official year-specific proceedings contents page with all numbered PDF records and section headings."
+    },
+    {
+      "source_id": "aamas2022_contents",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2022/forms/contents.htm",
+      "accessed_at": "2026-11-07T01:15:11.167446+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 214427,
+      "sha256": "771e392b50445055dee9b82ec24019fa3a16786622dbdb46c9cb92b1f0a98160",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/771e392b50445055dee9b82ec24019fa3a16786622dbdb46c9cb92b1f0a98160",
+      "finding": "Official year-specific proceedings contents page with all numbered PDF records and section headings."
+    },
+    {
+      "source_id": "aamas2023_contents",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2023/forms/contents.htm",
+      "accessed_at": "2026-11-07T01:15:13.643260+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 381041,
+      "sha256": "c9d8c027b50b83fbaaef893211bc94faf6941c71a7040f201a3d2c9139c06451",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/c9d8c027b50b83fbaaef893211bc94faf6941c71a7040f201a3d2c9139c06451",
+      "finding": "Official year-specific proceedings contents page with all numbered PDF records and section headings."
+    },
+    {
+      "source_id": "aamas2024_contents",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2024/forms/contents.htm",
+      "accessed_at": "2026-11-07T01:15:16.145264+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 340494,
+      "sha256": "0cc7bfbd736f46dfd1ee463e1aabe1c2890a76620df2612d664f11e9ca9f58be",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/0cc7bfbd736f46dfd1ee463e1aabe1c2890a76620df2612d664f11e9ca9f58be",
+      "finding": "Official year-specific proceedings contents page with all numbered PDF records and section headings."
+    },
+    {
+      "source_id": "aamas2025_contents",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2025/forms/contents.htm",
+      "accessed_at": "2026-11-07T01:15:18.796338+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 370650,
+      "sha256": "732847b51972f34c721a49d8bd963a80a029a48f3ec08022c9a0d5ddc2945549",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/732847b51972f34c721a49d8bd963a80a029a48f3ec08022c9a0d5ddc2945549",
+      "finding": "Official year-specific proceedings contents page with all numbered PDF records and section headings."
+    },
+    {
+      "source_id": "aamas2021_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2021/",
+      "accessed_at": "2026-11-07T01:15:09.787221+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4068,
+      "sha256": "ee913fe85db7fa286c870266e99ffeb7d6bbd899e8f815634e2f86ffdea147b4",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/ee913fe85db7fa286c870266e99ffeb7d6bbd899e8f815634e2f86ffdea147b4",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    },
+    {
+      "source_id": "aamas2022_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2022/",
+      "accessed_at": "2026-11-07T01:15:11.938778+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4327,
+      "sha256": "93f44a0ef2b5a45d3c9cea20f647fa3fef258faf54d68eebcb0dc1f0b1276fb5",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/93f44a0ef2b5a45d3c9cea20f647fa3fef258faf54d68eebcb0dc1f0b1276fb5",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    },
+    {
+      "source_id": "aamas2023_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2023/",
+      "accessed_at": "2026-11-07T01:15:14.392804+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4356,
+      "sha256": "82b21c01479860be7727d12d945a3aca9a9407677c3dbec4452dae35aa026cd6",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/82b21c01479860be7727d12d945a3aca9a9407677c3dbec4452dae35aa026cd6",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    },
+    {
+      "source_id": "aamas2024_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2024/",
+      "accessed_at": "2026-11-07T01:15:16.929479+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4334,
+      "sha256": "4fb2f27fc7079cecf0711196eb0c42389d73968d77d1ff1d0cea69f2e54e5068",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/4fb2f27fc7079cecf0711196eb0c42389d73968d77d1ff1d0cea69f2e54e5068",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    },
+    {
+      "source_id": "aamas2025_proceedings_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2025/",
+      "accessed_at": "2026-11-07T01:15:19.484536+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 4107,
+      "sha256": "850b7825c66d0147ac8a8bbf03a554590e4a9e8f4b5c576e043999bbd43317f4",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/850b7825c66d0147ac8a8bbf03a554590e4a9e8f4b5c576e043999bbd43317f4",
+      "finding": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published."
+    },
+    {
+      "source_id": "aamas2023_accepted_papers",
+      "url": "https://www.ifaamas.org/AAMAS/aamas2023/accepted_papers.html",
+      "accessed_at": "2026-11-07T01:15:20.684830+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 103540,
+      "sha256": "8911dcb336e7f716761d3aaa9838281790e550165215206d78689f3f6194cd31",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/8911dcb336e7f716761d3aaa9838281790e550165215206d78689f3f6194cd31",
+      "finding": "Official AAMAS 2023 accepted-paper or track-policy evidence; used only to reconcile the unresolved 2023 boundary."
+    },
+    {
+      "source_id": "aamas2023_news",
+      "url": "https://www.ifaamas.org/AAMAS/aamas2023/news.html",
+      "accessed_at": "2026-11-07T01:15:21.674952+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 31638,
+      "sha256": "4d37c5d1a0822a00b5512f38eadbb454d43673fb0868a487fd7400cab8ff14c4",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/4d37c5d1a0822a00b5512f38eadbb454d43673fb0868a487fd7400cab8ff14c4",
+      "finding": "Official AAMAS 2023 accepted-paper or track-policy evidence; used only to reconcile the unresolved 2023 boundary."
+    },
+    {
+      "source_id": "aamas2023_submission_instructions",
+      "url": "https://www.ifaamas.org/AAMAS/aamas2023/submission_instructions.html",
+      "accessed_at": "2026-11-07T01:15:22.633503+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 40014,
+      "sha256": "8b799136b47a2d3eeb4864c119ccc6d9636fd2e39c217de8b2225eebafc7fd7d",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/8b799136b47a2d3eeb4864c119ccc6d9636fd2e39c217de8b2225eebafc7fd7d",
+      "finding": "Official AAMAS 2023 accepted-paper or track-policy evidence; used only to reconcile the unresolved 2023 boundary."
+    },
+    {
+      "source_id": "aamas2023_authors_index",
+      "url": "https://www.ifaamas.org/Proceedings/aamas2023/forms/authors.htm",
+      "accessed_at": "2026-11-07T01:15:24.402392+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 356212,
+      "sha256": "6409bc43ba7313e5811b61f921b4d1345f64291c262e6da049c23ee6da64d792",
+      "snapshot_path": "data/raw/five-year-source-cache-v8/objects/6409bc43ba7313e5811b61f921b4d1345f64291c262e6da049c23ee6da64d792",
+      "finding": "Official AAMAS 2023 accepted-paper or track-policy evidence; used only to reconcile the unresolved 2023 boundary."
+    }
+  ],
+  "edition_dispositions": [
+    {
+      "venue_id": "venue:aamas",
+      "year": 2021,
+      "status": "verified_eligible",
+      "evidence_source_ids": [
+        "aamas2021_contents",
+        "aamas2021_proceedings_index"
+      ],
+      "main_section": "Main Track",
+      "expected_section_counts": {
+        "Blue Sky Ideas Track": 12,
+        "Main Track": 151,
+        "Extended Abstracts": 92,
+        "JAAMAS Track": 12,
+        "Demonstration Track": 15,
+        "Doctoral Consortium": 22
+      },
+      "expected_total_records": 304,
+      "expected_included": 151,
+      "rights_source_id": "aamas2021_proceedings_index"
+    },
+    {
+      "venue_id": "venue:aamas",
+      "year": 2022,
+      "status": "verified_eligible",
+      "evidence_source_ids": [
+        "aamas2022_contents",
+        "aamas2022_proceedings_index"
+      ],
+      "main_section": "Main Track",
+      "expected_section_counts": {
+        "Main Track": 166,
+        "Extended Abstracts": 89,
+        "Blue Sky Ideas Track": 9,
+        "Doctoral Consortium": 20,
+        "Demonstration Track": 11,
+        "JAAMAS Track": 11
+      },
+      "expected_total_records": 306,
+      "expected_included": 166,
+      "rights_source_id": "aamas2022_proceedings_index"
+    },
+    {
+      "venue_id": "venue:aamas",
+      "year": 2024,
+      "status": "verified_eligible",
+      "evidence_source_ids": [
+        "aamas2024_contents",
+        "aamas2024_proceedings_index"
+      ],
+      "main_section": "Full Research Papers",
+      "expected_section_counts": {
+        "Keynote Talks": 3,
+        "Full Research Papers": 230,
+        "Extended Abstract": 171,
+        "AAAI Track": 5,
+        "Blue Sky Ideas Track": 10,
+        "Doctoral Consortium": 23,
+        "Demonstration Track": 10,
+        "JAAMAS Track": 8
+      },
+      "expected_total_records": 460,
+      "expected_included": 230,
+      "rights_source_id": "aamas2024_proceedings_index"
+    },
+    {
+      "venue_id": "venue:aamas",
+      "year": 2025,
+      "status": "verified_eligible",
+      "evidence_source_ids": [
+        "aamas2025_contents",
+        "aamas2025_proceedings_index"
+      ],
+      "main_section": "Research Paper Track",
+      "expected_section_counts": {
+        "Keynote Talks": 3,
+        "Research Paper Track": 260,
+        "Extended Abstracts": 148,
+        "Blue Sky Ideas": 12,
+        "Doctoral Consortium": 25,
+        "Demo Track": 22,
+        "JAAMAS Track": 9
+      },
+      "expected_total_records": 479,
+      "expected_included": 260,
+      "rights_source_id": "aamas2025_proceedings_index"
+    }
+  ],
+  "unresolved_findings": [
+    {
+      "venue_id": "venue:aamas",
+      "year": 2023,
+      "status": "unresolved",
+      "evidence_source_ids": [
+        "aamas2023_contents",
+        "aamas2023_proceedings_index",
+        "aamas2023_accepted_papers",
+        "aamas2023_news",
+        "aamas2023_submission_instructions",
+        "aamas2023_authors_index"
+      ],
+      "official_full_papers_announced": 237,
+      "official_extended_abstracts_announced": 221,
+      "official_full_papers_listed": 237,
+      "accepted_extended_abstracts_listed": 219,
+      "extended_abstract_announcement_minus_listed": 2,
+      "contents_pdf_records_observed": 528,
+      "exact_normalized_title_joins_to_contents": 225,
+      "accepted_titles_without_exact_contents_match": 12,
+      "exact_byline_mismatches_among_matched_titles": 35,
+      "ambiguous_exact_title_matches": 0,
+      "reconciliation_method": "NFKC, whitespace normalization, case-fold exact title join; author sequence compared after Unicode normalization and punctuation removal",
+      "reason": "official accepted full-paper list is not completely and exactly reconciled to proceedings PDF records and bylines; session/poster contents mix full papers, extended abstracts, and other material"
+    }
+  ],
+  "rights_and_distribution": {
+    "summary": "The IFAAMAS proceedings pages identify IFAAMAS copyright; their notices allow limited personal/classroom copying with notice and credit but require prior permission or a fee for republication or redistribution. Detailed rosters remain local and ignored; no PDF or per-record roster is published.",
+    "tracked_full_rosters": false,
+    "full_rosters_local_ignored_only": true,
+    "pdfs_downloaded": false,
+    "public_per_record_roster": false
+  }
+}

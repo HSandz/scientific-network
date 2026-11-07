@@ -1,0 +1,215 @@
+{
+  "version": "five-year-source-corrections-v5",
+  "work_id": "WORK-2026-11-07-001",
+  "decision_id": "D030",
+  "recorded_at": "2026-11-07T07:30:00+07:00",
+  "scope_changed": false,
+  "official_sources": [
+    {
+      "source_id": "coling_2025_official_faq",
+      "url": "https://coling2025.org/faqs/",
+      "accessed_at": "2026-11-07T00:24:24Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 21871,
+      "sha256": "21ce11fb7f2deee77315c7e546ae97f0982c5cf4e16950c830005db60a49af1a",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/21ce11fb7f2deee77315c7e546ae97f0982c5cf4e16950c830005db60a49af1a",
+      "finding": "The official COLING 2025 FAQ says the series historically used even years, joined with LREC for a one-time 2024 transition, and shifted to odd years beginning in 2025."
+    },
+    {
+      "source_id": "coling_anthology_venue_history_v6",
+      "url": "https://aclanthology.org/venues/coling/",
+      "accessed_at": "2026-11-06T08:13:30.782512Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "a27dfd4cd8aa53dd65dd0be190da20efd81589e23efa77a66997946d9c2d3a8e",
+      "snapshot_path": null,
+      "finding": "The official Anthology COLING archive enumerates the 2020, 2022, 2024 joint LREC-COLING, and 2025 editions; it has no 2021 or 2023 COLING edition."
+    },
+    {
+      "source_id": "coling_2024_official_joint_proceedings",
+      "url": "https://aclanthology.org/volumes/2024.lrec-main/",
+      "accessed_at": "2026-11-07T00:22:01.561Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 4137022,
+      "sha256": "cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+      "finding": "The official proceedings volume identifies venues LREC and COLING and contains 1,554 paper records plus one volume-frontmatter record. The project records each joint-event paper once under the in-scope primary series COLING."
+    },
+    {
+      "source_id": "eacl_official_conference_history",
+      "url": "https://eacl.org/conferences/",
+      "accessed_at": "2026-11-07T00:24:24Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 14152,
+      "sha256": "0ee08d024d3356336de9a2c02c7e214e6d48d97acb9060bfbc360ff510cd34c7",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/0ee08d024d3356336de9a2c02c7e214e6d48d97acb9060bfbc360ff510cd34c7",
+      "finding": "The official EACL history lists ACL 2022 in place of an EACL edition, and lists EACL 2023, EACL 2024 and EACL 2026 with no EACL 2025 entry."
+    },
+    {
+      "source_id": "eccv_official_even_year_policy",
+      "url": "https://eccv.ecva.net/Conferences/2024",
+      "accessed_at": "2026-11-07T00:24:24Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 59265,
+      "sha256": "969ea05a74b906cd62ea4b13fd644c5271dc20229b58c5140119efd72b18e14e",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/969ea05a74b906cd62ea4b13fd644c5271dc20229b58c5140119efd72b18e14e",
+      "finding": "The official ECCV event page says ECCV is biannual on even-numbered years and that other events using the name are not sanctioned."
+    },
+    {
+      "source_id": "iccv_official_steering_bylaws",
+      "url": "https://www.thecvf.com/docs/CVPR%20ICCV%20bylaws%20final.pdf",
+      "accessed_at": "2026-11-07T00:26:00Z",
+      "response_status": 200,
+      "content_type": "application/pdf",
+      "response_bytes": 103740,
+      "sha256": "7794ca11ef1146eb342d96ec0e153bfdbceb644ff65133063e37147093f0fe3a",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/7794ca11ef1146eb342d96ec0e153bfdbceb644ff65133063e37147093f0fe3a",
+      "finding": "The official CVPR/ICCV Steering Committee bylaws state ICCV is held in odd-numbered years."
+    },
+    {
+      "source_id": "naacl_official_2023_no_conference_statement",
+      "url": "https://2023.aclweb.org/downloads/acl2023-handbook-v3.pdf",
+      "accessed_at": "2026-11-07T00:26:00Z",
+      "response_status": 200,
+      "content_type": "application/pdf",
+      "response_bytes": 41702286,
+      "sha256": "471080590b8b893adcc31d3e87ac6a172ae6fa9e1e8222b8548509af2a402cb8",
+      "snapshot_path": null,
+      "finding": "The official ACL 2023 handbook states that ACL was held in North America that year and therefore there was no NAACL conference. The binary was hashed in-browser but not retained locally because it is a 41.7 MB handbook."
+    },
+    {
+      "source_id": "naacl_official_conference_history",
+      "url": "https://naacl.org/conferences/",
+      "accessed_at": "2026-11-07T00:24:24Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 4652,
+      "sha256": "bf0a00acb6be31011516080b7ef0311299236525e3db445be46b104c83a46f38",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/bf0a00acb6be31011516080b7ef0311299236525e3db445be46b104c83a46f38",
+      "finding": "The official NAACL conference history lists 2021, 2022, 2024 and 2025 and excludes 2023, consistent with the explicit no-NAACL statement in the ACL 2023 handbook."
+    }
+  ],
+  "edition_dispositions": [
+    {
+      "venue_id": "venue:iccv",
+      "year": 2022,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "iccv_official_steering_bylaws"
+      ]
+    },
+    {
+      "venue_id": "venue:iccv",
+      "year": 2024,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "iccv_official_steering_bylaws"
+      ]
+    },
+    {
+      "venue_id": "venue:eccv",
+      "year": 2021,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "eccv_official_even_year_policy"
+      ]
+    },
+    {
+      "venue_id": "venue:eccv",
+      "year": 2023,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "eccv_official_even_year_policy"
+      ]
+    },
+    {
+      "venue_id": "venue:eccv",
+      "year": 2025,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "eccv_official_even_year_policy"
+      ]
+    },
+    {
+      "venue_id": "venue:naacl",
+      "year": 2023,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "naacl_official_2023_no_conference_statement",
+        "naacl_official_conference_history"
+      ]
+    },
+    {
+      "venue_id": "venue:eacl",
+      "year": 2022,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "eacl_official_conference_history"
+      ]
+    },
+    {
+      "venue_id": "venue:eacl",
+      "year": 2025,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "eacl_official_conference_history"
+      ]
+    },
+    {
+      "venue_id": "venue:coling",
+      "year": 2021,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "coling_2025_official_faq",
+        "coling_anthology_venue_history_v6"
+      ]
+    },
+    {
+      "venue_id": "venue:coling",
+      "year": 2023,
+      "status": "verified_no_edition",
+      "evidence_source_ids": [
+        "coling_2025_official_faq",
+        "coling_anthology_venue_history_v6"
+      ]
+    },
+    {
+      "venue_id": "venue:coling",
+      "year": 2024,
+      "status": "verified_eligible",
+      "primary_venue_id": "venue:coling",
+      "joint_event_id": "event:lrec-coling:2024",
+      "evidence_source_ids": [
+        "coling_2025_official_faq",
+        "coling_2024_official_joint_proceedings"
+      ]
+    }
+  ],
+  "joint_roster": {
+    "venue_id": "venue:coling",
+    "year": 2024,
+    "primary_venue_id": "venue:coling",
+    "joint_event_id": "event:lrec-coling:2024",
+    "joint_event_title": "LREC-COLING 2024",
+    "joint_event_venue_ids": [
+      "venue:coling",
+      "venue:lrec"
+    ],
+    "source_url": "https://aclanthology.org/volumes/2024.lrec-main/",
+    "source_response_sha256": "cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+    "source_response_bytes": 4137022,
+    "source_body_path": "data/raw/five-year-source-cache-v7/objects/cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+    "source_snapshot_path": "data/raw/five-year-source-cache-v7/objects/cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+    "retrieved_at": "2026-11-07T00:22:01.561Z",
+    "roster_path": "reports/runs/WORK-2026-11-07-001/coling2024-roster-v7.jsonl",
+    "roster_sha256": "6de4850b48acbf785603c4c4fbff99a143fdc0591b35f0e63071bad08df0373e",
+    "records": 1555,
+    "included": 1554,
+    "excluded_frontmatter": 1,
+    "parser": "official-roster-families-v2"
+  }
+}

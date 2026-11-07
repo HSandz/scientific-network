@@ -1,0 +1,58 @@
+{
+  "venue_id": "venue:mlsys",
+  "name": "MLSys",
+  "year": 2023,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 46,
+  "by_status": {
+    "included": 46
+  },
+  "routes": [
+    {
+      "venue_id": "venue:mlsys",
+      "name": "MLSys",
+      "year": 2023,
+      "adapter": "mlsys",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.mlsys.org/paper_files/paper/2023",
+      "catalog_locator": "Proceedings of Machine Learning and Systems 5"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.mlsys.org/",
+      "params": {},
+      "request_id": "fc4fa60617d9bb84e8bf9c09a8ac944fb402f67f04d519b3009759acdc74271a",
+      "sha256": "3102f1921a5c120dd02749f3c7e31ec3d58c32e03da21c244469903f04f833ba",
+      "retrieved_at": "2026-11-06T08:10:27.939736+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.mlsys.org/paper_files/paper/2023",
+      "params": {},
+      "request_id": "775c3b6054ca4bec2e62d5f296d8bdebf051eb4c981808d953683f570de18c2d",
+      "sha256": "6701f3da50c5cf183426badfe8bac09a2a7fa912a2845a0fa4db81383bab05ef",
+      "retrieved_at": "2026-11-06T08:10:30.004548+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "95de3a2b6617e7eac2d408dd1a0a6b6ec89cb670a92567763fd9577afda09216",
+  "checked_at": "2026-11-06T08:10:30.495713+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

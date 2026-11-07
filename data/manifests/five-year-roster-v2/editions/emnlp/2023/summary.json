@@ -1,0 +1,60 @@
+{
+  "venue_id": "venue:emnlp",
+  "name": "EMNLP",
+  "year": 2023,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 1048,
+  "by_status": {
+    "excluded": 1,
+    "included": 1047
+  },
+  "routes": [
+    {
+      "venue_id": "venue:emnlp",
+      "name": "EMNLP",
+      "year": 2023,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2023.emnlp-main/",
+      "collection": "2023.emnlp-main",
+      "catalog_locator": "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/emnlp/",
+      "params": {},
+      "request_id": "e368e1e756754a0c50367f3592ab12ab759bfe295e08e8f25ad7a37069e186ce",
+      "sha256": "21493d044a485c831ff3d0fd27187a0a504662f94c433380702d8bcaafc2ccdd",
+      "retrieved_at": "2026-11-06T08:12:33.441690+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2023.emnlp-main/",
+      "params": {},
+      "request_id": "93772fdf96b5fce043fbc31b3c8708bec73821e1ec949559da57dafecd189ab2",
+      "sha256": "b4d08fc5927ca30b1bea1ee8dc3a8284e27d540e399fc09991bde7124f020f88",
+      "retrieved_at": "2026-11-06T08:12:45.350411+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "41b904613472d3a009c3013806310f6ca7dda19ae0a279c54fcfa48282d1fe99",
+  "checked_at": "2026-11-06T11:57:23.180031+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

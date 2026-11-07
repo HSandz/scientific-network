@@ -1,0 +1,17 @@
+version: five-year-headers-v1
+decision: D024
+collection_authorized: true
+diagnostic_config: configs/five-year-diagnostics-v1.yaml
+max_papers: 68
+include_withheld_source_review: true
+rights: local_only_no_pdf_or_full_text_redistribution
+pdf:
+  header_endpoint: processHeaderDocument
+  consolidate_header: 0
+  timeout_seconds: 120
+  max_attempts: 2
+  delay_seconds: 0.3
+review:
+  automatic_identity_acceptance: false
+  automatic_affiliation_acceptance: false
+  preserve_withheld_status: true

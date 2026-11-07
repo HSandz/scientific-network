@@ -1,0 +1,478 @@
+{
+  "version": "five-year-source-corrections-v9",
+  "decision_id": "D034",
+  "work_id": "WORK-2026-11-07-007",
+  "recorded_at": "2026-11-07T18:43:53+07:00",
+  "method_version": "miccai2022-official-source-route-reconciliation-v1",
+  "inherited_correction": {
+    "path": "data/manifests/five-year-source-corrections-v8.json",
+    "sha256": "aa66cad3a9ebc2de5a838644e245e3707378ad7f660f118781ab7a8bdb544ee5",
+    "version": "five-year-source-corrections-v8",
+    "decision_id": "D033"
+  },
+  "official_sources": [
+    {
+      "source_id": "miccai2022_papers_index",
+      "url": "https://conferences.miccai.org/2022/papers/",
+      "accessed_at": "2026-11-07T18:25:37+07:00",
+      "response_status": 200,
+      "response_bytes": 195223,
+      "sha256": "37988fd266d8bdb469c82a27b29f9cd3d968600e18add604c58b5b2fc391c74c",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/miccai2022_papers_index.html",
+      "finding": "Official accepted-paper index."
+    },
+    {
+      "source_id": "miccai2022_categories",
+      "url": "https://conferences.miccai.org/2022/papers/categories/",
+      "accessed_at": "2026-11-07T18:18:47+07:00",
+      "response_status": 200,
+      "response_bytes": 1849589,
+      "sha256": "6f09fc3cedc2906e780f349537bfc207faed4fca5d211a8aa005207732e4732b",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/miccai2022_accepted_categories.html",
+      "finding": "Official accepted-paper topic categories."
+    },
+    {
+      "source_id": "miccai2022_program_for_authors",
+      "url": "https://conferences.miccai.org/2022/files/downloads/MICCAI2022-Program-for-authors.pdf",
+      "accessed_at": "2026-11-07T18:33:48+07:00",
+      "response_status": 200,
+      "response_bytes": 766794,
+      "sha256": "ce47c1515d9f9dd6541f7091d3f622abbcf6ae9b8c79147d8ff02187265002f9",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/miccai2022_program_for_authors.pdf",
+      "finding": "Official 41-page conference program; not a complete accepted-record roster."
+    },
+    {
+      "source_id": "miccai2022_program_book",
+      "url": "https://conferences.miccai.org/2022/files/downloads/MICCAI2022-Program-Book.pdf",
+      "accessed_at": "2026-11-07T18:35:16+07:00",
+      "response_status": 200,
+      "response_bytes": 5987847,
+      "sha256": "28b56be7264ef4100225103e3357e7f73865708593e024e7900e4704674239e0",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/miccai2022_program_book.pdf",
+      "finding": "Official 122-page conference program book; not a complete accepted-record roster."
+    },
+    {
+      "source_id": "springer_conference_index_v2",
+      "url": "https://link.springer.com/conference/miccai",
+      "accessed_at": "2026-11-07T18:32:43+07:00",
+      "response_status": 200,
+      "response_bytes": 189454,
+      "sha256": "16ae7bc58eb4367600893980158f81894ed50104c1a0bb8d28d995cbbe97ae74",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_conference_index_v11.html",
+      "finding": "Official Springer series index; 2022 counter remains 576."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164316_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16431-6?page=1",
+      "accessed_at": "2026-11-07T18:21:21+07:00",
+      "response_status": 200,
+      "response_bytes": 328646,
+      "sha256": "d1d7fff6f6efd8a1efeab1e3874f995fc962e503c20fd8d20634a8ffb889f492",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164316_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16431-6, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164316_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16431-6?page=2",
+      "accessed_at": "2026-11-07T18:21:22+07:00",
+      "response_status": 200,
+      "response_bytes": 329443,
+      "sha256": "9cce0e0c48a31a79b53fbd7ba6cc120ab5415b28866a0bc02ca1b29fb806efd0",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164316_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16431-6, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164316_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16431-6?page=3",
+      "accessed_at": "2026-11-07T18:21:22+07:00",
+      "response_status": 200,
+      "response_bytes": 330387,
+      "sha256": "73738fa74496a26692cf6a5e066be6ff2aefdb3ba4141f099d1f6a58b1e53207",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164316_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16431-6, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164316_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16431-6?page=4",
+      "accessed_at": "2026-11-07T18:21:22+07:00",
+      "response_status": 200,
+      "response_bytes": 327528,
+      "sha256": "7f593c9e40e3fafbc0e77ffacc8d8eb3507b9c3563319603642a171d7edff9bc",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164316_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16431-6, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164347_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16434-7?page=1",
+      "accessed_at": "2026-11-07T18:21:22+07:00",
+      "response_status": 200,
+      "response_bytes": 324296,
+      "sha256": "15b471283adcfa8a4947829ea08b47dee736b7dd58d1329f146e5add986e9c5b",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164347_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16434-7, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164347_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16434-7?page=2",
+      "accessed_at": "2026-11-07T18:21:22+07:00",
+      "response_status": 200,
+      "response_bytes": 324985,
+      "sha256": "67433f7c62bfdc1cefe6671fb0fbc85946c2de89dd46354cdab9aa2056d46192",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164347_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16434-7, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164347_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16434-7?page=3",
+      "accessed_at": "2026-11-07T18:21:24+07:00",
+      "response_status": 200,
+      "response_bytes": 326218,
+      "sha256": "93d6ced6b0c6896aee92b0bd30489a696c93b0cddc7cf0aa65c78ce8929302eb",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164347_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16434-7, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164347_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16434-7?page=4",
+      "accessed_at": "2026-11-07T18:21:24+07:00",
+      "response_status": 200,
+      "response_bytes": 322383,
+      "sha256": "138f3da3d47df3cf3d97a6c12c3f0d61b4d2ce42fd25aec5100ecae6fa88c1c9",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164347_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16434-7, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164378_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16437-8?page=1",
+      "accessed_at": "2026-11-07T18:21:25+07:00",
+      "response_status": 200,
+      "response_bytes": 328761,
+      "sha256": "0c1c2e2d3f6ac4b764fa9e593989e4a1ca35b637538e176019b517ecaa0f280f",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164378_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16437-8, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164378_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16437-8?page=2",
+      "accessed_at": "2026-11-07T18:21:24+07:00",
+      "response_status": 200,
+      "response_bytes": 328418,
+      "sha256": "14dd560a0bc6c9f6d5aef9f44071f27ff16145eee26f408fb286f190e73487bc",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164378_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16437-8, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164378_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16437-8?page=3",
+      "accessed_at": "2026-11-07T18:21:25+07:00",
+      "response_status": 200,
+      "response_bytes": 328410,
+      "sha256": "1cb9b6b6e988dd01848f300173bbb839e70d63a7ca7292048227674108b20c33",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164378_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16437-8, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164378_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16437-8?page=4",
+      "accessed_at": "2026-11-07T18:21:26+07:00",
+      "response_status": 200,
+      "response_bytes": 327617,
+      "sha256": "4d0ade40a12020b1af4e7d47970348d315a8c3da2c87a4f6b6d260ee6a9a2a55",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164378_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16437-8, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164408_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16440-8?page=1",
+      "accessed_at": "2026-11-07T18:21:27+07:00",
+      "response_status": 200,
+      "response_bytes": 316761,
+      "sha256": "7318c0913e4620e8a8379091e3e267dcbd36c1563336326e436af12354a046f8",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164408_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16440-8, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164408_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16440-8?page=2",
+      "accessed_at": "2026-11-07T18:21:27+07:00",
+      "response_status": 200,
+      "response_bytes": 317142,
+      "sha256": "98b78e4ba5b56bffe469c9d8cdb5782f3ea09ec74c1f60140c604fa41f7d1779",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164408_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16440-8, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164408_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16440-8?page=3",
+      "accessed_at": "2026-11-07T18:21:27+07:00",
+      "response_status": 200,
+      "response_bytes": 318427,
+      "sha256": "f6dc8976da222d6a62565940d866d3223e849688ce43da5a2585322f76ea8d6a",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164408_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16440-8, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164408_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16440-8?page=4",
+      "accessed_at": "2026-11-07T18:21:28+07:00",
+      "response_status": 200,
+      "response_bytes": 313361,
+      "sha256": "383825a5d491c02e631672adddfebda87a529e79accfcf89f0c0242b808976be",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164408_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16440-8, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164439_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16443-9?page=1",
+      "accessed_at": "2026-11-07T18:21:27+07:00",
+      "response_status": 200,
+      "response_bytes": 325459,
+      "sha256": "c843bae980f01536d4b77f3f74109cd7d3156105c7d6e8389112db7ca178d43b",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164439_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16443-9, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164439_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16443-9?page=2",
+      "accessed_at": "2026-11-07T18:21:29+07:00",
+      "response_status": 200,
+      "response_bytes": 326511,
+      "sha256": "1c3636e39a0cf4a04f63e07ca4cc1e72144248c4e2ea6401b13f6628c1ba896f",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164439_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16443-9, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164439_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16443-9?page=3",
+      "accessed_at": "2026-11-07T18:21:30+07:00",
+      "response_status": 200,
+      "response_bytes": 326767,
+      "sha256": "9aea391ee1d74953508f1dd83e3ff88b7b1dd4f0bfb678cea4ab0cb2a5449757",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164439_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16443-9, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164439_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16443-9?page=4",
+      "accessed_at": "2026-11-07T18:21:29+07:00",
+      "response_status": 200,
+      "response_bytes": 317861,
+      "sha256": "b48478b03e24dcf1150f19b367b5c6f838c3924b75dcbed7fd9d0c0568c5048e",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164439_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16443-9, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164460_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16446-0?page=1",
+      "accessed_at": "2026-11-07T18:21:30+07:00",
+      "response_status": 200,
+      "response_bytes": 321626,
+      "sha256": "8d69a6e8c62b2586da4da38b5a3e41a88d34399084030d6bcfb4fd10b4a751bf",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164460_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16446-0, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164460_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16446-0?page=2",
+      "accessed_at": "2026-11-07T18:21:30+07:00",
+      "response_status": 200,
+      "response_bytes": 322809,
+      "sha256": "dc43602c2400d8258a311e97a696f95106f4ee818a09824f5aacff2ca03a303d",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164460_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16446-0, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164460_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16446-0?page=3",
+      "accessed_at": "2026-11-07T18:21:30+07:00",
+      "response_status": 200,
+      "response_bytes": 322511,
+      "sha256": "890f4b04bfc47840fb407c1e537c11b2cefb634055d3d807a668ee376c85a1e5",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164460_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16446-0, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164460_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16446-0?page=4",
+      "accessed_at": "2026-11-07T18:21:31+07:00",
+      "response_status": 200,
+      "response_bytes": 321768,
+      "sha256": "095780ecb651f08b051e384e8092006b55c9be1d78f0a450e91a8fa18822570e",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164460_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16446-0, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164491_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16449-1?page=1",
+      "accessed_at": "2026-11-07T18:21:31+07:00",
+      "response_status": 200,
+      "response_bytes": 325732,
+      "sha256": "efe028d1412df9550b9f144d27e52ce1b69ed737e30942a7c67c276968795e08",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164491_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16449-1, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164491_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16449-1?page=2",
+      "accessed_at": "2026-11-07T18:21:33+07:00",
+      "response_status": 200,
+      "response_bytes": 327207,
+      "sha256": "c50015ce4c2da9435b3daccb2f8e2a15276e404fce23029c9a7ab5f910a74c8c",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164491_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16449-1, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164491_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16449-1?page=3",
+      "accessed_at": "2026-11-07T18:21:33+07:00",
+      "response_status": 200,
+      "response_bytes": 326540,
+      "sha256": "822f8302acf3c168454ef7927053508a25a143f846e59cdbde70df24f5e76cdc",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164491_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16449-1, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164491_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16449-1?page=4",
+      "accessed_at": "2026-11-07T18:21:33+07:00",
+      "response_status": 200,
+      "response_bytes": 325010,
+      "sha256": "1fb98163aa52dda4d572ca804fff5ccc52a7fc186457676545b47ca41f4b73f5",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164491_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16449-1, page 4."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164521_page1",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16452-1?page=1",
+      "accessed_at": "2026-11-07T18:21:33+07:00",
+      "response_status": 200,
+      "response_bytes": 316454,
+      "sha256": "764097abac587111da6d8c8bb00837ce6e3654877bd86bdee6b83bc0b64c11ee",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164521_page1.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16452-1, page 1."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164521_page2",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16452-1?page=2",
+      "accessed_at": "2026-11-07T18:21:34+07:00",
+      "response_status": 200,
+      "response_bytes": 317457,
+      "sha256": "fd9b58f3da9af1cdddbe74012c7f2f6b047cd37309641e006aafd173430075b8",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164521_page2.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16452-1, page 2."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164521_page3",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16452-1?page=3",
+      "accessed_at": "2026-11-07T18:21:34+07:00",
+      "response_status": 200,
+      "response_bytes": 317935,
+      "sha256": "69ac5eac82920a4f3961f5e031c31444e1987e4fc73b2ec03040056f734aa7b1",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164521_page3.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16452-1, page 3."
+    },
+    {
+      "source_id": "springer_miccai2022_9783031164521_page4",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16452-1?page=4",
+      "accessed_at": "2026-11-07T18:21:35+07:00",
+      "response_status": 200,
+      "response_bytes": 310983,
+      "sha256": "2ecce6583b4551dc129fc2bf9bb782d1d537963b3a684b844e46f751552e1750",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-007/springer_9783031164521_page4.html",
+      "finding": "Official Springer main-proceedings contents page for eISBN 978-3-031-16452-1, page 4."
+    }
+  ],
+  "edition_disposition": {
+    "venue_id": "venue:miccai",
+    "year": 2022,
+    "status": "unresolved",
+    "evidence_source_ids": [
+      "miccai2022_papers_index",
+      "miccai2022_categories",
+      "miccai2022_program_for_authors",
+      "miccai2022_program_book",
+      "springer_conference_index_v2",
+      "springer_miccai2022_9783031164316_page1",
+      "springer_miccai2022_9783031164316_page2",
+      "springer_miccai2022_9783031164316_page3",
+      "springer_miccai2022_9783031164316_page4",
+      "springer_miccai2022_9783031164347_page1",
+      "springer_miccai2022_9783031164347_page2",
+      "springer_miccai2022_9783031164347_page3",
+      "springer_miccai2022_9783031164347_page4",
+      "springer_miccai2022_9783031164378_page1",
+      "springer_miccai2022_9783031164378_page2",
+      "springer_miccai2022_9783031164378_page3",
+      "springer_miccai2022_9783031164378_page4",
+      "springer_miccai2022_9783031164408_page1",
+      "springer_miccai2022_9783031164408_page2",
+      "springer_miccai2022_9783031164408_page3",
+      "springer_miccai2022_9783031164408_page4",
+      "springer_miccai2022_9783031164439_page1",
+      "springer_miccai2022_9783031164439_page2",
+      "springer_miccai2022_9783031164439_page3",
+      "springer_miccai2022_9783031164439_page4",
+      "springer_miccai2022_9783031164460_page1",
+      "springer_miccai2022_9783031164460_page2",
+      "springer_miccai2022_9783031164460_page3",
+      "springer_miccai2022_9783031164460_page4",
+      "springer_miccai2022_9783031164491_page1",
+      "springer_miccai2022_9783031164491_page2",
+      "springer_miccai2022_9783031164491_page3",
+      "springer_miccai2022_9783031164491_page4",
+      "springer_miccai2022_9783031164521_page1",
+      "springer_miccai2022_9783031164521_page2",
+      "springer_miccai2022_9783031164521_page3",
+      "springer_miccai2022_9783031164521_page4"
+    ],
+    "accepted_index_records": 573,
+    "topic_category_records": 572,
+    "springer_main_volumes": 8,
+    "springer_chapters_by_volume": {
+      "978-3-031-16431-6": 71,
+      "978-3-031-16434-7": 72,
+      "978-3-031-16437-8": 75,
+      "978-3-031-16440-8": 71,
+      "978-3-031-16443-9": 69,
+      "978-3-031-16446-0": 76,
+      "978-3-031-16449-1": 72,
+      "978-3-031-16452-1": 70
+    },
+    "springer_chapter_number_gaps_by_volume": {
+      "978-3-031-16431-6": [],
+      "978-3-031-16434-7": [],
+      "978-3-031-16437-8": [],
+      "978-3-031-16440-8": [],
+      "978-3-031-16443-9": [],
+      "978-3-031-16446-0": [],
+      "978-3-031-16449-1": [
+        50
+      ],
+      "978-3-031-16452-1": []
+    },
+    "springer_main_volume_chapter_records": 576,
+    "springer_book_description_full_papers": 574,
+    "springer_series_index_count": 576,
+    "normalized_title_reconciliation": {
+      "official_accepted_index_unique_records": 573,
+      "official_topic_category_unique_records": 572,
+      "springer_series_index_counter": 576,
+      "springer_main_volume_chapter_records": 576,
+      "springer_full_papers_description": 574,
+      "normalized_title_exact_pairs": 558,
+      "accepted_records_without_unique_normalized_title_pair": 15,
+      "springer_chapters_without_unique_normalized_title_pair": 18,
+      "springer_correction_notice_titles": 3,
+      "complete_one_to_one_reconciliation": false,
+      "resolution": "One record separates the official accepted index (573) from the publisher full-paper description (574); title mismatches and correction records remain unadjudicated, so the edition stays unresolved."
+    },
+    "reason": "The official accepted index has 573 unique records, the Springer set describes 574 revised full papers, and the eight main volume tables expose 576 chapter records. The titles do not reconcile exactly, and available program documents do not close the count conflict. Do not infer a missing paper or change the edition disposition.",
+    "rights_summary": "Detailed source captures remain in ignored local storage; publish only aggregate counts and official links. This does not authorize redistribution of per-record metadata."
+  },
+  "rights_and_distribution": {
+    "raw_captures_local_ignored_only": true,
+    "public_per_record_roster": false,
+    "paper_pdfs_downloaded": false,
+    "summary": "The captured PDF files are conference program documents, not paper PDFs; no paper PDFs were downloaded."
+  }
+}

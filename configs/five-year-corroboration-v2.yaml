@@ -1,0 +1,22 @@
+version: five-year-corroboration-v2
+decision: D026
+collection_authorized: true
+diagnostic_config: configs/five-year-diagnostics-v1.yaml
+original_acquisition: data/interim/five-year-acquired-v1/papers.json
+original_acquisition_sha256: af4fb53e0623ccaca9a668fdbd68d8e2e162de779fa3161f59761cb6b0c0d8f2
+max_papers: 68
+historical_graph: data/processed/extended-graph-v2.json
+historical_graph_sha256: b78ecb704e356847b1066e01c70da5f1875f3f987bf1a0f57051b702765aa144
+historical_acquisition: data/interim/extended-acquired-v4/papers.json
+historical_acquisition_sha256: 8d0c0cd26a6482c832d0b6eafa7d066e7dbe9df87b884b7141e326676752ba68
+orcid:
+  max_unique_requests: 120
+  max_attempts: 2
+  timeout_seconds: 20
+  delay_seconds: 0.3
+policy:
+  source_review_may_override_identity: false
+  affiliations_require_printed_review: true
+  accept_name_only_merges: false
+  graph_import: false
+rights: public_aggregate_only; full_source_text_local_ignored

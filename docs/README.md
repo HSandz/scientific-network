@@ -4,8 +4,12 @@
 - [Task history and logging workflow](work-log/README.md)
 - [Work-entry template](templates/work-log.md)
 - [Project plan and acceptance criteria](project-plan.md)
+- [Complete pregraph prerequisite plan — planning only](pregraph-completion-plan.md)
 - [Expanded conference roster and track policy](conference-scope.md)
 - [Five-year 2021–2025 planning and temporal controls](five-year-scope.md)
+- [Authorized five-year collection workflow](five-year-collection.md)
+- [Five-year measured roster and diagnostic results](../reports/five-year-collection-v2.md)
+- [Latest official source recovery and scope gaps](../reports/five-year-source-recovery-v6.md)
 - [Shared Plan/Report Site and update workflow](sites-workflow.md)
 - [Latest publishable progress report](../reports/site-report.md)
 - [Setup and commands](setup.md)
@@ -30,3 +34,10 @@
 
 The original plan is a specification. The roadmap and measured reports determine
 what has actually been implemented and achieved.
+
+- [Selective five-year PDF/header diagnostics](../reports/five-year-headers-v1.md)
+  and [D024 workflow](five-year-collection.md#selective-frozen-development-pdf-headers-d024).
+
+- [Development corroboration report](../reports/five-year-corroboration-v1.md): D025 staging support, limits and measured checks.
+
+- [Pregraph readiness](../reports/five-year-pregraph-v3.md): frozen diagnostic bundle and explicit failed full-population gates.

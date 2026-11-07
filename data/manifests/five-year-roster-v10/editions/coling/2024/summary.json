@@ -1,0 +1,58 @@
+{
+  "venue_id": "venue:coling",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "complete_official_joint_main_roster_parsed",
+  "records": 1555,
+  "by_status": {
+    "excluded": 1,
+    "included": 1554
+  },
+  "routes": [
+    {
+      "official_index": "https://aclanthology.org/volumes/2024.lrec-main/",
+      "collection": "2024.lrec-main",
+      "disposition": "joint_event_primary_series_coling",
+      "joint_event_id": "event:lrec-coling:2024"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/volumes/2024.lrec-main/",
+      "sha256": "cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+      "retrieved_at": "2026-11-07T00:22:01.561Z",
+      "license": "unknown_unless_source_record_supplies_license"
+    }
+  ],
+  "official_policy_sources": [
+    {
+      "source_id": "coling_2025_official_faq",
+      "url": "https://coling2025.org/faqs/",
+      "accessed_at": "2026-11-07T00:24:24Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 21871,
+      "sha256": "21ce11fb7f2deee77315c7e546ae97f0982c5cf4e16950c830005db60a49af1a",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/21ce11fb7f2deee77315c7e546ae97f0982c5cf4e16950c830005db60a49af1a",
+      "finding": "The official COLING 2025 FAQ says the series historically used even years, joined with LREC for a one-time 2024 transition, and shifted to odd years beginning in 2025."
+    },
+    {
+      "source_id": "coling_2024_official_joint_proceedings",
+      "url": "https://aclanthology.org/volumes/2024.lrec-main/",
+      "accessed_at": "2026-11-07T00:22:01.561Z",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 4137022,
+      "sha256": "cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+      "snapshot_path": "data/raw/five-year-source-cache-v7/objects/cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+      "finding": "The official proceedings volume identifies venues LREC and COLING and contains 1,554 paper records plus one volume-frontmatter record. The project records each joint-event paper once under the in-scope primary series COLING."
+    }
+  ],
+  "roster_sha256": "da1a0ddce689145d45ee5489ac79545c95423904c77e930dcb2c4573aede3e68",
+  "method_version": "five-year-official-rosters-v7",
+  "checked_at": "2026-11-07T07:30:00+07:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "joint_event_id": "event:lrec-coling:2024",
+  "primary_venue_id": "venue:coling"
+}

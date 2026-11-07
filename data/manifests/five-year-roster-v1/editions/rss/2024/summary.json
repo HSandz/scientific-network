@@ -1,0 +1,56 @@
+{
+  "venue_id": "venue:rss",
+  "name": "Robotics: Science and Systems (RSS)",
+  "year": 2024,
+  "status": "needs_review",
+  "reason": "official page does not identify expected edition year",
+  "records": 0,
+  "by_status": {},
+  "routes": [
+    {
+      "venue_id": "venue:rss",
+      "name": "Robotics: Science and Systems (RSS)",
+      "year": 2024,
+      "adapter": "rss",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.roboticsproceedings.org/rss20/index.html",
+      "catalog_locator": "Robotics: Science and Systems XX July 15 - July 19, 2024 Delft University of Technology Delft, Netherlands conference web site Edited by Dana Kulic, Gentiane Venture, Kostas Bekris and Enrique Coronado ISBN 979-8-9902848-0-7"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.roboticsproceedings.org/",
+      "params": {},
+      "request_id": "82ab3cd5e60770a3681a3377b4de67177877a0849a9a7728e5e4a835591f8eaf",
+      "sha256": "0d61c8fe136b5eeb2422b37cd44ed5f090907a8c7659b32b8a613a7478713feb",
+      "retrieved_at": "2026-11-06T08:04:25.542022+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.roboticsproceedings.org/rss20/index.html",
+      "params": {},
+      "request_id": "59694c1fe6396d844dd0e2b260f6f9e6dff7157969b922fe7b68d0a4303c530b",
+      "sha256": "3cdbe134023fbc8b9b6ee0755afbf670f17052c56ba57e8394539258b911a954",
+      "retrieved_at": "2026-11-06T08:13:49.146674+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:49.377367+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

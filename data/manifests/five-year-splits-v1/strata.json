@@ -1,0 +1,308 @@
+[
+  {
+    "stratum": "acl:2021",
+    "population": 2358,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0021204410517387615,
+    "diagnostic_probability": 0.0008481764206955047,
+    "pool_groups": 2351
+  },
+  {
+    "stratum": "acl:2022",
+    "population": 2601,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0019223375624759708,
+    "diagnostic_probability": 0.0007689350249903883,
+    "pool_groups": 2594
+  },
+  {
+    "stratum": "acl:2024",
+    "population": 2992,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0016711229946524064,
+    "diagnostic_probability": 0.0006684491978609625,
+    "pool_groups": 2985
+  },
+  {
+    "stratum": "acl:2025",
+    "population": 4983,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0010034115994380895,
+    "diagnostic_probability": 0.0004013646397752358,
+    "pool_groups": 4976
+  },
+  {
+    "stratum": "cvf:2021",
+    "population": 3272,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.001528117359413203,
+    "diagnostic_probability": 0.0006112469437652812,
+    "pool_groups": 3265
+  },
+  {
+    "stratum": "cvf:2022",
+    "population": 2074,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0024108003857280617,
+    "diagnostic_probability": 0.0009643201542912247,
+    "pool_groups": 2067
+  },
+  {
+    "stratum": "cvf:2024",
+    "population": 2716,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.001840942562592047,
+    "diagnostic_probability": 0.0007363770250368188,
+    "pool_groups": 2709
+  },
+  {
+    "stratum": "cvf:2025",
+    "population": 5572,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0008973438621679827,
+    "diagnostic_probability": 0.0003589375448671931,
+    "pool_groups": 5565
+  },
+  {
+    "stratum": "ecva:2022",
+    "population": 1645,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.00303951367781155,
+    "diagnostic_probability": 0.0012158054711246201,
+    "pool_groups": 1638
+  },
+  {
+    "stratum": "ecva:2024",
+    "population": 2387,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0020946795140343527,
+    "diagnostic_probability": 0.0008378718056137411,
+    "pool_groups": 2380
+  },
+  {
+    "stratum": "ijcai:2021",
+    "population": 586,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.008532423208191127,
+    "diagnostic_probability": 0.0034129692832764505,
+    "pool_groups": 579
+  },
+  {
+    "stratum": "ijcai:2022",
+    "population": 678,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.007374631268436578,
+    "diagnostic_probability": 0.0029498525073746312,
+    "pool_groups": 671
+  },
+  {
+    "stratum": "ijcai:2024",
+    "population": 789,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0063371356147021544,
+    "diagnostic_probability": 0.0025348542458808617,
+    "pool_groups": 782
+  },
+  {
+    "stratum": "ijcai:2025",
+    "population": 1014,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.004930966469428008,
+    "diagnostic_probability": 0.0019723865877712033,
+    "pool_groups": 1007
+  },
+  {
+    "stratum": "kr:2021",
+    "population": 75,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.06666666666666667,
+    "diagnostic_probability": 0.02666666666666667,
+    "pool_groups": 68
+  },
+  {
+    "stratum": "kr:2022",
+    "population": 43,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.11627906976744186,
+    "diagnostic_probability": 0.046511627906976744,
+    "pool_groups": 36
+  },
+  {
+    "stratum": "kr:2024",
+    "population": 66,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.07575757575757576,
+    "diagnostic_probability": 0.030303030303030304,
+    "pool_groups": 59
+  },
+  {
+    "stratum": "kr:2025",
+    "population": 55,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.09090909090909091,
+    "diagnostic_probability": 0.03636363636363636,
+    "pool_groups": 48
+  },
+  {
+    "stratum": "mlsys:2021",
+    "population": 52,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.09615384615384616,
+    "diagnostic_probability": 0.038461538461538464,
+    "pool_groups": 45
+  },
+  {
+    "stratum": "mlsys:2022",
+    "population": 51,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.09803921568627451,
+    "diagnostic_probability": 0.0392156862745098,
+    "pool_groups": 44
+  },
+  {
+    "stratum": "mlsys:2024",
+    "population": 37,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.13513513513513514,
+    "diagnostic_probability": 0.05405405405405406,
+    "pool_groups": 30
+  },
+  {
+    "stratum": "mlsys:2025",
+    "population": 61,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.08196721311475409,
+    "diagnostic_probability": 0.03278688524590164,
+    "pool_groups": 54
+  },
+  {
+    "stratum": "neurips:2021",
+    "population": 2334,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0021422450728363325,
+    "diagnostic_probability": 0.000856898029134533,
+    "pool_groups": 2327
+  },
+  {
+    "stratum": "neurips:2022",
+    "population": 2671,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0018719580681392737,
+    "diagnostic_probability": 0.0007487832272557095,
+    "pool_groups": 2664
+  },
+  {
+    "stratum": "neurips:2024",
+    "population": 4034,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0012394645513138325,
+    "diagnostic_probability": 0.0004957858205255329,
+    "pool_groups": 4027
+  },
+  {
+    "stratum": "neurips:2025",
+    "population": 5286,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0009458948164964056,
+    "diagnostic_probability": 0.00037835792659856227,
+    "pool_groups": 5279
+  },
+  {
+    "stratum": "pmlr:2021",
+    "population": 2148,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0023277467411545625,
+    "diagnostic_probability": 0.000931098696461825,
+    "pool_groups": 2141
+  },
+  {
+    "stratum": "pmlr:2022",
+    "population": 2314,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.00216076058772688,
+    "diagnostic_probability": 0.000864304235090752,
+    "pool_groups": 2307
+  },
+  {
+    "stratum": "pmlr:2024",
+    "population": 3781,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0013224014810896587,
+    "diagnostic_probability": 0.0005289605924358636,
+    "pool_groups": 3774
+  },
+  {
+    "stratum": "pmlr:2025",
+    "population": 4581,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.0010914647456887142,
+    "diagnostic_probability": 0.0004365858982754857,
+    "pool_groups": 4574
+  },
+  {
+    "stratum": "rss:2021",
+    "population": 92,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.05434782608695652,
+    "diagnostic_probability": 0.021739130434782608,
+    "pool_groups": 85
+  },
+  {
+    "stratum": "rss:2022",
+    "population": 74,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.06756756756756757,
+    "diagnostic_probability": 0.02702702702702703,
+    "pool_groups": 67
+  },
+  {
+    "stratum": "rss:2024",
+    "population": 134,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.03731343283582089,
+    "diagnostic_probability": 0.014925373134328358,
+    "pool_groups": 127
+  },
+  {
+    "stratum": "rss:2025",
+    "population": 163,
+    "test_groups": 5,
+    "development_diagnostics": 2,
+    "test_probability": 0.03067484662576687,
+    "diagnostic_probability": 0.012269938650306749,
+    "pool_groups": 156
+  }
+]

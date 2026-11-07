@@ -1,0 +1,31 @@
+{
+  "venue_id": "venue:iclr",
+  "name": "ICLR",
+  "year": 2022,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://openreview.net/group",
+      "params": {
+        "id": "ICLR.cc"
+      },
+      "request_id": "f18bbcd2ef7ca81977913b71a8a14555fc6d42885af5c81b4c8580935a085f4c",
+      "sha256": "c9b2c7e87a3f46cf193017fda36e1182ad19ceee95279b9dd0c173e724a95ace",
+      "retrieved_at": "2026-11-06T08:09:47.783758+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T11:53:10.765583+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

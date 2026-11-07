@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:aaai",
+  "name": "AAAI",
+  "year": 2021,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI",
+      "params": {},
+      "request_id": "39381be76d263426b0241c572d620e25027425772e1dda2cee44799e5c9c25c0",
+      "sha256": "32ab4e900fadc9a537cdffc6b43412e55c9edcd4b4b20e0393b4ce7a8efe5cfc",
+      "retrieved_at": "2026-11-06T08:09:49.305635+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T11:53:11.261789+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

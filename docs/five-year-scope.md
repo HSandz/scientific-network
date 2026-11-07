@@ -1,10 +1,16 @@
 # Five-year release plan — 2021–2025
 
 Decision **D018**, 4 November 2026, extends the core release from 2023 to
-**2021, 2022, 2023, 2024 and 2025**. The user authorized planning, related
-documentation and Site updates only: **do not implement pipeline changes or
-collect research data yet**. D015 remains the historical authorization for the
-already completed 2023 staging; it does not override this current pause.
+**2021, 2022, 2023, 2024 and 2025**. D022 (6 November 2026) subsequently authorizes necessary implementation and
+staged collection, superseding the D018 execution pause. The new roster-only
+config and [collection workflow](five-year-collection.md) preserve historical
+2023 staging and all frozen assignments. Enrichment remains gated on cross-year
+version review and prospective sample freezing.
+
+
+Execution update (D023): corrected roster v2, frozen 68-paper diagnostic selection,
+170 new reserved tests and a 67-record metadata tranche are now recorded. Preserve
+these new test IDs in all future versions. [Measured revision 2](../reports/five-year-collection-v2.md).
 
 ## Conference and edition boundary
 
@@ -60,7 +66,8 @@ establish accuracy or justify relaxing those gates.
 Preserve all 5,046 legacy assignments and complete expanded frozen membership:
 **925 test / 470 development / 13,514 pool**, including the original 120 test /
 60 development papers. Keep the original 100-paper and expanded 250-paper diagnostic
-sets unchanged. This task creates no new roster, sample, split or annotation.
+sets unchanged. The D018 planning task created no new roster, sample, split or annotation.
+D022 now adds a versioned roster; frozen samples remain unchanged.
 
 Before later enrichment, reconcile the combined official roster and cross-year/
 cross-venue versions. A newly found version of an old test work stays held out;
@@ -93,9 +100,20 @@ infer causal growth or forecast success. Prediction remains optional and needs a
 separate forward-time evaluation without future identities/topics/affiliations/
 citation features.
 
+## Deadline and execution readiness
+
+The user confirmed **11 November 2026** as the deadline on 6 November. The
+[execution plan](five-year-execution-plan.md) and
+[170-row readiness queue](five-year-edition-readiness.csv) define dated work,
+acceptance checks, cross-year safety, effort scenarios and truthful partial delivery.
+The readiness-planning task performed no new edition verification or execution.
+D022 now authorizes staged collection; see [measured roster results](../reports/five-year-collection-v1.md).
+Deadline/capacity questions are not prerequisites.
+
 ## Work sequence after this planning revision
 
-1. Confirm deadline, annotation capacity and lecturer interpretation of accuracy.
+1. Use the confirmed 11 November deadline and preserve the proposed evaluation
+   rule and scientific caveats; do not wait for further capacity answers.
 2. Review the 170-candidate edition matrix and track history; plan lawful source
    routes and no-edition/unavailable states without claiming new collection.
 3. Specify new executable-config versions, cross-year IDs/version review, split
@@ -109,6 +127,6 @@ citation features.
 6. Publish dated measured progress on the existing Site's Report tab, separate
    from Plan targets. Follow [the publication workflow](sites-workflow.md).
 
-Current evidence remains 2023-only: loaded expanded graph 399 nodes / 533 edges;
+Current graph evidence remains 2023-only: loaded expanded graph 399 nodes / 533 edges;
 reviewed local candidate 402 / 538, not imported; independent accuracy unmeasured.
 These are diagnostic snapshots, not five-year results.

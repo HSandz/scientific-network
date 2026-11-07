@@ -1,0 +1,87 @@
+{
+  "venue_id": "venue:acl",
+  "name": "ACL",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 702,
+  "by_status": {
+    "excluded": 2,
+    "included": 700
+  },
+  "routes": [
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "year": 2022,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2022.acl-long/",
+      "collection": "2022.acl-long",
+      "catalog_locator": "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)"
+    },
+    {
+      "venue_id": "venue:acl",
+      "name": "ACL",
+      "year": 2022,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2022.acl-short/",
+      "collection": "2022.acl-short",
+      "catalog_locator": "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/acl/",
+      "params": {},
+      "request_id": "060f4ada499b4b826b6828ea99613377eb9f3038940e6cdc592cb8b52b570395",
+      "sha256": "f399028d8eb51c5cf0c0f4c59a2a1a277f69684b663652ced4d86b82003a0d44",
+      "retrieved_at": "2026-11-06T08:04:22.662868+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2022.acl-long/",
+      "params": {},
+      "request_id": "2ba6ba7dcc752dbf4088d7abab2b4490f9a3183c824389194ce4251e451d82e5",
+      "sha256": "c87b723171f5c07610c4801ff75fc86db0d403960e84b2d5ddfbfa6bbf2d8660",
+      "retrieved_at": "2026-11-06T08:12:42.836254+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2022.acl-short/",
+      "params": {},
+      "request_id": "f9de8e6a933cb30a4dd69a77f8843f9a8e6e94ea21eae54fa7e2ea6eea6baece",
+      "sha256": "0e9018e494ee6d99a700e7f92bf976f6d257a20fde12211635ad449a752e52d3",
+      "retrieved_at": "2026-11-06T08:12:46.020582+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "f7105fe7771a2f52985b7f2482cbb4ecad114c81d3384c91cd5a0464b3da0d6b",
+  "checked_at": "2026-11-06T08:12:46.834043+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

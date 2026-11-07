@@ -1,0 +1,87 @@
+{
+  "venue_id": "venue:eacl",
+  "name": "EACL",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 225,
+  "by_status": {
+    "excluded": 2,
+    "included": 223
+  },
+  "routes": [
+    {
+      "venue_id": "venue:eacl",
+      "name": "EACL",
+      "year": 2024,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2024.eacl-long/",
+      "collection": "2024.eacl-long",
+      "catalog_locator": "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers)"
+    },
+    {
+      "venue_id": "venue:eacl",
+      "name": "EACL",
+      "year": 2024,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2024.eacl-short/",
+      "collection": "2024.eacl-short",
+      "catalog_locator": "Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics (Volume 2: Short Papers)"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/eacl/",
+      "params": {},
+      "request_id": "e51fb9e05eb652b209ef0efc55e199cb5169074e53e3c3cff37ba8d021a25ecb",
+      "sha256": "ded24ed47f81287c870ed48587c59713eb9ba41c213d30a74f03075edae0b90f",
+      "retrieved_at": "2026-11-06T08:13:18.143794+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2024.eacl-long/",
+      "params": {},
+      "request_id": "097e8f16cd855b71b50ca2abe4f3be7eb1288bbe6ba153f3a1fed9b22ff5282d",
+      "sha256": "514eba1874bb2b54d22c1f29dc2eb4c9425e969db8088cee172644d3876ea3ae",
+      "retrieved_at": "2026-11-06T08:13:27.591164+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2024.eacl-short/",
+      "params": {},
+      "request_id": "1de01a6fd32b5de1d9fa501f70fa9ce93d721f07be9ddfd5508c73ee8f62258d",
+      "sha256": "6e02630fb450aed08ffaec3f06b75bb61f4be3d7f486706ae8db9e0c5cdf4623",
+      "retrieved_at": "2026-11-06T08:13:29.383912+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "928b34b117af6cff53d61c8c039da3f2ef7c054833bee7648ef9ae7b537b1760",
+  "checked_at": "2026-11-06T11:57:36.395638+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

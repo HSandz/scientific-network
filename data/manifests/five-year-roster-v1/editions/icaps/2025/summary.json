@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:icaps",
+  "name": "ICAPS",
+  "year": 2025,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/ICAPS",
+      "params": {},
+      "request_id": "15ab6a258de5f2c57b4ce29c0374bb26398a9779ca4de71155bce0e11a1a2553",
+      "sha256": "e84da2759f0fcbdb472673b89b2a3af5b8bacd99532185fbe82587008de61aa0",
+      "retrieved_at": "2026-11-06T08:14:05.851007+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:14:06.058877+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

@@ -1,0 +1,56 @@
+{
+  "venue_id": "venue:rss",
+  "name": "Robotics: Science and Systems (RSS)",
+  "year": 2022,
+  "status": "needs_review",
+  "reason": "official page does not identify expected edition year",
+  "records": 0,
+  "by_status": {},
+  "routes": [
+    {
+      "venue_id": "venue:rss",
+      "name": "Robotics: Science and Systems (RSS)",
+      "year": 2022,
+      "adapter": "rss",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.roboticsproceedings.org/rss18/index.html",
+      "catalog_locator": "Robotics: Science and Systems XVIII June 27 - July 01, 2022 Columbia University New York City, NY, USA conference web site Edited by Kris Hauser, Dylan Shell, and Shoudong Huang ISBN 978-0-9923747-8-5"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.roboticsproceedings.org/",
+      "params": {},
+      "request_id": "82ab3cd5e60770a3681a3377b4de67177877a0849a9a7728e5e4a835591f8eaf",
+      "sha256": "0d61c8fe136b5eeb2422b37cd44ed5f090907a8c7659b32b8a613a7478713feb",
+      "retrieved_at": "2026-11-06T08:04:25.542022+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.roboticsproceedings.org/rss18/index.html",
+      "params": {},
+      "request_id": "a0c160644171b7014eef470c58c8a55a3ea7c7ddbfa92e4c01435501fd9a16d4",
+      "sha256": "e91f6d9e521cc5a3e38f5caf1da862c367f6d106bb759e76753edc05d7c277bf",
+      "retrieved_at": "2026-11-06T08:13:48.133925+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:48.350672+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

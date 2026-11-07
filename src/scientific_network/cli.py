@@ -24,6 +24,31 @@ def parser() -> argparse.ArgumentParser:
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("schema", help="print the ten relationship contracts as JSON")
+    reconcile = commands.add_parser("reconcile-rosters", help="offline leakage triage; no work merges or split allocation")
+    reconcile.add_argument("--input", type=Path, required=True)
+    reconcile.add_argument("--previous-manifest", type=Path, required=True)
+    reconcile.add_argument("--previous-membership", type=Path, required=True)
+    reconcile.add_argument("--output", type=Path, required=True)
+    freeze = commands.add_parser("freeze-diagnostics", help="freeze prospective five-year layout/year diagnostics")
+    freeze.add_argument("--input", type=Path, required=True)
+    freeze.add_argument("--triage", type=Path, required=True)
+    freeze.add_argument("--config", type=Path, required=True)
+    freeze.add_argument("--output", type=Path, required=True)
+    diagnostic = commands.add_parser("acquire-diagnostics", help="bounded metadata for frozen five-year development IDs")
+    diagnostic.add_argument("--input", type=Path, required=True)
+    diagnostic.add_argument("--splits", type=Path, required=True)
+    diagnostic.add_argument("--config", type=Path, required=True)
+    diagnostic.add_argument("--output", type=Path, required=True)
+    diagnostic.add_argument("--cache", type=Path, required=True)
+    headers = commands.add_parser("extract-diagnostics", help="selective PDF/header source triage for frozen development IDs")
+    for name in ("input", "manifest", "splits", "config", "output", "cache"):
+        headers.add_argument("--"+name, type=Path, required=True)
+    corroborate = commands.add_parser("corroborate-diagnostics", help="bounded public-ORCID development support; no graph import")
+    for name in ("input", "manifest", "splits", "reviews", "config", "output", "cache"):
+        corroborate.add_argument("--"+name, type=Path, required=True)
+    pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
+    pregraph.add_argument("--config", type=Path, required=True)
+    pregraph.add_argument("--output", type=Path, required=True)
     validate = commands.add_parser("validate", help="check a graph artifact's structure, not semantic accuracy")
     validate.add_argument("--input", type=Path, required=True)
     validate.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -49,6 +74,18 @@ def parser() -> argparse.ArgumentParser:
     audit.add_argument("--correct", type=int, required=True)
     audit.add_argument("--total", type=int, required=True)
     audit.add_argument("--confidence", type=float, default=0.95)
+    audit_sample = commands.add_parser("freeze-audit-sample", help="prepare a hash-bound edge-review form; non-synthetic graphs require a post-build readiness receipt")
+    audit_sample.add_argument("--input", type=Path, required=True, help="frozen graph artifact")
+    audit_sample.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
+    audit_sample.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
+    audit_sample.add_argument("--output", type=Path, required=True, help="new blank CSV review form")
+    edge_audit = commands.add_parser("score-edge-audit", help="validate and score completed two-review edge-audit packets; not component evaluation or release certification")
+    edge_audit.add_argument("--input", type=Path, required=True, help="exact frozen graph artifact")
+    edge_audit.add_argument("--reviews", type=Path, required=True, help="two independent rows per sampled edge")
+    edge_audit.add_argument("--adjudications", type=Path, help="required only for reviewer disagreements")
+    edge_audit.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
+    edge_audit.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
+    edge_audit.add_argument("--output", type=Path, required=True, help="new evaluation JSON")
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -58,7 +95,12 @@ def parser() -> argparse.ArgumentParser:
         prefix = "" if name in IMPLEMENTED_STAGES else "PLANNED: "
         stage = commands.add_parser(name, help=f"{prefix}{spec.inputs} → {spec.outputs}")
         stage.add_argument("--config", type=Path, default=Path(f"configs/{spec.config}.yaml"))
-        stage.add_argument("--input", type=Path, required=name != "discover")
+        if name == "evaluate":
+            stage.add_argument("--frame", type=Path, required=True, help="frozen component evaluation frame")
+            stage.add_argument("--predictions", type=Path, required=True, help="frozen model predictions")
+            stage.add_argument("--gold", type=Path, required=True, help="two independent review packets and adjudications")
+        else:
+            stage.add_argument("--input", type=Path, required=name != "discover")
         stage.add_argument("--output", type=Path, required=True)
         if name in {"discover", "acquire", "extract", "resolve"}:
             stage.add_argument("--cache", type=Path, default=Path("data/raw/source-cache"))
@@ -70,6 +112,9 @@ def parser() -> argparse.ArgumentParser:
             stage.add_argument("--cache", type=Path, default=Path("data/raw/source-cache"))
         if name == "resolve":
             stage.add_argument("--decisions", type=Path, help="input-bound source review; can withhold core records, never force an identity merge")
+        if name == "analyze":
+            stage.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
+            stage.add_argument("--quality-config", type=Path, default=Path("configs/quality.yaml"))
     return root
 
 
@@ -126,6 +171,11 @@ def validation_summary(args: argparse.Namespace) -> tuple[dict, int]:
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
+        corpus_path = args.corpus_config if args.command == "split" else getattr(args, "config", None)
+        if args.command in {"split", "acquire", "extract", "resolve", "classify", "build"} and corpus_path:
+            corpus = yaml.safe_load(corpus_path.read_text())
+            if isinstance(corpus, dict) and str(corpus.get("workflow", "")).startswith("five_year_rosters_"):
+                raise ValueError("five-year v1 supports official roster discovery only; reconcile cross-year leakage and implement/freeze a new sample contract before enrichment")
         if args.command == "schema":
             result = {relation: {
                 "source": spec.source, "target": spec.target,
@@ -137,6 +187,31 @@ def main(argv: list[str] | None = None) -> int:
             if args.output:
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        elif args.command == "reconcile-rosters":
+            from scientific_network.collect.reconcile import reconcile_rosters
+            result = reconcile_rosters(args.input, args.previous_manifest, args.previous_membership, args.output)
+            exit_code = 0
+        elif args.command == "freeze-diagnostics":
+            from scientific_network.collect.diagnostics import freeze_diagnostics
+            result = freeze_diagnostics(args.input, args.triage, args.config, args.output)
+            exit_code = 0
+        elif args.command == "acquire-diagnostics":
+            from scientific_network.collect.diagnostic_acquire import acquire_diagnostics
+            result = acquire_diagnostics(args.input, args.splits, args.config, args.output, args.cache)
+            exit_code = int(result['by_status'].get('failed', 0) > 0 or result['by_status'].get('review', 0) > 0)
+        elif args.command == "extract-diagnostics":
+            from scientific_network.preprocess.diagnostics import extract_diagnostics
+            result = extract_diagnostics(args.input, args.manifest, args.splits, args.config, args.output, args.cache)
+            exit_code = int(result['by_status'].get('review', 0) > 0)
+        elif args.command == "corroborate-diagnostics":
+            from scientific_network.resolve.diagnostics import corroborate_diagnostics
+            result = corroborate_diagnostics(args.input, args.manifest, args.splits, args.reviews,
+                args.config, args.output, args.cache)
+            exit_code = int(result['review_queue_rows'] > 0 or result['collection_stopped'])
+        elif args.command == "prepare-pregraph":
+            from scientific_network.preprocess.pregraph import prepare_pregraph
+            result = prepare_pregraph(args.config, args.output)
+            exit_code = int(not result['full_pregraph_ready'])
         elif args.command == "report":
             from scientific_network.reporting.html import render_report
             result = render_report(args.input, args.metrics, args.config, args.scope_config, args.output)
@@ -174,10 +249,27 @@ def main(argv: list[str] | None = None) -> int:
             from scientific_network.graph.load import build
             result = build(args.input, args.output, args.config)
             exit_code = 0
+        elif args.command == "analyze":
+            from scientific_network.analysis.analyze import analyze_graph
+            result = analyze_graph(args.input, args.config, args.output, args.readiness, args.quality_config)
+            exit_code = 0
+        elif args.command == "evaluate":
+            from scientific_network.evaluation.components import evaluate_components
+            result, exit_code = evaluate_components(
+                args.frame, args.predictions, args.gold, args.config, args.output
+            )
         elif args.command == "audit-precision":
             result = precision_interval(args.correct, args.total, args.confidence)
             result["input_status"] = "user_supplied_counts_not_independently_verified"
             exit_code = 0
+        elif args.command == "freeze-audit-sample":
+            from scientific_network.evaluation.edge_audit import prepare_edge_audit_sample
+            result = prepare_edge_audit_sample(args.input, args.config, args.output, args.readiness)
+            exit_code = 0
+        elif args.command == "score-edge-audit":
+            from scientific_network.evaluation.edge_audit import evaluate_edge_audit
+            result, exit_code = evaluate_edge_audit(args.input, args.reviews, args.config,
+                args.output, args.adjudications, args.readiness)
         else:
             spec = STAGES[args.command]
             print(json.dumps({

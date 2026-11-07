@@ -1,0 +1,56 @@
+{
+  "venue_id": "venue:rss",
+  "name": "Robotics: Science and Systems (RSS)",
+  "year": 2023,
+  "status": "needs_review",
+  "reason": "official page does not identify expected edition year",
+  "records": 0,
+  "by_status": {},
+  "routes": [
+    {
+      "venue_id": "venue:rss",
+      "name": "Robotics: Science and Systems (RSS)",
+      "year": 2023,
+      "adapter": "rss",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.roboticsproceedings.org/rss19/index.html",
+      "catalog_locator": "Robotics: Science and Systems XIX July 10 - July 14, 2023 Daegu Exhibition and Convention Center Daegu, Republic of Korea conference web site Edited by Kostas Bekris, Kris Hauser, Sylvia Herbert and Jingjin Yu ISBN 978-0-9923747-9-2"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.roboticsproceedings.org/",
+      "params": {},
+      "request_id": "82ab3cd5e60770a3681a3377b4de67177877a0849a9a7728e5e4a835591f8eaf",
+      "sha256": "0d61c8fe136b5eeb2422b37cd44ed5f090907a8c7659b32b8a613a7478713feb",
+      "retrieved_at": "2026-11-06T08:04:25.542022+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.roboticsproceedings.org/rss19/index.html",
+      "params": {},
+      "request_id": "79b1e94a77700fe735398b81ae8f1032fb88fca0362d84588bf3c09410f43c71",
+      "sha256": "0b826e0406a5e8eb50bc2bb1d402c67d90ff88aabd08c3393ec2ed9d19f9b949",
+      "retrieved_at": "2026-11-06T08:13:48.559880+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:48.837337+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

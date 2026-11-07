@@ -1,0 +1,261 @@
+{
+  "version": "five-year-source-corrections-v7",
+  "decision_id": "D032",
+  "work_id": "WORK-2026-11-07-004",
+  "recorded_at": "2026-11-07T09:36:44+07:00",
+  "method_version": "miccai-official-rosters-v1",
+  "official_sources": [
+    {
+      "source_id": "miccai2021_accepted_list",
+      "url": "https://miccai2021.org/openaccess/paperlinks/",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 180003,
+      "sha256": "7509badbd51bd924c2e127308d37c33334439f676449f48c734edb3df4c97177",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2021_openreview.html",
+      "finding": "Official MICCAI 2021 accepted-paper title/identifier roster; entries expose no bylines."
+    },
+    {
+      "source_id": "miccai2022_proceedings_page",
+      "url": "https://conferences.miccai.org/2022/en/PROCEEDINGS.html",
+      "accessed_at": "2026-11-07T02:12:50+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 28842,
+      "sha256": "9c7724c8c1d9a13fec39ab65218ec9a816ef5dd07da84c16ba0f5f4f19d214c6",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2022_proceedings.html",
+      "finding": "Official conference proceedings route describing main-conference proceedings volumes."
+    },
+    {
+      "source_id": "miccai2023_accepted_list",
+      "url": "https://conferences.miccai.org/2023/papers/",
+      "accessed_at": "2026-11-07T02:12:49+00:00",
+      "response_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 250612,
+      "sha256": "5b1d49a07ff7e85c8456571736048a8479f566dad4dc97d9400fcbe7ade2e03c",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2023_papers.html",
+      "finding": "Official MICCAI 2023 accepted-paper title/identifier roster; entries expose no bylines."
+    },
+    {
+      "source_id": "miccai2024_open_access_list",
+      "url": "https://papers.miccai.org/miccai-2024/",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 1578847,
+      "sha256": "3c34c43faac85400d63a3f420d6e3a2ce6a1780f00aeb56840574811200e137b",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2024_main_open_access.html",
+      "finding": "Official Society open-access list; 856 unique numbered main-conference records observed."
+    },
+    {
+      "source_id": "miccai2025_open_access_list",
+      "url": "https://papers.miccai.org/miccai-2025/",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 1928886,
+      "sha256": "3e67ea74a6cce8e651048cca4637db27d4f2aef0935cbbba7b9322b2015653f7",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2025_main_open_access.html",
+      "finding": "Official Society open-access list; 1,027 unique numbered main-conference records observed with BibTeX."
+    },
+    {
+      "source_id": "miccai2025_final_update",
+      "url": "https://miccai.org/2025/12/19/miccai-quarterly-winter-december-2025/",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 265896,
+      "sha256": "f82024f6b42cf8833bafe5ef4110769ad2b0390f8b2ce4e8a2e72b7ab40aaeba",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2025_final_acceptance_update.html",
+      "finding": "Official Society final acceptance update states 1,027 accepted papers."
+    },
+    {
+      "source_id": "miccai_open_access_index",
+      "url": "https://miccai.org/publications/miccai-open-access-reviews/",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "response_bytes": 175595,
+      "sha256": "3bddbff7d036ad09a5179854b7684a5e20405843ce54c2fe8950bee868611342",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_society_open_access_index.html",
+      "finding": "Official Society page identifying the open-access proceedings service."
+    },
+    {
+      "source_id": "springer2021_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-030-87193-2",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 335502,
+      "sha256": "8172c91288cc2577c176c529634032e69bb5dbf8de75d0f31605a71c8b89a5b0",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2021_main_book_part1.html",
+      "finding": "Springer main-volume description states 531 revised full papers."
+    },
+    {
+      "source_id": "springer2022_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-16431-6",
+      "accessed_at": "2026-11-07T02:12:50+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 328606,
+      "sha256": "38c4bf69148391be315bb674fe20f9ad6fcf50c1149920ce4f0e902848842688",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2022_main_book_part1.html",
+      "finding": "Springer main-volume description states 574 revised full papers."
+    },
+    {
+      "source_id": "springer2023_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-43907-0",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 336775,
+      "sha256": "3f2f397d0c79a940e65ec35866c6deccf207be702e55b6e9a4d62bfc5dd663ba",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2023_main_book_part1.html",
+      "finding": "Springer main-volume description states 730 revised full papers."
+    },
+    {
+      "source_id": "springer2024_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-72378-0",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 336817,
+      "sha256": "2e49bbce2939dec4eafc95a10576dd110ff7e7d32f1b3ea76f8a50757962f8e7",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2024_main_book_part1.html",
+      "finding": "Springer main-volume description states MICCAI accepted 857 full papers."
+    },
+    {
+      "source_id": "springer2025_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-032-04927-8",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 349314,
+      "sha256": "0ef802cdc5d67f5d33eabd60681836cafed5755d05fbb27f5ed004c1e7a7162f",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2025_main_book_part1.html",
+      "finding": "Springer main-volume description states 1,027 papers included in proceedings."
+    },
+    {
+      "source_id": "springer_conference_index",
+      "url": "https://link.springer.com/conference/miccai",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 189455,
+      "sha256": "1fae086b038a2760bdee8b5b0bda8740df3818e206107b112ae2ad3dbf3f4a87",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_conference_index.html",
+      "finding": "Springer series index; displayed counts recorded separately as index counters: 535, 576, 732, 857, 1,029."
+    }
+  ],
+  "access_checks": [
+    {
+      "source_id": "miccai2022_papers",
+      "url": "https://conferences.miccai.org/2022/papers/",
+      "attempted_at": "2026-11-07T02:13:07+00:00",
+      "response_status": 522,
+      "content_type": "text/plain; charset=UTF-8",
+      "response_bytes": 16,
+      "curl_exit_code": 22,
+      "reason": "official accepted-paper route was inaccessible during the bounded capture; no roster body retained"
+    }
+  ],
+  "edition_dispositions": [
+    {
+      "venue_id": "venue:miccai",
+      "year": 2021,
+      "evidence_source_ids": [
+        "miccai2021_accepted_list",
+        "springer2021_main_book",
+        "springer_conference_index"
+      ],
+      "springer_full_paper_count": 531,
+      "springer_index_paper_count": 535,
+      "accepted_roster_count": 531,
+      "rights_summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+      "status": "verified_eligible",
+      "roster_source_id": "miccai2021_accepted_list",
+      "format": "accepted_list",
+      "parser_expected_records": 531,
+      "reason": "official_accepted_roster_matches_Springer_full_paper_count"
+    },
+    {
+      "venue_id": "venue:miccai",
+      "year": 2022,
+      "evidence_source_ids": [
+        "springer2022_main_book",
+        "springer_conference_index",
+        "miccai2022_proceedings_page"
+      ],
+      "springer_full_paper_count": 574,
+      "springer_index_paper_count": 576,
+      "accepted_roster_count": 0,
+      "rights_summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+      "status": "unresolved",
+      "reason": "official accepted-paper route returned HTTP 522; Springer describes 574 revised full papers while the series index displays 576 papers, and no complete record-level reconciliation is available",
+      "official_index": "https://conferences.miccai.org/2022/papers/"
+    },
+    {
+      "venue_id": "venue:miccai",
+      "year": 2023,
+      "evidence_source_ids": [
+        "miccai2023_accepted_list",
+        "springer2023_main_book",
+        "springer_conference_index"
+      ],
+      "springer_full_paper_count": 730,
+      "springer_index_paper_count": 732,
+      "accepted_roster_count": 730,
+      "rights_summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+      "status": "verified_eligible",
+      "roster_source_id": "miccai2023_accepted_list",
+      "format": "accepted_list",
+      "parser_expected_records": 730,
+      "reason": "official_accepted_roster_matches_Springer_full_paper_count"
+    },
+    {
+      "venue_id": "venue:miccai",
+      "year": 2024,
+      "evidence_source_ids": [
+        "miccai2024_open_access_list",
+        "springer2024_main_book",
+        "springer_conference_index"
+      ],
+      "springer_full_paper_count": 857,
+      "springer_index_paper_count": 857,
+      "accepted_roster_count": 856,
+      "rights_summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+      "status": "unresolved",
+      "reason": "official Society list has 856 unique numbered records while Springer describes 857 accepted full papers and its index displays 857; the missing accepted record is unreconciled",
+      "official_index": "https://papers.miccai.org/miccai-2024/"
+    },
+    {
+      "venue_id": "venue:miccai",
+      "year": 2025,
+      "evidence_source_ids": [
+        "miccai2025_open_access_list",
+        "springer2025_main_book",
+        "springer_conference_index",
+        "miccai2025_final_update"
+      ],
+      "springer_full_paper_count": 1027,
+      "springer_index_paper_count": 1029,
+      "accepted_roster_count": 1027,
+      "rights_summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+      "status": "verified_eligible",
+      "roster_source_id": "miccai2025_open_access_list",
+      "format": "bibtex_list",
+      "parser_expected_records": 1027,
+      "reason": "official_accepted_roster_matches_Springer_full_paper_count"
+    }
+  ],
+  "publisher_index_counts_are_not_accepted_roster_counts": true,
+  "rights_and_distribution": {
+    "summary": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+    "tracked_full_rosters": false,
+    "full_rosters_local_ignored_only": true,
+    "pdfs_downloaded": false,
+    "public_per_record_roster": false
+  }
+}

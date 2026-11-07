@@ -1,0 +1,56 @@
+{
+  "venue_id": "venue:eccv",
+  "name": "ECCV",
+  "year": 2024,
+  "status": "needs_review",
+  "reason": "ECVA paper URL and edition heading do not agree",
+  "records": 0,
+  "by_status": {},
+  "routes": [
+    {
+      "venue_id": "venue:eccv",
+      "name": "ECCV",
+      "year": 2024,
+      "adapter": "ecva",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.ecva.net/papers.php",
+      "catalog_locator": "ECCV 2024 Papers; papers/eccv_2024/"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ecva.net/papers.php",
+      "params": {},
+      "request_id": "5917de8eea2f6e8eba8dc2ad491c6fb6c4c64c937f22cc17f3cf3dd8af5e89ee",
+      "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+      "retrieved_at": "2026-11-06T08:04:29.797229+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.ecva.net/papers.php",
+      "params": {},
+      "request_id": "5917de8eea2f6e8eba8dc2ad491c6fb6c4c64c937f22cc17f3cf3dd8af5e89ee",
+      "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+      "retrieved_at": "2026-11-06T08:04:29.797229+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:12:27.344745+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

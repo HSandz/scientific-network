@@ -91,6 +91,36 @@ def parse_index(body: bytes, edition: dict, source: dict) -> list[dict]:
 
 def discover(config_path: Path, output: Path, cache_path: Path) -> dict:
     config = read_config(config_path)
+    if config.get("workflow") == "five_year_source_closure_v10":
+        from scientific_network.collect.source_closure_v10 import discover_v10
+        return discover_v10(config_path, output)
+    if config.get("workflow") == "five_year_source_closure_v9":
+        from scientific_network.collect.source_closure_v9 import discover_v9
+        return discover_v9(config_path, output)
+    if config.get("workflow") == "five_year_source_closure_v8":
+        from scientific_network.collect.source_closure_v8 import discover_v8
+        return discover_v8(config_path, output)
+    if config.get("workflow") == "five_year_source_closure_v7":
+        from scientific_network.collect.source_closure_v7 import discover_v7
+        return discover_v7(config_path, output)
+    if config.get("workflow") == "five_year_rosters_v6":
+        from scientific_network.collect.ojs_v6 import recover_v6
+        return recover_v6(config_path, output, cache_path)
+    if config.get("workflow") == "five_year_rosters_v5":
+        from scientific_network.collect.ojs_v5 import recover_v5
+        return recover_v5(config_path, output, cache_path)
+    if config.get("workflow") == "five_year_rosters_v4":
+        from scientific_network.collect.ojs_v4 import recover_v4
+        return recover_v4(config_path, output, cache_path)
+    if config.get("workflow") == "five_year_rosters_v3":
+        from scientific_network.collect.ojs import recover_ojs
+        return recover_ojs(config_path, output, cache_path)
+    if config.get("workflow") == "five_year_rosters_v2":
+        from scientific_network.collect.five_year_v2 import discover_v2
+        return discover_v2(config_path, output, cache_path)
+    if config.get("workflow") == "five_year_rosters_v1":
+        from scientific_network.collect.five_year import discover_five_year
+        return discover_five_year(config_path, output, cache_path)
     if config.get("collection_authorized") is False or "editions" not in config:
         raise ValueError("planning registry is not an authorized executable corpus config")
     if config.get("legacy_manifest"):

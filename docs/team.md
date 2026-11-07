@@ -15,7 +15,11 @@ A owns source/graph evidence for report updates; B owns NLP/analysis evidence;
 both check that the Site Report separates targets, historical results and new
 measurements before publication. See [Site workflow](sites-workflow.md).
 
-Actual course deadline: **TBD**. Weekly availability and review budget: **TBD**.
+Actual course deadline: **11 November 2026**, confirmed by the user on 6 November.
+Follow the [dated execution plan](five-year-execution-plan.md). The exact submission
+time is unspecified; internal packaging target is 10 November, 18:00 +07:00.
+Weekly availability/review budget remain unspecified and are not requested as
+blocking inputs. Do not infer committed hours from the illustrative effort ranges.
 Both independently annotate held-out papers/audit edges, adjudicate disagreements,
 check limitations/references and reproduce the other's principal outputs. Neither
 is the sole author and sole evaluator of an extraction rule.

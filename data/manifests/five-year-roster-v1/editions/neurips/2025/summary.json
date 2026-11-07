@@ -1,0 +1,60 @@
+{
+  "venue_id": "venue:neurips",
+  "name": "NeurIPS",
+  "year": 2025,
+  "status": "needs_review",
+  "reason": "roster_contains_unresolved_records",
+  "records": 5823,
+  "by_status": {
+    "included": 5286,
+    "excluded": 497,
+    "review": 40
+  },
+  "routes": [
+    {
+      "venue_id": "venue:neurips",
+      "name": "NeurIPS",
+      "year": 2025,
+      "adapter": "neurips",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.neurips.cc/paper_files/paper/2025/vol38-main-conference",
+      "catalog_locator": "Advances in Neural Information Processing Systems 38 Main Conference"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.neurips.cc/",
+      "params": {},
+      "request_id": "85f7bd303f3a6c15620cd55be5f035cdd386c7a68eef3371ea1c069bb7daa365",
+      "sha256": "c3bd4a4fd93a352393985c9e3ae3806ca34d7026c99d73e798910496babaad37",
+      "retrieved_at": "2026-11-06T08:05:11.791567+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2025/vol38-main-conference",
+      "params": {},
+      "request_id": "52f98664be4549c2b83fdfcf45751cfd7b68db35375e6230b456ef608e3d45d1",
+      "sha256": "ab3e067704acc301563a7286444b45ad95b59888f76959a6fda4aed55b2e5709",
+      "retrieved_at": "2026-11-06T08:09:44.243497+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "870c6ebd3b16dc839f21293f30cae4e2a8bb1b0d05b1da9bb8aeaf15784d149f",
+  "checked_at": "2026-11-06T08:09:47.087875+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

@@ -1,0 +1,33 @@
+{
+  "stage": "discover",
+  "config_sha256": "8389daad170cc3a766927926c319d0faa67162e6764f69d1a7628247afba67ed",
+  "method_version": "five-year-official-rosters-v2",
+  "scope": "2021-2025 official_rosters_only",
+  "candidate_editions": 170,
+  "roster_records": 78321,
+  "records_by_status": {
+    "excluded": 2666,
+    "included": 75655
+  },
+  "edition_statuses": {
+    "verified_eligible": 79,
+    "unresolved": 51,
+    "access_unavailable": 40
+  },
+  "by_year": {
+    "2021": 11063,
+    "2022": 12520,
+    "2023": 14480,
+    "2024": 17698,
+    "2025": 22560
+  },
+  "eligible_included_records": 75655,
+  "incomplete_editions": 91,
+  "review_required": 0,
+  "manifest_sha256": "4de5facc7c7e11ce5f66cc3788f1bf045e2dd1e3ab1799a646c3046d84597a3d",
+  "edition_ledger_sha256": "4817c2cd2fbd9027759149165d636b16e9b4df16a5b36eaddeb94e4e7dd504f1",
+  "canonical_work_count": null,
+  "resolved_researchers": null,
+  "semantic_accuracy": "not_measured",
+  "enrichment_status": "not_started_requires_leakage_reconciliation_and_frozen_design"
+}

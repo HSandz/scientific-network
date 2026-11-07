@@ -1,0 +1,63 @@
+{
+  "venue_id": "venue:aistats",
+  "name": "AISTATS",
+  "year": 2025,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 583,
+  "by_status": {
+    "included": 583
+  },
+  "routes": [
+    {
+      "venue_id": "venue:aistats",
+      "name": "AISTATS",
+      "year": 2025,
+      "adapter": "pmlr",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.mlr.press/v258/",
+      "volume": 258,
+      "required_markers": [
+        "2025",
+        "Volume 258"
+      ],
+      "catalog_locator": "Volume 258 Proceedings of AISTATS 2025"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/",
+      "params": {},
+      "request_id": "86716e38d7eda879e48666d7b58364d18d75238dca6e4a017f8349eee81f782a",
+      "sha256": "d790ae9a4d93af0acb80293a90e0a45b6ed1b1be54d20bb87605647edf52167f",
+      "retrieved_at": "2026-11-06T08:04:20.166776+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v258/",
+      "params": {},
+      "request_id": "a06c9d3824626031c40364574bc8d0027b4ed6d8f03a58aab533e747b8d259d0",
+      "sha256": "e1c7c9ae71035ea2fe74cb227fcbb95bb3a59bbc1b8428752919a871d9bcd6e4",
+      "retrieved_at": "2026-11-06T08:13:42.303365+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "254cc38fa6d835879e9aea38b898a8e03c2050da0c953ebab4161adebcf3eef3",
+  "checked_at": "2026-11-06T08:13:44.550606+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:aamas",
+  "name": "AAMAS",
+  "year": 2022,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://www.ifaamas.org/Proceedings/",
+      "params": {},
+      "request_id": "358053421984fa2dc0b4fa5167e43a398513abda6a5c37610301153e2f804f32",
+      "sha256": "ef60da63d61c292dc660fd957559fb678c4f3b82199316b83a3651aad309dbad",
+      "retrieved_at": "2026-11-06T08:13:50.994553+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:13:51.197454+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

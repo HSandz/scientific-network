@@ -1,0 +1,59 @@
+{
+  "work_id": "WORK-2026-11-06-007",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "version_number": 14,
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_1ac3e35e631081918939e90c0acd1dab",
+  "deployment_id": "appgdep_6aee020b273481918b120da97737dd5f",
+  "status": "succeeded",
+  "published_at": "2026-11-06T16:36:49.524831+00:00",
+  "commit_sha": "22d18ceee9a58b4fab738c519298f7084a97700b",
+  "archive_storage": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_00000000198c8211af0838a544c9c8a2",
+    "content_hash": "sha256:e87616208957dbce909deaa0c3d4e404f15c2aaffda45261db3937959f047f84",
+    "size_bytes": 1720320,
+    "file_count": 29
+  },
+  "method_version": "five-year-official-rosters-v5",
+  "config": "configs/corpus-five-year-v5.yaml",
+  "report": "reports/five-year-source-recovery-v5.metrics.json",
+  "measured": {
+    "candidate_editions": 170,
+    "eligible_editions": 88,
+    "included_roster_records": 85802,
+    "total_roster_records": 88608,
+    "unresolved": 41,
+    "access_unavailable": 40,
+    "needs_review": 1,
+    "tests_passed": 177,
+    "source_disabled_replays": 3,
+    "old_roster_records_unchanged": 78321,
+    "frozen_assignments_guarded": 76629,
+    "test_assignments_guarded": 1095,
+    "prior_artifacts_verified_before_report_refresh": 8104,
+    "source_objects_verified": 562,
+    "new_official_html_responses": 92,
+    "new_enrichment_requests": 0,
+    "graph_construction_performed": false,
+    "database_operations": 0,
+    "independent_accuracy": "not_measured"
+  },
+  "preserved": {
+    "plan_sections": 20,
+    "tabs": 2,
+    "graph_nodes": 399,
+    "graph_edges": 533,
+    "payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "checks": {
+    "static_unique_ids": 267,
+    "embeds_in_build": 0,
+    "downloads_match": true,
+    "local_http_and_metrics": "passed",
+    "browser_interactive_qa": "incomplete: navigation succeeded; desktop tab click timed out; follow-up inspection did not return; exec interrupted",
+    "hosted_http": "passed: HTTP 200, native metrics, 20 Plan sections, two tabs, zero Report embeds and three byte-identical downloads"
+  }
+}

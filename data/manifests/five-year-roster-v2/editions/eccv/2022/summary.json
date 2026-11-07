@@ -1,0 +1,58 @@
+{
+  "venue_id": "venue:eccv",
+  "name": "ECCV",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 1645,
+  "by_status": {
+    "included": 1645
+  },
+  "routes": [
+    {
+      "venue_id": "venue:eccv",
+      "name": "ECCV",
+      "year": 2022,
+      "adapter": "ecva",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.ecva.net/papers.php",
+      "catalog_locator": "ECCV 2022 Papers; papers/eccv_2022/"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ecva.net/papers.php",
+      "params": {},
+      "request_id": "5917de8eea2f6e8eba8dc2ad491c6fb6c4c64c937f22cc17f3cf3dd8af5e89ee",
+      "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+      "retrieved_at": "2026-11-06T08:04:29.797229+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.ecva.net/papers.php",
+      "params": {},
+      "request_id": "5917de8eea2f6e8eba8dc2ad491c6fb6c4c64c937f22cc17f3cf3dd8af5e89ee",
+      "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+      "retrieved_at": "2026-11-06T08:04:29.797229+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "8bf96372a66cd2e9700687ba42e50ab49ffacead9ba6c2ecbf5d96a550eaa3ad",
+  "checked_at": "2026-11-06T11:56:56.382504+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

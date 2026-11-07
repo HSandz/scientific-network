@@ -1,0 +1,71 @@
+{
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_ca72d413103c8191bc5d517bc37dc667",
+  "version_number": 17,
+  "deployment_id": "appgdep_6aef1bb1f8708191a65678456972e959",
+  "deployed_at_utc": "2026-11-07T12:38:29.998941+00:00",
+  "verified_at_utc": "2026-11-07T12:40:19+00:00",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "site_status": "active",
+  "source_commit": "4bdb158c9ebf769e1676545526258aedaf59c55c",
+  "source_hashes": {
+    "plan_sha256": "d4dfc0b788e8ada595b71265d511656e5f11a35c848e2918498459dac4979271",
+    "report_sha256": "8af90dedbd3519821173e8aec1398f1c4c7fadfbb2b2de4dc98c9c30e7c0fad5",
+    "report_payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "local_archive": {
+    "sha256": "0d921602517befb5d922524f7524105c4cb50e1015df3e15657a2f9581b98702",
+    "size_bytes": 421779
+  },
+  "archive_storage": {
+    "content_hash": "sha256:4fe2b377fb0c84351e203b7543ad88a8d9a27dd3dfd50bbd721077537b115df8",
+    "size_bytes": 2037760,
+    "file_count": 34
+  },
+  "artifact_versions": {
+    "decision_context": ["D022", "D031", "D034"],
+    "source_corrections": "five-year-source-corrections-v6",
+    "roster": "configs/corpus-five-year-v10.yaml",
+    "method": "aamas2023-official-identifier-scan-v1",
+    "work_id": "WORK-2026-11-07-008"
+  },
+  "publication_summary": {
+    "accepted_full_papers": 237,
+    "proceedings_pdf_records": 528,
+    "unique_ordered_byline_candidates": 196,
+    "exact_title_and_byline_candidates": 190,
+    "unique_byline_candidates_with_title_variants": 6,
+    "accepted_records_without_byline_candidate": 40,
+    "accepted_records_with_ambiguous_byline_candidate": 1,
+    "disposition": "AAMAS 2023 remains unresolved; no roster rows added"
+  },
+  "published_artifacts": [
+    "progress-report.md",
+    "five-year-source-recovery-v10.md",
+    "five-year-source-recovery-v10.metrics.json",
+    "five-year-edition-ledger-v10.csv",
+    "five-year-source-recovery-v9.md",
+    "five-year-edition-ledger-v9.csv"
+  ],
+  "preserved_historical_payload": {
+    "graph_version": "pilot-topic-d512d7239923",
+    "nodes": 399,
+    "edges": 533,
+    "sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "snapshots": {
+    "report": "sites-aamas-2023-followup-report-2026-11-07.md"
+  },
+  "static_audit": "reports/runs/WORK-2026-11-07-008/site-static-audit.json",
+  "source_audit": "reports/runs/WORK-2026-11-07-008/aamas_source_identifier_audit.json",
+  "live_browser_qa": {
+    "report_tab_selected": true,
+    "aamas_summary_visible": true,
+    "aggregate_counts_visible": true,
+    "embedded_documents_in_panels": 0,
+    "console_errors": 0,
+    "console_warnings": 0
+  }
+}

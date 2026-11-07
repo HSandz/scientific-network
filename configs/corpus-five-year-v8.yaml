@@ -1,0 +1,15 @@
+version: corpus-five-year-v8
+workflow: five_year_source_closure_v8
+decision: D031
+collection_authorized: true
+scope_registry: configs/conference-scope-2021-2025.yaml
+years: [2021, 2022, 2023, 2024, 2025]
+stage_boundary: official_rosters_only_no_enrichment_or_splits
+baseline:
+  config_path: configs/corpus-five-year-v7.yaml
+  config_sha256: 59e4edc3fad111e7d8eb5f32833697b5d13dda218d572e653230e91be1b41b75
+  output_dir: data/manifests/five-year-roster-v7
+  summary_sha256: 603362eb670a2ee7a52662c69b7a2f70e4a7f254b19acca27435b8b20bd26a51
+source_corrections:
+  path: data/manifests/five-year-source-corrections-v6.json
+  sha256: 0744efaebd00806c367eca4850cf170a82cf3d3e75d1352b761dc94856d92400

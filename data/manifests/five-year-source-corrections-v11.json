@@ -1,0 +1,114 @@
+{
+  "version": "five-year-source-corrections-v11",
+  "work_id": "WORK-2026-11-08-021",
+  "recorded_at": "2026-11-08T01:12:51+07:00",
+  "decision_id": "D038",
+  "method_version": "acmmm-2024-browser-source-review-v1",
+  "inherited_correction": {
+    "version": "five-year-source-corrections-v10",
+    "path": "data/manifests/five-year-source-corrections-v10.json",
+    "sha256": "9fec13823e1fd29172a97856515ed62b56acdb61f9375648b262fed3077f377d",
+    "decision_id": "D037"
+  },
+  "roster_baseline": {
+    "version": "five-year-official-rosters-v10",
+    "path": "configs/corpus-five-year-v10.yaml",
+    "sha256": "3af300dd109e846726da0c8b7aaae73ab0f6e9ee968019441ee39c12293ff562"
+  },
+  "official_sources": [
+    {
+      "source_id": "acmmm2024_accepted_paper_id_file_browser_recapture",
+      "url": "https://2024.acmmm.org/files/accepted_papers.txt",
+      "accessed_at": "2026-11-08T00:49:53+07:00",
+      "access_method": "connected browser network response",
+      "request_method": "GET",
+      "response_status": 200,
+      "content_encoding": "br",
+      "compressed_content_length": 2100,
+      "decoded_response_bytes": 5497,
+      "decoded_body_sha256": "00441e7cd5f52a8030d6b5d316c66bae7707021fddb2a3647c3dd1e0d2c25fc2",
+      "response_headers_sha256": "67c956faddccbf521de25d37f74a5cb072d86f218c603844a5ea5a96536097a9",
+      "snapshot_path": "reports/runs/WORK-2026-11-08-021/acmmm2024_accepted_papers.browser-decoded.txt",
+      "headers_path": "reports/runs/WORK-2026-11-08-021/acmmm2024_accepted_papers.browser-response-headers.txt",
+      "finding": "The decoded response is byte-identical to the WORK-017 accepted-ID capture: 1,149 unique numeric values, no duplicates, final newline. The file itself does not document its ID schema or reconcile to the official 1,150-acceptance statistic."
+    },
+    {
+      "source_id": "acmmm2024_regular_paper_call_route",
+      "url": "https://2024.acmmm.org/regular-papers",
+      "accessed_at": "2026-11-08T00:47:24+07:00",
+      "access_method": "connected browser network response",
+      "request_method": "GET",
+      "response_status": 200,
+      "response_bytes": 7508,
+      "sha256": "24131a90c6f898357a100157e932bbc6e8d2c0651c6075207bcad09e71eae544",
+      "response_headers_sha256": "32736363514af80b84151c5f7223a69963b9df7cad90c50238319b9496cd1aa6",
+      "snapshot_path": "reports/runs/WORK-2026-11-08-021/acmmm2024_regular_papers.html",
+      "headers_path": "reports/runs/WORK-2026-11-08-021/acmmm2024_regular_papers.headers",
+      "finding": "The origin HTML is a JavaScript application shell and contains no roster rows. The connected browser-rendered official page states that there is no long/short distinction for regular papers and that lengths use the same review process."
+    },
+    {
+      "source_id": "acmmm2024_bni_call",
+      "url": "https://2024.acmmm.org/files/MM24_BNI.pdf",
+      "access_method": "official file-index route and rendered PDF text",
+      "origin_response_status": null,
+      "origin_bytes_captured": false,
+      "origin_hash": null,
+      "finding": "The official BNI call states that accepted BNI papers are full papers in the ACM MM 2024 main conference proceedings. It describes a separate review committee and different review criteria; this does not provide a complete BNI-to-ID roster join."
+    },
+    {
+      "source_id": "acmmm2024_full_program",
+      "url": "https://2024.acmmm.org/files/MM24-Full_Program.pdf",
+      "access_method": "official file-index route and MarkItDown conversion",
+      "origin_response_status": null,
+      "origin_pdf_bytes_captured": false,
+      "origin_hash": null,
+      "finding": "The converted view is partial and not a hash-bound copy of the PDF. The aggregate-only parse records 63 explicit Paper-ID labels, insufficient to reconcile the 1,149 accepted-ID file or determine the complete proceedings roster.",
+      "aggregate_audit_path": "reports/runs/WORK-2026-11-08-021/acmmm2024_program_route_audit.json"
+    },
+    {
+      "source_id": "acmmm2024_research_track_statistics",
+      "url": "https://www.acmmm.org/",
+      "prior_hash_bound_capture": {
+        "work_id": "WORK-2026-11-07-017",
+        "path": "reports/runs/WORK-2026-11-07-017/acmmm-official-home.html",
+        "sha256": "1b3428b0a898f66dc92a5bd517f882d06dada0164d805cabae627107cda05a47"
+      },
+      "finding": "The prior captured official statistics page reports 1,150 research-track acceptances from 4,385 submissions (26.20%) for 2024; the count remains unmatched to the accepted-ID file."
+    }
+  ],
+  "edition_disposition": {
+    "venue_id": "venue:acmmm",
+    "year": 2024,
+    "status": "access_unavailable",
+    "accepted_id_file_records": 1149,
+    "accepted_id_file_unique_numeric_values": 1149,
+    "official_research_track_acceptance_statistic": 1150,
+    "complete_accepted_to_proceedings_reconciliation": false,
+    "regular_paper_length_track_resolution": "The official call states there is no long/short distinction and varying paper lengths use the same review process.",
+    "brave_new_idea_track_resolution": "The official BNI call says accepted papers are full papers in the main proceedings and identifies a separate review committee and criteria; complete record-level crosswalk is unavailable.",
+    "program_route_audit": {
+      "unique_explicit_paper_ids": 63,
+      "ids_also_in_accepted_id_file": 60,
+      "ids_outside_accepted_id_file": 3,
+      "complete_roster": false
+    },
+    "reason": "The official 1,149-ID file still disagrees with the 1,150 research-track statistic, the program view does not enumerate the full accepted roster, and bulk metadata reuse terms are not established. Do not infer a missing record, use the partial program as a roster, or promote the edition."
+  },
+  "rights_and_distribution": {
+    "source_license_or_bulk_reuse_authorization": "not established",
+    "raw_source_material_local_ignored_only": true,
+    "public_per_record_roster": false,
+    "paper_pdfs_downloaded": false,
+    "summary": "Only aggregate counts and official links may be included in tracked documentation. Local raw-source details remain ignored and do not authorize redistribution of per-record metadata."
+  },
+  "execution_effect": {
+    "roster_version_created": false,
+    "v10_outputs_changed": false,
+    "frozen_assignments_changed": false,
+    "new_splits_created": 0,
+    "enrichment_requests": 0,
+    "paper_pdfs_downloaded": 0,
+    "graph_writes": 0,
+    "database_operations": 0
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_55279e08c0748191889d21c931384878",
+  "version_number": 15,
+  "deployment_id": "appgdep_6aef04c54024819187d567bbe823a0fd",
+  "deployed_at_utc": "2026-11-07T11:00:43.059725+00:00",
+  "verified_at_utc": "2026-11-07T11:01:23+00:00",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "source_commit": "468ffd3795351e264ba0102dd887c3c68e3b5ab4",
+  "archive_sha256_local": "f2884aad4137b36623681a017af5f79a592d6ebe4bef02132708fb6969f513fb",
+  "archive_storage_content_hash": "sha256:dcbfd1760b8b8aa747822111c512138fbe06ffbbd422e87d0446112e65827f9b",
+  "archive_size_bytes": 2007040,
+  "archive_file_count": 34,
+  "source_hashes": {
+    "plan_sha256": "d4dfc0b788e8ada595b71265d511656e5f11a35c848e2918498459dac4979271",
+    "report_sha256": "7426437c079927b5127beda15ac3b9c479fbc2cb01f6aa8866753190832e6685",
+    "report_payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "snapshots": {
+    "plan": "sites-source-recovery-plan-2026-11-07.md",
+    "report": "sites-source-recovery-report-2026-11-07.md"
+  },
+  "published_artifacts": [
+    "five-year-source-recovery-v10.md",
+    "five-year-source-recovery-v10.metrics.json",
+    "five-year-edition-ledger-v10.csv",
+    "five-year-source-recovery-v9.md",
+    "five-year-edition-ledger-v9.csv"
+  ],
+  "static_audit": "reports/runs/WORK-2026-11-07-006/site-static-audit.json",
+  "browser_qa": "reports/runs/WORK-2026-11-07-006/site-browser-qa.json",
+  "work_id": "WORK-2026-11-07-006"
+}

@@ -12,12 +12,12 @@ Analysis for Business**, not a general research search engine.
   current 2023 artifacts are historical diagnostics, not five-year coverage.
   Exclude non-main research material under the venue-specific track policy; keep
   no-edition, exclusion and unresolved-source records in the ledger.
-- **Planning/documentation/Site updates only as of 2026-11-04 (D018). Do not
-  implement pipeline changes, discover sources, collect/enrich papers, create new
-  splits or import graphs until a later explicit instruction.** D015 authorized
-  historical 2023 staging; it does not override this current pause. Preserve all
-  legacy and expanded inputs/test IDs. Future executable configs need new versions,
-  cross-year leakage protection and honest per-edition availability ledgers.
+- **Five-year staged collection is authorized as of 2026-11-06 (D022),
+  superseding the D018 execution pause.** Start with official edition/roster
+  verification under the execution plan. Preserve all legacy and expanded inputs/
+  test IDs. Enrichment requires cross-year leakage reconciliation and a frozen
+  prospective sample; graph imports require isolated storage and validated support.
+  Use new executable versions and honest per-edition availability ledgers.
 - Preserve `configs/corpus.yaml`, `configs/quality.yaml` and frozen pilot artifacts
   for reproducibility. The scope registry is not an executable pipeline config.
   Expanded adapters/splits/venue handling are not implemented by listing venues.
@@ -121,7 +121,24 @@ Analysis for Business**, not a general research search engine.
 
 `schema`, structural `validate`, and the audit-interval utility work offline.
 `discover`, `split`, `acquire`, `extract`, `resolve`, `classify`, and `build` implement
-the historical 2023 staged workflow. Five-year execution is not implemented or authorized.
+the historical 2023 staged workflow. Five-year roster discovery v1/v2, leakage triage, prospective diagnostic freezing,
+and bounded diagnostic metadata acquisition are implemented under D022/D023.
+Read `docs/five-year-collection.md` for the versioned workflow. Preserve all new
+frozen test IDs as well as historical assignments. `extract-diagnostics` implements
+D024's bounded PDF/header source triage on exactly the frozen development sample;
+withheld records remain withheld and all affiliation outputs are review candidates.
+`corroborate-diagnostics` implements D025's input/PDF-bound printed-source overlays
+and bounded public-ORCID work corroboration, producing development support tables
+and review queues without graph imports. Affiliations require reviewed printed
+mapping plus exact same-author metadata. Full five-year enrichment/resolution,
+canonical works and graph stages remain pending. `prepare-pregraph` (D026) stages
+known-frame work/organization records, topic/citation candidates and claim dispositions,
+then freezes hashes without graph construction. Use `configs/five-year-pregraph-v3.yaml`;
+full readiness is false. Blank development reviewer forms are not completed gold labels.
+Official OJS roster recovery v5 adds AAAI 2021–2025 and ICAPS 2021–2024 under D027;
+ICAPS 2025 categories remain review. Use `configs/corpus-five-year-v5.yaml` for
+current rosters; frozen diagnostics/pregraph inputs still reference v2. Preserve
+v3/v4 source-recovery outputs, all held-out IDs and the failed pregraph freeze.
 Read `docs/extended-workflow.md` for the historical extended config,
 roster, split and separate Neo4j instance; `docs/pilot-workflow.md` records historical
 two-venue paths. Not all registry venues have working source adapters/access.

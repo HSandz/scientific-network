@@ -1,0 +1,506 @@
+{
+  "venue_id": "venue:aaai",
+  "name": "AAAI",
+  "year": 2023,
+  "status": "verified_eligible",
+  "reason": "complete_official_main_roster_parsed",
+  "records": 1578,
+  "by_status": {
+    "included": 1578
+  },
+  "routes": [
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 1",
+      "series": "Vol. 37 No. 1",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/548",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 1,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/4",
+      "catalog_sha256": "28dcbf72a7309fba1b923861d8cef0378f773f7bd6a6f1f65a0b3b516cac09f2",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/548']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 2",
+      "series": "Vol. 37 No. 2",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/549",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 2,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/4",
+      "catalog_sha256": "28dcbf72a7309fba1b923861d8cef0378f773f7bd6a6f1f65a0b3b516cac09f2",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/549']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 3",
+      "series": "Vol. 37 No. 3",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/550",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 3,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/4",
+      "catalog_sha256": "28dcbf72a7309fba1b923861d8cef0378f773f7bd6a6f1f65a0b3b516cac09f2",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/550']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 4",
+      "series": "Vol. 37 No. 4",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/551",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 4,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/551']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 5",
+      "series": "Vol. 37 No. 5",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/552",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 5,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/552']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 6",
+      "series": "Vol. 37 No. 6",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/553",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 6,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/553']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 7",
+      "series": "Vol. 37 No. 7",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/554",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 7,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/554']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 8",
+      "series": "Vol. 37 No. 8",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/555",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 8,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/555']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 9",
+      "series": "Vol. 37 No. 9",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/556",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 9,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/556']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 10",
+      "series": "Vol. 37 No. 10",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/557",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 10,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/557']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Technical Tracks 11",
+      "series": "Vol. 37 No. 11",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/558",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "collect",
+      "reason": "official_technical_issue",
+      "technical_number": 11,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/558']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Special Tracks",
+      "series": "Vol. 37 No. 12",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/559",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "excluded",
+      "reason": "non_main_issue_not_downloaded",
+      "technical_number": null,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/559']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    },
+    {
+      "year": 2023,
+      "title": "AAAI-23 Special Programs, IAAI-23, EAAI-23, Student Papers and Demonstrations",
+      "series": "Vol. 37 No. 13",
+      "official_index": "https://ojs.aaai.org/index.php/AAAI/issue/view/560",
+      "adapter": "ojs",
+      "journal": "AAAI",
+      "disposition": "excluded",
+      "reason": "non_main_issue_not_downloaded",
+      "technical_number": null,
+      "catalog_url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "catalog_sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "catalog_locator": "a.title[href='https://ojs.aaai.org/index.php/AAAI/issue/view/560']",
+      "venue_id": "venue:aaai",
+      "name": "AAAI",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI",
+      "params": {},
+      "request_id": "39381be76d263426b0241c572d620e25027425772e1dda2cee44799e5c9c25c0",
+      "sha256": "32ab4e900fadc9a537cdffc6b43412e55c9edcd4b4b20e0393b4ce7a8efe5cfc",
+      "retrieved_at": "2026-11-06T08:09:49.305635+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive",
+      "params": {},
+      "request_id": "44abd71b25b76ee97a6ef3b1205944e34b4522d2d785a8c61011e126716a5ad9",
+      "sha256": "cc37e20ff03a890dc6ec5d04933ab2ac7ba778516a3111f67fc8cea743716af0",
+      "retrieved_at": "2026-11-06T16:16:06.186700+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/2",
+      "params": {},
+      "request_id": "3de095b2e58658c51dff3b7723ec7ee35abf38ca8ad156d62db5c3a0978fbccf",
+      "sha256": "04d181c1014013325bf3ebbab39f769ce82803297feb87d1dccf520ad5d0bc28",
+      "retrieved_at": "2026-11-06T16:16:47.704943+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/3",
+      "params": {},
+      "request_id": "eb34e612e9863262fccad2fbdf104dcc1b771c1cb5f305ecba4490a7e79a6cc7",
+      "sha256": "7ce53d298b2541d986dd1633d5cdc0229fe9c832045a69613603f2be281deeaa",
+      "retrieved_at": "2026-11-06T16:17:34.482087+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/4",
+      "params": {},
+      "request_id": "adc7ddd7e55aa7b9c62ff5336fd29f6fe692fb772bd312a6283636f676973ee6",
+      "sha256": "28dcbf72a7309fba1b923861d8cef0378f773f7bd6a6f1f65a0b3b516cac09f2",
+      "retrieved_at": "2026-11-06T16:17:34.966315+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+      "params": {},
+      "request_id": "aef08111772eeaed0968d045524c88dba965f35f4e93cf743f4e07f257b03774",
+      "sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+      "retrieved_at": "2026-11-06T16:17:35.461174+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/6",
+      "params": {},
+      "request_id": "ffe6d3eee1f1b5a99d4c4864e2550879ca235d8c595714df66093dd0f807d2d3",
+      "sha256": "312a9b0f3e9cf7bfabe04f2bf0ba3fe9eede48da2ebae9a5623716b00b683776",
+      "retrieved_at": "2026-11-06T16:17:35.917973+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/548",
+      "params": {},
+      "request_id": "1714858dda060d9cd85f3a6261ebcc4200ac9c951a1b8da338de3fbf62a47158",
+      "sha256": "ad0126f61210a5672f1705ec7e9d03a54e4a64019cbb2a2a0f03aac7aab5a860",
+      "retrieved_at": "2026-11-06T16:24:16.387038+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/549",
+      "params": {},
+      "request_id": "ca8d44f3d585aed566eef274482a3329b286b2274c1c29893e8302783bb5d4f7",
+      "sha256": "69d60542ce4c76278f711820c31069462b7962f695834be68fea986b12dd4eed",
+      "retrieved_at": "2026-11-06T16:24:16.890502+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/550",
+      "params": {},
+      "request_id": "85e9d7403c6cc95ed96697e9744aec0c35db5ea9af3a97ad6aa4036bdee068cf",
+      "sha256": "4bef207c8e06f0cf5e5d99c3e2aef8f9a8174b80aa4ba08054a8cefc403c4c7f",
+      "retrieved_at": "2026-11-06T16:24:17.413890+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/551",
+      "params": {},
+      "request_id": "9e3aa4287c4e5c69a067e709d396f8ea1a9dd62ac2c1b318ee43e56416a7a253",
+      "sha256": "05219849547e16ce310fa7e6545752f7d7118244f15f209753b4b6c61a1d4a0a",
+      "retrieved_at": "2026-11-06T16:24:18.070406+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/552",
+      "params": {},
+      "request_id": "54b30cf63b6e4a7cc62aa5978e8ba959d6c0b88ba4edb684773554d38e7d6158",
+      "sha256": "54daae83d56947ae128939d4513be683fccf1022d299ebb5da1dfabb96a5d044",
+      "retrieved_at": "2026-11-06T16:24:18.572774+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/553",
+      "params": {},
+      "request_id": "642f8d0bd25b557d90c9f92478b2cfb405196a45b8d42abf108d0c900871db7d",
+      "sha256": "0d7a42d31b2afcf6ca07adb1d02cba3160c79ddf4b626bfbf47617b3e606e140",
+      "retrieved_at": "2026-11-06T16:24:19.064107+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/554",
+      "params": {},
+      "request_id": "dcdddb52d009b0661ea4717e604010f63451860cb8591f292cbe6806600a753b",
+      "sha256": "905fb4b41a92ede9367a0dd20f8f5ba0f7dfe607effa1feac029062c945ee33a",
+      "retrieved_at": "2026-11-06T16:24:19.679245+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/555",
+      "params": {},
+      "request_id": "4ecee8c50ccecb5f90f80592a265c849c69370a02046f8bd68d43a74ace679bc",
+      "sha256": "3a14cd12b8a2f964a2573a3c1c3c594a5c69c720f15fdf329c59ac709a9640e6",
+      "retrieved_at": "2026-11-06T16:24:33.573787+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/556",
+      "params": {},
+      "request_id": "590e23e6171a844b53aad174632b06b981c78de40a39c7feb5ca5f686c72c04f",
+      "sha256": "557d3460d7d3b50d37b989a14da55e069c3fad30ca506f26c6725f5396f321fb",
+      "retrieved_at": "2026-11-06T16:24:34.232276+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/557",
+      "params": {},
+      "request_id": "1d20a6c29bbf9ed2d6047da242b06ad8739d7ba916abdcd5bf5e3db680b40263",
+      "sha256": "8a23040e6bb4d3a21e94196b1636767bb7c71a88f827f78a4f6fdae3942daf63",
+      "retrieved_at": "2026-11-06T16:24:34.736882+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/558",
+      "params": {},
+      "request_id": "48d47a5c59a99c8e363bdeaefb32dd7c2501d3f284f66dae3aabecd4662f499d",
+      "sha256": "85dd68763695e041254d33a87bb39709a1f0f7ed43d7e79640d52fded1008bba",
+      "retrieved_at": "2026-11-06T16:24:35.391765+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "archive_complete": true,
+  "roster_sha256": "f1d62815b586171871837e948ca77586fdc7b91eff1c4003ef28cf41ac12b9ca",
+  "checked_at": "2026-11-06T16:24:35.689096+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v4"
+}

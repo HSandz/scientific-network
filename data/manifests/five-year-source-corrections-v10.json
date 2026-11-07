@@ -1,0 +1,132 @@
+{
+  "version": "five-year-source-corrections-v10",
+  "work_id": "WORK-2026-11-07-020",
+  "recorded_at": "2026-11-08T00:37:25+07:00",
+  "decision_id": "D037",
+  "method_version": "icdm-2025-official-source-audit-v1",
+  "inherited_correction": {
+    "version": "five-year-source-corrections-v9",
+    "path": "data/manifests/five-year-source-corrections-v9.json",
+    "sha256": "caf7707b759bf235309366fd40a2dc389757ecd924f3d29cc694917503cfc053",
+    "decision_id": "D034"
+  },
+  "roster_baseline": {
+    "version": "five-year-official-rosters-v10",
+    "path": "configs/corpus-five-year-v10.yaml",
+    "sha256": "3af300dd109e846726da0c8b7aaae73ab0f6e9ee968019441ee39c12293ff562"
+  },
+  "official_sources": [
+    {
+      "source_id": "icdm2025_accepted_papers",
+      "url": "https://www3.cs.stonybrook.edu/~icdm2025/acceptedpapers.html",
+      "accessed_at": "2026-11-08T00:22:57+07:00",
+      "request_method": "GET",
+      "response_status": 200,
+      "response_bytes": 238000,
+      "sha256": "22509c104ae6b92970246d875a0604df54d613fa9d7dd93081e4a907c1277d00",
+      "etag": "\"3a1b0-64313f9312e2e\"",
+      "last_modified": "2025-11-08T11:55:24Z",
+      "response_headers_sha256": "b67527930328edcd5b7df027da8e08a723b30663479154c101a9ee0d73af0fff",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-020/icdm2025_accepted.html",
+      "headers_path": "reports/runs/WORK-2026-11-07-020/icdm2025_accepted.headers",
+      "previous_local_capture": {
+        "path": "reports/runs/WORK-2026-11-07-010/icdm2025_accepted.html",
+        "sha256": "22509c104ae6b92970246d875a0604df54d613fa9d7dd93081e4a907c1277d00",
+        "body_matches_recapture": true,
+        "original_http_metadata_retained": false
+      },
+      "finding": "Two official accepted-paper tables contain 105 Regular and 70 Short entries; all 175 rows have sequential positions and distinct DM IDs. This verifies the current page contents, not the complete publisher proceedings roster."
+    },
+    {
+      "source_id": "icdm2025_main_call_for_papers",
+      "url": "https://www3.cs.stonybrook.edu/~icdm2025/cfp.html",
+      "accessed_at": "2026-11-08T00:22:57+07:00",
+      "request_method": "GET",
+      "response_status": 200,
+      "response_bytes": 90305,
+      "sha256": "b4aadd28859b2d2b19360d3b2d03e4e3e9f80330cc29d5ba8fa33133f9643d2e",
+      "etag": "\"160c1-64313f931e5c8\"",
+      "last_modified": "2025-11-08T11:55:24Z",
+      "response_headers_sha256": "db828c0d79c948463f61fb55acef6a370d36484515b03c3671952ca69eab7a81",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-020/icdm2025_cfp.html",
+      "headers_path": "reports/runs/WORK-2026-11-07-020/icdm2025_cfp.headers",
+      "finding": "The CFP states accepted conference papers are published in IEEE Computer Society proceedings, says there is no separate short-paper submission track, and conditions proceedings inclusion on an author registering and presenting."
+    },
+    {
+      "source_id": "icdm2025_bluesky_call",
+      "url": "https://www3.cs.stonybrook.edu/~icdm2025/cfbtp.html",
+      "accessed_at": "2026-11-08T00:22:57+07:00",
+      "request_method": "GET",
+      "response_status": 200,
+      "response_bytes": 104531,
+      "sha256": "dde83ee4991ecd3dc6c2d89a461aa6375d7b8549ed787356d4c951d10c7e3a39",
+      "etag": "\"19853-64313f9318fd8\"",
+      "last_modified": "2025-11-08T11:55:24Z",
+      "response_headers_sha256": "cd1291b5c225327df33fd4eabc35ee8728ce1f2a4147e08a51860a569a4c0856",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-020/icdm2025_bluesky.html",
+      "headers_path": "reports/runs/WORK-2026-11-07-020/icdm2025_bluesky.headers",
+      "finding": "The separate BlueSky track call states accepted submissions appear in workshop proceedings."
+    },
+    {
+      "source_id": "icdm2025_official_program",
+      "url": "https://www3.cs.stonybrook.edu/~icdm2025/program.html",
+      "accessed_at": "2026-11-08T00:22:57+07:00",
+      "request_method": "GET",
+      "response_status": 200,
+      "response_bytes": 222598,
+      "sha256": "04c5719b4b0937f2281dbddee9b9f12b5c88182653ffbc2f8e453ab555122c4c",
+      "etag": "\"36586-643a1c532bc21\"",
+      "last_modified": "2025-11-15T13:05:37Z",
+      "response_headers_sha256": "c1503faf91638658151eadd380d13a162457a7dd2c0e6dda3ce34f216a174628",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-020/icdm2025_program.html",
+      "headers_path": "reports/runs/WORK-2026-11-07-020/icdm2025_program.headers",
+      "finding": "The schedule contains 97 distinct DM IDs; it is not a complete proceedings crosswalk for the accepted-page list."
+    },
+    {
+      "source_id": "icdm2025_ieee_xplore_proceedings_route",
+      "url": "https://ieeexplore.ieee.org/xpl/conhome/11391637/proceeding",
+      "accessed_at": "2026-11-08",
+      "request_method": "HEAD",
+      "response_status": 418,
+      "response_bytes": 0,
+      "sha256": null,
+      "snapshot_path": null,
+      "finding": "A direct request to the candidate publisher contents route was refused. No bypass was attempted; search-rendered individual records do not provide a complete roster or reconciliation."
+    }
+  ],
+  "edition_disposition": {
+    "venue_id": "venue:icdm",
+    "year": 2025,
+    "status": "unresolved",
+    "accepted_page_records": 175,
+    "accepted_page_counts_by_section": {
+      "Regular Papers": 105,
+      "Short Papers": 70
+    },
+    "program_distinct_dm_ids": 97,
+    "accepted_ids_in_program": 95,
+    "program_ids_outside_accepted_list": 2,
+    "accepted_titles_with_normalized_exact_program_match": 94,
+    "complete_publisher_reconciliation": false,
+    "track_resolution": "The accepted page labels a Short Papers section while the main CFP says no separate short-paper submission track exists. The separate BlueSky call is routed to workshop proceedings. Final proceedings membership is not established.",
+    "reason": "The page capture is now hash-bound, but the accepted-to-IEEE-proceedings join is incomplete, the CFP requires presentation for proceedings inclusion, track classification is unclear, and no bulk metadata reuse terms were located. Do not promote the edition or infer which accepted records entered the proceedings."
+  },
+  "rights_and_distribution": {
+    "source_license_or_bulk_reuse_authorization": "not established",
+    "footer_copyright_reference": "The conference pages link to generic University of Auckland copyright terms; the page-level ownership and applicable reuse permissions are unresolved.",
+    "raw_captures_local_ignored_only": true,
+    "public_per_record_roster": false,
+    "paper_pdfs_downloaded": false,
+    "summary": "Detailed source captures remain local and ignored. Publish only aggregate counts and official links; this record does not authorize redistribution of per-record metadata."
+  },
+  "execution_effect": {
+    "roster_version_created": false,
+    "v10_outputs_changed": false,
+    "frozen_assignments_changed": false,
+    "new_splits_created": 0,
+    "enrichment_requests": 0,
+    "paper_pdfs_downloaded": 0,
+    "graph_writes": 0,
+    "database_operations": 0
+  }
+}

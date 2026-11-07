@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:eacl",
+  "name": "EACL",
+  "year": 2025,
+  "status": "unresolved",
+  "reason": "official_catalog_has_no_verified_edition_route",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/eacl/",
+      "params": {},
+      "request_id": "e51fb9e05eb652b209ef0efc55e199cb5169074e53e3c3cff37ba8d021a25ecb",
+      "sha256": "ded24ed47f81287c870ed48587c59713eb9ba41c213d30a74f03075edae0b90f",
+      "retrieved_at": "2026-11-06T08:13:18.143794+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T11:57:36.480768+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

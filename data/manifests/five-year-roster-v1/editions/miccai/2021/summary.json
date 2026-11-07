@@ -1,0 +1,29 @@
+{
+  "venue_id": "venue:miccai",
+  "name": "MICCAI",
+  "year": 2021,
+  "status": "unresolved",
+  "reason": "catalog_retrieved_but_main_track_adapter_not_implemented",
+  "records": 0,
+  "by_status": {},
+  "routes": [],
+  "sources": [
+    {
+      "url": "https://www.miccai.org/index.php/publications/",
+      "params": {},
+      "request_id": "9e828ab2e092ad481d03c004be2ee7651b5cb6f8a1fca30f6372512b63f912a8",
+      "sha256": "32948e2b819889616b7493f922adde9fe557377b803cc90c71dc8ac7ca5efbda",
+      "retrieved_at": "2026-11-06T08:12:32.328567+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checked_at": "2026-11-06T08:12:32.532845+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

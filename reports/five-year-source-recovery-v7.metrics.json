@@ -1,0 +1,112 @@
+{
+  "work_id": "WORK-2026-11-07-001",
+  "recorded_at": "2026-11-07T07:30:00+07:00",
+  "decision_id": "D030",
+  "discovery": {
+    "stage": "discover",
+    "method_version": "five-year-official-rosters-v7",
+    "config_sha256": "59e4edc3fad111e7d8eb5f32833697b5d13dda218d572e653230e91be1b41b75",
+    "source_corrections_sha256": "63a02fdd27fcf296fa0291d6b257124d202ff4d2fe16e4abf7895e401683b1fe",
+    "scope": "2021-2025 official_rosters_only",
+    "candidate_editions": 170,
+    "roster_records": 90163,
+    "records_by_status": {
+      "included": 87404,
+      "excluded": 2759
+    },
+    "edition_statuses": {
+      "verified_eligible": 90,
+      "unresolved": 30,
+      "verified_no_edition": 10,
+      "access_unavailable": 40
+    },
+    "by_year": {
+      "2021": 12794,
+      "2022": 13925,
+      "2023": 16138,
+      "2024": 21666,
+      "2025": 25640
+    },
+    "eligible_included_records": 87404,
+    "incomplete_editions": 70,
+    "review_required": 0,
+    "manifest_sha256": "7e9b6874f6773df7cb16dc7c87594bddeae697d6c1b9439e69217d7f0f18a5f4",
+    "edition_ledger_sha256": "a94a32ef87ff2b48aeba8f45eb50d0c24f8ec2a2a2ac2a57fc0561c2fffa159d",
+    "parent_method_version": "five-year-official-rosters-v6",
+    "parent_manifest_sha256": "cb77542b334fb77f6f965cb22213a86bdc607bf77bf603d357317c6942c3d006",
+    "parent_edition_ledger_sha256": "bc7a9c3c3b40d38bccbaf044ff77d5d9260cb78276e8888cb65b9753f7d1171e",
+    "frozen_assignments_guarded": 76629,
+    "protected_test_assignments": 1095,
+    "leakage_actions": {
+      "pending_prospective_design": 11745,
+      "quarantine_version_candidate": 4,
+      "preserve_existing_assignment": 75655
+    },
+    "new_splits_created": 0,
+    "canonical_works_merged": 0,
+    "semantic_accuracy": "not_measured",
+    "enrichment_requests": 0,
+    "graph_writes": 0,
+    "enrichment_authorized_by_this_output": false,
+    "graph_construction_authorized": false,
+    "output_sha256": {
+      "corpus_manifest.jsonl": "7e9b6874f6773df7cb16dc7c87594bddeae697d6c1b9439e69217d7f0f18a5f4",
+      "corpus_manifest-complete.parquet": "7fe258b83a285c1a3815468a7c6a09516ce16375dca2a1de0f3d66ffd0e91588",
+      "edition-ledger.jsonl": "a94a32ef87ff2b48aeba8f45eb50d0c24f8ec2a2a2ac2a57fc0561c2fffa159d",
+      "leakage-triage.jsonl": "aecb184621b67f24888a3e026773f56a34feb56a9c85d7a541428ea36a81bb26",
+      "editions/aaai/2021/roster.jsonl": "3d5a4d114ba77e8f0fa37f323d23225394a75d1a7ec1c12351e5d0006b6177f1",
+      "editions/aaai/2021/summary.json": "d396330af885590f7fb42d7e62340d476d2173eb53751cc6a401aed4c0b3723e",
+      "editions/aaai/2022/roster.jsonl": "1634ed386c34b793de7f24126474e29a0d6d5c41544ddd02c451a3d10111eaf7",
+      "editions/aaai/2022/summary.json": "91fedf7227c8c3e3dd87600940d536350bcc504352b56b9441f7f1774180c437",
+      "editions/aaai/2023/roster.jsonl": "dae613d9c4c7cf3a46beaf3f9b5521bbf648f291feda99447d3c21c0bcfc04d4",
+      "editions/aaai/2023/summary.json": "19ed62556a40e136c08a72aa6682356b8cf32bab330a597ecb48de47661ce7d6",
+      "editions/aaai/2024/roster.jsonl": "ab48c9a54b598e0fb9553ec97a3652e3a7d84c7898252b37d0491a8c2328bb65",
+      "editions/aaai/2024/summary.json": "991d423d5d568d155026049cb4bedb7a63253d18ae212e3d8f018f413723bb51",
+      "editions/aaai/2025/roster.jsonl": "529e0400a5952ef7c2e386ff403cc49f587098dfc5e4604fadc027c5d1b20af5",
+      "editions/aaai/2025/summary.json": "f1e1620881491d13129dfcbd8c84b45be11b8226b2774c041f9c931cc5f1f9f5",
+      "editions/coling/2024/roster.jsonl": "da1a0ddce689145d45ee5489ac79545c95423904c77e930dcb2c4573aede3e68",
+      "editions/coling/2024/summary.json": "6fc90c33f6ddc1ec391747948a957fb1295dd2da4b38c7f6d7483b45e8b7d0e8",
+      "editions/icaps/2021/roster.jsonl": "8042d49d3ffb27a76ba1f61534b70dc10a26b524a77d20b24bcb51e2076d6746",
+      "editions/icaps/2021/summary.json": "595972c27b3b01c4451535c2461ef3fd55e0fa736253f0d1f510fffe7c5d82cb",
+      "editions/icaps/2022/roster.jsonl": "e78af0e43a41288ca2faab62527828b98fae2d4bfd890d1851c397094df479c6",
+      "editions/icaps/2022/summary.json": "f85a147c50def5ead11b7ab08d2d7b2b926c37cb69437c85605b49b8d11939c1",
+      "editions/icaps/2023/roster.jsonl": "7b98a5570e1e47944625d0819305e205a3b2d6b4266cb66269ebefb4ebe40143",
+      "editions/icaps/2023/summary.json": "6fec438f3ea68a30e65b6534eb07af5dfb604892826c9afed3daa66254ff9b4c",
+      "editions/icaps/2024/roster.jsonl": "62a9130927a35c888de8838f0abeb112722f9d59fe2e1434385c2ce761128ddb",
+      "editions/icaps/2024/summary.json": "726b025b944a567caba20eb838824685ca6fa2f5b355d4593205d58c428043bd",
+      "editions/icaps/2025/roster.jsonl": "658becb38b79a49e2363d20909551e80cf858c412c258a300d87639d0fcb7828",
+      "editions/icaps/2025/summary.json": "c685a97030b279874541e2ad723e32c6fe8cac40f100b98f35c1761b945e297a"
+    }
+  },
+  "source_corrections": {
+    "version": "five-year-source-corrections-v5",
+    "sha256": "63a02fdd27fcf296fa0291d6b257124d202ff4d2fe16e4abf7895e401683b1fe",
+    "official_sources": 8,
+    "verified_no_edition_rows": 10,
+    "new_eligible_joint_edition": "venue:coling:2024",
+    "joint_roster_records": 1555,
+    "joint_included": 1554,
+    "joint_excluded_frontmatter": 1,
+    "joint_roster_sha256": "6de4850b48acbf785603c4c4fbff99a143fdc0591b35f0e63071bad08df0373e",
+    "joint_source_response_sha256": "cf988002de62da2c6d0231be7b97daab3f16c771cdb55d0351526343e34ca158",
+    "scope_changed": false
+  },
+  "preservation": {
+    "parent_method_version": "five-year-official-rosters-v6",
+    "parent_manifest_sha256": "cb77542b334fb77f6f965cb22213a86bdc607bf77bf603d357317c6942c3d006",
+    "parent_edition_ledger_sha256": "bc7a9c3c3b40d38bccbaf044ff77d5d9260cb78276e8888cb65b9753f7d1171e",
+    "frozen_assignments_guarded": 76629,
+    "protected_test_assignments": 1095,
+    "new_splits_created": 0,
+    "canonical_works_merged": 0,
+    "enrichment_requests": 0,
+    "graph_writes": 0
+  },
+  "pregraph_feasibility": {
+    "status": "no_go_for_broader_enrichment",
+    "reason": "30 unsupported-adapter editions, 40 access-unavailable editions, incomplete P03 prospective frame, and unmeasured canonical work/resources/reviewer capacity",
+    "new_enrichment_budget_requests": 0,
+    "authorized_paid_spend_usd": 0
+  },
+  "ledger_csv_sha256": "95795fa9ca9c2ec03d50f37b995efbc4ab9702a2828ed61e4da9675ef9bdfd36"
+}

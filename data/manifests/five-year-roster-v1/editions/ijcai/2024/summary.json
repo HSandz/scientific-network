@@ -1,0 +1,59 @@
+{
+  "venue_id": "venue:ijcai",
+  "name": "IJCAI",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 1048,
+  "by_status": {
+    "included": 790,
+    "excluded": 258
+  },
+  "routes": [
+    {
+      "venue_id": "venue:ijcai",
+      "name": "IJCAI",
+      "year": 2024,
+      "adapter": "ijcai",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://www.ijcai.org/proceedings/2024/",
+      "catalog_locator": "Proceedings"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ijcai.org/proceedings/",
+      "params": {},
+      "request_id": "864bb8338144efd86c52b90c0a1175d06f1784d654123c492acdc4e22f58410d",
+      "sha256": "91a616863d31ed4caed672a0b96e6f686155fd6e772493a7dd6646ac4bd348ae",
+      "retrieved_at": "2026-11-06T08:09:50.594868+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2024/",
+      "params": {},
+      "request_id": "a708a2c389fb4932f044eaa1e2589a6f709cda258406c4587cf652cf8766c2ff",
+      "sha256": "d8b9d3cf70ec43a9609eecefc5266d9e948993515be1c9e902dd6d9f708189e4",
+      "retrieved_at": "2026-11-06T08:10:06.885229+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "c3151984adb74c2c43e6f4b56631acb3b08225a639884c87b4fbb78f6bea43ad",
+  "checked_at": "2026-11-06T08:10:14.465944+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

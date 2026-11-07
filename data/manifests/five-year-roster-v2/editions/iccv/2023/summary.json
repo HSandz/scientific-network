@@ -1,0 +1,64 @@
+{
+  "venue_id": "venue:iccv",
+  "name": "ICCV",
+  "year": 2023,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 2156,
+  "by_status": {
+    "included": 2155,
+    "excluded": 1
+  },
+  "routes": [
+    {
+      "venue_id": "venue:iccv",
+      "name": "ICCV",
+      "year": 2023,
+      "adapter": "cvf",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://openaccess.thecvf.com/ICCV2023",
+      "params": {
+        "day": "all"
+      },
+      "catalog_locator": "Main Conference"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://openaccess.thecvf.com/menu",
+      "params": {},
+      "request_id": "b907429f0ec570d01d4eacfa4111916a127246e3903818449d9f136c2ea2ad6a",
+      "sha256": "bad318f51c3094f12985b488ae931afbcb9283f5458389471557fb87289c5d5a",
+      "retrieved_at": "2026-11-06T08:10:33.039692+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/ICCV2023",
+      "params": {
+        "day": "all"
+      },
+      "request_id": "7a2dab84f3935488fb2af6765f9a1422351338dfd4421617fb49d0b8b60151f0",
+      "sha256": "ba112ee3d3bc0111322a32faa874aa9d9b74f7a074de99994cfb6a335f1c58ed",
+      "retrieved_at": "2026-11-06T08:11:11.537891+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "c0bee1396efb3c924ff0b336931b5151aaf0cd9d414cfe9de9b1d25434bfc88b",
+  "checked_at": "2026-11-06T11:56:00.138840+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

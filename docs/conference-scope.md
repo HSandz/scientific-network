@@ -2,9 +2,10 @@
 
 The course's NeurIPS/ICML examples do not restrict venue selection (D014). The
 current core target is **2021–2025** (D018), retaining the same 34 flagship series.
-**Planning, documentation and Site updates only; no new pipeline implementation
-or research collection.** D015 authorized historical 2023 staging. See
-[the temporal plan](five-year-scope.md) for future prerequisites.
+**Staged collection authorized by D022 on 6 November 2026.** The new
+[roster workflow](five-year-collection.md) begins official source verification;
+unsupported/unavailable editions remain explicit gaps. The planning registry is
+preserved. See [the temporal plan](five-year-scope.md) for enrichment prerequisites.
 
 ## Explicit flagship registry
 
@@ -38,6 +39,10 @@ records remain historical for that year, not exclusions from all five years.
   research and nonresearch industry tracks remain outside this release.
 - Exclude NeurIPS Datasets and Benchmarks. KDD starts with Research Track;
   Applied Data Science and other tracks require a separate decision.
+- D027 implements official AAAI main Technical Tracks and ICAPS Main Track roster
+  recovery. Non-main issues/sections are excluded; unknown ICAPS 2025 categories
+  stay in review. [Literal section/edition rules](../reports/five-year-source-recovery-v5.md)
+  preserve source evidence without expanding the scope.
 - Preserve conservative COLT Original Papers and AAMAS regular research policies
   from D015; verify edition-specific layouts and track changes before future use.
 - Eligibility depends on source/edition/track evidence, not topic classification.
@@ -66,6 +71,7 @@ five-year target. [Existing workflow](extended-workflow.md),
 
 Preserve all legacy/expanded held-out IDs. Design supplemental venue–year sampling,
 version leakage protection, annotation hours and population weights before a later
-authorized run. Do not multiply old quotas or size targets by five. No new roster,
-split, measurement or collection is created here. The [five-year plan](five-year-scope.md)
+authorized enrichment tranche. Do not multiply old quotas or size targets by five.
+D022/D023 add versioned rosters and frozen development/test diagnostics. Metadata
+collection is bounded to development IDs; no five-year graph has been created. The [five-year plan](five-year-scope.md)
 specifies annual/cumulative support, citation-age controls and resource estimates.

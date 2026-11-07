@@ -1,0 +1,63 @@
+{
+  "venue_id": "venue:cvpr",
+  "name": "CVPR",
+  "year": 2022,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 2074,
+  "by_status": {
+    "included": 2074
+  },
+  "routes": [
+    {
+      "venue_id": "venue:cvpr",
+      "name": "CVPR",
+      "year": 2022,
+      "adapter": "cvf",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://openaccess.thecvf.com/CVPR2022",
+      "params": {
+        "day": "all"
+      },
+      "catalog_locator": "Main Conference"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://openaccess.thecvf.com/menu",
+      "params": {},
+      "request_id": "b907429f0ec570d01d4eacfa4111916a127246e3903818449d9f136c2ea2ad6a",
+      "sha256": "bad318f51c3094f12985b488ae931afbcb9283f5458389471557fb87289c5d5a",
+      "retrieved_at": "2026-11-06T08:10:33.039692+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/CVPR2022",
+      "params": {
+        "day": "all"
+      },
+      "request_id": "b9a5ea8986bffb174f49308e369cc3c0191cc296ed4fe68e1efce7d68836d9d5",
+      "sha256": "7c6a81f30b3317d1837142298c512807e62981d7184057df50acc5d6c66b131c",
+      "retrieved_at": "2026-11-06T08:10:44.950789+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "c0c940a12e05ae7e96864215203003e604129a3a17c3ba1d23d8898d6186fe01",
+  "checked_at": "2026-11-06T08:10:57.837043+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v1"
+}

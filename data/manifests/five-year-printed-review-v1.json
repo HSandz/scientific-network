@@ -1,0 +1,134 @@
+{
+  "method_version": "five-year-printed-development-notes-v1",
+  "reviewer": "Codex",
+  "independent_review": false,
+  "disposition": "source_observation_only_no_identity_or_triple_acceptance",
+  "observations": [
+    {
+      "paper_id": "paper:ijcai:2024:331",
+      "observation_ids": [
+        "candidate-affiliation:c1bd8e6fdca041dee2541e806e17ab2a92a54e766d1ad369e974c22644de880d",
+        "candidate-affiliation:2820ee56b5665d30f0909e1c24f4980e9293db76fe3941f1624c80f92d199eba"
+      ],
+      "pdf_sha256": "72befdd4775ef015442bf83daa07a7b5f034da18c04da9ba612e5663dd8b049d",
+      "tei_sha256": "e4db777ed869e376b92ab452a805ca8b42fcfb623f77ab2cd074b1f9c6bc6e15",
+      "source_locator": "PDF page 1, joint byline and shared department/university affiliation block",
+      "finding": "shared_printed_institution_block_supports_both_candidate_positions",
+      "candidate_positions": [
+        1,
+        2
+      ],
+      "accepted_identities": 0,
+      "accepted_affiliation_triples": 0
+    },
+    {
+      "paper_id": "paper:mlsys:2025:f37347375d8b54e3203e5d24aeb6c58c",
+      "extracted_record_sha256": "b607da6f7a64ea327b580846edba8aebde16e86c56d2e3b5ca8571fb55f261f3",
+      "pdf_sha256": "1b3f468b93d6b82fc2964129601bf09c862f6dda25f8e520c44c800fd8f47259",
+      "tei_sha256": "b0899460a5dd0190dd21a11d45823d9cf7442e472050855bc19cd2f7a555fe1f",
+      "official_url": "https://proceedings.mlsys.org/paper_files/paper/2025/hash/f37347375d8b54e3203e5d24aeb6c58c-Abstract-Conference.html",
+      "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3",
+      "finding": "printed_ordered_byline_corroborates_roster; citation_export_abbreviates_given_name",
+      "ordered_roster_byline_corroborated": true,
+      "metadata_status_preserved": "failed",
+      "printed_marker_candidates": [
+        {
+          "byline_position": 1,
+          "marker": "1",
+          "printed_institution": "Virginia Tech"
+        },
+        {
+          "byline_position": 2,
+          "marker": "2",
+          "printed_institution": "University of Minnesota"
+        },
+        {
+          "byline_position": 3,
+          "marker": "3",
+          "printed_institution": "Queen Mary University of London"
+        },
+        {
+          "byline_position": 4,
+          "marker": "1",
+          "printed_institution": "Virginia Tech"
+        },
+        {
+          "byline_position": 5,
+          "marker": "2",
+          "printed_institution": "University of Minnesota"
+        }
+      ],
+      "parser_findings": [
+        "institution_entity_missing_for_positions_1_and_4",
+        "institution_line_break_hyphen_preserved_for_position_3"
+      ],
+      "disposition": "retain_withheld_pending_input_bound_metadata_review_and_PID_corroboration",
+      "accepted_identities": 0,
+      "accepted_affiliation_triples": 0
+    },
+    {
+      "paper_id": "paper:colt:2022:lugosi22a",
+      "extracted_record_sha256": "c5d14cda88fee19cabfc329c45456a85277bcd47ce7a44bf93099621ed4cc26a",
+      "pdf_sha256": "e97db4ca88dc66b89f77e1c95b5d3252ed238b3edce50bb315c03129feadd536",
+      "tei_sha256": "9c11e56b365f13a0495561371b6ec5a9773a0ab57e306607fe19c3f62f9a7981",
+      "source_locator": "PDF page 1, two author blocks followed by explicitly labelled Editors line",
+      "finding": "parser_includes_proceedings_editors_and_omits_second_printed_author",
+      "printed_byline_count": 2,
+      "parsed_header_author_count": 3,
+      "disposition": "withhold_all_positional_affiliation_candidates_pending_header_correction",
+      "accepted_identities": 0,
+      "accepted_affiliation_triples": 0
+    },
+    {
+      "paper_id": "paper:rss:2025:p046",
+      "pdf_sha256": "ea97783357acbe22a97ef4edfcddd7ddadca21e068a3b48b11e7367525957a36",
+      "source_locator": "PDF page 1 rendered title/byline and affiliation blocks",
+      "finding": "visible_header_but_no_pdftotext_first_page_text; GROBID_HTTP_500",
+      "ordered_roster_byline_corroborated": true,
+      "printed_marker_candidates": [
+        {
+          "byline_position": 1,
+          "marker": "1",
+          "printed_institution": "Harvard University"
+        },
+        {
+          "byline_position": 2,
+          "marker": "2",
+          "printed_institution": "University of Science and Technology of China"
+        },
+        {
+          "byline_position": 3,
+          "marker": "1",
+          "printed_institution": "Harvard University"
+        }
+      ],
+      "disposition": "retain_parse_review; OCR_or_alternate_source_method_required",
+      "accepted_identities": 0,
+      "accepted_affiliation_triples": 0
+    },
+    {
+      "paper_id": "paper:rss:2025:p108",
+      "pdf_sha256": "3f7d624f04a28dd5ed66f716bb6b01ee77cdbc1ee5ac812cdb21c853dd7bd6c8",
+      "source_locator": "PDF page 1 rendered title/byline and affiliation blocks",
+      "finding": "visible_header_but_no_pdftotext_first_page_text; GROBID_HTTP_500",
+      "ordered_roster_byline_corroborated": true,
+      "printed_marker_candidates": [
+        {
+          "byline_position": 1,
+          "marker": null,
+          "printed_institution": "University of Michigan"
+        },
+        {
+          "byline_position": 2,
+          "marker": null,
+          "printed_institution": "University of Michigan"
+        }
+      ],
+      "disposition": "retain_parse_review; OCR_or_alternate_source_method_required",
+      "accepted_identities": 0,
+      "accepted_affiliation_triples": 0
+    }
+  ],
+  "reviewed_input_sha256": "ce769d553056e1e8c2ed43d49b513645ee4e364bc4de116092247b7d91cc832c",
+  "work_id": "WORK-2026-11-06-004"
+}

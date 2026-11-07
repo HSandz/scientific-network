@@ -1,0 +1,1066 @@
+{
+  "method_version": "five-year-printed-source-corrections-v2",
+  "reviewed_input_sha256": "ce769d553056e1e8c2ed43d49b513645ee4e364bc4de116092247b7d91cc832c",
+  "records": [
+    {
+      "pdf_sha256": "72befdd4775ef015442bf83daa07a7b5f034da18c04da9ba612e5663dd8b049d",
+      "source_locator": "PDF page 1, joint byline and shared department/university affiliation block",
+      "decision_id": "source-decision:a5a0a10bf674cac02de032265381f608015050330f3691593672bdefddb3d6f9",
+      "paper_id": "paper:ijcai:2024:331",
+      "record_sha256": "1662f64ff80bc1bda8e09a8a69ce11e7ac8c2bb2ccb50fc9a28c568bc9892d5e",
+      "title": "Game Transformations That Preserve Nash Equilibria or Best-Response Sets",
+      "authors": [
+        {
+          "name": "Emanuel Tewolde",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Carnegie Mellon University",
+              "marker": null,
+              "source_locator": "PDF page 1, joint byline and shared department/university affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Vincent Conitzer",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Carnegie Mellon University",
+              "marker": null,
+              "source_locator": "PDF page 1, joint byline and shared department/university affiliation block;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "shared_printed_institution_block_supports_both_candidate_positions",
+      "original_status_preserved": "acquired"
+    },
+    {
+      "pdf_sha256": "1b3f468b93d6b82fc2964129601bf09c862f6dda25f8e520c44c800fd8f47259",
+      "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3",
+      "decision_id": "source-decision:639d433d1c6fd68fba13bfcca4eca3951a00088abb8316437f68d5529e29f464",
+      "paper_id": "paper:mlsys:2025:f37347375d8b54e3203e5d24aeb6c58c",
+      "record_sha256": "57fa10e7748c3bb5f3cd3b5664a377e299446748878bca5be6acdcdd38c20250",
+      "title": "FLStore: Efficient Federated Learning Storage for non-training workloads",
+      "authors": [
+        {
+          "name": "Ahmad Faraz Khan",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Virginia Tech",
+              "marker": "1",
+              "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Samuel Fountain",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of Minnesota",
+              "marker": "2",
+              "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Ahmed M. Abdelmoniem",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "Queen Mary University of London",
+              "marker": "3",
+              "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3;byline_position=3"
+            }
+          ]
+        },
+        {
+          "name": "Ali R. Butt",
+          "position": 4,
+          "affiliations": [
+            {
+              "printed_institution": "Virginia Tech",
+              "marker": "1",
+              "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3;byline_position=4"
+            }
+          ]
+        },
+        {
+          "name": "Ali Anwar",
+          "position": 5,
+          "affiliations": [
+            {
+              "printed_institution": "University of Minnesota",
+              "marker": "2",
+              "source_locator": "PDF page 1, top ordered byline and numbered affiliation footnote 1/2/3;byline_position=5"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "printed_ordered_byline_corroborates_roster; citation_export_abbreviates_given_name",
+      "original_status_preserved": "failed"
+    },
+    {
+      "pdf_sha256": "e97db4ca88dc66b89f77e1c95b5d3252ed238b3edce50bb315c03129feadd536",
+      "source_locator": "PDF page 1, two author blocks followed by explicitly labelled Editors line",
+      "decision_id": "source-decision:ce5fc33f5aaa2cc0b0dd16263c4063d9c9f55e79ef45d694213ea4b208ed82ed",
+      "paper_id": "paper:colt:2022:lugosi22a",
+      "record_sha256": "d4e5f7a9f0edcd2fbe07a33c17742cde86158821117a4ea87dda559cbf92e28e",
+      "title": "Generalization Bounds via Convex Analysis",
+      "authors": [
+        {
+          "name": "Gábor Lugosi",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "ICREA",
+              "marker": null,
+              "source_locator": "PDF page 1, two author blocks followed by explicitly labelled Editors line;byline_position=1"
+            },
+            {
+              "printed_institution": "Universitat Pompeu Fabra",
+              "marker": null,
+              "source_locator": "PDF page 1, two author blocks followed by explicitly labelled Editors line;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Gergely Neu",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Universitat Pompeu Fabra",
+              "marker": null,
+              "source_locator": "PDF page 1, two author blocks followed by explicitly labelled Editors line;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "parser_includes_proceedings_editors_and_omits_second_printed_author",
+      "original_status_preserved": "acquired"
+    },
+    {
+      "pdf_sha256": "ea97783357acbe22a97ef4edfcddd7ddadca21e068a3b48b11e7367525957a36",
+      "source_locator": "PDF page 1 rendered title/byline and affiliation blocks",
+      "decision_id": "source-decision:131ecb5d2874a43a81be19143d4317ee33620ec53f67ee4595d05f22539debef",
+      "paper_id": "paper:rss:2025:p046",
+      "record_sha256": "e2383d446989d920416c5826017ae27d1e1219bb3f95c04f8dc6fde9660f983c",
+      "title": "Global Contact-Rich Planning with Sparsity-Rich Semidefinite Relaxations",
+      "authors": [
+        {
+          "name": "Shucheng Kang",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Harvard University",
+              "marker": "1",
+              "source_locator": "PDF page 1 rendered title/byline and affiliation blocks;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Guorui Liu",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of Science and Technology of China",
+              "marker": "2",
+              "source_locator": "PDF page 1 rendered title/byline and affiliation blocks;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Heng Yang",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "Harvard University",
+              "marker": "1",
+              "source_locator": "PDF page 1 rendered title/byline and affiliation blocks;byline_position=3"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "visible_header_but_no_pdftotext_first_page_text; GROBID_HTTP_500",
+      "original_status_preserved": "acquired"
+    },
+    {
+      "pdf_sha256": "3f7d624f04a28dd5ed66f716bb6b01ee77cdbc1ee5ac812cdb21c853dd7bd6c8",
+      "source_locator": "PDF page 1 rendered title/byline and affiliation blocks",
+      "decision_id": "source-decision:804e8ed169a8c205bdc81f25156c64b7e90d3eb09b02e4bfae097f9132c9ef05",
+      "paper_id": "paper:rss:2025:p108",
+      "record_sha256": "f92b8744c2abff7240c1088ae45e977058ab23c5240490d690a656a3a1977c34",
+      "title": "Vib2Move: In-hand Object Reconfiguration via Fingertip Micro-vibrations",
+      "authors": [
+        {
+          "name": "Xili Yi",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "University of Michigan",
+              "marker": null,
+              "source_locator": "PDF page 1 rendered title/byline and affiliation blocks;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Nima Fazeli",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of Michigan",
+              "marker": null,
+              "source_locator": "PDF page 1 rendered title/byline and affiliation blocks;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "visible_header_but_no_pdftotext_first_page_text; GROBID_HTTP_500",
+      "original_status_preserved": "acquired"
+    },
+    {
+      "pdf_sha256": "0349502a9621e723747e79a1d37b3c3531c04bde70e63c96367e236987eeb6f6",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:acl:2024:2024.acl-long.707",
+      "record_sha256": "d9baf2bc8380ef9f85956cbbecb2149397f004f7bd73f0871bbd218de218c59c",
+      "title": "Symbol- LLM : Towards Foundational Symbol-centric Interface For Large Language Models",
+      "authors": [
+        {
+          "name": "Fangzhi Xu",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Xi’an Jiaotong University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            },
+            {
+              "printed_institution": "Shanghai Artificial Intelligence Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Zhiyong Wu",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Shanghai Artificial Intelligence Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Qiushi Sun",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "National University of Singapore",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            }
+          ]
+        },
+        {
+          "name": "Siyu Ren",
+          "position": 4,
+          "affiliations": [
+            {
+              "printed_institution": "Shanghai Jiao Tong University",
+              "marker": "4",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=4"
+            }
+          ]
+        },
+        {
+          "name": "Fei Yuan",
+          "position": 5,
+          "affiliations": [
+            {
+              "printed_institution": "Shanghai Artificial Intelligence Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=5"
+            }
+          ]
+        },
+        {
+          "name": "Shuai Yuan",
+          "position": 6,
+          "affiliations": [
+            {
+              "printed_institution": "Hong Kong University of Science and Technology",
+              "marker": "5",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=6"
+            }
+          ]
+        },
+        {
+          "name": "Qika Lin",
+          "position": 7,
+          "affiliations": [
+            {
+              "printed_institution": "National University of Singapore",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=7"
+            }
+          ]
+        },
+        {
+          "name": "Yu Qiao",
+          "position": 8,
+          "affiliations": [
+            {
+              "printed_institution": "Shanghai Artificial Intelligence Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=8"
+            }
+          ]
+        },
+        {
+          "name": "Jun Liu",
+          "position": 9,
+          "affiliations": [
+            {
+              "printed_institution": "Xi’an Jiaotong University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=9"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:9bec1e2404cbfae842de34cd200903d010fdf1671ae5a2bbe2de4d540d7d6bcb"
+    },
+    {
+      "pdf_sha256": "54eb9e33fde85184475236ac23f9308d84188f1a22c611c4210fb9691ce3bf5e",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:cvpr:2021:Li_Semantic_Segmentation_With_Generative_Models_Semi-Supervised_Learning_and_Strong_Out-of-Domain_CVPR_2021_paper",
+      "record_sha256": "762d56e3e73d5383559e58a0a7cc0e2dead4ccd24c1f35bba1dd1c1d690d0803",
+      "title": "Semantic Segmentation With Generative Models: Semi-Supervised Learning and Strong Out-of-Domain Generalization",
+      "authors": [
+        {
+          "name": "Daiqing Li",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Junlin Yang",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Karsten Kreis",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Antonio Torralba",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Sanja Fidler",
+          "position": 5,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "parser_misclassifies_NVIDIA_institution_as_author",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:060e63343c8987fa7b11e511b12d009e2c303cd8904ce02de8b1766d3a51a4f8"
+    },
+    {
+      "pdf_sha256": "0f749ac6f32532a2f9dfb45c18c585672ce4e2f7cacf989e351262e05b410c93",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:cvpr:2024:Du_iKUN_Speak_to_Trackers_without_Retraining_CVPR_2024_paper",
+      "record_sha256": "e09799b6880f69b22b2fe676c06a82cac5f3a2d45de233782d3b00dcb09e5653",
+      "title": "iKUN: Speak to Trackers without Retraining",
+      "authors": [
+        {
+          "name": "Yunhao Du",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Beijing University of Posts and Telecommunications",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Cheng Lei",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Beijing University of Posts and Telecommunications",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Zhicheng Zhao",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "Beijing University of Posts and Telecommunications",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            },
+            {
+              "printed_institution": "Beijing Key Laboratory of Network System and Network Culture",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            },
+            {
+              "printed_institution": "Key Laboratory of Interactive Technology and Experience System Ministry of Culture and Tourism",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            }
+          ]
+        },
+        {
+          "name": "Fei Su",
+          "position": 4,
+          "affiliations": [
+            {
+              "printed_institution": "Beijing University of Posts and Telecommunications",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=4"
+            },
+            {
+              "printed_institution": "Beijing Key Laboratory of Network System and Network Culture",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=4"
+            },
+            {
+              "printed_institution": "Key Laboratory of Interactive Technology and Experience System Ministry of Culture and Tourism",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=4"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:ace9a76d43b958643f33e7af983b382bbef709c6f053711d724a69f260cd7dfb"
+    },
+    {
+      "pdf_sha256": "18d741cd8e7c057cbec110ee5d1c62867a3b9ad5471a1b2238714158d7c8c007",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:cvpr:2024:Fu_COLMAP-Free_3D_Gaussian_Splatting_CVPR_2024_paper",
+      "record_sha256": "62e8388e75a32f0e07bdabddaa6db12af7b4e17ae4f4698d317d0d618d1b1b43",
+      "title": "COLMAP-Free 3D Gaussian Splatting",
+      "authors": [
+        {
+          "name": "Yang Fu",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Sifei Liu",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Amey Kulkarni",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Jan Kautz",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Alexei A. Efros",
+          "position": 5,
+          "affiliations": []
+        },
+        {
+          "name": "Xiaolong Wang",
+          "position": 6,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "parser_misclassifies_institutions_as_authors",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:f19f81948ae2e16aba3784903d9c6d67a74f3f67734094a2725cb3017afbaeb5"
+    },
+    {
+      "pdf_sha256": "063728d40baef798067d9a9fcf7f5fb1456ce8d3bce5f694cdb0e16d8b0016b4",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:eccv:2024:3643_ECCV_2024_paper.php",
+      "record_sha256": "cf9d15fa83c66e968302450ef93a9ade433eb23d20bcac3485ff27c022d27e3e",
+      "title": "Repaint123: Fast and High-quality One Image to 3D Generation with Progressive Controllable Repainting",
+      "authors": [
+        {
+          "name": "Junwu Zhang*",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Zhenyu Tang",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Yatian Pang",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Xinhua Cheng",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Peng Jin",
+          "position": 5,
+          "affiliations": []
+        },
+        {
+          "name": "Yida Wei",
+          "position": 6,
+          "affiliations": []
+        },
+        {
+          "name": "xing zhou",
+          "position": 7,
+          "affiliations": []
+        },
+        {
+          "name": "munan ning",
+          "position": 8,
+          "affiliations": []
+        },
+        {
+          "name": "Li Yuan*",
+          "position": 9,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "missing_parsed_header; printed_byline_matches_roster",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:1e57356bd8dff38f67637f4139d257ac121aed7028089eb14a6d89c575c8b0e8"
+    },
+    {
+      "pdf_sha256": "6ba4e19238c0ef3a843c4816d77de33404f74344bcba7a0c0880925181d53589",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:emnlp:2021:2021.emnlp-main.493",
+      "record_sha256": "4d3553675a1d201adf918a8be6aa1b5f391866fa439cb10e9a9d5a6c9f3bb30e",
+      "title": "Perhaps PTLM s Should Go to School – A Task to Assess Open Book and Closed Book QA",
+      "authors": [
+        {
+          "name": "Manuel R. Ciosici",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Joe Cecil",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Alex Hedges",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Dong-Ho Lee",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Marjorie Freedman",
+          "position": 5,
+          "affiliations": []
+        },
+        {
+          "name": "Ralph Weischedel",
+          "position": 6,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "truncated_parser_byline; printed_byline_matches_roster",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:8b1f2fdc42de31e039ffac32aac4b95ef2a21831bc8f3d0f61d23d87b9f11f10"
+    },
+    {
+      "pdf_sha256": "91afe50b86a6a1a7695e2d3b67538e7d69d12c7b054ff62c97714fc0734ccb16",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:iccv:2021:Birodkar_The_Surprising_Impact_of_Mask-Head_Architecture_on_Novel_Class_Segmentation_ICCV_2021_paper",
+      "record_sha256": "d48ec1784f21317683c9d5c0a7ac4175ffbe20bca55214d1ad3dead62b6d874a",
+      "title": "The Surprising Impact of Mask-Head Architecture on Novel Class Segmentation",
+      "authors": [
+        {
+          "name": "Vighnesh Birodkar",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Zhichao Lu",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Siyang Li",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Vivek Rathod",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Jonathan Huang",
+          "position": 5,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "parser_appends_Google_to_last_author",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:08ed7d4575650863278966715da093af01bc9ffbf7c74b83e501b4faabb81b93"
+    },
+    {
+      "pdf_sha256": "49981594afdb55131164ebcc4ff79ef58a0edba63de62dd12afa5eb741e8b075",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:icml:2024:nauman24a",
+      "record_sha256": "4320abdb7c8f1d87c2f6a514d33ed1eb908903908742ff027f89e93c8164973b",
+      "title": "Overestimation, Overfitting, and Plasticity in Actor-Critic: the Bitter Lesson of Reinforcement Learning",
+      "authors": [
+        {
+          "name": "Michal Nauman",
+          "position": 1,
+          "affiliations": []
+        },
+        {
+          "name": "Michał Bortkiewicz",
+          "position": 2,
+          "affiliations": []
+        },
+        {
+          "name": "Piotr Miłoś",
+          "position": 3,
+          "affiliations": []
+        },
+        {
+          "name": "Tomasz Trzcinski",
+          "position": 4,
+          "affiliations": []
+        },
+        {
+          "name": "Mateusz Ostaszewski",
+          "position": 5,
+          "affiliations": []
+        },
+        {
+          "name": "Marek Cygan",
+          "position": 6,
+          "affiliations": []
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "parser_splits_diacritic_in_Trzcinski",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:53ba76b8dfe7dcf1c2352f0f569eb0c72ce0d91cbb496d15424f1ba5c776203d"
+    },
+    {
+      "pdf_sha256": "cc8bb36b9865696ba4ddcb7365d792e9b14354cec715bdc25f78bd38bdb08dbf",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom",
+      "paper_id": "paper:icml:2025:zhang25cg",
+      "record_sha256": "ac83d9b99e026dfad83286186df44e84652b092efea019ae1aa9fe4d1b448298",
+      "title": "MODA: MOdular Duplex Attention for Multimodal Perception, Cognition, and Emotion Understanding",
+      "authors": [
+        {
+          "name": "Zhicheng Zhang",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Nankai University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=1"
+            },
+            {
+              "printed_institution": "Pengcheng Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Wuyou Xia",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Nankai University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Chenxi Zhao",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "Nankai University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=3"
+            }
+          ]
+        },
+        {
+          "name": "Zhou Yan",
+          "position": 4,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=4"
+            }
+          ]
+        },
+        {
+          "name": "Xiaoqiang Liu",
+          "position": 5,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=5"
+            }
+          ]
+        },
+        {
+          "name": "Yongjie Zhu",
+          "position": 6,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=6"
+            }
+          ]
+        },
+        {
+          "name": "Wenyu Qin",
+          "position": 7,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=7"
+            }
+          ]
+        },
+        {
+          "name": "Pengfei Wan",
+          "position": 8,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=8"
+            }
+          ]
+        },
+        {
+          "name": "Di Zhang",
+          "position": 9,
+          "affiliations": [
+            {
+              "printed_institution": "Kuaishou Technology",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=9"
+            }
+          ]
+        },
+        {
+          "name": "Jufeng Yang",
+          "position": 10,
+          "affiliations": [
+            {
+              "printed_institution": "Nankai University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=10"
+            },
+            {
+              "printed_institution": "Pengcheng Laboratory",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=10"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:1067539b7b560de16168813dd50e81683ca7dbed27da6f40982ea269fb0e85b5"
+    },
+    {
+      "pdf_sha256": "12c40b1efb929cab7cb93f5c7b2b8c1c05ae4badf8212cdb098aff6cf122b0ca",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:ijcai:2022:13",
+      "record_sha256": "99e0519c2544efe8ef21b17574965c6e88a70eafe6b849d8e36aeb71ff085109",
+      "title": "General Opinion Formation Games with Social Group Membership",
+      "authors": [
+        {
+          "name": "Vittorio Bilò",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "University of Salento",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Diodato Ferraioli",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of Salerno",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Cosimo Vinci",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "University of Salerno",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            },
+            {
+              "printed_institution": "Gran Sasso Science Institute",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:ed712d28ab65e9695e8fd1803fa7710dd0aa085b56e5e3f9fb7475baff9ac9ea"
+    },
+    {
+      "pdf_sha256": "4017c92fc51d54c02023303dc9c3e4022d4cd75cfceaa8a0381f2e4a3bc687be",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:kr:2021:11",
+      "record_sha256": "7c68e87078f2c58437385767e867719254cae78b64b40da6efa5abe227a3dd96",
+      "title": "Choices and their Consequences - Explaining Acceptable Sets in Abstract Argumentation Frameworks",
+      "authors": [
+        {
+          "name": "Ringo Baumann",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "Leipzig University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Markus Ulbricht",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Leipzig University",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            },
+            {
+              "printed_institution": "TU Wien",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:8be9665c6f9414b28844af85c390174a2a0c4505e5350d79710b0630a86e216f"
+    },
+    {
+      "pdf_sha256": "cda170389464d4422bd7858fc1fc22a5479f558edb64d64fd5ef4c4b6da1dc69",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:kr:2022:29",
+      "record_sha256": "4e63361cc05ef8eb62a66271bcd14886a75f1c96355b913cf928a4ad2588267b",
+      "title": "On Dynamics in Structured Argumentation Formalisms",
+      "authors": [
+        {
+          "name": "Anna Rapberger",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "TU Wien",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Markus Ulbricht",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "Leipzig University",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:b4571893dc865b00b39f38e523dfb40184375e442e5756b58f5152a592430719"
+    },
+    {
+      "pdf_sha256": "a6e43f5afb737ca60fb9fb91305aa694ff694696a708323c5b4053fc6fd899df",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block",
+      "paper_id": "paper:kr:2025:21",
+      "record_sha256": "b340329350e1b4ba564c1280ce68ced50facc5cc74db22188890844538da9b62",
+      "title": "On the Complexity of Global Necessary Reasons to Explain Classification",
+      "authors": [
+        {
+          "name": "Marco Calautti",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "University of Milano",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Enrico Malizia",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of Bologna",
+              "marker": "2",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=2"
+            }
+          ]
+        },
+        {
+          "name": "Cristian Molinaro",
+          "position": 3,
+          "affiliations": [
+            {
+              "printed_institution": "University of Calabria",
+              "marker": "3",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block;byline_position=3"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:b9eac0bbc0196d8593852ece495e67a6d887cd07b039b964f217403a842dcfe4"
+    },
+    {
+      "pdf_sha256": "ce01398ce2785eb6b1c5cf09262edbf97e50ef26e8ce2b3a67d61cf12f28ccf3",
+      "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom",
+      "paper_id": "paper:mlsys:2022:b6856f264cd38f1d8f01d7769be62444",
+      "record_sha256": "2cc4ea21f6192eba579759406582fd33af761ffd6ab30ca19d92027e6e90420f",
+      "title": "Bit-serial Weight Pools: Compression and Arbitrary Precision Execution of Neural Networks on Resource Constrained Processors",
+      "authors": [
+        {
+          "name": "Shurui Li",
+          "position": 1,
+          "affiliations": [
+            {
+              "printed_institution": "University of California, Los Angeles",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=1"
+            }
+          ]
+        },
+        {
+          "name": "Puneet Gupta",
+          "position": 2,
+          "affiliations": [
+            {
+              "printed_institution": "University of California, Los Angeles",
+              "marker": "1",
+              "source_locator": "PDF page 1 ordered byline and numbered/shared affiliation block; footnote 1/2/3 at page bottom;byline_position=2"
+            }
+          ]
+        }
+      ],
+      "method": "printed_source_review",
+      "reviewer": "Codex",
+      "independent_review": false,
+      "reason": "reviewed_numbered_or_shared_printed_author_institution_mapping",
+      "original_status_preserved": "acquired",
+      "decision_id": "source-decision:e819f6eb5b3e548a37293f0c9730e78540dd4c63288af0401a15f3446c8d4f6b"
+    }
+  ],
+  "supersedes": "data/manifests/five-year-source-corrections-v1.json"
+}

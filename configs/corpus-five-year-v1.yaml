@@ -1,0 +1,187 @@
+version: corpus-five-year-v1
+workflow: five_year_rosters_v1
+decision: D022
+collection_authorized: true
+scope_registry: configs/conference-scope-2021-2025.yaml
+years:
+- 2021
+- 2022
+- 2023
+- 2024
+- 2025
+stage_boundary: official_rosters_only_no_enrichment_or_splits
+retrieval:
+  timeout_seconds: 25
+  max_attempts: 2
+  series_workers: 2
+conferences:
+- venue_id: venue:neurips
+  name: NeurIPS
+  source_catalog: https://proceedings.neurips.cc/
+  track_policy: main_archival_research_papers
+  adapter: neurips
+- venue_id: venue:icml
+  name: ICML
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  adapter: pmlr
+- venue_id: venue:iclr
+  name: ICLR
+  source_catalog: https://openreview.net/group?id=ICLR.cc
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:aaai
+  name: AAAI
+  source_catalog: https://ojs.aaai.org/index.php/AAAI
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:ijcai
+  name: IJCAI
+  source_catalog: https://www.ijcai.org/proceedings/
+  track_policy: main_archival_research_papers
+  adapter: ijcai
+- venue_id: venue:mlsys
+  name: MLSys
+  source_catalog: https://proceedings.mlsys.org/
+  track_policy: main_archival_research_papers
+  adapter: mlsys
+- venue_id: venue:cvpr
+  name: CVPR
+  source_catalog: https://openaccess.thecvf.com/menu
+  track_policy: main_archival_research_papers
+  adapter: cvf
+- venue_id: venue:iccv
+  name: ICCV
+  source_catalog: https://openaccess.thecvf.com/menu
+  track_policy: main_archival_research_papers
+  adapter: cvf
+- venue_id: venue:eccv
+  name: ECCV
+  source_catalog: https://www.ecva.net/papers.php
+  track_policy: main_archival_research_papers
+  adapter: ecva
+- venue_id: venue:acmmm
+  name: ACM Multimedia
+  source_catalog: https://dl.acm.org/conference/mm
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:miccai
+  name: MICCAI
+  source_catalog: https://www.miccai.org/index.php/publications/
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:acl
+  name: ACL
+  source_catalog: https://aclanthology.org/venues/acl/
+  track_policy: main_archival_research_papers
+  adapter: acl
+- venue_id: venue:emnlp
+  name: EMNLP
+  source_catalog: https://aclanthology.org/venues/emnlp/
+  track_policy: main_archival_research_papers
+  adapter: acl
+- venue_id: venue:naacl
+  name: NAACL
+  source_catalog: https://aclanthology.org/venues/naacl/
+  track_policy: main_archival_research_papers
+  adapter: acl
+- venue_id: venue:eacl
+  name: EACL
+  source_catalog: https://aclanthology.org/venues/eacl/
+  track_policy: main_archival_research_papers
+  adapter: acl
+- venue_id: venue:coling
+  name: COLING
+  source_catalog: https://aclanthology.org/venues/coling/
+  track_policy: main_archival_research_papers
+  adapter: acl
+- venue_id: venue:kdd
+  name: KDD
+  source_catalog: https://dl.acm.org/conference/kdd
+  track_policy: research_track_only
+  adapter: null
+- venue_id: venue:www
+  name: The Web Conference (WWW)
+  source_catalog: https://dl.acm.org/conference/www
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:sigir
+  name: SIGIR
+  source_catalog: https://dl.acm.org/conference/sigir
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:wsdm
+  name: WSDM
+  source_catalog: https://dl.acm.org/conference/wsdm
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:recsys
+  name: RecSys
+  source_catalog: https://dl.acm.org/conference/recsys
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:cikm
+  name: CIKM
+  source_catalog: https://dl.acm.org/conference/cikm
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:icdm
+  name: ICDM
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:sdm
+  name: SDM
+  source_catalog: https://epubs.siam.org/conference/sdm
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:aistats
+  name: AISTATS
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  adapter: pmlr
+- venue_id: venue:uai
+  name: UAI
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  adapter: pmlr
+- venue_id: venue:colt
+  name: COLT
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  adapter: pmlr
+- venue_id: venue:icra
+  name: ICRA
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:iros
+  name: IROS
+  source_catalog: https://ieeexplore.ieee.org/browse/conferences/title
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:rss
+  name: 'Robotics: Science and Systems (RSS)'
+  source_catalog: https://www.roboticsproceedings.org/
+  track_policy: main_archival_research_papers
+  adapter: rss
+- venue_id: venue:corl
+  name: Conference on Robot Learning (CoRL)
+  source_catalog: https://proceedings.mlr.press/
+  track_policy: main_archival_research_papers
+  adapter: pmlr
+- venue_id: venue:aamas
+  name: AAMAS
+  source_catalog: https://www.ifaamas.org/Proceedings/
+  track_policy: main_archival_research_papers
+  adapter: null
+- venue_id: venue:kr
+  name: KR
+  source_catalog: https://proceedings.kr.org/
+  track_policy: main_archival_research_papers
+  adapter: kr
+- venue_id: venue:icaps
+  name: ICAPS
+  source_catalog: https://ojs.aaai.org/index.php/ICAPS
+  track_policy: main_archival_research_papers
+  adapter: null

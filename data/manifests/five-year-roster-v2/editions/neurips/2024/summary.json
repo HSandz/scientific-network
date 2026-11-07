@@ -1,0 +1,59 @@
+{
+  "venue_id": "venue:neurips",
+  "name": "NeurIPS",
+  "year": 2024,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 4493,
+  "by_status": {
+    "included": 4034,
+    "excluded": 459
+  },
+  "routes": [
+    {
+      "venue_id": "venue:neurips",
+      "name": "NeurIPS",
+      "year": 2024,
+      "adapter": "neurips",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.neurips.cc/paper_files/paper/2024",
+      "catalog_locator": "Advances in Neural Information Processing Systems 37"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.neurips.cc/",
+      "params": {},
+      "request_id": "85f7bd303f3a6c15620cd55be5f035cdd386c7a68eef3371ea1c069bb7daa365",
+      "sha256": "c3bd4a4fd93a352393985c9e3ae3806ca34d7026c99d73e798910496babaad37",
+      "retrieved_at": "2026-11-06T08:05:11.791567+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2024",
+      "params": {},
+      "request_id": "41f0bf01979c84d3fb1869dc920668e4435031e7bacb61b827487a5c15ad1534",
+      "sha256": "a7dfe7900f9978f212c0431cca994d5e92b2984ffc0546523cd71e2d453dfd8c",
+      "retrieved_at": "2026-11-06T08:09:36.230133+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "15ca39db3e3dff22b1363b6e894359356ad1bb8ed644190eec4b5b208bffb7fd",
+  "checked_at": "2026-11-06T11:53:05.836999+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

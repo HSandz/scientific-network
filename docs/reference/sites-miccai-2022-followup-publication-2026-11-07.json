@@ -1,0 +1,56 @@
+{
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_4afca8836b388191a34e5d6f520a6777",
+  "version_number": 16,
+  "deployment_id": "appgdep_6aef13cbaecc8191ac369840e1ced673",
+  "deployed_at_utc": "2026-11-07T12:04:47.920572+00:00",
+  "verified_at_utc": "2026-11-07T12:07:39+00:00",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "site_status": "active",
+  "source_commit": "1882017c0d4960c04b3493c2e0e0ab1e5e19fc9d",
+  "source_hashes": {
+    "plan_sha256": "d4dfc0b788e8ada595b71265d511656e5f11a35c848e2918498459dac4979271",
+    "report_sha256": "7d182412c349eb44addf83a76a7ac66901be870acf53ce5719354b3eea27763a",
+    "report_payload_sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "local_archive": {
+    "sha256": "ed9b8d1296e5a9aaa070ec828f39dac18762df1a50ffd504f5a25848730b2a87",
+    "size_bytes": 415469,
+    "tar_member_count": 36
+  },
+  "archive_storage": {
+    "content_hash": "sha256:2b12ed48ee11ea3a291db13994084aaf39d75e82c1e284f1f750407aa1d924a4",
+    "size_bytes": 2007040,
+    "file_count": 34
+  },
+  "artifact_versions": {
+    "decision": "D034",
+    "source_corrections": "five-year-source-corrections-v9",
+    "source_corrections_sha256": "caf7707b759bf235309366fd40a2dc389757ecd924f3d29cc694917503cfc053",
+    "roster": "configs/corpus-five-year-v10.yaml",
+    "method": "miccai2022-official-source-route-reconciliation-v1",
+    "work_id": "WORK-2026-11-07-007"
+  },
+  "published_artifacts": [
+    "progress-report.md",
+    "five-year-source-recovery-v10.md",
+    "five-year-source-recovery-v10.metrics.json",
+    "five-year-edition-ledger-v10.csv",
+    "five-year-source-recovery-v9.md",
+    "five-year-edition-ledger-v9.csv"
+  ],
+  "preserved_historical_payload": {
+    "graph_version": "pilot-topic-d512d7239923",
+    "nodes": 399,
+    "edges": 533,
+    "sha256": "fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f"
+  },
+  "snapshots": {
+    "report": "sites-miccai-2022-followup-report-2026-11-07.md"
+  },
+  "static_audit": "reports/runs/WORK-2026-11-07-007/site-static-audit.json",
+  "browser_qa": "reports/runs/WORK-2026-11-07-007/site-browser-qa.json",
+  "source_hash_audit": "reports/runs/WORK-2026-11-07-007/source-hash-audit.json"
+}

@@ -1,0 +1,63 @@
+{
+  "venue_id": "venue:corl",
+  "name": "Conference on Robot Learning (CoRL)",
+  "year": 2021,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 166,
+  "by_status": {
+    "included": 166
+  },
+  "routes": [
+    {
+      "venue_id": "venue:corl",
+      "name": "Conference on Robot Learning (CoRL)",
+      "year": 2021,
+      "adapter": "pmlr",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://proceedings.mlr.press/v164/",
+      "volume": 164,
+      "required_markers": [
+        "2021",
+        "Volume 164"
+      ],
+      "catalog_locator": "Volume 164 Proceedings of CoRL 2021"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://proceedings.mlr.press/",
+      "params": {},
+      "request_id": "86716e38d7eda879e48666d7b58364d18d75238dca6e4a017f8349eee81f782a",
+      "sha256": "d790ae9a4d93af0acb80293a90e0a45b6ed1b1be54d20bb87605647edf52167f",
+      "retrieved_at": "2026-11-06T08:04:20.166776+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v164/",
+      "params": {},
+      "request_id": "84898b97fc9e5022c90d765f978824235344c6628346bec7f9dbcbbba54deabe",
+      "sha256": "5dbbb03b4b021f50898b66ce2f9896ef809a2813210e17c1a97809ac36e0bf71",
+      "retrieved_at": "2026-11-06T08:13:49.437579+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "40c5b3b5dbe0cd318d2e82ccb31247ce66ad2a72b7acc6bf9c9bada75293ca7b",
+  "checked_at": "2026-11-06T11:57:50.818616+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

@@ -1,0 +1,61 @@
+{
+  "venue_id": "venue:miccai",
+  "year": 2023,
+  "status": "verified_eligible",
+  "reason": "accepted_roster_matches_springer_full_paper_count",
+  "records": 730,
+  "by_status": {
+    "included": 730
+  },
+  "routes": [
+    {
+      "official_index": "https://conferences.miccai.org/2023/papers/",
+      "format": "accepted_list",
+      "accepted_roster_complete": true,
+      "track": "main_archival_research_papers"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "miccai2023_accepted_list",
+      "url": "https://conferences.miccai.org/2023/papers/",
+      "accessed_at": "2026-11-07T02:12:49+00:00",
+      "response_status": 200,
+      "content_type": "text/html",
+      "response_bytes": 250612,
+      "sha256": "5b1d49a07ff7e85c8456571736048a8479f566dad4dc97d9400fcbe7ade2e03c",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/miccai_2023_papers.html",
+      "finding": "Official MICCAI 2023 accepted-paper title/identifier roster; entries expose no bylines."
+    },
+    {
+      "source_id": "springer2023_main_book",
+      "url": "https://link.springer.com/book/10.1007/978-3-031-43907-0",
+      "accessed_at": "2026-11-07T02:22:12+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 336775,
+      "sha256": "3f2f397d0c79a940e65ec35866c6deccf207be702e55b6e9a4d62bfc5dd663ba",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_2023_main_book_part1.html",
+      "finding": "Springer main-volume description states 730 revised full papers."
+    },
+    {
+      "source_id": "springer_conference_index",
+      "url": "https://link.springer.com/conference/miccai",
+      "accessed_at": "2026-11-07T02:12:48+00:00",
+      "response_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 189455,
+      "sha256": "1fae086b038a2760bdee8b5b0bda8740df3818e206107b112ae2ad3dbf3f4a87",
+      "snapshot_path": "reports/runs/WORK-2026-11-07-004/springer_conference_index.html",
+      "finding": "Springer series index; displayed counts recorded separately as index counters: 535, 576, 732, 857, 1,029."
+    }
+  ],
+  "roster_sha256": "0dd8ca441de130b80a541f73f935dc61876d239ee22b7f588f497b1127461a33",
+  "method_version": "five-year-official-rosters-v9",
+  "checked_at": "2026-11-07T09:36:44+07:00",
+  "reviewer": "source_contract_and_count_reconciliation_not_independent_scientific_review",
+  "rights": "Captured official conference and publisher pages support year-specific list/count findings but do not establish permission to redistribute per-record roster metadata. Keep detailed captured pages and generated rosters in ignored local storage; publish aggregate counts and source links only.",
+  "redistribution": "local_ignored_only; public per-record metadata not authorized",
+  "publisher_index_paper_count": 732,
+  "accepted_full_paper_count": 730
+}

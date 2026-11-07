@@ -1,0 +1,60 @@
+{
+  "venue_id": "venue:naacl",
+  "name": "NAACL",
+  "year": 2021,
+  "status": "verified_eligible",
+  "reason": "official_main_roster_parsed",
+  "records": 478,
+  "by_status": {
+    "excluded": 1,
+    "included": 477
+  },
+  "routes": [
+    {
+      "venue_id": "venue:naacl",
+      "name": "NAACL",
+      "year": 2021,
+      "adapter": "acl",
+      "include_tracks": [
+        "main"
+      ],
+      "exclude_tracks": [
+        "nonresearch",
+        "datasets_and_benchmarks"
+      ],
+      "official_index": "https://aclanthology.org/volumes/2021.naacl-main/",
+      "collection": "2021.naacl-main",
+      "catalog_locator": "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aclanthology.org/venues/naacl/",
+      "params": {},
+      "request_id": "5038e476b43162f226a80acb615e26c90e8083925b4e4c92946a02f02ced39e2",
+      "sha256": "9d417ffe33fbe432330fd36ac4ee136fc36288edf166da568cdb558b59b7e4e0",
+      "retrieved_at": "2026-11-06T08:13:03.504717+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    },
+    {
+      "url": "https://aclanthology.org/volumes/2021.naacl-main/",
+      "params": {},
+      "request_id": "5a0a1bab38ea8e9908ad0d437bbb8b760868261e9f0a1277a424fea187be6882",
+      "sha256": "5947f4586f826c098af3f83866f20580cfcf2ab7c7f4c00f650a4b77b9506561",
+      "retrieved_at": "2026-11-06T08:13:05.730136+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html; charset=utf-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  ],
+  "roster_sha256": "dba9120f59a01128f72c49e65a7be2136c89ee796833ea248f58887dacf0da85",
+  "checked_at": "2026-11-06T11:57:23.997250+00:00",
+  "reviewer": "automated_contract_check_not_independent_scientific_review",
+  "rights": "unknown_unless_source_record_supplies_license",
+  "redistribution": "raw_downloads_local_ignored_rebuild_from_sources",
+  "method_version": "five-year-official-rosters-v2"
+}

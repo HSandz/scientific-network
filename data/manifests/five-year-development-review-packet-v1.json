@@ -1,0 +1,15 @@
+{
+  "work_id": "WORK-2026-11-06-006",
+  "population": "frozen_exposed_development_only",
+  "papers_per_reviewer": 68,
+  "author_positions_per_reviewer": 346,
+  "independent_annotations_completed": 0,
+  "held_out_sources_accessed": 0,
+  "files": {
+    "reviewer-b-papers.csv": "c1b46e8f3bae5f03b640448cd929ea85952f2e10f147a9b75ff2012afec83e28",
+    "README.md": "9eb0a45bf3ac452d578cebce8b7505d6f48f0628d36775a8fcf94672746b0a48",
+    "reviewer-a-papers.csv": "c1b46e8f3bae5f03b640448cd929ea85952f2e10f147a9b75ff2012afec83e28",
+    "reviewer-b-authors.csv": "ff97a579cb4e009ac12c289b9b435a6330a9b91b1688e4b5aecb10893581a4f2",
+    "reviewer-a-authors.csv": "ff97a579cb4e009ac12c289b9b435a6330a9b91b1688e4b5aecb10893581a4f2"
+  }
+}
