@@ -21,7 +21,23 @@ def validate_graph(graph: GraphArtifact, max_topic_labels: int = 3, *, require_d
     evidence = {item.id: item for item in graph.evidence}
     edges = {item.edge_id: item for item in graph.edges}
     semantic_keys: set[tuple] = set()
-    authored = {(e.source_id, e.target_id) for e in graph.edges if e.relation == R.AUTHORED}
+    # Per-node indexes, built in one pass over the edges so the node checks below
+    # stay linear in graph size (a per-node edge scan was quadratic: 7 s at 4k papers).
+    authored: set[tuple[str, str]] = set()
+    authored_papers: set[str] = set()
+    venue_edges: Counter[str] = Counter()  # PUBLISHED_IN edges per paper
+    topic_edges: Counter[str] = Counter()  # HAS_TOPIC edges per paper
+    parent_edges: Counter[str] = Counter()  # SUBTOPIC_OF edges per leaf topic
+    for edge in graph.edges:
+        if edge.relation == R.AUTHORED:
+            authored.add((edge.source_id, edge.target_id))
+            authored_papers.add(edge.target_id)
+        elif edge.relation == R.PUBLISHED_IN:
+            venue_edges[edge.source_id] += 1
+        elif edge.relation == R.HAS_TOPIC:
+            topic_edges[edge.source_id] += 1
+        elif edge.relation == R.SUBTOPIC_OF:
+            parent_edges[edge.source_id] += 1
     affiliations = {(a.researcher_id, a.organization_id) for a in graph.affiliation_observations}
 
     for node in graph.nodes:
@@ -96,19 +112,14 @@ def validate_graph(graph: GraphArtifact, max_topic_labels: int = 3, *, require_d
 
     for node in graph.nodes:
         if node.label == N.PAPER and node.properties.get("is_core") is True:
-            venues = [e for e in graph.edges if e.relation == R.PUBLISHED_IN and e.source_id == node.id]
-            if len(venues) != 1:
+            if venue_edges[node.id] != 1:
                 errors.append(f"{node.id}: core paper requires exactly one primary venue")
-            if not any(paper == node.id for _, paper in authored) and not node.properties.get("unresolved_author_reason"):
+            if node.id not in authored_papers and not node.properties.get("unresolved_author_reason"):
                 errors.append(f"{node.id}: core paper needs authorship or documented unresolved exception")
-        if node.label == N.PAPER:
-            label_count = sum(e.relation == R.HAS_TOPIC and e.source_id == node.id for e in graph.edges)
-            if label_count > max_topic_labels:
-                errors.append(f"{node.id}: too many accepted topic labels")
-        if node.label == N.TOPIC and node.properties.get("level") == "leaf":
-            parents = [e for e in graph.edges if e.relation == R.SUBTOPIC_OF and e.source_id == node.id]
-            if len(parents) != 1:
-                errors.append(f"{node.id}: leaf topic requires exactly one parent")
+        if node.label == N.PAPER and topic_edges[node.id] > max_topic_labels:
+            errors.append(f"{node.id}: too many accepted topic labels")
+        if node.label == N.TOPIC and node.properties.get("level") == "leaf" and parent_edges[node.id] != 1:
+            errors.append(f"{node.id}: leaf topic requires exactly one parent")
     if not errors and (require_derived or any(e.evidence_kind == K.DERIVED for e in graph.edges)):
         from scientific_network.graph.materialize import materialize
         expected = materialize(graph, researcher_min, organization_min)

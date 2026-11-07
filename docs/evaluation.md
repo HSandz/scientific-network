@@ -17,6 +17,32 @@ edge has correct identities/endpoints, predicate, paper/time scope and verifiabl
 evidence. Computing accuracy over every possible node pair would reward trivial
 nonedges and is not the proposed evaluation.
 
+## Release audit tooling (D040, current behaviour)
+
+`configs/quality-release-v1.yaml` sets `audit.review_design: split_with_overlap`:
+200 uniform global edges, 10 per relation, and 50 global-sample edges reviewed by
+both reviewers (A and B). A readiness receipt is no longer needed (`--readiness` is
+verified only when supplied), and the size gates are computed and recorded as passed
+or failed in the output of `freeze-audit-sample`, `score-edge-audit` and `analyze`.
+
+```bash
+research-network freeze-audit-sample --input data/processed/release-graph-v2/graph.json \
+  --config configs/quality-release-v1.yaml --output reports/release-v1/audit/edge-review-sheet.csv
+```
+
+This writes the CSV form (one row per edge per assigned reviewer, with the reviewer
+context columns) and `edge-review-sheet.html` next to it. Each reviewer opens the HTML
+sheet (it needs no server or network), chooses A or B, records correct, incorrect or
+unverifiable for each assigned edge with an error category and reason when not
+correct, and exports a CSV. Concatenate the two exports and pass them to
+`score-edge-audit --reviews`. A disagreement on an overlap edge needs one
+adjudication row (an optional `error_category` column is read). The result reports
+k/n, precision, the Wilson 95% interval, per-relation results, agreement percent and
+Cohen's kappa on the overlap, error categories, and both the course (point estimate
+above 90%) and project (at least 95% with a lower bound above 90%) gates. Design
+rationale: [release plan section 2.4](release-plan.md#24-accuracy-audit-configsquality-release-v1yaml).
+The `double_review` design below is still the default when `review_design` is absent.
+
 ## Frozen release audit
 
 1. After the graph is built, freeze its version, complete edge-frame hash and

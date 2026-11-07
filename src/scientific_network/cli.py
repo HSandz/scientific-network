@@ -74,17 +74,17 @@ def parser() -> argparse.ArgumentParser:
     audit.add_argument("--correct", type=int, required=True)
     audit.add_argument("--total", type=int, required=True)
     audit.add_argument("--confidence", type=float, default=0.95)
-    audit_sample = commands.add_parser("freeze-audit-sample", help="prepare a hash-bound edge-review form; non-synthetic graphs require a post-build readiness receipt")
+    audit_sample = commands.add_parser("freeze-audit-sample", help="prepare a hash-bound edge-review form (CSV, plus an HTML sheet for review_design split_with_overlap)")
     audit_sample.add_argument("--input", type=Path, required=True, help="frozen graph artifact")
     audit_sample.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
-    audit_sample.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
-    audit_sample.add_argument("--output", type=Path, required=True, help="new blank CSV review form")
-    edge_audit = commands.add_parser("score-edge-audit", help="validate and score completed two-review edge-audit packets; not component evaluation or release certification")
+    audit_sample.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
+    audit_sample.add_argument("--output", type=Path, required=True, help="new CSV review form; the HTML sheet is written next to it")
+    edge_audit = commands.add_parser("score-edge-audit", help="validate and score completed edge-audit review packets (double review, or split with overlap per the quality config); not component evaluation or release certification")
     edge_audit.add_argument("--input", type=Path, required=True, help="exact frozen graph artifact")
-    edge_audit.add_argument("--reviews", type=Path, required=True, help="two independent rows per sampled edge")
+    edge_audit.add_argument("--reviews", type=Path, required=True, help="completed review rows; two per edge, or one per edge plus the overlap, per review_design")
     edge_audit.add_argument("--adjudications", type=Path, help="required only for reviewer disagreements")
     edge_audit.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
-    edge_audit.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
+    edge_audit.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
     edge_audit.add_argument("--output", type=Path, required=True, help="new evaluation JSON")
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
@@ -113,7 +113,7 @@ def parser() -> argparse.ArgumentParser:
         if name == "resolve":
             stage.add_argument("--decisions", type=Path, help="input-bound source review; can withhold core records, never force an identity merge")
         if name == "analyze":
-            stage.add_argument("--readiness", type=Path, help="post-build audit-readiness receipt; required for non-synthetic graphs")
+            stage.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
             stage.add_argument("--quality-config", type=Path, default=Path("configs/quality.yaml"))
     return root
 

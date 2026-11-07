@@ -1,14 +1,22 @@
 """Prepare and score a frozen, independently reviewed graph-edge audit.
 
+Two review designs are supported, chosen by ``audit.review_design`` in the quality
+config. ``double_review`` (the default) needs two independent reviews of every sampled
+edge. ``split_with_overlap`` (release plan section 2.4, D040) reviews each sampled edge
+once, split deterministically between two reviewers, with ``overlap_sample_size``
+global-sample edges reviewed by both so agreement can be measured.
+
 This module validates audit evidence; it cannot establish who supplied reviewer
 IDs or whether the review was actually independent. Synthetic inputs stay clearly
 separate from any release claim.
 """
 
 import csv
+from collections import Counter
 from datetime import datetime
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Iterable
 
@@ -16,6 +24,7 @@ import yaml
 
 from scientific_network.contracts import GraphArtifact, Relation
 from scientific_network.evaluation.precision import precision_interval
+from scientific_network.evaluation.review_sheet import CONTEXT_FIELDS, ERROR_CATEGORIES, SheetContext, render_html
 from scientific_network.graph.validate import graph_counts, validate_graph
 
 
@@ -34,6 +43,10 @@ ADJUDICATION_FIELDS = [
 ]
 VERDICTS = {"correct", "incorrect", "unverifiable"}
 TRI_STATE = {"true", "false", "unknown"}
+CHECK_FIELDS = ("endpoints_correct", "predicate_correct", "paper_time_correct", "evidence_verifiable")
+DESIGNS = {"double_review", "split_with_overlap"}
+# The split-design form adds an error category and reviewer context to the scored columns.
+SPLIT_FIELDS = REVIEW_FIELDS + ["error_category"] + CONTEXT_FIELDS
 
 
 def _read_graph(path: Path) -> tuple[GraphArtifact, bytes, list[str]]:
@@ -61,7 +74,47 @@ def _load_quality(path: Path) -> tuple[dict, dict]:
         raise ValueError("the edge audit contract requires exactly two independent reviewers")
     if audit.get("unverifiable_is_incorrect") is not True or audit.get("supplement_is_separate") is not True:
         raise ValueError("quality config must keep unverifiable edges incorrect and supplements separate")
+    design = audit.get("review_design", "double_review")
+    if design not in DESIGNS:
+        raise ValueError(f"audit.review_design must be one of {sorted(DESIGNS)}")
+    if design == "split_with_overlap":
+        letters = audit.get("reviewer_ids")
+        if (not isinstance(letters, list) or len(letters) != 2 or len(set(letters)) != 2
+                or any(not isinstance(letter, str) or not letter.strip() for letter in letters)):
+            raise ValueError("audit.reviewer_ids must list two distinct reviewer IDs for split_with_overlap")
+        overlap = audit.get("overlap_sample_size")
+        if type(overlap) is not int or not 0 <= overlap <= audit["global_sample_size"]:
+            raise ValueError("audit.overlap_sample_size must be an integer between 0 and the global sample size")
     return config, audit
+
+
+def _rank(seed: int, purpose: str, edge_id: str) -> tuple[bytes, str]:
+    return hashlib.sha256(f"{seed}\0{purpose}\0{edge_id}".encode("utf-8")).digest(), edge_id
+
+
+def _assignments(audit: dict, global_ids: list[str], sampled: set[str]) -> dict[str, tuple[str, ...]]:
+    """Deterministic reviewers per sampled edge: overlap edges get both, the rest alternate."""
+    first, second = audit["reviewer_ids"]
+    seed = audit["random_seed"]
+    overlap = set(_sample_ids(global_ids, audit["overlap_sample_size"], seed, "overlap"))
+    assignments = {edge_id: (first, second) for edge_id in overlap}
+    rest = sorted(sampled - overlap, key=lambda edge_id: _rank(seed, "assign", edge_id))
+    for index, edge_id in enumerate(rest):
+        assignments[edge_id] = (first,) if index % 2 == 0 else (second,)
+    return assignments
+
+
+def cohens_kappa(pairs: list[tuple[str, str]]) -> float | None:
+    """Cohen's kappa for two raters' categorical decisions; None when undefined (no variation)."""
+    if not pairs:
+        return None
+    n = len(pairs)
+    observed = sum(a == b for a, b in pairs) / n
+    expected = sum(
+        (sum(a == c for a, _ in pairs) / n) * (sum(b == c for _, b in pairs) / n)
+        for c in {value for pair in pairs for value in pair}
+    )
+    return None if math.isclose(expected, 1.0) else (observed - expected) / (1 - expected)
 
 
 def _frame(graph: GraphArtifact) -> tuple[list[dict], str]:
@@ -95,10 +148,9 @@ def _audit_id(graph_version: str, frame_sha256: str, quality_config_sha256: str,
 
 
 def _check_readiness(path: Path | None, graph: GraphArtifact, graph_bytes: bytes) -> str | None:
-    if graph.is_synthetic:
+    """D040: a readiness receipt is optional; when one is supplied for a real graph it must match."""
+    if graph.is_synthetic or path is None:
         return None
-    if path is None:
-        raise ValueError("a post-build audit-readiness receipt is required for non-synthetic graphs")
     receipt_bytes = path.read_bytes()
     receipt = json.loads(receipt_bytes)
     if not isinstance(receipt, dict):
@@ -138,36 +190,33 @@ def _expected_samples(graph: GraphArtifact, audit: dict, quality_config_sha256: 
                 "big",
             )
             type_samples[relation] = _sample_ids(ids, audit["per_type_sample_size"], type_seed, relation)
-    if not graph.is_synthetic:
-        missing = sorted(relation for relation, ids in ids_by_relation.items() if not ids)
-        if missing:
-            raise ValueError("final audit frame lacks required relation types: " + ", ".join(missing))
     return ids_by_relation, type_samples, global_ids, frame_sha, _audit_id(
         graph.graph_version, frame_sha, quality_config_sha256, readiness_sha256, audit["random_seed"]
     )
 
 
-def _check_release_size(graph: GraphArtifact, config: dict) -> None:
+def _size_gates(graph: GraphArtifact, config: dict) -> dict | None:
+    """Size gates of a real graph, each recorded as passed or failed (D040); None if synthetic."""
     if graph.is_synthetic:
-        return
+        return None
     counts = graph_counts(graph)
     size = config.get("size")
     if not isinstance(size, dict):
         raise ValueError("quality config requires a size mapping")
-    checks = {
+    actual = {
         "min_domain_nodes": len(graph.nodes),
         "min_resolved_core_researchers": counts["resolved_core_researchers"],
         "min_unique_factual_edges": counts["unique_core_factual_edges"],
         "required_relation_types": len(counts["edges_by_relation"]),
     }
-    for key, actual in checks.items():
+    gates = {}
+    for key, value in actual.items():
         threshold = size.get(key)
         if type(threshold) is not int or threshold < 1:
             raise ValueError(f"quality config size.{key} must be a positive integer")
-        if actual < threshold:
-            raise ValueError(f"post-build graph fails configured size gate {key}: {actual} < {threshold}")
-    if len(counts["edges_by_relation"]) != size["required_relation_types"]:
-        raise ValueError("post-build graph does not contain every required relation type")
+        passed = value == threshold if key == "required_relation_types" else value >= threshold
+        gates[key] = {"required": threshold, "actual": value, "status": "passed" if passed else "failed"}
+    return {"status": "passed" if all(g["status"] == "passed" for g in gates.values()) else "failed", "gates": gates}
 
 
 def prepare_edge_audit_sample(
@@ -176,7 +225,7 @@ def prepare_edge_audit_sample(
     output_path: Path,
     readiness_path: Path | None = None,
 ) -> dict:
-    """Write a blank review form for the deterministic samples of a frozen graph."""
+    """Write a blank review form (and, for the split design, an HTML sheet) for the deterministic samples."""
     protected = {input_path.resolve(), config_path.resolve()}
     if readiness_path:
         protected.add(readiness_path.resolve())
@@ -189,7 +238,7 @@ def prepare_edge_audit_sample(
     config, audit = _load_quality(config_path)
     config_sha = hashlib.sha256(config_path.read_bytes()).hexdigest()
     readiness_sha = _check_readiness(readiness_path, graph, graph_bytes)
-    _check_release_size(graph, config)
+    size_gates = _size_gates(graph, config)
     ids_by_relation, type_samples, global_ids, frame_sha, audit_id = _expected_samples(graph, audit, config_sha, readiness_sha)
     graph_sha = hashlib.sha256(graph_bytes).hexdigest()
 
@@ -197,11 +246,18 @@ def prepare_edge_audit_sample(
     selected = set(global_ids)
     for ids in type_samples.values():
         selected.update(ids)
+    split = audit.get("review_design", "double_review") == "split_with_overlap"
+    assignments = _assignments(audit, global_ids, selected) if split else {}
+    contexts = SheetContext(graph) if split else None
+    edges = {edge.edge_id: edge for edge in graph.edges} if split else {}
+    html_path = output_path.with_suffix(".html")
+    if split and (html_path.exists() or html_path.is_symlink()):
+        raise ValueError("audit review sheet already exists; use a new versioned path")
     rows = []
     for edge_id in sorted(selected):
         relation = type_membership[edge_id]
         type_ids = type_samples.get(relation, [])
-        rows.append({
+        base = {
             "audit_id": audit_id,
             "method_version": METHOD_VERSION,
             "graph_version": graph.graph_version,
@@ -222,20 +278,31 @@ def prepare_edge_audit_sample(
             "decision": "",
             "reason": "",
             "reviewed_at": "",
-        })
+        }
+        if not split:
+            rows.append(base)
+            continue
+        assigned = assignments[edge_id]
+        context, links = contexts.describe(edges[edge_id])
+        context["is_overlap"] = str(len(assigned) == 2).lower()
+        for reviewer in assigned:
+            rows.append({**base, "reviewer_id": reviewer, "error_category": "", **context, "_links": links})
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = SPLIT_FIELDS if split else REVIEW_FIELDS
     with output_path.open("x", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=REVIEW_FIELDS)
+        writer = csv.DictWriter(stream, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
-    return {
+    summary = {
         "status": "synthetic_protocol_sample" if graph.is_synthetic else "review_form_prepared",
         "method_version": METHOD_VERSION,
+        "review_design": audit.get("review_design", "double_review"),
         "graph_version": graph.graph_version,
         "is_synthetic": graph.is_synthetic,
         "graph_sha256": graph_sha,
         "quality_config_sha256": config_sha,
         "readiness_sha256": readiness_sha,
+        "size_gates": size_gates,
         "frame_sha256": frame_sha,
         "audit_id": audit_id,
         "global_sample_size": len(global_ids),
@@ -246,6 +313,21 @@ def prepare_edge_audit_sample(
         "reviewer_ids_and_decisions": "not_supplied",
         "release_audit_performed": False,
     }
+    if split:
+        sheet_meta = {"audit_id": audit_id, "graph_version": graph.graph_version, "reviewer_ids": audit["reviewer_ids"]}
+        sheet_rows = [
+            {"review": {key: value for key, value in row.items() if key != "_links"},
+             "context": {key: row[key] for key in CONTEXT_FIELDS}, "links": row["_links"]}
+            for row in rows
+        ]
+        html_path.write_text(render_html(sheet_meta, SPLIT_FIELDS, sheet_rows), encoding="utf-8")
+        summary.update({
+            "review_sheet": str(html_path),
+            "overlap_sample_size": sum(len(a) == 2 for a in assignments.values()),
+            "assigned_rows_per_reviewer": dict(Counter(row["reviewer_id"] for row in rows)),
+            "form_rows": len(rows),
+        })
+    return summary
 
 
 def _parse_bool(value: str, field: str) -> str:
@@ -265,6 +347,27 @@ def _decision_from_checks(row: dict) -> str:
     if "unknown" in checks:
         return "unverifiable"
     return "correct"
+
+
+def _review_decision(row: dict, split: bool) -> tuple[str, str]:
+    """Return (decision, error_category) for one review row, enforcing internal consistency."""
+    checks = [row.get(field, "").strip() for field in CHECK_FIELDS]
+    if split and not any(checks):
+        # The release design records the verdict directly; the four legacy checks may stay blank.
+        decision = row["decision"].strip().lower()
+        if decision not in VERDICTS:
+            raise ValueError("review decision must be correct, incorrect, or unverifiable")
+    else:
+        decision = _decision_from_checks(row)
+        if row["decision"].strip().lower() != decision:
+            raise ValueError("review decision conflicts with the four recorded review checks")
+    category = row.get("error_category", "").strip().lower()
+    if split:
+        if decision == "correct" and category:
+            raise ValueError("error_category must be blank for a correct decision")
+        if decision != "correct" and category not in ERROR_CATEGORIES:
+            raise ValueError("incorrect/unverifiable decisions need an error_category from " + ", ".join(ERROR_CATEGORIES))
+    return decision, category
 
 
 def _load_csv(path: Path | None, fields: list[str]) -> list[dict]:
@@ -301,7 +404,7 @@ def evaluate_edge_audit(
     config, audit = _load_quality(config_path)
     config_sha = hashlib.sha256(config_path.read_bytes()).hexdigest()
     readiness_sha = _check_readiness(readiness_path, graph, graph_bytes)
-    _check_release_size(graph, config)
+    size_gates = _size_gates(graph, config)
     ids_by_relation, type_samples, global_ids, frame_sha, audit_id = _expected_samples(graph, audit, config_sha, readiness_sha)
     graph_sha = hashlib.sha256(graph_bytes).hexdigest()
     if not graph.is_synthetic:
@@ -313,6 +416,8 @@ def evaluate_edge_audit(
     type_sets = {relation: set(ids) for relation, ids in type_samples.items()}
     relation_for_edge = {edge_id: relation for relation, ids in ids_by_relation.items() for edge_id in ids}
     expected_union = global_set.union(*(type_sets.values() or [set()]))
+    split = audit.get("review_design", "double_review") == "split_with_overlap"
+    assignments = _assignments(audit, global_ids, expected_union) if split else {}
     reviews = _load_csv(reviews_path, REVIEW_FIELDS)
     if not reviews:
         raise ValueError("review packet contains no review rows")
@@ -343,25 +448,32 @@ def evaluate_edge_audit(
         if not reviewer_id:
             raise ValueError("reviewer_id is required; blank sample forms are not completed reviews")
         reviewer_ids.add(reviewer_id)
-        decision = _decision_from_checks(row)
-        if row["decision"].strip().lower() != decision:
-            raise ValueError("review decision conflicts with the four recorded review checks")
+        decision, category = _review_decision(row, split)
         reviewed_at = datetime.fromisoformat(row["reviewed_at"].strip().replace("Z", "+00:00"))
         if reviewed_at.tzinfo is None or not row["reason"].strip() and decision != "correct":
             raise ValueError("review timestamp needs a timezone; incorrect/unverifiable decisions need a reason")
-        row["_decision"] = decision
+        row["_decision"], row["_category"] = decision, category
         groups.setdefault(edge_id, []).append(row)
 
-    if len(reviewer_ids) != audit["independent_reviewers"]:
-        raise ValueError("review packet must contain exactly the configured number of distinct reviewer IDs")
-    for edge_id in expected_union:
-        edge_rows = groups.get(edge_id, [])
-        ids = [row["reviewer_id"].strip() for row in edge_rows]
-        if len(edge_rows) != 2 or len(set(ids)) != 2 or set(ids) != reviewer_ids:
-            raise ValueError("every sampled edge must have exactly one review from each of two reviewers")
+    if split:
+        if not reviewer_ids <= set(audit["reviewer_ids"]):
+            raise ValueError("review packet contains a reviewer ID outside audit.reviewer_ids")
+        for edge_id in expected_union:
+            given = sorted(row["reviewer_id"].strip() for row in groups.get(edge_id, []))
+            if given != sorted(assignments[edge_id]):
+                raise ValueError("review rows do not match the frozen reviewer assignment for every sampled edge")
+    else:
+        if len(reviewer_ids) != audit["independent_reviewers"]:
+            raise ValueError("review packet must contain exactly the configured number of distinct reviewer IDs")
+        for edge_id in expected_union:
+            edge_rows = groups.get(edge_id, [])
+            ids = [row["reviewer_id"].strip() for row in edge_rows]
+            if len(edge_rows) != 2 or len(set(ids)) != 2 or set(ids) != reviewer_ids:
+                raise ValueError("every sampled edge must have exactly one review from each of two reviewers")
 
     adjudications = _load_csv(adjudications_path, ADJUDICATION_FIELDS)
     adjudication_by_edge = {}
+    adjudication_category = {}
     for row in adjudications:
         edge_id = row["edge_id"].strip()
         if edge_id not in expected_union or edge_id in adjudication_by_edge:
@@ -385,19 +497,33 @@ def evaluate_edge_audit(
         if timestamp.tzinfo is None:
             raise ValueError("adjudication timestamp needs a timezone")
         adjudication_by_edge[edge_id] = decision
+        adjudication_category[edge_id] = row.get("error_category", "").strip().lower()
 
     final_decisions = {}
+    final_category = {}
+    paired = []
     for edge_id, rows in groups.items():
+        rows.sort(key=lambda item: item["reviewer_id"].strip())
+        if len(rows) == 1:
+            if edge_id in adjudication_by_edge:
+                raise ValueError("adjudication supplied for an edge without reviewer disagreement")
+            final_decisions[edge_id], final_category[edge_id] = rows[0]["_decision"], rows[0]["_category"]
+            continue
         decisions = [row["_decision"] for row in rows]
+        paired.append((decisions[0], decisions[1]))
         if decisions[0] == decisions[1]:
             if edge_id in adjudication_by_edge:
                 raise ValueError("agreed reviews must not have an adjudication row")
             final_decisions[edge_id] = decisions[0]
+            final_category[edge_id] = next((row["_category"] for row in rows if row["_category"]), "")
         else:
             if edge_id not in adjudication_by_edge:
                 raise ValueError("review disagreement requires one adjudication")
             final_decisions[edge_id] = adjudication_by_edge[edge_id]
-    unexpected_adjudications = set(adjudication_by_edge) - {edge_id for edge_id, rows in groups.items() if rows[0]["_decision"] != rows[1]["_decision"]}
+            final_category[edge_id] = adjudication_category[edge_id] or next(
+                (row["_category"] for row in rows if row["_category"]), "")
+    unexpected_adjudications = set(adjudication_by_edge) - {
+        edge_id for edge_id, rows in groups.items() if len(rows) == 2 and rows[0]["_decision"] != rows[1]["_decision"]}
     if unexpected_adjudications:
         raise ValueError("adjudication supplied for an edge without reviewer disagreement")
 
@@ -434,6 +560,29 @@ def evaluate_edge_audit(
         None if global_metric["wilson_95"] is None
         else global_metric["wilson_95"]["wilson_lower"] > audit["wilson_lower_bound_must_exceed"]
     )
+    # Course threshold (point estimate above 90%) is reported next to the project target.
+    course_threshold = audit.get("course_point_estimate_must_exceed")
+    course_gate = None if synthetic or course_threshold is None or global_metric["precision"] is None else {
+        "threshold": course_threshold,
+        "point_estimate": global_metric["precision"],
+        "status": "pass" if global_metric["precision"] > course_threshold else "fail",
+    }
+    agreed = sum(a == b for a, b in paired)
+    agreement = {
+        "edges_reviewed_by_both": len(paired),
+        "agreed": agreed,
+        "percent": agreed / len(paired) if paired else None,
+        "cohens_kappa": cohens_kappa(paired),
+        "kappa_note": None if cohens_kappa(paired) is not None or not paired
+        else "undefined: both reviewers used a single category on every overlap edge",
+    }
+
+    def categories(edge_ids: set[str]) -> dict:
+        counts = Counter(
+            final_category[edge_id] or ("unverifiable" if final_decisions[edge_id] == "unverifiable" else "uncategorized")
+            for edge_id in edge_ids if final_decisions[edge_id] != "correct"
+        )
+        return dict(sorted(counts.items()))
     score_status = (
         "not_applicable_synthetic" if synthetic
         else "pass" if point_pass and interval_pass
@@ -448,7 +597,9 @@ def evaluate_edge_audit(
         "reviewer_identity_status": "input_declared_not_independently_verified",
         "input_sha256": hashlib.sha256(graph_bytes).hexdigest(),
         "config_sha256": config_sha,
+        "review_design": audit.get("review_design", "double_review"),
         "readiness_sha256": readiness_sha,
+        "size_gates": size_gates,
         "review_packet_sha256": hashlib.sha256(reviews_path.read_bytes()).hexdigest(),
         "adjudication_packet_sha256": hashlib.sha256(adjudications_path.read_bytes()).hexdigest() if adjudications_path else None,
         "frame_sha256": frame_sha,
@@ -460,12 +611,17 @@ def evaluate_edge_audit(
         "numeric_gate_status": score_status,
         "global_point_precision_gate": None if synthetic else point_pass,
         "global_wilson_lower_gate": None if synthetic else interval_pass,
+        "course_gate": course_gate,
+        "agreement": agreement,
+        "error_categories": {"global_sample": categories(global_set), "all_sampled_edges": categories(set(final_decisions))},
         "sampled_global_edge_ids": len(global_set),
         "sampled_type_edge_ids": {relation: len(ids) for relation, ids in type_sets.items()},
         "reviewers": sorted(reviewer_ids),
+        "review_rows_per_reviewer": dict(sorted(Counter(row["reviewer_id"].strip() for row in reviews).items())),
         "limitations": [
             "The command checks packet structure and reports supplied judgments; it cannot verify reviewer identity or independence.",
             "Unverifiable edges count as incorrect. Per-type supplements are separate from the uniform global estimate.",
+            *(["Under split_with_overlap only the overlap edges were reviewed by both reviewers; agreement is measured on those, and every other sampled edge was judged by one reviewer."] if split else []),
             "Synthetic fixtures are protocol tests only and cannot support scientific or release claims.",
         ],
     }

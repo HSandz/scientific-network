@@ -152,24 +152,65 @@ def test_disagreement_requires_adjudication_and_unverifiable_is_not_correct(tmp_
     assert result["global"]["unverifiable"] + result["global"]["incorrect"] >= 1
 
 
-def test_non_synthetic_sample_requires_post_build_readiness_receipt(tmp_path):
+def _real_graph(tmp_path, *, drop_relation: str | None = None) -> Path:
     artifact = json.loads(GRAPH.read_text())
     artifact["is_synthetic"] = False
+    if drop_relation:
+        artifact["edges"] = [e for e in artifact["edges"] if e["relation"] != drop_relation]
     graph = tmp_path / "graph.json"
     graph.write_text(json.dumps(artifact))
+    return graph
+
+
+def test_real_graph_sample_needs_no_readiness_receipt_and_records_failed_size_gates(tmp_path, capsys):
+    graph = _real_graph(tmp_path)
     config = _config(tmp_path / "quality.yaml")
     output = tmp_path / "sample.csv"
-    assert main([
-        "freeze-audit-sample", "--input", str(graph), "--config", str(config),
-        "--output", str(output),
-    ]) == 1
-    assert not output.exists()
+    assert main(["freeze-audit-sample", "--input", str(graph), "--config", str(config),
+                 "--output", str(output)]) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["status"] == "review_form_prepared"
+    assert result["readiness_sha256"] is None
+    assert result["size_gates"]["status"] == "failed"
+    gates = result["size_gates"]["gates"]
+    assert gates["min_domain_nodes"] == {"required": 2000, "actual": 14, "status": "failed"}
+    assert gates["required_relation_types"] == {"required": 10, "actual": 10, "status": "passed"}
+    with output.open(newline="", encoding="utf-8") as stream:
+        rows = list(csv.DictReader(stream))
+    assert rows and all(row["readiness_sha256"] == "" for row in rows)
+
+
+def test_size_gates_are_recorded_as_passed_when_thresholds_are_met(tmp_path, capsys):
+    graph = _real_graph(tmp_path)
+    config = _config(tmp_path / "quality.yaml")
+    value = yaml.safe_load(config.read_text())
+    value["size"].update(min_domain_nodes=14, min_resolved_core_researchers=5,
+                         min_unique_factual_edges=16, required_relation_types=10)
+    config.write_text(yaml.safe_dump(value))
+    assert main(["freeze-audit-sample", "--input", str(graph), "--config", str(config),
+                 "--output", str(tmp_path / "sample.csv")]) == 0
+    assert json.loads(capsys.readouterr().out)["size_gates"]["status"] == "passed"
+
+
+def test_empty_relation_is_sampled_around_not_a_reason_to_stop(tmp_path, capsys):
+    graph = _real_graph(tmp_path, drop_relation="CITES")
+    config = _config(tmp_path / "quality.yaml")
+    output = tmp_path / "sample.csv"
+    assert main(["freeze-audit-sample", "--input", str(graph), "--config", str(config),
+                 "--output", str(output)]) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert "CITES" not in result["per_type_sample_sizes"]
+    assert result["size_gates"]["gates"]["required_relation_types"]["status"] == "failed"
+
+
+def test_a_supplied_readiness_receipt_must_still_match_the_graph(tmp_path):
+    graph = _real_graph(tmp_path)
+    config = _config(tmp_path / "quality.yaml")
+    output = tmp_path / "sample.csv"
     readiness = tmp_path / "readiness.json"
     readiness.write_text("[]")
-    assert main([
-        "freeze-audit-sample", "--input", str(graph), "--config", str(config),
-        "--readiness", str(readiness), "--output", str(output),
-    ]) == 1
+    assert main(["freeze-audit-sample", "--input", str(graph), "--config", str(config),
+                 "--readiness", str(readiness), "--output", str(output)]) == 1
     assert not output.exists()
 
 

@@ -12,6 +12,7 @@ project completion. Dates use Asia/Bangkok (UTC+07:00).
 
 | ID | Task | Status | Outcome |
 | --- | --- | --- | --- |
+| [WORK-2026-11-08-026](2026-11-08-026-release-phase-1-tooling.md) | Release Phase 1: tooling fixes | completed | Validator indexed (10k papers 0.28 s, was quadratic); labeled, batched loader with release-port guard (10k-paper invented graph loads in 19 s on a throwaway server); no readiness locks, size gates recorded; split-with-overlap audit with HTML review sheet; 273 passed / 1 skipped |
 | [WORK-2026-11-08-025](2026-11-08-025-release-phase-0-housekeeping.md) | Release Phase 0: housekeeping | completed | `neo4j-five-year` service and `release-v1`, `quality-release-v1`, `analysis-release-v1` configs added; compose validated, service not started; 224 passed / 1 skipped |
 | [WORK-2026-11-08-024](2026-11-08-024-release-plan-reset.md) | Independent review and release plan reset | completed | D040 and [release plan](../release-plan.md): AAAI + IJCAI 2021–2025 graph via DOI-matched OpenAlex evidence, feasible audit; source closure stopped; AGENTS.md and status replaced (old status archived); no code or data changes |
 | [WORK-2026-11-08-023](2026-11-08-023-recsys-2025-browser-source-audit.md) | P01 RecSys 2025 browser source audit | cancelled | Stopped by the user; raw captures left unanalyzed in ignored run artifacts; superseded by D040; v10 unchanged |

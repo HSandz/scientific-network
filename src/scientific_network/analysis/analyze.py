@@ -1,9 +1,10 @@
 """Deterministic descriptive analysis for versioned graph artifacts.
 
 Synthetic graphs are supported for protocol checks only. Real graphs require a
-matching post-build readiness receipt and a frozen analysis/evidence-sensitivity
-configuration. This module does not produce source-backed business findings or
-certify semantic quality.
+frozen analysis/evidence-sensitivity configuration; the quality-config size gates are
+computed and recorded as passed or failed (D040), and a readiness receipt is optional.
+This module does not produce source-backed business findings or certify semantic
+quality.
 """
 
 from datetime import datetime, timezone
@@ -130,7 +131,8 @@ def _validate_readiness(path: Path | None, graph: GraphArtifact, graph_raw: byte
     return raw
 
 
-def _validate_quality_size(graph: GraphArtifact, path: Path) -> tuple[dict, bytes]:
+def _size_gates(graph: GraphArtifact, path: Path) -> tuple[dict, bytes, dict]:
+    """Compute the quality-config size gates. Each is recorded as passed or failed, never raised."""
     raw = path.read_bytes()
     config = yaml.safe_load(raw)
     size = config.get("size") if isinstance(config, dict) else None
@@ -151,7 +153,7 @@ def _validate_quality_size(graph: GraphArtifact, path: Path) -> tuple[dict, byte
         "min_unique_factual_edges": counts["unique_core_factual_edges"],
         "required_relation_types": len(counts["edges_by_relation"]),
     }
-    checks = {
+    passed = {
         "min_domain_nodes": actual["min_domain_nodes"] >= size["min_domain_nodes"],
         "min_resolved_core_researchers": actual["min_resolved_core_researchers"] >= size["min_resolved_core_researchers"],
         "min_unique_factual_edges": actual["min_unique_factual_edges"] >= size["min_unique_factual_edges"],
@@ -160,11 +162,12 @@ def _validate_quality_size(graph: GraphArtifact, path: Path) -> tuple[dict, byte
             and actual["required_relation_types"] == len(Relation)
         ),
     }
-    failed = [key for key, passed in checks.items() if not passed]
-    if failed:
-        details = ", ".join(f"{key}={actual[key]}/{size[key]}" for key in failed)
-        raise ValueError("post-build graph fails configured size gates: " + details)
-    return config, raw
+    gates = {
+        key: {"required": size[key], "actual": actual[key], "status": "passed" if passed[key] else "failed"}
+        for key in required
+    }
+    summary = {"status": "passed" if all(passed.values()) else "failed", "gates": gates}
+    return config, raw, summary
 
 
 def _projection_graph(
@@ -556,6 +559,7 @@ def analyze_graph(
     config, config_raw = _load_config(config_path)
     readiness_raw = None
     quality_raw = None
+    size_gates = None
     if not graph.is_synthetic:
         if config["status"] != "frozen":
             raise ValueError("real-graph analysis requires a frozen analysis configuration")
@@ -566,8 +570,12 @@ def analyze_graph(
             raise ValueError("real-graph analysis requires a frozen strict evidence-filter specification")
         if quality_config_path is None:
             raise ValueError("a quality config is required for non-synthetic analysis")
-        _, quality_raw = _validate_quality_size(graph, quality_config_path)
-        readiness_raw = _validate_readiness(readiness_path, graph, graph_raw)
+        # D040: a real graph needs neither a readiness receipt nor passing size gates.
+        # The gates are computed and recorded as passed or failed in the output; a
+        # historical receipt is still verified when one is supplied.
+        _, quality_raw, size_gates = _size_gates(graph, quality_config_path)
+        if readiness_path is not None:
+            readiness_raw = _validate_readiness(readiness_path, graph, graph_raw)
 
     projections = {}
     for name, spec in config["projections"].items():
@@ -602,6 +610,7 @@ def analyze_graph(
         "analysis_config_sha256": hashlib.sha256(config_raw).hexdigest(),
         "quality_config_sha256": hashlib.sha256(quality_raw).hexdigest() if quality_raw is not None else None,
         "readiness_sha256": hashlib.sha256(readiness_raw).hexdigest() if readiness_raw is not None else None,
+        "size_gates": size_gates,
         "run_at": datetime.now(timezone.utc).isoformat(),
         "graph_counts": graph_counts(graph),
         "projections": projections,
