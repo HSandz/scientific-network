@@ -12,6 +12,7 @@ project completion. Dates use Asia/Bangkok (UTC+07:00).
 
 | ID | Task | Status | Outcome |
 | --- | --- | --- | --- |
+| [WORK-2026-11-08-025](2026-11-08-025-release-phase-0-housekeeping.md) | Release Phase 0: housekeeping | completed | `neo4j-five-year` service and `release-v1`, `quality-release-v1`, `analysis-release-v1` configs added; compose validated, service not started; 224 passed / 1 skipped |
 | [WORK-2026-11-08-024](2026-11-08-024-release-plan-reset.md) | Independent review and release plan reset | completed | D040 and [release plan](../release-plan.md): AAAI + IJCAI 2021–2025 graph via DOI-matched OpenAlex evidence, feasible audit; source closure stopped; AGENTS.md and status replaced (old status archived); no code or data changes |
 | [WORK-2026-11-08-023](2026-11-08-023-recsys-2025-browser-source-audit.md) | P01 RecSys 2025 browser source audit | cancelled | Stopped by the user; raw captures left unanalyzed in ignored run artifacts; superseded by D040; v10 unchanged |
 | [WORK-2026-11-08-022](2026-11-08-022-cikm-2025-browser-source-capture.md) | P01 CIKM 2025 browser source capture | partial | Captured five official pages; 827 accepted IDs versus 852 proceedings links, incomplete title/byline crosswalk and reuse terms; D039 keeps v10 unchanged; Sites helper failed before checkout, Site remains v18 |

@@ -1,0 +1,67 @@
+# Release scope, inputs and paths for the 11 November 2026 submission (D040).
+# Rules and rationale: docs/release-plan.md. Edit only with a dated D040 amendment.
+version: release-v1
+decision: D040
+
+scope:
+  venues: [venue:aaai, venue:ijcai]
+  years: [2021, 2022, 2023, 2024, 2025]
+  roster_status: included
+  expected_papers: 13617
+  expected_papers_by_venue_year:
+    venue:aaai: {2021: 1654, 2022: 1319, 2023: 1578, 2024: 2331, 2025: 3028}
+    venue:ijcai: {2021: 586, 2022: 678, 2023: 639, 2024: 790, 2025: 1014}
+
+# Roster v10 is final for this release: no edition, roster, source-route or rights
+# audits. The manifest is local, gitignored and rebuildable from the config below.
+roster:
+  config: configs/corpus-five-year-v10.yaml
+  manifest: data/manifests/five-year-roster-v10/corpus_manifest.jsonl
+  sha256: 84ff8ca78073e5d5e0d94f909aac63d18d71435cbd60f30630b7c3090b3c1cbe
+  held_out_membership: data/manifests/five-year-splits-v1/membership.jsonl
+
+openalex:
+  base_url: https://api.openalex.org
+  works_path: /works
+  rate_limit_path: /rate-limit
+  api_key_env: OPENALEX_API_KEY     # read from the environment or ignored .env; never logged
+  batch_size: 50                    # DOIs per filter=doi:a|b|... request
+  singleton_retry: true             # GET /works/doi:<doi> once for DOIs missing from a batch
+  select:
+    - id
+    - doi
+    - title
+    - publication_year
+    - authorships
+    - abstract_inverted_index
+    - referenced_works
+
+# Evidence rules (release plan section 2.2).
+matching:
+  title_similarity_accept: 0.9      # normalized-title similarity; below this goes to review
+  author_count_must_agree: true
+  paper_level_copy_guard:           # one set of institutions copied to every author
+    min_authors: 3
+    min_institutions: 2
+  not_found_reporting_threshold: 0.05
+
+neo4j:
+  service: neo4j-five-year          # compose profile five-year; NEO4J_URI overrides the default
+  default_uri: bolt://localhost:7689
+
+paths:
+  cache_dir: data/raw/openalex-release-v1
+  works: data/interim/release-v1/works.jsonl
+  acquisition_report: reports/release-v1/acquisition.json
+  graph_v1_dir: data/processed/release-graph-v1
+  graph_v2_dir: data/processed/release-graph-v2
+  graph_summary: reports/release-v1/graph-summary.json
+  reports_dir: reports/release-v1
+  audit_dir: reports/release-v1/audit
+  topic_test_manifest: data/manifests/release-v1/topic-test.jsonl
+  final_report_dir: reports/final-report
+
+configs:
+  quality: configs/quality-release-v1.yaml
+  analysis: configs/analysis-release-v1.yaml
+  topics: configs/topics-release-v1.yaml   # created in Phase 5, before test papers are inspected
