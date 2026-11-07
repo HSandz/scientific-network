@@ -754,3 +754,13 @@ phase 1; record any amendment here with its date.
     wrong `PUBLISHED_IN` or `SUBTOPIC_OF` edge has a valid category. `double_review`
     stays the default when `audit.review_design` is absent, so older configs and
     fixtures behave as before.
+- **2026-11-08 — duplicate OpenAlex records for one DOI
+  ([WORK-2026-11-08-027](work-log/2026-11-08-027-release-phase-2-openalex-acquisition.md)).**
+  In the full acquisition 330 of 13,617 DOIs returned two works: one crawled from the
+  official page and one merged from Crossref and arXiv. Among duplicates that pass the
+  title (at least 0.9) and author-count checks, the single record whose landing page equals
+  the roster official URL is chosen; the others are kept as alternates and whether their
+  author IDs agree is recorded. Any other duplicate stays in review (9 papers). The
+  OpenAlex `select` gained `type` and `primary_location` to make this possible, which
+  extends the field list in release plan section 8.2. Alternate IDs also resolve CITES
+  targets, so a reference to the merged record still reaches the paper.

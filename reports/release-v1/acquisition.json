@@ -1,0 +1,132 @@
+{
+  "stage": "release-acquire",
+  "method_version": "release-openalex-v1",
+  "config_version": "release-v1",
+  "config_sha256": "40c8461a1ddd426e02b4cb10d2260fc4a98b4c4638e7abfc53f8860f4aedb5eb",
+  "roster_sha256": "84ff8ca78073e5d5e0d94f909aac63d18d71435cbd60f30630b7c3090b3c1cbe",
+  "run_started_at": "2026-11-07T20:24:16.728735+00:00",
+  "completed_at": "2026-11-07T20:31:28.415566+00:00",
+  "papers": 13617,
+  "matched": 13606,
+  "matched_with_title_flag": 2,
+  "review": 11,
+  "not_found": 0,
+  "match_rate": 0.9992,
+  "failure_reasons": {
+    "author_count_mismatch": 2,
+    "duplicate_doi_works": 9
+  },
+  "duplicate_doi_works": {
+    "resolved_by_official_landing_page": 264,
+    "resolved_with_differing_author_ids": 66,
+    "left_in_review": 9
+  },
+  "by_venue_year": {
+    "venue:aaai:2021": {
+      "papers": 1654,
+      "matched": 1648,
+      "review": 6,
+      "match_rate": 0.9964
+    },
+    "venue:aaai:2022": {
+      "papers": 1319,
+      "matched": 1317,
+      "review": 2,
+      "match_rate": 0.9985
+    },
+    "venue:aaai:2023": {
+      "papers": 1578,
+      "matched": 1577,
+      "matched_with_title_flag": 1,
+      "review": 1,
+      "match_rate": 0.9994
+    },
+    "venue:aaai:2024": {
+      "papers": 2331,
+      "matched": 2331,
+      "match_rate": 1.0
+    },
+    "venue:aaai:2025": {
+      "papers": 3028,
+      "matched": 3027,
+      "review": 1,
+      "matched_with_title_flag": 1,
+      "match_rate": 0.9997
+    },
+    "venue:ijcai:2021": {
+      "papers": 586,
+      "matched": 585,
+      "review": 1,
+      "match_rate": 0.9983
+    },
+    "venue:ijcai:2022": {
+      "papers": 678,
+      "matched": 678,
+      "match_rate": 1.0
+    },
+    "venue:ijcai:2023": {
+      "papers": 639,
+      "matched": 639,
+      "match_rate": 1.0
+    },
+    "venue:ijcai:2024": {
+      "papers": 790,
+      "matched": 790,
+      "match_rate": 1.0
+    },
+    "venue:ijcai:2025": {
+      "papers": 1014,
+      "matched": 1014,
+      "match_rate": 1.0
+    }
+  },
+  "publication_year_differs_from_roster": 1,
+  "with_abstract": 13606,
+  "requests": {
+    "batch_network": 337,
+    "singleton_network": 7
+  },
+  "singleton_retries": 7,
+  "allowance": {
+    "before": {
+      "daily_budget_usd": 1,
+      "daily_used_usd": 0.0004,
+      "daily_remaining_usd": 0.9996,
+      "credits_remaining": 9996,
+      "list_cost_usd": 0.0001,
+      "singleton_cost_usd": 0,
+      "list_cost_credits": 1,
+      "resets_at": "2026-11-08T00:00:00.000Z",
+      "checked_at": "2026-11-07T20:24:17.070744+00:00"
+    },
+    "worst_case_authorized": {
+      "worst_case_batch_cost_usd": 0.1092,
+      "batches": 273,
+      "attempts_assumed": 4
+    },
+    "after": {
+      "daily_budget_usd": 1,
+      "daily_used_usd": 0.0341,
+      "daily_remaining_usd": 0.9659,
+      "credits_remaining": 9659,
+      "list_cost_usd": 0.0001,
+      "singleton_cost_usd": 0,
+      "list_cost_credits": 1,
+      "resets_at": "2026-11-08T00:00:00.000Z",
+      "checked_at": "2026-11-07T20:31:28.410779+00:00"
+    },
+    "used_this_run_usd": 0.0337
+  },
+  "openalex_select": [
+    "id",
+    "doi",
+    "title",
+    "publication_year",
+    "authorships",
+    "abstract_inverted_index",
+    "referenced_works",
+    "type",
+    "primary_location"
+  ],
+  "works_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+}

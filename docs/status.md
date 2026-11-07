@@ -1,17 +1,18 @@
 # Current project status
 
-Updated: **2026-11-08 03:30 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 03:40 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
 History before D040: [archived status](reference/status-archive-2026-11-08.md) and the [work log](work-log/README.md).
-Latest entry: [WORK-2026-11-08-026](work-log/2026-11-08-026-release-phase-1-tooling.md).
+Latest entry: [WORK-2026-11-08-027](work-log/2026-11-08-027-release-phase-2-openalex-acquisition.md).
 
 ## State
 
 - Release scope: AAAI + IJCAI 2021–2025, 13,617 papers from roster v10. Roster and
   source work is closed for this release.
+- OpenAlex acquisition done: 13,606 of 13,617 papers matched (`reports/release-v1/acquisition.json`).
 - No release graph exists yet. The pilot (154/211), 2023 diagnostic (399/533) and
   candidate (402/538) graphs are historical diagnostics only.
-- Tests: 273 passed, 1 skipped (WORK-026).
+- Tests: 343 passed, 1 skipped (WORK-027).
 - Services: `neo4j`, `neo4j-extended` and `grobid` stopped; `neo4j-five-year` is
   defined in `compose.yaml` but not started (Phase 4).
 - Release configs: `configs/release-v1.yaml`, `quality-release-v1.yaml`,
@@ -21,7 +22,7 @@ Latest entry: [WORK-2026-11-08-026](work-log/2026-11-08-026-release-phase-1-tool
 
 - [x] P0 Housekeeping: old services stopped; `neo4j-five-year` service defined; release configs created
 - [x] P1 Tooling fixes: validator indexed; loader labeled and batched; receipt locks removed; split-with-overlap review; tests pass
-- [ ] P2 OpenAlex acquisition: `works.jsonl` and `acquisition.json`; match rate reported (**CP1**, Sun 14:00)
+- [x] P2 OpenAlex acquisition: `works.jsonl` and `acquisition.json`; match rate reported (**CP1**, Sun 14:00)
 - [ ] P3 Graph v1: all ten relations, validated, `graph-summary.json`
 - [ ] P4 Neo4j: loaded, integrity clean, re-import idempotent (**CP2**, Sun 22:00)
 - [ ] P5 Topics: test set frozen first; classifier frozen; graph v2 loaded; label sheet ready
@@ -33,9 +34,8 @@ Latest entry: [WORK-2026-11-08-026](work-log/2026-11-08-026-release-phase-1-tool
 
 ## Next action
 
-Phase 2 (OpenAlex acquisition): derive DOIs from roster v10, preflight the
-OpenAlex allowance, fetch through `SourceCache`, write `works.jsonl` and
-`reports/release-v1/acquisition.json`, report the match rate (CP1).
+Phase 3: run `release-graph` on `works.jsonl` (builder and tests exist), check the name
+mismatch rate and memory, write `reports/release-v1/graph-summary.json`.
 
 ## Waiting on the user
 

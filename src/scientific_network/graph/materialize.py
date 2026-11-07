@@ -9,7 +9,8 @@ from scientific_network.graph.schema import edge_id
 
 
 def materialize(graph: GraphArtifact, researcher_min: int = 2, organization_min: int = 3) -> GraphArtifact:
-    graph = graph.model_copy(deep=True)
+    # Shallow copy: models are never mutated here, and edges/evidence are rebuilt as new lists below.
+    graph = graph.model_copy()
     graph.edges = [e for e in graph.edges if e.evidence_kind != "derived"]
     graph.evidence = [e for e in graph.evidence if e.kind != "derived"]
     base = {(e.relation, e.source_id, e.target_id): e.edge_id for e in graph.edges}

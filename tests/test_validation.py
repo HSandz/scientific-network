@@ -195,3 +195,13 @@ def test_validator_scales_linearly_on_a_10k_paper_invented_graph():
     # Measured 0.3 s on 8 Nov 2026; the old per-node edge scans took 7 s at 4k papers
     # and would need over 40 s here, so this bound catches a quadratic regression.
     assert elapsed < 5.0
+
+
+def test_materialize_leaves_its_input_graph_untouched(graph):
+    from scientific_network.graph.materialize import materialize
+
+    before = graph.model_dump_json()
+    rebuilt = materialize(graph)
+    assert graph.model_dump_json() == before
+    assert rebuilt is not graph and rebuilt.edges is not graph.edges and rebuilt.evidence is not graph.evidence
+    assert {e.edge_id for e in rebuilt.edges} == {e.edge_id for e in graph.edges}

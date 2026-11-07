@@ -99,3 +99,39 @@ conflicting official records and shared matched provider works require review.
 Normalized titles group potential leakage only, never establish work/person identity.
 The current [workflow](extended-workflow.md) and [report](../reports/extended-v1.md)
 identify active versions; older outputs remain reproducibility/diagnostic artifacts.
+
+## Release data conventions (D040)
+
+`data/interim/release-v1/works.jsonl` (ignored) has one row per roster paper in scope:
+`paper_id`, `venue_id`, `year`, `track`, the derived `doi`, a `roster` copy of the fields
+used later (title, byline, URLs, source hash and locator), a `match` object
+(`status` of `matched`, `review` or `not_found`, `reasons`, `flags`, title similarity,
+author counts) and, when a work was chosen, an `openalex` object (ID, type, landing page,
+authorships as returned, referenced works, reconstructed abstract, the cache `source`
+with request ID, raw SHA-256 and locator, and any `alternates`). Unresolved duplicate
+works are kept only under `review_candidates`, never as evidence. Roster rows carry
+`issue_series` for AAAI DOIs. `reports/release-v1/acquisition.json` (tracked) holds the
+counts, match rate per venue-year, request and allowance accounting.
+
+Release graph conventions, written by `resolve/release.py`:
+
+- IDs: `researcher:openalex:A…`, `organization:I…`, roster `paper_id`, `venue:aaai`,
+  `venue:ijcai`, taxonomy topic IDs. Graph version `release-` plus 12 hex digits.
+- Paper properties: `year`, `official_url`, `pdf_url`, `track`, `is_core`,
+  `official_author_count`, `doi`, `openalex_id`, `topic_text` (`title_and_abstract` or
+  `title_only`) and, when no accepted authorship exists, `unresolved_author_reason`.
+  Abstracts stay in `works.jsonl`.
+- Researcher: `resolution_status`, `identity_method: openalex_author_id`, `openalex_id`,
+  `orcid` when present. Organization: `sector` from the OpenAlex type (education is
+  academia, company is industry, government, nonprofit, anything else unknown),
+  `openalex_id`, `ror`, `country_code`.
+- AUTHORED edge: `byline_position`, `roster_name`, `name_match` (`exact` or `initials`).
+  AFFILIATED_WITH edge: `support_paper_count` and up to five distinct
+  `raw_affiliation_strings`; paper-level detail is in the affiliation observations.
+- Evidence granularity: one record per (OpenAlex response, work) shared by that work's
+  AUTHORED, CITES and affiliation claims, with the cached response hash and a locator
+  such as `openalex-request:<id>#results[3]`; one roster record per paper for
+  PUBLISHED_IN; one literal-excerpt record per HAS_TOPIC edge.
+- `review-queue.jsonl` (ignored) lists every withheld claim with a `kind` and reason:
+  `work_not_accepted`, `author_position_withheld`, `authorships_withheld_for_paper`,
+  `author_id_conflicting_orcids`, `paper_level_affiliation_copy`.
