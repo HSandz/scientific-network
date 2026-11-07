@@ -16,6 +16,10 @@ import yaml
 class SourceError(RuntimeError):
     """Sanitized source failure: never includes a credential-bearing request URL."""
 
+    def __init__(self, message: str, status_code: int | None = None):
+        super().__init__(message)
+        self.status_code = status_code
+
 
 class QuotaError(SourceError):
     pass
@@ -112,7 +116,7 @@ class SourceCache:
                 time.sleep(wait)
                 continue
             if response.status_code != 200:
-                raise SourceError(f"{urlsplit(url).netloc}: HTTP {response.status_code}")
+                raise SourceError(f"{urlsplit(url).netloc}: HTTP {response.status_code}", response.status_code)
             body = response.content
             record = {**descriptor, "request_id": request_id, "sha256": digest(body),
                 "retrieved_at": datetime.now(timezone.utc).isoformat(),

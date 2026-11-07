@@ -35,6 +35,8 @@ openalex:
     - authorships
     - abstract_inverted_index
     - referenced_works
+    - type                  # added 2026-11-08: duplicate-DOI records differ in type and landing page
+    - primary_location
 
 # Evidence rules (release plan section 2.2).
 matching:

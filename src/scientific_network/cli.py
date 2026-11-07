@@ -46,6 +46,18 @@ def parser() -> argparse.ArgumentParser:
     corroborate = commands.add_parser("corroborate-diagnostics", help="bounded public-ORCID development support; no graph import")
     for name in ("input", "manifest", "splits", "reviews", "config", "output", "cache"):
         corroborate.add_argument("--"+name, type=Path, required=True)
+    release_acquire = commands.add_parser("release-acquire", help="D040 release Phase 2: match roster papers to OpenAlex works by derived DOI")
+    release_acquire.add_argument("--config", type=Path, required=True, help="configs/release-v1.yaml")
+    release_acquire.add_argument("--works", type=Path, help="override the works.jsonl path from the config")
+    release_acquire.add_argument("--report", type=Path, help="override the acquisition.json path from the config")
+    release_acquire.add_argument("--limit", type=int, help="trial run over the first N papers; writes no outputs")
+    release_acquire.add_argument("--preflight-only", action="store_true", help="check the OpenAlex allowance and stop")
+    release_graph = commands.add_parser("release-graph", help="D040 release Phase 3: build the release graph from the roster-matched OpenAlex works")
+    release_graph.add_argument("--config", type=Path, required=True, help="configs/release-v1.yaml")
+    release_graph.add_argument("--taxonomy", type=Path, default=Path("configs/topics.yaml"), help="taxonomy for the phrase-baseline topics")
+    release_graph.add_argument("--works", type=Path, help="override works.jsonl from the config")
+    release_graph.add_argument("--output-dir", type=Path, help="override the graph directory from the config (must be empty or absent)")
+    release_graph.add_argument("--summary", type=Path, help="override the tracked graph-summary path from the config")
     pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
     pregraph.add_argument("--config", type=Path, required=True)
     pregraph.add_argument("--output", type=Path, required=True)
@@ -208,6 +220,19 @@ def main(argv: list[str] | None = None) -> int:
             result = corroborate_diagnostics(args.input, args.manifest, args.splits, args.reviews,
                 args.config, args.output, args.cache)
             exit_code = int(result['review_queue_rows'] > 0 or result['collection_stopped'])
+        elif args.command == "release-acquire":
+            from scientific_network.collect.openalex_release import acquire as release_acquire
+            result = release_acquire(args.config, works_path=args.works, report_path=args.report,
+                                     limit=args.limit, preflight_only=args.preflight_only)
+            exit_code = 0
+        elif args.command == "release-graph":
+            from scientific_network.resolve.release import build_release_graph
+            release = yaml.safe_load(args.config.read_text())
+            paths = release["paths"]
+            result = build_release_graph(
+                args.works or Path(paths["works"]), args.config, args.taxonomy, Path(release["configs"]["quality"]),
+                args.output_dir or Path(paths["graph_v1_dir"]), args.summary or Path(paths["graph_summary"]))
+            exit_code = 0
         elif args.command == "prepare-pregraph":
             from scientific_network.preprocess.pregraph import prepare_pregraph
             result = prepare_pregraph(args.config, args.output)
