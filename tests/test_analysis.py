@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 GRAPH = ROOT / "tests/fixtures/synthetic_graph.json"
 ANALYSIS = ROOT / "configs/analysis.yaml"
 QUALITY = ROOT / "configs/quality.yaml"
+RELEASE_ANALYSIS = ROOT / "configs/analysis-release-v1.yaml"
+RELEASE_QUALITY = ROOT / "configs/quality-release-v1.yaml"
 
 
 def test_synthetic_analysis_emits_named_projections_without_release_claim(tmp_path):
@@ -76,7 +78,7 @@ def test_frozen_strict_filter_runs_sensitivity_comparison_on_synthetic_only(tmp_
     assert result["robustness"]["per_projection"]["researcher_collaboration"]["edge_retention_fraction"] == 0.0
 
 
-def test_non_synthetic_graph_requires_frozen_config_and_post_build_readiness(tmp_path, capsys):
+def test_non_synthetic_graph_requires_frozen_config_and_strict_filter(tmp_path, capsys):
     graph_value = json.loads(GRAPH.read_text())
     graph_value["is_synthetic"] = False
     graph = tmp_path / "graph.json"
@@ -110,3 +112,64 @@ def test_pagerank_power_iteration_handles_dangling_nodes():
     assert set(scores) == {"a", "b", "c"}
     assert all(score > 0 for score in scores.values())
     assert abs(sum(scores.values()) - 1.0) < 1e-12
+
+
+def _real_graph(tmp_path):
+    value = json.loads(GRAPH.read_text())
+    value["is_synthetic"] = False
+    path = tmp_path / "graph.json"
+    path.write_text(json.dumps(value))
+    return path
+
+
+def test_real_graph_analysis_needs_no_readiness_receipt_and_records_failed_size_gates(tmp_path):
+    output = tmp_path / "analysis.json"
+    result = analyze_graph(_real_graph(tmp_path), RELEASE_ANALYSIS, output, None, RELEASE_QUALITY)
+    assert result["status"] == "analysis_metrics_only"
+    assert result["release_status"] == "not_certified"
+    assert result["readiness_sha256"] is None
+    assert result["analysis_config_status"] == "frozen"
+    assert result["size_gates"]["status"] == "failed"
+    gates = result["size_gates"]["gates"]
+    assert gates["min_domain_nodes"] == {"required": 2000, "actual": 14, "status": "failed"}
+    assert gates["min_resolved_core_researchers"]["actual"] == 5
+    assert gates["required_relation_types"] == {"required": 10, "actual": 10, "status": "passed"}
+    # a failed gate is reported, and the analysis itself still ran
+    assert result["projections"]["researcher_collaboration"]["edge_count"] == 3
+    assert result["robustness"]["sensitivity_comparison"] == "computed"
+    assert json.loads(output.read_text())["size_gates"] == result["size_gates"]
+
+
+def test_real_graph_size_gates_pass_when_thresholds_are_met(tmp_path):
+    quality = yaml.safe_load(RELEASE_QUALITY.read_text())
+    quality["size"].update(min_domain_nodes=14, min_resolved_core_researchers=5,
+                           min_unique_factual_edges=16, required_relation_types=10)
+    quality_path = tmp_path / "quality.yaml"
+    quality_path.write_text(yaml.safe_dump(quality))
+    result = analyze_graph(_real_graph(tmp_path), RELEASE_ANALYSIS, tmp_path / "analysis.json", None, quality_path)
+    assert result["size_gates"]["status"] == "passed"
+    assert {gate["status"] for gate in result["size_gates"]["gates"].values()} == {"passed"}
+
+
+def test_real_graph_still_requires_a_quality_config_and_verifies_a_supplied_receipt(tmp_path):
+    graph = _real_graph(tmp_path)
+    try:
+        analyze_graph(graph, RELEASE_ANALYSIS, tmp_path / "a.json")
+    except ValueError as exc:
+        assert "quality config is required" in str(exc)
+    else:
+        raise AssertionError("expected a quality config requirement")
+    receipt = tmp_path / "readiness.json"
+    receipt.write_text("[]")
+    try:
+        analyze_graph(graph, RELEASE_ANALYSIS, tmp_path / "b.json", receipt, RELEASE_QUALITY)
+    except ValueError as exc:
+        assert "readiness receipt" in str(exc)
+    else:
+        raise AssertionError("a supplied receipt must still match")
+    assert not (tmp_path / "b.json").exists()
+
+
+def test_synthetic_analysis_does_not_compute_size_gates(tmp_path):
+    result = analyze_graph(GRAPH, ANALYSIS, tmp_path / "analysis.json", None, QUALITY)
+    assert result["size_gates"] is None

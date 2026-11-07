@@ -141,9 +141,11 @@ engine.
 - Current roster: `configs/corpus-five-year-v10.yaml` →
   `data/manifests/five-year-roster-v10/`. Frozen held-out assignments:
   `data/manifests/five-year-splits-v1/membership.jsonl`.
+- Release-plan phase 1 tooling fixes are done (WORK-2026-11-08-026): the validator
+  is indexed, the loader uses labeled `MATCH` and 5,000-row transactions and refuses
+  to put a release graph anywhere but port 7689, `analyze` and the audit commands need
+  no readiness receipt and record the size gates, and `audit.review_design:
+  split_with_overlap` writes a review CSV plus an HTML sheet.
 - To build, following the release plan: OpenAlex DOI acquisition, OpenAlex-based
   resolution, embedding topics, the isolated Neo4j load, release analysis and the
-  audit. Release-plan phase 1 fixes known issues first: the validator's per-paper
-  edge scans, the loader's unlabeled `MATCH` and single transaction, the
-  readiness-receipt locks in `analyze` and `freeze-audit-sample`, and the
-  two-reviews-per-edge requirement.
+  audit.

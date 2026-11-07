@@ -736,3 +736,21 @@ phase 1; record any amendment here with its date.
 - **Risks, disclosed in the report:** OpenAlex author disambiguation and
   institution assignment errors (measured by the audit), the single-review design,
   and the narrower venue coverage.
+
+### D040 amendments
+
+- **2026-11-08 — tooling choices in phase 1
+  ([WORK-2026-11-08-026](work-log/2026-11-08-026-release-phase-1-tooling.md)).**
+  These implement the release plan; none changes a §2 default.
+  - A graph versioned `release-…` can only be imported into bolt port 7689 (the
+    isolated `neo4j-five-year` service), and a non-release graph cannot use that
+    port. `.env` points `NEO4J_URI` at the pilot service, so a forgotten override
+    would otherwise write the release graph into the pilot database.
+  - `analyze`, `freeze-audit-sample` and `score-edge-audit` no longer require a
+    readiness receipt (one is still verified when supplied) and record each size
+    gate as passed or failed. A relation with no edges no longer aborts the audit
+    freeze; the empty relation shows up as a failed `required_relation_types` gate.
+  - The audit error categories are the five in release plan §5 plus `other`, so a
+    wrong `PUBLISHED_IN` or `SUBTOPIC_OF` edge has a valid category. `double_review`
+    stays the default when `audit.review_design` is absent, so older configs and
+    fixtures behave as before.

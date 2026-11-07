@@ -199,8 +199,9 @@ protocol-only, while real scoring requires a reserved test frame, frozen quality
 config and complete eligible-core coverage denominator. It cannot verify held-out
 membership, reviewer identity or independence, or certify a release. The final
 edge audit is a separate post-build workflow: `freeze-audit-sample` prepares a new
-hash-bound reviewer form for a synthetic fixture or a post-build-ready graph, and
-`score-edge-audit` checks two-review packets. `audit-precision` is a separate
+hash-bound reviewer form (plus an HTML review sheet under the release plan's
+split-with-overlap design), and `score-edge-audit` checks the completed review
+packets; see [release audit tooling](docs/evaluation.md#release-audit-tooling-d040-current-behaviour). `audit-precision` is a separate
 Wilson-interval utility, not an independent audit or an accuracy result.
 
 Start with the [expanded-scope roadmap](docs/roadmap.md). Both teammates' roles,
