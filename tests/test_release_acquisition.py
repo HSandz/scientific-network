@@ -454,3 +454,12 @@ def test_works_row_records_the_alternates_and_never_accepts_unresolved_duplicate
     report = json.loads((tmp_path / "acquisition.json").read_text())
     assert report["duplicate_doi_works"] == {"resolved_by_official_landing_page": 1,
                                              "resolved_with_differing_author_ids": 0, "left_in_review": 1}
+
+
+def test_jsonl_round_trip_survives_unicode_line_separators_inside_strings(tmp_path):
+    from scientific_network.collect.storage import read_jsonl, write_jsonl
+
+    rows = [{"abstract": "line one line two\x85and more", "n": 1}, {"abstract": "plain", "n": 2}]
+    path = tmp_path / "rows.jsonl"
+    write_jsonl(path, rows)
+    assert read_jsonl(path) == rows

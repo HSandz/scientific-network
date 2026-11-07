@@ -51,7 +51,8 @@ def write_json(path: Path, value) -> None:
 
 
 def read_jsonl(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    # Split on "\n" only: str.splitlines() also breaks at U+2028/U+0085, which JSON strings may contain raw.
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").split("\n") if line.strip()]
 
 
 def write_jsonl(path: Path, rows: list[dict]) -> None:

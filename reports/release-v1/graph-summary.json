@@ -1,0 +1,75 @@
+{
+  "stage": "release-graph",
+  "method_version": "release-openalex-graph-v1",
+  "topic_method": "literal-phrase-baseline-v2-text-provenance",
+  "graph_version": "release-8a734ce7d09a",
+  "inputs_sha256": {
+    "works": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "config": "40c8461a1ddd426e02b4cb10d2260fc4a98b4c4638e7abfc53f8860f4aedb5eb",
+    "taxonomy": "dadd9ddc125a8aca4c4d8c9ca408a5d1493934ab0630fce9b790b191c5bebe2d",
+    "quality": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f"
+  },
+  "graph_sha256": "cf2714379c4abf738597fbda8d069ce28e8a0d048ba50de1d07c4d4ea8d92d41",
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2030,
+      "Paper": 13617,
+      "Researcher": 34318,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "COAUTHORED_WITH": 103578,
+      "AFFILIATED_WITH": 41653,
+      "AUTHORED": 54670,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 14322,
+      "HAS_TOPIC": 6291,
+      "CITES": 7308,
+      "RESEARCHES_TOPIC": 2198,
+      "CONTRIBUTES_TO_TOPIC": 1131,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "derived": 121229,
+      "observed": 117248,
+      "inferred_topic": 6291,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 34318,
+    "unique_core_factual_edges": 117248
+  },
+  "papers": 13617,
+  "coverage": {
+    "papers_with_abstract": 13606,
+    "author_positions": 65469,
+    "author_positions_accepted": 54670,
+    "author_positions_withheld": 10799,
+    "accepted_authorships_with_institution": 52386,
+    "papers_topic_labeled": 5198
+  },
+  "name_matching": {
+    "initials_tolerant": false,
+    "exact": 54670,
+    "initials": 0
+  },
+  "citations": {
+    "reference_targets": 378360,
+    "reference_targets_out_of_scope": 370831,
+    "reference_targets_ambiguous": 0,
+    "reference_targets_self": 34
+  },
+  "review_queue": {
+    "author_position_withheld": 2778,
+    "authorships_withheld_for_paper": 1237,
+    "paper_level_affiliation_copy": 141,
+    "work_not_accepted": 11
+  },
+  "topic_decisions": {
+    "abstain_no_supported_phrase": 8411,
+    "abstain_too_many_candidate_labels": 8,
+    "phrase_baseline_unvalidated": 5198
+  },
+  "created_at": "2026-11-07T20:33:22.721507+00:00"
+}
