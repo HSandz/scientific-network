@@ -158,10 +158,10 @@ def test_a_missing_author_id_is_withheld_and_an_id_with_conflicting_orcids_is_wi
             row(2, ["Ann One"], [authorship("A1", "Ann One", orcid="https://orcid.org/0000-0002-0000-0002")])]
     graph, _, queue = build(tmp_path, rows)
     assert edges(graph, Relation.AUTHORED) == []
-    # paper 1 has two unusable positions (the conflicted ID and a missing ID), so all of it is withheld;
-    # paper 2 has only the conflicted ID, so just that position is withheld
-    assert sorted(q["kind"] for q in queue) == ["author_id_conflicting_orcids", "author_position_withheld",
-                                                 "authorships_withheld_for_paper"]
+    # names fit, so none of this suggests a misaligned byline: each position is withheld on its own
+    assert sorted(q["kind"] for q in queue) == ["author_id_conflicting_orcids"] + ["author_position_withheld"] * 3
+    assert sorted(q["reason"] for q in queue if q["kind"] == "author_position_withheld") == [
+        "author_id_conflicting_orcids", "author_id_conflicting_orcids", "no_author_id"]
     assert not any(n.id == "researcher:openalex:A1" for n in graph.nodes)
 
 
@@ -274,3 +274,18 @@ def test_command_line_builds_into_the_configured_directories(tmp_path, monkeypat
     assert main(["release-graph", "--config", str(path)]) == 0
     assert (tmp_path / "g/graph.json").is_file() and (tmp_path / "g/review-queue.jsonl").is_file() and (tmp_path / "summary.json").is_file()
     assert main(["validate", "--input", str(tmp_path / "g/graph.json"), "--config", str(QUALITY)]) in (0, 1)
+
+
+def test_authors_without_an_openalex_id_are_withheld_singly_and_do_not_sink_the_paper(tmp_path):
+    names = ["Ann One", "Bo Two", "Cy Three"]
+    rows = [row(1, names, [authorship("A1", "Ann One"), authorship(None, "Bo Two"), authorship(None, "Cy Three")])]
+    graph, summary, queue = build(tmp_path, rows)
+    assert [e.source_id for e in edges(graph, Relation.AUTHORED)] == ["researcher:openalex:A1"]
+    assert [q["reason"] for q in queue] == ["no_author_id", "no_author_id"]
+    assert summary["coverage"]["author_positions_withheld_by_reason"] == {"no_author_id": 2}
+    assert summary["coverage"]["papers_all_authorships_withheld"] == 0
+    assert "unresolved_author_reason" not in next(n for n in graph.nodes if n.id == "paper:aaai:2021:1").properties
+    # a missing ID together with a name that does not fit still counts as one incompatible name only
+    mixed = [row(2, names, [authorship("A1", "Ann One"), authorship(None, "Bo Two"), authorship("A3", "Someone Else")])]
+    graph, _, queue = build(tmp_path, mixed, name="mixed")
+    assert len(edges(graph, Relation.AUTHORED)) == 1 and sorted(q["reason"] for q in queue) == ["name_incompatible", "no_author_id"]

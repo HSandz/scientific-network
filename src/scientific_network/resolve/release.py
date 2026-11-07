@@ -215,30 +215,35 @@ def build_release_graph(
             evidence[work_evidence.id] = work_evidence
             authorships = oa["authorships"]
             positions = []        # (index, authorship, name_match_kind)
-            bad = []
+            unusable = []         # (index, reason): withheld one by one
+            bad_names = 0         # name-incompatible positions: evidence the byline is misaligned
             for index, (name, authorship) in enumerate(zip(roster["authors"], authorships)):
                 author_id = short_id((authorship.get("author") or {}).get("id"))
-                kind = name_match(name, authorship, allow_initials) if author_id else None
+                kind = name_match(name, authorship, allow_initials)
                 if kind is None:
-                    bad.append((index, "no_author_id" if author_id is None else "name_incompatible"))
+                    bad_names += 1
+                    unusable.append((index, "name_incompatible"))
+                elif author_id is None:
+                    unusable.append((index, "no_author_id"))        # name fits but OpenAlex has no ID: not a person node
                 elif author_id in conflicted:
-                    bad.append((index, "author_id_conflicting_orcids"))
+                    unusable.append((index, "author_id_conflicting_orcids"))
                 else:
                     positions.append((index, authorship, kind))
             ids = [short_id(a["author"]["id"]) for _, a, _ in positions]
-            if len(bad) > 1 or len(ids) != len(set(ids)):
-                withheld = "multiple_incompatible_positions" if len(bad) > 1 else "author_id_repeated_in_paper"
+            if bad_names > 1 or len(ids) != len(set(ids)):
+                withheld = "multiple_incompatible_positions" if bad_names > 1 else "author_id_repeated_in_paper"
                 review.append({"kind": "authorships_withheld_for_paper", "paper_id": paper_id, "reason": withheld,
-                               "positions": [{"position": i + 1, "reason": r} for i, r in bad]})
+                               "positions": [{"position": i + 1, "reason": r} for i, r in unusable]})
                 counters["papers_all_authorships_withheld"] += 1
                 counters["author_positions_withheld"] += len(authorships)
-                positions, bad = [], []
+                positions, unusable = [], []
                 reason = "authorships_withheld:" + withheld
-            elif bad:
-                for index, why in bad:
+            elif unusable:
+                for index, why in unusable:
                     review.append({"kind": "author_position_withheld", "paper_id": paper_id, "position": index + 1,
                                    "reason": why, "roster_name": roster["authors"][index]})
-                counters["author_positions_withheld"] += len(bad)
+                    counters["author_positions_withheld_" + why] += 1
+                counters["author_positions_withheld"] += len(unusable)
             counters["author_positions"] += len(authorships)
             counters["author_positions_accepted"] += len(positions)
             counters["author_positions_initials_match"] += sum(kind == "initials" for _, _, kind in positions)
@@ -386,6 +391,9 @@ def build_release_graph(
             "author_positions": counters["author_positions"],
             "author_positions_accepted": counters["author_positions_accepted"],
             "author_positions_withheld": counters["author_positions_withheld"],
+            "author_positions_withheld_by_reason": {k.removeprefix("author_positions_withheld_"): v for k, v in sorted(counters.items())
+                                                    if k.startswith("author_positions_withheld_")},
+            "papers_all_authorships_withheld": counters["papers_all_authorships_withheld"],
             "accepted_authorships_with_institution": counters["accepted_authorships_with_institution"],
             "papers_topic_labeled": counters["papers_topic_labeled"],
         },
