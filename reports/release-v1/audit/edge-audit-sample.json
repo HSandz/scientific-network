@@ -1,0 +1,62 @@
+{
+  "status": "review_form_prepared",
+  "method_version": "edge-audit-v1",
+  "review_design": "split_with_overlap",
+  "graph_version": "release-5d830ffcbdf4",
+  "is_synthetic": false,
+  "graph_sha256": "b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb",
+  "quality_config_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+  "readiness_sha256": null,
+  "size_gates": {
+    "status": "passed",
+    "gates": {
+      "min_domain_nodes": {
+        "required": 2000,
+        "actual": 52415,
+        "status": "passed"
+      },
+      "min_resolved_core_researchers": {
+        "required": 2000,
+        "actual": 36680,
+        "status": "passed"
+      },
+      "min_unique_factual_edges": {
+        "required": 5000,
+        "actual": 124619,
+        "status": "passed"
+      },
+      "required_relation_types": {
+        "required": 10,
+        "actual": 10,
+        "status": "passed"
+      }
+    }
+  },
+  "frame_sha256": "2e169f5eb9050440a69072989ee9870136ca6c7aa6f229465fb4cca154b91bbb",
+  "audit_id": "edge-audit:39f4b5fc58a5908b4d49e925",
+  "global_sample_size": 200,
+  "per_type_sample_sizes": {
+    "AUTHORED": 10,
+    "AFFILIATED_WITH": 10,
+    "PUBLISHED_IN": 10,
+    "CITES": 10,
+    "HAS_TOPIC": 10,
+    "SUBTOPIC_OF": 10,
+    "COAUTHORED_WITH": 10,
+    "COLLABORATED_WITH": 10,
+    "RESEARCHES_TOPIC": 10,
+    "CONTRIBUTES_TO_TOPIC": 10
+  },
+  "union_sample_size": 300,
+  "sampling_method": "seeded_sha256_rank_without_replacement",
+  "review_form": "reports/release-v1/audit/edge-review-sheet.csv",
+  "reviewer_ids_and_decisions": "not_supplied",
+  "release_audit_performed": false,
+  "review_sheet": "reports/release-v1/audit/edge-review-sheet.html",
+  "overlap_sample_size": 50,
+  "assigned_rows_per_reviewer": {
+    "B": 175,
+    "A": 175
+  },
+  "form_rows": 350
+}
