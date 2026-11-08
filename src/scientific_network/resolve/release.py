@@ -26,7 +26,7 @@ from scientific_network.graph.schema import edge_id
 from scientific_network.graph.validate import graph_counts, validate_graph
 from scientific_network.nlp.baseline import METHOD as TOPIC_METHOD, predict
 
-METHOD_VERSION = "release-openalex-graph-v1"
+METHOD_VERSION = "release-openalex-graph-v1.1"
 SECTOR = {"education": "academia", "company": "industry", "government": "government", "nonprofit": "nonprofit"}
 VENUES = {
     "venue:aaai": "AAAI Conference on Artificial Intelligence",
@@ -232,10 +232,16 @@ def build_release_graph(
             ids = [short_id(a["author"]["id"]) for _, a, _ in positions]
             if bad_names > 1 or len(ids) != len(set(ids)):
                 withheld = "multiple_incompatible_positions" if bad_names > 1 else "author_id_repeated_in_paper"
+                reasons_by_position = {index: why for index, why in unusable}
+                position_reviews = []
+                for index, name in enumerate(roster["authors"]):
+                    why = reasons_by_position.get(index, withheld)
+                    position_reviews.append({"position": index + 1, "reason": why, "roster_name": name})
+                    counters["author_positions_withheld_" + why] += 1
                 review.append({"kind": "authorships_withheld_for_paper", "paper_id": paper_id, "reason": withheld,
-                               "positions": [{"position": i + 1, "reason": r} for i, r in unusable]})
+                               "positions": position_reviews})
                 counters["papers_all_authorships_withheld"] += 1
-                counters["author_positions_withheld"] += len(authorships)
+                counters["author_positions_withheld"] += len(roster["authors"])
                 positions, unusable = [], []
                 reason = "authorships_withheld:" + withheld
             elif unusable:
@@ -375,16 +381,32 @@ def build_release_graph(
     if errors:
         raise ValueError("release graph failed structural validation: " + "; ".join(errors[:5]))
 
+    counts = graph_counts(graph)
+    size_targets = quality["size"]
+    domain_nodes = sum(counts["nodes_by_label"].values())
+    size_gates = {
+        "domain_nodes": {"status": "passed" if domain_nodes >= size_targets["min_domain_nodes"] else "failed",
+                         "observed": domain_nodes, "minimum": size_targets["min_domain_nodes"]},
+        "resolved_core_researchers": {
+            "status": "passed" if counts["resolved_core_researchers"] >= size_targets["min_resolved_core_researchers"] else "failed",
+            "observed": counts["resolved_core_researchers"], "minimum": size_targets["min_resolved_core_researchers"]},
+        "unique_core_factual_edges": {
+            "status": "passed" if counts["unique_core_factual_edges"] >= size_targets["min_unique_factual_edges"] else "failed",
+            "observed": counts["unique_core_factual_edges"], "minimum": size_targets["min_unique_factual_edges"]},
+        "all_relation_types_present": {
+            "status": "passed" if len(counts["edges_by_relation"]) == size_targets["required_relation_types"] else "failed",
+            "observed": len(counts["edges_by_relation"]), "required": size_targets["required_relation_types"]},
+    }
     output_dir.mkdir(parents=True, exist_ok=True)
     write_bytes(output_dir / "graph.json", (graph.model_dump_json() + "\n").encode("utf-8"))
     write_bytes(output_dir / "review-queue.jsonl",
                 "".join(json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n" for item in review).encode("utf-8"))
-    counts = graph_counts(graph)
     summary = {
         "stage": "release-graph", "method_version": METHOD_VERSION, "topic_method": TOPIC_METHOD,
         "graph_version": graph_version, "inputs_sha256": inputs,
         "graph_sha256": hashlib.sha256((output_dir / "graph.json").read_bytes()).hexdigest(),
         "counts": json.loads(json.dumps(counts, default=str)),
+        "size_gates": size_gates,
         "papers": len(accepted_papers) + counters["papers_unmatched"],
         "coverage": {
             "papers_with_abstract": counters["papers_with_abstract"],

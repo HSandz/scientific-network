@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-028](2026-11-08-028-release-phase-3-verification.md) | Release Phase 3: verify and rebuild graph v1 | completed | Structural validation and all size gates pass; 36,680 researchers, 124,619 factual edges, ten relations; Phase 4 awaits Docker Desktop WSL integration |
+
 Newest recorded entry first. Status describes the bounded task, not overall
 project completion. Dates use Asia/Bangkok (UTC+07:00).
 

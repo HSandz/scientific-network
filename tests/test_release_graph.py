@@ -83,6 +83,8 @@ def test_all_ten_relations_are_derived_from_accepted_evidence_and_validate(tmp_p
     assert graph.is_synthetic is False and graph.graph_version.startswith("release-") and len(graph.graph_version) == len("release-") + 12
     assert len(edges(graph, Relation.PUBLISHED_IN)) == 3 and len(edges(graph, Relation.AUTHORED)) == 6
     assert queue == [] and summary["review_queue"] == {}
+    assert summary["size_gates"]["all_relation_types_present"] == {"status": "passed", "observed": 10, "required": 10}
+    assert summary["size_gates"]["resolved_core_researchers"]["status"] == "failed"
     paper = next(n for n in graph.nodes if n.id == "paper:aaai:2021:1")
     assert paper.properties["doi"] == "10.1609/aaai.v35i1.1" and paper.properties["openalex_id"] == "W1"
     assert paper.properties["official_author_count"] == 2 and "abstract" not in paper.properties
@@ -137,12 +139,19 @@ def test_one_incompatible_position_is_withheld_but_the_rest_of_the_paper_stays(t
 def test_two_incompatible_positions_withhold_the_whole_paper(tmp_path):
     rows = [row(1, ["Ann One", "Bo Two", "Cy Three"],
                 [authorship("A1", "Ann One"), authorship("A8", "Wrong Person"), authorship("A9", "Other Wrong")])]
-    graph, _, queue = build(tmp_path, rows)
+    graph, summary, queue = build(tmp_path, rows)
     assert edges(graph, Relation.AUTHORED) == []
     paper = next(n for n in graph.nodes if n.id == "paper:aaai:2021:1")
     assert paper.properties["unresolved_author_reason"] == "authorships_withheld:multiple_incompatible_positions"
     assert len(edges(graph, Relation.PUBLISHED_IN)) == 1
-    assert queue[0]["kind"] == "authorships_withheld_for_paper" and len(queue[0]["positions"]) == 2
+    assert queue[0]["kind"] == "authorships_withheld_for_paper" and len(queue[0]["positions"]) == 3
+    assert queue[0]["positions"] == [
+        {"position": 1, "reason": "multiple_incompatible_positions", "roster_name": "Ann One"},
+        {"position": 2, "reason": "name_incompatible", "roster_name": "Bo Two"},
+        {"position": 3, "reason": "name_incompatible", "roster_name": "Cy Three"},
+    ]
+    assert summary["coverage"]["author_positions_withheld_by_reason"] == {
+        "multiple_incompatible_positions": 1, "name_incompatible": 2}
 
 
 def test_the_same_author_id_twice_in_a_paper_withholds_all_its_authorships(tmp_path):
@@ -150,6 +159,10 @@ def test_the_same_author_id_twice_in_a_paper_withholds_all_its_authorships(tmp_p
     graph, _, queue = build(tmp_path, rows, initials=True)
     assert edges(graph, Relation.AUTHORED) == []
     assert queue[0]["reason"] == "author_id_repeated_in_paper"
+    assert queue[0]["positions"] == [
+        {"position": 1, "reason": "author_id_repeated_in_paper", "roster_name": "Ann One"},
+        {"position": 2, "reason": "author_id_repeated_in_paper", "roster_name": "A. One"},
+    ]
 
 
 def test_a_missing_author_id_is_withheld_and_an_id_with_conflicting_orcids_is_withheld_everywhere(tmp_path):
