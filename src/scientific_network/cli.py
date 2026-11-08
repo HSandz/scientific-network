@@ -64,6 +64,29 @@ def parser() -> argparse.ArgumentParser:
     topic_test.add_argument("--leakage", type=Path, default=Path("data/manifests/five-year-roster-v10/leakage-triage.jsonl"))
     topic_test.add_argument("--seed", type=int, required=True)
     topic_test.add_argument("--output", type=Path, required=True)
+    topic_cal = commands.add_parser("calibrate-topic-embeddings", help="calibrate topic thresholds using non-test release papers only")
+    topic_cal.add_argument("--config", type=Path, default=Path("configs/topics-release-v1.yaml"))
+    topic_cal.add_argument("--works", type=Path, default=Path("data/interim/release-v1/works.jsonl"))
+    topic_cal.add_argument("--roster", type=Path, default=Path("data/manifests/five-year-roster-v10/corpus_manifest.jsonl"))
+    topic_cal.add_argument("--membership", type=Path, default=Path("data/manifests/five-year-splits-v1/membership.jsonl"))
+    topic_cal.add_argument("--leakage", type=Path, default=Path("data/manifests/five-year-roster-v10/leakage-triage.jsonl"))
+    topic_cal.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
+    topic_cal.add_argument("--target-coverage", type=float, default=0.85)
+    topic_cal.add_argument("--sample-seed", type=int, default=20261108)
+    topic_cal.add_argument("--sample-size", type=int, default=30)
+    topic_cal.add_argument("--output", type=Path, required=True)
+    release_topics = commands.add_parser("release-topic-graph-v2", help="build and validate graph v2 with frozen embedding topics")
+    release_topics.add_argument("--input", type=Path, default=Path("data/processed/release-graph-v1/graph.json"))
+    release_topics.add_argument("--works", type=Path, default=Path("data/interim/release-v1/works.jsonl"))
+    release_topics.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
+    release_topics.add_argument("--quality", type=Path, default=Path("configs/quality-release-v1.yaml"))
+    release_topics.add_argument("--output-dir", type=Path, default=Path("data/processed/release-graph-v2"))
+    release_topics.add_argument("--summary", type=Path, default=Path("reports/release-v1/graph-v2-summary.json"))
+    topic_review = commands.add_parser("prepare-topic-review-sheet", help="prepare a prediction-blind sheet for frozen topic-test papers")
+    topic_review.add_argument("--works", type=Path, default=Path("data/interim/release-v1/works.jsonl"))
+    topic_review.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
+    topic_review.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
+    topic_review.add_argument("--output", type=Path, default=Path("reports/release-v1/audit/topic-label-sheet.csv"))
     pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
     pregraph.add_argument("--config", type=Path, required=True)
     pregraph.add_argument("--output", type=Path, required=True)
@@ -242,6 +265,42 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "freeze-topic-test":
             from scientific_network.nlp.topic_test import freeze_topic_test
             result = freeze_topic_test(args.roster, args.membership, args.leakage, args.output, seed=args.seed)
+            exit_code = 0
+        elif args.command == "calibrate-topic-embeddings":
+            from scientific_network.nlp.embeddings import (
+                calibrate_topic_thresholds, load_development_documents, load_sentence_model,
+            )
+            if args.output.exists() or args.output.is_symlink():
+                raise ValueError(f"refusing to overwrite calibration output: {args.output}")
+            taxonomy = yaml.safe_load(args.config.read_text(encoding="utf-8"))
+            if taxonomy.get("status") != "development_before_freeze":
+                raise ValueError("topic calibration requires an unfrozen development taxonomy config")
+            if any(value is not None for value in (taxonomy.get("model", {}).get("thresholds") or {}).values()):
+                raise ValueError("topic calibration config already contains frozen thresholds")
+            documents, split_report = load_development_documents(
+                args.works, args.roster, args.membership, args.leakage, args.topic_test)
+            model = load_sentence_model(taxonomy)
+            result = {
+                "split": split_report,
+                "model": {key: taxonomy["model"].get(key) for key in ("name", "revision", "device", "batch_size")},
+                "calibration": calibrate_topic_thresholds(
+                    documents, taxonomy, model, target_coverage=args.target_coverage,
+                    seed=args.sample_seed, sample_size=args.sample_size,
+                    batch_size=taxonomy["model"].get("batch_size", 64)),
+            }
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            with args.output.open("x", encoding="utf-8") as handle:
+                json.dump(result, handle, indent=2, ensure_ascii=False)
+                handle.write("\n")
+            exit_code = 0
+        elif args.command == "release-topic-graph-v2":
+            from scientific_network.resolve.release_topics import build_release_graph_v2
+            result = build_release_graph_v2(
+                args.input, args.works, args.taxonomy, args.quality, args.output_dir, args.summary)
+            exit_code = 0
+        elif args.command == "prepare-topic-review-sheet":
+            from scientific_network.evaluation.topic_review import prepare_topic_review_sheet
+            result = prepare_topic_review_sheet(args.works, args.topic_test, args.taxonomy, args.output)
             exit_code = 0
         elif args.command == "prepare-pregraph":
             from scientific_network.preprocess.pregraph import prepare_pregraph

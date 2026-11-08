@@ -1,0 +1,122 @@
+{
+  "stage": "release-topic-graph",
+  "method_version": "release-embedding-topics-v1",
+  "base_graph_method_version": "release-openalex-graph-v1.1",
+  "model": {
+    "name": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "device": "cpu"
+  },
+  "thresholds": {
+    "tau": 0.2708871364593506,
+    "delta": 0.02
+  },
+  "development_calibration": {
+    "target_coverage": 0.85,
+    "observed_coverage": 0.849966708589184,
+    "development_papers": 13517,
+    "sample_seed": 20261108,
+    "sample_size": 30
+  },
+  "graph_v1_version": "release-4c1253e05f2c",
+  "graph_version": "release-5d830ffcbdf4",
+  "inputs_sha256": {
+    "graph_v1_sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761",
+    "works_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "taxonomy_sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4",
+    "quality_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "topic_test_sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+  },
+  "graph_sha256": "b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb",
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2096,
+      "Paper": 13617,
+      "Researcher": 36680,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "COAUTHORED_WITH": 112042,
+      "AFFILIATED_WITH": 44535,
+      "AUTHORED": 59159,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 15157,
+      "RESEARCHES_TOPIC": 6888,
+      "HAS_TOPIC": 14222,
+      "CONTRIBUTES_TO_TOPIC": 2494,
+      "CITES": 7308,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "derived": 136581,
+      "observed": 124619,
+      "inferred_topic": 14222,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 36680,
+    "unique_core_factual_edges": 124619
+  },
+  "coverage": {
+    "eligible_papers": 13617,
+    "papers_with_abstract": 13606,
+    "papers_topic_labeled": 11575,
+    "papers_topic_abstained": 2042,
+    "topic_coverage": 0.8500403906881104,
+    "topic_labeled_by_venue_year": {
+      "venue:aaai": {
+        "2021": {
+          "eligible": 1654,
+          "labeled": 1409
+        },
+        "2022": {
+          "eligible": 1319,
+          "labeled": 1154
+        },
+        "2023": {
+          "eligible": 1578,
+          "labeled": 1387
+        },
+        "2024": {
+          "eligible": 2331,
+          "labeled": 2009
+        },
+        "2025": {
+          "eligible": 3028,
+          "labeled": 2550
+        }
+      },
+      "venue:ijcai": {
+        "2021": {
+          "eligible": 586,
+          "labeled": 480
+        },
+        "2022": {
+          "eligible": 678,
+          "labeled": 560
+        },
+        "2023": {
+          "eligible": 639,
+          "labeled": 524
+        },
+        "2024": {
+          "eligible": 790,
+          "labeled": 656
+        },
+        "2025": {
+          "eligible": 1014,
+          "labeled": 846
+        }
+      }
+    }
+  },
+  "topic_decisions": {
+    "abstain": 2042,
+    "labeled": 11575
+  },
+  "structural_validation": "passed",
+  "semantic_accuracy": "not_measured",
+  "test_predictions_computed_after_classifier_freeze": true,
+  "created_at": "2026-11-08T05:41:17.649457+00:00"
+}

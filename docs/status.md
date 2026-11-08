@@ -1,22 +1,23 @@
 # Current project status
 
-Updated: **2026-11-08 12:00 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 12:50 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
-Latest entry: [WORK-2026-11-08-029](work-log/2026-11-08-029-release-phase-5-topic-test-freeze.md).
+Latest entry: [WORK-2026-11-08-030](work-log/2026-11-08-030-release-phase-5-embedding-development.md).
 
 ## State
 
 - Scope and OpenAlex acquisition are complete under D040; 11 works remain in review.
-- Phase 3 graph v1 rebuilt with method `release-openalex-graph-v1.1`; version
-  `release-4c1253e05f2c`. Fresh validation passes; all ten relations and all size
-  gates pass. Summary: `reports/release-v1/graph-summary.json`.
-- Graph counts: 52,415 nodes; 261,755 edges; 124,619 factual R1–R4 edges;
-  36,680 resolved researchers. Phrase topics remain unvalidated and under-covered.
-- Phase 5 prerequisite frozen: 30 IJCAI + 20 AAAI topic-test IDs, seed `20261108`;
-  development taxonomy copy created and remains unfrozen. No test content was inspected.
-- Tests: 347 passed, 1 skipped (WORK-029).
-- Phase 4 is not run: Docker Desktop is not integrated with this WSL 2 distro;
-  `neo4j-five-year` is defined but not started and port 7689 is not listening.
+- Phase 3 graph v1 is preserved. Phase 5 graph v2 `release-5d830ffcbdf4` was built
+  from its frozen CPU embedding classifier and independently validates; its summary is
+  `reports/release-v1/graph-v2-summary.json`.
+- Graph v2: 52,415 nodes; 275,438 edges; 124,619 factual R1–R4 edges; all ten relations.
+  Topic labels cover 11,575/13,617 papers (85.00%); semantic accuracy is not measured.
+- A prediction-blind 50-paper topic sheet with 16 definitions is ready under
+  `reports/release-v1/audit/`; human labels remain pending.
+- Phase 4 remains blocked: Docker CLI is unavailable in this WSL 2 distro, and port
+  7689 is not listening. No Neo4j load, integrity query or replay has run.
+- Tests: 354 passed, 1 skipped (WORK-030). The CPU model build took 8m52s and peaked at
+  4.02 GiB RSS.
 
 ## Phase checklist
 
@@ -25,7 +26,7 @@ Latest entry: [WORK-2026-11-08-029](work-log/2026-11-08-029-release-phase-5-topi
 - [x] P2 OpenAlex acquisition
 - [x] P3 Graph v1: all ten relations, structural validation, summary and size gates
 - [ ] P4 Neo4j load, integrity and idempotent replay (**blocked by WSL Docker integration**)
-- [ ] P5 Test set frozen; embedding model, graph v2 and label sheet pending
+- [ ] P5 Embedding classifier frozen; graph v2 validated; Neo4j load and replay pending
 - [ ] P6 Network analysis, figures and findings
 - [ ] P7 Graph freeze and review sheets
 - [ ] Human edge/topic review returned
@@ -34,8 +35,9 @@ Latest entry: [WORK-2026-11-08-029](work-log/2026-11-08-029-release-phase-5-topi
 
 ## Next action
 
-Continue P5 model work on development papers only while waiting for Docker integration;
-then complete P4 load, integrity and replay before closing P5.
+Enable Docker Desktop WSL integration, start only `neo4j-five-year`, then load graph v2,
+run inventory/integrity queries and verify idempotent re-import. After P4, close P5 and
+continue with P6.
 
 ## Waiting on the user
 
