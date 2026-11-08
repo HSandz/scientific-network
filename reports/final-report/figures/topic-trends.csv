@@ -1,0 +1,81 @@
+year,topic_id,topic,fractional_paper_count,labeled_paper_denominator,fractional_topic_share
+2021,topic:causal-inference,Causal inference,24.666666666666,1889,0.013058055409
+2021,topic:computer-vision,Computer vision,78.333333333333,1889,0.041468148932
+2021,topic:efficient-systems,Efficient machine learning systems,183.5,1889,0.097141344627
+2021,topic:generative-modeling,Generative modeling,111.166666666666,1889,0.058849479442
+2021,topic:graph-ml,Graph machine learning,197.0,1889,0.10428798306
+2021,topic:multi-agent,Multi-agent systems,44.666666666667,1889,0.023645667902
+2021,topic:multimodal,Multimodal learning,133.666666666667,1889,0.070760543497
+2021,topic:nlp-language-models,Natural language processing and language models,119.333333333333,1889,0.063172754544
+2021,topic:optimization-theory,Optimization and learning theory,39.166666666666,1889,0.020734074466
+2021,topic:planning-reasoning,Planning and reasoning,132.666666666667,1889,0.070231162873
+2021,topic:probabilistic-bayesian,Probabilistic and Bayesian learning,28.833333333333,1889,0.015263808011
+2021,topic:reinforcement-learning,Reinforcement learning,215.666666666666,1889,0.11416975472
+2021,topic:representation-learning,Representation learning,404.333333333333,1889,0.214046232575
+2021,topic:retrieval-recommendation,Information retrieval and recommendation,25.833333333333,1889,0.013675666137
+2021,topic:robotics-embodied,Robotics and embodied AI,14.666666666667,1889,0.007764249162
+2021,topic:trustworthy-ml,Trustworthy machine learning,135.5,1889,0.071731074643
+2022,topic:causal-inference,Causal inference,24.0,1714,0.014002333722
+2022,topic:computer-vision,Computer vision,84.166666666667,1714,0.049105406457
+2022,topic:efficient-systems,Efficient machine learning systems,147.666666666667,1714,0.086153247764
+2022,topic:generative-modeling,Generative modeling,93.5,1714,0.05455075846
+2022,topic:graph-ml,Graph machine learning,177.5,1714,0.103558926488
+2022,topic:multi-agent,Multi-agent systems,32.166666666666,1714,0.018767016725
+2022,topic:multimodal,Multimodal learning,137.333333333334,1714,0.080124465189
+2022,topic:nlp-language-models,Natural language processing and language models,93.0,1714,0.054259043174
+2022,topic:optimization-theory,Optimization and learning theory,27.5,1714,0.016044340723
+2022,topic:planning-reasoning,Planning and reasoning,129.333333333334,1714,0.075457020615
+2022,topic:probabilistic-bayesian,Probabilistic and Bayesian learning,20.333333333333,1714,0.011863088292
+2022,topic:reinforcement-learning,Reinforcement learning,205.5,1714,0.119894982497
+2022,topic:representation-learning,Representation learning,394.833333333334,1714,0.230357837417
+2022,topic:retrieval-recommendation,Information retrieval and recommendation,17.5,1714,0.010210035006
+2022,topic:robotics-embodied,Robotics and embodied AI,7.666666666666,1714,0.004472967717
+2022,topic:trustworthy-ml,Trustworthy machine learning,122.0,1714,0.071178529755
+2023,topic:causal-inference,Causal inference,26.5,1911,0.013867085296
+2023,topic:computer-vision,Computer vision,84.166666666667,1911,0.044043258329
+2023,topic:efficient-systems,Efficient machine learning systems,191.166666666667,1911,0.100034885749
+2023,topic:generative-modeling,Generative modeling,121.333333333333,1911,0.063492063492
+2023,topic:graph-ml,Graph machine learning,195.833333333333,1911,0.102476888191
+2023,topic:multi-agent,Multi-agent systems,38.333333333333,1911,0.020059305774
+2023,topic:multimodal,Multimodal learning,175.333333333334,1911,0.091749520321
+2023,topic:nlp-language-models,Natural language processing and language models,77.166666666667,1911,0.040380254666
+2023,topic:optimization-theory,Optimization and learning theory,37.833333333333,1911,0.019797662655
+2023,topic:planning-reasoning,Planning and reasoning,124.5,1911,0.065149136578
+2023,topic:probabilistic-bayesian,Probabilistic and Bayesian learning,24.0,1911,0.012558869702
+2023,topic:reinforcement-learning,Reinforcement learning,210.5,1911,0.110151753009
+2023,topic:representation-learning,Representation learning,451.499999999999,1911,0.236263736264
+2023,topic:retrieval-recommendation,Information retrieval and recommendation,20.0,1911,0.010465724751
+2023,topic:robotics-embodied,Robotics and embodied AI,20.166666666666,1911,0.010552939124
+2023,topic:trustworthy-ml,Trustworthy machine learning,112.666666666666,1911,0.0589569161
+2024,topic:causal-inference,Causal inference,43.5,2665,0.016322701689
+2024,topic:computer-vision,Computer vision,157.333333333334,2665,0.059036898061
+2024,topic:efficient-systems,Efficient machine learning systems,244.833333333333,2665,0.091869918699
+2024,topic:generative-modeling,Generative modeling,195.833333333334,2665,0.073483427142
+2024,topic:graph-ml,Graph machine learning,243.166666666666,2665,0.09124452783
+2024,topic:multi-agent,Multi-agent systems,49.833333333334,2665,0.018699186992
+2024,topic:multimodal,Multimodal learning,367.5,2665,0.137898686679
+2024,topic:nlp-language-models,Natural language processing and language models,115.333333333334,2665,0.043277048155
+2024,topic:optimization-theory,Optimization and learning theory,41.666666666667,2665,0.015634771732
+2024,topic:planning-reasoning,Planning and reasoning,151.0,2665,0.056660412758
+2024,topic:probabilistic-bayesian,Probabilistic and Bayesian learning,30.5,2665,0.011444652908
+2024,topic:reinforcement-learning,Reinforcement learning,241.666666666667,2665,0.090681676048
+2024,topic:representation-learning,Representation learning,601.333333333333,2665,0.225641025641
+2024,topic:retrieval-recommendation,Information retrieval and recommendation,17.166666666667,2665,0.006441525954
+2024,topic:robotics-embodied,Robotics and embodied AI,18.833333333333,2665,0.007066916823
+2024,topic:trustworthy-ml,Trustworthy machine learning,145.5,2665,0.054596622889
+2025,topic:causal-inference,Causal inference,43.5,3396,0.012809187279
+2025,topic:computer-vision,Computer vision,214.833333333333,3396,0.063260698861
+2025,topic:efficient-systems,Efficient machine learning systems,313.833333333334,3396,0.092412642324
+2025,topic:generative-modeling,Generative modeling,306.166666666667,3396,0.090155084413
+2025,topic:graph-ml,Graph machine learning,321.5,3396,0.094670200236
+2025,topic:multi-agent,Multi-agent systems,44.333333333334,3396,0.013054574009
+2025,topic:multimodal,Multimodal learning,528.0,3396,0.155477031802
+2025,topic:nlp-language-models,Natural language processing and language models,176.666666666667,3396,0.052021986651
+2025,topic:optimization-theory,Optimization and learning theory,40.166666666667,3396,0.011827640361
+2025,topic:planning-reasoning,Planning and reasoning,196.666666666667,3396,0.057911268159
+2025,topic:probabilistic-bayesian,Probabilistic and Bayesian learning,21.666666666667,3396,0.006380054967
+2025,topic:reinforcement-learning,Reinforcement learning,263.833333333333,3396,0.077689438555
+2025,topic:representation-learning,Representation learning,665.0,3396,0.19581861013
+2025,topic:retrieval-recommendation,Information retrieval and recommendation,41.666666666667,3396,0.012269336474
+2025,topic:robotics-embodied,Robotics and embodied AI,29.333333333333,3396,0.008637612878
+2025,topic:trustworthy-ml,Trustworthy machine learning,188.833333333333,3396,0.055604632901
