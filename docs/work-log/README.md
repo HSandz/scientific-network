@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-034](2026-11-08-034-phase-8-report-draft.md) | Phase 8 report drafting before reviewer returns | partial | Report sections 1–11 drafted with measured results and six embedded figures; independent scoring and topic allocation need human input |
+
 | [WORK-2026-11-08-033](2026-11-08-033-release-phase-7-freeze.md) | Release Phase 7 freeze and review preparation | completed | v2 graph/config freeze; 200-edge global plus per-type packet with 50 overlap; prediction-blind topic sheet verified; report methods started |
 
 | [WORK-2026-11-08-032](2026-11-08-032-release-phase-6-analysis.md) | Release Phase 6 analysis | completed | D040 release metrics, six figures/tables, source-linked findings and criteria-based shortlists; semantic review remains pending |
