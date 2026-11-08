@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "compared_fields": [
+    "edge_id",
+    "reviewer_id",
+    "in_global_sample",
+    "in_type_sample",
+    "is_type_census",
+    "is_overlap"
+  ],
+  "assignment_rows": 350,
+  "unique_edges": 300,
+  "source_config": {
+    "path": "configs/quality-release-v1.yaml",
+    "sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f"
+  },
+  "sampling_settings_and_thresholds_equal": true
+}

@@ -24,6 +24,9 @@ dependencies = [
 analysis = ["pandas>=2.2,<3", "pyarrow>=18,<24", "matplotlib>=3.9,<4"]
 app = ["streamlit>=1.41,<2", "plotly>=6,<7"]
 nlp = ["sentence-transformers==5.1.1", "torch==2.8.0"]
+report = [
+    "markdown>=3.7,<4",
+]
 
 [dependency-groups]
 dev = ["pytest>=8.3,<10"]

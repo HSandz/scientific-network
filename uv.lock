@@ -447,6 +447,15 @@ wheels = [
 ]
 
 [[package]]
+name = "markdown"
+version = "3.11.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/eb/dc0fd6eff604bfb870b7fb68b90985a32caaf3c76f67736bbf7f438acd59/markdown-3.11.3.tar.gz", hash = "sha256:81eb91631dc97ad1efbc76019ef0f80fe90ca49ddf81546752d79989c3bfff3e", size = 498810, upload-time = "2026-11-05T20:30:52.926Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/6f/1fa8970e960e5c832874399e6efa564870ade8206d57fef5d5e296b834f5/markdown-3.11.3-py3-none-any.whl", hash = "sha256:e1a31a112232504d753e5c01bb8c2de90d3f0ba986b063e10770cf7695b09e73", size = 116758, upload-time = "2026-11-05T20:30:51.775Z" },
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1082,6 +1091,9 @@ nlp = [
     { name = "torch", version = "2.8.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform == 'darwin'" },
     { name = "torch", version = "2.8.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform != 'darwin'" },
 ]
+report = [
+    { name = "markdown" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -1092,6 +1104,7 @@ dev = [
 requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.12,<5" },
     { name = "httpx", specifier = ">=0.28,<0.29" },
+    { name = "markdown", marker = "extra == 'report'", specifier = ">=3.7,<4" },
     { name = "matplotlib", marker = "extra == 'analysis'", specifier = ">=3.9,<4" },
     { name = "neo4j", specifier = ">=5.26,<6" },
     { name = "networkx", specifier = ">=3.4,<4" },
@@ -1107,7 +1120,7 @@ requires-dist = [
     { name = "streamlit", marker = "extra == 'app'", specifier = ">=1.41,<2" },
     { name = "torch", marker = "extra == 'nlp'", specifier = "==2.8.0", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "scientific-network", extra = "nlp" } },
 ]
-provides-extras = ["analysis", "app", "nlp"]
+provides-extras = ["analysis", "app", "nlp", "report"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=8.3,<10" }]

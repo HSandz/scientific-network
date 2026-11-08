@@ -876,3 +876,13 @@ phase 1; record any amendment here with its date.
   - Agents finish scoring, report/README, rendered PDF checks and local submission
     preparation. Missing private team details stay pending without blocking other
     work. No push, tag, Site publication, invitation or submission is authorized.
+
+- **2026-11-09 — evaluator implementation and pre-review freeze (WORK-003).**
+  Select the available isolated A/B contexts, not the fallback. A dedicated
+  `score-agent-review` wrapper preserves legacy behavior while checking canonical
+  assignments, actual run/context IDs, source/receipt hashes and topic-before-edge
+  timestamps. Unknown precise runtime models/providers remain explicitly unknown.
+  Partial unreviewable topic references are excluded with explicit opt-in and
+  planned overlap weights retained. All result metadata is AI-assessed before
+  outputs are written. Sampling, thresholds, content freeze and graph unchanged.
+  Optional Markdown rendering dependency is isolated in the `report` extra.
