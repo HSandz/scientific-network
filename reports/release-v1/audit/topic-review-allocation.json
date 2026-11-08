@@ -1,0 +1,143 @@
+{
+  "status": "ready_for_human_labels",
+  "assignment_method_version": "d040-topic-review-allocation-v1",
+  "seed": 20261108,
+  "reviewers": [
+    "A",
+    "B"
+  ],
+  "paper_count": 50,
+  "assignments_per_reviewer": {
+    "A": 30,
+    "B": 30
+  },
+  "unique_papers_per_reviewer": {
+    "A": 30,
+    "B": 30
+  },
+  "total_assignment_rows": 60,
+  "reviewer_paper_ids": {
+    "A": [
+      "paper:aaai:2022:20630",
+      "paper:aaai:2022:20831",
+      "paper:aaai:2023:26117",
+      "paper:aaai:2023:26431",
+      "paper:aaai:2024:28796",
+      "paper:aaai:2024:28903",
+      "paper:aaai:2024:29437",
+      "paper:aaai:2024:29767",
+      "paper:aaai:2025:31992",
+      "paper:aaai:2025:33017",
+      "paper:aaai:2025:34383",
+      "paper:aaai:2025:34429",
+      "paper:ijcai:2022:124",
+      "paper:ijcai:2023:12",
+      "paper:ijcai:2023:136",
+      "paper:ijcai:2023:147",
+      "paper:ijcai:2023:154",
+      "paper:ijcai:2023:178",
+      "paper:ijcai:2023:181",
+      "paper:ijcai:2023:212",
+      "paper:ijcai:2023:243",
+      "paper:ijcai:2023:25",
+      "paper:ijcai:2023:346",
+      "paper:ijcai:2023:362",
+      "paper:ijcai:2023:393",
+      "paper:ijcai:2023:418",
+      "paper:ijcai:2023:458",
+      "paper:ijcai:2023:578",
+      "paper:ijcai:2023:610",
+      "paper:ijcai:2025:677"
+    ],
+    "B": [
+      "paper:aaai:2021:16469",
+      "paper:aaai:2021:17671",
+      "paper:aaai:2022:20084",
+      "paper:aaai:2022:20831",
+      "paper:aaai:2024:28128",
+      "paper:aaai:2024:28224",
+      "paper:aaai:2024:28796",
+      "paper:aaai:2024:29437",
+      "paper:aaai:2024:29981",
+      "paper:aaai:2025:32680",
+      "paper:aaai:2025:33017",
+      "paper:aaai:2025:34295",
+      "paper:ijcai:2023:147",
+      "paper:ijcai:2023:154",
+      "paper:ijcai:2023:206",
+      "paper:ijcai:2023:212",
+      "paper:ijcai:2023:243",
+      "paper:ijcai:2023:250",
+      "paper:ijcai:2023:362",
+      "paper:ijcai:2023:454",
+      "paper:ijcai:2023:461",
+      "paper:ijcai:2023:496",
+      "paper:ijcai:2023:498",
+      "paper:ijcai:2023:571",
+      "paper:ijcai:2023:601",
+      "paper:ijcai:2023:610",
+      "paper:ijcai:2024:302",
+      "paper:ijcai:2025:580",
+      "paper:ijcai:2025:862",
+      "paper:ijcai:2025:943"
+    ]
+  },
+  "overlap_count": 10,
+  "overlap_paper_ids": [
+    "paper:aaai:2022:20831",
+    "paper:aaai:2024:28796",
+    "paper:aaai:2024:29437",
+    "paper:aaai:2025:33017",
+    "paper:ijcai:2023:147",
+    "paper:ijcai:2023:154",
+    "paper:ijcai:2023:212",
+    "paper:ijcai:2023:243",
+    "paper:ijcai:2023:362",
+    "paper:ijcai:2023:610"
+  ],
+  "venue_counts": {
+    "A": {
+      "venue:aaai": 12,
+      "venue:ijcai": 18
+    },
+    "B": {
+      "venue:aaai": 12,
+      "venue:ijcai": 18
+    }
+  },
+  "predictions_included": false,
+  "master_sheet": {
+    "path": "reports/release-v1/audit/topic-label-sheet.csv",
+    "sha256": "592cfa03b990e125bca1219ff946d4500b2fe687aa028a98952916b6b67c1968"
+  },
+  "topic_test_manifest": {
+    "path": "data/manifests/release-v1/topic-test.jsonl",
+    "sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+  },
+  "taxonomy": {
+    "path": "configs/topics-release-v1.yaml",
+    "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+  },
+  "reviewer_sheets": {
+    "A": {
+      "csv": {
+        "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.csv",
+        "sha256": "8f2a4ce4d74974e186ed962147ea407b30834ddee700235f7a9543d6e997323e"
+      },
+      "html": {
+        "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.html",
+        "sha256": "5d3bb0fc140b7d8aa669bc39191bf864b5ba2010efda80ff9ad6f03a92b1e563"
+      }
+    },
+    "B": {
+      "csv": {
+        "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.csv",
+        "sha256": "6028db3d475c97be3cb21c9ef422544825a0b4181047323337e3adfec6dc2e06"
+      },
+      "html": {
+        "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.html",
+        "sha256": "9beb686c99fd5a139470301b928881a71055b9ae4d3d747dcfabd3850e435b87"
+      }
+    }
+  }
+}

@@ -87,6 +87,23 @@ def parser() -> argparse.ArgumentParser:
     topic_review.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
     topic_review.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
     topic_review.add_argument("--output", type=Path, default=Path("reports/release-v1/audit/topic-label-sheet.csv"))
+    topic_packets = commands.add_parser("prepare-topic-review-packets", help="assign the frozen topic test to reviewers A/B and create prediction-blind sheets")
+    topic_packets.add_argument("--master-sheet", type=Path, default=Path("reports/release-v1/audit/topic-label-sheet.csv"))
+    topic_packets.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
+    topic_packets.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
+    topic_packets.add_argument("--output-dir", type=Path, default=Path("reports/release-v1/audit"))
+    topic_eval = commands.add_parser("score-topic-review", help="score frozen phrase and embedding topic predictions against completed A/B review packets")
+    topic_eval.add_argument("--graph-v1", type=Path, default=Path("data/processed/release-graph-v1/graph.json"))
+    topic_eval.add_argument("--graph-v2", type=Path, default=Path("data/processed/release-graph-v2/graph.json"))
+    topic_eval.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
+    topic_eval.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
+    topic_eval.add_argument("--allocation", type=Path, default=Path("reports/release-v1/audit/topic-review-allocation.json"))
+    topic_eval.add_argument("--master-sheet", type=Path, default=Path("reports/release-v1/audit/topic-label-sheet.csv"))
+    topic_eval.add_argument("--reviewer-a", type=Path, required=True, help="completed reviewer A CSV export")
+    topic_eval.add_argument("--reviewer-b", type=Path, required=True, help="completed reviewer B CSV export")
+    topic_eval.add_argument("--freeze", type=Path, default=Path("reports/release-v1/freeze.json"))
+    topic_eval.add_argument("--graph-v2-summary", type=Path, default=Path("reports/release-v1/graph-v2-summary.json"))
+    topic_eval.add_argument("--output", type=Path, default=Path("reports/release-v1/topic-eval.json"))
     pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
     pregraph.add_argument("--config", type=Path, required=True)
     pregraph.add_argument("--output", type=Path, required=True)
@@ -301,6 +318,18 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "prepare-topic-review-sheet":
             from scientific_network.evaluation.topic_review import prepare_topic_review_sheet
             result = prepare_topic_review_sheet(args.works, args.topic_test, args.taxonomy, args.output)
+            exit_code = 0
+        elif args.command == "prepare-topic-review-packets":
+            from scientific_network.evaluation.topic_review import prepare_topic_review_packets
+            result = prepare_topic_review_packets(args.master_sheet, args.topic_test, args.taxonomy, args.output_dir)
+            exit_code = 0
+        elif args.command == "score-topic-review":
+            from scientific_network.evaluation.topic_eval import score_topic_review
+            result = score_topic_review(
+                args.graph_v1, args.graph_v2, args.topic_test, args.taxonomy,
+                args.allocation, args.master_sheet, args.reviewer_a, args.reviewer_b,
+                args.freeze, args.graph_v2_summary, args.output,
+            )
             exit_code = 0
         elif args.command == "prepare-pregraph":
             from scientific_network.preprocess.pregraph import prepare_pregraph

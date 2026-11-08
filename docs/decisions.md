@@ -764,3 +764,20 @@ phase 1; record any amendment here with its date.
   OpenAlex `select` gained `type` and `primary_location` to make this possible, which
   extends the field list in release plan section 8.2. Alternate IDs also resolve CITES
   targets, so a reference to the merged record still reaches the paper.
+- **2026-11-08 — topic-review allocation for the frozen test set (user decision).**
+  The D040 workload estimate of 25 papers per reviewer with 10 overlapping covered
+  only 40 of the 50 frozen papers. The user selected 30 papers each with 10 shared,
+  covering all 50 in 60 judgments. The deterministic venue-stratified allocation
+  gives each reviewer 12 AAAI and 18 IJCAI papers; the overlap contains four AAAI
+  and six IJCAI papers. The graph, test membership and classifier are unchanged.
+  The allocation manifest and reviewer sheet hashes are recorded in
+  [`freeze.json`](../reports/release-v1/freeze.json).
+- **2026-11-08 — topic metrics for the partial-overlap allocation.** Each of the
+  50 frozen papers contributes equal total weight to model metrics: a single
+  annotation has weight one and each annotation on a shared paper has weight one
+  half. This keeps all 50 papers in the estimate without treating repeated labels
+  on the overlap as extra papers. Reviewer labels on overlap papers remain
+  separate; exact-set agreement and per-topic Cohen's kappa are reported on those
+  ten papers. An empty label set requires a note confirming that no leaf applies.
+  This is an evaluation-weighting choice, not an accuracy threshold or a license
+  to tune on the reserved test set.

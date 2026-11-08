@@ -50,7 +50,7 @@
     "review_sheets": {
       "edge-review-sheet.csv": {
         "path": "reports/release-v1/audit/edge-review-sheet.csv",
-        "sha256": "de40b714e8f7f31a5ea3f75b4ee86216f0e01c4e1f6f62c4001570ef4390d0ff"
+        "sha256": "1bfa1e2ba51f2aa58cceb1068aa632fb833117b4d0f4588a6a5c2ff197432dd1"
       },
       "edge-review-sheet.html": {
         "path": "reports/release-v1/audit/edge-review-sheet.html",
@@ -64,11 +64,60 @@
       "sheets": {
         "topic-label-sheet.csv": {
           "path": "reports/release-v1/audit/topic-label-sheet.csv",
-          "sha256": "54f7564a52e337a53c619d09babe3b92363a47cdfe405d2ebd251a9406641379"
+          "sha256": "592cfa03b990e125bca1219ff946d4500b2fe687aa028a98952916b6b67c1968"
         },
         "topic-label-sheet.html": {
           "path": "reports/release-v1/audit/topic-label-sheet.html",
           "sha256": "0024d9b771dbb11153c0a7340925bc678010a8059aab90f34fca706ecd9446ae"
+        }
+      }
+    },
+    "topic_review_assignment": {
+      "prepared_at": "2026-11-08T14:21:54+07:00",
+      "assignment_method_version": "d040-topic-review-allocation-v1",
+      "seed": 20261108,
+      "paper_count": 50,
+      "assignments_per_reviewer": {
+        "A": 30,
+        "B": 30
+      },
+      "total_assignment_rows": 60,
+      "overlap_count": 10,
+      "venue_counts": {
+        "A": {
+          "venue:aaai": 12,
+          "venue:ijcai": 18
+        },
+        "B": {
+          "venue:aaai": 12,
+          "venue:ijcai": 18
+        }
+      },
+      "prediction_blind": true,
+      "allocation_manifest": {
+        "path": "reports/release-v1/audit/topic-review-allocation.json",
+        "sha256": "2123fbb83b05d207259c91726422b5b9543d6fb8f7cfedc5a271adfc691b7fe1"
+      },
+      "reviewer_sheets": {
+        "A": {
+          "csv": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.csv",
+            "sha256": "8f2a4ce4d74974e186ed962147ea407b30834ddee700235f7a9543d6e997323e"
+          },
+          "html": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.html",
+            "sha256": "5d3bb0fc140b7d8aa669bc39191bf864b5ba2010efda80ff9ad6f03a92b1e563"
+          }
+        },
+        "B": {
+          "csv": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.csv",
+            "sha256": "6028db3d475c97be3cb21c9ef422544825a0b4181047323337e3adfec6dc2e06"
+          },
+          "html": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.html",
+            "sha256": "9beb686c99fd5a139470301b928881a71055b9ae4d3d747dcfabd3850e435b87"
+          }
         }
       }
     }
