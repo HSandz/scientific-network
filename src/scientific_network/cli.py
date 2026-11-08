@@ -58,6 +58,12 @@ def parser() -> argparse.ArgumentParser:
     release_graph.add_argument("--works", type=Path, help="override works.jsonl from the config")
     release_graph.add_argument("--output-dir", type=Path, help="override the graph directory from the config (must be empty or absent)")
     release_graph.add_argument("--summary", type=Path, help="override the tracked graph-summary path from the config")
+    topic_test = commands.add_parser("freeze-topic-test", help="freeze the D040 topic test IDs before classifier tuning")
+    topic_test.add_argument("--roster", type=Path, default=Path("data/manifests/five-year-roster-v10/corpus_manifest.jsonl"))
+    topic_test.add_argument("--membership", type=Path, default=Path("data/manifests/five-year-splits-v1/membership.jsonl"))
+    topic_test.add_argument("--leakage", type=Path, default=Path("data/manifests/five-year-roster-v10/leakage-triage.jsonl"))
+    topic_test.add_argument("--seed", type=int, required=True)
+    topic_test.add_argument("--output", type=Path, required=True)
     pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
     pregraph.add_argument("--config", type=Path, required=True)
     pregraph.add_argument("--output", type=Path, required=True)
@@ -232,6 +238,10 @@ def main(argv: list[str] | None = None) -> int:
             result = build_release_graph(
                 args.works or Path(paths["works"]), args.config, args.taxonomy, Path(release["configs"]["quality"]),
                 args.output_dir or Path(paths["graph_v1_dir"]), args.summary or Path(paths["graph_summary"]))
+            exit_code = 0
+        elif args.command == "freeze-topic-test":
+            from scientific_network.nlp.topic_test import freeze_topic_test
+            result = freeze_topic_test(args.roster, args.membership, args.leakage, args.output, seed=args.seed)
             exit_code = 0
         elif args.command == "prepare-pregraph":
             from scientific_network.preprocess.pregraph import prepare_pregraph
