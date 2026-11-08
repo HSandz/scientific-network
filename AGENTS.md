@@ -10,6 +10,12 @@ wins. At session start read, in order: this file, `docs/release-plan.md`,
 `docs/status.md` (phase checklist) and the latest work-log entry. Open other
 documents only when a task needs a specific fact from them.
 
+**9 November user amendment:** agents perform all feasible audit, scoring, report
+and local packaging work. Human annotation is optional, not a prerequisite.
+Follow [the agent audit workflow](docs/agent-audit-workflow.md) and its frozen
+protocol config. The fresh-session prompt is under `docs/prompts/`. Old human
+handoffs and frozen receipts remain historical; do not wait for A/B human exports.
+
 ## Project boundary
 
 Read `docs/project-plan.md` (course brief and business questions) and
@@ -65,6 +71,14 @@ engine.
 - Structural validation is not semantic accuracy. Accuracy claims come from the
   frozen edge audit defined in the release plan (D040), reported with Wilson
   intervals, together with measured coverage and the topic evaluation.
+- Agent judgments must be source-backed and explicitly identified as AI-assessed.
+  Never present them as human annotations, independently validated gold labels or
+  verified course accuracy. Wilson intervals do not cover evaluator errors.
+  Record actual evaluator/model/run metadata, evidence depth and source overlap.
+- For agent evaluation, delegate A/B judgments to separate fresh contexts without
+  inherited conversation or shared answers when supported. Freeze blind topic
+  answers before edge review exposes predictions. If isolation is unavailable,
+  use the documented single-agent variant; never impersonate two reviewers.
 - Reserve held-out IDs before tuning; keep all versions of those papers out of
   development. Do not tune thresholds against test/audit errors and reuse that test
   as independent evidence.
@@ -146,6 +160,8 @@ engine.
   to put a release graph anywhere but port 7689, `analyze` and the audit commands need
   no readiness receipt and record the size gates, and `audit.review_design:
   split_with_overlap` writes a review CSV plus an HTML sheet.
-- To build, following the release plan: OpenAlex DOI acquisition, OpenAlex-based
-  resolution, embedding topics, the isolated Neo4j load, release analysis and the
-  audit.
+- OpenAlex DOI acquisition, OpenAlex-based resolution, embedding topics, the
+  isolated Neo4j load and release analysis are
+  already completed for the corrected graph. Do not rebuild them for an evaluator
+  change. Agent provenance/ledger support and real agent evaluation are the next
+  implementation/execution task; the new protocol config alone implements none.

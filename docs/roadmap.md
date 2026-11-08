@@ -5,6 +5,13 @@
 
 ## Current capabilities — D040 pre-audit corrections
 
+**9 November execution change:** agent-led source review replaces waiting for
+human annotations. [The agent workflow](agent-audit-workflow.md) and
+[protocol config](../configs/evaluation-agent-release-v1.yaml) specify the next
+implementation task: evaluator provenance/ledger/receipt binding, honest AI result
+metadata and the single-agent topic fallback. These additions are **not implemented
+yet**; the existing scorer capabilities below remain the working baseline.
+
 Release graph construction synchronizes and checks the frozen classifier taxonomy.
 `correct-release-taxonomy` preserves frozen predictions/core facts without inference.
 Edge auditing supports the normal A/B design, separate optional single-reviewer
@@ -12,7 +19,8 @@ packets, explicit partial scoring, dedicated reviewer packets and blank joint
 adjudication preparation. Topic scoring accepts explicit replacement graph,
 summary and freeze paths while retaining historical compatibility. Fractional
 descriptive metrics use exact sums; community plots mark unstored topic shares.
-See [the reviewer handoff](reviewer-handoff.md) and [WORK-037](work-log/2026-11-08-037-pre-audit-corrections.md).
+See [the agent workflow](agent-audit-workflow.md), the preserved optional
+[human handoff](reviewer-handoff.md) and [WORK-037](work-log/2026-11-08-037-pre-audit-corrections.md).
 Independent quality is still unmeasured; publication and submission remain pending.
 
 ## Historical implementation notes

@@ -1,5 +1,15 @@
 # Team and contribution record
 
+**Current D040 amendment, 9 November:** human annotation is optional. Agent review
+channels A/B are evaluator runs, not the people in this table. Record agent/model
+provenance in the evaluation manifest; never invent team identities or attribute
+agent judgments to students. Missing names/IDs/contributions do not block audit,
+scoring or local report/PDF preparation; keep those fields explicitly pending.
+
+The role allocation and human cross-review wording below are historical/optional,
+not current prerequisites. Follow [the release plan](release-plan.md) and
+[agent workflow](agent-audit-workflow.md) for active execution.
+
 Two-person baseline from the original plan. Fill in identities and actual dates
 before the first annotation/review; placeholders do not assert membership.
 

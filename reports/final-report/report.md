@@ -1,7 +1,9 @@
 # AI Research Network: AAAI and IJCAI, 2021–2025
 
-**Draft status:** methodology and Phase 6 results written; team allocation and
-independent evaluation still require human inputs. This is not the final report.
+**Draft status:** methodology and Phase 6 results written. The user selected
+agent-led evaluation on 9 November; evaluator implementation, source review and
+scoring remain pending. Human annotations are optional. Real team details remain
+pending from supplied records. This is not the final report.
 
 ## 1. Team allocation
 
@@ -100,16 +102,19 @@ The method compares title and abstract text against topic definitions and uses
 an abstract sentence (or title for title-only text) as supporting evidence. It
 assigns up to three leaf labels or abstains. Threshold calibration used
 non-test papers; the test IDs were frozen before tuning. Model outputs were
-generated only after the classifier freeze and are not shown in the human topic
-review sheet.
+generated only after the classifier freeze and are not shown in the prediction-blind
+topic review sheet.
 
 The corrected v3 graph has **11,575 topic-labeled papers** and **2,042 abstentions**, for
 85.00% label coverage. This is coverage, not topic accuracy. Fifty frozen test
-papers are ready for independent annotation with the 16 topic definitions.
+papers are ready for agent annotation with the 16 topic definitions.
 Reviewer A and reviewer B each receive 30 papers, with 10 papers reviewed by
 both; the union covers all 50. The allocation gives each reviewer 12 AAAI and 18
-IJCAI papers. The hash-bound packets remain prediction-blind. No human test
-labels or classifier precision/recall/F1 are available yet. Topic
+IJCAI papers. The hash-bound packets remain prediction-blind. Under the current
+protocol A/B denote isolated evaluator contexts; the documented single-agent
+variant is allowed when isolation is unavailable. No scored agent reference
+labels or classifier precision/recall/F1 are available yet. Human validation is
+not performed. Topic
 trends and topic-based findings below are therefore provisional until those
 annotations are scored.
 
@@ -199,7 +204,7 @@ resolved researchers are included, so isolates are size-one components. Graph
 *Figure 3. Top researcher communities under Louvain seed 17 and resolution 0.8.
 Each distinct labeled paper is fractionally allocated over its inferred topics.
 Only stored top-five topics per community are shown; grey cells indicate topics
-outside that stored profile, not measured zero support. Topic labels await human
+outside that stored profile, not measured zero support. Topic labels await agent
 review. Graph `release-9d4a6fb20f63`.*
 
 ![Organization collaboration by sector](figures-v3/sector-mixing.png)
@@ -212,7 +217,7 @@ unknown sector remains visible. Graph `release-9d4a6fb20f63`.*
 
 *Figure 5. Topic portfolio trends in 2021–2025. Each labeled paper contributes
 fractionally across its accepted inferred labels; the series combine AAAI and
-IJCAI within each year. Topic labels await human review. Graph
+IJCAI within each year. Topic labels await agent review. Graph
 `release-9d4a6fb20f63`.*
 
 ![Most cited papers within the release corpus](figures-v3/top-cited-papers.png)
@@ -305,15 +310,21 @@ The structural and coverage measurements currently available are:
 | Matched works | 13,606/13,617 (99.92%) | 11 in review |
 | Abstracts on matched works | 13,606/13,617 (99.92%) | Metadata coverage, not accuracy |
 | Institution support on accepted authorships | 56,633/59,159 (95.73%) | Alignment coverage, not affiliation correctness |
-| Topic labels | 11,575/13,617 (85.00%) | Coverage only; labels await human scoring |
+| Topic labels | 11,575/13,617 (85.00%) | Coverage only; agent reference labels and scoring pending |
 
-No independent semantic accuracy has been measured. The prepared edge audit
+No independent semantic accuracy or AI-assessed precision has been measured.
+The user has selected source-backed agent evaluation; human annotation is optional.
+Evaluator provenance/receipt/ledger support must be implemented before the real
+review. Old packets/receipts stay preserved; new agent artifacts use a separate
+evaluation package without changing the graph, classifier, tests or thresholds.
+The default edge sampling recipe
 uses 200 edges sampled uniformly from the complete frozen edge frame, plus 10
 per relation for separate relation-level inspection. The global sample has 50
-edges reviewed by both A and B; remaining rows are split evenly. The actual
-packet has 300 unique sampled edges and 350 assigned rows. Once labels and any
-adjudications are returned, the scorer will report global `k/n`, precision and
-the Wilson 95% interval, separate per-relation counts, overlap agreement,
+edges reviewed by isolated evaluator channels A and B; remaining rows are split
+evenly. The preserved packet has 300 unique sampled edges and 350 assigned rows.
+Once labels and any adjudications are produced, the agent-aware scorer will report
+global `k/n`, AI-assessed precision and the Wilson 95% interval, separate
+per-relation counts, overlap agreement,
 Cohen's kappa and error categories. Unverifiable edges count as incorrect.
 **These fields remain pending; the generated packet is not an audit result.**
 
@@ -322,13 +333,24 @@ with 20 AAAI and 30 IJCAI papers. Following the user's allocation decision,
 reviewer A and reviewer B each receive 30 papers, with 10 shared and 50 unique
 papers covered in 60 judgments. Each packet has 12 AAAI and 18 IJCAI papers. The
 assignment method, test/master hashes and reviewer-sheet hashes are recorded in
-the freeze record. The master sheet remains unchanged. After human labels are
-returned, both the embedding classifier and phrase baseline will be scored
-against the same labels for micro/macro precision, recall, F1, coverage and
-labeler agreement. Every paper contributes total weight one to model metrics;
+the graph/source freeze record. The master sheet remains unchanged. After blind
+agent labels are frozen, both the embedding classifier and phrase baseline will
+be scored against the same AI-assigned reference labels for micro/macro precision,
+recall, F1, coverage and labeler agreement. Every paper contributes total weight one to model metrics;
 each of two judgments on a shared paper contributes one half. Reviewer
 disagreements remain visible instead of being converted into a software-generated
-consensus label, and agreement is measured only on the ten shared papers.
+consensus label, and agreement is measured only on the ten shared papers. When
+isolated contexts are unavailable, the predeclared single-agent variant labels
+each test paper once and reports no overlap agreement. Unreviewable evidence is
+separate from a considered empty topic set, with actual denominators disclosed.
+
+Results will explicitly identify AI evaluator/model/run provenance, source reuse
+and evidence depth. Separate agent contexts do not establish independent gold
+labels. Numeric course/project threshold comparisons are AI-assessed only;
+verified course accuracy remains not established. Wilson intervals describe
+sampling uncertainty conditional on supplied judgments and do not include
+evaluator error, shared-model bias or correlated decisions. No claim is made
+that the lecturer has accepted AI-only evaluation.
 
 The frozen strict-evidence filter retains 8.0% of researcher-collaboration
 edges, 27.4% of organization-collaboration edges, no citation or paper-topic
@@ -350,7 +372,7 @@ candidates. These are reproducible descriptions of the frozen artifact.
 Several quality questions remain open. Eleven roster papers were not matched to
 OpenAlex under the release rules. Thousands of official byline positions lack an
 OpenAlex author ID and are withheld, so the researcher graph is a covered subset
-of bylines rather than a complete author network. Independent reviewers have
+of bylines rather than a complete author network. Agent evaluators have
 not yet checked accepted identities, affiliations, citations, topics or derived
 edges. The 85.0% topic coverage is not topic accuracy. Country and sector
 properties describe normalized organization metadata rather than researchers'
@@ -360,7 +382,8 @@ research venues.
 
 The current graph and report are not certified for the assignment's >90% accuracy
 claim. The final conclusion must state the measured Wilson interval and topic
-evaluation after human annotations are scored, and must report any failed gate.
+evaluation after agent judgments are scored, identify the AI basis and evaluator
+limitations, and report any failed numeric gate without claiming human validation.
 
 The pre-audit correction synchronizes all Topic metadata, hierarchy and evidence
 with the frozen classifier taxonomy; the classifier, test membership, predictions,
@@ -370,14 +393,16 @@ All analysis and figures in this draft were freshly computed on the corrected
 graph. Exact fractional accumulation (`d040-release-metrics-v2`) also corrects
 floating-point order effects on tied community topic rankings; this changes no
 graph facts or predictions. The old freeze and figure directory remain historical.
-Reviewers should follow [the current handoff](../../docs/reviewer-handoff.md).
+Execution follows [the agent workflow](../../docs/agent-audit-workflow.md).
 
 ## 11. Reproducibility and release state
 
 The source repository is [HSandz/scientific-network](https://github.com/HSandz/scientific-network).
-Remote `main`, verified on 9 November, is at `951b9c5`; no remote tags were
-found. This session's corrective commits remain local and no push or publication
-was performed. The course release tag is **pending**. The frozen graph is
+WORK-037 recorded an earlier 9 November remote check at `951b9c5`, with no tags;
+remote state was not refreshed for this protocol amendment. Verify current refs
+before separately authorized delivery. The course release/submission remains
+pending in project records. This amendment performs no external delivery.
+The frozen graph is
 `release-9d4a6fb20f63`, SHA-256
 `c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8`; the
 release, quality, analysis and topic configuration hashes and review packet
@@ -408,9 +433,11 @@ the exact commands, input hashes, outcomes and local artifact paths for the
 release stages. Independent reproduction should use the frozen configs and
 confirm graph and summary hashes before comparing reports.
 
-## Sections still requiring human input
+## Remaining completion work
 
-The task allocation, reviewer identities and contributions must be completed
-from `docs/team.md`. Independent edge and topic annotations, their scoring,
-quality conclusions, and the final limitations/results sections are pending.
-No accuracy claim is made in this draft.
+The agent will implement the evaluator metadata/binding support, perform source
+review, score the judgments, finish results/limitations and prepare the local
+PDF/package. Human annotations are optional and are not a prerequisite. Real team
+identities, student IDs, actual contributions and course-specific disclosure/access
+facts must come from supplied records; missing values remain explicitly pending
+without blocking other work. No accuracy claim is made in this draft.
