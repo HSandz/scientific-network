@@ -1,0 +1,55 @@
+version: quality-agent-release-v1
+status: frozen
+size:
+  min_domain_nodes: 2000
+  min_resolved_core_researchers: 2000
+  min_unique_factual_edges: 5000
+  required_relation_types: 10
+  factual_relations:
+  - AUTHORED
+  - AFFILIATED_WITH
+  - PUBLISHED_IN
+  - CITES
+audit:
+  review_design: split_with_overlap
+  global_sample_size: 200
+  per_type_sample_size: 10
+  random_seed: 20261101
+  independent_reviewers: 2
+  reviewer_ids:
+  - A
+  - B
+  overlap_sample_size: 50
+  confidence_level: 0.95
+  min_precision: 0.95
+  wilson_lower_bound_must_exceed: 0.9
+  course_point_estimate_must_exceed: 0.9
+  unverifiable_is_incorrect: true
+  supplement_is_separate: true
+  reviewer_kind: ai_agent
+coverage_targets:
+  abstracts: 0.95
+  author_paper_affiliation_resolution: 0.8
+  topics_on_eligible_papers: 0.8
+component_precision_targets:
+  researcher_pairwise: 0.98
+  organization_resolution: 0.95
+  affiliation_triples: 0.95
+  topic_labels: 0.95
+  citation_targets: 0.98
+topics:
+  max_labels_per_paper: 3
+  allow_abstention: true
+  thresholds_calibrated: false
+derived:
+  researcher_topic_min_distinct_papers: 2
+  organization_topic_min_distinct_papers: 3
+held_out:
+  reserve_before_tuning: true
+  development_papers_per_venue: 30
+  test_papers_per_venue: 60
+  random_seed: 20261102
+  exclude_all_versions_from_development: true
+evaluation_kind: ai_agent_review
+human_validation: not_performed
+reviewer_independence: not_established

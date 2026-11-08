@@ -156,6 +156,15 @@ def parser() -> argparse.ArgumentParser:
     edge_audit.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
     edge_audit.add_argument("--allow-partial", action="store_true", help="explicitly score only returned completed reviews; report missingness and potential nonresponse bias")
     edge_audit.add_argument("--output", type=Path, required=True, help="new evaluation JSON")
+    agent_review = commands.add_parser("score-agent-review", help="validate frozen agent provenance, receipts and source ledgers before AI-scoped edge/topic scoring")
+    for option in ("evaluation-freeze", "completion-receipt", "protocol", "topic-ledger", "edge-ledger",
+                   "graph", "quality", "graph-v1", "topic-test", "taxonomy", "allocation", "master-sheet",
+                   "topic-reviewer-a", "topic-reviewer-b", "graph-freeze", "graph-summary", "edge-output", "topic-output"):
+        agent_review.add_argument("--" + option, type=Path, required=True)
+    agent_review.add_argument("--edge-reviews", type=Path, nargs="+", required=True)
+    agent_review.add_argument("--adjudications", type=Path)
+    agent_review.add_argument("--adjudication-ledger", type=Path)
+    agent_review.add_argument("--allow-partial", action="store_true")
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -414,6 +423,11 @@ def main(argv: list[str] | None = None) -> int:
             from scientific_network.evaluation.edge_audit import evaluate_edge_audit
             result, exit_code = evaluate_edge_audit(args.input, args.reviews, args.config,
                 args.output, args.adjudications, args.readiness, allow_partial=args.allow_partial)
+        elif args.command == "score-agent-review":
+            from scientific_network.evaluation.agent_review import score_agent_review
+            result, exit_code = score_agent_review(**{
+                key: value for key, value in vars(args).items() if key != "command"
+            })
         else:
             spec = STAGES[args.command]
             print(json.dumps({
