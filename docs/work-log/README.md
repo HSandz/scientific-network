@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-031](2026-11-08-031-release-neo4j-loads.md) | Release Phases 4–5: isolated Neo4j loads and replay | completed | v1 and v2 inventory/integrity passed; both versions replayed idempotently; v2 is current in `neo4j-five-year` |
+
 | [WORK-2026-11-08-030](2026-11-08-030-release-phase-5-embedding-development.md) | Release Phase 5: embedding topics and graph v2 | partial | Frozen development-only classifier; graph v2 validates; prediction-blind topic sheet ready; Neo4j load awaits WSL Docker integration |
 
 | [WORK-2026-11-08-029](2026-11-08-029-release-phase-5-topic-test-freeze.md) | Release Phase 5: freeze topic test IDs | completed (Phase 5 partial) | Hash-bound 30 IJCAI + 20 AAAI topic-test sample frozen before tuning; model work remains pending |
