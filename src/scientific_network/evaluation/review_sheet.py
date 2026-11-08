@@ -215,7 +215,12 @@ class SheetContext:
         records = [self.evidence[ref] for ref in edge.evidence_ids if ref in self.evidence]
         support_ids = {ref for record in records for ref in record.support_edge_ids}
         supports = [self.edges_by_id[ref] for ref in sorted(support_ids) if ref in self.edges_by_id]
-        papers = sorted(set(self._support_papers(edge)) | set(self.papers_for(edge)))
+        paper_ids = set(self._support_papers(edge)) | set(self.papers_for(edge))
+        if edge.relation == R.AFFILIATED_WITH:
+            paper_ids.update(self.pair_papers.get((edge.source_id, edge.target_id), set()))
+        if edge.relation == R.CITES:
+            paper_ids.add(edge.target_id)
+        papers = sorted(paper_ids)
         evidence_ids = {ref for e in supports for ref in e.evidence_ids} | set(edge.evidence_ids)
         context = {
             "edge": edge.model_dump(mode="json"),
@@ -325,7 +330,7 @@ _APP_JS = r"""
     const c = row.context;
     const links = el('p', { class: 'links' }, row.links.map((link) => {
       const a = el('a', { text: link.label, target: '_blank', rel: 'noopener noreferrer' });
-      if (/^https?:\/\//.test(link.url)) a.setAttribute('href', link.url);
+      if (/^https?:\/\//.test(link.url) || (link.local_taxonomy && /^(?:\.\.\/)*[A-Za-z0-9_./-]+\.ya?ml$/.test(link.url))) a.setAttribute('href', link.url);
       return a;
     }));
     const category = el('select', { 'aria-label': 'Error category' }, [el('option', { value: '', text: 'error category…' })]
@@ -377,6 +382,7 @@ _APP_JS = r"""
   }
   DATA.meta.reviewer_ids.forEach((letter) => reviewerSelect.appendChild(el('option', { value: letter, text: letter })));
   try { reviewerSelect.value = localStorage.getItem(STORE + ':reviewer') || ''; } catch (e) { /* ignore */ }
+  if (DATA.meta.reviewer_ids.length === 1) reviewerSelect.value = DATA.meta.reviewer_ids[0];
   const fromHash = /reviewer=([^&]+)/.exec(location.hash || '');
   if (fromHash && DATA.meta.reviewer_ids.indexOf(decodeURIComponent(fromHash[1])) >= 0) reviewerSelect.value = decodeURIComponent(fromHash[1]);
   reviewerSelect.addEventListener('change', () => { try { localStorage.setItem(STORE + ':reviewer', reviewerSelect.value); } catch (e) { /* ignore */ } render(); });

@@ -145,9 +145,12 @@ def parser() -> argparse.ArgumentParser:
     audit_sample.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
     audit_sample.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
     audit_sample.add_argument("--output", type=Path, required=True, help="new CSV review form; the HTML sheet is written next to it")
+    adjudication_form = commands.add_parser("prepare-edge-adjudications", help="prepare blank joint decisions for returned conflicts; final scoring validates frame and assignments")
+    adjudication_form.add_argument("--reviews", type=Path, nargs="+", required=True)
+    adjudication_form.add_argument("--output", type=Path, required=True)
     edge_audit = commands.add_parser("score-edge-audit", help="validate and score completed edge-audit review packets (double review, or split with overlap per the quality config); not component evaluation or release certification")
     edge_audit.add_argument("--input", type=Path, required=True, help="exact frozen graph artifact")
-    edge_audit.add_argument("--reviews", type=Path, nargs="+", required=True, help="completed review rows; two per edge, or one per edge plus the overlap, per review_design")
+    edge_audit.add_argument("--reviews", type=Path, nargs="+", required=True, help="completed CSV exports, parsed separately; assignments follow double_review, split_with_overlap or single_reviewer")
     edge_audit.add_argument("--adjudications", type=Path, help="required only for reviewer disagreements")
     edge_audit.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
     edge_audit.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
@@ -402,6 +405,10 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "freeze-audit-sample":
             from scientific_network.evaluation.edge_audit import prepare_edge_audit_sample
             result = prepare_edge_audit_sample(args.input, args.config, args.output, args.readiness)
+            exit_code = 0
+        elif args.command == "prepare-edge-adjudications":
+            from scientific_network.evaluation.edge_audit import prepare_edge_adjudications
+            result = prepare_edge_adjudications(args.reviews, args.output)
             exit_code = 0
         elif args.command == "score-edge-audit":
             from scientific_network.evaluation.edge_audit import evaluate_edge_audit

@@ -1,0 +1,217 @@
+{
+  "status": "passed",
+  "fresh_analysis": "reports/release-v2/analysis.json",
+  "unchanged_sections": [
+    "projections",
+    "strict_projections",
+    "robustness",
+    "business_findings",
+    "graph_counts"
+  ],
+  "historical_graph_recomputed_with_fixed_metrics_equals_corrected_graph_metrics": true,
+  "difference_explanation": "Graph identity/time/input plus exact fractional sums and deterministic topic tie ranking; no graph facts/predictions changed.",
+  "differences": [
+    {
+      "path": "/graph_version",
+      "before": "release-5d830ffcbdf4",
+      "after": "release-9d4a6fb20f63"
+    },
+    {
+      "path": "/input_sha256",
+      "before": "b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb",
+      "after": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/3/community_top_topics/4/paper_count",
+      "before": 13,
+      "after": 17
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/3/community_top_topics/4/topic",
+      "before": "Trustworthy machine learning",
+      "after": "Efficient machine learning systems"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/3/community_top_topics/4/topic_id",
+      "before": "topic:trustworthy-ml",
+      "after": "topic:efficient-systems"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/15/community_top_topics/4/paper_count",
+      "before": 13,
+      "after": 17
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/15/community_top_topics/4/topic",
+      "before": "Trustworthy machine learning",
+      "after": "Efficient machine learning systems"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/15/community_top_topics/4/topic_id",
+      "before": "topic:trustworthy-ml",
+      "after": "topic:efficient-systems"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/17/community_top_topics/4/paper_count",
+      "before": 13,
+      "after": 17
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/17/community_top_topics/4/topic",
+      "before": "Trustworthy machine learning",
+      "after": "Efficient machine learning systems"
+    },
+    {
+      "path": "/release_metrics/bridge_researchers/top_researchers/17/community_top_topics/4/topic_id",
+      "before": "topic:trustworthy-ml",
+      "after": "topic:efficient-systems"
+    },
+    {
+      "path": "/release_metrics/method_version",
+      "before": "d040-release-metrics-v1",
+      "after": "d040-release-metrics-v2"
+    },
+    {
+      "path": "/release_metrics/organization_topic_comparison_candidates/5/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_comparison_candidates/27/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/5/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/27/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/56/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/71/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/74/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/107/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/130/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/138/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/146/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/157/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/204/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/214/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/267/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/394/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/464/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/688/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/703/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/768/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/796/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/1165/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/1698/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/1805/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/1843/fractional_portfolio_denominator",
+      "before": 189.778571428572,
+      "after": 189.778571428571
+    },
+    {
+      "path": "/release_metrics/organization_topic_profiles/2223/fractional_portfolio_denominator",
+      "before": 46.951190476191,
+      "after": 46.95119047619
+    },
+    {
+      "path": "/release_metrics/topic_shares_by_year_venue/rows/76/fractional_paper_count",
+      "before": 342.166666666666,
+      "after": 342.166666666667
+    },
+    {
+      "path": "/run_at",
+      "before": "2026-11-08T06:33:04.541773+00:00",
+      "after": "2026-11-08T17:13:24.966842+00:00"
+    }
+  ],
+  "new_metrics_method": "d040-release-metrics-v2",
+  "analysis_sha256": "b3d1bf6850e2b30fccaeab7d80e2130bdf68b8d38a09fb648c35e0b879564ad7"
+}

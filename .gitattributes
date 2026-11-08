@@ -4,4 +4,6 @@
 *.parquet binary
 
 # Freeze hashes bind to exact CSV bytes, including quoted embedded CRLFs.
-*.csv -text
+*.csv -text -whitespace
+
+# CSV cells retain source whitespace verbatim; Git code-whitespace checks do not apply.

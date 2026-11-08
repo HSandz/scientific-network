@@ -1,0 +1,22 @@
+{
+  "status": "cleared_for_authorized_replacement",
+  "recorded_at": "2026-11-09T00:06:13.122543+07:00",
+  "endpoint": "bolt://localhost:7689",
+  "service": "neo4j-five-year",
+  "container": "scientific-network-neo4j-five-year-1",
+  "before_nodes": [
+    {
+      "version": "release-5d830ffcbdf4",
+      "nodes": 52415
+    }
+  ],
+  "before_edges": [
+    {
+      "version": "release-5d830ffcbdf4",
+      "edges": 275438
+    }
+  ],
+  "nodes_after_reset": 0,
+  "old_disk_graph_preserved": "data/processed/release-graph-v2/graph.json",
+  "pilot_extended_services_or_volumes_modified": false
+}

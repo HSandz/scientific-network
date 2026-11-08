@@ -220,3 +220,14 @@ def test_frozen_topic_evaluator_compares_both_graphs_with_paper_normalized_label
     assert embedding["test_paper_coverage"]["coverage_fraction"] == 0.9
     assert embedding["paper_normalized_review_metrics"]["micro"]["recall"] == 0.9
     assert output.is_file()
+
+    if replacement:
+        from scientific_network.cli import main
+        assert main([
+            'score-topic-review', '--graph-v1', str(graph_v1_path),
+            '--embedding-graph', str(graph_v2_path), '--embedding-summary', str(graph_v2_summary_path),
+            '--topic-test', str(test_path), '--taxonomy', str(taxonomy_path),
+            '--allocation', str(allocation_path), '--master-sheet', str(master_path),
+            '--reviewer-a', str(review_paths['A']), '--reviewer-b', str(review_paths['B']),
+            '--freeze', str(freeze_path), '--output', str(tmp_path / 'cli-result.json'),
+        ]) == 0

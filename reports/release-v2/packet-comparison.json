@@ -1,0 +1,126 @@
+{
+  "status": "passed",
+  "same_deterministic_sample_ids_assignments_and_membership_flags": true,
+  "explanation": "Sampling ranks semantic IDs using the unchanged frozen seed; new graph/frame/audit hashes and full context were freshly generated.",
+  "changed_display_rows": [
+    {
+      "edge_id": "edge:0191beb7ddb6bb701c44807140829b0e6e76165a8bb202e08254b3c3ceab9717",
+      "reviewer": "A",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 2347
+    },
+    {
+      "edge_id": "edge:43fc0323847493ee7b7a291abc0f9c073cf195da8dac36b54b17efa367da4243",
+      "reviewer": "A",
+      "relation": "AFFILIATED_WITH",
+      "old_length": 700,
+      "new_length": 707
+    },
+    {
+      "edge_id": "edge:43fc0323847493ee7b7a291abc0f9c073cf195da8dac36b54b17efa367da4243",
+      "reviewer": "B",
+      "relation": "AFFILIATED_WITH",
+      "old_length": 700,
+      "new_length": 707
+    },
+    {
+      "edge_id": "edge:4930246c0a76c35e6fabdeed89a09ffd44d0bc1358e69207e5833b1ae73e91ee",
+      "reviewer": "A",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 1061
+    },
+    {
+      "edge_id": "edge:4f029586e8ee955213efdbd447c631e4aec0ff042ee00f26303b14a8fff9cc58",
+      "reviewer": "B",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 954
+    },
+    {
+      "edge_id": "edge:537ede05988f935c862c137302e7bf9af2d54364561d289be52d8962446df7ad",
+      "reviewer": "B",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 889
+    },
+    {
+      "edge_id": "edge:53eac360375d176e5f317249f026a62e3c39cdbdfd9503ac513d01c28e8b160a",
+      "reviewer": "A",
+      "relation": "HAS_TOPIC",
+      "old_length": 380,
+      "new_length": 476
+    },
+    {
+      "edge_id": "edge:53eac360375d176e5f317249f026a62e3c39cdbdfd9503ac513d01c28e8b160a",
+      "reviewer": "B",
+      "relation": "HAS_TOPIC",
+      "old_length": 380,
+      "new_length": 476
+    },
+    {
+      "edge_id": "edge:6222e3b15a626bb29188cb1049065c184def13bc2f82cabca23a3e6a0e2dfd64",
+      "reviewer": "A",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 1485
+    },
+    {
+      "edge_id": "edge:7576dcd4ab8421ea9fb574ffc6dc4282d668b492d2c8c9778e8eb36b1029f0cb",
+      "reviewer": "A",
+      "relation": "HAS_TOPIC",
+      "old_length": 343,
+      "new_length": 478
+    },
+    {
+      "edge_id": "edge:8ad99994ea2789d0b542b2ab21e2a8bbb2cda158632f2e0ab1021fb825e9ea68",
+      "reviewer": "A",
+      "relation": "HAS_TOPIC",
+      "old_length": 366,
+      "new_length": 462
+    },
+    {
+      "edge_id": "edge:98ee2fa216c75f0441a07378d6f75b86aa2cde8d9c4758b3ce875aa4bd435976",
+      "reviewer": "A",
+      "relation": "HAS_TOPIC",
+      "old_length": 430,
+      "new_length": 565
+    },
+    {
+      "edge_id": "edge:a7236002b0e62101aba72b095c9787fb94f5add1139616cc0d2776aa8aeb56dd",
+      "reviewer": "B",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 933
+    },
+    {
+      "edge_id": "edge:b4b30c86c1f4fb06e197577248ff3a42753d09ffcb473d283334cd5a39cff876",
+      "reviewer": "A",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 840
+    },
+    {
+      "edge_id": "edge:b4b30c86c1f4fb06e197577248ff3a42753d09ffcb473d283334cd5a39cff876",
+      "reviewer": "B",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 840
+    },
+    {
+      "edge_id": "edge:e083cb5001060c3e497dbec022269464fa87268e2ee736138144209f35935dce",
+      "reviewer": "B",
+      "relation": "COLLABORATED_WITH",
+      "old_length": 700,
+      "new_length": 1399
+    }
+  ],
+  "new_fields": [
+    "supporting_context"
+  ],
+  "all_decisions_blank": true,
+  "topic_sheet_reuse": "exact bytes and allocation from old freeze, bound in replacement freeze",
+  "old_audit_id": "edge-audit:39f4b5fc58a5908b4d49e925",
+  "new_audit_id": "edge-audit:02ba4ca1f599b45c869dab3e"
+}

@@ -1,0 +1,222 @@
+{
+  "status": "technically_ready_for_independent_human_review",
+  "recorded_at": "2026-11-09T00:30:58.309550+07:00",
+  "work_id": "WORK-2026-11-08-037",
+  "active_freeze": "reports/release-v2/freeze-v3.json",
+  "active_freeze_sha256": "3a90644746f00b0d07e8f4e5605a929664997a42469d69577d5afe130c97151e",
+  "graph_version": "release-9d4a6fb20f63",
+  "graph_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "environment": {
+    "command": "uv sync --locked --group dev --extra analysis",
+    "exit_code": 0
+  },
+  "tests": {
+    "command": "uv run pytest",
+    "exit_code": 0,
+    "passed": 384,
+    "skipped": 1,
+    "seconds": 14.72,
+    "skip": "existing empty stage parameterization",
+    "log": "reports/runs/WORK-2026-11-08-037/pytest-final-confirmed.log",
+    "post_attribute_check": "uv run pytest tests/test_review_csv_bytes.py -q: 1 passed"
+  },
+  "graph_validation": {
+    "command": "uv run research-network validate --input data/processed/release-graph-v3/graph.json --config configs/quality-release-v1.yaml --require-size --output reports/release-v2/validation.json",
+    "exit_code": 0
+  },
+  "fresh_analysis": {
+    "command": "uv run research-network analyze --input data/processed/release-graph-v3/graph.json --config configs/analysis-release-v1.yaml --quality-config configs/quality-release-v1.yaml --output reports/release-v2/analysis.json",
+    "exit_code": 0,
+    "seconds": 151.93,
+    "comparison": "analysis-comparison.json",
+    "all_projection_strict_projection_robustness_business_and_count_sections_unchanged": true,
+    "old_graph_with_fixed_fractional_metrics_matches_new_graph_metrics": true
+  },
+  "figures": {
+    "command": "uv run python -m scientific_network.analysis.figures --analysis reports/release-v2/analysis.json --output-dir reports/final-report/figures-v3",
+    "exit_code": 0,
+    "artifacts": 13,
+    "final_renderer_reproduced_exact_bytes": true,
+    "unstored_community_topics": "masked and disclosed"
+  },
+  "database": {
+    "endpoint": "bolt://localhost:7689",
+    "service": "neo4j-five-year",
+    "load_exit": 0,
+    "replay_exit": 0,
+    "transactions_per_import": 74,
+    "nodes_after_each_import": 52415,
+    "edges_after_each_import": 275438,
+    "inventory_matches_graph": true,
+    "integrity_queries": "queries/02_integrity.cypher",
+    "integrity_row_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "taxonomy_nodes_match_source": 20,
+    "pilot_or_extended_modified": false
+  },
+  "synthetic_browser_exports": {
+    "results": [
+      {
+        "design": "single",
+        "reviewer": "A",
+        "cards": 26,
+        "progress": "26 of 26 complete",
+        "exported": true
+      },
+      {
+        "design": "split",
+        "reviewer": "A",
+        "cards": 13,
+        "progress": "13 of 13 complete",
+        "exported": true
+      },
+      {
+        "design": "split",
+        "reviewer": "B",
+        "cards": 13,
+        "progress": "13 of 13 complete",
+        "exported": true
+      },
+      {
+        "topic_export": true,
+        "blank_topic_export_blocked": true
+      }
+    ],
+    "errors": []
+  },
+  "synthetic_browser_scoring": "single and split exports validated/scored as synthetic_protocol_only; not project quality",
+  "real_blank_browser_packets": {
+    "results": [
+      {
+        "kind": "edge",
+        "reviewer": "A",
+        "cards": 175,
+        "blank": true,
+        "local_taxonomy_links": 5,
+        "blank_download_rows": 0
+      },
+      {
+        "kind": "topic",
+        "reviewer": "A",
+        "papers": 30,
+        "blank": true,
+        "blank_export_blocked": true
+      },
+      {
+        "kind": "edge",
+        "reviewer": "B",
+        "cards": 175,
+        "blank": true,
+        "local_taxonomy_links": 5,
+        "blank_download_rows": 0
+      },
+      {
+        "kind": "topic",
+        "reviewer": "B",
+        "papers": 30,
+        "blank": true,
+        "blank_export_blocked": true
+      }
+    ],
+    "page_errors": []
+  },
+  "blank_refusals": [
+    {
+      "case": "normal-blank",
+      "expected_refusal_exit": 1,
+      "output_created": false,
+      "error": "review decision must be correct, incorrect, or unverifiable"
+    },
+    {
+      "case": "partial-blank",
+      "expected_refusal_exit": 1,
+      "output_created": false,
+      "error": "review decision must be correct, incorrect, or unverifiable"
+    },
+    {
+      "case": "browser-blank-export",
+      "expected_refusal_exit": 1,
+      "output_created": false,
+      "error": "review packet contains no review rows"
+    },
+    {
+      "case": "single-blank",
+      "expected_refusal_exit": 1,
+      "output_created": false,
+      "error": "review decision must be correct, incorrect, or unverifiable"
+    },
+    {
+      "case": "topic-blank",
+      "expected_refusal_exit": 1,
+      "output_created": false,
+      "error": "reviewer A left paper:aaai:2022:20630 unreviewed; explain an empty label set in Notes"
+    }
+  ],
+  "final_freeze_blank_topic_refusal": {
+    "freeze": "reports/release-v2/freeze-v3.json",
+    "exit_code": 1,
+    "output_created": false
+  },
+  "byte_verification": {
+    "status": "passed",
+    "recorded_at": "2026-11-09T00:29:43.186092+07:00",
+    "active_freeze": "reports/release-v2/freeze-v3.json",
+    "file_hashes_verified": 128,
+    "staged_git_blob_hashes_verified": 118,
+    "historical_files_preserved": 65,
+    "current_documentation_links_resolved": 119,
+    "real_completed_exports_or_scores_created": false,
+    "legacy_figure_csv_representations_preserved": {
+      "reports/final-report/figures/topic-trends.csv": {
+        "working_tree_sha256": "79192e55c385f2fc986583f8e60a1f15c7dcd2aaf3836abeebfed3a8ccd573bc",
+        "staged_and_baseline_git_sha256": "10585edd00c1c5394a9b41c1524c8183797ffb788a44f27c8df5ef76196a0c77"
+      },
+      "reports/final-report/figures/community-topic-profiles.csv": {
+        "working_tree_sha256": "813313e16d7685d4b4cd452e3917a62b68511cac1a1401ea1542d6f16b23edb3",
+        "staged_and_baseline_git_sha256": "f5d01515099054e42053531e034104e2b298b58430ae7cd1bbaab0c28ea9c396"
+      },
+      "reports/final-report/figures/researcher-degree-ccdf.csv": {
+        "working_tree_sha256": "c720859127b94426dd11e1331d5390efed9627b7a49cd40340fce5cc57547ce9",
+        "staged_and_baseline_git_sha256": "5baa8cbab2ef88628af7dc21bc6e244d3899747d98129ee357ce049a98c2baec"
+      },
+      "reports/final-report/figures/top-cited-papers.csv": {
+        "working_tree_sha256": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9",
+        "staged_and_baseline_git_sha256": "793884298f29fc5fe9a663eeaa781559951f765544255dde2e979d93b5409aaa"
+      },
+      "reports/final-report/figures/component-sizes.csv": {
+        "working_tree_sha256": "010b318938838f907f21fe167a6664b3a71588aeaca0c189380c34831d8c94b8",
+        "staged_and_baseline_git_sha256": "2f69346548ee2d55df40972b81163abe120791916c50d5f8a7884f2e9b1e5363"
+      },
+      "reports/final-report/figures/sector-mixing.csv": {
+        "working_tree_sha256": "dee839540fe1077fbac42f09b1f34a85a0d88159a5a0ed6c7f4264304a2e5ce8",
+        "staged_and_baseline_git_sha256": "1c7bd8db78eb1122f4379cb40a05897305c450fe46d0cee21c6adfd098c6138b"
+      }
+    }
+  },
+  "remote_snapshot": {
+    "main": "951b9c599f9ba5495cacc7cf88a7ba712e036657",
+    "tags": [],
+    "checked_at": "2026-11-09T00:30:58.309550+07:00"
+  },
+  "independent_semantic_accuracy": "not_measured",
+  "independent_topic_quality": "not_measured",
+  "real_completed_exports_or_scores_created": false,
+  "fallbacks_selected": false,
+  "technical_blockers": [],
+  "human_next_step": "Map actual people to A/B and follow docs/reviewer-handoff.md; return separate edge/topic CSVs and joint edge adjudications.",
+  "not_performed": [
+    "human annotation",
+    "model inference or retuning",
+    "source collection or historical source closure",
+    "Site publication",
+    "push",
+    "tag",
+    "submission"
+  ]
+}

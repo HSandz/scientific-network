@@ -1,74 +1,52 @@
 # Independent quality evaluation
 
-> **For the 11 Nov 2026 submission** the audit design is in the
-> [release plan](release-plan.md#24-accuracy-audit-configsquality-release-v1yaml)
-> (D040). The protocol below is the original proposal; its definitions of edge
-> correctness still apply.
+The [D040 release plan](release-plan.md) governs this release. The active package
+is [release-v2/freeze-v3.json](../reports/release-v2/freeze-v3.json), for the corrected
+graph at `data/processed/release-graph-v3/graph.json`. The old freeze, packets and
+reports remain historical; do not send the old edge sheets to reviewers.
 
-The current planned population is 2021–2025 (D018). All measured research results
-remain diagnostics; the P09 edge-audit packet tools are protocol tooling and do
-not produce an independent quality result without real reviewer inputs. Future
-component estimates must distinguish venue–year strata, coverage and version
-leakage. [Temporal evaluation design](five-year-scope.md).
+Use [the reviewer handoff](reviewer-handoff.md) for the exact A/B packet links,
+completed-export paths, supported adjudication preparation, and complete scoring
+commands with explicit graph, summary, allocation and freeze paths. Topic master,
+allocation and prediction-blind A/B sheets are intentionally reused by exact-byte
+reference; the replacement freeze binds them. No human reviews are completed and
+independent semantic accuracy and topic quality remain unmeasured.
 
-The assignment requires accuracy above 90%. The plan proposes **end-to-end edge
-precision** as the primary interpretation; confirm it with the lecturer. A passing
-edge has correct identities/endpoints, predicate, paper/time scope and verifiable
-evidence. Computing accuracy over every possible node pair would reward trivial
-nonedges and is not the proposed evaluation.
+## Current audit contracts
 
-## Release audit tooling (D040, current behaviour)
+`configs/quality-release-v1.yaml` selects the normal `split_with_overlap` design.
+The optional `quality-single-reviewer-release-v1.yaml` uses `single_reviewer` with
+no overlap and unavailable agreement. Its packets and freeze are separate and
+**not selected**. `double_review` remains the historical default when no design
+is specified. No readiness receipt is required under D040; an explicitly supplied
+historical receipt is still verified. Size gates are measured and reported.
 
-`configs/quality-release-v1.yaml` sets `audit.review_design: split_with_overlap`:
-200 uniform global edges, 10 per relation, and 50 global-sample edges reviewed by
-both reviewers (A and B). A readiness receipt is no longer needed (`--readiness` is
-verified only when supplied), and the size gates are computed and recorded as passed
-or failed in the output of `freeze-audit-sample`, `score-edge-audit` and `analyze`.
+`score-edge-audit --reviews A.csv B.csv` parses exports separately and validates
+frozen graph/config/frame, assignments, timestamps, categories and verdicts.
+`prepare-edge-adjudications` copies returned conflicts into a blank joint form;
+the scorer checks all final frame/assignment bindings and requires adjudication
+of disagreements. Unverifiable is incorrect. Global and per-type samples stay
+separate. Report both course (>90% point precision) and project (≥95% point with
+Wilson lower bound >90%) thresholds.
 
-```bash
-research-network freeze-audit-sample --input data/processed/release-graph-v2/graph.json \
-  --config configs/quality-release-v1.yaml --output reports/release-v1/audit/edge-review-sheet.csv
-```
+Complete frozen assignments are required by default. `--allow-partial` explicitly
+scores only completed returned rows and reports missingness, actual denominators,
+overlap completion and relation coverage. Malformed/blank/duplicate/foreign rows
+remain fatal. Partial results warn about nonresponse bias; they do not certify
+the planned complete audit. See the handoff for fallback commands and exit codes.
 
-This writes the CSV form (one row per edge per assigned reviewer, with the reviewer
-context columns) and `edge-review-sheet.html` next to it. Each reviewer opens the HTML
-sheet (it needs no server or network), chooses A or B, records correct, incorrect or
-unverifiable for each assigned edge with an error category and reason when not
-correct, and exports a CSV. Concatenate the two exports and pass them to
-`score-edge-audit --reviews`. A disagreement on an overlap edge needs one
-adjudication row (an optional `error_category` column is read). The result reports
-k/n, precision, the Wilson 95% interval, per-relation results, agreement percent and
-Cohen's kappa on the overlap, error categories, and both the course (point estimate
-above 90%) and project (at least 95% with a lower bound above 90%) gates. Design
-rationale: [release plan section 2.4](release-plan.md#24-accuracy-audit-configsquality-release-v1yaml).
-The `double_review` design below is still the default when `review_design` is absent.
+Topic scoring keeps one total weight per paper and independent overlap labels.
+The aliases `--embedding-graph` and `--embedding-summary` support replacement
+releases; historical `--graph-v2`/`--graph-v2-summary` options remain accepted.
+This test cannot be used for further classifier tuning.
 
-### D040 frozen topic-test reviews
+## Historical and optional evaluation designs
 
-The frozen topic test has 50 papers. Following the dated user decision in D040,
-reviewers A and B each label 30 papers, with 10 papers shared. The deterministic
-allocation is venue-balanced (12 AAAI and 18 IJCAI papers per reviewer) and is
-bound to the frozen test manifest, prediction-blind master sheet and classifier
-taxonomy in `reports/release-v1/freeze.json`. The master sheet is never edited;
-reviewers return their completed A/B CSV exports.
+The remaining sections preserve earlier proposals and optional component tooling.
+Their historical readiness requirements, sampling sizes and source-closure gates
+do not govern the D040 release. Synthetic examples are not measured project results.
 
-For an empty topic set, a reviewer leaves all three label columns blank and
-records “no applicable leaf” in Notes. This distinguishes a considered empty
-set from an unreviewed row. Do not expose classifier predictions before review.
-
-`research-network score-topic-review --reviewer-a <completed-A.csv>
---reviewer-b <completed-B.csv>` scores both frozen graph predictions over all 50
-papers. Each paper contributes total weight one: a single review has weight one,
-and each of two reviews on a shared paper has weight one half. The output gives
-micro/macro precision, recall and F1, per-label scores, model coverage,
-per-reviewer results, exact-set agreement and per-label Cohen's kappa on the ten
-overlap papers. Disagreement remains visible in the separate reviewer labels;
-the scorer does not invent a consensus label. This test-weighting rule is
-specific to the D040 assignment, and the test remains reserved from classifier
-tuning. Reviewer identity, independence and blind conduct are input-declared,
-not programmatically authenticated.
-
-## Frozen release audit
+## Historical pre-D040 audit proposal
 
 1. After the graph is built, freeze its version, complete edge-frame hash and
    configured random seed. `freeze-audit-sample` refuses non-synthetic graphs

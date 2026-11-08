@@ -124,13 +124,15 @@ def generate_report_figures(analysis_path: Path, output_dir: Path) -> list[Path]
         for row in visible_rows:
             topic_mass[row["topic"]] = topic_mass.get(row["topic"], 0.0) + row["fractional_paper_count"]
         topic_names = [topic for topic, _ in sorted(topic_mass.items(), key=lambda item: (-item[1], item[0]))[:10]]
-        matrix = [[0.0 for _ in topic_names] for _ in community_ids]
+        matrix = [[float("nan") for _ in topic_names] for _ in community_ids]
         community_index = {value: index for index, value in enumerate(community_ids)}
         topic_index = {value: index for index, value in enumerate(topic_names)}
         for row in visible_rows:
             if row["topic"] in topic_index:
                 matrix[community_index[row["community_id"]]][topic_index[row["topic"]]] = row["topic_share"]
-        image = axis.imshow(matrix, aspect="auto", cmap="YlGnBu", vmin=0)
+        import matplotlib.pyplot as plt
+        cmap = plt.get_cmap("YlGnBu").with_extremes(bad="#e5e7eb")
+        image = axis.imshow(matrix, aspect="auto", cmap=cmap, vmin=0)
         axis.set_yticks(range(len(community_ids)), [
             f"C{key.rsplit(':', 1)[-1]} (n={next(row['community_member_count'] for row in visible_rows if row['community_id'] == key):,})"
             for key in community_ids
@@ -142,7 +144,7 @@ def generate_report_figures(analysis_path: Path, output_dir: Path) -> list[Path]
     partition = metrics["bridge_researchers"]["community_topic_partition"]
     save_figure(
         "community-topic-profiles.png", "Topic profiles of largest researcher communities",
-        f"Projection: Researcher–COAUTHORED_WITH–Researcher, Louvain seed {partition.get('seed')} and resolution {partition.get('resolution')}. Filter: all accepted base graph edges; topics are inferred HAS_TOPIC labels. Counting: distinct papers per community, each fractionally allocated across its labels; top 12 communities are plotted, selected from the top 20 by membership.",
+        f"Projection: Researcher–COAUTHORED_WITH–Researcher, Louvain seed {partition.get('seed')} and resolution {partition.get('resolution')}. Filter: all accepted base graph edges; topics are inferred HAS_TOPIC labels. Counting: distinct papers per community, each fractionally allocated across its labels; top 12 communities are plotted, selected from the top 20 by membership. Only stored top-five topics per community are shown; grey means outside that stored profile, not zero support.",
         draw_communities,
         figsize=(12, 7.5),
     )
