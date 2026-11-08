@@ -1,45 +1,42 @@
 # Current project status
 
-Updated: **2026-11-08 03:40 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 11:51 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
-History before D040: [archived status](reference/status-archive-2026-11-08.md) and the [work log](work-log/README.md).
-Latest entry: [WORK-2026-11-08-027](work-log/2026-11-08-027-release-phase-2-openalex-acquisition.md).
+Latest entry: [WORK-2026-11-08-028](work-log/2026-11-08-028-release-phase-3-verification.md).
 
 ## State
 
-- Release scope: AAAI + IJCAI 2021–2025, 13,617 papers from roster v10. Roster and
-  source work is closed for this release.
-- OpenAlex acquisition done: 13,606 of 13,617 papers matched (`reports/release-v1/acquisition.json`).
-- No release graph exists yet. The pilot (154/211), 2023 diagnostic (399/533) and
-  candidate (402/538) graphs are historical diagnostics only.
-- Tests: 343 passed, 1 skipped (WORK-027).
-- Services: `neo4j`, `neo4j-extended` and `grobid` stopped; `neo4j-five-year` is
-  defined in `compose.yaml` but not started (Phase 4).
-- Release configs: `configs/release-v1.yaml`, `quality-release-v1.yaml`,
-  `analysis-release-v1.yaml`.
+- Scope and OpenAlex acquisition are complete under D040; 11 works remain in review.
+- Phase 3 graph v1 rebuilt with method `release-openalex-graph-v1.1`; version
+  `release-4c1253e05f2c`. Fresh validation passes; all ten relations and all size
+  gates pass. Summary: `reports/release-v1/graph-summary.json`.
+- Graph counts: 52,415 nodes; 261,755 edges; 124,619 factual R1–R4 edges;
+  36,680 resolved researchers. Topic labels remain an unvalidated phrase baseline.
+- Tests: 345 passed, 1 skipped (WORK-028).
+- Phase 4 is not run: Docker Desktop is not integrated with this WSL 2 distro;
+  `neo4j-five-year` is defined but not started and port 7689 is not listening.
 
 ## Phase checklist
 
-- [x] P0 Housekeeping: old services stopped; `neo4j-five-year` service defined; release configs created
-- [x] P1 Tooling fixes: validator indexed; loader labeled and batched; receipt locks removed; split-with-overlap review; tests pass
-- [x] P2 OpenAlex acquisition: `works.jsonl` and `acquisition.json`; match rate reported (**CP1**, Sun 14:00)
-- [ ] P3 Graph v1: all ten relations, validated, `graph-summary.json`
-- [ ] P4 Neo4j: loaded, integrity clean, re-import idempotent (**CP2**, Sun 22:00)
-- [ ] P5 Topics: test set frozen first; classifier frozen; graph v2 loaded; label sheet ready
-- [ ] P6 Analysis: `analysis.json`, figures, findings draft (**CP3**, Mon 16:00)
-- [ ] P7 Freeze: `freeze.json`; edge and topic review sheets delivered (**CP4**, Mon 20:00)
-- [ ] Human review returned: edge audit and topic labels (Tue 12:00)
-- [ ] P8 Scoring, full report draft, README rewrite (**CP5**, Tue 20:00)
-- [ ] P9 PDF, release tag, submission (**CP6**, Wed 11 Nov 12:00)
+- [x] P0 Housekeeping
+- [x] P1 Tooling fixes
+- [x] P2 OpenAlex acquisition
+- [x] P3 Graph v1: all ten relations, structural validation, summary and size gates
+- [ ] P4 Neo4j load, integrity and idempotent replay (**blocked by WSL Docker integration**)
+- [ ] P5 Embedding topics, frozen test set, graph v2 and label sheet
+- [ ] P6 Network analysis, figures and findings
+- [ ] P7 Graph freeze and review sheets
+- [ ] Human edge/topic review returned
+- [ ] P8 Scoring, full report draft and README
+- [ ] P9 PDF, release and submission
 
 ## Next action
 
-Phase 3: run `release-graph` on `works.jsonl` (builder and tests exist), check the name
-mismatch rate and memory, write `reports/release-v1/graph-summary.json`.
+Enable Docker Desktop WSL integration, start only `neo4j-five-year`, then complete the
+Phase 4 load, integrity and replay checks.
 
 ## Waiting on the user
 
-- Fill in `docs/team.md` (names, student IDs, roles); decide lecturer repo access;
-  check whether the course requires disclosing AI-tool use.
-- Start `neo4j-five-year` when Phase 4 asks.
-- Reserve review time Mon 20:00 → Tue 12:00 (about 4 h each for two reviewers).
+- Enable Docker Desktop WSL integration so the isolated release DB can start.
+- Fill in `docs/team.md`, choose lecturer repo access and confirm course AI-use disclosure.
+- Reserve edge/topic review time for both reviewers.
