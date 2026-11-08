@@ -381,3 +381,116 @@ def test_sheet_renders_assigned_cards_in_a_real_browser(tmp_path):
     assert done.stdout.count('<article class="card"') == expected
     assert f"0 of {expected} complete" in done.stdout
     assert 'class="empty"' not in done.stdout       # the "choose your reviewer" prompt was replaced by cards
+
+
+def test_single_reviewer_has_no_overlap_and_exports_score(tmp_path):
+    config, sample, summary, rows = _prepare(
+        tmp_path, review_design="single_reviewer", independent_reviewers=1,
+        reviewer_ids=["A"], overlap=0, per_type=5,
+    )
+    assert summary["review_design"] == "single_reviewer"
+    assert summary["overlap_sample_size"] == 0
+    assert summary["form_rows"] == summary["union_sample_size"]
+    assert {r["reviewer_id"] for r in rows} == {"A"}
+    assert {r["is_overlap"] for r in rows} == {"false"}
+    html, data = _sheet_parts(sample.with_suffix('.html'))
+    assert data["meta"]["reviewer_ids"] == ["A"]
+    reviews = _write(tmp_path / "done.csv", _complete(rows))
+    assert _score(config, reviews, tmp_path / "result.json") == 0
+    result = json.loads((tmp_path / "result.json").read_text())
+    assert result["audit_completion"] == "complete"
+    assert result["agreement"]["edges_reviewed_by_both"] == 0
+    assert result["agreement"]["percent"] is None and result["agreement"]["cohens_kappa"] is None
+    assert "unavailable" in result["agreement"]["availability"]
+
+
+def test_partial_scores_actual_global_denominator_missingness_and_only_returned_overlap(tmp_path):
+    config, _, summary, rows = _prepare(tmp_path)
+    complete = _complete(rows)
+    overlap_ids = sorted({r["edge_id"] for r in rows if r["is_overlap"] == "true"})
+    solo = next(r for r in rows if r["in_global_sample"] == "true" and r["is_overlap"] == "false")
+    # One global edge absent entirely; one overlap edge reviewed by just A.
+    completed = [r for r in complete if r["edge_id"] != solo["edge_id"]
+                 and not (r["edge_id"] == overlap_ids[0] and r["reviewer_id"] == "B")]
+    next(r for r in completed if r["edge_id"] == overlap_ids[0]).update(
+        decision="unverifiable", error_category="unverifiable", reason='Cannot verify "tên", source\nmissing')
+    reviews = _write(tmp_path / "partial.csv", completed)
+    strict = tmp_path / "strict.json"
+    assert _score(config, reviews, strict) == 1 and not strict.exists()
+    result_path = tmp_path / "partial.json"
+    assert main(["score-edge-audit", "--input", str(GRAPH), "--config", str(config),
+                 "--reviews", str(reviews), "--allow-partial", "--output", str(result_path)]) == 0
+    result = json.loads(result_path.read_text())
+    assert result["audit_completion"] == "partial"
+    assert result["global"]["planned_total"] == 10 and result["global"]["total"] == 9
+    assert result["global"]["unverifiable"] == 1
+    assert result["global"]["precision"] == pytest.approx(8 / 9)
+    assert result["completion"]["missing_assignment_count"] == 2
+    assert result["completion"]["planned_assignments"] == summary["form_rows"]
+    assert result["completion"]["overlap_completed"] == result["agreement"]["edges_reviewed_by_both"] == 3
+    assert result["completion"]["overlap_planned"] == 4
+    assert sum(x["global_reviewed"] for x in result["completion"]["relation_coverage"].values()) == 9
+    assert any("nonresponse" in s for s in result["limitations"])
+
+
+@pytest.mark.parametrize("mutation", ["duplicate", "foreign", "wrong_hash", "wrong_reviewer", "blank", "bad_csv", "naive_time"])
+def test_partial_opt_in_keeps_invalid_reviews_fatal(tmp_path, mutation):
+    config, _, _, rows = _prepare(tmp_path)
+    completed = _complete(rows)
+    solo = next(r for r in completed if r["is_overlap"] == "false")
+    if mutation == "duplicate":
+        completed.append(completed[0].copy())
+    elif mutation == "foreign":
+        completed[0]["edge_id"] = "edge:foreign"
+    elif mutation == "wrong_hash":
+        completed[0]["frame_sha256"] = "0" * 64
+    elif mutation == "wrong_reviewer":
+        solo["reviewer_id"] = "B" if solo["reviewer_id"] == "A" else "A"
+    elif mutation == "blank":
+        completed[0]["decision"] = ""
+    elif mutation == "naive_time":
+        completed[0]["reviewed_at"] = "2026-11-10T01:00:00"
+    reviews = _write(tmp_path / "reviews.csv", completed)
+    if mutation == "bad_csv":
+        with reviews.open('a') as stream:
+            stream.write('broken,row\n')
+    output = tmp_path / "result.json"
+    assert main(["score-edge-audit", "--input", str(GRAPH), "--config", str(config),
+                 "--reviews", str(reviews), "--allow-partial", "--output", str(output)]) == 1
+    assert not output.exists()
+
+
+def test_partial_still_requires_adjudication_of_returned_conflicts(tmp_path):
+    config, _, _, rows = _prepare(tmp_path)
+    complete = _complete(rows)
+    shared = next(r for r in complete if r["is_overlap"] == "true")
+    shared.update(decision="incorrect", error_category="wrong_identity", reason="Conflict")
+    # Partial because a different single-review edge is missing.
+    solo = next(r for r in complete if r["is_overlap"] == "false")
+    reviews = _write(tmp_path / "reviews.csv", [r for r in complete if r is not solo])
+    output = tmp_path / "result.json"
+    assert main(["score-edge-audit", "--input", str(GRAPH), "--config", str(config),
+                 "--reviews", str(reviews), "--allow-partial", "--output", str(output)]) == 1
+    assert not output.exists()
+    adjudication = _write(tmp_path / "adjudicate.csv", [{
+        **{k: shared[k] for k in ADJUDICATION_FIELDS if k in shared},
+        "adjudicator_id": "A+B", "decision": "unverifiable", "reason": "Joint review unresolved",
+        "reviewed_at": "2026-11-10T10:00:00+07:00",
+    }], ADJUDICATION_FIELDS)
+    assert main(["score-edge-audit", "--input", str(GRAPH), "--config", str(config),
+                 "--reviews", str(reviews), "--allow-partial", "--adjudications", str(adjudication),
+                 "--output", str(output)]) == 0
+    result = json.loads(output.read_text())
+    assert result["agreement"]["agreed"] == 3
+    assert result["global"]["unverifiable"] == 1
+
+
+def test_multiple_exports_are_combined_as_csv_rows_by_cli(tmp_path):
+    config, _, _, rows = _prepare(tmp_path)
+    completed = _complete(rows)
+    paths = [_write(tmp_path / f"{r}.csv", [x for x in completed if x["reviewer_id"] == r]) for r in ("A", "B")]
+    output = tmp_path / "result.json"
+    assert main(["score-edge-audit", "--input", str(GRAPH), "--config", str(config),
+                 "--reviews", *map(str, paths), "--output", str(output)]) == 0
+    result = json.loads(output.read_text())
+    assert result["audit_completion"] == "complete" and len(result["review_packets"]) == 2

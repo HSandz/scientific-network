@@ -80,7 +80,8 @@ def test_empty_topic_set_requires_an_explicit_review_note(tmp_path):
         )
 
 
-def test_frozen_topic_evaluator_compares_both_graphs_with_paper_normalized_labels(tmp_path):
+@pytest.mark.parametrize("replacement", [False, True])
+def test_frozen_topic_evaluator_compares_both_graphs_with_paper_normalized_labels(tmp_path, replacement):
     paper_rows = [
         {"paper_id": f"paper:aaai:{index}", "venue_id": "venue:aaai"}
         for index in range(20)
@@ -176,17 +177,18 @@ def test_frozen_topic_evaluator_compares_both_graphs_with_paper_normalized_label
     all_papers = {row["paper_id"] for row in paper_rows}
     graph_v1_path = make_graph("graph-v1", all_papers, "phrase-v1")
     embedding_ids = {row["paper_id"] for index, row in enumerate(paper_rows) if index < 45}
-    graph_v2_path = make_graph("graph-v2", embedding_ids, "embedding-v1")
-    graph_v2_summary_path = tmp_path / "graph-v2-summary.json"
+    version = "release-corrected-v3" if replacement else "graph-v2"
+    graph_v2_path = make_graph(version, embedding_ids, "embedding-v1")
+    graph_v2_summary_path = tmp_path / ("replacement-summary.json" if replacement else "graph-v2-summary.json")
     graph_v2_summary_path.write_text(json.dumps({
         "graph_v1_version": "graph-v1",
-        "graph_version": "graph-v2",
+        "graph_version": version,
         "graph_sha256": sha256(graph_v2_path.read_bytes()).hexdigest(),
         "inputs_sha256": {"graph_v1_sha256": sha256(graph_v1_path.read_bytes()).hexdigest()},
     }), encoding="utf-8")
-    freeze_path = tmp_path / "freeze.json"
+    freeze_path = tmp_path / ("replacement-freeze.json" if replacement else "freeze.json")
     freeze_path.write_text(json.dumps({
-        "graph_version": "graph-v2",
+        "graph_version": version,
         "graph_sha256": sha256(graph_v2_path.read_bytes()).hexdigest(),
         "topic_test_manifest_sha256": sha256(test_path.read_bytes()).hexdigest(),
         "config_hashes": {"configs/topics-release-v1.yaml": sha256(taxonomy_path.read_bytes()).hexdigest()},
@@ -195,6 +197,12 @@ def test_frozen_topic_evaluator_compares_both_graphs_with_paper_normalized_label
             "reviewer_sheets": blank_sheet_metadata,
         }},
     }), encoding="utf-8")
+
+    if replacement:
+        freeze_doc = json.loads(freeze_path.read_text())
+        freeze_doc["taxonomy_config"] = {"path": str(taxonomy_path), "sha256": sha256(taxonomy_path.read_bytes()).hexdigest()}
+        freeze_doc["config_hashes"] = {str(taxonomy_path): sha256(taxonomy_path.read_bytes()).hexdigest()}
+        freeze_path.write_text(json.dumps(freeze_doc))
 
     output = tmp_path / "topic-eval.json"
     result = score_topic_review(
