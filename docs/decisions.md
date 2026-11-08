@@ -781,3 +781,38 @@ phase 1; record any amendment here with its date.
   ten papers. An empty label set requires a note confirming that no leaf applies.
   This is an evaluation-weighting choice, not an accuracy threshold or a license
   to tune on the reserved test set.
+- **2026-11-09 — pre-audit taxonomy correction and implemented fallbacks
+  ([WORK-037](work-log/2026-11-08-037-pre-audit-corrections.md)).**
+  The frozen embedding graph copied baseline taxonomy metadata. Correct it by
+  synchronizing Topic nodes, hierarchy and evidence with the already frozen
+  classifier config, using the existing predictions and evidence without inference.
+  A deterministic new graph identity binds the old graph, summary, freeze and
+  unchanged taxonomy/quality bytes; every edge receives the new graph version.
+  Canonical comparisons must preserve every non-taxonomy node/edge/evidence record,
+  affiliation observation, semantic identity, excerpt, score, support and weight.
+  The original graph/freeze/packets remain immutable; replacement artifacts use
+  `release-graph-v3` and `reports/release-v2/`. Normal future embedding builds also
+  synchronize and check taxonomy content/provenance against its source config.
+  - The normal two-reviewer design remains active. A separate frozen
+    `quality-single-reviewer-release-v1.yaml` and separate optional packets implement
+    D040's 200-global-plus-five-per-type fallback, assigned only to A with no
+    overlap. Preparing these does not activate the fallback; agreement is unavailable.
+  - Complete assignment validation remains the default. `--allow-partial` scores
+    only supplied completed rows, with no automatic blank-row filtering. Exports
+    may be passed as separate CSV files; each is parsed independently. Duplicates,
+    foreign/malformed rows and hash/assignment mismatches remain fatal. A missing
+    second overlap judgment allows the one returned judgment to contribute, while
+    agreement uses only actual pairs. Returned conflicts still require adjudication.
+    Report actual global n/planned n, missing assignments, overlap and relation
+    coverage, partial status and possible nonresponse bias. Supplements remain
+    separate; an incomplete census is an estimate with an interval. A real partial
+    result exits nonzero even when its observed numeric thresholds pass.
+  - Frozen prediction-blind topic sheets and their allocation may be reused by
+    exact-byte reference: the correction changes no paper, taxonomy config, test
+    membership or annotation context in those sheets. Explicit embedding graph,
+    summary and freeze inputs support corrected releases while historical paths
+    and CLI options stay compatible.
+  - Reviewer context is complete rather than clipped: full evidence hashes,
+    locators, support edges/papers and affiliation observations are inspectable in
+    the HTML. Primary summaries remain concise. CSV files bypass Git newline
+    normalization so embedded quoted CRLFs cannot invalidate frozen hashes.

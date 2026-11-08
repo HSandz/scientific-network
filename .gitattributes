@@ -2,3 +2,6 @@
 *.png binary
 *.jpg binary
 *.parquet binary
+
+# Freeze hashes bind to exact CSV bytes, including quoted embedded CRLFs.
+*.csv -text

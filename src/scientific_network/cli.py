@@ -82,6 +82,14 @@ def parser() -> argparse.ArgumentParser:
     release_topics.add_argument("--quality", type=Path, default=Path("configs/quality-release-v1.yaml"))
     release_topics.add_argument("--output-dir", type=Path, default=Path("data/processed/release-graph-v2"))
     release_topics.add_argument("--summary", type=Path, default=Path("reports/release-v1/graph-v2-summary.json"))
+    correction = commands.add_parser("correct-release-taxonomy", help="correct frozen taxonomy metadata without model inference")
+    correction.add_argument("--input", type=Path, required=True)
+    correction.add_argument("--taxonomy", type=Path, required=True)
+    correction.add_argument("--quality", type=Path, required=True)
+    correction.add_argument("--source-summary", type=Path, required=True)
+    correction.add_argument("--source-freeze", type=Path, required=True)
+    correction.add_argument("--output-dir", type=Path, required=True)
+    correction.add_argument("--summary", type=Path, required=True)
     topic_review = commands.add_parser("prepare-topic-review-sheet", help="prepare a prediction-blind sheet for frozen topic-test papers")
     topic_review.add_argument("--works", type=Path, default=Path("data/interim/release-v1/works.jsonl"))
     topic_review.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
@@ -94,7 +102,7 @@ def parser() -> argparse.ArgumentParser:
     topic_packets.add_argument("--output-dir", type=Path, default=Path("reports/release-v1/audit"))
     topic_eval = commands.add_parser("score-topic-review", help="score frozen phrase and embedding topic predictions against completed A/B review packets")
     topic_eval.add_argument("--graph-v1", type=Path, default=Path("data/processed/release-graph-v1/graph.json"))
-    topic_eval.add_argument("--graph-v2", type=Path, default=Path("data/processed/release-graph-v2/graph.json"))
+    topic_eval.add_argument("--graph-v2", "--embedding-graph", type=Path, default=Path("data/processed/release-graph-v2/graph.json"))
     topic_eval.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
     topic_eval.add_argument("--taxonomy", type=Path, default=Path("configs/topics-release-v1.yaml"))
     topic_eval.add_argument("--allocation", type=Path, default=Path("reports/release-v1/audit/topic-review-allocation.json"))
@@ -102,7 +110,7 @@ def parser() -> argparse.ArgumentParser:
     topic_eval.add_argument("--reviewer-a", type=Path, required=True, help="completed reviewer A CSV export")
     topic_eval.add_argument("--reviewer-b", type=Path, required=True, help="completed reviewer B CSV export")
     topic_eval.add_argument("--freeze", type=Path, default=Path("reports/release-v1/freeze.json"))
-    topic_eval.add_argument("--graph-v2-summary", type=Path, default=Path("reports/release-v1/graph-v2-summary.json"))
+    topic_eval.add_argument("--graph-v2-summary", "--embedding-summary", type=Path, default=Path("reports/release-v1/graph-v2-summary.json"))
     topic_eval.add_argument("--output", type=Path, default=Path("reports/release-v1/topic-eval.json"))
     pregraph = commands.add_parser("prepare-pregraph", help="freeze diagnostic support tables and report unmet pregraph gates; no graph construction")
     pregraph.add_argument("--config", type=Path, required=True)
@@ -139,10 +147,11 @@ def parser() -> argparse.ArgumentParser:
     audit_sample.add_argument("--output", type=Path, required=True, help="new CSV review form; the HTML sheet is written next to it")
     edge_audit = commands.add_parser("score-edge-audit", help="validate and score completed edge-audit review packets (double review, or split with overlap per the quality config); not component evaluation or release certification")
     edge_audit.add_argument("--input", type=Path, required=True, help="exact frozen graph artifact")
-    edge_audit.add_argument("--reviews", type=Path, required=True, help="completed review rows; two per edge, or one per edge plus the overlap, per review_design")
+    edge_audit.add_argument("--reviews", type=Path, nargs="+", required=True, help="completed review rows; two per edge, or one per edge plus the overlap, per review_design")
     edge_audit.add_argument("--adjudications", type=Path, help="required only for reviewer disagreements")
     edge_audit.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
     edge_audit.add_argument("--readiness", type=Path, help="optional historical readiness receipt, verified against the graph when given (not required, D040)")
+    edge_audit.add_argument("--allow-partial", action="store_true", help="explicitly score only returned completed reviews; report missingness and potential nonresponse bias")
     edge_audit.add_argument("--output", type=Path, required=True, help="new evaluation JSON")
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
@@ -315,6 +324,11 @@ def main(argv: list[str] | None = None) -> int:
             result = build_release_graph_v2(
                 args.input, args.works, args.taxonomy, args.quality, args.output_dir, args.summary)
             exit_code = 0
+        elif args.command == "correct-release-taxonomy":
+            from scientific_network.resolve.release_taxonomy import correct_release_taxonomy
+            result = correct_release_taxonomy(args.input, args.taxonomy, args.quality, args.source_summary,
+                                             args.source_freeze, args.output_dir, args.summary)
+            exit_code = 0
         elif args.command == "prepare-topic-review-sheet":
             from scientific_network.evaluation.topic_review import prepare_topic_review_sheet
             result = prepare_topic_review_sheet(args.works, args.topic_test, args.taxonomy, args.output)
@@ -392,7 +406,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "score-edge-audit":
             from scientific_network.evaluation.edge_audit import evaluate_edge_audit
             result, exit_code = evaluate_edge_audit(args.input, args.reviews, args.config,
-                args.output, args.adjudications, args.readiness)
+                args.output, args.adjudications, args.readiness, allow_partial=args.allow_partial)
         else:
             spec = STAGES[args.command]
             print(json.dumps({

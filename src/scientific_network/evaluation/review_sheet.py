@@ -46,7 +46,7 @@ SUPPORT_SHOWN = {R.COAUTHORED_WITH: 1, R.COLLABORATED_WITH: 1, R.RESEARCHES_TOPI
 CONTEXT_FIELDS = [
     "relation", "is_overlap", "source_id", "source_name", "target_id", "target_name",
     "official_page_url", "pdf_url", "doi_url", "openalex_work_url", "openalex_entity_url",
-    "also_show", "correct_when",
+    "also_show", "correct_when", "supporting_context",
 ]
 
 _OPENALEX_ID = re.compile(r"^[AIWSCPF]\d+$", re.IGNORECASE)
@@ -95,6 +95,7 @@ class SheetContext:
         self.nodes = {node.id: node for node in graph.nodes}
         self.evidence = {item.id: item for item in graph.evidence}
         self.edges = {(e.relation, e.source_id, e.target_id): e for e in graph.edges}
+        self.edges_by_id = {e.edge_id: e for e in graph.edges}
         self.pair_papers: dict[tuple[str, str], set[str]] = defaultdict(set)
         self.paper_observations = defaultdict(list)
         for observation in graph.affiliation_observations:
@@ -209,6 +210,24 @@ class SheetContext:
         kind = "person" if r == R.RESEARCHES_TOPIC else "organization"
         return _join([f"{kind}: {source}", f"topic: {target}", f"supporting papers: {topic_papers}" if topic_papers else ""])
 
+    def supporting_context(self, edge: Edge) -> str:
+        """Keep complete source locators, taxonomy definitions and support available."""
+        records = [self.evidence[ref] for ref in edge.evidence_ids if ref in self.evidence]
+        support_ids = {ref for record in records for ref in record.support_edge_ids}
+        supports = [self.edges_by_id[ref] for ref in sorted(support_ids) if ref in self.edges_by_id]
+        papers = sorted(set(self._support_papers(edge)) | set(self.papers_for(edge)))
+        evidence_ids = {ref for e in supports for ref in e.evidence_ids} | set(edge.evidence_ids)
+        context = {
+            "edge": edge.model_dump(mode="json"),
+            "evidence": [self.evidence[ref].model_dump(mode="json") for ref in sorted(evidence_ids) if ref in self.evidence],
+            "support_edges": [e.model_dump(mode="json") for e in supports],
+            "papers": [self.nodes[p].model_dump(mode="json") for p in papers if p in self.nodes],
+            "affiliation_observations": [o.model_dump(mode="json") for p in papers for o in self.paper_observations[p]],
+            "topic_definitions": [self.nodes[t].model_dump(mode="json") for t in (edge.source_id, edge.target_id)
+                                  if t in self.nodes and self.nodes[t].label == "Topic"],
+        }
+        return json.dumps(context, ensure_ascii=False, sort_keys=True, indent=2)
+
     def describe(self, edge: Edge) -> tuple[dict, list[dict]]:
         """Return the flat CSV context columns and the full link list for one edge."""
         papers = self.papers_for(edge)
@@ -221,11 +240,12 @@ class SheetContext:
             "official_page_url": first_links.get("Official page", ""), "pdf_url": first_links.get("PDF", ""),
             "doi_url": first_links.get("DOI", ""), "openalex_work_url": first_links.get("OpenAlex work", ""),
             "openalex_entity_url": " ".join(url for _, url in entity),
-            "also_show": _clip(self.also_show(edge, papers)),
+            "also_show": self.also_show(edge, papers),
+            "supporting_context": self.supporting_context(edge),
             "correct_when": CORRECT_WHEN[edge.relation],
         }
         links = []
-        for index, paper in enumerate(papers):
+        for index, paper in enumerate(sorted(set(papers) | set(self._support_papers(edge)))):
             suffix = f" (paper {index + 1})" if len(papers) > 1 else ""
             links.extend({"label": label + suffix, "url": url} for label, url in self.paper_links(paper))
         links.extend({"label": label, "url": url} for label, url in entity)
@@ -334,6 +354,8 @@ _APP_JS = r"""
       el('h2', { text: c.source_name + '  →  ' + c.target_name }),
       links,
       el('p', { class: 'also', text: c.also_show }),
+      el('details', {}, [el('summary', { text: 'Complete evidence, support and frozen taxonomy context' }),
+                         el('pre', { text: c.supporting_context })]),
       el('p', { class: 'when' }, [el('strong', { text: 'Correct when: ' }), document.createTextNode(c.correct_when)]),
       el('div', { class: 'decide' }, radios),
       issue,
@@ -389,7 +411,7 @@ main{max-width:860px;margin:0 auto;padding:16px}.empty{color:var(--muted)}
 .links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0}.links a{color:var(--accent)}.also,.when{margin:6px 0;overflow-wrap:anywhere}.when{color:var(--muted)}
 .decide{display:flex;flex-wrap:wrap;gap:8px 18px;margin:10px 0 4px}.choice{cursor:pointer}.choice.correct{color:var(--ok)}.choice.incorrect{color:var(--bad)}.choice.unverifiable{color:var(--warn)}
 .issue{display:flex;flex-direction:column;gap:6px;margin:6px 0}.issue[hidden]{display:none}.issue select,.issue textarea{font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);width:100%}
-.id{margin:6px 0 0;font:11px ui-monospace,monospace;color:var(--muted);overflow-wrap:anywhere}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}details{margin:8px 0}.id{margin:6px 0 0;font:11px ui-monospace,monospace;color:var(--muted);overflow-wrap:anywhere}
 """
 
 

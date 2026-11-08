@@ -242,7 +242,11 @@ def score_topic_review(
         raise ValueError("topic taxonomy hash differs from the allocation manifest")
     if taxonomy.get("status") != "frozen" or taxonomy.get("calibration", {}).get("topic_test_sha256") != _digest(topic_test_path):
         raise ValueError("topic classifier or test manifest is not frozen together")
-    if freeze.get("config_hashes", {}).get("configs/topics-release-v1.yaml") != _digest(taxonomy_path):
+    taxonomy_binding = freeze.get("taxonomy_config", {}).get("sha256")
+    if taxonomy_binding is None:  # Historical freezes used the canonical config key.
+        taxonomy_binding = freeze.get("config_hashes", {}).get(str(taxonomy_path),
+            freeze.get("config_hashes", {}).get("configs/topics-release-v1.yaml"))
+    if taxonomy_binding != _digest(taxonomy_path):
         raise ValueError("topic taxonomy hash differs from the graph freeze")
 
     test_rows = list(_jsonl(topic_test_path))
@@ -304,6 +308,8 @@ def score_topic_review(
     }
     if venue_counts != expected_venue_counts or allocation.get("venue_counts") != expected_venue_counts:
         raise ValueError("topic reviewer allocation is not balanced across the frozen venues")
+    if dict(Counter(master_venues[p] for p in overlap_ids)) != {"venue:aaai": 4, "venue:ijcai": 6}:
+        raise ValueError("topic overlap must contain four AAAI and six IJCAI papers")
     labels_a = _read_topic_labels(
         reviewer_a_path, reviewer="A", expected_ids=assigned_a, master_rows=master_by_id,
         allowed_topics=topic_id_set,
@@ -338,7 +344,7 @@ def score_topic_review(
     graph_v2, graph_v2_hash = _read_graph(graph_v2_path)
     if graph_v2_hash != freeze.get("graph_sha256") or graph_v2_hash != summary.get("graph_sha256"):
         raise ValueError("embedding graph hash differs from the frozen release graph")
-    if graph_v2.graph_version != freeze.get("graph_version"):
+    if graph_v2.graph_version != freeze.get("graph_version") or graph_v2.graph_version != summary.get("graph_version"):
         raise ValueError("embedding graph version differs from the graph freeze")
     embedding_predictions = _predictions(graph_v2, paper_ids, topic_id_set)
     del graph_v2

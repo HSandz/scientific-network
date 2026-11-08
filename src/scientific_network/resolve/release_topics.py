@@ -76,7 +76,8 @@ def build_release_graph_v2(
         "topic_test_sha256": hashlib.sha256(topic_test_bytes).hexdigest(),
     }
     method_version = "release-embedding-topics-v1"
-    graph_version = "release-" + _digest(method_version, graph_v1.graph_version, *inputs.values())[:12]
+    construction_version = "release-embedding-graph-taxonomy-sync-v2"
+    graph_version = "release-" + _digest(construction_version, method_version, graph_v1.graph_version, *inputs.values())[:12]
     if model is None:
         model = load_sentence_model(taxonomy)
     documents = [{
@@ -143,6 +144,11 @@ def build_release_graph_v2(
         evidence=sorted(evidence_by_id.values(), key=lambda item: item.id),
         affiliation_observations=graph_v1.affiliation_observations,
     )
+    from scientific_network.resolve.release_taxonomy import synchronize_taxonomy, validate_taxonomy
+    graph = synchronize_taxonomy(graph, taxonomy_path, graph_version)
+    taxonomy_errors = validate_taxonomy(graph, taxonomy_path)
+    if taxonomy_errors:
+        raise ValueError("; ".join(taxonomy_errors))
     researcher_min = quality["derived"]["researcher_topic_min_distinct_papers"]
     organization_min = quality["derived"]["organization_topic_min_distinct_papers"]
     graph = materialize(graph, researcher_min, organization_min)
@@ -160,6 +166,7 @@ def build_release_graph_v2(
     summary = {
         "stage": "release-topic-graph", "method_version": method_version,
         "base_graph_method_version": GRAPH_V1_METHOD,
+        "construction_version": construction_version, "taxonomy_validation": "passed",
         "model": {key: model_config.get(key) for key in ("name", "revision", "device")},
         "thresholds": {"tau": float(tau), "delta": float(delta)},
         "development_calibration": {

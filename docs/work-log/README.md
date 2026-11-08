@@ -132,3 +132,5 @@ original failure. The same pattern works for a CLI command; the validator's
 Save observations, actions, decisions and evidence references. Do not dump full
 chats, hidden reasoning, credentials, sensitive profile data or restricted paper
 text into the journal.
+
+- [WORK-2026-11-08-037 — Pre-audit technical corrections](2026-11-08-037-pre-audit-corrections.md) (in_progress).
