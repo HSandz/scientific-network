@@ -20,9 +20,10 @@ import yaml
 from scientific_network.contracts import EvidenceKind, GraphArtifact, Relation
 from scientific_network.graph.schema import RELATIONSHIPS
 from scientific_network.graph.validate import graph_counts, validate_graph
+from scientific_network.analysis.release_metrics import compute_release_metrics
 
 
-METHOD_VERSION = "named-projection-analysis-v1"
+METHOD_VERSION = "named-projection-analysis-v2"
 REQUIRED_PROJECTIONS = {
     "researcher_collaboration",
     "organization_collaboration",
@@ -582,6 +583,8 @@ def analyze_graph(
         projected = _projection_graph(graph, spec, name)
         projections[name] = _summarize_projection(name, projected, config)
 
+    release_metrics = None if graph.is_synthetic else compute_release_metrics(graph, projections, config)
+
     strict_filter = config["robustness"].get("strict_evidence_filter")
     strict_filter_status = config["robustness"]["stricter_evidence_filter_status"]
     run_sensitivity = strict_filter_status == "frozen" and isinstance(strict_filter, dict)
@@ -614,6 +617,7 @@ def analyze_graph(
         "run_at": datetime.now(timezone.utc).isoformat(),
         "graph_counts": graph_counts(graph),
         "projections": projections,
+        "release_metrics": release_metrics,
         "strict_projections": strict_projection_metrics,
         "robustness": {
             "strict_evidence_filter_status": strict_filter_status,
@@ -622,13 +626,16 @@ def analyze_graph(
             "per_projection": sensitivity,
         },
         "business_findings": {
-            "status": "not_generated",
-            "reason": "source-backed interpretation and at least two supporting core papers are required",
+            "status": "not_generated" if graph.is_synthetic else "candidate_metrics_only",
+            "reason": "source-backed findings prose is maintained separately; candidate tables do not establish semantic accuracy",
         },
         "limitations": [
             "Structural validation does not establish semantic correctness or coverage.",
             "Community assignments use the configured NetworkX Louvain fallback; GDS was not used.",
-            "Strict-evidence sensitivity comparisons, citation-age analyses, figures, and business findings remain pending unless a frozen filter was supplied.",
+            "Topic labels are inferred and await independent human review; topic findings are provisional.",
+            "Strict-evidence sensitivity results describe robustness to the configured filter and are not accuracy evidence.",
+            "Citation counts use current in-scope metadata and are not normalized for paper age or exposure time.",
+            "Country mixing retains an unknown category where organization country metadata is absent.",
             "Synthetic output is a protocol check and cannot support a research or release claim.",
         ],
     }

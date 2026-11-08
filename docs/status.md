@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-08 13:03 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 13:37 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
-Latest entry: [WORK-2026-11-08-031](work-log/2026-11-08-031-release-neo4j-loads.md).
+Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-analysis.md).
 
 ## State
 
@@ -16,7 +16,10 @@ Latest entry: [WORK-2026-11-08-031](work-log/2026-11-08-031-release-neo4j-loads.
 - Graph v2 summary: `reports/release-v1/graph-v2-summary.json`; load/replay receipts are
   under `reports/release-v1/neo4j-*.json`. Topic coverage is 11,575/13,617 (85.00%);
   semantic accuracy is not measured and human labels remain pending.
-- Tests: 354 passed, 1 skipped (WORK-031).
+- P6 complete: release analysis `named-projection-analysis-v2`, six figure/table pairs,
+  captions, and three bounded findings with two investigation shortlists are ready.
+  All size gates pass; analysis remains `not_certified` and topic findings are provisional.
+- Latest full test suite: 357 passed, 1 skipped (WORK-032).
 
 ## Phase checklist
 
@@ -26,7 +29,7 @@ Latest entry: [WORK-2026-11-08-031](work-log/2026-11-08-031-release-neo4j-loads.
 - [x] P3 Graph v1: all ten relations, structural validation, summary and size gates
 - [x] P4 Neo4j v1 load, inventory, integrity and idempotent replay
 - [x] P5 Frozen embedding classifier; graph v2 validated, loaded and replayed; topic sheet ready
-- [ ] P6 Network analysis, figures and findings
+- [x] P6 Network analysis, figures and findings
 - [ ] P7 Graph freeze and review sheets
 - [ ] Human edge/topic review returned
 - [ ] P8 Scoring, full report draft and README
@@ -34,8 +37,8 @@ Latest entry: [WORK-2026-11-08-031](work-log/2026-11-08-031-release-neo4j-loads.
 
 ## Next action
 
-Continue P6 from graph v2: run configured analysis, identify missing metrics, and produce
-the planned figures and evidence-backed business findings.
+Proceed to P7: freeze the v2 graph/config hashes, generate the edge review sheet, verify
+the prediction-blind topic sheet, and start report methods sections.
 
 ## Waiting on the user
 
