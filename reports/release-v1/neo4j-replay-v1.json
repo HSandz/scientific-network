@@ -1,0 +1,66 @@
+{
+  "stage": "build",
+  "graph_version": "release-4c1253e05f2c",
+  "input_sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761",
+  "quality_config_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+  "neo4j_endpoint": "bolt://localhost:7689",
+  "is_synthetic": false,
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2096,
+      "Paper": 13617,
+      "Researcher": 36680,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "COAUTHORED_WITH": 112042,
+      "AFFILIATED_WITH": 44535,
+      "AUTHORED": 59159,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 15157,
+      "HAS_TOPIC": 6291,
+      "CITES": 7308,
+      "RESEARCHES_TOPIC": 2433,
+      "CONTRIBUTES_TO_TOPIC": 1197,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "derived": 130829,
+      "observed": 124619,
+      "inferred_topic": 6291,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 36680,
+    "unique_core_factual_edges": 124619
+  },
+  "database": {
+    "nodes_before": 52415,
+    "nodes_after": 52415,
+    "nodes_by_label": {
+      "Researcher": 36680,
+      "Organization": 2096,
+      "Paper": 13617,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_after": 261755,
+    "edges_by_relation": {
+      "AUTHORED": 59159,
+      "AFFILIATED_WITH": 44535,
+      "PUBLISHED_IN": 13617,
+      "CITES": 7308,
+      "HAS_TOPIC": 6291,
+      "SUBTOPIC_OF": 16,
+      "COAUTHORED_WITH": 112042,
+      "COLLABORATED_WITH": 15157,
+      "RESEARCHES_TOPIC": 2433,
+      "CONTRIBUTES_TO_TOPIC": 1197
+    },
+    "batch_size": 5000,
+    "transactions": 72
+  },
+  "semantic_accuracy": "not_measured",
+  "release_status": "audit_pending"
+}

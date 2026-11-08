@@ -1,23 +1,22 @@
 # Current project status
 
-Updated: **2026-11-08 12:50 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 13:03 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
-Latest entry: [WORK-2026-11-08-030](work-log/2026-11-08-030-release-phase-5-embedding-development.md).
+Latest entry: [WORK-2026-11-08-031](work-log/2026-11-08-031-release-neo4j-loads.md).
 
 ## State
 
-- Scope and OpenAlex acquisition are complete under D040; 11 works remain in review.
-- Phase 3 graph v1 is preserved. Phase 5 graph v2 `release-5d830ffcbdf4` was built
-  from its frozen CPU embedding classifier and independently validates; its summary is
-  `reports/release-v1/graph-v2-summary.json`.
-- Graph v2: 52,415 nodes; 275,438 edges; 124,619 factual R1–R4 edges; all ten relations.
-  Topic labels cover 11,575/13,617 papers (85.00%); semantic accuracy is not measured.
-- A prediction-blind 50-paper topic sheet with 16 definitions is ready under
-  `reports/release-v1/audit/`; human labels remain pending.
-- Phase 4 remains blocked: Docker CLI is unavailable in this WSL 2 distro, and port
-  7689 is not listening. No Neo4j load, integrity query or replay has run.
-- Tests: 354 passed, 1 skipped (WORK-030). The CPU model build took 8m52s and peaked at
-  4.02 GiB RSS.
+- Scope, acquisition and graph v1 are complete under D040; 11 works remain in review.
+- Phase 4 passed: v1 load, inventory, integrity query and idempotent replay on the
+  isolated `neo4j-five-year` service.
+- Phase 5 passed: classifier frozen, graph v2 validated and loaded, integrity query and
+  replay passed, and the prediction-blind 50-paper topic sheet is ready.
+- Current Neo4j database is graph `release-5d830ffcbdf4`: 52,415 nodes and 275,438
+  relationships. The service remains healthy on localhost ports 7476/7689.
+- Graph v2 summary: `reports/release-v1/graph-v2-summary.json`; load/replay receipts are
+  under `reports/release-v1/neo4j-*.json`. Topic coverage is 11,575/13,617 (85.00%);
+  semantic accuracy is not measured and human labels remain pending.
+- Tests: 354 passed, 1 skipped (WORK-031).
 
 ## Phase checklist
 
@@ -25,8 +24,8 @@ Latest entry: [WORK-2026-11-08-030](work-log/2026-11-08-030-release-phase-5-embe
 - [x] P1 Tooling fixes
 - [x] P2 OpenAlex acquisition
 - [x] P3 Graph v1: all ten relations, structural validation, summary and size gates
-- [ ] P4 Neo4j load, integrity and idempotent replay (**blocked by WSL Docker integration**)
-- [ ] P5 Embedding classifier frozen; graph v2 validated; Neo4j load and replay pending
+- [x] P4 Neo4j v1 load, inventory, integrity and idempotent replay
+- [x] P5 Frozen embedding classifier; graph v2 validated, loaded and replayed; topic sheet ready
 - [ ] P6 Network analysis, figures and findings
 - [ ] P7 Graph freeze and review sheets
 - [ ] Human edge/topic review returned
@@ -35,12 +34,11 @@ Latest entry: [WORK-2026-11-08-030](work-log/2026-11-08-030-release-phase-5-embe
 
 ## Next action
 
-Enable Docker Desktop WSL integration, start only `neo4j-five-year`, then load graph v2,
-run inventory/integrity queries and verify idempotent re-import. After P4, close P5 and
-continue with P6.
+Continue P6 from graph v2: run configured analysis, identify missing metrics, and produce
+the planned figures and evidence-backed business findings.
 
 ## Waiting on the user
 
-- Enable Docker Desktop WSL integration so the isolated release DB can start.
+- Complete the topic and edge review sheets with the reviewers; do not report accuracy
+  until those labels are returned and scored.
 - Fill in `docs/team.md`, choose lecturer repo access and confirm course AI-use disclosure.
-- Reserve edge/topic review time for both reviewers.
