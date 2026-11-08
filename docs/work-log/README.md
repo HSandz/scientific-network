@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-036](2026-11-08-036-progress-review.md) | Current progress review | completed | Fresh tests, graph/hash and live Neo4j checks pass; taxonomy inconsistency and missing audit fallbacks found; quality scores and final delivery remain pending |
+
 | [WORK-2026-11-08-035](2026-11-08-035-topic-review-allocation.md) | Topic-review allocation and Phase 8 tooling | partial | 30/30 reviewer packets with 10 overlap are hash-bound; topic scorer implemented; actual edge/topic annotations and scores remain pending |
 
 | [WORK-2026-11-08-034](2026-11-08-034-phase-8-report-draft.md) | Phase 8 report drafting before reviewer returns | partial | Report sections 1–11 drafted with measured results and six embedded figures; independent scoring and topic allocation need human input |
