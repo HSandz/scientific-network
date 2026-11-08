@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-08 13:45 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 13:53 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
-Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-analysis.md).
+Latest entry: [WORK-2026-11-08-034](work-log/2026-11-08-034-phase-8-report-draft.md).
 
 ## State
 
@@ -21,9 +21,11 @@ Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-anal
   All size gates pass; analysis remains `not_certified` and topic findings are provisional.
 - Latest full test suite: 357 passed, 1 skipped (WORK-032).
 - P7 complete: graph and four configs are hash-bound in `reports/release-v1/freeze.json`;
-  edge and prediction-blind topic review sheets are prepared; report sections 2–7 are drafted.
+  edge and prediction-blind topic review sheets are prepared.
 - Edge audit is prepared, not performed. No independent labels or semantic accuracy scores
   are available; `docs/team.md` reviewer identities/contributions and course disclosure remain.
+- Phase 8 report drafting has started with sections 1–11 and six embedded figures, but
+  scoring, final report completion and README update await human annotations.
 
 ## Phase checklist
 
@@ -41,12 +43,14 @@ Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-anal
 
 ## Next action
 
-Have reviewers A and B annotate the assigned edge sheet and both reviewers label the
-50 prediction-blind topic papers. Then run Phase 8 scoring and finish the report.
+Resolve the topic-review allocation, collect the completed edge and topic reviews, score
+both evaluations and finish the report/README. Then verify the PDF is at least ten pages.
 
 ## Waiting on the user
 
 - Return the completed A/B edge-review exports and two topic-label exports; no accuracy
   claim is available until these are scored.
+- Answer the allocation question: D040's 25-per-reviewer plus 10-overlap workload estimate
+  covers 40 unique papers, while the frozen topic test contains 50.
 - Fill in `docs/team.md` (real identities, roles and contributions), choose lecturer repo
   access and confirm course AI-use disclosure.
