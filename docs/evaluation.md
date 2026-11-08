@@ -43,6 +43,31 @@ above 90%) and project (at least 95% with a lower bound above 90%) gates. Design
 rationale: [release plan section 2.4](release-plan.md#24-accuracy-audit-configsquality-release-v1yaml).
 The `double_review` design below is still the default when `review_design` is absent.
 
+### D040 frozen topic-test reviews
+
+The frozen topic test has 50 papers. Following the dated user decision in D040,
+reviewers A and B each label 30 papers, with 10 papers shared. The deterministic
+allocation is venue-balanced (12 AAAI and 18 IJCAI papers per reviewer) and is
+bound to the frozen test manifest, prediction-blind master sheet and classifier
+taxonomy in `reports/release-v1/freeze.json`. The master sheet is never edited;
+reviewers return their completed A/B CSV exports.
+
+For an empty topic set, a reviewer leaves all three label columns blank and
+records “no applicable leaf” in Notes. This distinguishes a considered empty
+set from an unreviewed row. Do not expose classifier predictions before review.
+
+`research-network score-topic-review --reviewer-a <completed-A.csv>
+--reviewer-b <completed-B.csv>` scores both frozen graph predictions over all 50
+papers. Each paper contributes total weight one: a single review has weight one,
+and each of two reviews on a shared paper has weight one half. The output gives
+micro/macro precision, recall and F1, per-label scores, model coverage,
+per-reviewer results, exact-set agreement and per-label Cohen's kappa on the ten
+overlap papers. Disagreement remains visible in the separate reviewer labels;
+the scorer does not invent a consensus label. This test-weighting rule is
+specific to the D040 assignment, and the test remains reserved from classifier
+tuning. Reviewer identity, independence and blind conduct are input-declared,
+not programmatically authenticated.
+
 ## Frozen release audit
 
 1. After the graph is built, freeze its version, complete edge-frame hash and

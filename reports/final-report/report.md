@@ -104,8 +104,11 @@ review sheet.
 
 The v2 graph has **11,575 topic-labeled papers** and **2,042 abstentions**, for
 85.00% label coverage. This is coverage, not topic accuracy. Fifty frozen test
-papers are ready for independent annotation with the 16 topic definitions; no
-human test labels or classifier precision/recall/F1 are available yet. Topic
+papers are ready for independent annotation with the 16 topic definitions.
+Reviewer A and reviewer B each receive 30 papers, with 10 papers reviewed by
+both; the union covers all 50. The allocation gives each reviewer 12 AAAI and 18
+IJCAI papers. The hash-bound packets remain prediction-blind. No human test
+labels or classifier precision/recall/F1 are available yet. Topic
 trends and topic-based findings below are therefore provisional until those
 annotations are scored.
 
@@ -311,13 +314,18 @@ the Wilson 95% interval, separate per-relation counts, overlap agreement,
 Cohen's kappa and error categories. Unverifiable edges count as incorrect.
 **These fields remain pending; the generated packet is not an audit result.**
 
-The topic sheet contains 50 held-out papers selected before threshold tuning,
-with 20 AAAI and 30 IJCAI papers. An explicit allocation clarification is
-pending because D040's workload estimate of 25 papers per reviewer with 10
-overlapping does not cover all 50 unique test papers. The prediction-blind master
-sheet remains unchanged while this is resolved. After review, both the embedding
-classifier and phrase baseline must be scored against the same human labels for
-micro/macro precision, recall, F1, coverage and labeler agreement.
+The topic test contains 50 held-out papers selected before threshold tuning,
+with 20 AAAI and 30 IJCAI papers. Following the user's allocation decision,
+reviewer A and reviewer B each receive 30 papers, with 10 shared and 50 unique
+papers covered in 60 judgments. Each packet has 12 AAAI and 18 IJCAI papers. The
+assignment method, test/master hashes and reviewer-sheet hashes are recorded in
+the freeze record. The master sheet remains unchanged. After human labels are
+returned, both the embedding classifier and phrase baseline will be scored
+against the same labels for micro/macro precision, recall, F1, coverage and
+labeler agreement. Every paper contributes total weight one to model metrics;
+each of two judgments on a shared paper contributes one half. Reviewer
+disagreements remain visible instead of being converted into a software-generated
+consensus label, and agreement is measured only on the ten shared papers.
 
 The frozen strict-evidence filter retains 8.0% of researcher-collaboration
 edges, 27.4% of organization-collaboration edges, no citation or paper-topic

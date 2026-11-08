@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-035](2026-11-08-035-topic-review-allocation.md) | Topic-review allocation and Phase 8 tooling | partial | 30/30 reviewer packets with 10 overlap are hash-bound; topic scorer implemented; actual edge/topic annotations and scores remain pending |
+
 | [WORK-2026-11-08-034](2026-11-08-034-phase-8-report-draft.md) | Phase 8 report drafting before reviewer returns | partial | Report sections 1–11 drafted with measured results and six embedded figures; independent scoring and topic allocation need human input |
 
 | [WORK-2026-11-08-033](2026-11-08-033-release-phase-7-freeze.md) | Release Phase 7 freeze and review preparation | completed | v2 graph/config freeze; 200-edge global plus per-type packet with 50 overlap; prediction-blind topic sheet verified; report methods started |

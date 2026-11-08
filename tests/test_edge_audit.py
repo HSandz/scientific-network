@@ -62,6 +62,7 @@ def _write_reviews(sample: Path, output: Path, disagreement_edge: str | None = N
 
 def test_freeze_edge_audit_sample_is_bound_and_synthetic(tmp_path):
     _, sample, result = _sample(tmp_path)
+    assert b"\r\n" not in sample.read_bytes()
     with sample.open(newline="", encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
     assert result["status"] == "synthetic_protocol_sample"

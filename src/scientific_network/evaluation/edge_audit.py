@@ -290,7 +290,9 @@ def prepare_edge_audit_sample(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = SPLIT_FIELDS if split else REVIEW_FIELDS
     with output_path.open("x", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(
+            stream, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(rows)
     summary = {

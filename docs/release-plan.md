@@ -81,6 +81,12 @@ evidence classes and a review queue for conflicts.
   in-scope reserved tests (all IJCAI) plus 20 random AAAI papers reserved then.
 - Thresholds are chosen on non-test papers only. Don't look at test-set
   predictions before the classifier is frozen.
+- **D040 amendment, 8 November:** reviewers A and B each label 30 papers, with
+  10 papers assigned to both reviewers. This covers all 50 test papers in 60
+  judgments. Allocation is deterministic and venue-balanced: each reviewer gets
+  12 AAAI and 18 IJCAI papers, with four AAAI and six IJCAI papers in the overlap.
+  The assignment is hash-bound to the frozen test manifest and prediction-blind
+  master sheet.
 
 ### 2.4 Accuracy audit (`configs/quality-release-v1.yaml`)
 
@@ -120,7 +126,7 @@ evidence classes and a review queue for conflicts.
 | 5 | Embedding topics, graph v2 | 4 h | Mon 9 Nov 12:00 |
 | 6 | Analysis, figures, findings | 4 h | **CP3** Mon 16:00 |
 | 7 | Freeze, review sheets, report methods | 3 h | **CP4** Mon 20:00 |
-| — | Human review: edge audit and topic labels | ~4 h per person | Mon 20:00 → Tue 12:00 |
+| — | Human review: edge audit and topic labels | ~4.5 h per person | Mon 20:00 → Tue 12:00 |
 | 8 | Scoring, full report, README | 6 h | **CP5** Tue 10 Nov 20:00 |
 | 9 | PDF, release, submission | 3 h | **CP6** Wed 11 Nov 12:00 |
 
@@ -274,22 +280,30 @@ are in §4.
 - Run `freeze-audit-sample` with `quality-release-v1.yaml` and assign edges to
   reviewers A and B with the overlap (§2.4). Write
   `reports/release-v1/audit/edge-review-sheet.{csv,html}` (§5).
+- Prepare the prediction-blind topic master sheet from the frozen test manifest,
+  then create reviewer A/B packets with
+  `research-network prepare-topic-review-packets`; the agreed allocation is
+  recorded in the hash-bound assignment manifest.
 - Start `reports/final-report/report.md` with the method sections (§6 rows 2–7).
-- Exit (CP4): both sheets delivered to the user; commit.
+- Exit (CP4): the edge-review sheet and both topic reviewer packets are delivered
+  to the user; commit.
 
 ### Human review — Mon 20:00 → Tue 12:00
 
-- Edge audit: about 3.5 hours per reviewer. Topic labels: about 40 minutes each
-  (25 papers each, 10 overlapping). Meanwhile the agent writes report sections
+- Edge audit: about 3.5 hours per reviewer. Topic labels: about 50 minutes each
+  (30 papers each, 10 overlapping; 50 unique papers). Meanwhile the agent writes report sections
   that don't depend on the results.
 
 ### Phase 8 — Scoring and report (CP5)
 
 - Run `score-edge-audit` → `reports/release-v1/audit-results.json`, with the Wilson
   interval from `audit-precision`. State pass or fail against both thresholds.
-- Evaluate the embedding classifier and the phrase baseline on the 50 test papers:
-  micro/macro precision, recall, F1, coverage and labeler agreement →
-  `reports/release-v1/topic-eval.json`.
+- Score the embedding classifier and phrase baseline on the 50 test papers with
+  `research-network score-topic-review`: micro/macro precision, recall, F1,
+  coverage and overlap agreement → `reports/release-v1/topic-eval.json`. Each
+  paper contributes total weight one; when both reviewers label an overlap
+  paper, each judgment contributes one half. Preserve disagreements in the
+  reviewer-level labels; do not use this test to tune the classifier.
 - Finish `reports/final-report/report.md` (§6) using only measured numbers with
   versions.
 - Rewrite the top of `README.md`: what the project is, scope, measured results,
@@ -342,6 +356,13 @@ official paper page, the PDF, the DOI (`https://doi.org/…`), the OpenAlex work
 
 Error categories: wrong identity, wrong affiliation, wrong citation, wrong topic,
 unverifiable.
+
+Topic reviewers label one to three taxonomy leaves per assigned paper, leave all
+three label fields blank when no leaf applies, and record “no applicable leaf” in
+Notes so an empty label set is distinguishable from an unreviewed row. Notes can
+also record ambiguity.
+The reviewer-specific CSVs prefill the assigned A/B identifier; the HTML packet
+keeps that identifier fixed and does not display classifier predictions.
 
 ## 6. Report outline (≥10 pages; target 12–16)
 
