@@ -1,12 +1,30 @@
 version: taxonomy-release-v1
-status: development_before_freeze
+status: frozen
 model:
-  strategy: phrase_baseline_then_supported_embeddings
-  name: null
-  revision: null
-  thresholds: null
-  note: Phase 5 development copy. Freeze model revision and thresholds only after
-    development-only calibration; topic-test papers remain reserved.
+  strategy: sentence_transformer_embeddings
+  name: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  device: cpu
+  batch_size: 64
+  normalize_embeddings: true
+  thresholds:
+    tau: 0.2708871364593506
+    delta: 0.02
+  note: Apache-2.0 model; revision and thresholds are frozen from development-only calibration. Topic labels remain unvalidated pending human review.
+test_manifest: data/manifests/release-v1/topic-test.jsonl
+calibration:
+  method_version: release-embedding-topics-v1
+  target_coverage: 0.85
+  observed_coverage: 0.849966708589184
+  development_papers: 13517
+  sample_seed: 20261108
+  sample_size: 30
+  tau: 0.2708871364593506
+  delta: 0.02
+  works_sha256: 2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047
+  topic_test_sha256: 90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8
+  topic_test_predictions_computed_before_freeze: false
+  development_sample_inspection: 30 predictions inspected at the frozen delta; apparent semantic errors recorded in WORK-2026-11-08-030.
 parents:
 - id: topic:language-perception
   name: Language and perception
@@ -75,13 +93,13 @@ leaves:
 - id: topic:generative-modeling
   parent_id: topic:learning-representation
   name: Generative modeling
-  definition: Learning distributions to generate or reconstruct data samples.
+  definition: Learning data distributions to generate or reconstruct samples; estimating a stochastic or social diffusion process without sample generation does not qualify.
   synonyms:
   - generative model
   - diffusion model
   - normalizing flow
   include:
-  - diffusion
+  - diffusion models
   - adversarial generation
   - variational generation
   exclude:
@@ -89,7 +107,7 @@ leaves:
 - id: topic:graph-ml
   parent_id: topic:learning-representation
   name: Graph machine learning
-  definition: Learning from graph-structured entities and relationships.
+  definition: Learning from graph-structured entities and relationships through learned representations or predictions; combinatorial graph theory and graph algorithms without a learning task do not qualify.
   synonyms:
   - graph neural network
   - graph learning

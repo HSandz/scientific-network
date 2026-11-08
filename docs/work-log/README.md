@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-030](2026-11-08-030-release-phase-5-embedding-development.md) | Release Phase 5: embedding topics and graph v2 | partial | Frozen development-only classifier; graph v2 validates; prediction-blind topic sheet ready; Neo4j load awaits WSL Docker integration |
+
 | [WORK-2026-11-08-029](2026-11-08-029-release-phase-5-topic-test-freeze.md) | Release Phase 5: freeze topic test IDs | completed (Phase 5 partial) | Hash-bound 30 IJCAI + 20 AAAI topic-test sample frozen before tuning; model work remains pending |
 
 | [WORK-2026-11-08-028](2026-11-08-028-release-phase-3-verification.md) | Release Phase 3: verify and rebuild graph v1 | completed | Structural validation and all size gates pass; 36,680 researchers, 124,619 factual edges, ten relations; Phase 4 awaits Docker Desktop WSL integration |

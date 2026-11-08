@@ -23,6 +23,7 @@ dependencies = [
 [project.optional-dependencies]
 analysis = ["pandas>=2.2,<3", "pyarrow>=18,<24", "matplotlib>=3.9,<4"]
 app = ["streamlit>=1.41,<2", "plotly>=6,<7"]
+nlp = ["sentence-transformers==5.1.1", "torch==2.8.0"]
 
 [dependency-groups]
 dev = ["pytest>=8.3,<10"]
@@ -32,6 +33,14 @@ research-network = "scientific_network.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scientific_network"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", extra = "nlp" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
