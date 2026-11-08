@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-08-033](2026-11-08-033-release-phase-7-freeze.md) | Release Phase 7 freeze and review preparation | completed | v2 graph/config freeze; 200-edge global plus per-type packet with 50 overlap; prediction-blind topic sheet verified; report methods started |
+
 | [WORK-2026-11-08-032](2026-11-08-032-release-phase-6-analysis.md) | Release Phase 6 analysis | completed | D040 release metrics, six figures/tables, source-linked findings and criteria-based shortlists; semantic review remains pending |
 
 | [WORK-2026-11-08-031](2026-11-08-031-release-neo4j-loads.md) | Release Phases 4–5: isolated Neo4j loads and replay | completed | v1 and v2 inventory/integrity passed; both versions replayed idempotently; v2 is current in `neo4j-five-year` |

@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-08 13:37 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-08 13:45 +07:00**. Deadline: **11 November 2026**.
 Plan: [release plan](release-plan.md) under [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08).
 Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-analysis.md).
 
@@ -20,6 +20,10 @@ Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-anal
   captions, and three bounded findings with two investigation shortlists are ready.
   All size gates pass; analysis remains `not_certified` and topic findings are provisional.
 - Latest full test suite: 357 passed, 1 skipped (WORK-032).
+- P7 complete: graph and four configs are hash-bound in `reports/release-v1/freeze.json`;
+  edge and prediction-blind topic review sheets are prepared; report sections 2–7 are drafted.
+- Edge audit is prepared, not performed. No independent labels or semantic accuracy scores
+  are available; `docs/team.md` reviewer identities/contributions and course disclosure remain.
 
 ## Phase checklist
 
@@ -30,18 +34,19 @@ Latest entry: [WORK-2026-11-08-032](work-log/2026-11-08-032-release-phase-6-anal
 - [x] P4 Neo4j v1 load, inventory, integrity and idempotent replay
 - [x] P5 Frozen embedding classifier; graph v2 validated, loaded and replayed; topic sheet ready
 - [x] P6 Network analysis, figures and findings
-- [ ] P7 Graph freeze and review sheets
+- [x] P7 Graph freeze and review sheets
 - [ ] Human edge/topic review returned
 - [ ] P8 Scoring, full report draft and README
 - [ ] P9 PDF, release and submission
 
 ## Next action
 
-Proceed to P7: freeze the v2 graph/config hashes, generate the edge review sheet, verify
-the prediction-blind topic sheet, and start report methods sections.
+Have reviewers A and B annotate the assigned edge sheet and both reviewers label the
+50 prediction-blind topic papers. Then run Phase 8 scoring and finish the report.
 
 ## Waiting on the user
 
-- Complete the topic and edge review sheets with the reviewers; do not report accuracy
-  until those labels are returned and scored.
-- Fill in `docs/team.md`, choose lecturer repo access and confirm course AI-use disclosure.
+- Return the completed A/B edge-review exports and two topic-label exports; no accuracy
+  claim is available until these are scored.
+- Fill in `docs/team.md` (real identities, roles and contributions), choose lecturer repo
+  access and confirm course AI-use disclosure.
