@@ -1,0 +1,226 @@
+{
+  "stage": "release-taxonomy-correction",
+  "method_version": "release-taxonomy-metadata-correction-v1",
+  "base_graph_method_version": "release-openalex-graph-v1.1",
+  "model": {
+    "name": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "device": "cpu"
+  },
+  "thresholds": {
+    "tau": 0.2708871364593506,
+    "delta": 0.02
+  },
+  "development_calibration": {
+    "target_coverage": 0.85,
+    "observed_coverage": 0.849966708589184,
+    "development_papers": 13517,
+    "sample_seed": 20261108,
+    "sample_size": 30
+  },
+  "graph_v1_version": "release-4c1253e05f2c",
+  "graph_version": "release-9d4a6fb20f63",
+  "inputs_sha256": {
+    "graph_v1_sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761",
+    "works_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "taxonomy_sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4",
+    "quality_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "topic_test_sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+  },
+  "graph_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2096,
+      "Paper": 13617,
+      "Researcher": 36680,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "COAUTHORED_WITH": 112042,
+      "AFFILIATED_WITH": 44535,
+      "AUTHORED": 59159,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 15157,
+      "RESEARCHES_TOPIC": 6888,
+      "HAS_TOPIC": 14222,
+      "CONTRIBUTES_TO_TOPIC": 2494,
+      "CITES": 7308,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "derived": 136581,
+      "observed": 124619,
+      "inferred_topic": 14222,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 36680,
+    "unique_core_factual_edges": 124619
+  },
+  "coverage": {
+    "eligible_papers": 13617,
+    "papers_with_abstract": 13606,
+    "papers_topic_labeled": 11575,
+    "papers_topic_abstained": 2042,
+    "topic_coverage": 0.8500403906881104,
+    "topic_labeled_by_venue_year": {
+      "venue:aaai": {
+        "2021": {
+          "eligible": 1654,
+          "labeled": 1409
+        },
+        "2022": {
+          "eligible": 1319,
+          "labeled": 1154
+        },
+        "2023": {
+          "eligible": 1578,
+          "labeled": 1387
+        },
+        "2024": {
+          "eligible": 2331,
+          "labeled": 2009
+        },
+        "2025": {
+          "eligible": 3028,
+          "labeled": 2550
+        }
+      },
+      "venue:ijcai": {
+        "2021": {
+          "eligible": 586,
+          "labeled": 480
+        },
+        "2022": {
+          "eligible": 678,
+          "labeled": 560
+        },
+        "2023": {
+          "eligible": 639,
+          "labeled": 524
+        },
+        "2024": {
+          "eligible": 790,
+          "labeled": 656
+        },
+        "2025": {
+          "eligible": 1014,
+          "labeled": 846
+        }
+      }
+    }
+  },
+  "topic_decisions": {
+    "abstain": 2042,
+    "labeled": 11575
+  },
+  "structural_validation": "passed",
+  "semantic_accuracy": "not_measured",
+  "test_predictions_computed_after_classifier_freeze": true,
+  "topic_classifier_method_version": "release-embedding-topics-v1",
+  "correction_inputs": {
+    "source_graph": {
+      "path": "data/processed/release-graph-v2/graph.json",
+      "sha256": "b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb"
+    },
+    "taxonomy": {
+      "path": "configs/topics-release-v1.yaml",
+      "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+    },
+    "quality": {
+      "path": "configs/quality-release-v1.yaml",
+      "sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f"
+    },
+    "source_summary": {
+      "path": "reports/release-v1/graph-v2-summary.json",
+      "sha256": "3ae132a76885e92e1f53d224aab82e28d385f76ec624c4e1fc8e4daa82981326"
+    },
+    "source_freeze": {
+      "path": "reports/release-v1/freeze.json",
+      "sha256": "e0d8526c27164421c7ea9daccc4f47494eaff803e3873e1b88e3c5f72fcd56d6"
+    }
+  },
+  "supersedes_graph_version": "release-5d830ffcbdf4",
+  "preservation": {
+    "status": "preserved",
+    "invariants": {
+      "entity_identities": {
+        "before_sha256": "372f01c1a7a57388be5d573e17206616025ecfe58f2f1175e719f8c7dd90764d",
+        "after_sha256": "372f01c1a7a57388be5d573e17206616025ecfe58f2f1175e719f8c7dd90764d",
+        "equal": true
+      },
+      "non_topic_nodes": {
+        "before_sha256": "9281fea49362c9b10e4ddd6d001b7d380c35724b6e724d06a73c26439568a2a0",
+        "after_sha256": "9281fea49362c9b10e4ddd6d001b7d380c35724b6e724d06a73c26439568a2a0",
+        "equal": true
+      },
+      "semantic_edges": {
+        "before_sha256": "ed0f630da494366f792772be1703880e364ff4ca35c3ad33f96700267c2e354e",
+        "after_sha256": "ed0f630da494366f792772be1703880e364ff4ca35c3ad33f96700267c2e354e",
+        "equal": true
+      },
+      "non_taxonomy_edges": {
+        "before_sha256": "247d478c5490149611f9cff2108e15f4f0015a6e76f08b93d71780536a9c5d94",
+        "after_sha256": "247d478c5490149611f9cff2108e15f4f0015a6e76f08b93d71780536a9c5d94",
+        "equal": true
+      },
+      "non_taxonomy_evidence": {
+        "before_sha256": "adcac0a25158dfb76fdd778e2e79b067fae792d7597accb61d986f713d4e61d1",
+        "after_sha256": "adcac0a25158dfb76fdd778e2e79b067fae792d7597accb61d986f713d4e61d1",
+        "equal": true
+      },
+      "affiliation_observations": {
+        "before_sha256": "6f16e2a618149adeae12b121406c0b849ab973d4e2951a950e6b8b47ee82aeba",
+        "after_sha256": "6f16e2a618149adeae12b121406c0b849ab973d4e2951a950e6b8b47ee82aeba",
+        "equal": true
+      }
+    },
+    "nodes": 52415,
+    "edges": 275438,
+    "relations": {
+      "AFFILIATED_WITH": 44535,
+      "AUTHORED": 59159,
+      "CITES": 7308,
+      "COAUTHORED_WITH": 112042,
+      "COLLABORATED_WITH": 15157,
+      "CONTRIBUTES_TO_TOPIC": 2494,
+      "HAS_TOPIC": 14222,
+      "PUBLISHED_IN": 13617,
+      "RESEARCHES_TOPIC": 6888,
+      "SUBTOPIC_OF": 16
+    },
+    "changed_topic_node_ids": [
+      "topic:causal-inference",
+      "topic:computer-vision",
+      "topic:decision-interaction",
+      "topic:efficient-systems",
+      "topic:generative-modeling",
+      "topic:graph-ml",
+      "topic:language-perception",
+      "topic:learning-representation",
+      "topic:multi-agent",
+      "topic:multimodal",
+      "topic:nlp-language-models",
+      "topic:optimization-theory",
+      "topic:planning-reasoning",
+      "topic:probabilistic-bayesian",
+      "topic:reinforcement-learning",
+      "topic:reliability-theory-systems",
+      "topic:representation-learning",
+      "topic:retrieval-recommendation",
+      "topic:robotics-embodied",
+      "topic:trustworthy-ml"
+    ],
+    "intended_changes": [
+      "Topic source properties, version and status",
+      "taxonomy evidence IDs, hashes and locators",
+      "SUBTOPIC_OF provenance",
+      "every edge graph_version"
+    ],
+    "predictions_excerpts_scores_core_facts_support_sets_counts_weights": "byte-equivalent canonical content"
+  },
+  "taxonomy_validation": "passed",
+  "computation": "deterministic metadata correction; no model inference; coverage/calibration carried forward unchanged",
+  "source_created_at": "2026-11-08T05:41:17.649457+00:00"
+}

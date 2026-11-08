@@ -1,21 +1,19 @@
 # Current project status
 
-Updated: **2026-11-08 23:47 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-08-036](work-log/2026-11-08-036-progress-review.md).
+Updated: **2026-11-09 00:27 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-08-037](work-log/2026-11-08-037-pre-audit-corrections.md).
 
 ## State
 
-- Release scope remains the AAAI/IJCAI 2021–2025 main-track subset of roster v10.
-- Phases 0–7 have execution checkpoints. Phase 8 is partial; this review found a pre-audit taxonomy inconsistency that must be resolved first.
-- Frozen graph v2: `release-5d830ffcbdf4`, SHA-256 `b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb`.
-- Fresh validation: 52,415 nodes, 275,438 edges, 36,680 resolved researchers, 124,619 factual R1–R4 edges, ten nonempty predicates; structural size gates pass.
-- Fresh read-only Neo4j inventory matches v2; all six integrity queries return zero rows. `neo4j-five-year` is healthy on 7476/7689. Earlier load/replay receipts remain historical.
-- Graph, works, baseline, configs, test, analysis and review-packet hashes match their recorded references and tracked Git blobs where applicable.
-- **Taxonomy finding:** all v2 Topic nodes retain `taxonomy-v0.1`; generative-modeling and graph-ML definitions differ from the frozen classifier taxonomy. Four sampled topic edges show the old definitions. Preserve the freeze; a graph correction needs a new version and audit.
-- **Scoring gap:** the edge scorer requires two reviewers and complete assignments; D040's one-reviewer and incomplete-audit fallbacks are not implemented.
-- Analysis, six figure/table pairs and candidate findings exist. Report sections 1–11 are drafted; human edge/topic scores and the final PDF are absent. Semantic accuracy remains unmeasured.
-- Report fixes remain: author-position totals need the matched-work denominator; the statement that main has not been pushed is stale. Remote main matched the review base; no release tags were found.
-- Fresh environment sync and test suite pass: 363 passed, one existing empty-parameterization skip. This review changed handoff records only.
+- Pre-audit technical corrections are complete. Independent human review is the next action.
+- Active graph: `release-9d4a6fb20f63`, at `data/processed/release-graph-v3/graph.json`.
+- Active package: [release-v2/freeze-v3.json](../reports/release-v2/freeze-v3.json). It supersedes the old graph/freeze and the first corrective figure package; all remain preserved.
+- Taxonomy content/provenance now matches the frozen classifier config. Core facts, affiliation observations, predictions, excerpts, scores, derived support and weights are preserved by canonical equality checks.
+- Corrected graph validation passes. Isolated Neo4j load, inventory, taxonomy checks, six zero-row integrity queries and idempotent replay pass on port 7689.
+- Analysis and figures were freshly computed; exact fractional sums fix unstable topic ties. Unstored community topics are masked in the final figures.
+- Normal A/B review packets are ready. Single-reviewer packets are optional and not selected; incomplete scoring requires explicit opt-in. No real reviews or quality scores exist.
+- Final suite: 384 passed, one existing empty-parameterization skip. Real HTML packets and synthetic browser downloads were checked; blank real packets cannot produce results.
+- Remote main was verified at `951b9c5`, with no tags. This session's corrections remain local; no push or publication occurred.
 
 ## Phase checklist
 
@@ -24,20 +22,16 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-08-036](
 - [x] P2 OpenAlex acquisition
 - [x] P3 Graph v1 and structural validation
 - [x] P4 Neo4j v1 load, inventory, integrity and replay
-- [x] P5 Frozen embedding classifier, graph v2 and Neo4j replay (topic metadata correction outstanding)
-- [x] P6 Analysis, figures and findings
-- [x] P7 Graph freeze and review packets (review-context correction outstanding)
-- [ ] Resolve pre-audit taxonomy consistency finding
+- [x] P5 Frozen embedding classifier, corrected graph and Neo4j replay
+- [x] P6 Fresh corrected-graph analysis, figures and findings
+- [x] P7 Replacement freeze and consistent review packets
+- [x] Resolve pre-audit taxonomy, fallback-scoring and reviewer-export issues
 - [ ] Human edge/topic reviews returned and scored
 - [ ] P8 Final report and README complete after scoring
 - [ ] P9 PDF and submission packaging
 
-## Next action
+## Next action and human input
 
-Resolve the taxonomy finding under D040's new-version policy before independent review. Then collect and score completed reviewer exports, finish the report/team record, verify a ≥10-page PDF and prepare the release.
+Follow [the reviewer handoff](reviewer-handoff.md): map actual people to A/B, distribute their packets, preserve originals, return separate completed CSV exports, and jointly adjudicate edge conflicts. The normal design remains selected.
 
-## Waiting on human input
-
-- Completed review exports and required overlap adjudications after review context is consistent.
-- Real names, student IDs, actual contributions and the course AI-use disclosure.
-- Lecturer repository access and final submission/release actions.
+Real names, student IDs, actual contributions, course disclosure and lecturer access come from the user. Semantic accuracy and topic quality remain unmeasured. No Site update, release tag, push or submission is authorized by this handoff.

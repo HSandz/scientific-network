@@ -1,10 +1,12 @@
 """Prepare and score a frozen, independently reviewed graph-edge audit.
 
-Two review designs are supported, chosen by ``audit.review_design`` in the quality
+Three review designs are supported, chosen by ``audit.review_design`` in the quality
 config. ``double_review`` (the default) needs two independent reviews of every sampled
 edge. ``split_with_overlap`` (release plan section 2.4, D040) reviews each sampled edge
 once, split deterministically between two reviewers, with ``overlap_sample_size``
-global-sample edges reviewed by both so agreement can be measured.
+global-sample edges reviewed by both so agreement can be measured. The explicit
+``single_reviewer`` fallback assigns each edge once with no overlap.
+Complete packets are required unless partial scoring is explicitly requested.
 
 This module validates audit evidence; it cannot establish who supplied reviewer
 IDs or whether the review was actually independent. Synthetic inputs stay clearly
@@ -17,8 +19,10 @@ from datetime import datetime
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 from typing import Iterable
+from urllib.parse import quote
 
 import yaml
 
@@ -230,7 +234,7 @@ def prepare_edge_audit_sample(
     output_path: Path,
     readiness_path: Path | None = None,
 ) -> dict:
-    """Write a blank review form (and, for the split design, an HTML sheet) for the deterministic samples."""
+    """Write deterministic blank forms; release designs also get HTML and assigned packets."""
     protected = {input_path.resolve(), config_path.resolve()}
     if readiness_path:
         protected.add(readiness_path.resolve())
@@ -258,6 +262,14 @@ def prepare_edge_audit_sample(
     html_path = output_path.with_suffix(".html")
     if split and (html_path.exists() or html_path.is_symlink()):
         raise ValueError("audit review sheet already exists; use a new versioned path")
+    reviewer_paths = {}
+    if split and audit.get("review_design") == "split_with_overlap":
+        for reviewer in audit["reviewer_ids"]:
+            path = output_path.with_stem(output_path.stem + "-reviewer-" + quote(reviewer, safe=""))
+            for candidate in (path, path.with_suffix(".html")):
+                if candidate.exists() or candidate.is_symlink():
+                    raise ValueError("reviewer packet already exists; use a new versioned path")
+            reviewer_paths[reviewer] = path
     rows = []
     for edge_id in sorted(selected):
         relation = type_membership[edge_id]
@@ -289,6 +301,13 @@ def prepare_edge_audit_sample(
             continue
         assigned = assignments[edge_id]
         context, links = contexts.describe(edges[edge_id])
+        for ref in edges[edge_id].evidence_ids:
+            record = contexts.evidence.get(ref)
+            if record is not None and record.kind == "curated_taxonomy":
+                source_path = Path(record.source_locator.split("#", 1)[0])
+                if source_path.is_file():
+                    links.append({"label": "Frozen taxonomy config", "local_taxonomy": True,
+                                  "url": os.path.relpath(source_path, output_path.parent)})
         context["is_overlap"] = str(len(assigned) == 2).lower()
         for reviewer in assigned:
             rows.append({**base, "reviewer_id": reviewer, "error_category": "", **context, "_links": links})
@@ -328,7 +347,21 @@ def prepare_edge_audit_sample(
             for row in rows
         ]
         html_path.write_text(render_html(sheet_meta, SPLIT_FIELDS, sheet_rows), encoding="utf-8")
+        reviewer_packets = {}
+        for reviewer, path in reviewer_paths.items():
+            assigned_rows = [row for row in rows if row["reviewer_id"] == reviewer]
+            with path.open("x", newline="", encoding="utf-8") as stream:
+                writer = csv.DictWriter(stream, fieldnames=SPLIT_FIELDS, extrasaction="ignore", lineterminator="\n")
+                writer.writeheader()
+                writer.writerows(assigned_rows)
+            reviewer_html = path.with_suffix(".html")
+            assigned_sheet_rows = [row for row in sheet_rows if row["review"]["reviewer_id"] == reviewer]
+            reviewer_html.write_text(render_html({**sheet_meta, "reviewer_ids": [reviewer]}, SPLIT_FIELDS,
+                                                 assigned_sheet_rows), encoding="utf-8")
+            reviewer_packets[reviewer] = {kind: {"path": str(p), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()}
+                                         for kind, p in (("csv", path), ("html", reviewer_html))}
         summary.update({
+            "reviewer_packets": reviewer_packets,
             "review_sheet": str(html_path),
             "overlap_sample_size": sum(len(a) == 2 for a in assignments.values()),
             "assigned_rows_per_reviewer": dict(Counter(row["reviewer_id"] for row in rows)),
@@ -380,17 +413,27 @@ def _review_decision(row: dict, split: bool) -> tuple[str, str]:
 def _load_csv(path: Path | None, fields: list[str]) -> list[dict]:
     if path is None:
         return []
-    with path.open(newline="", encoding="utf-8-sig") as stream:
-        reader = csv.DictReader(stream)
-        missing = set(fields) - set(reader.fieldnames or [])
-        if missing:
-            raise ValueError(f"{path} missing columns: " + ", ".join(sorted(missing)))
-        rows = list(reader)
-        if len(reader.fieldnames or []) != len(set(reader.fieldnames or [])) or any(
-            None in row or any(value is None for value in row.values()) for row in rows
-        ):
-            raise ValueError(f"{path} contains malformed CSV rows or duplicate columns")
-        return rows
+    # Complete support ledgers can exceed Python's small 128 KiB CSV default.
+    # Keep a documented finite cap and restore the process setting after parsing.
+    previous_limit = csv.field_size_limit()
+    try:
+        csv.field_size_limit(max(previous_limit, 64 * 1024 * 1024))
+        with path.open(newline="", encoding="utf-8-sig") as stream:
+            reader = csv.DictReader(stream)
+            missing = set(fields) - set(reader.fieldnames or [])
+            if missing:
+                raise ValueError(f"{path} missing columns: " + ", ".join(sorted(missing)))
+            rows = list(reader)
+            if len(reader.fieldnames or []) != len(set(reader.fieldnames or [])) or any(
+                None in row or any(value is None for value in row.values()) for row in rows
+            ):
+                raise ValueError(f"{path} contains malformed CSV rows or duplicate columns")
+            return rows
+    except csv.Error as exc:
+        raise ValueError(f"{path} contains invalid CSV: {exc}") from exc
+    finally:
+        csv.field_size_limit(previous_limit)
+
 
 
 def evaluate_edge_audit(
@@ -402,7 +445,7 @@ def evaluate_edge_audit(
     readiness_path: Path | None = None,
     *, allow_partial: bool = False,
 ) -> tuple[dict, int]:
-    """Validate the frame/sample and score two reviews plus required adjudications."""
+    """Validate frozen assignments and score returned judgments with required adjudications."""
     review_paths = [reviews_path] if isinstance(reviews_path, Path) else list(reviews_path)
     if not review_paths or len({p.resolve() for p in review_paths}) != len(review_paths):
         raise ValueError("supply distinct completed review export paths")
@@ -520,7 +563,10 @@ def evaluate_edge_audit(
         if timestamp.tzinfo is None:
             raise ValueError("adjudication timestamp needs a timezone")
         adjudication_by_edge[edge_id] = decision
-        adjudication_category[edge_id] = row.get("error_category", "").strip().lower()
+        category = row.get("error_category", "").strip().lower()
+        if category and (category not in ERROR_CATEGORIES or decision == "correct"):
+            raise ValueError("adjudication error_category must be valid and blank for correct decisions")
+        adjudication_category[edge_id] = category
 
     final_decisions = {}
     final_category = {}
@@ -679,3 +725,46 @@ def evaluate_edge_audit(
     with output_path.open("x", encoding="utf-8") as stream:
         stream.write(json.dumps(result, indent=2) + "\n")
     return result, 0 if synthetic or score_status == "pass" else 1
+
+
+def prepare_edge_adjudications(review_paths: list[Path], output_path: Path) -> dict:
+    """Prepare blank decisions for returned conflicts; this does not score or certify reviews.
+
+    Final scoring still checks graph/config/frame/assignments. This helper avoids
+    manually copying provenance hashes into the adjudication form.
+    """
+    if output_path.exists() or output_path.is_symlink() or output_path.resolve() in {p.resolve() for p in review_paths}:
+        raise ValueError("adjudication form must use an unused output path")
+    reviews = [row for path in review_paths for row in _load_csv(path, REVIEW_FIELDS)]
+    if not reviews:
+        raise ValueError("no completed review rows supplied")
+    common_fields = [f for f in ADJUDICATION_FIELDS if f not in {'edge_id', 'adjudicator_id', 'decision', 'reason', 'reviewed_at'}]
+    common = {f: reviews[0][f] for f in common_fields}
+    groups = {}
+    seen = set()
+    for row in reviews:
+        if any(row[f] != common[f] for f in common_fields):
+            raise ValueError("review exports do not belong to the same frozen audit/frame")
+        key = (row['edge_id'], row['reviewer_id'])
+        if key in seen or not row['reviewer_id'].strip():
+            raise ValueError("duplicate or blank reviewer assignment")
+        seen.add(key)
+        decision, _ = _review_decision(row, 'error_category' in row)
+        timestamp = datetime.fromisoformat(row['reviewed_at'].replace('Z', '+00:00'))
+        if timestamp.tzinfo is None or (decision != 'correct' and not row['reason'].strip()):
+            raise ValueError("completed reviews need timezone timestamps and reasons for errors")
+        groups.setdefault(row['edge_id'], []).append((row['reviewer_id'], decision))
+    fields = ADJUDICATION_FIELDS + ['error_category', 'returned_judgments']
+    rows = []
+    for edge, judgments in sorted(groups.items()):
+        if len(judgments) > 2:
+            raise ValueError("more than two reviewer judgments for an edge")
+        if len(judgments) == 2 and judgments[0][1] != judgments[1][1]:
+            rows.append({**common, 'edge_id': edge, 'returned_judgments': json.dumps(sorted(judgments), ensure_ascii=False)})
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open('x', encoding='utf-8', newline='') as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator='\n')
+        writer.writeheader()
+        writer.writerows(rows)
+    return {'status': 'blank_adjudication_form_prepared', 'disagreements': len(rows), 'output': str(output_path),
+            'frame_assignment_validation': 'performed_by_score_edge_audit', 'release_audit_performed': False}

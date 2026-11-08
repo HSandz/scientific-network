@@ -3,7 +3,21 @@
 > **Current plan:** [release-plan.md](release-plan.md) (D040, 8 Nov 2026). The
 > iteration notes below are history.
 
-**Current instruction (D022): staged 2021–2025 collection authorized.**
+## Current capabilities — D040 pre-audit corrections
+
+Release graph construction synchronizes and checks the frozen classifier taxonomy.
+`correct-release-taxonomy` preserves frozen predictions/core facts without inference.
+Edge auditing supports the normal A/B design, separate optional single-reviewer
+packets, explicit partial scoring, dedicated reviewer packets and blank joint
+adjudication preparation. Topic scoring accepts explicit replacement graph,
+summary and freeze paths while retaining historical compatibility. Fractional
+descriptive metrics use exact sums; community plots mark unstored topic shares.
+See [the reviewer handoff](reviewer-handoff.md) and [WORK-037](work-log/2026-11-08-037-pre-audit-corrections.md).
+Independent quality is still unmeasured; publication and submission remain pending.
+
+## Historical implementation notes
+
+**Historical instruction (D022): staged 2021–2025 collection authorized.**
 Official roster discovery v2, OJS recovery v7, and source-roster overlays v8/v9/v10,
 leakage triage, frozen diagnostic sampling, bounded metadata acquisition and
 selective development PDF/header source triage
@@ -12,7 +26,7 @@ under D025; full five-year resolution and graph stages remain pending. See
 [collection workflow](five-year-collection.md) and [current status](status.md).
 Older execution sequences below remain historical.
 
-## Current iteration — P01 ICDM 2021 source follow-up (WORK-018)
+## Historical iteration — P01 ICDM 2021 source follow-up (WORK-018)
 
 The official accepted list has 197 unique IDs (98 Regular Papers, 99 Short
 Papers), all present in the official schedule. The schedule has 42 additional

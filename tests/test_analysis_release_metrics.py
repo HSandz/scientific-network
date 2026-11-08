@@ -90,7 +90,7 @@ def test_country_pair_mixing_keeps_unknown_and_is_symmetric():
     assert counts[("US", "UNKNOWN")] == counts[("UNKNOWN", "US")] == 1
 
 
-def test_figures_write_six_png_csv_pairs_and_versioned_captions(tmp_path):
+def test_figures_write_six_png_csv_pairs_and_versioned_captions(tmp_path, monkeypatch):
     analysis = {
         "is_synthetic": False,
         "graph_version": "release-test",
@@ -130,19 +130,94 @@ def test_figures_write_six_png_csv_pairs_and_versioned_captions(tmp_path):
             }]},
         },
     }
+    # A topic outside a community's stored top five is unknown in this artifact,
+    # and must not be plotted as a measured zero.
+    analysis['release_metrics']['bridge_researchers']['community_topic_profiles_top_20_by_size'].append({
+        'community_id': 'community:00001', 'member_count': 1, 'paper_count': 1,
+        'topic_labeled_paper_count': 1,
+        'top_topics': [{'topic_id': 'topic:other', 'topic': 'Other topic', 'paper_count': 1,
+                        'fractional_paper_count': 1.0, 'share_of_fractional_topic_mass': 1.0}],
+    })
+    import matplotlib.axes
+    import numpy as np
+    original_imshow = matplotlib.axes.Axes.imshow
+    captured = []
+    def observe(axis, matrix, *args, **kwargs):
+        captured.append(np.asarray(matrix, dtype=float))
+        return original_imshow(axis, matrix, *args, **kwargs)
+    monkeypatch.setattr(matplotlib.axes.Axes, 'imshow', observe)
     analysis_path = tmp_path / "analysis.json"
     analysis_path.write_text(json.dumps(analysis), encoding="utf-8")
     output_dir = tmp_path / "figures"
     paths = generate_report_figures(analysis_path, output_dir)
 
+    community_matrix = next(matrix for matrix in captured if matrix.shape == (2, 2))
+    assert np.isnan(community_matrix).sum() == 2
+    assert (community_matrix == 0).sum() == 0
     assert len(paths) == 13
     for path in paths:
         assert path.is_file()
     assert (output_dir / "researcher-degree-ccdf.png").read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     assert "release-test" in (output_dir / "captions.md").read_text(encoding="utf-8")
+    assert "grey means outside that stored profile, not zero support" in (output_dir / "captions.md").read_text()
     try:
         generate_report_figures(analysis_path, output_dir)
     except ValueError as exc:
         assert "already exist" in str(exc)
     else:
         raise AssertionError("figure generation must not overwrite existing artifacts")
+
+
+def test_fractional_metric_outputs_are_stable_across_python_hash_seeds():
+    """Exact sums must not change ties or rounded denominators across set orders."""
+    import os
+    import subprocess
+    import sys
+    script = '''
+import sys,json
+sys.path.insert(0,'tests')
+from test_analysis_release_metrics import _tie_fixture_metrics
+print(json.dumps(_tie_fixture_metrics(),sort_keys=True))
+'''
+    outputs = []
+    for seed in (1, 17, 101):
+        result = subprocess.run([sys.executable, '-c', script], cwd=ROOT,
+                                env={**os.environ, 'PYTHONHASHSEED': str(seed)},
+                                check=True, capture_output=True)
+        outputs.append(result.stdout)
+    assert outputs[0] == outputs[1] == outputs[2]
+
+
+def _tie_fixture_metrics():
+    from scientific_network.contracts import Node, Edge
+    nodes = [Node(id='researcher:tie', label='Researcher', name='Invented researcher')]
+    topic_ids = [f'topic:fill{i}' for i in range(4)] + ['topic:a', 'topic:b']
+    nodes += [Node(id=t, label='Topic', name=t) for t in topic_ids]
+    edges = []
+    labels = ([['topic:a', 'topic:fill0', 'topic:fill1']] * 6
+              + [['topic:b', 'topic:fill2']] * 4
+              + [[f'topic:fill{i}'] for i in range(4) for _ in range(10)])
+    for index, topics in enumerate(labels):
+        paper = f'paper:invented:{index}'
+        nodes.append(Node(id=paper, label='Paper', name=paper, properties={'is_core': True, 'year': 2025}))
+        for relation, source, target, kind in [('AUTHORED', 'researcher:tie', paper, 'observed')]+[
+            ('HAS_TOPIC', paper, topic, 'inferred_topic') for topic in topics
+        ]:
+            edges.append(Edge(edge_id=f'edge:{len(edges)}', relation=relation, source_id=source,
+                              target_id=target, evidence_kind=kind, evidence_ids=['evidence:invented'],
+                              method_version='synthetic', graph_version='synthetic-tie', validation_status='accepted'))
+    graph = GraphArtifact(graph_version='synthetic-tie', is_synthetic=True, nodes=nodes, edges=edges, evidence=[])
+    projections = {'researcher_collaboration': {'top_betweenness': [], 'weak_or_undirected_component_sizes': [],
+                    'communities': [{'algorithm': 'louvain_networkx', 'seed': 17, 'resolution': 0.8,
+                                     'communities': [['researcher:tie']]}]},
+                   'core_citations': {'centrality_scores': {'pagerank': {}}}}
+    config = yaml.safe_load(ANALYSIS_CONFIG.read_text())
+    return compute_release_metrics(graph, projections, config)
+
+
+def test_exact_fractional_topic_ties_use_topic_id_instead_of_float_roundoff():
+    metrics = _tie_fixture_metrics()
+    top = metrics['bridge_researchers']['community_topic_profiles_top_20_by_size'][0]['top_topics']
+    assert len(top) == 5
+    assert top[-1]['topic_id'] == 'topic:a'   # six thirds and four halves are exactly equal
+    assert top[-1]['fractional_paper_count'] == 2.0

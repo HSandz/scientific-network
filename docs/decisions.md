@@ -816,3 +816,30 @@ phase 1; record any amendment here with its date.
     locators, support edges/papers and affiliation observations are inspectable in
     the HTML. Primary summaries remain concise. CSV files bypass Git newline
     normalization so embedded quoted CRLFs cannot invalidate frozen hashes.
+
+  - **Same-session descriptive analysis correction:** fresh recomputation exposed
+    floating-point accumulation over unordered paper sets, affecting rounded
+    portfolio denominators and some tied community-topic rank cutoffs. Use exact
+    rational sums (`d040-release-metrics-v2`) for fractional topic mass before
+    rounding/display, then topic ID for exact ties. Recompute current analysis and
+    figures; preserve the first diagnostic run in the ignored work directory.
+    Recomputing the old graph with the corrected metric method must reproduce
+    the corrected graph's descriptive metrics. This changes no graph support,
+    classifier setting, prediction or quality threshold.
+  - Dedicated A/B edge packets contain only each person's assignments. A supported
+    `prepare-edge-adjudications` command copies returned conflicts into a blank
+    joint form; final scoring still enforces all frozen bindings and assignments.
+
+  - **Figure package revision:** the community heatmap stores only top-five topic
+    profiles. Unstored cells must be masked and labelled as unshown, rather than
+    drawn as measured zero. Figures under `figures-v3` and `freeze-v2.json` supersede
+    the first corrective figure package; the earlier freeze/figures remain intact.
+    The graph, analysis, samples, packets and topic allocation are unchanged.
+
+  - **Final receipt metadata:** `reports/release-v2/freeze-v3.json` is the active
+    package. It names the actual analysis and release-metric methods separately;
+    the earlier corrected receipts are preserved with explicit supersession links.
+    Historical unbound figure CSVs already have CRLF working-tree bytes versus LF
+    Git blobs. Preserve both historical representations; do not renormalize them.
+    Newly frozen CSVs bypass normalization and whitespace styling so quoted source
+    strings, including CRLF and trailing whitespace, retain their exact bytes.

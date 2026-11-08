@@ -1,0 +1,292 @@
+{
+  "status": "frozen",
+  "freeze_method_version": "d040-corrected-package-freeze-v2",
+  "frozen_at": "2026-11-09T00:25:01.287444+07:00",
+  "supersedes": {
+    "path": "reports/release-v2/freeze.json",
+    "sha256": "aa19a1062541213027da08fc91443115deb689fbcd989a0a90a9bdb282f504a9"
+  },
+  "supersedes_graph_version": "release-5d830ffcbdf4",
+  "supersession_scope": "graph taxonomy metadata/provenance, edge review context, analysis/figures; old artifacts retained",
+  "graph_version": "release-9d4a6fb20f63",
+  "graph_path": "data/processed/release-graph-v3/graph.json",
+  "graph_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "correction_summary": {
+    "path": "reports/release-v2/graph-summary.json",
+    "sha256": "3566416665a5ff6960c7c361675c3214cc3ea24da6fa4139df7e2a92a515e199"
+  },
+  "config_hashes": {
+    "configs/release-v1.yaml": "40c8461a1ddd426e02b4cb10d2260fc4a98b4c4638e7abfc53f8860f4aedb5eb",
+    "configs/quality-release-v1.yaml": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "configs/analysis-release-v1.yaml": "7a8024718111ced17fd946d75b25a93f17f08a733cd3c3d47f55671e5ae23e0e",
+    "configs/topics-release-v1.yaml": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+  },
+  "taxonomy_config": {
+    "path": "configs/topics-release-v1.yaml",
+    "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+  },
+  "method_versions": {
+    "graph_schema": "0.1.0",
+    "base_graph": "release-openalex-graph-v1.1",
+    "derived_edges": "core-derivation-v1",
+    "topic_classifier": "release-embedding-topics-v1",
+    "analysis": "named-projection-analysis-v2+d040-release-metrics-v1",
+    "edge_audit": "edge-audit-v1",
+    "taxonomy_correction": "release-taxonomy-metadata-correction-v1",
+    "release_metrics": "d040-release-metrics-v2"
+  },
+  "topic_test_manifest": {
+    "path": "data/manifests/release-v1/topic-test.jsonl",
+    "sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+  },
+  "topic_test_manifest_sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8",
+  "release_status": "frozen_pending_independent_reviews_and_scoring",
+  "independent_quality": "not_measured",
+  "graph_mutation_policy": "immutable; any correction requires a new graph version, validation, Neo4j load and audit sample",
+  "review_packet": {
+    "topic_review_sample": {
+      "paper_count": 50,
+      "prediction_blind": true,
+      "filled_annotation_rows": 0,
+      "sheets": {
+        "topic-label-sheet.csv": {
+          "path": "reports/release-v1/audit/topic-label-sheet.csv",
+          "sha256": "592cfa03b990e125bca1219ff946d4500b2fe687aa028a98952916b6b67c1968"
+        },
+        "topic-label-sheet.html": {
+          "path": "reports/release-v1/audit/topic-label-sheet.html",
+          "sha256": "0024d9b771dbb11153c0a7340925bc678010a8059aab90f34fca706ecd9446ae"
+        }
+      }
+    },
+    "topic_review_assignment": {
+      "prepared_at": "2026-11-08T14:21:54+07:00",
+      "assignment_method_version": "d040-topic-review-allocation-v1",
+      "seed": 20261108,
+      "paper_count": 50,
+      "assignments_per_reviewer": {
+        "A": 30,
+        "B": 30
+      },
+      "total_assignment_rows": 60,
+      "overlap_count": 10,
+      "venue_counts": {
+        "A": {
+          "venue:aaai": 12,
+          "venue:ijcai": 18
+        },
+        "B": {
+          "venue:aaai": 12,
+          "venue:ijcai": 18
+        }
+      },
+      "prediction_blind": true,
+      "allocation_manifest": {
+        "path": "reports/release-v1/audit/topic-review-allocation.json",
+        "sha256": "2123fbb83b05d207259c91726422b5b9543d6fb8f7cfedc5a271adfc691b7fe1"
+      },
+      "reviewer_sheets": {
+        "A": {
+          "csv": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.csv",
+            "sha256": "8f2a4ce4d74974e186ed962147ea407b30834ddee700235f7a9543d6e997323e"
+          },
+          "html": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-A.html",
+            "sha256": "5d3bb0fc140b7d8aa669bc39191bf864b5ba2010efda80ff9ad6f03a92b1e563"
+          }
+        },
+        "B": {
+          "csv": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.csv",
+            "sha256": "6028db3d475c97be3cb21c9ef422544825a0b4181047323337e3adfec6dc2e06"
+          },
+          "html": {
+            "path": "reports/release-v1/audit/topic-label-sheet-reviewer-B.html",
+            "sha256": "9beb686c99fd5a139470301b928881a71055b9ae4d3d747dcfabd3850e435b87"
+          }
+        }
+      }
+    },
+    "prepared_at": "2026-11-09T00:19:47.611062+07:00",
+    "edge_audit_id": "edge-audit:02ba4ca1f599b45c869dab3e",
+    "edge_frame_sha256": "7d6c18a8154a6a4e6f2d82fe817cbda36c89527c2c6817ca2b90be671a8bfa5f",
+    "sampling_method": "seeded_sha256_rank_without_replacement",
+    "global_unique_edges": 200,
+    "per_type_sample_sizes": {
+      "AUTHORED": 10,
+      "AFFILIATED_WITH": 10,
+      "PUBLISHED_IN": 10,
+      "CITES": 10,
+      "HAS_TOPIC": 10,
+      "SUBTOPIC_OF": 10,
+      "COAUTHORED_WITH": 10,
+      "COLLABORATED_WITH": 10,
+      "RESEARCHES_TOPIC": 10,
+      "CONTRIBUTES_TO_TOPIC": 10
+    },
+    "union_unique_edges": 300,
+    "review_assignments": 350,
+    "overlap_edges": 50,
+    "reviewer_assignment_counts": {
+      "B": 175,
+      "A": 175
+    },
+    "edge_summary": {
+      "path": "reports/release-v2/audit/sample-summary.json",
+      "sha256": "983fd3788429c4023fa29b0a45bb4d40e0e318b4cd9d95baf94a8f7756cb479e"
+    },
+    "review_sheets": {
+      "master_csv": {
+        "path": "reports/release-v2/audit/edge-review-sheet-v2.csv",
+        "sha256": "71fd81f7b6520cda71e44231b6c54d0818e8a875e31c21f8ef86d94e023002c3"
+      },
+      "master_html": {
+        "path": "reports/release-v2/audit/edge-review-sheet-v2.html",
+        "sha256": "7c868416e2790e54ec49f792f6e5a94ac92f9c3bc09ecee8ac7497a5c88f8075"
+      }
+    },
+    "edge_reviewer_packets": {
+      "A": {
+        "csv": {
+          "path": "reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.csv",
+          "sha256": "0567527a3867bb1fe8634f6c3501e29413a0494eaa54a6315f6b614bad2924ab"
+        },
+        "html": {
+          "path": "reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.html",
+          "sha256": "377432e04b859360485bf504e51b907efe5a92e2977d1e5032f17ad366962634"
+        }
+      },
+      "B": {
+        "csv": {
+          "path": "reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.csv",
+          "sha256": "684ffa5b2b09e9cf8f2c14adc6d0d22559f07aff3f24e5f18ec59d8106554a60"
+        },
+        "html": {
+          "path": "reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.html",
+          "sha256": "f938ac0e6728ca5f7927c3acde8d0995bc90611ee6ebd95956e1efdb61497c07"
+        }
+      }
+    },
+    "topic_reuse": {
+      "status": "unchanged_bytes_reused_by_reference",
+      "source_freeze": {
+        "path": "reports/release-v1/freeze.json",
+        "sha256": "e0d8526c27164421c7ea9daccc4f47494eaff803e3873e1b88e3c5f72fcd56d6"
+      },
+      "reason": "prediction-blind sheets already use frozen taxonomy; paper text, taxonomy config and agreed allocation unchanged"
+    }
+  },
+  "analysis": {
+    "path": "reports/release-v2/analysis.json",
+    "sha256": "b3d1bf6850e2b30fccaeab7d80e2130bdf68b8d38a09fb648c35e0b879564ad7"
+  },
+  "analysis_sha256": "b3d1bf6850e2b30fccaeab7d80e2130bdf68b8d38a09fb648c35e0b879564ad7",
+  "analysis_comparison": {
+    "path": "reports/release-v2/analysis-comparison.json",
+    "sha256": "8f1091f4ec7f93f2c021da0f3f615e0af9ff5fa848b6b7885f2036b7cc375822"
+  },
+  "figures": {
+    "captions.md": {
+      "path": "reports/final-report/figures-v3/captions.md",
+      "sha256": "e71315b0808aeafdc4e7622deb65849fea59e3005e85fe63f525880719616101"
+    },
+    "community-topic-profiles.csv": {
+      "path": "reports/final-report/figures-v3/community-topic-profiles.csv",
+      "sha256": "813313e16d7685d4b4cd452e3917a62b68511cac1a1401ea1542d6f16b23edb3"
+    },
+    "community-topic-profiles.png": {
+      "path": "reports/final-report/figures-v3/community-topic-profiles.png",
+      "sha256": "1e514f72992f160f92e36687662c459d945c0498c3245f80aa5b2a9cea3b86b9"
+    },
+    "component-sizes.csv": {
+      "path": "reports/final-report/figures-v3/component-sizes.csv",
+      "sha256": "010b318938838f907f21fe167a6664b3a71588aeaca0c189380c34831d8c94b8"
+    },
+    "component-sizes.png": {
+      "path": "reports/final-report/figures-v3/component-sizes.png",
+      "sha256": "bf7a62cdae2fabfcde5167af6f336e2af9d91bfb1f118c341de9a4c7a93d0965"
+    },
+    "researcher-degree-ccdf.csv": {
+      "path": "reports/final-report/figures-v3/researcher-degree-ccdf.csv",
+      "sha256": "c720859127b94426dd11e1331d5390efed9627b7a49cd40340fce5cc57547ce9"
+    },
+    "researcher-degree-ccdf.png": {
+      "path": "reports/final-report/figures-v3/researcher-degree-ccdf.png",
+      "sha256": "284200dc3a8fa67237d0517772c0d31d85148821a25452c26408913b94e1292a"
+    },
+    "sector-mixing.csv": {
+      "path": "reports/final-report/figures-v3/sector-mixing.csv",
+      "sha256": "dee839540fe1077fbac42f09b1f34a85a0d88159a5a0ed6c7f4264304a2e5ce8"
+    },
+    "sector-mixing.png": {
+      "path": "reports/final-report/figures-v3/sector-mixing.png",
+      "sha256": "0ea3fadde39a28586b78c8815d81b2d14d7e4d9e751d443da327434ffb82ba2b"
+    },
+    "top-cited-papers.csv": {
+      "path": "reports/final-report/figures-v3/top-cited-papers.csv",
+      "sha256": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9"
+    },
+    "top-cited-papers.png": {
+      "path": "reports/final-report/figures-v3/top-cited-papers.png",
+      "sha256": "b31cfcaf04ddb368826d41102869eb0f326f8f17be44d004440deccfce2ae148"
+    },
+    "topic-trends.csv": {
+      "path": "reports/final-report/figures-v3/topic-trends.csv",
+      "sha256": "b51a988acc8fdb3de2fd36efffe290349fe6a7586a748711d2484e75211ea24a"
+    },
+    "topic-trends.png": {
+      "path": "reports/final-report/figures-v3/topic-trends.png",
+      "sha256": "a18c14dd8d6b0e2df18ae2b1241d7a1f6ca59538798642df1449a0aaaafbb8b0"
+    }
+  },
+  "verification": {
+    "validation.json": {
+      "path": "reports/release-v2/validation.json",
+      "sha256": "fabbda3f3ae2274755d6d975fa874cd993c02b00735aee892820739c3cc9ff66"
+    },
+    "neo4j-reset.json": {
+      "path": "reports/release-v2/neo4j-reset.json",
+      "sha256": "925d04b6969e7bf8a8b19b0bb7cdd9b74be7557fc17366af9d9c51a28f2faa97"
+    },
+    "neo4j-load.json": {
+      "path": "reports/release-v2/neo4j-load.json",
+      "sha256": "7e86155a4eada8293764c53858f85533beb55e4179fa7dde2c3c754a543a2a72"
+    },
+    "neo4j-replay.json": {
+      "path": "reports/release-v2/neo4j-replay.json",
+      "sha256": "103560d9510a8a56602d1d7df6af3f46f01b8ae3b705829cc36f830174ead17d"
+    },
+    "neo4j-verification.json": {
+      "path": "reports/release-v2/neo4j-verification.json",
+      "sha256": "ee57884c16f53f97d8d60f3a1eaa17df0e925b788d32add975808b736558b894"
+    },
+    "author-position-denominators.json": {
+      "path": "reports/release-v2/author-position-denominators.json",
+      "sha256": "8ae0bfa615acd1fc1d983a9717ced265713902aba2f4c263ead3232c28b243e9"
+    }
+  },
+  "optional_single_reviewer": {
+    "status": "prepared_not_selected",
+    "freeze": {
+      "path": "reports/release-v2/audit-single-reviewer/freeze-v2.json",
+      "sha256": "9f593fde4bf0f0899dd8557e6c933a69f923f3bc90b50480ef3881d2fef08152"
+    }
+  },
+  "source_inputs": {
+    "works": {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    },
+    "phrase_baseline": {
+      "path": "data/processed/release-graph-v1/graph.json",
+      "sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761"
+    }
+  },
+  "package_revision": "d040-review-package-v2",
+  "original_superseded_graph_freeze": {
+    "path": "reports/release-v1/freeze.json",
+    "sha256": "e0d8526c27164421c7ea9daccc4f47494eaff803e3873e1b88e3c5f72fcd56d6"
+  },
+  "package_revision_reason": "Community plot masks unstored topic shares instead of depicting them as measured zero; graph, analysis, sample and packets unchanged."
+}

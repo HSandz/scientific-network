@@ -19,21 +19,24 @@ and [current status](docs/status.md).
 | Relationship types | All 10 predicates are nonempty |
 | OpenAlex coverage | 13,606/13,617 works matched (99.92%); 11 remain in review |
 | Topic coverage | 11,575/13,617 papers labeled (85.00%); this is coverage, not accuracy |
-| Graph database | Neo4j Community 5.26 isolated service; v1/v2 inventory, integrity and idempotent replay passed |
+| Graph database | Neo4j Community 5.26 isolated service; corrected graph inventory, integrity and idempotent replay passed |
 | Network analysis | Five projections, six figures with tables, and three evidence-linked candidate findings |
 | Independent quality | **Not measured.** Human edge reviews and topic labels have not been returned; the graph is not certified |
 | Report | Sections 1–11 drafted with measured results; reviewer scores, real team details and final PDF remain pending |
 
-Graph v2 is `release-5d830ffcbdf4`, SHA-256
-`b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb`. The
+Graph v3 is `release-9d4a6fb20f63`, SHA-256
+`c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8`.
+It corrects taxonomy metadata/provenance without rerunning the frozen classifier.
+The old graph, freeze, packets and reports remain preserved; the replacement
+package is [reports/release-v2/freeze-v3.json](reports/release-v2/freeze-v3.json). The
 current graph and full source caches are local ignored artifacts; small reports,
 figures, configurations and code are versioned. The graph meets the structural
 size targets, but structural validation does not establish semantic accuracy.
 
-The edge audit packet covers 200 globally sampled edges plus a separate sample of
-10 per relation. The global sample has 50 edges reviewed by both reviewers. Topic
-reviewer A and B each receive 30 of the 50 frozen papers, with 10 shared. Both
-instruments are prepared for human review; neither is an evaluation result.
+The independent-review instruments are blank. Use the [reviewer handoff](docs/reviewer-handoff.md)
+for the exact A/B edge and prediction-blind topic packets, export/return paths,
+adjudication and scoring commands. The normal A/B design remains selected;
+one-reviewer and partial-audit fallbacks are explicit options only.
 
 ## Reproduce the local checks
 
@@ -43,10 +46,10 @@ Requires Python 3.12 and [uv](https://docs.astral.sh/uv/).
 uv sync --locked --group dev --extra analysis
 uv run pytest
 uv run research-network validate \
-  --input data/processed/release-graph-v2/graph.json \
+  --input data/processed/release-graph-v3/graph.json \
   --config configs/quality-release-v1.yaml \
   --require-size \
-  --output reports/runs/manual-v2-validation.json
+  --output reports/runs/manual-v3-validation.json
 ```
 
 The graph file and OpenAlex cache are ignored and are not included in a fresh
@@ -61,7 +64,7 @@ output path because the committed workspace output is frozen:
 
 ```bash
 uv run research-network analyze \
-  --input data/processed/release-graph-v2/graph.json \
+  --input data/processed/release-graph-v3/graph.json \
   --config configs/analysis-release-v1.yaml \
   --quality-config configs/quality-release-v1.yaml \
   --output reports/runs/manual-analysis.json
@@ -69,14 +72,16 @@ uv run research-network analyze \
 
 ## Review and report artifacts
 
-- [Release findings](reports/release-v1/findings.md)
-- [Analysis metrics](reports/release-v1/analysis.json)
-- [Graph v2 summary](reports/release-v1/graph-v2-summary.json)
-- [Frozen graph and review hashes](reports/release-v1/freeze.json)
+- [Release findings](reports/release-v2/findings.md)
+- [Fresh analysis metrics](reports/release-v2/analysis.json)
+- [Graph correction summary and preservation checks](reports/release-v2/graph-summary.json)
+- [Replacement freeze and review hashes](reports/release-v2/freeze-v3.json)
 - [Topic-review assignment manifest](reports/release-v1/audit/topic-review-allocation.json)
-- [Edge review sheet](reports/release-v1/audit/edge-review-sheet.html)
+- Edge packets: [reviewer A](reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.html#reviewer=A), [reviewer B](reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.html#reviewer=B)
 - Topic review packets: [reviewer A](reports/release-v1/audit/topic-label-sheet-reviewer-A.html), [reviewer B](reports/release-v1/audit/topic-label-sheet-reviewer-B.html)
 - [Draft academic report](reports/final-report/report.md)
+- [Reviewer export, adjudication and scoring instructions](docs/reviewer-handoff.md)
+- [Technical verification and remaining human inputs](reports/release-v2/technical-verification.json)
 - [Evaluation protocol](docs/evaluation.md)
 
 Reviewer CSV exports should preserve the paper/edge IDs, use the assigned A/B
@@ -116,5 +121,6 @@ release quality. The public project Site is **AI Research Network — Plan & Rep
 this local workspace. The repository URL is
 [github.com/HSandz/scientific-network](https://github.com/HSandz/scientific-network).
 
-This local branch has not been pushed or tagged. Do not treat the remote README,
-release or Site as updated until the project owner publishes the final version.
+Remote `main` was verified on 9 November at `951b9c5`; no remote tags were found.
+The corrections in this session are committed locally only. No push, tag, Site
+publication or submission was performed.

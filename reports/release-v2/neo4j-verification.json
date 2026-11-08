@@ -1,0 +1,252 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-11-09T00:10:57.935572+07:00",
+  "endpoint": "bolt://localhost:7689",
+  "graph_version": "release-9d4a6fb20f63",
+  "graph_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "queries": {
+    "01_inventory.cypher": [
+      [
+        {
+          "labels": [
+            "Researcher"
+          ],
+          "nodes": 36680
+        },
+        {
+          "labels": [
+            "Paper"
+          ],
+          "nodes": 13617
+        },
+        {
+          "labels": [
+            "Organization"
+          ],
+          "nodes": 2096
+        },
+        {
+          "labels": [
+            "Topic"
+          ],
+          "nodes": 20
+        },
+        {
+          "labels": [
+            "Venue"
+          ],
+          "nodes": 2
+        }
+      ],
+      [
+        {
+          "relation": "AFFILIATED_WITH",
+          "evidence_kind": "observed",
+          "edges": 44535
+        },
+        {
+          "relation": "AUTHORED",
+          "evidence_kind": "observed",
+          "edges": 59159
+        },
+        {
+          "relation": "CITES",
+          "evidence_kind": "observed",
+          "edges": 7308
+        },
+        {
+          "relation": "COAUTHORED_WITH",
+          "evidence_kind": "derived",
+          "edges": 112042
+        },
+        {
+          "relation": "COLLABORATED_WITH",
+          "evidence_kind": "derived",
+          "edges": 15157
+        },
+        {
+          "relation": "CONTRIBUTES_TO_TOPIC",
+          "evidence_kind": "derived",
+          "edges": 2494
+        },
+        {
+          "relation": "HAS_TOPIC",
+          "evidence_kind": "inferred_topic",
+          "edges": 14222
+        },
+        {
+          "relation": "PUBLISHED_IN",
+          "evidence_kind": "observed",
+          "edges": 13617
+        },
+        {
+          "relation": "RESEARCHES_TOPIC",
+          "evidence_kind": "derived",
+          "edges": 6888
+        },
+        {
+          "relation": "SUBTOPIC_OF",
+          "evidence_kind": "curated_taxonomy",
+          "edges": 16
+        }
+      ],
+      [
+        {
+          "resolved_core_researchers": 36680,
+          "core_papers_with_resolved_authorship": 13505
+        }
+      ]
+    ],
+    "02_integrity.cypher": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  "node_versions": [
+    {
+      "graph_version": "release-9d4a6fb20f63"
+    }
+  ],
+  "edge_versions": [
+    {
+      "graph_version": "release-9d4a6fb20f63"
+    }
+  ],
+  "taxonomy_nodes": [
+    {
+      "id": "topic:causal-inference",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Identifying or estimating causal structure, effects or interventions."
+    },
+    {
+      "id": "topic:computer-vision",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Methods for interpreting images, video or visual scenes."
+    },
+    {
+      "id": "topic:decision-interaction",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Parent grouping"
+    },
+    {
+      "id": "topic:efficient-systems",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Methods improving training or inference computation, memory or system efficiency."
+    },
+    {
+      "id": "topic:generative-modeling",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning data distributions to generate or reconstruct samples; estimating a stochastic or social diffusion process without sample generation does not qualify."
+    },
+    {
+      "id": "topic:graph-ml",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning from graph-structured entities and relationships through learned representations or predictions; combinatorial graph theory and graph algorithms without a learning task do not qualify."
+    },
+    {
+      "id": "topic:language-perception",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Parent grouping"
+    },
+    {
+      "id": "topic:learning-representation",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Parent grouping"
+    },
+    {
+      "id": "topic:multi-agent",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Interaction, cooperation or competition among multiple decision-making agents."
+    },
+    {
+      "id": "topic:multimodal",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning that substantively combines or aligns multiple data modalities."
+    },
+    {
+      "id": "topic:nlp-language-models",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Methods for understanding, generating or modeling natural language."
+    },
+    {
+      "id": "topic:optimization-theory",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Optimization methods or formal theoretical properties of learning."
+    },
+    {
+      "id": "topic:planning-reasoning",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Methods for structured inference, reasoning or goal-directed plan construction."
+    },
+    {
+      "id": "topic:probabilistic-bayesian",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Probabilistic inference and Bayesian modeling as a central contribution."
+    },
+    {
+      "id": "topic:reinforcement-learning",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning policies from reward or feedback in sequential decisions."
+    },
+    {
+      "id": "topic:reliability-theory-systems",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Parent grouping"
+    },
+    {
+      "id": "topic:representation-learning",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning transferable or structured feature representations."
+    },
+    {
+      "id": "topic:retrieval-recommendation",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Methods for retrieving, ranking or recommending relevant items."
+    },
+    {
+      "id": "topic:robotics-embodied",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Learning or reasoning for agents acting in physical or embodied environments."
+    },
+    {
+      "id": "topic:trustworthy-ml",
+      "version": "taxonomy-release-v1",
+      "status": "frozen",
+      "definition": "Reliability, robustness, safety, fairness, privacy or interpretability of learning systems."
+    }
+  ],
+  "reconciliation": "matches corrected graph summary, load and replay",
+  "integrity_query_count": 6,
+  "integrity_row_counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "semantic_accuracy": "not_measured"
+}

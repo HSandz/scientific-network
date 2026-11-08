@@ -66,8 +66,9 @@ review, alongside two author-count mismatches.
 
 For a matched paper, a Researcher is keyed by its OpenAlex author ID only at a
 compatible byline position. ORCID is recorded when present, but is not required
-for this release. Names alone never merge people. Of 65,469 official author
-positions, **59,159** were accepted as `AUTHORED` support and **6,310** were
+for this release. Names alone never merge people. The scoped roster has 65,507
+author positions, including 38 on unmatched papers. Of the 65,469 positions on
+matched works, **59,159** were accepted as `AUTHORED` support and **6,310** were
 withheld: 6,283 lack an OpenAlex author ID, 7 have incompatible names, 18 are on
 papers with a repeated author ID, and 2 otherwise compatible positions were
 withheld because multiple mismatches affected their paper. Five papers have all
@@ -92,7 +93,7 @@ core citation projection.
 ## 5. NLP methods
 
 The frozen topic taxonomy contains four parent topics and 16 leaf topics. A
-phrase-based classifier supplied topics for graph v1. Graph v2 replaces those
+phrase-based classifier supplied topics for graph v1. Graph v2 replaced those
 labels with a sentence-embedding method using the frozen model revision and
 development-calibrated thresholds `tau = 0.2708871365` and `delta = 0.02`.
 The method compares title and abstract text against topic definitions and uses
@@ -102,7 +103,7 @@ non-test papers; the test IDs were frozen before tuning. Model outputs were
 generated only after the classifier freeze and are not shown in the human topic
 review sheet.
 
-The v2 graph has **11,575 topic-labeled papers** and **2,042 abstentions**, for
+The corrected v3 graph has **11,575 topic-labeled papers** and **2,042 abstentions**, for
 85.00% label coverage. This is coverage, not topic accuracy. Fifty frozen test
 papers are ready for independent annotation with the 16 topic definitions.
 Reviewer A and reviewer B each receive 30 papers, with 10 papers reviewed by
@@ -122,7 +123,7 @@ curated taxonomy; `COAUTHORED_WITH`, `COLLABORATED_WITH`, `RESEARCHES_TOPIC` and
 nodes, evidence records and graph edges retain stable IDs and versioned
 provenance. Unresolved evidence stays in review queues.
 
-| Predicate | v2 edge count | Evidence class |
+| Predicate | v3 edge count | Evidence class |
 | --- | ---: | --- |
 | AUTHORED | 59,159 | Observed |
 | AFFILIATED_WITH | 44,535 | Observed |
@@ -135,12 +136,12 @@ provenance. Unresolved evidence stays in review queues.
 | RESEARCHES_TOPIC | 6,888 | Derived |
 | CONTRIBUTES_TO_TOPIC | 2,494 | Derived |
 
-The frozen v2 graph (`release-5d830ffcbdf4`) has **52,415 nodes** and **275,438
+The corrected frozen v3 graph (`release-9d4a6fb20f63`) has **52,415 nodes** and **275,438
 edges**. The four observed predicates contain **124,619 unique factual edges**;
 derived, inferred-topic and curated-taxonomy edges are counted separately.
 Neo4j Community 5.26 was loaded in the isolated `neo4j-five-year` service on
-`bolt://localhost:7689`. Inventory and integrity queries passed for v1 and v2,
-and replay reconciled counts without changing the v2 graph. The pilot and
+`bolt://localhost:7689`. Fresh inventory and all six integrity queries passed for the corrected v3 graph;
+replay reconciled counts without changing its inventory. The pilot and
 extended databases were preserved.
 
 ## 7. Network statistics
@@ -171,52 +172,54 @@ counts are not adjusted for the unequal time papers have had to receive
 citations.
 
 The six static figures and their CSV data tables are in
-[`figures/`](figures/), with graph version, projection, filter and counting
+[`figures-v3/`](figures-v3/), with graph version, projection, filter and counting
 conventions in each caption. Three source-linked candidate findings and two
 screening shortlists are in
-[`reports/release-v1/findings.md`](../release-v1/findings.md). The strict-filter
+[`reports/release-v2/findings.md`](../release-v2/findings.md). The strict-filter
 sensitivity analysis materially changes researcher betweenness rankings and
 retains only 8.0% of researcher collaboration edges; these comparisons are
 robustness diagnostics, not semantic accuracy estimates.
 
 ### Figures
 
-![Researcher collaboration degree complementary cumulative distribution](figures/researcher-degree-ccdf.png)
+![Researcher collaboration degree complementary cumulative distribution](figures-v3/researcher-degree-ccdf.png)
 
 *Figure 1. Researcher collaboration degree CCDF. Distinct coauthor neighbors;
 denominator includes all resolved researchers, including isolates. Graph
-`release-5d830ffcbdf4`.*
+`release-9d4a6fb20f63`.*
 
-![Researcher collaboration connected component sizes](figures/component-sizes.png)
+![Researcher collaboration connected component sizes](figures-v3/component-sizes.png)
 
 *Figure 2. Connected researcher collaboration components, ranked by size. All
 resolved researchers are included, so isolates are size-one components. Graph
-`release-5d830ffcbdf4`.*
+`release-9d4a6fb20f63`.*
 
-![Researcher community topic profiles](figures/community-topic-profiles.png)
+![Researcher community topic profiles](figures-v3/community-topic-profiles.png)
 
 *Figure 3. Top researcher communities under Louvain seed 17 and resolution 0.8.
 Each distinct labeled paper is fractionally allocated over its inferred topics.
-Topic labels await human review. Graph `release-5d830ffcbdf4`.*
+Only stored top-five topics per community are shown; grey cells indicate topics
+outside that stored profile, not measured zero support. Topic labels await human
+review. Graph `release-9d4a6fb20f63`.*
 
-![Organization collaboration by sector](figures/sector-mixing.png)
+![Organization collaboration by sector](figures-v3/sector-mixing.png)
 
 *Figure 4. Organization collaboration sector mixing. Counts are distinct
 organization-pair by core-paper supports on accepted `COLLABORATED_WITH` edges;
-unknown sector remains visible. Graph `release-5d830ffcbdf4`.*
+unknown sector remains visible. Graph `release-9d4a6fb20f63`.*
 
-![Inferred topic portfolio trends by year](figures/topic-trends.png)
+![Inferred topic portfolio trends by year](figures-v3/topic-trends.png)
 
 *Figure 5. Topic portfolio trends in 2021–2025. Each labeled paper contributes
 fractionally across its accepted inferred labels; the series combine AAAI and
 IJCAI within each year. Topic labels await human review. Graph
-`release-5d830ffcbdf4`.*
+`release-9d4a6fb20f63`.*
 
-![Most cited papers within the release corpus](figures/top-cited-papers.png)
+![Most cited papers within the release corpus](figures-v3/top-cited-papers.png)
 
 *Figure 6. Highest in-degree papers in the directed core citation projection.
 Counts include only citing papers inside the release corpus and are not adjusted
-for citation exposure time. Graph `release-5d830ffcbdf4`.*
+for citation exposure time. Graph `release-9d4a6fb20f63`.*
 
 ## 8. Analysis and business findings
 
@@ -277,7 +280,7 @@ opportunity.
 The bridge shortlist contains the top ten approximate-betweenness candidates
 from the full researcher projection, including Dacheng Tao, Zhe Chen, Xiaochun
 Cao, Shirui Pan and Xinchao Wang. The full list, scores and community IDs are in
-[`findings.md`](../release-v1/findings.md). Selection requires a high configured
+[`findings.md`](../release-v2/findings.md). Selection requires a high configured
 betweenness score with deterministic score/ID ordering; candidates should be
 rechecked against accepted bylines and the strict-filter graph before use.
 
@@ -359,16 +362,26 @@ The current graph and report are not certified for the assignment's >90% accurac
 claim. The final conclusion must state the measured Wilson interval and topic
 evaluation after human annotations are scored, and must report any failed gate.
 
+The pre-audit correction synchronizes all Topic metadata, hierarchy and evidence
+with the frozen classifier taxonomy; the classifier, test membership, predictions,
+excerpts, similarity scores, core facts and derived weights are unchanged.
+[The correction summary](../release-v2/graph-summary.json) records equality hashes.
+All analysis and figures in this draft were freshly computed on the corrected
+graph. Exact fractional accumulation (`d040-release-metrics-v2`) also corrects
+floating-point order effects on tied community topic rankings; this changes no
+graph facts or predictions. The old freeze and figure directory remain historical.
+Reviewers should follow [the current handoff](../../docs/reviewer-handoff.md).
+
 ## 11. Reproducibility and release state
 
 The source repository is [HSandz/scientific-network](https://github.com/HSandz/scientific-network).
-At this draft the local `main` branch contains the release implementation and
-analysis commits but has not been pushed or tagged for submission. The course
-release tag is therefore **pending**. The frozen graph is
-`release-5d830ffcbdf4`, SHA-256
-`b79e456b22488ca8f753fb0884afd5c6a89afeeeaffec07d89ce83b2c5c141fb`; the
+Remote `main`, verified on 9 November, is at `951b9c5`; no remote tags were
+found. This session's corrective commits remain local and no push or publication
+was performed. The course release tag is **pending**. The frozen graph is
+`release-9d4a6fb20f63`, SHA-256
+`c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8`; the
 release, quality, analysis and topic configuration hashes and review packet
-hashes are recorded in [`freeze.json`](../release-v1/freeze.json).
+hashes are recorded in [`freeze-v3.json`](../release-v2/freeze-v3.json).
 
 The locked environment is restored with:
 
@@ -380,15 +393,14 @@ The frozen graph analysis is reproduced with:
 
 ```bash
 uv run research-network analyze \
-  --input data/processed/release-graph-v2/graph.json \
+  --input data/processed/release-graph-v3/graph.json \
   --config configs/analysis-release-v1.yaml \
   --quality-config configs/quality-release-v1.yaml \
-  --output reports/release-v1/analysis.json
+  --output reports/runs/manual-corrected-analysis.json
 ```
 
-That output path is already occupied in the frozen release workspace. Replays
-must use a separate output path or a clean reproducibility checkout; do not
-overwrite the frozen analysis or graph. Source acquisition uses the official
+The committed fresh analysis is `reports/release-v2/analysis.json`. Use an unused
+output path for each replay; do not overwrite the frozen analysis or graph. Source acquisition uses the official
 roster manifest and OpenAlex cache described in `configs/release-v1.yaml`, with
 an API key supplied via an ignored environment file. Raw downloads, graph JSON,
 database volumes and paper files are not tracked in Git. The work logs record

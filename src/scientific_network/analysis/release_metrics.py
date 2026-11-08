@@ -5,6 +5,7 @@ because the release topic labels have not received independent human review.
 """
 
 from collections import Counter, defaultdict
+from fractions import Fraction
 
 from scientific_network.contracts import GraphArtifact, Relation
 
@@ -164,7 +165,7 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
 
     # Topic shares are fractional across labels. Keep the all-paper coverage
     # denominator beside the labeled-paper denominator.
-    topic_slices = defaultdict(lambda: {"papers": set(), "labeled_papers": set(), "raw": Counter(), "fractional": Counter()})
+    topic_slices = defaultdict(lambda: {"papers": set(), "labeled_papers": set(), "raw": Counter(), "fractional": defaultdict(Fraction)})
     for paper_id, paper in papers.items():
         year = paper.properties["year"]
         venue_id = paper_venues.get(paper_id)
@@ -175,7 +176,7 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
         paper_topics = sorted(topics_by_paper.get(paper_id, ()))
         if paper_topics:
             topic_slices[key]["labeled_papers"].add(paper_id)
-            fraction = 1.0 / len(paper_topics)
+            fraction = Fraction(1, len(paper_topics))
             for topic_id in paper_topics:
                 topic_slices[key]["raw"][topic_id] += 1
                 topic_slices[key]["fractional"][topic_id] += fraction
@@ -205,18 +206,18 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
         if observation.paper_id in core_papers and observation.organization_id in organizations:
             organizations_by_paper[observation.paper_id].add(observation.organization_id)
     organization_topic_papers = defaultdict(set)
-    organization_fractional = Counter()
-    organization_fractional_denominator = Counter()
+    organization_fractional = defaultdict(Fraction)
+    organization_fractional_denominator = defaultdict(Fraction)
     organization_paper_denominator = defaultdict(set)
     for paper_id in core_papers:
         paper_topics = topics_by_paper.get(paper_id, set())
         paper_orgs = organizations_by_paper.get(paper_id, set())
         if not paper_topics or not paper_orgs:
             continue
-        fraction = 1.0 / (len(paper_topics) * len(paper_orgs))
+        fraction = Fraction(1, len(paper_topics) * len(paper_orgs))
         for organization_id in paper_orgs:
             organization_paper_denominator[organization_id].add(paper_id)
-            organization_fractional_denominator[organization_id] += 1.0 / len(paper_orgs)
+            organization_fractional_denominator[organization_id] += Fraction(1, len(paper_orgs))
             for topic_id in paper_topics:
                 organization_topic_papers[organization_id, topic_id].add(paper_id)
                 organization_fractional[organization_id, topic_id] += fraction
@@ -318,14 +319,14 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
     for community_id, members in community_members:
         paper_ids = papers_by_community[community_id]
         topic_paper_counts = Counter()
-        topic_fractional = Counter()
+        topic_fractional = defaultdict(Fraction)
         labeled_papers = set()
         for paper_id in paper_ids:
             paper_topics = topics_by_paper.get(paper_id, set())
             if not paper_topics:
                 continue
             labeled_papers.add(paper_id)
-            fraction = 1.0 / len(paper_topics)
+            fraction = Fraction(1, len(paper_topics))
             for topic_id in paper_topics:
                 topic_paper_counts[topic_id] += 1
                 topic_fractional[topic_id] += fraction
@@ -383,7 +384,7 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
 
     component_sizes = projections.get("researcher_collaboration", {}).get("weak_or_undirected_component_sizes", [])
     return {
-        "method_version": "d040-release-metrics-v1",
+        "method_version": "d040-release-metrics-v2",
         "evidence_scope": "accepted core graph records; all topic results use inferred labels awaiting independent human review",
         "annual_counts": {
             "year_scope": list(YEARS),

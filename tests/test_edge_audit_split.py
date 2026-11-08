@@ -296,8 +296,10 @@ def test_hostile_text_cannot_break_out_of_the_embedded_data(tmp_path):
 
 
 @pytest.mark.skipif(NODE is None, reason="node is not installed")
-def test_exported_csv_from_the_sheet_scores_cleanly(tmp_path):
-    config, sample, _, rows = _prepare(tmp_path)
+@pytest.mark.parametrize("single", [False, True])
+def test_exported_csv_from_the_sheet_scores_cleanly(tmp_path, single):
+    kwargs = dict(review_design="single_reviewer", independent_reviewers=1, reviewer_ids=["A"], overlap=0) if single else {}
+    config, sample, _, rows = _prepare(tmp_path, **kwargs)
     html_path = sample.with_suffix(".html")
     driver = tmp_path / "export.js"
     driver.write_text(
@@ -310,7 +312,7 @@ def test_exported_csv_from_the_sheet_scores_cleanly(tmp_path):
     )
     wrong = next(r for r in rows if r["is_overlap"] == "false" and r["in_global_sample"] == "true")
     packets = []
-    for reviewer in ("A", "B"):
+    for reviewer in (("A",) if single else ("A", "B")):
         answers = {}
         for row in rows:
             if row["reviewer_id"] != reviewer:
@@ -330,8 +332,10 @@ def test_exported_csv_from_the_sheet_scores_cleanly(tmp_path):
         packet = tmp_path / f"export-{reviewer}.csv"
         packet.write_text(out["csv"], encoding="utf-8")
         packets.append(packet)
-    with packets[0].open(newline="", encoding="utf-8") as a, packets[1].open(newline="", encoding="utf-8") as b:
-        merged = list(csv.DictReader(a)) + list(csv.DictReader(b))
+    merged = []
+    for packet in packets:
+        with packet.open(newline="", encoding="utf-8") as stream:
+            merged.extend(csv.DictReader(stream))
     reviews = _write(tmp_path / "reviews.csv", merged)
     output = tmp_path / "evaluation.json"
     assert _score(config, reviews, output) == 0
@@ -494,3 +498,58 @@ def test_multiple_exports_are_combined_as_csv_rows_by_cli(tmp_path):
                  "--reviews", *map(str, paths), "--output", str(output)]) == 0
     result = json.loads(output.read_text())
     assert result["audit_completion"] == "complete" and len(result["review_packets"]) == 2
+
+
+def test_review_context_preserves_long_definitions_excerpts_and_source_locators(tmp_path):
+    artifact = json.loads(GRAPH.read_text())
+    topic = next(n for n in artifact['nodes'] if n['label'] == 'Topic' and n['properties'].get('level') == 'leaf')
+    topic['properties']['definition'] = 'Definition “tên”, ' * 80 + 'END OF DEFINITION'
+    edge = next(e for e in artifact['edges'] if e['relation'] == 'HAS_TOPIC' and e['target_id'] == topic['id'])
+    evidence = next(r for r in artifact['evidence'] if r['id'] == edge['evidence_ids'][0])
+    evidence['excerpt'] = 'Quoted excerpt. ' * 80 + 'END OF EXCERPT'
+    graph = tmp_path / 'long.json'
+    graph.write_text(json.dumps(artifact))
+    _, sample, _, rows = _prepare(tmp_path, graph=graph, global_size=27)
+    chosen = next(r for r in rows if r['edge_id'] == edge['edge_id'])
+    assert 'END OF DEFINITION' in chosen['also_show'] and 'END OF EXCERPT' in chosen['also_show']
+    full = json.loads(chosen['supporting_context'])
+    assert full['topic_definitions'][0]['properties']['definition'] == topic['properties']['definition']
+    assert full['evidence'][0]['raw_sha256'] == evidence['raw_sha256']
+    assert full['evidence'][0]['source_locator'] == evidence['source_locator']
+
+
+def test_individual_edge_packets_lock_the_assigned_reviewer_and_preserve_master_rows(tmp_path):
+    _, _, summary, rows = _prepare(tmp_path)
+    for reviewer in ('A', 'B'):
+        packet = summary['reviewer_packets'][reviewer]
+        with Path(packet['csv']['path']).open(newline='', encoding='utf-8') as stream:
+            assigned = list(csv.DictReader(stream))
+        assert assigned == [r for r in rows if r['reviewer_id'] == reviewer]
+        _, data = _sheet_parts(Path(packet['html']['path']))
+        assert data['meta']['reviewer_ids'] == [reviewer]
+        assert {row['review']['reviewer_id'] for row in data['rows']} == {reviewer}
+
+
+def test_adjudication_preparation_copies_conflict_bindings_but_never_invents_decisions(tmp_path):
+    _, _, _, rows = _prepare(tmp_path)
+    complete = _complete(rows)
+    shared = next(r for r in complete if r['is_overlap'] == 'true')
+    shared.update(decision='unverifiable', error_category='unverifiable', reason='Synthetic source absent')
+    paths = [_write(tmp_path / f'{r}.csv', [x for x in complete if x['reviewer_id'] == r]) for r in ('A', 'B')]
+    output = tmp_path / 'adjudications.csv'
+    assert main(['prepare-edge-adjudications', '--reviews', *map(str, paths), '--output', str(output)]) == 0
+    with output.open(newline='', encoding='utf-8') as stream:
+        conflicts = list(csv.DictReader(stream))
+    assert len(conflicts) == 1 and conflicts[0]['edge_id'] == shared['edge_id']
+    assert conflicts[0]['graph_sha256'] == shared['graph_sha256']
+    assert not conflicts[0]['decision'] and not conflicts[0]['adjudicator_id'] and not conflicts[0]['reviewed_at']
+
+
+def test_scorer_preserves_large_complete_evidence_context_and_restores_csv_limit(tmp_path):
+    config, _, _, rows = _prepare(tmp_path)
+    completed = _complete(rows)
+    completed[0]['supporting_context'] = 'Synthetic “tên”, evidence\n' * 15000
+    reviews = _write(tmp_path / 'large.csv', completed)
+    previous = csv.field_size_limit()
+    assert _score(config, reviews, tmp_path / 'result.json') == 0
+    assert csv.field_size_limit() == previous
