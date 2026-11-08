@@ -21,7 +21,7 @@ and [current status](docs/status.md).
 | Topic coverage | 11,575/13,617 papers labeled (85.00%); this is coverage, not accuracy |
 | Graph database | Neo4j Community 5.26 isolated service; corrected graph inventory, integrity and idempotent replay passed |
 | Network analysis | Five projections, six figures with tables, and three evidence-linked candidate findings |
-| Independent quality | **Not measured.** Human edge reviews and topic labels have not been returned; the graph is not certified |
+| Quality evaluation | **Not measured.** Agent-led source review is authorized; evaluator support and real judgments/scoring are next. Human validation is not performed |
 | Report | Sections 1–11 drafted with measured results; reviewer scores, real team details and final PDF remain pending |
 
 Graph v3 is `release-9d4a6fb20f63`, SHA-256
@@ -33,10 +33,14 @@ current graph and full source caches are local ignored artifacts; small reports,
 figures, configurations and code are versioned. The graph meets the structural
 size targets, but structural validation does not establish semantic accuracy.
 
-The independent-review instruments are blank. Use the [reviewer handoff](docs/reviewer-handoff.md)
-for the exact A/B edge and prediction-blind topic packets, export/return paths,
-adjudication and scoring commands. The normal A/B design remains selected;
-one-reviewer and partial-audit fallbacks are explicit options only.
+The user selected **agent-led evaluation** on 9 November. Human annotations are
+optional and do not block execution. Follow [the agent workflow](docs/agent-audit-workflow.md)
+and [fresh-session execution prompt](docs/prompts/agent-release-completion.md).
+The [protocol config](configs/evaluation-agent-release-v1.yaml) declares the method;
+agent provenance/scoring support still needs implementation before actual review.
+Report AI-assessed precision and topic agreement with AI-assigned labels, with
+evaluator/source limitations; do not present these as human validation or verified
+course accuracy. Frozen graph, classifier, samples and historical packets stay intact.
 
 ## Reproduce the local checks
 
@@ -77,18 +81,20 @@ uv run research-network analyze \
 - [Graph correction summary and preservation checks](reports/release-v2/graph-summary.json)
 - [Replacement freeze and review hashes](reports/release-v2/freeze-v3.json)
 - [Topic-review assignment manifest](reports/release-v1/audit/topic-review-allocation.json)
-- Edge packets: [reviewer A](reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.html#reviewer=A), [reviewer B](reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.html#reviewer=B)
+- Preserved human edge packets: [reviewer A](reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.html#reviewer=A), [reviewer B](reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.html#reviewer=B)
 - Topic review packets: [reviewer A](reports/release-v1/audit/topic-label-sheet-reviewer-A.html), [reviewer B](reports/release-v1/audit/topic-label-sheet-reviewer-B.html)
 - [Draft academic report](reports/final-report/report.md)
-- [Reviewer export, adjudication and scoring instructions](docs/reviewer-handoff.md)
+- [Active agent audit and scoring workflow](docs/agent-audit-workflow.md)
+- [Fresh-session execution prompt](docs/prompts/agent-release-completion.md)
+- [Preserved optional human handoff](docs/reviewer-handoff.md)
 - [Technical verification and remaining human inputs](reports/release-v2/technical-verification.json)
 - [Evaluation protocol](docs/evaluation.md)
 
-Reviewer CSV exports should preserve the paper/edge IDs, use the assigned A/B
-reviewer label, and follow the packet instructions. For an empty topic set, leave
-the label fields blank and note that no taxonomy leaf applies. Return completed
-edge and topic exports for scoring. The topic master sheet and frozen test
-membership must not be edited.
+New agent review exports and evidence ledgers go to the separately versioned paths
+in the active workflow. Do not fill or rebind old human edge forms. Topic packets
+may be reused by exact-byte reference for blind input; completed outputs stay
+separate. Distinguish a considered empty topic set from an unreviewable paper.
+The topic master, allocation and frozen test membership must not be edited.
 
 ## Graph model
 
@@ -121,6 +127,7 @@ release quality. The public project Site is **AI Research Network — Plan & Rep
 this local workspace. The repository URL is
 [github.com/HSandz/scientific-network](https://github.com/HSandz/scientific-network).
 
-Remote `main` was verified on 9 November at `951b9c5`; no remote tags were found.
-The corrections in this session are committed locally only. No push, tag, Site
-publication or submission was performed.
+WORK-037 recorded an earlier 9 November remote check at `951b9c5`, with no tags.
+Remote state was not refreshed for this protocol amendment; verify it before
+authorized delivery. This amendment performs no push, tag, Site publication or
+submission.

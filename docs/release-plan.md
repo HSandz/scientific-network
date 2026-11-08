@@ -7,6 +7,16 @@ P02 enrichment no-go, readiness receipts and the 600-edge two-reviewer audit.
 Those documents stay as history. Where anything conflicts with this plan, this
 plan wins. If this plan is wrong or blocked, ask the user; don't route around it.
 
+**Active user amendment — 9 November 2026:** complete feasible evaluation, report
+and local packaging work with agents; human annotation is optional. Follow
+[agent-audit-workflow.md](agent-audit-workflow.md) and
+[`evaluation-agent-release-v1.yaml`](../configs/evaluation-agent-release-v1.yaml).
+They replace requirements to wait for human A/B reviews. Agent results are explicitly
+AI-assessed, with human validation not performed and evaluator independence not
+established. This does not change the graph, frozen classifier or numeric targets.
+The protocol is declared; provenance/scoring support must be implemented before
+running the real agent audit. Existing frozen receipts remain unchanged.
+
 ## 0. Every session starts here
 
 1. Read `AGENTS.md`, this plan, `docs/status.md` and the latest work-log entry.
@@ -30,7 +40,7 @@ plan wins. If this plan is wrong or blocked, ask the user; don't route around it
 | ≥2,000 nodes | Node counts by label | Resolved researchers alone ≥2,000 |
 | ≥5,000 edges | Unique R1–R4 factual edges; derived edges counted separately | ≥5,000 |
 | Ten relationship types | All ten predicates nonempty | Inventory in the graph summary |
-| Accuracy >90% | Frozen edge audit with a Wilson 95% interval | Course: point estimate >90%. Project target: ≥95% with lower bound >90% |
+| Accuracy >90% | Source-backed agent edge audit with a Wilson 95% interval; disclose evaluator limitations | AI-assessed checks: point >90%; project ≥95% and lower bound >90%. Verified course accuracy remains not established |
 | Suitable graph DBMS | Neo4j 5.26 Community, isolated `neo4j-five-year` service | Load, integrity queries, idempotent re-import |
 | Report ≥10 pages | `reports/final-report/` rendered to PDF | All sections in §6 |
 | Real GitHub URL | <https://github.com/HSandz/scientific-network> plus a release tag | The lecturer can open it |
@@ -40,8 +50,8 @@ reported, not hidden, and is not a reason to stop.
 
 ## 2. Decisions (D040)
 
-These are defaults. The user can change them before Phase 1; record any change as
-a dated D040 amendment.
+These are defaults. The user can change them explicitly; record changes as dated
+D040 amendments without silently rewriting frozen artifacts or earlier outcomes.
 
 ### 2.1 Scope
 
@@ -87,6 +97,12 @@ evidence classes and a review queue for conflicts.
   12 AAAI and 18 IJCAI papers, with four AAAI and six IJCAI papers in the overlap.
   The assignment is hash-bound to the frozen test manifest and prediction-blind
   master sheet.
+- **9 November override:** A/B are isolated agent evaluator channels, not human
+  team identities. Preserve the allocation and weighting for the default design.
+  Complete/hash topic judgments before exposing those contexts to edge predictions.
+  If isolated contexts are unavailable, select the explicit single-agent variant
+  before review: every frozen test paper once, no overlap/agreement estimate.
+  Report agreement with AI-assigned reference labels, not human gold accuracy.
 
 ### 2.4 Accuracy audit (`configs/quality-release-v1.yaml`)
 
@@ -94,15 +110,21 @@ evidence classes and a review queue for conflicts.
 - Global sample: 200 edges, uniform without replacement, with the seed recorded in
   the config before sampling. Per type: 10 per relation (census if fewer),
   reported separately and never pooled into the global estimate.
-- Reviewers A and B (names in `docs/team.md`): each sampled edge is reviewed once,
-  split between them; 50 global-sample edges are reviewed by both; disagreements
-  are adjudicated together.
+- A and B are separate fresh agent contexts: each sampled edge is reviewed once,
+  split between them; 50 global-sample edges are reviewed by both. Freeze their
+  separate answers before source-backed agent adjudication of conflicts.
 - Decision per edge: correct, incorrect or unverifiable (counts as incorrect), with
   an error category. Report k/n, precision, Wilson 95% interval, per-type k/n,
   agreement (percent and Cohen's κ) and error categories.
-- If only one reviewer is available: 200 uniform plus 5 per type, no overlap, and
-  say so in the report.
+- If isolated contexts are unavailable: select the single-agent variant before
+  judging, with 200 uniform plus 5 per type, no overlap; disclose it in the report.
 - Size and coverage targets keep their `configs/quality.yaml` values.
+- Preserve the old quality configs and packets. Create a new agent quality config,
+  new bound forms and an evaluation freeze under `reports/release-v3/` as specified
+  in the agent workflow. Keep sample IDs/flags equal to the selected source recipe.
+  Source-backed AI judgments are real evaluation observations, but are not human
+  validation or proof of independent semantic accuracy. Numeric gate outcomes must
+  be labeled AI-assessed; Wilson intervals exclude evaluator error/shared bias.
 
 ### 2.5 Other
 
@@ -126,14 +148,15 @@ evidence classes and a review queue for conflicts.
 | 5 | Embedding topics, graph v2 | 4 h | Mon 9 Nov 12:00 |
 | 6 | Analysis, figures, findings | 4 h | **CP3** Mon 16:00 |
 | 7 | Freeze, review sheets, report methods | 3 h | **CP4** Mon 20:00 |
-| — | Human review: edge audit and topic labels | ~4.5 h per person | Mon 20:00 → Tue 12:00 |
+| — | Agent source review: blind topics, then edges | Checkpoint bounded batches; no wait for human labels | Before CP5 |
 | 8 | Scoring, full report, README | 6 h | **CP5** Tue 10 Nov 20:00 |
 | 9 | PDF, release, submission | 3 h | **CP6** Wed 11 Nov 12:00 |
 
 If work starts after Sun 09:00, shift CP1–CP2 by the delay but keep CP4 fixed;
-cut Phase 6 extras first. If a phase overruns its time box by half, or a blocker
-lasts 30 minutes, stop and tell the user the blocker and two options. Fallbacks
-are in §4.
+cut Phase 6 extras first. Checkpoint a long-running phase or a 30-minute blocker,
+try the documented fallback and continue independent work. Request human input
+only for a demonstrated unavailable fact, capability/access need or external
+authorization; do not stop merely because human annotations are absent.
 
 ### Phase 0 — Housekeeping
 
@@ -288,22 +311,32 @@ are in §4.
 - Exit (CP4): the edge-review sheet and both topic reviewer packets are delivered
   to the user; commit.
 
-### Human review — Mon 20:00 → Tue 12:00
+### Agent evaluation — active next task after the corrected package
 
-- Edge audit: about 3.5 hours per reviewer. Topic labels: about 50 minutes each
-  (30 papers each, 10 overlapping; 50 unique papers). Meanwhile the agent writes report sections
-  that don't depend on the results.
+- Implement and test the minimum evaluator provenance, receipt/ledger binding and
+  truthful result metadata. Freeze evaluator prompts/settings/design before labels.
+- Execute [the agent workflow](agent-audit-workflow.md): prediction-blind topic
+  judgments first, then all sampled source-backed edge judgments and adjudication.
+  Missing source evidence is recorded as such, not a reason to await human review.
+- Complete all feasible report sections while review batches run. Do not claim
+  independence from separate contexts alone. Old human sheets/receipts stay intact.
 
 ### Phase 8 — Scoring and report (CP5)
 
-- Run `score-edge-audit` → `reports/release-v1/audit-results.json`, with the Wilson
-  interval from `audit-precision`. State pass or fail against both thresholds.
+- Use the tested agent-aware scoring path →
+  `reports/release-v3/audit-results-agent.json`, with the Wilson interval from
+  `audit-precision`. State AI-assessed pass/fail against both numeric thresholds;
+  verified course accuracy remains not established.
 - Score the embedding classifier and phrase baseline on the 50 test papers with
   `research-network score-topic-review`: micro/macro precision, recall, F1,
-  coverage and overlap agreement → `reports/release-v1/topic-eval.json`. Each
+  coverage and actual agent overlap agreement →
+  `reports/release-v3/topic-eval-agent.json`. Each
   paper contributes total weight one; when both reviewers label an overlap
   paper, each judgment contributes one half. Preserve disagreements in the
-  reviewer-level labels; do not use this test to tune the classifier.
+  reviewer-level labels; do not use this test to tune the classifier. The explicit
+  single-agent variant uses one label set per paper and no overlap statistic.
+  Unreviewable papers are separate from considered empty topic sets; report actual
+  denominators/missingness. All metrics identify the AI reference-label provenance.
 - Finish `reports/final-report/report.md` (§6) using only measured numbers with
   versions.
 - Rewrite the top of `README.md`: what the project is, scope, measured results,
@@ -333,7 +366,9 @@ are in §4.
 | Neo4j load slow or failing | Not loaded by Mon 10:00 | Bulk import with `neo4j-admin database import full` from CSV exports |
 | Embedding classifier blocked | Not working by Mon 12:00 | Keep phrase-baseline topics (graph v1) and say so in the report |
 | Full scope not built | Not loaded by Mon 12:00 | Ship the largest complete, validated subset and document it |
-| Audit unfinished | Tue 14:00 | Score the completed reviews; report the actual n and interval |
+| Isolated evaluator contexts unavailable | Demonstrated during pre-review setup | Select the declared single-agent edge/topic variant; freeze it before judging; no invented A/B independence |
+| Sampled source unavailable | Bounded access attempts fail | Record unverifiable edge/unreviewable topic and source limitation; continue other units without waiting for human annotations |
+| Audit unfinished | Tue 14:00 | Explicit partial scoring, actual n/interval/missingness; do not certify a complete audit |
 
 ## 5. Review sheet contents
 
@@ -344,7 +379,7 @@ official paper page, the PDF, the DOI (`https://doi.org/…`), the OpenAlex work
 | Relation | Also show | Correct when |
 | --- | --- | --- |
 | AUTHORED | Byline position, roster name, ORCID if any | The person is on the official byline at that position, and the OpenAlex author page shows no obvious merge of different people |
-| AFFILIATED_WITH | Supporting papers, raw affiliation string, organization | The paper's PDF lists that author at that organization |
+| AFFILIATED_WITH | Supporting papers, author-specific raw affiliation string and institution ID | The D040 authorship-specific source supports the mapping; an accessible PDF can corroborate it |
 | PUBLISHED_IN | Venue and year | The official page lists the paper in that venue and year |
 | CITES | Citing PDF, cited title | The reference list contains the cited paper |
 | HAS_TOPIC | Title, excerpt, topic definition | The topic is a substantive topic of the paper |
@@ -514,12 +549,16 @@ Do:
 
 - Work phase by phase and meet each exit check; commit locally at checkpoints.
 - Report measured numbers with graph, config and method versions.
-- Ask the user when blocked for 30 minutes, with two options.
+- Complete feasible work with agents. Ask only for genuine unavailable personal
+  facts, demonstrated tool/access blockers or external authorization; continue
+  other work. Agent review is not blocked by missing human annotation.
 
 Don't:
 
 - Run edition, roster, source-route or rights audits, or add source adapters.
-- Write new planning documents, gate frameworks or readiness receipts.
+- Expand planning or invent new gate frameworks. The user-requested agent workflow,
+  execution prompt and evaluator provenance freeze are the targeted exception;
+  they are not a new pregraph readiness sequence.
 - Publish the Site before Phase 9.
 - Append history to `docs/status.md`, or restate roster and assignment totals
   across files.
@@ -530,9 +569,12 @@ Don't:
 
 | When | Item |
 | --- | --- |
-| Before Phase 1 | Confirm or change the §2 defaults; stop the old services |
-| Sun | Start `neo4j-five-year` when asked; fill in `docs/team.md` (names, IDs, roles) |
-| By Mon | Decide how the lecturer reaches the repo (public, or an invite); check the course's AI-use disclosure rule |
-| Mon 20:00 → Tue 12:00 | Edge audit and topic labels (two reviewers, about 4 h each) |
-| Tue afternoon | Review the report draft; write the task-allocation section |
-| Wed | Push, tag the release, submit |
+| When unavailable in supplied records | Real names, student IDs and actual contributions for `docs/team.md`; do not invent them |
+| Only if tools cannot do it | Necessary private credentials, service/access action or course-specific information; continue independent work |
+| Before final external delivery | Lecturer access choice and actual course AI-use disclosure requirements |
+| After local package is ready | Explicit authorization for push/tag/publication or submission; this protocol change does not authorize them |
+
+The agent writes the report/task-allocation draft from real records, renders and
+checks the local PDF, and prepares reproducibility/submission files. Human review
+of a draft is optional; missing personal details stay clearly pending. No routine
+annotation or manual scoring task is reserved for the user.

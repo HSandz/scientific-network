@@ -1,5 +1,11 @@
 # Reviewer handoff — corrected release, 9 November 2026
 
+> **Superseded execution instructions:** the user selected agent-led evaluation on
+> 9 November. Use [the agent audit workflow](agent-audit-workflow.md) and
+> [fresh-session prompt](prompts/agent-release-completion.md). Do not wait for
+> human A/B identities or annotations. The remainder preserves the optional human
+> workflow and its frozen packet paths; it does not govern current execution.
+
 The active package is [release-v2/freeze-v3.json](../reports/release-v2/freeze-v3.json),
 for graph `release-9d4a6fb20f63` at
 `data/processed/release-graph-v3/graph.json`. It supersedes the v2 graph's old

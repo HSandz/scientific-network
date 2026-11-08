@@ -1,0 +1,66 @@
+# D040 user amendment, 9 November 2026. Declarative evaluation contract.
+# Existing CLIs do not consume this file yet: implement and test the binding and
+# reviewer-provenance support before running or reporting the agent evaluation.
+version: evaluation-agent-release-v1
+status: frozen
+evaluation_kind: ai_agent_review
+human_validation: not_performed
+reviewer_independence: not_established
+rubric_version: source-backed-agent-review-v1
+
+inputs:
+  graph: data/processed/release-graph-v3/graph.json
+  graph_version: release-9d4a6fb20f63
+  graph_sha256: c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8
+  graph_freeze: reports/release-v2/freeze-v3.json
+  graph_summary: reports/release-v2/graph-summary.json
+  phrase_baseline: data/processed/release-graph-v1/graph.json
+  taxonomy: configs/topics-release-v1.yaml
+  topic_test: data/manifests/release-v1/topic-test.jsonl
+  topic_master: reports/release-v1/audit/topic-label-sheet.csv
+  topic_allocation: reports/release-v1/audit/topic-review-allocation.json
+
+review:
+  default: isolated_agent_A_B
+  edge_sampling_source: configs/quality-release-v1.yaml
+  topic_assignment_source: reports/release-v1/audit/topic-review-allocation.json
+  topic_before_edge_review: true
+  topic_predictions_visible: false
+  share_other_reviewer_answers: false
+  # Choose only on a demonstrated context/tool limitation, before any judgments.
+  fallback: single_agent
+  fallback_edge_sampling_source: configs/quality-single-reviewer-release-v1.yaml
+  fallback_topic_assignment: all_frozen_test_papers_once
+  same_context_may_impersonate_two_reviewers: false
+
+evidence:
+  source_required_for_correct: true
+  graph_or_validator_alone_is_evidence: false
+  depth_categories: [primary_source, secondary_source_only, internal_only, unavailable]
+  internal_only_or_unavailable_edge_verdict: unverifiable
+  unverifiable_counts_as_incorrect: true
+  record_same_source_as_construction: true
+  raw_cache: immutable_ignored
+  record_fields: [unit_id, reviewer_id, reviewer_kind, evaluator_run_id, decision,
+                  reason, source_url, source_locator, source_sha256, evidence_depth,
+                  source_independence, reviewed_at]
+
+reporting:
+  edge_metric_name: AI-assessed edge precision
+  topic_metric_name: topic agreement with AI-assigned reference labels
+  numeric_thresholds_source: configs/quality-release-v1.yaml
+  numeric_gate_scope: ai_assessed_only
+  verified_course_accuracy: not_established
+  wilson_interval_excludes_evaluator_error: true
+  preserve_failed_gates_and_missingness: true
+  topic_unreviewable_is_not_no_applicable_leaf: true
+
+outputs:
+  root: reports/release-v3
+  evaluation_freeze: reports/release-v3/evaluation-freeze-v1.json
+  quality_config: configs/quality-agent-release-v1.yaml
+  edge_forms: reports/release-v3/audit/edge-review-sheet.csv
+  completed: reports/release-v3/completed
+  edge_results: reports/release-v3/audit-results-agent.json
+  topic_results: reports/release-v3/topic-eval-agent.json
+  limitations: reports/release-v3/evaluation-limitations.md

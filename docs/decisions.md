@@ -843,3 +843,36 @@ phase 1; record any amendment here with its date.
     Git blobs. Preserve both historical representations; do not renormalize them.
     Newly frozen CSVs bypass normalization and whitespace styling so quoted source
     strings, including CRLF and trailing whitespace, retain their exact bytes.
+- **2026-11-09 — agent-led evaluation and local release completion (user decision;
+  [WORK-2026-11-09-002](work-log/2026-11-09-002-agent-led-evaluation-handoff.md)).**
+  The user directs agents to do all feasible work, reserving human input for
+  genuinely unavailable facts/capabilities and external authorization. Human
+  annotation is optional, replacing the requirement to wait for human A/B exports.
+  [The agent workflow](agent-audit-workflow.md),
+  [frozen protocol contract](../configs/evaluation-agent-release-v1.yaml) and
+  [fresh-session prompt](prompts/agent-release-completion.md) implement this policy
+  change in documentation; evaluator/scorer support and real review remain work
+  for the execution session.
+  - Default reviewer A/B are isolated fresh evaluator contexts with actual model/run
+    provenance, no inherited conversation or shared answers. Freeze blind topic
+    answers before edge packets expose predictions. Context separation does not
+    establish human/statistical independence, even across different models.
+  - Preserve existing sample recipes, graph, classifier, taxonomy, test membership,
+    allocation, quality configs and frozen packets. Create a new agent quality
+    config, bound edge forms, evaluator freeze and outputs under `reports/release-v3/`.
+    New config hashes require new packet bindings, not edits to the old forms.
+    A documented single-agent edge/topic variant is allowed only when isolation is
+    unavailable, selected before judging; never duplicate one agent as two people.
+  - Each judgment needs actual source inspection, evidence locator/hash/depth,
+    source-reuse disclosure and evaluator run/timestamp. Graph/validator agreement
+    alone is not correctness. Unverifiable edges remain incorrect; unreviewable
+    topics are distinct from considered empty label sets. Preserve missingness,
+    initial judgments, unresolved conflicts and failed numeric gates.
+  - Report AI-assessed edge precision and topic agreement with AI-assigned labels.
+    Numeric thresholds remain unchanged and explicitly AI-assessed. Human validation
+    is not performed; reviewer independence and verified course accuracy are not
+    established. Wilson intervals omit judge error/shared-model bias. No claim is
+    made that the lecturer has accepted this evaluation method.
+  - Agents finish scoring, report/README, rendered PDF checks and local submission
+    preparation. Missing private team details stay pending without blocking other
+    work. No push, tag, Site publication, invitation or submission is authorized.

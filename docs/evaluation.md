@@ -1,4 +1,30 @@
-# Independent quality evaluation
+# Quality evaluation
+
+## Active agent-led protocol — 9 November amendment
+
+The user has delegated feasible audit/scoring/report work to agents. Human
+annotation is optional. Follow [agent-audit-workflow.md](agent-audit-workflow.md)
+and [the frozen protocol contract](../configs/evaluation-agent-release-v1.yaml).
+The next session must first implement evaluator provenance, receipt/ledger binding
+and honest result metadata; those capabilities and real scores do not exist yet.
+
+Keep the existing graph/content freeze intact. Use new agent quality/packet/result
+versions under the paths declared in the contract, preserving the selected sample
+recipe. Default A/B now denote isolated evaluator contexts; a documented
+single-agent variant is permitted when isolated contexts are unavailable.
+Freeze blind topic labels before exposing edge predictions. A considered empty
+topic set and an unreviewable paper must be distinguished.
+
+Report AI-assessed edge precision and topic agreement with AI-assigned reference
+labels. Keep numeric thresholds unchanged, but qualify their outcomes as
+AI-assessed; verified course accuracy is not established by these judgments.
+Disclose evaluator models/runs, source reuse, evidence depth, missingness and
+correlated judge errors. Wilson intervals cover sampling uncertainty conditional
+on judgments, not evaluator accuracy. Do not claim human or independent gold
+validation. The earlier human protocol below is retained for optional use/history;
+its requirement to return human annotations no longer blocks execution.
+
+## Preserved human protocol and implemented scoring tools
 
 The [D040 release plan](release-plan.md) governs this release. The active package
 is [release-v2/freeze-v3.json](../reports/release-v2/freeze-v3.json), for the corrected
