@@ -1,0 +1,62 @@
+{
+  "recorded_at": "2026-11-09T18:22:07.884082+07:00",
+  "check": "bounded public HEAD requests; HTTP failures do not prove permanent unavailability",
+  "checks": [
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i1.16107",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16107",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i1.16152",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16152",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i2.16197",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16197",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i2.16199",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16199",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v36i1.19954",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/19954",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v36i3.20193",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/20193",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v36i8.20851",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/20851",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v37i6.25871",
+      "status": 200,
+      "resolved_url": "https://ojs.aaai.org/index.php/AAAI/article/view/25871",
+      "availability": "reachable"
+    },
+    {
+      "url": "https://github.com/HSandz/scientific-network",
+      "availability": "not_verified",
+      "error_type": "HTTPError",
+      "http_status": 404
+    }
+  ],
+  "reachable": 8,
+  "not_verified": 1
+}
