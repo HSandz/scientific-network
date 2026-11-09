@@ -1,0 +1,37 @@
+version: evaluation-agent-release-v2
+status: frozen
+evaluation_scope: edge_only
+evaluation_kind: ai_agent_review
+human_validation: not_performed
+reviewer_independence: not_established
+verified_course_accuracy: not_established
+amendment:
+  path: docs/correction-amendment-2026-11-09.md
+  sha256: 17dbde57b2acda50aa80024714a2942abfdc404dc488d35aea2018cdf871e9b6
+correction:
+  source_graph: data/processed/release-graph-v3/graph.json
+  works: data/interim/release-v1/works.jsonl
+  output_graph: data/processed/release-graph-v4/graph.json
+  policy: global valid singular-plus-observed ORCID union; conflicting or malformed
+    nonempty ID evidence withheld; no model inference
+  historical_artifacts: preserved
+review:
+  default: isolated_agent_A_B
+  share_other_reviewer_answers: false
+  seed: 20261109
+  seed_retries: 0
+  sampling_frame: all accepted corrected-graph edges
+  global_sample_size: 200
+  per_type_sample_size: 10
+  overlap_sample_size: 50
+  quality: configs/quality-agent-release-v2.yaml
+  rubric: reports/release-v4/reviewer-rubric-v2.md
+  historical_topic_reference: reports/release-v3/topic-eval-agent.json
+  topic_reference_reuse: historical exposed AI-assigned reference, conditional on
+    semantic prediction equality; no new topic evaluation
+reporting:
+  numeric_targets: unchanged
+  source_reuse: disclose same-source extraction checks
+  overlap: record previous semantic edge and underlying paper/source overlap
+  correction_origin: earlier audit-motivated; no independence claim
+  failed_gates: preserve, no correction/resample loop

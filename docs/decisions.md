@@ -907,3 +907,8 @@ phase 1; record any amendment here with its date.
   volumes and existing archives/PDFs. Rendering validates local references, text,
   sections and images; external availability and visual/glyph QA are separately
   recorded. Personal/course facts remain pending in an explicitly local draft.
+
+
+### D040 amendment — identity remediation and one prospective edge audit (2026-11-09)
+
+The user explicitly adopted all five remediation steps. [The dated amendment](correction-amendment-2026-11-09.md) authorizes a separately versioned global observed-ORCID correction, corrected Neo4j/analysis, one edge-only prospective audit (seed 20261109 frozen before draw) and local packaging. Preserve old graphs, all failed outcomes, classifiers and references. No external delivery is authorized.
