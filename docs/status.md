@@ -1,25 +1,28 @@
 # Current project status
 
-Updated: **2026-11-09 18:35 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040](release-plan.md); current user adopts [full remediation](prompts/implement-remediation-plan.md).
-Latest completed checkpoint: [WORK-013](work-log/2026-11-09-013-prospective-edge-audit.md).
+Updated: **2026-11-09 18:42 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
+Latest completed: [WORK-014](work-log/2026-11-09-014-remediation-package.md).
 
 ## Remediation checklist
 
-- [x] A Required topic-ledger labels; regressions; original edge/topic JSON exactly reproduced (expected failed-gate exit 1); 426 tests passed/1 existing skip.
-- [x] B Versioned global ORCID correction: `release-d3c788c3114a`; 47,875 nodes/225,731 edges, protected predictions/facts preserved; size/structure pass.
-- [x] C Corrected isolated DB inventory/six integrity checks/replay pass; five projections, sensitivity, six figures and findings recomputed.
-- [x] D One frozen source-backed edge-only A/B audit:193/200 (96.5%), Wilson92.95–98.29%; AI-only numeric pass. Coverage/topic gates still fail.
-- [ ] E Measured replacement report, PDF/HTML/ZIP and local QA.
+- [x] A Topic-ledger labels required; original failed edge/topic results exactly reproduced, expected exit1.
+- [x] B New graph `release-d3c788c3114a`:47,875nodes/225,731edges; frozen predictions/facts preserved; size/structure pass.
+- [x] C Isolated Neo4j inventory,six integrity queries,replay pass; five projections,sensitivity,six figures/findings recomputed.
+- [x] D One frozen source-backed edge-only A/B audit:193/200 (96.5%),Wilson92.95–98.29%; AI-only numeric pass; all350assignments complete.
+- [x] E Measured report and new23-page A4 PDF/HTML/ZIP verified;504tests passed/1existing skip.
 
-## Preserved historical state
+## Current local artifacts
 
-Graph v3 `release-9d4a6fb20f63`, original AI audit 176/200 (88%), failed precision gates and topic micro F1 .4667/.2301 remain immutable. Prior local package remains preserved. Prior release phases/checkpoints are in WORK-009 and earlier entries; logs remain historical evidence.
+[Package QA and exact paths/hashes](../reports/release-v4/local-package-receipt-v2.json),
+[results and limitations](../reports/release-v4/README.md), [report source](../reports/final-report/report.md).
+Package source checkpoint `8f0782a`; final QA/logs are later records outside that snapshot.
+All1394archive members verified;14historic CRLF-only CSV differences preserved;125historical hashes unchanged.
 
-## Active work
+## Quality and preserved history
 
-Correction is explicitly authorized as a new graph version; no in-place correction, classifier tuning, threshold relaxation or repeated sample cycle. Agents perform feasible work; human annotation is optional. No push/tag/publication/invitation/submission.
+AI-assessed only: human validation not performed; reviewer independence and verified course accuracy not established. Wilson excludes evaluator/source/model bias. Affiliation coverage73.71% matched positions (FAIL80%); historical embedding/phrase F1 .4667/.2301 and topic precision target failures persist. Original v3 graph,88%failed audit,topics,freezes and old package bytes preserved. No retuning or resampling.
 
 ## Remaining personal facts and delivery
 
-Real team names/IDs/contributions and course AI-use/access facts remain unavailable. Local package remains a draft pending those facts. External actions require separate explicit authorization. Human validation, evaluator independence and verified course accuracy remain not established.
+Real student names/IDs/contributions,lecturer access and course AI-use requirements remain pending. GitHubHEAD404 leaves public/lecturer access not_verified;8DOIs reachable. Package remains a local submission draft. No push,tag,Site publication,invitation or submission performed or authorized. Supply personal/course facts before a new delivery render; external delivery requires separate authorization. Human annotation is optional.
