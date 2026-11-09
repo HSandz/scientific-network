@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-09-005](2026-11-09-005-report-completion.md) | Measured report and renderer | completed | Measured report/README, reproducibility and renderer; 19-page preview/six figures inspected; final snapshot package follows |
+
 | [WORK-2026-11-09-004](2026-11-09-004-agent-source-review.md) | Source-backed agent evaluation and scoring | completed | Full AI review/scoring: 88% edge precision, failed gates; topic F1 .4667 embedding/.2301 phrase; 419 tests passed/1 skip |
 
 | [WORK-2026-11-09-003](2026-11-09-003-agent-evaluator-freeze.md) | Agent evaluator implementation and freeze | completed | Provenance-bound scorer and 19 regressions; 403 passed/1 skip; matching agent packets and pre-review freeze ready |

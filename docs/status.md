@@ -1,7 +1,7 @@
 # Current project status
 
 Updated: **2026-11-09 12:36 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-004](work-log/2026-11-09-004-agent-source-review.md).
+Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-005](work-log/2026-11-09-005-report-completion.md).
 
 ## State
 
@@ -32,11 +32,11 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-004](
 - [x] Adopt user-authorized agent evaluation and prepare a fresh-session prompt
 - [x] Implement and test evaluator provenance/bindings and AI result metadata
 - [x] Complete and score source-backed agent edge/topic reviews
-- [ ] P8 Final report and README complete after scoring
+- [x] P8 Final report and README complete after scoring
 - [ ] P9 PDF and submission packaging
 
 ## Next action and human input
 
-Finish the measured report/README, then render/check the local PDF and prepare the submission bundle. Failed numeric gates remain reported; no frozen graph correction.
+Report/README are complete; preview PDF has 19 A4 pages/six figures, checked for text/glyphs/layout. Prepare and verify the final local bundle from the committed source snapshot. Failed numeric gates remain reported; no frozen graph correction.
 
 Only unavailable real team/private facts, demonstrated tool/access needs and separately authorized external delivery actions require human input. Continue independent work while they remain pending.

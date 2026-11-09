@@ -21,8 +21,9 @@ and [current status](docs/status.md).
 | Topic coverage | 11,575/13,617 papers labeled (85.00%); this is coverage, not accuracy |
 | Graph database | Neo4j Community 5.26 isolated service; corrected graph inventory, integrity and idempotent replay passed |
 | Network analysis | Five projections, six figures with tables, and three evidence-linked candidate findings |
-| Quality evaluation | **Not measured.** Agent-led source review is authorized; evaluator support and real judgments/scoring are next. Human validation is not performed |
-| Report | Sections 1–11 drafted with measured results; reviewer scores, real team details and final PDF remain pending |
+| AI-assessed edge precision | **176/200 = 88.00%**, Wilson 95% **82.77%–91.80%**; course point/project precision gates **FAIL**; zero missing reviews |
+| Topic agreement with AI references | Embedding micro F1 **.4667**, phrase **.2301**; test coverage 90%/26%; neither reaches .95 micro precision |
+| Report | Measured report complete; local PDF/package checks recorded in current status; real team/course facts pending |
 
 Graph v3 is `release-9d4a6fb20f63`, SHA-256
 `c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8`.
@@ -33,21 +34,29 @@ current graph and full source caches are local ignored artifacts; small reports,
 figures, configurations and code are versioned. The graph meets the structural
 size targets, but structural validation does not establish semantic accuracy.
 
-The user selected **agent-led evaluation** on 9 November. Human annotations are
-optional and do not block execution. Follow [the agent workflow](docs/agent-audit-workflow.md)
-and [fresh-session execution prompt](docs/prompts/agent-release-completion.md).
-The [protocol config](configs/evaluation-agent-release-v1.yaml) declares the method;
-agent provenance/scoring support still needs implementation before actual review.
-Report AI-assessed precision and topic agreement with AI-assigned labels, with
-evaluator/source limitations; do not present these as human validation or verified
-course accuracy. Frozen graph, classifier, samples and historical packets stay intact.
+Source-backed agent evaluation is complete under the
+[agent workflow](docs/agent-audit-workflow.md) and
+[protocol](configs/evaluation-agent-release-v1.yaml). A/B used separate fresh
+contexts and froze blind topic judgments before edge exposure. All 350 edge
+assignments and 60 topic assignments are complete; 11 actual edge disagreements
+were source-adjudicated with original votes retained. Edge overlap agreement is
+39/50 (78%; kappa .1852); topic overlap exact agreement is 10/10. These results
+are **AI-assessed**, with human validation not performed, evaluator independence
+and verified course accuracy not established. Precise runtime model/provider IDs
+are unknown; Wilson intervals do not cover evaluator error or shared-source bias.
+
+The audit found a resolver omission: conflicting `author.observed_orcids` arrays
+are retained in raw/full source records but ignored by singular-ORCID conflict
+handling. See [post-audit findings](docs/post-audit-findings.md). The frozen graph,
+classifier, samples and historical receipts remain unchanged. Any correction
+requires a separately versioned graph and new audit; failed gates are preserved.
 
 ## Reproduce the local checks
 
 Requires Python 3.12 and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-uv sync --locked --group dev --extra analysis
+uv sync --locked --group dev --extra analysis --extra report
 uv run pytest
 uv run research-network validate \
   --input data/processed/release-graph-v3/graph.json \
@@ -74,27 +83,32 @@ uv run research-network analyze \
   --output reports/runs/manual-analysis.json
 ```
 
-## Review and report artifacts
+## Evaluation, report and local delivery
 
-- [Release findings](reports/release-v2/findings.md)
-- [Fresh analysis metrics](reports/release-v2/analysis.json)
-- [Graph correction summary and preservation checks](reports/release-v2/graph-summary.json)
-- [Replacement freeze and review hashes](reports/release-v2/freeze-v3.json)
-- [Topic-review assignment manifest](reports/release-v1/audit/topic-review-allocation.json)
-- Preserved human edge packets: [reviewer A](reports/release-v2/audit/edge-review-sheet-v2-reviewer-A.html#reviewer=A), [reviewer B](reports/release-v2/audit/edge-review-sheet-v2-reviewer-B.html#reviewer=B)
-- Topic review packets: [reviewer A](reports/release-v1/audit/topic-label-sheet-reviewer-A.html), [reviewer B](reports/release-v1/audit/topic-label-sheet-reviewer-B.html)
-- [Draft academic report](reports/final-report/report.md)
-- [Active agent audit and scoring workflow](docs/agent-audit-workflow.md)
-- [Fresh-session execution prompt](docs/prompts/agent-release-completion.md)
-- [Preserved optional human handoff](docs/reviewer-handoff.md)
-- [Technical verification and remaining human inputs](reports/release-v2/technical-verification.json)
-- [Evaluation protocol](docs/evaluation.md)
+- [AI edge results and failed gates](reports/release-v3/audit-results-agent.json)
+- [Both frozen topic classifiers and per-label metrics](reports/release-v3/topic-eval-agent.json)
+- [Evaluation package and completion receipts](reports/release-v3/README.md)
+- [Evaluation limitations and source reuse](reports/release-v3/evaluation-limitations.md)
+- [Academic report](reports/final-report/report.md)
+- [Exact scoring, rendering and packaging commands](docs/reproduce-agent-evaluation.md)
+- [Local submission and separately authorized delivery checklist](docs/local-submission-checklist.md)
+- [Frozen analysis](reports/release-v2/analysis.json) and [candidate findings](reports/release-v2/findings.md)
+- [Graph correction summary](reports/release-v2/graph-summary.json) and [content freeze](reports/release-v2/freeze-v3.json)
 
-New agent review exports and evidence ledgers go to the separately versioned paths
-in the active workflow. Do not fill or rebind old human edge forms. Topic packets
-may be reused by exact-byte reference for blind input; completed outputs stay
-separate. Distinguish a considered empty topic set from an unreviewable paper.
-The topic master, allocation and frozen test membership must not be edited.
+The new source ledgers/exports preserve actual judgments and evidence locators;
+old blank human packets and frozen test membership/allocation are unchanged.
+Global and per-type audit samples are reported separately. Topic scoring gives
+each paper weight one and distinguishes considered empty sets from unreviewable
+references; none of the real topic assignments is unreviewable.
+
+The local PDF/ZIP remain ignored; their checked paths/hashes and source checkpoint
+are recorded in the final work entry/package receipt linked from
+[current status](docs/status.md). The package contains permitted source files,
+small reports/figures and the rendered report. It excludes raw/full graph data,
+models, credentials and database volumes. Rescoring requires restoring original
+permitted inputs, then checking their freeze hashes; it cannot run from the ZIP
+alone. Real names, student IDs, actual contributions, lecturer access and course
+AI-use rules remain pending. No human annotation wait is required.
 
 ## Graph model
 
@@ -127,7 +141,10 @@ release quality. The public project Site is **AI Research Network — Plan & Rep
 this local workspace. The repository URL is
 [github.com/HSandz/scientific-network](https://github.com/HSandz/scientific-network).
 
-WORK-037 recorded an earlier 9 November remote check at `951b9c5`, with no tags.
-Remote state was not refreshed for this protocol amendment; verify it before
-authorized delivery. This amendment performs no push, tag, Site publication or
-submission.
+A read-only 9 November remote check returned main
+`05ac5d83922c54bd006034e5c7296de00e811f72` and no tags. Local commits remain
+unpushed; the GitHub HTTP check returned 504, so public lecturer access remains
+not verified. The project Site still reflects an earlier publication and is not
+live-synchronized with these local results. No push, release tag, Site publication,
+invitation or submission was performed. Those actions require separate explicit
+authorization after the local package is reviewed.

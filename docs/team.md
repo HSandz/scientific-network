@@ -41,3 +41,20 @@ credit from this role allocation.
 | Date/week | Member | Issue/commit/artifact | Work performed | Reviewer | Evidence link |
 | --- | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD | TBD |
+
+## Actual agent execution record — 9 November 2026
+
+This records agent work, not student credit. Human names, student IDs and actual
+individual contributions remain pending; the illustrative A/B role table above
+must not be treated as observed student work.
+
+| Agent context | Recorded work | Evidence |
+| --- | --- | --- |
+| Codex coordinator `/root` | Freeze, integration, source/DB validation, scoring/report/package preparation | WORK-2026-11-09-003 onward |
+| `/root/reviewer_a` | 30 prediction-blind topic judgments; assigned source-backed edge review | `reports/release-v3/completed/A-*` |
+| `/root/reviewer_b` | 30 prediction-blind topic judgments; assigned source-backed edge review | `reports/release-v3/completed/B-*` |
+| `/root/agent_scorer` | Agent provenance/scoring wrapper, synthetic regressions and renderer/package tooling | Implementation and tests in WORK-003 onward |
+
+Exact runtime provider/model IDs are unknown; evaluator channels are not human
+identities. Human validation was not performed; course AI-use/access rules are
+not available in supplied records. No student contribution is invented here.
