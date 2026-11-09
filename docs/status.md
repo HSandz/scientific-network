@@ -1,48 +1,25 @@
 # Current project status
 
-Updated: **2026-11-09 15:04 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-009](work-log/2026-11-09-009-remediation-prompt.md).
+Updated: **2026-11-09 15:15 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040](release-plan.md); current user adopts [full remediation](prompts/implement-remediation-plan.md).
+Latest completed checkpoint: [WORK-010](work-log/2026-11-09-010-scorer-remediation.md).
 
-## State
+## Remediation checklist
 
-- Agent evaluation, report and local packaging have been executed; review found the scorer guard below still needs correction. Human annotation is optional.
-- Graph `release-9d4a6fb20f63` and [content freeze](../reports/release-v2/freeze-v3.json) are unchanged. No post-audit graph correction or classifier tuning.
-- AI-assessed edge precision **176/200 = 88.00%**, Wilson 95% **82.77%–91.80%**; course point and project precision gates **FAIL**. Full results/ledgers: [release-v3](../reports/release-v3/README.md).
-- Topic micro F1: embedding **.4667**, phrase **.2301**, test coverage 90%/26%. Neither reaches .95 micro precision. Topic overlap 10/10; edge overlap 39/50, kappa .1852.
-- Human validation not performed; evaluator independence and verified course accuracy not established. Exact runtime model/provider IDs unknown; source reuse and judge errors limit all results.
-- Resolver ignores retained `author.observed_orcids` arrays in conflict withholding; [post-audit finding](post-audit-findings.md) preserved for a separate version/new audit.
-- Latest review confirms that source evidence and exactly reproduces both score JSONs. New P2 gap: scorer accepts a topic ledger without required `labels`, bypassing CSV/ledger label comparison; synthetic reproduction recorded. Current real records all contain matching labels.
-- Final suite: **419 passed/1 existing skip**; schema CLI and locked sync pass. Structural/size validation and read-only Neo4j inventory/six integrity queries pass in WORK-004; earlier replay remains historical.
-- [Measured report](../reports/final-report/report.md) and README complete. Final local PDF: **19 A4 pages/six figures**. ZIP: **1,320 members**, all member hashes/CRC rechecked; WORK-006 records **89 frozen/completed hashes** and zero configured-secret matches. Latest review checks 55 unique evaluation/completion bindings; all match.
-- [Final package/QA receipt](../reports/release-v3/local-package-receipt-v1.json) identifies ignored PDF/HTML/ZIP paths, hashes, source checkpoint `98bc295`, visual/glyph checks and historical CSV byte differences.
-- Read-only remote refs: main `05ac5d8`, no tags. GitHub HTTP504 leaves public lecturer access not_verified. No push, tag, Site publication, invitation or submission performed.
+- [x] A Required topic-ledger labels; regressions; original edge/topic JSON exactly reproduced (expected failed-gate exit 1); 426 tests passed/1 existing skip.
+- [ ] B Separately versioned global observed-ORCID correction, preserved predictions, change manifest/content freeze.
+- [ ] C Isolated release DB inventory/integrity/replay; all analysis and figures recomputed.
+- [ ] D One prospectively frozen edge-only source-backed A/B audit; preserve failed gates.
+- [ ] E Measured replacement report, PDF/HTML/ZIP and local QA.
 
-## Phase checklist
+## Preserved historical state
 
-- [x] P0 Housekeeping
-- [x] P1 Tooling fixes
-- [x] P2 OpenAlex acquisition
-- [x] P3 Graph v1 and structural validation
-- [x] P4 Neo4j v1 load, inventory, integrity and replay
-- [x] P5 Frozen embedding classifier, corrected graph and Neo4j replay
-- [x] P6 Fresh corrected-graph analysis, figures and findings
-- [x] P7 Replacement freeze and consistent review packets
-- [x] Resolve pre-audit taxonomy, fallback-scoring and reviewer-export issues
-- [x] Independently review the corrected pre-audit package
-- [x] Adopt agent workflow; implement/test provenance and freeze evaluator inputs
-- [x] Complete and score source-backed agent edge/topic reviews
-- [x] P8 Measured final report and README
-- [x] P9 Local PDF and submission packaging (external delivery pending)
-- [x] Review completed evaluation/report/package (WORK-007; findings open)
-- [x] Plan review remediation (planning only; WORK-008)
-- [x] Prepare fresh-session remediation prompt (WORK-009; no execution)
+Graph v3 `release-9d4a6fb20f63`, original AI audit 176/200 (88%), failed precision gates and topic micro F1 .4667/.2301 remain immutable. Prior local package remains preserved. Prior release phases/checkpoints are in WORK-009 and earlier entries; logs remain historical evidence.
 
-## Next local work
+## Active work
 
-Follow [the remediation plan](remediation-plan.md): first require topic-ledger `labels`, add regressions and confirm unchanged real scores. The proposed next track is a separately versioned ORCID correction, affected analysis, prospective agent audit and replacement package. Record a dated D040 amendment when that correction track is adopted; the plan itself changes no frozen artifact or scientific rule. No code fix or correction has been executed.
+Correction is explicitly authorized as a new graph version; no in-place correction, classifier tuning, threshold relaxation or repeated sample cycle. Agents perform feasible work; human annotation is optional. No push/tag/publication/invitation/submission.
 
-Use [the implementation prompt](prompts/implement-remediation-plan.md) in a fresh session to execute all five steps under its explicit correction scope. The earlier pre-evaluation prompt is historical for this task.
+## Remaining personal facts and delivery
 
-## Remaining facts and external delivery
-
-Real student names/IDs/actual contributions, course AI-use rules and lecturer access remain unavailable. The local bundle is a submission draft until those facts are reflected in a new render. Follow [the checklist](local-submission-checklist.md); push/tag/Site publication/invitation/submission require separate explicit authorization. Human annotation is optional; the scorer fix above is feasible agent work.
+Real team names/IDs/contributions and course AI-use/access facts remain unavailable. Local package remains a draft pending those facts. External actions require separate explicit authorization. Human validation, evaluator independence and verified course accuracy remain not established.

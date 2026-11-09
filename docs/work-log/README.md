@@ -153,3 +153,5 @@ Save observations, actions, decisions and evidence references. Do not dump full
 chats, hidden reasoning, credentials, sensitive profile data or restricted paper
 text into the journal.
 
+
+- [WORK-2026-11-09-010 — Scorer remediation](2026-11-09-010-scorer-remediation.md): required topic labels, 426 tests pass, original results exactly reproduced.
