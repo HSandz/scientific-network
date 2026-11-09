@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-09-007](2026-11-09-007-agent-release-review.md) | Review agent evaluation and local release | completed (findings open) | Exact rescore/package verification passes; known ORCID defect confirmed; new missing-topic-label validation gap reproduced; 419 tests/1 skip |
+
 | [WORK-2026-11-09-006](2026-11-09-006-local-package.md) | Final local PDF and submission package | completed | 19 A4 pages/six figures; 1,320 ZIP members verified, 89 frozen/completed hashes pass, zero configured-secret matches; 419 tests/1 skip |
 
 | [WORK-2026-11-09-005](2026-11-09-005-report-completion.md) | Measured report and renderer | completed | Measured report/README, reproducibility and renderer; 19-page preview/six figures inspected; final snapshot package follows |
