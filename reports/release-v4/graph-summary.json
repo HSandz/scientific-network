@@ -1,0 +1,235 @@
+{
+  "stage": "release-identity-correction",
+  "method_version": "release-observed-orcid-identity-correction-v1",
+  "base_graph_method_version": "release-openalex-graph-v1.1",
+  "model": {
+    "name": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "device": "cpu"
+  },
+  "thresholds": {
+    "tau": 0.2708871364593506,
+    "delta": 0.02
+  },
+  "development_calibration": {
+    "target_coverage": 0.85,
+    "observed_coverage": 0.849966708589184,
+    "development_papers": 13517,
+    "sample_seed": 20261108,
+    "sample_size": 30
+  },
+  "graph_v1_version": "release-4c1253e05f2c",
+  "graph_version": "release-d3c788c3114a",
+  "inputs_sha256": {
+    "graph_v1_sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761",
+    "works_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "taxonomy_sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4",
+    "quality_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "topic_test_sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+  },
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2047,
+      "Paper": 13617,
+      "Researcher": 32189,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "AUTHORED": 50437,
+      "COAUTHORED_WITH": 80482,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 13031,
+      "RESEARCHES_TOPIC": 5622,
+      "AFFILIATED_WITH": 38664,
+      "HAS_TOPIC": 14222,
+      "CONTRIBUTES_TO_TOPIC": 2332,
+      "CITES": 7308,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "observed": 110026,
+      "derived": 101467,
+      "inferred_topic": 14222,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 32189,
+    "unique_core_factual_edges": 110026
+  },
+  "coverage": {
+    "eligible_papers": 13617,
+    "papers_with_abstract": 13606,
+    "papers_topic_labeled": 11575,
+    "papers_topic_abstained": 2042,
+    "topic_coverage": 0.8500403906881104,
+    "topic_labeled_by_venue_year": {
+      "venue:aaai": {
+        "2021": {
+          "eligible": 1654,
+          "labeled": 1409
+        },
+        "2022": {
+          "eligible": 1319,
+          "labeled": 1154
+        },
+        "2023": {
+          "eligible": 1578,
+          "labeled": 1387
+        },
+        "2024": {
+          "eligible": 2331,
+          "labeled": 2009
+        },
+        "2025": {
+          "eligible": 3028,
+          "labeled": 2550
+        }
+      },
+      "venue:ijcai": {
+        "2021": {
+          "eligible": 586,
+          "labeled": 480
+        },
+        "2022": {
+          "eligible": 678,
+          "labeled": 560
+        },
+        "2023": {
+          "eligible": 639,
+          "labeled": 524
+        },
+        "2024": {
+          "eligible": 790,
+          "labeled": 656
+        },
+        "2025": {
+          "eligible": 1014,
+          "labeled": 846
+        }
+      }
+    },
+    "official_author_positions_all_roster_papers": 65507,
+    "author_positions": 65469,
+    "author_positions_accepted": 50437,
+    "author_positions_withheld": 15032,
+    "author_positions_withheld_by_reason": {
+      "author_id_conflicting_orcids": 8722,
+      "historical_withheld_reason_not_carried_in_source_summary": 6310
+    },
+    "accepted_authorships_with_institution": 48259,
+    "author_paper_affiliation_coverage": 0.7371274954558646,
+    "papers_all_authorships_withheld": 188,
+    "papers_without_accepted_authorship": 199,
+    "identity_correction_removed_authorships": 8722,
+    "paper_unresolved_reason_policy": "preserve all original paper properties; add identity_correction:all_authorships_withheld only when a newly authorless paper lacks a reason"
+  },
+  "topic_decisions": {
+    "abstain": 2042,
+    "labeled": 11575
+  },
+  "structural_validation": "passed",
+  "semantic_accuracy": "not_measured_for_corrected_graph",
+  "test_predictions_computed_after_classifier_freeze": true,
+  "topic_classifier_method_version": "release-embedding-topics-v1",
+  "correction_inputs": {
+    "works": {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    },
+    "source_graph": {
+      "path": "data/processed/release-graph-v3/graph.json",
+      "sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8"
+    },
+    "taxonomy": {
+      "path": "configs/topics-release-v1.yaml",
+      "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+    },
+    "quality": {
+      "path": "configs/quality-release-v1.yaml",
+      "sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f"
+    },
+    "source_summary": {
+      "path": "reports/release-v2/graph-summary.json",
+      "sha256": "3566416665a5ff6960c7c361675c3214cc3ea24da6fa4139df7e2a92a515e199"
+    },
+    "source_freeze": {
+      "path": "reports/release-v2/freeze-v3.json",
+      "sha256": "3a90644746f00b0d07e8f4e5605a929664997a42469d69577d5afe130c97151e"
+    },
+    "correction_protocol": {
+      "path": "configs/evaluation-agent-release-v2.yaml",
+      "sha256": "24ecf240de3210796d66ac9cf70ca88cd22e2d8e2463ed322493ecc7722c467b"
+    }
+  },
+  "supersedes_graph_version": "release-9d4a6fb20f63",
+  "preservation": {
+    "paper_venue_topic_nodes": {
+      "before_sha256": "85a85e6a573a875491448f79d40c9b4bc5c896c07ef3025017b3f2b285179699",
+      "after_sha256": "85a85e6a573a875491448f79d40c9b4bc5c896c07ef3025017b3f2b285179699",
+      "equal": true
+    },
+    "publication_citation_topic_taxonomy_edges": {
+      "before_sha256": "693599b80302578187c38e702edb98a5e312b9e5a5fa6ebc41381580c2efd9ee",
+      "after_sha256": "693599b80302578187c38e702edb98a5e312b9e5a5fa6ebc41381580c2efd9ee",
+      "equal": true
+    },
+    "non_derived_evidence": {
+      "before_sha256": "f86dd684b49b544928789d2bf917d895a3ff13e0fbae0f239d303de4f7e7cdb0",
+      "after_sha256": "f86dd684b49b544928789d2bf917d895a3ff13e0fbae0f239d303de4f7e7cdb0",
+      "equal": true
+    }
+  },
+  "taxonomy_validation": "passed",
+  "computation": "full-source global identity withholding; R7-R10 recomputed; frozen predictions/evidence copied without inference",
+  "source_created_at": "2026-11-08T05:41:17.649457+00:00",
+  "name_matching": {
+    "initials_tolerant": null,
+    "exact": 50437,
+    "initials": 0
+  },
+  "size_gates": {
+    "domain_nodes": {
+      "observed": 47875,
+      "minimum": 2000,
+      "status": "passed"
+    },
+    "resolved_core_researchers": {
+      "observed": 32189,
+      "minimum": 2000,
+      "status": "passed"
+    },
+    "unique_core_factual_edges": {
+      "observed": 110026,
+      "minimum": 5000,
+      "status": "passed"
+    },
+    "all_relation_types_present": {
+      "observed": 10,
+      "minimum": 10,
+      "status": "passed"
+    }
+  },
+  "identity": {
+    "matched_author_ids": 36690,
+    "conflicting_author_ids": 4492,
+    "malformed_author_ids": 0,
+    "withheld_author_ids": 4492,
+    "source_orcid_observations": 118365
+  },
+  "policies": {
+    "identity": "union checksum-valid singular and observed ORCIDs across all matched works; withhold multiple values globally",
+    "malformed": "withhold globally on nonempty malformed values or wrong containers; missing/null is allowed",
+    "unsupported_organizations": "remove organizations without surviving affiliation observations",
+    "paper_metadata": "preserve all original paper properties; add identity_correction:all_authorships_withheld only when a newly authorless paper lacks a reason",
+    "predictions": "preserve frozen HAS_TOPIC, taxonomy and all non-derived evidence exactly; no inference"
+  },
+  "change_manifest": {
+    "path": "data/processed/release-graph-v4/change-manifest.json",
+    "sha256": "eaa73c6d6b25b9ccaeec93ac98c16fbbc8723f39ea8c70f3e72a1f8cc6627434"
+  },
+  "review_queue": {
+    "author_id_conflicting_orcids": 4492
+  }
+}

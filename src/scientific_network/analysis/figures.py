@@ -215,7 +215,7 @@ def generate_report_figures(analysis_path: Path, output_dir: Path) -> list[Path]
 
     save_figure(
         "topic-trends.png", "Inferred topic portfolio trends, 2021–2025",
-        "Projection: core Paper–HAS_TOPIC–Topic. Filter: core papers in AAAI and IJCAI, 2021–2025; inferred labels remain pending review. Counting: each labeled paper contributes 1/k to each of k labels; shares normalize over labeled papers across both venues in each year. Lines show the eight largest topics by fractional mass.",
+        "Projection: core Paper–HAS_TOPIC–Topic. Filter: core papers in AAAI and IJCAI, 2021–2025; inferred labels have no human validation; historical AI topic assessment is reported separately. Counting: each labeled paper contributes 1/k to each of k labels; shares normalize over labeled papers across both venues in each year. Lines show the eight largest topics by fractional mass.",
         draw_topics,
     )
 

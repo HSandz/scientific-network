@@ -632,7 +632,7 @@ def analyze_graph(
         "limitations": [
             "Structural validation does not establish semantic correctness or coverage.",
             "Community assignments use the configured NetworkX Louvain fallback; GDS was not used.",
-            "Topic labels are inferred and await independent human review; topic findings are provisional.",
+            "Topic labels are inferred; source-backed AI assessment is separate, human validation was not performed and topic findings are provisional.",
             "Strict-evidence sensitivity results describe robustness to the configured filter and are not accuracy evidence.",
             "Citation counts use current in-scope metadata and are not normalized for paper age or exposure time.",
             "Country mixing retains an unknown category where organization country metadata is absent.",

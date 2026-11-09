@@ -3,7 +3,11 @@
 > **Current plan:** [release-plan.md](release-plan.md) (D040, 8 Nov 2026). The
 > iteration notes below are history.
 
-## Current capabilities — D040 agent evaluation and local packaging
+## Current capabilities — D040 remediation
+
+**9 November remediation:** `correct-release-identity` applies global singular-plus-observed ORCID withholding from immutable works, preserves frozen predictions without inference and emits full changes/content freeze. `score-agent-edge-review` supports prospectively frozen edge-only contexts and actual post-export adjudication metadata without attributing old topic references to new reviewers. Complete raw source packets retain observed arrays and verify against cache bytes. The original combined scorer now requires explicit topic labels; historical scores reproduce unchanged.
+
+## Earlier capabilities — D040 agent evaluation and local packaging
 
 **9 November implementation:** `score-agent-review` validates evaluator/source
 ledgers, freeze/receipt bindings, canonical assignments, review order and truthful

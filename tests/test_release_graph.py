@@ -68,7 +68,7 @@ def edges(graph, relation):
 
 def rich_rows():
     i1, i2 = inst("I1"), inst("I2")
-    a1 = lambda: authorship("A1", "Ann One", [i1], orcid="https://orcid.org/0000-0001-0000-0001")
+    a1 = lambda: authorship("A1", "Ann One", [i1], orcid="https://orcid.org/0000-0002-1825-0097")
     a2 = lambda: authorship("A2", "Bo Two", [i2])
     return [
         row(1, ["Ann One", "Bo Two"], [a1(), a2()]),
@@ -90,7 +90,7 @@ def test_all_ten_relations_are_derived_from_accepted_evidence_and_validate(tmp_p
     assert paper.properties["official_author_count"] == 2 and "abstract" not in paper.properties
     researcher = next(n for n in graph.nodes if n.id == "researcher:openalex:A1")
     assert researcher.properties == {"resolution_status": "resolved", "identity_method": "openalex_author_id",
-                                     "openalex_id": "A1", "orcid": "0000-0001-0000-0001"}
+                                     "openalex_id": "A1", "orcid": "0000-0002-1825-0097"}
     org = next(n for n in graph.nodes if n.id == "organization:I1")
     assert org.properties["sector"] == "academia" and org.properties["ror"] == "https://ror.org/i1" and org.properties["country_code"] == "US"
     authored = next(e for e in graph.edges if e.relation == Relation.AUTHORED and e.target_id == "paper:aaai:2021:1" and e.source_id.endswith("A2"))
@@ -166,9 +166,9 @@ def test_the_same_author_id_twice_in_a_paper_withholds_all_its_authorships(tmp_p
 
 
 def test_a_missing_author_id_is_withheld_and_an_id_with_conflicting_orcids_is_withheld_everywhere(tmp_path):
-    rows = [row(1, ["Ann One", "Bo Two"], [authorship("A1", "Ann One", orcid="https://orcid.org/0000-0001-0000-0001"),
+    rows = [row(1, ["Ann One", "Bo Two"], [authorship("A1", "Ann One", orcid="https://orcid.org/0000-0002-1825-0097"),
                                          authorship(None, "Bo Two")]),
-            row(2, ["Ann One"], [authorship("A1", "Ann One", orcid="https://orcid.org/0000-0002-0000-0002")])]
+            row(2, ["Ann One"], [authorship("A1", "Ann One", orcid="https://orcid.org/0000-0001-5109-3700")])]
     graph, _, queue = build(tmp_path, rows)
     assert edges(graph, Relation.AUTHORED) == []
     # names fit, so none of this suggests a misaligned byline: each position is withheld on its own

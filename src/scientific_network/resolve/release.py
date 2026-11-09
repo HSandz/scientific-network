@@ -26,7 +26,7 @@ from scientific_network.graph.schema import edge_id
 from scientific_network.graph.validate import graph_counts, validate_graph
 from scientific_network.nlp.baseline import METHOD as TOPIC_METHOD, predict
 
-METHOD_VERSION = "release-openalex-graph-v1.1"
+METHOD_VERSION = "release-openalex-graph-v1.2"
 SECTOR = {"education": "academia", "company": "industry", "government": "government", "nonprofit": "nonprofit"}
 VENUES = {
     "venue:aaai": "AAAI Conference on Artificial Intelligence",
@@ -172,18 +172,11 @@ def build_release_graph(
             validation_status="accepted", properties=properties or {})
         return edges[identifier]
 
-    # ---- pass 1: ORCIDs per OpenAlex author ID (an ID carrying conflicting ORCIDs is withheld)
-    orcids: dict[str, set[str]] = defaultdict(set)
-    for row in rows:
-        if row["match"]["status"] != "matched":
-            continue
-        for authorship in row["openalex"]["authorships"]:
-            author = authorship.get("author") or {}
-            if short_id(author.get("id")) and normalize_orcid(author.get("orcid")):
-                orcids[short_id(author["id"])].add(normalize_orcid(author["orcid"]))
-    conflicted = {identifier for identifier, values in orcids.items() if len(values) > 1}
-    for identifier in sorted(conflicted):
-        review.append({"kind": "author_id_conflicting_orcids", "author_id": identifier, "orcids": sorted(orcids[identifier])})
+    # Complete-source identity pass, shared with the frozen-prediction correction.
+    from scientific_network.resolve.release_identity import collect_identity_evidence
+    identity = collect_identity_evidence(rows)
+    orcids, withheld = identity["orcids"], identity["withheld"]
+    review.extend(identity["review"])
 
     # ---- venues, papers, authorships, affiliations
     for venue_id, name in VENUES.items():
@@ -225,8 +218,8 @@ def build_release_graph(
                     unusable.append((index, "name_incompatible"))
                 elif author_id is None:
                     unusable.append((index, "no_author_id"))        # name fits but OpenAlex has no ID: not a person node
-                elif author_id in conflicted:
-                    unusable.append((index, "author_id_conflicting_orcids"))
+                elif author_id in withheld:
+                    unusable.append((index, withheld[author_id]))
                 else:
                     positions.append((index, authorship, kind))
             ids = [short_id(a["author"]["id"]) for _, a, _ in positions]
@@ -270,7 +263,8 @@ def build_release_graph(
         for index, authorship, kind in info["positions"]:
             author = authorship["author"]
             researcher_id = "researcher:openalex:" + short_id(author["id"])
-            orcid = normalize_orcid(author.get("orcid"))
+            values = orcids.get(short_id(author["id"]), set())
+            orcid = next(iter(values)) if len(values) == 1 else None
             if researcher_id not in nodes:
                 nodes[researcher_id] = Node(
                     id=researcher_id, label="Researcher", name=author.get("display_name") or short_id(author["id"]),

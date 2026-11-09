@@ -385,7 +385,7 @@ def compute_release_metrics(graph: GraphArtifact, projections: dict, config: dic
     component_sizes = projections.get("researcher_collaboration", {}).get("weak_or_undirected_component_sizes", [])
     return {
         "method_version": "d040-release-metrics-v2",
-        "evidence_scope": "accepted core graph records; all topic results use inferred labels awaiting independent human review",
+        "evidence_scope": "accepted core graph records; all topic results use inferred labels; human validation not performed, AI assessment reported separately",
         "annual_counts": {
             "year_scope": list(YEARS),
             "new_collaboration_rule": "one accepted COAUTHORED_WITH pair counted in its earliest supported core-paper year",
