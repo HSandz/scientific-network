@@ -1,0 +1,102 @@
+{
+  "recorded_at": "2026-11-09T15:23:50.371719+07:00",
+  "uri": "bolt://localhost:7689",
+  "graph_version": "release-d3c788c3114a",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "nodes": [
+    {
+      "label": "Researcher",
+      "count": 32189
+    },
+    {
+      "label": "Organization",
+      "count": 2047
+    },
+    {
+      "label": "Paper",
+      "count": 13617
+    },
+    {
+      "label": "Topic",
+      "count": 20
+    },
+    {
+      "label": "Venue",
+      "count": 2
+    }
+  ],
+  "edges": [
+    {
+      "relation": "AUTHORED",
+      "count": 50437
+    },
+    {
+      "relation": "AFFILIATED_WITH",
+      "count": 38664
+    },
+    {
+      "relation": "PUBLISHED_IN",
+      "count": 13617
+    },
+    {
+      "relation": "CITES",
+      "count": 7308
+    },
+    {
+      "relation": "HAS_TOPIC",
+      "count": 14222
+    },
+    {
+      "relation": "SUBTOPIC_OF",
+      "count": 16
+    },
+    {
+      "relation": "COAUTHORED_WITH",
+      "count": 80482
+    },
+    {
+      "relation": "COLLABORATED_WITH",
+      "count": 13031
+    },
+    {
+      "relation": "RESEARCHES_TOPIC",
+      "count": 5622
+    },
+    {
+      "relation": "CONTRIBUTES_TO_TOPIC",
+      "count": 2332
+    }
+  ],
+  "versions": [
+    {
+      "version": "release-d3c788c3114a"
+    }
+  ],
+  "integrity": [
+    {
+      "query": "// Each query should return no rows on a structurally accepted graph.\nMATCH (s)-[r]->(t)\nWHERE s = t\nRETURN s.id AS self_loop_node, type(r) AS relation",
+      "returned_rows": []
+    },
+    {
+      "query": "MATCH (s)-[r]->(t)\nWITH type(r) AS relation, s.id AS source_id, t.id AS target_id, count(*) AS copies\nWHERE copies > 1\nRETURN relation, source_id, target_id, copies",
+      "returned_rows": []
+    },
+    {
+      "query": "MATCH (s)-[r]->(t)\nWHERE type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] AND s.id >= t.id\nRETURN r.edge_id AS incorrectly_oriented_edge",
+      "returned_rows": []
+    },
+    {
+      "query": "MATCH ()-[r]->()\nWHERE r.edge_id IS NULL OR r.method_version IS NULL OR r.graph_version IS NULL\n   OR r.evidence_kind IS NULL OR r.evidence_ids IS NULL OR size(r.evidence_ids) = 0\n   OR r.validation_status IS NULL OR r.validation_status <> 'accepted'\nRETURN r.edge_id AS missing_or_invalid_provenance, type(r) AS relation",
+      "returned_rows": []
+    },
+    {
+      "query": "WITH {\n  AUTHORED: ['Researcher', 'Paper'],\n  AFFILIATED_WITH: ['Researcher', 'Organization'],\n  PUBLISHED_IN: ['Paper', 'Venue'],\n  CITES: ['Paper', 'Paper'],\n  HAS_TOPIC: ['Paper', 'Topic'],\n  SUBTOPIC_OF: ['Topic', 'Topic'],\n  COAUTHORED_WITH: ['Researcher', 'Researcher'],\n  COLLABORATED_WITH: ['Organization', 'Organization'],\n  RESEARCHES_TOPIC: ['Researcher', 'Topic'],\n  CONTRIBUTES_TO_TOPIC: ['Organization', 'Topic']\n} AS endpoint_schema\nMATCH (s)-[r]->(t)\nWITH s, r, t, endpoint_schema[type(r)] AS expected\nWHERE expected IS NULL OR NOT (expected[0] IN labels(s)) OR NOT (expected[1] IN labels(t))\nRETURN r.edge_id AS invalid_endpoint_edge, type(r) AS relation",
+      "returned_rows": []
+    },
+    {
+      "query": "MATCH (p:Paper)\nWHERE p.is_core = true\nOPTIONAL MATCH (p)-[:PUBLISHED_IN]->(v:Venue)\nWITH p, count(v) AS venue_count\nWHERE venue_count <> 1\nRETURN p.id AS paper_with_invalid_primary_venue, venue_count",
+      "returned_rows": []
+    }
+  ],
+  "status": "passed"
+}

@@ -157,3 +157,5 @@ text into the journal.
 - [WORK-2026-11-09-010 — Scorer remediation](2026-11-09-010-scorer-remediation.md): required topic labels, 426 tests pass, original results exactly reproduced.
 
 - [WORK-2026-11-09-011 — Versioned identity correction](2026-11-09-011-identity-correction.md): completed; graph v4 size/structure pass, frozen predictions preserved.
+
+- [WORK-2026-11-09-012 — Corrected DB and analysis](2026-11-09-012-corrected-db-analysis.md): completed; isolated integration and fresh analysis/findings pass.

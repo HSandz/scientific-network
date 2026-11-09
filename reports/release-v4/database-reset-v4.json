@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-11-09T15:20:54.146850+07:00",
+  "service": {
+    "Name": "scientific-network-neo4j-five-year-1",
+    "Service": "neo4j-five-year",
+    "State": "running",
+    "Health": "healthy",
+    "Publishers": [
+      {
+        "URL": "127.0.0.1",
+        "TargetPort": 7474,
+        "PublishedPort": 7476,
+        "Protocol": "tcp"
+      },
+      {
+        "URL": "127.0.0.1",
+        "TargetPort": 7687,
+        "PublishedPort": 7689,
+        "Protocol": "tcp"
+      }
+    ]
+  },
+  "old_graph_recoverable_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "components": [
+    {
+      "name": "Neo4j Kernel",
+      "versions": [
+        "5.26.12"
+      ],
+      "edition": "community"
+    }
+  ],
+  "before_reset": [
+    {
+      "project": "scientific-network",
+      "version": "release-9d4a6fb20f63",
+      "n": 52415
+    }
+  ],
+  "reset_verified_empty": true
+}

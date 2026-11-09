@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "nodes_after": 47875,
+  "edges_after": 225731,
+  "per_label_and_relation_maps_equal": true
+}
