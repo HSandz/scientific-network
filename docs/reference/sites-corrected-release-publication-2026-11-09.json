@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-11-09T12:12:08.375448+00:00",
+  "work_id": "WORK-2026-11-09-015",
+  "project_id": "appgprj_6ae7698b8b2881919d49df2426c517a2",
+  "title": "AI Research Network — Plan & Report (2021–2025)",
+  "url": "https://ai-research-network-plan.hazy-tern-8113.chatgpt.site",
+  "audience": "public",
+  "preserved_identity_url_audience": true,
+  "previous_version": 18,
+  "version_number": 19,
+  "version_id": "appgprj_6ae7698b8b2881919d49df2426c517a2~appgver_02489b8de1ec819185847a8b107b7f48",
+  "deployment_id": "appgdep_6af1b87c41cc8191821707f5315d1e52",
+  "status": "succeeded",
+  "site_source_commit": "7fdaf1ed6cd85bda8dc1474694f90fe4e38a2f67",
+  "archive_storage": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_0000000027a8820780b1ef224b5b379d",
+    "content_hash": "sha256:462d156e7615ae815d2054ee51d1943a902c0c017b08abe8b89192ed41da0465",
+    "size_bytes": 10321920,
+    "file_count": 64
+  },
+  "graph_version": "release-d3c788c3114a",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "repository_source_checkpoint": "fb2f0e797f197ebdd5691b5cec6b93afa49195ad",
+  "network_method": "release-network-views-v1",
+  "local_package_receipt": "reports/release-v4/local-package-receipt-v3.json",
+  "scope": "Native corrected-release Report and D040 Plan amendment; full twenty-section Plan retained; no unattended synchronization or course submission.",
+  "validation": {
+    "local_python_tests": "508 passed, 1 existing skip",
+    "source_plan": "exact original preserved after removing two identical amendment insertions",
+    "local_browser": "Desktop/mobile, three graph projections, node/edge public sources, search/group/support filters, zoom/reset, deep hashes, Escape dialog, six chart images and fourteen downloads pass; no JS errors/warnings",
+    "native_dom": "221 unique IDs; zero iframe/object/embed",
+    "privacy": "No raw text/excerpts in public view payload; four configured secret values scanned across output with zero hits",
+    "graph_analysis_audit": "Frozen bytes unchanged; exact committed score rescore; no new judgments",
+    "live_browser": "Native terminal publication succeeded; live DOM confirms corrected graph/version, counts, twenty Plan chapters, zero Report embeds; organization selector and public node evidence operate; PDF HTTP200/2039947bytes. Plan tab renders via DOM activation. Automated pointer clicks on Plan/search timed out on hosted page; local pointer/keyboard tests pass. No live JavaScript errors/warnings observed."
+  }
+}

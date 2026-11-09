@@ -1,0 +1,148 @@
+{
+  "recorded_at": "2026-11-09T19:09:53.217470+07:00",
+  "status": "passed",
+  "source_commit": "fb2f0e797f197ebdd5691b5cec6b93afa49195ad",
+  "source_tree_clean_at_build_and_qa": true,
+  "source_bytes_match_commit": "all except 14 historical CRLF-only CSV differences, identical to prior package receipt",
+  "working_tree_vs_commit_blob_differences": [
+    {
+      "path": "docs/five-year-edition-readiness.csv",
+      "working_tree_sha256": "178d76355544bd9059feb0d05b7e5dbe59c18f718486d3885b2e22dfce435234",
+      "commit_blob_sha256": "b3a199c5f7a9f1e5077a4426fefc34ccd1415231bd35c4d273c1b1849ea05a34",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/community-topic-profiles.csv",
+      "working_tree_sha256": "813313e16d7685d4b4cd452e3917a62b68511cac1a1401ea1542d6f16b23edb3",
+      "commit_blob_sha256": "f5d01515099054e42053531e034104e2b298b58430ae7cd1bbaab0c28ea9c396",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/component-sizes.csv",
+      "working_tree_sha256": "010b318938838f907f21fe167a6664b3a71588aeaca0c189380c34831d8c94b8",
+      "commit_blob_sha256": "2f69346548ee2d55df40972b81163abe120791916c50d5f8a7884f2e9b1e5363",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/researcher-degree-ccdf.csv",
+      "working_tree_sha256": "c720859127b94426dd11e1331d5390efed9627b7a49cd40340fce5cc57547ce9",
+      "commit_blob_sha256": "5baa8cbab2ef88628af7dc21bc6e244d3899747d98129ee357ce049a98c2baec",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/sector-mixing.csv",
+      "working_tree_sha256": "dee839540fe1077fbac42f09b1f34a85a0d88159a5a0ed6c7f4264304a2e5ce8",
+      "commit_blob_sha256": "1c7bd8db78eb1122f4379cb40a05897305c450fe46d0cee21c6adfd098c6138b",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/top-cited-papers.csv",
+      "working_tree_sha256": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9",
+      "commit_blob_sha256": "793884298f29fc5fe9a663eeaa781559951f765544255dde2e979d93b5409aaa",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/topic-trends.csv",
+      "working_tree_sha256": "79192e55c385f2fc986583f8e60a1f15c7dcd2aaf3836abeebfed3a8ccd573bc",
+      "commit_blob_sha256": "10585edd00c1c5394a9b41c1524c8183797ffb788a44f27c8df5ef76196a0c77",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v1.csv",
+      "working_tree_sha256": "333e784cc886773fef0869afc2212080458323cecae8e270771da895ae0bbd5d",
+      "commit_blob_sha256": "4a3422f726086ca83d6ab372f009fca5783992d59ee745748050e65f45650097",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v2.csv",
+      "working_tree_sha256": "bead3eb88548f88856f9192cf0a65efdf267d5af0870dc21d93adf9bde5d861c",
+      "commit_blob_sha256": "f5603edf7f2cbd4874aea4a7668e6518fdb05a88147fe650c97f07f5ce8aaa89",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v5.csv",
+      "working_tree_sha256": "8c3be677c4c6851ca481ca88198dea87cabe67c031db6f0d40095d12882e7d02",
+      "commit_blob_sha256": "d2282c9126baa9079fe1d5bff3006071db0062f244d0772e84c34d780b41a863",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v6.csv",
+      "working_tree_sha256": "684ad08a3f977818681835e9e4be6bb5d22cbb74b411f25d96015d9bf13caafc",
+      "commit_blob_sha256": "bd242c3b44a1de8e143edd100593285990ed1d8578cd24950444db167fd00127",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v7.csv",
+      "working_tree_sha256": "95795fa9ca9c2ec03d50f37b995efbc4ab9702a2828ed61e4da9675ef9bdfd36",
+      "commit_blob_sha256": "9664d90ef030b9c412b41fd8c09bdc2a7239bbde9f1a5131020c090e94443159",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v8.csv",
+      "working_tree_sha256": "92d8a7e855edd9dfa1341abb1611d49c3915efb972847554c032993779926bf4",
+      "commit_blob_sha256": "a07e763fcc510fe45689e4f1abc46ffa236243e5992b8f7fd4fc0eef57716138",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v9.csv",
+      "working_tree_sha256": "9f225bc99cae24a73f574241c35d0269879f8c59e38919d0e3b058349c106116",
+      "commit_blob_sha256": "f8187782fa183b48a8665560dc6f61694cadff730878214397b95b082c2b2c99",
+      "only_crlf_normalization": true
+    }
+  ],
+  "zip_crc": "passed",
+  "archive_members_verified": 1410,
+  "manifest_members_verified": 1409,
+  "tracked_source_blobs_verified": 1407,
+  "html_local_links_verified": 36,
+  "html_tables": 9,
+  "embedded_figures": 9,
+  "pdf_font_listing": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+DejaVuSans                    CID TrueType      Identity-H       yes yes yes      5  0\nCAAAAA+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+DejaVuSansMono                Type 3            Custom           yes yes yes     74  0\n",
+  "font_character_coverage": "passed",
+  "pdf_text_and_page_bounds_words_verified": 6447,
+  "page_count": 26,
+  "actual_configured_secret_scan": {
+    "distinct_values_checked": 4,
+    "hits": 0,
+    "values_disclosed": false
+  },
+  "privacy_exclusions": "permitted_source_path enforced for all tracked source members; only generated PDF/HTML added",
+  "historical_hashes_unchanged": 125,
+  "frozen_bindings_verified": {
+    "evaluation-freeze-v2.json": 541,
+    "completion-receipt-v2.json": 32
+  },
+  "artifacts": {
+    "report.pdf": {
+      "path": "reports/runs/WORK-2026-11-09-015/package-v4-maps-v2/report.pdf",
+      "sha256": "938f924a2460a9b0d6e3b5316db7d16a9787aafa5a37373d536e8176619239a0",
+      "size_bytes": 2039947
+    },
+    "report.html": {
+      "path": "reports/runs/WORK-2026-11-09-015/package-v4-maps-v2/report.html",
+      "sha256": "918e8d2019f43cf7409648fefe91c56f7b0575d0568fd2ca91d398bd30176a94",
+      "size_bytes": 5171432
+    },
+    "scientific-network-submission.zip": {
+      "path": "reports/runs/WORK-2026-11-09-015/package-v4-maps-v2/scientific-network-submission.zip",
+      "sha256": "8b06048d993b4964045ac9a32f1f0a3825d8856289192e311dad8e4e5642bd62",
+      "size_bytes": 74876099
+    },
+    "submission-manifest.json": {
+      "path": "reports/runs/WORK-2026-11-09-015/package-v4-maps-v2/submission-manifest.json",
+      "sha256": "5479c1ff94c27b4924014a6d4fc376d7758f7e3b2c498a74c988b0cf85fefa3a",
+      "size_bytes": 286506
+    },
+    "package-receipt.json": {
+      "path": "reports/runs/WORK-2026-11-09-015/package-v4-maps-v2/package-receipt.json",
+      "sha256": "0669967b18c6a9e00559777afda80ee760f1c7e2ac93650f22be82fc9385450a",
+      "size_bytes": 885
+    }
+  },
+  "visual_inspection": "Network-map PDF pages 13,14,15 inspected at 1000px; no clipping or overlap. Static organization map inspected at full image size. Browser desktop/mobile screenshots inspected.",
+  "limitations": [
+    "AI assessment only; human validation not performed; reviewer independence and verified course accuracy not established.",
+    "Personal team details and lecturer/course AI-use/access facts remain pending.",
+    "Package remains a local course draft. Site publication is separately authorized and recorded; source snapshot predates final QA and publication receipt."
+  ]
+}
