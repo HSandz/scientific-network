@@ -1,0 +1,38 @@
+{
+  "evaluation_freeze_sha256": "74e369dac5114434329687d639d7c4a59ac9348529474f5d186764fc975a0cfe",
+  "created_at": "2026-11-09T18:28:06.946323+07:00",
+  "evaluator_run": {
+    "reviewer_id": "ADJ",
+    "reviewer_kind": "ai_agent",
+    "evaluator_run_id": "/root:edge-adjudication-v2",
+    "context_id": "/root",
+    "model": "unknown",
+    "provider": "unknown",
+    "started_at": "2026-11-09T18:28:06.946094+07:00",
+    "scope": "actual coordinator source-adjudication run after A/B exports froze; no independence claim"
+  },
+  "initial_exports": [
+    {
+      "path": "reports/release-v4/completed/edge-ledger.jsonl",
+      "sha256": "81381d3d7d905deb24f2c8d8cd8f5fd45aa69565a426c0f16bc8740351b3510a"
+    },
+    {
+      "path": "reports/release-v4/completed/A-edges.csv",
+      "sha256": "c3a1e4e51bc943c8e0c0845585bf46115e92a18afb12a6c78abc3e64d0ca0a2f"
+    },
+    {
+      "path": "reports/release-v4/completed/B-edges.csv",
+      "sha256": "7f9b0f88b626fd2e0933acb3bb048254e0103bfa7a3254674523d6a8ea307c85"
+    }
+  ],
+  "channel_completion_bindings": [
+    {
+      "path": "reports/release-v4/completed/A-edge-completion.json",
+      "sha256": "eab345c936d96b170287c58b2a62cfbd76fc9a0dc425dc86c49ef5593c0c93a7"
+    },
+    {
+      "path": "reports/release-v4/completed/B-edge-completion.json",
+      "sha256": "8642a11075188e6ded26070bb5c5ca88a01f53c861be72ef5c9118e1e5986fb6"
+    }
+  ]
+}

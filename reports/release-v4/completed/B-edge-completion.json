@@ -1,0 +1,66 @@
+{
+  "assignment_count": 175,
+  "authorization_timestamp": "2026-11-09T18:15:15.775194+07:00",
+  "checks": [
+    "175 explicit authored judgments; no programmatic verdict generation",
+    "Every original assigned CSV field preserved except permitted review fields",
+    "CSV and ledger decisions/reasons/timestamps agree exactly",
+    "All cited full source-byte hashes verified",
+    "Relevant full raw fields and official bylines inspected in bounded batches",
+    "Singular and all observed ORCID entries inspected for relied-on identities",
+    "Completion written after source and output validation; exports frozen"
+  ],
+  "completed_at": "2026-11-09T18:27:04.845435+07:00",
+  "completed_count": 175,
+  "decision_counts": {
+    "correct": 173,
+    "incorrect": 2
+  },
+  "error_category_counts": {
+    "wrong_topic": 2
+  },
+  "evaluator_context_id": "/root/prospective_b",
+  "evaluator_run_id": "/root/prospective_b:edge-only-v2",
+  "exposed_model_family": "GPT-6",
+  "freeze_commit": "85b6ead",
+  "input_hashes": {
+    "configs/topics-release-v1.yaml": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4",
+    "reports/release-v4/audit/edge-review-sheet-reviewer-B.csv": "628f7e45ecd858ba29c8e4e72f71026265610d8b8b9929e177a21b7fc921e380",
+    "reports/release-v4/reviewer-rubric-v2.md": "b370498ae61f2d337b0681b9bf0326eb0736fcdcaef940934b1e9fc800a50697",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-sources.jsonl": "a6d55d45e0e28fafd1db933b10b1a8c8314177c76352850c500d84e820aaa888",
+    "reports/runs/WORK-2026-11-09-013/sources/B-edge-sources.jsonl": "9c8e7bb3afdb65383fdd9787cc090f0028eb0c5ed705166da179590310fb7ad2"
+  },
+  "limitations": [
+    "AI-assessed; no human validation or reviewer/model independence established.",
+    "verified_course_accuracy=not_established; Wilson intervals exclude evaluator error and source/model bias.",
+    "Construction source reuse is disclosed; OpenAlex affiliation/topic/citation evidence remains secondary-source-only.",
+    "No primary paper reference lists or PDFs read for citation judgments.",
+    "Base CITES packet lacked full target work objects; immutable target supplement was inspected and hash-bound. Eight bounded live OpenAlex target records also support DOI/title mapping.",
+    "Two Wuyi institution detail records were fetched to resolve a homonym mapping. All live supplements use OpenAlex, the construction provider.",
+    "CONTRIBUTES_TO_TOPIC evaluates existence of at least three substantive distinct papers. CAS generative edge: 10 of 35 supports inspected; USTC representation edge: 17 of 107 inspected. Their entire computed support_count values are not semantically certified. Other assigned aggregate supports were inspected in full.",
+    "Observed nonqualifying topic supports and identity conflicts are retained in reasons; unrelated source identities are not treated as independent real-world identity validation."
+  ],
+  "model": "unknown",
+  "model_version": "unknown",
+  "output_hashes": {
+    "reports/release-v4/completed/B-edge-ledger.jsonl": "72071c33f538da07f2f1f02e806887d3f20d6845c80a03f5e49200001010d2e8",
+    "reports/release-v4/completed/B-edges.csv": "7f9b0f88b626fd2e0933acb3bb048254e0103bfa7a3254674523d6a8ea307c85"
+  },
+  "provider": "unknown",
+  "reviewer_id": "B",
+  "reviewer_kind": "ai_agent",
+  "source_independence": "same_source_as_construction",
+  "supplemental_live_files": {
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-118.json": "b81f99537100c2b8f9457f5d09c645451ddc8f9693c58f7f3ede4c80a6dadbf1",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-131.json": "ed0d147128e1682ff24eac53ea0a4854d790920f63f964b02669c76f1fdcc06e",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-134.json": "78601bbd45b211f8e67a50fb2e4122499557e8ebb6fd51b61e0540012963b0c6",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-15.json": "93cd4b9885a22321b12fd7d966e1b65ae9ed07746d8d582022e3a75741c42815",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-160.json": "e01e2c0f2e64a1a14c4f9ed5edf68a3a59af2242bf07b7351fb79b8d1b12b125",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-39.json": "3b06c4746b03e77f5d7d0683fc809c0ad1ec7eb1ef6080cb315afd50104be0bb",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-53.json": "d12854839992334ccc4c5fd47b2f3952cb0adb9fcdcd344846b8f3bc656efdda",
+    "reports/runs/WORK-2026-11-09-013/B-citation-target-71.json": "01bb54284e20b54646facda600508b048fe16032523ea0e58267e1ee411dd888",
+    "reports/runs/WORK-2026-11-09-013/B-supplement-I4210151615.json": "ac7353a1e12cf5b68388623e226aabb2ec7637982eaab3edc92fe5780e84540c",
+    "reports/runs/WORK-2026-11-09-013/B-supplement-I98834328.json": "b09cd096cbe7a361c63a743b9ff44fc5b5ec17c702ff5261870d555dd5d4d41e"
+  },
+  "verified_course_accuracy": "not_established"
+}

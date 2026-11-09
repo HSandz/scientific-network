@@ -1,0 +1,111 @@
+{
+  "recorded_at": "2026-11-09T18:24:20.007765+07:00",
+  "reason": "Base frozen CITES packet supplied citing work and target entity metadata but omitted full target raw work. Target records from already-frozen immutable works/cache supplied during review; no change to graph/sample/base packets or verdict suggestions. B also made8bounded target reads before supplement; those remain in B completion metadata.",
+  "source_version": "original immutable release-v1 works/raw caches",
+  "supplements": [
+    {
+      "reviewer_id": "A",
+      "path": "reports/runs/WORK-2026-11-09-013/A-citation-target-sources.jsonl",
+      "sha256": "a6b29bab8812a74f72496b1a25077da0ee4fcd7d5df9df98e10665b0318b7e21",
+      "targets": [
+        {
+          "openalex_id": "W3174377922",
+          "paper_id": "paper:aaai:2021:16328",
+          "source_locator": "data/raw/openalex-release-v1/objects/3c6818269dccc56b6dc5cbebd3391c0ecf1422f07efe5471776a119a26c3e985#results[3]",
+          "source_sha256": "3c6818269dccc56b6dc5cbebd3391c0ecf1422f07efe5471776a119a26c3e985"
+        },
+        {
+          "openalex_id": "W3176451061",
+          "paper_id": "paper:aaai:2021:16727",
+          "source_locator": "data/raw/openalex-release-v1/objects/888dda843cb5185b957aec01e30e792beb172639282a3c84d7d813b39474e421#results[37]",
+          "source_sha256": "888dda843cb5185b957aec01e30e792beb172639282a3c84d7d813b39474e421"
+        },
+        {
+          "openalex_id": "W3199589346",
+          "paper_id": "paper:aaai:2022:21244",
+          "source_locator": "data/raw/openalex-release-v1/objects/1a3bdb6666b0952626c0a042fdba52cdce8e3ead65976dcac09419c01e9e0f5d#results[2]",
+          "source_sha256": "1a3bdb6666b0952626c0a042fdba52cdce8e3ead65976dcac09419c01e9e0f5d"
+        },
+        {
+          "openalex_id": "W3215171287",
+          "paper_id": "paper:aaai:2022:21191",
+          "source_locator": "data/raw/openalex-release-v1/objects/46ab85c15e1715db276c8cb9932d549c5e7dc1f27e99561c6b6bb3da6a8669ff#results[3]",
+          "source_sha256": "46ab85c15e1715db276c8cb9932d549c5e7dc1f27e99561c6b6bb3da6a8669ff"
+        },
+        {
+          "openalex_id": "W4200630800",
+          "paper_id": "paper:aaai:2022:20041",
+          "source_locator": "data/raw/openalex-release-v1/objects/f4df7585a937d665c848c624c29dccc6fb35f48b3153bf241d1e4a16f9dfb354#results[24]",
+          "source_sha256": "f4df7585a937d665c848c624c29dccc6fb35f48b3153bf241d1e4a16f9dfb354"
+        },
+        {
+          "openalex_id": "W4221141747",
+          "paper_id": "paper:ijcai:2022:114",
+          "source_locator": "data/raw/openalex-release-v1/objects/34d55f1af893580bfd6f8fc73ca2d7d88c5db335f343d8daec957eaf61b38e47#results[21]",
+          "source_sha256": "34d55f1af893580bfd6f8fc73ca2d7d88c5db335f343d8daec957eaf61b38e47"
+        },
+        {
+          "openalex_id": "W4226401482",
+          "paper_id": "paper:ijcai:2022:471",
+          "source_locator": "data/raw/openalex-release-v1/objects/70a28b0fcee84ef171a4faf77b2e4600f978bd8bc98f496a755843f6ea8cc19c#results[12]",
+          "source_sha256": "70a28b0fcee84ef171a4faf77b2e4600f978bd8bc98f496a755843f6ea8cc19c"
+        }
+      ]
+    },
+    {
+      "reviewer_id": "B",
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-sources.jsonl",
+      "sha256": "a6d55d45e0e28fafd1db933b10b1a8c8314177c76352850c500d84e820aaa888",
+      "targets": [
+        {
+          "openalex_id": "W3174377922",
+          "paper_id": "paper:aaai:2021:16328",
+          "source_locator": "data/raw/openalex-release-v1/objects/3c6818269dccc56b6dc5cbebd3391c0ecf1422f07efe5471776a119a26c3e985#results[3]",
+          "source_sha256": "3c6818269dccc56b6dc5cbebd3391c0ecf1422f07efe5471776a119a26c3e985"
+        },
+        {
+          "openalex_id": "W3176398504",
+          "paper_id": "paper:aaai:2021:16822",
+          "source_locator": "data/raw/openalex-release-v1/objects/a8ca3b780595892bb1af3dd0f61eb83759f9e254583f19fbbb157f6c1c32ae41#results[7]",
+          "source_sha256": "a8ca3b780595892bb1af3dd0f61eb83759f9e254583f19fbbb157f6c1c32ae41"
+        },
+        {
+          "openalex_id": "W3176451061",
+          "paper_id": "paper:aaai:2021:16727",
+          "source_locator": "data/raw/openalex-release-v1/objects/888dda843cb5185b957aec01e30e792beb172639282a3c84d7d813b39474e421#results[37]",
+          "source_sha256": "888dda843cb5185b957aec01e30e792beb172639282a3c84d7d813b39474e421"
+        },
+        {
+          "openalex_id": "W4226396876",
+          "paper_id": "paper:aaai:2022:20108",
+          "source_locator": "data/raw/openalex-release-v1/objects/f71835efe2890be358283d6806c95e5d62aeff07dff8b3beca6c42bfe8d5b6ea#results[5]",
+          "source_sha256": "f71835efe2890be358283d6806c95e5d62aeff07dff8b3beca6c42bfe8d5b6ea"
+        },
+        {
+          "openalex_id": "W4283790315",
+          "paper_id": "paper:aaai:2022:20781",
+          "source_locator": "data/raw/openalex-release-v1/objects/58f9cfc5552be621a76c94e2d846cd0ab5b74b58a2940a810fd3eb7972c221d4#results[13]",
+          "source_sha256": "58f9cfc5552be621a76c94e2d846cd0ab5b74b58a2940a810fd3eb7972c221d4"
+        },
+        {
+          "openalex_id": "W4285600354",
+          "paper_id": "paper:ijcai:2022:477",
+          "source_locator": "data/raw/openalex-release-v1/objects/70a28b0fcee84ef171a4faf77b2e4600f978bd8bc98f496a755843f6ea8cc19c#results[1]",
+          "source_sha256": "70a28b0fcee84ef171a4faf77b2e4600f978bd8bc98f496a755843f6ea8cc19c"
+        },
+        {
+          "openalex_id": "W4285603626",
+          "paper_id": "paper:ijcai:2022:418",
+          "source_locator": "data/raw/openalex-release-v1/objects/6252091c118b9bb68660c27d8e6f0032eebead3e1cf6b1f74696c9dc4e005ea1#results[2]",
+          "source_sha256": "6252091c118b9bb68660c27d8e6f0032eebead3e1cf6b1f74696c9dc4e005ea1"
+        },
+        {
+          "openalex_id": "W4285606658",
+          "paper_id": "paper:ijcai:2022:194",
+          "source_locator": "data/raw/openalex-release-v1/objects/d0f77eaaccc17a6f7a29481c59066095374cad46bdcaad556b9afce9af2b55a6#results[3]",
+          "source_sha256": "d0f77eaaccc17a6f7a29481c59066095374cad46bdcaad556b9afce9af2b55a6"
+        }
+      ]
+    }
+  ]
+}

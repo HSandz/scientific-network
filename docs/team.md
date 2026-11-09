@@ -58,3 +58,13 @@ must not be treated as observed student work.
 Exact runtime provider/model IDs are unknown; evaluator channels are not human
 identities. Human validation was not performed; course AI-use/access rules are
 not available in supplied records. No student contribution is invented here.
+
+### Authorized remediation execution (9 November, separately versioned)
+
+Coordinator `/root` integrated A–E, source verification and actual post-export
+adjudication. `/root/identity_correction` implemented corrected graph/analysis and
+report updates. Fresh `/root/prospective_a` and `/root/prospective_b` each reviewed
+175 assigned edges, with no inherited coordinator history/shared answers. They
+did not create historical topic references. Evidence/run metadata and unknown
+runtime IDs are in `reports/release-v4/evaluation-freeze-v2.json` and completion
+records. This adds no student credit or human validation; see WORK-010–014.
