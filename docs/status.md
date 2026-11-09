@@ -1,7 +1,7 @@
 # Current project status
 
-Updated: **2026-11-09 01:54 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-003](work-log/2026-11-09-003-agent-evaluator-freeze.md).
+Updated: **2026-11-09 12:36 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-004](work-log/2026-11-09-004-agent-source-review.md).
 
 ## State
 
@@ -11,8 +11,10 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-003](
 - Active execution: [agent workflow](agent-audit-workflow.md), [protocol contract](../configs/evaluation-agent-release-v1.yaml) and [fresh-session prompt](prompts/agent-release-completion.md).
 - `score-agent-review` now validates evaluator/source ledgers, freeze/receipt hashes, canonical assignments and review order; honest AI metadata is applied before output. Default isolated A/B selected; no fallback needed.
 - Default A/B are isolated evaluator contexts; freeze blind topic answers before edge review. If contexts are unavailable, select the single-agent variant before judging. Do not impersonate two people.
-- Agent packets and [pre-review freeze](../reports/release-v3/evaluation-freeze-v1.json) are ready; all 300 sampled semantic IDs and 350 assignments match. Blind topic review starts next. No scores exist yet.
-- Fresh suite: 403 passed/1 existing skip. Frozen graph/source hashes checked while preparing inputs. Prior database/figure checks remain historical. Human validation not performed; verified course accuracy not established.
+- Full source-backed A/B reviews and adjudication are complete. AI-assessed edge precision **176/200 = 88.00%**, Wilson 95% **82.77%–91.80%**; course point/project gates **fail**. No missing reviews.
+- Topic test: embedding micro F1 **.4667**, phrase **.2301**; coverage 90%/26%. Blind overlap agreement 10/10. Edge agreement 39/50. These are AI reference judgments, not independent gold.
+- Fresh suite: **419 passed/1 existing skip**; schema CLI, structural/size validation, 66 frozen hashes and read-only Neo4j inventory/six integrity queries pass. Graph remains frozen; observed-ORCID array handling defect is documented for a separate future version.
+- Human validation not performed; evaluator independence and verified course accuracy not established. Exact model/provider IDs unknown. Results/limitations: `reports/release-v3/`.
 - No push, tag, Site publication, invitation or submission was performed or authorized by this change.
 
 ## Phase checklist
@@ -29,12 +31,12 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-003](
 - [x] Independently review the corrected pre-audit package
 - [x] Adopt user-authorized agent evaluation and prepare a fresh-session prompt
 - [x] Implement and test evaluator provenance/bindings and AI result metadata
-- [ ] Complete and score source-backed agent edge/topic reviews
+- [x] Complete and score source-backed agent edge/topic reviews
 - [ ] P8 Final report and README complete after scoring
 - [ ] P9 PDF and submission packaging
 
 ## Next action and human input
 
-Complete blind A/B topics, hash exports, then source-backed edges, scoring, report and local PDF/package under [the execution prompt](prompts/agent-release-completion.md).
+Finish the measured report/README, then render/check the local PDF and prepare the submission bundle. Failed numeric gates remain reported; no frozen graph correction.
 
 Only unavailable real team/private facts, demonstrated tool/access needs and separately authorized external delivery actions require human input. Continue independent work while they remain pending.

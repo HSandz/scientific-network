@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-11-09T12:26:01.597543+07:00",
+  "supersedes": "reports/release-v3/report-external-link-checks.json",
+  "initial_record_preserved": true,
+  "retry_method": "GET with 20s timeout for prior non-passing URLs only",
+  "retry_attempts": [
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i1.16152",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16152",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i2.16197",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16197",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://github.com/HSandz/scientific-network",
+      "final_url": "https://github.com/HSandz/scientific-network",
+      "status_code": 504,
+      "status": "not_verified"
+    }
+  ],
+  "rows": [
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i1.16107",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16107",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i1.16152",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16152",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i2.16197",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16197",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i2.16199",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16199",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v35i5.16592",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16592",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v36i1.19954",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/19954",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.1609/aaai.v36i3.20193",
+      "final_url": "https://ojs.aaai.org/index.php/AAAI/article/view/20193",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://doi.org/10.24963/ijcai.2021/453",
+      "final_url": "https://ijcai.org/proceedings/2021/453",
+      "status_code": 200,
+      "status": "passed"
+    },
+    {
+      "url": "https://github.com/HSandz/scientific-network",
+      "final_url": "https://github.com/HSandz/scientific-network",
+      "status_code": 504,
+      "status": "not_verified"
+    }
+  ],
+  "counts": {
+    "passed": 8,
+    "access_limited": 0,
+    "failed": 0,
+    "not_verified": 1
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "reviewer_id": "A",
+  "reviewer_kind": "ai_agent",
+  "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+  "context_id": "/root/reviewer_a",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "edge_started_at": "2026-11-09T01:57:16.942167+07:00",
+  "completed_at": "2026-11-09T12:23:35.547361+07:00",
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/A-edges.csv",
+      "sha256": "e62a9ed68fa6e3a07b9c51c185cbbdb1b060634ba5a026a1d761489c3a57127e"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-ledger.jsonl",
+      "sha256": "478b1b818345fdcd9c4e72cb1838d744a34cc02b11f580f4c895ac896ae52f8a"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-amendments.jsonl",
+      "sha256": "405cd573cf0e81c82d918db8dc3211421e556d7ab080da60858af0a1398ec298"
+    }
+  ],
+  "planned": 175,
+  "reviewed": 175,
+  "decision_counts": {
+    "correct": 143,
+    "incorrect": 31,
+    "unverifiable": 1
+  },
+  "error_category_counts": {
+    "wrong_identity": 26,
+    "wrong_topic": 4,
+    "unverifiable": 1,
+    "wrong_affiliation": 1
+  },
+  "main_evidence_depth_counts": {
+    "primary_source": 57,
+    "secondary_source_only": 118
+  },
+  "main_source_independence_counts": {
+    "same_source_as_construction": 174,
+    "independent_source": 1
+  },
+  "verified_source_files": 208,
+  "limitations": [
+    "Source OpenAlex records are secondary and largely repeat construction evidence.",
+    "Official bylines corroborate sampled-work names but author profile and merge-history pages were not inspected.",
+    "One scoped official PDF independently corroborated topic semantics; no broad PDF verification was performed.",
+    "Derived support checks establish required minimums and do not independently recount all stored support weights."
+  ],
+  "topic_outputs_frozen_before_edges": true,
+  "other_reviewer_answers_read": false
+}

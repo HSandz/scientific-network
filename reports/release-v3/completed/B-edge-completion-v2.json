@@ -1,0 +1,59 @@
+{
+  "reviewer_id": "B",
+  "evaluator_run_id": "WORK-2026-11-09-004-B-v1",
+  "context_id": "/root/reviewer_b",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "edge_started_at": "2026-11-09T01:57:05.932043+07:00",
+  "completed_at": "2026-11-09T12:26:22.692280+07:00",
+  "planned": 175,
+  "reviewed": 175,
+  "decisions": {
+    "correct": 161,
+    "incorrect": 11,
+    "unverifiable": 3
+  },
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/B-edges.csv",
+      "sha256": "b5b3dbaf9e57962d8094521d21d6fba0c91f7c2bc81afa52f3470f2173218e5a"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-ledger.jsonl",
+      "sha256": "20bf52c5417ca0d8f39343d3306a7f0412eb204e541f12edc6a1c1776ddaca11"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-check-corrections-v1.jsonl",
+      "sha256": "94f5272fe9427fcfeb65f52eb2c589ab315352b1251167f0dadf115a933954d4"
+    }
+  ],
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "method": "Every assigned edge was manually assessed from bounded complete relevant source extracts; source hashes verified. Formatting scripts did not determine judgments. Additional threshold/identity sources are listed per edge.",
+  "limitations": [
+    "Most identity judgments establish D040 sampled-work name/ID compatibility without a profile-wide identity investigation.",
+    "OpenAlex repeated construction sources are not independent corroboration.",
+    "Selected ambiguous names received bounded live public OpenAlex/ORCID lookups; unresolved identities remain unverifiable.",
+    "No checkpointed verdict was changed.",
+    "Structural support weights/count totals were not independently recomputed; semantic existence/minimum-paper thresholds were assessed."
+  ],
+  "revision": "v2",
+  "previous_completion": {
+    "path": "reports/release-v3/completed/B-edge-completion.json",
+    "sha256": "8169d2b54aaa78aa0a09ccf5e1b9ef034799ac36a81cb2fbef1522ea257ee84f"
+  },
+  "correction_record": {
+    "path": "reports/release-v3/completed/B-edge-check-corrections-v1.jsonl",
+    "sha256": "94f5272fe9427fcfeb65f52eb2c589ab315352b1251167f0dadf115a933954d4"
+  },
+  "validation": {
+    "function": "scientific_network.evaluation.edge_audit._review_decision(row, True)",
+    "rows_validated": 175,
+    "judgments_changed": 0,
+    "check_fields_refined": 3,
+    "original_output_bytes_reconstructible": true
+  },
+  "original_judgment_completion_at": "2026-11-09T12:24:05.446319+07:00"
+}

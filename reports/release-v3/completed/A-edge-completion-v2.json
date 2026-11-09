@@ -1,0 +1,60 @@
+{
+  "reviewer_id": "A",
+  "reviewer_kind": "ai_agent",
+  "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+  "context_id": "/root/reviewer_a",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "edge_started_at": "2026-11-09T01:57:16.942167+07:00",
+  "completed_at": "2026-11-09T12:24:05.578609+07:00",
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/A-edges.csv",
+      "sha256": "91858638bc491b64461d0382c83e9282ae8fddb65851f4df35a0a95ae840c2b7"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-ledger.jsonl",
+      "sha256": "b9f8f42b8036c072a9512d46b895de4fdbf18caa503068e3863ceb471c8156b4"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-amendments.jsonl",
+      "sha256": "a71414b23c02d7e2408de4fbe54161865a792166c7f4d29942b91fb2e3513e87"
+    }
+  ],
+  "planned": 175,
+  "reviewed": 175,
+  "decision_counts": {
+    "correct": 143,
+    "incorrect": 31,
+    "unverifiable": 1
+  },
+  "error_category_counts": {
+    "wrong_identity": 26,
+    "wrong_topic": 4,
+    "unverifiable": 1,
+    "wrong_affiliation": 1
+  },
+  "main_evidence_depth_counts": {
+    "primary_source": 57,
+    "secondary_source_only": 118
+  },
+  "main_source_independence_counts": {
+    "same_source_as_construction": 174,
+    "independent_source": 1
+  },
+  "verified_source_files": 208,
+  "limitations": [
+    "Source OpenAlex records are secondary and largely repeat construction evidence.",
+    "Official bylines corroborate sampled-work names but author profile and merge-history pages were not inspected.",
+    "One scoped official PDF independently corroborated topic semantics; no broad PDF verification was performed.",
+    "Derived support checks establish required minimums and do not independently recount all stored support weights."
+  ],
+  "topic_outputs_frozen_before_edges": true,
+  "other_reviewer_answers_read": false,
+  "supersedes": {
+    "path": "reports/release-v3/completed/A-edge-completion.json",
+    "sha256": "24a871fb83e5aa6c390a26a54528a4fada543ed865b44884a2b40e5d391fbff4",
+    "reason": "The final tri-state consistency refinement initially hit a CSV field-size limit before mutation. A dated amendment now changes two endpoint checks to match their unchanged verdicts/rationales. Preserve the initial receipt as historical; use this v2 binding."
+  }
+}

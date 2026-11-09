@@ -1,0 +1,27 @@
+{
+  "reviewer_id": "B",
+  "evaluator_run_id": "WORK-2026-11-09-004-B-v1",
+  "context_id": "/root/reviewer_b",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "completed_at": "2026-11-09T01:52:57.421719+07:00",
+  "planned": 30,
+  "reviewed": 30,
+  "unreviewable": 0,
+  "considered_no_applicable_leaf": 1,
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/B-topics.csv",
+      "sha256": "c8fac2827ef2d6fd28b4858915b614066237410443fb5f55794883184ee5e224"
+    },
+    {
+      "path": "reports/release-v3/completed/B-topic-ledger.jsonl",
+      "sha256": "d5b105dd36b80ada01aa2368a187389f9496b328dbb4020475a588d41462cb61"
+    }
+  ],
+  "blinding": "Completed blind title/abstract review before any edge packet or classifier predictions; other reviewer answers not inspected.",
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established"
+}

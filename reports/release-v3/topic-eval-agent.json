@@ -1,0 +1,1352 @@
+{
+  "status": "scored_ai_assessed",
+  "evaluation_method_version": "d040-topic-partial-overlap-v1",
+  "topic_test_paper_count": 50,
+  "annotation_judgment_count": 60,
+  "reviewer_assignment": {
+    "A": 30,
+    "B": 30,
+    "overlap": 10,
+    "union": 50
+  },
+  "weighting": {
+    "method": "inverse_reviewer_count_per_paper",
+    "description": "Each paper contributes total weight one; each reviewer label on a shared paper contributes one half.",
+    "effective_paper_weight": 50.0
+  },
+  "reviewer_agreement_on_overlap": {
+    "overlap_paper_count": 10,
+    "exact_set_agreement_count": 10,
+    "exact_set_agreement_fraction": 1.0,
+    "mean_jaccard": 1.0,
+    "per_topic": {
+      "topic:causal-inference": {
+        "cohen_kappa": null,
+        "positive_agreement_count": 0,
+        "reviewer_a_positive_count": 0,
+        "reviewer_b_positive_count": 0
+      },
+      "topic:computer-vision": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 2,
+        "reviewer_a_positive_count": 2,
+        "reviewer_b_positive_count": 2
+      },
+      "topic:efficient-systems": {
+        "cohen_kappa": null,
+        "positive_agreement_count": 0,
+        "reviewer_a_positive_count": 0,
+        "reviewer_b_positive_count": 0
+      },
+      "topic:generative-modeling": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 2,
+        "reviewer_a_positive_count": 2,
+        "reviewer_b_positive_count": 2
+      },
+      "topic:graph-ml": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 2,
+        "reviewer_a_positive_count": 2,
+        "reviewer_b_positive_count": 2
+      },
+      "topic:multi-agent": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:multimodal": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:nlp-language-models": {
+        "cohen_kappa": null,
+        "positive_agreement_count": 0,
+        "reviewer_a_positive_count": 0,
+        "reviewer_b_positive_count": 0
+      },
+      "topic:optimization-theory": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:planning-reasoning": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 2,
+        "reviewer_a_positive_count": 2,
+        "reviewer_b_positive_count": 2
+      },
+      "topic:probabilistic-bayesian": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:reinforcement-learning": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 3,
+        "reviewer_a_positive_count": 3,
+        "reviewer_b_positive_count": 3
+      },
+      "topic:representation-learning": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 3,
+        "reviewer_a_positive_count": 3,
+        "reviewer_b_positive_count": 3
+      },
+      "topic:retrieval-recommendation": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:robotics-embodied": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 1,
+        "reviewer_a_positive_count": 1,
+        "reviewer_b_positive_count": 1
+      },
+      "topic:trustworthy-ml": {
+        "cohen_kappa": 1.0,
+        "positive_agreement_count": 2,
+        "reviewer_a_positive_count": 2,
+        "reviewer_b_positive_count": 2
+      }
+    }
+  },
+  "models": {
+    "phrase_baseline": {
+      "test_paper_coverage": {
+        "eligible_papers": 50,
+        "labeled_papers": 13,
+        "coverage_fraction": 0.26
+      },
+      "paper_normalized_review_metrics": {
+        "annotation_rows": 60,
+        "effective_paper_weight": 50.0,
+        "micro": {
+          "true_positive": 13.0,
+          "false_positive": 1.0,
+          "false_negative": 86.0,
+          "precision": 0.92857143,
+          "recall": 0.13131313,
+          "f1": 0.2300885
+        },
+        "per_label": {
+          "topic:causal-inference": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 1.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 1.0,
+            "predicted_support": 0.0
+          },
+          "topic:computer-vision": {
+            "true_positive": 2.0,
+            "false_positive": 0.0,
+            "false_negative": 15.0,
+            "precision": 1.0,
+            "recall": 0.11764706,
+            "f1": 0.21052632,
+            "gold_support": 17.0,
+            "predicted_support": 2.0
+          },
+          "topic:efficient-systems": {
+            "true_positive": 1.0,
+            "false_positive": 0.0,
+            "false_negative": 8.0,
+            "precision": 1.0,
+            "recall": 0.11111111,
+            "f1": 0.2,
+            "gold_support": 9.0,
+            "predicted_support": 1.0
+          },
+          "topic:generative-modeling": {
+            "true_positive": 1.0,
+            "false_positive": 0.0,
+            "false_negative": 3.0,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4,
+            "gold_support": 4.0,
+            "predicted_support": 1.0
+          },
+          "topic:graph-ml": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 3.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 3.0,
+            "predicted_support": 0.0
+          },
+          "topic:multi-agent": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 4.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 4.0,
+            "predicted_support": 0.0
+          },
+          "topic:multimodal": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 5.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 5.0,
+            "predicted_support": 0.0
+          },
+          "topic:nlp-language-models": {
+            "true_positive": 1.0,
+            "false_positive": 0.0,
+            "false_negative": 5.0,
+            "precision": 1.0,
+            "recall": 0.16666667,
+            "f1": 0.28571429,
+            "gold_support": 6.0,
+            "predicted_support": 1.0
+          },
+          "topic:optimization-theory": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 5.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 5.0,
+            "predicted_support": 0.0
+          },
+          "topic:planning-reasoning": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 8.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 8.0,
+            "predicted_support": 0.0
+          },
+          "topic:probabilistic-bayesian": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 4.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 4.0,
+            "predicted_support": 0.0
+          },
+          "topic:reinforcement-learning": {
+            "true_positive": 4.0,
+            "false_positive": 0.0,
+            "false_negative": 4.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.66666667,
+            "gold_support": 8.0,
+            "predicted_support": 4.0
+          },
+          "topic:representation-learning": {
+            "true_positive": 2.0,
+            "false_positive": 0.0,
+            "false_negative": 9.0,
+            "precision": 1.0,
+            "recall": 0.18181818,
+            "f1": 0.30769231,
+            "gold_support": 11.0,
+            "predicted_support": 2.0
+          },
+          "topic:retrieval-recommendation": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 1.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 1.0,
+            "predicted_support": 0.0
+          },
+          "topic:robotics-embodied": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 2.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 2.0,
+            "predicted_support": 0.0
+          },
+          "topic:trustworthy-ml": {
+            "true_positive": 2.0,
+            "false_positive": 1.0,
+            "false_negative": 9.0,
+            "precision": 0.66666667,
+            "recall": 0.18181818,
+            "f1": 0.28571429,
+            "gold_support": 11.0,
+            "predicted_support": 3.0
+          }
+        },
+        "macro": {
+          "f1": 0.14726962,
+          "precision": 0.41666667,
+          "recall": 0.09431632
+        }
+      },
+      "by_reviewer": {
+        "A": {
+          "annotation_rows": 30,
+          "effective_paper_weight": 30.0,
+          "micro": {
+            "true_positive": 9.0,
+            "false_positive": 1.0,
+            "false_negative": 53.0,
+            "precision": 0.9,
+            "recall": 0.14516129,
+            "f1": 0.25
+          },
+          "per_label": {
+            "topic:causal-inference": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:computer-vision": {
+              "true_positive": 2.0,
+              "false_positive": 0.0,
+              "false_negative": 8.0,
+              "precision": 1.0,
+              "recall": 0.2,
+              "f1": 0.33333333,
+              "gold_support": 10.0,
+              "predicted_support": 2.0
+            },
+            "topic:efficient-systems": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 7.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 7.0,
+              "predicted_support": 0.0
+            },
+            "topic:generative-modeling": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.66666667,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:graph-ml": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:multi-agent": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:multimodal": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:nlp-language-models": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 3.0,
+              "predicted_support": 0.0
+            },
+            "topic:optimization-theory": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 4.0,
+              "predicted_support": 0.0
+            },
+            "topic:planning-reasoning": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 5.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 5.0,
+              "predicted_support": 0.0
+            },
+            "topic:probabilistic-bayesian": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:reinforcement-learning": {
+              "true_positive": 3.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.66666667,
+              "gold_support": 6.0,
+              "predicted_support": 3.0
+            },
+            "topic:representation-learning": {
+              "true_positive": 2.0,
+              "false_positive": 0.0,
+              "false_negative": 5.0,
+              "precision": 1.0,
+              "recall": 0.28571429,
+              "f1": 0.44444444,
+              "gold_support": 7.0,
+              "predicted_support": 2.0
+            },
+            "topic:retrieval-recommendation": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:robotics-embodied": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:trustworthy-ml": {
+              "true_positive": 1.0,
+              "false_positive": 1.0,
+              "false_negative": 6.0,
+              "precision": 0.5,
+              "recall": 0.14285714,
+              "f1": 0.22222222,
+              "gold_support": 7.0,
+              "predicted_support": 2.0
+            }
+          },
+          "macro": {
+            "f1": 0.14583333,
+            "precision": 0.28125,
+            "recall": 0.10178571
+          }
+        },
+        "B": {
+          "annotation_rows": 30,
+          "effective_paper_weight": 30.0,
+          "micro": {
+            "true_positive": 9.0,
+            "false_positive": 0.0,
+            "false_negative": 50.0,
+            "precision": 1.0,
+            "recall": 0.15254237,
+            "f1": 0.26470588
+          },
+          "per_label": {
+            "topic:causal-inference": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 0.0,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "gold_support": 0.0,
+              "predicted_support": 0.0
+            },
+            "topic:computer-vision": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 9.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 9.0,
+              "predicted_support": 0.0
+            },
+            "topic:efficient-systems": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.66666667,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:generative-modeling": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": 1.0,
+              "recall": 0.25,
+              "f1": 0.4,
+              "gold_support": 4.0,
+              "predicted_support": 1.0
+            },
+            "topic:graph-ml": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 3.0,
+              "predicted_support": 0.0
+            },
+            "topic:multi-agent": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 4.0,
+              "predicted_support": 0.0
+            },
+            "topic:multimodal": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 4.0,
+              "predicted_support": 0.0
+            },
+            "topic:nlp-language-models": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": 1.0,
+              "recall": 0.33333333,
+              "f1": 0.5,
+              "gold_support": 3.0,
+              "predicted_support": 1.0
+            },
+            "topic:optimization-theory": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:planning-reasoning": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 5.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 5.0,
+              "predicted_support": 0.0
+            },
+            "topic:probabilistic-bayesian": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 3.0,
+              "predicted_support": 0.0
+            },
+            "topic:reinforcement-learning": {
+              "true_positive": 3.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": 1.0,
+              "recall": 0.6,
+              "f1": 0.75,
+              "gold_support": 5.0,
+              "predicted_support": 3.0
+            },
+            "topic:representation-learning": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 6.0,
+              "precision": 1.0,
+              "recall": 0.14285714,
+              "f1": 0.25,
+              "gold_support": 7.0,
+              "predicted_support": 1.0
+            },
+            "topic:retrieval-recommendation": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:robotics-embodied": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:trustworthy-ml": {
+              "true_positive": 2.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": 1.0,
+              "recall": 0.33333333,
+              "f1": 0.5,
+              "gold_support": 6.0,
+              "predicted_support": 2.0
+            }
+          },
+          "macro": {
+            "f1": 0.20444444,
+            "precision": 0.4,
+            "recall": 0.14396825
+          }
+        }
+      }
+    },
+    "embedding_classifier": {
+      "test_paper_coverage": {
+        "eligible_papers": 50,
+        "labeled_papers": 45,
+        "coverage_fraction": 0.9
+      },
+      "paper_normalized_review_metrics": {
+        "annotation_rows": 60,
+        "effective_paper_weight": 50.0,
+        "micro": {
+          "true_positive": 35.0,
+          "false_positive": 16.0,
+          "false_negative": 64.0,
+          "precision": 0.68627451,
+          "recall": 0.35353535,
+          "f1": 0.46666667
+        },
+        "per_label": {
+          "topic:causal-inference": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 1.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 1.0,
+            "predicted_support": 0.0
+          },
+          "topic:computer-vision": {
+            "true_positive": 6.0,
+            "false_positive": 0.0,
+            "false_negative": 11.0,
+            "precision": 1.0,
+            "recall": 0.35294118,
+            "f1": 0.52173913,
+            "gold_support": 17.0,
+            "predicted_support": 6.0
+          },
+          "topic:efficient-systems": {
+            "true_positive": 3.0,
+            "false_positive": 2.0,
+            "false_negative": 6.0,
+            "precision": 0.6,
+            "recall": 0.33333333,
+            "f1": 0.42857143,
+            "gold_support": 9.0,
+            "predicted_support": 5.0
+          },
+          "topic:generative-modeling": {
+            "true_positive": 3.0,
+            "false_positive": 2.0,
+            "false_negative": 1.0,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.66666667,
+            "gold_support": 4.0,
+            "predicted_support": 5.0
+          },
+          "topic:graph-ml": {
+            "true_positive": 1.0,
+            "false_positive": 2.0,
+            "false_negative": 2.0,
+            "precision": 0.33333333,
+            "recall": 0.33333333,
+            "f1": 0.33333333,
+            "gold_support": 3.0,
+            "predicted_support": 3.0
+          },
+          "topic:multi-agent": {
+            "true_positive": 1.0,
+            "false_positive": 1.0,
+            "false_negative": 3.0,
+            "precision": 0.5,
+            "recall": 0.25,
+            "f1": 0.33333333,
+            "gold_support": 4.0,
+            "predicted_support": 2.0
+          },
+          "topic:multimodal": {
+            "true_positive": 0.0,
+            "false_positive": 2.0,
+            "false_negative": 5.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 5.0,
+            "predicted_support": 2.0
+          },
+          "topic:nlp-language-models": {
+            "true_positive": 3.0,
+            "false_positive": 0.0,
+            "false_negative": 3.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.66666667,
+            "gold_support": 6.0,
+            "predicted_support": 3.0
+          },
+          "topic:optimization-theory": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 5.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 5.0,
+            "predicted_support": 0.0
+          },
+          "topic:planning-reasoning": {
+            "true_positive": 4.0,
+            "false_positive": 0.0,
+            "false_negative": 4.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.66666667,
+            "gold_support": 8.0,
+            "predicted_support": 4.0
+          },
+          "topic:probabilistic-bayesian": {
+            "true_positive": 0.0,
+            "false_positive": 1.0,
+            "false_negative": 4.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 4.0,
+            "predicted_support": 1.0
+          },
+          "topic:reinforcement-learning": {
+            "true_positive": 6.0,
+            "false_positive": 0.0,
+            "false_negative": 2.0,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.85714286,
+            "gold_support": 8.0,
+            "predicted_support": 6.0
+          },
+          "topic:representation-learning": {
+            "true_positive": 4.0,
+            "false_positive": 5.0,
+            "false_negative": 7.0,
+            "precision": 0.44444444,
+            "recall": 0.36363636,
+            "f1": 0.4,
+            "gold_support": 11.0,
+            "predicted_support": 9.0
+          },
+          "topic:retrieval-recommendation": {
+            "true_positive": 0.0,
+            "false_positive": 0.0,
+            "false_negative": 1.0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold_support": 1.0,
+            "predicted_support": 0.0
+          },
+          "topic:robotics-embodied": {
+            "true_positive": 1.0,
+            "false_positive": 1.0,
+            "false_negative": 1.0,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5,
+            "gold_support": 2.0,
+            "predicted_support": 2.0
+          },
+          "topic:trustworthy-ml": {
+            "true_positive": 3.0,
+            "false_positive": 0.0,
+            "false_negative": 8.0,
+            "precision": 1.0,
+            "recall": 0.27272727,
+            "f1": 0.42857143,
+            "gold_support": 11.0,
+            "predicted_support": 3.0
+          }
+        },
+        "macro": {
+          "f1": 0.36266822,
+          "precision": 0.49861111,
+          "recall": 0.30662322
+        }
+      },
+      "by_reviewer": {
+        "A": {
+          "annotation_rows": 30,
+          "effective_paper_weight": 30.0,
+          "micro": {
+            "true_positive": 23.0,
+            "false_positive": 9.0,
+            "false_negative": 39.0,
+            "precision": 0.71875,
+            "recall": 0.37096774,
+            "f1": 0.4893617
+          },
+          "per_label": {
+            "topic:causal-inference": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:computer-vision": {
+              "true_positive": 4.0,
+              "false_positive": 0.0,
+              "false_negative": 6.0,
+              "precision": 1.0,
+              "recall": 0.4,
+              "f1": 0.57142857,
+              "gold_support": 10.0,
+              "predicted_support": 4.0
+            },
+            "topic:efficient-systems": {
+              "true_positive": 2.0,
+              "false_positive": 0.0,
+              "false_negative": 5.0,
+              "precision": 1.0,
+              "recall": 0.28571429,
+              "f1": 0.44444444,
+              "gold_support": 7.0,
+              "predicted_support": 2.0
+            },
+            "topic:generative-modeling": {
+              "true_positive": 2.0,
+              "false_positive": 2.0,
+              "false_negative": 0.0,
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.66666667,
+              "gold_support": 2.0,
+              "predicted_support": 4.0
+            },
+            "topic:graph-ml": {
+              "true_positive": 0.0,
+              "false_positive": 1.0,
+              "false_negative": 2.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:multi-agent": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:multimodal": {
+              "true_positive": 0.0,
+              "false_positive": 1.0,
+              "false_negative": 2.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:nlp-language-models": {
+              "true_positive": 2.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": 1.0,
+              "recall": 0.66666667,
+              "f1": 0.8,
+              "gold_support": 3.0,
+              "predicted_support": 2.0
+            },
+            "topic:optimization-theory": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 4.0,
+              "predicted_support": 0.0
+            },
+            "topic:planning-reasoning": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": 1.0,
+              "recall": 0.2,
+              "f1": 0.33333333,
+              "gold_support": 5.0,
+              "predicted_support": 1.0
+            },
+            "topic:probabilistic-bayesian": {
+              "true_positive": 0.0,
+              "false_positive": 1.0,
+              "false_negative": 2.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:reinforcement-learning": {
+              "true_positive": 6.0,
+              "false_positive": 0.0,
+              "false_negative": 0.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0,
+              "gold_support": 6.0,
+              "predicted_support": 6.0
+            },
+            "topic:representation-learning": {
+              "true_positive": 2.0,
+              "false_positive": 4.0,
+              "false_negative": 5.0,
+              "precision": 0.33333333,
+              "recall": 0.28571429,
+              "f1": 0.30769231,
+              "gold_support": 7.0,
+              "predicted_support": 6.0
+            },
+            "topic:retrieval-recommendation": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:robotics-embodied": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.66666667,
+              "gold_support": 2.0,
+              "predicted_support": 1.0
+            },
+            "topic:trustworthy-ml": {
+              "true_positive": 3.0,
+              "false_positive": 0.0,
+              "false_negative": 4.0,
+              "precision": 1.0,
+              "recall": 0.42857143,
+              "f1": 0.6,
+              "gold_support": 7.0,
+              "predicted_support": 3.0
+            }
+          },
+          "macro": {
+            "f1": 0.3368895,
+            "precision": 0.48958333,
+            "recall": 0.29791667
+          }
+        },
+        "B": {
+          "annotation_rows": 30,
+          "effective_paper_weight": 30.0,
+          "micro": {
+            "true_positive": 21.0,
+            "false_positive": 8.0,
+            "false_negative": 38.0,
+            "precision": 0.72413793,
+            "recall": 0.3559322,
+            "f1": 0.47727273
+          },
+          "per_label": {
+            "topic:causal-inference": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 0.0,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "gold_support": 0.0,
+              "predicted_support": 0.0
+            },
+            "topic:computer-vision": {
+              "true_positive": 4.0,
+              "false_positive": 0.0,
+              "false_negative": 5.0,
+              "precision": 1.0,
+              "recall": 0.44444444,
+              "f1": 0.61538462,
+              "gold_support": 9.0,
+              "predicted_support": 4.0
+            },
+            "topic:efficient-systems": {
+              "true_positive": 1.0,
+              "false_positive": 2.0,
+              "false_negative": 1.0,
+              "precision": 0.33333333,
+              "recall": 0.5,
+              "f1": 0.4,
+              "gold_support": 2.0,
+              "predicted_support": 3.0
+            },
+            "topic:generative-modeling": {
+              "true_positive": 3.0,
+              "false_positive": 1.0,
+              "false_negative": 1.0,
+              "precision": 0.75,
+              "recall": 0.75,
+              "f1": 0.75,
+              "gold_support": 4.0,
+              "predicted_support": 4.0
+            },
+            "topic:graph-ml": {
+              "true_positive": 1.0,
+              "false_positive": 1.0,
+              "false_negative": 2.0,
+              "precision": 0.5,
+              "recall": 0.33333333,
+              "f1": 0.4,
+              "gold_support": 3.0,
+              "predicted_support": 2.0
+            },
+            "topic:multi-agent": {
+              "true_positive": 1.0,
+              "false_positive": 1.0,
+              "false_negative": 3.0,
+              "precision": 0.5,
+              "recall": 0.25,
+              "f1": 0.33333333,
+              "gold_support": 4.0,
+              "predicted_support": 2.0
+            },
+            "topic:multimodal": {
+              "true_positive": 0.0,
+              "false_positive": 1.0,
+              "false_negative": 4.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 4.0,
+              "predicted_support": 1.0
+            },
+            "topic:nlp-language-models": {
+              "true_positive": 1.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": 1.0,
+              "recall": 0.33333333,
+              "f1": 0.5,
+              "gold_support": 3.0,
+              "predicted_support": 1.0
+            },
+            "topic:optimization-theory": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 2.0,
+              "predicted_support": 0.0
+            },
+            "topic:planning-reasoning": {
+              "true_positive": 4.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.88888889,
+              "gold_support": 5.0,
+              "predicted_support": 4.0
+            },
+            "topic:probabilistic-bayesian": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 3.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 3.0,
+              "predicted_support": 0.0
+            },
+            "topic:reinforcement-learning": {
+              "true_positive": 3.0,
+              "false_positive": 0.0,
+              "false_negative": 2.0,
+              "precision": 1.0,
+              "recall": 0.6,
+              "f1": 0.75,
+              "gold_support": 5.0,
+              "predicted_support": 3.0
+            },
+            "topic:representation-learning": {
+              "true_positive": 2.0,
+              "false_positive": 1.0,
+              "false_negative": 5.0,
+              "precision": 0.66666667,
+              "recall": 0.28571429,
+              "f1": 0.4,
+              "gold_support": 7.0,
+              "predicted_support": 3.0
+            },
+            "topic:retrieval-recommendation": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 1.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 1.0,
+              "predicted_support": 0.0
+            },
+            "topic:robotics-embodied": {
+              "true_positive": 1.0,
+              "false_positive": 1.0,
+              "false_negative": 0.0,
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.66666667,
+              "gold_support": 1.0,
+              "predicted_support": 2.0
+            },
+            "topic:trustworthy-ml": {
+              "true_positive": 0.0,
+              "false_positive": 0.0,
+              "false_negative": 6.0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0,
+              "gold_support": 6.0,
+              "predicted_support": 0.0
+            }
+          },
+          "macro": {
+            "f1": 0.3802849,
+            "precision": 0.48333333,
+            "recall": 0.35312169
+          }
+        }
+      }
+    }
+  },
+  "inputs": {
+    "topic_test_manifest": {
+      "path": "data/manifests/release-v1/topic-test.jsonl",
+      "sha256": "90d01d6483d9fe84eec055e78cf17b2a8e4f26440250488fc548c510c89158d8"
+    },
+    "taxonomy": {
+      "path": "configs/topics-release-v1.yaml",
+      "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+    },
+    "allocation_manifest": {
+      "path": "reports/release-v1/audit/topic-review-allocation.json",
+      "sha256": "2123fbb83b05d207259c91726422b5b9543d6fb8f7cfedc5a271adfc691b7fe1"
+    },
+    "master_sheet": {
+      "path": "reports/release-v1/audit/topic-label-sheet.csv",
+      "sha256": "592cfa03b990e125bca1219ff946d4500b2fe687aa028a98952916b6b67c1968"
+    },
+    "reviewer_a_export": {
+      "path": "reports/release-v3/completed/A-topics.csv",
+      "sha256": "9a36f259c8480db993255e45b82437318eed0b3ae577b0981a98f544d66e9e27"
+    },
+    "reviewer_b_export": {
+      "path": "reports/release-v3/completed/B-topics.csv",
+      "sha256": "c8fac2827ef2d6fd28b4858915b614066237410443fb5f55794883184ee5e224"
+    },
+    "graph_v1_phrase_baseline": {
+      "path": "data/processed/release-graph-v1/graph.json",
+      "sha256": "570fb4bb5b180cea30be2c7b942aeff1f2f0aef09874a29e33dcbf78334ab761",
+      "graph_version": "release-4c1253e05f2c"
+    },
+    "graph_v2_embedding": {
+      "path": "data/processed/release-graph-v3/graph.json",
+      "sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+      "graph_version": "release-9d4a6fb20f63"
+    },
+    "graph_freeze": {
+      "path": "reports/release-v2/freeze-v3.json",
+      "sha256": "3a90644746f00b0d07e8f4e5605a929664997a42469d69577d5afe130c97151e"
+    },
+    "graph_v2_summary": {
+      "path": "reports/release-v2/graph-summary.json",
+      "sha256": "3566416665a5ff6960c7c361675c3214cc3ea24da6fa4139df7e2a92a515e199"
+    }
+  },
+  "limitations": [
+    "Reviewer identity and independence are input-declared and not authenticated by this program.",
+    "Forty papers have one review and ten have two; agreement is reported only on the overlap.",
+    "Paper-normalized metrics give each annotation on an overlap paper half weight; disagreement is retained as reviewer-level evidence rather than adjudicated into a synthetic consensus label.",
+    "This topic evaluation is separate from the global/per-relation edge audit and does not certify the release.",
+    "AI judgments are source-backed declarations; file/ledger validation does not authenticate their correctness.",
+    "Human validation was not performed and evaluator independence is not established, including between fresh contexts.",
+    "Wilson intervals exclude evaluator error and shared-model/source bias; verified course accuracy is not established."
+  ],
+  "completion": {
+    "planned_assignments": 60,
+    "reviewed_assignments": 60,
+    "unreviewable_assignments": 0,
+    "unreviewable": [],
+    "reviewed_papers": 50,
+    "fully_unreviewable_papers": 0
+  },
+  "partial_scoring_opt_in": false,
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "verified_course_accuracy": "not_established",
+  "numeric_gate_scope": "ai_assessed_only",
+  "metric_name": "topic agreement with AI-assigned reference labels",
+  "agent_provenance": {
+    "evaluation_freeze": {
+      "path": "reports/release-v3/evaluation-freeze-v1.json",
+      "sha256": "05e5ddfbcd36fd5d862ad04f8f4e6399b6edce2aaf630b2d95ad816c3c4172e0"
+    },
+    "completion_receipt": {
+      "path": "reports/release-v3/completion-receipt-v1.json",
+      "sha256": "07ec4048f83eeeae0cdb53f040df1587eb795a0b198e3f6f888a00ba3bfebb0e"
+    },
+    "evaluator_runs": [
+      {
+        "reviewer_id": "A",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+        "context_id": "/root/reviewer_a",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "fresh_no_inherited_conversation",
+        "settings": "platform default; exact sampling settings unknown"
+      },
+      {
+        "reviewer_id": "B",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-B-v1",
+        "context_id": "/root/reviewer_b",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "fresh_no_inherited_conversation",
+        "settings": "platform default; exact sampling settings unknown"
+      },
+      {
+        "reviewer_id": "ADJ",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-ADJ-v1",
+        "context_id": "/root",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "coordinator_adjudication_after_export_freeze",
+        "settings": "platform default; exact sampling settings unknown"
+      }
+    ],
+    "ledgers": [
+      {
+        "path": "reports/release-v3/completed/topic-ledger.jsonl",
+        "sha256": "9fe9a49255e3102512e0b8308b112bab15ee02b5b24e2b2ee514443fc6bc16e5"
+      },
+      {
+        "path": "reports/release-v3/completed/edge-ledger.jsonl",
+        "sha256": "99f6ac0613d309b1bb4e976d12d6cea47e17915fc8dfb36fa5ecc5205a7a43ca"
+      },
+      {
+        "path": "reports/release-v3/completed/adjudication-ledger.jsonl",
+        "sha256": "279e208eda6d9961c2dbec4fdcb04ef7f7ba21f7a824defc212e4f5b5a83e625"
+      }
+    ]
+  },
+  "evidence_depth_counts": {
+    "secondary_source_only": 60
+  },
+  "source_independence_counts": {
+    "same_source_as_construction": 60
+  },
+  "reference_label_provenance": "ai_assigned_not_human_validated"
+}
