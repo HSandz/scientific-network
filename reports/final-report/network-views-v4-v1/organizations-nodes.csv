@@ -1,0 +1,61 @@
+id,name,label,group,score,year,sector,venue,url,x,y
+organization:I125839683,Beijing Institute of Technology,Organization,academia,92.19603175,,academia,,https://openalex.org/I125839683,-0.03708762,-0.29158954
+organization:I126520041,University of Science and Technology of China,Organization,academia,183.96190476,,academia,,https://openalex.org/I126520041,0.03299864,-0.11932099
+organization:I1290206253,Microsoft (United States),Organization,industry,91.7304544,,industry,,https://openalex.org/I1290206253,-0.24735756,-0.11375906
+organization:I1291425158,Google (United States),Organization,industry,74.07085137,,industry,,https://openalex.org/I1291425158,-0.56293538,0.22494986
+organization:I1294671590,Centre National de la Recherche Scientifique,Organization,government,67.87644206,,government,,https://openalex.org/I1294671590,-0.95145426,-0.29635142
+organization:I129604602,The University of Sydney,Organization,academia,64.25555556,,academia,,https://openalex.org/I129604602,-0.22432758,0.1978014
+organization:I136199984,Harvard University,Organization,academia,57.25753968,,academia,,https://openalex.org/I136199984,-0.61867898,0.08658217
+organization:I139759216,Beijing University of Posts and Telecommunications,Organization,academia,88.42777778,,academia,,https://openalex.org/I139759216,0.04840182,-0.28443192
+organization:I14243506,Hong Kong Polytechnic University,Organization,academia,79.51957672,,academia,,https://openalex.org/I14243506,0.29812818,-0.01681754
+organization:I145847075,TU Wien,Organization,academia,59.87142857,,academia,,https://openalex.org/I145847075,-1.0,0.03981249
+organization:I149594827,Xidian University,Organization,academia,89.88624339,,academia,,https://openalex.org/I149594827,0.24900226,0.21371916
+organization:I150229711,University of Electronic Science and Technology of China,Organization,academia,97.51843712,,academia,,https://openalex.org/I150229711,-0.05209784,0.41254332
+organization:I154099455,Shandong University,Organization,academia,59.96111111,,academia,,https://openalex.org/I154099455,-0.18837543,-0.23055628
+organization:I157725225,University of Illinois Urbana-Champaign,Organization,academia,54.95396825,,academia,,https://openalex.org/I157725225,-0.22868281,-0.55134584
+organization:I157773358,Sun Yat-sen University,Organization,academia,143.41269841,,academia,,https://openalex.org/I157773358,-0.04061815,0.13791589
+organization:I162868743,Tianjin University,Organization,academia,84.85555556,,academia,,https://openalex.org/I162868743,0.31377027,-0.18776923
+organization:I165932596,National University of Singapore,Organization,academia,166.88309991,,academia,,https://openalex.org/I165932596,-0.17838942,0.05194277
+organization:I168719708,City University of Hong Kong,Organization,academia,74.57777778,,academia,,https://openalex.org/I168719708,0.21149016,0.29285822
+organization:I170215575,National University of Defense Technology,Organization,academia,58.11111111,,academia,,https://openalex.org/I170215575,0.10306569,-0.36024312
+organization:I17145004,Northwestern Polytechnical University,Organization,academia,57.73650794,,academia,,https://openalex.org/I17145004,0.4709434,-0.00274611
+organization:I172675005,Nanyang Technological University,Organization,academia,151.26176046,,academia,,https://openalex.org/I172675005,-0.07560631,0.07672964
+organization:I177725633,Chinese University of Hong Kong,Organization,academia,106.26636142,,academia,,https://openalex.org/I177725633,-0.1305564,0.1133068
+organization:I180726961,Shenzhen University,Organization,academia,68.45238095,,academia,,https://openalex.org/I180726961,0.37620742,0.2022632
+organization:I183067930,Shanghai Jiao Tong University,Organization,academia,206.1,,academia,,https://openalex.org/I183067930,-0.06494105,-0.02456622
+organization:I191208505,Xiamen University,Organization,academia,89.58809524,,academia,,https://openalex.org/I191208505,0.01058073,-0.19567713
+organization:I194450716,Jilin University,Organization,academia,63.5981685,,academia,,https://openalex.org/I194450716,0.56665842,0.22378283
+organization:I19820366,Chinese Academy of Sciences,Organization,government,269.53023714,,government,,https://openalex.org/I19820366,0.22693977,0.00834954
+organization:I200769079,Hong Kong University of Science and Technology,Organization,academia,75.06031746,,academia,,https://openalex.org/I200769079,-0.16811249,-0.0320459
+organization:I20231570,Peking University,Organization,academia,244.18253968,,academia,,https://openalex.org/I20231570,0.0158828,-0.03242319
+organization:I204983213,Harbin Institute of Technology,Organization,academia,163.79206349,,academia,,https://openalex.org/I204983213,0.05576569,0.11608984
+organization:I21193070,Beijing Jiaotong University,Organization,academia,58.19206349,,academia,,https://openalex.org/I21193070,0.34810971,0.28282581
+organization:I2250653659,Tencent (China),Organization,industry,237.35714286,,industry,,https://openalex.org/I2250653659,0.10645003,-0.01285163
+organization:I2250955327,Huawei Technologies (China),Organization,industry,146.99206349,,industry,,https://openalex.org/I2250955327,-0.0007858,0.03873227
+organization:I24943067,Fudan University,Organization,academia,117.08253968,,academia,,https://openalex.org/I24943067,0.16915865,-0.10062424
+organization:I36399199,Nanjing University of Science and Technology,Organization,academia,66.87777778,,academia,,https://openalex.org/I36399199,0.09075367,0.31920934
+organization:I37461747,Wuhan University,Organization,academia,91.2005291,,academia,,https://openalex.org/I37461747,-0.13443012,0.24490938
+organization:I40120149,University of Oxford,Organization,academia,91.92871573,,academia,,https://openalex.org/I40120149,-0.3947518,0.09063128
+organization:I4210090176,Institute of Computing Technology,Organization,unknown,60.66706349,,unknown,,https://openalex.org/I4210090176,0.41513562,0.07962165
+organization:I4210112150,Institute of Automation,Organization,unknown,92.9997558,,unknown,,https://openalex.org/I4210112150,0.40075722,-0.04834456
+organization:I4210136793,Peng Cheng Laboratory,Organization,unknown,166.88333333,,unknown,,https://openalex.org/I4210136793,0.13730352,0.1156274
+organization:I4210165038,University of Chinese Academy of Sciences,Organization,academia,217.15645096,,academia,,https://openalex.org/I4210165038,0.29308315,0.03563263
+organization:I4391012619,Shanghai Artificial Intelligence Laboratory,Organization,unknown,65.19047619,,unknown,,https://openalex.org/I4391012619,0.12302366,-0.14803198
+organization:I4405256866,ByteDance (China),Organization,industry,57.70873016,,industry,,https://openalex.org/I4405256866,0.08822248,-0.2391167
+organization:I4405270328,Ant Group (China),Organization,industry,62.63333333,,industry,,https://openalex.org/I4405270328,0.04229317,0.21773936
+organization:I45928872,Alibaba Group (China),Organization,industry,160.25769231,,industry,,https://openalex.org/I45928872,0.13060531,0.04603354
+organization:I47720641,Huazhong University of Science and Technology,Organization,academia,89.29444444,,academia,,https://openalex.org/I47720641,-0.1182713,-0.12587968
+organization:I56590836,Monash University,Organization,academia,56.07671958,,academia,,https://openalex.org/I56590836,-0.28047426,-0.31486223
+organization:I63966007,Massachusetts Institute of Technology,Organization,academia,67.35346598,,academia,,https://openalex.org/I63966007,-0.61967678,-0.04324927
+organization:I66867065,East China Normal University,Organization,academia,80.25079365,,academia,,https://openalex.org/I66867065,-0.09176674,-0.19567098
+organization:I74973139,Carnegie Mellon University,Organization,academia,91.73617886,,academia,,https://openalex.org/I74973139,-0.33923696,-0.06840361
+organization:I76130692,Zhejiang University,Organization,academia,342.25927961,,academia,,https://openalex.org/I76130692,0.05602892,0.02991261
+organization:I76569877,Southeast University,Organization,academia,84.37460317,,academia,,https://openalex.org/I76569877,0.33083122,-0.11663442
+organization:I78988378,Renmin University of China,Organization,academia,62.34340659,,academia,,https://openalex.org/I78988378,0.18760627,-0.27058193
+organization:I82880672,Beihang University,Organization,academia,147.24563492,,academia,,https://openalex.org/I82880672,0.24115477,-0.09184333
+organization:I87445476,Xi'an Jiaotong University,Organization,academia,90.92777778,,academia,,https://openalex.org/I87445476,0.15510885,0.22063305
+organization:I881766915,Nanjing University,Organization,academia,103.36031746,,academia,,https://openalex.org/I881766915,0.199089,0.12364531
+organization:I889458895,University of Hong Kong,Organization,academia,65.47301587,,academia,,https://openalex.org/I889458895,-0.0718312,0.24071656
+organization:I90610280,South China University of Technology,Organization,academia,78.20793651,,academia,,https://openalex.org/I90610280,0.0019413,0.2924799
+organization:I98301712,Baidu (China),Organization,industry,70.27142857,,industry,,https://openalex.org/I98301712,0.25232937,-0.22078235
+organization:I99065089,Tsinghua University,Organization,academia,283.54078144,,academia,,https://openalex.org/I99065089,0.07162513,-0.0404768
