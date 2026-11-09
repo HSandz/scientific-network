@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-09-009](2026-11-09-009-remediation-prompt.md) | Fresh-session remediation prompt | completed (handoff only) | Full five-step execution prompt with explicit versioned-correction scope, agent audit and validation boundaries; baseline 419 tests/1 skip; no implementation changes |
+
 | [WORK-2026-11-09-008](2026-11-09-008-remediation-plan.md) | Plan review remediation | completed (planning only) | Scoped scorer fix, proposed versioned ORCID correction, prospective agent audit and new package; baseline 419 tests/1 skip; implementation unchanged |
 
 | [WORK-2026-11-09-007](2026-11-09-007-agent-release-review.md) | Review agent evaluation and local release | completed (findings open) | Exact rescore/package verification passes; known ORCID defect confirmed; new missing-topic-label validation gap reproduced; 419 tests/1 skip |
