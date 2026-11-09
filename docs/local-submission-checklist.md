@@ -3,7 +3,17 @@
 Follow D040 and the agent evaluation workflow. This checklist does not authorize
 external delivery and is not a claim that the lecturer accepts AI-only evaluation.
 
-## Local evidence
+## Corrected local evidence
+
+The authorized separate correction is under `reports/release-v4/`: content and
+evaluator freezes, new prospective edge results/ledgers, exposure/source checks,
+Neo4j reconciliation and recomputed analysis/findings. Use
+[the v4 reproduction instructions](reproduce-remediation-v4.md). Historical topic
+references/results remain under release-v3 and are reused only after exact
+prediction/evidence equality. Current package QA receipt is linked from status;
+older package bytes stay unchanged. All external delivery remains unauthorized.
+
+## Historical original local evidence
 
 - Content freeze: `reports/release-v2/freeze-v3.json` (unchanged graph/classifier).
 - Evaluator freeze: `reports/release-v3/evaluation-freeze-v1.json`.
