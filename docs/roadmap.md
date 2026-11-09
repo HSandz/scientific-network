@@ -3,15 +3,16 @@
 > **Current plan:** [release-plan.md](release-plan.md) (D040, 8 Nov 2026). The
 > iteration notes below are history.
 
-## Current capabilities — D040 pre-audit corrections
+## Current capabilities — D040 agent evaluation and local packaging
 
 **9 November implementation:** `score-agent-review` validates evaluator/source
 ledgers, freeze/receipt bindings, canonical assignments, review order and truthful
 AI metadata around the unchanged legacy scorers. Isolated A/B contexts are
 available and selected; a pre-review freeze and matching agent packets exist.
 Partial unreviewable topic references retain planned overlap weighting. No
-single-agent topic fallback is selected or claimed implemented. Real review and
-scoring follow this tooling checkpoint.
+single-agent topic fallback is selected or claimed implemented. Real source-backed
+A/B judgments and provenance-bound scoring are complete; failed numeric quality
+gates are preserved in the release-v3 results.
 
 Release graph construction synchronizes and checks the frozen classifier taxonomy.
 `correct-release-taxonomy` preserves frozen predictions/core facts without inference.
@@ -22,7 +23,12 @@ summary and freeze paths while retaining historical compatibility. Fractional
 descriptive metrics use exact sums; community plots mark unstored topic shares.
 See [the agent workflow](agent-audit-workflow.md), the preserved optional
 [human handoff](reviewer-handoff.md) and [WORK-037](work-log/2026-11-08-037-pre-audit-corrections.md).
-Independent quality is still unmeasured; publication and submission remain pending.
+`python -m scientific_network.reporting.release_package` renders the measured
+Markdown report to A4 PDF/portable HTML, validates headings/figures/local links,
+and packages permitted tracked sources with member hashes. Raw data, models,
+credentials and volumes remain excluded. Human validation, evaluator independence
+and verified course accuracy are not established; publication/submission remain
+pending. See [reproduction instructions](reproduce-agent-evaluation.md).
 
 ## Historical implementation notes
 

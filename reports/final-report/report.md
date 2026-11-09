@@ -1,15 +1,31 @@
 # AI Research Network: AAAI and IJCAI, 2021–2025
 
-**Draft status:** methodology and Phase 6 results written. The user selected
-agent-led evaluation on 9 November; evaluator implementation, source review and
-scoring remain pending. Human annotations are optional. Real team details remain
-pending from supplied records. This is not the final report.
+**Local report, 9 November 2026.** Source-backed AI evaluation is complete:
+**176/200 edges correct (88.00%), Wilson 95% interval 82.77%–91.80%**.
+The course point comparison and project precision checks **fail**. Human
+validation was not performed; evaluator independence and verified course accuracy
+are not established. Real team details and course disclosure/access facts remain
+pending. This local submission draft has not been published or submitted.
 
 ## 1. Team allocation
 
-**Pending completion from `docs/team.md`.** Names, student IDs, individual roles,
-review assignments and course AI-use disclosure must be supplied from the team
-record. They are intentionally not inferred here.
+Real human names, student IDs and actual human contributions remain **pending**
+in [the team record](../../docs/team.md); no student identity is inferred from
+repository accounts or illustrative role assignments.
+
+| Recorded contributor | Actual work in this execution | Attribution scope |
+| --- | --- | --- |
+| Codex coordinator | Repository inspection, evaluator freeze, integration, validation, scoring/report/package preparation | AI-assisted project work |
+| Isolated evaluator A | 30 blind topic judgments; assigned source-backed edge review | AI evaluator channel, not a student |
+| Isolated evaluator B | 30 blind topic judgments; assigned source-backed edge review | AI evaluator channel, not a student |
+| Scorer/renderer agent | Provenance-bound evaluation wrapper, regression tests and local rendering/package tooling | AI-assisted implementation |
+| Human team | Names, IDs and actual individual contributions pending | Must be supplied from real records |
+
+The contexts use the platform's inherited settings; precise provider/model/version
+and sampling parameters are not exposed and are recorded as unknown. A/B received
+no inherited coordinator conversation or other evaluator answers. The course's
+specific AI-use disclosure/access requirements remain pending; this report openly
+identifies AI work without asserting lecturer acceptance of AI-only judging.
 
 ## 2. Network rationale
 
@@ -86,6 +102,26 @@ authorships). The paper-level copied-affiliation guard withheld 147 patterns.
 `AFFILIATED_WITH` aggregates the accepted observations only after these
 triples are retained.
 
+These figures describe implementation output, not a guarantee of the intended
+identity rule. The audit found that resolver conflict handling reads singular
+`author.orcid` but ignores multiple retained `author.observed_orcids` values.
+Consequently some accepted researcher endpoints violate D040's conflicting-ID
+withholding rule. Raw/full works retain the arrays; the projected review packet
+also omitted them. Section 9 and the post-audit findings document this defect.
+The frozen graph was preserved after discovery rather than corrected against its
+audit sample.
+
+
+The [first live diagnostic pilot](../pilot-v1.md), dated 3 November, used
+ORCID-publication corroboration and exact printed institution matching. Among
+100 processed 2023 papers it resolved 28/464 official authorship positions (6.03%)
+and accepted affiliation evidence for 5/464 positions (1.08%). These are historical
+pilot denominators, not release measurements. D040 replaced that restrictive
+identity policy with compatible authorship-level OpenAlex IDs and author-specific
+institution evidence while preserving ambiguity guards. The change improves
+covered-network size but introduces dependence on OpenAlex identity resolution;
+its coverage gain must not be called an accuracy gain.
+
 Citation edges point from a citing paper to a deduplicated cited paper. The
 acquisition scan found 378,360 reference targets: 370,831 targets outside the
 release scope, 34 self-references, no ambiguous in-scope target mappings, and
@@ -106,17 +142,26 @@ generated only after the classifier freeze and are not shown in the prediction-b
 topic review sheet.
 
 The corrected v3 graph has **11,575 topic-labeled papers** and **2,042 abstentions**, for
-85.00% label coverage. This is coverage, not topic accuracy. Fifty frozen test
-papers are ready for agent annotation with the 16 topic definitions.
-Reviewer A and reviewer B each receive 30 papers, with 10 papers reviewed by
-both; the union covers all 50. The allocation gives each reviewer 12 AAAI and 18
-IJCAI papers. The hash-bound packets remain prediction-blind. Under the current
-protocol A/B denote isolated evaluator contexts; the documented single-agent
-variant is allowed when isolation is unavailable. No scored agent reference
-labels or classifier precision/recall/F1 are available yet. Human validation is
-not performed. Topic
-trends and topic-based findings below are therefore provisional until those
-annotations are scored.
+85.00% label coverage. This is coverage, not topic accuracy. Both isolated
+reviewers completed their prediction-blind assignments before edge exposure:
+30 papers each with ten shared, covering all 50 frozen tests. Each received 12
+AAAI and 18 IJCAI papers. Their exports and evidence ledgers are hash-bound.
+The embedding classifier achieves micro precision/recall/F1
+**.6863/.3535/.4667** against these AI-assigned references; the phrase baseline
+achieves **.9286/.1313/.2301**. Test coverage is 45/50 (90%) versus 13/50 (26%).
+Embedding improves recall and F1 at lower precision; neither reaches the .95
+precision target. Section 9 reports weighting, macro metrics and limitations.
+Topic trends and topic-based business findings remain provisional given these
+measured errors and source/evaluator dependence.
+
+Earlier extraction diagnostics used GROBID 0.8.2 CRF-only PDF headers. In the
+first pilot, all 100 TEI responses were valid XML but only 51 had affiliation
+structures; valid parsing did not establish correct author alignment. A later
+[frozen development diagnostic](../five-year-headers-v1.md) parsed 66/68 headers
+and produced unaccepted affiliation candidates, not release edges. D040 makes
+PDF/GROBID corroboration optional; this release uses the DOI-matched OpenAlex
+source route and the frozen embedding classifier. Those historical diagnostics
+were not rerun or pooled into the current evaluation.
 
 ## 6. Graph design and graph database
 
@@ -167,6 +212,19 @@ are in the analysis JSON. New collaboration pairs are assigned to the earliest
 year among their supported core papers, so yearly pair counts describe first
 observed in-scope collaboration rather than an annual snapshot graph.
 
+| Year | Core papers | Active resolved researchers | First observed coauthor pairs |
+| --- | ---: | ---: | ---: |
+| 2021 | 2,240 | 7,250 | 17,113 |
+| 2022 | 1,997 | 7,038 | 14,640 |
+| 2023 | 2,217 | 8,137 | 18,685 |
+| 2024 | 3,121 | 10,810 | 24,208 |
+| 2025 | 4,042 | 15,158 | 37,396 |
+
+Researchers can appear in several years, so annual active-researcher counts must
+not be summed into the cumulative unique population. These stored statistics are
+reused from the corrected-graph analysis; no analysis or classifier was rerun for
+the evaluator change.
+
 Sector and country mixing count distinct accepted organization-pair by
 core-paper supports, using the derived collaboration evidence. Unknown sector
 or country is retained as its own category. Topic shares are available by both
@@ -204,8 +262,8 @@ resolved researchers are included, so isolates are size-one components. Graph
 *Figure 3. Top researcher communities under Louvain seed 17 and resolution 0.8.
 Each distinct labeled paper is fractionally allocated over its inferred topics.
 Only stored top-five topics per community are shown; grey cells indicate topics
-outside that stored profile, not measured zero support. Topic labels await agent
-review. Graph `release-9d4a6fb20f63`.*
+outside that stored profile, not measured zero support. Topic validity is limited
+to the AI-assessed evaluation in section 9. Graph `release-9d4a6fb20f63`.*
 
 ![Organization collaboration by sector](figures-v3/sector-mixing.png)
 
@@ -217,7 +275,8 @@ unknown sector remains visible. Graph `release-9d4a6fb20f63`.*
 
 *Figure 5. Topic portfolio trends in 2021–2025. Each labeled paper contributes
 fractionally across its accepted inferred labels; the series combine AAAI and
-IJCAI within each year. Topic labels await agent review. Graph
+IJCAI within each year. Topic validity is limited to the AI-assessed evaluation
+in section 9. Graph
 `release-9d4a6fb20f63`.*
 
 ![Most cited papers within the release corpus](figures-v3/top-cited-papers.png)
@@ -299,7 +358,7 @@ impact.
 
 ## 9. Quality and robustness
 
-The structural and coverage measurements currently available are:
+### 9.1 Structural and coverage checks
 
 | Measure | Observed | Interpretation |
 | --- | ---: | --- |
@@ -308,57 +367,128 @@ The structural and coverage measurements currently available are:
 | Unique R1–R4 factual edges | 124,619 | Size gate passed (minimum 5,000) |
 | Nonempty relation types | 10/10 | Size gate passed |
 | Matched works | 13,606/13,617 (99.92%) | 11 in review |
-| Abstracts on matched works | 13,606/13,617 (99.92%) | Metadata coverage, not accuracy |
-| Institution support on accepted authorships | 56,633/59,159 (95.73%) | Alignment coverage, not affiliation correctness |
-| Topic labels | 11,575/13,617 (85.00%) | Coverage only; agent reference labels and scoring pending |
+| Abstracts on matched works | 13,606/13,617 (99.92%) | Metadata coverage |
+| Institution support on accepted authorships | 56,633/59,159 (95.73%) | Alignment coverage |
+| Topic labels | 11,575/13,617 (85.00%) | Label coverage |
 
-No independent semantic accuracy or AI-assessed precision has been measured.
-The user has selected source-backed agent evaluation; human annotation is optional.
-Evaluator provenance/receipt/ledger support must be implemented before the real
-review. Old packets/receipts stay preserved; new agent artifacts use a separate
-evaluation package without changing the graph, classifier, tests or thresholds.
-The default edge sampling recipe
-uses 200 edges sampled uniformly from the complete frozen edge frame, plus 10
-per relation for separate relation-level inspection. The global sample has 50
-edges reviewed by isolated evaluator channels A and B; remaining rows are split
-evenly. The preserved packet has 300 unique sampled edges and 350 assigned rows.
-Once labels and any adjudications are produced, the agent-aware scorer will report
-global `k/n`, AI-assessed precision and the Wilson 95% interval, separate
-per-relation counts, overlap agreement,
-Cohen's kappa and error categories. Unverifiable edges count as incorrect.
-**These fields remain pending; the generated packet is not an audit result.**
+Fresh structural validation and size checks pass. A read-only check on the
+isolated Neo4j service matches 52,415 nodes/275,438 edges; all six integrity queries
+return zero rows. Sixty-six frozen content/evaluator file hashes were checked.
+These checks do not establish semantic accuracy. Idempotent replay was performed
+at the earlier corrected-graph checkpoint; this evaluation did not reload it.
 
-The topic test contains 50 held-out papers selected before threshold tuning,
-with 20 AAAI and 30 IJCAI papers. Following the user's allocation decision,
-reviewer A and reviewer B each receive 30 papers, with 10 shared and 50 unique
-papers covered in 60 judgments. Each packet has 12 AAAI and 18 IJCAI papers. The
-assignment method, test/master hashes and reviewer-sheet hashes are recorded in
-the graph/source freeze record. The master sheet remains unchanged. After blind
-agent labels are frozen, both the embedding classifier and phrase baseline will
-be scored against the same AI-assigned reference labels for micro/macro precision,
-recall, F1, coverage and labeler agreement. Every paper contributes total weight one to model metrics;
-each of two judgments on a shared paper contributes one half. Reviewer
-disagreements remain visible instead of being converted into a software-generated
-consensus label, and agreement is measured only on the ten shared papers. When
-isolated contexts are unavailable, the predeclared single-agent variant labels
-each test paper once and reports no overlap agreement. Unreviewable evidence is
-separate from a considered empty topic set, with actual denominators disclosed.
+### 9.2 Source-backed AI edge audit
 
-Results will explicitly identify AI evaluator/model/run provenance, source reuse
-and evidence depth. Separate agent contexts do not establish independent gold
-labels. Numeric course/project threshold comparisons are AI-assessed only;
-verified course accuracy remains not established. Wilson intervals describe
-sampling uncertainty conditional on supplied judgments and do not include
-evaluator error, shared-model bias or correlated decisions. No claim is made
-that the lecturer has accepted AI-only evaluation.
+The unchanged frozen recipe samples 200 edges uniformly without replacement
+from all accepted edges, plus ten per relation as separate supplements. Fifty
+global edges have both A/B reviews. All 350 assigned rows covering 300 unique
+edges are complete, with zero missing reviews. A/B were separate fresh contexts
+without inherited coordinator conversation or shared answers. Topic exports were
+frozen before either context received edge predictions. Exact runtime model,
+provider/version and sampling settings were unavailable and remain unknown.
+
+The coordinator source-adjudicated all 11 actual overlap disagreements after
+both edge exports were fixed. Nine identifier-policy disputes were resolved as
+incorrect; two substantive-topic disputes as correct. Original votes and all
+source-backed adjudications remain visible. Unverifiable edges count as incorrect.
+
+| Global uniform sample | Measured AI-assessed result |
+| --- | --- |
+| Correct / planned | **176/200 = 88.00%** |
+| Incorrect / unverifiable / missing | 23 / 1 / 0 |
+| Wilson 95% interval | **82.7657%–91.8020%** |
+| Course point comparison (>90%) | **FAIL** |
+| Project point precision (≥95%) | **FAIL** |
+| Project Wilson lower bound (>90%) | **FAIL** |
+| Overlap agreement before adjudication | 39/50 = 78%; Cohen kappa .1851851852 |
+| Verified course accuracy | **Not established** |
+
+Global error categories are wrong identity 19, wrong topic four and unverifiable
+one. Across all unique sampled edges, categories are wrong identity 27, wrong
+topic 11, wrong affiliation one and unverifiable three. These latter counts
+include supplements and are not a second global estimate.
+
+Each row below is a **separate n=10 supplement**, never pooled with the global
+sample. Small denominators produce wide Wilson intervals even at 10/10.
+
+| Predicate | Correct/10 | Incorrect | Unverifiable | Wilson 95% interval |
+| --- | ---: | ---: | ---: | --- |
+| AFFILIATED_WITH | 9/10 | 1 | 0 | 59.58%–98.21% |
+| AUTHORED | 7/10 | 3 | 0 | 39.68%–89.22% |
+| CITES | 10/10 | 0 | 0 | 72.25%–100.00% |
+| COAUTHORED_WITH | 6/10 | 4 | 0 | 31.27%–83.18% |
+| COLLABORATED_WITH | 9/10 | 1 | 0 | 59.58%–98.21% |
+| CONTRIBUTES_TO_TOPIC | 6/10 | 4 | 0 | 31.27%–83.18% |
+| HAS_TOPIC | 9/10 | 1 | 0 | 59.58%–98.21% |
+| PUBLISHED_IN | 10/10 | 0 | 0 | 72.25%–100.00% |
+| RESEARCHES_TOPIC | 6/10 | 2 | 2 | 31.27%–83.18% |
+| SUBTOPIC_OF | 10/10 | 0 | 0 | 72.25%–100.00% |
+
+The leading identity finding is a resolver omission: raw/full work records retain
+`author.observed_orcids`, but the singular-ORCID conflict pass ignores this array.
+Reviewer A's separate source inventory binds 25 sampled edges with that conflict
+to raw hashes and locators. The coordinator independently inspected the raw arrays
+for the nine overlap identifier disputes. No graph-wide prevalence is inferred
+from that targeted inventory. See [post-audit findings](../../docs/post-audit-findings.md).
+Any correction needs a new graph version and new audit; these failed results stay
+attached to the unchanged frozen graph.
+
+Main evidence for the 350 assignments is primary for 123 and secondary-only for
+227; 349 reuse construction sources and one uses an independent main source.
+Taxonomy checks against the frozen config count as primary for the curated
+hierarchy, not independent scientific corroboration. Additional sources are
+recorded separately. The ledgers distinguish byline/author-specific institution
+checks, citation records, topic evidence and distinct-paper derived support.
+Reading the same OpenAlex snapshot cannot establish that snapshot's correctness.
+
+### 9.3 Topic agreement with AI-assigned reference labels
+
+The held-out set contains 20 AAAI and 30 IJCAI papers, selected before tuning.
+All 60 assignments over 50 unique papers are reviewed; none is unreviewable.
+One exclusive judgment has a considered empty leaf set. Each exclusive review
+has weight one, and each of two overlap reviews has weight one half, so the
+effective denominator is 50 papers. Reference disagreements would remain visible
+rather than being converted into a synthetic consensus. Actual overlap exact-set
+agreement is 10/10 and mean Jaccard is 1.0; agreement does not authenticate the
+labels or establish independence. All topic evidence is secondary-only,
+reconstructed OpenAlex title/abstract text from the construction source.
+
+Both classifiers are evaluated on the same unchanged references and test IDs.
+Metrics below are agreement with AI labels, not human gold accuracy.
+
+| Frozen classifier | Test coverage | Micro P | Micro R | Micro F1 | Macro P | Macro R | Macro F1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Phrase baseline | 13/50 (26%) | 0.9286 | 0.1313 | 0.2301 | 0.4167 | 0.0943 | 0.1473 |
+| Embedding | 45/50 (90%) | 0.6863 | 0.3535 | 0.4667 | 0.4986 | 0.3066 | 0.3627 |
+
+Weighted embedding TP/FP/FN are 35/16/64; phrase counts are 13/1/86. Neither
+micro precision reaches the frozen .95 target. Embedding's broader coverage
+increases recall/F1 but also introduces false positives; the results support
+cautious exploratory use of topic portfolios. Macro scores give equal weight to
+all 16 leaves, with the scorer's explicit undefined-label conventions. Full
+per-label metrics and reviewer-specific results remain in
+[topic-eval-agent.json](../release-v3/topic-eval-agent.json).
+
+### 9.4 Robustness and evaluation limits
+
+Every scored output records `evaluation_kind=ai_agent_review`,
+`human_validation=not_performed`, `reviewer_independence=not_established` and
+`verified_course_accuracy=not_established`. Separate contexts do not demonstrate
+statistical independence or different models. Wilson intervals describe sampling
+uncertainty conditional on judgments; they omit evaluator mistakes, shared-model
+bias and source dependence. The audit measures accepted-edge precision, not
+omitted-edge recall. No claim is made that the lecturer accepts AI-only evaluation.
+The [evaluation limitations](../release-v3/evaluation-limitations.md) and
+[completed source ledgers](../release-v3/completed/) give the scope and provenance.
 
 The frozen strict-evidence filter retains 8.0% of researcher-collaboration
 edges, 27.4% of organization-collaboration edges, no citation or paper-topic
-edges, and all organization-topic edges. This is a sensitivity comparison,
-not a correctness estimate. In particular, the low researcher betweenness
-overlap means bridge rankings are sensitive to evidence support. Topic coverage
-is uneven by venue–year (81.9%–87.9%) and semantic topic validity is unmeasured.
-No project precision gate or course accuracy requirement is declared passed.
+edges, and all organization-topic edges. This is sensitivity analysis, not a
+correctness estimate. Researcher bridge rankings are sensitive to support:
+top-20 betweenness overlap is 1/20. Topic coverage varies by venue–year
+(81.9%–87.9%), while the held-out AI agreement reveals semantic errors. Business
+findings in section 8 remain candidates for source investigation rather than
+validated recommendations.
 
 ## 10. Achievements and limitations
 
@@ -372,25 +502,31 @@ candidates. These are reproducible descriptions of the frozen artifact.
 Several quality questions remain open. Eleven roster papers were not matched to
 OpenAlex under the release rules. Thousands of official byline positions lack an
 OpenAlex author ID and are withheld, so the researcher graph is a covered subset
-of bylines rather than a complete author network. Agent evaluators have
-not yet checked accepted identities, affiliations, citations, topics or derived
-edges. The 85.0% topic coverage is not topic accuracy. Country and sector
+of bylines rather than a complete author network. Agent evaluators checked the frozen sample, finding identity and topic errors;
+the sample does not validate the complete graph. The 85.0% topic coverage is not topic accuracy. Country and sector
 properties describe normalized organization metadata rather than researchers'
 nationality or employment. Citation counts have unequal exposure time. The
 release covers two conference series only, so claims do not generalize to all AI
 research venues.
 
-The current graph and report are not certified for the assignment's >90% accuracy
-claim. The final conclusion must state the measured Wilson interval and topic
-evaluation after agent judgments are scored, identify the AI basis and evaluator
-limitations, and report any failed numeric gate without claiming human validation.
+The project meets structural size requirements and produces reproducible social
+network descriptions, but its AI-assessed edge precision is only 88.00% (Wilson
+95% 82.77%–91.80%). Both course point and project precision checks fail. Embedding
+micro F1 .4667 exceeds phrase .2301 against AI references but leaves substantial
+topic error. Human validation and verified course accuracy remain unestablished.
+These outcomes constrain the business interpretation; they are preserved rather
+than hidden through post-audit tuning. A separately versioned correction should
+first address observed-ORCID conflict handling, retain provenance and obtain a
+new audit without reusing these test errors as independent evidence.
 
 The pre-audit correction synchronizes all Topic metadata, hierarchy and evidence
 with the frozen classifier taxonomy; the classifier, test membership, predictions,
 excerpts, similarity scores, core facts and derived weights are unchanged.
 [The correction summary](../release-v2/graph-summary.json) records equality hashes.
-All analysis and figures in this draft were freshly computed on the corrected
-graph. Exact fractional accumulation (`d040-release-metrics-v2`) also corrects
+The analysis and figures were computed at the earlier corrected-graph checkpoint
+and are reused here with their exact frozen bytes; they were not recomputed for
+the evaluator change. New [caption version 1](captions-agent-v1.md) qualifies the
+AI assessment without modifying the frozen figure/caption artifacts. Exact fractional accumulation (`d040-release-metrics-v2`) also corrects
 floating-point order effects on tied community topic rankings; this changes no
 graph facts or predictions. The old freeze and figure directory remain historical.
 Execution follows [the agent workflow](../../docs/agent-audit-workflow.md).
@@ -398,10 +534,11 @@ Execution follows [the agent workflow](../../docs/agent-audit-workflow.md).
 ## 11. Reproducibility and release state
 
 The source repository is [HSandz/scientific-network](https://github.com/HSandz/scientific-network).
-WORK-037 recorded an earlier 9 November remote check at `951b9c5`, with no tags;
-remote state was not refreshed for this protocol amendment. Verify current refs
-before separately authorized delivery. The course release/submission remains
-pending in project records. This amendment performs no external delivery.
+A read-only remote check on 9 November returned main
+`05ac5d83922c54bd006034e5c7296de00e811f72` and no tags; local work is not pushed.
+The GitHub HTTP check returned 504, so public lecturer access is not verified.
+Eight DOI links in this report passed the recorded external-link check. No course
+release/tag, Site update, invitation or submission was performed.
 The frozen graph is
 `release-9d4a6fb20f63`, SHA-256
 `c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8`; the
@@ -411,7 +548,9 @@ hashes are recorded in [`freeze-v3.json`](../release-v2/freeze-v3.json).
 The locked environment is restored with:
 
 ```bash
-uv sync --locked --group dev --extra analysis
+uv sync --locked --group dev --extra analysis --extra report
+uv run pytest
+uv run research-network schema
 ```
 
 The frozen graph analysis is reproduced with:
@@ -433,11 +572,25 @@ the exact commands, input hashes, outcomes and local artifact paths for the
 release stages. Independent reproduction should use the frozen configs and
 confirm graph and summary hashes before comparing reports.
 
-## Remaining completion work
+The real review exports, receipt, evaluator freeze and source ledgers are under
+[`reports/release-v3/`](../release-v3/README.md). The supported `score-agent-review`
+command validates bindings before writing AI-labelled results; its actual exit
+code is 1 because numeric quality gates fail. The full suite passed 419 tests
+with one existing empty-parameterization skip. These are software checks, not
+semantic validation of the measured graph. Exact scoring/rendering commands and
+host requirements are in [reproduction instructions](../../docs/reproduce-agent-evaluation.md).
+The package excludes full graph/raw caches/models/credentials/database volumes;
+a fresh clone cannot rescore without restoring original permitted ignored inputs
+and verifying their hashes. Source ledgers permit traceability but do not
+redistribute the complete third-party source cache.
 
-The agent will implement the evaluator metadata/binding support, perform source
-review, score the judgments, finish results/limitations and prepare the local
-PDF/package. Human annotations are optional and are not a prerequisite. Real team
-identities, student IDs, actual contributions and course-specific disclosure/access
-facts must come from supplied records; missing values remain explicitly pending
-without blocking other work. No accuracy claim is made in this draft.
+## Remaining personal facts and external delivery
+
+Agent annotation, scoring, report drafting and local rendering/package preparation
+are complete or recorded in the current local package receipt. Human annotation
+is optional. Real names, student IDs, actual human contributions, lecturer access
+and course-specific AI-use rules remain explicitly pending from supplied records.
+The local package is a submission draft until those facts are reflected in a new
+render. A release tag/push, Site publication, invitations and submission require
+separate authorization after this concrete local result is reviewed; follow
+[the delivery checklist](../../docs/local-submission-checklist.md).

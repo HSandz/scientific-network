@@ -897,3 +897,13 @@ phase 1; record any amendment here with its date.
   `post-audit-findings.md`; any correction requires a separately versioned graph
   and new audit. AI judgments, unknown precise runtime IDs, source reuse and
   failed independence/course-accuracy establishment remain explicit.
+
+- **2026-11-09 — local report packaging (WORK-005).**
+  Render the measured Markdown report using an optional Markdown extra, embedded
+  figures/fonts and local Chrome to A4 PDF. Shared PDF repository references are
+  plain text to avoid machine-specific file links; packaged HTML preserves
+  portable relative links. ZIP includes permitted tracked source bytes and explicit
+  renders, with hashes/source commit; excludes credentials/raw/full graphs/models/
+  volumes and existing archives/PDFs. Rendering validates local references, text,
+  sections and images; external availability and visual/glyph QA are separately
+  recorded. Personal/course facts remain pending in an explicitly local draft.
