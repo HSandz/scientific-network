@@ -1,0 +1,38 @@
+{
+  "reviewer_id": "B",
+  "evaluator_run_id": "WORK-2026-11-09-004-B-v1",
+  "context_id": "/root/reviewer_b",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "edge_started_at": "2026-11-09T01:57:05.932043+07:00",
+  "completed_at": "2026-11-09T12:24:05.446319+07:00",
+  "planned": 175,
+  "reviewed": 175,
+  "decisions": {
+    "correct": 161,
+    "incorrect": 11,
+    "unverifiable": 3
+  },
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/B-edges.csv",
+      "sha256": "f7771a11abc231818c03f49be72795c92320157e7b380f6496a47a94071c2377"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-ledger.jsonl",
+      "sha256": "2e245e9f92b44c2941c469ecfb89b9834389d63da53467aef4f7d6c9650486df"
+    }
+  ],
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "method": "Every assigned edge was manually assessed from bounded complete relevant source extracts; source hashes verified. Formatting scripts did not determine judgments. Additional threshold/identity sources are listed per edge.",
+  "limitations": [
+    "Most identity judgments establish D040 sampled-work name/ID compatibility without a profile-wide identity investigation.",
+    "OpenAlex repeated construction sources are not independent corroboration.",
+    "Selected ambiguous names received bounded live public OpenAlex/ORCID lookups; unresolved identities remain unverifiable.",
+    "No checkpointed verdict was changed.",
+    "Structural support weights/count totals were not independently recomputed; semantic existence/minimum-paper thresholds were assessed."
+  ]
+}

@@ -9,7 +9,7 @@ import pytest
 import yaml
 
 from scientific_network.evaluation.agent_review import AI_METADATA, score_agent_review
-from scientific_network.evaluation.edge_audit import SPLIT_FIELDS, prepare_edge_audit_sample
+from scientific_network.evaluation.edge_audit import ADJUDICATION_FIELDS, SPLIT_FIELDS, prepare_edge_audit_sample
 from scientific_network.evaluation.topic_review import FIELDS, prepare_topic_review_packets
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -220,3 +220,67 @@ def test_unreviewable_topic_is_missing_reference_and_retains_planned_overlap_wei
     assert result['weighting']['effective_paper_weight'] == 49.5
     assert result['reviewer_agreement_on_overlap']['overlap_paper_count'] == 9
     assert result['models']['phrase_baseline']['paper_normalized_review_metrics']['micro']['false_negative'] == 49.5
+
+
+@pytest.mark.parametrize('invalid', [None, 'source', 'timestamp', 'run'])
+def test_agent_adjudication_has_its_own_run_source_ledger_and_later_timestamp(agent_package, invalid):
+    p = agent_package
+    with p['edge_reviews'][0].open(newline='') as stream:
+        rows = list(csv.DictReader(stream))
+    conflict = next(row for row in rows if row['is_overlap'] == 'true' and row['reviewer_id'] == 'B')
+    conflict.update(decision='incorrect', error_category='wrong_topic', reason='Invented topic disagreement')
+    write_csv(p['edge_reviews'][0], rows, SPLIT_FIELDS)
+    ledger = [json.loads(line) for line in p['edge_ledger'].read_text().splitlines()]
+    entry = next(row for row in ledger if row['unit_id'] == conflict['edge_id'] and row['reviewer_id'] == 'B')
+    entry.update(decision='incorrect', reason=conflict['reason'])
+    write_jsonl(p['edge_ledger'], ledger)
+    adjudication = {key: conflict.get(key, '') for key in ADJUDICATION_FIELDS}
+    adjudication.update(adjudicator_id='ADJ', decision='unverifiable', reason='Invented unresolved source conflict',
+                        reviewed_at='2026-11-09T02:10:00+07:00')
+    p['adjudications'] = write_csv(p['edge_output'].parent / 'adjudications.csv', [adjudication], ADJUDICATION_FIELDS)
+    adjudicated = {**entry, 'reviewer_id': 'ADJ', 'evaluator_run_id': 'run-ADJ',
+                   'decision': 'unverifiable', 'reason': adjudication['reason'], 'reviewed_at': adjudication['reviewed_at']}
+    if invalid == 'source':
+        adjudicated['source_sha256'] = '0' * 64
+    elif invalid == 'timestamp':
+        adjudicated['reviewed_at'] = adjudication['reviewed_at'] = '2026-11-09T01:30:00+07:00'
+        write_csv(p['adjudications'], [adjudication], ADJUDICATION_FIELDS)
+    elif invalid == 'run':
+        adjudicated['evaluator_run_id'] = 'run-A'
+    p['adjudication_ledger'] = write_jsonl(p['edge_output'].parent / 'adjudication.jsonl', [adjudicated])
+    freeze = json.loads(p['evaluation_freeze'].read_text())
+    freeze['evaluator_runs'].append({**freeze['evaluator_runs'][0], 'reviewer_id': 'ADJ',
+                                    'evaluator_run_id': 'run-ADJ', 'context_id': 'context-ADJ'})
+    write_json(p['evaluation_freeze'], freeze)
+    receipt = json.loads(p['completion_receipt'].read_text())
+    receipt['output_files'].extend({'path': str(p[key]), 'sha256': digest(p[key])} for key in ('adjudications', 'adjudication_ledger'))
+    write_json(p['completion_receipt'], receipt)
+    rebind(p)
+    if invalid:
+        with pytest.raises(ValueError, match={'source': 'local source hash', 'timestamp': 'follow both initial', 'run': 'run does not match'}[invalid]):
+            score_agent_review(**p)
+        assert not p['edge_output'].exists()
+    else:
+        score_agent_review(**p)
+        result = json.loads(p['edge_output'].read_text())
+        assert result['global']['unverifiable'] == 1
+        assert result['global']['correct'] == 9
+        assert result['adjudication_evidence_depth_counts'] == {'secondary_source_only': 1}
+
+
+def test_partial_edge_opt_in_preserves_canonical_sample_missingness(agent_package):
+    p = agent_package
+    with p['edge_reviews'][0].open(newline='') as stream:
+        rows = list(csv.DictReader(stream))
+    removed = next(row for row in rows if row['is_overlap'] == 'false' and row['in_global_sample'] == 'true')
+    write_csv(p['edge_reviews'][0], [row for row in rows if row is not removed], SPLIT_FIELDS)
+    ledger = [json.loads(line) for line in p['edge_ledger'].read_text().splitlines()]
+    write_jsonl(p['edge_ledger'], [row for row in ledger if (row['unit_id'], row['reviewer_id']) != (removed['edge_id'], removed['reviewer_id'])])
+    rebind(p)
+    with pytest.raises(ValueError, match='every frozen reviewer assignment'):
+        score_agent_review(**p)
+    score_agent_review(**p, allow_partial=True)
+    result = json.loads(p['edge_output'].read_text())
+    assert result['completion']['missing_assignment_count'] == 1
+    assert result['global']['total'] == 9
+    assert result['global']['planned_total'] == 10

@@ -1,0 +1,30 @@
+{
+  "reviewer_id": "A",
+  "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+  "context_id": "/root/reviewer_a",
+  "provider": "unknown",
+  "model": "unknown",
+  "model_version": "unknown",
+  "completed_at": "2026-11-09T01:54:11.855157+07:00",
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/A-topics.csv",
+      "sha256": "9a36f259c8480db993255e45b82437318eed0b3ae577b0981a98f544d66e9e27"
+    },
+    {
+      "path": "reports/release-v3/completed/A-topic-ledger.jsonl",
+      "sha256": "8e4a5874e3a9d1e3b14af50394da757c63fc08aaa525f4766049f426d78b2f78"
+    }
+  ],
+  "planned": 30,
+  "reviewed": 30,
+  "unreviewable": 0,
+  "considered_empty": 0,
+  "evidence_depth_counts": {
+    "secondary_source_only": 30
+  },
+  "source_independence_counts": {
+    "same_source_as_construction": 30
+  },
+  "blinding": "Only own prediction-blind topic packet, frozen taxonomy/rubric and own blind source metadata accessed before completion. No edge materials or item predictions accessed."
+}

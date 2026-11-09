@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-09-004](2026-11-09-004-agent-source-review.md) | Source-backed agent evaluation and scoring | completed | Full AI review/scoring: 88% edge precision, failed gates; topic F1 .4667 embedding/.2301 phrase; 419 tests passed/1 skip |
+
 | [WORK-2026-11-09-003](2026-11-09-003-agent-evaluator-freeze.md) | Agent evaluator implementation and freeze | completed | Provenance-bound scorer and 19 regressions; 403 passed/1 skip; matching agent packets and pre-review freeze ready |
 
 | [WORK-2026-11-09-002](2026-11-09-002-agent-led-evaluation-handoff.md) | Agent-led evaluation and fresh-session handoff | completed | User-authorized D040 amendment removes waiting for human annotations; declared source/evaluator protocol and execution prompt ready; scorer implementation and real evaluation are next |

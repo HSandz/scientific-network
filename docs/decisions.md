@@ -886,3 +886,14 @@ phase 1; record any amendment here with its date.
   planned overlap weights retained. All result metadata is AI-assessed before
   outputs are written. Sampling, thresholds, content freeze and graph unchanged.
   Optional Markdown rendering dependency is isolated in the `report` extra.
+
+- **2026-11-09 — completed agent evaluation (WORK-004).**
+  Preserve measured failed gates: 176/200 AI-assessed global precision (88%),
+  Wilson 95% 82.7657%–91.8020%. Unverifiable counts incorrect; supplements remain
+  separate. Topic embedding micro F1 .46666667 versus phrase .23008850 on the
+  unchanged held-out set. No classifier tuning or post-audit graph mutation.
+  Source conflict evidence in `author.observed_orcids` was retained in raw/full
+  works but ignored by resolver singular-ORCID conflict handling. Document under
+  `post-audit-findings.md`; any correction requires a separately versioned graph
+  and new audit. AI judgments, unknown precise runtime IDs, source reuse and
+  failed independence/course-accuracy establishment remain explicit.

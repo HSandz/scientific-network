@@ -1,0 +1,119 @@
+{
+  "artifact_kind": "supplemental_source_provenance_only",
+  "reviewer_id": "A",
+  "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+  "recorded_at": "2026-11-09T12:29:49.330727+07:00",
+  "inventory_path": "reports/release-v3/completed/A-orcid-conflict-provenance-v1.jsonl",
+  "inventory_sha256": "0212d9317df48b16e37d6278520477cf87336c4d9daaf776cda5f5d7e3e65c44",
+  "orcid_conflict_rows": 25,
+  "distinct_conflicting_author_ids": 26,
+  "conflict_source_occurrences": 27,
+  "frozen_exports_unchanged": {
+    "reports/release-v3/completed/A-edges.csv": "91858638bc491b64461d0382c83e9282ae8fddb65851f4df35a0a95ae840c2b7",
+    "reports/release-v3/completed/A-edge-ledger.jsonl": "b9f8f42b8036c072a9512d46b895de4fdbf18caa503068e3863ceb471c8156b4",
+    "reports/release-v3/completed/A-edge-amendments.jsonl": "a71414b23c02d7e2408de4fbe54161865a792166c7f4d29942b91fb2e3513e87",
+    "reports/release-v3/completed/A-edge-completion-v2.json": "8f14b3cf4ce5af37bb86a33784c4a6fffecb453a49a0439a6c8ab04f685b47bd"
+  },
+  "input_claim_pack": {
+    "path": "reports/runs/WORK-2026-11-09-003/A-edge-evidence.jsonl",
+    "sha256": "e7e5bba4d3e89f1f0873abb1e78740ed6018aa7b4effad29fd88452a86ce1f36"
+  },
+  "additional_row36_conflicts": {
+    "edge_id": "edge:45cc91e92a1f21e42be1e3b8de460f47276322f7cf42ecb169d20f122105f32c",
+    "frozen_reason": "All five support candidates were examined. Ghidorah models social diffusion prediction rather than generative sampling; SS-GEN and DiffuseHigh each rely on the sole Central South author ID carrying conflicting ORCIDs. The remaining GPMO and SaSDim can provide only two valid organization-topic papers, below three.",
+    "conflict_sources": [
+      {
+        "paper_id": "paper:aaai:2025:32119",
+        "work_title": "SS-GEN: A Social Story Generation Framework with Large Language Models",
+        "source_url": "https://openalex.org/W4409346378",
+        "source_locator": "data/raw/openalex-release-v1/objects/b98b6cd24167f488ec69b97de385085e31f50830414ad6da2043bb576172c8d7#results[17].authorships[3].author",
+        "claimed_source_sha256": "b98b6cd24167f488ec69b97de385085e31f50830414ad6da2043bb576172c8d7",
+        "verified_source_sha256": "b98b6cd24167f488ec69b97de385085e31f50830414ad6da2043bb576172c8d7",
+        "author_id": "https://openalex.org/A5101447904",
+        "author_display_name": "Zhuang Chen",
+        "authorship_position_zero_based": 3,
+        "orcid": "https://orcid.org/0000-0002-7048-7833",
+        "observed_orcids": [
+          "https://orcid.org/0000-0002-7048-7833",
+          "https://orcid.org/0009-0006-7354-7308"
+        ],
+        "observed_orcid_sources": [
+          {
+            "orcid_url": "https://orcid.org/0000-0002-7048-7833",
+            "source_locator": "data/raw/openalex-release-v1/objects/b98b6cd24167f488ec69b97de385085e31f50830414ad6da2043bb576172c8d7#results[17].authorships[3].author.observed_orcids[0]"
+          },
+          {
+            "orcid_url": "https://orcid.org/0009-0006-7354-7308",
+            "source_locator": "data/raw/openalex-release-v1/objects/b98b6cd24167f488ec69b97de385085e31f50830414ad6da2043bb576172c8d7#results[17].authorships[3].author.observed_orcids[1]"
+          }
+        ]
+      },
+      {
+        "paper_id": "paper:aaai:2025:32456",
+        "work_title": "DiffuseHigh: Training-Free Progressive High-Resolution Image Synthesis Through Structure Guidance",
+        "source_url": "https://openalex.org/W4409368325",
+        "source_locator": "data/raw/openalex-release-v1/objects/d0d3e825b1695ae7099bfb9101d7bd7932f48c47fe7ec330556c2a6feee841f6#results[8].authorships[2].author",
+        "claimed_source_sha256": "d0d3e825b1695ae7099bfb9101d7bd7932f48c47fe7ec330556c2a6feee841f6",
+        "verified_source_sha256": "d0d3e825b1695ae7099bfb9101d7bd7932f48c47fe7ec330556c2a6feee841f6",
+        "author_id": "https://openalex.org/A5102925096",
+        "author_display_name": "Junyu Zhang",
+        "authorship_position_zero_based": 2,
+        "orcid": "https://orcid.org/0009-0002-9132-1848",
+        "observed_orcids": [
+          "https://orcid.org/0009-0002-9132-1848",
+          "https://orcid.org/0009-0001-0975-8200"
+        ],
+        "observed_orcid_sources": [
+          {
+            "orcid_url": "https://orcid.org/0009-0002-9132-1848",
+            "source_locator": "data/raw/openalex-release-v1/objects/d0d3e825b1695ae7099bfb9101d7bd7932f48c47fe7ec330556c2a6feee841f6#results[8].authorships[2].author.observed_orcids[0]"
+          },
+          {
+            "orcid_url": "https://orcid.org/0009-0001-0975-8200",
+            "source_locator": "data/raw/openalex-release-v1/objects/d0d3e825b1695ae7099bfb9101d7bd7932f48c47fe7ec330556c2a6feee841f6#results[8].authorships[2].author.observed_orcids[1]"
+          }
+        ]
+      }
+    ]
+  },
+  "row156_name_mismatch": {
+    "edge_id": "edge:e77e3a350f401f635620693a3a6072bcf6875c22724fc34a15bede9b33700f16",
+    "frozen_reason": "The official first author is Zhenjie Xu, but the sampled authorship and person endpoint are Zian Xu. These are different full given names, not an initials or ordering variant; the matching institution alone cannot establish this person mapping.",
+    "sources": [
+      {
+        "paper_id": "paper:aaai:2025:34748",
+        "work_title": "Mitigating Social Bias in Large Language Models: A Multi-Objective Approach Within a Multi-Agent Framework",
+        "source_url": "https://openalex.org/W4409362698",
+        "source_locator": "data/raw/openalex-release-v1/objects/51a3e6e4ce6ae570c8cbd922ee6e62e389e7d693ed9d780a2f8c70fdd58eb45b#results[16].authorships[0].author",
+        "claimed_source_sha256": "51a3e6e4ce6ae570c8cbd922ee6e62e389e7d693ed9d780a2f8c70fdd58eb45b",
+        "verified_source_sha256": "51a3e6e4ce6ae570c8cbd922ee6e62e389e7d693ed9d780a2f8c70fdd58eb45b",
+        "author_id": "https://openalex.org/A5069590333",
+        "author_display_name": "Zian Xu",
+        "authorship_position_zero_based": 0,
+        "orcid": "https://orcid.org/0000-0002-5214-1580",
+        "observed_orcids": [
+          "https://orcid.org/0000-0002-5214-1580"
+        ],
+        "observed_orcid_sources": [
+          {
+            "orcid_url": "https://orcid.org/0000-0002-5214-1580",
+            "source_locator": "data/raw/openalex-release-v1/objects/51a3e6e4ce6ae570c8cbd922ee6e62e389e7d693ed9d780a2f8c70fdd58eb45b#results[16].authorships[0].author.observed_orcids[0]"
+          }
+        ],
+        "official_byline_name": "Zhenjie Xu",
+        "official_url": "https://ojs.aaai.org/index.php/AAAI/article/view/34748",
+        "official_source": {
+          "source_url": "https://ojs.aaai.org/index.php/AAAI/issue/view/647",
+          "source_locator": "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/34748']",
+          "source_sha256": "9483dd3a8e897f8f96dd6935cf33a18a3e9166ded217ebffdc2bace1c9171673"
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "AI-assessed judgments; human validation not performed.",
+    "This supplemental extraction verifies field presence and exact cached bytes. It is not an author-profile or merge-history investigation.",
+    "The raw observed_orcids field carries multiple values while singular author.orcid and normalized packets retain only one.",
+    "No graph, classifier, config, sample, packet or frozen review was modified."
+  ]
+}

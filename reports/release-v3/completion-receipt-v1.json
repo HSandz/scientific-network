@@ -1,0 +1,117 @@
+{
+  "version": "completion-receipt-v1",
+  "completed_at": "2026-11-09T12:31:59.415119+07:00",
+  "evaluation_freeze_sha256": "05e5ddfbcd36fd5d862ad04f8f4e6399b6edce2aaf630b2d95ad816c3c4172e0",
+  "topic_completed_at": "2026-11-09T01:54:33.750922+07:00",
+  "edge_started_at": "2026-11-09T01:54:33.750922+07:00",
+  "reviewer_active_receipts": {
+    "A": "reports/release-v3/completed/A-edge-completion-v2.json",
+    "B": "reports/release-v3/completed/B-edge-completion-v2.json"
+  },
+  "initial_receipts_preserved": true,
+  "adjudication": {
+    "context_id": "/root",
+    "evaluator_run_id": "WORK-2026-11-09-004-ADJ-v1",
+    "actual_conflicts": 11,
+    "method": "manual source-backed per-conflict judgment, initial verdicts preserved"
+  },
+  "output_files": [
+    {
+      "path": "reports/release-v3/completed/A-edge-amendments.jsonl",
+      "sha256": "a71414b23c02d7e2408de4fbe54161865a792166c7f4d29942b91fb2e3513e87"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-completion-v2.json",
+      "sha256": "8f14b3cf4ce5af37bb86a33784c4a6fffecb453a49a0439a6c8ab04f685b47bd"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-completion.json",
+      "sha256": "24a871fb83e5aa6c390a26a54528a4fada543ed865b44884a2b40e5d391fbff4"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edge-ledger.jsonl",
+      "sha256": "b9f8f42b8036c072a9512d46b895de4fdbf18caa503068e3863ceb471c8156b4"
+    },
+    {
+      "path": "reports/release-v3/completed/A-edges.csv",
+      "sha256": "91858638bc491b64461d0382c83e9282ae8fddb65851f4df35a0a95ae840c2b7"
+    },
+    {
+      "path": "reports/release-v3/completed/A-orcid-conflict-provenance-receipt-v1.json",
+      "sha256": "7bcb9fedd30e8a31e6b02e1b5658e186ac2495c0e3f99d913205a157b5ce9f9d"
+    },
+    {
+      "path": "reports/release-v3/completed/A-orcid-conflict-provenance-v1.jsonl",
+      "sha256": "0212d9317df48b16e37d6278520477cf87336c4d9daaf776cda5f5d7e3e65c44"
+    },
+    {
+      "path": "reports/release-v3/completed/A-topic-completion.json",
+      "sha256": "bb89535f5af059fd509db5cc958327c8c32d6acd5b5ca7c5d7bd678ee06e4fd5"
+    },
+    {
+      "path": "reports/release-v3/completed/A-topic-ledger.jsonl",
+      "sha256": "8e4a5874e3a9d1e3b14af50394da757c63fc08aaa525f4766049f426d78b2f78"
+    },
+    {
+      "path": "reports/release-v3/completed/A-topics.csv",
+      "sha256": "9a36f259c8480db993255e45b82437318eed0b3ae577b0981a98f544d66e9e27"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-check-corrections-v1.jsonl",
+      "sha256": "94f5272fe9427fcfeb65f52eb2c589ab315352b1251167f0dadf115a933954d4"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-completion-v2.json",
+      "sha256": "9bc471a481e97651d66a606fd3a2f4d6e4763ec8d4055063428802e17283cbac"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-completion.json",
+      "sha256": "8169d2b54aaa78aa0a09ccf5e1b9ef034799ac36a81cb2fbef1522ea257ee84f"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edge-ledger.jsonl",
+      "sha256": "20bf52c5417ca0d8f39343d3306a7f0412eb204e541f12edc6a1c1776ddaca11"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edges.csv",
+      "sha256": "b5b3dbaf9e57962d8094521d21d6fba0c91f7c2bc81afa52f3470f2173218e5a"
+    },
+    {
+      "path": "reports/release-v3/completed/B-topic-completion.json",
+      "sha256": "0e65c48e1c31cffd3ca8f7ca885dad5c1b8a697fb46efd5f789ede5650616907"
+    },
+    {
+      "path": "reports/release-v3/completed/B-topic-ledger.jsonl",
+      "sha256": "d5b105dd36b80ada01aa2368a187389f9496b328dbb4020475a588d41462cb61"
+    },
+    {
+      "path": "reports/release-v3/completed/B-topics.csv",
+      "sha256": "c8fac2827ef2d6fd28b4858915b614066237410443fb5f55794883184ee5e224"
+    },
+    {
+      "path": "reports/release-v3/completed/adjudication-ledger.jsonl",
+      "sha256": "279e208eda6d9961c2dbec4fdcb04ef7f7ba21f7a824defc212e4f5b5a83e625"
+    },
+    {
+      "path": "reports/release-v3/completed/adjudications.csv",
+      "sha256": "96ffd6124947791482f2af50f59e79cf759ccaacf02398d7e71e7e0a5d109653"
+    },
+    {
+      "path": "reports/release-v3/completed/edge-ledger.jsonl",
+      "sha256": "99f6ac0613d309b1bb4e976d12d6cea47e17915fc8dfb36fa5ecc5205a7a43ca"
+    },
+    {
+      "path": "reports/release-v3/completed/topic-ledger.jsonl",
+      "sha256": "9fe9a49255e3102512e0b8308b112bab15ee02b5b24e2b2ee514443fc6bc16e5"
+    },
+    {
+      "path": "reports/release-v3/topic-completion-freeze-v1.json",
+      "sha256": "5b6de2d687e133a28b76716b5aa0862b7c1e9abd18b144f516e34e37a5f128a6"
+    }
+  ],
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "graph_mutation": "none",
+  "partial_scoring": false
+}

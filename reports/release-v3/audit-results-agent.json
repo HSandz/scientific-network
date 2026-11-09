@@ -1,0 +1,475 @@
+{
+  "status": "fail",
+  "method_version": "edge-audit-v1",
+  "graph_version": "release-9d4a6fb20f63",
+  "is_synthetic": false,
+  "release_status": "not_certified_by_this_command",
+  "reviewer_identity_status": "input_declared_not_independently_verified",
+  "input_sha256": "c23ef82c97fcb539b4b1c279e8ff42378bdb102e80fe851acf1a42e816a727b8",
+  "config_sha256": "059c73d56a398290339a2ccf942ab2c0bf1d63a2cd923d5feaba45540ac6b0c2",
+  "review_design": "split_with_overlap",
+  "readiness_sha256": null,
+  "size_gates": {
+    "status": "passed",
+    "gates": {
+      "min_domain_nodes": {
+        "required": 2000,
+        "actual": 52415,
+        "status": "passed"
+      },
+      "min_resolved_core_researchers": {
+        "required": 2000,
+        "actual": 36680,
+        "status": "passed"
+      },
+      "min_unique_factual_edges": {
+        "required": 5000,
+        "actual": 124619,
+        "status": "passed"
+      },
+      "required_relation_types": {
+        "required": 10,
+        "actual": 10,
+        "status": "passed"
+      }
+    }
+  },
+  "review_packet_sha256": null,
+  "review_packets": [
+    {
+      "path": "reports/release-v3/completed/A-edges.csv",
+      "sha256": "91858638bc491b64461d0382c83e9282ae8fddb65851f4df35a0a95ae840c2b7"
+    },
+    {
+      "path": "reports/release-v3/completed/B-edges.csv",
+      "sha256": "b5b3dbaf9e57962d8094521d21d6fba0c91f7c2bc81afa52f3470f2173218e5a"
+    }
+  ],
+  "partial_scoring_opt_in": false,
+  "audit_completion": "complete",
+  "completion": {
+    "planned_assignments": 350,
+    "completed_assignments": 350,
+    "missing_assignment_count": 0,
+    "missing_assignments": [],
+    "overlap_planned": 50,
+    "overlap_completed": 50,
+    "global_reviewed_n": 200,
+    "global_planned_n": 200,
+    "relation_coverage": {
+      "AFFILIATED_WITH": {
+        "global_planned": 30,
+        "global_reviewed": 30,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "AUTHORED": {
+        "global_planned": 44,
+        "global_reviewed": 44,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "CITES": {
+        "global_planned": 11,
+        "global_reviewed": 11,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "COAUTHORED_WITH": {
+        "global_planned": 74,
+        "global_reviewed": 74,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "COLLABORATED_WITH": {
+        "global_planned": 9,
+        "global_reviewed": 9,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "CONTRIBUTES_TO_TOPIC": {
+        "global_planned": 1,
+        "global_reviewed": 1,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "HAS_TOPIC": {
+        "global_planned": 14,
+        "global_reviewed": 14,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "PUBLISHED_IN": {
+        "global_planned": 11,
+        "global_reviewed": 11,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "RESEARCHES_TOPIC": {
+        "global_planned": 6,
+        "global_reviewed": 6,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      },
+      "SUBTOPIC_OF": {
+        "global_planned": 0,
+        "global_reviewed": 0,
+        "supplement_planned": 10,
+        "supplement_reviewed": 10
+      }
+    }
+  },
+  "adjudication_packet_sha256": "96ffd6124947791482f2af50f59e79cf759ccaacf02398d7e71e7e0a5d109653",
+  "frame_sha256": "7d6c18a8154a6a4e6f2d82fe817cbda36c89527c2c6817ca2b90be671a8bfa5f",
+  "audit_id": "edge-audit:eaeb8584df5ef42c3deb7e33",
+  "sampling_method": "seeded_sha256_rank_without_replacement",
+  "global": {
+    "planned_total": 200,
+    "missing_edges": 0,
+    "correct": 176,
+    "incorrect": 23,
+    "unverifiable": 1,
+    "total": 200,
+    "precision": 0.88,
+    "is_census": false,
+    "wilson_95": {
+      "correct": 176,
+      "total": 200,
+      "precision": 0.88,
+      "confidence": 0.95,
+      "wilson_lower": 0.8276574790170326,
+      "wilson_upper": 0.9180200729362449
+    }
+  },
+  "per_type": {
+    "AFFILIATED_WITH": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 9,
+      "incorrect": 1,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.9,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 9,
+        "total": 10,
+        "precision": 0.9,
+        "confidence": 0.95,
+        "wilson_lower": 0.5958499732047616,
+        "wilson_upper": 0.982123786904927
+      }
+    },
+    "AUTHORED": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 7,
+      "incorrect": 3,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.7,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 7,
+        "total": 10,
+        "precision": 0.7,
+        "confidence": 0.95,
+        "wilson_lower": 0.39677814746114537,
+        "wilson_upper": 0.8922087325936989
+      }
+    },
+    "CITES": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 10,
+      "incorrect": 0,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 1.0,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 10,
+        "total": 10,
+        "precision": 1.0,
+        "confidence": 0.95,
+        "wilson_lower": 0.7224672001371109,
+        "wilson_upper": 1.0
+      }
+    },
+    "COAUTHORED_WITH": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 6,
+      "incorrect": 4,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.6,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 6,
+        "total": 10,
+        "precision": 0.6,
+        "confidence": 0.95,
+        "wilson_lower": 0.3126737697336583,
+        "wilson_upper": 0.8318196702937637
+      }
+    },
+    "COLLABORATED_WITH": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 9,
+      "incorrect": 1,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.9,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 9,
+        "total": 10,
+        "precision": 0.9,
+        "confidence": 0.95,
+        "wilson_lower": 0.5958499732047616,
+        "wilson_upper": 0.982123786904927
+      }
+    },
+    "CONTRIBUTES_TO_TOPIC": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 6,
+      "incorrect": 4,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.6,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 6,
+        "total": 10,
+        "precision": 0.6,
+        "confidence": 0.95,
+        "wilson_lower": 0.3126737697336583,
+        "wilson_upper": 0.8318196702937637
+      }
+    },
+    "HAS_TOPIC": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 9,
+      "incorrect": 1,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 0.9,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 9,
+        "total": 10,
+        "precision": 0.9,
+        "confidence": 0.95,
+        "wilson_lower": 0.5958499732047616,
+        "wilson_upper": 0.982123786904927
+      }
+    },
+    "PUBLISHED_IN": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 10,
+      "incorrect": 0,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 1.0,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 10,
+        "total": 10,
+        "precision": 1.0,
+        "confidence": 0.95,
+        "wilson_lower": 0.7224672001371109,
+        "wilson_upper": 1.0
+      }
+    },
+    "RESEARCHES_TOPIC": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 6,
+      "incorrect": 2,
+      "unverifiable": 2,
+      "total": 10,
+      "precision": 0.6,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 6,
+        "total": 10,
+        "precision": 0.6,
+        "confidence": 0.95,
+        "wilson_lower": 0.3126737697336583,
+        "wilson_upper": 0.8318196702937637
+      }
+    },
+    "SUBTOPIC_OF": {
+      "planned_total": 10,
+      "missing_edges": 0,
+      "correct": 10,
+      "incorrect": 0,
+      "unverifiable": 0,
+      "total": 10,
+      "precision": 1.0,
+      "is_census": false,
+      "wilson_95": {
+        "correct": 10,
+        "total": 10,
+        "precision": 1.0,
+        "confidence": 0.95,
+        "wilson_lower": 0.7224672001371109,
+        "wilson_upper": 1.0
+      }
+    }
+  },
+  "macro_per_type_precision": 0.82,
+  "numeric_gate_status": "fail",
+  "global_point_precision_gate": false,
+  "global_wilson_lower_gate": false,
+  "course_gate": {
+    "threshold": 0.9,
+    "point_estimate": 0.88,
+    "status": "fail",
+    "scope": "ai_assessed_only"
+  },
+  "agreement": {
+    "edges_reviewed_by_both": 50,
+    "agreed": 39,
+    "percent": 0.78,
+    "cohens_kappa": 0.18518518518518534,
+    "availability": "available",
+    "kappa_note": null
+  },
+  "error_categories": {
+    "global_sample": {
+      "unverifiable": 1,
+      "wrong_identity": 19,
+      "wrong_topic": 4
+    },
+    "all_sampled_edges": {
+      "unverifiable": 3,
+      "wrong_affiliation": 1,
+      "wrong_identity": 27,
+      "wrong_topic": 11
+    }
+  },
+  "sampled_global_edge_ids": 200,
+  "sampled_type_edge_ids": {
+    "AUTHORED": 10,
+    "AFFILIATED_WITH": 10,
+    "PUBLISHED_IN": 10,
+    "CITES": 10,
+    "HAS_TOPIC": 10,
+    "SUBTOPIC_OF": 10,
+    "COAUTHORED_WITH": 10,
+    "COLLABORATED_WITH": 10,
+    "RESEARCHES_TOPIC": 10,
+    "CONTRIBUTES_TO_TOPIC": 10
+  },
+  "reviewers": [
+    "A",
+    "B"
+  ],
+  "review_rows_per_reviewer": {
+    "A": 175,
+    "B": 175
+  },
+  "limitations": [
+    "The command checks packet structure and reports supplied judgments; it cannot verify reviewer identity or independence.",
+    "Unverifiable edges count as incorrect. Per-type supplements are separate from the uniform global estimate.",
+    "Under split_with_overlap only the overlap edges were reviewed by both reviewers; agreement is measured on those, and every other sampled edge was judged by one reviewer.",
+    "Synthetic fixtures are protocol tests only and cannot support scientific or release claims.",
+    "AI judgments are source-backed declarations; file/ledger validation does not authenticate their correctness.",
+    "Human validation was not performed and evaluator independence is not established, including between fresh contexts.",
+    "Wilson intervals exclude evaluator error and shared-model/source bias; verified course accuracy is not established."
+  ],
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "verified_course_accuracy": "not_established",
+  "numeric_gate_scope": "ai_assessed_only",
+  "metric_name": "AI-assessed edge precision",
+  "agent_provenance": {
+    "evaluation_freeze": {
+      "path": "reports/release-v3/evaluation-freeze-v1.json",
+      "sha256": "05e5ddfbcd36fd5d862ad04f8f4e6399b6edce2aaf630b2d95ad816c3c4172e0"
+    },
+    "completion_receipt": {
+      "path": "reports/release-v3/completion-receipt-v1.json",
+      "sha256": "07ec4048f83eeeae0cdb53f040df1587eb795a0b198e3f6f888a00ba3bfebb0e"
+    },
+    "evaluator_runs": [
+      {
+        "reviewer_id": "A",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-A-v1",
+        "context_id": "/root/reviewer_a",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "fresh_no_inherited_conversation",
+        "settings": "platform default; exact sampling settings unknown"
+      },
+      {
+        "reviewer_id": "B",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-B-v1",
+        "context_id": "/root/reviewer_b",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "fresh_no_inherited_conversation",
+        "settings": "platform default; exact sampling settings unknown"
+      },
+      {
+        "reviewer_id": "ADJ",
+        "reviewer_kind": "ai_agent",
+        "evaluator_run_id": "WORK-2026-11-09-004-ADJ-v1",
+        "context_id": "/root",
+        "provider": "unknown",
+        "model": "unknown",
+        "model_version": "unknown",
+        "started_at": "2026-11-09T01:47:30.012531+07:00",
+        "context_isolation": "coordinator_adjudication_after_export_freeze",
+        "settings": "platform default; exact sampling settings unknown"
+      }
+    ],
+    "ledgers": [
+      {
+        "path": "reports/release-v3/completed/topic-ledger.jsonl",
+        "sha256": "9fe9a49255e3102512e0b8308b112bab15ee02b5b24e2b2ee514443fc6bc16e5"
+      },
+      {
+        "path": "reports/release-v3/completed/edge-ledger.jsonl",
+        "sha256": "99f6ac0613d309b1bb4e976d12d6cea47e17915fc8dfb36fa5ecc5205a7a43ca"
+      },
+      {
+        "path": "reports/release-v3/completed/adjudication-ledger.jsonl",
+        "sha256": "279e208eda6d9961c2dbec4fdcb04ef7f7ba21f7a824defc212e4f5b5a83e625"
+      }
+    ]
+  },
+  "evidence_depth_counts": {
+    "primary_source": 123,
+    "secondary_source_only": 227
+  },
+  "source_independence_counts": {
+    "same_source_as_construction": 349,
+    "independent_source": 1
+  },
+  "ai_assessed_numeric_checks": {
+    "project_status": "fail",
+    "course_point_check": {
+      "threshold": 0.9,
+      "point_estimate": 0.88,
+      "status": "fail",
+      "scope": "ai_assessed_only"
+    }
+  },
+  "adjudication_evidence_depth_counts": {
+    "secondary_source_only": 11
+  }
+}
