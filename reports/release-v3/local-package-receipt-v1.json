@@ -1,0 +1,165 @@
+{
+  "version": "local-package-qa-v1",
+  "created_at": "2026-11-09T12:42:57.887782+07:00",
+  "work_id": "WORK-2026-11-09-006",
+  "status": "local_draft_verified",
+  "source_commit": "98bc295d75e1fefd6bfcb04adef03a7e0e81cafe",
+  "source_bytes": "permitted_tracked_working_tree_bytes; exact member hashes in manifest",
+  "receipt_recorded_after_packaging": true,
+  "receipt_and_WORK_006_not_in_source_snapshot": true,
+  "artifacts": [
+    {
+      "path": "reports/runs/WORK-2026-11-09-006/package-v1/report.pdf",
+      "sha256": "077e0dff09b14b3412cd2f88818b2b3ef7fd1bee1dcedbc7d3c5f95b2e7db6f1",
+      "size_bytes": 1062415
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-006/package-v1/report.html",
+      "sha256": "2858c694bf9824a28cb1a1485a933ee3b311b4ac7993e543d18a617d34b1d887",
+      "size_bytes": 3717915
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-006/package-v1/scientific-network-submission.zip",
+      "sha256": "e67a76b3ab60240d1f7122bb73fb717cd69d192cd30b53e313253316835ce80c",
+      "size_bytes": 63305524
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-006/package-v1/submission-manifest.json",
+      "sha256": "e2f079b234a039b09fe285434ea3e3c7dbd38e6e62a640ab23a9c08a09d94898",
+      "size_bytes": 265073
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-006/package-v1/package-receipt.json",
+      "sha256": "27b88652978d8a3beaab21c8873c3e446d813c1b0eddb3276836de5a88fd065e",
+      "size_bytes": 853
+    }
+  ],
+  "checks": {
+    "zip_crc": "passed",
+    "all_member_hashes": "passed",
+    "member_count": 1320,
+    "configured_secret_values_checked": 2,
+    "configured_secret_matches": 0,
+    "privacy_exclusions": "passed; no raw/interim/processed data, models, database volumes, credentials, symlinks or prior archives/PDFs; only explicit report PDF",
+    "frozen_and_completed_file_hashes": 89,
+    "all_frozen_and_completed_hashes_match": true,
+    "report_numeric_tables_match_scored_json": true,
+    "html_and_pdf_extracted_text_equal_visually_checked_preview": true,
+    "page_count": 19,
+    "image_count": 6,
+    "section_headings_verified": 13,
+    "missing_report_font_glyphs": [],
+    "replacement_glyphs": 0,
+    "pdf_local_file_annotations": "none; renderer mutool check passed",
+    "visual_review": "preview 16-page contact sheet; final quality tables/pages 15 and 16 inspected at 1600px; no clipping/overlap; all six preview figures visible",
+    "environment_sync": "uv sync --locked --group dev --extra analysis --extra report; exit 0",
+    "tests": "Final WORK-006 uv run pytest: 419 passed, 1 existing empty-parameterization skip, 21.73s; exit 0",
+    "offline_cli": "Final WORK-006 uv run research-network schema: exit 0; renderer --help passed in WORK-005",
+    "remote_refs": "read-only git ls-remote: main 05ac5d83922c54bd006034e5c7296de00e811f72; no tags",
+    "external_urls": "eight report DOI links passed; GitHub HTTP504 not_verified; see report-external-link-checks-v2.json"
+  },
+  "working_tree_vs_commit_blob_differences": [
+    {
+      "path": "docs/five-year-edition-readiness.csv",
+      "working_tree_sha256": "178d76355544bd9059feb0d05b7e5dbe59c18f718486d3885b2e22dfce435234",
+      "commit_blob_sha256": "b3a199c5f7a9f1e5077a4426fefc34ccd1415231bd35c4d273c1b1849ea05a34",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/community-topic-profiles.csv",
+      "working_tree_sha256": "813313e16d7685d4b4cd452e3917a62b68511cac1a1401ea1542d6f16b23edb3",
+      "commit_blob_sha256": "f5d01515099054e42053531e034104e2b298b58430ae7cd1bbaab0c28ea9c396",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/component-sizes.csv",
+      "working_tree_sha256": "010b318938838f907f21fe167a6664b3a71588aeaca0c189380c34831d8c94b8",
+      "commit_blob_sha256": "2f69346548ee2d55df40972b81163abe120791916c50d5f8a7884f2e9b1e5363",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/researcher-degree-ccdf.csv",
+      "working_tree_sha256": "c720859127b94426dd11e1331d5390efed9627b7a49cd40340fce5cc57547ce9",
+      "commit_blob_sha256": "5baa8cbab2ef88628af7dc21bc6e244d3899747d98129ee357ce049a98c2baec",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/sector-mixing.csv",
+      "working_tree_sha256": "dee839540fe1077fbac42f09b1f34a85a0d88159a5a0ed6c7f4264304a2e5ce8",
+      "commit_blob_sha256": "1c7bd8db78eb1122f4379cb40a05897305c450fe46d0cee21c6adfd098c6138b",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/top-cited-papers.csv",
+      "working_tree_sha256": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9",
+      "commit_blob_sha256": "793884298f29fc5fe9a663eeaa781559951f765544255dde2e979d93b5409aaa",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/topic-trends.csv",
+      "working_tree_sha256": "79192e55c385f2fc986583f8e60a1f15c7dcd2aaf3836abeebfed3a8ccd573bc",
+      "commit_blob_sha256": "10585edd00c1c5394a9b41c1524c8183797ffb788a44f27c8df5ef76196a0c77",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v1.csv",
+      "working_tree_sha256": "333e784cc886773fef0869afc2212080458323cecae8e270771da895ae0bbd5d",
+      "commit_blob_sha256": "4a3422f726086ca83d6ab372f009fca5783992d59ee745748050e65f45650097",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v2.csv",
+      "working_tree_sha256": "bead3eb88548f88856f9192cf0a65efdf267d5af0870dc21d93adf9bde5d861c",
+      "commit_blob_sha256": "f5603edf7f2cbd4874aea4a7668e6518fdb05a88147fe650c97f07f5ce8aaa89",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v5.csv",
+      "working_tree_sha256": "8c3be677c4c6851ca481ca88198dea87cabe67c031db6f0d40095d12882e7d02",
+      "commit_blob_sha256": "d2282c9126baa9079fe1d5bff3006071db0062f244d0772e84c34d780b41a863",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v6.csv",
+      "working_tree_sha256": "684ad08a3f977818681835e9e4be6bb5d22cbb74b411f25d96015d9bf13caafc",
+      "commit_blob_sha256": "bd242c3b44a1de8e143edd100593285990ed1d8578cd24950444db167fd00127",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v7.csv",
+      "working_tree_sha256": "95795fa9ca9c2ec03d50f37b995efbc4ab9702a2828ed61e4da9675ef9bdfd36",
+      "commit_blob_sha256": "9664d90ef030b9c412b41fd8c09bdc2a7239bbde9f1a5131020c090e94443159",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v8.csv",
+      "working_tree_sha256": "92d8a7e855edd9dfa1341abb1611d49c3915efb972847554c032993779926bf4",
+      "commit_blob_sha256": "a07e763fcc510fe45689e4f1abc46ffa236243e5992b8f7fd4fc0eef57716138",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v9.csv",
+      "working_tree_sha256": "9f225bc99cae24a73f574241c35d0269879f8c59e38919d0e3b058349c106116",
+      "commit_blob_sha256": "f8187782fa183b48a8665560dc6f61694cadff730878214397b95b082c2b2c99",
+      "only_crlf_normalization": true
+    }
+  ],
+  "historical_csv_note": "Historical CRLF working-tree bytes are preserved; do not rewrite frozen CSVs to match LF Git blobs. Member hashes, not source commit alone, identify the package.",
+  "quality": {
+    "evaluation_kind": "ai_agent_review",
+    "human_validation": "not_performed",
+    "reviewer_independence": "not_established",
+    "verified_course_accuracy": "not_established",
+    "edge_precision": 0.88,
+    "numeric_gates": "fail",
+    "embedding_micro_f1": 0.46666667,
+    "phrase_micro_f1": 0.2300885
+  },
+  "pending": [
+    "real student names/IDs/actual human contributions",
+    "course AI-use rules and lecturer access",
+    "separately authorized push/tag/Site publication/invitation/submission"
+  ],
+  "external_mutations_performed": false,
+  "snapshot_note": "Packaged status/work logs precede final package verification; this post-package receipt and WORK-006 are deliberately outside the source snapshot. The embedded member manifest describes actual bundle bytes."
+}

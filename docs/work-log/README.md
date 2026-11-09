@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+| [WORK-2026-11-09-006](2026-11-09-006-local-package.md) | Final local PDF and submission package | completed | 19 A4 pages/six figures; 1,320 ZIP members verified, 89 frozen/completed hashes pass, zero configured-secret matches; 419 tests/1 skip |
+
 | [WORK-2026-11-09-005](2026-11-09-005-report-completion.md) | Measured report and renderer | completed | Measured report/README, reproducibility and renderer; 19-page preview/six figures inspected; final snapshot package follows |
 
 | [WORK-2026-11-09-004](2026-11-09-004-agent-source-review.md) | Source-backed agent evaluation and scoring | completed | Full AI review/scoring: 88% edge precision, failed gates; topic F1 .4667 embedding/.2301 phrase; 419 tests passed/1 skip |
