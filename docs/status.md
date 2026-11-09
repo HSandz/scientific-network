@@ -1,7 +1,7 @@
 # Current project status
 
-Updated: **2026-11-09 13:31 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-007](work-log/2026-11-09-007-agent-release-review.md).
+Updated: **2026-11-09 14:26 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-008](work-log/2026-11-09-008-remediation-plan.md).
 
 ## State
 
@@ -34,10 +34,11 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-007](
 - [x] P8 Measured final report and README
 - [x] P9 Local PDF and submission packaging (external delivery pending)
 - [x] Review completed evaluation/report/package (WORK-007; findings open)
+- [x] Plan review remediation (planning only; WORK-008)
 
 ## Next local work
 
-Require topic-ledger `labels` in the scorer, add a missing-field regression and confirm unchanged real results. This review preserved code and frozen artifacts. Known graph quality failures need a separately versioned correction/new audit; no post-audit tuning or silent replacement.
+Follow [the remediation plan](remediation-plan.md): first require topic-ledger `labels`, add regressions and confirm unchanged real scores. The proposed next track is a separately versioned ORCID correction, affected analysis, prospective agent audit and replacement package. Record a dated D040 amendment when that correction track is adopted; the plan itself changes no frozen artifact or scientific rule. No code fix or correction has been executed.
 
 ## Remaining facts and external delivery
 
