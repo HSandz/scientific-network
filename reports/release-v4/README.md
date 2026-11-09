@@ -97,3 +97,23 @@ receipt will be `local-package-receipt-v2.json` after the committed source build
 that later QA receipt is intentionally outside its own source snapshot.
 No push, tag, Site publication, invitation or submission is performed. Real student
 names/IDs/contributions, lecturer access and course AI-use rules remain pending.
+
+## Visible network maps (presentation update)
+
+The final report now includes three bounded maps alongside its six statistical
+charts: [researchers](../final-report/network-views-v4-v1/researchers-network.png),
+[organizations](../final-report/network-views-v4-v1/organizations-network.png), and
+[citations](../final-report/network-views-v4-v1/citations-network.png).
+[Selection, public evidence links and output hashes](../final-report/network-views-v4-v1/receipt.json)
+keep these illustrations separate from full-projection results. Reproduce into an
+unused output directory:
+
+```bash
+uv run python -m scientific_network.reporting.network_views \
+  --graph data/processed/release-graph-v4/graph.json \
+  --analysis reports/release-v4/analysis.json \
+  --freeze reports/release-v4/content-freeze-v4.json \
+  --output-dir reports/runs/network-views-reproduction
+```
+
+This presentation change does not rebuild the graph, analysis or frozen audit.

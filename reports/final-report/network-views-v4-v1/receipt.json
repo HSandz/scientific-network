@@ -1,0 +1,51 @@
+{
+  "method_version": "release-network-views-v1",
+  "graph_version": "release-d3c788c3114a",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "files": [
+    {
+      "path": "reports/final-report/network-views-v4-v1/captions.md",
+      "sha256": "494c944811956a1369ca3c51e582bfc1c54ab72fc4c967cc4c899baa80c5f61a"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/citations-edges.csv",
+      "sha256": "4a1b634ae46845602522a87a97afc3304916e3026cb1f7e868de983b025da5d4"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/citations-network.png",
+      "sha256": "03dde4572c5dcb21b380c0b3bd0389f0c9af7ffbb116472c6fede02f7d906247"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/citations-nodes.csv",
+      "sha256": "a4a5b886466c0a95890fc185d30925d6c509c51f2f5d6233bdff4d17a2dbb13a"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/network-views.json",
+      "sha256": "48f34122c328de69e161eacf0127be8c539964b6017e7aca86cd037ef9470867"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/organizations-edges.csv",
+      "sha256": "d9dd92e5cdf61207bc43775dd3ee66d7b376bb404f9bba30c19202c78dbd4e7d"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/organizations-network.png",
+      "sha256": "88a3b3335c4ffc253a34cd601a1103d6cbc96156b8235bf2cebc98cc0909914a"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/organizations-nodes.csv",
+      "sha256": "e6253847c391da960221efad5e247c27053cd1fc62696cc693e6f8cc23f8f0bb"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/researchers-edges.csv",
+      "sha256": "f77c3de0a8bc56692c491d35e41d7e1435da2a7f0b5f6fc68b010654c8fda517"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/researchers-network.png",
+      "sha256": "de1246cc0511635439ff85385c95caebee05887aff44a2e8b91a945b52191042"
+    },
+    {
+      "path": "reports/final-report/network-views-v4-v1/researchers-nodes.csv",
+      "sha256": "58bdb29af7a184ab7bf61e3d18cec13c044cf2231d5bc001b03d69e49ed5d10b"
+    }
+  ]
+}

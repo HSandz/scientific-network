@@ -912,3 +912,21 @@ phase 1; record any amendment here with its date.
 ### D040 amendment — identity remediation and one prospective edge audit (2026-11-09)
 
 The user explicitly adopted all five remediation steps. [The dated amendment](correction-amendment-2026-11-09.md) authorizes a separately versioned global observed-ORCID correction, corrected Neo4j/analysis, one edge-only prospective audit (seed 20261109 frozen before draw) and local packaging. Preserve old graphs, all failed outcomes, classifiers and references. No external delivery is authorized.
+
+### D040 amendment — report graphs and existing Site publication (2026-11-09)
+
+The user requests a current review, visible report graphs and an updated existing
+public Site ([WORK-015](work-log/2026-11-09-015-release-review-graphs-site.md)).
+This authorizes one completed Site update, superseding the earlier no-publication
+instruction for this Site only; GitHub push/tag, invitation and course submission
+remain outside scope. Preserve the Site project ID, public audience, URL and full
+Plan. Add the current D040 amendment above the historical design.
+
+`release-network-views-v1` selects at most100researchers/60organizations by
+full-projection fractional strength, and80papers by within-corpus citation
+in-degree, excluding isolates and breaking ties by ID. Keep all accepted induced
+edges; use deterministic spring layout seed42. Export only public identifiers,
+names and evidence pointers. These bounded illustrations are not representative
+samples; full counts and score computations remain the original bound analysis.
+Do not mutate/recompute graph content, classifier, judgments or audit samples for
+this presentation update. Preserve old packages; render new local PDF/HTML/ZIP.

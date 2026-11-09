@@ -333,6 +333,45 @@ in section 9. Graph
 Counts include only citing papers inside the release corpus and are not adjusted
 for citation exposure time. Graph `release-d3c788c3114a`.*
 
+### Network maps of the corrected release
+
+These three maps add node-and-edge views to the six statistical charts above.
+They use the immutable corrected graph `release-d3c788c3114a` and its existing
+bound analysis. Selection is deterministic: the highest full-projection fractional
+collaboration strengths (researchers/organizations), or within-corpus citation
+in-degrees (papers), with ID tie breaks. Every accepted edge induced by the selected
+nodes is retained. These are deliberately bounded illustrations, not probability
+samples or complete graphs; centrality and community claims still use the full
+projections above. Positions have no geographic or quantitative meaning.
+
+![Researcher coauthorship network, selected 100 researchers and 90 induced edges](network-views-v4-v1/researchers-network.png)
+
+Researcher collaboration: 100 selected researchers and 90 induced coauthorship
+edges from the full 32,189-node/80,482-edge projection. Node size uses full-projection
+fractional strength. Colors use the stored Louvain result (seed 17, resolution 0.8);
+the palette repeats. Layout seed 42. Numeric callouts identify eight highest scores.
+
+![Organization collaboration network, selected 60 organizations and 1119 induced edges](network-views-v4-v1/organizations-network.png)
+
+Organization collaboration: 60 selected organizations and 1,119 induced edges from
+the full 2,047-node/13,031-edge projection. Colors indicate sector. Edges require
+accepted distinct-author paper support; a sole dual affiliation cannot establish
+collaboration. Fractional strength determines node size, not raw support count.
+
+![Directed within-corpus citation network, selected 80 papers and 22 induced edges](network-views-v4-v1/citations-network.png)
+
+Citations: 80 selected papers and 22 induced edges from the full
+13,617-node/7,308-edge projection. Arrows point from citing to cited paper;
+colors indicate edition year and node size uses full-projection in-degree.
+Sparse connectivity here reflects selection by incoming citations, not total
+citation coverage. Counts exclude out-of-corpus cited works.
+
+[Reproducible view payload, public evidence links and node/edge CSVs](network-views-v4-v1/)
+accompany the maps, with input/output hashes and the selection method. Each derived
+edge shows at most three supporting-paper links; those previews do not verify all
+aggregate supports. The public Site provides native interactive versions with
+projection controls, filters and evidence inspection.
+
 ## 8. Analysis and business findings
 
 The corrected largest component covers 64.5% of resolved researchers, alongside
@@ -668,7 +707,7 @@ The release graph meets the course's node, factual-edge and ten-relation size
 requirements, and it has passed structural validation, Neo4j inventory/integrity
 checks and idempotent replay. Phase 6 now provides separate collaboration,
 citation and topic projections, annual counts, partner/country mixing, topic
-profiles, cited-paper rankings, sensitivity results, six figures and evidence
+profiles, cited-paper rankings, sensitivity results, six statistical figures, three network maps and evidence
 candidates. These are reproducible descriptions of the frozen artifact.
 
 Several quality questions remain open. Eleven roster papers were not matched to

@@ -1,0 +1,81 @@
+id,name,label,group,score,year,sector,venue,url,x,y
+paper:aaai:2021:16127,Stock Selection via Spatiotemporal Hypergraph Attention Network: A Learning to Rank Approach,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16127,-0.58439091,-0.78185303
+paper:aaai:2021:16188,Ref-NMS: Breaking Proposal Bottlenecks in Two-Stage Referring Expression Grounding,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16188,0.14676659,0.08276502
+paper:aaai:2021:16207,Voxel R-CNN: Towards High Performance Voxel-based 3D Object Detection,Paper,2021,14.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16207,-0.81173821,0.56320513
+paper:aaai:2021:16258,Improving Image Captioning by Leveraging Intra- and Inter-layer Global Representation in Transformer Network,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16258,-0.96669456,-0.14839084
+paper:aaai:2021:16285,Proposal-Free Video Grounding with Contextual Pyramid Network,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16285,-0.81578689,-0.53186377
+paper:aaai:2021:16328,Dual-level Collaborative Transformer for Image Captioning,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16328,0.9214562,0.32105499
+paper:aaai:2021:16330,SMIL: Multimodal Learning with Severely Missing Modality,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16330,-0.91431627,0.26126182
+paper:aaai:2021:16406,Boundary Proposal Network for Two-stage Natural Language Video Localization,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16406,0.1466059,0.09448383
+paper:aaai:2021:16419,Sparse Single Sweep LiDAR Point Cloud Segmentation via Learning Contextual Shape Priors from Scene Completion,Paper,2021,11.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16419,-0.98888869,-0.06394213
+paper:aaai:2021:16431,ERNIE-ViL: Knowledge Enhanced Vision-Language Representations through Scene Graphs,Paper,2021,11.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16431,-0.51424844,-0.85233527
+paper:aaai:2021:16468,Exploiting Sample Uncertainty for Domain Adaptive Person Re-Identification,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16468,-0.73417925,0.66496594
+paper:aaai:2021:16470,CIA-SSD: Confident IoU-Aware Single-Stage Object Detector From Point Cloud,Paper,2021,13.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16470,0.83017843,0.50964261
+paper:aaai:2021:16514,Beyond Low-frequency Information in Graph Convolutional Networks,Paper,2021,25.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16514,0.9185721,-0.34400174
+paper:aaai:2021:16523,Graph Neural Network-Based Anomaly Detection in Multivariate Time Series,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16523,0.58810805,0.75968452
+paper:aaai:2021:16604,Learning from History: Modeling Temporal Knowledge Graphs with Sequential Copy-Generation Networks,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16604,0.51416992,0.81260552
+paper:aaai:2021:16647,Fair and Truthful Mechanisms for Dichotomous Valuations,Paper,2021,16.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16647,0.8212979,-0.53522962
+paper:aaai:2021:16651,The Price of Connectivity in Fair Division,Paper,2021,15.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16651,-0.96510588,-0.23717589
+paper:aaai:2021:16779,Topology-Aware Correlations Between Relations for Inductive Link Prediction in Knowledge Graphs,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16779,-0.25682349,-0.96596922
+paper:aaai:2021:16792,(Comet-) Atomic 2020: On Symbolic and Neural Commonsense Knowledge Graphs,Paper,2021,11.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16792,0.59874859,-0.75181801
+paper:aaai:2021:16826,TabNet: Attentive Interpretable Tabular Learning,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16826,-0.05070983,-0.97859181
+paper:aaai:2021:16916,Generalize a Small Pre-trained Model to Arbitrarily Large TSP Instances,Paper,2021,11.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16916,0.72682755,0.64951507
+paper:aaai:2021:16960,Personalized Cross-Silo Federated Learning on Non-IID Data,Paper,2021,11.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/16960,-0.40432754,0.83412018
+paper:aaai:2021:17037,Contrastive Clustering,Paper,2021,12.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17037,0.84588278,-0.50852264
+paper:aaai:2021:17198,Deep Fusion Clustering Network,Paper,2021,12.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17198,0.00809239,0.93110582
+paper:aaai:2021:17206,Contrastive and Generative Graph Convolutional Networks for Graph-based Semi-Supervised Learning,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17206,-0.92658811,0.34714791
+paper:aaai:2021:17219,Addressing Class Imbalance in Federated Learning,Paper,2021,10.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17219,0.84293099,-0.44608223
+paper:aaai:2021:17231,Unified Tensor Framework for Incomplete Multi-view Clustering and Missing-view Inferring,Paper,2021,10.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17231,0.94443818,0.12200963
+paper:aaai:2021:17276,Improving Sample Efficiency in Model-Free Reinforcement Learning from Images,Paper,2021,12.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17276,0.42672864,-0.89097666
+paper:aaai:2021:17315,Data Augmentation for Graph Neural Networks,Paper,2021,13.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17315,-0.39239059,-0.92134911
+paper:aaai:2021:17319,Meta Label Correction for Noisy Label Learning,Paper,2021,8.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17319,0.7528309,0.56436276
+paper:aaai:2021:17320,Going Deeper With Directly-Trained Larger Spiking Neural Networks,Paper,2021,20.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17320,0.93488916,-0.26310624
+paper:aaai:2021:17325,Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting,Paper,2021,51.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17325,-0.92468081,-0.35175051
+paper:aaai:2021:17332,Graph Neural Networks with Heterophily,Paper,2021,12.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17332,-0.97643285,0.02081316
+paper:aaai:2021:17344,Lifelong Multi-Agent Path Finding in Large-Scale Warehouses,Paper,2021,17.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17344,-0.55203668,0.76545165
+paper:aaai:2021:17359,Is the Most Accurate AI the Best Teammate? Optimizing AI for Teamwork,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17359,0.25994663,0.89349157
+paper:aaai:2021:17466,EECBS: A Bounded-Suboptimal Search for Multi-Agent Path Finding,Paper,2021,13.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17466,-0.17933564,0.94457009
+paper:aaai:2021:17625,DialogXL: All-in-One XLNet for Multi-Party Conversation Emotion Recognition,Paper,2021,9.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17625,-0.87545602,0.42289664
+paper:aaai:2021:17717,Document-Level Relation Extraction with Adaptive Thresholding and Localized Context Pooling,Paper,2021,10.0,2021,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/17717,0.35009341,0.8827702
+paper:aaai:2022:19957,Contrastive Learning from Extremely Augmented Skeleton Sequences for Self-Supervised Action Recognition,Paper,2022,8.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/19957,-0.68704611,0.60713043
+paper:aaai:2022:20060,Unsupervised Temporal Video Grounding with Deep Semantic Clustering,Paper,2022,8.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20060,-0.67427335,-0.73888262
+paper:aaai:2022:20155,Pose-Guided Feature Disentangling for Occluded Person Re-identification Based on Transformer,Paper,2022,8.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20155,-0.34796464,0.91098433
+paper:aaai:2022:20162,Low-Light Image Enhancement with Normalizing Flow,Paper,2022,13.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20162,0.14810254,-0.97792912
+paper:aaai:2022:20202,Evo-ViT: Slow-Fast Token Evolution for Dynamic Vision Transformer,Paper,2022,13.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20202,-0.95960468,0.10418043
+paper:aaai:2022:20292,Using MaxSAT for Efficient Explanations of Tree Ensembles,Paper,2022,9.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20292,0.91279006,-0.15007765
+paper:aaai:2022:20335,Graph Structure Learning with Variational Information Bottleneck,Paper,2022,8.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20335,0.96851251,-0.03633849
+paper:aaai:2022:20436,Fair and Efficient Allocations of Chores under Bivalued Preferences,Paper,2022,8.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20436,0.81007929,-0.54411937
+paper:aaai:2022:20700,Augmentation-Free Self-Supervised Learning on Graphs,Paper,2022,9.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20700,-0.37337446,-0.87046571
+paper:aaai:2022:20723,Efficient One-Pass Multi-View Subspace Clustering with Consensus Anchors,Paper,2022,11.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20723,-0.8028934,0.47428269
+paper:aaai:2022:20726,Deep Graph Clustering via Dual Correlation Reduction,Paper,2022,14.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20726,0.00782645,0.8669393
+paper:aaai:2022:20819,FedProto: Federated Prototype Learning across Heterogeneous Clients,Paper,2022,13.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20819,0.9388174,0.21123922
+paper:aaai:2022:20881,TS2Vec: Towards Universal Representation of Time Series,Paper,2022,14.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/20881,-0.29722215,-0.64432134
+paper:aaai:2022:21266,MAPF-LNS2: Fast Repairing for Multi-Agent Path Finding via Large Neighborhood Search,Paper,2022,9.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/21266,-0.17689407,0.91884924
+paper:aaai:2022:21344,Unified Named Entity Recognition as Word-Word Relation Classification,Paper,2022,10.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/21344,-0.88444343,-0.46898584
+paper:aaai:2022:21350,DiffSinger: Singing Voice Synthesis via Shallow Diffusion Mechanism,Paper,2022,10.0,2022,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/21350,-0.78765727,-0.62501697
+paper:aaai:2023:25233,BEVDepth: Acquisition of Reliable Depth for Multi-View 3D Object Detection,Paper,2023,14.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/25233,0.52680582,-0.84399624
+paper:aaai:2023:25281,Intriguing Findings of Frequency Selection for Image Deblurring,Paper,2023,9.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/25281,0.04836302,-1.0
+paper:aaai:2023:25573,Beyond Smoothing: Unsupervised Graph Representation Learning with Edge Heterophily Discriminating,Paper,2023,8.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/25573,0.3854518,-0.3848979
+paper:aaai:2023:26059,DICNet: Deep Instance-Level Contrastive Network for Double Incomplete Multi-View Multi-Label Classification,Paper,2023,8.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26059,-0.12060113,-0.28615529
+paper:aaai:2023:26060,Incomplete Multi-View Multi-Label Learning via Label-Guided Masked View- and Category-Aware Transformers,Paper,2023,8.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26060,-0.11821814,-0.29761967
+paper:aaai:2023:26187,Federated Learning on Non-IID Graphs via Structural Knowledge Sharing,Paper,2023,9.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26187,0.37568386,-0.39162367
+paper:aaai:2023:26317,Are Transformers Effective for Time Series Forecasting?,Paper,2023,14.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26317,-0.89700589,-0.34103171
+paper:aaai:2023:26460,A Proof That Using Crossover Can Guarantee Exponential Speed-Ups in Evolutionary Multi-Objective Optimisation,Paper,2023,8.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26460,-0.63551437,0.72725437
+paper:aaai:2023:26462,From Understanding the Population Dynamics of the NSGA-II to the First Proven Lower Bounds,Paper,2023,9.0,2023,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/26462,-0.49896388,0.84126829
+paper:aaai:2024:28206,Follow Your Pose: Pose-Guided Text-to-Video Generation Using Pose-Free Videos,Paper,2024,10.0,2024,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/28206,0.13406735,0.85147473
+paper:aaai:2024:28226,T2I-Adapter: Learning Adapters to Dig Out More Controllable Ability for Text-to-Image Diffusion Models,Paper,2024,21.0,2024,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/28226,0.150507,0.94130527
+paper:aaai:2025:32690,EfficientVMamba: Atrous Selective Scan for Light Weight Visual Mamba,Paper,2025,9.0,2025,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/32690,0.84631782,0.31372158
+paper:aaai:2025:32728,Boosting Consistency in Story Visualization with Rich-Contextual Conditional Diffusion Models,Paper,2025,9.0,2025,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/32728,-0.00456983,-0.02690184
+paper:aaai:2025:32729,IMAGDressing-v1: Customizable Virtual Dressing,Paper,2025,9.0,2025,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/32729,-0.01449183,-0.02064863
+paper:aaai:2025:32761,Ultra-High Resolution Segmentation via Boundary-Enhanced Patch-Merging Transformer,Paper,2025,8.0,2025,,venue:aaai,https://ojs.aaai.org/index.php/AAAI/article/view/32761,-0.69874335,-0.64803329
+paper:ijcai:2021:152,Audio2Head: Audio-driven One-shot Talking-head Generation with Natural Head Motion,Paper,2021,10.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/152,0.84270855,0.42268587
+paper:ijcai:2021:214,Masked Label Prediction: Unified Message Passing Model for Semi-Supervised Classification,Paper,2021,16.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/214,0.92421688,0.03926875
+paper:ijcai:2021:254,Abductive Knowledge Induction from Raw Data,Paper,2021,9.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/254,-0.15238663,-0.99575641
+paper:ijcai:2021:320,Graph-Free Knowledge Distillation for Graph Neural Networks,Paper,2021,9.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/320,0.64367354,0.68962036
+paper:ijcai:2021:321,Optimal ANN-SNN Conversion for Fast and Accurate Inference in Deep Spiking Neural Networks,Paper,2021,9.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/321,0.2332654,-0.92773902
+paper:ijcai:2021:324,Time-Series Representation Learning via Temporal and Contextual Contrasting,Paper,2021,19.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/324,0.3301248,-0.93709265
+paper:ijcai:2021:356,On Explaining Random Forests with SAT,Paper,2021,12.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/356,0.96730247,-0.15526389
+paper:ijcai:2021:473,Graph Debiased Contrastive Learning with Joint Representation Clustering,Paper,2021,9.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/473,0.4295222,0.83792388
+paper:ijcai:2021:568,Anytime Multi-Agent Path Finding via Large Neighborhood Search,Paper,2021,9.0,2021,,venue:ijcai,https://www.ijcai.org/proceedings/2021/568,-0.16973185,0.91302928
+paper:ijcai:2022:124,SVTR: Scene Text Recognition with a Single Visual Model,Paper,2022,12.0,2022,,venue:ijcai,https://www.ijcai.org/proceedings/2022/124,0.89830227,-0.4245777
+paper:ijcai:2023:184,Action Recognition with Multi-stream Motion Modeling and Mutual Information Maximization,Paper,2023,9.0,2023,,venue:ijcai,https://www.ijcai.org/proceedings/2023/184,-0.96527426,0.19135164

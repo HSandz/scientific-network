@@ -1,0 +1,101 @@
+id,name,label,group,score,year,sector,venue,url,x,y
+researcher:openalex:A5000000572,Piotr Faliszewski,Researcher,0,15.0,,,,https://openalex.org/A5000000572,0.01011067,-0.054833
+researcher:openalex:A5000755750,Xiangliang Zhang,Researcher,104,10.93095238,,,,https://openalex.org/A5000755750,0.64551379,0.52161062
+researcher:openalex:A5001520779,Pasin Manurangsi,Researcher,0,10.0,,,,https://openalex.org/A5001520779,0.02473072,-0.02623905
+researcher:openalex:A5001529504,Chang Xu,Researcher,189,11.6,,,,https://openalex.org/A5001529504,0.8837886,-0.47250957
+researcher:openalex:A5002246957,João P. Marques-Silva,Researcher,78,11.8,,,,https://openalex.org/A5002246957,0.236864,0.05657354
+researcher:openalex:A5003217535,Zheng-Jun Zha,Researcher,56,18.58214286,,,,https://openalex.org/A5003217535,-0.51511154,-0.80064929
+researcher:openalex:A5004773077,Stanisław Szufa,Researcher,0,10.28571429,,,,https://openalex.org/A5004773077,0.0028666,-0.06367752
+researcher:openalex:A5008056593,Shirui Pan,Researcher,43,19.21547619,,,,https://openalex.org/A5008056593,-0.35963515,-0.29798315
+researcher:openalex:A5009013876,Dongxiao He,Researcher,43,20.48214286,,,,https://openalex.org/A5009013876,-0.34238965,-0.26036271
+researcher:openalex:A5009175450,Pascal Bercher,Researcher,78,12.0,,,,https://openalex.org/A5009175450,0.68553838,-0.69042644
+researcher:openalex:A5012035228,Levi H. S. Lelis,Researcher,51,10.33333333,,,,https://openalex.org/A5012035228,-0.94894747,-0.03795887
+researcher:openalex:A5012455357,Di Jin,Researcher,43,16.64880952,,,,https://openalex.org/A5012455357,-0.34490966,-0.2713209
+researcher:openalex:A5013290512,Giuseppe De Giacomo,Researcher,70,19.26666667,,,,https://openalex.org/A5013290512,0.18229682,-0.96092221
+researcher:openalex:A5013548083,Youfang Lin,Researcher,43,11.53412698,,,,https://openalex.org/A5013548083,-0.70067958,-0.66149636
+researcher:openalex:A5015874725,Cheng Dan Deng,Researcher,69,11.58333333,,,,https://openalex.org/A5015874725,-0.36141416,0.0005013
+researcher:openalex:A5016080094,Rongrong Ji,Researcher,58,11.36190476,,,,https://openalex.org/A5016080094,-0.37430236,-0.09382674
+researcher:openalex:A5017076947,Sebastian Ordyniak,Researcher,0,14.4,,,,https://openalex.org/A5017076947,0.09707971,0.03914197
+researcher:openalex:A5017130830,Marcello Restelli,Researcher,0,11.26666667,,,,https://openalex.org/A5017130830,-0.35136687,-0.90365662
+researcher:openalex:A5017743551,Bo An,Researcher,126,18.38333333,,,,https://openalex.org/A5017743551,0.95351276,0.18040473
+researcher:openalex:A5019108029,Wanxiang Che,Researcher,41,11.1702381,,,,https://openalex.org/A5019108029,0.79904124,-0.61615399
+researcher:openalex:A5019708391,Xiaokang Yang,Researcher,58,12.61984127,,,,https://openalex.org/A5019708391,-0.36133568,-0.03993746
+researcher:openalex:A5023341829,Zhendong Mao,Researcher,56,11.23333333,,,,https://openalex.org/A5023341829,0.71090815,0.63798361
+researcher:openalex:A5023571961,Tüomas Sandholm,Researcher,4,20.71428571,,,,https://openalex.org/A5023571961,0.33276997,0.06370071
+researcher:openalex:A5023762528,Tao Dai,Researcher,5,12.72857143,,,,https://openalex.org/A5023762528,-0.29127036,-0.21183674
+researcher:openalex:A5023834700,Chengjie Wang,Researcher,58,18.4202381,,,,https://openalex.org/A5023834700,-0.37225989,-0.06080524
+researcher:openalex:A5024120048,Gabriele Kern-Isberner,Researcher,254,10.25,,,,https://openalex.org/A5024120048,0.31568939,-0.20970274
+researcher:openalex:A5024401174,Xiangyang Ji,Researcher,59,11.11190476,,,,https://openalex.org/A5024401174,-0.79559202,0.50034993
+researcher:openalex:A5026549557,Sven Koenig,Researcher,78,12.85555556,,,,https://openalex.org/A5026549557,0.27106792,0.05460277
+researcher:openalex:A5028731909,Yabiao Wang,Researcher,58,11.54404762,,,,https://openalex.org/A5028731909,-0.37647291,-0.05561131
+researcher:openalex:A5029021362,Ying Yu Tai,Researcher,58,16.12222222,,,,https://openalex.org/A5029021362,-0.36664972,-0.07158566
+researcher:openalex:A5031193164,Markus Brill,Researcher,0,12.8,,,,https://openalex.org/A5031193164,0.0420493,-0.03713735
+researcher:openalex:A5032708386,Pheng‐Ann Heng,Researcher,119,11.10714286,,,,https://openalex.org/A5032708386,-0.2175563,-0.95712886
+researcher:openalex:A5033021388,Rolf Niedermeier,Researcher,0,11.41666667,,,,https://openalex.org/A5033021388,0.00700353,-0.07336324
+researcher:openalex:A5033729619,Mingyu Xiao,Researcher,29,14.91666667,,,,https://openalex.org/A5033729619,-0.5370272,0.79161111
+researcher:openalex:A5034104790,Shu‐Tao Xia,Researcher,5,18.36190476,,,,https://openalex.org/A5034104790,-0.299627,-0.20550855
+researcher:openalex:A5036357902,Philip S. Yu,Researcher,108,15.77738095,,,,https://openalex.org/A5036357902,0.09295828,-0.40239781
+researcher:openalex:A5036786337,Zhoujun Li,Researcher,47,10.18214286,,,,https://openalex.org/A5036786337,-0.39652519,-0.36529506
+researcher:openalex:A5037092803,Stefan Szeider,Researcher,0,19.5,,,,https://openalex.org/A5037092803,0.10745654,0.04260271
+researcher:openalex:A5037132097,Dongyan Zhao,Researcher,41,10.0,,,,https://openalex.org/A5037132097,-0.72421902,0.63919222
+researcher:openalex:A5037340898,Xiaofeng Zhu,Researcher,108,11.26666667,,,,https://openalex.org/A5037340898,-0.89686042,0.29500835
+researcher:openalex:A5039620960,Elias Bareinboim,Researcher,53,11.0,,,,https://openalex.org/A5039620960,0.59119666,-0.8019976
+researcher:openalex:A5040010053,Jiayi Ma,Researcher,148,13.33333333,,,,https://openalex.org/A5040010053,-0.38993453,-0.04263149
+researcher:openalex:A5040136820,Pierre Marquis,Researcher,77,12.0,,,,https://openalex.org/A5040136820,-0.90633454,-0.2702761
+researcher:openalex:A5041089506,Ariel D. Procaccia,Researcher,0,10.0,,,,https://openalex.org/A5041089506,0.01605538,0.00083286
+researcher:openalex:A5041528950,Kuldeep S. Meel,Researcher,70,18.76666667,,,,https://openalex.org/A5041528950,0.17934694,0.05349195
+researcher:openalex:A5042251906,Irwin King,Researcher,79,11.4,,,,https://openalex.org/A5042251906,0.94823253,0.19161813
+researcher:openalex:A5043872748,Jilles Vreeken,Researcher,65,11.5,,,,https://openalex.org/A5043872748,0.84296601,0.55365218
+researcher:openalex:A5043914348,Zunlei Feng,Researcher,100,10.25119048,,,,https://openalex.org/A5043914348,0.35303527,-0.92922797
+researcher:openalex:A5046805800,Wengang Zhou,Researcher,100,10.00833333,,,,https://openalex.org/A5046805800,-0.10092889,0.17066444
+researcher:openalex:A5047161904,Martin Bullinger,Researcher,0,10.0,,,,https://openalex.org/A5047161904,0.03742205,-0.0079499
+researcher:openalex:A5047491682,Jesse Heyninck,Researcher,254,11.25,,,,https://openalex.org/A5047491682,0.3131292,-0.20216288
+researcher:openalex:A5047509839,Jianye Hao,Researcher,95,14.96107504,,,,https://openalex.org/A5047509839,-0.38462896,0.00904722
+researcher:openalex:A5048237545,Enhong Chen,Researcher,21,14.13095238,,,,https://openalex.org/A5048237545,-0.85849033,0.24180956
+researcher:openalex:A5048361071,Argyrios Deligkas,Researcher,0,14.0,,,,https://openalex.org/A5048361071,0.0756402,0.02808662
+researcher:openalex:A5050150656,Edith Elkind,Researcher,0,13.0,,,,https://openalex.org/A5050150656,0.01621715,-0.02922664
+researcher:openalex:A5050903632,Vincent Conitzer,Researcher,4,12.83333333,,,,https://openalex.org/A5050903632,0.3484828,0.07398736
+researcher:openalex:A5051649145,Yefeng Zheng,Researcher,45,10.96666667,,,,https://openalex.org/A5051649145,-0.83104104,-0.48347214
+researcher:openalex:A5056989280,Markus Hecher,Researcher,254,18.08333333,,,,https://openalex.org/A5056989280,0.13321511,0.04664726
+researcher:openalex:A5057999649,Wenqi Ren,Researcher,136,10.25,,,,https://openalex.org/A5057999649,-0.34022812,-0.14672755
+researcher:openalex:A5058066577,Tiejun Huang,Researcher,89,12.91666667,,,,https://openalex.org/A5058066577,0.04434857,0.94268781
+researcher:openalex:A5064573190,Nenghai Yu,Researcher,32,10.80238095,,,,https://openalex.org/A5064573190,0.08443592,0.95159025
+researcher:openalex:A5064839018,Peter J. Stuckey,Researcher,78,17.71666667,,,,https://openalex.org/A5064839018,0.25812218,0.05715023
+researcher:openalex:A5066848088,Eduard Eiben,Researcher,0,14.0,,,,https://openalex.org/A5066848088,0.08676314,0.03414565
+researcher:openalex:A5068837264,Xiaochun Cao,Researcher,136,15.06309524,,,,https://openalex.org/A5068837264,-0.33000885,-0.18682579
+researcher:openalex:A5069681054,En Zhu,Researcher,130,11.57619048,,,,https://openalex.org/A5069681054,0.30216208,-0.510173
+researcher:openalex:A5073535763,Jiancheng Lv,Researcher,27,12.76428571,,,,https://openalex.org/A5073535763,0.91697549,0.41481104
+researcher:openalex:A5076485255,Yanyun Qu,Researcher,58,11.4031746,,,,https://openalex.org/A5076485255,-0.42131023,-0.07773653
+researcher:openalex:A5076532681,Jörg Hoffmann,Researcher,78,10.0,,,,https://openalex.org/A5076532681,0.25595096,0.89636393
+researcher:openalex:A5076948208,Ruichu Cai,Researcher,119,12.96428571,,,,https://openalex.org/A5076948208,0.65870853,0.74770694
+researcher:openalex:A5078141810,Houqiang Li,Researcher,100,15.21547619,,,,https://openalex.org/A5078141810,-0.0948868,0.16718338
+researcher:openalex:A5079007635,Xueyang Fu,Researcher,56,16.275,,,,https://openalex.org/A5079007635,-0.51043904,-0.79278659
+researcher:openalex:A5079083101,Min-Ling Zhang,Researcher,126,18.1547619,,,,https://openalex.org/A5079083101,0.95039517,0.20356547
+researcher:openalex:A5082525642,Warut Suksompong,Researcher,0,27.66666667,,,,https://openalex.org/A5082525642,0.0279308,-0.0192938
+researcher:openalex:A5082786719,Stan Ziqing Li,Researcher,130,11.48095238,,,,https://openalex.org/A5082786719,-0.0533863,-0.96435085
+researcher:openalex:A5083207349,Christian Kroer,Researcher,4,10.33333333,,,,https://openalex.org/A5083207349,0.34979337,0.05649996
+researcher:openalex:A5084218062,Lizhuang Ma,Researcher,58,16.78769841,,,,https://openalex.org/A5084218062,-0.39378509,-0.0736195
+researcher:openalex:A5084279065,Jimeng Sun,Researcher,147,10.5,,,,https://openalex.org/A5084279065,-0.41309903,0.83877311
+researcher:openalex:A5085496384,Zhenya Huang,Researcher,21,11.5952381,,,,https://openalex.org/A5085496384,-0.84862568,0.23996373
+researcher:openalex:A5086397952,Shouhong Ding,Researcher,58,15.67261905,,,,https://openalex.org/A5086397952,-0.38586305,-0.08474564
+researcher:openalex:A5087158377,Junchi Yan,Researcher,58,14.65555556,,,,https://openalex.org/A5087158377,-0.36428028,-0.02583564
+researcher:openalex:A5087818121,Wanli Ouyang,Researcher,32,12.79960317,,,,https://openalex.org/A5087818121,0.05975204,0.95742367
+researcher:openalex:A5088116512,Robert Ganian,Researcher,0,13.0,,,,https://openalex.org/A5088116512,0.08883343,0.04198082
+researcher:openalex:A5089404640,Tat‐Seng Chua,Researcher,27,10.44325397,,,,https://openalex.org/A5089404640,-0.34474934,-0.2908521
+researcher:openalex:A5089442472,Johannes K. Fichte,Researcher,254,10.08333333,,,,https://openalex.org/A5089442472,0.13767228,0.05083154
+researcher:openalex:A5090455375,Yanghua Xiao,Researcher,185,13.47539683,,,,https://openalex.org/A5090455375,-0.31823491,0.91234101
+researcher:openalex:A5090907162,Alexandros A. Voudouris,Researcher,0,10.0,,,,https://openalex.org/A5090907162,0.05108688,0.0097476
+researcher:openalex:A5100382077,Chunyan Miao,Researcher,79,10.63809524,,,,https://openalex.org/A5100382077,0.53221039,0.82520191
+researcher:openalex:A5100621138,Zhi‐Hua Zhou,Researcher,19,11.04761905,,,,https://openalex.org/A5100621138,1.0,-0.0313961
+researcher:openalex:A5100705849,Chuan Shi,Researcher,43,11.55714286,,,,https://openalex.org/A5100705849,-0.16884928,0.94161349
+researcher:openalex:A5100724297,Yong Liu,Researcher,58,10.44285714,,,,https://openalex.org/A5100724297,-0.39307157,-0.05776285
+researcher:openalex:A5100726984,Jian Jun Yang,Researcher,84,11.68333333,,,,https://openalex.org/A5100726984,-0.37509182,-0.32751869
+researcher:openalex:A5100740618,Hao Ming Peng,Researcher,108,11.81071429,,,,https://openalex.org/A5100740618,0.09275425,-0.39423206
+researcher:openalex:A5101499733,Jiaoyang Li,Researcher,78,16.59761905,,,,https://openalex.org/A5101499733,0.27739207,0.05868821
+researcher:openalex:A5101596072,Songcan Chen,Researcher,126,12.73095238,,,,https://openalex.org/A5101596072,0.96622335,-0.24036953
+researcher:openalex:A5101715620,Zhenguang Liu,Researcher,15,10.05555556,,,,https://openalex.org/A5101715620,0.39746622,0.86472057
+researcher:openalex:A5101727888,Xinwang Liu,Researcher,130,19.1297619,,,,https://openalex.org/A5101727888,0.30693915,-0.51772044
+researcher:openalex:A5102754146,Shuo Shang,Researcher,54,13.17857143,,,,https://openalex.org/A5102754146,0.66595498,0.53818287
+researcher:openalex:A5103140908,Kui Jiang,Researcher,59,13.78333333,,,,https://openalex.org/A5103140908,-0.61525928,0.69019892
+researcher:openalex:A5103204774,Sheng-Jun Huang,Researcher,126,11.23095238,,,,https://openalex.org/A5103204774,0.97627139,-0.24344153
+researcher:openalex:A5103285429,Nisarg Shah,Researcher,0,18.33333333,,,,https://openalex.org/A5103285429,0.0323508,0.02016604
