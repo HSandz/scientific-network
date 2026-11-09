@@ -1,7 +1,7 @@
 # Current project status
 
-Updated: **2026-11-09 14:26 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-008](work-log/2026-11-09-008-remediation-plan.md).
+Updated: **2026-11-09 15:04 +07:00**. Deadline: **11 November 2026**.
+Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-009](work-log/2026-11-09-009-remediation-prompt.md).
 
 ## State
 
@@ -35,10 +35,13 @@ Plan: [D040 release plan](release-plan.md). Latest entry: [WORK-2026-11-09-008](
 - [x] P9 Local PDF and submission packaging (external delivery pending)
 - [x] Review completed evaluation/report/package (WORK-007; findings open)
 - [x] Plan review remediation (planning only; WORK-008)
+- [x] Prepare fresh-session remediation prompt (WORK-009; no execution)
 
 ## Next local work
 
 Follow [the remediation plan](remediation-plan.md): first require topic-ledger `labels`, add regressions and confirm unchanged real scores. The proposed next track is a separately versioned ORCID correction, affected analysis, prospective agent audit and replacement package. Record a dated D040 amendment when that correction track is adopted; the plan itself changes no frozen artifact or scientific rule. No code fix or correction has been executed.
+
+Use [the implementation prompt](prompts/implement-remediation-plan.md) in a fresh session to execute all five steps under its explicit correction scope. The earlier pre-evaluation prompt is historical for this task.
 
 ## Remaining facts and external delivery
 

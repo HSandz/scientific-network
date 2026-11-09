@@ -6,6 +6,10 @@ first. This is a bounded continuation of the existing release phases, not a new
 readiness framework. Human annotation remains optional; agents perform feasible
 implementation, source review, scoring, analysis and packaging.
 
+Execution handoff: [fresh-session prompt](prompts/implement-remediation-plan.md).
+Pasting that prompt adopts its explicit correction scope; drafting it here does
+not execute the correction or change an existing frozen artifact.
+
 The immediate next task is **step 1**. Steps 2–5 describe the recommended separate
 correction release. This plan does not change the frozen graph or enact a D040
 amendment. When that track is adopted, record the dated decision before execution:
