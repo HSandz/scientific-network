@@ -92,7 +92,7 @@ def agent_package(tmp_path):
             answered = list(csv.DictReader(stream))
         for row in answered:
             row.update(label_1='topic:invented:0', notes='Invented supported finding')
-            topic_rows.append(ledger(row['paper_id'], reviewer, 'topic'))
+            topic_rows.append({**ledger(row['paper_id'], reviewer, 'topic'), 'labels': ['topic:invented:0']})
         topic_reviews[reviewer] = write_csv(tmp_path / f'topics-{reviewer}.csv', answered, FIELDS)
     topic_ledger = write_jsonl(tmp_path / 'topics.jsonl', topic_rows)
     edge_ledger = write_jsonl(tmp_path / 'edges.jsonl', [ledger(row['edge_id'], row['reviewer_id'], 'edge') for row in edge_rows])
@@ -203,7 +203,7 @@ def test_unreviewable_topic_is_missing_reference_and_retains_planned_overlap_wei
     shared = set(json.loads(p['evaluation_freeze'].read_text())['assignments']['topics']['A']) & set(json.loads(p['evaluation_freeze'].read_text())['assignments']['topics']['B'])
     unit = sorted(shared)[0]
     entry = next(row for row in ledger if row['unit_id'] == unit and row['reviewer_id'] == 'A')
-    entry.update(decision='unreviewable', evidence_depth='unavailable', reason='Invented unavailable source')
+    entry.update(decision='unreviewable', labels=[], evidence_depth='unavailable', reason='Invented unavailable source')
     write_jsonl(p['topic_ledger'], ledger)
     with p['topic_reviewer_a'].open(newline='') as stream:
         rows = list(csv.DictReader(stream))
@@ -284,3 +284,49 @@ def test_partial_edge_opt_in_preserves_canonical_sample_missingness(agent_packag
     assert result['completion']['missing_assignment_count'] == 1
     assert result['global']['total'] == 9
     assert result['global']['planned_total'] == 10
+
+
+@pytest.mark.parametrize('labels', ['missing', None, 'topic:invented:0', [None], ['topic:invented:0', 'topic:invented:0']])
+def test_topic_ledger_requires_explicit_unique_string_labels(agent_package, labels):
+    p = agent_package
+    rows = [json.loads(line) for line in p['topic_ledger'].read_text().splitlines()]
+    if labels == 'missing':
+        del rows[0]['labels']
+    else:
+        rows[0]['labels'] = labels
+    write_jsonl(p['topic_ledger'], rows)
+    rebind(p)
+    with pytest.raises(ValueError, match='topic CSV labels differ'):
+        score_agent_review(**p)
+    assert not p['edge_output'].exists()
+    assert not p['topic_output'].exists()
+
+
+def test_considered_empty_topic_labels_are_scored_as_reviewed(agent_package):
+    p = agent_package
+    ledger = [json.loads(line) for line in p['topic_ledger'].read_text().splitlines()]
+    entry = ledger[0]
+    entry.update(labels=[], reason='No applicable leaf in this invented paper')
+    write_jsonl(p['topic_ledger'], ledger)
+    path = p['topic_reviewer_a']
+    with path.open(newline='') as stream:
+        rows = list(csv.DictReader(stream))
+    for row in rows:
+        if row['paper_id'] == entry['unit_id']:
+            row.update(label_1='', notes=entry['reason'])
+    write_csv(path, rows, FIELDS)
+    rebind(p)
+    score_agent_review(**p)
+    result = json.loads(p['topic_output'].read_text())
+    assert result['completion']['unreviewable_assignments'] == 0
+    assert result['annotation_judgment_count'] == 60
+
+
+def test_unreviewable_topic_cannot_hide_labels_in_ledger(agent_package):
+    p = agent_package
+    ledger = [json.loads(line) for line in p['topic_ledger'].read_text().splitlines()]
+    ledger[0].update(decision='unreviewable', evidence_depth='unavailable')
+    write_jsonl(p['topic_ledger'], ledger)
+    rebind(p)
+    with pytest.raises(ValueError, match='unreviewable topics must not contain reference labels'):
+        score_agent_review(**p, allow_partial=True)

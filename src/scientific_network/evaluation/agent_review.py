@@ -185,7 +185,7 @@ def _join_csv(rows: list[dict], ledger: dict, *, kind: str) -> None:
             labels = [row[f"label_{i}"].strip() for i in range(1, 4) if row[f"label_{i}"].strip()]
             if entry["decision"] == "unreviewable" and labels:
                 raise ValueError("unreviewable topics must not contain reference labels")
-            if "labels" in entry and (not isinstance(entry["labels"], list)
+            if "labels" not in entry or (not isinstance(entry["labels"], list)
                                       or any(not isinstance(label, str) for label in entry["labels"])
                                       or len(entry["labels"]) != len(set(entry["labels"]))
                                       or set(entry["labels"]) != set(labels)):
