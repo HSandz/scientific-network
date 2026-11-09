@@ -1,0 +1,43 @@
+{
+  "assignments_completed": 175,
+  "authorization_at": "2026-11-09T18:15:15.775194+07:00",
+  "automation_scope": "Extraction, hash/locator checks, formatting and consistency checks only; every decision/reason explicitly authored in A-decisions.jsonl.",
+  "completed_at": "2026-11-09T18:24:34.645466+07:00",
+  "context_id": "/root/prospective_a",
+  "decision_counts": {
+    "correct": 166,
+    "incorrect": 1,
+    "unverifiable": 8
+  },
+  "evaluator_run_id": "/root/prospective_a:edge-only-v2",
+  "evidence_read": "Actual raw cached JSON work objects, complete relevant authorship fields including singular/observed ORCIDs and author-specific affiliation mappings; raw official HTML byline entries; full title/abstracts for assigned topic predicates and all support papers; raw reference arrays and target identity sources for citations; frozen normative taxonomy. Raw full-file SHA256 and exact object locators verified.",
+  "freeze_commit": "85b6ead",
+  "frozen": true,
+  "input_hashes": {
+    "reports/release-v4/audit/edge-review-sheet-reviewer-A.csv": "521207850c4dd3555be7356d0ac46e535526bf11158b6ff46da2b39633b02fa0",
+    "reports/release-v4/reviewer-rubric-v2.md": "b370498ae61f2d337b0681b9bf0326eb0736fcdcaef940934b1e9fc800a50697",
+    "reports/runs/WORK-2026-11-09-013/A-citation-target-sources.jsonl": "a6b29bab8812a74f72496b1a25077da0ee4fcd7d5df9df98e10665b0318b7e21",
+    "reports/runs/WORK-2026-11-09-013/sources/A-edge-sources.jsonl": "261910bef338e1dea69333d6e069c819ba52541c2922f24c94a8bd8c46151807"
+  },
+  "limitations": [
+    "AI-assessed, not human annotations or independently validated gold.",
+    "Same-source construction reuse; no independent real-world identity accuracy established.",
+    "Citations use OpenAlex reference lists; no primary reference lists read.",
+    "Wilson intervals exclude evaluator error and source/model bias.",
+    "No blind topic-reference assignment was made to this context; topic judgments here assess assigned edge predicates only."
+  ],
+  "model": "unknown",
+  "model_family_exposed_in_system": "GPT-6",
+  "model_version": "unknown",
+  "opaque_runtime_context_id": "unknown",
+  "output_hashes": {
+    "reports/release-v4/completed/A-edge-ledger.jsonl": "166605d48f15257d064bd96d62a92ecc4f2df7e03e06b3a9baef8f64160f956e",
+    "reports/release-v4/completed/A-edges.csv": "c3a1e4e51bc943c8e0c0845585bf46115e92a18afb12a6c78abc3e64d0ca0a2f"
+  },
+  "packet_gap_resolution": "Base frozen packet lacked full target-paper sources for six CITES targets. Coordinator supplied A-citation-target-sources.jsonl from existing immutable caches; all seven citation target DOI/title/year/author-count fields and official entries were read and hashes verified before freezing. No new acquisition or frozen packet edit.",
+  "provider": "unknown",
+  "reviewer_id": "A",
+  "reviewer_kind": "ai_agent",
+  "source_independence": "same_source_as_construction",
+  "verified_course_accuracy": "not_established"
+}

@@ -1,15 +1,15 @@
 # Current project status
 
-Updated: **2026-11-09 15:15 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-09 18:35 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); current user adopts [full remediation](prompts/implement-remediation-plan.md).
-Latest completed checkpoint: [WORK-012](work-log/2026-11-09-012-corrected-db-analysis.md).
+Latest completed checkpoint: [WORK-013](work-log/2026-11-09-013-prospective-edge-audit.md).
 
 ## Remediation checklist
 
 - [x] A Required topic-ledger labels; regressions; original edge/topic JSON exactly reproduced (expected failed-gate exit 1); 426 tests passed/1 existing skip.
 - [x] B Versioned global ORCID correction: `release-d3c788c3114a`; 47,875 nodes/225,731 edges, protected predictions/facts preserved; size/structure pass.
 - [x] C Corrected isolated DB inventory/six integrity checks/replay pass; five projections, sensitivity, six figures and findings recomputed.
-- [ ] D One prospectively frozen edge-only source-backed A/B audit; preserve failed gates.
+- [x] D One frozen source-backed edge-only A/B audit:193/200 (96.5%), Wilson92.95–98.29%; AI-only numeric pass. Coverage/topic gates still fail.
 - [ ] E Measured replacement report, PDF/HTML/ZIP and local QA.
 
 ## Preserved historical state

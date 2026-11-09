@@ -1,0 +1,141 @@
+{
+  "evaluation_freeze_sha256": "74e369dac5114434329687d639d7c4a59ac9348529474f5d186764fc975a0cfe",
+  "edge_started_at": "2026-11-09T18:15:15.775194+07:00",
+  "edge_completed_at": "2026-11-09T18:27:04.845435+07:00",
+  "adjudication_completed_at": "2026-11-09T18:30:33.306213+07:00",
+  "output_files": [
+    {
+      "path": "reports/release-v4/completed/A-edge-completion.json",
+      "sha256": "eab345c936d96b170287c58b2a62cfbd76fc9a0dc425dc86c49ef5593c0c93a7"
+    },
+    {
+      "path": "reports/release-v4/completed/A-edge-ledger.jsonl",
+      "sha256": "166605d48f15257d064bd96d62a92ecc4f2df7e03e06b3a9baef8f64160f956e"
+    },
+    {
+      "path": "reports/release-v4/completed/A-edges.csv",
+      "sha256": "c3a1e4e51bc943c8e0c0845585bf46115e92a18afb12a6c78abc3e64d0ca0a2f"
+    },
+    {
+      "path": "reports/release-v4/completed/B-edge-completion.json",
+      "sha256": "8642a11075188e6ded26070bb5c5ca88a01f53c861be72ef5c9118e1e5986fb6"
+    },
+    {
+      "path": "reports/release-v4/completed/B-edge-ledger.jsonl",
+      "sha256": "72071c33f538da07f2f1f02e806887d3f20d6845c80a03f5e49200001010d2e8"
+    },
+    {
+      "path": "reports/release-v4/completed/B-edges.csv",
+      "sha256": "7f9b0f88b626fd2e0933acb3bb048254e0103bfa7a3254674523d6a8ea307c85"
+    },
+    {
+      "path": "reports/release-v4/completed/adjudication-ledger.jsonl",
+      "sha256": "cfe5d392604a97c69a1fecebc9b18f4a6bda83e45fe2a6cb25dd4019e15462aa"
+    },
+    {
+      "path": "reports/release-v4/completed/adjudications.csv",
+      "sha256": "e4625a96aea9632a466f1c9110228f63a4aa6504146ae9b4d7277f64c0575306"
+    },
+    {
+      "path": "reports/release-v4/completed/edge-ledger.jsonl",
+      "sha256": "81381d3d7d905deb24f2c8d8cd8f5fd45aa69565a426c0f16bc8740351b3510a"
+    },
+    {
+      "path": "reports/release-v4/adjudication-start-receipt-v2.json",
+      "sha256": "2ece2ce2388e6e77e40066a291b8e35ca9cfe1833ffee93a4866b09d336d6ebd"
+    },
+    {
+      "path": "reports/release-v4/source-supplement-manifest-v2.json",
+      "sha256": "6c19adb5844a4b04e354f12bd08f06d4ae9b11e0d3a0ec8f2c8be4279ef5e6e1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/A-citation-target-sources.jsonl",
+      "sha256": "a6b29bab8812a74f72496b1a25077da0ee4fcd7d5df9df98e10665b0318b7e21"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-sources.jsonl",
+      "sha256": "a6d55d45e0e28fafd1db933b10b1a8c8314177c76352850c500d84e820aaa888"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/ADJ-retrievals.json",
+      "sha256": "39f32facf52025da497bc172bec775fa4601fa26ba0a19ae27704cbd08f142e6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/ADJ-author-A5100629829.json",
+      "sha256": "1ea160daac25acad5fdfd1b553732c0fe0ffd80f04fd150b982839a447d22c8c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/ADJ-orcid-person.json",
+      "sha256": "ffa85c509d67925fed217f0adf36769aa13d28bfdb5858834edae64c407c4ed6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/ADJ-orcid-works.json",
+      "sha256": "3f55bb6b441dcc5137fbbb3e7175c48f5cb1f923283ab2cf78c22f2d8a9fb1d8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-131.json",
+      "sha256": "ed0d147128e1682ff24eac53ea0a4854d790920f63f964b02669c76f1fdcc06e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-judgments.jsonl",
+      "sha256": "323fc20aa8710621b4f044f7239c0489ff9446f15ca52bbb770900de3ae6c080"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-39.json",
+      "sha256": "3b06c4746b03e77f5d7d0683fc809c0ad1ec7eb1ef6080cb315afd50104be0bb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-record.py",
+      "sha256": "7f9763cfc325718d2379e3c94d4893bf96ce2536e56ed262b2d45833f162ad93"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-export.py",
+      "sha256": "519c337c7f4e0ade3b18fe19190bac61d46907d1605ac86a08849e6332c3e428"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-supplement-I98834328.json",
+      "sha256": "b09cd096cbe7a361c63a743b9ff44fc5b5ec17c702ff5261870d555dd5d4d41e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-134.json",
+      "sha256": "78601bbd45b211f8e67a50fb2e4122499557e8ebb6fd51b61e0540012963b0c6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-supplement-I4210151615.json",
+      "sha256": "ac7353a1e12cf5b68388623e226aabb2ec7637982eaab3edc92fe5780e84540c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-53.json",
+      "sha256": "d12854839992334ccc4c5fd47b2f3952cb0adb9fcdcd344846b8f3bc656efdda"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-71.json",
+      "sha256": "01bb54284e20b54646facda600508b048fe16032523ea0e58267e1ee411dd888"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-160.json",
+      "sha256": "e01e2c0f2e64a1a14c4f9ed5edf68a3a59af2242bf07b7351fb79b8d1b12b125"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-support-inspection.json",
+      "sha256": "b1f23873981802d63e6a5ab27f61df65217e094a5ecb7a036597ab7ac2d1fbda"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-15.json",
+      "sha256": "93cd4b9885a22321b12fd7d966e1b65ae9ed07746d8d582022e3a75741c42815"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-citation-target-118.json",
+      "sha256": "b81f99537100c2b8f9457f5d09c645451ddc8f9693c58f7f3ede4c80a6dadbf1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/B-review.py",
+      "sha256": "f15141cda7a6c377d52efc8ed7e90af326f38dab12df7b4cc7e0e0c82c795f69"
+    }
+  ],
+  "review_order": "A/B exports froze before actual coordinator source-adjudication; original votes unchanged",
+  "edge_start_semantics": "authorization to begin frozen edge-only review; exact process creation/runtime UUID unknown",
+  "sample_or_graph_changes_after_review": false,
+  "source_gap_resolution": "original immutable cited-target records supplied after packet freeze and hash-bound here; sampled claims/assignments unchanged",
+  "adjudication_scope": "one actual categorical overlap disagreement; unresolved identity is unverifiable, counted incorrect; no graph correction or resample"
+}
