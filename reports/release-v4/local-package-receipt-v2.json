@@ -1,0 +1,196 @@
+{
+  "recorded_at": "2026-11-09T18:42:20.601183+07:00",
+  "status": "local_draft_verified",
+  "source_commit": "8f0782ac3ce46a65ea1c1eb32c489fba2f980f85",
+  "source_tree_clean_at_build_and_qa": true,
+  "source_bytes_match_commit": "all except 14 historical CRLF-only CSV differences, identical to prior package receipt",
+  "working_tree_vs_commit_blob_differences": [
+    {
+      "path": "docs/five-year-edition-readiness.csv",
+      "working_tree_sha256": "178d76355544bd9059feb0d05b7e5dbe59c18f718486d3885b2e22dfce435234",
+      "commit_blob_sha256": "b3a199c5f7a9f1e5077a4426fefc34ccd1415231bd35c4d273c1b1849ea05a34",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/community-topic-profiles.csv",
+      "working_tree_sha256": "813313e16d7685d4b4cd452e3917a62b68511cac1a1401ea1542d6f16b23edb3",
+      "commit_blob_sha256": "f5d01515099054e42053531e034104e2b298b58430ae7cd1bbaab0c28ea9c396",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/component-sizes.csv",
+      "working_tree_sha256": "010b318938838f907f21fe167a6664b3a71588aeaca0c189380c34831d8c94b8",
+      "commit_blob_sha256": "2f69346548ee2d55df40972b81163abe120791916c50d5f8a7884f2e9b1e5363",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/researcher-degree-ccdf.csv",
+      "working_tree_sha256": "c720859127b94426dd11e1331d5390efed9627b7a49cd40340fce5cc57547ce9",
+      "commit_blob_sha256": "5baa8cbab2ef88628af7dc21bc6e244d3899747d98129ee357ce049a98c2baec",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/sector-mixing.csv",
+      "working_tree_sha256": "dee839540fe1077fbac42f09b1f34a85a0d88159a5a0ed6c7f4264304a2e5ce8",
+      "commit_blob_sha256": "1c7bd8db78eb1122f4379cb40a05897305c450fe46d0cee21c6adfd098c6138b",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/top-cited-papers.csv",
+      "working_tree_sha256": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9",
+      "commit_blob_sha256": "793884298f29fc5fe9a663eeaa781559951f765544255dde2e979d93b5409aaa",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/final-report/figures/topic-trends.csv",
+      "working_tree_sha256": "79192e55c385f2fc986583f8e60a1f15c7dcd2aaf3836abeebfed3a8ccd573bc",
+      "commit_blob_sha256": "10585edd00c1c5394a9b41c1524c8183797ffb788a44f27c8df5ef76196a0c77",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v1.csv",
+      "working_tree_sha256": "333e784cc886773fef0869afc2212080458323cecae8e270771da895ae0bbd5d",
+      "commit_blob_sha256": "4a3422f726086ca83d6ab372f009fca5783992d59ee745748050e65f45650097",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v2.csv",
+      "working_tree_sha256": "bead3eb88548f88856f9192cf0a65efdf267d5af0870dc21d93adf9bde5d861c",
+      "commit_blob_sha256": "f5603edf7f2cbd4874aea4a7668e6518fdb05a88147fe650c97f07f5ce8aaa89",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v5.csv",
+      "working_tree_sha256": "8c3be677c4c6851ca481ca88198dea87cabe67c031db6f0d40095d12882e7d02",
+      "commit_blob_sha256": "d2282c9126baa9079fe1d5bff3006071db0062f244d0772e84c34d780b41a863",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v6.csv",
+      "working_tree_sha256": "684ad08a3f977818681835e9e4be6bb5d22cbb74b411f25d96015d9bf13caafc",
+      "commit_blob_sha256": "bd242c3b44a1de8e143edd100593285990ed1d8578cd24950444db167fd00127",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v7.csv",
+      "working_tree_sha256": "95795fa9ca9c2ec03d50f37b995efbc4ab9702a2828ed61e4da9675ef9bdfd36",
+      "commit_blob_sha256": "9664d90ef030b9c412b41fd8c09bdc2a7239bbde9f1a5131020c090e94443159",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v8.csv",
+      "working_tree_sha256": "92d8a7e855edd9dfa1341abb1611d49c3915efb972847554c032993779926bf4",
+      "commit_blob_sha256": "a07e763fcc510fe45689e4f1abc46ffa236243e5992b8f7fd4fc0eef57716138",
+      "only_crlf_normalization": true
+    },
+    {
+      "path": "reports/five-year-edition-ledger-v9.csv",
+      "working_tree_sha256": "9f225bc99cae24a73f574241c35d0269879f8c59e38919d0e3b058349c106116",
+      "commit_blob_sha256": "f8187782fa183b48a8665560dc6f61694cadff730878214397b95b082c2b2c99",
+      "only_crlf_normalization": true
+    }
+  ],
+  "zip_crc": "passed",
+  "archive_members_verified": 1394,
+  "manifest_members_verified": 1393,
+  "tracked_source_blobs_verified": 1391,
+  "html_local_links_verified": 35,
+  "html_tables": 9,
+  "embedded_figures": 6,
+  "pdf_font_listing": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+DejaVuSans-Bold               CID TrueType      Identity-H       yes yes yes      4  0\nBAAAAA+DejaVuSans                    CID TrueType      Identity-H       yes yes yes      5  0\nCAAAAA+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes      8  0\nCAAAAA+DejaVuSansMono                Type 3            Custom           yes yes yes     65  0\n",
+  "font_character_coverage": "passed",
+  "pdf_text_and_page_bounds_words_verified": 6177,
+  "page_count": 23,
+  "actual_configured_secret_scan": {
+    "distinct_values_checked": 4,
+    "hits": 0,
+    "values_disclosed": false
+  },
+  "privacy_exclusions": "permitted_source_path enforced for all tracked source members; only generated PDF/HTML added",
+  "historical_hashes_unchanged": 125,
+  "frozen_bindings_verified": {
+    "evaluation-freeze-v2.json": 541,
+    "completion-receipt-v2.json": 32
+  },
+  "artifacts": {
+    "report.pdf": {
+      "path": "reports/runs/WORK-2026-11-09-014/package-v4/report.pdf",
+      "sha256": "8c406a2e7b2bd1b0468a6d39dc489634884e4902fe4f8a438a718dc3bd1241a1",
+      "size_bytes": 1189382
+    },
+    "report.html": {
+      "path": "reports/runs/WORK-2026-11-09-014/package-v4/report.html",
+      "sha256": "d67e93782edf401421eb3716195221b2b777884e07a759c71f886081c9ea16ac",
+      "size_bytes": 3742851
+    },
+    "scientific-network-submission.zip": {
+      "path": "reports/runs/WORK-2026-11-09-014/package-v4/scientific-network-submission.zip",
+      "sha256": "99a55fc62ab6d2158e76ea1907d44ad2750c1588e7b48eb34e1caaaeca5fea68",
+      "size_bytes": 71778316
+    },
+    "submission-manifest.json": {
+      "path": "reports/runs/WORK-2026-11-09-014/package-v4/submission-manifest.json",
+      "sha256": "3ea6492126d68dd03f690ea253c1c418a21165322ade41dcfd8fc816148ec639",
+      "size_bytes": 281900
+    },
+    "package-receipt.json": {
+      "path": "reports/runs/WORK-2026-11-09-014/package-v4/package-receipt.json",
+      "sha256": "a1bacab2814e8e3dfb24574211583e52f3b5e173db30ae536e7b36125af8ca34",
+      "size_bytes": 853
+    }
+  },
+  "visual_inspection": {
+    "status": "passed",
+    "pages_reviewed": [
+      1,
+      8,
+      10,
+      11,
+      12,
+      15,
+      16,
+      17,
+      18,
+      22,
+      23
+    ],
+    "detail_pages": [
+      16,
+      18
+    ],
+    "method": "11-page contact sheet plus individual quality tables at 1700px",
+    "observations": "Header, schema/coverage tables, all six figures/captions, current and historical audit tables, source limits, command wrapping and ending readable. No clipping or overlap observed.",
+    "scope": "representative pages, not a pixel-by-pixel review of every page"
+  },
+  "limitations": [
+    "AI assessment only; human validation not performed; reviewer independence and verified course accuracy not established.",
+    "Personal team details and lecturer/course AI-use/access facts remain pending.",
+    "Package is local and source snapshot predates this QA receipt/final log; no external delivery."
+  ],
+  "version": "local-package-qa-v2",
+  "work_id": "WORK-2026-11-09-014",
+  "source_bytes": "permitted tracked working-tree bytes; exact member hashes in manifest",
+  "exact_commit_blob_matches": 1377,
+  "receipt_recorded_after_packaging": true,
+  "receipt_and_final_log_outside_source_snapshot": true,
+  "checks": {
+    "environment_sync": "uv sync --locked --group dev --extra analysis --extra report; exit0",
+    "full_suite": "uv run pytest;504passed,1existing empty-parameterization skip,27.24s;exit0; before report-only edits",
+    "render": "uv run --extra report python -m scientific_network.reporting.release_package --report reports/final-report/report.md --output-dir reports/runs/WORK-2026-11-09-014/package-v4;exit0",
+    "independent_package_qa": "uv run python reports/runs/WORK-2026-11-09-014/verify-package-v4c.py;exit0",
+    "pdf_local_file_annotations": "passed_no_local_file_annotations per renderer mutool check",
+    "section_headings_verified": 13,
+    "local_references": "41 source local references verified;6embedded figures and35non-image links verified against actual archive members",
+    "external_links": "8supporting DOI HEAD200;GitHubHEAD404,public/lecturer access not_verified; bounded statuses not permanent availability",
+    "graph_and_database": "v4 structural/size pass; isolated Neo4j inventory6integrity queries and idempotent replay pass in WORK-012",
+    "audit": "one prospective scoring,exit0;193/200 AI-assessed;not human/course certification",
+    "failures_preserved": "initial QA exact-blob assertion exposed14known historic CRLF-only exceptions; second QA arbitrary >=10table assumption corrected to actual9source/render tables; original exit1logs retained, package bytes unchanged"
+  },
+  "no_external_delivery": [
+    "no push",
+    "no tag",
+    "no Site publication",
+    "no invitation",
+    "no submission"
+  ]
+}
