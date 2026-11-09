@@ -1,0 +1,2568 @@
+{
+  "evaluation_kind": "ai_agent_review",
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "verified_course_accuracy": "not_established",
+  "numeric_gate_scope": "ai_assessed_only",
+  "version": "evaluation-freeze-edge-v2",
+  "evaluation_scope": "edge_only",
+  "created_at": "2026-11-09T18:15:15.775194+07:00",
+  "review_design": "isolated_agent_A_B",
+  "adjudication_policy": "separate_source_review_after_frozen_exports",
+  "graph_version": "release-d3c788c3114a",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "input_files": [
+    {
+      "path": "configs/evaluation-agent-release-v2.yaml",
+      "sha256": "24ecf240de3210796d66ac9cf70ca88cd22e2d8e2463ed322493ecc7722c467b"
+    },
+    {
+      "path": "configs/quality-agent-release-v2.yaml",
+      "sha256": "64b59294eed0fcc85d83850d553ce605fd5bab07832e7d016bb30cc8f533fc88"
+    },
+    {
+      "path": "docs/correction-amendment-2026-11-09.md",
+      "sha256": "bd3b789ac9b5e4cacab29a19b20439b74d48388ab0cfe05855c56af16a51127b"
+    },
+    {
+      "path": "data/processed/release-graph-v4/graph.json",
+      "sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90"
+    },
+    {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    },
+    {
+      "path": "reports/release-v4/content-freeze-v4.json",
+      "sha256": "5f2218e5ee1fea59ff043596bd475273a48807d7b7f045010d2317d82decad4b"
+    },
+    {
+      "path": "reports/release-v4/graph-summary.json",
+      "sha256": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408"
+    },
+    {
+      "path": "reports/release-v4/reviewer-rubric-v2.md",
+      "sha256": "b370498ae61f2d337b0681b9bf0326eb0736fcdcaef940934b1e9fc800a50697"
+    },
+    {
+      "path": "configs/topics-release-v1.yaml",
+      "sha256": "7df4f6ad223a777be91db05f3567eaac904b0deba36d84dcaac08cff5d725ee4"
+    },
+    {
+      "path": "reports/release-v3/topic-eval-agent.json",
+      "sha256": "49df5456906d271d0b44b5ede63e1ad53675c3dc2dc1adaa871a9353931f3471"
+    },
+    {
+      "path": "reports/release-v4/sample-exposure-v2.json",
+      "sha256": "44db2af00a06717c5b222c44bb12e7a3eea28f91f6a61abaa6eca912230d50e3"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet-reviewer-A.csv",
+      "sha256": "521207850c4dd3555be7356d0ac46e535526bf11158b6ff46da2b39633b02fa0"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet-reviewer-A.html",
+      "sha256": "294f2cfc1c5ae511636b1a8687ca06d1a0bd481be6b8653f0a52a3c7cd7fa6e6"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet-reviewer-B.csv",
+      "sha256": "628f7e45ecd858ba29c8e4e72f71026265610d8b8b9929e177a21b7fc921e380"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet-reviewer-B.html",
+      "sha256": "adfa5e45c41e73dac4e746fb81196340b6d26da2d3ae41d9867950ae4d25a559"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet.csv",
+      "sha256": "85ad26dbf9319e9e55e8c760d0122faffc7915518ae5c49f30269a4d3b853fef"
+    },
+    {
+      "path": "reports/release-v4/audit/edge-review-sheet.html",
+      "sha256": "57a266c16f720d92dfa8e07732bd5b92fdfecd9f5d518816fa2c8cf10996f24b"
+    },
+    {
+      "path": "reports/release-v4/audit/sample-summary.json",
+      "sha256": "a35081b1d730af83b8dffbdaae831be7f6eec7fb3207d80df20c4787f43b0661"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/source-receipt.json",
+      "sha256": "ee70d6ffa8728016d5b0a85ce48514ba1d089ac2c5947ffaeae71f1019feaedb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/A-edge-sources.jsonl",
+      "sha256": "261910bef338e1dea69333d6e069c819ba52541c2922f24c94a8bd8c46151807"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/B-edge-sources.jsonl",
+      "sha256": "9c8e7bb3afdb65383fdd9787cc090f0028eb0c5ed705166da179590310fb7ad2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33768.json",
+      "sha256": "c15dffb1ddbb43a489460f99829020413a984e8a06c42e6588f60700a136245c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32580.json",
+      "sha256": "89ae1575da7b282e35930c7fbafec21ac0dbddd7915a766e42f9451af0aca845"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28977.json",
+      "sha256": "9dc9f851a9c9ef07111f84945120845e049ea897d936790b7c4968b8cfef71b1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20557.json",
+      "sha256": "2dc7966e85dfe0b8a3d75a1345b2e57250c5e533d184dd722d0231344c907596"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16092.json",
+      "sha256": "9a69f77fad894ad57194c8f11690f2d30ec5603a613e6034f6d15c1558c92809"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27954.json",
+      "sha256": "81528d8d47dd96cb78a14ee1516aeaaed4138c6df60cd17ee236cb4f373ccb6e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32155.json",
+      "sha256": "5e5c75732c4ea7a98b6606c0506d7b5df86e5da8422dff2d6113a736e5f1dbc4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32483.json",
+      "sha256": "35c729b2ec98745bccea0154716d74b0b662407c1baddd014fc339f303cb5919"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_30062.json",
+      "sha256": "ce41926ce78305c6fc49874ddf2a70e84fadaf20b2dd7b0ac9c51894028064c1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_19884.json",
+      "sha256": "6f2aeefb0122a02e09f1074a2073919b84d1f987d36f879d1beadd46acbe83c6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27896.json",
+      "sha256": "59a145ef0da1c722ba377c502f3c777a0416616b79c30a96de34b30fe77d8172"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34241.json",
+      "sha256": "d4449dbd362269420e52a53b1a23feeb17ec9a4bee936c021e804f0e7e46c500"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32565.json",
+      "sha256": "dc5772c5b0523cb7673d5a6979bef8b82d8f643b6f6a9f5a4d97603942daa522"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16576.json",
+      "sha256": "0511f570cd759c9550b64d86a497abf010cff0fc0e3ac1fb4eab96866c1582f4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32485.json",
+      "sha256": "95c592b5696ecf07a91a878188a9217ffbd8d96f271e127d88221d82ec784c5f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33562.json",
+      "sha256": "d4065208edad32b3f85629ac702c712edb6162f301dca430e52248166a341deb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34052.json",
+      "sha256": "d5d41d8647d01b66aad37b2bf1df0c586bb94c685fa0108d75748e0a71cc8ecf"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34078.json",
+      "sha256": "a0f30d6a4928fb1ea13185b926a3678755fdf7361fc3f2885fda83934718f034"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34820.json",
+      "sha256": "8d8ee34b360678a36ac92f7b039a48ea057e971e1ffcfafc77b39c9e5b9014ba"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33508.json",
+      "sha256": "7032c4a8fa5c8f94e041e93e823c96fd1ae812d1b919c22149348c92b826a25a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17302.json",
+      "sha256": "456fdde65655ba5d73e89f93fec2a9d3379fd3f7478a1c36309f45abcf9bdbd8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20660.json",
+      "sha256": "f6661b7c6ade481424f0f864aac0ba0de6f83306a4539295a8526f8a43aff28a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34086.json",
+      "sha256": "aea064fb82c86f2e9d91d64010d4c08b97292197d27b8e5dc1a3082784628ee6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_561.json",
+      "sha256": "4f98823668f1ab2d115298df68f156c354840f10c0314b9fc556fcae8c33a423"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26646.json",
+      "sha256": "524886faaef4fd248e3443843b4616f99aedb8b451b38fc4cf73fea959372601"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33535.json",
+      "sha256": "4ce39e68fc5a7643b783f6bb160f8dc427ee2fe1e3d24a33168d0c6cf156ccd8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25589.json",
+      "sha256": "d9b19a1702d0bab8542c17812900ad214020fe88e9aa049941f79ded79453f1a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_339.json",
+      "sha256": "41b8252201a8b13b95738a3e5d66e7c991edb8b85bfdec0d5a903d5ce5acf618"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29011.json",
+      "sha256": "3b10fdf71c3299e44c2b526f6f2b51a8280592581f322a3d492da11683a37b1f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28625.json",
+      "sha256": "1e120c1fc643f1c852cefe15c2472824c31f24dcfbb44ab72ebdbae10df23de9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34782.json",
+      "sha256": "e7ec4de2a334655bcf57ea4e889a5706fa2469c6e641f9d784548db34268cc89"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_141.json",
+      "sha256": "feb070f1ef4e53ac99d438a8046415585511e78b56c8382c75666025dc06f25f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_499.json",
+      "sha256": "180dbecb5d2adcffeeb7e3b8bed01949b192cfbc17f664440f063fb178c20b02"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17418.json",
+      "sha256": "35a241ec42081a39ea679c92253338f6c59160487dfcc305816345231ac75131"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17241.json",
+      "sha256": "414abd77d16dffbace96772f01460043c9a4e05ba7359f3dde8cd56cce38f199"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16420.json",
+      "sha256": "aa9265afed02c86651e787bf56f20c8f2d0611ecf012fcca0a34958fb43b22c0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16946.json",
+      "sha256": "e7136323ce327b6cd4bcce1fc2dc6ddfb69f26cc17cc427d1bb5aad53d88cfc2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17583.json",
+      "sha256": "dd9921d6beda4629e93540487e90e88180b4240101db08e5adc9bf1d2c07efc1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17682.json",
+      "sha256": "078c75a33c5121ad05136db13b98ee1e443c7a04f5e773516c31ba84508ec4c6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20015.json",
+      "sha256": "9416856c9c04a6fa19985e89148440ad6d28220fe6521b7d3f2e948298fb6167"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20391.json",
+      "sha256": "9838d92a3879ddbcc54861522f17fde825bae1473feaa9ee23598ca00ca32dc2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25278.json",
+      "sha256": "c191726135ebb00fd513eff73548699ae0587a2e0e8acc7c06a35e91e1e0710b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25914.json",
+      "sha256": "2301266bae78338f70b1de28ce756ab480b9bd8928c22d9bbc2038efd416b967"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25938.json",
+      "sha256": "386e4cf422d66b7f88e5810ad4454e5a895114b4ad1c26f99413980f27985ab7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26137.json",
+      "sha256": "fcda87a3bd80d6681cf6256598e716901ac4c6d71779d7a07f9ee6e963a7ab75"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28023.json",
+      "sha256": "1ccdd9b351bca5b902f51f3aedd4c00c65a4014b6b8fc4bd807d3ff7fa92cfbe"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28120.json",
+      "sha256": "fb151efdc51b4726f74cd775f5cb04f91a1c8c258e5e032247420f44d9e006a1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28226.json",
+      "sha256": "5a61ecc3c490440ddf1ea3b7235f1c18f7659b029315bd74a3fce3fb02690b3a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28565.json",
+      "sha256": "b1db1bcda4e1f75626df529c9872a65313325aba39b857afbd58a6c96b1f9dd6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28784.json",
+      "sha256": "f46be9291faa73dedcba2c8c342606c13500d0d4bbb1c64179ca15a2030e4b96"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29600.json",
+      "sha256": "c427dfd6b5b5265ffcecc7ae03a9bce3dc13223324bff388e389b8be897d5118"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29773.json",
+      "sha256": "2213d99b0c0861c5d7093558e45eccc12c6850e4eaba506247d11ab6a970055a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32493.json",
+      "sha256": "ee2e42d344134bdc61c3fb5ff05952ab8ec914e9b139ad61e8bcd8d82ec5f969"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32515.json",
+      "sha256": "9fb3862f579dd3b461c9001ed9d41984b1fe4951cbd1e8ea1291bd01e7986699"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32808.json",
+      "sha256": "1c7035ee7c3c86432e88d81f77a8cf8613d132b4de3b1130bdce2b0538625a9e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33023.json",
+      "sha256": "65924745569ea3201382852c1df48867397879fda2839a347192dcbc006e6599"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33027.json",
+      "sha256": "9c009ce426218123ea0a7c3049e1f2b5cefe175e143c6ed6f5ac9d765b8a9630"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33089.json",
+      "sha256": "e94b96e35de78ea50649565a68159769c6478b2d819e0d3c94a350ac7254fb16"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33244.json",
+      "sha256": "566663db6adce99e2dbbc575d19bfb378179e7573334fb6785dffcf639fe9d88"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33373.json",
+      "sha256": "f21293edfdcea1062d20a4ae66ee6ee5e06d1cb52581e298e41e224e665e83dd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34488.json",
+      "sha256": "a58b5a2d36edbf0c330f29b3703a4e52b0e44aaebdb6d738c007b05e2812f94d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34512.json",
+      "sha256": "714f160330ae1524089bc2a7434c3bac6e4e1b531551cfed2f6fb806e0955a01"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34823.json",
+      "sha256": "bc986d43deac0715d309f44131468e604d9977344301ec8cea62e11ac30630cd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_397.json",
+      "sha256": "340f5eb5ca8612744ca6a4052ee263468e817de5fe0be9fb6467879d9edcfba5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_243.json",
+      "sha256": "8f7c18fa7dff9c8e9dde60ed2ef0f5824a948db9429c66923ab32c8b48159e60"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_526.json",
+      "sha256": "b00c1012abf7b5ac3ee73e80c79fcf27f8566a014d670d057505e55c4be8923d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_160.json",
+      "sha256": "d0b8b44cf2fc3282db9f59a957c9f6454200d7e61e6b6368e5da6c7b19b530b8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_43.json",
+      "sha256": "736f5fa216d62b6c6934bdcaa137a028c9e41333e379f227fc359e71e501885c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_530.json",
+      "sha256": "b6bcc110f9c03b5ad838ff45f932778a43289afdc2d76f1f91f3ea7886563cd3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_903.json",
+      "sha256": "24b386a6d125f21c6ee38b3fa63d01edbcf41503b22ab4ea41e46a75609571ed"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20897.json",
+      "sha256": "d514cc47b2abdec88c8e0c11e3faa5117b8a3511f8faa9014e098f3780c954fd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25698.json",
+      "sha256": "7002af98690438740e5e132521e91657c116d1cbe0096fbe884070abe393ae88"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16726.json",
+      "sha256": "a253b2c86562de19cde9eca4b3b8c2a83540ad362143e2512c6a6f47921efe75"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16311.json",
+      "sha256": "b9387c5e92f0efac78bfdf0ef8f9e88cbb8823b3e5f0d41acb812230efce1460"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25882.json",
+      "sha256": "b6c8e8a7e4835a83cfcbc19d8deae33de4309b76025a62664a4a7b94e7e311a8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29529.json",
+      "sha256": "c179c13a1cb9fdfd1ab11fb8f341c874d1bfc953fe4736909beb978231a7923a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25618.json",
+      "sha256": "f765fd2927f13ae31c6bbcde87d36e0429176d1847b659e996e337b9eac9a196"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_35406.json",
+      "sha256": "23b93331a60fe723e59aa9515ddb5630ef126869cdf4b5d0651b4061005d219d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32317.json",
+      "sha256": "6147f10b2667fdc379de56b85876a63df2e42c6ddf12faf2be9fdfd764c36718"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33143.json",
+      "sha256": "64521c93e04a6b169c51fd0e6157a302958a66095948dd851a51b38a53f640f9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28890.json",
+      "sha256": "975527c17746f4fbefec9ce9e94dc5184086764b67041abdb152f606a5996a44"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21326.json",
+      "sha256": "d2a1b4d936c19b7d733399559bd8370837f84c69abd10b9ab6e48a6ce067fc24"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33686.json",
+      "sha256": "18c448ef9bd7b24e3a80656ec5284d333b92c5a8d9218cfed81eab5ac9b056cd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_99.json",
+      "sha256": "0cadcc9abddcfc12c576518b31acf98b8065f1653a84d3fb7e769e5719f00691"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_373.json",
+      "sha256": "efb84b151325db3ebb4ca9282fe25d16d1d992bb94ff17399ba6c4b865bd4449"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29174.json",
+      "sha256": "12357bc36c57dc459971b279c2b4d5c3cbdefd5cd74cac1c34354cc1c0bdd6c2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16088.json",
+      "sha256": "898a2a4c18ba8ca5e196f00ba506dcb22505013a3a12c0cf4e10c7488d854737"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_424.json",
+      "sha256": "070edb657cd2141d7c4353951f1f82cb38c446d8e6731eb4d440dad2e241d879"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34680.json",
+      "sha256": "d52895a3ba8060cc3b778a60147cb6a906b9f9d56c3f2f38fdb39677a76ad499"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17714.json",
+      "sha256": "ff6ddf88c1283037b7d0f123dcda7fc12a2263a32187326a4271f8f40f96d187"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_19886.json",
+      "sha256": "b535d9432ab6859d4330dd8b2d4ee49a0a212b754e1919c446c1f97f643f2049"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32906.json",
+      "sha256": "7f954256b576f70faa2719705c9f810af0458928bca2a2fecf2143d9433d71b8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29523.json",
+      "sha256": "17ec383c15a0ffe5362180f34830742d5d200477b34227242a409416825ff495"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32643.json",
+      "sha256": "794e84e270238f4c5c66986fe9527956835c89b7c4d87fc5ffac3d0d71175e06"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_122.json",
+      "sha256": "1c49a0c7be4b7a1382e1500dd6a01666fc816887c362936363c7f60646359f41"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_200.json",
+      "sha256": "115d38de5df3e4c2819c4fcacc720665fef132ddc002a6e5279e7878126b66e6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20598.json",
+      "sha256": "8e198127b447130d9c293cd46e963656885ac1f6e329bf2bb1c0895a86320d23"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16582.json",
+      "sha256": "8eb72235821626a721e6ba7f12b8347ec04eacf335ba02d366917831118d6780"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_605.json",
+      "sha256": "74aa7cfe61f30954242656ef997fbf5f63c0115ef91325cdc0220bfff9b6e5a1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29718.json",
+      "sha256": "30942a21641db89cd697238fc728feeaedd49133b80fc39b644c695a41698858"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16500.json",
+      "sha256": "95dfdbea794b89027bc4970c10857c1e3e3ca392725cd8a7b3f4c3bac44d42a2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_337.json",
+      "sha256": "100bd83edf0a44a2f39a863acb5c40de7027981bf54d5d274acf684d130a1503"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29047.json",
+      "sha256": "862ce7765bf59004c9361f10a98b70dee20bdd03feb4cf19ac17307b205ed4bc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_898.json",
+      "sha256": "c177e600799f5e09bb6c0b71f55d04df3c81ca9d3f99cc259509a154fa4f3f89"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27996.json",
+      "sha256": "6c91f38b894c5f552aa629beea6c60879489ff8308b0f2ce46c65766192fddc8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32408.json",
+      "sha256": "bda75373641446318e4045544c39dcd8c25c0d2e5a6719f600d395f4e50972d7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34788.json",
+      "sha256": "b6ec5d0047276334db5513205701123b5d6eb09bc43dbc776050001bbcd73d1c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_342.json",
+      "sha256": "64918e4f5eb590b004edf32226ca2a82460b7308607dcd279acb4cf85381854d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_3.json",
+      "sha256": "bd686f229e46d3b60a7e0e6300f2d53c574745d8f65f30a11d541f12b4cc1e90"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33852.json",
+      "sha256": "e3f68b1b132281878909d66716ddb648ddba357b38d8533851daab22cef46787"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16442.json",
+      "sha256": "ea7d10da9cb4203e5269163738e290b6b4464d1757416e56683039748bf05677"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25958.json",
+      "sha256": "7592d3bca5c64e9ffe1206a7933f902fd3706aa16d876f5376e3469fa6760f01"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33282.json",
+      "sha256": "334678a59d9c9245ecb6eeb2de4f4878e880d12d25c920f6ba01b890337cd4bc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25995.json",
+      "sha256": "ed3b9a39b2c1ba9a3980af89887d790de6f5391ad67304771c2a3761742fe459"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32953.json",
+      "sha256": "70ad2737b2d897535fdf3381b90ce7b6f3cdc46197f2ae5fff50f0be70d4e165"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25377.json",
+      "sha256": "c2515d9c4d412380a607ead7ca43d0d40cb0999e81d3cb12f2c7b40c0f7dabd5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_150.json",
+      "sha256": "f7edb5f94386397a0c164b596c390498eb83e7465f55949cb825b540416ed787"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33144.json",
+      "sha256": "19f7c8529c9dd692c2c7d036ff5b8161ca01b8f3ef9ef9e51196056c08dc3da4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_15.json",
+      "sha256": "49e8703ec91fabb7652124e82e2cc79438094aadd15e93b654c19b8eca3123a0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28108.json",
+      "sha256": "1fd8ad98b2ff943e12c80b508771b0e2c9a3f84ca95d1ae540419a0713951fe4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_57.json",
+      "sha256": "8b4659b0dc710c1e715aa43e5dfe19f0c3ca998d6b6783326655519a1495153c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29256.json",
+      "sha256": "9e87e1bd96918b83c62421d024a8e4fc15dec713fe223977f899416eece11d6d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33513.json",
+      "sha256": "12e9be196da5fe9c1f0c41d7803ed9855c0cd6a081ce391b05d7462b52dafaf4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20170.json",
+      "sha256": "d6875e0b737cec27f4285d8a52a18dcd5cdee967c4885a94b864c5277838f888"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29560.json",
+      "sha256": "075f7f8cede0a2f99b1ec90c71592c391358f13fb3d61f3366602b85131afef8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25665.json",
+      "sha256": "7b549beef94ad9f04bd859c3a48022a7d405b2eaf2d342214fa3eb7fdc041b9b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27749.json",
+      "sha256": "21e79236708ae4fba3e312abb3baf1c162b13413c34e68c2a87fdcc127300d90"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_537.json",
+      "sha256": "164eae476318a0910caab6831fb17078ad406f3a6203056b0d780cd301b5799b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_671.json",
+      "sha256": "06637dbaf2d0d500d911d0584605d5611db8e73f9e10313d7455a034e5caa420"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_681.json",
+      "sha256": "612e6b8b982b04f74b48aa5a9c49cd22654f5f51e01d56f8045543d076428284"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28567.json",
+      "sha256": "7168d00719bf761bf45fac9cda14a81d1fa663b092587a504b59a02a1d82a95a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21336.json",
+      "sha256": "a18263b1fba3878beafaba412bb1b96493385e0d42e38fd4f6c5bc367ce440b9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25673.json",
+      "sha256": "95fbca34ac90fd185418baf8799db4d5b89514fc4e0cf31fe168e922992b3d82"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28273.json",
+      "sha256": "fa8fb05b9e603e80fcd6792989db60f656eded58646244299fde895714139f6e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28275.json",
+      "sha256": "5a07200930a6d6683e39cd06030f975016403de56779788ad2f5be548e8f4318"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32965.json",
+      "sha256": "f4ec9efcdf89697158c58437608c9afa08f3ec1600721d3bb785b52437120b82"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_35484.json",
+      "sha256": "7f60af779fda86cbf39f5230528fb09f26856e0432629aaa3b44438888862bd7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_337.json",
+      "sha256": "0692081dadf1f6cc1590d3d1ae6f300186a73b77db5b0c31e8d225a504e71891"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26172.json",
+      "sha256": "79d840cdf456cf09a41530fab9b5b9cb7dfac72525644fd8ee1c229be229b8d8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33488.json",
+      "sha256": "1db252b73a1158d6b753cf740c409dca1552e0edbf89f2234add49114cd06db8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25076.json",
+      "sha256": "e39777dec6c3f389985eba3c55362e8d8f9d36e0d3d6fd0fae1e60d320e84ed5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16417.json",
+      "sha256": "6684532b9beaadf5b62b93115bb0e577e7ceec13a735eeae0259ceaaead57c3f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_631.json",
+      "sha256": "8162e5b9670c36cd32cc90cc18fdbe4aec0b81e4017abd74d7ca27f28f3345de"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32539.json",
+      "sha256": "041890e1839183f9ed55173cbeae821953d4ac66616348315b20a8bae33ec3eb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_466.json",
+      "sha256": "4ef943062a6356e468fe6bb9afb3f9f8715c8f3a4a08d7552c20a3abf885de16"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33601.json",
+      "sha256": "47eadf40ed47265ecd2401f190d3d49270a2caaf00160b45a9cca3197e22fa7c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_77.json",
+      "sha256": "7ecbafa20d7560632f0d6a1b3a0b6b46c85ff9f7ddfa20d6e27bb5bb60459cdb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17474.json",
+      "sha256": "895cac8679fc0920ef08f6c845d92789a2be22ec775ee69d64667990fdc16ea2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20293.json",
+      "sha256": "e482447e51e7f41299a1ba703aa420964791db9dc59395867c99a8b41008e761"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21219.json",
+      "sha256": "8953d72d73dd1653f862ef509d12ad73eedf1f1f451d85bfcd0c1ca039de3c1e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25527.json",
+      "sha256": "91702ae853b36a0c841797fb1fe94f31ad039bbb7da20d382fb835c50953dd40"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28650.json",
+      "sha256": "89c936c02dd12abafafc0279e7b5ae9924104a4f7117df68023050490776e7ee"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28660.json",
+      "sha256": "ecf2a788e658f6ea452fe80f8cc70cd9220959579ead2954dd5e10ec139afff4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28927.json",
+      "sha256": "f2ba80ae24d0f96e8454667036d5487a8aa8a338ad0d95edab017841a3cbc2b7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_30001.json",
+      "sha256": "48aadaab8e95fc3b6a4e97f7c700ec6acc65ec2813430c0764fb9462b2b27658"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33240.json",
+      "sha256": "01ac800da6c7e231f28924adbe7cef9a386362d495e53e3cc9149c6a0aea20ac"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_557.json",
+      "sha256": "3aec5286a283257aff88085ccfb29e1fd8e68c8eeb18e214ab7dc54755240327"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_562.json",
+      "sha256": "13151d04c78f1eea97f68197ee9c6763c2da8021e122f37ed675e0f9f90e43e7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_253.json",
+      "sha256": "7485c9481ac406d09b03eb2a7685f919f434b67b353ba67c1e37c38af552e9d6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32733.json",
+      "sha256": "933b3a8f7b13cbf1b72be71883be98f0f25a5423d11d3c987839ae3e719af08b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32376.json",
+      "sha256": "b12781ff494c717f7a23078c17eb34a80ee8ddd83c59d8c334f27007eb4fcc26"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34436.json",
+      "sha256": "3a33294a0003eef468e94f244a1cb439dc374edaacf8c5e93587cb8d4a93cbbf"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17670.json",
+      "sha256": "44749686c6e1a75f5e8477adc5799f32da6ab4a9ae2c58194a0df2b218afdc17"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25285.json",
+      "sha256": "af6f1561b3469b5064f6a3c0a33cef1975d72acc68b04b284e7549570ac0de3e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20490.json",
+      "sha256": "0bac38de4c33fda9d6855e5f449f69c619f4bdcdfce68e7223d24675a92a4bb5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32209.json",
+      "sha256": "27dbece1642ab78fd1f30d8657d62fa24eec9b48081ea32b0da6d44af4e5ee52"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17110.json",
+      "sha256": "1e652042d9947d166080e5f5cb5f60f9766b7bb8549957ddb76519498188231c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28791.json",
+      "sha256": "bd09498269ada0ca065c1520743e064b88129f6e62a3957e0513bb0be02947b3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26522.json",
+      "sha256": "8dba381a7971833b5bf0c138f61c5a197a601ce82ea5b2d6f7ede9c3eccaddb0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17108.json",
+      "sha256": "91eafab44c3237e2217f6c67de23a392351a5f98143bb9ba88e513c0bbd1870f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33324.json",
+      "sha256": "09d45655b8201252b2d4e481cac9589411675747dfb7ffa9e996f8e4fbf9e4de"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_339.json",
+      "sha256": "78e9a7e66bdcc60422a94ef3206d7265f13939c09c1cf50de0e12f9ecf7455fb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17295.json",
+      "sha256": "0d7941d60c209b681fc9f7c381b6982cebe4439d129862216419c849aa70ff7a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34827.json",
+      "sha256": "11acd3de7ce73ec92708f35ce64980cb9fc24c3acf2a84a5266bf6fe43e37b21"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20674.json",
+      "sha256": "921de3d91c005c16846ee174615ab1835276b347c8e994523feaf8156e572614"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20299.json",
+      "sha256": "4f694a221a50d36c5f8317d358a35f24416ac604ba72daca95ec55f2c70ee97c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20303.json",
+      "sha256": "5ba3946e69b1b90fc1c93133c2814f6cccdf947e6087335384941e0639667e64"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32614.json",
+      "sha256": "e9098cac086675f20f502503962d2af5c846939e21a3a4cf430dc563aee31aed"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32842.json",
+      "sha256": "a970c8074442e80d9c1e6d4a1378cd9e9fcc5b208285b19ed53c7eb5153e2b2b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32019.json",
+      "sha256": "60d326fb60e76b6b7662f250361e3908bdbcdf01a2074edc0feb3819fd1e10e4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_104.json",
+      "sha256": "e627769c4a7bb75ea90fae2a6f911f2048ea7bfa456a92aa9f20705f134c0233"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_116.json",
+      "sha256": "69ff8c1ba6a6d15f1a5dad5c5d3d3e99341d684ea406f241b5897fc34a60bdf0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_71.json",
+      "sha256": "76dc4bf9bb6d314af506e1c4cf060daf2b946fcdcda74baec365ec1929abc241"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25293.json",
+      "sha256": "79cecddeeb8224fc1a26ec6b05c41053880d1cf14b69dac367f9bc4c4fea6fde"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25922.json",
+      "sha256": "ce9240f5dc8dd7f949fba0e1cf610dfe0dba0b74aeb50acc356618569faa0d0c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_83.json",
+      "sha256": "ad98f7c259603c69ef684383246a6ac17eeccaaa8e15fb3bf760bdbcccc3543b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25236.json",
+      "sha256": "a65db56d9dcc620a878dacc49e3d75e78f6fa605611cd3d39b125d0f9b533e26"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_137.json",
+      "sha256": "f5e59fe9529e6f183ade4fc06f1dad58f1797b58675a9e98bf9465301265d52f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_19914.json",
+      "sha256": "9b3c30704313f6d2d8234105c002541a97d730439ec64e03c99f90d5a8af33bb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_976.json",
+      "sha256": "26eb8dc00eb4729ff2f64b0619fd740c0a38869ba6abb3508432c2cbc5151023"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16155.json",
+      "sha256": "7587d5bc2315e817b5872575b467d8a744c73276d5b48fd2ad6b3b6d4127fadf"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20318.json",
+      "sha256": "cf1c4a192442dba45539b760e9d0eb1961eee48a1127d422858dd5c00787258e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28672.json",
+      "sha256": "edefd037cb4cf3a0a0419598211b03a93950266fb116492b485f869553e62ae1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_545.json",
+      "sha256": "5fe95795ddd76936f329955854cecd4afc4d977894a350420aa78d44620331cc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_569.json",
+      "sha256": "6de73fa84e32c0f4a1c7030a142789103e5911f2f11bd88df083b73daa801af4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16537.json",
+      "sha256": "e195e9362b2602d3215eb3f31004117948fe9c1ce9ebe1701047b59fe0228de1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25561.json",
+      "sha256": "66eb9cea9277186c052924b8182737755b6efac3cd7c45055b4fbd519638a386"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25289.json",
+      "sha256": "6158a90331aef4a8cb9399e42851ef91d17549570c1cae8b4599ff6c17d74f50"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20441.json",
+      "sha256": "c2e29168b203a28fef93de5ac979eed84bc060377b2d784ffd5e22565abc3458"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_72.json",
+      "sha256": "730cfacb4d315b23943bb8112c425a1d191b40de9cfa6a5c5676f2a440cb4ecb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25113.json",
+      "sha256": "4070a3f8b3c2914d776e057f6ecfe9b2a5b6530ce0102f2f23140e8e3f6aa2c0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32316.json",
+      "sha256": "a349ef39ffbaa2d595af99ac26b916b3dbc6536dde4f3c9bc0b351fc0a2c8199"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20636.json",
+      "sha256": "0d4759ea799c5ba9c38e69d59b52f38bd2237e7ad6b29235ff61fd70bb1bf9e6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32826.json",
+      "sha256": "e15f2c76255ace87f9de9b0f5ba0854acd22051e6e9a4b9b91765119cb952fbd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27949.json",
+      "sha256": "f9e9e0e4306d56f3b60c23218f443270b1e61c78734690d43f1e3c3b6ab8b484"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33886.json",
+      "sha256": "f6b24009456947c14582735818dd86a88fbd7e020a75643461bed806df0155d3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20146.json",
+      "sha256": "06c6353dc8d2e60ad1976d4365af5b55e157f20ec59b903fc55d622601b98b2c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32111.json",
+      "sha256": "5cd8bc6bf46728d89086f417490056a36d615f4bcbf0fe44aa992a07610b1867"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_309.json",
+      "sha256": "3fd0b20bd886605520560a09393eea71baa416bac66ea146eb692a1da283ebd0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20278.json",
+      "sha256": "9cbbfb46fbbeec5e30fb4329161eae2fe684ff0b0d3991f8040fef9f76d345e4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27780.json",
+      "sha256": "d978d11c4ded4cdf7e0f3b6092c7dd7c76d2e85db54d84d7446e372c96153d26"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33375.json",
+      "sha256": "28e359acddabded498299a724fbfa8ee10e816ca46c5c47724f22f0146cdf7b8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_661.json",
+      "sha256": "4bfd3ebe618a4ba02c2b06284900c4a99dacc9291ff7a77cf24a6f62395f452d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32097.json",
+      "sha256": "4764d2b686e66d6b4734ff5feee1c95e94d0508a51b604943c9f0062239ba89e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_457.json",
+      "sha256": "e45a74c3b25a9fc65eeb9bdc0e4241294650b92240a2e2ecbfa8d9f997630309"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29049.json",
+      "sha256": "dd87e401698cc51354bfeeb0733de03f117a3ad8d1497950d98528b4c8764baa"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26059.json",
+      "sha256": "36b78ec434ddb81c4e7a9819b9e8f59253bce685b71581f8c8cb869d4cd598f3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25609.json",
+      "sha256": "5c7d533a5eebcda9b727e0be0d7777a4a2d6291e64c9980ed9137beb1d0edde1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_1012.json",
+      "sha256": "77a9bd971fadab8b74ab59a423557b994ba78c3793f97e4d791779c21096b92c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16226.json",
+      "sha256": "d30c973b825b8b27b957dd7d9992f7488ea8f58dfff75d975d36635166d7b4c1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16247.json",
+      "sha256": "3e03b886b5ccf0df578e700f0baffd92697f9b9bdda4a2d0e3ac5302a4fd76b5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16375.json",
+      "sha256": "2aa6ae386c488f4fdf3bb60b19dd8c94d3d2468ab8369e1b1af327a3d17d14da"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16382.json",
+      "sha256": "d0f3c4e4c6869aeaf82f4ea92e52dc9be6106fcfe0356302140a3335e29cc953"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16429.json",
+      "sha256": "68606a92c1f8851f48fb8e592ec17103ba38e4ac0361dcdad82a5eff6acee3b0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16457.json",
+      "sha256": "261e97c2485074307870be8f602a50b33344233c40616255a56b1e342f910501"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16468.json",
+      "sha256": "b19c932f43b5624c56e14b4190569ac3d623fa8521072dce4bd77a0d03e1323d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16545.json",
+      "sha256": "12bcbd1d3e99012789361e6d9ddf9340ae49afe1ef39cc06575cbebbac0aac5d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16568.json",
+      "sha256": "c050162493040f30d659799cd4721e4a0d412bd696f3b8e2cc3ad13ab410e4ea"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16906.json",
+      "sha256": "6031833255d4e91db636845c40d1d36500dea9751c4f001612d78899506ad373"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17021.json",
+      "sha256": "a712fef7dee3ca46dfe08199adca6dac743cb64edbad84bc96b39e48d3790993"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17044.json",
+      "sha256": "504aeb53323921ebf35a060ff07ceafd2a18e1bb01894def5c21602ca175e3d7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17220.json",
+      "sha256": "5edca25c6953c8ec4a1e077e0d77af7d12d025f3babb568c02dcf946ed466d3f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17236.json",
+      "sha256": "d12294d9c5458716b46fe532c99494f946fc50bcb987fba4b38ec52f2c41633c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17518.json",
+      "sha256": "0fb783e9be3d3e1941ab9d6d81efc3fe3273826aee812bdab3f5b39eea532087"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17693.json",
+      "sha256": "66f269a34a419de5b4604afafbf33340eb9becfb235c4bd13d2904b17ab4022e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_19984.json",
+      "sha256": "67b02db4644ba94c67286d6d050dd50999f3283e9d3888d4fc7fa1b10f991eb7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20025.json",
+      "sha256": "7af0ce01a23f3a37f2d5f80feab47147e238104a22c4118efd6ae4fafe48b6c9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20062.json",
+      "sha256": "25de89403755822e47e7d04f4bdaf57d209906a0e313b6917374d02fe8da834d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20065.json",
+      "sha256": "1f9f39aaf5ea6a6413d84fee979c890fe1ca08bb5a6f5a60ad95ee51c94e8e19"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20067.json",
+      "sha256": "2e3e0f478d2cc64887fe914b7fbeef7cc64353b5f5a8a28951941298ab0ae2ba"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20133.json",
+      "sha256": "6fe066df152b37cfeeb9813fd317c6035ed8f7540ad66af73517f985f56a0328"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20166.json",
+      "sha256": "0f0fc2eaf98ed57871237b6c89234764b71450a2f1673af2599be7017dd3dfea"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20173.json",
+      "sha256": "c0d07359961017737df65e0e808c5c8a4ec7fb1cf29bacdadd01b3bf3fabded9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21415.json",
+      "sha256": "32dc1ee5ccedb787bae1ea666a0631ef9a84d777e7a59f1ddcf6ce28a28aa22f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25077.json",
+      "sha256": "84864b2e2c26482b8314b472136d6cbb49429bf2403acfc776dea276ba453eed"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25128.json",
+      "sha256": "cf618846ddc1bc28309d8ff62030f8103ec40a667889d28f192b5e62c17e6f40"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25130.json",
+      "sha256": "d924a01dfc1e00d70b1d3486966e3ae93a51b8160c7b3c368a7b82641f64f09b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25168.json",
+      "sha256": "abcfa1bb8c86ea555a59fff748d5db6828e3a084ac6da3985a92f1faa0abcaa7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25237.json",
+      "sha256": "67c8215d6fb2c2332e66a9af40080f4aad601124d2c2b24f968759e21d284fbc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25305.json",
+      "sha256": "c3b5d9f08620f4626551653cea55459684274b1499eb3f51d41854db6f185960"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25376.json",
+      "sha256": "dc804ab39a145b483deb049918868890cb58f18c8d28faf967b7f65064b66d7d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25470.json",
+      "sha256": "31cfff3837ddc0b8da9eeb48a866269df70f0e072efe526fb903908d772099d7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25479.json",
+      "sha256": "67dd726c47541b878302d539dac2fe1e9d527d4b586d4e22e74a6d261d746195"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25846.json",
+      "sha256": "00547add3b1b76da8f7429402901e05260162d00afc3820148dd78506384939a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26063.json",
+      "sha256": "7bd0f845f502ad78e9cfd2b842675b2127754d78a225934617e395c09d37f429"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26236.json",
+      "sha256": "7398c755077baa3d1a8415216baf5e4227a1e5ec62051c4a756d612a7a04dd8e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26516.json",
+      "sha256": "8b5cc0acfc9dacf6aab2739e849d75ab5bca1879a5bfa0d84778f8c39962e53a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26573.json",
+      "sha256": "363c47d3ceee0870c7e3882f690c9b9df69698806e519acca455dabd0aae8514"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27879.json",
+      "sha256": "417b4335e57422c787f229f8d0b70f675d0d31f3817fc03b4c836ffa98972abb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27891.json",
+      "sha256": "db4f4ffb9060710f092d2e171c7aabc54611caed57fb835529287a2479d5545a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27957.json",
+      "sha256": "bc5c0cc591dbd02916ad7649bf8e8c55482ef720682203b1ee162a3efe45d57b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28082.json",
+      "sha256": "d128a73982852e6d7a7276e08964f0ee9f5b1bc9419499c3f84f54ea43df7fdb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28117.json",
+      "sha256": "344260cbc7bceb41adb9be4fcbbde3cd619c0e533c207099f8b41a3b4ac806aa"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28122.json",
+      "sha256": "a0e3435474461ee405404a53012301c9cf2ccaf61ca123b84f97591eaa2f67a8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28572.json",
+      "sha256": "8c74ade6f5e3d0b23ea981b3e3351fbe3cbeedf8bc54e1a1b662289b00965061"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28601.json",
+      "sha256": "1a3abe58e1b3c03445461ce3392c122083136822de37e47d727c7aa38fee9d65"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28614.json",
+      "sha256": "2cdf586a150d68b41ef289dde9699c515a17a15bdb7a5e2e30cff84333ceb3d7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28684.json",
+      "sha256": "5b1053562544ee1d5fc7dd1136f74cbe09bfac83e4c36ebd0106fda40049ad8f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28721.json",
+      "sha256": "cf8bc0896d5b8186639e293b7c36b059706a83b5442c4314690ad8210281d0e5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28789.json",
+      "sha256": "9a4ce8db24587dd02a83454f5652dcf54ba0f24c84eed2b0d71c5532e6e010fa"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29155.json",
+      "sha256": "98ee4edb24e2891a124acbd70d984570fbb8fe8da613550567e275930a8eaf08"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29159.json",
+      "sha256": "01c6f3b217173a755269dc1a57f8b23f97cd1b00091657ef4e80adb21b1c75bc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29598.json",
+      "sha256": "04f5e3de51a47453eff19e76d9b6ab936f58b5a561682140927e939f0548e4f6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29826.json",
+      "sha256": "25c274f893ccff87af3e328a322b0f6d8dee4b8c13b188f3133b4a2baf1118c8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32102.json",
+      "sha256": "59ce778c605e4b8f6a85491d8fa27802f8f7aa0110c7897d9cf8e3b8815c6504"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32210.json",
+      "sha256": "d94ebc9607b02d3400525740706237e2ce8ba8fb4bee8ea288c137b325d8310b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32234.json",
+      "sha256": "f865583c51a8dd859e22e54b2709797da3bf43e72559f1cf1d040d77269cf1e3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32239.json",
+      "sha256": "80fc55198541775bb6ba3f01dc7022625f2dfbfaeaef3b080c38f2a57566370e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32274.json",
+      "sha256": "94e4c9fe03f4a0a9f2fefb06340f6723558a49c7672d0389ba38e85ad5a43dff"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32324.json",
+      "sha256": "487cc8c80cada2bfdda00c5c51a5912bdc59709bc308e0c6dd9f24531d0753c8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32609.json",
+      "sha256": "e9d3d56e969243df1717460535ff01c0707e9470344b0ec5e6d9ea0c46e1bfe0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32626.json",
+      "sha256": "06bfe9d1fa6df61696bccb353df2a5c85b6872811a17610ee7ac94eb070ce4b5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32757.json",
+      "sha256": "787374b5b487f75be5a1d25d5258b643d70978a354ab5a1af81c91edd9f354a8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32779.json",
+      "sha256": "a6bf494e0129320745035ce4d9218374e5387c43a6661e9620f20268b52fc325"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32972.json",
+      "sha256": "447af72197c69155422a46ca2c51394743667c8777184beaa5b23e0c19b0b5bd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33074.json",
+      "sha256": "60e490dd2146e0a9aaedd1fe870231e6f3ee6678652d04b14932fcedeb036997"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33100.json",
+      "sha256": "00df1a21f785a3cf9cfd01ed51d659b2b0aed65d93b84e7d808f0fb784443aaa"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33137.json",
+      "sha256": "72178a5a288c4138bbf860b65cbcff539fb818339e621721003c3904d95d9d92"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33202.json",
+      "sha256": "ac09cdc17ac5b0a9b24e3176ebe764abf3e36c41588ec969b87139118a21129b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33403.json",
+      "sha256": "8626adf36df4b33a41f132ca5c6834591d7b71d18c290e44a31f3d4c132bd7e3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33864.json",
+      "sha256": "aa32bfe06bd8f310484d146dab46b22f0e92fd72753d94b8d53266d44bccc7dc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33883.json",
+      "sha256": "7d03affbb186e2e317bf3e34a7503b0452ec0451c6b37eb09881c21e6e06c471"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34403.json",
+      "sha256": "7f1f9c1d443e89c1c187a75797faafe70944fd2eb340cc9230d5117c3803e096"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34456.json",
+      "sha256": "b0d38eaa541e11dba11a1cf12a9df5085661350f12d2f5041519ab662d4eaa4a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34543.json",
+      "sha256": "14d3912cadc9a62411253a180884f098b81910f6b1d0f6d9cfd7bbef874b99e9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34584.json",
+      "sha256": "a9cf7628147b56f0652934b067bc2015962cb42c7bf1fc37263e0cf9bd063106"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_100.json",
+      "sha256": "9ae245ec150340c240a7242e9791429cd76bee40b13ec8fb05bcb2626b33477c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_164.json",
+      "sha256": "0728ce43c29bfca5d59a75bd39d4d187d5a831bc0f4afd884e0f7d8e6e2f3b5c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_222.json",
+      "sha256": "37ee3ed59aa776d298e8b75d277909860c8bf4d125b1d39e6ea47ec6f497f25f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_313.json",
+      "sha256": "28243f1557b853fd736fa37d87a00eb61a464d4f47e4d867e2ef345f4f88585e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_471.json",
+      "sha256": "062f40a3c59704d82e2c32fdd69660abc13b8d59395ee1254d7a2bdfb00c220c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_151.json",
+      "sha256": "f70b50f544272f1f443a31a37e92a2db6137efcbc4edf6f5aa74b23b5c822b39"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_171.json",
+      "sha256": "082659f55558e43b13976df62a80cd8103bcb44f1785d71f470db93e284b567d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_384.json",
+      "sha256": "21ae6329ae115259b45db9007841c751871666d464acc1a768b59e8428b7588c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_150.json",
+      "sha256": "117424a32e30fd1ad1f18114775691329afdbab2750927787ad2a3937c508eaf"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_158.json",
+      "sha256": "07b23f70f1ef398d36757e893259ec69b6c79482782572f9ef6a69d3600c1015"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_169.json",
+      "sha256": "708a60acd34326e1397032ba644a50207c29a6d37089c4895d1f584c308bffee"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_194.json",
+      "sha256": "1cf887f19b85b621b8048fac624a9d432e8efa321af60dd8a8ae1f429cc3e028"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_252.json",
+      "sha256": "989670fddf24c7d2371140f892616bedc3857876b7678cabe42b87e8506fdf9f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_470.json",
+      "sha256": "f14a37eafe7b120e14c9c8acee32463b84b74b65b1f17f17abee7a70ad395d1a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_68.json",
+      "sha256": "51f71176957eb78c9afee377434ceb977e032499dcd23e0eb3a8f2995c9e8796"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_195.json",
+      "sha256": "12b87a16c658ccabdb2510418a1e7e0ba60d01b53f08a4e63a2b57fff0c9ca5a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_460.json",
+      "sha256": "bf220362fad0971c52cc95fd52e36286782c68e0e9fa12e4ecc646855bbfd104"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_536.json",
+      "sha256": "1fb10a001347a86700fb5fd7dac47a72ba0398dc2fa1ea38d611b33deea8820e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_612.json",
+      "sha256": "30a3c24fc509eed42b616e607570dad4d20560aa74ea5f5affeebd436db5103c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_85.json",
+      "sha256": "62cfe979e56d6cc9ce9ce496e4279108808cd54c2af41ba7aaf9b7e0678ff1fd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_254.json",
+      "sha256": "754ee19cb6c457c6bfe3d485af57c923f9fb8f7642210fbe59e898225a06183e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_279.json",
+      "sha256": "9bba3c44c34f0ce360f29200308a0c4dda306ad288b0074b5567c15571d40cf1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_355.json",
+      "sha256": "c2b62fc0eb83483cdda760acc08a49679777d0f3b6f05d364071d3007b2b8f5e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_407.json",
+      "sha256": "a36d4cf162182e9a5ea9f1a53add1fd4492d05f6762d396493c39a81f7b4cfb0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_545.json",
+      "sha256": "16bb3846f9cbd5d0c30c4573a81e4bf57dd3af7dc2baae5bbdbf04738b319731"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_60.json",
+      "sha256": "ab2a8aaee690cbc79076946b769530c1e8aefb0dd4eabf96abe37e4609112e71"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_657.json",
+      "sha256": "e9a30df42865fd96043f09605f0942dd6da9b3ef0a8f6dd0c26907e9853721cd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_802.json",
+      "sha256": "3de8184eb6f33d7672be0832c31857dfb59062774ca4957f1552fde25224754b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_805.json",
+      "sha256": "17747b7b90e7d1329d90977c94c7854c265f92ac567d22d74e7578d585eede16"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28828.json",
+      "sha256": "803623e896259501d0b84dc3f0a3b5856302660aed67c5faf0a131af095931c7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20526.json",
+      "sha256": "b1c3f20d22a04a763bc52f28b39873b0e055deca2a3b6260e8d2edf9ea05876e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26285.json",
+      "sha256": "0044a3a96d3e611489a5ce1f3582c7a9a8984bf8eab44af2453240e2a72c0fea"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29580.json",
+      "sha256": "4fb981a583af8ba2e89f33690e7bf6c980cd281fae3c5e147e2d87f2365d70fb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28570.json",
+      "sha256": "1036d3275ef7f1e7c62a634ae0ef105a9eeeaa5b6abb9ebf84c1ced9190243ed"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26249.json",
+      "sha256": "3805fbf6a50eb1f849fa90c49b692a0513ca0bd3ce190f8f3360970d9e06bc4b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28491.json",
+      "sha256": "89f5c591dab005b0fe7ec899c7239fd9ddeae0a737c77c714b380a225cf5720f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26583.json",
+      "sha256": "f5808e6ca443ba9296b4f7afd4409833bcc8aff7b7865d401bcbc4f7afbc615b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28145.json",
+      "sha256": "dfe0440e9e78ed1de214625b94e1a45d1a5ecf35ec980ce17f591af99ea083ed"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33041.json",
+      "sha256": "6b047b0a8789bc1e02c60e2fec5b40ef3730a82018f04b7f2cbc0f99550363de"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17342.json",
+      "sha256": "e51a978bbdda6575c24f3d488542fa19acb609fbcc889ef4ef3a642f37623e58"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_815.json",
+      "sha256": "c7796cb382c3183e8ccd47e08e55d9656a736dd12631025e28b496c75e260aa5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_737.json",
+      "sha256": "b0a27df2986f3fe0e0a18161dc43ec81f74f98070c1674883ad0701a41f727cb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_108.json",
+      "sha256": "8345bd7c5f2e60b874427cddacfdbfc99e8085a6b16ecfd9a9ff001f261b1055"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25937.json",
+      "sha256": "4814824e875580471c77fae11a4f7cb3ce3c46579eb036466b8e64868754b34e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28109.json",
+      "sha256": "35c3b2cb59f20154f16a67b696b4410ea3db93beaa64a49ab609328b7b4ed8c8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28460.json",
+      "sha256": "36ca89b0f916a13281a8fb567a17941f7ca8bddfbbb49558fee0776e4d19dc35"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29957.json",
+      "sha256": "6322c867cbd3a6926938bd6214799837a79a31de28919a6f8efe81b0ff9bc1ab"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29966.json",
+      "sha256": "70183d7bb203e075c7b736d02fe3708198412c31e7f46d79b7f23dbe26854ac9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32108.json",
+      "sha256": "f13966dfd865b7d159ecd37be4e791322325dbad2d0a21b46689141ffedf69d1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33117.json",
+      "sha256": "bf4280a8ffeddfbb48ccdf7b3feae29e1b77dbc0bf74eb856d4b52d57ac4f9d6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34025.json",
+      "sha256": "a5db9fedc523aa8c5ca3b955b85cc5bf1fe16742ab4553c815f63e47f69435f2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_508.json",
+      "sha256": "7bf66e80c36c3340e382e81aa5921e4a2cdcafe7b4fb3d3a9e6e50d409768347"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_491.json",
+      "sha256": "446e4a419e32e3d4dc695f4ca54e05e2f572cf0ec80fe1e40bfecd22ef535eb5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_670.json",
+      "sha256": "bbad7bd43a3e9ef87d58ec5871d28e557db3d1eca18543a98bb9289ba6640f17"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_886.json",
+      "sha256": "ce009937e96888cda4a8d62b5d3e8d28bdf8800795ec3d37bc740584f18607fe"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27803.json",
+      "sha256": "c4f1820e33f0ed0f85d079e6274981742ce8520c35b2cb8e973467bfdcdb820b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26169.json",
+      "sha256": "835c49fb64daa0158d60af939fd8e0689db956a54926794ae139c6b36ee18fb2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28752.json",
+      "sha256": "101f96f9b008d1f49f0757531a547d8aabc5337c78c5aa8f20fcb764dde63b45"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28972.json",
+      "sha256": "fbea81935372cf6b486ab63492ed99094740dc9a7620ef0f9e881824729a50ce"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16278.json",
+      "sha256": "1cc105ba76b81bf636731eccdd511f8a708daf935c1d928df058edfa192d7e5c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32301.json",
+      "sha256": "91eb0a1d386d93e34cea2fe0c26e771ace7367b06d44879e0578478bc71f4c78"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34043.json",
+      "sha256": "9978e9e10ed84bc5dff0c175858bc130234d8470fbbb8ac3cd5880072b94babe"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34075.json",
+      "sha256": "88fcce3336c5c7ae94e451767d39230df81b4eba54eeb1cc2e910a2a8335206b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34406.json",
+      "sha256": "440a190a45cf4927ea80094cc42693e72fb4605d4a6c208fc283219cd4604a39"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34432.json",
+      "sha256": "38d54bc8c1dc7f02e1f6f63ede11104a09b1623271b5eb350bc8dc392367bb18"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17409.json",
+      "sha256": "87068fac715443382e5982173ceb4e0b07aaa7409722de267b2ab85016ac297c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26416.json",
+      "sha256": "6f7dd9a755ac46930fcf510f795cc954a3f4a360ca951203e30feb709e12cf81"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_566.json",
+      "sha256": "a1dfa6162af5f323402cd8dbd1d5a3be29fd1fd7bf0dcf93e64aa9f81648aeff"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_609.json",
+      "sha256": "090db6a4b18954870b9e4448c7bd2758b56f22ef5544431170576760bc464265"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_507.json",
+      "sha256": "cdbeeacc9b08195672f66efcc8c7e3eec37433f9f56dc2fd6a319451c733272d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33466.json",
+      "sha256": "8eabb75fff5d62544381fce3921d90656ca8e6c515b6d85d543d5ebe8df17ffc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33026.json",
+      "sha256": "28c31034888f5263421d9d030ac9ac36c869addaa4fc42c009da6eb5789c052a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_312.json",
+      "sha256": "1a7f6cdc2a08e4bdb04aa52775395e5a3d1641abe1f8d4eb5c344063f0537d1c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34303.json",
+      "sha256": "4c472ebe27a6c8bb8d0c2d2a33031e1d30e4e429188dc2e595f8fcb99c89b72f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26556.json",
+      "sha256": "622d26bd48ded7d833358f4a2d152fa442766d95ee63bb5d481ef7d99afca891"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25500.json",
+      "sha256": "aa9ce9a65f01f4b100fe0227b056feb9ddbf16700b597c9651b881839f51ff4c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28318.json",
+      "sha256": "995bd193486036a2ea384ef41d63d23c67491c992d9a457ea7e18d1e28b0e182"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_25.json",
+      "sha256": "b6b5440bf8228927e353478920f5a8907bd10dbd8680260333f779cd1349bfd9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25983.json",
+      "sha256": "791aae0211f76cd745288f7940e7432bcd7131c42a191ba9f1cd114ef74060f7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28465.json",
+      "sha256": "f8e483ff5999fbe43094fbebabc85f5ca4cc555fb8fd32ac6844fba78866bc52"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21194.json",
+      "sha256": "a6a82b54b0cbdbad9ff7eb5553adc8a5a46a0eb5af7a42d92b8d93838519d512"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20875.json",
+      "sha256": "87e8ae52639962140f8e5b80ed5b64baaf2364d2f68b3fd272e7a56e7e76e1e3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29381.json",
+      "sha256": "9089d02da6c7381b6352e17cd3bbdfbf8cf109b6ea08d4b6b9e9a105e5b412e4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29887.json",
+      "sha256": "0a40c4e48e64b6e052544e75dc88d73a751f2d412b71db8600d48fdf4bb32857"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_288.json",
+      "sha256": "4f95ae14d1bd1bb89b0452b12b0d835989268af6e23b353d448537b578a67278"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28517.json",
+      "sha256": "c8c83465a3c6df57a75dd2fbb3dd9a846aaaeb2b2caa4afc150959539fe72849"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25165.json",
+      "sha256": "442fd88fbb68713bdb905cb4e173db57425c585aec8101de3dcf0ca2bf7a12d9"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27884.json",
+      "sha256": "abdea010984fc06458281981f31b154caa4908b4ad7496e71580c3e8ea078bf8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32494.json",
+      "sha256": "6e45797d352cc630eaee6195571ef576c85cc165c639664b905b7a44b7cb9a20"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_462.json",
+      "sha256": "344635e80516e6c2619f7e2f07a7fe77acc7f3f18afbb6c32635fd2d936e66db"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20676.json",
+      "sha256": "0cc681e37be5f8c0c7cae936827e58c715719154d251740653cbac341216a625"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28097.json",
+      "sha256": "82236312c06c8702cffc413ca7cdfdd58e642ccfd47e992ebea6cc25aa72cc7d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29140.json",
+      "sha256": "cf69d6c90aac287fad9c033c15a93234f468d62cc018b7a524d74e7eafec5968"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28292.json",
+      "sha256": "aab29b91894380d7cc00ee7c2717a6387bf6093100c2eb479b619041a86e6347"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32465.json",
+      "sha256": "51f1645c8fd15542232c79605647fdb1b872a543b21b8b73cbc66f86bc29af43"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34416.json",
+      "sha256": "3d290a2da89baa61a425dbe3348ba9a8a079c7445e72feefc8f4e90c60bf54c1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34030.json",
+      "sha256": "3d143a4bc0ba58592423bac5cb6a0baa990d9bbfbe20bdbe3b82df4927a5125c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33555.json",
+      "sha256": "62724364ed6cbcca44fcfe4ce83ccda5fcaf5188689838c1cb2c5cd9518807f5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32335.json",
+      "sha256": "11dd9e2cd1fb2190bf7eb1f873054dd5870b0732634463338e3564cb1c8d06de"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17159.json",
+      "sha256": "5897b4a7e03d25b21c57763d065d1cb4fb1881453aef394dcdb17f6e33e1e104"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20635.json",
+      "sha256": "4ad54dd6916a6617116e3d645b78bfe1bfce13a5225215ced37e75d35977b7d3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26561.json",
+      "sha256": "a29e4bbc22fd5a850bfda066ef7135b2f2a368a85e2c79ddbb6eb9833c077c32"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29039.json",
+      "sha256": "e8584942687fb0198d52fe09e6da82da53b25fc26b7391235aaedc9c411dbf87"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_306.json",
+      "sha256": "966ba47ab3bd6a484dcb5e4c5a71d56d7bc0c27b9ec41a93ca87bf641bb46154"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_440.json",
+      "sha256": "fcc8dcb699bf1e372a1960add33bf37b22c5bcb35a00fa01bbfe92426b41e55f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20866.json",
+      "sha256": "fb41391328f7f7af9b9cc0ef4077bc145aed8111192d9e76beef9455d7168ffc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28648.json",
+      "sha256": "ca8c0652779cd7cd668921882568acb38a61441877ab55a6bb150dc046dc2839"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26195.json",
+      "sha256": "12855f6d06a8237924339890d0f549bc56cbc1e24b46ef94eb9a7bbda5bec3f6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_27834.json",
+      "sha256": "3447af534148b4853bba184803d4b79b9e930bee8eaeb9e73ae898b616308df6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28271.json",
+      "sha256": "3ea756f0a106161d0ea7343bf934be25accf12d6bf6783690911dde4ec30947e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28993.json",
+      "sha256": "6bcd5ca13c0bd619178045b6d69ba9396dadd99da4194d77eca65ed789495074"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29431.json",
+      "sha256": "cebd9ff0c4f535a4917760dc67bbdea52501fb2aee11f9459e9c28ad944a4afd"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32107.json",
+      "sha256": "712e15ce609b200751684e60fa1776cdbb61c3a11f9cbddd11f98a31620116c0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34212.json",
+      "sha256": "151e66c13c39073bc84ae4ce55ed24e233c24b875d7d7f71668051fd77e0efb0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_579.json",
+      "sha256": "a7e5677bbcb4200b6dff5d510f29f3fa104635ddc1722ddea17d234a9d65c3e0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_200.json",
+      "sha256": "2b17d07f327c778f1661b7ac7e9c0ce1c942517ed4bbcfd6cf656ab1ae6f6345"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_544.json",
+      "sha256": "2626a4aab0bcd8d0910a978fe29ca5b758f48a9ee30d1fb8f2741dfc9a51dc8c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_692.json",
+      "sha256": "0859a371d61d4c233e64f4c95ffdaad67b5e93ae74bcaf3184401a768c0f32bf"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_900.json",
+      "sha256": "74684d48c87b8f2b4c583297cd764e5f74a36113c58365057034d6646ba33974"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29280.json",
+      "sha256": "ab9bb3a9de9e44a71458625b7e465e3b4488e3bb31539348255ea569f7512c21"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34176.json",
+      "sha256": "3975aee6830ea2c7b6d0a9ceead99302cd498310854857cb8d12d515371c8681"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32647.json",
+      "sha256": "ca4cf24ddc1f6a5f47d38ab06c425b6630b0d868a42d9e878dcbb4a2449d10f4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33695.json",
+      "sha256": "d3119d29b62bbbcf6acac1a6f1aacc6d1784f974673137573f5b94c22f9ba386"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17166.json",
+      "sha256": "b6f094aa8f78c7d74937f1a0c299b48ce0fa30852f8fdad6051dcfa48f1aca81"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_484.json",
+      "sha256": "4b333eec0a1b8868363a45dfc86d20c2faa3e07f8a44159d178666cb2e07b01f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_582.json",
+      "sha256": "4b881185a668cacb7804966e0920e427f89bb2cc2bc924c9e451921fb61492a1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29449.json",
+      "sha256": "6222123818583c8f07611e2306c09d09fff7bb8687b87bf7feb3dd67092c72ec"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28373.json",
+      "sha256": "2026caa2db1d4379b869d33688572c13dfb567de6e331ff9898cc45272b1cf7f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25853.json",
+      "sha256": "45a64176dcd921fdafad27187f99191506a1c3a1b4153d82aa699fccb51deae3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34685.json",
+      "sha256": "cc0f9fbf7e336cecffe46885d4460681226326b4d6342060a80bacfe11ad443e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_19918.json",
+      "sha256": "9229ab72a3a8baa2ee0205a0717090669fcd118ed71dd8f7a9745f469ee8f92d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29308.json",
+      "sha256": "1adade59f1aac495f1d2d9a7872e873826976e1de8fbba72d20d34d46f8d8565"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32353.json",
+      "sha256": "fe48f2d5bd6ba8f54c74f986721b1228e43f1dc4eb3414679d87571fce5c0089"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_166.json",
+      "sha256": "2deabb0380deab9b16611933b8a14d15adef5c60937fb79c3b43424925a4cd14"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_80.json",
+      "sha256": "2b7c84a4d015a1c572b6f0973cee1cae05a76024e756a7f8673258ce1ac9b88f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_701.json",
+      "sha256": "a715358591090bf789d366c4ab37994d86155c6336c14611fea23d0fd457b444"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33201.json",
+      "sha256": "f9a9009a3e3a6954afbbbd7497752ebfc1d3f839674e1413457a85b51518eeab"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20535.json",
+      "sha256": "b4cd575a5fab82b075d1fd0c42b787bebced293431fd9d4a245bf3cf50859812"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21362.json",
+      "sha256": "8a6b63a87e6db1f37ab8e81949ab0f243cef9fb1e9dd1362f4d5ffe382c3b342"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25443.json",
+      "sha256": "d0a2b87fa1764b4496ce5c84507cf12e7fbe04ad33069faa1d78ce8cbd8796f3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28359.json",
+      "sha256": "f47958f9affdf7897821ffe2da5a6ae3bafb665acce22c105857173f09df14d5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28386.json",
+      "sha256": "d1dbc7a296d37be07184a0dafd04830ff0ed10a30f5c3f25a582d852af0d0b41"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20250.json",
+      "sha256": "2437b9cfc9aee62fe39d48084576958b83fffed50d257efa2b4342bb5c11ba20"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29817.json",
+      "sha256": "30671694966f241b5f0f40455ef23077f3c1b714c36d8273897f3311ac1683c3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21235.json",
+      "sha256": "af8ba75aa30e8ee890c526ac934e15c76e03aa55a41843e2d4cb0b8cade4c097"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_385.json",
+      "sha256": "98f047feed7024afd8f014cf1af278bbca8456d5aed05414bd5fc39087f849c5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_255.json",
+      "sha256": "0e06a720db5aa69a7af9ceddf00ecd3da311c2c17a964d3b563670b31c25b9a8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_837.json",
+      "sha256": "053cd25087722134f7076c1f4a821a46e32f1e763bc7001e2d24de666245a0f7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33704.json",
+      "sha256": "6b811a4bda1fca01c5406bed5ab7c7c2f8b345ef06951d9652d31e33c3865a1c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32574.json",
+      "sha256": "94188506f07a047311e786be2c6d73458ea9202522c229c6b889ef51ed8f6b60"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_580.json",
+      "sha256": "974338369d60a946eeb16a3d76ca4aec16c06a6fe9599c7f1332da6c5033b27b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20010.json",
+      "sha256": "a8ba5bd0093ebd11863362877be7951040a91da2d952291cd6c7d73d33710344"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_541.json",
+      "sha256": "06a6e086a16466b827fecda47203a6f565bb533140de4e7d54ff8e49294dc5f4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_302.json",
+      "sha256": "f177fe4d98ced3b4bdadf269917b85b9065c231dc1db53af7d1218927d68f6fb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_412.json",
+      "sha256": "b66e3587685e6a3a119b9a273723200f0414729e9aaa980489a5d2c469ac10dc"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25378.json",
+      "sha256": "f7eacbdfa2234d54584ffb0055b7de36367bcae73e68158d88232fb92c4b0dca"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_341.json",
+      "sha256": "154e7436f9d1676aa297d47c82897b60cb7fe910795e519a3147a03093c9567f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28665.json",
+      "sha256": "9c9eea50182d2f572b51fdd45558bd3f293a327b59df9deca0f4e5cc1a97ab30"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32192.json",
+      "sha256": "54cf1c913919987390a54d0b479c4028b70becc3b92bc2cf3893a79c1a070bba"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_35417.json",
+      "sha256": "ab893a8d424fe5d170a0fdd31e910abb0d96be8322bb83f696ee8126ac438e05"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17080.json",
+      "sha256": "f275c60f23e40277cccfbb9c9334138fbe3d2c82d0282b3d4c29b04dc0a468f7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_259.json",
+      "sha256": "9b6b8ad206a1637417c46dd3e36959119e35be59a73c9b61f5cecf3261955ae2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_573.json",
+      "sha256": "734063bf2582c7be725975e7868dd260ed5a70b925af029443bf6d2d8a6d3202"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_442.json",
+      "sha256": "5e217619ef305633ef79148a36a1febb4991adf08abf09e9f1930a8b9096a38d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29581.json",
+      "sha256": "7eb30d2213612e09435cc55e9b28cd8b5c2312e2b8a21a138123e93b57c62628"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_349.json",
+      "sha256": "75cf24d4831ea50a64f41a782a1c8344aba69c3fa78fd309cf3d60e6ddb30845"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16694.json",
+      "sha256": "5188046c0da057093d0824b42118ac7fe7b93ecdbe1a5f3650c786bb53e6ecb5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29106.json",
+      "sha256": "31771a639e8ab45bce7f067e01aab8ea2c140fd3a4841c22b9eb957791b4197f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_478.json",
+      "sha256": "ae4ee0173dec33c11ec234e01b155cce4bbe8aca16047970df56573d0f8c87b7"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20631.json",
+      "sha256": "f9bb56192c79a2696464e4dc4875693aaa3a822b004d72e2a6fbe6970785abcb"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25431.json",
+      "sha256": "1fb3e7ef884611f9d9ccd20d79a084d900968329c1236c824109a5f82b7c7ead"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28493.json",
+      "sha256": "e41ac16db7f4a5df5d7ed4608f7c722efe5b903a82df033e9e2b4c3a981f7e9d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_26122.json",
+      "sha256": "cc0b4c849f9bc7b866c7de894d777598e0692c0d70fbbb6453fcb0563efef341"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32895.json",
+      "sha256": "bc8a7554a4fa08844d7faffa4d20000de24f156e1fbba0dd9ba88e80cb141139"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28304.json",
+      "sha256": "e2a8ae22244316f1ec59221078d9674c7f4ee977e4998238d37dc86651748dc1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16440.json",
+      "sha256": "0be28ad1b2ac15814f8b156dae0f6b2863ae6a57daccaa94e798f71b6b0d2f3a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20119.json",
+      "sha256": "ab1d2c7223f5bb8672c6fd7f5e4bfed64b7d6573955ce7ea484fcbda55e00a3d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28164.json",
+      "sha256": "e7748845fe37c9baa86b6685d488cf4afaaf045237bd022d9f0c0859337cf07d"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16151.json",
+      "sha256": "fad659171138d636b31f897ab932ce2a59e340a3fb6c08f29aa86ec9ceb75f38"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17389.json",
+      "sha256": "805df8e949da84c4869277c4f1e26230b974edc00e5b9323ed2c18adf391babe"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_204.json",
+      "sha256": "81b3723503872236726193f07e36530c0bd69ad3cf8e64d0124bf96b3b78203a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_68.json",
+      "sha256": "19dc05b45e97d710db538ea9155e472673dfa5b15701fc13a15ff2fcedc931ff"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_686.json",
+      "sha256": "6b2dc937f22845ca899dc0e2a1364fa8a24be5d5abd58ea78a0f428de22ae5d3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17669.json",
+      "sha256": "c44a2512d6de806aa19e41202afc86f2719749c89040dc8060a4a918e7bae4e1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17699.json",
+      "sha256": "36ad19d35b4e1a8336878f97b2c8f060400b6fc040d7ef4cea0f1c0761a451b2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_708.json",
+      "sha256": "c1547c7f7c92c4b8d0d87c571bb5f3defe9d7886c4532dadd449d5b58b58a825"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_29235.json",
+      "sha256": "82822ba0645ab045c93f14116d1432f837efa560cf393a40c3590eedf85314ab"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_33635.json",
+      "sha256": "078e867c4c275345dbb1ece642178276f8b09af92cc86f8e61094a6f3bd4f0b5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_253.json",
+      "sha256": "ae0b2a0318c3efd97f916556314af608a6a65e99d3074792d6d9d41b320ec04c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_351.json",
+      "sha256": "07eba6cea64356184778aab465ebf7ee0f06d8e9b781f722f5eceb4391c11fd6"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16802.json",
+      "sha256": "a01938b3261310e13119552b3f93d6c0704cdebab1d6efb65a4ca6777a14c747"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20611.json",
+      "sha256": "da24b5d978a939c49bc2cabf2eae2dda400430a9a8085a345b39a1dbd23eb4a3"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_531.json",
+      "sha256": "65f5454cb3bdfc3614e07060362cc292a0ecd0f62adec66b14602edd88894db1"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_636.json",
+      "sha256": "c7a090361591ab0adb3bdfe7e012356eb38a59c3db2e1459c0269464d3babd4a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28642.json",
+      "sha256": "489b4768567653bc7a04d1fb8b929a5d7d462b3914e3766114bf9e4c012c10f8"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_20850.json",
+      "sha256": "25624a37074a73b6429ebcb1c598aaf11cedc3e44bb62087e7f69fad67450d0e"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28284.json",
+      "sha256": "4467e39b89ff1203aed5b64bddab3ef7f7a143f3b766103864da910a452dc759"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28388.json",
+      "sha256": "447ea0187e62de478064b366f4440b1a2deac1fbd0903d1dcf1318b152fd2026"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25384.json",
+      "sha256": "b6df1dcddac765f4d4b6d70f94c792c7212333a754aa650adcd7f9972b3a198a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28602.json",
+      "sha256": "77ca3a619232fd6d857a70795a1d6fc9bc0dec0ef7eeae86624dbbb4852ac43a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32367.json",
+      "sha256": "85aadce2fef0e8b6785d5a11d795ffa4740992f6bba3e86249f17cf2845a870c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2024_49.json",
+      "sha256": "3e072a9e20b2e89b8207ecf59d59d3d7e7bc1e6cc906252d7d48b91c5be66dfe"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_17336.json",
+      "sha256": "e17d91506e2300531184c1261a54ea19885074e33952fdd14b4f9a4e8778070b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16849.json",
+      "sha256": "4c1535b08cfedf9c06c88977c332402b9c554b8e22f1b4b4cf3890e81ba26132"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16971.json",
+      "sha256": "fea36dfab8e904246c1a75cba873b80aa30b5eff14d49eacfe4d94338efdf7ec"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2022_21191.json",
+      "sha256": "8fa404d71f191c36589600dbbdb22a20ed17cf4d9f2d1fe06a93e5bd3753ae14"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2021_376.json",
+      "sha256": "e6c3e52f5ca421e572e8ca6164bfb3b343fde327c4641644a9a6678e33db9ed4"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25129.json",
+      "sha256": "d09cceba176c57d670824196176805f6f3b14de35fdb81b3b8c321f9f40c58f2"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28569.json",
+      "sha256": "22a3b36d41b75c0dec25783321e8f27b8ae2bb99ab24c469bb07f1867a3caa44"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32326.json",
+      "sha256": "d30648ca5cb621d2d459ea13cd85f1aa0674346eec151c382e1bdfc6897f9b7f"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2022_203.json",
+      "sha256": "2bef10f47e85b9a6599ae15ab1592eb9b1a043598c9a9c8642810ecac3798df5"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28656.json",
+      "sha256": "ff1726f3c1a46304a77647ffd398436f944379cfbd8811adc1f06fae13d714b0"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_34542.json",
+      "sha256": "42b8ac11d7e9612a60f113dcd620b3e1fefc85b241a537daca196fa9b70eaf3c"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2025_32033.json",
+      "sha256": "acfda4777e9fd8425cd6f8eda8be259c27738e9076e3465cb129a0bd531890aa"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2025_844.json",
+      "sha256": "e991a772e934a52736c81c9f58e6a01652d9be6ce388360ae9e9ddc0c5d862db"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25750.json",
+      "sha256": "15397e67586b79c8dff9dd6c87d61fce5108184b5ca2874bcf12934bef6b6600"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2021_16240.json",
+      "sha256": "c10133cdcdd24c16aee320fe185dd21ff83669be812891133f5fc773e51dd828"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2023_25280.json",
+      "sha256": "9c04b8b6aeb6f7a69943a5dd9121ae2711ef26375ec5f1e5e0c1acd97ada1f1a"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_ijcai_2023_85.json",
+      "sha256": "b75172072b8fd7f24772d41dc879fc522623e3139124f8811be39beeec2f924b"
+    },
+    {
+      "path": "reports/runs/WORK-2026-11-09-013/sources/papers/paper_aaai_2024_28279.json",
+      "sha256": "8b513625fa4396a86cff19e51fec81d3fb0ef18255a701099875f06ff6390f23"
+    },
+    {
+      "path": "src/scientific_network/evaluation/agent_edge_review.py",
+      "sha256": "f795bd8201cf6c5a4de978dd2b20bb37f23fd5f78533a5a585aec7fe66f57e43"
+    },
+    {
+      "path": "src/scientific_network/evaluation/agent_review.py",
+      "sha256": "9fb1933b72802605115097b6c280d49c532dcbb499d4eb69aaecc69c9408bc50"
+    },
+    {
+      "path": "src/scientific_network/evaluation/edge_sources.py",
+      "sha256": "528806c98a789301e7a601732eb30fa1b24a8ac25c74d0330e5e38ec31b3b837"
+    },
+    {
+      "path": "src/scientific_network/evaluation/edge_audit.py",
+      "sha256": "641b37869ec1d6576e56dc8ac521fe1abaca841612c71de62f94becf6973ab63"
+    }
+  ],
+  "evaluator_runs": [
+    {
+      "reviewer_id": "A",
+      "reviewer_kind": "ai_agent",
+      "evaluator_run_id": "/root/prospective_a:edge-only-v2",
+      "context_id": "/root/prospective_a",
+      "model": "unknown",
+      "provider": "unknown",
+      "model_family": "GPT-6 as system identity; exact runtime ID unknown",
+      "started_at": "2026-11-09T18:15:15.775194+07:00",
+      "start_semantics": "authorization to begin this frozen review; initialization-only context existed before freeze",
+      "tools_settings": "inherited platform settings; exact temperature/runtime session UUID unknown"
+    },
+    {
+      "reviewer_id": "B",
+      "reviewer_kind": "ai_agent",
+      "evaluator_run_id": "/root/prospective_b:edge-only-v2",
+      "context_id": "/root/prospective_b",
+      "model": "unknown",
+      "provider": "unknown",
+      "model_family": "GPT-6 as system identity; exact runtime ID unknown",
+      "started_at": "2026-11-09T18:15:15.775194+07:00",
+      "start_semantics": "authorization to begin this frozen review; initialization-only context existed before freeze",
+      "tools_settings": "inherited platform settings; exact temperature/runtime session UUID unknown"
+    }
+  ],
+  "assignments": {
+    "edges": {
+      "A": [
+        "edge:00b9703eb0973822f82aeba6776a51c93d6992eb2d2449c127e4c94e75862e10",
+        "edge:0372dde62bcf065d65e4224138b887fe33e3560233fd7435437c41231ad9a900",
+        "edge:040b2eba7b01a764347ac06d94f65d01dc9815a0e95aade4072261a484d6b9ae",
+        "edge:04a1d99324b09f5d0d4161883b5a34b1013af778c0393e7622dc49c88cf9d39f",
+        "edge:050c1c0039dc5903de8df92d08daf83474b927c77df7ae70e258bdda09d9a22d",
+        "edge:068392edcf8989457fd50add0cc74ce6b1048a78fd20e36562fa2debd4e29704",
+        "edge:0745447420b89d068ee603a82bf059364104f40a5b02a031e95a323b6d481f4d",
+        "edge:0a279df1c225e517e57c7d60b6c83ef77b2fdd4f3245656381d4a90519f18c93",
+        "edge:0a7e6df2b4e0e93fabde0e00fc4b34e1493fd749fb8dcffd645ac5a40f498427",
+        "edge:0b0c58e7290d76e1a8635d0456ac95bd95ad3203c99965049d65d0246a9052d4",
+        "edge:0bd6c7d5e875406c0d70640d3246d12102daf0ae4122c01b01e3fa3540573cee",
+        "edge:0dfea6987f0b78779d2fc4bd49d9e3d5e81119fbc648acf1ab7167c40ce85af2",
+        "edge:0eeab7522ade7492fb0dd725ef87c4ed4775cbeefe917effd1c689271eaa9df5",
+        "edge:1014c33af07a49837e8a75edbdc10212df13e39e394136a8780c73d6459f320b",
+        "edge:10976b3755fae086438b8d3fd574b7e13ea45fdf23b13d47eb7635712de68938",
+        "edge:10d3446290ced9a9a148ea9a63d7c25f94308197dda39d92a2c3fda19ec7013f",
+        "edge:1187869a8e09397556f8cba1870cf4ec812baf0954cb7c74007c59ffe89e7d1b",
+        "edge:12589437d9550d45daabcaef2be8068643d4d87070551517ed4e5e45c776add9",
+        "edge:1346b4377ab92ced0e0674c462b9c7284fd567ae3a4db08b6533d9fb0dd36873",
+        "edge:13951180fc6f21e068f4b7320a8c7b6904372568fa3fbcc93391d02710feee01",
+        "edge:1445beb8d2dda74aa62f746f7c546c32eb6478f295a205b227304e5bee4af318",
+        "edge:1492ffaa63f64a5e0921242df1dc66e6ea5bf00cc2f7030b88fd8893d13e74ec",
+        "edge:1b9fbb984139e5b3027a790db9c1e524480037006fad984dd15017dcb6ea1bf0",
+        "edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35",
+        "edge:1dc084ed8aa8fc4452ad7d0b6a51cfc0a4958a112a2ccf1ade8a00abe1375cf9",
+        "edge:1e16a4e1215519f11afbaa3e7dbd043796dd21d9234cc569e9b8f0d4f5a96e9a",
+        "edge:1e56bb4986d9ae94513a8e47072fab59acb1876334bcd04feb1f3f3a5437da71",
+        "edge:24024520dd0d741c21875a2a9481d56f3f77402f9447fc8a4131038d0632a545",
+        "edge:258db03bfc2d2db00ee72efba543180e78e84ba0e73bb7525e84b791376b6dbb",
+        "edge:268d12e95cc2131b27441d9aa994cbaaa21568b5c8cfe8eaa4a2625058dd81c9",
+        "edge:2726788dcaeb16d47cebdc56a939d10b6b3cb7ebe1dd0619994fd5c4d00b6aa2",
+        "edge:27bc2522ead87ff2685ae742053b9195ccad2f2950dd26cf1c9c08d5d1788e60",
+        "edge:288ad0e4701a48d80987ce319d84c1cba17f069841d64109ff7861184dd778d0",
+        "edge:28ff880183ffa9b7a35feccd12a3f543524dcb1d328c7c60824a009db691b07f",
+        "edge:2a7724d0c2782ef512aa1190be2a8d9d3f90b3d775325c66b9f25b31f6b52eaf",
+        "edge:2bd0db7c32788442b18e24c1c6824cd2a425d0b86433e5226aa556a3d2261bc7",
+        "edge:2be0995a434f523dcb23f37055f1cf7bddd7157db974456f699b26a8b8e3d409",
+        "edge:2ff4855d608992b75d21225637f54cdcdaa13fa6f6959ca1ef3a6009f934995f",
+        "edge:31df7bd02d861c7d245d022a8a7bc83cbfd95042efef06857268fcf304302dc4",
+        "edge:342ecdc49136fe8fdcc6012bd77199ebb3b6ec6a1eb2b3ad0d4a35bd21b3a2b5",
+        "edge:349d6bd2cbc5c9ade7c45f09e5ac5c537e860e6c105c1cd83941c9bc3658a546",
+        "edge:35b82b12de0065af228a8a068f0036d78a588deb0af4b0dc15ac53ae581b343f",
+        "edge:36a1ab6555667f940b4445eba49bc12f718ee620368def8c7e39b6dc219aa053",
+        "edge:398a4d465500c29ec1a8357b14b15e19ca2bb4e1f6f1e416c768ed6207961607",
+        "edge:3d5bafbf47732b5fb818b5e88cfac9bec7706f77eca528647bf7e23844991c95",
+        "edge:3e5a2b4739e692205c6b87d823eb7a4ddb40adb9e8dd57f06e45885e8f60dbce",
+        "edge:3eec70a7cd561dfe9d32135415acea7fde6212668a0087f8819e3ab3e145fbb7",
+        "edge:3f441e7d7f7360754d00dc7270aa34cbb69d7db020f5889f37a87c65dff764dc",
+        "edge:3f8711d723231fbd6f36b492e1bdedbc2bd1de5e0aeb81fd9a0a9a628e9a1151",
+        "edge:41679752530a12d71fcb6621842d04b7b3aa51461429321cbb2c9337f1c1ac58",
+        "edge:4192ea18a99b424515c3cd289bf137501b40c0369bea9dadf04ffcee4c2ed937",
+        "edge:41aa6a72d8138a13090013449f78226b102dec68d08dda21cfe9c33e8f444d65",
+        "edge:46c6fae0b4c75a2f6b5bc752d5d6b46299c0f6c2637c1b4f22fa0ee0fb86ad60",
+        "edge:4790ba7dfa1d0b96ddf343363c801e13b4ecb10c177430ad0243d16301e97187",
+        "edge:495c34a10413beed565ae388bb14a5565da6bd33b74c98a6eb608c1d227f4938",
+        "edge:49a2fe236c1eba302dec9e1c0b84d5d36bad0e87c93bd31c9cec0955a83444bb",
+        "edge:4b2e475ec14a18cb4a6f45db7cb585ca078bbb4f8dc3813c0a6e1ed6d90f73d8",
+        "edge:4bdcd411056895a4f5cd093856f6e756ec1958649436ffa7c6c582798c34b461",
+        "edge:4ca71892b53a8d154ca22dac9a1b46d1cbf538b14d0660c210c28f28bf663867",
+        "edge:4dd16d1544c72c9fcb03e71d13303703b941458d770367cdb5a07cb3674dbdf9",
+        "edge:50a8f4e2eb033ed78b4a6579271b834490044db87e2cdad4142aa236550fb50a",
+        "edge:51ebd9c7e0a54365706116749b7da6dba2229fbb736765299b733ed1e27e2568",
+        "edge:544e1eead59dc33592a298a098c39aa0d41476faf34418a65557fdefd7a10324",
+        "edge:59a3388cc888f49b4d6300b1c40359b6d18f34614b8ff861e65e8f8ea90f7c04",
+        "edge:5af663b0d63271aba4bf2dbfe9415f35965e45a896699c155d778cd6156c7c32",
+        "edge:5b4a2e667d87ce8c602c17a421f7e767d32b249d1a5d22aa07f70d4600a45b6e",
+        "edge:5b9e339aec651ab22bda3d9e2f1cca249258b6391accbc35716255450fd8aab5",
+        "edge:5c5b9d50c3100b89e76267379d75d47e9e2b8c380f30a13b8c3487929451cdb5",
+        "edge:5e1f6bc3d39f122c1fe6f991d1995984ea4f7ee2d11ea2d154ef99d0397b76da",
+        "edge:5e8d8747bc4ceedde7a9aa94688378e40aa8d23d5259ebfd35cd0c3e61bfe9db",
+        "edge:5f18122faa32f53f9b4d8e602b679203c053b21427a8d6636748dd35333a34f9",
+        "edge:606feffb1d3015c4d7fd01c0c6de76616b1bb0897f7f187b0103d2e45e1b51f0",
+        "edge:60c3f43732deffad7bfa6fd979f8d53c163db27cae44259f454ba3422e53d385",
+        "edge:60e4a4f987addf1d44bc0622f6f7853feebf5ef7da5556a2820c658a1d2a177b",
+        "edge:60e605167e1e0e0fdaf4e3fef02956fc091ee54b5641fbd6dc336e1a712483d0",
+        "edge:623130dd717780002b73a813062434b6e21a289368bc0168cc908f25418f2d48",
+        "edge:646932e8e959f5eef3e69016f2191f278ded56d7582830b1d6e71f5a6917eb13",
+        "edge:65362f38a0625bc2f59c8c5653d924ac81466529419046dcdabaa081d2926ff6",
+        "edge:65b615181b5d432e75a002a0729d00b2991edfa904017fcdbedf0556e2940e4c",
+        "edge:68b35baae568aa3b4d6e935dd870b2eb7c538cb01400cb0345fe80420056065a",
+        "edge:6a1220b418ebfabe3db1f8822dccc44cafe4153b23c3ae4da6ace7e06159ad43",
+        "edge:6ad30a9be4f254af993ee46b47e2e054a7b68a91dff22ec8987d317fe43c1678",
+        "edge:6bd05fcd5a76fe1e4655cc951fb1b8cf458a2639e348a4ae56a20a607be999c9",
+        "edge:6dee001b544e8ddc190da11f9ea9bfb145f0a576916045ee7a1e25b4964be935",
+        "edge:7105e5947709efc0e6a378f058055d2f92e54d651d4dae273329e365e4448bc0",
+        "edge:72114dca85a24162cd7208b1a9fee76913a2ba7a80ac4c002508c894b3366fb5",
+        "edge:733a48af80592333b194b4b9fa038979c849835257454928cdf72b4de996c681",
+        "edge:77f77b45561e2f94519210f15cf1206c347b7e402bc41d0afcbbe85ed15e001c",
+        "edge:7c759c0985498222a460621ec3aef75b95e924db7d4a630714197ce6b1abe875",
+        "edge:7ee7cfc3ff1352b2f4e74c20261d93430a5463beee3ea1be94dfb36ded2997b5",
+        "edge:7fff2d53bab7aae1f45de9f0a3547ab57b141f189efaf848807187305e5008ac",
+        "edge:805d80ffd2bf0af048030226f6cf21a1aa155b9ede987e4ebb8c0b291639d0b6",
+        "edge:80dd3fe4ca8fdbd9d450ebba3e98a4c7ab503f78e5239d079584083a8a25e460",
+        "edge:81b3bf36b74eaa92a6530b311fd38e57d2950b0ca2dd71b0eed402df146da27b",
+        "edge:8225a62b6be7c647cf17920438e45b474183c64471fe1d4cb5fbdbf3738aa888",
+        "edge:82aba11a4217c14a70a5c6e91602a0f603f83b2f360f15c448d72323dba1aaf0",
+        "edge:8359e0be028ccf8c647e13d62a9f4fe583fa05b12a138f5676d47f771c8c6a87",
+        "edge:838aa7793a4da0f98689877056d29ba3b53289c5b82bad7fba429e0f37f28639",
+        "edge:8409167dd70802cb99e61b9c3882f72a74f78f92f640b17332ea7752d60fe76a",
+        "edge:8491f98df85bd918e0243a598d2546957903961745f0029d0205ee79ed0d26bd",
+        "edge:8570b16fa8d441178579c210ca35b579484f7fea64aafab80146640a7943da07",
+        "edge:85c5ffbe4ea6621514ea149a1b308d5d86afe88099adc035ddb930947174cd45",
+        "edge:877d3fbe40f244979eb4ac2e95ecc00e8a4fd351226fbcde4e97090c607322dc",
+        "edge:8905483b21f0c7e4838ac4f8126adf6f39ae93d516c0d6b2f913f08b01116815",
+        "edge:8a42edaa8b8190916922b6bd320c9ee82ae68f6425cb402051180586e86638e8",
+        "edge:8b2e5b754304a85990cd627b8f93b6b99f1057d8b234dfef7c10db57356de3e9",
+        "edge:8c6d2b5ff474b1a2ff9f193b6418d8095521d7ba2665bbaa2819868535bbd872",
+        "edge:8ca2b667aaee8cbf9429f817d208e49b3e052dc15f8be05160e8fd9a219d3c98",
+        "edge:8d7b4069c77e3fc40f50f99704ece547641cccd41f77dc34ea80006028cc6ad4",
+        "edge:9143a4a169812969dffef1917e83c82f8f88a229c6d688fb195958e3c8b5cfd5",
+        "edge:93414a8fcaa1ac74f64a9ba44d8201cebf00fd57607a14316e70634402c86e54",
+        "edge:947ebdf22d7f9d7d99dc25b60f632406eca737469aad9b746259c0639eb0dd98",
+        "edge:95ed0dfbe15c7f3671f3c016e860b31cb08ae08e29ff07f420bbbc643cd7bd38",
+        "edge:964e71f02fafbdd7d5a104d88855a3d4784ba3b78bbb70e6f3998ec1b43b696b",
+        "edge:985caebf2de342b3d0f610cf016c514191a136c02d73b98ef90149534f249129",
+        "edge:98f001b973062a6f407326dc292f98606fedcaf9cacb7c6e36548d1d7c796618",
+        "edge:9a7c0252d9636d0fbc8be2b110adb5f231ddd5e2ea52cf33a9827f1e027e4c47",
+        "edge:9a8eb2de50cb7054d423e9729eeb7776b244ce3722845544ba8b09a98a0f0603",
+        "edge:9bd0395ee21ccdb85a199f4838aca3a88df577cbdd6f0e92d053fbff92a4ae39",
+        "edge:9d0b935641ba1de12fa3f42be015382c5ae3551ced0defe6c7e9712245d8268c",
+        "edge:9d7401c6a66978dce79b7984760c49597571dc061718973829b98b89304d4042",
+        "edge:9e574957c07cbeaa63dc1c6cbc6af74d76bcecfda72c7f4fb0c7e08b9bbf28e5",
+        "edge:9e65b4e65dafdc09d06b1a28c2d6277090f8e18dc46732d64980b4ed02744e9d",
+        "edge:9febb06689d2610e32fe805e2eb259ea0d36dac0b2bb3d78d3bbba1e7d00b6e0",
+        "edge:a3e7716920a4cff35640cb94b3c6ce70c13bd3dab90e371a7893f134303a6078",
+        "edge:a5398a4466ceaa7b81bd8fa919a4e2228ba97e8f0143a1dc46c110ba398e8fec",
+        "edge:a74b78c9729702c3f27724e4fdd81661ce3fbaeb3e5c737476bb8b43b21f47b8",
+        "edge:ada5fafe4a162f0a781c9584b7164554268e4c0a30b9ee5117fe03191b082eda",
+        "edge:ae69a9db2bd7b5c01bc4263ab01593e938549b0195a5c4ff61ad944d4ab97ae7",
+        "edge:b043a7b0616d1886e018788ff2c386c22180696bfe6c10fe04c0095a9e2b8622",
+        "edge:b0b22f548dbd7567810726c7d73b0843f9e35501187cbef76ae80b940330da88",
+        "edge:b21310a957ea4ac270759bd57a66b8a90955061457e063264d4b228709d4000c",
+        "edge:b35d755375fb0be1d6f56f93aed46ab3284cafb87875089af378fe7de4e2b558",
+        "edge:b452f692f117be8aaac7c21d1453d8f587010c1760c8cd143c3005b4d116ad7d",
+        "edge:b486fb4b42d20aa3d1cf450de72d544bfa5b678bafdfe048ea396d9908c716b3",
+        "edge:b794d5a46bef7d651d566a29247d572a149343217898dfd3a039c930736e776d",
+        "edge:baaeb2cbf5f352c54f683c7b5906fa435c94c59c01fccdcd278446050c9974af",
+        "edge:bae665734de8f42628f5ddcec4965879d9f75893c3fb151641bdb0cac640369f",
+        "edge:bc4d996bd6c83a392849b9f264270698b034e41a97475f5393873fc893c50ec5",
+        "edge:be43930881e6de5ec421d85bbc97a59e14b3515822e65c89faf9e6caf11f03a2",
+        "edge:bed5ef72c821f744713ccfe729ac55fc1a442856dbc719c5c717132e88bf32a2",
+        "edge:c541d338cf09b81d693f48ba921b043e0123cd9bb6886c6e5c1c491166e4d3f4",
+        "edge:c666b728b2aa6c8338f6127f057f02bb26541d40637c88b8a3734a0aa6aa6108",
+        "edge:c691cbb153905fa6df669401f72a1479982ccf1f04b1de4f6700d0038c584875",
+        "edge:c97bad4d45cf56ab50673674b4dbdbe29368684d5bb60e932e319ac89cc1d7a8",
+        "edge:cb65129d5a3e7719b35d07a1802fc710cb1b102be2fc3e988dfb0545c01affd2",
+        "edge:cbc07e31183f1b0948637a24bb30f6b6c42e07cdfd40d8e6e8a8cf615fe88d3f",
+        "edge:cc4ba01ea79442630eaecca7394c2a03d72c119236532913544a4fcf59ef577d",
+        "edge:cf2dd563918ce8a48d8b1610968e2364bff4aa14354017013f8a0028a16f02f1",
+        "edge:cf7949de8f98b2b28d03d10522ff6b6b73f5d2c6333c7f9035d0b5bfea6627a4",
+        "edge:d0c08f591d207dc6b24b41cc4544ecce415af541ccaf432fe487b5f8faeb25de",
+        "edge:d404fa64fe35d4d25219be1ce2c8d8f81f2730c5f8873e0f7609021a1a1ce001",
+        "edge:d56cb3e73312193e124c59f1b28d1785a3f85315f0acf3aba87755b5437c3aca",
+        "edge:d636dea5fcd0b2e021ddcbe610a5549b4c70a09ff6a57fc43e10199eb9ab54ed",
+        "edge:da095c38f6438cb5bdfc6bce6f04d8a0b0116a66609dc64c52934b9e22d01e23",
+        "edge:e019a85f08ca8e58a48f6439ea273a69c9228d389f102aad0def6d4dcde5a2f4",
+        "edge:e30e281468313a718d774ff91ffe487ac6cc2f9372d0030e84cd47b74ab2794d",
+        "edge:e35c83559cd088a93c0371d13f459a78dc16fdd56f103ec5f1d02d266b644545",
+        "edge:e5096860d5bd6b05a7536b8d07bb60e7b5baf735bb6a35be42d25854bdc44fc6",
+        "edge:e9af59ea78df3bc2390473ec147b3826ca6de9834981672cb0c66a2a32bf1b92",
+        "edge:edf258a7684fff1a93d16f714df65c9a17d044762da04cc359fe1a758be7714b",
+        "edge:f0d280b79ef19b3f643f3799a1bd775760b79a61173ec7adf3701e9161237a3b",
+        "edge:f15944f26ec2565b92f45404c9d033f51c8147d8f7b7ba5c7ad45e7af61fd866",
+        "edge:f237bae24c5f1b3afa214171498c0cad645c5b3b17823822b2971e64ae9848a5",
+        "edge:f45dbff71fa8f54a39237bf953d8e81ba9ed20a5cde842c23fae39aebdd3ca05",
+        "edge:f5b6510b6ad36ebb6ac08d02b53321313760a5ff8b2f338546eb1454d16ad83e",
+        "edge:f62a73e0ce052595e763f090d73525b0fae0a41222480180c5020a1c012c2685",
+        "edge:f6fe8b0abc231199c119443b67198b2511bfa189a446928e1c86a269485172f6",
+        "edge:f7906aa8431931595c4912715892809fb9950cbbff8aadbcbe112a4ca1b9f884",
+        "edge:fc0ded2eb60af4adff82d2f64271c232823f861b7824a7f9eac1de0c913ccd5d",
+        "edge:fc7502e864e3790c9e6b14ed39cd421d5fc661ef043917ae799e5fdb9e89f885",
+        "edge:fd94572f41c2c18f247ac0bb6e28d111e22955d90077834c1d55431ee64bd971",
+        "edge:fdb8404af77a434afbd74f712efdb1a146563c88b089061914e8d86526e15ff5",
+        "edge:fea7519eed2ab77ea5a7500d72b5098145d1b226144e231471e17786ad25d6df",
+        "edge:feac16fe69360f620487211001250fd0aa3e8284ab57fdd2e4e29b990119d481"
+      ],
+      "B": [
+        "edge:000304de76b4aa13dac062c51ac7054f8ac0ff37904b1c4179072ac00232777b",
+        "edge:011bc546fce8ec29710729bc63cd9db7e9c109873aff7da2578399fc52f8396c",
+        "edge:040b2eba7b01a764347ac06d94f65d01dc9815a0e95aade4072261a484d6b9ae",
+        "edge:050c1c0039dc5903de8df92d08daf83474b927c77df7ae70e258bdda09d9a22d",
+        "edge:05e6c2d6dbe4b9ce4230b08fce3ab2b30814439b230a7f94232c64bd404d3b84",
+        "edge:06140e5a84e62fb93bb541f25616bfdb655e2688537daacdfe693501210bd393",
+        "edge:068392edcf8989457fd50add0cc74ce6b1048a78fd20e36562fa2debd4e29704",
+        "edge:06f667fd8929354a706810d3eb7ddc215e7c7de93e44ba188cf9c7b51d138c44",
+        "edge:0a7e6df2b4e0e93fabde0e00fc4b34e1493fd749fb8dcffd645ac5a40f498427",
+        "edge:0dbd18f13280bde2927dc2fc6da829662862b69fd1f440b5858fe1ddc9579d55",
+        "edge:1445beb8d2dda74aa62f746f7c546c32eb6478f295a205b227304e5bee4af318",
+        "edge:1510075ce990e084d012b428715b83d0a20f1a1052330a89fb464e348a6f43da",
+        "edge:19bd27c4b68e6483a503b49f0ee0bc0844fed2b9944f7ba7ac7c1462b8168a28",
+        "edge:1ad8c7f6361788357f2f6f28164eb3449eefa9f7b60733cc72ae61e25689369c",
+        "edge:1df3e7e3276e5b27bd97e4c8948e693c7f9ec8bf0c88a78299d7b7e9f5af79ae",
+        "edge:24024520dd0d741c21875a2a9481d56f3f77402f9447fc8a4131038d0632a545",
+        "edge:24260c19ba2a924feae4dcc35b72b9e47b53e2899a8a3c4dd148dac9017678c2",
+        "edge:24bf765a18f26ee5390d4e032e0c1bd863fabf393a2f7bb5c2fb666419bab372",
+        "edge:25d2691cf2584493fcc50a7363a3c399514a87647f97672c0411abf44207f20e",
+        "edge:288ad0e4701a48d80987ce319d84c1cba17f069841d64109ff7861184dd778d0",
+        "edge:29c37e50d145181e083eb81e5bfb218cc760a377447fb38395ae913b7477adf5",
+        "edge:29cd9cf42373cf510538b79390662ec9783068bff2e9f119c6842bf8c62609b8",
+        "edge:2a1b5cd6166d32ccbe5923362ec2eb30f37906774df955f3faf54f4aa47d0da9",
+        "edge:2afc40396d87bff938f700156671e773a4786d87898c082ed00e4677c4e2d9e6",
+        "edge:2bd0db7c32788442b18e24c1c6824cd2a425d0b86433e5226aa556a3d2261bc7",
+        "edge:2be0995a434f523dcb23f37055f1cf7bddd7157db974456f699b26a8b8e3d409",
+        "edge:2d046aace0948b70128f25bb9e96f056b3b4f0b54d7706127c328692127d507e",
+        "edge:31df7bd02d861c7d245d022a8a7bc83cbfd95042efef06857268fcf304302dc4",
+        "edge:34810143499eafc4f065fe80fe45051805fcda1d59236d7987096e79763f99a8",
+        "edge:35b82b12de0065af228a8a068f0036d78a588deb0af4b0dc15ac53ae581b343f",
+        "edge:36a1ab6555667f940b4445eba49bc12f718ee620368def8c7e39b6dc219aa053",
+        "edge:37122d4d45e86f1456010ab364df6f946608d2ac6c440c81a8fb5734b4ef5cde",
+        "edge:3784de45bf7bce661c6096b1d4e64f6a712fd2616d30c3072419070b7efe8d1b",
+        "edge:381e7908e6b499691d0e0379b33648706c18ec53e2cf93a4d47fed149f6cab7e",
+        "edge:3aaccee03eb35867272de429f8219848edfcdfc4e20e36a908cb9b825ce44b4a",
+        "edge:41679752530a12d71fcb6621842d04b7b3aa51461429321cbb2c9337f1c1ac58",
+        "edge:4287ab1eae420281cac0b75690c0b190cc6b70413d8fc0bef77a7ce6c19d7ea2",
+        "edge:42d74c3aab9d03398c70b028216cefc5ea67367fa2a487bb0dda4662c27d5b13",
+        "edge:462f36aaa12b06ca650c63849f702015c1782191cde12216f2cd861c334f36d2",
+        "edge:483657fa6a96e787b67fae9e1a8fa0be44aeae2c6545bb0aa320c1acf52e77e9",
+        "edge:4a9740b6d3d2e3d27f4a77a3d3b951859be419feecb9c5e16a3f78c800e77f30",
+        "edge:4b03ba282d2605a2f025bddf739c8a8ff3d895f42851ed6ab16db367f3156c69",
+        "edge:4b4cf48b57755040afbec6bd41c54fed72e5f6e9c14b8535ed562d451ae75346",
+        "edge:4ca71892b53a8d154ca22dac9a1b46d1cbf538b14d0660c210c28f28bf663867",
+        "edge:4deb6027f67b7999cd363f5736bca2e1721a7b9aedb117243459a79410ba66af",
+        "edge:51c442b69a78cc2104dfde3b72130f57350cb0eb297f6b99f8d2564210985052",
+        "edge:520d912768cef9629537ca836f9e623652e358f352ebd510ee7b6c427f993cd3",
+        "edge:526f80591047f78cdc8474f6a4cf495256a5b49e1234fd25e4865747ab13ce9d",
+        "edge:5323f73e05a010e2832fe16528c90a47d1d0d1af685af32f5c6c3321a89854e7",
+        "edge:53bb3eaacedcb3eaf7ec380c0f510258a60d065cd875fca82092dcc43fc8e3fb",
+        "edge:5717108c9005eabfe9182731b51a7233d8d6cacea7da73edeb88e8713bc34942",
+        "edge:5af663b0d63271aba4bf2dbfe9415f35965e45a896699c155d778cd6156c7c32",
+        "edge:5b93fd3f95f2d7c8320d4f02c82a9c58b4ebcb2fcf23b8c14a69ca60e4642f62",
+        "edge:5b9e339aec651ab22bda3d9e2f1cca249258b6391accbc35716255450fd8aab5",
+        "edge:5b9fa4137dd6ceb79110d1e313b57c0fa1d156af2c43a00727583cc90a7a1c0f",
+        "edge:5cda2c78889e422fc26ad95e8e0eac7fce668e0f6fb1e5add76c56ad2f3a6191",
+        "edge:5d94d63ed39e0c25ffad432ca332f0c960ad834eef41f643016c683ea95c927b",
+        "edge:5f18122faa32f53f9b4d8e602b679203c053b21427a8d6636748dd35333a34f9",
+        "edge:5f9e22102cfb709de92e0774e54f4f6f1184cdf7c3afbe29777c257af92b6d99",
+        "edge:60ccb7d4af1f6777d6a167115f5c6205a0a9cfe0a9593d643817d56fbcd5d1eb",
+        "edge:60e605167e1e0e0fdaf4e3fef02956fc091ee54b5641fbd6dc336e1a712483d0",
+        "edge:61b51c9499853ee177310126e71c11003921471604c47b74e35c3da138b194a1",
+        "edge:623130dd717780002b73a813062434b6e21a289368bc0168cc908f25418f2d48",
+        "edge:62c1ac021d710cbf992f9e473d1cbd831f37973b2bdc4f4cdd1d5043021b5b6b",
+        "edge:68b35baae568aa3b4d6e935dd870b2eb7c538cb01400cb0345fe80420056065a",
+        "edge:693624b12c5dadd34aaa5138aef4ceb1543d77ea7621351c470b424a0e17d0be",
+        "edge:69720787331a226176b870bb13548d8aa96be650150e40243a1918d141d9da4e",
+        "edge:6dc61a47c18a7505130286c42c67240c9cacf8fb9b5be4e35465a72381702302",
+        "edge:6de6003f18a050fa14e6c81e3610d47fa837032ca0ebaa8cfc9cf61b1be4bb62",
+        "edge:705a21577f18432a74a6e947f196096c552d0a14a568a5d36555051110209e91",
+        "edge:723a2883d386e0e6f70ec03395576a9bc8b7936a35cdf435ef2c474aeee0b879",
+        "edge:73ac8b0919bd6cccb0cc2a038551a493c08024772d60273b769a0e068b86a674",
+        "edge:7457bc7e2325009fb267050302f142d4a9dd0ec2830fbe37b3925a990547eb94",
+        "edge:768efa0b4c4df7ccd8657b74650f86232a52edff3ffcc6854aaaff01ddd60870",
+        "edge:76f05249ad5b0aa4422f148c9f3141d80dfdafea511e2b168d277721c1be753f",
+        "edge:785d683c93bdcc143fca1e8eb40f2aa01b267417c67973358be5b8d7acb8a49f",
+        "edge:7c8e5374adb59e5dce7498dc794032d2e10336c13ee0b765ac35410fd221a7dd",
+        "edge:7f7c0cfcde5ef4fff669279668821d98cb3fdc17d6edcf922c7fff199af661bd",
+        "edge:7fff2d53bab7aae1f45de9f0a3547ab57b141f189efaf848807187305e5008ac",
+        "edge:805d80ffd2bf0af048030226f6cf21a1aa155b9ede987e4ebb8c0b291639d0b6",
+        "edge:80dd3fe4ca8fdbd9d450ebba3e98a4c7ab503f78e5239d079584083a8a25e460",
+        "edge:82aba11a4217c14a70a5c6e91602a0f603f83b2f360f15c448d72323dba1aaf0",
+        "edge:82d8cc6c82cf143462172f2d85e032f1cb157da874078bcb96f58d199b492db2",
+        "edge:8317e11bb7f9ec895e7ec81ecd818c55a679d8610bc62d1a85186f8faf44066a",
+        "edge:8359e0be028ccf8c647e13d62a9f4fe583fa05b12a138f5676d47f771c8c6a87",
+        "edge:838aa7793a4da0f98689877056d29ba3b53289c5b82bad7fba429e0f37f28639",
+        "edge:83b95c28adade5087812ad835ca944a296893e14fef3142c12325953a42efc38",
+        "edge:8409167dd70802cb99e61b9c3882f72a74f78f92f640b17332ea7752d60fe76a",
+        "edge:8849633d90da8bdf3e0ded87c4f4fa5e75cea2feaec3af2ab04a4afdf7686418",
+        "edge:89970b03a18a9c4a27fcfc05228fbebc4d96180cb8bcb8e345d0079704de47af",
+        "edge:89b894d5eb979167be83abb04b5819bba34cb08bca0f74b64bde6a2f0b16bc81",
+        "edge:89bc2cab1068cfad3f5b106d3b1c027e5b2ee4c76cea79911cbc7d909eef2b9a",
+        "edge:8a42edaa8b8190916922b6bd320c9ee82ae68f6425cb402051180586e86638e8",
+        "edge:8c96f97da429beefebed6cef8157489ed6675209439eeeddbb591cd97742280a",
+        "edge:8ee9bf3c50ee99bf26ed7afd786e89e5e9e364606648ab259c8f05ca748bc437",
+        "edge:8f2e8161b9bb3bb481bb107ab15ab453fec54cf5a80aff39dacacdc2c2741bcb",
+        "edge:9126e5191938cdca21a5acd3c9216b6c107043c96faf7aebb7142853a2eacf95",
+        "edge:9143a4a169812969dffef1917e83c82f8f88a229c6d688fb195958e3c8b5cfd5",
+        "edge:93da591f2582305bf0573dd8a7052cb6f33b4225fc7c7685e1fb514c2cd018bf",
+        "edge:9499077fe2a3560cc358cb38dc1376afd3cfca720e51fbd117a59e90c9bdd0f3",
+        "edge:9660bae954dbd236c94d8fccd4618fbb32c2657b7378b0c53a083531e380eb5c",
+        "edge:98f001b973062a6f407326dc292f98606fedcaf9cacb7c6e36548d1d7c796618",
+        "edge:9a7e08e58e55cf7ebc9e5a0cced81eb38593e9bd2eb796263658aa9c2c08c132",
+        "edge:9bd0395ee21ccdb85a199f4838aca3a88df577cbdd6f0e92d053fbff92a4ae39",
+        "edge:9d7401c6a66978dce79b7984760c49597571dc061718973829b98b89304d4042",
+        "edge:9e65b4e65dafdc09d06b1a28c2d6277090f8e18dc46732d64980b4ed02744e9d",
+        "edge:9f05323bc3adadcb95442f52cc7ff8f2fd6be4bc2ae1fa523ea720d05a16c951",
+        "edge:a383349e60f305d1c0a91efe87050b262f1947ebd6ca2ded3b597d7beef75e25",
+        "edge:a4e9f6a4af3b4075ad098058ec2572c9ee9426b95081c5e995cb1ab4837e8e75",
+        "edge:a7d5a82473fdcbc638f989ec422474df8c3143a6af0b35eb6ee04fccff073702",
+        "edge:a859a3c00f27a76f7d8ae9b1a30e9747c62af5d8e1a049714c0b4e0471dd4b7d",
+        "edge:a883572a42c3a9a6be07e244d1ed40b6f781b13bfaa0fee69fb31ba2a42c3cdb",
+        "edge:a8ae36a1ba980cc8805c8a38578c0328754cd7a1d5bcbacf3984dfdb736b02c1",
+        "edge:ab28f4dfa8010f22f138ee8387fa2c75803f9a144c54f4f324f96617ef445cf8",
+        "edge:abf523308122c797fdfd26d60e7bd494903f3f7198c60cf3c654f36789db81f4",
+        "edge:ac983734ed4b7dc608294a6672e79ffbdb92c7fc8c680fa2af184551ab382ced",
+        "edge:ada5fafe4a162f0a781c9584b7164554268e4c0a30b9ee5117fe03191b082eda",
+        "edge:ae69a9db2bd7b5c01bc4263ab01593e938549b0195a5c4ff61ad944d4ab97ae7",
+        "edge:b038a3a955051c763898adaea3287c942e01d1375c07a183bb8e440c5f203464",
+        "edge:b03dea9e16acb566ff37503290f5622d38bcc0b6b51fb417007f16a8190c898d",
+        "edge:b0746e9d2bb86091d539c0e4250bc4681d31ed8981bcef5a1dafdebd21cdbefb",
+        "edge:b169c3d01b44d07d4ec7ab90577b23b8fa14445fe0ca915c3161454343df2295",
+        "edge:b176da7f884392376a079debac51ee10e709c99d9682801e9d9b601c2ea9c87d",
+        "edge:b35d755375fb0be1d6f56f93aed46ab3284cafb87875089af378fe7de4e2b558",
+        "edge:b3adf4cc0e73d7a26c62dc81421b9dd3effa901a1cf67c4c75d1477d6462f702",
+        "edge:b4623ef940f246a5eecbd3861156e8b6403fbf0ad5664e2681d39df38ed13349",
+        "edge:b475cd45e1cdc9837dd109902c7c1d97db8cd6eecd28eb60fb260be79577650a",
+        "edge:b92a8886ba29f335c73731368af89735437cce07852dfe8e04830e275a9fed0b",
+        "edge:b9766ad6c455b3d019c1f5bbbc8744bdcc18486a2fc43307d19e9a9c0cf5aa1e",
+        "edge:baaeb2cbf5f352c54f683c7b5906fa435c94c59c01fccdcd278446050c9974af",
+        "edge:bf86e5ed7df5c15dc0f8d97f1656b8579ba65dbb665148cc5dabf4a1aed897f8",
+        "edge:c088a9a6d7693909a89caf3fa92b0110fc6c6f341ceba736aaeecb61537d55ee",
+        "edge:c12fcf1bf395e2ef3669c74694df775ca45c4ec1e9cd20f578e34bf6be2b4c0d",
+        "edge:c1c33ccb2551f0f486cc9f93ff20129a3a7c1380d8c8767b61098eb93b59b14b",
+        "edge:c265c1b254dbd92ca8c629c9ad31eae0b316202b97d8c022f20b85cc17ae875b",
+        "edge:c5a9ebdd4c2a36dabde0a3a73a87cfde898ca050cc7cf07a7c382c6ef703321d",
+        "edge:c666b728b2aa6c8338f6127f057f02bb26541d40637c88b8a3734a0aa6aa6108",
+        "edge:c691cbb153905fa6df669401f72a1479982ccf1f04b1de4f6700d0038c584875",
+        "edge:c7bbe0e1b3df482975f24c8861f52e74468c46ce6dad16c8766343410488d72b",
+        "edge:c97bad4d45cf56ab50673674b4dbdbe29368684d5bb60e932e319ac89cc1d7a8",
+        "edge:c997966c01ecb5b748725b144755bf6da50642675939bfcdcb4ce868cd76fa3f",
+        "edge:cbc07e31183f1b0948637a24bb30f6b6c42e07cdfd40d8e6e8a8cf615fe88d3f",
+        "edge:cc4ba01ea79442630eaecca7394c2a03d72c119236532913544a4fcf59ef577d",
+        "edge:cd157e748b835578c97d6fe938e63e39f74bc3deff684a81b6cdfbb8d0db1b74",
+        "edge:cd43f88fade6f0a38b20fd4c3b485bc3677e9bf501da72955c31f5fa04d3dec9",
+        "edge:cf5016cdab1365d262d19607b24f5f006db0e52b100f6c295a38701b944dec48",
+        "edge:cf6e96eed28e0817921152a0ef50ee12a0c4822cd152c71c91dec600048d73bf",
+        "edge:cf7949de8f98b2b28d03d10522ff6b6b73f5d2c6333c7f9035d0b5bfea6627a4",
+        "edge:d09712b4df1714e3c8ccdaec95394f574140584a785090c6384be06a8f78fac8",
+        "edge:d0aa740c89d5f4c3a9b840964fd2660dc471e18e42b3e5731b88233b0b8a932e",
+        "edge:d2912f484a1490e52575781e838dc27e1f109d0d9f652b9ae583b03ede6f853d",
+        "edge:d3de47a83ab5ab927c367ce76b83727b6f14bac133e3cd563a3cabd9b51c324c",
+        "edge:d4530a7ff06494b7a4f10ecc7073a407bac6a425c674ef91ce898982757754dc",
+        "edge:d636dea5fcd0b2e021ddcbe610a5549b4c70a09ff6a57fc43e10199eb9ab54ed",
+        "edge:d6c0bde0872a65a7b4029b8832b7f2c7161c5a2e939c0489e3c0e1df5779bf8e",
+        "edge:d87152e600d6707c10e68d530d3714fb57ec35d47df3199179917842d969a2e3",
+        "edge:da3f88baaa2e24342869e42a7adae6855eb9f2ab4a77f8497d9f8fe886eb018a",
+        "edge:e01b330e93017105715b61e7a2f2f9e2da046d64e18039385b4d2b516d93e455",
+        "edge:e31b9ccdb2e89ce971b0e816d7b6c043172dc87f2d90f098640f4e030d607e26",
+        "edge:e6de0216fc017392286234de41331aff516b62bcc89d696d96d7c2f77d64c841",
+        "edge:e99aa72327e582384bf7f2ae499e0172c3a8c2d966433ecb80b1af0a82b6dcac",
+        "edge:eb67908c2e8cb4bb74b00d50b13dfeca6ab1dbfc500541166765e4ca3eb2a1bf",
+        "edge:f069b349b4522277cfb23f7a3c6bac47de0ebb329cf89f9d81d5ae6e944e31fb",
+        "edge:f0d280b79ef19b3f643f3799a1bd775760b79a61173ec7adf3701e9161237a3b",
+        "edge:f1150115f216b2b8d57bc0949c94dc3439a97a99952710b4d0c9bd0a13a4be25",
+        "edge:f1968b00131dfc97cc13fbafd1a6576cda9d2c5b701d93b3db83591cc65f1484",
+        "edge:f237bae24c5f1b3afa214171498c0cad645c5b3b17823822b2971e64ae9848a5",
+        "edge:f58adb05b67a7ecef9221ea9c30f9552c2d33df596e39dd93b562c6bff802da9",
+        "edge:f6d45121c78c7b734e345dad6e378cc53956f781b75c3de9af3677f38ff0c458",
+        "edge:f6fe8b0abc231199c119443b67198b2511bfa189a446928e1c86a269485172f6",
+        "edge:f8f3b98f4738080eaa3e138ed414879431661b32a2366adbe9aea565045ee15d",
+        "edge:fd94572f41c2c18f247ac0bb6e28d111e22955d90077834c1d55431ee64bd971",
+        "edge:fdb8404af77a434afbd74f712efdb1a146563c88b089061914e8d86526e15ff5",
+        "edge:feac16fe69360f620487211001250fd0aa3e8284ab57fdd2e4e29b990119d481",
+        "edge:ffca711dae065a64b82813fe12ae821e70bf59668b1b21add617861f215e8e5d"
+      ]
+    }
+  },
+  "source_receipt": "reports/runs/WORK-2026-11-09-013/sources/source-receipt.json",
+  "reviewer_initialization": "separate fresh fork_turns=none contexts read only rubric before authorization; no coordinator history or shared answers",
+  "historical_topic_references": "not assigned to new contexts; retained historical results conditional on exact prediction preservation",
+  "limitations": "Prior exposure frame uses supplied raw-source packets and recorded ledgers including historical blind topic sources; additional exploratory context exposure may exist and is not exhaustively reconstructed. Same OpenAlex construction snapshot reused throughout; fresh draw/context does not establish evaluator/source independence."
+}
