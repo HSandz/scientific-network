@@ -5,9 +5,10 @@ evaluation_kind: ai_agent_review
 human_validation: not_performed
 reviewer_independence: not_established
 verified_course_accuracy: not_established
+numeric_gate_scope: ai_assessed_only
 amendment:
   path: docs/correction-amendment-2026-11-09.md
-  sha256: 17dbde57b2acda50aa80024714a2942abfdc404dc488d35aea2018cdf871e9b6
+  sha256: bd3b789ac9b5e4cacab29a19b20439b74d48388ab0cfe05855c56af16a51127b
 correction:
   source_graph: data/processed/release-graph-v3/graph.json
   works: data/interim/release-v1/works.jsonl
@@ -15,6 +16,8 @@ correction:
   policy: global valid singular-plus-observed ORCID union; conflicting or malformed
     nonempty ID evidence withheld; no model inference
   historical_artifacts: preserved
+  paper_metadata_exception: only add missing unresolved_author_reason to newly zero-authorship
+    papers; preserve all substantive paper properties and record full diff
 review:
   default: isolated_agent_A_B
   share_other_reviewer_answers: false

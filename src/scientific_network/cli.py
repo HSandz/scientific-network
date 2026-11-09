@@ -90,6 +90,9 @@ def parser() -> argparse.ArgumentParser:
     correction.add_argument("--source-freeze", type=Path, required=True)
     correction.add_argument("--output-dir", type=Path, required=True)
     correction.add_argument("--summary", type=Path, required=True)
+    identity_correction = commands.add_parser("correct-release-identity", help="correct global ORCID evidence without changing frozen predictions")
+    for option in ("works", "input", "taxonomy", "quality", "source-summary", "source-freeze", "protocol", "output-dir", "summary", "freeze-output"):
+        identity_correction.add_argument("--" + option, type=Path, required=True)
     topic_review = commands.add_parser("prepare-topic-review-sheet", help="prepare a prediction-blind sheet for frozen topic-test papers")
     topic_review.add_argument("--works", type=Path, default=Path("data/interim/release-v1/works.jsonl"))
     topic_review.add_argument("--topic-test", type=Path, default=Path("data/manifests/release-v1/topic-test.jsonl"))
@@ -165,6 +168,15 @@ def parser() -> argparse.ArgumentParser:
     agent_review.add_argument("--adjudications", type=Path)
     agent_review.add_argument("--adjudication-ledger", type=Path)
     agent_review.add_argument("--allow-partial", action="store_true")
+    agent_edges = commands.add_parser("score-agent-edge-review", help="validate a prospective edge-only agent review without attributing historical topic labels")
+    for option in ("evaluation-freeze", "completion-receipt", "protocol", "edge-ledger", "graph", "quality", "graph-freeze", "graph-summary", "rubric", "edge-output"):
+        agent_edges.add_argument("--" + option, type=Path, required=True)
+    agent_edges.add_argument("--edge-packets", type=Path, nargs="+", required=True)
+    agent_edges.add_argument("--edge-reviews", type=Path, nargs="+", required=True)
+    agent_edges.add_argument("--adjudications", type=Path)
+    agent_edges.add_argument("--adjudication-ledger", type=Path)
+    agent_edges.add_argument("--adjudication-start-receipt", type=Path)
+    agent_edges.add_argument("--allow-partial", action="store_true")
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -341,6 +353,11 @@ def main(argv: list[str] | None = None) -> int:
             result = correct_release_taxonomy(args.input, args.taxonomy, args.quality, args.source_summary,
                                              args.source_freeze, args.output_dir, args.summary)
             exit_code = 0
+        elif args.command == "correct-release-identity":
+            from scientific_network.resolve.release_identity import correct_release_identity
+            result = correct_release_identity(args.works, args.input, args.taxonomy, args.quality,
+                args.source_summary, args.source_freeze, args.protocol, args.output_dir, args.summary, args.freeze_output)
+            exit_code = 0
         elif args.command == "prepare-topic-review-sheet":
             from scientific_network.evaluation.topic_review import prepare_topic_review_sheet
             result = prepare_topic_review_sheet(args.works, args.topic_test, args.taxonomy, args.output)
@@ -426,6 +443,11 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "score-agent-review":
             from scientific_network.evaluation.agent_review import score_agent_review
             result, exit_code = score_agent_review(**{
+                key: value for key, value in vars(args).items() if key != "command"
+            })
+        elif args.command == "score-agent-edge-review":
+            from scientific_network.evaluation.agent_edge_review import score_agent_edge_review
+            result, exit_code = score_agent_edge_review(**{
                 key: value for key, value in vars(args).items() if key != "command"
             })
         else:
