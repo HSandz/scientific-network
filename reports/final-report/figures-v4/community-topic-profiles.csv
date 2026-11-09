@@ -1,0 +1,101 @@
+community_id,community_member_count,community_paper_count,topic_labeled_paper_count,topic_id,topic,topic_paper_count,fractional_paper_count,topic_share
+community:00058,953,468,383,topic:representation-learning,Representation learning,155,122.166666666667,0.318973020017
+community:00058,953,468,383,topic:multimodal,Multimodal learning,100,75.666666666667,0.197563098346
+community:00058,953,468,383,topic:efficient-systems,Efficient machine learning systems,51,40.333333333333,0.105308964317
+community:00058,953,468,383,topic:computer-vision,Computer vision,47,38.0,0.099216710183
+community:00058,953,468,383,topic:generative-modeling,Generative modeling,37,33.666666666667,0.087902523934
+community:00000,687,533,197,topic:multi-agent,Multi-agent systems,45,45.0,0.228426395939
+community:00000,687,533,197,topic:planning-reasoning,Planning and reasoning,42,39.0,0.197969543147
+community:00000,687,533,197,topic:reinforcement-learning,Reinforcement learning,28,27.0,0.137055837563
+community:00000,687,533,197,topic:graph-ml,Graph machine learning,27,26.0,0.131979695431
+community:00000,687,533,197,topic:trustworthy-ml,Trustworthy machine learning,16,15.5,0.078680203046
+community:00185,512,210,186,topic:representation-learning,Representation learning,58,43.5,0.233870967742
+community:00185,512,210,186,topic:multimodal,Multimodal learning,44,35.333333333333,0.189964157706
+community:00185,512,210,186,topic:nlp-language-models,Natural language processing and language models,40,31.333333333333,0.168458781362
+community:00185,512,210,186,topic:efficient-systems,Efficient machine learning systems,22,16.833333333333,0.090501792115
+community:00185,512,210,186,topic:generative-modeling,Generative modeling,24,15.833333333333,0.085125448029
+community:00043,481,270,250,topic:graph-ml,Graph machine learning,88,81.0,0.324
+community:00043,481,270,250,topic:representation-learning,Representation learning,58,47.666666666667,0.190666666667
+community:00043,481,270,250,topic:efficient-systems,Efficient machine learning systems,28,23.666666666667,0.094666666667
+community:00043,481,270,250,topic:trustworthy-ml,Trustworthy machine learning,26,22.833333333333,0.091333333333
+community:00043,481,270,250,topic:generative-modeling,Generative modeling,23,17.833333333333,0.071333333333
+community:00005,480,208,182,topic:representation-learning,Representation learning,64,46.5,0.255494505495
+community:00005,480,208,182,topic:multimodal,Multimodal learning,43,33.666666666667,0.184981684982
+community:00005,480,208,182,topic:nlp-language-models,Natural language processing and language models,30,23.5,0.129120879121
+community:00005,480,208,182,topic:graph-ml,Graph machine learning,26,22.5,0.123626373626
+community:00005,480,208,182,topic:efficient-systems,Efficient machine learning systems,23,17.666666666667,0.09706959707
+community:00015,469,197,180,topic:representation-learning,Representation learning,65,51.166666666667,0.284259259259
+community:00015,469,197,180,topic:multimodal,Multimodal learning,45,36.666666666667,0.203703703704
+community:00015,469,197,180,topic:computer-vision,Computer vision,24,18.0,0.1
+community:00015,469,197,180,topic:efficient-systems,Efficient machine learning systems,19,14.5,0.080555555556
+community:00015,469,197,180,topic:graph-ml,Graph machine learning,15,14.333333333333,0.07962962963
+community:00100,451,218,198,topic:representation-learning,Representation learning,69,55.833333333333,0.281986531987
+community:00100,451,218,198,topic:multimodal,Multimodal learning,35,29.333333333333,0.148148148148
+community:00100,451,218,198,topic:computer-vision,Computer vision,31,28.833333333333,0.145622895623
+community:00100,451,218,198,topic:reinforcement-learning,Reinforcement learning,24,21.5,0.108585858586
+community:00100,451,218,198,topic:graph-ml,Graph machine learning,14,12.166666666667,0.061447811448
+community:00136,407,190,162,topic:representation-learning,Representation learning,56,41.5,0.256172839506
+community:00136,407,190,162,topic:multimodal,Multimodal learning,43,35.5,0.219135802469
+community:00136,407,190,162,topic:graph-ml,Graph machine learning,27,21.5,0.132716049383
+community:00136,407,190,162,topic:computer-vision,Computer vision,18,15.833333333333,0.097736625514
+community:00136,407,190,162,topic:efficient-systems,Efficient machine learning systems,19,13.666666666667,0.084362139918
+community:00091,405,211,186,topic:representation-learning,Representation learning,73,59.0,0.317204301075
+community:00091,405,211,186,topic:efficient-systems,Efficient machine learning systems,43,30.666666666667,0.164874551971
+community:00091,405,211,186,topic:graph-ml,Graph machine learning,24,20.833333333333,0.112007168459
+community:00091,405,211,186,topic:multimodal,Multimodal learning,22,16.0,0.086021505376
+community:00091,405,211,186,topic:trustworthy-ml,Trustworthy machine learning,20,15.5,0.083333333333
+community:00016,391,195,180,topic:representation-learning,Representation learning,58,47.0,0.261111111111
+community:00016,391,195,180,topic:multimodal,Multimodal learning,38,31.666666666667,0.175925925926
+community:00016,391,195,180,topic:graph-ml,Graph machine learning,27,24.0,0.133333333333
+community:00016,391,195,180,topic:nlp-language-models,Natural language processing and language models,23,17.666666666667,0.098148148148
+community:00016,391,195,180,topic:efficient-systems,Efficient machine learning systems,23,17.333333333333,0.096296296296
+community:00119,383,186,161,topic:representation-learning,Representation learning,58,46.333333333333,0.287784679089
+community:00119,383,186,161,topic:causal-inference,Causal inference,21,19.166666666667,0.119047619048
+community:00119,383,186,161,topic:computer-vision,Computer vision,20,16.833333333333,0.104554865424
+community:00119,383,186,161,topic:multimodal,Multimodal learning,19,16.166666666667,0.100414078675
+community:00119,383,186,161,topic:reinforcement-learning,Reinforcement learning,16,14.333333333333,0.089026915114
+community:00047,379,158,142,topic:representation-learning,Representation learning,34,25.166666666667,0.177230046948
+community:00047,379,158,142,topic:multimodal,Multimodal learning,28,22.833333333333,0.160798122066
+community:00047,379,158,142,topic:nlp-language-models,Natural language processing and language models,29,22.666666666667,0.159624413146
+community:00047,379,158,142,topic:reinforcement-learning,Reinforcement learning,17,14.833333333333,0.104460093897
+community:00047,379,158,142,topic:efficient-systems,Efficient machine learning systems,18,13.166666666667,0.092723004695
+community:00045,378,161,136,topic:representation-learning,Representation learning,65,50.5,0.371323529412
+community:00045,378,161,136,topic:multimodal,Multimodal learning,29,21.333333333333,0.156862745098
+community:00045,378,161,136,topic:planning-reasoning,Planning and reasoning,11,11.0,0.080882352941
+community:00045,378,161,136,topic:generative-modeling,Generative modeling,11,8.666666666667,0.063725490196
+community:00045,378,161,136,topic:computer-vision,Computer vision,12,8.333333333333,0.061274509804
+community:00041,374,169,143,topic:representation-learning,Representation learning,50,36.333333333333,0.254079254079
+community:00041,374,169,143,topic:multimodal,Multimodal learning,28,23.0,0.160839160839
+community:00041,374,169,143,topic:nlp-language-models,Natural language processing and language models,27,19.166666666667,0.134032634033
+community:00041,374,169,143,topic:efficient-systems,Efficient machine learning systems,22,15.666666666667,0.109557109557
+community:00041,374,169,143,topic:generative-modeling,Generative modeling,18,14.666666666667,0.102564102564
+community:00021,367,184,166,topic:representation-learning,Representation learning,40,29.833333333333,0.179718875502
+community:00021,367,184,166,topic:multimodal,Multimodal learning,29,24.0,0.144578313253
+community:00021,367,184,166,topic:graph-ml,Graph machine learning,24,21.833333333333,0.131526104418
+community:00021,367,184,166,topic:reinforcement-learning,Reinforcement learning,26,21.333333333333,0.128514056225
+community:00021,367,184,166,topic:nlp-language-models,Natural language processing and language models,24,18.666666666667,0.112449799197
+community:00126,367,206,180,topic:representation-learning,Representation learning,63,52.333333333333,0.290740740741
+community:00126,367,206,180,topic:multimodal,Multimodal learning,32,25.833333333333,0.143518518519
+community:00126,367,206,180,topic:graph-ml,Graph machine learning,26,21.666666666667,0.12037037037
+community:00126,367,206,180,topic:reinforcement-learning,Reinforcement learning,22,19.333333333333,0.107407407407
+community:00126,367,206,180,topic:efficient-systems,Efficient machine learning systems,26,18.333333333333,0.101851851852
+community:00031,361,165,139,topic:representation-learning,Representation learning,51,37.666666666667,0.270983213429
+community:00031,361,165,139,topic:multimodal,Multimodal learning,31,24.833333333333,0.178657074341
+community:00031,361,165,139,topic:nlp-language-models,Natural language processing and language models,22,20.333333333333,0.146282973621
+community:00031,361,165,139,topic:graph-ml,Graph machine learning,19,17.0,0.122302158273
+community:00031,361,165,139,topic:generative-modeling,Generative modeling,16,12.666666666667,0.091127098321
+community:00078,359,243,211,topic:planning-reasoning,Planning and reasoning,127,116.0,0.549763033175
+community:00078,359,243,211,topic:trustworthy-ml,Trustworthy machine learning,26,23.833333333333,0.112954186414
+community:00078,359,243,211,topic:reinforcement-learning,Reinforcement learning,26,19.666666666667,0.093206951027
+community:00078,359,243,211,topic:multi-agent,Multi-agent systems,14,10.666666666667,0.050552922591
+community:00078,359,243,211,topic:efficient-systems,Efficient machine learning systems,18,10.166666666667,0.048183254344
+community:00010,357,154,136,topic:representation-learning,Representation learning,35,28.333333333333,0.208333333333
+community:00010,357,154,136,topic:multimodal,Multimodal learning,31,25.833333333333,0.189950980392
+community:00010,357,154,136,topic:computer-vision,Computer vision,16,12.666666666667,0.093137254902
+community:00010,357,154,136,topic:planning-reasoning,Planning and reasoning,13,12.5,0.091911764706
+community:00010,357,154,136,topic:reinforcement-learning,Reinforcement learning,13,12.5,0.091911764706
+community:00027,350,170,159,topic:representation-learning,Representation learning,58,43.0,0.270440251572
+community:00027,350,170,159,topic:multimodal,Multimodal learning,46,36.333333333333,0.228511530398
+community:00027,350,170,159,topic:computer-vision,Computer vision,28,23.0,0.14465408805
+community:00027,350,170,159,topic:graph-ml,Graph machine learning,20,16.666666666667,0.104821802935
+community:00027,350,170,159,topic:trustworthy-ml,Trustworthy machine learning,14,13.333333333333,0.083857442348
