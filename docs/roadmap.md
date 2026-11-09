@@ -7,8 +7,8 @@
 
 **9 November presentation:** `python -m scientific_network.reporting.network_views`
 exports three deterministic bounded induced maps and public evidence-pointer
-JSON/CSVs from exact graph/analysis/freeze bindings. Native Site controls provide
-projection/filter/zoom and source inspection. Full projection counts remain
+JSON/CSVs from exact graph/analysis/freeze bindings. Published Site v19 provides native
+projection/filter/zoom controls, source inspection and the new report PDF. Full projection counts remain
 separate from displayed subsets; see [WORK-015](work-log/2026-11-09-015-release-review-graphs-site.md).
 
 **9 November remediation:** `correct-release-identity` applies global singular-plus-observed ORCID withholding from immutable works, preserves frozen predictions without inference and emits full changes/content freeze. `score-agent-edge-review` supports prospectively frozen edge-only contexts and actual post-export adjudication metadata without attributing old topic references to new reviewers. Complete raw source packets retain observed arrays and verify against cache bytes. The original combined scorer now requires explicit topic labels; historical scores reproduce unchanged.

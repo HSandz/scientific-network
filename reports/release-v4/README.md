@@ -95,7 +95,7 @@ Tests and the isolated Neo4j checks are recorded in WORK-010 through WORK-014.
 The current report is [report.md](../final-report/report.md). Its local package
 receipt will be `local-package-receipt-v2.json` after the committed source build;
 that later QA receipt is intentionally outside its own source snapshot.
-No push, tag, Site publication, invitation or submission is performed. Real student
+At the remediation packaging checkpoint (WORK-014), no push, tag, Site publication, invitation or submission was performed. The later WORK-015 Site publication is recorded below. Real student
 names/IDs/contributions, lecturer access and course AI-use rules remain pending.
 
 ## Visible network maps (presentation update)
@@ -117,3 +117,16 @@ uv run python -m scientific_network.reporting.network_views \
 ```
 
 This presentation change does not rebuild the graph, analysis or frozen audit.
+
+The current presentation package is recorded in
+[`local-package-receipt-v3.json`](local-package-receipt-v3.json):26A4pages/nine
+figures. It supersedes the earlier six-figure local render without modifying it.
+The existing [public Site](https://ai-research-network-plan.hazy-tern-8113.chatgpt.site/#report)
+was updated to version19 using the Sites plugin; its
+[receipt](../../docs/reference/sites-corrected-release-publication-2026-11-09.json)
+records exact source/deployment and browser-verification limits.
+
+The PDF is the committed `fb2f0e7` presentation snapshot, rendered before Site
+publication. Its external-delivery paragraphs retain that checkpoint's wording;
+current Site authorization/state is governed by the dated D040 amendment and v19
+receipt above. They do not authorize GitHub/course delivery.

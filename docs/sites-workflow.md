@@ -45,17 +45,31 @@ Version 8's [receipt](reference/sites-diagnostics-publication-2026-11-06.json)
 and source snapshots remain historical; [v9](reference/sites-diagnostics-final-publication-2026-11-06.json)
 records replay fixes and 120 tests. V10 corrects currency rendering; counts are unchanged.
 
+## Current corrected release — version 19 (9 November 2026)
+
+[Publication receipt](reference/sites-corrected-release-publication-2026-11-09.json)
+binds the exact Site source commit and deployed archive. The public project ID,
+URL and audience are preserved. The Report now uses corrected graph v4 and three
+bounded native SVG maps (researcher/organization/citation), with full-projection
+counts separately labelled, source inspection, filters, zoom, CSVs, six statistical
+charts and the new26-page/nine-figure PDF. Full historical Plan retained verbatim
+with two identical D040 amendment insertions (preamble and rendered chapter1).
+The historical Escape search issue is fixed and passes local keyboard QA.
+
+Live DOM/download verification confirms current graph/counts, native controls,
+20chapters, zero Report embeds and PDF HTTP200. Automated hosted pointer clicks
+on Plan/search timed out; DOM activation works and local pointer/keyboard checks
+pass. This is a browser-verification limit, not evidence of a confirmed application
+defect. No unattended sync or external course/GitHub delivery was configured.
+
 ## Two views, one publication
 
-- **Plan** (`#plan`): full specification, current 2021–2025 scope, requirements,
-  pipeline design, evaluation, workload and next tasks. State that D022 authorizes staged collection; five-year roster discovery has
-  started and new split/enrichment/graph stages require their prerequisite checks.
-- **Report** (`#report`): dated measured progress, coverage, five-year roster progress, loaded-versus-candidate
-  versions, quality gaps, history and the existing interactive graph explorer.
-  The explorer retains its 399/533 2023 snapshot; report the 402/538 local candidate
-  separately until a matching new explorer is authorized/generated. The graph,
-  charts, filters, coverage table and evidence inspector are native Site components
-  in the Report DOM, not an iframe or embedded standalone document (D020).
+- **Plan** (`#plan`): full20-section specification, with a prominent D040
+  amendment superseding historical scope, source holds and human prerequisites.
+- **Report** (`#report`): corrected cumulative release, measured AI edge audit,
+  failed coverage/topic gates, three bounded interactive graph projections,
+  statistical charts and source/download controls. Components are native in the
+  Report DOM, never an iframe. Historical pilot counts belong to old versions.
 
 The Site report does not replace the final ≥10-page course report. It does not
 query localhost Neo4j, read `.env` or automatically synchronize repository files.
@@ -72,7 +86,7 @@ publications; existing results can be published without new research collection.
    supported helper. Keep tokens only in session memory/stdin, never files/logs.
 3. Update Site `source-plan.md` when the plan changes and `source-report.md` for
    measured progress. Preserve old source commits. Copy only permitted artifacts
-   such as summary JSON and the unchanged safe graph payload after checking
+   such as summary JSON and a version-bound public view payload after checking
    hashes/disclosure. Keep the standalone HTML as an offline artifact, not a Site
    embed. In Site source, `native-report.html`, `report-payload.json` and
    `dist/native-report.{css,js}` implement the native report; `build_site.py`
