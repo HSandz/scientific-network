@@ -1,0 +1,13 @@
+# D040 amendment — bounded identity correction and prospective edge audit
+
+Adopted by explicit user instruction on 9 November 2026; recorded 2026-11-09T15:10:03+07:00.
+
+The user authorizes the complete five-step remediation prompt, including a NEW graph correcting the omitted `observed_orcids` evidence across all matched works. Preserve graph v3, failed 176/200 audit, historical topic references/scores and all frozen artifacts. This is a bounded exception to the post-audit graph-change prohibition, with no classifier tuning, threshold relaxation or repeated corrective audit cycle.
+
+Union normalized valid singular and observed-array ORCIDs per OpenAlex author ID over all matched works. Multiple distinct valid values withhold that ID everywhere. Missing/null ORCID is allowed. Nonempty malformed identifier evidence is recorded and conservatively withheld globally, never converted into identity evidence. Keep exact raw locators and hashes. Remove affiliation observations of withheld researchers, rebuild aggregates and all four derived relations; remove organizations without surviving observations. Preserve all papers and official byline denominators, frozen paper-topic predictions, evidence and taxonomy. Historical paper metadata is retained; new coverage records actual surviving authorships.
+
+Use unused v4 paths and freeze corrected content. Reset/import only the verified isolated neo4j-five-year service on port 7689; preserve immutable old graph files and receipts. Recompute all projections, sensitivity, figures and findings.
+
+Run ONE prospective edge-only source-backed agent audit, isolated fresh A/B contexts. Seed **20261109** is chosen by this dated amendment before drawing; retain 200 global, 10 per type, 50 overlap and unchanged numeric targets. Sample all accepted edges, with no exclusions for prior review and no seed retry. Record semantic/sample/paper/source overlap and that earlier errors motivated this correction. Keep old topic references explicitly historical; no new topic judgments are attributed to edge reviewers. Freeze initial exports before separate source adjudication.
+
+All results are AI-assessed: human_validation=not_performed; reviewer_independence=not_established; verified_course_accuracy=not_established. Wilson intervals exclude evaluator mistakes and shared-source/model bias. Failed gates remain failures; finish report and local package regardless. Personal/course facts remain pending where unavailable. No push, tag, Site publication, invitation or submission is authorized.
