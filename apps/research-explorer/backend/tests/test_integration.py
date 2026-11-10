@@ -171,3 +171,14 @@ def test_support_thresholds_do_not_filter_factual_citations(live_client):
     assert base.status_code == filtered.status_code == 200
     assert base.json()['edges']
     assert {e['edge_id'] for e in base.json()['edges']} == {e['edge_id'] for e in filtered.json()['edges']}
+
+
+def test_curated_overview_never_silently_ignores_paper_filters(live_client):
+    response = live_client.get('/api/views/heterogeneous', params={'year_min': 2023, 'venue': 'venue:ijcai'})
+    assert response.status_code == 422
+    assert 'Researcher → Paper → Topic' in response.json()['detail']
+    response = live_client.get('/api/views/heterogeneous', params={'preset': 'researcher_paper_topic', 'year_min': 2023, 'year_max': 2023, 'venue': 'venue:ijcai', 'topic_id': 'topic:causal-inference'})
+    assert response.status_code == 200
+    papers = [n for n in response.json()['nodes'] if n['label'] == 'Paper']
+    assert papers
+    assert all(n['year'] == 2023 and n['venue'] == 'venue:ijcai' for n in papers)

@@ -43,6 +43,7 @@ interface SigmaGraphCanvasProps {
   rawEdgesCount?: number;
   isLoading: boolean;
   error?: Error | null;
+  onRetry: () => void;
   onExpandNode: (
     nodeId: string,
     replace?: boolean,
@@ -280,6 +281,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   rawEdgesCount,
   isLoading,
   error,
+  onRetry,
   onExpandNode,
   isExpanding,
 }) => {
@@ -1310,6 +1312,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
               </div>
               <p className="text-[13px] text-muted leading-relaxed">
                 {error.message}
+                <button className="ledger-btn mt-2 px-3 py-2" onClick={onRetry}>Retry</button>
               </p>
             </div>
           </div>

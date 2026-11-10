@@ -544,6 +544,7 @@ export const App: React.FC = () => {
                 rawEdgesCount={effectiveGraph.rawEdges.length}
                 isLoading={viewQuery.isLoading}
                 error={viewQuery.error as Error | null}
+                onRetry={() => { void viewQuery.refetch(); }}
                 onExpandNode={handleExpandNode}
                 isExpanding={isExpanding}
               />
