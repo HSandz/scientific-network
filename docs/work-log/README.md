@@ -9,6 +9,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 - [WORK-2026-11-10-007 — Azure production deployment](2026-11-10-007-azure-production.md): completed; full graph/schema/content equality, HTTPS API and Pages cutover, five live browser suites, bounded runtime, safe swap and off-VM backup/restart recovery passed; original services and migration edits preserved.
 
+- [WORK-2026-11-10-006 — Neo4j AuraDB migration](2026-11-10-006-auradb-migration.md): partial; verified and retained the release-v4 offline dump; local source remains healthy and fingerprint-identical; Aura authentication/empty state verified; one upload rejected with HTTP 422 requiring at least 3 GB disk; next step is an authorized capacity increase.
+
 - [WORK-2026-11-10-005 — Research Explorer usability and graph operations implementation](2026-11-10-005-research-explorer-usability-implementation.md): completed; authoritative effective view state, collision-free neighbor reading and pinning (Warut 7/7 names readable together, dense node list without label wall), explicit Overview/Ego/Path views with Back navigation, reciprocal/parallel edge preservation in multi-edge graphology, responsive layout and header hit targets, accessible drawers/pickers, and unavailable quality fallback; 15 backend tests, 5 Playwright E2E suites, 507 repo tests, design lint 0 FAIL.
 
 - [WORK-2026-11-10-004 — Fresh-session Explorer implementation prompt](2026-11-10-004-explorer-implementation-prompt.md): completed, handoff only; paste-ready prompt covers the combined graph/website plan, `design-taste-frontend`, acceptance checks, preservation boundaries and deliverables; no application changes.

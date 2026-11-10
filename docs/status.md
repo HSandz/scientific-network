@@ -2,7 +2,7 @@
 
 Updated: **2026-11-10 15:03 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
-Latest completed: [WORK-2026-11-10-005](work-log/2026-11-10-005-research-explorer-usability-implementation.md), Research Explorer usability and graph operations implementation.
+Latest completed: [WORK-2026-11-10-005](work-log/2026-11-10-005-research-explorer-usability-implementation.md), Research Explorer usability and graph operations implementation. Previous operational work: [WORK-2026-11-10-006](work-log/2026-11-10-006-auradb-migration.md), partial.
 
 ## Remediation and presentation checklist
 
@@ -39,7 +39,12 @@ AI-assessed edge precision 193/200 = 96.5%, Wilson 92.95–98.29%; human validat
 
 - [x] Azure VM swap/Docker, guarded dump restore, exact full-content/schema comparison, compact evidence/analytics, HTTPS API functional checks, off-VM backup and restart recovery ([WORK-007](work-log/2026-11-10-007-azure-production.md)).
 - [x] Pages production build and live browser acceptance complete: Azure API, all five live browser suites and 28 public API checks passed. [Runbook](../ops/azure/README.md); [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
-- Render/Aura remain retained.
+- Render/Aura remain retained. Historical migration notes below are superseded as runtime plans by the Azure deployment.
+
+## AuraDB migration handoff
+
+- [ ] Aura import pending: Free-tier upload rejected the uncompressed dump and requires at least 3 GB disk. Target remains empty; verified dump is retained; local source graph is unchanged and healthy. Credential file is mode 0600 and artifact scan is clean. See [migration report](../reports/release-v4/neo4j-auradb-migration.md).
+- Render backend is not ready until the Aura graph, schema, and application queries are verified. The local `graph.json` evidence ledger and analysis artifacts remain separate.
 
 ## Remaining personal facts and delivery
 
