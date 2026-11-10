@@ -63,8 +63,13 @@ were found. Process presence alone cannot establish another session's intent.
 
 ## Next step
 
-Push reviewed implementation on unchanged main, verify manual and automatic runs,
-then finalize receipts and documentation-only negative push.
+Final backend push 42795556553 and manual dispatch 42795640673 both passed for
+b25f026. Public smoke 28/28, standalone Chromium and complete graph/schema
+fingerprint comparison passed, with zero scientific differences. All service and
+volume identities except the API container are preserved. See the measured
+[receipt](../../reports/release-v4/azure-api-cicd-2026-11-10.md).
+Next: push documentation-only acceptance record, verify no Azure run starts,
+then finalize this entry and status.
 
 ## Corrections
 
