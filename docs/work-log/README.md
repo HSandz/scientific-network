@@ -188,4 +188,4 @@ text into the journal.
 
 - [WORK-2026-11-09-014 — Corrected local package](2026-11-09-014-remediation-package.md): completed;23-page A4 PDF,HTML,1394-member ZIP verified locally.
 
-- [WORK-2026-11-10-009 — Automatic Azure API deployment](2026-11-10-009-azure-api-cicd.md): in progress; hosted builds, OIDC delivery and guarded API-only rollback.
+- [WORK-2026-11-10-009 — Automatic Azure API deployment](2026-11-10-009-azure-api-cicd.md): completed; real automatic/manual deployment, OIDC, API-only rollback, full graph preservation and trigger checks passed.
