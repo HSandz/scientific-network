@@ -975,3 +975,28 @@ failed rollback is critical. Root-owned policy separately pins compatibility-rea
 code and the existing artifact manifest; CI cannot approve its own data/schema
 change. Scientific releases remain explicitly coordinated operator work.
 See [runbook](../ops/azure/README.md) for the security boundary and quota limitations.
+
+### D040 amendment — Read-only Explorer intelligence extension (2026-11-10)
+
+The user requests application correctness, defensible analytical drilldowns and
+renderer continuity (WORK-2026-11-10-011), with no push or production changes.
+Preserve the scientific release and all historical results. Serve existing frozen
+analysis first; additional citation cohorts, R8 support persistence and component
+representatives live in a separate deterministic `explorer-analysis-release-v1`
+artifact with graph/config/method hashes and exploratory definitions. These are
+presentation/descriptive additions, not a new evaluation or tuned graph.
+
+Use one effective displayed slice for metrics/export/rendering. Repeated-paper
+controls apply only to R7/R8; paper-window filtering requires accepted evidence
+support and retains frozen full-period weights. Missing artifacts produce
+unavailable states. A constrained expansion unsupported by the bounded endpoint
+must explain that limitation rather than silently ignore filters.
+
+Version shared/saved state, reconstruct bounded Ego/Path through actual requests,
+and explicitly downgrade manual appended expansions to filtered overview links.
+Keep Sigma/Graphology and ECharts instances through updates, preserving semantic
+edge IDs and positions. Complete new analytical charts require a new immutable
+runtime artifact directory and coordinated operator review through the existing
+Azure runbook; no CI approval bypass, database reimport or production write is
+authorized. Remaining feature/verification gaps are recorded in the implementation
+receipt rather than represented as completed.
