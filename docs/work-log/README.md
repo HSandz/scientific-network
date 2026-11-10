@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-10-008 — Azure deployment leftover cleanup](2026-11-10-008-azure-leftover-cleanup.md): completed; removed abandoned graph volume, failed images, obsolete settings and duplicate bootstrap; backups preserved; bounded Caddy Go concurrency restored health checks; production checks passed.
+
 - [WORK-2026-11-10-007 — Azure production deployment](2026-11-10-007-azure-production.md): completed; full graph/schema/content equality, HTTPS API and Pages cutover, five live browser suites, bounded runtime, safe swap and off-VM backup/restart recovery passed; original services and migration edits preserved.
 
 - [WORK-2026-11-10-006 — Neo4j AuraDB migration](2026-11-10-006-auradb-migration.md): partial; verified and retained the release-v4 offline dump; local source remains healthy and fingerprint-identical; Aura authentication/empty state verified; one upload rejected with HTTP 422 requiring at least 3 GB disk; next step is an authorized capacity increase.
