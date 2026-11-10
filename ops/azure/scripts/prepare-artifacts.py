@@ -60,11 +60,23 @@ def build(root: Path, output: Path):
     del graph
     analysis = json.loads(inputs['analysis'].read_bytes())
     # The API uses base projections and robustness comparisons. Strict projection
-    # internals are a duplicate research computation and are never returned/queried.
-    analysis.pop('strict_projections', None)
+    # centrality maps and partitions are omitted; retain compact measured summaries.
+    analysis['strict_projections'] = {
+        name: {key: p.get(key) for key in ('node_count', 'edge_count', 'isolate_count',
+               'weak_or_undirected_component_sizes', 'top_betweenness')}
+        for name, p in analysis.get('strict_projections', {}).items()
+        if name in ('researcher_collaboration', 'organization_collaboration')
+    }
     # Only the first frozen Louvain partition is used by the existing Explorer.
     for projection in analysis.get('projections', {}).values():
         projection['communities'] = projection.get('communities', [])[:1]
+    derived_path = root / 'reports/explorer-analysis-release-v1/derived.json'
+    if derived_path.is_file():
+        derived = json.loads(derived_path.read_bytes())
+        if derived['graph_sha256'] != manifest['sources']['graph']['sha256']:
+            raise ValueError('Explorer extension belongs to another graph')
+        analysis['explorer_derived'] = derived
+        manifest['sources']['explorer_derived'] = {'path': str(derived_path.relative_to(root)), 'sha256': digest(derived_path)}
     (output / 'analysis.json').write_text(json.dumps(analysis, ensure_ascii=False, separators=(',', ':')))
     for name, path in inputs.items():
         if name not in ('graph', 'analysis'):

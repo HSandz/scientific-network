@@ -1,6 +1,17 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useQuery } from "@tanstack/react-query";
-import { AnalyticsView } from "./components/analytics/AnalyticsView";
+const AnalyticsView = React.lazy(() =>
+  import("./components/analytics/AnalyticsView").then((m) => ({
+    default: m.AnalyticsView,
+  })),
+);
+import { effectiveSlice } from "./lib/effectiveGraph";
 import { LeftSidebar } from "./components/filters/LeftSidebar";
 import { SigmaGraphCanvas } from "./components/graph/SigmaGraphCanvas";
 import { RightInspector } from "./components/inspector/RightInspector";
@@ -48,11 +59,14 @@ export const App: React.FC = () => {
   const [isExpanding, setIsExpanding] = useState(false);
   const workspaceShellRef = useRef<HTMLDivElement>(null);
   const prevViewportWidthRef = useRef<number>(
-    typeof window !== "undefined" ? window.innerWidth : 1440
+    typeof window !== "undefined" ? window.innerWidth : 1440,
   );
 
   const anyModalOpen =
     searchModalOpen || pathFinderOpen || compareModalOpen || caveatsModalOpen;
+
+  // Development-only instrumentation for correctness/performance regression checks.
+  if (import.meta.env.DEV) (window as any).__explorerStore = useExplorerStore;
 
   // Hydrate initial state from URL parameters on mount
   useEffect(() => {
@@ -97,7 +111,12 @@ export const App: React.FC = () => {
       ) {
         // At 1024–1263px, keep >= 600px graph width by folding the filter rail when inspector is open
         state.setLeftSidebarOpen(false);
-      } else if (prevW < 1264 && w >= 1264 && !state.leftSidebarOpen && !state.canvasExpanded) {
+      } else if (
+        prevW < 1264 &&
+        w >= 1264 &&
+        !state.leftSidebarOpen &&
+        !state.canvasExpanded
+      ) {
         // Returning to wide desktop restores the left filter rail
         state.setLeftSidebarOpen(true);
       }
@@ -205,8 +224,13 @@ export const App: React.FC = () => {
       rawEdges = extraEdges;
     } else {
       // Overview view: base view subgraph + any appended expansion nodes
-      const baseNodes = viewQuery.data?.nodes || [];
-      const baseEdges = viewQuery.data?.edges || [];
+      const baseNodes =
+        viewMode === "heterogeneous" &&
+        filters.preset === "custom" &&
+        (!filters.nodeLabels.length || !filters.relations.length)
+          ? []
+          : viewQuery.data?.nodes || [];
+      const baseEdges = baseNodes.length ? viewQuery.data?.edges || [] : [];
 
       if (extraNodes.length === 0 && extraEdges.length === 0) {
         rawNodes = baseNodes;
@@ -225,53 +249,9 @@ export const App: React.FC = () => {
       }
     }
 
-    // 2. Presentation Edge Filtering (all vs strong vs connected)
-    let effectiveEdges = rawEdges;
-    if (edgeFilterMode === "strong") {
-      if (viewMode === "citations") {
-        // Shared-paper support filter is inapplicable on citation graph
-        effectiveEdges = [];
-      } else {
-        effectiveEdges = rawEdges.filter(
-          (e) =>
-            (e.support_count ?? 1) >= 2 ||
-            (typeof e.fractional_weight === "number" && e.fractional_weight >= 0.45)
-        );
-      }
-    }
-
-    let effectiveNodes = rawNodes;
-    if (edgeFilterMode === "connected") {
-      const connectedIds = new Set<string>();
-      for (const e of effectiveEdges) {
-        connectedIds.add(e.source);
-        connectedIds.add(e.target);
-      }
-      effectiveNodes = rawNodes.filter(
-        (n) => connectedIds.has(n.id) || n.id === selectedNodeId
-      );
-    }
-
-    // 3. Compute accurate rendered visible degree & strength metrics from effectiveEdges
-    const visibleDegrees = new Map<string, number>();
-    const visibleStrengths = new Map<string, number>();
-    for (const e of effectiveEdges) {
-      visibleDegrees.set(e.source, (visibleDegrees.get(e.source) || 0) + 1);
-      visibleDegrees.set(e.target, (visibleDegrees.get(e.target) || 0) + 1);
-      const w = e.fractional_weight ?? e.support_count ?? 1;
-      visibleStrengths.set(e.source, (visibleStrengths.get(e.source) || 0) + w);
-      visibleStrengths.set(e.target, (visibleStrengths.get(e.target) || 0) + w);
-    }
-
-    const finalNodes = effectiveNodes.map((n) => ({
-      ...n,
-      displayed_degree: visibleDegrees.get(n.id) || 0,
-      displayed_strength: visibleStrengths.get(n.id) || 0,
-    }));
-
+    rawNodes = rawNodes.slice(0, 250);
     return {
-      nodes: finalNodes,
-      edges: effectiveEdges,
+      ...effectiveSlice(rawNodes, rawEdges, edgeFilterMode),
       rawNodes,
       rawEdges,
     };
@@ -282,83 +262,211 @@ export const App: React.FC = () => {
     viewQuery.data,
     edgeFilterMode,
     viewMode,
-    selectedNodeId,
+    filters,
   ]);
+
+  const expansionController = useRef<AbortController | null>(null);
+  const requestKey = JSON.stringify([
+    viewMode,
+    filters,
+    edgeFilterMode,
+    graphViewScope.kind,
+  ]);
+  const requestKeyRef = useRef(requestKey);
+  requestKeyRef.current = requestKey;
+  useEffect(() => {
+    expansionController.current?.abort();
+    setIsExpanding(false);
+  }, [requestKey]);
+  useEffect(() => () => expansionController.current?.abort(), []);
 
   // Expand 1-hop neighborhood of any entity (even outside top-100 illustration)
   const handleExpandNode = useCallback(
     async (nodeId: string, replace = false, exploreAll = false) => {
+      expansionController.current?.abort();
+      const controller = new AbortController();
+      expansionController.current = controller;
+      const key = requestKeyRef.current;
+      const current = useExplorerStore.getState();
       try {
         setIsExpanding(true);
         setExpansionError(null);
-
+        if (exploreAll) {
+          current.setViewMode("heterogeneous");
+          current.updateFilters({ preset: "custom" });
+          setExpansionError({
+            message:
+              "Switched to all relationship types. Retry to load this neighborhood in the new scope.",
+            nodeId,
+            replace,
+          });
+          return;
+        }
+        // These filters require paper-specific joins not supplied by the neighbor endpoint.
+        // Keep the last graph rather than silently ignoring a user's constraint.
+        if (
+          current.filters.communityId ||
+          current.filters.countryCode ||
+          current.filters.topicId ||
+          current.filters.crossSectorOnly
+        ) {
+          setExpansionError({
+            message:
+              "Expansion is unavailable with community, country, topic or cross-sector constraints. Use the filtered overview or reset those constraints and Retry.",
+            nodeId,
+            replace,
+          });
+          return;
+        }
+        if (
+          current.viewMode === "heterogeneous" &&
+          current.filters.preset === "custom" &&
+          (!current.filters.nodeLabels.length ||
+            !current.filters.relations.length)
+        ) {
+          setExpansionError({
+            message:
+              "Select at least one label and predicate before expanding.",
+            nodeId,
+            replace,
+          });
+          return;
+        }
         const params: Record<string, unknown> = {
           limit: 60,
-          year_min: filters.yearMin,
-          year_max: filters.yearMax,
+          year_min: current.filters.yearMin,
+          year_max: current.filters.yearMax,
+          venue: current.filters.venue || undefined,
+          sector: current.filters.sector || undefined,
         };
-
-        if (!exploreAll) {
-          if (viewMode === "researchers") {
-            params.relations = ["COAUTHORED_WITH"];
-            params.node_labels = ["Researcher"];
-            if (filters.minSupport > 1) params.min_support = filters.minSupport;
-            if (filters.minWeight > 0) params.min_weight = filters.minWeight;
-            if (filters.venue) params.venue = filters.venue;
-          } else if (viewMode === "organizations") {
-            params.relations = ["COLLABORATED_WITH"];
-            params.node_labels = ["Organization"];
-            if (filters.sector) params.sector = filters.sector;
-          } else if (viewMode === "citations") {
-            params.relations = ["CITES"];
-            params.node_labels = ["Paper"];
-          }
+        if (
+          current.viewMode === "researchers" ||
+          current.viewMode === "organizations"
+        ) {
+          params.relations = [
+            current.viewMode === "researchers"
+              ? "COAUTHORED_WITH"
+              : "COLLABORATED_WITH",
+          ];
+          params.node_labels = [
+            current.viewMode === "researchers" ? "Researcher" : "Organization",
+          ];
+          params.min_support = current.filters.minSupport;
+          params.min_weight = current.filters.minWeight;
+        } else if (current.viewMode === "citations") {
+          params.relations = ["CITES"];
+          params.node_labels = ["Paper"];
+        } else if (current.filters.preset === "custom") {
+          params.relations = current.filters.relations;
+          params.node_labels = current.filters.nodeLabels;
         }
-
-        const res = await explorerApi.getNodeNeighbors(nodeId, params as any);
+        const res = await explorerApi.getNodeNeighbors(
+          nodeId,
+          params,
+          controller.signal,
+        );
+        if (controller.signal.aborted || key !== requestKeyRef.current) return;
         if (replace) {
-          enterEgoView(res.center_node, res.nodes, res.edges);
+          const camera = document.querySelector<HTMLElement>(
+            '[data-testid="sigma-canvas-container"]',
+          )?.dataset.camera;
+          enterEgoView(
+            res.center_node,
+            res.nodes,
+            res.edges,
+            camera ? JSON.parse(camera) : null,
+            params,
+          );
         } else {
           mergeSubgraph(res.nodes, res.edges, false, nodeId);
           selectNode(nodeId, res.center_node.name);
         }
-      } catch (err: any) {
-        console.error("Failed to expand neighborhood:", err);
+      } catch (err) {
+        if (controller.signal.aborted || key !== requestKeyRef.current) return;
         setExpansionError({
-          message: `Failed to load neighborhood for ${nodeId}. Server returned an error.`,
+          message:
+            err instanceof Error
+              ? err.message
+              : "Neighborhood unavailable. Retry.",
           nodeId,
           replace,
         });
       } finally {
-        setIsExpanding(false);
+        if (expansionController.current === controller) setIsExpanding(false);
       }
     },
-    [
-      filters.yearMin,
-      filters.yearMax,
-      filters.minSupport,
-      filters.minWeight,
-      filters.venue,
-      filters.sector,
-      viewMode,
-      enterEgoView,
-      mergeSubgraph,
-      selectNode,
-      setExpansionError,
-    ]
+    [enterEgoView, mergeSubgraph, selectNode, setExpansionError],
   );
+
+  // A restored scope must fetch its graph, not just restore its heading.
+  useEffect(() => {
+    if (extraNodes.length) return;
+    if (graphViewScope.kind === "ego" && graphViewScope.centerId) {
+      void handleExpandNode(graphViewScope.centerId, true);
+    }
+    if (graphViewScope.kind === "path" && graphViewScope.pathData?.mode) {
+      const p = graphViewScope.pathData;
+      let active = true;
+      explorerApi
+        .findPath({
+          source_id: p.sourceId,
+          target_id: p.targetId,
+          mode: p.mode!,
+          max_hops: p.maxHops || 4,
+        })
+        .then((res) => {
+          if (!active) return;
+          if (res.found) useExplorerStore.getState().enterPathView(res);
+          else
+            setExpansionError({
+              message: "Shared path unavailable under the recorded traversal.",
+              nodeId: p.sourceId,
+              replace: false,
+            });
+        })
+        .catch((err) => {
+          if (active)
+            setExpansionError({
+              message: String(err),
+              nodeId: p.sourceId,
+              replace: false,
+            });
+        });
+      return () => {
+        active = false;
+      };
+    }
+  }, [
+    graphViewScope.kind,
+    graphViewScope.centerId,
+    graphViewScope.pathData,
+    extraNodes.length,
+    handleExpandNode,
+    setExpansionError,
+  ]);
 
   // Focus an entity in the Graph tab (from Search, Table, or Analytics)
   const handleFocusNodeInGraph = useCallback(
     (nodeId: string, name?: string) => {
       setWorkspaceTab("graph");
+      const current = useExplorerStore.getState();
+      if (
+        nodeId.startsWith("researcher:") &&
+        current.viewMode !== "researchers"
+      )
+        current.setViewMode("researchers");
+      if (
+        nodeId.startsWith("organization:") &&
+        current.viewMode !== "organizations"
+      )
+        current.setViewMode("organizations");
       selectNode(nodeId, name);
       const alreadyOnCanvas = effectiveGraph.nodes.some((n) => n.id === nodeId);
       if (!alreadyOnCanvas) {
         void handleExpandNode(nodeId, false);
       }
     },
-    [setWorkspaceTab, selectNode, effectiveGraph.nodes, handleExpandNode]
+    [setWorkspaceTab, selectNode, effectiveGraph.nodes, handleExpandNode],
   );
 
   return (
@@ -374,14 +482,60 @@ export const App: React.FC = () => {
           displayedEdges={effectiveGraph.edges}
         />
 
-        <div className="flex-1 flex min-h-0 overflow-hidden relative">
+        {summaryQuery.isError && (
+          <p role="alert" className="p-2 text-xs">
+            Release metadata unavailable: {String(summaryQuery.error)}{" "}
+            <button
+              className="underline"
+              onClick={() => summaryQuery.refetch()}
+            >
+              Retry
+            </button>
+          </p>
+        )}
+        <div className="flex-1 flex min-h-0 overflow-hidden relative z-0">
           {workspaceTab === "graph" && (
             <LeftSidebar
+              summary={summaryQuery.data}
               availableCommunities={viewQuery.data?.available_communities || []}
             />
           )}
 
           <main className="flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden bg-ground">
+            {useExplorerStore.getState().shareNotice && (
+              <p role="status" className="p-2 text-xs">
+                {useExplorerStore.getState().shareNotice}
+              </p>
+            )}
+            {workspaceTab === "graph" && (
+              <div className="px-4 py-2 flex flex-wrap gap-2 text-xs border-b border-border">
+                {useExplorerStore.getState().insightReturn && (
+                  <button
+                    className="underline"
+                    onClick={() => setWorkspaceTab("analytics")}
+                  >
+                    ← Back to finding
+                  </button>
+                )}
+                <span className="text-muted">Explore findings</span>
+                {[
+                  ["robustness", "Fragile bridges"],
+                  ["sectors", "Academia–industry"],
+                  ["topics", "Inferred topic trends"],
+                ].map(([id, label]) => (
+                  <button
+                    className="underline underline-offset-2"
+                    key={id}
+                    onClick={() => {
+                      useExplorerStore.setState({ analyticsSection: id });
+                      setWorkspaceTab("analytics");
+                    }}
+                  >
+                    {label} →
+                  </button>
+                ))}
+              </div>
+            )}
             {workspaceTab === "graph" && (
               <SigmaGraphCanvas
                 viewData={viewQuery.data}
@@ -400,10 +554,22 @@ export const App: React.FC = () => {
             )}
 
             {workspaceTab === "analytics" && (
-              <AnalyticsView
-                summary={summaryQuery.data}
-                onFocusNodeInGraph={handleFocusNodeInGraph}
-              />
+              <React.Suspense
+                fallback={<p className="p-5">Loading analytics…</p>}
+              >
+                <AnalyticsView
+                  summary={summaryQuery.data}
+                  onFocusNodeInGraph={(id, name) => {
+                    const state = useExplorerStore.getState();
+                    state.setViewMode(id.startsWith("researcher:") ? "researchers" : id.startsWith("organization:") ? "organizations" : "citations");
+                    state.resetFilters();
+                    state.setEdgeFilterMode("all");
+                    state.setWorkspaceTab("graph");
+                    state.selectNode(id, name);
+                    void handleExpandNode(id, true);
+                  }}
+                />
+              </React.Suspense>
             )}
           </main>
 

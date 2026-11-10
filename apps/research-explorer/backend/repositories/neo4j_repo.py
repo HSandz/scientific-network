@@ -309,8 +309,8 @@ class Neo4jRepository:
         cypher = (
             f"MATCH (s)-[r:{rel_pattern}]->(t) "
             "WHERE s.id IN $ids AND t.id IN $ids "
-            "AND coalesce(r.support_count, r.support_paper_count, 1) >= $min_support "
-            "AND coalesce(r.fractional_weight, 1.0) >= $min_weight "
+            "AND (NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.support_count, r.support_paper_count, 1) >= $min_support) "
+            "AND (NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.fractional_weight, 1.0) >= $min_weight) "
             "RETURN r, type(r) AS relation, s.id AS source_id, s.name AS source_name, "
             "labels(s)[0] AS source_label, t.id AS target_id, t.name AS target_name, "
             "labels(t)[0] AS target_label "
@@ -549,8 +549,8 @@ class Neo4jRepository:
         label_filter = " OR ".join(f"m:{tl}" for tl in valid_labels)
         where_clauses = [
             f"({label_filter})",
-            "coalesce(r.support_count, r.support_paper_count, 1) >= $min_support",
-            "coalesce(r.fractional_weight, 1.0) >= $min_weight",
+            "(NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.support_count, r.support_paper_count, 1) >= $min_support)",
+            "(NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.fractional_weight, 1.0) >= $min_weight)",
         ]
         if year_min is not None:
             where_clauses.append("(NOT m:Paper OR m.year >= $year_min)")
@@ -582,7 +582,7 @@ class Neo4jRepository:
             "WITH m, labels(m)[0] AS m_label, r, type(r) AS relation, "
             "startNode(r) AS s, endNode(r) AS t "
             "ORDER BY coalesce(r.fractional_weight, 0.0) DESC, "
-            "coalesce(r.support_count, r.support_paper_count, 1) DESC, m.id ASC "
+            "coalesce(r.support_count, r.support_paper_count, 1) DESC, m.id ASC, r.edge_id ASC "
             "LIMIT $limit "
             "RETURN m, m_label, r, relation, s.id AS source_id, s.name AS source_name, "
             "labels(s)[0] AS source_label, t.id AS target_id, t.name AS target_name, "
@@ -794,7 +794,7 @@ class Neo4jRepository:
         """Query COLLABORATED_WITH subgraph with sector, cross-sector, and support filters."""
         where_clauses = [
             "coalesce(r.support_count, 1) >= $min_support",
-            "coalesce(r.fractional_weight, 1.0) >= $min_weight",
+            "(NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.fractional_weight, 1.0) >= $min_weight)",
         ]
         if sector:
             where_clauses.append("(a.sector = $sector OR b.sector = $sector)")
@@ -1268,8 +1268,8 @@ class Neo4jRepository:
         valid_rels = validate_relations([relation] if relation else None)
         rel_pattern = "|".join(valid_rels)
         where_clauses = [
-            "coalesce(r.support_count, r.support_paper_count, 1) >= $min_support",
-            "coalesce(r.fractional_weight, 1.0) >= $min_weight",
+            "(NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.support_count, r.support_paper_count, 1) >= $min_support)",
+            "(NOT type(r) IN ['COAUTHORED_WITH', 'COLLABORATED_WITH'] OR coalesce(r.fractional_weight, 1.0) >= $min_weight)",
         ]
         if evidence_kind:
             where_clauses.append("r.evidence_kind = $evidence_kind")

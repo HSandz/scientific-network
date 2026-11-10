@@ -8,6 +8,7 @@ from typing import Any
 import networkx as nx
 
 from ..config import (
+    REPO_ROOT,
     EXPECTED_EDGES_BY_RELATION,
     EXPECTED_FACTUAL_EDGES,
     EXPECTED_GRAPH_SHA256,
@@ -95,15 +96,14 @@ HETEROGENEOUS_PRESETS: list[dict[str, Any]] = [
 ]
 
 SCIENTIFIC_CAVEATS: list[str] = [
-    "Release scope (D040): AAAI and IJCAI 2021–2025 main-track papers from roster v10 (13,617 core papers); 62 unresolved or unavailable candidates are excluded.",
-    "AI-assessed edge precision is 96.50% (193/200, Wilson 95% CI 92.95%–98.29%; 1 incorrect, 6 unverifiable, 0 missing; point target 95.0%, Wilson lower bound target >90.0%). Human validation was not performed and independently verified course accuracy is not established.",
-    "Affiliation resolution coverage is 73.71% (48,259/65,469 authorship positions on OpenAlex-matched works; 48,259/65,507 = 73.67% across all official authorship positions; 10,037/13,617 core papers have ≥1 accepted AFFILIATED_WITH edge), which misses the 80.0% target (FAIL).",
-    "Topic assignments (HAS_TOPIC) are inferred via sentence embeddings (bge-small-en-v1.5, threshold 0.56, max 3 leaf topics), covering 85.00% of core papers (11,575/13,617; 2,042 abstained; target ≥80.0% PASS). Historical blind dual-agent topic-label precision is 68.63% (below the 95.0% target, FAIL) and historical micro-F1 is 0.4667 (vs phrase-baseline micro-F1 0.2301).",
-    "Researchers are keyed by compatible OpenAlex author IDs with global observed-ORCID conflict withholding (4,491 conflicting IDs removed in v4); researchers are never merged by name alone.",
-    "AFFILIATED_WITH reflects paper-specific authorship observations, not current employment or career duration.",
-    "Citation edges (CITES) represent within-corpus references among matched AAAI/IJCAI 2021–2025 papers (7,308 edges across 13,617 papers), not global citation counts, and are not exposure-time normalized.",
-    "Node layout coordinates are deterministic visual embeddings (seed 42), not geographic locations or measured scientific similarity.",
-    "Centrality and bridge rankings describe structural position within a specific graph projection, not researcher quality or scientific importance.",
+    "Release scope: AAAI/IJCAI 2021–2025 main-track core papers; excluded or unavailable papers limit coverage.",
+    "Edge precision is AI-assessed. No independent human validation; reviewer independence and verified course accuracy are not established. Wilson intervals exclude evaluator error. Measurements and denominators are in the quality contract; unavailable measurements must not be inferred.",
+    "Affiliations are authorship-specific observations, not current employment. Missing affiliations or sectors mean unknown, not no collaboration. Co-publication does not establish funding, contracts or employment.",
+    "HAS_TOPIC is embedding-inferred; topic coverage is not accuracy. Historical topic evaluation is reused without retuning. The identity correction and embedding classifier are separate processing stages.",
+    "Researcher identity uses compatible OpenAlex author IDs and global observed-ORCID conflict withholding; never normalized names alone.",
+    "CITES points from citing to cited paper within this corpus. Counts are not global influence or exposure-adjusted impact.",
+    "Layouts, radial rings and visual grouping do not measure geography, scientific similarity or hierarchy. Bounded graph slices are illustrative, not statistically representative.",
+    "Centrality describes structural position in a particular projection, not researcher quality. Community IDs can change between graph versions.",
 ]
 
 
@@ -164,7 +164,7 @@ class ExplorerService:
 
         # 1. Edge precision from audit artifact
         global_audit = audit.get("global") or audit.get("global_sample") or {}
-        has_audit = bool(global_audit and ("precision" in global_audit or "n" in global_audit or "correct" in global_audit))
+        has_audit = bool(all(key in global_audit for key in ("precision", "correct", "total", "wilson_95")) and isinstance(global_audit["wilson_95"], dict) and all(key in global_audit["wilson_95"] for key in ("wilson_lower", "wilson_upper")))
 
         edge_target = float(audit_cfg.get("min_precision", 0.95)) if audit_cfg else 0.95
         wilson_target = float(audit_cfg.get("wilson_lower_bound_must_exceed", 0.90)) if audit_cfg else 0.90
@@ -215,7 +215,7 @@ class ExplorerService:
         macro_prec_val: float | None = float(audit.get("macro_per_type_precision", 0.0)) if has_audit and "macro_per_type_precision" in audit else None
 
         # 2. Coverage metrics from summary artifact
-        has_coverage = bool(coverage and ("author_positions" in coverage or "author_paper_affiliation_coverage" in coverage or "eligible_papers" in coverage))
+        has_coverage = bool(all(key in coverage for key in ("accepted_authorships_with_institution", "author_positions", "papers_with_abstract", "eligible_papers", "papers_topic_labeled", "papers_topic_abstained")))
 
         aff_target = float(cov_targets.get("author_paper_affiliation_resolution", 0.80)) if cov_targets else 0.80
         abs_target = float(cov_targets.get("abstracts", 0.95)) if cov_targets else 0.95
@@ -253,14 +253,14 @@ class ExplorerService:
                 top_cov_val = 0.0
             top_cov_status = "passed" if top_cov_val >= top_cov_target else "failed"
 
-            aff_all_official_val: int | None = int(coverage.get("all_official_authorships", 65507))
-            aff_accepted_val: int | None = int(coverage.get("accepted_authorships", 50437))
+            aff_all_official_val: int | None = int(coverage["all_official_authorships"]) if "all_official_authorships" in coverage else None
+            aff_accepted_val: int | None = int(coverage["accepted_authorships"]) if "accepted_authorships" in coverage else None
             aff_cond_cov_val: float | None = (
                 (aff_resolved_val or 0) / aff_accepted_val
                 if aff_accepted_val and aff_accepted_val > 0
                 else None
             )
-            aff_papers_with_edge_val: int | None = int(coverage.get("papers_with_accepted_affiliation_edge", 10037))
+            aff_papers_with_edge_val: int | None = int(coverage["papers_with_accepted_affiliation_edge"]) if "papers_with_accepted_affiliation_edge" in coverage else None
             match_rate_val: float | None = (
                 (abs_resolved_val or 0) / max(1, abs_eligible_val or 1)
                 if abs_eligible_val
@@ -387,6 +387,9 @@ class ExplorerService:
             "topic_coverage_target": top_cov_target,
             "topic_coverage_status": top_cov_status,
             "topic_precision": top_prec_val,
+            "topic_precision_true_positive": emb_micro.get("true_positive"),
+            "topic_precision_predicted_labels": (emb_micro["true_positive"] + emb_micro["false_positive"]) if "true_positive" in emb_micro and "false_positive" in emb_micro else None,
+            "topic_precision_denominator_note": "Paper-normalized weighted label judgments; inverse reviewer count per paper, not independent human gold",
             "topic_embedding_precision": top_prec_val,
             "topic_precision_target": top_prec_target,
             "topic_precision_status": top_prec_status,
@@ -409,41 +412,39 @@ class ExplorerService:
         summary = self.store.summary_data
         counts = summary.get("counts", {})
 
-        nodes_by_label = inv["nodes_by_label"] or counts.get("nodes_by_label", EXPECTED_NODES_BY_LABEL)
-        edges_by_relation = inv["edges_by_relation"] or counts.get("edges_by_relation", EXPECTED_EDGES_BY_RELATION)
-        edges_by_kind = counts.get(
-            "edges_by_evidence_kind",
-            {
-                "observed": 110026,
-                "derived": 101467,
-                "inferred_topic": 14222,
-                "curated_taxonomy": 16,
-            },
-        )
+        if not summary or not counts or not summary.get("graph_sha256") or not summary.get("graph_version"):
+            from fastapi import HTTPException
+            raise HTTPException(status_code=503, detail="Release summary artifact unavailable")
+        nodes_by_label = inv["nodes_by_label"] or counts["nodes_by_label"]
+        edges_by_relation = inv["edges_by_relation"] or counts["edges_by_relation"]
+        edges_by_kind = counts["edges_by_evidence_kind"]
         quality_summary = self._build_quality_contract()
 
         return GraphSummaryResponse(
-            graph_version=summary.get("graph_version", EXPECTED_GRAPH_VERSION),
-            graph_sha256=summary.get("graph_sha256", EXPECTED_GRAPH_SHA256),
+            graph_version=summary["graph_version"],
+            graph_sha256=summary["graph_sha256"],
             database_verified=inv["database_verified"],
             warnings=inv["warnings"],
             nodes_by_label=nodes_by_label,
             edges_by_relation=edges_by_relation,
             edges_by_evidence_kind=edges_by_kind,
-            total_nodes=sum(nodes_by_label.values()) or EXPECTED_TOTAL_NODES,
-            total_edges=sum(edges_by_relation.values()) or EXPECTED_TOTAL_EDGES,
-            unique_core_factual_edges=counts.get("unique_core_factual_edges", EXPECTED_FACTUAL_EDGES),
-            core_papers=counts.get("core_papers", 13617),
-            resolved_core_researchers=counts.get("resolved_core_researchers", 32189),
+            total_nodes=sum(nodes_by_label.values()),
+            total_edges=sum(edges_by_relation.values()),
+            unique_core_factual_edges=counts["unique_core_factual_edges"],
+            core_papers=counts["core_papers"],
+            resolved_core_researchers=counts["resolved_core_researchers"],
             quality=quality_summary,
             size_gates=summary.get("size_gates", {}),
-            scientific_caveats=SCIENTIFIC_CAVEATS,
+            scientific_caveats=SCIENTIFIC_CAVEATS + ([f"Frozen topic model: {summary['model']['name']}; revision {summary['model'].get('revision', 'unavailable')}; tau {summary.get('thresholds', {}).get('tau', 'unavailable')}. See frozen summary for calibration provenance."] if summary.get("model", {}).get("name") else []),
         )
 
     def get_schema(self) -> GraphSchemaResponse:
         inv = self.repo.verify_inventory(use_cache=True)
-        n_counts = inv["nodes_by_label"] or EXPECTED_NODES_BY_LABEL
-        e_counts = inv["edges_by_relation"] or EXPECTED_EDGES_BY_RELATION
+        n_counts = inv["nodes_by_label"] or self.store.summary_data.get("counts", {}).get("nodes_by_label")
+        e_counts = inv["edges_by_relation"] or self.store.summary_data.get("counts", {}).get("edges_by_relation")
+        if not n_counts or not e_counts:
+            from fastapi import HTTPException
+            raise HTTPException(status_code=503, detail="Graph schema inventory unavailable")
 
         labels = [
             LabelSpecItem(
@@ -451,35 +452,35 @@ class ExplorerService:
                 description="Resolved person keyed by compatible OpenAlex author ID on matched works (ORCID conflict-checked).",
                 id_prefix="researcher:openalex:A...",
                 key_properties=["name", "resolution_status", "identity_method", "openalex_id", "orcid"],
-                count=n_counts.get("Researcher", 32189),
+                count=n_counts["Researcher"],
             ),
             LabelSpecItem(
                 label="Paper",
                 description="Main-track AAAI or IJCAI proceedings paper (2021–2025) from roster v10.",
                 id_prefix="paper:{venue}:{year}:{id}",
                 key_properties=["name", "year", "official_url", "pdf_url", "doi", "openalex_id", "track", "is_core", "official_author_count"],
-                count=n_counts.get("Paper", 13617),
+                count=n_counts["Paper"],
             ),
             LabelSpecItem(
                 label="Organization",
                 description="Institution or corporate entity with an OpenAlex institution ID on accepted authorships.",
                 id_prefix="organization:I...",
                 key_properties=["name", "sector", "country_code", "ror", "openalex_id"],
-                count=n_counts.get("Organization", 2047),
+                count=n_counts["Organization"],
             ),
             LabelSpecItem(
                 label="Topic",
                 description="Frozen vocabulary concept (4 parent topics and 16 leaf topics).",
                 id_prefix="topic:{slug}",
                 key_properties=["name", "level", "parent_id", "definition", "synonyms", "taxonomy_version"],
-                count=n_counts.get("Topic", 20),
+                count=n_counts["Topic"],
             ),
             LabelSpecItem(
                 label="Venue",
                 description="Conference series (AAAI and IJCAI).",
                 id_prefix="venue:{slug}",
                 key_properties=["name"],
-                count=n_counts.get("Venue", 2),
+                count=n_counts["Venue"],
             ),
         ]
 
@@ -494,7 +495,7 @@ class ExplorerService:
                 directed=True,
                 description="Resolved researcher on the official paper byline at a compatible position.",
                 weight_rule="Unit observation; stores byline_position and roster_name.",
-                count=e_counts.get("AUTHORED", 50437),
+                count=e_counts["AUTHORED"],
             ),
             PredicateSpecItem(
                 id="R2",
@@ -506,7 +507,7 @@ class ExplorerService:
                 directed=True,
                 description="Aggregated over aligned author–paper–organization observations (not employment duration).",
                 weight_rule="Stores support_paper_count and raw_affiliation_strings.",
-                count=e_counts.get("AFFILIATED_WITH", 38664),
+                count=e_counts["AFFILIATED_WITH"],
             ),
             PredicateSpecItem(
                 id="R3",
@@ -518,7 +519,7 @@ class ExplorerService:
                 directed=True,
                 description="Official main-track conference proceedings publication.",
                 weight_rule="Exactly one primary venue per core paper; stores edition year.",
-                count=e_counts.get("PUBLISHED_IN", 13617),
+                count=e_counts["PUBLISHED_IN"],
             ),
             PredicateSpecItem(
                 id="R4",
@@ -530,7 +531,7 @@ class ExplorerService:
                 directed=True,
                 description="Explicit within-corpus reference from citing paper to cited in-scope paper.",
                 weight_rule="Directed unit edge (citing → cited).",
-                count=e_counts.get("CITES", 7308),
+                count=e_counts["CITES"],
             ),
             PredicateSpecItem(
                 id="R5",
@@ -542,7 +543,7 @@ class ExplorerService:
                 directed=True,
                 description="1–3 leaf topics assigned by the frozen sentence-embedding classifier (or abstained).",
                 weight_rule="Stores cosine_similarity, threshold_tau, margin_delta, and supporting sentence excerpt.",
-                count=e_counts.get("HAS_TOPIC", 14222),
+                count=e_counts["HAS_TOPIC"],
             ),
             PredicateSpecItem(
                 id="R6",
@@ -554,7 +555,7 @@ class ExplorerService:
                 directed=True,
                 description="Curated hierarchy connecting each of the 16 leaf topics to its parent topic.",
                 weight_rule="Curated taxonomy link (leaf → parent).",
-                count=e_counts.get("SUBTOPIC_OF", 16),
+                count=e_counts["SUBTOPIC_OF"],
             ),
             PredicateSpecItem(
                 id="R7",
@@ -566,7 +567,7 @@ class ExplorerService:
                 directed=False,
                 description="Derived collaboration between distinct resolved researchers sharing ≥1 accepted core paper.",
                 weight_rule="Each shared paper with k official authors contributes 1/(k-1) to fractional_weight; stores support_count.",
-                count=e_counts.get("COAUTHORED_WITH", 80482),
+                count=e_counts["COAUTHORED_WITH"],
             ),
             PredicateSpecItem(
                 id="R8",
@@ -578,7 +579,7 @@ class ExplorerService:
                 directed=False,
                 description="Derived collaboration between two organizations supported by ≥2 distinct authors on the same core paper.",
                 weight_rule="A sole dual-affiliated author creates no edge. Contributes 1/q per supported org pair on a paper.",
-                count=e_counts.get("COLLABORATED_WITH", 13031),
+                count=e_counts["COLLABORATED_WITH"],
             ),
             PredicateSpecItem(
                 id="R9",
@@ -590,7 +591,7 @@ class ExplorerService:
                 directed=True,
                 description="Derived researcher topic profile requiring ≥2 distinct accepted core papers with that leaf topic.",
                 weight_rule="Thresholded at support_count ≥ 2 distinct core papers.",
-                count=e_counts.get("RESEARCHES_TOPIC", 5622),
+                count=e_counts["RESEARCHES_TOPIC"],
             ),
             PredicateSpecItem(
                 id="R10",
@@ -602,7 +603,7 @@ class ExplorerService:
                 directed=True,
                 description="Derived organization topic profile requiring ≥3 distinct accepted core papers with aligned author affiliation and topic.",
                 weight_rule="Thresholded at support_count ≥ 3 distinct core papers.",
-                count=e_counts.get("CONTRIBUTES_TO_TOPIC", 2332),
+                count=e_counts["CONTRIBUTES_TO_TOPIC"],
             ),
         ]
 
@@ -612,10 +613,10 @@ class ExplorerService:
             predicates=predicates,
             heterogeneous_presets=HETEROGENEOUS_PRESETS,
             evidence_classes={
-                "observed": "Factual claims (R1–R4) directly backed by matched official roster and OpenAlex authorship/reference records (110,026 edges).",
-                "inferred_topic": "Text-inferred topic assignments (R5) from title/abstract embeddings with sentence excerpts (14,222 edges).",
+                "observed": "Factual claims (R1–R4) directly backed by matched official roster and OpenAlex authorship/reference records; inventory reported separately.",
+                "inferred_topic": "Text-inferred topic assignments (R5) from title/abstract embeddings with sentence excerpts; inventory reported separately.",
                 "curated_taxonomy": "Frozen 16-leaf → 4-parent topic hierarchy (R6, 16 edges).",
-                "derived": "Materialized social and topic-profile edges (R7–R10) deterministically derived from accepted core-paper support (101,467 edges).",
+                "derived": "Materialized social and topic-profile edges (R7–R10) deterministically derived from accepted core-paper support; inventory reported separately.",
             },
         )
 
@@ -1397,6 +1398,33 @@ class ExplorerService:
             include_induced_edges=include_induced_edges,
         )
 
+        # Scope collaboration support through immutable evidence, never current profiles.
+        narrowed = bool(venue or (year_min is not None and year_min > 2021) or (year_max is not None and year_max < 2025))
+        if narrowed:
+            if not self.store.ensure_ledger_loaded():
+                from fastapi import HTTPException
+                raise HTTPException(status_code=503, detail="Paper-specific neighborhood filter evidence unavailable")
+            support_by_edge = {}
+            paper_ids = set()
+            for edge in edges_raw:
+                support = set()
+                if edge["relation"] == "AFFILIATED_WITH":
+                    support.update(a["paper_id"] for a in self.store.affiliations_by_researcher_org.get((edge["source"], edge["target"]), []))
+                for eid in edge.get("evidence_ids", []):
+                    support.update(self.store.evidence_by_id.get(eid, {}).get("support_paper_ids", []))
+                support.update(i for i in (edge["source"], edge["target"]) if i.startswith("paper:"))
+                support_by_edge[edge["edge_id"]] = support
+                paper_ids.update(support)
+            if len(paper_ids) > 5000:
+                from fastapi import HTTPException
+                raise HTTPException(status_code=503, detail="Paper filter exceeds bounded evidence lookup; use a smaller neighborhood")
+            paper_nodes = self.repo.get_nodes_by_ids(sorted(paper_ids))
+            paper_venues = self.repo.get_paper_venues(sorted(paper_ids)) if venue else {}
+            allowed = {pid for pid, paper in paper_nodes.items() if (year_min or 2021) <= paper.get("year", 0) <= (year_max or 2025) and (not venue or paper_venues.get(pid) == venue)}
+            edges_raw = [edge for edge in edges_raw if edge["relation"] == "SUBTOPIC_OF" or support_by_edge[edge["edge_id"]] & allowed]
+            incident_ids = {endpoint for edge in edges_raw for endpoint in (edge["source"], edge["target"])}
+            neighbor_nodes_raw = [n for n in neighbor_nodes_raw if n["id"] in incident_ids]
+
         all_raw_nodes = [raw_center, *[n for n in neighbor_nodes_raw if n["id"] != node_id]]
         nodes, edges = self._compute_layout_and_finalize(
             all_raw_nodes,
@@ -1410,8 +1438,8 @@ class ExplorerService:
             center_node=center_gnode,
             total_incident_edges=total_incident,
             returned_neighbor_count=max(0, len(nodes) - 1),
-            truncated=total_incident > len(neighbor_nodes_raw),
-            metric_scope_note="Node `score` and `full_metrics` reflect the full release projection; `displayed_degree` and `displayed_strength` reflect the returned subgraph.",
+            truncated=total_incident > sum(1 for edge in edges_raw if node_id in (edge["source"], edge["target"])),
+            metric_scope_note="Scores, support counts and fractional weights retain full-period frozen meanings. A narrowed year/venue requires at least one accepted supporting paper in that window. The incident-edge total is a prefilter upper bound when paper evidence filtering is active; returned graph metrics describe only returned edges.",
             applied_filters={
                 "relations": relations,
                 "node_labels": node_labels,
@@ -1648,9 +1676,19 @@ class ExplorerService:
     def get_analytics_overview(self) -> dict[str, Any]:
         """Return precomputed full-graph analytics from reports/release-v4/analysis.json."""
         analysis = self.store.analysis_data
+        if not analysis or not analysis.get("release_metrics"):
+            from fastapi import HTTPException
+            raise HTTPException(status_code=503, detail="Frozen analytics artifact unavailable")
         rm = analysis.get("release_metrics", {})
         projections = analysis.get("projections", {})
         robustness = analysis.get("robustness", {})
+
+        derived = analysis.get("explorer_derived")
+        derived_path = REPO_ROOT / "reports/explorer-analysis-release-v1/derived.json"
+        if derived is None and derived_path.is_file():
+            derived = json.loads(derived_path.read_bytes())
+        if derived and derived.get("graph_sha256") != analysis.get("input_sha256"):
+            derived = None  # Never serve an extension for another graph.
 
         proj_summaries = {}
         for name, p in projections.items():
@@ -1663,15 +1701,18 @@ class ExplorerService:
                 "degree_mean": p.get("degree_mean"),
                 "degree_max": p.get("degree_max"),
                 "top_degree_strength": p.get("top_degree_strength", [])[:15],
-                "top_betweenness": p.get("top_betweenness", [])[:15],
+                "top_betweenness": p.get("top_betweenness", [])[:20],
+                "component_sizes": p.get("weak_or_undirected_component_sizes", []),
                 "top_pagerank": p.get("top_pagerank", [])[:15],
             }
 
         return {
-            "graph_version": analysis.get("graph_version", EXPECTED_GRAPH_VERSION),
-            "analysis_method_version": analysis.get("analysis_method_version", "named-projection-analysis-v2"),
+            "graph_version": analysis.get("graph_version"),
+            "provenance": {"analysis_input_sha256": analysis.get("input_sha256"), "analysis_config_sha256": analysis.get("analysis_config_sha256"), "quality_config_sha256": analysis.get("quality_config_sha256"), "run_at": analysis.get("run_at")},
+            "analysis_method_version": analysis.get("analysis_method_version"),
             "evidence_scope": rm.get("evidence_scope", ""),
             "quality": self._build_quality_contract(),
+            "explorer_derived": derived,
             "projections": proj_summaries,
             "annual_counts": rm.get("annual_counts", {}),
             "researcher_degree_ccdf": rm.get("researcher_degree_ccdf", {}),
@@ -1692,7 +1733,10 @@ class ExplorerService:
             "organization_topic_candidates": rm.get("organization_topic_comparison_candidates", [])[:25],
             "robustness": {
                 "strict_evidence_filter_status": robustness.get("strict_evidence_filter_status"),
-                "sensitivity_comparison": robustness.get("sensitivity_comparison", {}),
+                "sensitivity_comparison": robustness.get("sensitivity_comparison"),
+                "per_projection": robustness.get("per_projection", {}),
+                "strict_evidence_filter_sha256": robustness.get("strict_evidence_filter_sha256"),
+                "strict_projections": {name: {key: p.get(key) for key in ("node_count", "edge_count", "isolate_count", "weak_or_undirected_component_sizes", "top_betweenness")} for name, p in analysis.get("strict_projections", {}).items() if name in ("researcher_collaboration", "organization_collaboration")},
             },
             "limitations": analysis.get("limitations", SCIENTIFIC_CAVEATS),
         }
@@ -1773,7 +1817,7 @@ class ExplorerService:
         if mode == "citation_directed":
             return "Directed citation path: every step follows CITES from citing paper to cited paper."
         if mode == "citation_undirected":
-            return "Undirected citation chain: traverses CITES links in either direction (co-citation / bibliographic coupling)."
+            return "Undirected citation chain: traverses CITES links in either direction; this alone does not establish co-citation or bibliographic coupling."
         if mode == "collaboration":
             return "Undirected collaboration path across COAUTHORED_WITH, COLLABORATED_WITH, AUTHORED, and AFFILIATED_WITH."
         return "Heterogeneous knowledge graph path across accepted release relationships."
@@ -1790,12 +1834,25 @@ class ExplorerService:
         _, direct_edges = self._compute_layout_and_finalize([left_raw, right_raw], comp["direct_edges"])
         shared_neighbors = [self._build_graph_node(sn) for sn in comp["shared_neighbors"]]
 
+        if left_node.label == "Organization" and right_node.label == "Organization":
+            support = set()
+            if not self.store.ensure_ledger_loaded():
+                from fastapi import HTTPException
+                raise HTTPException(status_code=503, detail="Organization co-publication evidence unavailable")
+            if self.store.ensure_ledger_loaded():
+                for edge in direct_edges:
+                    if edge.relation == "COLLABORATED_WITH":
+                        for eid in edge.evidence_ids:
+                            support.update(self.store.evidence_by_id.get(eid, {}).get("support_paper_ids", []))
+            paper_nodes = self.repo.get_nodes_by_ids(sorted(support)[:100])
+            comp["shared_papers"] = [{"paper_id": pid, "title": raw.get("name", pid), "year": raw.get("year"), "official_url": raw.get("official_url"), "doi": raw.get("doi")} for pid, raw in paper_nodes.items()]
+
         left_topics = self.store.org_topic_profiles.get(left_id, [])[:10]
         right_topics = self.store.org_topic_profiles.get(right_id, [])[:10]
 
         notes = [
             "Shared papers and collaboration weights are computed strictly from accepted core-paper support in release v4.",
-            "Topic portfolios use fractional allocation across accepted inferred leaf labels.",
+            "Topic portfolios use fractional allocation across accepted inferred leaf labels. Organization shared papers resolve accepted R8 evidence only (up to 100); shared-neighbor results are bounded to 30 and are not complete unique-neighbor counts.",
         ]
         return CompareResponse(
             left_node=left_node,

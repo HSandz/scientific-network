@@ -160,3 +160,14 @@ def test_live_analytics_overview_and_path_discovery(live_client: TestClient):
     te_res = live_client.get("/api/table/edges", params={"relation": "COAUTHORED_WITH", "page": 1, "page_size": 10})
     assert te_res.status_code == 200
     assert len(te_res.json()["items"]) == 10
+
+
+def test_support_thresholds_do_not_filter_factual_citations(live_client):
+    """Thresholds are meaningful for aggregate R7/R8, never binary citation facts."""
+    endpoint = '/api/nodes/paper:aaai:2021:17325/neighbors'
+    params = {'relations': 'CITES', 'direction': 'incoming', 'limit': 20}
+    base = live_client.get(endpoint, params=params)
+    filtered = live_client.get(endpoint, params={**params, 'min_support': 10, 'min_weight': 20})
+    assert base.status_code == filtered.status_code == 200
+    assert base.json()['edges']
+    assert {e['edge_id'] for e in base.json()['edges']} == {e['edge_id'] for e in filtered.json()['edges']}

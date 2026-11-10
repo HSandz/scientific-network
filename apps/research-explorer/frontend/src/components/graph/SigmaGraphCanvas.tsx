@@ -1,3 +1,4 @@
+import { parallelGroups, lanePath } from "../../lib/edgeLanes";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Graph from "graphology";
 import Sigma from "sigma";
@@ -42,13 +43,18 @@ interface SigmaGraphCanvasProps {
   rawEdgesCount?: number;
   isLoading: boolean;
   error?: Error | null;
-  onExpandNode: (nodeId: string, replace?: boolean, exploreAll?: boolean) => void;
+  onExpandNode: (
+    nodeId: string,
+    replace?: boolean,
+    exploreAll?: boolean,
+  ) => void;
   isExpanding: boolean;
 }
 
 function createCustomSigmaRenderers(isDark: boolean) {
   const tokens = getThemeTokens(isDark);
-  const drawnBoxes: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+  const drawnBoxes: Array<{ x1: number; y1: number; x2: number; y2: number }> =
+    [];
   let resetScheduled = false;
 
   const ensureFrameReset = () => {
@@ -61,9 +67,19 @@ function createCustomSigmaRenderers(isDark: boolean) {
     }
   };
 
-  const overlapsExisting = (rect: { x1: number; y1: number; x2: number; y2: number }) => {
+  const overlapsExisting = (rect: {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+  }) => {
     for (const b of drawnBoxes) {
-      if (rect.x1 < b.x2 && rect.x2 > b.x1 && rect.y1 < b.y2 && rect.y2 > b.y1) {
+      if (
+        rect.x1 < b.x2 &&
+        rect.x2 > b.x1 &&
+        rect.y1 < b.y2 &&
+        rect.y2 > b.y1
+      ) {
         return true;
       }
     }
@@ -81,7 +97,7 @@ function createCustomSigmaRenderers(isDark: boolean) {
       forceLabel?: boolean;
       highlighted?: boolean;
     },
-    settings: { labelSize: number; labelFont: string; labelWeight: string }
+    settings: { labelSize: number; labelFont: string; labelWeight: string },
   ) => {
     ensureFrameReset();
     if (!data.label || data.highlighted) return;
@@ -93,8 +109,10 @@ function createCustomSigmaRenderers(isDark: boolean) {
     const boxW = textWidth + 8;
     const boxH = fontSize + 6;
 
-    const canvasW = context.canvas?.clientWidth || context.canvas?.width || 1440;
-    const canvasH = context.canvas?.clientHeight || context.canvas?.height || 900;
+    const canvasW =
+      context.canvas?.clientWidth || context.canvas?.width || 1440;
+    const canvasH =
+      context.canvas?.clientHeight || context.canvas?.height || 900;
 
     // 4-way candidate placement: Right, Left, Above, Below
     const candidates = [
@@ -104,7 +122,11 @@ function createCustomSigmaRenderers(isDark: boolean) {
       { x: data.x - boxW / 2, y: data.y + data.size + 4 },
     ];
 
-    let chosenCandidate: { x: number; y: number; rect: { x1: number; y1: number; x2: number; y2: number } } | null = null;
+    let chosenCandidate: {
+      x: number;
+      y: number;
+      rect: { x1: number; y1: number; x2: number; y2: number };
+    } | null = null;
     for (const c of candidates) {
       const padded = {
         x1: c.x - 3,
@@ -112,7 +134,12 @@ function createCustomSigmaRenderers(isDark: boolean) {
         x2: c.x + boxW + 3,
         y2: c.y + boxH + 2,
       };
-      if (padded.x1 >= 4 && padded.y1 >= 4 && padded.x2 <= canvasW - 4 && padded.y2 <= canvasH - 4) {
+      if (
+        padded.x1 >= 4 &&
+        padded.y1 >= 4 &&
+        padded.x2 <= canvasW - 4 &&
+        padded.y2 <= canvasH - 4
+      ) {
         if (!overlapsExisting(padded)) {
           chosenCandidate = { ...c, rect: padded };
           break;
@@ -143,7 +170,13 @@ function createCustomSigmaRenderers(isDark: boolean) {
     context.fillStyle = tokens.labelPillBg;
     context.beginPath();
     if (context.roundRect) {
-      context.roundRect(chosenCandidate.x - 2, chosenCandidate.y, boxW, boxH, 4);
+      context.roundRect(
+        chosenCandidate.x - 2,
+        chosenCandidate.y,
+        boxW,
+        boxH,
+        4,
+      );
       context.fill();
     } else {
       context.fillRect(chosenCandidate.x - 2, chosenCandidate.y, boxW, boxH);
@@ -155,8 +188,14 @@ function createCustomSigmaRenderers(isDark: boolean) {
 
   const drawHover = (
     context: CanvasRenderingContext2D,
-    data: { x: number; y: number; size: number; label?: string | null; color?: string },
-    settings: { labelSize: number; labelFont: string; labelWeight: string }
+    data: {
+      x: number;
+      y: number;
+      size: number;
+      label?: string | null;
+      color?: string;
+    },
+    settings: { labelSize: number; labelFont: string; labelWeight: string },
   ) => {
     ensureFrameReset();
     const fontSize = settings.labelSize || 12;
@@ -168,7 +207,9 @@ function createCustomSigmaRenderers(isDark: boolean) {
     const strokeColor = tokens.hoverStroke;
     const textColor = tokens.hoverInk;
 
-    const labelText = data.label ? truncateCanvasLabel(String(data.label), 48) : "";
+    const labelText = data.label
+      ? truncateCanvasLabel(String(data.label), 48)
+      : "";
     if (labelText) {
       const textWidth = context.measureText(labelText).width;
       const boxW = textWidth + 12;
@@ -177,11 +218,21 @@ function createCustomSigmaRenderers(isDark: boolean) {
       let boxY = data.y - fontSize / 2 - 4;
       let textY = data.y + fontSize / 3;
 
-      const candidateRight = { x1: boxX - 2, y1: boxY - 2, x2: boxX + boxW + 2, y2: boxY + boxH + 2 };
+      const candidateRight = {
+        x1: boxX - 2,
+        y1: boxY - 2,
+        x2: boxX + boxW + 2,
+        y2: boxY + boxH + 2,
+      };
       if (overlapsExisting(candidateRight)) {
         // Flip to left of node if right side overlaps another highlighted endpoint
         const leftX = data.x - data.size - boxW - 4;
-        const candidateLeft = { x1: leftX - 2, y1: boxY - 2, x2: leftX + boxW + 2, y2: boxY + boxH + 2 };
+        const candidateLeft = {
+          x1: leftX - 2,
+          y1: boxY - 2,
+          x2: leftX + boxW + 2,
+          y2: boxY + boxH + 2,
+        };
         if (!overlapsExisting(candidateLeft) && leftX >= 6) {
           boxX = leftX;
         } else {
@@ -191,7 +242,12 @@ function createCustomSigmaRenderers(isDark: boolean) {
         }
       }
 
-      drawnBoxes.push({ x1: boxX - 2, y1: boxY - 2, x2: boxX + boxW + 2, y2: boxY + boxH + 2 });
+      drawnBoxes.push({
+        x1: boxX - 2,
+        y1: boxY - 2,
+        x2: boxX + boxW + 2,
+        y2: boxY + boxH + 2,
+      });
 
       context.fillStyle = bgFill;
       context.strokeStyle = strokeColor;
@@ -256,6 +312,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sigmaRef = useRef<Sigma | null>(null);
   const graphRef = useRef<Graph | null>(null);
+  const positionCache = useRef(new Map<string, { x: number; y: number }>());
   const draggedNodeRef = useRef<string | null>(null);
   const isDraggingRef = useRef<boolean>(false);
   const [scopeNoteOpen, setScopeNoteOpen] = useState<boolean>(false);
@@ -277,7 +334,19 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     return map;
   }, [activeEdges]);
 
-  const activeFocusNodeId = hoveredNodeId || selectedNodeId;
+  const nodeMapRef = useRef(nodeById),
+    edgeMapRef = useRef(edgeById);
+  nodeMapRef.current = nodeById;
+  edgeMapRef.current = edgeById;
+  const previousLayout = useRef(layoutMode);
+  const laneOverlayRef = useRef<SVGSVGElement | null>(null);
+  const groupsRef = useRef(parallelGroups(edges));
+  groupsRef.current = parallelGroups(edges);
+  const reducedMotion = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const activeFocusNodeId =
+    hoveredNodeId ||
+    (selectedNodeId && nodeById.has(selectedNodeId) ? selectedNodeId : null);
 
   const focusNeighbors = useMemo(() => {
     const set = new Set<string>();
@@ -293,20 +362,23 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   // Build Graphology instance and mount Sigma WebGL renderer
   useEffect(() => {
     const container = containerRef.current;
-    if (!container || activeNodes.length === 0) {
-      if (sigmaRef.current) {
-        sigmaRef.current.kill();
-        sigmaRef.current = null;
-      }
-      return;
-    }
-
-    const prevCamera = sigmaRef.current ? sigmaRef.current.getCamera().getState() : null;
-
+    if (!container) return;
     const tokens = getThemeTokens(darkMode);
-    // multi: true, type: "mixed" to preserve every distinct edge ID and reciprocal directions
-    const graph = new Graph({ multi: true, type: "mixed" });
-    const maxScore = Math.max(1, ...activeNodes.map((n) => n.score || 1));
+    const graph = graphRef.current || new Graph({ multi: true, type: "mixed" });
+    const relayout = previousLayout.current !== layoutMode;
+    previousLayout.current = layoutMode;
+    const nextNodes = new Set(activeNodes.map((n) => n.id));
+    const nextEdges = new Set(activeEdges.map((e) => e.edge_id));
+    for (const id of graph.edges()) if (!nextEdges.has(id)) graph.dropEdge(id);
+    for (const id of graph.nodes()) {
+      positionCache.current.set(id, {
+        x: graph.getNodeAttribute(id, "x"),
+        y: graph.getNodeAttribute(id, "y"),
+      });
+      if (!nextNodes.has(id)) graph.dropNode(id);
+    }
+    const sizeMetric = (n: GraphNode) => viewMode === "citations" ? n.full_metrics?.in_degree : n.full_metrics?.degree_strength;
+    const maxScore = Math.max(1, ...activeNodes.map((n) => sizeMetric(n) ?? 0));
     const count = activeNodes.length;
 
     // Viewport-aware sizing scale
@@ -326,7 +398,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         y = Math.sin(angle);
       } else if (layoutMode === "concentric") {
         const rankRatio = index / Math.max(1, count);
-        const ringIdx = rankRatio < 0.1 ? 0 : rankRatio < 0.3 ? 1 : rankRatio < 0.6 ? 2 : 3;
+        const ringIdx =
+          rankRatio < 0.1 ? 0 : rankRatio < 0.3 ? 1 : rankRatio < 0.6 ? 2 : 3;
         const ringRadius = concentricRings[ringIdx];
         const nodesInRing = activeNodes.filter((_, i) => {
           const r = i / Math.max(1, count);
@@ -335,7 +408,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         });
         const indexInRing = nodesInRing.findIndex((item) => item.id === n.id);
         const angle =
-          (2 * Math.PI * Math.max(0, indexInRing)) / Math.max(1, nodesInRing.length);
+          (2 * Math.PI * Math.max(0, indexInRing)) /
+          Math.max(1, nodesInRing.length);
         x = ringRadius * Math.cos(angle);
         y = ringRadius * Math.sin(angle);
       } else {
@@ -348,11 +422,14 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         }
       }
 
-      const normalizedScore = Math.sqrt(Math.max(0.05, n.score) / maxScore);
-      const size = (4.0 + normalizedScore * 12) * viewportScale;
+      const metric = sizeMetric(n);
+      const normalizedScore = Math.sqrt(Math.max(0.05, metric ?? 0) / maxScore);
+      const size =
+        (viewMode === "heterogeneous" || metric == null ? 6.5 : 4.0 + normalizedScore * 12) *
+        viewportScale;
       const maxChars = n.label === "Paper" ? 30 : 26;
 
-      graph.addNode(n.id, {
+      const attributes = {
         label: truncateCanvasLabel(n.name, maxChars),
         fullLabel: n.name,
         x,
@@ -361,38 +438,51 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         color: getNodeColor(n, viewMode),
         nodeType: n.label,
         score: n.score,
-      });
+      };
+      if (graph.hasNode(n.id)) {
+        if (!relayout) {
+          attributes.x = graph.getNodeAttribute(n.id, "x");
+          attributes.y = graph.getNodeAttribute(n.id, "y");
+        }
+        graph.mergeNodeAttributes(n.id, attributes);
+      } else {
+        const cached = positionCache.current.get(n.id);
+        graph.addNode(
+          n.id,
+          !relayout && cached ? { ...attributes, ...cached } : attributes,
+        );
+      }
     });
 
     activeEdges.forEach((e) => {
       if (!graph.hasNode(e.source) || !graph.hasNode(e.target)) return;
       if (e.source === e.target) return;
 
-      const weightVal = e.fractional_weight ?? e.support_count ?? 1;
+      const comparable = e.relation === "COAUTHORED_WITH" || e.relation === "COLLABORATED_WITH";
+      const weightVal = comparable ? (e.fractional_weight ?? 0) : 0;
       const isDirected = e.directed && !e.symmetric;
       const baseMin = isDirected ? 1.55 : 1.15;
       const size = Math.min(
         4.8,
-        Math.max(baseMin, 1.05 + Math.log1p(weightVal) * 1.15)
+        Math.max(baseMin, 1.05 + Math.log1p(weightVal) * 1.15),
       );
 
-      try {
-        graph.addEdgeWithKey(e.edge_id, e.source, e.target, {
-          size,
-          color: tokens.contextEdge,
-          type: isDirected ? "arrow" : "line",
-          relation: e.relation,
-        });
-      } catch {
-        // Edge key already added
-      }
+      const attributes = {
+        size,
+        color: tokens.contextEdge,
+        type: isDirected ? "arrow" : "line",
+        relation: e.relation,
+        hidden: groupsRef.current.some((g) => g.some((member) => member.edge_id === e.edge_id)),
+      };
+      if (graph.hasEdge(e.edge_id)) graph.mergeEdgeAttributes(e.edge_id, attributes);
+      else graph.addEdgeWithKey(e.edge_id, e.source, e.target, attributes);
     });
 
     graphRef.current = graph;
 
     if (sigmaRef.current) {
-      sigmaRef.current.kill();
-      sigmaRef.current = null;
+      sigmaRef.current.refresh();
+      return;
     }
 
     try {
@@ -414,21 +504,109 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         defaultDrawNodeHover: customRenderers.drawHover,
       });
 
-      // Restore camera state if view scope did not change drastically
-      if (prevCamera && graphViewScope.kind === "overview") {
-        sigma.getCamera().setState(prevCamera);
-      } else if (cameraState && graphViewScope.kind !== "overview") {
-        sigma.getCamera().setState(cameraState);
-      }
-
+      container.dataset.rendererGeneration = String(
+        Number(container.dataset.rendererGeneration || 0) + 1,
+      );
+      const syncLanes = () => {
+        const overlay = laneOverlayRef.current;
+        if (!overlay) return;
+        const state = useExplorerStore.getState();
+        const theme = getThemeTokens(state.darkMode);
+        const ns = "http://www.w3.org/2000/svg";
+        const fragment = document.createDocumentFragment();
+        for (const group of groupsRef.current) {
+          const canonical = [group[0].source, group[0].target].sort();
+          if (!graph.hasNode(canonical[0]) || !graph.hasNode(canonical[1]))
+            continue;
+          const a = sigma.graphToViewport(
+            graph.getNodeAttributes(canonical[0]) as any,
+          );
+          const b = sigma.graphToViewport(
+            graph.getNodeAttributes(canonical[1]) as any,
+          );
+          group.forEach((edge, index) => {
+            const c = lanePath(a, b, index, group.length);
+            const forward = edge.source === canonical[0],
+              start = forward ? a : b,
+              end = forward ? b : a;
+            const length = Math.max(1, Math.hypot(end.x - c.x, end.y - c.y));
+            const endSize = graph.getNodeAttribute(edge.target, "size") + 5;
+            const ex = end.x - ((end.x - c.x) / length) * endSize,
+              ey = end.y - ((end.y - c.y) / length) * endSize;
+            const path = document.createElementNS(ns, "path");
+            path.setAttribute(
+              "d",
+              `M ${start.x} ${start.y} Q ${c.x} ${c.y} ${ex} ${ey}`,
+            );
+            const color =
+              state.selectedEdgeId === edge.edge_id
+                ? theme.focusedEdge
+                : theme.contextEdge;
+            path.setAttribute("stroke", color);
+            path.setAttribute("fill", "none");
+            path.setAttribute(
+              "stroke-width",
+              state.selectedEdgeId === edge.edge_id ? "3.5" : "2",
+            );
+            path.setAttribute(
+              "stroke-dasharray",
+              edge.evidence_kind === "inferred_topic"
+                ? "5 4"
+                : edge.evidence_kind === "curated_taxonomy"
+                  ? "2 3"
+                  : edge.evidence_kind === "derived"
+                    ? "10 3"
+                    : "none",
+            );
+            path.setAttribute("pointer-events", "stroke");
+            path.setAttribute("tabindex", "0");
+            path.setAttribute("role", "button");
+            path.dataset.edgeId = edge.edge_id;
+            const description = `${edge.source_name || edge.source} ${edge.directed ? "→" : "↔"} ${edge.relation} ${edge.target_name || edge.target}; ${edge.evidence_kind}; ${edge.support_count} supports; ${edge.edge_id}`;
+            path.setAttribute("aria-label", description);
+            const title = document.createElementNS(ns, "title");
+            title.textContent = description;
+            path.appendChild(title);
+            const inspect = () =>
+              useExplorerStore
+                .getState()
+                .selectEdge(edge.edge_id, edge.relation);
+            path.addEventListener("click", inspect);
+            path.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                inspect();
+              }
+            });
+            fragment.appendChild(path);
+            if (edge.directed && !edge.symmetric) {
+              const arrow = document.createElementNS(ns, "path");
+              const ux = (ex - c.x) / length,
+                uy = (ey - c.y) / length;
+              arrow.setAttribute(
+                "d",
+                `M ${ex} ${ey} L ${ex - ux * 9 - uy * 4} ${ey - uy * 9 + ux * 4} L ${ex - ux * 9 + uy * 4} ${ey - uy * 9 - ux * 4} Z`,
+              );
+              arrow.setAttribute("fill", color);
+              fragment.appendChild(arrow);
+            }
+          });
+        }
+        overlay.replaceChildren(fragment);
+      };
+      sigma.on("afterRender", syncLanes);
+      sigma.getCamera().on("updated", () => {
+        const c = sigma.getCamera().getState();
+        container.dataset.camera = JSON.stringify(c);
+      });
       sigma.on("clickNode", ({ node }) => {
         if (isDraggingRef.current) return;
-        const nObj = nodeById.get(node);
+        const nObj = nodeMapRef.current.get(node);
         selectNode(node, nObj?.name || node);
       });
 
       sigma.on("clickEdge", ({ edge }) => {
-        const eObj = edgeById.get(edge);
+        const eObj = edgeMapRef.current.get(edge);
         const label = eObj
           ? `${eObj.source_name || eObj.source} → ${eObj.relation} → ${eObj.target_name || eObj.target}`
           : edge;
@@ -475,20 +653,30 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
       });
 
       sigmaRef.current = sigma;
+      if (import.meta.env.DEV) (container as any).__sigma = sigma;
       setWebglError(null);
     } catch (err) {
       setWebglError(
-        err instanceof Error ? err.message : "WebGL context initialization failed"
+        err instanceof Error
+          ? err.message
+          : "WebGL context initialization failed",
       );
     }
+  }, [activeNodes, activeEdges, viewMode, layoutMode]);
 
-    return () => {
-      if (sigmaRef.current) {
-        sigmaRef.current.kill();
-        sigmaRef.current = null;
-      }
-    };
-  }, [activeNodes, activeEdges, viewMode, layoutMode, graphViewScope.kind]);
+  // One renderer per mounted canvas; listener/captor ownership ends with kill().
+  useEffect(
+    () => () => {
+      sigmaRef.current?.kill();
+      sigmaRef.current = null;
+      graphRef.current = null;
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (cameraState) sigmaRef.current?.getCamera().setState(cameraState);
+  }, [cameraState]);
 
   // Refresh Sigma viewport when panels open/close or container resizes
   useEffect(() => {
@@ -514,7 +702,9 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     sigma.setSetting("defaultDrawNodeLabel", customRenderers.drawLabel);
     sigma.setSetting("defaultDrawNodeHover", customRenderers.drawHover);
 
-    const selectedEdgeObj = selectedEdgeId ? edgeById.get(selectedEdgeId) : null;
+    const selectedEdgeObj = selectedEdgeId
+      ? edgeById.get(selectedEdgeId)
+      : null;
     const visibleNeighborCount = Math.max(0, focusNeighbors.size - 1);
 
     const topNeighborIds = new Set<string>();
@@ -528,6 +718,12 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         .forEach((n) => topNeighborIds.add(n!.id));
     }
 
+    const restLabels = new Set<string>();
+    for (const label of new Set(activeNodes.map(n => n.label))) {
+      activeNodes.filter(n => n.label === label)
+        .sort((a,b) => b.displayed_degree - a.displayed_degree || a.id.localeCompare(b.id))
+        .slice(0,2).forEach(n => restLabels.add(n.id));
+    }
     sigma.setSetting("nodeReducer", (node, data) => {
       const res = { ...data };
 
@@ -570,8 +766,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         return res;
       }
 
-      // At rest, let Sigma's 140px spatial grid choose the highest-degree node per cell with zero overlap
-      res.forceLabel = false;
+      // A bounded label budget within each entity type keeps the fixed-size overview readable.
+      res.forceLabel = restLabels.has(node);
       return res;
     });
 
@@ -589,14 +785,15 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
 
       if (activeFocusNodeId && eObj) {
         const isIncident =
-          eObj.source === activeFocusNodeId || eObj.target === activeFocusNodeId;
+          eObj.source === activeFocusNodeId ||
+          eObj.target === activeFocusNodeId;
         res.color = isIncident ? tokens.focusedEdge : tokens.dimmedEdge;
         res.size = isIncident ? Math.max(2.6, (data.size || 1.2) * 1.55) : 0.85;
         res.zIndex = isIncident ? 8 : 0;
         return res;
       }
 
-      res.color = tokens.contextEdge;
+      res.color = eObj?.evidence_kind === "derived" ? tokens.chartPrimarySeries : eObj?.evidence_kind === "inferred_topic" ? tokens.warning : eObj?.evidence_kind === "curated_taxonomy" ? tokens.chartSecondarySeries : tokens.contextEdge;
       return res;
     });
 
@@ -611,15 +808,21 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   ]);
 
   const handleZoomIn = () => {
-    sigmaRef.current?.getCamera().animatedZoom({ duration: 200 });
+    sigmaRef.current
+      ?.getCamera()
+      .animatedZoom({ duration: reducedMotion() ? 0 : 250 });
   };
 
   const handleZoomOut = () => {
-    sigmaRef.current?.getCamera().animatedUnzoom({ duration: 200 });
+    sigmaRef.current
+      ?.getCamera()
+      .animatedUnzoom({ duration: reducedMotion() ? 0 : 250 });
   };
 
   const handleResetCamera = () => {
-    sigmaRef.current?.getCamera().animatedReset({ duration: 250 });
+    sigmaRef.current
+      ?.getCamera()
+      .animatedReset({ duration: reducedMotion() ? 0 : 250 });
   };
 
   const handleFitNeighborhood = () => {
@@ -627,9 +830,14 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     if (!sigma || !graphRef.current) return;
     if (activeFocusNodeId && graphRef.current.hasNode(activeFocusNodeId)) {
       const pos = graphRef.current.getNodeAttributes(activeFocusNodeId);
-      sigma.getCamera().animate({ x: pos.x, y: pos.y, ratio: 0.45 }, { duration: 300 });
+      sigma
+        .getCamera()
+        .animate(
+          { x: pos.x, y: pos.y, ratio: 0.45 },
+          { duration: reducedMotion() ? 0 : 300 },
+        );
     } else {
-      sigma.getCamera().animatedReset({ duration: 250 });
+      sigma.getCamera().animatedReset({ duration: reducedMotion() ? 0 : 250 });
     }
   };
 
@@ -810,15 +1018,17 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             aria-label="Canvas edge visibility"
             data-testid="canvas-edge-filter"
             value={edgeFilterMode}
-            onChange={(e) => setEdgeFilterMode(e.target.value as EdgeFilterMode)}
+            onChange={(e) =>
+              setEdgeFilterMode(e.target.value as EdgeFilterMode)
+            }
             className="hidden md:inline-block ledger-input !h-[30px] !py-0 !px-2 text-xs"
             title="Filter rendered canvas links or hide slice-level isolates"
           >
             <option value="all">All subgraph links</option>
             <option value="strong" disabled={viewMode === "citations"}>
               {viewMode === "citations"
-                ? "Strong links (N/A for citations)"
-                : "Strong links (≥2 papers)"}
+                ? "Repeated collaborations (N/A for citations)"
+                : "Repeated collaborations (≥2 papers)"}
             </option>
             <option value="connected">Hide slice isolates</option>
           </select>
@@ -881,7 +1091,9 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
               type="button"
               onClick={handleFitNeighborhood}
               aria-label="Focus neighborhood"
-              title={activeFocusNodeId ? "Fit focused neighborhood" : "Center view"}
+              title={
+                activeFocusNodeId ? "Fit focused neighborhood" : "Center view"
+              }
               className="p-2 md:p-1.5 text-muted hover:text-ink hover:bg-raised transition-colors border-l border-border"
             >
               <Focus className="w-3.5 h-3.5" />
@@ -895,7 +1107,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         <div className="shrink-0 bg-raised border-b border-border px-5 py-2 flex items-center justify-between gap-4 text-[13px] text-muted">
           <span>
             {viewData?.metric_scope_note ||
-              "Node size and score reflect full release-projection centrality; displayed degree and edge counts reflect the currently rendered subgraph."}
+              "Mixed graph nodes have fixed size. Single-label projections scale within that projection. Layout coordinates are illustrative and do not imply similarity, geography or hierarchy."}
           </span>
           <button
             type="button"
@@ -945,30 +1157,41 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             className="absolute top-12 left-4 z-20 bg-surface border border-border rounded-[6px] px-2.5 py-1 text-[11px] text-muted"
           >
             <span>
-              Dense neighborhood: <strong>{focusNeighbors.size - 1}</strong> visible neighbors. Prominent labels shown; inspect complete list in right panel.
+              Dense neighborhood: <strong>{focusNeighbors.size - 1}</strong>{" "}
+              visible neighbors. Prominent labels shown; inspect complete list
+              in right panel.
             </span>
           </div>
         )}
 
+        <svg
+          ref={laneOverlayRef}
+          aria-label="Parallel and reciprocal relationship lanes"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ zIndex: 1 }}
+        />
         {/* Empty strong link filter banner */}
-        {edgeFilterMode === "strong" && activeEdges.length === 0 && nodes.length > 0 && (
-          <div
-            data-testid="empty-filter-banner"
-            className="absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 bg-surface border border-[var(--warning)]/50 rounded-[6px] px-3.5 py-2 text-xs"
-          >
-            <span className="text-ink">
-              No links match the strong threshold (≥2 papers or fractional weight ≥0.45).
-            </span>
-            <button
-              type="button"
-              onClick={() => setEdgeFilterMode("all")}
-              data-testid="reset-edge-filter-btn"
-              className="ledger-btn h-6 px-2 text-[11px]"
+        {edgeFilterMode === "strong" &&
+          activeEdges.length === 0 &&
+          nodes.length > 0 && (
+            <div
+              data-testid="empty-filter-banner"
+              className="absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 bg-surface border border-[var(--warning)]/50 rounded-[6px] px-3.5 py-2 text-xs"
             >
-              Show all links
-            </button>
-          </div>
-        )}
+              <span className="text-ink">
+                No collaboration links have ≥2 distinct supporting papers. Other
+                predicates are preserved.
+              </span>
+              <button
+                type="button"
+                onClick={() => setEdgeFilterMode("all")}
+                data-testid="reset-edge-filter-btn"
+                className="ledger-btn h-6 px-2 text-[11px]"
+              >
+                Show all links
+              </button>
+            </div>
+          )}
 
         {/* Inline expansion error banner with Retry */}
         {expansionError && (
@@ -982,7 +1205,9 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             </span>
             <button
               type="button"
-              onClick={() => onExpandNode(expansionError.nodeId, expansionError.replace)}
+              onClick={() =>
+                onExpandNode(expansionError.nodeId, expansionError.replace)
+              }
               className="ledger-btn ledger-btn-primary h-6 px-2 text-[11px]"
             >
               Retry
@@ -1011,12 +1236,16 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           </select>
           <select
             value={edgeFilterMode}
-            onChange={(e) => setEdgeFilterMode(e.target.value as EdgeFilterMode)}
+            onChange={(e) =>
+              setEdgeFilterMode(e.target.value as EdgeFilterMode)
+            }
             aria-label="Mobile edge filter"
             className="h-7 px-2 text-[11px] rounded bg-ground border border-border text-ink"
           >
             <option value="all">All links</option>
-            <option value="strong">Strong links</option>
+            <option value="strong" disabled={viewMode === "citations"}>
+              Repeated collaborations
+            </option>
             <option value="connected">Hide isolates</option>
           </select>
           <button
@@ -1093,7 +1322,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                 No entities match current filters
               </div>
               <p className="text-[13px] text-muted">
-                Relax the minimum shared paper threshold, sector filter, or publication year window.
+                Relax the minimum shared paper threshold, sector filter, or
+                publication year window.
               </p>
             </div>
           </div>
@@ -1113,6 +1343,14 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           data-testid="graph-legend"
           className="flex items-center gap-x-3 gap-y-1 min-w-0 shrink-0 md:shrink"
         >
+          <details className="relative">
+            <summary className="cursor-pointer text-xs py-1">Relationships</summary>
+            <div className="absolute bottom-full left-0 mb-2 w-72 ledger-panel p-3 z-40 text-xs space-y-2">
+              <p>Observed facts: graphite; inferred topics: ochre; curated taxonomy: grey; derived aggregations: blue. Arrows follow source → target.</p>
+              <p>Parallel lanes: solid observed, dashed inferred, dotted taxonomy, long-dash derived. Each lane is separately selectable. Straight edges use evidence color.</p>
+              <p>Width compares frozen fractional strength only within R7 or within R8. Other predicates have fixed width. Mixed-label nodes have fixed size. Overview labels prioritize two high displayed-degree entities per type, with collision suppression. Coordinates do not measure similarity or geography.</p>
+            </div>
+          </details>
           {/* Compact mobile Key disclosure */}
           <details className="md:hidden relative">
             <summary className="list-none cursor-pointer inline-flex items-center gap-1 px-2 py-1 rounded-[4px] border border-border bg-ground text-ink font-medium">
@@ -1137,7 +1375,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                     ))}
                   </div>
                   <p className="text-faint">
-                    12-color palette cycles by community rank; node size = full-projection fractional strength.
+                    12-color palette cycles by community rank; node size =
+                    full-projection fractional strength.
                   </p>
                 </div>
               )}
@@ -1145,7 +1384,13 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                 <div className="space-y-1.5">
                   <div className="flex flex-wrap gap-2">
                     {(
-                      ["academia", "industry", "government", "nonprofit"] as const
+                      [
+                        "academia",
+                        "industry",
+                        "government",
+                        "nonprofit",
+                        "unknown",
+                      ] as const
                     ).map((sec) => (
                       <span
                         key={sec}
@@ -1181,7 +1426,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                     ))}
                   </div>
                   <p className="text-faint">
-                    Directed arrow: citing → cited paper (R4); size = in-corpus citations.
+                    Directed arrow: citing → cited paper (R4); size = in-corpus
+                    citations.
                   </p>
                 </div>
               )}
@@ -1231,7 +1477,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                   </span>
                 ))}
                 <span className="hidden xl:inline text-xs text-faint">
-                  (12-color palette cycles by community rank; shared color ≠ same community · size = fractional strength)
+                  (12-color palette cycles by community rank; shared color ≠
+                  same community · size = fractional strength)
                 </span>
               </>
             )}
@@ -1239,7 +1486,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             {viewMode === "organizations" && (
               <>
                 {(
-                  ["academia", "industry", "government", "nonprofit"] as const
+                  ["academia", "industry", "government", "nonprofit", "unknown"] as const
                 ).map((sec) => (
                   <span
                     key={sec}
@@ -1273,7 +1520,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                   </span>
                 ))}
                 <span className="hidden lg:inline text-xs text-faint">
-                  · Arrow: citing → cited paper (R4) · Size = in-corpus citations
+                  · Arrow: citing → cited paper (R4) · Size = in-corpus
+                  citations
                 </span>
               </>
             )}
@@ -1336,7 +1584,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
                 onClick={() =>
                   selectEdge(
                     sampleEdge.edge_id,
-                    `${sampleEdge.source_name || sampleEdge.source} → ${sampleEdge.relation} → ${sampleEdge.target_name || sampleEdge.target}`
+                    `${sampleEdge.source_name || sampleEdge.source} → ${sampleEdge.relation} → ${sampleEdge.target_name || sampleEdge.target}`,
                   )
                 }
                 data-testid="quick-sample-edge"

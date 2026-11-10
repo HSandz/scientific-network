@@ -163,7 +163,7 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
               Inventory ledger
             </h1>
             <p className="hidden sm:block text-[13px] text-muted mt-0.5">
-              Server-paginated query across all 47,875 domain entities and 225,731 accepted relationships.
+              Server-paginated query across all release domain entities and accepted relationships.
             </p>
           </div>
 
@@ -178,7 +178,7 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
                 data-testid="table-mode-nodes"
                 className="!px-2 sm:!px-2.5 !text-xs sm:!text-[13px]"
               >
-                Domain nodes (47,875)
+                Domain nodes
               </button>
               <button
                 type="button"
@@ -189,7 +189,7 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
                 data-testid="table-mode-edges"
                 className="!px-2 sm:!px-2.5 !text-xs sm:!text-[13px]"
               >
-                Accepted edges (225,731)
+                Accepted edges
               </button>
             </div>
           </div>

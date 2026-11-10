@@ -22,12 +22,21 @@ import {
 import { explorerApi } from "../../lib/api";
 import { LABEL_COLORS, PREDICATE_R_CODE, getNodeColor } from "../../lib/colors";
 import { useExplorerStore } from "../../stores/useExplorerStore";
-import { EvidenceKind, GraphEdge, GraphNode, NodeDetailResponse } from "../../types/explorer";
+import {
+  EvidenceKind,
+  GraphEdge,
+  GraphNode,
+  NodeDetailResponse,
+} from "../../types/explorer";
 
 interface RightInspectorProps {
   displayedNodes: GraphNode[];
   displayedEdges: GraphEdge[];
-  onExpandNode: (nodeId: string, replace?: boolean, exploreAll?: boolean) => void;
+  onExpandNode: (
+    nodeId: string,
+    replace?: boolean,
+    exploreAll?: boolean,
+  ) => void;
   isExpanding: boolean;
 }
 
@@ -109,6 +118,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
     viewMode,
   } = useExplorerStore();
 
+  const [copyFallback, setCopyFallback] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState(false);
   const [visibleFilter, setVisibleFilter] = useState("");
 
@@ -128,8 +138,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
 
   const nodeQuery = useQuery({
     queryKey: ["node-detail", selectedNodeId],
-    queryFn: ({ signal }) =>
-      explorerApi.getNodeDetail(selectedNodeId!, signal),
+    queryFn: ({ signal }) => explorerApi.getNodeDetail(selectedNodeId!, signal),
     enabled: Boolean(selectedNodeId),
   });
 
@@ -144,14 +153,16 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
   const incidentEdges = useMemo(() => {
     if (!selectedNodeId) return [];
     return displayedEdges.filter(
-      (e: GraphEdge) => e.source === selectedNodeId || e.target === selectedNodeId
+      (e: GraphEdge) =>
+        e.source === selectedNodeId || e.target === selectedNodeId,
     );
   }, [selectedNodeId, displayedEdges]);
 
   const visibleDegree = incidentEdges.length;
   const visibleStrength = incidentEdges.reduce(
-    (sum: number, e: GraphEdge) => sum + (e.fractional_weight ?? e.support_count ?? 1),
-    0
+    (sum: number, e: GraphEdge) =>
+      sum + (e.fractional_weight ?? e.support_count ?? 1),
+    0,
   );
 
   const visibleNeighborsList = useMemo(() => {
@@ -175,7 +186,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
     }
 
     return Array.from(map.values()).sort(
-      (a, b) => (b.neighborNode.score || 0) - (a.neighborNode.score || 0)
+      (a, b) => (b.neighborNode.score || 0) - (a.neighborNode.score || 0),
     );
   }, [selectedNodeId, incidentEdges, displayedNodes]);
 
@@ -186,7 +197,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
       ({ neighborNode }: { neighborNode: GraphNode; edges: GraphEdge[] }) =>
         neighborNode.name.toLowerCase().includes(q) ||
         neighborNode.id.toLowerCase().includes(q) ||
-        neighborNode.label.toLowerCase().includes(q)
+        neighborNode.label.toLowerCase().includes(q),
     );
   }, [visibleNeighborsList, visibleFilter]);
 
@@ -194,12 +205,15 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
 
   const displayedNodeObj = displayedNodes.find((n) => n.id === selectedNodeId);
 
-  const handleCopy = (text: string) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).catch(() => {});
+  const handleCopy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedId(true);
+      setTimeout(() => setCopiedId(false), 1800);
+    } catch {
+      setCopiedId(false);
+      setCopyFallback(text);
     }
-    setCopiedId(true);
-    setTimeout(() => setCopiedId(false), 1800);
   };
 
   return (
@@ -213,8 +227,16 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
 
       <aside
         data-testid="right-inspector"
-        role={typeof window !== "undefined" && window.innerWidth < 1024 ? "dialog" : undefined}
-        aria-modal={typeof window !== "undefined" && window.innerWidth < 1024 ? "true" : undefined}
+        role={
+          typeof window !== "undefined" && window.innerWidth < 1024
+            ? "dialog"
+            : undefined
+        }
+        aria-modal={
+          typeof window !== "undefined" && window.innerWidth < 1024
+            ? "true"
+            : undefined
+        }
         aria-label="Entity and relationship evidence inspector"
         className="absolute inset-y-0 right-0 z-40 w-[400px] max-w-[100vw] lg:static lg:w-[392px] border-l border-border bg-surface flex flex-col h-full shrink-0 overflow-y-auto"
       >
@@ -245,8 +267,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
               {selectedEdgeId
                 ? "Relationship provenance (Mode E)"
                 : selectedNodeId
-                ? "Entity dossier & connections"
-                : "Details"}
+                  ? "Entity dossier & connections"
+                  : "Details"}
             </span>
           </div>
 
@@ -264,6 +286,18 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
           </div>
         </div>
 
+        {copyFallback && (
+          <label role="alert" className="p-3 text-xs">
+            Clipboard unavailable; select and copy:
+            <input
+              aria-label="Identifier to copy"
+              readOnly
+              value={copyFallback}
+              onFocus={(e) => e.target.select()}
+              className="ledger-input w-full"
+            />
+          </label>
+        )}
         {/* Empty State if opened manually without selection */}
         {!selectedNodeId && !selectedEdgeId && (
           <div
@@ -274,7 +308,9 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
               No entity or relationship selected
             </h2>
             <p className="text-xs text-muted leading-relaxed max-w-xs">
-              Select a node on the canvas, search for any of the 47,875 entities, or click an edge to inspect its supporting core papers and affiliation observations.
+              Select a node on the canvas, search for all entities, or click an
+              edge to inspect its supporting core papers and affiliation
+              observations.
             </p>
           </div>
         )}
@@ -309,7 +345,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                         className="w-2 h-2 rounded-full"
                         style={{
                           backgroundColor:
-                            LABEL_COLORS[nodeQuery.data.node.label] || "#6e7681",
+                            LABEL_COLORS[nodeQuery.data.node.label] ||
+                            "#6e7681",
                         }}
                       />
                       <span>{nodeQuery.data.node.label}</span>
@@ -405,7 +442,10 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                         className="col-span-2 ledger-btn h-[28px] text-[11px] text-muted hover:text-ink"
                         title="Switch to heterogeneous knowledge graph to explore all 10 relationship types"
                       >
-                        <span>Explore all relationship types (switch to heterogeneous)</span>
+                        <span>
+                          Explore all relationship types (switch to
+                          heterogeneous)
+                        </span>
                       </button>
                     )}
                   </div>
@@ -418,7 +458,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       Overview & centrality metrics
                     </span>
                     <span className="font-mono text-faint">
-                      {nodeQuery.data.node.full_metrics?.projection || "release-v4"}
+                      {nodeQuery.data.node.full_metrics?.projection ||
+                        "release-v4"}
                     </span>
                   </div>
 
@@ -436,12 +477,16 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       </div>
                     </div>
 
-                    {nodeQuery.data.node.full_metrics?.betweenness !== undefined &&
-                      nodeQuery.data.node.full_metrics?.betweenness !== null && (
+                    {nodeQuery.data.node.full_metrics?.betweenness !==
+                      undefined &&
+                      nodeQuery.data.node.full_metrics?.betweenness !==
+                        null && (
                         <div className="p-2.5 rounded-[6px] bg-surface border border-border">
                           <div className="text-muted">Full betweenness</div>
                           <div className="mt-0.5 font-medium text-ink tabular-nums">
-                            {nodeQuery.data.node.full_metrics.betweenness.toFixed(5)}
+                            {nodeQuery.data.node.full_metrics.betweenness.toFixed(
+                              5,
+                            )}
                           </div>
                         </div>
                       )}
@@ -451,19 +496,24 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                         <div className="p-2.5 rounded-[6px] bg-surface border border-border">
                           <div className="text-muted">Full PageRank</div>
                           <div className="mt-0.5 font-medium text-ink tabular-nums">
-                            {nodeQuery.data.node.full_metrics.pagerank.toFixed(6)}
+                            {nodeQuery.data.node.full_metrics.pagerank.toFixed(
+                              6,
+                            )}
                           </div>
                         </div>
                       )}
                   </div>
 
                   <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
-                    <span className="text-muted">Displayed subgraph degree</span>
+                    <span className="text-muted">
+                      Displayed subgraph degree
+                    </span>
                     <span
                       data-testid="inspector-displayed-degree"
                       className="font-medium text-ink tabular-nums"
                     >
-                      {visibleDegree} visible edges (weight {visibleStrength.toFixed(2)})
+                      {visibleDegree} visible edges (weight{" "}
+                      {visibleStrength.toFixed(2)})
                     </span>
                   </div>
 
@@ -474,11 +524,12 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                         type="button"
                         onClick={() => {
                           const cid =
-                            nodeQuery.data.node.full_metrics?.community_id || "";
+                            nodeQuery.data.node.full_metrics?.community_id ||
+                            "";
                           setViewMode(
                             nodeQuery.data.node.label === "Organization"
                               ? "organizations"
-                              : "researchers"
+                              : "researchers",
                           );
                           updateFilters({ communityId: cid });
                           setWorkspaceTab("graph");
@@ -486,7 +537,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                         className="font-mono text-xs text-ink underline underline-offset-2 hover:text-accent tabular-nums"
                       >
                         {nodeQuery.data.node.full_metrics.community_id} (
-                        {nodeQuery.data.node.full_metrics.community_size} members)
+                        {nodeQuery.data.node.full_metrics.community_size}{" "}
+                        members)
                       </button>
                     </div>
                   )}
@@ -497,7 +549,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                   Boolean(nodeQuery.data.node.properties.definition) && (
                     <section className="p-3.5 rounded-[8px] bg-ground border border-border text-xs space-y-1">
                       <div className="font-medium text-ink">
-                        Taxonomy definition ({String(nodeQuery.data.node.properties.level)})
+                        Taxonomy definition (
+                        {String(nodeQuery.data.node.properties.level)})
                       </div>
                       <p className="text-muted leading-relaxed">
                         {String(nodeQuery.data.node.properties.definition)}
@@ -526,7 +579,9 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                           </button>
                           <span className="text-muted tabular-nums shrink-0">
                             {tp.supported_paper_count} papers (
-                            {(tp.fractional_topic_portfolio_share * 100).toFixed(1)}
+                            {(
+                              tp.fractional_topic_portfolio_share * 100
+                            ).toFixed(1)}
                             %)
                           </span>
                         </div>
@@ -540,10 +595,14 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-ink">
                       On this graph ({visibleNeighborsList.length} visible{" "}
-                      {visibleNeighborsList.length === 1 ? "neighbor" : "neighbors"})
+                      {visibleNeighborsList.length === 1
+                        ? "neighbor"
+                        : "neighbors"}
+                      )
                     </span>
                     <span className="text-muted text-[11px] tabular-nums">
-                      {visibleDegree} visible {visibleDegree === 1 ? "edge" : "edges"}
+                      {visibleDegree} visible{" "}
+                      {visibleDegree === 1 ? "edge" : "edges"}
                     </span>
                   </div>
 
@@ -571,7 +630,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
 
                   {visibleNeighborsList.length === 0 ? (
                     <div className="p-3 rounded-[8px] bg-ground border border-border text-xs text-muted">
-                      No visible neighbors on current canvas under active filters.
+                      No visible neighbors on current canvas under active
+                      filters.
                     </div>
                   ) : filteredVisibleNeighbors.length === 0 ? (
                     <div className="p-3 rounded-[8px] bg-ground border border-border text-xs text-muted">
@@ -579,103 +639,137 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                     </div>
                   ) : (
                     <div className="rounded-[8px] border border-border bg-surface divide-y divide-rule max-h-72 overflow-y-auto">
-                      {filteredVisibleNeighbors.map(({ neighborNode, edges }: { neighborNode: GraphNode; edges: GraphEdge[] }) => {
-                        const labelColor = LABEL_COLORS[neighborNode.label] || "#7fa6cc";
-                        return (
-                          <div
-                            key={neighborNode.id}
-                            onMouseEnter={() => setHoveredNodeId(neighborNode.id)}
-                            onMouseLeave={() => setHoveredNodeId(null)}
-                            onFocus={() => setHoveredNodeId(neighborNode.id)}
-                            onBlur={() => setHoveredNodeId(null)}
-                            className="p-2.5 space-y-1.5 hover:bg-raised/60 text-xs transition-colors"
-                          >
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="min-w-0 flex-1">
+                      {filteredVisibleNeighbors.map(
+                        ({
+                          neighborNode,
+                          edges,
+                        }: {
+                          neighborNode: GraphNode;
+                          edges: GraphEdge[];
+                        }) => {
+                          const labelColor =
+                            LABEL_COLORS[neighborNode.label] || "#7fa6cc";
+                          return (
+                            <div
+                              key={neighborNode.id}
+                              onMouseEnter={() =>
+                                setHoveredNodeId(neighborNode.id)
+                              }
+                              onMouseLeave={() => setHoveredNodeId(null)}
+                              onFocus={() => setHoveredNodeId(neighborNode.id)}
+                              onBlur={() => setHoveredNodeId(null)}
+                              className="p-2.5 space-y-1.5 hover:bg-raised/60 text-xs transition-colors"
+                            >
+                              <div className="flex items-start justify-between gap-2">
+                                <div className="min-w-0 flex-1">
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      selectNode(
+                                        neighborNode.id,
+                                        neighborNode.name,
+                                      )
+                                    }
+                                    className="font-medium text-ink hover:underline text-left truncate block w-full"
+                                    title={`${neighborNode.name} (${neighborNode.id})`}
+                                  >
+                                    {neighborNode.name}
+                                  </button>
+                                  <div className="flex items-center gap-1.5 text-[11px] text-muted font-mono truncate">
+                                    <span
+                                      className="w-2 h-2 rounded-full shrink-0"
+                                      style={{ backgroundColor: labelColor }}
+                                      title={neighborNode.label}
+                                    />
+                                    <span>{neighborNode.label}</span>
+                                    <span className="text-faint truncate">
+                                      · {neighborNode.id}
+                                    </span>
+                                  </div>
+                                </div>
                                 <button
                                   type="button"
-                                  onClick={() => selectNode(neighborNode.id, neighborNode.name)}
-                                  className="font-medium text-ink hover:underline text-left truncate block w-full"
-                                  title={`${neighborNode.name} (${neighborNode.id})`}
+                                  onClick={() =>
+                                    selectNode(
+                                      neighborNode.id,
+                                      neighborNode.name,
+                                    )
+                                  }
+                                  className="ledger-btn h-6 px-2 text-[11px] shrink-0"
+                                  title="Center and inspect this entity"
                                 >
-                                  {neighborNode.name}
+                                  Select
                                 </button>
-                                <div className="flex items-center gap-1.5 text-[11px] text-muted font-mono truncate">
-                                  <span
-                                    className="w-2 h-2 rounded-full shrink-0"
-                                    style={{ backgroundColor: labelColor }}
-                                    title={neighborNode.label}
-                                  />
-                                  <span>{neighborNode.label}</span>
-                                  <span className="text-faint truncate">· {neighborNode.id}</span>
-                                </div>
                               </div>
-                              <button
-                                type="button"
-                                onClick={() => selectNode(neighborNode.id, neighborNode.name)}
-                                className="ledger-btn h-6 px-2 text-[11px] shrink-0"
-                                title="Center and inspect this entity"
-                              >
-                                Select
-                              </button>
-                            </div>
 
-                            {/* Edges connecting selectedNodeId and this neighbor */}
-                            <div className="pl-3.5 border-l-2 border-border/70 space-y-1 pt-0.5">
-                              {edges.map((e: GraphEdge) => {
-                                const rCode = PREDICATE_R_CODE[e.relation] || e.relation;
-                                const dirSymbol = e.symmetric || !e.directed
-                                  ? "↔"
-                                  : e.source === selectedNodeId
-                                  ? "→"
-                                  : "←";
-                                return (
-                                  <div
-                                    key={e.edge_id}
-                                    className="flex items-center justify-between gap-2 text-[11px]"
-                                  >
-                                    <div className="flex items-center gap-1 min-w-0 text-muted">
-                                      <span className="font-mono font-medium text-ink">
-                                        {dirSymbol}
-                                      </span>
-                                      <span className="font-mono text-faint">
-                                        {rCode}
-                                      </span>
-                                      <span className="truncate" title={e.relation}>
-                                        {e.relation}
-                                      </span>
-                                      {e.support_count > 1 && (
-                                        <span className="tabular-nums text-faint shrink-0">
-                                          ({e.support_count} {e.relation === "CITES" ? "citations" : "papers"})
-                                        </span>
-                                      )}
-                                      {typeof e.fractional_weight === "number" && (
-                                        <span className="tabular-nums text-faint shrink-0">
-                                          (wt {e.fractional_weight.toFixed(2)})
-                                        </span>
-                                      )}
-                                    </div>
-                                    <button
-                                      type="button"
-                                      data-testid={`inspect-visible-edge-${e.edge_id}`}
-                                      onClick={() =>
-                                        selectEdge(
-                                          e.edge_id,
-                                          `${e.relation}: ${neighborNode.name}`
-                                        )
-                                      }
-                                      className="font-mono text-[10px] text-accent hover:underline shrink-0"
-                                      title="Inspect relationship evidence"
+                              {/* Edges connecting selectedNodeId and this neighbor */}
+                              <div className="pl-3.5 border-l-2 border-border/70 space-y-1 pt-0.5">
+                                {edges.map((e: GraphEdge) => {
+                                  const rCode =
+                                    PREDICATE_R_CODE[e.relation] || e.relation;
+                                  const dirSymbol =
+                                    e.symmetric || !e.directed
+                                      ? "↔"
+                                      : e.source === selectedNodeId
+                                        ? "→"
+                                        : "←";
+                                  return (
+                                    <div
+                                      key={e.edge_id}
+                                      className="flex items-center justify-between gap-2 text-[11px]"
                                     >
-                                      Evidence
-                                    </button>
-                                  </div>
-                                );
-                              })}
+                                      <div className="flex items-center gap-1 min-w-0 text-muted">
+                                        <span className="font-mono font-medium text-ink">
+                                          {dirSymbol}
+                                        </span>
+                                        <span className="font-mono text-faint">
+                                          {rCode}
+                                        </span>
+                                        <span
+                                          className="truncate"
+                                          title={e.relation}
+                                        >
+                                          {e.relation}
+                                        </span>
+                                        {e.support_count > 1 && (
+                                          <span className="tabular-nums text-faint shrink-0">
+                                            ({e.support_count}{" "}
+                                            {e.relation === "CITES"
+                                              ? "citations"
+                                              : "papers"}
+                                            )
+                                          </span>
+                                        )}
+                                        {typeof e.fractional_weight ===
+                                          "number" && (
+                                          <span className="tabular-nums text-faint shrink-0">
+                                            (wt {e.fractional_weight.toFixed(2)}
+                                            )
+                                          </span>
+                                        )}
+                                      </div>
+                                      <button
+                                        type="button"
+                                        data-testid={`inspect-visible-edge-${e.edge_id}`}
+                                        onClick={() =>
+                                          selectEdge(
+                                            e.edge_id,
+                                            `${e.relation}: ${neighborNode.name}`,
+                                          )
+                                        }
+                                        className="font-mono text-[10px] text-accent hover:underline shrink-0"
+                                        title="Inspect relationship evidence"
+                                      >
+                                        Evidence
+                                      </button>
+                                    </div>
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        },
+                      )}
                     </div>
                   )}
                 </section>
@@ -685,13 +779,21 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                   <div className="flex items-start justify-between gap-2 text-xs">
                     <div>
                       <span className="font-medium text-ink">
-                        All database connections ({nodeQuery.data.total_degree.toLocaleString()} total)
+                        All database connections (
+                        {nodeQuery.data.total_degree.toLocaleString()} total)
                       </span>
                       <p className="text-[11px] text-muted">
-                        Stored across all projections and filters. Showing top {nodeQuery.data.connected_groups.reduce((acc, g) => acc + g.items.length, 0)} results.
+                        Stored across all projections and filters. Showing top{" "}
+                        {nodeQuery.data.connected_groups.reduce(
+                          (acc, g) => acc + g.items.length,
+                          0,
+                        )}{" "}
+                        results.
                       </p>
                     </div>
-                    <span className="text-faint text-[11px] shrink-0">Click Evidence to trace</span>
+                    <span className="text-faint text-[11px] shrink-0">
+                      Click Evidence to trace
+                    </span>
                   </div>
 
                   {nodeQuery.data.connected_groups.map((grp) => {
@@ -704,11 +806,15 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       >
                         <div className="px-3 py-2 bg-ground border-b border-border flex items-center justify-between gap-2 text-xs">
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <span className="font-mono text-faint">{rCode}</span>
+                            <span className="font-mono text-faint">
+                              {rCode}
+                            </span>
                             <span className="font-mono font-medium text-ink truncate">
                               {grp.relation}
                             </span>
-                            <span className="text-muted">({grp.direction})</span>
+                            <span className="text-muted">
+                              ({grp.direction})
+                            </span>
                           </div>
                           <span className="px-2 py-0.5 rounded bg-raised text-ink font-medium tabular-nums shrink-0">
                             {grp.total_count.toLocaleString()}
@@ -727,7 +833,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                                   onClick={() =>
                                     selectNode(
                                       item.neighbor_id,
-                                      item.neighbor_name
+                                      item.neighbor_name,
                                     )
                                   }
                                   className="font-medium text-ink hover:underline text-left truncate block w-full"
@@ -740,9 +846,11 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                                   {item.support_count > 1 && (
                                     <span>· {item.support_count} papers</span>
                                   )}
-                                  {typeof item.fractional_weight === "number" && (
+                                  {typeof item.fractional_weight ===
+                                    "number" && (
                                     <span>
-                                      · weight {item.fractional_weight.toFixed(2)}
+                                      · weight{" "}
+                                      {item.fractional_weight.toFixed(2)}
                                     </span>
                                   )}
                                 </div>
@@ -754,7 +862,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                                 onClick={() =>
                                   selectEdge(
                                     item.edge_id,
-                                    `${grp.relation}: ${item.neighbor_name}`
+                                    `${grp.relation}: ${item.neighbor_name}`,
                                   )
                                 }
                                 title="Inspect relationship evidence (Mode E)"
@@ -778,30 +886,38 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       {nodeQuery.data.affiliation_observations.length})
                     </div>
                     <div className="rounded-[8px] border border-border divide-y divide-rule bg-surface max-h-48 overflow-y-auto">
-                      {nodeQuery.data.affiliation_observations.map((obs, idx) => {
-                        const rawStrings = Array.isArray(obs.raw_affiliation_strings)
-                          ? (obs.raw_affiliation_strings as string[])
-                          : [];
-                        return (
-                          <div
-                            key={String(obs.id || idx)}
-                            className="p-2.5 text-xs space-y-1"
-                          >
-                            <div className="font-medium text-ink">
-                              {String(obs.organization_name || obs.organization_id || "")}
-                            </div>
-                            <div className="text-muted truncate">
-                              Paper ({String(obs.paper_year || "2021–2025")}):{" "}
-                              {String(obs.paper_title || obs.paper_id || "")}
-                            </div>
-                            {rawStrings.length > 0 && (
-                              <div className="text-faint truncate">
-                                Raw string: “{rawStrings[0]}”
+                      {nodeQuery.data.affiliation_observations.map(
+                        (obs, idx) => {
+                          const rawStrings = Array.isArray(
+                            obs.raw_affiliation_strings,
+                          )
+                            ? (obs.raw_affiliation_strings as string[])
+                            : [];
+                          return (
+                            <div
+                              key={String(obs.id || idx)}
+                              className="p-2.5 text-xs space-y-1"
+                            >
+                              <div className="font-medium text-ink">
+                                {String(
+                                  obs.organization_name ||
+                                    obs.organization_id ||
+                                    "",
+                                )}
                               </div>
-                            )}
-                          </div>
-                        );
-                      })}
+                              <div className="text-muted truncate">
+                                Paper ({String(obs.paper_year || "2021–2025")}):{" "}
+                                {String(obs.paper_title || obs.paper_id || "")}
+                              </div>
+                              {rawStrings.length > 0 && (
+                                <div className="text-faint truncate">
+                                  Raw string: “{rawStrings[0]}”
+                                </div>
+                              )}
+                            </div>
+                          );
+                        },
+                      )}
                     </div>
                   </section>
                 )}
@@ -903,7 +1019,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       data-testid="evidence-predicate-badge"
                       className="px-2.5 py-1 rounded-[5px] font-mono text-xs font-semibold bg-raised border border-control text-ink"
                     >
-                      {PREDICATE_R_CODE[edgeEvidenceQuery.data.edge.relation] || ""}{" "}
+                      {PREDICATE_R_CODE[edgeEvidenceQuery.data.edge.relation] ||
+                        ""}{" "}
                       {edgeEvidenceQuery.data.edge.relation}
                     </span>
                     <span
@@ -927,7 +1044,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       onClick={() =>
                         selectNode(
                           edgeEvidenceQuery.data.source_node.id,
-                          edgeEvidenceQuery.data.source_node.name
+                          edgeEvidenceQuery.data.source_node.name,
                         )
                       }
                       className="w-full text-left p-2.5 rounded-[6px] bg-surface border border-border hover:border-control transition-colors"
@@ -954,7 +1071,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       onClick={() =>
                         selectNode(
                           edgeEvidenceQuery.data.target_node.id,
-                          edgeEvidenceQuery.data.target_node.name
+                          edgeEvidenceQuery.data.target_node.name,
                         )
                       }
                       className="w-full text-left p-2.5 rounded-[6px] bg-surface border border-border hover:border-control transition-colors"
@@ -1078,7 +1195,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                               {obs.paper_title || obs.paper_id}
                             </div>
                           </div>
-                        )
+                        ),
                       )}
                     </div>
                   </section>
@@ -1102,7 +1219,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       <div className="p-2 rounded-[5px] bg-surface border border-border">
                         <div className="text-muted">Support count</div>
                         <div className="font-semibold text-ink tabular-nums">
-                          {edgeEvidenceQuery.data.edge.support_count} paper(s)
+                          {edgeEvidenceQuery.data.edge.support_count} {edgeEvidenceQuery.data.edge.relation === "SUBTOPIC_OF" ? "curated mapping" : edgeEvidenceQuery.data.edge.relation === "CITES" ? "citation fact" : "paper support(s)"}
                         </div>
                       </div>
                       <div className="p-2 rounded-[5px] bg-surface border border-border">
@@ -1111,9 +1228,9 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                           {typeof edgeEvidenceQuery.data.edge
                             .fractional_weight === "number"
                             ? edgeEvidenceQuery.data.edge.fractional_weight.toFixed(
-                                4
+                                4,
                               )
-                            : "1.0000 (unit)"}
+                            : "Not applicable"}
                         </div>
                       </div>
                       <div className="p-2 rounded-[5px] bg-surface border border-border">
@@ -1131,7 +1248,9 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                     </div>
 
                     <div className="p-2 rounded-[5px] bg-surface border border-border">
-                      <div className="text-muted mb-0.5">Deterministic edge ID</div>
+                      <div className="text-muted mb-0.5">
+                        Deterministic edge ID
+                      </div>
                       <div className="font-mono text-xs text-ink break-all">
                         {edgeEvidenceQuery.data.edge.edge_id}
                       </div>
@@ -1189,7 +1308,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       <p key={i} className="leading-relaxed">
                         • {lim}
                       </p>
-                    )
+                    ),
                   )}
                 </section>
               </>

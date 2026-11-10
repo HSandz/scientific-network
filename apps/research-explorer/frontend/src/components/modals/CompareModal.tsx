@@ -155,7 +155,9 @@ export const CompareModal: React.FC = () => {
             />
           </div>
 
-          {compareQuery.isLoading ? (
+          {compareQuery.isError ? (
+            <p role="alert">Comparison unavailable: {String(compareQuery.error)} <button className="ledger-btn" onClick={() => compareQuery.refetch()}>Retry</button></p>
+          ) : compareQuery.isLoading ? (
             <div className="py-10 text-center text-muted">
               Computing comparison from Neo4j...
             </div>
@@ -190,8 +192,12 @@ export const CompareModal: React.FC = () => {
                         {node.name}
                       </div>
                       <div className="text-xs font-mono text-faint mt-0.5 tabular-nums">
-                        {node.id} · Score: {node.score.toFixed(2)}
+                        {node.id}
                       </div>
+                      <p className="mt-2 text-muted tabular-nums">
+                        Full projection fractional strength: {node.full_metrics?.degree_strength?.toFixed(3) ?? "Unavailable"}
+                        {node.label === "Paper" ? ` · In-scope citations in/out: ${node.full_metrics?.in_degree ?? "Unavailable"} / ${node.full_metrics?.out_degree ?? "Unavailable"}` : ""}
+                      </p>
                     </div>
                   )
                 )}
