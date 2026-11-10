@@ -141,7 +141,7 @@ class ExplorerService:
                 "analysis_json": bool(self.store.analysis_data),
                 "network_views_json": bool(self.store.network_views_data),
                 "audit_results_json": bool(self.store.audit_results_data),
-                "graph_ledger_available": self.store.graph_artifact_path.exists(),
+                "graph_ledger_available": self.store.ledger_available,
             },
         )
 

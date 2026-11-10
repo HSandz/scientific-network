@@ -5,6 +5,13 @@
 
 ## Current capabilities — D040 remediation
 
+**10 November production operations:** the Explorer has an isolated Azure Docker
+runtime with read-only Neo4j, one API worker, indexed SQLite evidence, compact
+analytics, Caddy HTTPS, guarded restore/backup and bounded resource limits.
+See [runbook](../ops/azure/README.md) and
+[deployment receipt](../reports/release-v4/azure-deployment-2026-11-10.md) for
+measured acceptance and current frontend cutover state.
+
 **9 November presentation:** `python -m scientific_network.reporting.network_views`
 exports three deterministic bounded induced maps and public evidence-pointer
 JSON/CSVs from exact graph/analysis/freeze bindings. Published Site v19 provides native

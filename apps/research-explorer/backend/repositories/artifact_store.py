@@ -9,6 +9,7 @@ from typing import Any
 import yaml
 
 from backend.config import REPO_ROOT
+from backend.repositories.sqlite_ledger import LedgerMapping
 
 
 class ArtifactStore:
@@ -29,12 +30,14 @@ class ArtifactStore:
         quality_config_path: Path | None = None,
         topic_eval_path: Path | None = None,
         historical_topic_reuse_path: Path | None = None,
+        ledger_sqlite_path: Path | None = None,
     ) -> None:
         self.summary_path = summary_path
         self.analysis_path = analysis_path
         self.network_views_path = network_views_path
         self.audit_results_path = audit_results_path
         self.graph_artifact_path = graph_artifact_path
+        self.ledger_sqlite_path = ledger_sqlite_path
         self.quality_config_path = quality_config_path or (
             REPO_ROOT / "configs" / "quality-agent-release-v2.yaml"
         )
@@ -73,6 +76,19 @@ class ArtifactStore:
         self.affiliations_by_org: dict[str, list[dict[str, Any]]] = defaultdict(list)
 
         self._load_fast_artifacts()
+        if ledger_sqlite_path is not None:
+            if not ledger_sqlite_path.is_file():
+                raise RuntimeError("Configured evidence database is unavailable")
+            self.evidence_by_id = LedgerMapping(ledger_sqlite_path, "evidence")
+            self.affiliations_by_researcher_org = LedgerMapping(ledger_sqlite_path, "pair")
+            self.affiliations_by_paper = LedgerMapping(ledger_sqlite_path, "paper")
+            self.affiliations_by_researcher = LedgerMapping(ledger_sqlite_path, "researcher")
+            self.affiliations_by_org = LedgerMapping(ledger_sqlite_path, "organization")
+            self._ledger_loaded = True
+
+    @property
+    def ledger_available(self) -> bool:
+        return bool(self.ledger_sqlite_path and self.ledger_sqlite_path.is_file()) or self.graph_artifact_path.is_file()
 
     def _load_fast_artifacts(self) -> None:
         if self.summary_path.exists():

@@ -1,6 +1,6 @@
 """FastAPI application entrypoint for the Scientific Network Explorer backend."""
 
-from collections import defaultdict
+from collections import OrderedDict
 from contextlib import asynccontextmanager
 import sys
 import time
@@ -27,7 +27,7 @@ from backend.services.explorer_service import ExplorerService  # noqa: E402
 
 ALLOWED_HTTP_METHODS: frozenset[str] = frozenset({"GET", "POST", "OPTIONS", "HEAD"})
 RATE_LIMIT_WINDOW_SECONDS = 60.0
-RATE_LIMIT_MAX_REQUESTS = 600
+RATE_LIMIT_MAX_REQUESTS = 180
 
 
 def create_app(
@@ -39,10 +39,8 @@ def create_app(
 ) -> FastAPI:
     """Create and configure the read-only Research Explorer FastAPI application.
 
-    TODO(security): User account login, OAuth, MFA, password hashing, and session/CSRF
-    cookies are intentionally omitted because this is a local-only (127.0.0.1), single-user,
-    read-only scientific research graph explorer with zero user accounts, zero file uploads,
-    and zero state-mutating endpoints.
+    Public deployments expose read-only scientific data with bounded queries.
+    There are no accounts, uploads, or state-mutating routes. CORS is not authentication.
     """
     cfg = settings or load_settings()
 
@@ -59,6 +57,7 @@ def create_app(
                 quality_config_path=cfg.quality_config_path,
                 topic_eval_path=cfg.topic_eval_path,
                 historical_topic_reuse_path=cfg.historical_topic_reuse_path,
+                ledger_sqlite_path=cfg.ledger_sqlite_path,
             )
             if background_warmup:
                 active_store.start_background_ledger_warmup()
@@ -74,6 +73,9 @@ def create_app(
         title="Scientific Network Explorer API",
         description="Read-only knowledge graph exploration API over AAAI & IJCAI 2021–2025 (Release v4).",
         version="1.0.0",
+        docs_url=None if cfg.production else "/docs",
+        redoc_url=None if cfg.production else "/redoc",
+        openapi_url=None if cfg.production else "/openapi.json",
         lifespan=lifespan,
     )
 
@@ -92,12 +94,12 @@ def create_app(
         allow_headers=["Content-Type", "Accept"],
     )
 
-    request_log: dict[str, list[float]] = defaultdict(list)
+    request_log: OrderedDict[str, list[float]] = OrderedDict()
 
     @app.middleware("http")
     async def security_and_rate_limit_middleware(request: Request, call_next):
         # 1. Enforce HTTP method allow-list (disable TRACE, PUT, DELETE, PATCH)
-        if request.method not in ALLOWED_HTTP_METHODS:
+        if request.method not in ALLOWED_HTTP_METHODS or (request.method == "POST" and request.url.path != "/api/paths"):
             return JSONResponse(
                 status_code=405,
                 content={"detail": f"HTTP method {request.method} is not permitted on this read-only API."},
@@ -106,7 +108,11 @@ def create_app(
         # 2. Sliding-window rate limiting per client IP
         client_ip = request.client.host if request.client else "127.0.0.1"
         now = time.monotonic()
-        timestamps = request_log[client_ip]
+        # Bound memory even when many distinct public clients visit the service.
+        timestamps = request_log.setdefault(client_ip, [])
+        request_log.move_to_end(client_ip)
+        if len(request_log) > 4096:
+            request_log.popitem(last=False)
         cutoff = now - RATE_LIMIT_WINDOW_SECONDS
         while timestamps and timestamps[0] < cutoff:
             timestamps.pop(0)
@@ -116,6 +122,17 @@ def create_app(
                 content={"detail": "Rate limit exceeded. Please slow down requests."},
             )
         timestamps.append(now)
+
+        if len(request.url.query) > 8192:
+            return JSONResponse(status_code=414, content={"detail": "Query string too long."})
+        if request.method == "POST":
+            # Stream a bounded body before letting Pydantic parse it.
+            body = bytearray()
+            async for chunk in request.stream():
+                body.extend(chunk)
+                if len(body) > 4096:
+                    return JSONResponse(status_code=413, content={"detail": "Request body too large."})
+            request._body = bytes(body)
 
         response = await call_next(request)
 
@@ -130,7 +147,7 @@ def create_app(
             "script-src 'self'; "
             "style-src 'self' 'unsafe-inline'; "
             "img-src 'self' data: blob:; "
-            "connect-src 'self' http://127.0.0.1:8000 http://localhost:8000; "
+            "connect-src 'self'; "
             "object-src 'none'; "
             "frame-ancestors 'none';"
         )
@@ -159,8 +176,27 @@ def create_app(
     async def handle_runtime_error(_request: Request, exc: RuntimeError):
         return JSONResponse(
             status_code=503,
-            content={"detail": str(exc)[:200]},
+            content={"detail": "A required backend service is unavailable."},
         )
+
+    @app.get("/api/live", include_in_schema=False)
+    def liveness():
+        return {"status": "ok"}
+
+    @app.get("/api/ready", include_in_schema=False)
+    def readiness(request: Request):
+        active = request.app.state.explorer_service
+        # Cheap fresh probe catches a stopped DB; full release inventory is checked
+        # once per process and separately by the exhaustive deployment verifier.
+        active.repo.run_read("RETURN 1 AS ready")
+        inventory = active.repo.verify_inventory()
+        artifacts = active.store
+        ready = inventory["database_verified"] and artifacts.ledger_available and all((
+            artifacts.summary_data, artifacts.analysis_data, artifacts.network_views_data,
+            artifacts.audit_results_data, artifacts.quality_config_data,
+            artifacts.topic_eval_data, artifacts.historical_topic_reuse_data,
+        ))
+        return JSONResponse(status_code=200 if ready else 503, content={"status": "ok" if ready else "unavailable"})
 
     app.include_router(api_router)
     return app

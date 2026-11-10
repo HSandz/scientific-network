@@ -142,13 +142,14 @@ class Neo4jRepository:
                 raise RuntimeError(
                     "NEO4J_PASSWORD is not configured. Set NEO4J_PASSWORD in environment or .env."
                 )
-            # TODO(security): Local Docker Neo4j Community uses unencrypted localhost Bolt
-            # (127.0.0.1:7689). For production deployments across networks, enforce bolt+s:// with mTLS.
+            # Production Bolt stays on an isolated Docker network with no host port.
             self._driver = GraphDatabase.driver(
                 self.settings.neo4j_uri,
                 auth=(self.settings.neo4j_username, self.settings.neo4j_password),
                 connection_timeout=10.0,
-                max_connection_pool_size=25,
+                max_connection_pool_size=8,
+                connection_acquisition_timeout=10.0,
+                max_transaction_retry_time=5.0,
             )
         return self._driver
 
@@ -185,7 +186,6 @@ class Neo4jRepository:
                 "MATCH (n:Venue) RETURN collect(DISTINCT n.graph_version) AS versions"
             )
         except (Neo4jError, DriverError, RuntimeError, OSError) as exc:
-            detail = str(getattr(exc, "message", None) or exc)[:240]
             return {
                 "connected": False,
                 "endpoint": self.sanitized_endpoint,
@@ -196,7 +196,7 @@ class Neo4jRepository:
                 "edges_by_relation": {},
                 "total_nodes": 0,
                 "total_edges": 0,
-                "warnings": [f"Database connection failed: {type(exc).__name__}: {detail}"],
+                "warnings": [f"Database connection failed: {type(exc).__name__}"],
             }
 
         nodes_by_label = {row["label"]: int(row["count"]) for row in node_rows if row.get("label")}
