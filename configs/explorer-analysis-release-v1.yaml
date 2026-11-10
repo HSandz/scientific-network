@@ -1,0 +1,12 @@
+version: explorer-analysis-release-v1
+status: exploratory_descriptive
+method: frozen-support-cohorts-persistence-v1
+seed: null # no stochastic computation
+scope: accepted release-v4 core papers and R8 evidence support IDs only
+years: [2021, 2022, 2023, 2024, 2025]
+cohort: venue_id_and_conference_year
+percentile: empirical_fraction_with_in_degree_less_than_or_equal_including_ties
+pair_limit: 25
+pair_order: descending_distinct_support_papers_then_edge_id
+component_selection: largest_25_by_size_then_stable_id
+component_representative: highest_accepted_R7_degree_then_stable_id

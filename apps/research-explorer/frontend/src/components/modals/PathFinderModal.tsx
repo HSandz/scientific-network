@@ -96,7 +96,7 @@ export const PathFinderModal: React.FC = () => {
               Bounded shortest-path discovery
             </h2>
             <p className="text-xs text-muted mt-0.5">
-              Find and verify connection chains between any two entities in Neo4j (bounded to ≤ 6 hops).
+              Find and verify connection chains between any two entities in Neo4j (bounded to ≤ 4 hops).
             </p>
           </div>
           <button

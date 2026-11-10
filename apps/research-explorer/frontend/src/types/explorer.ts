@@ -29,11 +29,15 @@ export interface GraphViewScope {
   title: string;
   description?: string;
   centerId?: string | null;
+  transient?: boolean;
+  neighborParams?: Record<string, unknown>;
   pathData?: {
     sourceId: string;
     targetId: string;
     sourceName?: string;
     targetName?: string;
+    mode?: string;
+    maxHops?: number;
     hopCount: number;
     steps: string[];
   } | null;
@@ -70,6 +74,7 @@ export interface GraphNode {
   name: string;
   group: string;
   score: number;
+  displayed_neighbor_count?: number;
   displayed_degree: number;
   displayed_strength: number;
   x: number;
@@ -160,6 +165,8 @@ export interface QualityContract {
   topic_coverage_target?: number;
   topic_coverage_status?: string;
   topic_precision?: number;
+  topic_precision_true_positive?: number;
+  topic_precision_predicted_labels?: number;
   topic_embedding_precision?: number;
   topic_precision_target?: number;
   topic_precision_status?: string;

@@ -1,849 +1,1130 @@
-import React, { useEffect, useRef } from "react";
+import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import * as echarts from "echarts";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  ChevronRight,
-  GitCompare,
-} from "lucide-react";
 import { explorerApi } from "../../lib/api";
 import { getThemeTokens } from "../../lib/colors";
+import {
+  bridgeRanks,
+  ccdfPoints,
+  componentHistogram,
+  sectorCells,
+  topicCells,
+  TopicRow,
+} from "../../lib/analytics";
 import { useExplorerStore } from "../../stores/useExplorerStore";
-import { GraphSummaryResponse, QualityContract } from "../../types/explorer";
+import { GraphSummaryResponse } from "../../types/explorer";
+import { EChartBox } from "./EChartBox";
 
-interface EChartBoxProps {
-  option: echarts.EChartsOption;
-  height?: number;
-  darkMode: boolean;
-}
+const fmt = (n: unknown) =>
+  typeof n === "number" ? n.toLocaleString() : "Unavailable";
+const pct = (n: unknown, digits = 2) =>
+  typeof n === "number" ? `${(n * 100).toFixed(digits)}%` : "Unavailable";
+const Table: React.FC<{
+  headers: string[];
+  rows: React.ReactNode[][];
+  label: string;
+}> = ({ headers, rows, label }) => (
+  <details className="mt-3 text-xs">
+    <summary className="cursor-pointer py-2">
+      {label} · data & keyboard actions ({rows.length} rows)
+    </summary>
+    <div className="overflow-auto max-h-96">
+      <table className="w-full text-left">
+        <caption className="sr-only">{label}</caption>
+        <thead>
+          <tr>
+            {headers.map((h) => (
+              <th key={h} className="p-2 font-medium text-muted">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} className="border-t border-border">
+              {r.map((v, j) => (
+                <td key={j} className="p-2 tabular-nums">
+                  {v}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+);
+const Panel: React.FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children,
+}) => (
+  <section className="ledger-panel p-4 sm:p-5 min-w-0">
+    <h2 className="text-sm font-semibold mb-2">{title}</h2>
+    {children}
+  </section>
+);
 
-const EChartBox: React.FC<EChartBoxProps> = ({
-  option,
-  height = 280,
-  darkMode,
-}) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const instanceRef = useRef<echarts.ECharts | null>(null);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    if (instanceRef.current) {
-      instanceRef.current.dispose();
-    }
-    const chart = echarts.init(el, darkMode ? "dark" : undefined);
-    instanceRef.current = chart;
-    chart.setOption({
-      backgroundColor: "transparent",
-      textStyle: {
-        fontFamily: "Geist, system-ui, sans-serif",
-      },
-      ...option,
-    });
-
-    const handleResize = () => {
-      chart.resize();
-    };
-    window.addEventListener("resize", handleResize);
-
-    let ro: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(() => {
-        chart.resize();
-      });
-      ro.observe(el);
-    }
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (ro) ro.disconnect();
-      chart.dispose();
-      instanceRef.current = null;
-    };
-  }, [option, darkMode]);
-
-  return <div ref={containerRef} style={{ width: "100%", height }} />;
-};
-
-interface AnalyticsViewProps {
+export const AnalyticsView: React.FC<{
   summary?: GraphSummaryResponse;
-  onFocusNodeInGraph: (nodeId: string, name?: string) => void;
-}
-
-export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
-  summary,
-  onFocusNodeInGraph,
-}) => {
+  onFocusNodeInGraph: (id: string, name?: string) => void;
+}> = ({ summary, onFocusNodeInGraph }) => {
   const {
     darkMode,
+    analyticsSection: section,
     setViewMode,
-    setWorkspaceTab,
     updateFilters,
-    selectNode,
+    resetFilters,
+    setWorkspaceTab,
     setCompareModalOpen,
+    selectNode,
   } = useExplorerStore();
-
-  const analyticsQuery = useQuery({
+  const [venue, setVenue] = useState("venue:aaai"),
+    [topic, setTopic] = useState(""),
+    [yearMin, setYearMin] = useState(2021),
+    [yearMax, setYearMax] = useState(2025);
+  const [family, setFamily] = useState("");
+  const [community, setCommunity] = useState("");
+  const query = useQuery({
     queryKey: ["analytics-overview"],
     queryFn: ({ signal }) => explorerApi.getAnalyticsOverview(signal),
     staleTime: 300_000,
   });
-
-  if (analyticsQuery.isLoading) {
+  const data = query.data as Record<string, any> | undefined;
+  const tokens = getThemeTokens(darkMode);
+  const chart = useMemo(
+    () => ({
+      tooltip: { trigger: "item" },
+      grid: { top: 35, left: 58, right: 20, bottom: 65 },
+      textStyle: { color: tokens.chartAxis },
+      xAxis: {
+        type: "category",
+        axisLabel: { color: tokens.chartAxis, fontSize: 12 },
+      },
+      yAxis: {
+        type: "value",
+        axisLabel: { color: tokens.chartAxis },
+        splitLine: { lineStyle: { color: tokens.chartGrid } },
+      },
+      color: [tokens.chartPrimarySeries, tokens.chartSecondarySeries],
+      legend: { textStyle: { color: tokens.chartAxis } },
+    }),
+    [darkMode],
+  );
+  const button = (id: string, name?: string) => (
+    <button
+      className="underline underline-offset-2 text-left"
+      onClick={() => onFocusNodeInGraph(id, name)}
+    >
+      {name || id}
+    </button>
+  );
+  const topics: TopicRow[] = data?.topic_shares_by_year_venue?.rows || [];
+  const families: { topic_id: string; family_id: string; family: string }[] =
+    data?.explorer_derived?.topic_families || [];
+  const cells = useMemo(
+    () =>
+      topicCells(topics, venue, yearMin, yearMax, topic).filter(
+        (r) =>
+          !family ||
+          families.some(
+            (f) => f.family_id === family && f.topic_id === r.topic_id,
+          ),
+      ),
+    [topics, venue, yearMin, yearMax, topic, family, families],
+  );
+  const topicNames = [...new Set(cells.map((r) => r.topic))];
+  const years = [...new Set(cells.map((r) => r.year))].sort();
+  const openCell = (r: TopicRow) => {
+    setViewMode("heterogeneous");
+    resetFilters();
+    updateFilters({
+      preset: "researcher_paper_topic",
+      topicId: r.topic_id,
+      venue: r.venue_id,
+      yearMin: r.year,
+      yearMax: r.year,
+      limit: 120,
+    });
+    selectNode(r.topic_id, r.topic);
+    setWorkspaceTab("graph");
+  };
+  if (query.isLoading)
     return (
-      <div className="flex-1 flex items-center justify-center bg-ground text-sm text-muted">
-        Loading precomputed release v4 analytics...
+      <p role="status" className="p-5">
+        Loading frozen analytics…
+      </p>
+    );
+  if (query.isError || !data || !data.graph_version || !data.projections)
+    return (
+      <div role="alert" className="p-5">
+        Analytics unavailable:{" "}
+        {query.error instanceof Error
+          ? query.error.message
+          : "incomplete artifact"}
+        .{" "}
+        <button className="ledger-btn" onClick={() => query.refetch()}>
+          Retry
+        </button>
       </div>
     );
-  }
-
-  const data = (analyticsQuery.data || {}) as Record<string, any>;
-  const annualRows: Array<{
-    year: number;
-    paper_count: number;
-    active_researcher_count: number;
-    new_collaboration_pair_count: number;
-  }> = data.annual_counts?.rows || [];
-
-  const sectorMatrix: Array<{
-    row_sector: string;
-    column_sector: string;
-    pair_paper_support_count: number;
-  }> = data.sector_mixing?.matrix || [];
-
-  const ccdfRows: Array<{
-    degree: number;
-    researcher_count_at_least: number;
-    fraction_at_least: number;
-  }> = data.researcher_degree_ccdf?.rows || [];
-
-  const bridgeResearchers: Array<{
-    researcher_id: string;
-    researcher: string;
-    betweenness: number;
-    community_id: string;
-    community_member_count: number;
-    community_top_topics: Array<{ topic: string; paper_count: number }>;
-  }> = data.bridge_researchers?.top_researchers || [];
-
-  const topCitedPapers: Array<{
-    paper_id: string;
-    title: string;
-    year: number;
-    venue: string;
-    in_degree: number;
-    pagerank: number;
-  }> = data.cited_papers?.top_by_in_degree || [];
-
-  const acadIndustryPairs: Array<{
-    academia_organization_id: string;
-    academia_organization: string;
-    industry_organization_id: string;
-    industry_organization: string;
-    topic_id: string;
-    topic: string;
-    supported_paper_count: number;
-  }> = data.academia_industry_pairs || [];
-
-  const countryPairs: Array<{
-    country_a: string;
-    country_b: string;
-    pair_paper_support_count: number;
-  }> = data.country_pair_collaborations?.rows || [];
-
-  const tokens = getThemeTokens(darkMode);
-  const axisColor = tokens.chartAxis;
-  const gridColor = tokens.chartGrid;
-  const primarySeriesColor = tokens.chartPrimarySeries;
-  const inkSeriesColor = tokens.chartInkSeries;
-  const secondarySeriesColor = tokens.chartSecondarySeries;
-
-  const quality: QualityContract | undefined =
-    summary?.quality || (data.quality as QualityContract | undefined);
-
-  const edgePrecPct =
-    quality?.edge_precision !== undefined && quality?.edge_precision !== null
-      ? `${(quality.edge_precision * 100).toFixed(2)}%`
-      : "Unavailable";
-  const edgePrecDetail =
-    quality?.edge_precision !== undefined && quality?.edge_precision !== null
-      ? `${quality.edge_precision_correct ?? 0} / ${quality.edge_precision_total ?? 0} correct · Wilson 95% CI: ${(((quality.edge_precision_wilson_lower ?? 0)) * 100).toFixed(2)}%–${(((quality.edge_precision_wilson_upper ?? 0)) * 100).toFixed(2)}% · Target ${(((quality.edge_precision_target ?? 0.9)) * 100).toFixed(1)}%`
-      : "Audit artifacts unavailable in local store.";
-
-  const affCovPct =
-    quality?.affiliation_coverage !== undefined && quality?.affiliation_coverage !== null
-      ? `${(quality.affiliation_coverage * 100).toFixed(2)}%`
-      : "Unavailable";
-  const affCovDetail =
-    quality?.affiliation_coverage !== undefined && quality?.affiliation_coverage !== null
-      ? `${(quality.affiliation_positions_resolved ?? 0).toLocaleString()} / ${(quality.affiliation_positions_eligible ?? 0).toLocaleString()} authorship positions on OpenAlex-matched works · Target ${(((quality.affiliation_target ?? 0.8)) * 100).toFixed(1)}% (${(quality.affiliation_papers_with_edge ?? 0).toLocaleString()} / ${(quality.affiliation_papers_eligible ?? 0).toLocaleString()} core papers)`
-      : "Affiliation coverage artifacts unavailable in local store.";
-
-  const topicCovPct =
-    quality?.topic_coverage !== undefined && quality?.topic_coverage !== null
-      ? `${(quality.topic_coverage * 100).toFixed(2)}%`
-      : "Unavailable";
-  const topicPrecPct =
-    quality?.topic_precision !== undefined && quality?.topic_precision !== null
-      ? `${(quality.topic_precision * 100).toFixed(2)}%`
-      : "Unavailable";
-  const topicF1Val =
-    quality?.topic_embedding_micro_f1 !== undefined && quality?.topic_embedding_micro_f1 !== null
-      ? quality.topic_embedding_micro_f1.toFixed(4)
-      : "—";
-  const topicDetail =
-    quality?.topic_coverage !== undefined && quality?.topic_coverage !== null
-      ? `${(quality.topic_papers_labeled ?? 0).toLocaleString()} / ${(quality.topic_papers_eligible ?? 0).toLocaleString()} core papers (Target ${(((quality.topic_coverage_target ?? 0.8)) * 100).toFixed(1)}% ${quality.topic_coverage_status ? quality.topic_coverage_status.toUpperCase() : "PASS"}) · AI-assessed topic precision ${topicPrecPct} (Target ${(((quality.topic_precision_target ?? 0.95)) * 100).toFixed(1)}% ${quality.topic_precision_status ? quality.topic_precision_status.toUpperCase() : "FAIL"}) · Historical micro-F1 ${topicF1Val} (vs ${(quality.topic_phrase_baseline_f1 ?? 0).toFixed(4)} phrase baseline)`
-      : "Topic classification artifacts unavailable in local store.";
-
-  // 1. Annual Corpus & Collaboration Growth
-  const annualChartOption: echarts.EChartsOption = {
-    tooltip: { trigger: "axis" },
-    legend: {
-      top: 0,
-      right: 0,
-      itemWidth: 12,
-      itemHeight: 8,
-      textStyle: { fontSize: 12, color: axisColor },
-    },
-    grid: { top: 38, left: 52, right: 18, bottom: 28 },
-    xAxis: {
-      type: "category",
-      data: annualRows.map((r) => String(r.year)),
-      axisLabel: { fontSize: 12, color: axisColor },
-      axisLine: { lineStyle: { color: gridColor } },
-    },
-    yAxis: {
-      type: "value",
-      axisLabel: { fontSize: 12, color: axisColor },
-      splitLine: { lineStyle: { color: gridColor } },
-    },
-    series: [
-      {
-        name: "Core papers",
-        type: "bar",
-        barMaxWidth: 26,
-        data: annualRows.map((r) => r.paper_count),
-        itemStyle: { color: primarySeriesColor, borderRadius: [2, 2, 0, 0] },
-      },
-      {
-        name: "Active researchers",
-        type: "line",
-        smooth: false,
-        symbolSize: 6,
-        data: annualRows.map((r) => r.active_researcher_count),
-        itemStyle: { color: inkSeriesColor },
-        lineStyle: { width: 2, color: inkSeriesColor },
-      },
-      {
-        name: "New coauthor pairs",
-        type: "line",
-        smooth: false,
-        symbolSize: 6,
-        data: annualRows.map((r) => r.new_collaboration_pair_count),
-        itemStyle: { color: secondarySeriesColor },
-        lineStyle: { width: 2, type: "dashed", color: secondarySeriesColor },
-      },
-    ],
-  };
-
-  // 2. Sector Mixing Heatmap
-  const sectors = ["academia", "industry", "government", "nonprofit"];
-  const heatmapData: Array<[number, number, number]> = [];
-  for (const cell of sectorMatrix) {
-    const xIdx = sectors.indexOf(cell.column_sector);
-    const yIdx = sectors.indexOf(cell.row_sector);
-    if (xIdx >= 0 && yIdx >= 0) {
-      heatmapData.push([xIdx, yIdx, cell.pair_paper_support_count]);
-    }
-  }
-
-  const sectorHeatmapOption: echarts.EChartsOption = {
-    tooltip: {
-      position: "top",
-      formatter: (params: any) => {
-        const [x, y, val] = params.data;
-        return `${sectors[y]} × ${sectors[x]}: <b>${Number(
-          val
-        ).toLocaleString()}</b> pair-paper supports`;
-      },
-    },
-    grid: { top: 12, left: 86, right: 20, bottom: 48 },
-    xAxis: {
-      type: "category",
-      data: sectors.map((s) => s.charAt(0).toUpperCase() + s.slice(1)),
-      axisLabel: { fontSize: 12, color: axisColor },
-      splitArea: { show: false },
-    },
-    yAxis: {
-      type: "category",
-      data: sectors.map((s) => s.charAt(0).toUpperCase() + s.slice(1)),
-      axisLabel: { fontSize: 12, color: axisColor },
-      splitArea: { show: false },
-    },
-    visualMap: {
-      min: 0,
-      max: 11000,
-      calculable: false,
-      orient: "horizontal",
-      left: "center",
-      bottom: 0,
-      itemWidth: 12,
-      itemHeight: 90,
-      textStyle: { fontSize: 12, color: axisColor },
-      inRange: {
-        color: tokens.heatmapScale,
-      },
-    },
-    series: [
-      {
-        name: "Sector mixing",
-        type: "heatmap",
-        data: heatmapData,
-        label: {
-          show: true,
-          formatter: (p: any) => Number(p.data[2]).toLocaleString(),
-          fontSize: 12,
-          color: inkSeriesColor,
-        },
-      },
-    ],
-  };
-
-  // 3. Researcher Coauthorship Degree CCDF
-  const ccdfOption: echarts.EChartsOption = {
-    tooltip: { trigger: "axis" },
-    grid: { top: 18, left: 58, right: 20, bottom: 42 },
-    xAxis: {
-      type: "category",
-      name: "Coauthor degree k",
-      nameLocation: "middle",
-      nameGap: 26,
-      nameTextStyle: { fontSize: 12, color: axisColor },
-      axisLabel: { fontSize: 12, color: axisColor },
-      data: ccdfRows.slice(0, 35).map((r) => String(r.degree)),
-    },
-    yAxis: {
-      type: "log",
-      name: "Researchers ≥ k",
-      nameTextStyle: { fontSize: 12, color: axisColor },
-      axisLabel: { fontSize: 12, color: axisColor },
-      splitLine: { lineStyle: { color: gridColor } },
-      min: 1,
-    },
-    series: [
-      {
-        name: "Researchers with degree ≥ k",
-        type: "line",
-        smooth: false,
-        symbolSize: 5,
-        data: ccdfRows.slice(0, 35).map((r) => r.researcher_count_at_least),
-        itemStyle: { color: primarySeriesColor },
-        lineStyle: { width: 2, color: primarySeriesColor },
-        areaStyle: { opacity: 0.08, color: primarySeriesColor },
-      },
-    ],
-  };
-
-  // 4. Country-Pair Collaborations
-  const countryBarOption: echarts.EChartsOption = {
-    tooltip: { trigger: "axis" },
-    grid: { top: 12, left: 76, right: 24, bottom: 28 },
-    xAxis: {
-      type: "value",
-      axisLabel: { fontSize: 12, color: axisColor },
-      splitLine: { lineStyle: { color: gridColor } },
-    },
-    yAxis: {
-      type: "category",
-      inverse: true,
-      axisLabel: { fontSize: 12, color: axisColor },
-      data: countryPairs
-        .slice(0, 10)
-        .map((c) => `${c.country_a} – ${c.country_b}`),
-    },
-    series: [
-      {
-        name: "Pair-paper support",
-        type: "bar",
-        barMaxWidth: 18,
-        data: countryPairs.slice(0, 10).map((c) => c.pair_paper_support_count),
-        itemStyle: { color: primarySeriesColor, borderRadius: [0, 2, 2, 0] },
-      },
-    ],
-  };
-
-  const totalNodesText =
-    summary?.total_nodes !== undefined
-      ? summary.total_nodes.toLocaleString()
-      : "47,875";
-  const totalEdgesText =
-    summary?.total_edges !== undefined
-      ? summary.total_edges.toLocaleString()
-      : data.graph_totals?.total_edges !== undefined
-      ? Number(data.graph_totals.total_edges).toLocaleString()
-      : "225,731";
-  const coreFactualText =
-    summary?.unique_core_factual_edges !== undefined
-      ? summary.unique_core_factual_edges.toLocaleString()
-      : "110,026";
-
+  const q = summary?.quality || data.quality;
+  const base = data.projections.researcher_collaboration,
+    strict = data.robustness?.strict_projections?.researcher_collaboration;
+  const sensitivity = data.robustness?.per_projection?.researcher_collaboration;
+  const bridges = data.bridge_researchers?.top_researchers || [];
+  const names = new Map<string, string>(
+    bridges.map((b: any) => [b.researcher_id, b.researcher]),
+  );
+  const ranks = bridgeRanks(
+    base?.top_betweenness || [],
+    strict?.top_betweenness || [],
+  );
+  const profiles =
+    data.bridge_researchers?.community_topic_profiles_top_20_by_size || [];
+  const profile =
+    profiles.find((p: any) => p.community_id === community) || profiles[0];
+  const histogram = componentHistogram(base?.component_sizes || []);
+  const mixing = sectorCells(data.sector_mixing?.matrix || []);
+  const annual = data.annual_counts?.rows || [];
+  const cited = data.cited_papers?.top_by_in_degree || [];
+  const pairs = data.academia_industry_pairs || [];
+  const derived = data.explorer_derived;
+  const change = [...new Set(cells.map((r) => r.topic_id))].map((id) => {
+    const rows = cells
+      .filter((r) => r.topic_id === id)
+      .sort((a, b) => a.year - b.year);
+    const first = rows[0],
+      last = rows[rows.length - 1];
+    return {
+      first,
+      last,
+      delta:
+        100 *
+        (last.share_of_fractional_topic_mass -
+          first.share_of_fractional_topic_mass),
+    };
+  });
   return (
     <div
-      className="flex-1 overflow-y-auto px-3 sm:px-6 py-3 sm:py-5 bg-ground space-y-3 sm:space-y-5"
       data-testid="analytics-view"
+      className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4 text-ink"
     >
-      {/* Title Row */}
-      <div className="flex flex-wrap items-baseline justify-between gap-2 sm:gap-4">
-        <div>
-          <h1 className="text-base sm:text-xl font-semibold text-ink tracking-tight">
-            Full-graph scientific analytics
-          </h1>
-          <p className="hidden sm:block text-xs text-muted mt-0.5">
-            Precomputed over the complete 2021–2025 AAAI &amp; IJCAI main-track graph (
-            <span className="font-mono">release-d3c788c3114a</span>). Click any entity to inspect or focus it on the graph canvas.
-          </p>
-        </div>
+      <div className="flex flex-wrap justify-between gap-2 items-center">
+        <h1 className="text-lg font-semibold">Explore findings</h1>
+        <span className="text-xs text-muted">
+          {data.graph_version} · {data.analysis_method_version}
+        </span>
       </div>
-
-      {/* 1. Inventory Summary Strip (Divided 4-cell ledger container) */}
-      <section
-        aria-label="Corpus inventory totals"
-        className="ledger-kpis [&>.ledger-kpi]:!p-2.5 sm:[&>.ledger-kpi]:!p-3.5"
-      >
-        <div className="ledger-kpi">
-          <div className="text-xs text-muted">Domain nodes</div>
-          <div className="mt-0.5 sm:mt-1 text-lg sm:text-2xl font-medium text-ink tabular-nums">
-            {totalNodesText}
+      <nav aria-label="Analytical sections" className="flex flex-wrap gap-1">
+        {[
+          ["robustness", "Evidence sensitivity"],
+          ["topics", "Topic evolution"],
+          ["communities", "Components & communities"],
+          ["sectors", "Academia–industry"],
+          ["trajectories", "Citations & annual metrics"],
+        ].map(([id, label]) => (
+          <button
+            key={id}
+            aria-pressed={section === id}
+            className={`ledger-btn px-3 py-2 text-xs ${section === id ? "bg-raised" : ""}`}
+            onClick={() => useExplorerStore.setState({ analyticsSection: id })}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
+      <section className="ledger-kpis">
+        {[
+          ["Domain nodes", summary?.total_nodes],
+          ["Accepted relationships", summary?.total_edges],
+          ["Core factual edges (R1–R4)", summary?.unique_core_factual_edges],
+          ["Resolved researchers", summary?.resolved_core_researchers],
+        ].map(([label, n]) => (
+          <div key={String(label)} className="ledger-kpi">
+            <div className="text-xs text-muted">{label}</div>
+            <div className="text-xl tabular-nums">{fmt(n)}</div>
           </div>
-          <div className="mt-0.5 sm:mt-1 text-xs text-[var(--positive)] flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-            <span>Gate ≥ 2,000 PASS</span>
-          </div>
-        </div>
-
-        <div className="ledger-kpi">
-          <div className="text-xs text-muted">Accepted relationships</div>
-          <div className="mt-0.5 sm:mt-1 text-lg sm:text-2xl font-medium text-ink tabular-nums">
-            {totalEdgesText}
-          </div>
-          <div className="mt-0.5 sm:mt-1 text-xs text-muted">
-            Across 10 predicates (R1–R10)
-          </div>
-        </div>
-
-        <div className="ledger-kpi">
-          <div className="text-xs text-muted">Core factual edges (R1–R4)</div>
-          <div className="mt-0.5 sm:mt-1 text-lg sm:text-2xl font-medium text-ink tabular-nums">
-            {coreFactualText}
-          </div>
-          <div className="mt-0.5 sm:mt-1 text-xs text-[var(--positive)] flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-            <span>Gate ≥ 5,000 PASS</span>
-          </div>
-        </div>
-
-        <div className="ledger-kpi">
-          <div className="text-xs text-muted">Resolved researchers</div>
-          <div className="mt-0.5 sm:mt-1 text-lg sm:text-2xl font-medium text-ink tabular-nums">
-            32,189
-          </div>
-          <div className="mt-0.5 sm:mt-1 text-xs text-muted tabular-nums">
-            13,617 core papers · 2,047 orgs
-          </div>
-        </div>
+        ))}
       </section>
-
-      {/* 2. Separate Scientific Quality, Coverage & Audit Status Ledger */}
       <section
-        aria-label="Scientific quality and coverage audit"
         data-testid="quality-audit-panel"
-        className="ledger-panel p-3 sm:p-4"
+        aria-label="Scientific quality and coverage audit"
+        className="ledger-panel p-3 text-xs space-y-2"
       >
-        {/* Compact phone disclosure so first chart enters initial 844px viewport */}
-        <details className="sm:hidden group">
-          <summary className="list-none cursor-pointer flex items-center justify-between gap-2 text-xs">
-            <div className="min-w-0">
-              <div className="font-semibold text-ink">
-                Quality &amp; audit (D040 AI-assessed)
-              </div>
-              <div className="text-muted tabular-nums truncate mt-0.5">
-                Edge {edgePrecPct} · Affil {affCovPct} ({quality?.affiliation_status ? `Gate ${quality.affiliation_status.toUpperCase()}` : "FAIL"}) · Topic {topicCovPct} cov / {topicPrecPct} prec / {topicF1Val} F1
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-muted shrink-0 transition-transform group-open:rotate-90" />
-          </summary>
-          <div className="mt-2.5 space-y-2 text-xs">
-            <div className="p-2.5 rounded-[6px] bg-ground border border-border">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-ink tabular-nums">
-                  AI-assessed edge precision: {edgePrecPct}
-                </span>
-                {edgePrecPct === "Unavailable" ? (
-                  <span className="ledger-pill">Unavailable</span>
-                ) : quality?.edge_precision_status === "pass" ? (
-                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
-                ) : (
-                  <span className="ledger-pill ledger-pill-warn">AI-assessed</span>
-                )}
-              </div>
-              <div className="mt-1 text-muted tabular-nums">{edgePrecDetail}</div>
-            </div>
-            <div className="p-2.5 rounded-[6px] bg-ground border border-border">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-ink tabular-nums">
-                  Affiliation coverage: {affCovPct}
-                </span>
-                {affCovPct === "Unavailable" ? (
-                  <span className="ledger-pill">Unavailable</span>
-                ) : quality?.affiliation_status === "pass" ? (
-                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
-                ) : (
-                  <span className="ledger-pill ledger-pill-neg">Gate FAIL</span>
-                )}
-              </div>
-              <div className="mt-1 text-muted tabular-nums">{affCovDetail}</div>
-            </div>
-            <div className="p-2.5 rounded-[6px] bg-ground border border-border">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-ink tabular-nums">
-                  Topic: {topicCovPct} cov · {topicPrecPct} prec · {topicF1Val} F1
-                </span>
-                {topicCovPct === "Unavailable" ? (
-                  <span className="ledger-pill">Unavailable</span>
-                ) : quality?.topic_coverage_status === "pass" && quality?.topic_precision_status === "pass" ? (
-                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
-                ) : quality?.topic_coverage_status === "pass" ? (
-                  <span className="ledger-pill ledger-pill-warn">Cov PASS · Prec FAIL</span>
-                ) : (
-                  <span className="ledger-pill ledger-pill-neg">Gate FAIL</span>
-                )}
-              </div>
-              <div className="mt-1 text-muted tabular-nums">{topicDetail}</div>
-            </div>
+        <div className="grid sm:grid-cols-3 gap-3">
+          <div data-testid="quality-card-edge-precision">
+            <strong>
+              AI-assessed edge precision: {pct(q?.edge_precision)}
+            </strong>
+            <p>
+              {fmt(q?.edge_precision_correct)} / {fmt(q?.edge_precision_total)}{" "}
+              correct · Wilson 95% CI {pct(q?.edge_precision_wilson_lower)}–
+              {pct(q?.edge_precision_wilson_upper)} ·{" "}
+              {q?.edge_precision_status || "Unavailable"}
+            </p>
           </div>
-        </details>
-
-        {/* Tablet (2-col) and Desktop (3-col) Quality Grid */}
-        <div className="hidden sm:block">
-          <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-            <h2 className="text-sm font-semibold text-ink">
-              Scientific quality, coverage &amp; audit status (D040)
-            </h2>
-            <span className="text-xs text-muted">
-              Agent-assessed frozen audit · No human annotation performed
-            </span>
+          <div data-testid="quality-card-affiliation">
+            <strong>
+              Affiliation coverage: {pct(q?.affiliation_coverage)}
+            </strong>
+            <p>
+              {fmt(q?.affiliation_positions_resolved)} /{" "}
+              {fmt(q?.affiliation_positions_eligible)} matched-work authorship
+              positions · Target {pct(q?.affiliation_target)} ·{" "}
+              {q?.affiliation_status || "Unavailable"}
+            </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 text-xs">
-            <div
-              data-testid="quality-card-edge-precision"
-              className="p-3 rounded-[6px] bg-ground border border-border flex items-start justify-between gap-3"
-            >
-              <div>
-                <div className="text-muted">AI-assessed edge precision</div>
-                <div className="mt-1 text-lg font-semibold text-ink tabular-nums">
-                  {edgePrecPct}
-                </div>
-                <div className="mt-0.5 text-muted tabular-nums leading-relaxed">
-                  {edgePrecDetail}
-                </div>
-              </div>
-              {edgePrecPct === "Unavailable" ? (
-                <span className="ledger-pill shrink-0">Unavailable</span>
-              ) : quality?.edge_precision_status === "pass" ? (
-                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
-              ) : (
-                <span className="ledger-pill ledger-pill-warn shrink-0">AI-assessed</span>
-              )}
-            </div>
-
-            <div
-              data-testid="quality-card-affiliation"
-              className="p-3 rounded-[6px] bg-ground border border-border flex items-start justify-between gap-3"
-            >
-              <div>
-                <div className="text-muted">Affiliation position coverage</div>
-                <div className="mt-1 text-lg font-semibold text-ink tabular-nums">
-                  {affCovPct}
-                </div>
-                <div className="mt-0.5 text-muted tabular-nums leading-relaxed">
-                  {affCovDetail}
-                </div>
-              </div>
-              {affCovPct === "Unavailable" ? (
-                <span className="ledger-pill shrink-0">Unavailable</span>
-              ) : quality?.affiliation_status === "pass" ? (
-                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
-              ) : (
-                <span className="ledger-pill ledger-pill-neg shrink-0">
-                  <AlertTriangle className="w-3 h-3" />
-                  Gate FAIL
-                </span>
-              )}
-            </div>
-
-            <div
-              data-testid="quality-card-topic"
-              className="p-3 rounded-[6px] bg-ground border border-border flex items-start justify-between gap-3 md:col-span-2 xl:col-span-1"
-            >
-              <div>
-                <div className="text-muted">
-                  Topic coverage, precision &amp; historical F1
-                </div>
-                <div className="mt-1 text-lg font-semibold text-ink tabular-nums">
-                  {topicCovPct} cov · {topicPrecPct} prec · {topicF1Val} F1
-                </div>
-                <div className="mt-0.5 text-muted tabular-nums leading-relaxed">
-                  {topicDetail}
-                </div>
-              </div>
-              {topicCovPct === "Unavailable" ? (
-                <span className="ledger-pill shrink-0">Unavailable</span>
-              ) : quality?.topic_coverage_status === "pass" && quality?.topic_precision_status === "pass" ? (
-                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
-              ) : quality?.topic_coverage_status === "pass" ? (
-                <span className="ledger-pill ledger-pill-warn shrink-0">
-                  <AlertTriangle className="w-3 h-3" />
-                  Cov PASS · Prec FAIL
-                </span>
-              ) : (
-                <span className="ledger-pill ledger-pill-neg shrink-0">
-                  <AlertTriangle className="w-3 h-3" />
-                  Gate FAIL
-                </span>
-              )}
-            </div>
+          <div data-testid="quality-card-topic">
+            <strong>Topic coverage {pct(q?.topic_coverage)} ≠ accuracy</strong>
+            <p>
+              Precision {pct(q?.topic_precision)} (
+              {fmt(q?.topic_precision_true_positive)} /{" "}
+              {fmt(q?.topic_precision_predicted_labels)} weighted labels) ·
+              Historical micro-F1{" "}
+              {q?.topic_embedding_micro_f1?.toFixed(4) ?? "Unavailable"} vs{" "}
+              {q?.topic_phrase_baseline_f1?.toFixed(4) ?? "Unavailable"} phrase
+              baseline
+            </p>
+            <p>
+              {fmt(q?.topic_papers_labeled)} / {fmt(q?.topic_papers_eligible)}{" "}
+              labeled papers
+            </p>
           </div>
         </div>
+        <p className="text-muted">
+          No independent human validation; reviewer independence and verified
+          course accuracy not established. Wilson intervals exclude evaluator
+          error. Inferred topics are provisional. Unknown affiliations/sectors
+          do not imply absent collaboration.
+        </p>
       </section>
-
-      {/* 3. Paired Analytical Charts (2x2 on desktop, stacked on tablet/phone) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-        <div className="ledger-panel p-5">
-          <div className="mb-2">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Annual corpus & collaboration growth (2021–2025)
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Core proceedings papers, active OpenAlex-resolved researchers, and newly formed coauthorship pairs per conference year.
+      {section === "robustness" && (
+        <>
+          <Panel title="Which bridge claims survive repeated-paper evidence?">
+            <p className="text-sm mb-3">
+              {pct(sensitivity?.edge_retention_fraction)} of coauthorship edges
+              survive the frozen strict filter. The top-20 bridge overlap is{" "}
+              {fmt(sensitivity?.centralities?.betweenness?.overlap_count)}/20.
             </p>
-          </div>
-          <EChartBox option={annualChartOption} darkMode={darkMode} />
-        </div>
-
-        <div className="ledger-panel p-5">
-          <div className="mb-2">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Organization sector mixing matrix (COLLABORATED_WITH)
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Pair-paper support counts across organizational sectors (academia, industry, government, nonprofit).
-            </p>
-          </div>
-          <EChartBox option={sectorHeatmapOption} darkMode={darkMode} />
-        </div>
-
-        <div className="ledger-panel p-5">
-          <div className="mb-2">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Researcher coauthorship degree CCDF (log scale)
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Complementary cumulative distribution across all 32,189 resolved researchers (including 471 single-author isolates).
-            </p>
-          </div>
-          <EChartBox option={ccdfOption} darkMode={darkMode} />
-        </div>
-
-        <div className="ledger-panel p-5">
-          <div className="mb-2">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Top country-pair organization collaborations
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Distinct accepted COLLABORATED_WITH organization-pair by core-paper support counts across ISO country codes.
-            </p>
-          </div>
-          <EChartBox option={countryBarOption} darkMode={darkMode} />
-        </div>
-      </div>
-
-      {/* 4. Linked Interactive Ranking Tables */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-        {/* Bridge Researchers */}
-        <div className="ledger-panel p-5">
-          <div className="mb-3">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Top bridge researchers (full-projection betweenness)
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Computed on the 32,189-node Researcher–COAUTHORED_WITH projection.
-            </p>
-          </div>
-
-          <div className="divide-y divide-rule text-xs max-h-96 overflow-y-auto">
-            {bridgeResearchers.slice(0, 12).map((br, idx) => (
-              <div
-                key={br.researcher_id}
-                className="py-2.5 flex items-center justify-between gap-3 hover:bg-raised/60 px-2 transition-colors"
-              >
-                <div className="min-w-0">
-                  <div className="font-medium text-ink flex items-center gap-2">
-                    <span className="font-mono text-faint tabular-nums w-6">
-                      #{idx + 1}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => selectNode(br.researcher_id, br.researcher)}
-                      className="hover:underline truncate text-left"
-                    >
-                      {br.researcher}
-                    </button>
-                  </div>
-                  <div className="text-muted flex flex-wrap items-center gap-2 mt-0.5 pl-8 tabular-nums">
-                    <span>Betweenness: {br.betweenness.toFixed(4)}</span>
-                    <span>·</span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setViewMode("researchers");
-                        updateFilters({ communityId: br.community_id });
-                        setWorkspaceTab("graph");
-                      }}
-                      className="text-ink underline underline-offset-2"
-                    >
-                      {br.community_id} ({br.community_member_count} members)
-                    </button>
-                  </div>
+            {strict && sensitivity ? (
+              <>
+                <EChartBox
+                  label="Base versus strict researcher connectivity"
+                  option={{
+                    ...chart,
+                    xAxis: {
+                      ...chart.xAxis,
+                      data: ["Base", "Strict ≥2 papers"],
+                    },
+                    yAxis: {
+                      ...chart.yAxis,
+                      name: "Largest component (%)",
+                      max: 100,
+                    },
+                    series: [
+                      {
+                        name: "Largest component share",
+                        type: "bar",
+                        data: [
+                          100 * sensitivity.largest_component_share_base,
+                          100 * sensitivity.largest_component_share_strict,
+                        ],
+                      },
+                    ],
+                  }}
+                />
+                <Table
+                  label="Connectivity"
+                  headers={[
+                    "Projection",
+                    "Researchers",
+                    "Edges",
+                    "Largest component",
+                    "Components",
+                    "Isolates",
+                  ]}
+                  rows={[
+                    [
+                      "Corrected base",
+                      fmt(base.node_count),
+                      fmt(base.edge_count),
+                      `${fmt(base.component_sizes?.[0])} (${pct(sensitivity.largest_component_share_base)})`,
+                      fmt(base.component_sizes?.length),
+                      fmt(base.isolate_count),
+                    ],
+                    [
+                      "Frozen strict",
+                      fmt(strict.node_count),
+                      fmt(strict.edge_count),
+                      `${fmt(strict.weak_or_undirected_component_sizes?.[0])} (${pct(sensitivity.largest_component_share_strict)})`,
+                      fmt(strict.weak_or_undirected_component_sizes?.length),
+                      fmt(strict.isolate_count),
+                    ],
+                  ]}
+                />
+                <div className="flex flex-wrap gap-2 mt-3">
+                  <button
+                    className="ledger-btn px-3 py-2 text-xs"
+                    onClick={() => {
+                      setViewMode("researchers");
+                      resetFilters();
+                      updateFilters({ minSupport: 2, minWeight: 0 });
+                      setWorkspaceTab("graph");
+                    }}
+                  >
+                    Inspect repeated co-publications →
+                  </button>
+                  <button
+                    className="ledger-btn px-3 py-2 text-xs"
+                    onClick={() => {
+                      setViewMode("researchers");
+                      resetFilters();
+                      updateFilters({ minSupport: 1, minWeight: 0 });
+                      setWorkspaceTab("graph");
+                    }}
+                  >
+                    Inspect base collaboration →
+                  </button>
                 </div>
+              </>
+            ) : (
+              <p role="status">
+                Strict summaries unavailable in this runtime artifact. Operator
+                must prepare a new versioned artifact directory; no successful
+                comparison inferred.
+              </p>
+            )}
+            <details className="text-xs mt-3">
+              <summary className="cursor-pointer py-2">
+                Method & limitations
+              </summary>
+              <p>
+                Frozen minimum support = 2 distinct core papers; same researcher
+                denominator including isolates. Approximate weighted betweenness
+                uses 256 pivots, inverse positive fractional strength as
+                distance, random seed 20261101. Louvain NetworkX, seed 17,
+                resolution 0.8. Rankings describe structural position, never
+                researcher quality. Historical 73.6% largest component belongs
+                to a different frozen graph, not a UI filter. The historical
+                blanket strict filter mechanically removes CITES/HAS_TOPIC; this
+                UI applies repeated-paper filtering only to collaboration
+                predicates.
+              </p>
+            </details>
+          </Panel>
+          <Panel title="Top-20 bridge ranking stability (base ↔ strict)">
+            <p className="text-xs text-muted">
+              Outside top 20 is not a zero centrality. Each stable ID opens its
+              collaboration graph and paper evidence.
+            </p>
+            <Table
+              label="Bridge ranking comparison"
+              headers={["Researcher / stable ID", "Base rank", "Strict rank"]}
+              rows={ranks.map((r) => [
+                button(r.id, names.get(r.id)),
+                r.base ?? "Outside top 20",
+                r.strict ?? "Outside top 20",
+              ])}
+            />
+            <div className="grid sm:grid-cols-2 gap-2 mt-3">
+              {bridges.slice(0, 6).map((b: any) => (
+                <div key={b.researcher_id} className="text-xs py-2">
+                  {button(b.researcher_id, b.researcher)} ·{" "}
+                  {b.betweenness.toFixed(6)}
+                  <p className="text-muted">
+                    {b.community_id} · {fmt(b.community_member_count)} members
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Panel>
+        </>
+      )}
+      {section === "topics" && (
+        <Panel title="Which inferred topics changed by venue and year?">
+          <div className="flex flex-wrap gap-3 text-xs mb-3">
+            <label>
+              Venue
+              <select
+                aria-label="Topic venue"
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+                className="ledger-input ml-2"
+              >
+                <option value="venue:aaai">AAAI</option>
+                <option value="venue:ijcai">IJCAI</option>
+              </select>
+            </label>
+            <label>
+              Family
+              <select
+                aria-label="Topic family"
+                value={family}
+                onChange={(e) => setFamily(e.target.value)}
+                className="ledger-input ml-2"
+              >
+                <option value="">All families</option>
+                {[
+                  ...new Map(
+                    families.map((f) => [f.family_id, f.family]),
+                  ).entries(),
+                ].map(([id, name]) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Topic
+              <select
+                aria-label="Topic selection"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+                className="ledger-input ml-2 max-w-52"
+              >
+                <option value="">All inferred leaves</option>
+                {[
+                  ...new Map(
+                    topics.map((r) => [r.topic_id, r.topic]),
+                  ).entries(),
+                ].map(([id, name]) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              From
+              <input
+                aria-label="Topic first year"
+                type="number"
+                min="2021"
+                max={yearMax}
+                value={yearMin}
+                onChange={(e) =>
+                  setYearMin(Math.max(2021, Math.min(yearMax, +e.target.value)))
+                }
+                className="ledger-input w-20 ml-2"
+              />
+            </label>
+            <label>
+              Through
+              <input
+                aria-label="Topic last year"
+                type="number"
+                min={yearMin}
+                max="2025"
+                value={yearMax}
+                onChange={(e) =>
+                  setYearMax(Math.min(2025, Math.max(yearMin, +e.target.value)))
+                }
+                className="ledger-input w-20 ml-2"
+              />
+            </label>
+          </div>
+          <p className="text-xs text-muted">
+            Each labeled paper contributes 1/k to each of its k labels;
+            fractional mass / labeled papers defines prevalence. Coverage
+            includes abstentions; prevalence and percentage-point change are not
+            accuracy or causal growth. Click a cell or use its data-table button
+            for a bounded, illustrative paper-topic graph.
+          </p>
+          <EChartBox
+            label="Year by inferred topic share"
+            height={Math.max(300, topicNames.length * 27 + 100)}
+            onClick={(p) => {
+              const r = cells[p.dataIndex];
+              if (r) openCell(r);
+            }}
+            option={{
+              ...chart,
+              grid: {
+                top: 20,
+                left: 15,
+                right: 15,
+                bottom: 60,
+                containLabel: true,
+              },
+              xAxis: { type: "category", data: years },
+              yAxis: {
+                type: "category",
+                data: topicNames,
+                axisLabel: {
+                  color: tokens.chartAxis,
+                  width: 180,
+                  overflow: "truncate",
+                },
+              },
+              visualMap: {
+                min: 0,
+                max: Math.max(
+                  0,
+                  ...cells.map((r) => r.share_of_fractional_topic_mass * 100),
+                ),
+                orient: "horizontal",
+                left: "center",
+                bottom: 0,
+                inRange: { color: tokens.heatmapScale },
+                textStyle: { color: tokens.chartAxis },
+              },
+              series: [
+                {
+                  type: "heatmap",
+                  data: cells.map((r) => [
+                    years.indexOf(r.year),
+                    topicNames.indexOf(r.topic),
+                    100 * r.share_of_fractional_topic_mass,
+                  ]),
+                  label: {
+                    show: !!topic,
+                    formatter: (p: any) => `${p.value[2].toFixed(1)}%`,
+                  },
+                },
+              ],
+            }}
+          />
+          <Table
+            label="Topic cells and filtered graphs"
+            headers={[
+              "Year",
+              "Topic / graph",
+              "Raw count",
+              "Fractional count",
+              "Labeled / all papers",
+              "Coverage",
+              "Share",
+              "Abstentions",
+            ]}
+            rows={cells.map((r) => [
+              r.year,
+              <button
+                className="underline text-left"
+                onClick={() => openCell(r)}
+              >
+                {r.topic} → papers
+              </button>,
+              r.paper_count,
+              r.fractional_paper_count.toFixed(3),
+              `${r.labeled_paper_count} / ${r.all_core_paper_count}`,
+              pct(r.topic_label_coverage),
+              pct(r.share_of_fractional_topic_mass),
+              r.all_core_paper_count - r.labeled_paper_count,
+            ])}
+          />
+          {topic && (
+            <EChartBox
+              label="Selected topic comparison by venue"
+              option={{
+                ...chart,
+                tooltip: { trigger: "axis" },
+                legend: { textStyle: { color: tokens.chartAxis } },
+                xAxis: { ...chart.xAxis, data: years },
+                yAxis: { ...chart.yAxis, name: "Share of labeled papers (%)" },
+                series: ["venue:aaai", "venue:ijcai"].map((vid) => ({
+                  type: "line",
+                  name: vid === "venue:aaai" ? "AAAI" : "IJCAI",
+                  data: years.map((year) => {
+                    const r = topics.find(
+                      (r) =>
+                        r.topic_id === topic &&
+                        r.venue_id === vid &&
+                        r.year === year,
+                    );
+                    return r ? 100 * r.share_of_fractional_topic_mass : null;
+                  }),
+                })),
+              }}
+            />
+          )}
+          <Table
+            label="Prevalence change in selected venue"
+            headers={[
+              "Topic",
+              "First year/share",
+              "Last year/share",
+              "Percentage-point change",
+            ]}
+            rows={change.map((r) => [
+              r.first.topic,
+              `${r.first.year}: ${pct(r.first.share_of_fractional_topic_mass)}`,
+              `${r.last.year}: ${pct(r.last.share_of_fractional_topic_mass)}`,
+              `${r.delta >= 0 ? "+" : ""}${r.delta.toFixed(2)} pp`,
+            ])}
+          />
+        </Panel>
+      )}
+      {section === "communities" && (
+        <div className="grid lg:grid-cols-2 gap-4">
+          <Panel title="Connected components, including isolates">
+            <p className="text-xs text-muted">
+              {fmt(base?.component_sizes?.length)} components /{" "}
+              {fmt(base?.node_count)} researchers; {fmt(base?.isolate_count)}{" "}
+              isolates. A component differs from a Louvain community. Size
+              histogram includes the full tail.
+            </p>
+            <EChartBox
+              label="Component size distribution"
+              option={{
+                ...chart,
+                xAxis: {
+                  ...chart.xAxis,
+                  type: "log",
+                  name: "Researchers per component",
+                  min: 1,
+                },
+                yAxis: {
+                  ...chart.yAxis,
+                  type: "log",
+                  name: "Components",
+                  min: 1,
+                },
+                series: [{ type: "line", data: histogram }],
+              }}
+            />
+            <Table
+              label="Component distribution"
+              headers={["Size", "Components"]}
+              rows={histogram.map((r) => r)}
+            />
+            <Table
+              label="Largest component representatives"
+              headers={[
+                "Component stable membership ID",
+                "Size",
+                "Representative collaboration neighborhood",
+              ]}
+              rows={(derived?.component_examples || []).map((c: any) => [
+                c.component_id,
+                c.size,
+                button(c.representative_id, c.representative),
+              ])}
+            />
+            <p className="text-xs text-muted">
+              Representative = highest accepted coauthor degree, stable-ID
+              tie-break. Its bounded neighborhood is illustrative of that
+              component; it does not display every member.
+            </p>
+          </Panel>
+          <Panel title="What do frozen researcher communities study?">
+            <label className="text-xs">
+              Community
+              <select
+                aria-label="Community profile"
+                className="ledger-input w-full my-2"
+                value={profile?.community_id || ""}
+                onChange={(e) => setCommunity(e.target.value)}
+              >
+                {profiles.map((p: any) => (
+                  <option key={p.community_id} value={p.community_id}>
+                    {p.community_id} · {p.member_count} researchers
+                  </option>
+                ))}
+              </select>
+            </label>
+            {profile && (
+              <>
+                <p className="text-xs">
+                  {fmt(profile.paper_count)} distinct papers;{" "}
+                  {fmt(profile.topic_labeled_paper_count)} labeled papers. Only
+                  the stored top five topics are available. Not in stored
+                  profile ≠ zero.
+                </p>
+                <EChartBox
+                  label="Community inferred topic portfolio"
+                  option={{
+                    ...chart,
+                    grid: {
+                      left: 15,
+                      right: 15,
+                      top: 20,
+                      bottom: 80,
+                      containLabel: true,
+                    },
+                    xAxis: {
+                      ...chart.xAxis,
+                      data: profile.top_topics.map((t: any) => t.topic),
+                      axisLabel: {
+                        color: tokens.chartAxis,
+                        rotate: 25,
+                        width: 100,
+                        overflow: "truncate",
+                      },
+                    },
+                    yAxis: { ...chart.yAxis, name: "Fractional mass (%)" },
+                    series: [
+                      {
+                        type: "bar",
+                        data: profile.top_topics.map(
+                          (t: any) => 100 * t.share_of_fractional_topic_mass,
+                        ),
+                      },
+                    ],
+                  }}
+                />
                 <button
-                  type="button"
-                  onClick={() =>
-                    onFocusNodeInGraph(br.researcher_id, br.researcher)
-                  }
-                  className="ledger-btn h-7 px-2.5 text-xs shrink-0"
+                  className="ledger-btn px-3 py-2 text-xs"
+                  onClick={() => {
+                    setViewMode("researchers");
+                    updateFilters({ communityId: profile.community_id });
+                    setWorkspaceTab("graph");
+                  }}
                 >
-                  Focus →
+                  Open representative community graph →
                 </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Top Cited Core Papers */}
-        <div className="ledger-panel p-5">
-          <div className="mb-3">
-            <h2 className="text-[15px] font-semibold text-ink">
-              Top within-corpus cited papers (CITES in-degree)
-            </h2>
-            <p className="text-xs text-muted mt-0.5">
-              Directed citations within the 2021–2025 AAAI/IJCAI release corpus.
+                <Table
+                  label="Stored community topic profile"
+                  headers={[
+                    "Inferred topic",
+                    "Distinct papers",
+                    "Fractional share",
+                  ]}
+                  rows={profile.top_topics.map((t: any) => [
+                    t.topic,
+                    t.paper_count,
+                    pct(t.share_of_fractional_topic_mass),
+                  ])}
+                />
+              </>
+            )}
+            <p className="text-xs text-muted mt-3">
+              Louvain NetworkX seed 17, resolution 0.8. IDs are run-specific and
+              unstable across graph versions. Community paper sets may overlap;
+              do not sum as unique corpus papers.
             </p>
-          </div>
-
-          <div className="divide-y divide-rule text-xs max-h-96 overflow-y-auto">
-            {topCitedPapers.slice(0, 12).map((paper, idx) => (
-              <div
-                key={paper.paper_id}
-                className="py-2.5 flex items-center justify-between gap-3 hover:bg-raised/60 px-2 transition-colors"
-              >
-                <div className="min-w-0">
-                  <div className="font-medium text-ink flex items-center gap-2">
-                    <span className="font-mono text-faint tabular-nums w-6">
-                      #{idx + 1}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => selectNode(paper.paper_id, paper.title)}
-                      className="hover:underline truncate text-left"
-                    >
-                      {paper.title}
-                    </button>
-                  </div>
-                  <div className="text-muted mt-0.5 pl-8 tabular-nums">
-                    {paper.year} · In-degree: {paper.in_degree} · PageRank:{" "}
-                    {paper.pagerank.toFixed(5)}
-                  </div>
+          </Panel>
+        </div>
+      )}
+      {section === "sectors" && (
+        <>
+          <Panel title="Academia–industry co-publication, including unknown sectors">
+            <p className="text-xs text-muted">
+              Symmetric organization-pair × core-paper support matrix. A pair is
+              counted once per supporting paper; cells are neither unique pairs
+              nor unique papers. Unknown means missing sector evidence.
+              Co-publication establishes neither funding, contracts nor
+              employment.
+            </p>
+            <EChartBox
+              label="Sector pair-paper supports"
+              option={{
+                ...chart,
+                grid: { left: 90, right: 15, top: 10, bottom: 80 },
+                xAxis: {
+                  type: "category",
+                  data: mixing.sectors,
+                  axisLabel: { color: tokens.chartAxis, rotate: 25 },
+                },
+                yAxis: {
+                  type: "category",
+                  data: mixing.sectors,
+                  axisLabel: { color: tokens.chartAxis },
+                },
+                visualMap: {
+                  min: 0,
+                  max: mixing.max,
+                  orient: "horizontal",
+                  left: "center",
+                  bottom: 0,
+                  inRange: { color: tokens.heatmapScale },
+                  textStyle: { color: tokens.chartAxis },
+                },
+                series: [
+                  {
+                    type: "heatmap",
+                    data: mixing.cells,
+                    label: { show: true, color: tokens.chartInkSeries },
+                  },
+                ],
+              }}
+            />
+            <Table
+              label="Sector mixing"
+              headers={["Sector A", "Sector B", "Pair-paper supports"]}
+              rows={(data.sector_mixing?.matrix || []).map((r: any) => [
+                r.row_sector,
+                r.column_sector,
+                r.pair_paper_support_count,
+              ])}
+            />
+          </Panel>
+          <Panel title="Repeated cross-sector topic pairs">
+            <div className="grid md:grid-cols-2 gap-4">
+              {pairs.map((p: any, i: number) => (
+                <div key={i} className="text-xs border-t border-border py-3">
+                  <strong>
+                    {p.academia_organization} ↔ {p.industry_organization}
+                  </strong>
+                  <p>
+                    {p.topic}: {p.supported_paper_count} distinct supporting
+                    papers
+                  </p>
+                  <button
+                    className="ledger-btn px-3 py-2 mt-2"
+                    onClick={() =>
+                      setCompareModalOpen(
+                        true,
+                        p.academia_organization_id,
+                        p.industry_organization_id,
+                      )
+                    }
+                  >
+                    Compare portfolios & supporting papers
+                  </button>
                 </div>
+              ))}
+            </div>
+          </Panel>
+        </>
+      )}
+      {section === "trajectories" && (
+        <>
+          <Panel title="Annual corpus and collaboration metrics">
+            <p className="text-xs text-muted">
+              Separate scales retain actual counts. New coauthor pair = an
+              accepted pair counted in its earliest supported core-paper year;
+              not all pairs active that year. Annual active researcher sets
+              overlap and must not be summed.
+            </p>
+            <div className="grid lg:grid-cols-3 gap-3">
+              {[
+                ["Core papers", "paper_count"],
+                ["Active researchers", "active_researcher_count"],
+                ["New coauthor pairs", "new_collaboration_pair_count"],
+              ].map(([title, key]) => (
+                <div key={key}>
+                  <h3 className="text-xs mt-3">{title}</h3>
+                  <EChartBox
+                    label={title}
+                    height={240}
+                    option={{
+                      ...chart,
+                      xAxis: {
+                        ...chart.xAxis,
+                        data: annual.map((r: any) => r.year),
+                      },
+                      series: [
+                        { type: "bar", data: annual.map((r: any) => r[key]) },
+                      ],
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+            <Table
+              label="Annual metrics"
+              headers={[
+                "Year",
+                "Core papers",
+                "Active researchers",
+                "New coauthor pairs",
+              ]}
+              rows={annual.map((r: any) => [
+                r.year,
+                r.paper_count,
+                r.active_researcher_count,
+                r.new_collaboration_pair_count,
+              ])}
+            />
+          </Panel>
+          <Panel title="Researcher coauthor degree CCDF, complete tail">
+            <p className="text-xs text-muted">
+              Numerical degree x-axis; logarithmic researcher-count y-axis.
+              Includes {fmt(base?.isolate_count)} isolates /{" "}
+              {fmt(data.researcher_degree_ccdf?.node_denominator)} researchers.
+              Unique coauthor degree is specific to this projection.
+            </p>
+            <EChartBox
+              label="Complete researcher degree CCDF"
+              option={{
+                ...chart,
+                xAxis: {
+                  ...chart.xAxis,
+                  type: "value",
+                  name: "Coauthor degree",
+                },
+                yAxis: {
+                  ...chart.yAxis,
+                  type: "log",
+                  min: 1,
+                  name: "Researchers ≥ k",
+                },
+                series: [
+                  {
+                    type: "line",
+                    showSymbol: false,
+                    data: ccdfPoints(data.researcher_degree_ccdf?.rows || []),
+                  },
+                ],
+              }}
+            />
+            <Table
+              label="Complete CCDF"
+              headers={["Degree k", "Researchers ≥ k", "Fraction ≥ k"]}
+              rows={(data.researcher_degree_ccdf?.rows || []).map((r: any) => [
+                r.degree,
+                r.researcher_count_at_least,
+                pct(r.fraction_at_least),
+              ])}
+            />
+          </Panel>
+          <Panel title="Citation cohorts: compare papers within venue and conference year">
+            <p className="text-xs text-muted">
+              Exploratory empirical CDF of within-corpus incoming citations.
+              Percentile = fraction of same-venue/year papers with in-degree ≤
+              this paper, including ties and uncited papers. This controls
+              cohort membership only, not reference coverage or exposure. No
+              prediction or independent evaluation.
+            </p>
+            {derived ? (
+              <>
+                <Table
+                  label="Citation cohort distributions"
+                  headers={[
+                    "Venue",
+                    "Year",
+                    "All cohort papers",
+                    "Uncited",
+                    "In-degree: paper counts",
+                  ]}
+                  rows={derived.citation_cohorts.map((r: any) => [
+                    r.venue_id,
+                    r.year,
+                    r.paper_denominator,
+                    r.zero_in_degree_count,
+                    r.distribution
+                      .map((d: any) => `${d.in_degree}: ${d.paper_count}`)
+                      .join("; "),
+                  ])}
+                />
+                <Table
+                  label="Within-cohort citation leaders"
+                  headers={[
+                    "Paper / evidence",
+                    "Venue",
+                    "Year",
+                    "Incoming citations",
+                    "Cohort N",
+                    "Empirical percentile",
+                  ]}
+                  rows={derived.cohort_leaders.map((p: any) => [
+                    <button
+                      className="underline text-left"
+                      onClick={() => {
+                        setViewMode("citations");
+                        onFocusNodeInGraph(p.paper_id, p.title);
+                      }}
+                    >
+                      {p.title}
+                    </button>,
+                    p.venue_id,
+                    p.year,
+                    p.in_degree,
+                    p.cohort_paper_denominator,
+                    pct(p.empirical_percentile_including_ties),
+                  ])}
+                />
+              </>
+            ) : (
+              <p className="text-xs">
+                Exploratory cohort artifact unavailable.
+              </p>
+            )}
+          </Panel>
+          <Panel title="Organization collaboration persistence by supported paper year">
+            <p className="text-xs text-muted">
+              Top 25 accepted organization pairs, sorted by distinct full-period
+              R8 evidence paper support then edge ID. Active years count
+              observed co-publication years; zero years do not prove a
+              partnership ceased. Topic counts overlap for multilabel papers.
+              Exploratory selection, not a preregistered test.
+            </p>
+            {derived ? (
+              <Table
+                label="Pair persistence, inferred topics and evidence"
+                headers={[
+                  "Pair / provenance",
+                  "Distinct papers",
+                  "Active years",
+                  "2021–2025 paper counts",
+                  "Inferred topic support",
+                ]}
+                rows={derived.organization_pair_persistence.map((p: any) => [
+                  <button
+                    className="underline text-left"
+                    onClick={() => {
+                      setCompareModalOpen(true, p.source_id, p.target_id);
+                    }}
+                  >
+                    {p.source} ↔ {p.target}
+                  </button>,
+                  p.distinct_support_papers,
+                  p.active_year_count,
+                  p.by_year
+                    .map((y: any) => `${y.year}: ${y.distinct_support_papers}`)
+                    .join(" · "),
+                  p.inferred_topics
+                    .map((t: any) => `${t.topic}: ${t.distinct_support_papers}`)
+                    .join("; "),
+                ])}
+              />
+            ) : (
+              <p className="text-xs">Persistence artifact unavailable.</p>
+            )}
+          </Panel>
+          <Panel title="Citations within the release corpus">
+            <p className="text-xs text-muted">
+              Citing → cited, both endpoints AAAI/IJCAI 2021–2025. Counts are
+              not global influence or future impact; older papers have more
+              exposure.
+            </p>
+            <Table
+              label="Top within-corpus cited papers"
+              headers={["Paper / graph", "Year", "In-degree", "PageRank"]}
+              rows={cited.map((p: any) => [
                 <button
-                  type="button"
+                  className="underline text-left"
                   onClick={() => {
                     setViewMode("citations");
-                    onFocusNodeInGraph(paper.paper_id, paper.title);
+                    onFocusNodeInGraph(p.paper_id, p.title);
                   }}
-                  className="ledger-btn h-7 px-2.5 text-xs shrink-0"
                 >
-                  Citations →
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* 5. Academia–Industry Collaboration Candidates */}
-      <div className="ledger-panel p-5">
-        <div className="mb-3">
-          <h2 className="text-[15px] font-semibold text-ink">
-            Academia–industry topic collaboration candidates
-          </h2>
-          <p className="text-xs text-muted mt-0.5">
-            Cross-sector organization pairs co-publishing on shared inferred AI topics. Click Compare to inspect joint papers and topic portfolios.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {acadIndustryPairs.slice(0, 12).map((pair, idx) => (
-            <div
-              key={`${pair.academia_organization_id}-${pair.industry_organization_id}-${pair.topic_id}-${idx}`}
-              className="p-3.5 rounded-[8px] border border-border bg-ground flex flex-col justify-between gap-3"
-            >
-              <div>
-                <div className="text-xs font-semibold text-ink">
-                  {pair.academia_organization} ↔ {pair.industry_organization}
-                </div>
-                <div className="text-xs text-muted mt-1">
-                  Shared topic: <strong className="font-medium text-ink">{pair.topic}</strong>
-                </div>
-                <div className="text-xs text-faint mt-0.5 tabular-nums">
-                  Supported by {pair.supported_paper_count} shared topic papers
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setCompareModalOpen(
-                      true,
-                      pair.academia_organization_id,
-                      pair.industry_organization_id
-                    )
+                  {p.title}
+                </button>,
+                p.year,
+                p.in_degree,
+                p.pagerank,
+              ])}
+            />
+          </Panel>
+        </>
+      )}
+      <details className="text-xs text-muted">
+        <summary className="cursor-pointer py-2">
+          Artifact provenance and limitations
+        </summary>
+        <pre className="whitespace-pre-wrap break-all">
+          {JSON.stringify(
+            {
+              analysis: data.provenance,
+              exploratory: derived
+                ? {
+                    method: derived.method_version,
+                    graph_sha256: derived.graph_sha256,
+                    config_sha256: derived.config_sha256,
+                    definitions: derived.definitions,
                   }
-                  className="flex-1 ledger-btn h-7 px-2.5 text-xs"
-                >
-                  <GitCompare className="w-3.5 h-3.5 text-muted" />
-                  <span>Compare pair</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setViewMode("organizations");
-                    onFocusNodeInGraph(
-                      pair.industry_organization_id,
-                      pair.industry_organization
-                    );
-                  }}
-                  className="ledger-btn ledger-btn-primary h-7 px-2.5 text-xs"
-                >
-                  Graph
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+                : "Unavailable",
+            },
+            null,
+            2,
+          )}
+        </pre>
+        {(data.limitations || []).map((s: string) => (
+          <p key={s}>{s}</p>
+        ))}
+      </details>
     </div>
   );
 };

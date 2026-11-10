@@ -436,3 +436,83 @@ def test_empty_artifacts_quality_contract_unavailable():
     assert contract["topic_micro_f1"] is None
     assert contract["topic_eval_status"] == "unavailable"
 
+
+
+def test_analytics_frozen_sensitivity_and_metadata_parity(unit_client):
+    import json
+    root = Path(__file__).resolve().parents[4]
+    frozen = json.loads((root / "reports/release-v4/analysis.json").read_bytes())
+    summary = unit_client.get("/api/graph/summary").json()
+    response = unit_client.get("/api/analytics/overview")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["graph_version"] == frozen["graph_version"] == summary["graph_version"]
+    for name, projection in frozen["projections"].items():
+        assert data["projections"][name]["edge_count"] == projection["edge_count"]
+        assert data["projections"][name]["component_sizes"] == projection["weak_or_undirected_component_sizes"]
+    assert data["robustness"]["per_projection"] == frozen["robustness"]["per_projection"]
+    strict = data["robustness"]["strict_projections"]["researcher_collaboration"]
+    assert strict["edge_count"] == 6260
+    assert len(strict["top_betweenness"]) == 20
+    assert data["projections"]["researcher_collaboration"]["isolate_count"] == 414
+    assert data["quality"] == summary["quality"]
+    assert data["quality"]["edge_precision_correct"] == 193
+    assert data["quality"]["edge_precision_total"] == 200
+    readme = (root / "apps/research-explorer/README.md").read_text()
+    for stale in ("89,036", "14,578", "19,351", "471", "bge-small-en-v1.5", "0.56"):
+        assert stale not in readme
+    frozen_summary = json.loads((root / "reports/release-v4/graph-summary.json").read_bytes())
+    assert frozen_summary["model"]["name"] in readme
+    assert str(frozen_summary["thresholds"]["tau"]) in readme
+    assert "bge-small-en-v1.5" not in str(summary)
+    assert frozen_summary["model"]["name"] in str(summary["scientific_caveats"])
+    assert all(str(n) in readme for n in ("80,482", "13,031", "7,308", "414"))
+
+
+def test_missing_analytics_and_summary_are_unavailable(unit_client, monkeypatch):
+    store = unit_client.app.state.explorer_service.store
+    monkeypatch.setattr(store, "analysis_data", {})
+    monkeypatch.setattr(store, "summary_data", {})
+    for route in ("/api/analytics/overview", "/api/graph/summary"):
+        response = unit_client.get(route)
+        assert response.status_code == 503
+        assert "unavailable" in response.json()["detail"].lower()
+        assert "47875" not in response.text
+
+
+def test_neighborhood_window_uses_support_papers_and_keeps_frozen_weights(unit_client, monkeypatch):
+    """Invented support fixture: aggregate researcher edges have no paper endpoint."""
+    service = unit_client.app.state.explorer_service
+    store = service.store
+    paper_id = "paper:aaai:2021:17325"
+    monkeypatch.setattr(store, "ensure_ledger_loaded", lambda: True)
+    monkeypatch.setattr(store, "evidence_by_id", {
+        "evidence:derived:sample123": {"support_paper_ids": [paper_id, paper_id]}
+    })
+    endpoint = "/api/nodes/researcher:openalex:A5017743551/neighbors"
+    response = unit_client.get(endpoint, params={"year_min": 2021, "year_max": 2021, "venue": "venue:aaai"})
+    assert response.status_code == 200
+    edge = response.json()["edges"][0]
+    assert edge["support_count"] == 3
+    assert edge["fractional_weight"] == .75
+    assert "full-period" in response.json()["metric_scope_note"]
+    for params in ({"year_min": 2022}, {"venue": "venue:ijcai"}):
+        result = unit_client.get(endpoint, params=params)
+        assert result.status_code == 200
+        assert result.json()["edges"] == []
+        assert result.json()["returned_neighbor_count"] == 0
+    monkeypatch.setattr(store, "ensure_ledger_loaded", lambda: False)
+    result = unit_client.get(endpoint, params={"year_min": 2022})
+    assert result.status_code == 503
+    assert "evidence unavailable" in result.json()["detail"]
+
+
+def test_partial_quality_artifacts_never_manufacture_success(unit_client, monkeypatch):
+    service = unit_client.app.state.explorer_service
+    monkeypatch.setattr(service.store, "audit_results_data", {"global": {"precision": .99}})
+    monkeypatch.setattr(service.store, "summary_data", {"coverage": {"topic_coverage": .99}})
+    quality = service._build_quality_contract()
+    assert quality["edge_precision"] is None
+    assert quality["edge_precision_status"] == "unavailable"
+    assert quality["topic_coverage"] is None
+    assert quality["affiliation_coverage"] is None

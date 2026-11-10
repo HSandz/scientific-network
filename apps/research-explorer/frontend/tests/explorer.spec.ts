@@ -238,7 +238,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
     await expect(page.getByTestId("caveats-modal")).toBeVisible();
     await expect(page.getByTestId("caveats-modal")).toHaveAttribute("role", "dialog");
     await expect(page.getByTestId("caveats-modal")).toHaveAttribute("aria-modal", "true");
-    await expect(page.getByTestId("caveats-modal")).toContainText("48,259/65,469");
+    await expect(page.getByTestId("caveats-modal")).toContainText(/48,259\s*\/\s*65,469/);
     await expect(page.getByTestId("caveats-modal")).toContainText("85.00%");
     await expect(page.getByTestId("caveats-modal")).toContainText("68.63%");
     await expect(page.getByTestId("caveats-modal")).toContainText("0.4667");

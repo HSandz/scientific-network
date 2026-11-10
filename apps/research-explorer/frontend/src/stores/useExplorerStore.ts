@@ -1,3 +1,10 @@
+import {
+  makeViewSpec,
+  shareSpec,
+  validateSpec,
+  validId,
+  ViewSpec,
+} from "../lib/viewSpec";
 import { create } from "zustand";
 import {
   EdgeFilterMode,
@@ -37,6 +44,7 @@ export interface SavedViewBookmark {
   viewMode: ViewMode;
   filters: ExplorerFilters;
   selectedNodeId: string | null;
+  spec?: ViewSpec;
 }
 
 const THEME_STORAGE_KEY = "scientific-network-theme-v1";
@@ -104,6 +112,8 @@ const DEFAULT_FILTERS: ExplorerFilters = {
 
 interface ExplorerState {
   // Theme & workspace layout
+  insightReturn: boolean;
+  analyticsSection: string;
   darkMode: boolean;
   workspaceTab: WorkspaceTab;
   leftSidebarOpen: boolean;
@@ -119,6 +129,7 @@ interface ExplorerState {
   // Explicit graph views (Overview, Ego, Path)
   graphViewScope: GraphViewScope;
   cameraState: { x: number; y: number; ratio: number } | null;
+  shareNotice: string | null;
   expansionError: { message: string; nodeId: string; replace: boolean } | null;
 
   // Selection & navigation history
@@ -152,8 +163,12 @@ interface ExplorerState {
   setLayoutMode: (mode: LayoutMode) => void;
   setEdgeFilterMode: (mode: EdgeFilterMode) => void;
   setGraphViewScope: (scope: GraphViewScope) => void;
-  setCameraState: (camera: { x: number; y: number; ratio: number } | null) => void;
-  setExpansionError: (err: { message: string; nodeId: string; replace: boolean } | null) => void;
+  setCameraState: (
+    camera: { x: number; y: number; ratio: number } | null,
+  ) => void;
+  setExpansionError: (
+    err: { message: string; nodeId: string; replace: boolean } | null,
+  ) => void;
   setViewMode: (mode: ViewMode) => void;
   updateFilters: (partial: Partial<ExplorerFilters>) => void;
   resetFilters: () => void;
@@ -166,23 +181,28 @@ interface ExplorerState {
     nodes: GraphNode[],
     edges: GraphEdge[],
     replace?: boolean,
-    centerId?: string | null
+    centerId?: string | null,
   ) => void;
   enterEgoView: (
     centerNode: GraphNode,
     nodes: GraphNode[],
     edges: GraphEdge[],
-    cameraState?: { x: number; y: number; ratio: number } | null
+    cameraState?: { x: number; y: number; ratio: number } | null,
+    params?: Record<string, unknown>,
   ) => void;
   enterPathView: (
     path: PathResponse,
-    cameraState?: { x: number; y: number; ratio: number } | null
+    cameraState?: { x: number; y: number; ratio: number } | null,
   ) => void;
   restorePriorGraphScope: () => void;
   clearExtraSubgraph: () => void;
   setSearchModalOpen: (open: boolean) => void;
   setPathFinderOpen: (open: boolean) => void;
-  setCompareModalOpen: (open: boolean, leftId?: string, rightId?: string) => void;
+  setCompareModalOpen: (
+    open: boolean,
+    leftId?: string,
+    rightId?: string,
+  ) => void;
   setCaveatsModalOpen: (open: boolean) => void;
   saveCurrentView: (name: string) => void;
   applySavedView: (bookmark: SavedViewBookmark) => void;
@@ -191,6 +211,8 @@ interface ExplorerState {
 }
 
 export const useExplorerStore = create<ExplorerState>((set, get) => ({
+  insightReturn: false,
+  analyticsSection: "robustness",
   darkMode: getInitialDarkMode(),
   workspaceTab: "graph",
   leftSidebarOpen: getInitialLeftSidebarOpen(),
@@ -207,6 +229,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
     title: "Overview: Knowledge graph",
   },
   cameraState: null,
+  shareNotice: null,
   expansionError: null,
 
   selectedNodeId: null,
@@ -268,8 +291,14 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       }
       if (typeof window !== "undefined") {
         try {
-          window.localStorage.setItem(THEME_STORAGE_KEY, next ? "dark" : "light");
-          window.localStorage.setItem("scientific-network-theme", next ? "dark" : "light");
+          window.localStorage.setItem(
+            THEME_STORAGE_KEY,
+            next ? "dark" : "light",
+          );
+          window.localStorage.setItem(
+            "scientific-network-theme",
+            next ? "dark" : "light",
+          );
         } catch {
           // ignore storage errors
         }
@@ -280,6 +309,9 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   setWorkspaceTab: (workspaceTab) =>
     set((state) => ({
       workspaceTab,
+      insightReturn:
+        state.insightReturn ||
+        (state.workspaceTab === "analytics" && workspaceTab === "graph"),
       rightSidebarOpen:
         workspaceTab === "graph"
           ? Boolean(state.selectedNodeId || state.selectedEdgeId)
@@ -287,25 +319,34 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       leftSidebarOpen:
         workspaceTab === "graph" &&
         state.leftSidebarOpen &&
-        (!Boolean(state.selectedNodeId || state.selectedEdgeId) || canKeepBothDesktopRails()),
+        (!Boolean(state.selectedNodeId || state.selectedEdgeId) ||
+          canKeepBothDesktopRails()),
     })),
   setLeftSidebarOpen: (leftSidebarOpen) =>
     set((state) => ({
       leftSidebarOpen,
       rightSidebarOpen:
-        leftSidebarOpen && !canKeepBothDesktopRails() ? false : state.rightSidebarOpen,
+        leftSidebarOpen && !canKeepBothDesktopRails()
+          ? false
+          : state.rightSidebarOpen,
     })),
   setRightSidebarOpen: (rightSidebarOpen) =>
     set((state) => ({
       rightSidebarOpen,
       leftSidebarOpen:
-        rightSidebarOpen && !canKeepBothDesktopRails() ? false : state.leftSidebarOpen,
+        rightSidebarOpen && !canKeepBothDesktopRails()
+          ? false
+          : state.leftSidebarOpen,
     })),
   setCanvasExpanded: (canvasExpanded) =>
     set((state) => ({
       canvasExpanded,
-      leftSidebarOpen: !canvasExpanded && (typeof window === "undefined" || window.innerWidth >= 1024),
-      rightSidebarOpen: !canvasExpanded && Boolean(state.selectedNodeId || state.selectedEdgeId),
+      leftSidebarOpen:
+        !canvasExpanded &&
+        (typeof window === "undefined" || window.innerWidth >= 1024),
+      rightSidebarOpen:
+        !canvasExpanded &&
+        Boolean(state.selectedNodeId || state.selectedEdgeId),
     })),
 
   setLayoutMode: (layoutMode) => set({ layoutMode }),
@@ -325,11 +366,20 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       // Clear selection if it does not belong in the new projection
       let nextSelectedNodeId = state.selectedNodeId;
       if (nextSelectedNodeId) {
-        if (viewMode === "researchers" && !nextSelectedNodeId.startsWith("researcher:")) {
+        if (
+          viewMode === "researchers" &&
+          !nextSelectedNodeId.startsWith("researcher:")
+        ) {
           nextSelectedNodeId = null;
-        } else if (viewMode === "organizations" && !nextSelectedNodeId.startsWith("organization:")) {
+        } else if (
+          viewMode === "organizations" &&
+          !nextSelectedNodeId.startsWith("organization:")
+        ) {
           nextSelectedNodeId = null;
-        } else if (viewMode === "citations" && !nextSelectedNodeId.startsWith("paper:")) {
+        } else if (
+          viewMode === "citations" &&
+          !nextSelectedNodeId.startsWith("paper:")
+        ) {
           nextSelectedNodeId = null;
         }
       }
@@ -359,6 +409,12 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   updateFilters: (partial) =>
     set((state) => ({
       filters: { ...state.filters, ...partial },
+      selectedEdgeId: null,
+      hoveredNodeId: null,
+      graphViewScope: {
+        kind: "overview",
+        title: `Overview: ${state.viewMode}`,
+      },
       extraNodes: [],
       extraEdges: [],
       focusedCenterId: null,
@@ -373,10 +429,10 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
           state.viewMode === "organizations"
             ? 60
             : state.viewMode === "citations"
-            ? 80
-            : state.viewMode === "heterogeneous"
-            ? 120
-            : 100,
+              ? 80
+              : state.viewMode === "heterogeneous"
+                ? 120
+                : 100,
       },
       extraNodes: [],
       extraEdges: [],
@@ -395,7 +451,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       }
       const nextHistory = [
         ...state.selectionHistory.filter(
-          (item) => !(item.type === "node" && item.id === nodeId)
+          (item) => !(item.type === "node" && item.id === nodeId),
         ),
         { type: "node" as const, id: nodeId, label: label || nodeId },
       ].slice(-12);
@@ -403,7 +459,9 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
         selectedNodeId: nodeId,
         selectedEdgeId: null,
         rightSidebarOpen: true,
-        leftSidebarOpen: canKeepBothDesktopRails() ? state.leftSidebarOpen : false,
+        leftSidebarOpen: canKeepBothDesktopRails()
+          ? state.leftSidebarOpen
+          : false,
         selectionHistory: nextHistory,
       };
     }),
@@ -418,7 +476,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       }
       const nextHistory = [
         ...state.selectionHistory.filter(
-          (item) => !(item.type === "edge" && item.id === edgeId)
+          (item) => !(item.type === "edge" && item.id === edgeId),
         ),
         { type: "edge" as const, id: edgeId, label: label || edgeId },
       ].slice(-12);
@@ -426,7 +484,9 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
         selectedEdgeId: edgeId,
         selectedNodeId: null,
         rightSidebarOpen: true,
-        leftSidebarOpen: canKeepBothDesktopRails() ? state.leftSidebarOpen : false,
+        leftSidebarOpen: canKeepBothDesktopRails()
+          ? state.leftSidebarOpen
+          : false,
         selectionHistory: nextHistory,
       };
     }),
@@ -478,13 +538,14 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       for (const e of edges) edgeMap.set(e.edge_id, e);
 
       return {
+        graphViewScope: { ...state.graphViewScope, transient: true },
         extraNodes: Array.from(nodeMap.values()),
         extraEdges: Array.from(edgeMap.values()),
         focusedCenterId: centerId ?? state.focusedCenterId,
       };
     }),
 
-  enterEgoView: (centerNode, nodes, edges, cameraState = null) =>
+  enterEgoView: (centerNode, nodes, edges, cameraState = null, params) =>
     set((state) => {
       const prior = {
         viewMode: state.viewMode,
@@ -505,7 +566,11 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
           title: `Ego: ${centerNode.name}`,
           description: `Isolated 1-hop neighborhood (${nodes.length} nodes, ${edges.length} relationships)`,
           centerId: centerNode.id,
-          priorState: state.graphViewScope.kind === "ego" ? state.graphViewScope.priorState : prior,
+          neighborParams: params,
+          priorState:
+            state.graphViewScope.kind === "ego"
+              ? state.graphViewScope.priorState
+              : prior,
         },
         extraNodes: nodes,
         extraEdges: edges,
@@ -545,10 +610,15 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
             targetId: pathRes.target_id,
             sourceName: sName,
             targetName: tName,
+            mode: pathRes.mode,
+            maxHops: pathRes.max_hops,
             hopCount: pathRes.hop_count,
             steps: pathRes.step_descriptions || [],
           },
-          priorState: state.graphViewScope.kind === "path" ? state.graphViewScope.priorState : prior,
+          priorState:
+            state.graphViewScope.kind === "path"
+              ? state.graphViewScope.priorState
+              : prior,
         },
         extraNodes: pathRes.nodes,
         extraEdges: pathRes.edges,
@@ -583,6 +653,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
           centerId: prior.graphViewScope.centerId,
           priorState: null,
         },
+        cameraState: prior.cameraState ?? null,
         viewMode: prior.viewMode,
         selectedNodeId: prior.selectedNodeId,
         extraNodes: prior.extraNodes,
@@ -615,138 +686,151 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
     })),
   setCaveatsModalOpen: (caveatsModalOpen) => set({ caveatsModalOpen }),
 
-  saveCurrentView: (name) =>
-    set((state) => ({
-      savedViews: [
-        ...state.savedViews,
-        {
-          id: `custom-${Date.now()}`,
-          name: name.trim() || `Saved View ${state.savedViews.length + 1}`,
-          viewMode: state.viewMode,
-          filters: { ...state.filters },
-          selectedNodeId: state.selectedNodeId,
-        },
-      ],
-    })),
-
-  applySavedView: (bookmark) =>
+  saveCurrentView: (name) => {
+    const state = get();
+    const spec = makeViewSpec(state);
+    const bookmark = {
+      id: `custom-${Date.now()}`,
+      name: name.trim() || "Saved view",
+      viewMode: state.viewMode,
+      filters: { ...state.filters },
+      selectedNodeId: state.selectedNodeId,
+      spec: shareSpec(spec),
+    };
+    const savedViews = [...state.savedViews, bookmark];
+    try {
+      localStorage.setItem(
+        "scientific-network-views-v2",
+        JSON.stringify(savedViews.filter((v) => v.id.startsWith("custom-"))),
+      );
+    } catch {
+      /* storage may be unavailable */
+    }
+    set({ savedViews, shareNotice: spec.notice || null });
+  },
+  applySavedView: (bookmark) => {
+    const spec = bookmark.spec
+      ? validateSpec(bookmark.spec, DEFAULT_FILTERS)
+      : validateSpec(
+          { version: 2, ...bookmark, scope: { kind: "overview" } },
+          DEFAULT_FILTERS,
+        );
+    if (!spec) return;
     set({
-      viewMode: bookmark.viewMode,
-      filters: { ...bookmark.filters },
-      selectedNodeId: bookmark.selectedNodeId,
-      selectedEdgeId: null,
-      rightSidebarOpen: Boolean(bookmark.selectedNodeId),
+      viewMode: spec.viewMode,
+      filters: spec.filters,
+      selectedNodeId: spec.selectedNodeId,
+      selectedEdgeId: spec.selectedEdgeId,
+      rightSidebarOpen: !!(spec.selectedNodeId || spec.selectedEdgeId),
+      layoutMode: spec.layoutMode,
+      edgeFilterMode: spec.edgeFilterMode,
+      graphViewScope: spec.scope,
       extraNodes: [],
       extraEdges: [],
       focusedCenterId: null,
-      graphViewScope: {
-        kind: "overview",
-        title: `Overview: ${bookmark.viewMode.charAt(0).toUpperCase() + bookmark.viewMode.slice(1)}`,
-      },
       workspaceTab: "graph",
       expansionError: null,
-    }),
-
-  hydrateFromUrl: () => {
-    if (typeof window === "undefined") return;
-    const sp = new URLSearchParams(window.location.search);
-    const mode = sp.get("mode") as ViewMode | null;
-    const tab = sp.get("tab") as WorkspaceTab | null;
-    const layout = sp.get("layout");
-    const edgeFilter = sp.get("edge_filter");
-    const scope = sp.get("scope");
-    const center = sp.get("center");
-    const node = sp.get("node");
-    const edge = sp.get("edge");
-    const comm = sp.get("community");
-    const sector = sp.get("sector");
-    const preset = sp.get("preset");
-    const limit = sp.get("limit");
-    const minSupport = sp.get("min_support");
-    const minWeight = sp.get("min_weight");
-    const yearMin = sp.get("year_min");
-    const yearMax = sp.get("year_max");
-    const crossSector = sp.get("cross_sector");
-
-    set((state) => {
-      const nextMode =
-        mode && ["researchers", "organizations", "citations", "heterogeneous"].includes(mode)
-          ? mode
-          : state.viewMode;
-      const nextTab =
-        tab && ["graph", "table", "analytics"].includes(tab)
-          ? tab
-          : state.workspaceTab;
-      const nextLayout =
-        layout && ["seeded", "circular", "concentric"].includes(layout)
-          ? (layout as LayoutMode)
-          : state.layoutMode;
-      const nextFilter =
-        edgeFilter && ["all", "strong", "connected"].includes(edgeFilter)
-          ? (edgeFilter as EdgeFilterMode)
-          : state.edgeFilterMode;
-      const nextNode = node || state.selectedNodeId;
-      const nextEdge = edge || state.selectedEdgeId;
-
-      const nextScope: GraphViewScope = {
-        kind: scope && ["overview", "ego", "path"].includes(scope) ? (scope as any) : state.graphViewScope.kind,
-        title:
-          scope === "ego" && center
-            ? `Ego: ${center}`
-            : `Overview: ${nextMode.charAt(0).toUpperCase() + nextMode.slice(1)}`,
-        centerId: center ?? state.graphViewScope.centerId,
-      };
-
-      return {
-        viewMode: nextMode,
-        workspaceTab: nextTab,
-        layoutMode: nextLayout,
-        edgeFilterMode: nextFilter,
-        graphViewScope: nextScope,
-        selectedNodeId: nextNode,
-        selectedEdgeId: nextEdge,
-        rightSidebarOpen: Boolean(nextNode || nextEdge) || state.rightSidebarOpen,
-        filters: {
-          ...state.filters,
-          limit: limit ? Math.min(250, Math.max(10, parseInt(limit, 10))) : state.filters.limit,
-          communityId: comm ?? state.filters.communityId,
-          sector: sector ?? state.filters.sector,
-          preset: preset ?? state.filters.preset,
-          minSupport: minSupport ? parseInt(minSupport, 10) : state.filters.minSupport,
-          minWeight: minWeight ? parseFloat(minWeight) : state.filters.minWeight,
-          yearMin: yearMin ? parseInt(yearMin, 10) : state.filters.yearMin,
-          yearMax: yearMax ? parseInt(yearMax, 10) : state.filters.yearMax,
-          crossSectorOnly: crossSector === "1" ? true : state.filters.crossSectorOnly,
-        },
-      };
+      shareNotice: spec.notice || null,
     });
   },
-
+  hydrateFromUrl: () => {
+    if (typeof window === "undefined") return;
+    try {
+      const stored = JSON.parse(
+        localStorage.getItem("scientific-network-views-v2") || "[]",
+      );
+      if (Array.isArray(stored))
+        set((s) => ({
+          savedViews: [
+            ...s.savedViews.filter((v) => !v.id.startsWith("custom-")),
+            ...stored.filter(
+              (v) =>
+                v &&
+                typeof v.name === "string" &&
+                validateSpec(v.spec, DEFAULT_FILTERS),
+            ),
+          ],
+        }));
+    } catch {
+      /* inaccessible storage */
+    }
+    const sp = new URLSearchParams(window.location.search);
+    let spec: ViewSpec | null = null;
+    try {
+      if (sp.has("view"))
+        spec = validateSpec(JSON.parse(sp.get("view")!), DEFAULT_FILTERS);
+    } catch {
+      /* invalid links use safe overview */
+    }
+    if (!spec) {
+      const legacy: Record<string, unknown> = { ...get().filters };
+      for (const [param, key] of Object.entries({
+        limit: "limit",
+        year_min: "yearMin",
+        year_max: "yearMax",
+        min_support: "minSupport",
+        min_weight: "minWeight",
+      }))
+        if (sp.has(param)) legacy[key] = Number(sp.get(param));
+      for (const [param, key] of Object.entries({
+        community: "communityId",
+        sector: "sector",
+        preset: "preset",
+        country: "countryCode",
+        venue: "venue",
+        topic: "topicId",
+      }))
+        if (sp.has(param)) legacy[key] = sp.get(param);
+      legacy.crossSectorOnly = sp.get("cross_sector") === "1";
+      spec = validateSpec(
+        {
+          version: 2,
+          viewMode: sp.get("mode") || get().viewMode,
+          workspaceTab: sp.get("tab"),
+          filters: legacy,
+          layoutMode: sp.get("layout"),
+          edgeFilterMode: sp.get("edge_filter"),
+          selectedNodeId: sp.get("node"),
+          selectedEdgeId: sp.get("edge"),
+          scope: {
+            kind:
+              sp.get("scope") === "ego" && validId(sp.get("center"))
+                ? "ego"
+                : "overview",
+            centerId: sp.get("center"),
+          },
+          notice:
+            sp.get("scope") === "path"
+              ? "Legacy path URL has no traversal parameters; showing overview."
+              : undefined,
+        },
+        DEFAULT_FILTERS,
+      );
+    }
+    if (spec)
+      set({
+        viewMode: spec.viewMode,
+        workspaceTab: spec.workspaceTab,
+        filters: spec.filters,
+        layoutMode: spec.layoutMode,
+        edgeFilterMode: spec.edgeFilterMode,
+        graphViewScope: spec.scope,
+        selectedNodeId: spec.selectedNodeId,
+        selectedEdgeId: spec.selectedEdgeId,
+        rightSidebarOpen: !!(spec.selectedNodeId || spec.selectedEdgeId),
+        extraNodes: [],
+        extraEdges: [],
+        shareNotice: spec.notice || null,
+      });
+  },
   buildShareUrl: () => {
     if (typeof window === "undefined") return "";
-    const state = get();
-    const sp = new URLSearchParams();
-    sp.set("mode", state.viewMode);
-    sp.set("tab", state.workspaceTab);
-    sp.set("layout", state.layoutMode);
-    sp.set("edge_filter", state.edgeFilterMode);
-    sp.set("scope", state.graphViewScope.kind);
-    if (state.graphViewScope.centerId) {
-      sp.set("center", state.graphViewScope.centerId);
-    }
-    if (state.selectedNodeId) sp.set("node", state.selectedNodeId);
-    if (state.selectedEdgeId) sp.set("edge", state.selectedEdgeId);
-    if (state.filters.limit) sp.set("limit", String(state.filters.limit));
-    if (state.filters.communityId) sp.set("community", state.filters.communityId);
-    if (state.filters.sector) sp.set("sector", state.filters.sector);
-    if (state.filters.minSupport > 1) sp.set("min_support", String(state.filters.minSupport));
-    if (state.filters.minWeight > 0) sp.set("min_weight", String(state.filters.minWeight));
-    if (state.filters.yearMin !== 2021) sp.set("year_min", String(state.filters.yearMin));
-    if (state.filters.yearMax !== 2025) sp.set("year_max", String(state.filters.yearMax));
-    if (state.filters.crossSectorOnly) sp.set("cross_sector", "1");
-    if (state.viewMode === "heterogeneous" && state.filters.preset) {
-      sp.set("preset", state.filters.preset);
-    }
-    return `${window.location.origin}${window.location.pathname}?${sp.toString()}`;
+    const spec = makeViewSpec(get());
+    set({ shareNotice: spec.notice || null });
+    const sp = new URLSearchParams({
+      v: "2",
+      view: JSON.stringify(shareSpec(spec)),
+    });
+    return `${window.location.origin}${window.location.pathname}?${sp}`;
   },
 }));

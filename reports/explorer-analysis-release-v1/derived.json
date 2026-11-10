@@ -1,0 +1,4889 @@
+{
+  "citation_cohorts": [
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 716
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 414
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 203
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 127
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 70
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 32
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 27
+        },
+        {
+          "in_degree": 7,
+          "paper_count": 27
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 8
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 8
+        },
+        {
+          "in_degree": 10,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 11,
+          "paper_count": 5
+        },
+        {
+          "in_degree": 12,
+          "paper_count": 4
+        },
+        {
+          "in_degree": 13,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 14,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 15,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 16,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 17,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 20,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 25,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 51,
+          "paper_count": 1
+        }
+      ],
+      "paper_denominator": 1654,
+      "venue_id": "venue:aaai",
+      "year": 2021,
+      "zero_in_degree_count": 716
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 662
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 308
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 161
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 79
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 53
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 16
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 16
+        },
+        {
+          "in_degree": 7,
+          "paper_count": 8
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 5
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 10,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 11,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 13,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 14,
+          "paper_count": 2
+        }
+      ],
+      "paper_denominator": 1319,
+      "venue_id": "venue:aaai",
+      "year": 2022,
+      "zero_in_degree_count": 662
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 988
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 373
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 108
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 61
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 21
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 10
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 6
+        },
+        {
+          "in_degree": 7,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 4
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 14,
+          "paper_count": 2
+        }
+      ],
+      "paper_denominator": 1578,
+      "venue_id": "venue:aaai",
+      "year": 2023,
+      "zero_in_degree_count": 988
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 2057
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 212
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 49
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 4
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 5
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 10,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 21,
+          "paper_count": 1
+        }
+      ],
+      "paper_denominator": 2331,
+      "venue_id": "venue:aaai",
+      "year": 2024,
+      "zero_in_degree_count": 2057
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 2894
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 97
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 21
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 7
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 3
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 3
+        }
+      ],
+      "paper_denominator": 3028,
+      "venue_id": "venue:aaai",
+      "year": 2025,
+      "zero_in_degree_count": 2894
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 274
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 144
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 66
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 42
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 23
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 9
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 7
+        },
+        {
+          "in_degree": 7,
+          "paper_count": 8
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 4
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 5
+        },
+        {
+          "in_degree": 10,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 12,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 16,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 19,
+          "paper_count": 1
+        }
+      ],
+      "paper_denominator": 586,
+      "venue_id": "venue:ijcai",
+      "year": 2021,
+      "zero_in_degree_count": 274
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 347
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 182
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 80
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 36
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 16
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 13
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 8,
+          "paper_count": 1
+        },
+        {
+          "in_degree": 12,
+          "paper_count": 1
+        }
+      ],
+      "paper_denominator": 678,
+      "venue_id": "venue:ijcai",
+      "year": 2022,
+      "zero_in_degree_count": 347
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 480
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 112
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 26
+        },
+        {
+          "in_degree": 3,
+          "paper_count": 10
+        },
+        {
+          "in_degree": 4,
+          "paper_count": 6
+        },
+        {
+          "in_degree": 5,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 6,
+          "paper_count": 2
+        },
+        {
+          "in_degree": 9,
+          "paper_count": 1
+        }
+      ],
+      "paper_denominator": 639,
+      "venue_id": "venue:ijcai",
+      "year": 2023,
+      "zero_in_degree_count": 480
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 724
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 53
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 13
+        }
+      ],
+      "paper_denominator": 790,
+      "venue_id": "venue:ijcai",
+      "year": 2024,
+      "zero_in_degree_count": 724
+    },
+    {
+      "distribution": [
+        {
+          "in_degree": 0,
+          "paper_count": 998
+        },
+        {
+          "in_degree": 1,
+          "paper_count": 14
+        },
+        {
+          "in_degree": 2,
+          "paper_count": 2
+        }
+      ],
+      "paper_denominator": 1014,
+      "venue_id": "venue:ijcai",
+      "year": 2025,
+      "zero_in_degree_count": 998
+    }
+  ],
+  "cohort_leaders": [
+    {
+      "cohort_paper_denominator": 1654,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 51,
+      "paper_id": "paper:aaai:2021:17325",
+      "title": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+      "venue_id": "venue:aaai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 1654,
+      "empirical_percentile_including_ties": 0.9993954050785974,
+      "in_degree": 25,
+      "paper_id": "paper:aaai:2021:16514",
+      "title": "Beyond Low-frequency Information in Graph Convolutional Networks",
+      "venue_id": "venue:aaai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 1654,
+      "empirical_percentile_including_ties": 0.9987908101571947,
+      "in_degree": 20,
+      "paper_id": "paper:aaai:2021:17320",
+      "title": "Going Deeper With Directly-Trained Larger Spiking Neural Networks",
+      "venue_id": "venue:aaai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 1654,
+      "empirical_percentile_including_ties": 0.998186215235792,
+      "in_degree": 17,
+      "paper_id": "paper:aaai:2021:17344",
+      "title": "Lifelong Multi-Agent Path Finding in Large-Scale Warehouses",
+      "venue_id": "venue:aaai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 1654,
+      "empirical_percentile_including_ties": 0.9975816203143894,
+      "in_degree": 16,
+      "paper_id": "paper:aaai:2021:16647",
+      "title": "Fair and Truthful Mechanisms for Dichotomous Valuations",
+      "venue_id": "venue:aaai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 1319,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 14,
+      "paper_id": "paper:aaai:2022:20726",
+      "title": "Deep Graph Clustering via Dual Correlation Reduction",
+      "venue_id": "venue:aaai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 1319,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 14,
+      "paper_id": "paper:aaai:2022:20881",
+      "title": "TS2Vec: Towards Universal Representation of Time Series",
+      "venue_id": "venue:aaai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 1319,
+      "empirical_percentile_including_ties": 0.9984836997725549,
+      "in_degree": 13,
+      "paper_id": "paper:aaai:2022:20162",
+      "title": "Low-Light Image Enhancement with Normalizing Flow",
+      "venue_id": "venue:aaai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 1319,
+      "empirical_percentile_including_ties": 0.9984836997725549,
+      "in_degree": 13,
+      "paper_id": "paper:aaai:2022:20202",
+      "title": "Evo-ViT: Slow-Fast Token Evolution for Dynamic Vision Transformer",
+      "venue_id": "venue:aaai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 1319,
+      "empirical_percentile_including_ties": 0.9984836997725549,
+      "in_degree": 13,
+      "paper_id": "paper:aaai:2022:20819",
+      "title": "FedProto: Federated Prototype Learning across Heterogeneous Clients",
+      "venue_id": "venue:aaai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 1578,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 14,
+      "paper_id": "paper:aaai:2023:25233",
+      "title": "BEVDepth: Acquisition of Reliable Depth for Multi-View 3D Object Detection",
+      "venue_id": "venue:aaai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 1578,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 14,
+      "paper_id": "paper:aaai:2023:26317",
+      "title": "Are Transformers Effective for Time Series Forecasting?",
+      "venue_id": "venue:aaai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 1578,
+      "empirical_percentile_including_ties": 0.9987325728770595,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2023:25281",
+      "title": "Intriguing Findings of Frequency Selection for Image Deblurring",
+      "venue_id": "venue:aaai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 1578,
+      "empirical_percentile_including_ties": 0.9987325728770595,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2023:26187",
+      "title": "Federated Learning on Non-IID Graphs via Structural Knowledge Sharing",
+      "venue_id": "venue:aaai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 1578,
+      "empirical_percentile_including_ties": 0.9987325728770595,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2023:26462",
+      "title": "From Understanding the Population Dynamics of the NSGA-II to the First Proven Lower Bounds",
+      "venue_id": "venue:aaai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 2331,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 21,
+      "paper_id": "paper:aaai:2024:28226",
+      "title": "T2I-Adapter: Learning Adapters to Dig Out More Controllable Ability for Text-to-Image Diffusion Models",
+      "venue_id": "venue:aaai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 2331,
+      "empirical_percentile_including_ties": 0.9995709995709996,
+      "in_degree": 10,
+      "paper_id": "paper:aaai:2024:28206",
+      "title": "Follow Your Pose: Pose-Guided Text-to-Video Generation Using Pose-Free Videos",
+      "venue_id": "venue:aaai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 2331,
+      "empirical_percentile_including_ties": 0.9991419991419992,
+      "in_degree": 5,
+      "paper_id": "paper:aaai:2024:28204",
+      "title": "Directed Diffusion: Direct Control of Object Placement through Attention Guidance",
+      "venue_id": "venue:aaai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 2331,
+      "empirical_percentile_including_ties": 0.9991419991419992,
+      "in_degree": 5,
+      "paper_id": "paper:aaai:2024:29546",
+      "title": "Reliable Conflictive Multi-View Learning",
+      "venue_id": "venue:aaai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 2331,
+      "empirical_percentile_including_ties": 0.9982839982839983,
+      "in_degree": 4,
+      "paper_id": "paper:aaai:2024:28253",
+      "title": "NuScenes-QA: A Multi-Modal Visual Question Answering Benchmark for Autonomous Driving Scenario",
+      "venue_id": "venue:aaai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 3028,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2025:32690",
+      "title": "EfficientVMamba: Atrous Selective Scan for Light Weight Visual Mamba",
+      "venue_id": "venue:aaai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 3028,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2025:32728",
+      "title": "Boosting Consistency in Story Visualization with Rich-Contextual Conditional Diffusion Models",
+      "venue_id": "venue:aaai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 3028,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 9,
+      "paper_id": "paper:aaai:2025:32729",
+      "title": "IMAGDressing-v1: Customizable Virtual Dressing",
+      "venue_id": "venue:aaai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 3028,
+      "empirical_percentile_including_ties": 0.9990092470277411,
+      "in_degree": 8,
+      "paper_id": "paper:aaai:2025:32761",
+      "title": "Ultra-High Resolution Segmentation via Boundary-Enhanced Patch-Merging Transformer",
+      "venue_id": "venue:aaai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 3028,
+      "empirical_percentile_including_ties": 0.9986789960369881,
+      "in_degree": 6,
+      "paper_id": "paper:aaai:2025:34640",
+      "title": "Augmenting Math Word Problems via Iterative Question Composing",
+      "venue_id": "venue:aaai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 586,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 19,
+      "paper_id": "paper:ijcai:2021:324",
+      "title": "Time-Series Representation Learning via Temporal and Contextual Contrasting",
+      "venue_id": "venue:ijcai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 586,
+      "empirical_percentile_including_ties": 0.9982935153583617,
+      "in_degree": 16,
+      "paper_id": "paper:ijcai:2021:214",
+      "title": "Masked Label Prediction: Unified Message Passing Model for Semi-Supervised Classification",
+      "venue_id": "venue:ijcai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 586,
+      "empirical_percentile_including_ties": 0.9965870307167235,
+      "in_degree": 12,
+      "paper_id": "paper:ijcai:2021:356",
+      "title": "On Explaining Random Forests with SAT",
+      "venue_id": "venue:ijcai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 586,
+      "empirical_percentile_including_ties": 0.9948805460750854,
+      "in_degree": 10,
+      "paper_id": "paper:ijcai:2021:152",
+      "title": "Audio2Head: Audio-driven One-shot Talking-head Generation with Natural Head Motion",
+      "venue_id": "venue:ijcai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 586,
+      "empirical_percentile_including_ties": 0.9931740614334471,
+      "in_degree": 9,
+      "paper_id": "paper:ijcai:2021:254",
+      "title": "Abductive Knowledge Induction from Raw Data",
+      "venue_id": "venue:ijcai",
+      "year": 2021
+    },
+    {
+      "cohort_paper_denominator": 678,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 12,
+      "paper_id": "paper:ijcai:2022:124",
+      "title": "SVTR: Scene Text Recognition with a Single Visual Model",
+      "venue_id": "venue:ijcai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 678,
+      "empirical_percentile_including_ties": 0.9985250737463127,
+      "in_degree": 8,
+      "paper_id": "paper:ijcai:2022:171",
+      "title": "Copy Motion From One to Another: Fake Motion Video Generation",
+      "venue_id": "venue:ijcai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 678,
+      "empirical_percentile_including_ties": 0.9970501474926253,
+      "in_degree": 6,
+      "paper_id": "paper:ijcai:2022:343",
+      "title": "Multi-Level Firing with Spiking DS-ResNet: Enabling Better and Deeper Directly-Trained Spiking Neural Networks",
+      "venue_id": "venue:ijcai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 678,
+      "empirical_percentile_including_ties": 0.9970501474926253,
+      "in_degree": 6,
+      "paper_id": "paper:ijcai:2022:376",
+      "title": "Causes of Effects: Learning Individual Responses from Population Data",
+      "venue_id": "venue:ijcai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 678,
+      "empirical_percentile_including_ties": 0.9941002949852508,
+      "in_degree": 5,
+      "paper_id": "paper:ijcai:2022:111",
+      "title": "MotionMixer: MLP-based 3D Human Body Pose Forecasting",
+      "venue_id": "venue:ijcai",
+      "year": 2022
+    },
+    {
+      "cohort_paper_denominator": 639,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 9,
+      "paper_id": "paper:ijcai:2023:184",
+      "title": "Action Recognition with Multi-stream Motion Modeling and Mutual Information Maximization",
+      "venue_id": "venue:ijcai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 639,
+      "empirical_percentile_including_ties": 0.9984350547730829,
+      "in_degree": 6,
+      "paper_id": "paper:ijcai:2023:435",
+      "title": "Incomplete Multi-view Clustering via Prototype-based Imputation",
+      "venue_id": "venue:ijcai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 639,
+      "empirical_percentile_including_ties": 0.9984350547730829,
+      "in_degree": 6,
+      "paper_id": "paper:ijcai:2023:612",
+      "title": "Stochastic Population Update Can Provably Be Helpful in Multi-Objective Evolutionary Algorithms",
+      "venue_id": "venue:ijcai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 639,
+      "empirical_percentile_including_ties": 0.9953051643192489,
+      "in_degree": 5,
+      "paper_id": "paper:ijcai:2023:62",
+      "title": "RaSa: Relation and Sensitivity Aware Representation Learning for Text-based Person Search",
+      "venue_id": "venue:ijcai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 639,
+      "empirical_percentile_including_ties": 0.9953051643192489,
+      "in_degree": 5,
+      "paper_id": "paper:ijcai:2023:628",
+      "title": "A Mathematical Runtime Analysis of the Non-dominated Sorting Genetic Algorithm III (NSGA-III)",
+      "venue_id": "venue:ijcai",
+      "year": 2023
+    },
+    {
+      "cohort_paper_denominator": 790,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2024:107",
+      "title": "Bridging Stereo Geometry and BEV Representation with Reliable Mutual Interaction for Semantic Scene Completion",
+      "venue_id": "venue:ijcai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 790,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2024:111",
+      "title": "Probabilistic Contrastive Learning for Domain Adaptation",
+      "venue_id": "venue:ijcai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 790,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2024:185",
+      "title": "Detector Collapse: Backdooring Object Detection to Catastrophic Overload or Blindness in the Physical World",
+      "venue_id": "venue:ijcai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 790,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2024:241",
+      "title": "Where to Mask: Structure-Guided Masking for Graph Masked Autoencoders",
+      "venue_id": "venue:ijcai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 790,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2024:336",
+      "title": "Exponential Lower Bounds on the Double Oracle Algorithm in Zero-Sum Games",
+      "venue_id": "venue:ijcai",
+      "year": 2024
+    },
+    {
+      "cohort_paper_denominator": 1014,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2025:782",
+      "title": "Dynamic and Adaptive Feature Generation with LLM",
+      "venue_id": "venue:ijcai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 1014,
+      "empirical_percentile_including_ties": 1.0,
+      "in_degree": 2,
+      "paper_id": "paper:ijcai:2025:878",
+      "title": "Endowing Interpretability for Neural Cognitive Diagnosis by Efficient Kolmogorov-Arnold Networks",
+      "venue_id": "venue:ijcai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 1014,
+      "empirical_percentile_including_ties": 0.9980276134122288,
+      "in_degree": 1,
+      "paper_id": "paper:ijcai:2025:119",
+      "title": "Shaping a Stabilized Video by Mitigating Unintended Changes for Concept-Augmented Video Editing",
+      "venue_id": "venue:ijcai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 1014,
+      "empirical_percentile_including_ties": 0.9980276134122288,
+      "in_degree": 1,
+      "paper_id": "paper:ijcai:2025:123",
+      "title": "Incorporating Visual Experts to Resolve the Information Loss in Multimodal Large Language Models",
+      "venue_id": "venue:ijcai",
+      "year": 2025
+    },
+    {
+      "cohort_paper_denominator": 1014,
+      "empirical_percentile_including_ties": 0.9980276134122288,
+      "in_degree": 1,
+      "paper_id": "paper:ijcai:2025:19",
+      "title": "Combining Deep Reinforcement Learning and Search with Generative Models for Game-Theoretic Opponent Modeling",
+      "venue_id": "venue:ijcai",
+      "year": 2025
+    }
+  ],
+  "component_examples": [
+    {
+      "component_id": "component:474365caa63dd4e3",
+      "representative": "Chengjie Wang",
+      "representative_id": "researcher:openalex:A5023834700",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20776
+    },
+    {
+      "component_id": "component:99aaee302dacad9c",
+      "representative": "Seungryong Kim",
+      "representative_id": "researcher:openalex:A5085363061",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 44
+    },
+    {
+      "component_id": "component:f53fc01624caa7f4",
+      "representative": "Seong–Whan Lee",
+      "representative_id": "researcher:openalex:A5011014617",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 43
+    },
+    {
+      "component_id": "component:0093147a9e060dfa",
+      "representative": "Yejin Choi",
+      "representative_id": "researcher:openalex:A5102992157",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 38
+    },
+    {
+      "component_id": "component:55df242ec013b0ed",
+      "representative": "Hongfei Lin",
+      "representative_id": "researcher:openalex:A5023931221",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 36
+    },
+    {
+      "component_id": "component:cdddf32562442e18",
+      "representative": "Weihao Tan",
+      "representative_id": "researcher:openalex:A5024313207",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 33
+    },
+    {
+      "component_id": "component:f5dc53bb4f0b6b71",
+      "representative": "Tsung‐Hui Chang",
+      "representative_id": "researcher:openalex:A5064271996",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 27
+    },
+    {
+      "component_id": "component:1c1789d56604b9e2",
+      "representative": "Caiwen Ding",
+      "representative_id": "researcher:openalex:A5030060072",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 26
+    },
+    {
+      "component_id": "component:2cda5bebbce05c7f",
+      "representative": "Vinay P. Namboodiri",
+      "representative_id": "researcher:openalex:A5007109424",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 26
+    },
+    {
+      "component_id": "component:6e4375da695618a6",
+      "representative": "Jaegul Choo",
+      "representative_id": "researcher:openalex:A5047912015",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 26
+    },
+    {
+      "component_id": "component:c03f290ebf978584",
+      "representative": "Susmit Jha",
+      "representative_id": "researcher:openalex:A5035902535",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 25
+    },
+    {
+      "component_id": "component:8a754587e4dba051",
+      "representative": "Ole‐Christoffer Granmo",
+      "representative_id": "researcher:openalex:A5071922620",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 25
+    },
+    {
+      "component_id": "component:e19ad7612a9dfa88",
+      "representative": "Kento Uemura",
+      "representative_id": "researcher:openalex:A5040450895",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 24
+    },
+    {
+      "component_id": "component:b69a8911e52aab41",
+      "representative": "Bohyung Han",
+      "representative_id": "researcher:openalex:A5006594639",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 23
+    },
+    {
+      "component_id": "component:224924c1222eba7c",
+      "representative": "Shiliang Sun",
+      "representative_id": "researcher:openalex:A5047846625",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 23
+    },
+    {
+      "component_id": "component:bdf9ddb484f01e82",
+      "representative": "Yu-Shen Liu",
+      "representative_id": "researcher:openalex:A5101691399",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 22
+    },
+    {
+      "component_id": "component:6f39b6c514781d47",
+      "representative": "Andrew Cropper",
+      "representative_id": "researcher:openalex:A5008794311",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 22
+    },
+    {
+      "component_id": "component:8bac7da573318e86",
+      "representative": "Yong Man Ro",
+      "representative_id": "researcher:openalex:A5038798134",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 22
+    },
+    {
+      "component_id": "component:7781bda58c9912bf",
+      "representative": "Zhiguo Cao",
+      "representative_id": "researcher:openalex:A5036358447",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 21
+    },
+    {
+      "component_id": "component:f56f06bd171dd087",
+      "representative": "Zhenbo Shi",
+      "representative_id": "researcher:openalex:A5078030239",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 21
+    },
+    {
+      "component_id": "component:6412859b32e70735",
+      "representative": "Elias Bareinboim",
+      "representative_id": "researcher:openalex:A5039620960",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20
+    },
+    {
+      "component_id": "component:4073daa3648c191b",
+      "representative": "Hong-Han Shuai",
+      "representative_id": "researcher:openalex:A5040050806",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20
+    },
+    {
+      "component_id": "component:24e7b01f7468359c",
+      "representative": "Niki Trigoni",
+      "representative_id": "researcher:openalex:A5010637110",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20
+    },
+    {
+      "component_id": "component:7bb20acfee81f20d",
+      "representative": "Hans Vandierendonck",
+      "representative_id": "researcher:openalex:A5086758775",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20
+    },
+    {
+      "component_id": "component:90e86101c7eb169d",
+      "representative": "Binghui Wang",
+      "representative_id": "researcher:openalex:A5101789833",
+      "selection": "highest accepted coauthor degree, stable ID tie-break; bounded ego is illustrative",
+      "size": 20
+    }
+  ],
+  "config": {
+    "cohort": "venue_id_and_conference_year",
+    "component_representative": "highest_accepted_R7_degree_then_stable_id",
+    "component_selection": "largest_25_by_size_then_stable_id",
+    "method": "frozen-support-cohorts-persistence-v1",
+    "pair_limit": 25,
+    "pair_order": "descending_distinct_support_papers_then_edge_id",
+    "percentile": "empirical_fraction_with_in_degree_less_than_or_equal_including_ties",
+    "scope": "accepted release-v4 core papers and R8 evidence support IDs only",
+    "seed": null,
+    "status": "exploratory_descriptive",
+    "version": "explorer-analysis-release-v1",
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "config_sha256": "5e91d098bd5d84cf93c4a4720ab2030b48fb5200ee9d375e0d013842c7636ad8",
+  "definitions": {
+    "citations": "In-degree from accepted in-corpus CITES only; no global or exposure-adjusted influence claim",
+    "components": "All researchers including isolates; accepted R7 connected components; largest 25 by size then stable ID, highest-degree representative then ID tie-break; bounded representative Ego is not full membership",
+    "percentile": "Empirical CDF within venue/year; ties receive same upper percentile; includes uncited papers",
+    "persistence": "Accepted R8 evidence distinct support papers by year, including zero years; not continuous partnership or employment",
+    "selection": "Top pairs by full-period distinct paper support; exploratory, no independent evaluation",
+    "topics": "Raw distinct supported-paper counts per inferred topic, multilabel counts overlap; missing label is unknown"
+  },
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "graph_version": "release-d3c788c3114a",
+  "method_source_sha256": "dbfac4367ae0d09d95f574fbc38d9d9ea85cb75b6c9e55499baa8bffe283821e",
+  "method_version": "frozen-support-cohorts-persistence-v1",
+  "organization_pair_persistence": [
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 49,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 52,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 43,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 58,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 101,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 303,
+      "edge_id": "edge:fdba1e6b7056bab87f63f693ab691f9e5cce6548bfbc46bd8e21880bb0af9db6",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 78,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 42,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 38,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 38,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 32,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 25,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 24,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 19,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Optimization and learning theory",
+          "topic_id": "topic:optimization-theory"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Robotics and embodied AI",
+          "topic_id": "topic:robotics-embodied"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16075",
+        "paper:aaai:2021:16204",
+        "paper:aaai:2021:16244",
+        "paper:aaai:2021:16264",
+        "paper:aaai:2021:16345",
+        "paper:aaai:2021:16347",
+        "paper:aaai:2021:16351",
+        "paper:aaai:2021:16361",
+        "paper:aaai:2021:16399",
+        "paper:aaai:2021:16413",
+        "paper:aaai:2021:16414",
+        "paper:aaai:2021:16473",
+        "paper:aaai:2021:16518",
+        "paper:aaai:2021:16595",
+        "paper:aaai:2021:16599",
+        "paper:aaai:2021:16601",
+        "paper:aaai:2021:16756",
+        "paper:aaai:2021:16766",
+        "paper:aaai:2021:16850",
+        "paper:aaai:2021:16946",
+        "paper:aaai:2021:16958",
+        "paper:aaai:2021:16981",
+        "paper:aaai:2021:17064",
+        "paper:aaai:2021:17179",
+        "paper:aaai:2021:17490",
+        "paper:aaai:2021:17508",
+        "paper:aaai:2021:17509",
+        "paper:aaai:2021:17552",
+        "paper:aaai:2021:17634",
+        "paper:aaai:2021:17636",
+        "paper:aaai:2021:17696",
+        "paper:aaai:2021:17702",
+        "paper:aaai:2021:17719",
+        "paper:aaai:2021:17720",
+        "paper:aaai:2022:19879",
+        "paper:aaai:2022:19888",
+        "paper:aaai:2022:19912",
+        "paper:aaai:2022:19919",
+        "paper:aaai:2022:19927",
+        "paper:aaai:2022:19963",
+        "paper:aaai:2022:19965",
+        "paper:aaai:2022:19977",
+        "paper:aaai:2022:19991",
+        "paper:aaai:2022:20085",
+        "paper:aaai:2022:20090",
+        "paper:aaai:2022:20138",
+        "paper:aaai:2022:20161",
+        "paper:aaai:2022:20198",
+        "paper:aaai:2022:20202",
+        "paper:aaai:2022:20211",
+        "paper:aaai:2022:20213",
+        "paper:aaai:2022:20222",
+        "paper:aaai:2022:20337",
+        "paper:aaai:2022:20351",
+        "paper:aaai:2022:20355",
+        "paper:aaai:2022:20391",
+        "paper:aaai:2022:20394",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2022:20477",
+        "paper:aaai:2022:20490",
+        "paper:aaai:2022:20521",
+        "paper:aaai:2022:20576",
+        "paper:aaai:2022:20586",
+        "paper:aaai:2022:20893",
+        "paper:aaai:2022:20901",
+        "paper:aaai:2022:21165",
+        "paper:aaai:2022:21324",
+        "paper:aaai:2022:21328",
+        "paper:aaai:2022:21388",
+        "paper:aaai:2023:25081",
+        "paper:aaai:2023:25151",
+        "paper:aaai:2023:25154",
+        "paper:aaai:2023:25185",
+        "paper:aaai:2023:25220",
+        "paper:aaai:2023:25274",
+        "paper:aaai:2023:25278",
+        "paper:aaai:2023:25294",
+        "paper:aaai:2023:25296",
+        "paper:aaai:2023:25408",
+        "paper:aaai:2023:25417",
+        "paper:aaai:2023:25472",
+        "paper:aaai:2023:25492",
+        "paper:aaai:2023:25505",
+        "paper:aaai:2023:25531",
+        "paper:aaai:2023:25598",
+        "paper:aaai:2023:25825",
+        "paper:aaai:2023:25845",
+        "paper:aaai:2023:25925",
+        "paper:aaai:2023:25926",
+        "paper:aaai:2023:25957",
+        "paper:aaai:2023:26129",
+        "paper:aaai:2023:26137",
+        "paper:aaai:2023:26283",
+        "paper:aaai:2023:26353",
+        "paper:aaai:2023:26384",
+        "paper:aaai:2023:26385",
+        "paper:aaai:2023:26554",
+        "paper:aaai:2023:26570",
+        "paper:aaai:2023:26619",
+        "paper:aaai:2024:27760",
+        "paper:aaai:2024:27806",
+        "paper:aaai:2024:27810",
+        "paper:aaai:2024:27816",
+        "paper:aaai:2024:27880",
+        "paper:aaai:2024:27938",
+        "paper:aaai:2024:27963",
+        "paper:aaai:2024:27966",
+        "paper:aaai:2024:27994",
+        "paper:aaai:2024:27995",
+        "paper:aaai:2024:28157",
+        "paper:aaai:2024:28183",
+        "paper:aaai:2024:28311",
+        "paper:aaai:2024:28324",
+        "paper:aaai:2024:28434",
+        "paper:aaai:2024:28456",
+        "paper:aaai:2024:28473",
+        "paper:aaai:2024:28549",
+        "paper:aaai:2024:28565",
+        "paper:aaai:2024:28691",
+        "paper:aaai:2024:28730",
+        "paper:aaai:2024:28734",
+        "paper:aaai:2024:28768",
+        "paper:aaai:2024:28784",
+        "paper:aaai:2024:28787",
+        "paper:aaai:2024:28960",
+        "paper:aaai:2024:29052",
+        "paper:aaai:2024:29103",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29142",
+        "paper:aaai:2024:29177",
+        "paper:aaai:2024:29184",
+        "paper:aaai:2024:29255",
+        "paper:aaai:2024:29334",
+        "paper:aaai:2024:29438",
+        "paper:aaai:2024:29520",
+        "paper:aaai:2024:29542",
+        "paper:aaai:2024:29555",
+        "paper:aaai:2024:29600",
+        "paper:aaai:2024:29613",
+        "paper:aaai:2024:29667",
+        "paper:aaai:2024:29671",
+        "paper:aaai:2024:29712",
+        "paper:aaai:2024:29728",
+        "paper:aaai:2024:29770",
+        "paper:aaai:2024:29773",
+        "paper:aaai:2024:29816",
+        "paper:aaai:2024:29831",
+        "paper:aaai:2024:29899",
+        "paper:aaai:2024:29928",
+        "paper:aaai:2024:30053",
+        "paper:aaai:2025:32048",
+        "paper:aaai:2025:32049",
+        "paper:aaai:2025:32053",
+        "paper:aaai:2025:32066",
+        "paper:aaai:2025:32097",
+        "paper:aaai:2025:32118",
+        "paper:aaai:2025:32132",
+        "paper:aaai:2025:32144",
+        "paper:aaai:2025:32280",
+        "paper:aaai:2025:32488",
+        "paper:aaai:2025:32489",
+        "paper:aaai:2025:32513",
+        "paper:aaai:2025:32515",
+        "paper:aaai:2025:32584",
+        "paper:aaai:2025:32614",
+        "paper:aaai:2025:32712",
+        "paper:aaai:2025:32713",
+        "paper:aaai:2025:32730",
+        "paper:aaai:2025:32761",
+        "paper:aaai:2025:32808",
+        "paper:aaai:2025:32895",
+        "paper:aaai:2025:32930",
+        "paper:aaai:2025:32949",
+        "paper:aaai:2025:32952",
+        "paper:aaai:2025:32990",
+        "paper:aaai:2025:33023",
+        "paper:aaai:2025:33068",
+        "paper:aaai:2025:33089",
+        "paper:aaai:2025:33115",
+        "paper:aaai:2025:33120",
+        "paper:aaai:2025:33130",
+        "paper:aaai:2025:33224",
+        "paper:aaai:2025:33244",
+        "paper:aaai:2025:33328",
+        "paper:aaai:2025:33332",
+        "paper:aaai:2025:33352",
+        "paper:aaai:2025:33359",
+        "paper:aaai:2025:33365",
+        "paper:aaai:2025:33375",
+        "paper:aaai:2025:33575",
+        "paper:aaai:2025:33729",
+        "paper:aaai:2025:33730",
+        "paper:aaai:2025:33733",
+        "paper:aaai:2025:33815",
+        "paper:aaai:2025:33837",
+        "paper:aaai:2025:33862",
+        "paper:aaai:2025:33864",
+        "paper:aaai:2025:33899",
+        "paper:aaai:2025:33981",
+        "paper:aaai:2025:34021",
+        "paper:aaai:2025:34112",
+        "paper:aaai:2025:34123",
+        "paper:aaai:2025:34188",
+        "paper:aaai:2025:34210",
+        "paper:aaai:2025:34212",
+        "paper:aaai:2025:34250",
+        "paper:aaai:2025:34302",
+        "paper:aaai:2025:34303",
+        "paper:aaai:2025:34390",
+        "paper:aaai:2025:34426",
+        "paper:aaai:2025:34454",
+        "paper:aaai:2025:34461",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34490",
+        "paper:aaai:2025:34520",
+        "paper:aaai:2025:34557",
+        "paper:aaai:2025:34573",
+        "paper:aaai:2025:34636",
+        "paper:aaai:2025:34646",
+        "paper:aaai:2025:34657",
+        "paper:aaai:2025:34742",
+        "paper:aaai:2025:34753",
+        "paper:aaai:2025:34778",
+        "paper:aaai:2025:34782",
+        "paper:aaai:2025:34793",
+        "paper:aaai:2025:34811",
+        "paper:aaai:2025:34883",
+        "paper:aaai:2025:34915",
+        "paper:aaai:2025:35476",
+        "paper:aaai:2025:35487",
+        "paper:ijcai:2021:113",
+        "paper:ijcai:2021:119",
+        "paper:ijcai:2021:168",
+        "paper:ijcai:2021:178",
+        "paper:ijcai:2021:182",
+        "paper:ijcai:2021:184",
+        "paper:ijcai:2021:185",
+        "paper:ijcai:2021:264",
+        "paper:ijcai:2021:341",
+        "paper:ijcai:2021:457",
+        "paper:ijcai:2021:526",
+        "paper:ijcai:2021:529",
+        "paper:ijcai:2021:535",
+        "paper:ijcai:2021:540",
+        "paper:ijcai:2021:94",
+        "paper:ijcai:2022:149",
+        "paper:ijcai:2022:174",
+        "paper:ijcai:2022:189",
+        "paper:ijcai:2022:228",
+        "paper:ijcai:2022:287",
+        "paper:ijcai:2022:291",
+        "paper:ijcai:2022:325",
+        "paper:ijcai:2022:328",
+        "paper:ijcai:2022:329",
+        "paper:ijcai:2022:345",
+        "paper:ijcai:2022:424",
+        "paper:ijcai:2022:552",
+        "paper:ijcai:2022:562",
+        "paper:ijcai:2022:578",
+        "paper:ijcai:2022:582",
+        "paper:ijcai:2022:584",
+        "paper:ijcai:2022:611",
+        "paper:ijcai:2023:137",
+        "paper:ijcai:2023:152",
+        "paper:ijcai:2023:243",
+        "paper:ijcai:2023:253",
+        "paper:ijcai:2023:334",
+        "paper:ijcai:2023:34",
+        "paper:ijcai:2023:37",
+        "paper:ijcai:2023:376",
+        "paper:ijcai:2023:565",
+        "paper:ijcai:2023:604",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2023:97",
+        "paper:ijcai:2023:99",
+        "paper:ijcai:2024:108",
+        "paper:ijcai:2024:34",
+        "paper:ijcai:2024:347",
+        "paper:ijcai:2024:425",
+        "paper:ijcai:2024:500",
+        "paper:ijcai:2024:526",
+        "paper:ijcai:2024:768",
+        "paper:ijcai:2025:147",
+        "paper:ijcai:2025:160",
+        "paper:ijcai:2025:166",
+        "paper:ijcai:2025:24",
+        "paper:ijcai:2025:257",
+        "paper:ijcai:2025:281",
+        "paper:ijcai:2025:284",
+        "paper:ijcai:2025:338",
+        "paper:ijcai:2025:358",
+        "paper:ijcai:2025:370",
+        "paper:ijcai:2025:43",
+        "paper:ijcai:2025:530",
+        "paper:ijcai:2025:549",
+        "paper:ijcai:2025:725",
+        "paper:ijcai:2025:783",
+        "paper:ijcai:2025:875",
+        "paper:ijcai:2025:896",
+        "paper:ijcai:2025:90",
+        "paper:ijcai:2025:904",
+        "paper:ijcai:2025:914",
+        "paper:ijcai:2025:977"
+      ],
+      "target": "University of Chinese Academy of Sciences",
+      "target_id": "organization:I4210165038"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 15,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 24,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 17,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 32,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 37,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 125,
+      "edge_id": "edge:9ebe5424e719ec6392bf7c95db0602e6f55bb9ca8296d9c6226ed495b4513ebf",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 33,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 21,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 17,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 14,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 13,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16204",
+        "paper:aaai:2021:16244",
+        "paper:aaai:2021:16345",
+        "paper:aaai:2021:16347",
+        "paper:aaai:2021:16351",
+        "paper:aaai:2021:16399",
+        "paper:aaai:2021:16415",
+        "paper:aaai:2021:16599",
+        "paper:aaai:2021:16601",
+        "paper:aaai:2021:16958",
+        "paper:aaai:2021:16981",
+        "paper:aaai:2021:17179",
+        "paper:aaai:2021:17508",
+        "paper:aaai:2021:17509",
+        "paper:aaai:2021:17720",
+        "paper:aaai:2022:19879",
+        "paper:aaai:2022:19927",
+        "paper:aaai:2022:19963",
+        "paper:aaai:2022:19965",
+        "paper:aaai:2022:19991",
+        "paper:aaai:2022:20045",
+        "paper:aaai:2022:20085",
+        "paper:aaai:2022:20090",
+        "paper:aaai:2022:20108",
+        "paper:aaai:2022:20138",
+        "paper:aaai:2022:20161",
+        "paper:aaai:2022:20198",
+        "paper:aaai:2022:20202",
+        "paper:aaai:2022:20213",
+        "paper:aaai:2022:20394",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2022:20586",
+        "paper:aaai:2022:21165",
+        "paper:aaai:2023:25081",
+        "paper:aaai:2023:25151",
+        "paper:aaai:2023:25185",
+        "paper:aaai:2023:25220",
+        "paper:aaai:2023:25278",
+        "paper:aaai:2023:25294",
+        "paper:aaai:2023:25408",
+        "paper:aaai:2023:25472",
+        "paper:aaai:2023:25492",
+        "paper:aaai:2023:25825",
+        "paper:aaai:2023:26137",
+        "paper:aaai:2023:26384",
+        "paper:aaai:2023:26385",
+        "paper:aaai:2024:27760",
+        "paper:aaai:2024:27806",
+        "paper:aaai:2024:27810",
+        "paper:aaai:2024:27816",
+        "paper:aaai:2024:27938",
+        "paper:aaai:2024:27963",
+        "paper:aaai:2024:27995",
+        "paper:aaai:2024:28082",
+        "paper:aaai:2024:28086",
+        "paper:aaai:2024:28183",
+        "paper:aaai:2024:28307",
+        "paper:aaai:2024:28311",
+        "paper:aaai:2024:28398",
+        "paper:aaai:2024:28434",
+        "paper:aaai:2024:28456",
+        "paper:aaai:2024:28473",
+        "paper:aaai:2024:28565",
+        "paper:aaai:2024:28960",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29334",
+        "paper:aaai:2024:29542",
+        "paper:aaai:2024:29555",
+        "paper:aaai:2024:29671",
+        "paper:aaai:2024:29710",
+        "paper:aaai:2024:29899",
+        "paper:aaai:2024:29929",
+        "paper:aaai:2025:32053",
+        "paper:aaai:2025:32118",
+        "paper:aaai:2025:32126",
+        "paper:aaai:2025:32132",
+        "paper:aaai:2025:32144",
+        "paper:aaai:2025:32489",
+        "paper:aaai:2025:32515",
+        "paper:aaai:2025:32712",
+        "paper:aaai:2025:32808",
+        "paper:aaai:2025:32811",
+        "paper:aaai:2025:33089",
+        "paper:aaai:2025:33130",
+        "paper:aaai:2025:33156",
+        "paper:aaai:2025:33244",
+        "paper:aaai:2025:33334",
+        "paper:aaai:2025:33729",
+        "paper:aaai:2025:33864",
+        "paper:aaai:2025:33981",
+        "paper:aaai:2025:34123",
+        "paper:aaai:2025:34212",
+        "paper:aaai:2025:34250",
+        "paper:aaai:2025:34426",
+        "paper:aaai:2025:34454",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34490",
+        "paper:aaai:2025:34535",
+        "paper:aaai:2025:34573",
+        "paper:aaai:2025:34636",
+        "paper:aaai:2025:34782",
+        "paper:aaai:2025:34793",
+        "paper:aaai:2025:35476",
+        "paper:ijcai:2022:130",
+        "paper:ijcai:2022:149",
+        "paper:ijcai:2022:174",
+        "paper:ijcai:2022:228",
+        "paper:ijcai:2022:328",
+        "paper:ijcai:2022:345",
+        "paper:ijcai:2023:334",
+        "paper:ijcai:2023:37",
+        "paper:ijcai:2023:376",
+        "paper:ijcai:2023:62",
+        "paper:ijcai:2024:32",
+        "paper:ijcai:2024:34",
+        "paper:ijcai:2024:347",
+        "paper:ijcai:2024:4",
+        "paper:ijcai:2024:500",
+        "paper:ijcai:2024:83",
+        "paper:ijcai:2025:147",
+        "paper:ijcai:2025:166",
+        "paper:ijcai:2025:24",
+        "paper:ijcai:2025:257",
+        "paper:ijcai:2025:284",
+        "paper:ijcai:2025:977"
+      ],
+      "target": "Institute of Automation",
+      "target_id": "organization:I4210112150"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 17,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 23,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 17,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 28,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 34,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 119,
+      "edge_id": "edge:b937cb013cc7e2c78172692ebd14aced859d1b88c0e5bb20a51c50e9faadb40d",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 30,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 20,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 19,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Institute of Automation",
+      "source_id": "organization:I4210112150",
+      "support_paper_ids": [
+        "paper:aaai:2021:16204",
+        "paper:aaai:2021:16208",
+        "paper:aaai:2021:16244",
+        "paper:aaai:2021:16345",
+        "paper:aaai:2021:16347",
+        "paper:aaai:2021:16351",
+        "paper:aaai:2021:16399",
+        "paper:aaai:2021:16415",
+        "paper:aaai:2021:16599",
+        "paper:aaai:2021:16601",
+        "paper:aaai:2021:16958",
+        "paper:aaai:2021:16981",
+        "paper:aaai:2021:17179",
+        "paper:aaai:2021:17508",
+        "paper:aaai:2021:17509",
+        "paper:aaai:2021:17535",
+        "paper:aaai:2021:17720",
+        "paper:aaai:2022:19879",
+        "paper:aaai:2022:19927",
+        "paper:aaai:2022:19963",
+        "paper:aaai:2022:19965",
+        "paper:aaai:2022:19991",
+        "paper:aaai:2022:20085",
+        "paper:aaai:2022:20090",
+        "paper:aaai:2022:20138",
+        "paper:aaai:2022:20161",
+        "paper:aaai:2022:20198",
+        "paper:aaai:2022:20202",
+        "paper:aaai:2022:20213",
+        "paper:aaai:2022:20394",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2022:20586",
+        "paper:aaai:2022:21165",
+        "paper:aaai:2022:21396",
+        "paper:aaai:2022:21427",
+        "paper:aaai:2023:25081",
+        "paper:aaai:2023:25151",
+        "paper:aaai:2023:25185",
+        "paper:aaai:2023:25220",
+        "paper:aaai:2023:25278",
+        "paper:aaai:2023:25294",
+        "paper:aaai:2023:25408",
+        "paper:aaai:2023:25472",
+        "paper:aaai:2023:25492",
+        "paper:aaai:2023:25825",
+        "paper:aaai:2023:26137",
+        "paper:aaai:2023:26384",
+        "paper:aaai:2023:26385",
+        "paper:aaai:2023:26643",
+        "paper:aaai:2024:27760",
+        "paper:aaai:2024:27806",
+        "paper:aaai:2024:27810",
+        "paper:aaai:2024:27816",
+        "paper:aaai:2024:27938",
+        "paper:aaai:2024:27963",
+        "paper:aaai:2024:27995",
+        "paper:aaai:2024:28096",
+        "paper:aaai:2024:28183",
+        "paper:aaai:2024:28281",
+        "paper:aaai:2024:28311",
+        "paper:aaai:2024:28434",
+        "paper:aaai:2024:28456",
+        "paper:aaai:2024:28473",
+        "paper:aaai:2024:28565",
+        "paper:aaai:2024:28960",
+        "paper:aaai:2024:29027",
+        "paper:aaai:2024:29052",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29334",
+        "paper:aaai:2024:29542",
+        "paper:aaai:2024:29555",
+        "paper:aaai:2024:29671",
+        "paper:aaai:2024:29699",
+        "paper:aaai:2024:29899",
+        "paper:aaai:2025:32053",
+        "paper:aaai:2025:32118",
+        "paper:aaai:2025:32132",
+        "paper:aaai:2025:32144",
+        "paper:aaai:2025:32489",
+        "paper:aaai:2025:32515",
+        "paper:aaai:2025:32712",
+        "paper:aaai:2025:32758",
+        "paper:aaai:2025:32808",
+        "paper:aaai:2025:33089",
+        "paper:aaai:2025:33130",
+        "paper:aaai:2025:33174",
+        "paper:aaai:2025:33244",
+        "paper:aaai:2025:33729",
+        "paper:aaai:2025:33864",
+        "paper:aaai:2025:34123",
+        "paper:aaai:2025:34212",
+        "paper:aaai:2025:34250",
+        "paper:aaai:2025:34426",
+        "paper:aaai:2025:34454",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34490",
+        "paper:aaai:2025:34573",
+        "paper:aaai:2025:34636",
+        "paper:aaai:2025:34782",
+        "paper:aaai:2025:34793",
+        "paper:aaai:2025:35388",
+        "paper:aaai:2025:35476",
+        "paper:ijcai:2022:149",
+        "paper:ijcai:2022:174",
+        "paper:ijcai:2022:228",
+        "paper:ijcai:2022:328",
+        "paper:ijcai:2022:345",
+        "paper:ijcai:2023:334",
+        "paper:ijcai:2023:37",
+        "paper:ijcai:2023:376",
+        "paper:ijcai:2024:34",
+        "paper:ijcai:2024:347",
+        "paper:ijcai:2024:500",
+        "paper:ijcai:2025:147",
+        "paper:ijcai:2025:166",
+        "paper:ijcai:2025:24",
+        "paper:ijcai:2025:257",
+        "paper:ijcai:2025:284",
+        "paper:ijcai:2025:977"
+      ],
+      "target": "University of Chinese Academy of Sciences",
+      "target_id": "organization:I4210165038"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 16,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 16,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 15,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 20,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 79,
+      "edge_id": "edge:113ee2946b95987881f10c2b41f137a13028cc59a1893c8fdd6790ba8d77c833",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 17,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 11,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 11,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16075",
+        "paper:aaai:2021:16264",
+        "paper:aaai:2021:16410",
+        "paper:aaai:2021:16518",
+        "paper:aaai:2021:16595",
+        "paper:aaai:2021:16946",
+        "paper:aaai:2021:17532",
+        "paper:aaai:2021:17552",
+        "paper:aaai:2021:17682",
+        "paper:aaai:2021:17696",
+        "paper:aaai:2022:19888",
+        "paper:aaai:2022:19929",
+        "paper:aaai:2022:20015",
+        "paper:aaai:2022:20042",
+        "paper:aaai:2022:20161",
+        "paper:aaai:2022:20211",
+        "paper:aaai:2022:20222",
+        "paper:aaai:2022:20355",
+        "paper:aaai:2022:20391",
+        "paper:aaai:2022:20490",
+        "paper:aaai:2022:20901",
+        "paper:aaai:2022:21324",
+        "paper:aaai:2023:25621",
+        "paper:aaai:2023:25926",
+        "paper:aaai:2023:25957",
+        "paper:aaai:2023:26027",
+        "paper:aaai:2023:26129",
+        "paper:aaai:2023:26283",
+        "paper:aaai:2023:26353",
+        "paper:aaai:2023:26570",
+        "paper:aaai:2024:27810",
+        "paper:aaai:2024:28691",
+        "paper:aaai:2024:28730",
+        "paper:aaai:2024:28734",
+        "paper:aaai:2024:29153",
+        "paper:aaai:2024:29184",
+        "paper:aaai:2024:29376",
+        "paper:aaai:2024:29520",
+        "paper:aaai:2024:29600",
+        "paper:aaai:2024:29712",
+        "paper:aaai:2024:29773",
+        "paper:aaai:2024:29928",
+        "paper:aaai:2025:32048",
+        "paper:aaai:2025:32761",
+        "paper:aaai:2025:32930",
+        "paper:aaai:2025:32990",
+        "paper:aaai:2025:33023",
+        "paper:aaai:2025:33057",
+        "paper:aaai:2025:33328",
+        "paper:aaai:2025:33332",
+        "paper:aaai:2025:33359",
+        "paper:aaai:2025:33365",
+        "paper:aaai:2025:33375",
+        "paper:aaai:2025:33743",
+        "paper:aaai:2025:33823",
+        "paper:aaai:2025:34021",
+        "paper:aaai:2025:34461",
+        "paper:aaai:2025:34742",
+        "paper:aaai:2025:34778",
+        "paper:aaai:2025:34883",
+        "paper:ijcai:2021:119",
+        "paper:ijcai:2021:168",
+        "paper:ijcai:2021:182",
+        "paper:ijcai:2021:184",
+        "paper:ijcai:2021:341",
+        "paper:ijcai:2021:457",
+        "paper:ijcai:2022:287",
+        "paper:ijcai:2022:312",
+        "paper:ijcai:2022:424",
+        "paper:ijcai:2022:611",
+        "paper:ijcai:2023:137",
+        "paper:ijcai:2023:34",
+        "paper:ijcai:2023:62",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:199",
+        "paper:ijcai:2024:425",
+        "paper:ijcai:2024:599",
+        "paper:ijcai:2025:549",
+        "paper:ijcai:2025:783"
+      ],
+      "target": "Institute of Computing Technology",
+      "target_id": "organization:I4210090176"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 14,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 11,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 24,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 69,
+      "edge_id": "edge:9ed12a7033e616790aca3d1357cb71ef640e7e96baa61d1d109702c081132ba6",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 25,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Optimization and learning theory",
+          "topic_id": "topic:optimization-theory"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16264",
+        "paper:aaai:2021:16361",
+        "paper:aaai:2021:16601",
+        "paper:aaai:2021:16850",
+        "paper:aaai:2021:17181",
+        "paper:aaai:2021:17552",
+        "paper:aaai:2021:17634",
+        "paper:aaai:2021:17719",
+        "paper:aaai:2022:19912",
+        "paper:aaai:2022:20036",
+        "paper:aaai:2022:20337",
+        "paper:aaai:2022:20490",
+        "paper:aaai:2022:20521",
+        "paper:aaai:2023:25154",
+        "paper:aaai:2023:25417",
+        "paper:aaai:2023:25472",
+        "paper:aaai:2023:25531",
+        "paper:aaai:2023:25598",
+        "paper:aaai:2023:26554",
+        "paper:aaai:2024:28157",
+        "paper:aaai:2024:28324",
+        "paper:aaai:2024:28691",
+        "paper:aaai:2024:28768",
+        "paper:aaai:2024:28784",
+        "paper:aaai:2024:29142",
+        "paper:aaai:2024:29253",
+        "paper:aaai:2024:29254",
+        "paper:aaai:2024:29613",
+        "paper:aaai:2024:29816",
+        "paper:aaai:2024:29831",
+        "paper:aaai:2025:32387",
+        "paper:aaai:2025:32513",
+        "paper:aaai:2025:32584",
+        "paper:aaai:2025:32632",
+        "paper:aaai:2025:32730",
+        "paper:aaai:2025:33068",
+        "paper:aaai:2025:33115",
+        "paper:aaai:2025:33352",
+        "paper:aaai:2025:33575",
+        "paper:aaai:2025:33815",
+        "paper:aaai:2025:33862",
+        "paper:aaai:2025:33899",
+        "paper:aaai:2025:34241",
+        "paper:aaai:2025:34390",
+        "paper:aaai:2025:34520",
+        "paper:aaai:2025:34646",
+        "paper:aaai:2025:34657",
+        "paper:aaai:2025:34823",
+        "paper:ijcai:2021:176",
+        "paper:ijcai:2021:178",
+        "paper:ijcai:2021:185",
+        "paper:ijcai:2021:264",
+        "paper:ijcai:2021:529",
+        "paper:ijcai:2021:540",
+        "paper:ijcai:2022:325",
+        "paper:ijcai:2022:562",
+        "paper:ijcai:2022:584",
+        "paper:ijcai:2023:152",
+        "paper:ijcai:2023:243",
+        "paper:ijcai:2023:436",
+        "paper:ijcai:2023:565",
+        "paper:ijcai:2023:97",
+        "paper:ijcai:2023:99",
+        "paper:ijcai:2025:160",
+        "paper:ijcai:2025:281",
+        "paper:ijcai:2025:43",
+        "paper:ijcai:2025:530",
+        "paper:ijcai:2025:90",
+        "paper:ijcai:2025:914"
+      ],
+      "target": "Institute of Information Engineering",
+      "target_id": "organization:I4210156404"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 16,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 13,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 11,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 18,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 68,
+      "edge_id": "edge:b5e6d475f308fcc6ba42f9a4f60144c486f92aff019f63c4cd73e1f1fcdb0545",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 15,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 11,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Institute of Computing Technology",
+      "source_id": "organization:I4210090176",
+      "support_paper_ids": [
+        "paper:aaai:2021:16075",
+        "paper:aaai:2021:16148",
+        "paper:aaai:2021:16264",
+        "paper:aaai:2021:16518",
+        "paper:aaai:2021:16582",
+        "paper:aaai:2021:16595",
+        "paper:aaai:2021:16850",
+        "paper:aaai:2021:16946",
+        "paper:aaai:2021:17552",
+        "paper:aaai:2021:17696",
+        "paper:aaai:2022:19888",
+        "paper:aaai:2022:20161",
+        "paper:aaai:2022:20211",
+        "paper:aaai:2022:20222",
+        "paper:aaai:2022:20355",
+        "paper:aaai:2022:20391",
+        "paper:aaai:2022:20490",
+        "paper:aaai:2022:20901",
+        "paper:aaai:2022:21324",
+        "paper:aaai:2023:25641",
+        "paper:aaai:2023:25926",
+        "paper:aaai:2023:25957",
+        "paper:aaai:2023:26129",
+        "paper:aaai:2023:26283",
+        "paper:aaai:2023:26353",
+        "paper:aaai:2023:26570",
+        "paper:aaai:2024:27810",
+        "paper:aaai:2024:28691",
+        "paper:aaai:2024:28730",
+        "paper:aaai:2024:28734",
+        "paper:aaai:2024:29184",
+        "paper:aaai:2024:29520",
+        "paper:aaai:2024:29600",
+        "paper:aaai:2024:29712",
+        "paper:aaai:2024:29773",
+        "paper:aaai:2024:29928",
+        "paper:aaai:2025:32048",
+        "paper:aaai:2025:32761",
+        "paper:aaai:2025:32930",
+        "paper:aaai:2025:32990",
+        "paper:aaai:2025:33023",
+        "paper:aaai:2025:33328",
+        "paper:aaai:2025:33332",
+        "paper:aaai:2025:33359",
+        "paper:aaai:2025:33365",
+        "paper:aaai:2025:33375",
+        "paper:aaai:2025:34021",
+        "paper:aaai:2025:34112",
+        "paper:aaai:2025:34461",
+        "paper:aaai:2025:34742",
+        "paper:aaai:2025:34778",
+        "paper:aaai:2025:34883",
+        "paper:ijcai:2021:119",
+        "paper:ijcai:2021:168",
+        "paper:ijcai:2021:182",
+        "paper:ijcai:2021:184",
+        "paper:ijcai:2021:341",
+        "paper:ijcai:2021:457",
+        "paper:ijcai:2022:287",
+        "paper:ijcai:2022:291",
+        "paper:ijcai:2022:424",
+        "paper:ijcai:2022:611",
+        "paper:ijcai:2023:137",
+        "paper:ijcai:2023:34",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:425",
+        "paper:ijcai:2025:549",
+        "paper:ijcai:2025:783"
+      ],
+      "target": "University of Chinese Academy of Sciences",
+      "target_id": "organization:I4210165038"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 13,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 20,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 62,
+      "edge_id": "edge:e33cba9c39518c10b5b4df4993e23c985d3ef5e7c97b4285f4018fa2a07e0fad",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 27,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 12,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Institute of Information Engineering",
+      "source_id": "organization:I4210156404",
+      "support_paper_ids": [
+        "paper:aaai:2021:16148",
+        "paper:aaai:2021:16264",
+        "paper:aaai:2021:16361",
+        "paper:aaai:2021:16601",
+        "paper:aaai:2021:16850",
+        "paper:aaai:2021:17552",
+        "paper:aaai:2021:17634",
+        "paper:aaai:2021:17719",
+        "paper:aaai:2022:19912",
+        "paper:aaai:2022:20337",
+        "paper:aaai:2022:20490",
+        "paper:aaai:2022:20491",
+        "paper:aaai:2022:20521",
+        "paper:aaai:2023:25154",
+        "paper:aaai:2023:25417",
+        "paper:aaai:2023:25472",
+        "paper:aaai:2023:25531",
+        "paper:aaai:2023:25598",
+        "paper:aaai:2023:26554",
+        "paper:aaai:2023:26647",
+        "paper:aaai:2024:28157",
+        "paper:aaai:2024:28324",
+        "paper:aaai:2024:28691",
+        "paper:aaai:2024:28768",
+        "paper:aaai:2024:28784",
+        "paper:aaai:2024:29142",
+        "paper:aaai:2024:29613",
+        "paper:aaai:2024:29816",
+        "paper:aaai:2024:29831",
+        "paper:aaai:2025:32513",
+        "paper:aaai:2025:32584",
+        "paper:aaai:2025:32730",
+        "paper:aaai:2025:33068",
+        "paper:aaai:2025:33115",
+        "paper:aaai:2025:33352",
+        "paper:aaai:2025:33575",
+        "paper:aaai:2025:33815",
+        "paper:aaai:2025:33862",
+        "paper:aaai:2025:33899",
+        "paper:aaai:2025:34390",
+        "paper:aaai:2025:34520",
+        "paper:aaai:2025:34646",
+        "paper:aaai:2025:34657",
+        "paper:ijcai:2021:178",
+        "paper:ijcai:2021:185",
+        "paper:ijcai:2021:264",
+        "paper:ijcai:2021:529",
+        "paper:ijcai:2021:540",
+        "paper:ijcai:2022:325",
+        "paper:ijcai:2022:562",
+        "paper:ijcai:2022:584",
+        "paper:ijcai:2023:152",
+        "paper:ijcai:2023:243",
+        "paper:ijcai:2023:565",
+        "paper:ijcai:2023:97",
+        "paper:ijcai:2023:99",
+        "paper:ijcai:2025:160",
+        "paper:ijcai:2025:281",
+        "paper:ijcai:2025:43",
+        "paper:ijcai:2025:530",
+        "paper:ijcai:2025:90",
+        "paper:ijcai:2025:914"
+      ],
+      "target": "University of Chinese Academy of Sciences",
+      "target_id": "organization:I4210165038"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 7,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 13,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 17,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 52,
+      "edge_id": "edge:234430cd354795a438457f672a98875661c03df60f37ae3ffd0f51513f31ae06",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 9,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 9,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Causal inference",
+          "topic_id": "topic:causal-inference"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Optimization and learning theory",
+          "topic_id": "topic:optimization-theory"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Robotics and embodied AI",
+          "topic_id": "topic:robotics-embodied"
+        }
+      ],
+      "source": "Institute of Software",
+      "source_id": "organization:I4210128818",
+      "support_paper_ids": [
+        "paper:aaai:2021:16178",
+        "paper:aaai:2021:17064",
+        "paper:aaai:2021:17490",
+        "paper:aaai:2021:17636",
+        "paper:aaai:2021:17702",
+        "paper:aaai:2022:19919",
+        "paper:aaai:2022:19977",
+        "paper:aaai:2022:21324",
+        "paper:aaai:2022:21388",
+        "paper:aaai:2023:25216",
+        "paper:aaai:2023:25505",
+        "paper:aaai:2023:25925",
+        "paper:aaai:2023:26129",
+        "paper:aaai:2023:26619",
+        "paper:aaai:2024:27966",
+        "paper:aaai:2024:27994",
+        "paper:aaai:2024:29103",
+        "paper:aaai:2024:29177",
+        "paper:aaai:2024:29255",
+        "paper:aaai:2024:29438",
+        "paper:aaai:2024:29520",
+        "paper:aaai:2024:29667",
+        "paper:aaai:2024:29712",
+        "paper:aaai:2024:29728",
+        "paper:aaai:2024:29770",
+        "paper:aaai:2025:32066",
+        "paper:aaai:2025:32614",
+        "paper:aaai:2025:32712",
+        "paper:aaai:2025:32713",
+        "paper:aaai:2025:32895",
+        "paper:aaai:2025:32952",
+        "paper:aaai:2025:33120",
+        "paper:aaai:2025:33224",
+        "paper:aaai:2025:33733",
+        "paper:aaai:2025:33837",
+        "paper:aaai:2025:34210",
+        "paper:aaai:2025:34303",
+        "paper:aaai:2025:34461",
+        "paper:aaai:2025:34811",
+        "paper:ijcai:2021:526",
+        "paper:ijcai:2021:535",
+        "paper:ijcai:2022:329",
+        "paper:ijcai:2022:416",
+        "paper:ijcai:2022:552",
+        "paper:ijcai:2022:578",
+        "paper:ijcai:2023:604",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:560",
+        "paper:ijcai:2024:768",
+        "paper:ijcai:2025:338",
+        "paper:ijcai:2025:783",
+        "paper:ijcai:2025:896"
+      ],
+      "target": "University of Chinese Academy of Sciences",
+      "target_id": "organization:I4210165038"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 8,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 6,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 13,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 17,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 52,
+      "edge_id": "edge:c6ae4e6b736ecb57235e8a50afbbbf919a4e51d5eaaa0ce96cef6a14990eb5e2",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 9,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Optimization and learning theory",
+          "topic_id": "topic:optimization-theory"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Robotics and embodied AI",
+          "topic_id": "topic:robotics-embodied"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:17064",
+        "paper:aaai:2021:17490",
+        "paper:aaai:2021:17636",
+        "paper:aaai:2021:17682",
+        "paper:aaai:2021:17702",
+        "paper:aaai:2022:19919",
+        "paper:aaai:2022:19977",
+        "paper:aaai:2022:21324",
+        "paper:aaai:2023:25192",
+        "paper:aaai:2023:25505",
+        "paper:aaai:2023:25925",
+        "paper:aaai:2023:26129",
+        "paper:aaai:2023:26563",
+        "paper:aaai:2023:26619",
+        "paper:aaai:2024:27966",
+        "paper:aaai:2024:27994",
+        "paper:aaai:2024:29103",
+        "paper:aaai:2024:29177",
+        "paper:aaai:2024:29255",
+        "paper:aaai:2024:29376",
+        "paper:aaai:2024:29438",
+        "paper:aaai:2024:29520",
+        "paper:aaai:2024:29667",
+        "paper:aaai:2024:29712",
+        "paper:aaai:2024:29728",
+        "paper:aaai:2024:29770",
+        "paper:aaai:2025:32066",
+        "paper:aaai:2025:32614",
+        "paper:aaai:2025:32712",
+        "paper:aaai:2025:32713",
+        "paper:aaai:2025:32895",
+        "paper:aaai:2025:32952",
+        "paper:aaai:2025:33120",
+        "paper:aaai:2025:33224",
+        "paper:aaai:2025:33733",
+        "paper:aaai:2025:33837",
+        "paper:aaai:2025:34303",
+        "paper:aaai:2025:34461",
+        "paper:aaai:2025:34811",
+        "paper:aaai:2025:34923",
+        "paper:ijcai:2021:526",
+        "paper:ijcai:2021:535",
+        "paper:ijcai:2021:570",
+        "paper:ijcai:2022:329",
+        "paper:ijcai:2022:552",
+        "paper:ijcai:2022:578",
+        "paper:ijcai:2023:604",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:768",
+        "paper:ijcai:2025:338",
+        "paper:ijcai:2025:783",
+        "paper:ijcai:2025:896"
+      ],
+      "target": "Institute of Software",
+      "target_id": "organization:I4210128818"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 11,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 14,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 50,
+      "edge_id": "edge:50016db3e693b7940d2059e1ccbd833a36e8970c699bc2e9653623ee340cf25e",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 14,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 13,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Causal inference",
+          "topic_id": "topic:causal-inference"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Alibaba Group (China)",
+      "source_id": "organization:I45928872",
+      "support_paper_ids": [
+        "paper:aaai:2021:16136",
+        "paper:aaai:2021:16381",
+        "paper:aaai:2021:16731",
+        "paper:aaai:2021:17617",
+        "paper:aaai:2021:17677",
+        "paper:aaai:2021:17723",
+        "paper:aaai:2021:17724",
+        "paper:aaai:2022:20139",
+        "paper:aaai:2022:20229",
+        "paper:aaai:2023:25143",
+        "paper:aaai:2023:25329",
+        "paper:aaai:2023:25384",
+        "paper:aaai:2023:25402",
+        "paper:aaai:2023:25584",
+        "paper:aaai:2024:28283",
+        "paper:aaai:2024:28602",
+        "paper:aaai:2024:28673",
+        "paper:aaai:2024:28774",
+        "paper:aaai:2024:29033",
+        "paper:aaai:2024:29495",
+        "paper:aaai:2024:29897",
+        "paper:aaai:2024:29917",
+        "paper:aaai:2025:32386",
+        "paper:aaai:2025:32735",
+        "paper:aaai:2025:32929",
+        "paper:aaai:2025:32982",
+        "paper:aaai:2025:33131",
+        "paper:aaai:2025:33201",
+        "paper:aaai:2025:33882",
+        "paper:aaai:2025:34370",
+        "paper:aaai:2025:34456",
+        "paper:aaai:2025:34744",
+        "paper:ijcai:2021:327",
+        "paper:ijcai:2021:372",
+        "paper:ijcai:2021:551",
+        "paper:ijcai:2021:552",
+        "paper:ijcai:2022:161",
+        "paper:ijcai:2022:273",
+        "paper:ijcai:2022:411",
+        "paper:ijcai:2022:567",
+        "paper:ijcai:2022:679",
+        "paper:ijcai:2023:192",
+        "paper:ijcai:2023:526",
+        "paper:ijcai:2023:559",
+        "paper:ijcai:2023:70",
+        "paper:ijcai:2024:687",
+        "paper:ijcai:2025:143",
+        "paper:ijcai:2025:202",
+        "paper:ijcai:2025:542",
+        "paper:ijcai:2025:762"
+      ],
+      "target": "Zhejiang University",
+      "target_id": "organization:I76130692"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 1,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 14,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 15,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 50,
+      "edge_id": "edge:dc724a366632ca8988c17e61945a9489f710c6f6dd69df25cbb9ee252373d7c1",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 16,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 14,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 11,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        }
+      ],
+      "source": "Harbin Institute of Technology",
+      "source_id": "organization:I204983213",
+      "support_paper_ids": [
+        "paper:aaai:2021:16084",
+        "paper:aaai:2022:19884",
+        "paper:aaai:2022:20147",
+        "paper:aaai:2022:20255",
+        "paper:aaai:2022:20345",
+        "paper:aaai:2022:20365",
+        "paper:aaai:2022:21342",
+        "paper:aaai:2023:25173",
+        "paper:aaai:2023:25218",
+        "paper:aaai:2023:25235",
+        "paper:aaai:2023:25373",
+        "paper:aaai:2023:25390",
+        "paper:aaai:2023:25483",
+        "paper:aaai:2023:25551",
+        "paper:aaai:2023:26059",
+        "paper:aaai:2023:26060",
+        "paper:aaai:2023:26216",
+        "paper:aaai:2023:26638",
+        "paper:aaai:2023:26645",
+        "paper:aaai:2024:27934",
+        "paper:aaai:2024:28126",
+        "paper:aaai:2024:28234",
+        "paper:aaai:2024:28389",
+        "paper:aaai:2024:28522",
+        "paper:aaai:2024:28559",
+        "paper:aaai:2024:28568",
+        "paper:aaai:2024:28771",
+        "paper:aaai:2024:29577",
+        "paper:aaai:2024:29796",
+        "paper:aaai:2024:29814",
+        "paper:aaai:2024:29851",
+        "paper:aaai:2024:29876",
+        "paper:aaai:2024:29975",
+        "paper:aaai:2025:32525",
+        "paper:aaai:2025:32527",
+        "paper:aaai:2025:32835",
+        "paper:aaai:2025:33586",
+        "paper:aaai:2025:34034",
+        "paper:aaai:2025:34127",
+        "paper:aaai:2025:34590",
+        "paper:aaai:2025:34655",
+        "paper:aaai:2025:34656",
+        "paper:aaai:2025:34720",
+        "paper:aaai:2025:35476",
+        "paper:ijcai:2022:113",
+        "paper:ijcai:2022:560",
+        "paper:ijcai:2023:131",
+        "paper:ijcai:2023:241",
+        "paper:ijcai:2024:118",
+        "paper:ijcai:2025:260"
+      ],
+      "target": "Peng Cheng Laboratory",
+      "target_id": "organization:I4210136793"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 2,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 20,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 49,
+      "edge_id": "edge:2491e3cdceea95410d54e65691c77e04d5f457e140b06f4120634130d9241ad8",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 22,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        }
+      ],
+      "source": "Tsinghua Shenzhen International Graduate School",
+      "source_id": "organization:I4405263052",
+      "support_paper_ids": [
+        "paper:aaai:2021:16380",
+        "paper:aaai:2022:20036",
+        "paper:aaai:2022:20054",
+        "paper:aaai:2022:20179",
+        "paper:aaai:2022:20180",
+        "paper:aaai:2023:25119",
+        "paper:aaai:2023:25315",
+        "paper:aaai:2023:25319",
+        "paper:aaai:2023:25373",
+        "paper:aaai:2023:25809",
+        "paper:aaai:2023:26339",
+        "paper:aaai:2023:26616",
+        "paper:aaai:2023:26628",
+        "paper:aaai:2024:27783",
+        "paper:aaai:2024:27854",
+        "paper:aaai:2024:27959",
+        "paper:aaai:2024:28118",
+        "paper:aaai:2024:28389",
+        "paper:aaai:2024:28405",
+        "paper:aaai:2024:28494",
+        "paper:aaai:2024:28522",
+        "paper:aaai:2024:28559",
+        "paper:aaai:2024:28566",
+        "paper:aaai:2024:28706",
+        "paper:aaai:2024:28715",
+        "paper:aaai:2024:28749",
+        "paper:aaai:2024:28901",
+        "paper:aaai:2024:29162",
+        "paper:aaai:2024:29450",
+        "paper:aaai:2024:29471",
+        "paper:aaai:2024:29484",
+        "paper:aaai:2024:29902",
+        "paper:aaai:2025:32091",
+        "paper:aaai:2025:32176",
+        "paper:aaai:2025:32268",
+        "paper:aaai:2025:32356",
+        "paper:aaai:2025:32835",
+        "paper:aaai:2025:32851",
+        "paper:aaai:2025:32901",
+        "paper:aaai:2025:33094",
+        "paper:aaai:2025:33112",
+        "paper:aaai:2025:34206",
+        "paper:aaai:2025:35417",
+        "paper:ijcai:2021:101",
+        "paper:ijcai:2022:518",
+        "paper:ijcai:2023:76",
+        "paper:ijcai:2023:87",
+        "paper:ijcai:2024:171",
+        "paper:ijcai:2025:690"
+      ],
+      "target": "Tsinghua University",
+      "target_id": "organization:I99065089"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 6,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 43,
+      "edge_id": "edge:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 7,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        }
+      ],
+      "source": "Tencent (China)",
+      "source_id": "organization:I2250653659",
+      "support_paper_ids": [
+        "paper:aaai:2021:16577",
+        "paper:aaai:2021:17050",
+        "paper:aaai:2021:17497",
+        "paper:aaai:2021:17647",
+        "paper:aaai:2022:19913",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2023:25159",
+        "paper:aaai:2023:25349",
+        "paper:aaai:2023:25375",
+        "paper:aaai:2023:25398",
+        "paper:aaai:2023:25447",
+        "paper:aaai:2023:25466",
+        "paper:aaai:2023:25758",
+        "paper:aaai:2023:25809",
+        "paper:aaai:2023:26319",
+        "paper:aaai:2023:26628",
+        "paper:aaai:2024:28010",
+        "paper:aaai:2024:28626",
+        "paper:aaai:2024:28749",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29471",
+        "paper:aaai:2024:29492",
+        "paper:aaai:2024:29837",
+        "paper:aaai:2024:29902",
+        "paper:aaai:2025:32119",
+        "paper:aaai:2025:32176",
+        "paper:aaai:2025:32213",
+        "paper:aaai:2025:32356",
+        "paper:aaai:2025:32360",
+        "paper:aaai:2025:32533",
+        "paper:aaai:2025:32643",
+        "paper:aaai:2025:33274",
+        "paper:aaai:2025:34425",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34750",
+        "paper:ijcai:2021:314",
+        "paper:ijcai:2021:470",
+        "paper:ijcai:2022:193",
+        "paper:ijcai:2022:395",
+        "paper:ijcai:2022:518",
+        "paper:ijcai:2024:109",
+        "paper:ijcai:2024:110",
+        "paper:ijcai:2025:198"
+      ],
+      "target": "Tsinghua University",
+      "target_id": "organization:I99065089"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 7,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 11,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 42,
+      "edge_id": "edge:8085ad14b985de7c91c88ba92bf42ac120fbab715d0c8ddbf7281a87ab9a49ec",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 14,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 13,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        }
+      ],
+      "source": "Peking University",
+      "source_id": "organization:I20231570",
+      "support_paper_ids": [
+        "paper:aaai:2021:16147",
+        "paper:aaai:2021:16196",
+        "paper:aaai:2021:16421",
+        "paper:aaai:2021:17548",
+        "paper:aaai:2021:17583",
+        "paper:aaai:2022:19884",
+        "paper:aaai:2022:19942",
+        "paper:aaai:2022:20021",
+        "paper:aaai:2022:20159",
+        "paper:aaai:2022:20170",
+        "paper:aaai:2022:20175",
+        "paper:aaai:2023:25073",
+        "paper:aaai:2023:25258",
+        "paper:aaai:2023:25478",
+        "paper:aaai:2023:25494",
+        "paper:aaai:2023:25843",
+        "paper:aaai:2023:26629",
+        "paper:aaai:2024:27917",
+        "paper:aaai:2024:28162",
+        "paper:aaai:2024:28237",
+        "paper:aaai:2024:28345",
+        "paper:aaai:2024:28372",
+        "paper:aaai:2024:28466",
+        "paper:aaai:2024:28588",
+        "paper:aaai:2024:29006",
+        "paper:aaai:2024:29162",
+        "paper:aaai:2024:29851",
+        "paper:aaai:2025:32299",
+        "paper:aaai:2025:32608",
+        "paper:aaai:2025:32680",
+        "paper:aaai:2025:32763",
+        "paper:aaai:2025:32778",
+        "paper:aaai:2025:32780",
+        "paper:ijcai:2021:169",
+        "paper:ijcai:2021:321",
+        "paper:ijcai:2022:113",
+        "paper:ijcai:2023:104",
+        "paper:ijcai:2023:116",
+        "paper:ijcai:2023:263",
+        "paper:ijcai:2023:39",
+        "paper:ijcai:2023:71",
+        "paper:ijcai:2025:860"
+      ],
+      "target": "Peng Cheng Laboratory",
+      "target_id": "organization:I4210136793"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 2,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 4,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 6,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 17,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 41,
+      "edge_id": "edge:f6257e7c6c9064fc29f6a58979b1c279c07348e7303fbf530d97b87056fc95bc",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 10,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16446",
+        "paper:aaai:2021:16595",
+        "paper:aaai:2022:19977",
+        "paper:aaai:2022:20036",
+        "paper:aaai:2022:20394",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2023:25154",
+        "paper:aaai:2023:25296",
+        "paper:aaai:2023:25300",
+        "paper:aaai:2023:25398",
+        "paper:aaai:2023:25925",
+        "paper:aaai:2024:27994",
+        "paper:aaai:2024:27995",
+        "paper:aaai:2024:28157",
+        "paper:aaai:2024:28549",
+        "paper:aaai:2024:28901",
+        "paper:aaai:2024:29103",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29255",
+        "paper:aaai:2024:29433",
+        "paper:aaai:2024:29929",
+        "paper:aaai:2025:32149",
+        "paper:aaai:2025:32493",
+        "paper:aaai:2025:32672",
+        "paper:aaai:2025:32871",
+        "paper:aaai:2025:33068",
+        "paper:aaai:2025:33373",
+        "paper:aaai:2025:33837",
+        "paper:aaai:2025:34241",
+        "paper:aaai:2025:34390",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34535",
+        "paper:aaai:2025:34557",
+        "paper:aaai:2025:34633",
+        "paper:aaai:2025:34785",
+        "paper:aaai:2025:34883",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:202",
+        "paper:ijcai:2024:583",
+        "paper:ijcai:2025:664",
+        "paper:ijcai:2025:896"
+      ],
+      "target": "Tsinghua University",
+      "target_id": "organization:I99065089"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 1,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 11,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 38,
+      "edge_id": "edge:6159c77b6714b9131664121ae65214d8b405bcdcd1a8fb1d0cc4b9b5f5c0ffb6",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 15,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 10,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        }
+      ],
+      "source": "Peng Cheng Laboratory",
+      "source_id": "organization:I4210136793",
+      "support_paper_ids": [
+        "paper:aaai:2021:16888",
+        "paper:aaai:2022:19884",
+        "paper:aaai:2022:20036",
+        "paper:aaai:2022:20147",
+        "paper:aaai:2022:20255",
+        "paper:aaai:2022:21179",
+        "paper:aaai:2023:25159",
+        "paper:aaai:2023:25218",
+        "paper:aaai:2023:25373",
+        "paper:aaai:2023:25466",
+        "paper:aaai:2023:25551",
+        "paper:aaai:2023:25809",
+        "paper:aaai:2023:26616",
+        "paper:aaai:2024:27802",
+        "paper:aaai:2024:28389",
+        "paper:aaai:2024:28522",
+        "paper:aaai:2024:28559",
+        "paper:aaai:2024:28715",
+        "paper:aaai:2024:28865",
+        "paper:aaai:2024:28901",
+        "paper:aaai:2024:29162",
+        "paper:aaai:2024:29484",
+        "paper:aaai:2025:32091",
+        "paper:aaai:2025:32176",
+        "paper:aaai:2025:32608",
+        "paper:aaai:2025:32655",
+        "paper:aaai:2025:32835",
+        "paper:aaai:2025:33118",
+        "paper:aaai:2025:35417",
+        "paper:ijcai:2022:108",
+        "paper:ijcai:2022:510",
+        "paper:ijcai:2022:85",
+        "paper:ijcai:2023:71",
+        "paper:ijcai:2023:76",
+        "paper:ijcai:2023:87",
+        "paper:ijcai:2024:109",
+        "paper:ijcai:2024:110",
+        "paper:ijcai:2025:260"
+      ],
+      "target": "Tsinghua University",
+      "target_id": "organization:I99065089"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 2,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 4,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 12,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 10,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 33,
+      "edge_id": "edge:1edabf22a8c9786d81369f5f99f3031f9769bde4e572ff1e1828432989332924",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 11,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 8,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Multi-agent systems",
+          "topic_id": "topic:multi-agent"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        }
+      ],
+      "source": "University of Chinese Academy of Sciences",
+      "source_id": "organization:I4210165038",
+      "support_paper_ids": [
+        "paper:aaai:2021:16595",
+        "paper:aaai:2021:17205",
+        "paper:aaai:2022:19977",
+        "paper:aaai:2022:20394",
+        "paper:aaai:2022:20460",
+        "paper:aaai:2023:25154",
+        "paper:aaai:2023:25216",
+        "paper:aaai:2023:25296",
+        "paper:aaai:2023:25925",
+        "paper:aaai:2024:27994",
+        "paper:aaai:2024:27995",
+        "paper:aaai:2024:28157",
+        "paper:aaai:2024:28549",
+        "paper:aaai:2024:28873",
+        "paper:aaai:2024:29103",
+        "paper:aaai:2024:29129",
+        "paper:aaai:2024:29162",
+        "paper:aaai:2024:29255",
+        "paper:aaai:2024:29823",
+        "paper:aaai:2025:32149",
+        "paper:aaai:2025:32493",
+        "paper:aaai:2025:32672",
+        "paper:aaai:2025:33068",
+        "paper:aaai:2025:33837",
+        "paper:aaai:2025:34390",
+        "paper:aaai:2025:34488",
+        "paper:aaai:2025:34557",
+        "paper:aaai:2025:34883",
+        "paper:ijcai:2022:416",
+        "paper:ijcai:2023:77",
+        "paper:ijcai:2024:202",
+        "paper:ijcai:2024:583",
+        "paper:ijcai:2025:896"
+      ],
+      "target": "Tsinghua University",
+      "target_id": "organization:I99065089"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 5,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 2,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 32,
+      "edge_id": "edge:2bc82f1c9c990cac9a34d5fb9c59a8b0b35b2dc59925429d3bd38d77567e22dc",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 14,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 10,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        }
+      ],
+      "source": "Shanghai Jiao Tong University",
+      "source_id": "organization:I183067930",
+      "support_paper_ids": [
+        "paper:aaai:2021:16400",
+        "paper:aaai:2022:19954",
+        "paper:aaai:2022:19955",
+        "paper:aaai:2022:20071",
+        "paper:aaai:2022:20193",
+        "paper:aaai:2022:20202",
+        "paper:aaai:2022:20318",
+        "paper:aaai:2022:20352",
+        "paper:aaai:2023:25303",
+        "paper:aaai:2023:25349",
+        "paper:aaai:2023:25467",
+        "paper:aaai:2023:26016",
+        "paper:aaai:2024:27955",
+        "paper:aaai:2024:27958",
+        "paper:aaai:2024:27992",
+        "paper:aaai:2024:28066",
+        "paper:aaai:2024:28153",
+        "paper:aaai:2024:28687",
+        "paper:aaai:2024:28696",
+        "paper:aaai:2024:29308",
+        "paper:aaai:2024:29547",
+        "paper:aaai:2025:32350",
+        "paper:ijcai:2021:132",
+        "paper:ijcai:2021:183",
+        "paper:ijcai:2021:480",
+        "paper:ijcai:2021:84",
+        "paper:ijcai:2022:129",
+        "paper:ijcai:2023:110",
+        "paper:ijcai:2023:166",
+        "paper:ijcai:2023:261",
+        "paper:ijcai:2023:80",
+        "paper:ijcai:2025:198"
+      ],
+      "target": "Tencent (China)",
+      "target_id": "organization:I2250653659"
+    },
+    {
+      "active_year_count": 4,
+      "by_year": [
+        {
+          "distinct_support_papers": 0,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 2,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 14,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 31,
+      "edge_id": "edge:0bfa70883ba263111c6991a5018e51aaacd126e6cf834284a784aea34fe21f83",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 13,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 7,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Jilin University",
+      "source_id": "organization:I194450716",
+      "support_paper_ids": [
+        "paper:aaai:2022:20064",
+        "paper:aaai:2023:25616",
+        "paper:aaai:2023:25873",
+        "paper:aaai:2024:28908",
+        "paper:aaai:2024:29035",
+        "paper:aaai:2024:29314",
+        "paper:aaai:2024:29816",
+        "paper:aaai:2024:29835",
+        "paper:aaai:2024:30008",
+        "paper:aaai:2025:32201",
+        "paper:aaai:2025:32202",
+        "paper:aaai:2025:32429",
+        "paper:aaai:2025:32430",
+        "paper:aaai:2025:32513",
+        "paper:aaai:2025:32633",
+        "paper:aaai:2025:33440",
+        "paper:aaai:2025:34093",
+        "paper:aaai:2025:34387",
+        "paper:aaai:2025:34629",
+        "paper:aaai:2025:34650",
+        "paper:ijcai:2022:102",
+        "paper:ijcai:2023:154",
+        "paper:ijcai:2023:228",
+        "paper:ijcai:2023:417",
+        "paper:ijcai:2023:571",
+        "paper:ijcai:2023:74",
+        "paper:ijcai:2024:219",
+        "paper:ijcai:2024:719",
+        "paper:ijcai:2025:647",
+        "paper:ijcai:2025:786",
+        "paper:ijcai:2025:964"
+      ],
+      "target": "Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University",
+      "target_id": "organization:I4405259713"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 8,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 2,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 28,
+      "edge_id": "edge:5418aeb8851de23b2aff25e77351fcbc227006babd8850d1d43a8f68da762a97",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 8,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        }
+      ],
+      "source": "Tencent (China)",
+      "source_id": "organization:I2250653659",
+      "support_paper_ids": [
+        "paper:aaai:2021:16188",
+        "paper:aaai:2021:16199",
+        "paper:aaai:2021:16360",
+        "paper:aaai:2021:16406",
+        "paper:aaai:2022:20236",
+        "paper:aaai:2023:25171",
+        "paper:aaai:2023:25303",
+        "paper:aaai:2023:26230",
+        "paper:aaai:2024:28007",
+        "paper:aaai:2024:28361",
+        "paper:aaai:2024:28429",
+        "paper:aaai:2024:28690",
+        "paper:aaai:2024:29737",
+        "paper:aaai:2025:32061",
+        "paper:aaai:2025:32265",
+        "paper:aaai:2025:32424",
+        "paper:aaai:2025:32621",
+        "paper:aaai:2025:32914",
+        "paper:aaai:2025:33139",
+        "paper:aaai:2025:34117",
+        "paper:aaai:2025:34543",
+        "paper:ijcai:2021:154",
+        "paper:ijcai:2021:157",
+        "paper:ijcai:2021:278",
+        "paper:ijcai:2021:552",
+        "paper:ijcai:2022:577",
+        "paper:ijcai:2023:125",
+        "paper:ijcai:2023:556"
+      ],
+      "target": "Zhejiang University",
+      "target_id": "organization:I76130692"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 1,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 1,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 4,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 4,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 18,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 28,
+      "edge_id": "edge:fdf21e154d153adaaba447ab5e625094f22775c240a5f2c10b02b5922f9420ae",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 7,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Generative modeling",
+          "topic_id": "topic:generative-modeling"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Information retrieval and recommendation",
+          "topic_id": "topic:retrieval-recommendation"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16946",
+        "paper:aaai:2022:20353",
+        "paper:aaai:2023:25505",
+        "paper:aaai:2024:27966",
+        "paper:aaai:2024:29542",
+        "paper:aaai:2024:29731",
+        "paper:aaai:2025:32097",
+        "paper:aaai:2025:32387",
+        "paper:aaai:2025:32603",
+        "paper:aaai:2025:32641",
+        "paper:aaai:2025:32747",
+        "paper:aaai:2025:33172",
+        "paper:aaai:2025:33273",
+        "paper:aaai:2025:33340",
+        "paper:aaai:2025:33743",
+        "paper:aaai:2025:34512",
+        "paper:aaai:2025:34633",
+        "paper:aaai:2025:34732",
+        "paper:aaai:2025:34815",
+        "paper:aaai:2025:34923",
+        "paper:ijcai:2023:49",
+        "paper:ijcai:2023:97",
+        "paper:ijcai:2023:99",
+        "paper:ijcai:2024:730",
+        "paper:ijcai:2025:735",
+        "paper:ijcai:2025:907",
+        "paper:ijcai:2025:908",
+        "paper:ijcai:2025:914"
+      ],
+      "target": "Beihang University",
+      "target_id": "organization:I82880672"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 3,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 3,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 2,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 9,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 26,
+      "edge_id": "edge:feac9f3251288524636a70653221463a79b00aa541fe28576857ef0546eab399",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 9,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 6,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        }
+      ],
+      "source": "Westlake University",
+      "source_id": "organization:I3133055985",
+      "support_paper_ids": [
+        "paper:aaai:2021:16521",
+        "paper:aaai:2021:16957",
+        "paper:aaai:2021:17580",
+        "paper:aaai:2022:20711",
+        "paper:aaai:2022:20721",
+        "paper:aaai:2023:26232",
+        "paper:aaai:2023:26512",
+        "paper:aaai:2024:27784",
+        "paper:aaai:2024:27919",
+        "paper:aaai:2024:28230",
+        "paper:aaai:2024:28255",
+        "paper:aaai:2024:28289",
+        "paper:aaai:2024:28308",
+        "paper:aaai:2024:29161",
+        "paper:aaai:2024:29445",
+        "paper:aaai:2025:31994",
+        "paper:aaai:2025:31998",
+        "paper:aaai:2025:32061",
+        "paper:aaai:2025:32074",
+        "paper:aaai:2025:32756",
+        "paper:aaai:2025:32757",
+        "paper:aaai:2025:33131",
+        "paper:ijcai:2022:290",
+        "paper:ijcai:2024:510",
+        "paper:ijcai:2025:214",
+        "paper:ijcai:2025:551"
+      ],
+      "target": "Zhejiang University",
+      "target_id": "organization:I76130692"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 5,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 3,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 6,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 7,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 3,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 24,
+      "edge_id": "edge:42fe7b889ba606b5a3cb65b08ce50bff1f0be8d6ccfce5186a8169767fcbb59e",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 9,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Robotics and embodied AI",
+          "topic_id": "topic:robotics-embodied"
+        }
+      ],
+      "source": "Zhejiang Lab",
+      "source_id": "organization:I4210123185",
+      "support_paper_ids": [
+        "paper:aaai:2021:16221",
+        "paper:aaai:2021:16222",
+        "paper:aaai:2021:16463",
+        "paper:aaai:2022:20329",
+        "paper:aaai:2023:25171",
+        "paper:aaai:2023:25215",
+        "paper:aaai:2024:27876",
+        "paper:aaai:2024:27952",
+        "paper:aaai:2024:27980",
+        "paper:aaai:2024:28007",
+        "paper:aaai:2024:28029",
+        "paper:aaai:2024:29661",
+        "paper:aaai:2025:32830",
+        "paper:aaai:2025:33814",
+        "paper:aaai:2025:34440",
+        "paper:ijcai:2021:240",
+        "paper:ijcai:2021:87",
+        "paper:ijcai:2022:135",
+        "paper:ijcai:2022:607",
+        "paper:ijcai:2023:117",
+        "paper:ijcai:2023:144",
+        "paper:ijcai:2023:184",
+        "paper:ijcai:2023:202",
+        "paper:ijcai:2024:688"
+      ],
+      "target": "Zhejiang University",
+      "target_id": "organization:I76130692"
+    },
+    {
+      "active_year_count": 5,
+      "by_year": [
+        {
+          "distinct_support_papers": 3,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 6,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 1,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 6,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 24,
+      "edge_id": "edge:77c37e034dc2b45d4c4c7beeb9298279372b617df3b122d34792354590d5f680",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 5,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 5,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Causal inference",
+          "topic_id": "topic:causal-inference"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        }
+      ],
+      "source": "Centre National de la Recherche Scientifique",
+      "source_id": "organization:I1294671590",
+      "support_paper_ids": [
+        "paper:aaai:2021:16776",
+        "paper:aaai:2022:19875",
+        "paper:aaai:2022:20311",
+        "paper:aaai:2022:20672",
+        "paper:aaai:2022:20770",
+        "paper:aaai:2022:20783",
+        "paper:aaai:2024:28334",
+        "paper:aaai:2024:28654",
+        "paper:aaai:2024:29208",
+        "paper:aaai:2024:29515",
+        "paper:aaai:2024:29742",
+        "paper:aaai:2025:33622",
+        "paper:aaai:2025:33787",
+        "paper:aaai:2025:33795",
+        "paper:aaai:2025:33848",
+        "paper:ijcai:2021:248",
+        "paper:ijcai:2021:367",
+        "paper:ijcai:2022:575",
+        "paper:ijcai:2023:210",
+        "paper:ijcai:2024:204",
+        "paper:ijcai:2024:376",
+        "paper:ijcai:2024:406",
+        "paper:ijcai:2025:418",
+        "paper:ijcai:2025:487"
+      ],
+      "target": "Institut national de recherche en sciences et technologies du numérique",
+      "target_id": "organization:I1326498283"
+    },
+    {
+      "active_year_count": 4,
+      "by_year": [
+        {
+          "distinct_support_papers": 9,
+          "year": 2021
+        },
+        {
+          "distinct_support_papers": 0,
+          "year": 2022
+        },
+        {
+          "distinct_support_papers": 2,
+          "year": 2023
+        },
+        {
+          "distinct_support_papers": 5,
+          "year": 2024
+        },
+        {
+          "distinct_support_papers": 8,
+          "year": 2025
+        }
+      ],
+      "distinct_support_papers": 24,
+      "edge_id": "edge:fb184bfed8afdccaa69e81d659ac1ce12e1c5551a1f9bae83b65b0d394cfe7e2",
+      "inferred_topics": [
+        {
+          "distinct_support_papers": 4,
+          "topic": "Computer vision",
+          "topic_id": "topic:computer-vision"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Multimodal learning",
+          "topic_id": "topic:multimodal"
+        },
+        {
+          "distinct_support_papers": 4,
+          "topic": "Representation learning",
+          "topic_id": "topic:representation-learning"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Efficient machine learning systems",
+          "topic_id": "topic:efficient-systems"
+        },
+        {
+          "distinct_support_papers": 3,
+          "topic": "Trustworthy machine learning",
+          "topic_id": "topic:trustworthy-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Graph machine learning",
+          "topic_id": "topic:graph-ml"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Natural language processing and language models",
+          "topic_id": "topic:nlp-language-models"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Planning and reasoning",
+          "topic_id": "topic:planning-reasoning"
+        },
+        {
+          "distinct_support_papers": 2,
+          "topic": "Reinforcement learning",
+          "topic_id": "topic:reinforcement-learning"
+        },
+        {
+          "distinct_support_papers": 1,
+          "topic": "Optimization and learning theory",
+          "topic_id": "topic:optimization-theory"
+        }
+      ],
+      "source": "Chinese Academy of Sciences",
+      "source_id": "organization:I19820366",
+      "support_paper_ids": [
+        "paper:aaai:2021:16326",
+        "paper:aaai:2021:16410",
+        "paper:aaai:2021:16413",
+        "paper:aaai:2021:16414",
+        "paper:aaai:2021:16518",
+        "paper:aaai:2021:17363",
+        "paper:aaai:2021:17364",
+        "paper:aaai:2021:17615",
+        "paper:aaai:2023:25379",
+        "paper:aaai:2023:25398",
+        "paper:aaai:2024:27880",
+        "paper:aaai:2024:28192",
+        "paper:aaai:2024:28193",
+        "paper:aaai:2024:28558",
+        "paper:aaai:2024:30053",
+        "paper:aaai:2025:32127",
+        "paper:aaai:2025:32280",
+        "paper:aaai:2025:32949",
+        "paper:aaai:2025:34127",
+        "paper:aaai:2025:34678",
+        "paper:aaai:2025:34753",
+        "paper:aaai:2025:34782",
+        "paper:ijcai:2021:135",
+        "paper:ijcai:2025:591"
+      ],
+      "target": "Shenzhen Institutes of Advanced Technology",
+      "target_id": "organization:I4210145761"
+    }
+  ],
+  "status": "exploratory_descriptive",
+  "topic_families": [
+    {
+      "family": "Decision and interaction",
+      "family_id": "topic:decision-interaction",
+      "topic_id": "topic:robotics-embodied"
+    },
+    {
+      "family": "Learning and representation",
+      "family_id": "topic:learning-representation",
+      "topic_id": "topic:generative-modeling"
+    },
+    {
+      "family": "Language and perception",
+      "family_id": "topic:language-perception",
+      "topic_id": "topic:multimodal"
+    },
+    {
+      "family": "Language and perception",
+      "family_id": "topic:language-perception",
+      "topic_id": "topic:computer-vision"
+    },
+    {
+      "family": "Decision and interaction",
+      "family_id": "topic:decision-interaction",
+      "topic_id": "topic:multi-agent"
+    },
+    {
+      "family": "Decision and interaction",
+      "family_id": "topic:decision-interaction",
+      "topic_id": "topic:reinforcement-learning"
+    },
+    {
+      "family": "Reliability, theory and systems",
+      "family_id": "topic:reliability-theory-systems",
+      "topic_id": "topic:optimization-theory"
+    },
+    {
+      "family": "Language and perception",
+      "family_id": "topic:language-perception",
+      "topic_id": "topic:retrieval-recommendation"
+    },
+    {
+      "family": "Language and perception",
+      "family_id": "topic:language-perception",
+      "topic_id": "topic:nlp-language-models"
+    },
+    {
+      "family": "Learning and representation",
+      "family_id": "topic:learning-representation",
+      "topic_id": "topic:probabilistic-bayesian"
+    },
+    {
+      "family": "Learning and representation",
+      "family_id": "topic:learning-representation",
+      "topic_id": "topic:graph-ml"
+    },
+    {
+      "family": "Reliability, theory and systems",
+      "family_id": "topic:reliability-theory-systems",
+      "topic_id": "topic:trustworthy-ml"
+    },
+    {
+      "family": "Decision and interaction",
+      "family_id": "topic:decision-interaction",
+      "topic_id": "topic:planning-reasoning"
+    },
+    {
+      "family": "Reliability, theory and systems",
+      "family_id": "topic:reliability-theory-systems",
+      "topic_id": "topic:causal-inference"
+    },
+    {
+      "family": "Reliability, theory and systems",
+      "family_id": "topic:reliability-theory-systems",
+      "topic_id": "topic:efficient-systems"
+    },
+    {
+      "family": "Learning and representation",
+      "family_id": "topic:learning-representation",
+      "topic_id": "topic:representation-learning"
+    }
+  ],
+  "version": "explorer-analysis-release-v1"
+}

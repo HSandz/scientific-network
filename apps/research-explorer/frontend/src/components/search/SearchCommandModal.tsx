@@ -141,7 +141,7 @@ export const SearchCommandModal: React.FC<SearchCommandModalProps> = ({
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search all 47,875 entities by name, paper title, DOI, OpenAlex ID, or topic..."
+            placeholder="Search all entities by name, paper title, DOI, OpenAlex ID, or topic..."
             data-testid="global-search-input"
             className="flex-1 bg-transparent text-sm text-ink placeholder-[var(--faint)] focus:outline-none"
           />

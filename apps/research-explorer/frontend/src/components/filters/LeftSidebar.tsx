@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useExplorerStore } from "../../stores/useExplorerStore";
 import {
+  GraphSummaryResponse,
   CommunityOption,
   NodeLabel,
   RelationType,
@@ -22,6 +23,7 @@ import { LABEL_COLORS, PREDICATE_R_CODE } from "../../lib/colors";
 
 interface LeftSidebarProps {
   availableCommunities: CommunityOption[];
+  summary?: GraphSummaryResponse;
 }
 
 const ALL_NODE_LABELS: NodeLabel[] = [
@@ -55,28 +57,28 @@ const PROJECTION_MODES: Array<{
   {
     id: "heterogeneous",
     title: "Knowledge graph",
-    countLabel: "47,875",
+    countLabel: "",
     predicateSummary: "All 5 entity labels and 10 predicates (R1–R10)",
     icon: Layers,
   },
   {
     id: "organizations",
     title: "Organizations",
-    countLabel: "2,047",
+    countLabel: "",
     predicateSummary: "COLLABORATED_WITH (R8) institutional network",
     icon: Building2,
   },
   {
     id: "researchers",
     title: "Researchers",
-    countLabel: "32,189",
+    countLabel: "",
     predicateSummary: "COAUTHORED_WITH (R7) collaboration projection",
     icon: Users,
   },
   {
     id: "citations",
     title: "Citations",
-    countLabel: "13,617",
+    countLabel: "",
     predicateSummary: "Directed CITES (R4) within-corpus references",
     icon: BookOpen,
   },
@@ -84,6 +86,7 @@ const PROJECTION_MODES: Array<{
 
 export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   availableCommunities,
+  summary,
 }) => {
   const {
     leftSidebarOpen,
@@ -217,8 +220,16 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
 
       <aside
         data-testid="left-sidebar"
-        role={typeof window !== "undefined" && window.innerWidth < 1024 ? "dialog" : undefined}
-        aria-modal={typeof window !== "undefined" && window.innerWidth < 1024 ? "true" : undefined}
+        role={
+          typeof window !== "undefined" && window.innerWidth < 1024
+            ? "dialog"
+            : undefined
+        }
+        aria-modal={
+          typeof window !== "undefined" && window.innerWidth < 1024
+            ? "true"
+            : undefined
+        }
         aria-label="Graph projection and scope filters"
         className="absolute inset-y-0 left-0 z-40 w-[300px] max-w-[90vw] lg:static lg:w-[272px] shrink-0 bg-surface border-r border-border flex flex-col h-full overflow-y-auto select-none"
       >
@@ -243,7 +254,11 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           <div className="text-[13px] font-medium text-muted mb-2">
             Network projection
           </div>
-          <div className="space-y-1" role="radiogroup" aria-label="Network projection">
+          <div
+            className="space-y-1"
+            role="radiogroup"
+            aria-label="Network projection"
+          >
             {PROJECTION_MODES.map((m) => {
               const Icon = m.icon;
               const active = viewMode === m.id;
@@ -266,7 +281,16 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     <span className="truncate">{m.title}</span>
                   </span>
                   <span className="text-[13px] text-faint tabular-nums shrink-0">
-                    {m.countLabel}
+                    {(m.id === "heterogeneous"
+                      ? summary?.total_nodes
+                      : summary?.nodes_by_label[
+                          m.id === "researchers"
+                            ? "Researcher"
+                            : m.id === "organizations"
+                              ? "Organization"
+                              : "Paper"
+                        ]
+                    )?.toLocaleString() ?? "Unavailable"}
                   </span>
                 </button>
               );
@@ -333,7 +357,8 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                 <option value="">All communities (top by degree)</option>
                 {availableCommunities.map((c) => (
                   <option key={c.community_id} value={c.community_id}>
-                    {c.community_id} ({c.member_count.toLocaleString()} researchers)
+                    {c.community_id} ({c.member_count.toLocaleString()}{" "}
+                    researchers)
                   </option>
                 ))}
               </select>
@@ -427,7 +452,9 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
 
               <div>
                 <div className="flex items-center justify-between text-[13px] mb-1.5">
-                  <span className="font-medium text-ink">Publication window</span>
+                  <span className="font-medium text-ink">
+                    Publication window
+                  </span>
                   <span className="text-muted tabular-nums">
                     {filters.yearMin}–{filters.yearMax}
                   </span>
@@ -438,7 +465,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     value={filters.yearMin}
                     onChange={(e) =>
                       updateFilters({
-                        yearMin: Math.min(Number(e.target.value), filters.yearMax),
+                        yearMin: Math.min(
+                          Number(e.target.value),
+                          filters.yearMax,
+                        ),
                       })
                     }
                     className="ledger-input text-[13px] tabular-nums"
@@ -454,7 +484,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     value={filters.yearMax}
                     onChange={(e) =>
                       updateFilters({
-                        yearMax: Math.max(Number(e.target.value), filters.yearMin),
+                        yearMax: Math.max(
+                          Number(e.target.value),
+                          filters.yearMin,
+                        ),
                       })
                     }
                     className="ledger-input text-[13px] tabular-nums"
@@ -510,7 +543,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           {(viewMode === "researchers" || viewMode === "organizations") && (
             <div>
               <div className="flex items-center justify-between text-[13px] mb-1">
-                <label htmlFor="filter-min-support" className="font-medium text-ink">
+                <label
+                  htmlFor="filter-min-support"
+                  className="font-medium text-ink"
+                >
                   Min shared papers
                 </label>
                 <span className="text-muted tabular-nums">
@@ -536,7 +572,10 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           {/* Subgraph Node Cap */}
           <div>
             <div className="flex items-center justify-between text-[13px] mb-1">
-              <label htmlFor="filter-node-limit" className="font-medium text-ink">
+              <label
+                htmlFor="filter-node-limit"
+                className="font-medium text-ink"
+              >
                 Displayed node limit
               </label>
               <span className="text-muted tabular-nums">
