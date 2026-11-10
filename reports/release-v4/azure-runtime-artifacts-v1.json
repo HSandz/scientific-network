@@ -1,0 +1,75 @@
+{
+  "format": "explorer-runtime-v1",
+  "sources": {
+    "graph": {
+      "path": "data/processed/release-graph-v4/graph.json",
+      "sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90"
+    },
+    "analysis": {
+      "path": "reports/release-v4/analysis.json",
+      "sha256": "580d1a6dbc21ef2ac17b820979830f3de157fc1b04d1c89f2580731f141701c9"
+    },
+    "summary.json": {
+      "path": "reports/release-v4/graph-summary.json",
+      "sha256": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408"
+    },
+    "network-views.json": {
+      "path": "reports/final-report/network-views-v4-v1/network-views.json",
+      "sha256": "48f34122c328de69e161eacf0127be8c539964b6017e7aca86cd037ef9470867"
+    },
+    "audit.json": {
+      "path": "reports/release-v4/audit-results-agent-v2.json",
+      "sha256": "b1111bb9b834469a37216e53ee3e388757a42c44bf3eabc65e48eb9f29a546dd"
+    },
+    "quality.yaml": {
+      "path": "configs/quality-agent-release-v2.yaml",
+      "sha256": "64b59294eed0fcc85d83850d553ce605fd5bab07832e7d016bb30cc8f533fc88"
+    },
+    "topic-eval.json": {
+      "path": "reports/release-v3/topic-eval-agent.json",
+      "sha256": "49df5456906d271d0b44b5ede63e1ad53675c3dc2dc1adaa871a9353931f3471"
+    },
+    "topic-reuse.json": {
+      "path": "reports/release-v4/historical-topic-reuse-v2.json",
+      "sha256": "e0e719b3188dffdda2ebf9ab3f0852a6d7f22e03fbe4aeef998f2be37d037675"
+    }
+  },
+  "ledger_counts": {
+    "evidence": 142928,
+    "affiliations": 56273
+  },
+  "outputs": {
+    "analysis.json": {
+      "sha256": "240ae410b802746ca9c9996073ef60685f9ed3907f88a8e2084310c3b70a9fc7",
+      "bytes": 7385843
+    },
+    "audit.json": {
+      "sha256": "b1111bb9b834469a37216e53ee3e388757a42c44bf3eabc65e48eb9f29a546dd",
+      "bytes": 13784
+    },
+    "ledger.sqlite": {
+      "sha256": "efaf6c4a48ea222b158f45c5f588409518ed2b337f39c7d95b21eb2d6995ba6b",
+      "bytes": 145858560
+    },
+    "network-views.json": {
+      "sha256": "48f34122c328de69e161eacf0127be8c539964b6017e7aca86cd037ef9470867",
+      "bytes": 1421789
+    },
+    "quality.yaml": {
+      "sha256": "64b59294eed0fcc85d83850d553ce605fd5bab07832e7d016bb30cc8f533fc88",
+      "bytes": 1417
+    },
+    "summary.json": {
+      "sha256": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408",
+      "bytes": 8037
+    },
+    "topic-eval.json": {
+      "sha256": "49df5456906d271d0b44b5ede63e1ad53675c3dc2dc1adaa871a9353931f3471",
+      "bytes": 44173
+    },
+    "topic-reuse.json": {
+      "sha256": "e0e719b3188dffdda2ebf9ab3f0852a6d7f22e03fbe4aeef998f2be37d037675",
+      "bytes": 1996
+    }
+  }
+}

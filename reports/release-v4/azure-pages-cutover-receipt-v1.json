@@ -1,0 +1,29 @@
+{
+  "project": "scientific-network-explorer",
+  "frontend": "https://scientific-network-explorer.pages.dev",
+  "api": "https://scientific-network-api.eastasia.cloudapp.azure.com/api",
+  "previous_variable_names": [
+    "VITE_API_BASE_URL"
+  ],
+  "current_variable_names": [
+    "VITE_API_BASE_URL"
+  ],
+  "verified_deployment": {
+    "id": "128d74a8-b5ef-40d6-90a2-19ff830e35fc",
+    "url": "https://128d74a8.scientific-network-explorer.pages.dev",
+    "commit": "ccdb6905f44978bc767aa1b8090f2564b847c936",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-11-10T07:57:18.459346Z",
+      "ended_on": "2026-11-10T07:57:26.901037Z",
+      "status": "success"
+    }
+  },
+  "build_config": {
+    "build_command": "npm ci && npm run build",
+    "destination_dir": "dist",
+    "root_dir": "apps/research-explorer/frontend",
+    "web_analytics_tag": null,
+    "web_analytics_token": null
+  }
+}

@@ -73,3 +73,39 @@ def test_public_routes_reject_large_bodies_and_hide_debug_endpoints():
         assert client.get('/api/search?q='+'x'*8200).status_code == 414
         assert client.get('/api/search?limit=100000').status_code == 422
         assert client.get('/api/live', headers={'Origin': 'https://evil.example'}).headers.get('access-control-allow-origin') is None
+
+
+def test_readiness_rechecks_connection_after_inventory_was_verified():
+    from types import SimpleNamespace
+    from neo4j.exceptions import ServiceUnavailable
+
+    class ReadinessRepo(FakeNeo4jRepository):
+        connected = True
+
+        def run_read(self, query):
+            if not self.connected:
+                raise ServiceUnavailable('simulated outage')
+            return [{'ready': 1}]
+
+    store = SimpleNamespace(ledger_available=True, **{name: {'available': True} for name in (
+        'summary_data', 'analysis_data', 'network_views_data', 'audit_results_data',
+        'quality_config_data', 'topic_eval_data', 'historical_topic_reuse_data',
+    )})
+    repo = ReadinessRepo()
+    app = create_app(load_settings(), repo=repo, store=store)
+    with TestClient(app) as client:
+        assert client.get('/api/ready').status_code == 200
+        repo.connected = False
+        assert client.get('/api/ready').status_code == 503
+        repo.connected = True
+        store.topic_eval_data = {}
+        assert client.get('/api/ready').status_code == 503
+
+
+def test_forwarded_headers_cannot_bypass_rate_limit(monkeypatch):
+    monkeypatch.setattr('backend.main.RATE_LIMIT_MAX_REQUESTS', 2)
+    app = create_app(load_settings(), repo=FakeNeo4jRepository(), background_warmup=False)
+    with TestClient(app) as client:
+        assert client.get('/api/live', headers={'X-Forwarded-For': '1.1.1.1'}).status_code == 200
+        assert client.get('/api/live', headers={'X-Forwarded-For': '2.2.2.2'}).status_code == 200
+        assert client.get('/api/live', headers={'X-Forwarded-For': '3.3.3.3'}).status_code == 429

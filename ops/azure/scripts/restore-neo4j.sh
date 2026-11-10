@@ -4,8 +4,8 @@ set -euo pipefail
 source "$(dirname "$0")/common.sh"
 exec 9>"$AZURE_COMPOSE_DIR/.runtime.lock"
 flock -n 9 || { echo 'Another deployment/maintenance operation is running.' >&2; exit 1; }
-archive=${1:?Usage: restore-neo4j.sh /absolute/path/neo4j.dump [new-volume-name] [trusted-sha256]}
-volume=${2:-scientific-network-production-neo4j-data-v1}
+archive=${1:?Usage: restore-neo4j.sh /absolute/path/neo4j.dump new-volume-name [trusted-sha256]}
+volume=${2:?Set an explicit fresh production volume name}
 expected_sha=${3:-1206b2572c4ebfb25b2c7db961daa429e0854d5daa14f307658ab178ecdce1df}
 [[ "$expected_sha" =~ ^[0-9a-f]{64}$ ]] || { echo 'Invalid trusted checksum.' >&2; exit 1; }
 if [[ -f .restore-complete && "$(cat .restore-complete)" == "$volume" ]]; then
