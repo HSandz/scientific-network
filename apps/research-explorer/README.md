@@ -4,6 +4,10 @@ A self-contained, local full-stack scientific knowledge graph exploration worksp
 
 The explorer connects **read-only** to the isolated `neo4j-five-year` Neo4j instance (`bolt://127.0.0.1:7689`) and cross-references local release ledgers (`reports/release-v4/analysis.json` and `data/processed/release-graph-v4/graph.json`) for full-projection network metrics, Louvain community partitions, `EvidenceRecord` provenance, and `AffiliationObservation` author–paper–organization triples.
 
+Production operations: see [Azure runbook](../../ops/azure/README.md) for the
+Cloudflare Pages + Azure/Caddy deployment, immutable SQLite evidence artifacts,
+backup, restore and rollback. Local development commands below remain available.
+
 ---
 
 ## 1. Architecture & Technology Stack

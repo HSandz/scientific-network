@@ -930,3 +930,30 @@ names and evidence pointers. These bounded illustrations are not representative
 samples; full counts and score computations remain the original bound analysis.
 Do not mutate/recompute graph content, classifier, judgments or audit samples for
 this presentation update. Preserve old packages; render new local PDF/HTML/ZIP.
+
+
+### D040 amendment — Azure Explorer runtime (2026-11-10)
+
+The user explicitly authorizes deployment, Pages configuration and pushing tested
+deployment changes for the existing Explorer (WORK-2026-11-10-007). This is an
+operational copy of the frozen release, not a new graph build or scientific
+release. Keep the authoritative local `neo4j-five-year` completely untouched
+apart from read-only verification queries; retain Render and Aura until explicit
+cleanup authorization. Restore the compatible verified dump into a fresh isolated
+Azure volume and require full typed-property fingerprints and schema equality.
+
+The existing 4 GB Azure VM uses a 4 GiB OS-disk swap file because inspection found
+no temporary disk and sufficient persistent disk headroom. Neo4j heap/page cache
+and container limits fit physical RAM. Its database defaults to read-only, and
+Bolt/Browser are not public. One bounded API worker uses immutable indexed SQLite
+for all evidence and aligned affiliation observations; compact runtime analysis
+preserves exact API analytics, node metrics, communities and ranking responses.
+Original research artifacts, accepted facts, weights and provenance stay unchanged.
+
+The connected Cloudflare account has no zones. Use Caddy with the user-supplied
+Azure DNS hostname `scientific-network-api.eastasia.cloudapp.azure.com`, retaining
+the existing Pages project/audience/URL. Update its production Vite API origin only
+after external API verification; build and test the resulting production frontend.
+No paid resource, resize, registry, graph trimming or old-service deletion is
+included. See [runbook](../ops/azure/README.md) and measured
+[receipt](../reports/release-v4/azure-deployment-2026-11-10.md).

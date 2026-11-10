@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-10-007 — Azure production deployment](2026-11-10-007-azure-production.md): in progress; complete graph/schema/content equality, HTTPS API checks, bounded runtime, safe swap and off-VM backup/recovery passed; Pages cutover/browser acceptance pending.
+
 - [WORK-2026-11-10-005 — Research Explorer usability and graph operations implementation](2026-11-10-005-research-explorer-usability-implementation.md): completed; authoritative effective view state, collision-free neighbor reading and pinning (Warut 7/7 names readable together, dense node list without label wall), explicit Overview/Ego/Path views with Back navigation, reciprocal/parallel edge preservation in multi-edge graphology, responsive layout and header hit targets, accessible drawers/pickers, and unavailable quality fallback; 15 backend tests, 5 Playwright E2E suites, 507 repo tests, design lint 0 FAIL.
 
 - [WORK-2026-11-10-004 — Fresh-session Explorer implementation prompt](2026-11-10-004-explorer-implementation-prompt.md): completed, handoff only; paste-ready prompt covers the combined graph/website plan, `design-taste-frontend`, acceptance checks, preservation boundaries and deliverables; no application changes.

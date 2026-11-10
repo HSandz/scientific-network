@@ -60,6 +60,8 @@ class Settings:
     quality_config_path: Path = REPO_ROOT / "configs" / "quality-agent-release-v2.yaml"
     topic_eval_path: Path = REPO_ROOT / "reports" / "release-v3" / "topic-eval-agent.json"
     historical_topic_reuse_path: Path = REPO_ROOT / "reports" / "release-v4" / "historical-topic-reuse-v2.json"
+    ledger_sqlite_path: Path | None = None
+    production: bool = False
 
 
 def load_settings() -> Settings:
@@ -112,6 +114,8 @@ def load_settings() -> Settings:
         host=host,
         port=port,
         cors_origins=cors_origins,
+        production=os.environ.get("EXPLORER_PRODUCTION", "").lower() == "true",
+        ledger_sqlite_path=Path(os.environ["EXPLORER_LEDGER_SQLITE_PATH"]) if os.environ.get("EXPLORER_LEDGER_SQLITE_PATH") else None,
         query_timeout_seconds=float(os.environ.get("EXPLORER_QUERY_TIMEOUT", "15.0")),
         max_neighbor_limit=250,
         max_search_limit=100,

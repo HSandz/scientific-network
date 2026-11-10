@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+*.sqlite
+*.tar
+*.gz
+backups/
+artifacts/
+secrets/
+.runtime.lock
+.restore-complete

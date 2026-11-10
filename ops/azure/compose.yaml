@@ -1,0 +1,128 @@
+name: scientific-network-production
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: '3'
+
+services:
+  neo4j:
+    image: neo4j:5.26.12-community
+    restart: unless-stopped
+    mem_limit: 2g
+    memswap_limit: 2560m
+    cpus: 1.5
+    pids_limit: 300
+    stop_grace_period: 90s
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:?Set production password in ignored .env}
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 768m
+      NEO4J_server_memory_pagecache_size: 512m
+      NEO4J_server_databases_default__to__read__only: 'true'
+      NEO4J_db_transaction_timeout: 15s
+      NEO4J_dbms_memory_transaction_total_max: 256m
+      NEO4J_db_tx__log_rotation_retention__policy: 256M size
+      NEO4J_server_http_enabled: 'false'
+      NEO4J_server_https_enabled: 'false'
+    volumes:
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+    networks: [database]
+    healthcheck:
+      test: ['CMD-SHELL', 'cypher-shell -a bolt://localhost:7687 -u neo4j -p "$${NEO4J_AUTH#*/}" "RETURN 1" >/dev/null 2>&1']
+      interval: 60s
+      timeout: 15s
+      retries: 5
+      start_period: 90s
+    logging: *logging
+
+  api:
+    image: ${API_IMAGE:?Set an immutable locally-built image tag}
+    restart: unless-stopped
+    init: true
+    user: '10001:10001'
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    memswap_limit: 1g
+    cpus: 1.0
+    pids_limit: 100
+    stop_grace_period: 30s
+    tmpfs: ['/tmp:size=32m,mode=1777']
+    ports: ['127.0.0.1:8000:8000']
+    environment:
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD:?Set production password}
+      NEO4J_DATABASE: neo4j
+      EXPLORER_NEO4J_URI: bolt://neo4j:7687
+      EXPLORER_PRODUCTION: 'true'
+      EXPLORER_CORS_ORIGINS: https://scientific-network-explorer.pages.dev
+      EXPLORER_QUERY_TIMEOUT: '12'
+      EXPLORER_GRAPH_PATH: /artifacts/not-shipped-graph.json
+      EXPLORER_LEDGER_SQLITE_PATH: /artifacts/ledger.sqlite
+      EXPLORER_ANALYSIS_PATH: /artifacts/analysis.json
+      EXPLORER_SUMMARY_PATH: /artifacts/summary.json
+      EXPLORER_NETWORK_VIEWS_PATH: /artifacts/network-views.json
+      EXPLORER_AUDIT_RESULTS_PATH: /artifacts/audit.json
+      EXPLORER_QUALITY_CONFIG_PATH: /artifacts/quality.yaml
+      EXPLORER_TOPIC_EVAL_PATH: /artifacts/topic-eval.json
+      EXPLORER_TOPIC_REUSE_PATH: /artifacts/topic-reuse.json
+    command: ['uvicorn', 'backend.main:app', '--host', '0.0.0.0', '--port', '8000', '--workers', '1', '--limit-concurrency', '12', '--timeout-keep-alive', '5', '--timeout-graceful-shutdown', '25', '--no-proxy-headers']
+    volumes:
+      - ${ARTIFACT_DIR:?Set immutable artifact directory}:/artifacts:ro
+    networks: [database, ingress]
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', 'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/api/ready", timeout=20).read()']
+      interval: 30s
+      timeout: 25s
+      retries: 4
+      start_period: 40s
+    logging: *logging
+
+  caddy:
+    image: ${CADDY_IMAGE:-caddy:2.10.2-alpine}
+    profiles: [https]
+    restart: unless-stopped
+    mem_limit: 128m
+    memswap_limit: 192m
+    cpus: 0.5
+    pids_limit: 100
+    stop_grace_period: 20s
+    ports: ['80:80', '443:443']
+    environment:
+      API_HOSTNAME: ${API_HOSTNAME:?Set verified DNS hostname}
+    volumes:
+      - ./proxy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks: [ingress]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q --spider --timeout=10 "https://$$API_HOSTNAME/api/live"']
+      interval: 60s
+      timeout: 15s
+      retries: 3
+      start_period: 30s
+    logging: *logging
+
+networks:
+  database:
+    internal: true
+  ingress:
+
+volumes:
+  neo4j-data:
+    name: ${NEO4J_DATA_VOLUME:-scientific-network-production-neo4j-data-v1}
+    external: true
+  neo4j-logs:
+    name: scientific-network-production-neo4j-logs-v1
+  caddy-data:
+  caddy-config:
