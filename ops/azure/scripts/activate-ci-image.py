@@ -75,6 +75,10 @@ def activate(args):
             subprocess.run([str(OPS / 'scripts/verify.sh')], cwd=OPS, check=True)
             assert before == stable_services()
             previous['operation'] = 'noop'
+            # An operator may coordinate a new immutable artifact directory with
+            # this same image. Record the verified active inputs, not stale pins.
+            previous['artifact_dir'] = str(artifacts)
+            previous['preserved_services'] = before
             previous['sequence'] = args.sequence
             previous['verified_at'] = datetime.now(timezone.utc).isoformat()
             STATE.write_text(json.dumps(previous, indent=2) + '\n')
