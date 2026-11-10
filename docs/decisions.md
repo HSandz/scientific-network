@@ -1026,3 +1026,10 @@ a sole dual-affiliated author is excluded. Comparisons are full-period, explicit
 independent of canvas filters. Version-2 views add backward-compatible analytical
 section/controls; pre-spec bookmarks migrate to safe overview, clearing unsupported
 hidden controls with a notice. No threshold tuning or graph reimport is involved.
+
+
+WORK-2026-11-10-012 follow-up: Table workspace query, label, sector/venue,
+predicate/evidence, sort and pagination state belongs in the versioned saved view,
+with bounded validation and safe legacy defaults. Restoring a tab alone does not
+restore an exploration. Graph/Table/Analytics save/reload tests cover the actual
+workspace controls. No scientific artifact or runtime contract changes.

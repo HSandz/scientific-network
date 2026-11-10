@@ -38,6 +38,25 @@ export interface ExplorerFilters {
   relations: RelationType[];
 }
 
+export interface TableWorkspaceState {
+  mode: "nodes" | "edges";
+  nodeSearch: string;
+  nodeLabel: string;
+  nodeSector: string;
+  nodeVenue: string;
+  nodeSortBy: string;
+  nodeSortOrder: "asc" | "desc";
+  nodePage: number;
+  edgeSearch: string;
+  edgeRelation: string;
+  edgeEvidenceKind: string;
+  edgeMinSupport: number;
+  edgeSortBy: string;
+  edgeSortOrder: "asc" | "desc";
+  edgePage: number;
+}
+const DEFAULT_TABLE_WORKSPACE: TableWorkspaceState = { mode: "nodes", nodeSearch: "", nodeLabel: "Researcher", nodeSector: "", nodeVenue: "", nodeSortBy: "score", nodeSortOrder: "desc", nodePage: 1, edgeSearch: "", edgeRelation: "COAUTHORED_WITH", edgeEvidenceKind: "", edgeMinSupport: 1, edgeSortBy: "support_count", edgeSortOrder: "desc", edgePage: 1 };
+
 export interface AnalyticsFilters {
   venue: string;
   topic: string;
@@ -125,6 +144,7 @@ interface ExplorerState {
   insightReturn: boolean;
   analyticsSection: string;
   analyticsFilters: AnalyticsFilters;
+  tableWorkspace: TableWorkspaceState;
   darkMode: boolean;
   workspaceTab: WorkspaceTab;
   leftSidebarOpen: boolean;
@@ -225,6 +245,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   insightReturn: false,
   analyticsSection: "robustness",
   analyticsFilters: { ...DEFAULT_ANALYTICS_FILTERS },
+  tableWorkspace: { ...DEFAULT_TABLE_WORKSPACE },
   darkMode: getInitialDarkMode(),
   workspaceTab: "graph",
   leftSidebarOpen: getInitialLeftSidebarOpen(),
@@ -753,6 +774,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       workspaceTab: spec.workspaceTab,
       analyticsSection: spec.analyticsSection || "robustness",
       analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
+      tableWorkspace: spec.tableWorkspace || { ...DEFAULT_TABLE_WORKSPACE },
       insightReturn: false,
       hoveredNodeId: null,
       expansionError: null,
@@ -839,6 +861,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
         workspaceTab: spec.workspaceTab,
         analyticsSection: spec.analyticsSection || "robustness",
       analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
+      tableWorkspace: spec.tableWorkspace || { ...DEFAULT_TABLE_WORKSPACE },
         filters: spec.filters,
         layoutMode: spec.layoutMode,
         edgeFilterMode: spec.edgeFilterMode,
