@@ -59,6 +59,8 @@ def activate(args):
     assert hashlib.sha256((artifacts / 'manifest.json').read_bytes()).hexdigest() == approval['manifest_sha256']
     previous = json.loads(STATE.read_text()) if STATE.exists() else {}
     assert args.sequence >= previous.get('sequence', 0), 'Stale deployment rejected'
+    if args.sequence == previous.get('sequence'):
+        assert args.sha == previous.get('sha'), 'Conflicting sequence rejected'
     image = 'scientific-network-api:sha-' + args.sha
     before = stable_services()
     assert os.statvfs(OPS).f_bavail * os.statvfs(OPS).f_frsize > 8 * 1024**3, 'Need 8 GiB free'
@@ -67,6 +69,7 @@ def activate(args):
         if current['API_IMAGE'] == image and api['Image'] == previous.get('image_id'):
             subprocess.run([str(OPS / 'scripts/verify.sh')], cwd=OPS, check=True)
             assert before == stable_services()
+            previous['operation'] = 'noop'
             previous['sequence'] = args.sequence
             previous['verified_at'] = datetime.now(timezone.utc).isoformat()
             STATE.write_text(json.dumps(previous, indent=2) + '\n')
@@ -104,14 +107,21 @@ def activate(args):
     assert labels['org.opencontainers.image.revision'] == args.sha
     assert labels['org.scientific-network.runtime-contract'] == approval['runtime_contract'], 'Artifact contract changed: coordinated release required'
     try:
-        subprocess.run([str(OPS / 'scripts/update.sh'), image, str(artifacts)], cwd=OPS, check=True)
+        updated = subprocess.run([str(OPS / 'scripts/update.sh'), image, str(artifacts)], cwd=OPS, capture_output=True, text=True)
+        print(updated.stdout, flush=True)
+        print(updated.stderr, flush=True)
+        updated.check_returncode()
     finally:
         assert before == stable_services(), 'CRITICAL: database/proxy identity or mounts changed'
     assert env_values()['ARTIFACT_DIR'] == str(artifacts)
     active = json.loads(run('docker', 'inspect', 'scientific-network-production-api-1'))[0]
     assert active['Image'] == args.image_id and active['State']['Health']['Status'] == 'healthy'
     assert not active['State']['OOMKilled'] and active['RestartCount'] == 0
-    receipt = dict(sha=args.sha, image=image, image_id=args.image_id, sequence=args.sequence,
+    snapshot = next(line.split(': ', 1)[1] for line in updated.stdout.splitlines() if line.startswith('Deployment verified; rollback snapshot: '))
+    prior = OPS / '.ci-rollback-state.json'
+    prior.write_text(json.dumps(previous) + '\n')
+    prior.chmod(0o600)
+    receipt = dict(operation='activated', rollback_snapshot=snapshot, sha=args.sha, image=image, image_id=args.image_id, sequence=args.sequence,
                    artifact_dir=str(artifacts), verified_at=datetime.now(timezone.utc).isoformat(),
                    preserved_services=before)
     tmp = STATE.with_suffix('.tmp')

@@ -6,7 +6,7 @@ host=${1:-azure_scientific-network}
 contract=$(python3 ops/azure/scripts/runtime-contract.py)
 remote=$(ssh "$host" 'mktemp -d /tmp/azure-api-ci-install-XXXXXX')
 trap 'ssh "$host" "rm -rf -- $remote"' EXIT
-scp ops/azure/scripts/{activate-ci-image.py,common.sh,update.sh,rollback.sh,verify.sh,smoke-api.py} "$host:$remote/" >/dev/null
+scp ops/azure/scripts/{activate-ci-image.py,rollback-ci-image.py,common.sh,update.sh,rollback.sh,verify.sh,smoke-api.py} "$host:$remote/" >/dev/null
 ssh "$host" sudo -n python3 - "$remote" "$contract" <<'PY'
 import fcntl,hashlib,json,pathlib,subprocess,sys
 source=pathlib.Path(sys.argv[1])

@@ -231,7 +231,7 @@ git push origin main
 ```
 
 Triggers are backend source/tests, `Dockerfile.api`, `requirements-api.txt`,
-`build-image.sh`, `runtime-contract.py`, `ci-image-smoke.sh`, `pyproject.toml` and
+`build-image.sh`, `runtime-contract.py`, `ci-image-smoke.sh`, `image-identity.py`, `pyproject.toml` and
 `uv.lock`, on `main` only. PRs never deploy. Frontend-only and documentation-only
 changes do not deploy Azure; existing Pages automation is unchanged. Scientific
 artifacts, graph files, Compose and restore/preparation scripts are excluded.
@@ -239,8 +239,8 @@ The existing Offline checks still runs on all pushes/PRs; it installs locked
 analysis/report extras because the figure tests require matplotlib.
 
 The production image is `scientific-network-api:sha-<full-commit-SHA>`. Its revision
-and compatibility fingerprint are OCI labels. Actions records the Docker image
-content ID (`sha256:...`, not a registry RepoDigest), plus SHA-256 of the compressed
+and compatibility fingerprint are OCI labels. Actions records the portable Docker image
+configuration digest (`sha256:...`, not a registry RepoDigest or a store-specific manifest ID), plus SHA-256 of the compressed
 Docker archive. No registry is used. Repeating a verified deployed commit verifies
 the existing immutable image and keeps it; a redundant rebuild is discarded.
 
@@ -308,7 +308,9 @@ image/artifact selectors and recreates **only API**, with `--no-deps --pull neve
 Readiness, artifact SHA-256, database counts/version and the complete public HTTPS
 smoke must pass. Any failure restores the previous exact environment and verifies
 the recovered API, returning failure to Actions. It does not recursively acquire
-the runtime lock. Failed rollback returns critical exit 70. Neo4j/Caddy are never
+the runtime lock. Failed rollback returns critical exit 70. A subsequent hosted-runner public smoke
+failure invokes transaction-bound recovery through Run Command; it refuses to
+roll back a superseding release or an unchanged idempotent deployment. Neo4j/Caddy are never
 targeted; their IDs, start times, restart counts and mounts must remain identical.
 
 Manual redeployment: Actions → Deploy Azure API → Run workflow → branch **main**,

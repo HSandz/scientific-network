@@ -10,6 +10,7 @@ on:
       - 'ops/azure/scripts/build-image.sh'
       - 'ops/azure/scripts/runtime-contract.py'
       - 'ops/azure/scripts/ci-image-smoke.sh'
+      - 'ops/azure/scripts/image-identity.py'
       - 'pyproject.toml'
       - 'uv.lock'
   workflow_dispatch:
@@ -61,9 +62,9 @@ jobs:
         env:
           IMAGE: scientific-network-api:sha-${{ github.sha }}
         run: |
-          docker image inspect --format '{{.Id}}' "$IMAGE" > image-id.txt
-          echo "image-id=$(cat image-id.txt)" >> "$GITHUB_OUTPUT"
           docker save "$IMAGE" | gzip -1 > image.tar.gz
+          python3 ops/azure/scripts/image-identity.py image.tar.gz --sha "$GITHUB_SHA" > image-id.txt
+          echo "image-id=$(cat image-id.txt)" >> "$GITHUB_OUTPUT"
           sha256sum image.tar.gz > image.tar.gz.sha256
           {
             echo "Commit: $GITHUB_SHA"
@@ -123,5 +124,3 @@ jobs:
           ARTIFACT_ID: ${{ needs.build.outputs.artifact-id }}
           AZURE_VM_ID: ${{ vars.AZURE_API_VM_ID }}
         run: python3 ops/azure/scripts/deliver-ci-image.py
-      - name: Verify public production contract independently
-        run: python3 ops/azure/scripts/smoke-api.py --base-url https://scientific-network-api.eastasia.cloudapp.azure.com/api
