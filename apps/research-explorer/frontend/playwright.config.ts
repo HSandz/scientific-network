@@ -27,7 +27,7 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: `PYTHONPATH=${APP_DIR}:${REPO_ROOT}/src uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000`,
+      command: `PYTHONPATH=${APP_DIR}:${REPO_ROOT}/src ${REPO_ROOT}/.venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000`,
       cwd: APP_DIR,
       url: "http://127.0.0.1:8000/api/health",
       reuseExistingServer: true,

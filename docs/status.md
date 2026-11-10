@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-10 07:50 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 09:30 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
-Latest completed: [WORK-2026-11-10-001](work-log/2026-11-10-001-explorer-improvements.md), Research Explorer improvements implementation: soft graphite dark mode (`#1e1e1e`), unified release-v4 quality contract across views (73.71% affiliation, 85.00% topic coverage, 68.63% topic precision), responsive composition across 6 breakpoints (dual rails >=1264px, single-row mobile header, >=422px mobile plot), accessible dialogs/focus trap/Escape layers, accent-insensitive search across 47,875 nodes; 14 backend unit/integration tests, 4 Playwright E2E suites passing on both dev and preview, design-taste-frontend inspect 0 FAIL, 507 repo tests pass.
+Latest completed: [WORK-2026-11-10-005](work-log/2026-11-10-005-research-explorer-usability-implementation.md), Research Explorer usability and graph operations implementation.
 
 ## Remediation and presentation checklist
 
@@ -18,7 +18,9 @@ Latest completed: [WORK-2026-11-10-001](work-log/2026-11-10-001-explorer-improve
 - [x] Explorer redesign & verification: `achromatic-ledger` light/dark system, responsive shell (`1440px`/`768px`/`390px`), contextual inspector, collision-free graph labels, name-based entity pickers, and table DB edge counts; `0 FAIL, 0 WARN` browser inspection, 4 Playwright E2E, 14 backend, and 507 repo tests pass (WORK-018).
 - [x] Redesign follow-up review: [findings and priorities](../reports/research-explorer-redesign-review-2026-11-09.md) recorded (WORK-019).
 - [x] Improvement planning: [plan](research-explorer-improvement-plan.md) and [implementation prompt](prompts/implement-explorer-improvements.md) prepared (WORK-020).
-- [x] Explorer improvements implementation: soft graphite dark mode, unified quality contract, 6-breakpoint responsive shell, relationship legibility, accessible modal focus/Escape layers, accent-insensitive search; 0 FAIL inspection, Playwright E2E dev/preview parity, 507 repo tests pass (WORK-2026-11-10-001).
+- [x] Explorer improvements implementation: soft graphite dark mode, unified quality contract, 6-breakpoint responsive shell, accessible modal focus/Escape layers, accent-insensitive search (WORK-2026-11-10-001).
+- [x] Graph operations review & prompt: [findings](../reports/research-explorer-graph-operations-review-2026-11-10.md), [plan](research-explorer-graph-usability-plan.md), [prompt](prompts/implement-explorer-graph-usability-plan.md) (WORK-003, WORK-004).
+- [x] Explorer graph usability implementation: authoritative effective view state, collision-free neighbor reading and pinning (Warut 7/7 names, dense node lists), explicit Overview/Ego/Path views with Back navigation, reciprocal/parallel edge preservation in multi-edge graphology, responsive layout and header hit targets, accessible drawers/pickers, and unavailable quality fallback; 15 backend tests, 5 Playwright E2E suites, 507 repo tests, design lint 0 FAIL (WORK-2026-11-10-005).
 
 ## Current artifacts
 
@@ -27,7 +29,7 @@ Latest completed: [WORK-2026-11-10-001](work-log/2026-11-10-001-explorer-improve
 and [local research explorer](../apps/research-explorer/README.md).
 Source checkpoint `fb2f0e7`; all 1,410 archive members and 125 historical hashes preserved.
 [Public Site v19](https://ai-research-network-plan.hazy-tern-8113.chatgpt.site/#report):
-[exact publication receipt](reference/sites-corrected-release-publication-2026-11-09.json) (untouched by WORK-016..021).
+[exact publication receipt](reference/sites-corrected-release-publication-2026-11-09.json) (untouched by WORK-016..022).
 
 ## Quality and preserved history
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Users,
   Building2,
@@ -105,6 +105,16 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
 
   const [bookmarkName, setBookmarkName] = useState("");
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && leftSidebarOpen) {
+        setLeftSidebarOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [leftSidebarOpen, setLeftSidebarOpen]);
+
   if (!leftSidebarOpen) return null;
 
   const activeMode =
@@ -207,6 +217,8 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
 
       <aside
         data-testid="left-sidebar"
+        role={typeof window !== "undefined" && window.innerWidth < 1024 ? "dialog" : undefined}
+        aria-modal={typeof window !== "undefined" && window.innerWidth < 1024 ? "true" : undefined}
         aria-label="Graph projection and scope filters"
         className="absolute inset-y-0 left-0 z-40 w-[300px] max-w-[90vw] lg:static lg:w-[272px] shrink-0 bg-surface border-r border-border flex flex-col h-full overflow-y-auto select-none"
       >

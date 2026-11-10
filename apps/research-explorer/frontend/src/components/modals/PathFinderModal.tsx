@@ -32,7 +32,7 @@ export const PathFinderModal: React.FC = () => {
     pathFinderOpen,
     setPathFinderOpen,
     selectedNodeId,
-    mergeSubgraph,
+    enterPathView,
     selectNode,
     selectEdge,
     setWorkspaceTab,
@@ -221,13 +221,7 @@ export const PathFinderModal: React.FC = () => {
                     type="button"
                     onClick={() => {
                       if (!pathMutation.data) return;
-                      mergeSubgraph(
-                        pathMutation.data.nodes,
-                        pathMutation.data.edges,
-                        true,
-                        pathMutation.data.source_id
-                      );
-                      setWorkspaceTab("graph");
+                      enterPathView(pathMutation.data);
                       setPathFinderOpen(false);
                     }}
                     className="ledger-btn ledger-btn-primary h-8 px-3 text-xs"

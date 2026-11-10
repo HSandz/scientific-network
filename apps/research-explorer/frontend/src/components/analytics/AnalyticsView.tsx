@@ -163,36 +163,39 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
     summary?.quality || (data.quality as QualityContract | undefined);
 
   const edgePrecPct =
-    quality?.edge_precision !== undefined
+    quality?.edge_precision !== undefined && quality?.edge_precision !== null
       ? `${(quality.edge_precision * 100).toFixed(2)}%`
-      : "96.50%";
-  const edgePrecDetail = quality
-    ? `${quality.edge_precision_correct ?? 193} / ${quality.edge_precision_total ?? 200} correct · Wilson 95% CI: ${(((quality.edge_precision_wilson_lower ?? 0.9295)) * 100).toFixed(2)}%–${(((quality.edge_precision_wilson_upper ?? 0.9829)) * 100).toFixed(2)}% · Target ${(((quality.edge_precision_target ?? 0.9)) * 100).toFixed(1)}%`
-    : "193 / 200 correct · Wilson 95% CI: 92.95%–98.29%";
+      : "Unavailable";
+  const edgePrecDetail =
+    quality?.edge_precision !== undefined && quality?.edge_precision !== null
+      ? `${quality.edge_precision_correct ?? 0} / ${quality.edge_precision_total ?? 0} correct · Wilson 95% CI: ${(((quality.edge_precision_wilson_lower ?? 0)) * 100).toFixed(2)}%–${(((quality.edge_precision_wilson_upper ?? 0)) * 100).toFixed(2)}% · Target ${(((quality.edge_precision_target ?? 0.9)) * 100).toFixed(1)}%`
+      : "Audit artifacts unavailable in local store.";
 
   const affCovPct =
-    quality?.affiliation_coverage !== undefined
+    quality?.affiliation_coverage !== undefined && quality?.affiliation_coverage !== null
       ? `${(quality.affiliation_coverage * 100).toFixed(2)}%`
-      : "73.71%";
-  const affCovDetail = quality
-    ? `${(quality.affiliation_positions_resolved ?? 48259).toLocaleString()} / ${(quality.affiliation_positions_eligible ?? 65469).toLocaleString()} authorship positions on OpenAlex-matched works · Target ${(((quality.affiliation_target ?? 0.8)) * 100).toFixed(1)}% (${(quality.affiliation_papers_with_edge ?? 10037).toLocaleString()} / ${(quality.affiliation_papers_eligible ?? 13617).toLocaleString()} core papers)`
-    : "48,259 / 65,469 authorship positions on OpenAlex-matched works · Target 80.0%";
+      : "Unavailable";
+  const affCovDetail =
+    quality?.affiliation_coverage !== undefined && quality?.affiliation_coverage !== null
+      ? `${(quality.affiliation_positions_resolved ?? 0).toLocaleString()} / ${(quality.affiliation_positions_eligible ?? 0).toLocaleString()} authorship positions on OpenAlex-matched works · Target ${(((quality.affiliation_target ?? 0.8)) * 100).toFixed(1)}% (${(quality.affiliation_papers_with_edge ?? 0).toLocaleString()} / ${(quality.affiliation_papers_eligible ?? 0).toLocaleString()} core papers)`
+      : "Affiliation coverage artifacts unavailable in local store.";
 
   const topicCovPct =
-    quality?.topic_coverage !== undefined
+    quality?.topic_coverage !== undefined && quality?.topic_coverage !== null
       ? `${(quality.topic_coverage * 100).toFixed(2)}%`
-      : "85.00%";
+      : "Unavailable";
   const topicPrecPct =
-    quality?.topic_precision !== undefined
+    quality?.topic_precision !== undefined && quality?.topic_precision !== null
       ? `${(quality.topic_precision * 100).toFixed(2)}%`
-      : "68.63%";
+      : "Unavailable";
   const topicF1Val =
-    quality?.topic_embedding_micro_f1 !== undefined
+    quality?.topic_embedding_micro_f1 !== undefined && quality?.topic_embedding_micro_f1 !== null
       ? quality.topic_embedding_micro_f1.toFixed(4)
-      : "0.4667";
-  const topicDetail = quality
-    ? `${(quality.topic_papers_labeled ?? 11575).toLocaleString()} / ${(quality.topic_papers_eligible ?? 13617).toLocaleString()} core papers (Target ${(((quality.topic_coverage_target ?? 0.8)) * 100).toFixed(1)}% PASS) · AI-assessed topic precision ${topicPrecPct} (140/204, Target ${(((quality.topic_precision_target ?? 0.95)) * 100).toFixed(1)}% FAIL) · Historical micro-F1 ${topicF1Val} (vs ${(quality.topic_phrase_baseline_f1 ?? 0.2301).toFixed(4)} phrase baseline)`
-    : "11,575 / 13,617 core papers (Target 80.0% PASS) · AI-assessed topic precision 68.63% (140/204, Target 95.0% FAIL) · Historical micro-F1 0.4667 (vs 0.2301 phrase baseline)";
+      : "—";
+  const topicDetail =
+    quality?.topic_coverage !== undefined && quality?.topic_coverage !== null
+      ? `${(quality.topic_papers_labeled ?? 0).toLocaleString()} / ${(quality.topic_papers_eligible ?? 0).toLocaleString()} core papers (Target ${(((quality.topic_coverage_target ?? 0.8)) * 100).toFixed(1)}% ${quality.topic_coverage_status ? quality.topic_coverage_status.toUpperCase() : "PASS"}) · AI-assessed topic precision ${topicPrecPct} (Target ${(((quality.topic_precision_target ?? 0.95)) * 100).toFixed(1)}% ${quality.topic_precision_status ? quality.topic_precision_status.toUpperCase() : "FAIL"}) · Historical micro-F1 ${topicF1Val} (vs ${(quality.topic_phrase_baseline_f1 ?? 0).toFixed(4)} phrase baseline)`
+      : "Topic classification artifacts unavailable in local store.";
 
   // 1. Annual Corpus & Collaboration Growth
   const annualChartOption: echarts.EChartsOption = {
@@ -466,7 +469,7 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                 Quality &amp; audit (D040 AI-assessed)
               </div>
               <div className="text-muted tabular-nums truncate mt-0.5">
-                Edge {edgePrecPct} · Affil {affCovPct} (48,259 / 65,469 FAIL) · Topic {topicCovPct} cov / {topicPrecPct} prec / {topicF1Val} F1
+                Edge {edgePrecPct} · Affil {affCovPct} ({quality?.affiliation_status ? `Gate ${quality.affiliation_status.toUpperCase()}` : "FAIL"}) · Topic {topicCovPct} cov / {topicPrecPct} prec / {topicF1Val} F1
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-muted shrink-0 transition-transform group-open:rotate-90" />
@@ -477,7 +480,13 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                 <span className="font-semibold text-ink tabular-nums">
                   AI-assessed edge precision: {edgePrecPct}
                 </span>
-                <span className="ledger-pill ledger-pill-warn">AI-assessed</span>
+                {edgePrecPct === "Unavailable" ? (
+                  <span className="ledger-pill">Unavailable</span>
+                ) : quality?.edge_precision_status === "pass" ? (
+                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
+                ) : (
+                  <span className="ledger-pill ledger-pill-warn">AI-assessed</span>
+                )}
               </div>
               <div className="mt-1 text-muted tabular-nums">{edgePrecDetail}</div>
             </div>
@@ -486,7 +495,13 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                 <span className="font-semibold text-ink tabular-nums">
                   Affiliation coverage: {affCovPct}
                 </span>
-                <span className="ledger-pill ledger-pill-neg">Gate FAIL</span>
+                {affCovPct === "Unavailable" ? (
+                  <span className="ledger-pill">Unavailable</span>
+                ) : quality?.affiliation_status === "pass" ? (
+                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
+                ) : (
+                  <span className="ledger-pill ledger-pill-neg">Gate FAIL</span>
+                )}
               </div>
               <div className="mt-1 text-muted tabular-nums">{affCovDetail}</div>
             </div>
@@ -495,9 +510,15 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                 <span className="font-semibold text-ink tabular-nums">
                   Topic: {topicCovPct} cov · {topicPrecPct} prec · {topicF1Val} F1
                 </span>
-                <span className="ledger-pill ledger-pill-warn">
-                  Cov PASS · Prec FAIL
-                </span>
+                {topicCovPct === "Unavailable" ? (
+                  <span className="ledger-pill">Unavailable</span>
+                ) : quality?.topic_coverage_status === "pass" && quality?.topic_precision_status === "pass" ? (
+                  <span className="ledger-pill ledger-pill-pos">Gate PASS</span>
+                ) : quality?.topic_coverage_status === "pass" ? (
+                  <span className="ledger-pill ledger-pill-warn">Cov PASS · Prec FAIL</span>
+                ) : (
+                  <span className="ledger-pill ledger-pill-neg">Gate FAIL</span>
+                )}
               </div>
               <div className="mt-1 text-muted tabular-nums">{topicDetail}</div>
             </div>
@@ -529,9 +550,13 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                   {edgePrecDetail}
                 </div>
               </div>
-              <span className="ledger-pill ledger-pill-warn shrink-0">
-                AI-assessed
-              </span>
+              {edgePrecPct === "Unavailable" ? (
+                <span className="ledger-pill shrink-0">Unavailable</span>
+              ) : quality?.edge_precision_status === "pass" ? (
+                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
+              ) : (
+                <span className="ledger-pill ledger-pill-warn shrink-0">AI-assessed</span>
+              )}
             </div>
 
             <div
@@ -547,10 +572,16 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                   {affCovDetail}
                 </div>
               </div>
-              <span className="ledger-pill ledger-pill-neg shrink-0">
-                <AlertTriangle className="w-3 h-3" />
-                Gate FAIL
-              </span>
+              {affCovPct === "Unavailable" ? (
+                <span className="ledger-pill shrink-0">Unavailable</span>
+              ) : quality?.affiliation_status === "pass" ? (
+                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
+              ) : (
+                <span className="ledger-pill ledger-pill-neg shrink-0">
+                  <AlertTriangle className="w-3 h-3" />
+                  Gate FAIL
+                </span>
+              )}
             </div>
 
             <div
@@ -568,10 +599,21 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({
                   {topicDetail}
                 </div>
               </div>
-              <span className="ledger-pill ledger-pill-warn shrink-0">
-                <AlertTriangle className="w-3 h-3" />
-                Cov PASS · Prec FAIL
-              </span>
+              {topicCovPct === "Unavailable" ? (
+                <span className="ledger-pill shrink-0">Unavailable</span>
+              ) : quality?.topic_coverage_status === "pass" && quality?.topic_precision_status === "pass" ? (
+                <span className="ledger-pill ledger-pill-pos shrink-0">Gate PASS</span>
+              ) : quality?.topic_coverage_status === "pass" ? (
+                <span className="ledger-pill ledger-pill-warn shrink-0">
+                  <AlertTriangle className="w-3 h-3" />
+                  Cov PASS · Prec FAIL
+                </span>
+              ) : (
+                <span className="ledger-pill ledger-pill-neg shrink-0">
+                  <AlertTriangle className="w-3 h-3" />
+                  Gate FAIL
+                </span>
+              )}
             </div>
           </div>
         </div>

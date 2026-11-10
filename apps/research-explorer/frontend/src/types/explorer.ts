@@ -18,6 +18,40 @@ export type ViewMode = "researchers" | "organizations" | "citations" | "heteroge
 
 export type WorkspaceTab = "graph" | "table" | "analytics";
 
+export type LayoutMode = "seeded" | "circular" | "concentric";
+
+export type EdgeFilterMode = "all" | "strong" | "connected";
+
+export type GraphViewScopeKind = "overview" | "ego" | "path";
+
+export interface GraphViewScope {
+  kind: GraphViewScopeKind;
+  title: string;
+  description?: string;
+  centerId?: string | null;
+  pathData?: {
+    sourceId: string;
+    targetId: string;
+    sourceName?: string;
+    targetName?: string;
+    hopCount: number;
+    steps: string[];
+  } | null;
+  priorState?: {
+    viewMode: ViewMode;
+    selectedNodeId: string | null;
+    cameraState?: { x: number; y: number; ratio: number } | null;
+    extraNodes: GraphNode[];
+    extraEdges: GraphEdge[];
+    graphViewScope: {
+      kind: GraphViewScopeKind;
+      title: string;
+      description?: string;
+      centerId?: string | null;
+    };
+  } | null;
+}
+
 export interface FullProjectionMetrics {
   projection?: string | null;
   degree_strength?: number | null;

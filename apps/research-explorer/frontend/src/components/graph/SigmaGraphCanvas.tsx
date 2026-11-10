@@ -11,6 +11,9 @@ import {
   CircleDot,
   X,
   Info,
+  ArrowLeft,
+  Focus,
+  RefreshCw,
 } from "lucide-react";
 import { useExplorerStore } from "../../stores/useExplorerStore";
 import {
@@ -23,9 +26,11 @@ import {
   YEAR_COLORS,
 } from "../../lib/colors";
 import {
+  EdgeFilterMode,
   GraphEdge,
   GraphNode,
   GraphViewResponse,
+  LayoutMode,
   NodeLabel,
   ViewMode,
 } from "../../types/explorer";
@@ -34,14 +39,12 @@ interface SigmaGraphCanvasProps {
   viewData?: GraphViewResponse;
   nodes: GraphNode[];
   edges: GraphEdge[];
+  rawEdgesCount?: number;
   isLoading: boolean;
   error?: Error | null;
-  onExpandNode: (nodeId: string, replace?: boolean) => void;
+  onExpandNode: (nodeId: string, replace?: boolean, exploreAll?: boolean) => void;
   isExpanding: boolean;
 }
-
-type LayoutMode = "seeded" | "circular" | "concentric";
-type EdgeFilterMode = "all" | "strong" | "connected";
 
 function createCustomSigmaRenderers(isDark: boolean) {
   const tokens = getThemeTokens(isDark);
@@ -87,42 +90,66 @@ function createCustomSigmaRenderers(isDark: boolean) {
     context.save();
     context.font = `${settings.labelWeight || "500"} ${fontSize}px ${settings.labelFont}`;
     const textWidth = context.measureText(text).width;
-    const boxW = textWidth + 6;
-    const boxH = fontSize + 4;
-    let boxX = data.x + data.size + 3;
-    const boxY = data.y - fontSize / 2 - 2;
+    const boxW = textWidth + 8;
+    const boxH = fontSize + 6;
 
     const canvasW = context.canvas?.clientWidth || context.canvas?.width || 1440;
     const canvasH = context.canvas?.clientHeight || context.canvas?.height || 900;
 
-    if (boxX + boxW > canvasW - 8) {
-      boxX = data.x - data.size - boxW - 3;
+    // 4-way candidate placement: Right, Left, Above, Below
+    const candidates = [
+      { x: data.x + data.size + 4, y: data.y - fontSize / 2 - 3 },
+      { x: data.x - data.size - boxW - 4, y: data.y - fontSize / 2 - 3 },
+      { x: data.x - boxW / 2, y: data.y - data.size - boxH - 4 },
+      { x: data.x - boxW / 2, y: data.y + data.size + 4 },
+    ];
+
+    let chosenCandidate: { x: number; y: number; rect: { x1: number; y1: number; x2: number; y2: number } } | null = null;
+    for (const c of candidates) {
+      const padded = {
+        x1: c.x - 3,
+        y1: c.y - 2,
+        x2: c.x + boxW + 3,
+        y2: c.y + boxH + 2,
+      };
+      if (padded.x1 >= 4 && padded.y1 >= 4 && padded.x2 <= canvasW - 4 && padded.y2 <= canvasH - 4) {
+        if (!overlapsExisting(padded)) {
+          chosenCandidate = { ...c, rect: padded };
+          break;
+        }
+      }
     }
 
-    const padded = {
-      x1: boxX - 4,
-      y1: boxY - 2,
-      x2: boxX + boxW + 4,
-      y2: boxY + boxH + 2,
-    };
-
-    const isForced = Boolean(data.forceLabel || data.highlighted);
-    if (!isForced) {
-      if (padded.x1 < 4 || padded.y1 < 4 || padded.x2 > canvasW - 4 || padded.y2 > canvasH - 4) {
+    const isForced = Boolean(data.forceLabel);
+    if (!chosenCandidate) {
+      if (!isForced) {
         context.restore();
         return;
       }
-    }
-    if (overlapsExisting(padded)) {
-      context.restore();
-      return;
+      // If forced (e.g. focused neighborhood endpoint), pick first candidate
+      const fallback = candidates[0];
+      chosenCandidate = {
+        ...fallback,
+        rect: {
+          x1: fallback.x - 3,
+          y1: fallback.y - 2,
+          x2: fallback.x + boxW + 3,
+          y2: fallback.y + boxH + 2,
+        },
+      };
     }
 
-    drawnBoxes.push(padded);
+    drawnBoxes.push(chosenCandidate.rect);
     context.fillStyle = tokens.labelPillBg;
-    context.fillRect(boxX - 2, boxY, boxW, boxH);
+    context.beginPath();
+    if (context.roundRect) {
+      context.roundRect(chosenCandidate.x - 2, chosenCandidate.y, boxW, boxH, 4);
+      context.fill();
+    } else {
+      context.fillRect(chosenCandidate.x - 2, chosenCandidate.y, boxW, boxH);
+    }
     context.fillStyle = tokens.labelInk;
-    context.fillText(text, boxX + 1, data.y + fontSize / 3);
+    context.fillText(text, chosenCandidate.x + 2, chosenCandidate.y + fontSize);
     context.restore();
   };
 
@@ -194,6 +221,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   viewData,
   nodes,
   edges,
+  rawEdgesCount,
   isLoading,
   error,
   onExpandNode,
@@ -213,6 +241,16 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     setHoveredNodeId,
     extraNodes,
     clearExtraSubgraph,
+    layoutMode,
+    setLayoutMode,
+    edgeFilterMode,
+    setEdgeFilterMode,
+    graphViewScope,
+    restorePriorGraphScope,
+    expansionError,
+    setExpansionError,
+    cameraState,
+    setCameraState,
   } = useExplorerStore();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -220,42 +258,12 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
   const graphRef = useRef<Graph | null>(null);
   const draggedNodeRef = useRef<string | null>(null);
   const isDraggingRef = useRef<boolean>(false);
-
-  const [layoutMode, setLayoutMode] = useState<LayoutMode>("seeded");
-  const [edgeFilterMode, setEdgeFilterMode] = useState<EdgeFilterMode>("all");
   const [scopeNoteOpen, setScopeNoteOpen] = useState<boolean>(false);
   const [webglError, setWebglError] = useState<string | null>(null);
 
-  const renderedGraph = useMemo(() => {
-    if (edgeFilterMode === "all") {
-      return { nodes, edges };
-    }
-    if (edgeFilterMode === "strong") {
-      const strongEdges = edges.filter(
-        (e) =>
-          (e.support_count ?? 1) >= 2 ||
-          (typeof e.fractional_weight === "number" && e.fractional_weight >= 0.45)
-      );
-      const effectiveEdges = strongEdges.length > 0 ? strongEdges : edges;
-      return { nodes, edges: effectiveEdges };
-    }
-    // "connected": hide slice-level isolates
-    const connectedIds = new Set<string>();
-    for (const e of edges) {
-      connectedIds.add(e.source);
-      connectedIds.add(e.target);
-    }
-    const connectedNodes = nodes.filter(
-      (n) => connectedIds.has(n.id) || n.id === selectedNodeId
-    );
-    return {
-      nodes: connectedNodes.length > 0 ? connectedNodes : nodes,
-      edges,
-    };
-  }, [nodes, edges, edgeFilterMode, selectedNodeId]);
-
-  const activeNodes = renderedGraph.nodes;
-  const activeEdges = renderedGraph.edges;
+  // Authoritative rendered nodes & edges passed from App.tsx effectiveGraph
+  const activeNodes = nodes;
+  const activeEdges = edges;
 
   const nodeById = useMemo(() => {
     const map = new Map<string, GraphNode>();
@@ -293,28 +301,55 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
       return;
     }
 
-    const tokens = getThemeTokens(darkMode);
-    const graph = new Graph({ multi: false, type: "mixed" });
-    const maxScore = Math.max(1, ...activeNodes.map((n) => n.score || 1));
+    const prevCamera = sigmaRef.current ? sigmaRef.current.getCamera().getState() : null;
 
+    const tokens = getThemeTokens(darkMode);
+    // multi: true, type: "mixed" to preserve every distinct edge ID and reciprocal directions
+    const graph = new Graph({ multi: true, type: "mixed" });
+    const maxScore = Math.max(1, ...activeNodes.map((n) => n.score || 1));
     const count = activeNodes.length;
+
+    // Viewport-aware sizing scale
+    const containerWidth = container.clientWidth || 1200;
+    const viewportScale = Math.max(0.65, Math.min(1.2, containerWidth / 1200));
+
+    // Concentric layout distribution helper
+    const concentricRings = [0.22, 0.45, 0.72, 1.0];
+
     activeNodes.forEach((n, index) => {
       let x = n.x;
       let y = n.y;
+
       if (layoutMode === "circular") {
         const angle = (2 * Math.PI * index) / Math.max(1, count);
         x = Math.cos(angle);
         y = Math.sin(angle);
       } else if (layoutMode === "concentric") {
         const rankRatio = index / Math.max(1, count);
-        const ring = rankRatio < 0.15 ? 0.25 : rankRatio < 0.5 ? 0.6 : 1.0;
-        const angle = (2 * Math.PI * index * 3) / Math.max(1, count);
-        x = ring * Math.cos(angle);
-        y = ring * Math.sin(angle);
+        const ringIdx = rankRatio < 0.1 ? 0 : rankRatio < 0.3 ? 1 : rankRatio < 0.6 ? 2 : 3;
+        const ringRadius = concentricRings[ringIdx];
+        const nodesInRing = activeNodes.filter((_, i) => {
+          const r = i / Math.max(1, count);
+          const ri = r < 0.1 ? 0 : r < 0.3 ? 1 : r < 0.6 ? 2 : 3;
+          return ri === ringIdx;
+        });
+        const indexInRing = nodesInRing.findIndex((item) => item.id === n.id);
+        const angle =
+          (2 * Math.PI * Math.max(0, indexInRing)) / Math.max(1, nodesInRing.length);
+        x = ringRadius * Math.cos(angle);
+        y = ringRadius * Math.sin(angle);
+      } else {
+        // Seeded / Force: if position is missing, place with subtle deterministic spiral
+        if (x === 0 && y === 0 && index > 0) {
+          const angle = index * 0.8;
+          const radius = 0.15 + (index / Math.max(1, count)) * 0.85;
+          x = radius * Math.cos(angle);
+          y = radius * Math.sin(angle);
+        }
       }
 
       const normalizedScore = Math.sqrt(Math.max(0.05, n.score) / maxScore);
-      const size = 4.5 + normalizedScore * 13;
+      const size = (4.0 + normalizedScore * 12) * viewportScale;
       const maxChars = n.label === "Paper" ? 30 : 26;
 
       graph.addNode(n.id, {
@@ -332,9 +367,6 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     activeEdges.forEach((e) => {
       if (!graph.hasNode(e.source) || !graph.hasNode(e.target)) return;
       if (e.source === e.target) return;
-      const existingEdge =
-        graph.edge(e.source, e.target) || graph.edge(e.target, e.source);
-      if (existingEdge) return;
 
       const weightVal = e.fractional_weight ?? e.support_count ?? 1;
       const isDirected = e.directed && !e.symmetric;
@@ -352,7 +384,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           relation: e.relation,
         });
       } catch {
-        // Ignore duplicate edge key
+        // Edge key already added
       }
     });
 
@@ -373,14 +405,21 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         labelSize: 12,
         labelWeight: "500",
         labelColor: { color: tokens.labelInk },
-        labelDensity: 0.25,
-        labelGridCellSize: 160,
-        labelRenderedSizeThreshold: 6.5,
+        labelDensity: 0.35,
+        labelGridCellSize: 140,
+        labelRenderedSizeThreshold: 5.5,
         defaultEdgeType: "line",
         zIndex: true,
         defaultDrawNodeLabel: customRenderers.drawLabel,
         defaultDrawNodeHover: customRenderers.drawHover,
       });
+
+      // Restore camera state if view scope did not change drastically
+      if (prevCamera && graphViewScope.kind === "overview") {
+        sigma.getCamera().setState(prevCamera);
+      } else if (cameraState && graphViewScope.kind !== "overview") {
+        sigma.getCamera().setState(cameraState);
+      }
 
       sigma.on("clickNode", ({ node }) => {
         if (isDraggingRef.current) return;
@@ -449,7 +488,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         sigmaRef.current = null;
       }
     };
-  }, [activeNodes, activeEdges, viewMode, layoutMode]);
+  }, [activeNodes, activeEdges, viewMode, layoutMode, graphViewScope.kind]);
 
   // Refresh Sigma viewport when panels open/close or container resizes
   useEffect(() => {
@@ -476,6 +515,18 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     sigma.setSetting("defaultDrawNodeHover", customRenderers.drawHover);
 
     const selectedEdgeObj = selectedEdgeId ? edgeById.get(selectedEdgeId) : null;
+    const visibleNeighborCount = Math.max(0, focusNeighbors.size - 1);
+
+    const topNeighborIds = new Set<string>();
+    if (visibleNeighborCount > 12 && activeFocusNodeId) {
+      Array.from(focusNeighbors)
+        .filter((id) => id !== activeFocusNodeId)
+        .map((id) => nodeById.get(id))
+        .filter(Boolean)
+        .sort((a, b) => (b!.score || 0) - (a!.score || 0))
+        .slice(0, 6)
+        .forEach((n) => topNeighborIds.add(n!.id));
+    }
 
     sigma.setSetting("nodeReducer", (node, data) => {
       const res = { ...data };
@@ -485,7 +536,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           node === selectedEdgeObj.source || node === selectedEdgeObj.target;
         res.highlighted = isEndpoint;
         res.forceLabel = isEndpoint;
-        res.zIndex = isEndpoint ? 10 : 1;
+        res.zIndex = isEndpoint ? 20 : 1;
         if (!isEndpoint) {
           res.color = tokens.dimmedNode;
           res.label = "";
@@ -497,17 +548,29 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         const isCenter = node === activeFocusNodeId;
         const isNeighbor = focusNeighbors.has(node);
         res.highlighted = isCenter;
-        // Force label only on the center node; let Sigma's spatial grid place non-overlapping neighbor labels
-        res.forceLabel = isCenter;
-        res.zIndex = isCenter ? 12 : isNeighbor ? 6 : 1;
+        res.zIndex = isCenter ? 25 : isNeighbor ? 12 : 1;
+
         if (!isNeighbor) {
           res.color = tokens.dimmedNode;
           res.label = "";
+          res.forceLabel = false;
+        } else {
+          // Moderate neighborhood (<= 12): force labels on center AND all visible neighbors.
+          // This allows all 7 of Warut Suksompong's neighbors to be readable together.
+          if (isCenter) {
+            res.forceLabel = true;
+          } else if (visibleNeighborCount <= 12) {
+            res.forceLabel = true;
+          } else {
+            // Dense neighborhood (> 12): force labels on center and top 6 prominent neighbors by score.
+            // Remaining neighbors remain visible as nodes, inspectable in the right panel.
+            res.forceLabel = topNeighborIds.has(node);
+          }
         }
         return res;
       }
 
-      // At rest, let Sigma's 160px spatial grid choose the highest-degree node per cell with zero overlap
+      // At rest, let Sigma's 140px spatial grid choose the highest-degree node per cell with zero overlap
       res.forceLabel = false;
       return res;
     });
@@ -543,6 +606,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     selectedEdgeId,
     focusNeighbors,
     edgeById,
+    nodeById,
     darkMode,
   ]);
 
@@ -556,6 +620,17 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
 
   const handleResetCamera = () => {
     sigmaRef.current?.getCamera().animatedReset({ duration: 250 });
+  };
+
+  const handleFitNeighborhood = () => {
+    const sigma = sigmaRef.current;
+    if (!sigma || !graphRef.current) return;
+    if (activeFocusNodeId && graphRef.current.hasNode(activeFocusNodeId)) {
+      const pos = graphRef.current.getNodeAttributes(activeFocusNodeId);
+      sigma.getCamera().animate({ x: pos.x, y: pos.y, ratio: 0.45 }, { duration: 300 });
+    } else {
+      sigma.getCamera().animatedReset({ duration: 250 });
+    }
   };
 
   const hoveredNode = hoveredNodeId ? nodeById.get(hoveredNodeId) : null;
@@ -740,7 +815,11 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             title="Filter rendered canvas links or hide slice-level isolates"
           >
             <option value="all">All subgraph links</option>
-            <option value="strong">Strong links (≥2 papers)</option>
+            <option value="strong" disabled={viewMode === "citations"}>
+              {viewMode === "citations"
+                ? "Strong links (N/A for citations)"
+                : "Strong links (≥2 papers)"}
+            </option>
             <option value="connected">Hide slice isolates</option>
           </select>
 
@@ -798,6 +877,15 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
+            <button
+              type="button"
+              onClick={handleFitNeighborhood}
+              aria-label="Focus neighborhood"
+              title={activeFocusNodeId ? "Fit focused neighborhood" : "Center view"}
+              className="p-2 md:p-1.5 text-muted hover:text-ink hover:bg-raised transition-colors border-l border-border"
+            >
+              <Focus className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </div>
@@ -826,6 +914,120 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           data-testid="sigma-canvas-container"
           className="w-full h-full cursor-grab active:cursor-grabbing"
         />
+
+        {/* Scope banner when in Ego or Path view */}
+        {graphViewScope.kind !== "overview" && (
+          <div
+            data-testid="canvas-scope-banner"
+            className="absolute top-3 left-4 z-20 flex items-center gap-2 bg-surface border border-border rounded-[6px] px-3 py-1.5 text-xs"
+          >
+            <button
+              type="button"
+              onClick={() => restorePriorGraphScope()}
+              data-testid="scope-back-button"
+              className="inline-flex items-center gap-1 font-medium text-ink hover:text-accent underline underline-offset-2"
+              title="Return to previous overview / graph view"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Back to overview</span>
+            </button>
+            <span className="text-muted">·</span>
+            <span className="font-medium text-ink truncate max-w-[180px] sm:max-w-xs">
+              {graphViewScope.title}
+            </span>
+          </div>
+        )}
+
+        {/* Dense neighborhood badge */}
+        {activeFocusNodeId && focusNeighbors.size - 1 > 12 && (
+          <div
+            data-testid="dense-neighborhood-badge"
+            className="absolute top-12 left-4 z-20 bg-surface border border-border rounded-[6px] px-2.5 py-1 text-[11px] text-muted"
+          >
+            <span>
+              Dense neighborhood: <strong>{focusNeighbors.size - 1}</strong> visible neighbors. Prominent labels shown; inspect complete list in right panel.
+            </span>
+          </div>
+        )}
+
+        {/* Empty strong link filter banner */}
+        {edgeFilterMode === "strong" && activeEdges.length === 0 && nodes.length > 0 && (
+          <div
+            data-testid="empty-filter-banner"
+            className="absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 bg-surface border border-[var(--warning)]/50 rounded-[6px] px-3.5 py-2 text-xs"
+          >
+            <span className="text-ink">
+              No links match the strong threshold (≥2 papers or fractional weight ≥0.45).
+            </span>
+            <button
+              type="button"
+              onClick={() => setEdgeFilterMode("all")}
+              data-testid="reset-edge-filter-btn"
+              className="ledger-btn h-6 px-2 text-[11px]"
+            >
+              Show all links
+            </button>
+          </div>
+        )}
+
+        {/* Inline expansion error banner with Retry */}
+        {expansionError && (
+          <div
+            data-testid="expansion-error-banner"
+            className="absolute top-3 right-4 z-20 flex items-center gap-2.5 bg-surface border border-[var(--negative)]/60 rounded-[6px] px-3.5 py-2 text-xs text-ink"
+          >
+            <AlertCircle className="w-3.5 h-3.5 text-[var(--negative)] shrink-0" />
+            <span className="truncate max-w-xs">
+              Expansion error: {expansionError.message}
+            </span>
+            <button
+              type="button"
+              onClick={() => onExpandNode(expansionError.nodeId, expansionError.replace)}
+              className="ledger-btn ledger-btn-primary h-6 px-2 text-[11px]"
+            >
+              Retry
+            </button>
+            <button
+              type="button"
+              onClick={() => setExpansionError(null)}
+              className="text-muted hover:text-ink text-xs ml-1"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
+        {/* Mobile floating bottom quick tools (md:hidden) */}
+        <div className="md:hidden absolute bottom-4 right-4 z-20 flex items-center gap-1.5 bg-surface border border-border rounded-[6px] p-1">
+          <select
+            value={layoutMode}
+            onChange={(e) => setLayoutMode(e.target.value as LayoutMode)}
+            aria-label="Mobile layout selector"
+            className="h-7 px-2 text-[11px] rounded bg-ground border border-border text-ink"
+          >
+            <option value="seeded">Force</option>
+            <option value="concentric">Radial</option>
+            <option value="circular">Circle</option>
+          </select>
+          <select
+            value={edgeFilterMode}
+            onChange={(e) => setEdgeFilterMode(e.target.value as EdgeFilterMode)}
+            aria-label="Mobile edge filter"
+            className="h-7 px-2 text-[11px] rounded bg-ground border border-border text-ink"
+          >
+            <option value="all">All links</option>
+            <option value="strong">Strong links</option>
+            <option value="connected">Hide isolates</option>
+          </select>
+          <button
+            type="button"
+            onClick={handleFitNeighborhood}
+            aria-label="Fit mobile view"
+            className="w-7 h-7 flex items-center justify-center rounded bg-ground border border-border text-muted hover:text-ink"
+          >
+            <Focus className="w-3 h-3" />
+          </button>
+        </div>
 
         {/* Transient Hover Preview Card (only while hovering a node) */}
         {hoveredNode && (

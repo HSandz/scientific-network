@@ -146,153 +146,262 @@ class ExplorerService:
         )
 
     def _build_quality_contract(self) -> dict[str, Any]:
-        """Build the single canonical quality and provenance contract from release artifacts."""
-        summary = self.store.summary_data
-        coverage = summary.get("coverage", {})
-        audit = self.store.audit_results_data
-        qcfg = self.store.quality_config_data
-        topic_eval = self.store.topic_eval_data
-        topic_reuse = self.store.historical_topic_reuse_data
+        """Build the single canonical quality and provenance contract from release artifacts.
+        
+        When underlying artifacts or sections are absent, returns explicit unavailable
+        states and None numeric fields rather than historical fallback defaults.
+        """
+        summary = self.store.summary_data or {}
+        coverage = summary.get("coverage", {}) if isinstance(summary, dict) else {}
+        audit = self.store.audit_results_data or {}
+        qcfg = self.store.quality_config_data or {}
+        topic_eval = self.store.topic_eval_data or {}
+        topic_reuse = self.store.historical_topic_reuse_data or {}
 
+        audit_cfg = qcfg.get("audit", {}) if isinstance(qcfg, dict) else {}
+        cov_targets = qcfg.get("coverage_targets", {}) if isinstance(qcfg, dict) else {}
+        comp_targets = qcfg.get("component_precision_targets", {}) if isinstance(qcfg, dict) else {}
+
+        # 1. Edge precision from audit artifact
         global_audit = audit.get("global") or audit.get("global_sample") or {}
-        wilson_obj = global_audit.get("wilson_95", {})
-        if isinstance(wilson_obj, dict):
-            wilson_lower = float(wilson_obj.get("wilson_lower", 0.9295293884777092))
-            wilson_upper = float(wilson_obj.get("wilson_upper", 0.9829444579914328))
-        elif isinstance(wilson_obj, (list, tuple)) and len(wilson_obj) >= 2:
-            wilson_lower = float(wilson_obj[0])
-            wilson_upper = float(wilson_obj[1])
+        has_audit = bool(global_audit and ("precision" in global_audit or "n" in global_audit or "correct" in global_audit))
+
+        edge_target = float(audit_cfg.get("min_precision", 0.95)) if audit_cfg else 0.95
+        wilson_target = float(audit_cfg.get("wilson_lower_bound_must_exceed", 0.90)) if audit_cfg else 0.90
+
+        if has_audit:
+            edge_precision = float(global_audit.get("precision", 0.0))
+            wilson_obj = global_audit.get("wilson_95", {})
+            if isinstance(wilson_obj, dict):
+                wilson_lower = float(wilson_obj.get("wilson_lower", 0.0))
+                wilson_upper = float(wilson_obj.get("wilson_upper", 0.0))
+            elif isinstance(wilson_obj, (list, tuple)) and len(wilson_obj) >= 2:
+                wilson_lower = float(wilson_obj[0])
+                wilson_upper = float(wilson_obj[1])
+            else:
+                wilson_lower = edge_precision
+                wilson_upper = edge_precision
+
+            edge_status = (
+                "passed"
+                if edge_precision >= edge_target and wilson_lower > wilson_target
+                else "failed"
+            )
+            correct_val: int | None = int(global_audit.get("correct", 0))
+            total_val: int | None = int(global_audit.get("total", global_audit.get("n", 0)))
+            incorrect_val: int | None = int(global_audit.get("incorrect", 0))
+            unverifiable_val: int | None = int(global_audit.get("unverifiable", 0))
+            wilson_lower_val: float | None = wilson_lower
+            wilson_upper_val: float | None = wilson_upper
+            wilson_pair_val: list[float] | None = [wilson_lower, wilson_upper]
+            edge_precision_val: float | None = edge_precision
         else:
-            wilson_lower = 0.9295293884777092
-            wilson_upper = 0.9829444579914328
+            edge_precision_val = None
+            correct_val = None
+            total_val = None
+            incorrect_val = None
+            unverifiable_val = None
+            wilson_lower_val = None
+            wilson_upper_val = None
+            wilson_pair_val = None
+            edge_status = "unavailable"
 
-        audit_cfg = qcfg.get("audit", {})
-        cov_targets = qcfg.get("coverage_targets", {})
-        comp_targets = qcfg.get("component_precision_targets", {})
+        agreement = audit.get("agreement", {}) if isinstance(audit, dict) else {}
+        has_agreement = bool(agreement)
+        overlap_reviewed_val: int | None = int(agreement.get("edges_reviewed_by_both", 0)) if has_agreement else None
+        overlap_agreed_val: int | None = int(agreement.get("agreed", 0)) if has_agreement else None
+        overlap_rate_val: float | None = float(agreement.get("percent", 0.0)) if has_agreement else None
+        kappa_val: float | None = float(agreement.get("cohens_kappa", 0.0)) if has_agreement else None
+        macro_prec_val: float | None = float(audit.get("macro_per_type_precision", 0.0)) if has_audit and "macro_per_type_precision" in audit else None
 
-        edge_precision = float(global_audit.get("precision", 0.965))
-        edge_target = float(audit_cfg.get("min_precision", 0.95))
-        wilson_target = float(audit_cfg.get("wilson_lower_bound_must_exceed", 0.90))
-        edge_status = (
-            "passed"
-            if edge_precision >= edge_target and wilson_lower > wilson_target
-            else "failed"
-        )
+        # 2. Coverage metrics from summary artifact
+        has_coverage = bool(coverage and ("author_positions" in coverage or "author_paper_affiliation_coverage" in coverage or "eligible_papers" in coverage))
 
-        aff_resolved = int(coverage.get("accepted_authorships_with_institution", 48259))
-        aff_eligible = int(coverage.get("author_positions", 65469))
-        aff_cov = float(coverage.get("author_paper_affiliation_coverage", aff_resolved / max(1, aff_eligible)))
-        aff_target = float(cov_targets.get("author_paper_affiliation_resolution", 0.80))
-        aff_status = "passed" if aff_cov >= aff_target else "failed"
+        aff_target = float(cov_targets.get("author_paper_affiliation_resolution", 0.80)) if cov_targets else 0.80
+        abs_target = float(cov_targets.get("abstracts", 0.95)) if cov_targets else 0.95
+        top_cov_target = float(cov_targets.get("topics_on_eligible_papers", 0.80)) if cov_targets else 0.80
 
-        abs_resolved = int(coverage.get("papers_with_abstract", 13606))
-        abs_eligible = int(coverage.get("eligible_papers", 13617))
-        abs_cov = float(coverage.get("abstract_coverage", abs_resolved / max(1, abs_eligible)))
-        abs_target = float(cov_targets.get("abstracts", 0.95))
-        abs_status = "passed" if abs_cov >= abs_target else "failed"
+        if has_coverage:
+            aff_resolved_val: int | None = int(coverage.get("accepted_authorships_with_institution", 0))
+            aff_eligible_val: int | None = int(coverage.get("author_positions", 0))
+            if "author_paper_affiliation_coverage" in coverage:
+                aff_cov_val: float | None = float(coverage["author_paper_affiliation_coverage"])
+            elif aff_eligible_val and aff_eligible_val > 0:
+                aff_cov_val = (aff_resolved_val or 0) / aff_eligible_val
+            else:
+                aff_cov_val = 0.0
+            aff_status = "passed" if aff_cov_val >= aff_target else "failed"
 
-        top_labeled = int(coverage.get("papers_topic_labeled", 11575))
-        top_eligible = int(coverage.get("eligible_papers", 13617))
-        top_abstained = int(coverage.get("papers_topic_abstained", 2042))
-        top_cov = float(coverage.get("topic_coverage", top_labeled / max(1, top_eligible)))
-        top_cov_target = float(cov_targets.get("topics_on_eligible_papers", 0.80))
-        top_cov_status = "passed" if top_cov >= top_cov_target else "failed"
+            abs_resolved_val: int | None = int(coverage.get("papers_with_abstract", 0))
+            abs_eligible_val: int | None = int(coverage.get("eligible_papers", 0))
+            if "abstract_coverage" in coverage:
+                abs_cov_val: float | None = float(coverage["abstract_coverage"])
+            elif abs_eligible_val and abs_eligible_val > 0:
+                abs_cov_val = (abs_resolved_val or 0) / abs_eligible_val
+            else:
+                abs_cov_val = 0.0
+            abs_status = "passed" if abs_cov_val >= abs_target else "failed"
 
+            top_labeled_val: int | None = int(coverage.get("papers_topic_labeled", 0))
+            top_eligible_val: int | None = int(coverage.get("eligible_papers", abs_eligible_val or 0))
+            top_abstained_val: int | None = int(coverage.get("papers_topic_abstained", 0))
+            if "topic_coverage" in coverage:
+                top_cov_val: float | None = float(coverage["topic_coverage"])
+            elif top_eligible_val and top_eligible_val > 0:
+                top_cov_val = (top_labeled_val or 0) / top_eligible_val
+            else:
+                top_cov_val = 0.0
+            top_cov_status = "passed" if top_cov_val >= top_cov_target else "failed"
+
+            aff_all_official_val: int | None = int(coverage.get("all_official_authorships", 65507))
+            aff_accepted_val: int | None = int(coverage.get("accepted_authorships", 50437))
+            aff_cond_cov_val: float | None = (
+                (aff_resolved_val or 0) / aff_accepted_val
+                if aff_accepted_val and aff_accepted_val > 0
+                else None
+            )
+            aff_papers_with_edge_val: int | None = int(coverage.get("papers_with_accepted_affiliation_edge", 10037))
+            match_rate_val: float | None = (
+                (abs_resolved_val or 0) / max(1, abs_eligible_val or 1)
+                if abs_eligible_val
+                else None
+            )
+        else:
+            aff_resolved_val = None
+            aff_eligible_val = None
+            aff_cov_val = None
+            aff_status = "unavailable"
+            abs_resolved_val = None
+            abs_eligible_val = None
+            abs_cov_val = None
+            abs_status = "unavailable"
+            top_labeled_val = None
+            top_eligible_val = None
+            top_abstained_val = None
+            top_cov_val = None
+            top_cov_status = "unavailable"
+            aff_all_official_val = None
+            aff_accepted_val = None
+            aff_cond_cov_val = None
+            aff_papers_with_edge_val = None
+            match_rate_val = None
+
+        # 3. Topic evaluation
         emb_micro = (
             topic_eval.get("models", {})
             .get("embedding_classifier", {})
             .get("paper_normalized_review_metrics", {})
             .get("micro", {})
+            if isinstance(topic_eval, dict)
+            else {}
         )
         phr_micro = (
             topic_eval.get("models", {})
             .get("phrase_baseline", {})
             .get("paper_normalized_review_metrics", {})
             .get("micro", {})
+            if isinstance(topic_eval, dict)
+            else {}
         )
-        top_prec = float(emb_micro.get("precision", 0.68627451))
-        top_prec_target = float(comp_targets.get("topic_labels", 0.95))
-        top_prec_status = "passed" if top_prec >= top_prec_target else "failed"
-        top_f1 = float(
-            emb_micro.get(
-                "f1",
-                topic_reuse.get("historical_micro_f1", {}).get("embedding_classifier", 0.46666667),
-            )
-        )
-        phr_f1 = float(
-            phr_micro.get(
-                "f1",
-                topic_reuse.get("historical_micro_f1", {}).get("phrase_baseline", 0.2300885),
-            )
-        )
-        phr_prec = float(phr_micro.get("precision", 0.92857143))
+        has_topic_eval = bool(emb_micro and "precision" in emb_micro)
 
-        agreement = audit.get("agreement", {})
+        top_prec_target = float(comp_targets.get("topic_labels", 0.95)) if comp_targets else 0.95
 
-        return {
-            # Canonical keys
-            "edge_precision": edge_precision,
-            "edge_precision_ai_assessed": edge_precision,
-            "edge_precision_correct": int(global_audit.get("correct", 193)),
-            "edge_precision_total": int(global_audit.get("total", global_audit.get("n", 200))),
-            "edge_precision_incorrect": int(global_audit.get("incorrect", 1)),
-            "edge_precision_unverifiable": int(global_audit.get("unverifiable", 6)),
-            "edge_precision_wilson_lower": wilson_lower,
-            "edge_precision_wilson_upper": wilson_upper,
-            "edge_precision_wilson_95": [wilson_lower, wilson_upper],
-            "edge_precision_target": edge_target,
-            "edge_precision_wilson_target": wilson_target,
-            "edge_precision_status": edge_status,
-            "macro_per_type_precision": float(audit.get("macro_per_type_precision", 0.97)),
-            "overlap_reviewed": int(agreement.get("edges_reviewed_by_both", 50)),
-            "overlap_agreed": int(agreement.get("agreed", 49)),
-            "overlap_agreement_rate": float(agreement.get("percent", 0.98)),
-            "cohens_kappa": float(agreement.get("cohens_kappa", 0.6598639455782315)),
-            "affiliation_coverage": aff_cov,
-            "affiliation_positions_resolved": aff_resolved,
-            "affiliation_positions_eligible": aff_eligible,
-            "affiliation_positions_all_official": 65507,
-            "affiliation_positions_accepted": 50437,
-            "affiliation_conditional_coverage": aff_resolved / 50437.0,
-            "affiliation_papers_with_edge": 10037,
-            "affiliation_papers_eligible": abs_eligible,
-            "affiliation_target": aff_target,
-            "affiliation_coverage_target": aff_target,
-            "affiliation_status": aff_status,
-            "affiliation_coverage_status": aff_status,
-            "abstract_coverage": abs_cov,
-            "abstract_papers_resolved": abs_resolved,
-            "abstract_papers_eligible": abs_eligible,
-            "abstract_coverage_target": abs_target,
-            "abstract_coverage_status": abs_status,
-            "openalex_work_match_rate": abs_resolved / max(1, abs_eligible),
-            "topic_coverage": top_cov,
-            "topic_papers_labeled": top_labeled,
-            "topic_papers_eligible": top_eligible,
-            "topic_papers_abstained": top_abstained,
-            "topic_coverage_target": top_cov_target,
-            "topic_coverage_status": top_cov_status,
-            "topic_precision": top_prec,
-            "topic_embedding_precision": top_prec,
-            "topic_precision_target": top_prec_target,
-            "topic_precision_status": top_prec_status,
-            "topic_micro_f1": top_f1,
-            "topic_embedding_micro_f1": top_f1,
-            "topic_phrase_baseline_f1": phr_f1,
-            "topic_phrase_baseline_precision": phr_prec,
-            "topic_test_paper_count": int(topic_eval.get("topic_test_paper_count", 50)),
-            "topic_eval_status": str(
+        if has_topic_eval:
+            top_prec_val: float | None = float(emb_micro["precision"])
+            top_prec_status = "passed" if top_prec_val >= top_prec_target else "failed"
+            top_f1_val: float | None = float(
+                emb_micro.get(
+                    "f1",
+                    topic_reuse.get("historical_micro_f1", {}).get("embedding_classifier", 0.0),
+                )
+            )
+            phr_f1_val: float | None = float(
+                phr_micro.get(
+                    "f1",
+                    topic_reuse.get("historical_micro_f1", {}).get("phrase_baseline", 0.0),
+                )
+            )
+            phr_prec_val: float | None = float(phr_micro.get("precision", 0.0))
+            topic_test_count_val: int | None = int(topic_eval.get("topic_test_paper_count", 50))
+            topic_eval_status_val: str = str(
                 topic_reuse.get(
                     "status",
                     "historical_reference_reuse_supported_by_exact_prediction_equality",
                 )
-            ),
-            "evaluation_kind": str(audit.get("evaluation_kind", "ai_agent_review")),
+            )
+        else:
+            top_prec_val = None
+            top_prec_status = "unavailable"
+            top_f1_val = None
+            phr_f1_val = None
+            phr_prec_val = None
+            topic_test_count_val = None
+            topic_eval_status_val = "unavailable"
+
+        eval_kind_str = str(audit.get("evaluation_kind", "ai_agent_review")) if has_audit else "unavailable"
+        course_acc_str = str(audit.get("verified_course_accuracy", "not_established")) if has_audit else "not_established"
+        gate_scope_str = str(audit.get("numeric_gate_scope", "ai_assessed_only")) if has_audit else "unavailable"
+
+        return {
+            # Canonical keys
+            "edge_precision": edge_precision_val,
+            "edge_precision_ai_assessed": edge_precision_val,
+            "edge_precision_correct": correct_val,
+            "edge_precision_total": total_val,
+            "edge_precision_incorrect": incorrect_val,
+            "edge_precision_unverifiable": unverifiable_val,
+            "edge_precision_wilson_lower": wilson_lower_val,
+            "edge_precision_wilson_upper": wilson_upper_val,
+            "edge_precision_wilson_95": wilson_pair_val,
+            "edge_precision_target": edge_target,
+            "edge_precision_wilson_target": wilson_target,
+            "edge_precision_status": edge_status,
+            "macro_per_type_precision": macro_prec_val,
+            "overlap_reviewed": overlap_reviewed_val,
+            "overlap_agreed": overlap_agreed_val,
+            "overlap_agreement_rate": overlap_rate_val,
+            "cohens_kappa": kappa_val,
+            "affiliation_coverage": aff_cov_val,
+            "affiliation_positions_resolved": aff_resolved_val,
+            "affiliation_positions_eligible": aff_eligible_val,
+            "affiliation_positions_all_official": aff_all_official_val,
+            "affiliation_positions_accepted": aff_accepted_val,
+            "affiliation_conditional_coverage": aff_cond_cov_val,
+            "affiliation_papers_with_edge": aff_papers_with_edge_val,
+            "affiliation_papers_eligible": abs_eligible_val,
+            "affiliation_target": aff_target,
+            "affiliation_coverage_target": aff_target,
+            "affiliation_status": aff_status,
+            "affiliation_coverage_status": aff_status,
+            "abstract_coverage": abs_cov_val,
+            "abstract_papers_resolved": abs_resolved_val,
+            "abstract_papers_eligible": abs_eligible_val,
+            "abstract_coverage_target": abs_target,
+            "abstract_coverage_status": abs_status,
+            "openalex_work_match_rate": match_rate_val,
+            "topic_coverage": top_cov_val,
+            "topic_papers_labeled": top_labeled_val,
+            "topic_papers_eligible": top_eligible_val,
+            "topic_papers_abstained": top_abstained_val,
+            "topic_coverage_target": top_cov_target,
+            "topic_coverage_status": top_cov_status,
+            "topic_precision": top_prec_val,
+            "topic_embedding_precision": top_prec_val,
+            "topic_precision_target": top_prec_target,
+            "topic_precision_status": top_prec_status,
+            "topic_micro_f1": top_f1_val,
+            "topic_embedding_micro_f1": top_f1_val,
+            "topic_phrase_baseline_f1": phr_f1_val,
+            "topic_phrase_baseline_precision": phr_prec_val,
+            "topic_test_paper_count": topic_test_count_val,
+            "topic_eval_status": topic_eval_status_val,
+            "evaluation_kind": eval_kind_str,
             "human_validation_performed": False,
             "reviewer_independence_established": False,
             "verified_course_accuracy_established": False,
-            "verified_course_accuracy": str(audit.get("verified_course_accuracy", "not_established")),
-            "numeric_gate_scope": str(audit.get("numeric_gate_scope", "ai_assessed_only")),
+            "verified_course_accuracy": course_acc_str,
+            "numeric_gate_scope": gate_scope_str,
         }
 
     def get_summary(self) -> GraphSummaryResponse:

@@ -491,7 +491,7 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
                             e.stopPropagation();
                             onFocusNodeInGraph(node.id, node.name);
                           }}
-                          className="text-xs font-medium text-ink hover:underline"
+                          className="ledger-btn h-6 px-2 text-[11px] font-medium text-ink hover:text-accent"
                         >
                           <span className="hidden sm:inline">Focus in graph →</span>
                           <span className="sm:hidden">Graph →</span>
@@ -618,10 +618,20 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
                       </td>
 
                       <td className="py-2.5 px-3 sm:px-4 text-right whitespace-nowrap">
-                        <span className="font-medium text-ink hover:underline">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            selectEdge(
+                              edge.edge_id,
+                              `${edge.source_name || edge.source} → ${edge.relation} → ${edge.target_name || edge.target}`
+                            );
+                          }}
+                          className="ledger-btn h-6 px-2 text-[11px] font-medium text-ink hover:text-accent"
+                        >
                           <span className="hidden sm:inline">Inspect evidence →</span>
                           <span className="sm:hidden">Evidence →</span>
-                        </span>
+                        </button>
                       </td>
                     </tr>
                   );

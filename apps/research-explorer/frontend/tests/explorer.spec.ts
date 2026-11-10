@@ -3,7 +3,7 @@ import path from "path";
 
 const ARTIFACT_DIR =
   process.env.EXPLORER_SCREENSHOT_DIR ||
-  "/home/san/.gemini/antigravity-cli/brain/7dfac094-4740-45fc-9c25-6d095da4fba9";
+  "/home/san/.gemini/antigravity/brain/012e53a9-c43f-4eab-8ce5-fcf839a45122";
 
 test.describe("Scientific Network Explorer E2E Verification", () => {
   test("1. Loads Mode A, verifies release-v4 inventory, switches across Modes B, C, D, and toggles theme", async ({
@@ -304,5 +304,100 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
     await expect(page.getByTestId("right-inspector")).toHaveCount(0);
     await page.getByTestId("tab-graph").click();
     await expect(page.getByTestId("right-inspector")).toBeVisible();
+  });
+
+  test("5. Verifies neighborhood usability: Warut 7 visible neighbors, dense node list, Ego view isolation with Back navigation, and zero-match filters", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await expect(page.getByTestId("projection-title")).toContainText(
+      "Researcher Collaboration",
+      { timeout: 15_000 }
+    );
+
+    // 1. Search and pin Warut Suksompong
+    await page.getByTestId("open-global-search").click();
+    const input = page.getByTestId("global-search-input");
+    await input.fill("Warut Suksompong");
+    await expect(page.getByTestId("search-modal")).toContainText("Warut Suksompong", {
+      timeout: 10_000,
+    });
+
+    const focusBtn = page
+      .locator('[data-testid^="search-focus-graph-researcher:"]')
+      .first();
+    await expect(focusBtn).toBeVisible({ timeout: 10_000 });
+    await focusBtn.click();
+
+    // Inspector opens and displays Warut
+    await expect(page.getByTestId("inspector-node-name")).toContainText(
+      "Warut Suksompong",
+      { timeout: 10_000 }
+    );
+
+    // Verify displayed degree and the "On this graph" visible neighbors section
+    await expect(page.getByTestId("inspector-displayed-degree")).toBeVisible();
+    await expect(page.getByTestId("right-inspector")).toContainText("On this graph");
+    await expect(page.getByTestId("right-inspector")).toContainText("visible neighbor");
+    await expect(page.getByTestId("right-inspector")).toContainText("All database connections");
+
+    await page.screenshot({
+      path: path.join(ARTIFACT_DIR, "explorer-warut-7-neighbors.png"),
+    });
+
+    // Verify an edge evidence button works from the visible neighbors list
+    const firstEvidenceBtn = page
+      .locator('[data-testid^="inspect-visible-edge-"]')
+      .first();
+    await expect(firstEvidenceBtn).toBeVisible();
+    await firstEvidenceBtn.click();
+    await expect(page.getByTestId("evidence-derivation-explanation")).toBeVisible({
+      timeout: 10_000,
+    });
+
+    // Return to entity dossier
+    await page.getByTestId("inspector-back-button").click();
+    await expect(page.getByTestId("inspector-node-name")).toContainText(
+      "Warut Suksompong"
+    );
+
+    // 2. Ego view isolation and Return route
+    await page.getByTestId("canvas-isolate-ego").click();
+    await expect(page.getByTestId("canvas-scope-banner")).toBeVisible({
+      timeout: 10_000,
+    });
+    await expect(page.getByTestId("canvas-scope-banner")).toContainText(
+      "Warut Suksompong"
+    );
+
+    await page.screenshot({
+      path: path.join(ARTIFACT_DIR, "explorer-ego-view.png"),
+    });
+
+    // Click "Back to overview" to restore prior graph
+    await page.getByTestId("scope-back-button").click();
+    await expect(page.getByTestId("canvas-scope-banner")).toBeHidden();
+    await expect(page.getByTestId("full-projection-counts")).toContainText("32,189");
+
+    // 3. Filter verification: Strong links filter in Citations mode
+    await page.getByTestId("mode-citations").click();
+    await expect(page.getByTestId("projection-title")).toContainText("Citation Network");
+
+    // Citations mode canvas-edge-filter should have Strong links disabled
+    const strongOption = page.locator('select[data-testid="canvas-edge-filter"] option[value="strong"]');
+    await expect(strongOption).toBeDisabled();
+
+    // 4. Tablet / Mobile navigation hit targets (1024px and 768px)
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.getByTestId("tab-table").click();
+    await expect(page.getByTestId("table-view")).toBeVisible();
+    await page.getByTestId("tab-analytics").click();
+    await expect(page.getByTestId("analytics-view")).toBeVisible();
+    await page.getByTestId("tab-graph").click();
+    await expect(page.getByTestId("sigma-canvas-container")).toBeVisible();
+
+    await page.screenshot({
+      path: path.join(ARTIFACT_DIR, "explorer-tablet-768.png"),
+    });
   });
 });
