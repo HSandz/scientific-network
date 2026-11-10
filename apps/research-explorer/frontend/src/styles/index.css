@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   AI Research Network Explorer — Achromatic Ledger + Neutral Charcoal System
+   Dealt from tasteskill v2 (`achromatic-ledger`, seed 103171675)
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --ground: #f5f4f1;
+  --surface: #ffffff;
+  --raised: #ecebe7;
+  --active: #e2e0da;
+  --border: #dfddd7;
+  --rule: #ecebe7;
+  --control: #c7c5be;
+  --text: #111111;
+  --muted: #504f4c;
+  --faint: #64635e;
+  --accent: #1d5fbf;
+  --primary: #141414;
+  --primary-ink: #ffffff;
+
+  --positive: #247b50;
+  --negative: #c4242a;
+  --warning: #92400e;
+
+  --pill-positive-bg: #dcfae5;
+  --pill-positive-ink: #04250e;
+  --pill-negative-bg: #ffedea;
+  --pill-negative-ink: #831c1e;
+  --pill-warning-bg: #fffbeb;
+  --pill-warning-ink: #78350f;
+  --pill-neutral-bg: #ecebe7;
+  --pill-neutral-ink: #33322f;
+
+  --chart-1: #141414;
+  --chart-2: #767570;
+  --chart-3: #1d5fbf;
+  --chart-4: #247b50;
+  --chart-grid: #e8e7e2;
+  --chart-axis: #504f4c;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --row-height: 44px;
+  --sidebar-width: 272px;
+  --inspector-width: 392px;
+  --gap: 12px;
+  --pad: 20px;
+  --control-height: 34px;
+  --fs-title: 22px;
+  --fs-section: 15px;
+  --fs-kpi: 26px;
+  --fs-body: 14px;
+  --fs-small: 12px;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --ground: #1e1e1e;
+  --surface: #252525;
+  --raised: #2d2d2d;
+  --active: #363636;
+  --border: #373737;
+  --rule: #323232;
+  --control: #5b5b5b;
+  --text: #cecece;
+  --muted: #b0b0b0;
+  --faint: #9f9f9f;
+  --accent: #7fa6cc;
+  --primary: #363636;
+  --primary-ink: #cecece;
+
+  --positive: #3fc07a;
+  --negative: #e5566f;
+  --warning: #e5a93b;
+
+  --pill-positive-bg: #1b3324;
+  --pill-positive-ink: #7ce8a9;
+  --pill-negative-bg: #361d22;
+  --pill-negative-ink: #fda4af;
+  --pill-warning-bg: #332715;
+  --pill-warning-ink: #fcd34d;
+  --pill-neutral-bg: #2d2d2d;
+  --pill-neutral-ink: #cecece;
+
+  --chart-1: #cecece;
+  --chart-2: #9f9f9f;
+  --chart-3: #7fa6cc;
+  --chart-4: #3fc07a;
+  --chart-grid: #323232;
+  --chart-axis: #b0b0b0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--ground);
+  color: var(--text);
+  font-family: "Geist", system-ui, -apple-system, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure all numeric elements render with aligned tabular numerals */
+.num,
+.tabular-nums,
+table,
+td,
+th,
+.kpi-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--control);
+  border-radius: 3px;
+}
+
+@layer components {
+  /* Semantic surface components */
+  .ledger-panel {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    min-width: 0;
+  }
+
+  .ledger-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .ledger-kpi {
+    padding: 14px 18px;
+    min-width: 0;
+  }
+
+  .ledger-kpi + .ledger-kpi {
+    border-left: 1px solid var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .ledger-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ledger-kpi + .ledger-kpi {
+      border-left: 0;
+    }
+    .ledger-kpi:nth-child(2n) {
+      border-left: 1px solid var(--border);
+    }
+    .ledger-kpi:nth-child(n + 3) {
+      border-top: 1px solid var(--border);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ledger-kpis {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ledger-kpi:nth-child(2n) {
+      border-left: 0;
+    }
+    .ledger-kpi + .ledger-kpi {
+      border-top: 1px solid var(--border);
+    }
+  }
+
+  .ledger-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: 22px;
+    padding: 0 8px;
+    border-radius: 999px;
+    font-size: var(--fs-small);
+    font-weight: 500;
+    background-color: var(--pill-neutral-bg);
+    color: var(--pill-neutral-ink);
+    white-space: nowrap;
+  }
+
+  .ledger-pill-pos {
+    background-color: var(--pill-positive-bg);
+    color: var(--pill-positive-ink);
+  }
+
+  .ledger-pill-neg {
+    background-color: var(--pill-negative-bg);
+    color: var(--pill-negative-ink);
+  }
+
+  .ledger-pill-warn {
+    background-color: var(--pill-warning-bg);
+    color: var(--pill-warning-ink);
+  }
+
+  .ledger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: var(--control-height);
+    padding: 0 12px;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--control);
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: var(--fs-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    white-space: nowrap;
+  }
+
+  .ledger-btn:hover:not(:disabled) {
+    background-color: var(--raised);
+  }
+
+  .ledger-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .ledger-btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-ink);
+    border-color: var(--control);
+  }
+
+  .ledger-btn-primary:hover:not(:disabled) {
+    background-color: var(--active);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  :root:not(.dark) .ledger-btn-primary {
+    border-color: var(--primary);
+  }
+
+  :root:not(.dark) .ledger-btn-primary:hover:not(:disabled) {
+    background-color: #292927;
+    border-color: #141414;
+    color: #ffffff;
+  }
+
+  .ledger-btn-ghost {
+    border-color: transparent;
+    background-color: transparent;
+    color: var(--muted);
+  }
+
+  .ledger-btn-ghost:hover:not(:disabled) {
+    background-color: var(--raised);
+    color: var(--text);
+  }
+
+  .ledger-input {
+    height: var(--control-height);
+    padding: 0 10px;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--control);
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: var(--fs-body);
+  }
+
+  .ledger-input::placeholder {
+    color: var(--faint);
+  }
+
+  .ledger-segmented {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 7px;
+    background-color: var(--raised);
+    border: 1px solid var(--border);
+  }
+
+  .ledger-segmented button {
+    height: 28px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease;
+    white-space: nowrap;
+  }
+
+  .ledger-segmented button:hover {
+    color: var(--text);
+  }
+
+  .ledger-segmented button[aria-pressed="true"],
+  .ledger-segmented button[data-active="true"] {
+    background-color: var(--surface);
+    color: var(--text);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

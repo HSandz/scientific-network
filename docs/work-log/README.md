@@ -7,6 +7,14 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-10-001 — Implement Research Explorer improvements](2026-11-10-001-explorer-improvements.md): completed; soft graphite dark mode (`#1e1e1e`), unified release-v4 quality contract across views (73.71% affiliation, 85.00% topic coverage, 68.63% topic precision), responsive composition across 6 breakpoints (dual rails >=1264px, single-row mobile header, >=422px mobile plot), accessible dialogs/focus trap/Escape layers, accent-insensitive search across 47,875 nodes; 14 backend unit/integration tests, 4 Playwright E2E suites passing on both dev and preview, design-taste-frontend inspect 0 FAIL, 507 repo tests pass.
+- [WORK-2026-11-09-020 — Explorer improvement plan and implementation prompt](2026-11-09-020-explorer-improvement-plan.md): completed 10 November, planning only; soft graphite dark-mode proposal, six ordered implementation steps and fresh-session prompt; links/file-preservation checks and 508 tests pass, 1 existing skip. No app changes.
+- [WORK-2026-11-09-019 — Redesigned Explorer follow-up review](2026-11-09-019-redesign-followup-review.md): completed, review only; improved visual system verified; quality-display inconsistencies, graph legibility, responsive density and keyboard issues recorded; production inspector 0 FAIL/0 WARN, 4 E2E and 508 repo tests pass with 1 existing skip. No application edits.
+- [WORK-2026-11-09-018 — Research Explorer redesign and implementation](2026-11-09-018-research-explorer-redesign.md): completed; `achromatic-ledger` light/dark redesign across desktop/tablet/phone (`0 FAIL, 0 WARN` on production build), contextual inspector, collision-free Sigma labels, name-based entity pickers, and table DB degree fix; 4 Playwright E2E, 14 backend, and 507 repo tests pass.
+- [WORK-2026-11-09-017 — Research Explorer design review](2026-11-09-017-research-explorer-design-review.md): completed; screenshot critique and recommendations only; no implementation.
+
+| [WORK-2026-11-09-016](2026-11-09-016-research-explorer.md) | Modern scientific network explorer application | completed | Self-contained FastAPI + React/Sigma.js/ECharts explorer under `apps/research-explorer/` backed by live `neo4j-five-year` (`release-d3c788c3114a`); 14 backend unit/integration tests, Vite build, 3 Playwright E2E browser suites, and 508 repo tests pass |
+
 | [WORK-2026-11-09-015](2026-11-09-015-release-review-graphs-site.md) | Release review, visible graphs and Site | completed | Exact rescore/hash review; three network maps,26-page/nine-figure package/1410members; Site v19 published;508tests/1skip; live pointer QA limit recorded |
 
 | [WORK-2026-11-09-009](2026-11-09-009-remediation-prompt.md) | Fresh-session remediation prompt | completed (handoff only) | Full five-step execution prompt with explicit versioned-correction scope, agent audit and validation boundaries; baseline 419 tests/1 skip; no implementation changes |
