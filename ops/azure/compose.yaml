@@ -97,6 +97,8 @@ services:
     ports: ['80:80', '443:443']
     environment:
       API_HOSTNAME: ${API_HOSTNAME:?Set verified DNS hostname}
+      # Keep Go concurrency bounded on hosts exposing many CPUs to containers.
+      GOMAXPROCS: '2'
     volumes:
       - ./proxy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy-data:/data

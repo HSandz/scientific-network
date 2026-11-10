@@ -189,3 +189,12 @@ was counted as a successful verification.
 
 Ignored raw evidence: `reports/runs/WORK-2026-11-10-007/`. The migration agent's
 uncommitted files/shared-document hunks remain local and were excluded from commits.
+
+## Follow-up — authorized leftover cleanup, 10 November 2026
+
+The retained-leftover statements above describe the original deployment checkpoint.
+The user subsequently authorized cleanup. [WORK-008](../../docs/work-log/2026-11-10-008-azure-leftover-cleanup.md)
+records removal of the unused first graph volume, failed API images, obsolete env
+snapshots and duplicate bootstrap, recovering 2,278,842,368 bytes. Production graph
+data, backups and known-good v3 settings were preserved. A Caddy thread-limit issue
+found during inspection was corrected with `GOMAXPROCS=2`; only Caddy was recreated.

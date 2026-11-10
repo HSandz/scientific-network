@@ -21,7 +21,9 @@ disabled. Never format an unrecognized disk or move graph data to temporary disk
 Neo4j: 512–768 MiB heap, 512 MiB page cache, 2 GiB container limit, 256 MiB
 aggregate transaction budget, 15-second default transaction timeout. API:
 768 MiB, one Uvicorn worker, at most 12 concurrent connections, eight Bolt
-connections, 12-second query timeout. Caddy: 128 MiB. Swap is protection for short
+connections, 12-second query timeout. Caddy: 128 MiB, `GOMAXPROCS=2` to bound Go
+runtime concurrency and leave room under its PID limit for health checks even
+when the container sees the host's larger CPU inventory. Swap is protection for short
 spikes, not additional physical RAM. Watch `vmstat` for sustained swap I/O.
 
 Only Caddy publishes public ports 80/443. API port 8000 binds VM loopback for
