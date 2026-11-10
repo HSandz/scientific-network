@@ -170,6 +170,10 @@ metric. Camera/chart motion respects reduced-motion preferences. Missing release
 metadata or analytics is Unavailable with Retry; counts/gate success are never
 fabricated from defaults.
 
+Full-period curated presets reject narrowed year/venue/topic requests with guidance
+to select Researcher → Paper → Topic; they never silently ignore those constraints.
+Curated ranking ties use stable IDs.
+
 Current explicit limits: community/country/topic/cross-sector constrained expansion
 is blocked with an explanation (filtered overviews work). Non-custom curated
 presets explain their bounded selection, but expansions use the applicable projection

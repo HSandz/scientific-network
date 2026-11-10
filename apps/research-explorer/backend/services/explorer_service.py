@@ -1231,6 +1231,11 @@ class ExplorerService:
                 edges=edges,
             )
 
+        # Curated full-period context presets must never silently ignore paper filters.
+        narrowed_papers = bool(venue or topic_id or (year_min is not None and year_min > 2021) or (year_max is not None and year_max < 2025))
+        if narrowed_papers and preset != "researcher_paper_topic":
+            from fastapi import HTTPException
+            raise HTTPException(status_code=422, detail="Paper-specific year/venue/topic filters require the Researcher → Paper → Topic preset. Other curated presets show full-period context; select that preset or reset these filters.")
         # Mode D: Heterogeneous knowledge graph
         node_limit = min(max(20, limit or 120), 250)
         raw_nodes, edges_raw = self.repo.get_heterogeneous_subgraph(

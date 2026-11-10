@@ -977,7 +977,7 @@ class Neo4jRepository:
                 "MATCH (res:Researcher)-[r1:AUTHORED]->(p:Paper)-[r2:HAS_TOPIC]->(t:Topic) "
                 "MATCH (p)-[r3:PUBLISHED_IN]->(v:Venue) "
                 f"WHERE {w_str} "
-                "WITH res, r1, p, r2, t, r3, v ORDER BY r2.cosine_similarity DESC, p.year DESC LIMIT 35 "
+                "WITH res, r1, p, r2, t, r3, v ORDER BY r2.cosine_similarity DESC, p.year DESC, p.id ASC, res.id ASC, t.id ASC LIMIT 35 "
                 "UNWIND [ "
                 "  {s: res, source_label: 'Researcher', r: r1, relation: 'AUTHORED', t: p, target_label: 'Paper'}, "
                 "  {s: p, source_label: 'Paper', r: r2, relation: 'HAS_TOPIC', t: t, target_label: 'Topic'}, "
@@ -989,7 +989,7 @@ class Neo4jRepository:
             add_query_rows(cypher1, params)
             add_query_rows(
                 "MATCH (s:Topic)-[r:SUBTOPIC_OF]->(t:Topic) "
-                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label",
+                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label ORDER BY r.edge_id ASC",
                 {},
             )
 
@@ -1003,7 +1003,7 @@ class Neo4jRepository:
                 "MATCH (res:Researcher)-[r1:AFFILIATED_WITH]->(o:Organization) "
                 "MATCH (res)-[r2:AUTHORED]->(p:Paper)-[r3:PUBLISHED_IN]->(v:Venue) "
                 f"WHERE {w_str} AND r1.support_paper_count >= 3 "
-                "WITH res, r1, o, r2, p, r3, v ORDER BY r1.support_paper_count DESC, p.year DESC LIMIT 35 "
+                "WITH res, r1, o, r2, p, r3, v ORDER BY r1.support_paper_count DESC, p.year DESC, p.id ASC, res.id ASC, o.id ASC LIMIT 35 "
                 "UNWIND [ "
                 "  {s: res, source_label: 'Researcher', r: r1, relation: 'AFFILIATED_WITH', t: o, target_label: 'Organization'}, "
                 "  {s: res, source_label: 'Researcher', r: r2, relation: 'AUTHORED', t: p, target_label: 'Paper'}, "
@@ -1021,7 +1021,7 @@ class Neo4jRepository:
                 "WHERE s.sector <> t.sector AND r.support_count >= 2 "
                 "RETURN s, 'Organization' AS source_label, r, 'COLLABORATED_WITH' AS relation, "
                 "t, 'Organization' AS target_label "
-                "ORDER BY r.support_count DESC, r.fractional_weight DESC LIMIT 45",
+                "ORDER BY r.support_count DESC, r.fractional_weight DESC, r.edge_id ASC LIMIT 45",
                 {},
             )
             org_ids = [nid for nid in nodes_map if nid.startswith("organization:")]
@@ -1030,12 +1030,12 @@ class Neo4jRepository:
                     "MATCH (s:Organization)-[r:CONTRIBUTES_TO_TOPIC]->(t:Topic) "
                     "WHERE s.id IN $org_ids AND r.support_count >= 5 "
                     "RETURN s, 'Organization' AS source_label, r, 'CONTRIBUTES_TO_TOPIC' AS relation, "
-                    "t, 'Topic' AS target_label ORDER BY r.support_count DESC LIMIT 60",
+                    "t, 'Topic' AS target_label ORDER BY r.support_count DESC, r.edge_id ASC LIMIT 60",
                     {"org_ids": org_ids},
                 )
             add_query_rows(
                 "MATCH (s:Topic)-[r:SUBTOPIC_OF]->(t:Topic) "
-                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label",
+                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label ORDER BY r.edge_id ASC",
                 {},
             )
 
@@ -1051,7 +1051,7 @@ class Neo4jRepository:
                 "MATCH (t)-[r3:PUBLISHED_IN]->(v2:Venue) "
                 "OPTIONAL MATCH (t)-[r4:HAS_TOPIC]->(top:Topic) "
                 f"WHERE {w_str} "
-                "WITH s, r1, t, r2, v1, r3, v2, r4, top ORDER BY t.year ASC, s.year DESC LIMIT 40 "
+                "WITH s, r1, t, r2, v1, r3, v2, r4, top ORDER BY t.year ASC, s.year DESC, s.id ASC, t.id ASC, top.id ASC LIMIT 40 "
                 "UNWIND ( "
                 "  [ "
                 "    {s: s, source_label: 'Paper', r: r1, relation: 'CITES', t: t, target_label: 'Paper'}, "
@@ -1068,19 +1068,19 @@ class Neo4jRepository:
             # Showcase all 5 entity labels and all 10 relationship predicates in a cohesive bounded subgraph!
             add_query_rows(
                 "MATCH (s:Topic)-[r:SUBTOPIC_OF]->(t:Topic) "
-                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label",
+                "RETURN s, 'Topic' AS source_label, r, 'SUBTOPIC_OF' AS relation, t, 'Topic' AS target_label ORDER BY r.edge_id ASC",
                 {},
             )
             add_query_rows(
                 "MATCH (s:Organization)-[r:CONTRIBUTES_TO_TOPIC]->(t:Topic) "
                 "RETURN s, 'Organization' AS source_label, r, 'CONTRIBUTES_TO_TOPIC' AS relation, "
-                "t, 'Topic' AS target_label ORDER BY r.support_count DESC LIMIT 25",
+                "t, 'Topic' AS target_label ORDER BY r.support_count DESC, r.edge_id ASC LIMIT 25",
                 {},
             )
             add_query_rows(
                 "MATCH (s:Researcher)-[r:RESEARCHES_TOPIC]->(t:Topic) "
                 "RETURN s, 'Researcher' AS source_label, r, 'RESEARCHES_TOPIC' AS relation, "
-                "t, 'Topic' AS target_label ORDER BY r.support_count DESC LIMIT 25",
+                "t, 'Topic' AS target_label ORDER BY r.support_count DESC, r.edge_id ASC LIMIT 25",
                 {},
             )
             res_ids = [nid for nid in nodes_map if nid.startswith("researcher:")]
@@ -1090,14 +1090,14 @@ class Neo4jRepository:
                     "MATCH (s:Researcher)-[r:AFFILIATED_WITH]->(t:Organization) "
                     "WHERE s.id IN $res_ids "
                     "RETURN s, 'Researcher' AS source_label, r, 'AFFILIATED_WITH' AS relation, "
-                    "t, 'Organization' AS target_label ORDER BY r.support_paper_count DESC LIMIT 25",
+                    "t, 'Organization' AS target_label ORDER BY r.support_paper_count DESC, r.edge_id ASC LIMIT 25",
                     {"res_ids": res_ids},
                 )
                 add_query_rows(
                     "MATCH (s:Researcher)-[r:COAUTHORED_WITH]->(t:Researcher) "
                     "WHERE s.id IN $res_ids OR t.id IN $res_ids "
                     "RETURN s, 'Researcher' AS source_label, r, 'COAUTHORED_WITH' AS relation, "
-                    "t, 'Researcher' AS target_label ORDER BY r.support_count DESC LIMIT 20",
+                    "t, 'Researcher' AS target_label ORDER BY r.support_count DESC, r.edge_id ASC LIMIT 20",
                     {"res_ids": res_ids},
                 )
             org_ids = [nid for nid in nodes_map if nid.startswith("organization:")]
@@ -1106,7 +1106,7 @@ class Neo4jRepository:
                     "MATCH (s:Organization)-[r:COLLABORATED_WITH]->(t:Organization) "
                     "WHERE s.id IN $org_ids AND t.id IN $org_ids "
                     "RETURN s, 'Organization' AS source_label, r, 'COLLABORATED_WITH' AS relation, "
-                    "t, 'Organization' AS target_label ORDER BY r.support_count DESC LIMIT 25",
+                    "t, 'Organization' AS target_label ORDER BY r.support_count DESC, r.edge_id ASC LIMIT 25",
                     {"org_ids": org_ids},
                 )
             add_query_rows(
