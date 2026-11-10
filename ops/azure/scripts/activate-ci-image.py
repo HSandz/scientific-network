@@ -26,6 +26,10 @@ def run(*args):
     return subprocess.check_output(args, text=True).strip()
 
 
+def portable_id(image, sha):
+    return run('python3', str(OPS / 'scripts/image-identity.py'), '--docker-image', image, '--sha', sha)
+
+
 def env_values():
     return dict(line.split('=', 1) for line in (OPS / '.env').read_text().splitlines()
                 if '=' in line and not line.startswith('#'))
@@ -66,7 +70,8 @@ def activate(args):
     assert os.statvfs(OPS).f_bavail * os.statvfs(OPS).f_frsize > 8 * 1024**3, 'Need 8 GiB free'
     if previous.get('sha') == args.sha:
         api = json.loads(run('docker', 'inspect', 'scientific-network-production-api-1'))[0]
-        if current['API_IMAGE'] == image and api['Image'] == previous.get('image_id'):
+        if (current['API_IMAGE'] == image and api['Image'] == json.loads(run('docker', 'image', 'inspect', image))[0]['Id']
+                and portable_id(image, args.sha) == previous.get('image_id')):
             subprocess.run([str(OPS / 'scripts/verify.sh')], cwd=OPS, check=True)
             assert before == stable_services()
             previous['operation'] = 'noop'
@@ -99,10 +104,10 @@ def activate(args):
         # Refuse rebinding an existing commit tag to a different image.
         existing = subprocess.run(['docker', 'image', 'inspect', image], capture_output=True, text=True)
         if existing.returncode == 0:
-            assert json.loads(existing.stdout)[0]['Id'] == args.image_id, 'Immutable tag conflict'
+            assert portable_id(image, args.sha) == args.image_id, 'Immutable tag conflict'
         subprocess.run(['docker', 'load', '-i', str(tar)], check=True, timeout=180)
     d = json.loads(run('docker', 'image', 'inspect', image))[0]
-    assert d['Id'] == args.image_id and d['Architecture'] == 'amd64'
+    assert portable_id(image, args.sha) == args.image_id and d['Architecture'] == 'amd64'
     labels = d['Config']['Labels']
     assert labels['org.opencontainers.image.revision'] == args.sha
     assert labels['org.scientific-network.runtime-contract'] == approval['runtime_contract'], 'Artifact contract changed: coordinated release required'
@@ -115,13 +120,13 @@ def activate(args):
         assert before == stable_services(), 'CRITICAL: database/proxy identity or mounts changed'
     assert env_values()['ARTIFACT_DIR'] == str(artifacts)
     active = json.loads(run('docker', 'inspect', 'scientific-network-production-api-1'))[0]
-    assert active['Image'] == args.image_id and active['State']['Health']['Status'] == 'healthy'
+    assert active['Image'] == d['Id'] and active['State']['Health']['Status'] == 'healthy'
     assert not active['State']['OOMKilled'] and active['RestartCount'] == 0
     snapshot = next(line.split(': ', 1)[1] for line in updated.stdout.splitlines() if line.startswith('Deployment verified; rollback snapshot: '))
     prior = OPS / '.ci-rollback-state.json'
     prior.write_text(json.dumps(previous) + '\n')
     prior.chmod(0o600)
-    receipt = dict(operation='activated', rollback_snapshot=snapshot, sha=args.sha, image=image, image_id=args.image_id, sequence=args.sequence,
+    receipt = dict(operation='activated', rollback_snapshot=snapshot, sha=args.sha, image=image, image_id=args.image_id, image_store_id=d['Id'], sequence=args.sequence,
                    artifact_dir=str(artifacts), verified_at=datetime.now(timezone.utc).isoformat(),
                    preserved_services=before)
     tmp = STATE.with_suffix('.tmp')
