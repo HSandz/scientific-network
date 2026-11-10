@@ -1,0 +1,128 @@
+{
+  "deployment": {
+    "sha": "d4dcf2af14ef070b7f96b93d1911b78c75606f04",
+    "image": "scientific-network-api:sha-d4dcf2af14ef070b7f96b93d1911b78c75606f04",
+    "image_id": "sha256:b868a6c462f80a9cc95eccf38268b55590d7020a0fb54bca20400482b3ecd0e6",
+    "image_store_id": "sha256:71a9da7778e01daba0773b9bf34b5e2fb068c309410b7083ad239775fadc549d",
+    "operation": "noop",
+    "sequence": 9,
+    "artifact_dir": "/opt/scientific-network/artifacts/explorer-20261110-v2",
+    "verified_at": "2026-11-10T16:02:51.804881+00:00",
+    "rollback_snapshot": ".env.rollback-20261110T155818Z-2O1Opg"
+  },
+  "approval": {
+    "runtime_contract": "6ca14fb8375af8d2e0e66c82634f0251141f5fa702b841dd5497e6170e5615ec",
+    "manifest_sha256": "3b188311e1daefd2083100957f5bc488dc5309b4966b2359136ddd0246ab5820"
+  },
+  "manifest_sha256": "3b188311e1daefd2083100957f5bc488dc5309b4966b2359136ddd0246ab5820",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "services": {
+    "api": {
+      "container_id": "424658617f5edc527c400828c98c45bc89bd13f37edc5959c615d729831fb4a4",
+      "image": "scientific-network-api:sha-d4dcf2af14ef070b7f96b93d1911b78c75606f04",
+      "health": "healthy",
+      "started_at": "2026-11-10T16:04:19.702270437Z",
+      "restart_count": 0,
+      "oom_killed": false,
+      "docker_init": true
+    },
+    "caddy": {
+      "container_id": "95e8ad0b802cf52dc94993dea69f55169bebd3bf326a0d341a2addb1fa50e7fc",
+      "image": "caddy:2.10.2-alpine",
+      "health": "healthy",
+      "started_at": "2026-11-10T15:55:08.364393238Z",
+      "restart_count": 0,
+      "oom_killed": false,
+      "docker_init": true
+    },
+    "neo4j": {
+      "container_id": "3aad86b5b0d5293022eca9f902a5fef57a31c54d561c43d9c6432f7eed6841a4",
+      "image": "neo4j:5.26.12-community",
+      "health": "healthy",
+      "started_at": "2026-11-10T07:49:31.551201012Z",
+      "restart_count": 0,
+      "oom_killed": false,
+      "docker_init": false
+    }
+  },
+  "status": "production_verified",
+  "recorded_at": "2026-11-10T23:09:00+07:00",
+  "frontend": {
+    "verified_source_sha": "987c693b631bc529eac229ccf711812718df69f2",
+    "verified_deployment_id": "d020337d-4e9a-42dc-82da-6d45ededca77",
+    "url": "https://scientific-network-explorer.pages.dev",
+    "note": "Frontend-only bookmark follow-up; backend code unchanged from deployed API SHA. Subsequent documentation commits can update Pages metadata without changing assets."
+  },
+  "workflow_runs": {
+    "azure_push": 42849498240,
+    "azure_idempotent": 42850337433,
+    "offline_initial": 42849498206,
+    "offline_frontend": 42850930716
+  },
+  "checks": {
+    "repository_passed": 530,
+    "repository_existing_skips": 1,
+    "local_chromium_passed": 22,
+    "public_chromium_passed": 5,
+    "public_api_checks": 28,
+    "complete_derived_and_strict_analytics": true,
+    "post_restart_checks_passed": true,
+    "live_bookmark_workspace_checks": 3,
+    "visual_captures": 32,
+    "unexpected_browser_errors": 0,
+    "neo4j_container_mounts_start_preserved": true,
+    "production_rollback_injected": false
+  },
+  "filters": {
+    "status": "passed",
+    "windows": [
+      {
+        "mode": "researchers",
+        "year": 2021,
+        "venue": "aaai",
+        "edges": 31,
+        "distinct_support_papers": 22,
+        "sample_node_metadata_checked": 3
+      },
+      {
+        "mode": "researchers",
+        "year": 2025,
+        "venue": "ijcai",
+        "edges": 6,
+        "distinct_support_papers": 9,
+        "sample_node_metadata_checked": 3
+      },
+      {
+        "mode": "organizations",
+        "year": 2021,
+        "venue": "aaai",
+        "edges": 320,
+        "distinct_support_papers": 304,
+        "sample_node_metadata_checked": 3
+      },
+      {
+        "mode": "organizations",
+        "year": 2025,
+        "venue": "ijcai",
+        "edges": 240,
+        "distinct_support_papers": 189,
+        "sample_node_metadata_checked": 3
+      }
+    ],
+    "distinct_windows": true
+  },
+  "restart": {
+    "api_restart": "passed",
+    "api_id": "424658617f5edc527c400828c98c45bc89bd13f37edc5959c615d729831fb4a4",
+    "neo4j_identity_mounts_start_preserved": true,
+    "caddy_health": "healthy",
+    "caddy_init": true,
+    "ssl_client_processes": 0,
+    "graph_not_modified": true
+  },
+  "rollback": {
+    "artifact_only_snapshot": ".env.rollback-20261110T160011Z-z7zXU2",
+    "original_api_snapshot": ".env.rollback-20261110T155818Z-2O1Opg",
+    "approval_backup": "/opt/scientific-network/ops/azure/backups/explorer-20261110-013/.ci-approval.json"
+  }
+}

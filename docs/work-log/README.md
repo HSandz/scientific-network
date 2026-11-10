@@ -7,7 +7,7 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
-- [WORK-2026-11-10-013 — Explorer production release](2026-11-10-013-explorer-production-release.md): in progress; user-authorized push/deployment verification; Caddy-only recovery healthy, database preserved.
+- [WORK-2026-11-10-013 — Explorer production release](2026-11-10-013-explorer-production-release.md): completed; authorized push, Caddy init recovery, API/immutable analytics activation and idempotent verification, restart and public acceptance; global bookmark menu follow-up; frozen database preserved.
 
 - [WORK-2026-11-10-012 — Explorer final integration](2026-11-10-012-explorer-final-integration.md): completed locally, rollout pending authorization; Caddy reaping, accepted support filters, constrained expansion, complete comparison totals and workspace restoration; 530 repo/32 backend/22 Chromium tests pass, immutable runtime and rollback verified; no push or production mutation.
 

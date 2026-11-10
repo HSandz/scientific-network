@@ -11,7 +11,8 @@ Complete comparison totals precede bounded previews. Saved Graph/Table/Analytics
 workspaces preserve controls; finding return and exports preserve provenance.
 Caddy orphan reaping, runtime package/strict analytics readiness and transactional
 rollback are locally verified. [Final receipt and authorized-release procedure](../reports/explorer-final-integration-2026-11-10.md).
-Production changes and push await separate approval; no scientific graph rebuild.
+User-authorized production activation and live acceptance are complete, including
+global workspace Save/Restore. [Production receipt](../reports/explorer-production-verification-2026-11-10.md); no scientific graph rebuild.
 
 **10 November production operations:** the Explorer has an isolated Azure Docker
 runtime with read-only Neo4j, one API worker, indexed SQLite evidence, compact
