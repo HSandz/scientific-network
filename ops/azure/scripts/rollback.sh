@@ -5,5 +5,5 @@ flock -n 9 || { echo 'Another deployment/maintenance operation is running.' >&2;
 prior=${1:?Usage: rollback.sh .env.rollback-UTCSTAMP}
 [[ "$prior" == .env.rollback-* && -f "$prior" && ! -L "$prior" ]]
 cp -p "$prior" .env
-"${COMPOSE[@]}" --profile https up -d --no-build --wait --wait-timeout 240
+"${COMPOSE[@]}" up -d --no-deps --no-build --pull never --wait --wait-timeout 120 api
 "$AZURE_COMPOSE_DIR/scripts/verify.sh"

@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-10 16:28 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 16:48 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
 Latest completed: [WORK-2026-11-10-008](work-log/2026-11-10-008-azure-leftover-cleanup.md), Azure deployment leftover cleanup and Caddy health recovery. Production deployment: [WORK-007](work-log/2026-11-10-007-azure-production.md).
 
@@ -40,6 +40,7 @@ AI-assessed edge precision 193/200 = 96.5%, Wilson 92.95–98.29%; human validat
 - [x] Azure VM swap/Docker, guarded dump restore, exact full-content/schema comparison, compact evidence/analytics, HTTPS API functional checks, off-VM backup and restart recovery ([WORK-007](work-log/2026-11-10-007-azure-production.md)).
 - [x] Pages production build and live browser acceptance complete: Azure API, all five live browser suites and 28 public API checks passed. [Runbook](../ops/azure/README.md); [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
 - [x] User-authorized deployment leftover cleanup: unused first graph volume, failed images and obsolete files removed; backups retained; Caddy concurrency bounded and production rechecked ([WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md)).
+- [ ] Automatic API CI/CD: hosted build and passwordless Azure delivery implemented; real Actions deployment verification in progress ([WORK-009](work-log/2026-11-10-009-azure-api-cicd.md)).
 - Render/Aura remain retained. Historical migration notes below are superseded as runtime plans by the Azure deployment.
 
 ## AuraDB migration handoff

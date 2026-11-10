@@ -957,3 +957,21 @@ after external API verification; build and test the resulting production fronten
 No paid resource, resize, registry, graph trimming or old-service deletion is
 included. See [runbook](../ops/azure/README.md) and measured
 [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
+
+
+### D040 amendment — Automatic backend-only Azure delivery (2026-11-10)
+
+The user authorizes CI/CD implementation, provisioning, real main pushes and
+production verification (WORK-2026-11-10-009). Use hosted amd64 builds and private
+one-day Actions image artifacts, delivered over Azure OIDC/VM Run Command. A free
+managed identity has only VM read/instance-view/Run Command actions assigned on
+the existing VM. Run Command remains root-equivalent there, so trust is restricted
+to the exact main workflow and main-only production environment. No SSH credential,
+production CI runner, registry, firewall opening or paid resource is introduced.
+
+Routine updates recreate API only and retain exact previous configuration, images
+and versioned read-only artifacts. Failed verification automatically rolls back;
+failed rollback is critical. Root-owned policy separately pins compatibility-reader
+code and the existing artifact manifest; CI cannot approve its own data/schema
+change. Scientific releases remain explicitly coordinated operator work.
+See [runbook](../ops/azure/README.md) for the security boundary and quota limitations.

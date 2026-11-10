@@ -150,14 +150,15 @@ the full fingerprint comparator after restores, graph changes or suspected corru
 
 ## Updates and rollback
 
-Build and test locally, copy new image and versioned artifacts, then on VM:
+Ordinary backend changes deploy through Actions as described below. For an explicitly
+coordinated image/artifact release, build/test and copy approved versions, then on VM:
 
 ```bash
 cd /opt/scientific-network/ops/azure
 scripts/update.sh scientific-network-api:new-tested-tag /opt/scientific-network/artifacts/new-version
 scripts/status.sh
 scripts/logs.sh api
-# If verification fails, select the precise preceding ignored env snapshot:
+# Updates roll back automatically on failure. For a deliberate manual rollback:
 scripts/rollback.sh .env.rollback-UTCSTAMP
 ```
 
@@ -216,3 +217,156 @@ paid backup service is configured; schedule operator-controlled copies as needed
 Before retiring Render/Aura: verify browser flows, database fingerprints, a fresh
 off-VM backup, HTTPS/certificate renewal and an observation period. Deletion still
 requires explicit user authorization; this deployment never performs that cleanup.
+
+
+## Automatic backend deployment
+
+[Deploy Azure API](https://github.com/HSandz/scientific-network/actions/workflows/deploy-azure-api.yml)
+builds/tests on GitHub-hosted Ubuntu x86-64. Push backend changes normally:
+
+```bash
+git add <intended-backend-files>
+git commit -m "Update backend"
+git push origin main
+```
+
+Triggers are backend source/tests, `Dockerfile.api`, `requirements-api.txt`,
+`build-image.sh`, `runtime-contract.py`, `ci-image-smoke.sh`, `pyproject.toml` and
+`uv.lock`, on `main` only. PRs never deploy. Frontend-only and documentation-only
+changes do not deploy Azure; existing Pages automation is unchanged. Scientific
+artifacts, graph files, Compose and restore/preparation scripts are excluded.
+The existing Offline checks still runs on all pushes/PRs; it installs locked
+analysis/report extras because the figure tests require matplotlib.
+
+The production image is `scientific-network-api:sha-<full-commit-SHA>`. Its revision
+and compatibility fingerprint are OCI labels. Actions records the Docker image
+content ID (`sha256:...`, not a registry RepoDigest), plus SHA-256 of the compressed
+Docker archive. No registry is used. Repeating a verified deployed commit verifies
+the existing immutable image and keeps it; a redundant rebuild is discarded.
+
+The runner uploads only the private image to a private Actions artifact (one-day
+retention). Deployment exchanges GitHub OIDC for Azure access and asks Azure VM
+Run Command to invoke the operator-installed `activate-ci-image.py`. The VM pulls
+the short-lived signed artifact URL over HTTPS, checks size, archive contents,
+checksum, amd64 architecture, image identity, revision and compatibility approval.
+No GitHub token, personal SSH key or long-lived Azure credential goes to the VM.
+The URL is masked in Actions and expires; Azure guest-command records must be
+handled as sensitive until it expires. No inbound firewall rule is added.
+
+`production-api` accepts the `main` branch only, without per-push approval. The
+repository OIDC subject includes repository identity, environment and exact
+`job_workflow_ref`; Azure federation must match GitHub's actual subject prefix
+(including immutable repository IDs when enabled). The free user-assigned managed
+identity `scientific-network-api-github` has a custom role with VM read,
+instance-view read and Run Command invocation, assigned only on this VM.
+**Run Command is root-equivalent within the VM**: trusted main workflow changes
+are production-administrator changes. Main currently has no branch protection;
+keep repository write/admin membership limited. There is no production runner,
+Docker-group user, webhook, registry or paid service. Existing public SSH access
+was observed in the NSG; this task does not alter that pre-existing login policy.
+
+Build jobs have `contents: read`. Only the deployment job receives `actions: read`
+and `id-token: write`. All external actions are pinned to commit SHAs. No GitHub
+Actions secrets are required. Nonsecret **environment variables** in `production-api`:
+
+- `AZURE_API_CLIENT_ID`
+- `AZURE_API_TENANT_ID`
+- `AZURE_API_SUBSCRIPTION_ID`
+- `AZURE_API_VM_ID`
+
+Operator provisioning is reproducible with `python3 ops/azure/scripts/configure-ci-azure.py`
+(after Azure login and with identity/custom-role/role-assignment rights), followed
+by `ops/azure/scripts/install-ci-vm.sh` from the reviewed checkout. The latter
+uses the operator's existing SSH connection, never a GitHub runner SSH alias.
+CI cannot install/update its own VM scripts or approve its own artifact contract.
+Review and install script changes explicitly with that operator command.
+
+Concurrency is serialized, with cancellation disabled. The hosted delivery step
+checks that the triggering SHA is still main; the VM also rejects sequences older
+than its last successful deployment. A separate delivery lock covers download/load;
+the existing runtime maintenance lock covers the API transaction. Timeouts bound
+jobs, readiness, download and public smoke. At least 8 GiB free VM disk is required.
+No automatic pruning deletes recovery images; monitor disk and remove only reviewed,
+unreferenced old CI images when needed. Keep the current and previous known-good image.
+Private-repository Actions consumes the account's minutes/storage allowance. Image
+artifacts expire after one day; builds are bounded to 20 minutes and deployment to
+25 minutes. Exact account usage/quota was not readable with the available GitHub
+credential (billing endpoints require additional user scope). Check account
+Settings → Billing and licensing → Usage before increasing deployment frequency;
+no paid quota or service was enabled.
+
+## Verification, rollback and troubleshooting
+
+The VM's `.ci-deployment.json` (0600) records the actual commit, image content ID,
+artifact path, UTC verification time and preserved Neo4j/Caddy identities/mounts.
+Actions build summary records the package identity; deployment logs record actual
+activation or the existing identity for an idempotent no-op. Check both after a
+rerun. See the Actions workflow URL above, select the run, then build/deploy logs.
+
+`update.sh` snapshots the exact protected environment, atomically changes only the
+image/artifact selectors and recreates **only API**, with `--no-deps --pull never`.
+Readiness, artifact SHA-256, database counts/version and the complete public HTTPS
+smoke must pass. Any failure restores the previous exact environment and verifies
+the recovered API, returning failure to Actions. It does not recursively acquire
+the runtime lock. Failed rollback returns critical exit 70. Neo4j/Caddy are never
+targeted; their IDs, start times, restart counts and mounts must remain identical.
+
+Manual redeployment: Actions → Deploy Azure API → Run workflow → branch **main**,
+or `gh workflow run deploy-azure-api.yml --repo HSandz/scientific-network --ref main`.
+An advanced main may cause an older queued run to skip; dispatch the current main.
+Manual rollback, on the VM:
+
+```bash
+cd /opt/scientific-network/ops/azure
+sudo scripts/rollback.sh .env.rollback-<exact-snapshot-filename>
+sudo scripts/status.sh
+```
+
+Use the precise snapshot reported in deployment logs; snapshots contain secrets
+and remain untracked. Preserve previous images/artifacts. A code rollback by
+reverting the backend commit and pushing main also goes through the tested pipeline.
+For safe failure testing, `sudo scripts/test-rollback-isolated.sh` uses a separate
+64 MiB Compose project, existing image aliases, no graph/volumes/network, and an
+intentionally failing container health check; it cleans up only its test resources.
+Offline tests also inject verifier and rollback failures against the real shell
+transaction. Never induce a failure in the production database.
+
+If OIDC fails, compare the federated subject with repository OIDC customization,
+main-only environment policy and Azure role scope. If download fails, rerun for a
+fresh signed URL. If the immutable tag conflicts, investigate the image identity;
+do not retag/overwrite it. If readiness or smoke fails, inspect API logs and rollback
+verification before retrying. If VM scripts change, operator-install reviewed
+scripts; ordinary backend CI deliberately cannot overwrite them. If disk drops
+below 8 GiB, reclaim only reviewed old images/logs; never prune volumes/backups.
+
+## Coordinated graph/artifact releases and disabling automation
+
+Backend CI never copies, creates, removes or modifies research data. It reuses the
+protected environment's existing versioned artifact directory, mounted read-only;
+SQLite remains `mode=ro&immutable=1`. `.ci-approval.json` separately pins its manifest
+hash and a conservative fingerprint of release constants/configuration and the
+JSON/SQLite readers. Changes to those files are blocked before activation, even
+when tests pass. Behavioral incompatibility elsewhere can still be caught by
+readiness/hash/public smoke, which triggers rollback. Arbitrary semantic changes
+cannot be proved compatible by automation; review them as a coordinated release.
+
+For a new graph/schema/artifact version, explicitly review/approve the data release,
+use the existing guarded new-volume restore and full-content/schema comparator,
+prepare a **new** versioned artifact directory, then coordinate the matching tested
+image and selectors manually. Update the verifier/smoke expectations only with a
+documented release decision; this workflow remains fixed to the current release.
+Update the root-owned compatibility approval only after that review and verification.
+Never have CI regenerate artifacts or dump/load databases. Do not change the pinned
+manifest or fingerprint merely to bypass a failed gate.
+
+Temporarily disable automatic deployment with:
+
+```bash
+gh workflow disable deploy-azure-api.yml --repo HSandz/scientific-network
+# Resume when ready:
+gh workflow enable deploy-azure-api.yml --repo HSandz/scientific-network
+```
+
+This leaves Pages, Offline checks and the running API untouched. For credential
+revocation, remove the managed identity's VM role assignment or federation. Do not
+change SSH or delete a graph volume to disable deployments.
