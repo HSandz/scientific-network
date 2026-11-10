@@ -6,7 +6,7 @@ const ARTIFACT_DIR =
   "/home/san/.gemini/antigravity/brain/012e53a9-c43f-4eab-8ce5-fcf839a45122";
 
 test.describe("Scientific Network Explorer E2E Verification", () => {
-  test("1. Loads Mode A, verifies release-v4 inventory, switches across Modes B, C, D, and toggles theme", async ({
+  test("1. Defaults to Knowledge graph, verifies projection order and release-v4 inventory, switches modes, and toggles theme", async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
@@ -24,6 +24,18 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
       { timeout: 15_000 }
     );
 
+    // Fresh visits select the first sidebar projection: Knowledge graph.
+    const projections = page.getByRole("radiogroup", { name: "Network projection" });
+    await expect(projections.getByRole("radio")).toHaveCount(4);
+    const orderedModes = ["heterogeneous", "organizations", "researchers", "citations"];
+    for (const [index, mode] of orderedModes.entries()) {
+      await expect(projections.getByRole("radio").nth(index)).toHaveAttribute("data-testid", `mode-${mode}`);
+    }
+    await expect(page.getByTestId("mode-heterogeneous")).toHaveAttribute("aria-checked", "true");
+    await expect(page.getByTestId("projection-title")).toContainText("Heterogeneous Knowledge Graph");
+    await expect(page.getByTestId("full-projection-counts")).toContainText("47,875");
+
+    await page.getByTestId("mode-researchers").click();
     // Verify Mode A (Researcher Collaboration) loads with full projection count 32,189
     await expect(page.getByTestId("projection-title")).toContainText(
       "Researcher Collaboration"
@@ -94,7 +106,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
   test("2. Searches full database beyond top-100 via keyboard shortcut (/), expands +1 hop neighborhood, and inspects Mode E edge provenance", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/?mode=researchers");
     await expect(page.getByTestId("projection-title")).toContainText(
       "Researcher Collaboration",
       { timeout: 15_000 }
@@ -237,7 +249,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
   test("4. Verifies contextual inspector, responsive tablet/phone drawers, table DB incident edge counts, and theme persistence", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/?mode=researchers");
     await expect(page.getByTestId("displayed-counts")).toBeVisible({
       timeout: 15_000,
     });
@@ -309,7 +321,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
   test("5. Verifies neighborhood usability: Warut 7 visible neighbors, dense node list, Ego view isolation with Back navigation, and zero-match filters", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/?mode=researchers");
     await expect(page.getByTestId("projection-title")).toContainText(
       "Researcher Collaboration",
       { timeout: 15_000 }

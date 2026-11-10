@@ -189,3 +189,5 @@ text into the journal.
 - [WORK-2026-11-09-014 — Corrected local package](2026-11-09-014-remediation-package.md): completed;23-page A4 PDF,HTML,1394-member ZIP verified locally.
 
 - [WORK-2026-11-10-009 — Automatic Azure API deployment](2026-11-10-009-azure-api-cicd.md): completed; real automatic/manual deployment, OIDC, API-only rollback, full graph preservation and trigger checks passed.
+
+- [WORK-2026-11-10-010 — Explorer projection order and default](2026-11-10-010-projection-order.md): completed; Knowledge graph first/default, production build, 5 browser suites and 524 repository tests pass.
