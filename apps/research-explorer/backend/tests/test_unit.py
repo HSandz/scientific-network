@@ -186,6 +186,9 @@ class FakeNeo4jRepository:
             }
         ]
 
+    def get_authored_paper_ids(self, researcher_id):
+        return {"paper:aaai:2021:17325"}
+
     def get_neighborhood(self, node_id: str, **_kwargs):
         other = self.nodes["researcher:openalex:A5000000572"]
         return 1, [other], [self.sample_edge]
@@ -516,3 +519,102 @@ def test_partial_quality_artifacts_never_manufacture_success(unit_client, monkey
     assert quality["edge_precision_status"] == "unavailable"
     assert quality["topic_coverage"] is None
     assert quality["affiliation_coverage"] is None
+
+
+@pytest.mark.parametrize('view,relation,label', [
+    ('researchers', 'COAUTHORED_WITH', 'Researcher'),
+    ('organizations', 'COLLABORATED_WITH', 'Organization'),
+])
+def test_collaboration_windows_discriminate_year_venue_and_preserve_weights(unit_client, monkeypatch, view, relation, label):
+    """Invented support cases: duplicates and papers outside each requested window."""
+    service = unit_client.app.state.explorer_service
+    repo, store = service.repo, service.store
+    ids = ['researcher:fixture:a', 'researcher:fixture:b'] if label == 'Researcher' else ['organization:fixture:a', 'organization:fixture:b']
+    nodes = {i: {'id': i, 'name': i, '_label': label, 'sector': 'academia', 'country_code': 'CN'} for i in ids}
+    paper_ids = ['paper:fixture:2021', 'paper:fixture:2025']
+    papers = {i: {'id': i, 'name': i, '_label': 'Paper', 'year': year, 'is_core': True} for i, year in zip(paper_ids, [2021, 2025])}
+    edge = {**repo.sample_edge, 'source': ids[0], 'target': ids[1], 'relation': relation}
+    monkeypatch.setattr(store, 'ensure_ledger_loaded', lambda: True)
+    monkeypatch.setattr(store, 'evidence_by_id', {edge['evidence_ids'][0]: {'support_paper_ids': [*paper_ids, paper_ids[0]]}})
+    monkeypatch.setattr(store, 'get_top_node_ids', lambda *a: ids)
+    monkeypatch.setattr(repo, 'get_nodes_by_ids', lambda wanted: {i: {**nodes, **papers}[i] for i in wanted if i in {**nodes, **papers}})
+    monkeypatch.setattr(repo, 'get_induced_edges', lambda *a, **kw: [edge])
+    monkeypatch.setattr(repo, 'get_organization_collaboration_subgraph', lambda **kw: (list(nodes.values()), [edge]))
+    monkeypatch.setattr(repo, 'get_paper_venues', lambda wanted: {paper_ids[0]: 'venue:aaai', paper_ids[1]: 'venue:ijcai'})
+    monkeypatch.setattr(repo, 'get_papers_with_topic', lambda wanted, topic: {paper_ids[1]}, raising=False)
+    for params, expected in [
+        ({'year_max': 2021, 'venue': 'venue:aaai'}, [paper_ids[0]]),
+        ({'year_min': 2025, 'venue': 'venue:ijcai'}, [paper_ids[1]]),
+        ({'year_min': 2025, 'venue': 'venue:aaai'}, []),
+        ({'year_max': 2021, 'topic_id': 'topic:fixture'}, []),
+    ]:
+        response = unit_client.get(f'/api/views/{view}', params={'limit': 40, **params})
+        assert response.status_code == 200, response.text
+        body = response.json()
+        assert len(body['edges']) == bool(expected)
+        if expected:
+            actual = body['edges'][0]
+            assert actual['support_count'] == 3
+            assert actual['fractional_weight'] == .75
+            assert actual['properties']['in_window_support_count'] == 1
+            assert actual['properties']['in_window_support_paper_ids'] == expected
+        else:
+            assert body['nodes'] == []
+    monkeypatch.setattr(store, 'ensure_ledger_loaded', lambda: False)
+    assert unit_client.get(f'/api/views/{view}?year_max=2021').status_code == 503
+
+
+def test_unsupported_filters_and_unknown_communities_rejected(unit_client):
+    for route in ('/api/views/researchers?sector=industry', '/api/views/citations?community_id=community:00058',
+                  '/api/views/heterogeneous?country_code=US', '/api/views/researchers?community_id=missing'):
+        assert unit_client.get(route).status_code == 422
+
+
+def test_constrained_expansion_preserves_community_and_rejects_foreign_center(unit_client, monkeypatch):
+    service = unit_client.app.state.explorer_service
+    center, other = 'researcher:openalex:A5017743551', 'researcher:openalex:A5000000572'
+    monkeypatch.setattr(service.store, 'researcher_communities', {'community:test': [center], 'community:both': [center, other]})
+    for community, edges in [('community:test', 0), ('community:both', 1)]:
+        response = unit_client.get(f'/api/nodes/{center}/neighbors', params={'community_id': community})
+        assert response.status_code == 200
+        assert len(response.json()['edges']) == edges
+        assert response.json()['applied_filters']['community_id'] == community
+    assert unit_client.get(f'/api/nodes/{other}/neighbors?community_id=community:test').status_code == 422
+
+
+def test_optional_analytics_absent_or_wrong_graph_remain_honestly_unavailable(unit_client, monkeypatch, tmp_path):
+    import backend.services.explorer_service as module
+    service = unit_client.app.state.explorer_service
+    monkeypatch.setattr(module, 'REPO_ROOT', tmp_path)
+    original = service.store.analysis_data
+    for extension in (None, {'graph_sha256': 'wrong', 'graph_version': original['graph_version']},
+                      {'graph_sha256': original['input_sha256'], 'graph_version': 'wrong'}):
+        monkeypatch.setattr(service.store, 'analysis_data', {**original, 'explorer_derived': extension})
+        response = unit_client.get('/api/analytics/overview')
+        assert response.status_code == 200
+        assert response.json()['explorer_derived'] is None
+
+
+def test_comparison_counts_precede_preview_and_single_dual_affiliation_is_not_shared(unit_client, monkeypatch):
+    service = unit_client.app.state.explorer_service
+    repo, store = service.repo, service.store
+    left, right = 'organization:fixture:left', 'organization:fixture:right'
+    nodes = {i: {'id': i, 'name': i, '_label': 'Organization'} for i in [left, right]}
+    papers = [f'paper:fixture:{i:03d}' for i in range(130)]
+    nodes.update({i: {'id': i, 'name': i, '_label': 'Paper', 'is_core': True} for i in papers})
+    edge = {**repo.sample_edge, 'relation': 'COLLABORATED_WITH', 'source': left, 'target': right}
+    monkeypatch.setattr(repo, 'get_node_by_id', lambda i: nodes.get(i))
+    monkeypatch.setattr(repo, 'get_nodes_by_ids', lambda ids: {i: nodes[i] for i in ids if i in nodes})
+    monkeypatch.setattr(repo, 'compare_entities', lambda *a: {'direct_edges': [edge], 'shared_neighbors': [], 'shared_papers': [], 'neighbor_sets': {'shared': papers, 'left_only': [], 'right_only': []}})
+    monkeypatch.setattr(store, 'ensure_ledger_loaded', lambda: True)
+    # The final overlapping paper has one dual-affiliated author and no R8 evidence.
+    monkeypatch.setattr(store, 'affiliations_by_org', {left: [{'paper_id': i} for i in papers], right: [{'paper_id': i} for i in papers]})
+    monkeypatch.setattr(store, 'evidence_by_id', {edge['evidence_ids'][0]: {'support_paper_ids': papers[:129]}})
+    response = unit_client.get('/api/compare', params={'left_id': left, 'right_id': right})
+    assert response.status_code == 200, response.text
+    body = response.json()
+    assert len(body['shared_papers']) == 100
+    assert body['comparison_sets']['papers']['shared']['total'] == 129
+    assert body['comparison_sets']['papers']['shared']['shown'] == 30
+    assert body['comparison_sets']['papers']['shared']['truncated'] is True
+    assert body['comparison_sets']['neighbors']['shared']['total'] == 130

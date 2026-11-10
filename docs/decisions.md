@@ -1000,3 +1000,29 @@ runtime artifact directory and coordinated operator review through the existing
 Azure runbook; no CI approval bypass, database reimport or production write is
 authorized. Remaining feature/verification gaps are recorded in the implementation
 receipt rather than represented as completed.
+
+### D040 amendment — Explorer final integration and filter contract (2026-11-10)
+
+WORK-2026-11-10-012 is application/operations work only. Preserve release-v4,
+all scientific results and active production resources until separate authorization.
+Caddy must reap orphaned HTTPS probe helpers using Docker init; never raise the
+PID limit or bypass the healthy-service gate to hide the measured leak.
+
+A narrowed collaboration edge requires at least one distinct accepted supporting
+core paper satisfying year, venue and optional inferred topic together. Keep its
+frozen full-period support count, fractional weight and node rankings; expose
+in-window distinct support separately. Filters apply to a bounded candidate slice,
+not a newly complete projection. Organization sector/country restrict both
+organization endpoints; community IDs apply only to their corresponding frozen
+partition. Citation paper filters apply to both endpoints. Unsupported preset
+filters return 422 rather than substitute full-period data. Taxonomy is timeless
+context; a selected non-paper Ego center may remain as explicit context when no
+bounded supporting links match. Path traversal is full-period: suspend overview
+filters with a notice and restore them on Back.
+
+Comparison counts use complete accepted distinct neighbor/paper sets before
+bounding deterministic previews. Shared organization papers require R8 evidence;
+a sole dual-affiliated author is excluded. Comparisons are full-period, explicitly
+independent of canvas filters. Version-2 views add backward-compatible analytical
+section/controls; pre-spec bookmarks migrate to safe overview, clearing unsupported
+hidden controls with a notice. No threshold tuning or graph reimport is involved.

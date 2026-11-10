@@ -373,7 +373,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                   htmlFor="filter-sector"
                   className="block text-[13px] font-medium text-ink mb-1.5"
                 >
-                  Institution sector
+                  Institution sector (both endpoints)
                 </label>
                 <select
                   id="filter-sector"
@@ -410,7 +410,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                   htmlFor="filter-country"
                   className="block text-[13px] font-medium text-ink mb-1.5"
                 >
-                  ISO country code
+                  ISO country code (both endpoints)
                 </label>
                 <input
                   id="filter-country"
@@ -427,8 +427,8 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
             </div>
           )}
 
-          {/* Mode C & D: Venue & Publication Year Window */}
-          {(viewMode === "citations" || viewMode === "heterogeneous") && (
+          {/* Paper-support filters apply to all four projections. */}
+          {(
             <div className="space-y-3">
               <div>
                 <label
@@ -503,6 +503,9 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
             </div>
           )}
 
+          {(viewMode === "researchers" || viewMode === "organizations") && (
+            <p className="text-xs text-muted leading-relaxed">Paper-window filters require accepted support in that window. Weights and minimum shared-paper thresholds retain their full-period meaning. Results are bounded illustrative slices.</p>
+          )}
           {/* Mode D: Curated Schema Presets */}
           {viewMode === "heterogeneous" && (
             <div>
@@ -547,7 +550,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                   htmlFor="filter-min-support"
                   className="font-medium text-ink"
                 >
-                  Min shared papers
+                  Min shared papers (full period)
                 </label>
                 <span className="text-muted tabular-nums">
                   ≥ {filters.minSupport}

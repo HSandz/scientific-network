@@ -106,7 +106,7 @@ test("view schema validates, clamps, includes all filters, and discloses transie
     filters: {
       ...filters,
       venue: "venue:aaai",
-      countryCode: "VN",
+      countryCode: "",
       topicId: "topic:graph-ml",
       yearMin: 2022,
       yearMax: 2024,
@@ -126,6 +126,10 @@ test("view schema validates, clamps, includes all filters, and discloses transie
   expect(validateSpec(JSON.parse(JSON.stringify(spec)), filters)).toMatchObject(
     JSON.parse(JSON.stringify(spec)),
   );
+  const hidden = validateSpec({ ...spec, filters: { ...spec.filters, countryCode: "VN", communityId: "community:00001" } }, filters)!;
+  expect(hidden.filters.countryCode).toBe("");
+  expect(hidden.filters.communityId).toBe("");
+  expect(hidden.notice).toContain("Unsupported hidden filters");
   const invalid = validateSpec(
     {
       ...spec,

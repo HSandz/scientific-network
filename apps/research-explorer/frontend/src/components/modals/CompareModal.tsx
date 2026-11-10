@@ -247,10 +247,26 @@ export const CompareModal: React.FC = () => {
                 )}
               </div>
 
+              {Object.entries(compareQuery.data.comparison_sets || {}).map(([kind, groups]) => (
+                <section key={kind} className="p-3.5 rounded-[8px] border border-border bg-ground">
+                  <h3 className="font-semibold text-ink">Full-period {kind}: shared and unique</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+                    {Object.entries(groups).map(([group, value]) => (
+                      <div key={group}>
+                        <h4 className="font-medium text-ink">{group.replace("_", " ")}: {value.total.toLocaleString()}</h4>
+                        <p className="text-muted text-xs">Showing {value.shown} of {value.total}{value.truncated ? "; preview truncated" : ""}</p>
+                        <ul className="max-h-40 overflow-y-auto text-xs space-y-1 mt-2">
+                          {value.items.map(item => <li key={item.id}><button className="text-ink underline text-left" onClick={() => { selectNode(item.id, item.name); setCompareModalOpen(false); }}>{item.name}</button></li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ))}
               {/* Shared Core Papers */}
               <div className="p-3.5 rounded-[8px] border border-border bg-ground">
                 <div className="font-semibold text-ink mb-2">
-                  Shared core papers ({compareQuery.data.shared_papers.length})
+                  Shared core papers ({compareQuery.data.comparison_sets?.papers?.shared.total ?? compareQuery.data.shared_papers.length}; showing {compareQuery.data.shared_papers.length})
                 </div>
                 {compareQuery.data.shared_papers.length === 0 ? (
                   <div className="text-muted">No shared core papers found.</div>

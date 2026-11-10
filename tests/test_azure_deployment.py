@@ -187,3 +187,30 @@ def test_saved_config_identity_is_portable_and_validates_architecture(tmp_path):
     save(config.replace(b'amd64', b'arm64'))
     with pytest.raises(AssertionError):
         module.identity(path, sha)
+
+
+def test_https_probe_has_reaper_without_relaxing_resource_or_health_limits():
+    """TLS helper children must be reaped; retain the real trusted HTTPS probe."""
+    import yaml
+    config = yaml.safe_load((ROOT/'ops/azure/compose.yaml').read_text())
+    proxy = config['services']['caddy']
+    assert proxy['init'] is True
+    assert proxy['pids_limit'] == 100
+    assert 'https://$$API_HOSTNAME/api/live' in proxy['healthcheck']['test'][-1]
+    assert '--no-check-certificate' not in proxy['healthcheck']['test'][-1]
+
+
+def test_unhealthy_proxy_blocks_activation_before_download_or_update(monkeypatch, tmp_path):
+    import importlib.util
+    import json
+    spec = importlib.util.spec_from_file_location('activate', ROOT/'ops/azure/scripts/activate-ci-image.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    def inspect(*args):
+        healthy = args[-1].endswith('neo4j-1')
+        return json.dumps([{'Id': 'preserved', 'Image': 'same', 'Mounts': [], 'RestartCount': 0,
+                            'State': {'Health': {'Status': 'healthy' if healthy else 'unhealthy'},
+                                      'OOMKilled': False, 'StartedAt': 'unchanged'}}])
+    monkeypatch.setattr(module, 'run', inspect)
+    with pytest.raises(AssertionError, match='caddy unhealthy'):
+        module.stable_services()

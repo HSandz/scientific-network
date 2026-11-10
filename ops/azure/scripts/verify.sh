@@ -21,6 +21,12 @@ for path in ('ready','health','graph/summary','analytics/overview'):
     if path=='health':
         assert d['database_verified'] and all(d['artifacts'].values()), d
         assert (d['total_nodes'],d['total_edges']) == (47875,225731)
+    if path=='analytics/overview' and 'explorer_derived' in m['sources']:
+        assert d.get('explorer_derived'), 'Configured Explorer analytics unavailable'
+        assert d['explorer_derived']['graph_sha256']==m['sources']['graph']['sha256']
+        assert d['explorer_derived']['graph_version']==d['graph_version']
+        for name in ('researcher_collaboration','organization_collaboration'):
+            assert d['robustness']['strict_projections'][name]['edge_count'] is not None
     print(path, 'passed')
 print('All artifact hashes passed')
 PY

@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 # Operator-only fault injection on a separate Compose project, no volumes/data.
 source "$(dirname "$0")/common.sh"
-image=$("${COMPOSE[@]}" config --format json | python3 -c 'import json,sys;print(json.load(sys.stdin)["services"]["api"]["image"])')
+# An explicit local image enables the same isolated test without a production .env.
+image=${1:-}
+if [[ -z $image ]]; then
+  image=$("${COMPOSE[@]}" config --format json | python3 -c 'import json,sys;print(json.load(sys.stdin)["services"]["api"]["image"])')
+fi
+[[ $image =~ ^scientific-network-api:[a-zA-Z0-9._-]+$ ]] || exit 2
 testdir=$(mktemp -d /tmp/azure-rollback-test-XXXXXX)
 name="scientific-network-rollback-test-$$"
 old="scientific-network-api:rollback-good-$$"
@@ -11,7 +16,7 @@ cleanup() {
   docker image rm "$old" "$bad" >/dev/null 2>&1 || true
   rm -rf "$testdir"
 }
-[[ $(id -u) == 0 ]] || { echo 'Run test as root (no Docker group needed).' >&2; exit 1; }
+docker info >/dev/null || { echo 'Run with Docker access (sudo on VM).' >&2; exit 1; }
 trap cleanup EXIT
 mkdir "$testdir/scripts" "$testdir/artifacts"
 cp "$AZURE_COMPOSE_DIR/scripts/"{common.sh,update.sh,rollback.sh} "$testdir/scripts/"

@@ -42,6 +42,7 @@ export interface GraphViewScope {
     steps: string[];
   } | null;
   priorState?: {
+    filters?: import("../stores/useExplorerStore").ExplorerFilters;
     viewMode: ViewMode;
     selectedNodeId: string | null;
     cameraState?: { x: number; y: number; ratio: number } | null;
@@ -392,6 +393,7 @@ export interface CompareResponse {
     fractional_topic_portfolio_share: number;
   }>;
   comparison_notes: string[];
+  comparison_sets?: Record<string, Record<string, { total: number; shown: number; truncated: boolean; items: { id: string; name: string }[] }>>;
 }
 
 export interface TableNodesResponse {

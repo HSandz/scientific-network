@@ -293,6 +293,13 @@ class Neo4jRepository:
         rows = self.run_read(cypher, {"ids": list(set(paper_ids))})
         return {r["paper_id"]: r["venue_id"] for r in rows}
 
+    def get_papers_with_topic(self, paper_ids: list[str], topic_id: str) -> set[str]:
+        rows = self.run_read(
+            "MATCH (p:Paper)-[r:HAS_TOPIC]->(:Topic {id: $topic}) "
+            "WHERE p.id IN $ids AND r.validation_status = 'accepted' "
+            "RETURN DISTINCT p.id AS paper_id", {"ids": paper_ids, "topic": topic_id})
+        return {r["paper_id"] for r in rows}
+
     def get_induced_edges(
         self,
         node_ids: list[str],
@@ -882,7 +889,7 @@ class Neo4jRepository:
         if topic_id:
             where_clauses.append(
                 "(EXISTS { MATCH (a)-[:HAS_TOPIC]->(:Topic {id: $topic_id}) } "
-                "OR EXISTS { MATCH (b)-[:HAS_TOPIC]->(:Topic {id: $topic_id}) })"
+                "AND EXISTS { MATCH (b)-[:HAS_TOPIC]->(:Topic {id: $topic_id}) })"
             )
 
         where_str = " AND ".join(where_clauses)
@@ -1147,6 +1154,12 @@ class Neo4jRepository:
             dedup_edges[er["edge_id"]] = er
         return list(nodes_map.values()), list(dedup_edges.values())
 
+    def get_authored_paper_ids(self, researcher_id: str) -> set[str]:
+        return {r["id"] for r in self.run_read(
+            "MATCH (:Researcher {id: $id})-[r:AUTHORED]->(p:Paper) "
+            "WHERE r.validation_status = 'accepted' AND p.is_core = true "
+            "RETURN DISTINCT p.id AS id", {"id": researcher_id})}
+
     def compare_entities(self, left_id: str, right_id: str) -> dict[str, Any]:
         """Find direct edges, shared neighbors, and shared papers between two entities."""
         direct_edges = self.get_induced_edges([left_id, right_id], limit=20)
@@ -1155,17 +1168,17 @@ class Neo4jRepository:
         l_match = f"(a:{l_lbl} {{id: $left_id}})" if l_lbl in ALLOWED_LABELS else "(a {id: $left_id})"
         r_match = f"(b:{r_lbl} {{id: $right_id}})" if r_lbl in ALLOWED_LABELS else "(b {id: $right_id})"
 
-        shared_cypher = (
-            f"MATCH {l_match}-[]-(m)-[]-{r_match} "
-            "WHERE m.id <> $left_id AND m.id <> $right_id "
-            "RETURN DISTINCT m, labels(m)[0] AS label LIMIT 30"
-        )
-        shared_rows = self.run_read(shared_cypher, {"left_id": left_id, "right_id": right_id})
-        shared_neighbors = []
-        for row in shared_rows:
-            p = dict(row["m"])
-            p["_label"] = row["label"]
-            shared_neighbors.append(p)
+        # Fetch complete distinct ID sets before bounding presentation lists.
+        neighbor_sets = []
+        for node_id, label in ((left_id, l_lbl), (right_id, r_lbl)):
+            match = f"(n:{label} {{id: $id}})" if label in ALLOWED_LABELS else "(n {id: $id})"
+            rows = self.run_read(f"MATCH {match}-[r]-(m) WHERE r.validation_status = 'accepted' "
+                                 "AND NOT m.id IN $pair RETURN DISTINCT m.id AS id",
+                                 {"id": node_id, "pair": [left_id, right_id]})
+            neighbor_sets.append({row["id"] for row in rows})
+        left_neighbors, right_neighbors = neighbor_sets
+        shared_ids = left_neighbors & right_neighbors
+        shared_neighbors = list(self.get_nodes_by_ids(sorted(shared_ids)[:30]).values())
 
         # Check shared papers (either direct AUTHORED or via AFFILIATED_WITH -> AUTHORED)
         shared_papers: list[dict[str, Any]] = []
@@ -1177,6 +1190,9 @@ class Neo4jRepository:
         return {
             "direct_edges": direct_edges,
             "shared_neighbors": shared_neighbors,
+            "neighbor_sets": {"shared": sorted(shared_ids),
+                              "left_only": sorted(left_neighbors - right_neighbors),
+                              "right_only": sorted(right_neighbors - left_neighbors)},
             "shared_papers": shared_papers,
         }
 
