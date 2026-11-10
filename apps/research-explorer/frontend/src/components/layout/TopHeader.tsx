@@ -54,8 +54,12 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
     setCompareModalOpen,
     setCaveatsModalOpen,
     buildShareUrl,
+    savedViews,
+    saveCurrentView,
+    applySavedView,
   } = useExplorerStore();
 
+  const [bookmarkName, setBookmarkName] = useState("");
   const [shareFallback, setShareFallback] = useState<string | null>(null);
   const [copiedShare, setCopiedShare] = useState(false);
   const [exportMenuOpen, setExportMenuOpen] = useState(false);
@@ -308,7 +312,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             </button>
 
             {exportMenuOpen && (
-              <div className="absolute right-0 mt-1.5 w-56 rounded-[8px] bg-surface border border-border py-1.5 z-50">
+              <div className="absolute right-0 mt-1.5 w-56 max-h-[75dvh] overflow-y-auto rounded-[8px] bg-surface border border-border py-1.5 z-50">
                 {/* Secondary analysis tools collapsed on smaller screens (< 1280px) */}
                 <div className="xl:hidden border-b border-rule pb-1 mb-1">
                   <button
@@ -347,6 +351,27 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                       {edgePrecisionPct ? ` (${edgePrecisionPct})` : ""}
                     </span>
                   </button>
+                </div>
+
+                <div className="px-3 py-2 border-b border-rule mb-1">
+                  <label htmlFor="workspace-bookmark-name" className="block text-xs font-medium text-muted mb-1">Save workspace</label>
+                  <div className="flex gap-1">
+                    <input id="workspace-bookmark-name" value={bookmarkName}
+                      onChange={e => setBookmarkName(e.target.value)}
+                      placeholder="Workspace name" maxLength={100}
+                      className="ledger-input min-w-0 flex-1 h-8 text-xs" />
+                    <button type="button" disabled={!bookmarkName.trim()}
+                      data-testid="save-workspace-bookmark"
+                      className="ledger-btn h-8 text-xs disabled:opacity-50"
+                      onClick={() => { saveCurrentView(bookmarkName.trim()); setBookmarkName(""); setExportMenuOpen(false); }}>Save</button>
+                  </div>
+                  {savedViews.length > 0 && <div className="mt-2 space-y-1" aria-label="Saved workspaces">
+                    {savedViews.map(view => <button key={view.id} type="button"
+                      className="block w-full text-left text-xs py-1.5 px-1 rounded hover:bg-raised truncate"
+                      onClick={() => { applySavedView(view); setExportMenuOpen(false); }}>
+                      Restore {view.name}
+                    </button>)}
+                  </div>}
                 </div>
 
                 <button
