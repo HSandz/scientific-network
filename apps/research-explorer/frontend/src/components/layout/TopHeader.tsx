@@ -122,7 +122,12 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   };
   const handleExportEdgesCsv = () => {
     download(
-      csv(displayedEdges as unknown as Record<string, unknown>[], [
+      csv(displayedEdges.map(e => ({ ...e,
+        in_window_support_count: e.properties.in_window_support_count,
+        in_window_support_paper_ids: JSON.stringify(e.properties.in_window_support_paper_ids || []),
+        weight_scope: "full_period",
+        evidence_ids: JSON.stringify(e.evidence_ids),
+      })) as unknown as Record<string, unknown>[], [
         "edge_id",
         "source",
         "target",
@@ -131,6 +136,10 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         "symmetric",
         "support_count",
         "fractional_weight",
+        "weight_scope",
+        "in_window_support_count",
+        "in_window_support_paper_ids",
+        "evidence_ids",
         "evidence_kind",
         "method_version",
         "graph_version",

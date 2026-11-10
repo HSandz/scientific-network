@@ -8,6 +8,7 @@ import urllib.parse
 import urllib.request
 
 parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--require-explorer-analytics', action='store_true', help='Require strict summaries and the graph-bound Explorer extension for coordinated releases')
 parser.add_argument('--base-url', required=True, help='https://hostname/api or VM loopback URL')
 args = parser.parse_args()
 base = args.base_url.rstrip('/')
@@ -63,7 +64,17 @@ check('/edges/'+rows[0]['edge_id']+'/evidence', validate=lambda d:len(d['affilia
 check('/nodes/organization:I183067930')
 check('/nodes/paper:aaai:2021:17325')
 check('/nodes/paper:aaai:2021:17325/neighbors?relations=CITES&direction=incoming&limit=20')
-check('/analytics/overview', validate=lambda d:len(d['annual_counts']['rows'])==5)
+analytics = check('/analytics/overview', validate=lambda d:len(d['annual_counts']['rows'])==5)
+if args.require_explorer_analytics:
+    derived = analytics.get('explorer_derived')
+    assert derived and derived['graph_sha256'] == analytics['provenance']['analysis_input_sha256'], 'Missing/mismatched Explorer extension'
+    assert derived['graph_version'] == analytics['graph_version'], 'Extension graph version mismatch'
+    assert len(derived['citation_cohorts']) == 10, 'Incomplete citation cohorts'
+    assert derived['organization_pair_persistence'], 'Missing organization persistence'
+    for name in ('researcher_collaboration', 'organization_collaboration'):
+        strict = analytics['robustness']['strict_projections'][name]
+        assert strict['edge_count'] is not None and strict['weak_or_undirected_component_sizes'], 'Missing strict robustness summary'
+    print('Complete graph-bound Explorer analytics passed', flush=True)
 check('/compare?left_id=organization:I183067930&right_id=organization:I2250653659')
 check('/paths', payload={'source_id':'organization:I183067930','target_id':'organization:I2250653659','mode':'collaboration','max_hops':2}, validate=lambda d:d['found'] and d['hop_count']==1)
 check('/table/nodes?label=Researcher&page=1&page_size=10', validate=lambda d:len(d['items'])==10)

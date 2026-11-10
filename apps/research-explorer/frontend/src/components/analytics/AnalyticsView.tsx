@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { explorerApi } from "../../lib/api";
 import { getThemeTokens } from "../../lib/colors";
@@ -78,12 +78,15 @@ export const AnalyticsView: React.FC<{
     setCompareModalOpen,
     selectNode,
   } = useExplorerStore();
-  const [venue, setVenue] = useState("venue:aaai"),
-    [topic, setTopic] = useState(""),
-    [yearMin, setYearMin] = useState(2021),
-    [yearMax, setYearMax] = useState(2025);
-  const [family, setFamily] = useState("");
-  const [community, setCommunity] = useState("");
+  const { venue, topic, yearMin, yearMax, family, community } = useExplorerStore(s => s.analyticsFilters);
+  const updateAnalytic = (partial: Partial<import("../../stores/useExplorerStore").AnalyticsFilters>) =>
+    useExplorerStore.setState(s => ({ analyticsFilters: { ...s.analyticsFilters, ...partial } }));
+  const setVenue = (venue: string) => updateAnalytic({ venue });
+  const setTopic = (topic: string) => updateAnalytic({ topic });
+  const setYearMin = (yearMin: number) => updateAnalytic({ yearMin });
+  const setYearMax = (yearMax: number) => updateAnalytic({ yearMax });
+  const setFamily = (family: string) => updateAnalytic({ family });
+  const setCommunity = (community: string) => updateAnalytic({ community });
   const query = useQuery({
     queryKey: ["analytics-overview"],
     queryFn: ({ signal }) => explorerApi.getAnalyticsOverview(signal),

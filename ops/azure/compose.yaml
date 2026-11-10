@@ -88,6 +88,9 @@ services:
   caddy:
     image: ${CADDY_IMAGE:-caddy:2.10.2-alpine}
     profiles: [https]
+    # BusyBox TLS probes can orphan ssl_client children; reap them before the
+    # bounded PID cgroup fills and Docker can no longer execute health checks.
+    init: true
     restart: unless-stopped
     mem_limit: 128m
     memswap_limit: 192m

@@ -289,6 +289,7 @@ class CompareResponse(BaseModel):
     left_topics: list[dict[str, Any]]
     right_topics: list[dict[str, Any]]
     comparison_notes: list[str]
+    comparison_sets: dict[str, Any] = Field(default_factory=dict)
 
 
 class TableNodesResponse(BaseModel):

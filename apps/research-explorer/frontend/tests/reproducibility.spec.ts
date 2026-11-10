@@ -253,6 +253,10 @@ test("topic-cell chart actions open the correct venue/year/topic and expose sour
   await expect(
     page.getByRole("button", { name: "← Back to finding" }),
   ).toBeVisible();
+  await page.getByRole("button", {name: "← Back to finding"}).click();
+  await expect(page.getByRole("button", {name: "Topic evolution", exact: true})).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByLabel("Topic venue")).toHaveValue("venue:ijcai");
+  await expect(page.getByLabel("Topic first year")).toHaveValue("2023");
 });
 
 test("reciprocal edges have distinct selectable lanes and exact export identity", async ({
@@ -396,4 +400,72 @@ test("node positions survive selection and expansion; unmount removes renderer l
   await page.getByTestId('tab-graph').click();
   await ready(page);
   expect(await page.getByTestId('sigma-canvas-container').locator('canvas').count()).toBe(7);
+});
+
+for (const tab of ["graph", "table", "analytics"] as const) {
+  test(`saved ${tab} view restores workspace, section and state after reload`, async ({ page }) => {
+    await page.goto("/?mode=researchers");
+    await ready(page);
+    await page.evaluate((tab) => {
+      const s = (window as any).__explorerStore;
+      s.getState().updateFilters({ minSupport: 2, limit: 60 });
+      s.getState().setLayoutMode("circular");
+      s.setState({ analyticsSection: "topics", analyticsFilters: { venue: "venue:ijcai", topic: "", yearMin: 2023, yearMax: 2023, family: "", community: "" } });
+      s.getState().setWorkspaceTab(tab);
+      s.getState().saveCurrentView(`Restore ${tab}`);
+    }, tab);
+    await page.reload();
+    await page.waitForFunction(() => (window as any).__explorerStore?.getState().savedViews.some((v: any) => v.name.startsWith("Restore")));
+    await page.evaluate((tab) => {
+      const s = (window as any).__explorerStore;
+      s.getState().applySavedView(s.getState().savedViews.find((v: any) => v.name === `Restore ${tab}`));
+    }, tab);
+    await expect.poll(() => page.evaluate(() => {
+      const s = (window as any).__explorerStore.getState();
+      return { tab: s.workspaceTab, section: s.analyticsSection, layout: s.layoutMode, projection: s.viewMode, minSupport: s.filters.minSupport, scope: s.graphViewScope.kind };
+    })).toEqual({ tab, section: "topics", layout: "circular", projection: "researchers", minSupport: 2, scope: "overview" });
+    if (tab === "table") await expect(page.getByTestId("table-view")).toBeVisible();
+    if (tab === "graph") await expect(page.getByTestId("sigma-canvas-container")).toBeVisible();
+    if (tab === "analytics") {
+      await expect(page.getByRole("navigation", { name: "Analytical sections" }).getByRole("button", { name: /topic/i })).toHaveAttribute("aria-pressed", "true");
+      await expect(page.getByLabel("Topic venue")).toHaveValue("venue:ijcai");
+      await expect(page.getByLabel("Topic first year")).toHaveValue("2023");
+    }
+  });
+}
+
+for (const mode of ["researchers", "organizations"]) {
+  test(`${mode} paper-window controls and exports use discriminating accepted support`, async ({ page }) => {
+    await page.goto(`/?mode=${mode}`);
+    await ready(page);
+    const supportSets: string[][] = [];
+    for (const [year, venue] of [[2021, "aaai"], [2025, "ijcai"]] as const) {
+      const response = page.waitForResponse(r => r.url().includes(`/views/${mode}?`) && r.url().includes(`year_min=${year}`) && r.url().includes(`year_max=${year}`) && (r.url().includes(`venue=venue%3A${venue}`) || r.url().includes(`venue=venue:${venue}`)) && r.status() === 200);
+      await page.evaluate(({year, venue}) => (window as any).__explorerStore.getState().updateFilters({ yearMin: year, yearMax: year, venue: `venue:${venue}`, limit: 60 }), {year, venue});
+      await response;
+      await expect(page.getByLabel("Start year")).toHaveValue(`${year}`);
+      await expect(page.getByLabel("End year")).toHaveValue(`${year}`);
+      await expect(page.getByTestId("filter-venue")).toHaveValue(`venue:${venue}`);
+      await page.waitForTimeout(150);
+      const slice = await exportSlice(page);
+      expect(slice.edges.length).toBeGreaterThan(0);
+      const support = slice.edges.flatMap((e: any) => e.properties.in_window_support_paper_ids);
+      expect(support.every((id: string) => id.startsWith(`paper:${venue}:${year}:`))).toBe(true);
+      expect(slice.edges.every((e: any) => e.support_count >= e.properties.in_window_support_count && e.properties.weight_scope === "full_period")).toBe(true);
+      supportSets.push(support);
+    }
+    expect(supportSets[0].some(id => supportSets[1].includes(id))).toBe(false);
+  });
+}
+
+test("legacy bookmark safely restores overview and discloses unsupported filters", async ({page}) => {
+  await page.addInitScript(() => localStorage.setItem("scientific-network-views-v1", JSON.stringify([{id:"custom-legacy", name:"Legacy", viewMode:"researchers", filters:{sector:"industry",yearMin:2021,yearMax:2025}, selectedNodeId:null}])));
+  await page.goto("/?mode=researchers");
+  await ready(page);
+  await page.evaluate(() => {
+    const s=(window as any).__explorerStore;
+    s.getState().applySavedView(s.getState().savedViews.find((v:any)=>v.id==="custom-legacy"));
+  });
+  await expect(page.getByRole("status")).toContainText("Unsupported hidden filters");
+  expect((await state(page)).filters.sector).toBe("");
 });

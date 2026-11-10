@@ -17,7 +17,7 @@ def digest(path):
 
 
 def build(root: Path, output: Path):
-    if output.exists():
+    if output.exists() or output.is_symlink():
         raise SystemExit('Output already exists; use a new versioned directory.')
     output.mkdir(parents=True)
     inputs = {

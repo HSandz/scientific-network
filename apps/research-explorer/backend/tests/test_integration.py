@@ -182,3 +182,25 @@ def test_curated_overview_never_silently_ignores_paper_filters(live_client):
     papers = [n for n in response.json()['nodes'] if n['label'] == 'Paper']
     assert papers
     assert all(n['year'] == 2023 and n['venue'] == 'venue:ijcai' for n in papers)
+
+
+def test_live_collaboration_paper_windows_and_frozen_edge_weights(live_client):
+    for mode in ('researchers', 'organizations'):
+        supports = []
+        for year, venue in ((2021, 'aaai'), (2025, 'ijcai')):
+            response = live_client.get(f'/api/views/{mode}', params={'limit': 60, 'year_min': year, 'year_max': year, 'venue': f'venue:{venue}'})
+            assert response.status_code == 200, response.text
+            edges = response.json()['edges']
+            assert edges
+            paper_ids = set()
+            for edge in edges:
+                support = edge['properties']['in_window_support_paper_ids']
+                assert support and all(i.startswith(f'paper:{venue}:{year}:') for i in support)
+                assert len(set(support)) == edge['properties']['in_window_support_count']
+                assert edge['support_count'] >= len(support)
+                paper_ids.update(support)
+            original = live_client.get(f"/api/edges/{edges[0]['edge_id']}").json()
+            assert original['fractional_weight'] == edges[0]['fractional_weight']
+            assert original['support_count'] == edges[0]['support_count']
+            supports.append(paper_ids)
+        assert not supports[0] & supports[1]

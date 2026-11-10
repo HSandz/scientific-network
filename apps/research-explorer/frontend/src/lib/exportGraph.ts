@@ -22,7 +22,7 @@ export function exportGraph(
       displayed_degree: "incident displayed semantic edges",
       displayed_neighbor_count: "unique displayed neighbors",
       displayed_strength:
-        "fractional collaboration strength only; mixed predicates are not comparable",
+        "sum of frozen full-period fractional weights on displayed collaboration edges; not recomputed for a paper window; mixed predicates are not comparable",
       full_metrics:
         "frozen full-projection metrics, separate from displayed metrics",
     },

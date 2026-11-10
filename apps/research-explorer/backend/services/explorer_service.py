@@ -997,6 +997,82 @@ class ExplorerService:
             results=results,
         )
 
+    def _filter_paper_support(self, edges, *, year_min=None, year_max=None, venue=None, topic_id=None):
+        """Filter a bounded slice through accepted support; never reweight frozen edges.
+
+        Every explicit Paper endpoint must satisfy the window (not merely one end
+        of a citation). Aggregate predicates require a distinct accepted support
+        paper. Taxonomy edges are timeless context.
+        """
+        from fastapi import HTTPException
+        if not (venue or topic_id or (year_min is not None and year_min > 2021)
+                or (year_max is not None and year_max < 2025)):
+            return edges
+        if not self.store.ensure_ledger_loaded():
+            raise HTTPException(status_code=503, detail="Paper-specific filter evidence unavailable")
+        supports = {}
+        paper_ids = set()
+        for edge in edges:
+            support = set()
+            if edge["relation"] == "AFFILIATED_WITH":
+                support.update(a["paper_id"] for a in self.store.affiliations_by_researcher_org.get((edge["source"], edge["target"]), []))
+            for eid in edge.get("evidence_ids", []):
+                evidence = self.store.evidence_by_id.get(eid, {})
+                support.update(evidence.get("support_paper_ids", []))
+            support.update(i for i in (edge["source"], edge["target"]) if i.startswith("paper:"))
+            supports[edge["edge_id"]] = support
+            paper_ids.update(support)
+        # A release has 13,617 core papers. Bound lookup independently of ledger size.
+        if len(paper_ids) > 20000:
+            raise HTTPException(status_code=503, detail="Paper filter exceeds bounded evidence lookup; use a smaller slice")
+        papers = self.repo.get_nodes_by_ids(sorted(paper_ids))
+        venues = self.repo.get_paper_venues(sorted(paper_ids)) if venue else {}
+        topic_papers = self.repo.get_papers_with_topic(sorted(paper_ids), topic_id) if topic_id else set()
+        allowed = {pid for pid, p in papers.items()
+                   if p.get("is_core", False) and (year_min or 2021) <= p.get("year", 0) <= (year_max or 2025)
+                   and (not venue or venues.get(pid) == venue)
+                   and (not topic_id or pid in topic_papers)}
+        result = []
+        for edge in edges:
+            if edge["relation"] == "SUBTOPIC_OF":
+                result.append(edge)
+                continue
+            endpoints = {i for i in (edge["source"], edge["target"]) if i.startswith("paper:")}
+            matched = supports[edge["edge_id"]] & allowed
+            if matched and endpoints <= allowed:
+                result.append({**edge, "properties": {**edge.get("properties", {}),
+                    "in_window_support_count": len(matched),
+                    "in_window_support_paper_ids": sorted(matched),
+                    "weight_scope": "full_period"}})
+        return result
+
+    def _filter_collaboration_slice(self, nodes, edges, *, view, community_id=None,
+                                    sector=None, country_code=None, cross_sector_only=False,
+                                    include_isolates=False, **paper_filters):
+        from fastapi import HTTPException
+        communities = (self.store.researcher_communities if view == "researchers"
+                       else self.store.organization_communities)
+        if community_id and community_id not in communities:
+            raise HTTPException(status_code=422, detail="Unknown community for this projection; reset the community filter")
+        allowed = {n["id"] for n in nodes if
+                   (not community_id or n["id"] in communities[community_id]) and
+                   ((n.get("_label") or n.get("label")) != "Organization" or
+                    ((not sector or n.get("sector") == sector) and
+                     (not country_code or n.get("country_code") == country_code)))}
+        by_id = {n["id"]: n for n in nodes}
+        edges = [e for e in edges if e["source"] in allowed and e["target"] in allowed and
+                 (not cross_sector_only or (e["relation"] == "COLLABORATED_WITH" and
+                  by_id[e["source"]].get("sector", "unknown") != by_id[e["target"]].get("sector", "unknown")))]
+        edges = self._filter_paper_support(edges, **paper_filters)
+        # Filtered nodes are endpoints with proven support. Isolates without that
+        # evidence cannot be advertised as satisfying a requested paper window.
+        narrowed = bool(paper_filters.get("venue") or paper_filters.get("topic_id") or
+                        (paper_filters.get("year_min") or 2021) > 2021 or
+                        (paper_filters.get("year_max") or 2025) < 2025)
+        if narrowed or not include_isolates:
+            allowed &= {i for e in edges for i in (e["source"], e["target"])}
+        return [n for n in nodes if n["id"] in allowed], edges
+
     def get_view(
         self,
         view: str,
@@ -1019,6 +1095,24 @@ class ExplorerService:
         node_labels: list[str] | None = None,
     ) -> GraphViewResponse:
         """Load one of the four primary exploration modes with server-side filters."""
+        from fastapi import HTTPException
+        unsupported = []
+        if view != "organizations" and (country_code or cross_sector_only or include_topics):
+            unsupported.append("country/cross-sector/topic-context")
+        if view not in ("researchers", "organizations") and community_id:
+            unsupported.append("community")
+        if view not in ("organizations", "heterogeneous") and sector:
+            unsupported.append("sector")
+        if view != "heterogeneous" and (relations or node_labels):
+            unsupported.append("custom labels/predicates")
+        if view == "heterogeneous" and include_isolates:
+            unsupported.append("collaboration isolate control")
+        if view == "citations" and (min_support > 1 or min_weight > 0 or include_isolates):
+            unsupported.append("collaboration evidence/isolate controls")
+        if view == "heterogeneous" and sector and preset != "researcher_organization":
+            unsupported.append("sector (requires the Researcher → Affiliation → Organization preset)")
+        if unsupported:
+            raise HTTPException(status_code=422, detail="Unsupported filters for this projection: " + ", ".join(unsupported) + ". Reset these filters.")
         applied_filters = {
             "limit": limit,
             "community_id": community_id,
@@ -1079,6 +1173,12 @@ class ExplorerService:
             else:
                 raw_nodes = list(nodes_by_id.values())
 
+            raw_nodes, edges_raw = self._filter_collaboration_slice(
+                raw_nodes, edges_raw, view=view, community_id=community_id,
+                sector=sector, country_code=country_code, cross_sector_only=cross_sector_only,
+                include_isolates=include_isolates, year_min=year_min, year_max=year_max,
+                venue=venue, topic_id=topic_id,
+            )
             nodes, edges = self._compute_layout_and_finalize(
                 raw_nodes, edges_raw, precomputed_positions=precomputed_pos
             )
@@ -1094,7 +1194,7 @@ class ExplorerService:
                 displayed_edge_count=len(edges),
                 score_name="Full-projection fractional collaboration strength",
                 color_meaning="Louvain community membership (seed 17, resolution 0.8; palette repeats)",
-                metric_scope_note="Node score, betweenness, PageRank, and community ID come from the full 32,189-researcher projection. Displayed degree counts only edges visible in the current canvas.",
+                metric_scope_note="Node score, betweenness, PageRank, and community ID come from the full 32,189-researcher projection. Displayed degree counts only edges visible in the current canvas. Paper filters require accepted in-window support within this bounded candidate slice; weights and support_count remain full-period. Edge properties report distinct in_window_support_count and supporting IDs.",
                 scientific_caveat="Each core paper with k official authors contributes 1/(k-1) to each resolved pair. Community colors use a repeating palette and do not prove identical community IDs.",
                 layout_seed=LAYOUT_SEED,
                 applied_filters=applied_filters,
@@ -1152,13 +1252,19 @@ class ExplorerService:
                     limit=node_limit,
                 )
 
+            raw_nodes, edges_raw = self._filter_collaboration_slice(
+                raw_nodes, edges_raw, view=view, community_id=community_id,
+                sector=sector, country_code=country_code, cross_sector_only=cross_sector_only,
+                include_isolates=include_isolates, year_min=year_min, year_max=year_max,
+                venue=venue, topic_id=topic_id,
+            )
             nodes, edges = self._compute_layout_and_finalize(
                 raw_nodes, edges_raw, precomputed_positions=precomputed_pos
             )
             return GraphViewResponse(
                 view="organizations",
                 title="Mode B — Organization Collaboration Network",
-                description="Derived COLLABORATED_WITH partnerships supported by distinct coauthors affiliated with distinct institutions.",
+                description="Derived COLLABORATED_WITH co-publications supported by distinct coauthors affiliated with distinct institutions.",
                 relation="COLLABORATED_WITH",
                 directed=False,
                 full_node_count=EXPECTED_NODES_BY_LABEL["Organization"],
@@ -1167,7 +1273,7 @@ class ExplorerService:
                 displayed_edge_count=len(edges),
                 score_name="Full-projection fractional collaboration strength",
                 color_meaning="Organization sector (academia, industry, government, nonprofit, unknown)",
-                metric_scope_note="Node score and rankings reflect the full 2,047-organization projection. Displayed degree reflects only currently visible links.",
+                metric_scope_note="Node score and rankings reflect the full 2,047-organization projection. Displayed degree reflects only currently visible links. Paper filters require accepted in-window support within this bounded candidate slice; weights and support_count remain full-period. Edge properties report distinct in_window_support_count and supporting IDs.",
                 scientific_caveat="Affiliations reflect paper-specific authorship observations (73.71% coverage; fails 80% target), not current employment. A sole dual-affiliated author never creates an organization collaboration edge.",
                 layout_seed=LAYOUT_SEED,
                 applied_filters=applied_filters,
@@ -1249,6 +1355,11 @@ class ExplorerService:
             topic_id=topic_id,
             limit=node_limit,
         )
+        edges_raw = [e for e in edges_raw if e["relation"] not in ("COAUTHORED_WITH", "COLLABORATED_WITH")
+                     or (e.get("support_count", 1) >= min_support and (e.get("fractional_weight") or 0) >= min_weight)]
+        if min_support > 1 or min_weight > 0:
+            incident = {i for e in edges_raw for i in (e["source"], e["target"])}
+            raw_nodes = [n for n in raw_nodes if n["id"] in incident]
         nodes, edges = self._compute_layout_and_finalize(raw_nodes, edges_raw)
         return GraphViewResponse(
             view="heterogeneous",
@@ -1379,6 +1490,10 @@ class ExplorerService:
         year_max: int | None = None,
         venue: str | None = None,
         sector: str | None = None,
+        community_id: str | None = None,
+        country_code: str | None = None,
+        topic_id: str | None = None,
+        cross_sector_only: bool = False,
         min_support: int = 1,
         min_weight: float = 0.0,
         limit: int = 60,
@@ -1387,6 +1502,18 @@ class ExplorerService:
         raw_center = self.repo.get_node_by_id(node_id)
         if raw_center is None:
             return None
+
+        # A paper center is itself part of the displayed slice, not exempt from
+        # visible paper constraints merely because it is selected.
+        if (raw_center.get("_label") or raw_center.get("label")) == "Paper":
+            valid_center = (year_min or 2021) <= raw_center.get("year", 0) <= (year_max or 2025)
+            if venue:
+                valid_center = valid_center and self.repo.get_paper_venues([node_id]).get(node_id) == venue
+            if topic_id:
+                valid_center = valid_center and node_id in self.repo.get_papers_with_topic([node_id], topic_id)
+            if not valid_center:
+                from fastapi import HTTPException
+                raise HTTPException(status_code=422, detail="Selected paper does not satisfy the active year/venue/topic filters")
 
         total_incident, neighbor_nodes_raw, edges_raw = self.repo.get_neighborhood(
             node_id,
@@ -1403,32 +1530,22 @@ class ExplorerService:
             include_induced_edges=include_induced_edges,
         )
 
-        # Scope collaboration support through immutable evidence, never current profiles.
-        narrowed = bool(venue or (year_min is not None and year_min > 2021) or (year_max is not None and year_max < 2025))
-        if narrowed:
-            if not self.store.ensure_ledger_loaded():
-                from fastapi import HTTPException
-                raise HTTPException(status_code=503, detail="Paper-specific neighborhood filter evidence unavailable")
-            support_by_edge = {}
-            paper_ids = set()
-            for edge in edges_raw:
-                support = set()
-                if edge["relation"] == "AFFILIATED_WITH":
-                    support.update(a["paper_id"] for a in self.store.affiliations_by_researcher_org.get((edge["source"], edge["target"]), []))
-                for eid in edge.get("evidence_ids", []):
-                    support.update(self.store.evidence_by_id.get(eid, {}).get("support_paper_ids", []))
-                support.update(i for i in (edge["source"], edge["target"]) if i.startswith("paper:"))
-                support_by_edge[edge["edge_id"]] = support
-                paper_ids.update(support)
-            if len(paper_ids) > 5000:
-                from fastapi import HTTPException
-                raise HTTPException(status_code=503, detail="Paper filter exceeds bounded evidence lookup; use a smaller neighborhood")
-            paper_nodes = self.repo.get_nodes_by_ids(sorted(paper_ids))
-            paper_venues = self.repo.get_paper_venues(sorted(paper_ids)) if venue else {}
-            allowed = {pid for pid, paper in paper_nodes.items() if (year_min or 2021) <= paper.get("year", 0) <= (year_max or 2025) and (not venue or paper_venues.get(pid) == venue)}
-            edges_raw = [edge for edge in edges_raw if edge["relation"] == "SUBTOPIC_OF" or support_by_edge[edge["edge_id"]] & allowed]
-            incident_ids = {endpoint for edge in edges_raw for endpoint in (edge["source"], edge["target"])}
-            neighbor_nodes_raw = [n for n in neighbor_nodes_raw if n["id"] in incident_ids]
+        if community_id or country_code or cross_sector_only:
+            from fastapi import HTTPException
+            label = raw_center.get("_label") or raw_center.get("label")
+            if label not in ("Researcher", "Organization") or (label == "Researcher" and (country_code or cross_sector_only)):
+                raise HTTPException(status_code=422, detail="Community/country/cross-sector expansion requires the corresponding collaboration projection")
+            filtered_nodes, edges_raw = self._filter_collaboration_slice(
+                [raw_center, *neighbor_nodes_raw], edges_raw,
+                view="researchers" if label == "Researcher" else "organizations",
+                community_id=community_id, country_code=country_code, sector=sector,
+                cross_sector_only=cross_sector_only, include_isolates=True,
+            )
+            if node_id not in {n["id"] for n in filtered_nodes}:
+                raise HTTPException(status_code=422, detail="Selected entity does not satisfy the active neighborhood constraints")
+        edges_raw = self._filter_paper_support(edges_raw, year_min=year_min, year_max=year_max, venue=venue, topic_id=topic_id)
+        incident_ids = {i for e in edges_raw for i in (e["source"], e["target"])}
+        neighbor_nodes_raw = [n for n in neighbor_nodes_raw if n["id"] in incident_ids]
 
         all_raw_nodes = [raw_center, *[n for n in neighbor_nodes_raw if n["id"] != node_id]]
         nodes, edges = self._compute_layout_and_finalize(
@@ -1444,7 +1561,7 @@ class ExplorerService:
             total_incident_edges=total_incident,
             returned_neighbor_count=max(0, len(nodes) - 1),
             truncated=total_incident > sum(1 for edge in edges_raw if node_id in (edge["source"], edge["target"])),
-            metric_scope_note="Scores, support counts and fractional weights retain full-period frozen meanings. A narrowed year/venue requires at least one accepted supporting paper in that window. The incident-edge total is a prefilter upper bound when paper evidence filtering is active; returned graph metrics describe only returned edges.",
+            metric_scope_note="Scores, support counts and fractional weights retain full-period frozen meanings. A narrowed year/venue requires at least one accepted supporting paper in that window. The incident-edge total is a prefilter upper bound when paper evidence filtering is active; returned graph metrics describe only returned edges. A selected non-paper center is retained as context even when the bounded result has no matching support.",
             applied_filters={
                 "relations": relations,
                 "node_labels": node_labels,
@@ -1453,6 +1570,10 @@ class ExplorerService:
                 "year_max": year_max,
                 "venue": venue,
                 "sector": sector,
+                "community_id": community_id,
+                "country_code": country_code,
+                "topic_id": topic_id,
+                "cross_sector_only": cross_sector_only,
                 "min_support": min_support,
                 "min_weight": min_weight,
                 "limit": limit,
@@ -1692,7 +1813,7 @@ class ExplorerService:
         derived_path = REPO_ROOT / "reports/explorer-analysis-release-v1/derived.json"
         if derived is None and derived_path.is_file():
             derived = json.loads(derived_path.read_bytes())
-        if derived and derived.get("graph_sha256") != analysis.get("input_sha256"):
+        if derived and (derived.get("graph_sha256") != analysis.get("input_sha256") or derived.get("graph_version") != analysis.get("graph_version")):
             derived = None  # Never serve an extension for another graph.
 
         proj_summaries = {}
@@ -1839,25 +1960,50 @@ class ExplorerService:
         _, direct_edges = self._compute_layout_and_finalize([left_raw, right_raw], comp["direct_edges"])
         shared_neighbors = [self._build_graph_node(sn) for sn in comp["shared_neighbors"]]
 
-        if left_node.label == "Organization" and right_node.label == "Organization":
-            support = set()
-            if not self.store.ensure_ledger_loaded():
+        paper_sets = None
+        if left_node.label == right_node.label and left_node.label in ("Researcher", "Organization"):
+            if left_node.label == "Organization" and not self.store.ensure_ledger_loaded():
                 from fastapi import HTTPException
-                raise HTTPException(status_code=503, detail="Organization co-publication evidence unavailable")
-            if self.store.ensure_ledger_loaded():
+                raise HTTPException(status_code=503, detail="Comparison paper evidence unavailable")
+            if left_node.label == "Researcher":
+                left_papers = self.repo.get_authored_paper_ids(left_id)
+                right_papers = self.repo.get_authored_paper_ids(right_id)
+                shared = left_papers & right_papers
+            else:
+                left_papers = {a["paper_id"] for a in self.store.affiliations_by_org.get(left_id, [])}
+                right_papers = {a["paper_id"] for a in self.store.affiliations_by_org.get(right_id, [])}
+                # A dual affiliation by one author alone is not R8 collaboration.
+                shared = set()
                 for edge in direct_edges:
                     if edge.relation == "COLLABORATED_WITH":
                         for eid in edge.evidence_ids:
-                            support.update(self.store.evidence_by_id.get(eid, {}).get("support_paper_ids", []))
-            paper_nodes = self.repo.get_nodes_by_ids(sorted(support)[:100])
+                            shared.update(self.store.evidence_by_id.get(eid, {}).get("support_paper_ids", []))
+            paper_sets = {"shared": sorted(shared), "left_only": sorted(left_papers - right_papers),
+                          "right_only": sorted(right_papers - left_papers)}
+            paper_nodes = self.repo.get_nodes_by_ids(sorted(shared)[:100])
             comp["shared_papers"] = [{"paper_id": pid, "title": raw.get("name", pid), "year": raw.get("year"), "official_url": raw.get("official_url"), "doi": raw.get("doi")} for pid, raw in paper_nodes.items()]
+
+        # Counts are complete; each visible list is a stable bounded preview.
+        sets = {"neighbors": comp.get("neighbor_sets"), "papers": paper_sets}
+        comparison_sets = {}
+        for kind, groups in sets.items():
+            if groups is None:
+                continue
+            comparison_sets[kind] = {}
+            for group, ids in groups.items():
+                preview_ids = ids[:30]
+                entities = self.repo.get_nodes_by_ids(preview_ids)
+                comparison_sets[kind][group] = {
+                    "total": len(ids), "shown": len(entities), "truncated": len(ids) > len(entities),
+                    "items": [{"id": i, "name": entities[i].get("name", i)} for i in preview_ids if i in entities],
+                }
 
         left_topics = self.store.org_topic_profiles.get(left_id, [])[:10]
         right_topics = self.store.org_topic_profiles.get(right_id, [])[:10]
 
         notes = [
             "Shared papers and collaboration weights are computed strictly from accepted core-paper support in release v4.",
-            "Topic portfolios use fractional allocation across accepted inferred leaf labels. Organization shared papers resolve accepted R8 evidence only (up to 100); shared-neighbor results are bounded to 30 and are not complete unique-neighbor counts.",
+            "Topic portfolios use fractional allocation across accepted inferred leaf labels. Shared organization papers require accepted R8 evidence; single-author dual affiliations are excluded. Unique papers mean accepted papers belonging only to one entity. Counts precede preview limits (30 per set, 100 shared paper details). Comparison is full-period and independent of canvas filters.",
         ]
         return CompareResponse(
             left_node=left_node,
@@ -1868,6 +2014,7 @@ class ExplorerService:
             left_topics=left_topics,
             right_topics=right_topics,
             comparison_notes=notes,
+            comparison_sets=comparison_sets,
         )
 
     def get_table_nodes(

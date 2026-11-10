@@ -302,22 +302,6 @@ export const App: React.FC = () => {
           });
           return;
         }
-        // These filters require paper-specific joins not supplied by the neighbor endpoint.
-        // Keep the last graph rather than silently ignoring a user's constraint.
-        if (
-          current.filters.communityId ||
-          current.filters.countryCode ||
-          current.filters.topicId ||
-          current.filters.crossSectorOnly
-        ) {
-          setExpansionError({
-            message:
-              "Expansion is unavailable with community, country, topic or cross-sector constraints. Use the filtered overview or reset those constraints and Retry.",
-            nodeId,
-            replace,
-          });
-          return;
-        }
         if (
           current.viewMode === "heterogeneous" &&
           current.filters.preset === "custom" &&
@@ -338,6 +322,10 @@ export const App: React.FC = () => {
           year_max: current.filters.yearMax,
           venue: current.filters.venue || undefined,
           sector: current.filters.sector || undefined,
+          community_id: current.filters.communityId || undefined,
+          country_code: current.filters.countryCode || undefined,
+          topic_id: current.filters.topicId || undefined,
+          cross_sector_only: current.filters.crossSectorOnly || undefined,
         };
         if (
           current.viewMode === "researchers" ||

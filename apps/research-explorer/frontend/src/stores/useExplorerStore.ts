@@ -38,6 +38,16 @@ export interface ExplorerFilters {
   relations: RelationType[];
 }
 
+export interface AnalyticsFilters {
+  venue: string;
+  topic: string;
+  yearMin: number;
+  yearMax: number;
+  family: string;
+  community: string;
+}
+const DEFAULT_ANALYTICS_FILTERS: AnalyticsFilters = { venue: "venue:aaai", topic: "", yearMin: 2021, yearMax: 2025, family: "", community: "" };
+
 export interface SavedViewBookmark {
   id: string;
   name: string;
@@ -114,6 +124,7 @@ interface ExplorerState {
   // Theme & workspace layout
   insightReturn: boolean;
   analyticsSection: string;
+  analyticsFilters: AnalyticsFilters;
   darkMode: boolean;
   workspaceTab: WorkspaceTab;
   leftSidebarOpen: boolean;
@@ -213,6 +224,7 @@ interface ExplorerState {
 export const useExplorerStore = create<ExplorerState>((set, get) => ({
   insightReturn: false,
   analyticsSection: "robustness",
+  analyticsFilters: { ...DEFAULT_ANALYTICS_FILTERS },
   darkMode: getInitialDarkMode(),
   workspaceTab: "graph",
   leftSidebarOpen: getInitialLeftSidebarOpen(),
@@ -401,6 +413,10 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
           ...state.filters,
           limit: defaultLimits[viewMode],
           communityId: "",
+          ...(viewMode !== "organizations" ? { countryCode: "", crossSectorOnly: false, includeTopics: false } : {}),
+          ...(viewMode !== "organizations" && viewMode !== "heterogeneous" ? { sector: "" } : {}),
+          ...(viewMode === "heterogeneous" ? { includeIsolates: false } : {}),
+          ...(viewMode === "citations" ? { minSupport: 1, minWeight: 0, includeIsolates: false } : {}),
         },
       };
     });
@@ -548,6 +564,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   enterEgoView: (centerNode, nodes, edges, cameraState = null, params) =>
     set((state) => {
       const prior = {
+        filters: state.filters,
         viewMode: state.viewMode,
         selectedNodeId: state.selectedNodeId,
         cameraState: cameraState ?? state.cameraState,
@@ -584,6 +601,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   enterPathView: (pathRes, cameraState = null) =>
     set((state) => {
       const prior = {
+        filters: state.filters,
         viewMode: state.viewMode,
         selectedNodeId: state.selectedNodeId,
         cameraState: cameraState ?? state.cameraState,
@@ -601,6 +619,8 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       const sName = sourceNode?.name || pathRes.source_id;
       const tName = targetNode?.name || pathRes.target_id;
       return {
+        filters: { ...DEFAULT_FILTERS, limit: state.filters.limit },
+        shareNotice: "Path traversal covers the full release period. Overview filters are suspended; Back restores them.",
         graphViewScope: {
           kind: "path",
           title: `Path: ${sName} → ${tName}`,
@@ -655,6 +675,8 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
         },
         cameraState: prior.cameraState ?? null,
         viewMode: prior.viewMode,
+        filters: prior.filters || state.filters,
+        shareNotice: null,
         selectedNodeId: prior.selectedNodeId,
         extraNodes: prior.extraNodes,
         extraEdges: prior.extraEdges,
@@ -728,7 +750,11 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       extraNodes: [],
       extraEdges: [],
       focusedCenterId: null,
-      workspaceTab: "graph",
+      workspaceTab: spec.workspaceTab,
+      analyticsSection: spec.analyticsSection || "robustness",
+      analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
+      insightReturn: false,
+      hoveredNodeId: null,
       expansionError: null,
       shareNotice: spec.notice || null,
     });
@@ -737,7 +763,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
     if (typeof window === "undefined") return;
     try {
       const stored = JSON.parse(
-        localStorage.getItem("scientific-network-views-v2") || "[]",
+        localStorage.getItem("scientific-network-views-v2") || localStorage.getItem("scientific-network-views-v1") || "[]",
       );
       if (Array.isArray(stored))
         set((s) => ({
@@ -747,7 +773,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
               (v) =>
                 v &&
                 typeof v.name === "string" &&
-                validateSpec(v.spec, DEFAULT_FILTERS),
+                validateSpec(v.spec || { version: 2, ...v, scope: { kind: "overview" } }, DEFAULT_FILTERS),
             ),
           ],
         }));
@@ -811,6 +837,8 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       set({
         viewMode: spec.viewMode,
         workspaceTab: spec.workspaceTab,
+        analyticsSection: spec.analyticsSection || "robustness",
+      analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
         filters: spec.filters,
         layoutMode: spec.layoutMode,
         edgeFilterMode: spec.edgeFilterMode,

@@ -1,4 +1,4 @@
-import type { ExplorerFilters } from "../stores/useExplorerStore";
+import type { AnalyticsFilters, ExplorerFilters } from "../stores/useExplorerStore";
 import type {
   EdgeFilterMode,
   GraphViewScope,
@@ -11,6 +11,8 @@ export interface ViewSpec {
   version: 2;
   viewMode: ViewMode;
   workspaceTab: WorkspaceTab;
+  analyticsSection?: string;
+  analyticsFilters?: AnalyticsFilters;
   filters: ExplorerFilters;
   layoutMode: LayoutMode;
   edgeFilterMode: EdgeFilterMode;
@@ -76,6 +78,20 @@ export function validateSpec(
     filters.relations = defaults.relations.filter((x) =>
       f.relations.includes(x),
     );
+  const mode = choice(v.viewMode, ["heterogeneous", "researchers", "organizations", "citations"] as const, "heterogeneous");
+  const before = JSON.stringify(filters);
+  if (mode !== "organizations") {
+    filters.countryCode = "";
+    filters.crossSectorOnly = false;
+    filters.includeTopics = false;
+  }
+  if (mode !== "organizations" && mode !== "heterogeneous") filters.sector = "";
+  if (mode !== "organizations" && mode !== "researchers") filters.communityId = "";
+  if (mode === "heterogeneous") filters.includeIsolates = false;
+  if (mode === "citations") {
+    filters.minSupport = 1; filters.minWeight = 0; filters.includeIsolates = false;
+  }
+  const cleared = before !== JSON.stringify(filters);
   const kind = choice(
     v.scope?.kind,
     ["overview", "ego", "path"] as const,
@@ -127,6 +143,15 @@ export function validateSpec(
       ["heterogeneous", "researchers", "organizations", "citations"] as const,
       "heterogeneous",
     ),
+    analyticsFilters: {
+      venue: choice(v.analyticsFilters?.venue, ["venue:aaai", "venue:ijcai"] as const, "venue:aaai"),
+      topic: typeof v.analyticsFilters?.topic === "string" ? v.analyticsFilters.topic.slice(0,80) : "",
+      yearMin: Math.round(number(v.analyticsFilters?.yearMin,2021,2025,2021)),
+      yearMax: Math.round(number(v.analyticsFilters?.yearMax,2021,2025,2025)),
+      family: typeof v.analyticsFilters?.family === "string" ? v.analyticsFilters.family.slice(0,80) : "",
+      community: typeof v.analyticsFilters?.community === "string" ? v.analyticsFilters.community.slice(0,80) : "",
+    },
+    analyticsSection: choice(v.analyticsSection, ["robustness", "topics", "communities", "sectors", "trajectories"] as const, "robustness"),
     workspaceTab: choice(
       v.workspaceTab,
       ["graph", "table", "analytics"] as const,
@@ -147,12 +172,14 @@ export function validateSpec(
     selectedNodeId: validId(v.selectedNodeId) ? v.selectedNodeId : null,
     selectedEdgeId: validId(v.selectedEdgeId) ? v.selectedEdgeId : null,
     shareable: true,
-    notice: typeof v.notice === "string" ? v.notice.slice(0, 240) : undefined,
+    notice: cleared ? "Unsupported hidden filters were cleared for this projection." : typeof v.notice === "string" ? v.notice.slice(0, 240) : undefined,
   };
 }
 export function makeViewSpec(state: {
   viewMode: ViewMode;
   workspaceTab: WorkspaceTab;
+  analyticsSection?: string;
+  analyticsFilters?: AnalyticsFilters;
   filters: ExplorerFilters;
   layoutMode: LayoutMode;
   edgeFilterMode: EdgeFilterMode;
@@ -175,6 +202,8 @@ export function makeViewSpec(state: {
     version: 2,
     viewMode: state.viewMode,
     workspaceTab: state.workspaceTab,
+    analyticsSection: state.analyticsSection,
+    analyticsFilters: state.analyticsFilters,
     filters: state.filters,
     layoutMode: state.layoutMode,
     edgeFilterMode: state.edgeFilterMode,
