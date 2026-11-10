@@ -105,3 +105,85 @@ def test_actual_workflow_path_policy(paths, deploy):
         assert "github.ref == 'refs/heads/main'" in job['if']
         assert "github.event_name == 'push' || github.event_name == 'workflow_dispatch'" in job['if']
     assert workflow['concurrency']['cancel-in-progress'] == 'false'
+
+
+@pytest.fixture
+def hosted_recovery(tmp_path, monkeypatch):
+    import importlib.util
+    import json
+    spec = importlib.util.spec_from_file_location('ci_recovery', ROOT/'ops/azure/scripts/rollback-ci-image.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    monkeypatch.setattr(module, 'OPS', tmp_path)
+    state = {'sha': 'a'*40, 'sequence': 5, 'operation': 'activated', 'rollback_snapshot': '.env.rollback-fixture'}
+    (tmp_path/'.ci-deployment.json').write_text(json.dumps(state))
+    (tmp_path/'.ci-rollback-state.json').write_text(json.dumps({'sha': 'b'*40, 'image_id': 'sha256:previous', 'sequence': 4}))
+    return module, tmp_path, state
+
+
+def test_hosted_failure_recovery_keeps_sequence_watermark(hosted_recovery, monkeypatch):
+    import json
+    module, ops, state = hosted_recovery
+    calls = []
+    monkeypatch.setattr(module.subprocess, 'run', lambda *a, **kw: calls.append((a, kw)))
+    module.rollback('a'*40, 5)
+    recovered = json.loads((ops/'.ci-deployment.json').read_text())
+    assert recovered['sha'] == 'b'*40 and recovered['image_id'] == 'sha256:previous'
+    assert recovered['sequence'] == 5 and recovered['operation'] == 'rolled_back'
+    assert calls[0][0][0] == [str(ops/'scripts/rollback.sh'), '.env.rollback-fixture']
+
+
+def test_hosted_recovery_refuses_superseding_deployment(hosted_recovery, monkeypatch):
+    module, ops, state = hosted_recovery
+    monkeypatch.setattr(module.subprocess, 'run', lambda *a, **kw: pytest.fail('Must not invoke rollback'))
+    with pytest.raises(AssertionError, match='superseding'):
+        module.rollback('c'*40, 4)
+
+
+def test_hosted_recovery_failure_does_not_claim_restoration(hosted_recovery, monkeypatch):
+    import json
+    module, ops, state = hosted_recovery
+    def fail(*a, **kw):
+        raise subprocess.CalledProcessError(70, a)
+    monkeypatch.setattr(module.subprocess, 'run', fail)
+    with pytest.raises(subprocess.CalledProcessError):
+        module.rollback('a'*40, 5)
+    assert json.loads((ops/'.ci-deployment.json').read_text()) == state
+
+
+def test_hosted_failure_after_noop_does_not_roll_back_unchanged_service(hosted_recovery, monkeypatch):
+    import json
+    module, ops, state = hosted_recovery
+    state['operation'] = 'noop'
+    (ops/'.ci-deployment.json').write_text(json.dumps(state))
+    monkeypatch.setattr(module.subprocess, 'run', lambda *a, **kw: pytest.fail('Must retain unchanged service'))
+    module.rollback('a'*40, 5)
+    assert json.loads((ops/'.ci-deployment.json').read_text()) == state
+
+
+def test_saved_config_identity_is_portable_and_validates_architecture(tmp_path):
+    import hashlib
+    import importlib.util
+    import io
+    import json
+    import tarfile
+    spec = importlib.util.spec_from_file_location('image_identity', ROOT/'ops/azure/scripts/image-identity.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    sha = 'a'*40
+    config = json.dumps({'architecture': 'amd64', 'os': 'linux', 'rootfs': {'diff_ids': ['sha256:layer']},
+                         'config': {'Labels': {'org.opencontainers.image.revision': sha}}}).encode()
+    path = tmp_path/'image.tar.gz'
+    def save(data):
+        with tarfile.open(path, 'w:gz') as t:
+            for name, payload in [('manifest.json', json.dumps([{'RepoTags': ['scientific-network-api:sha-'+sha], 'Config': 'config.json'}]).encode()), ('config.json', data)]:
+                item = tarfile.TarInfo(name)
+                item.size = len(payload)
+                t.addfile(item, io.BytesIO(payload))
+    save(config)
+    assert module.identity(path, sha) == 'sha256:'+hashlib.sha256(config).hexdigest()
+    with pytest.raises(AssertionError):
+        module.identity(path, 'b'*40)
+    save(config.replace(b'amd64', b'arm64'))
+    with pytest.raises(AssertionError):
+        module.identity(path, sha)

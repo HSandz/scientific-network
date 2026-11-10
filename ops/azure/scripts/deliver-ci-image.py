@@ -49,6 +49,19 @@ def deliver():
         '--checksum', Path('image.tar.gz.sha256').read_text().split()[0],
         '--image-id', Path('image-id.txt').read_text().strip(), '--url', signed_url,
     ])
+    invoke(command, 'AZURE_API_DEPLOYMENT_VERIFIED', signed_url)
+    try:
+        subprocess.run(['python3', str(Path(__file__).with_name('smoke-api.py')),
+                        '--base-url', 'https://scientific-network-api.eastasia.cloudapp.azure.com/api'],
+                       check=True, timeout=180)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        rollback = shlex.join(['python3', '/opt/scientific-network/ops/azure/scripts/rollback-ci-image.py',
+                              '--sha', sha, '--sequence', os.environ['GITHUB_RUN_NUMBER']])
+        invoke(rollback, 'AZURE_API_ROLLBACK_VERIFIED', signed_url)
+        raise RuntimeError('Hosted public smoke failed; recovery verified')
+
+
+def invoke(command, marker, signed_url):
     with tempfile.TemporaryDirectory() as temp:
         script = Path(temp) / 'activate.sh'
         script.write_text('#!/bin/sh\nset -eu\n' + command + '\n')
@@ -68,9 +81,7 @@ def deliver():
             # API invocation success does NOT imply guest script success.
             if 'failed' in item.get('code', '').lower():
                 raise RuntimeError('Azure guest command failed')
-        # Run Command extension can report success even for nonzero shell exits.
-        # Require the explicit final marker produced only after activation succeeds.
-        assert any('AZURE_API_DEPLOYMENT_VERIFIED' in i.get('message', '') for i in values), 'Missing verified guest receipt'
+        assert any(marker in i.get('message', '') for i in values), 'Missing verified guest receipt'
 
 
 if __name__ == '__main__':

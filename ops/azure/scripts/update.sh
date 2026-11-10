@@ -17,9 +17,8 @@ recover() {
   trap - EXIT HUP INT TERM
   if [[ $changed == true && $rc != 0 ]]; then
     echo 'Deployment failed; restoring exact previous configuration.' >&2
-    cp -p "$snapshot" .env
     # Already hold lock 9: never call rollback.sh, which acquires it again.
-    if "${COMPOSE[@]}" up -d --no-deps --no-build --pull never --wait --wait-timeout 120 api &&
+    if cp -p "$snapshot" .env && "${COMPOSE[@]}" up -d --no-deps --no-build --pull never --wait --wait-timeout 120 api &&
        "$AZURE_COMPOSE_DIR/scripts/verify.sh"; then
       echo 'Previous API restored and verified.' >&2
     else

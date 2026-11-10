@@ -45,7 +45,13 @@ using IMDS; identity/federation/custom VM-scoped role and main-only production-a
 environment configured. Existing NSG public SSH/HTTP/HTTPS rules unchanged. Root-owned
 activation scripts and compatibility approval installed. Production unchanged so far.
 Existing Offline checks failed from missing matplotlib; install locked analysis/report
-extras in both workflows. Real Actions runs pending. Exact billing quota inaccessible.
+extras in both workflows. Initial push/manual runs 42793772100/42793793606 failed safely before activation:
+Docker containerd inspect identity differed from the VM classic-store config ID.
+Corrected packaging to hash the docker-save config directly, with offline regression
+coverage. Full suite now 524 passed / one skip; rollback/path/identity tests 16 passed.
+Hosted build and repaired Offline checks passed; Azure OIDC login/delivery succeeded.
+Added transaction-bound rollback for hosted-only public smoke failures. Exact billing
+quota remains inaccessible; each image artifact measured about 87 MB with one-day retention.
 Multiple Codex processes exist locally; no dirty files or deployment processes
 were found. Process presence alone cannot establish another session's intent.
 
