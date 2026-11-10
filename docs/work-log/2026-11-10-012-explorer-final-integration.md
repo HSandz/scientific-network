@@ -2,80 +2,63 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress |
-| Recorded | 2026-11-10 22:15 +07:00 (Asia/Bangkok) |
+| Status | completed locally; production release awaits authorization |
+| Started / finalized | 2026-11-10 22:15 / 22:49 +07:00 (Asia/Bangkok) |
 | Contributor | Codex |
-| Git state | Clean main 4a432d60fe7a1a012029de86b7ce06e66b358ca2; remote HEAD matches |
+| Initial Git | Clean main 4a432d6; remote matched; no user edits |
 
-## Objective
+## Objective and boundary
 
-Fix deployment health, scientific filter correctness and saved views; prepare an
-immutable matching runtime package and verify locally. No push, deployment,
-active-artifact replacement or disruptive VM action is authorized.
+Implement deployment-health, scientific-filter, workspace and exploration fixes;
+prepare immutable artifacts and verify. No push, deployment, active-artifact
+replacement, database change or disruptive VM action authorized/performed.
+Initial in_progress checkpoint recorded before implementation; checkpoints at
+22:34, 22:38 and 22:44 +07:00 are preserved in local commit history.
 
-## Findings and checkpoint
+## Findings and changes
 
-Read-only SSH and complete Actions run 42838707362 logs confirm activation
-failed at stable_services before image delivery/update; missing receipt is a
-consequence. Caddy health exec fails with procReady not received, despite public
-HTTPS health passing and exact frozen inventory. Container has 96 tasks against
-pids_limit 100, eight live Caddy threads and 88 orphaned zombie ssl_client
-children; no init/reaper. Existing HTTPS BusyBox wget probe creates children.
-API/Neo4j are healthy; active API/receipt remains b25f026, artifact azure-20261110-v1.
-No VM mutation performed. Raw checks/logs: reports/runs/WORK-2026-11-10-012/.
+Full Actions 42838707362 logs/read-only SSH show Caddy health exec fails before
+activation: 88 orphaned ssl_client zombies plus eight threads approach PID cap
+100, while public HTTPS remains healthy. BusyBox TLS probe helpers lack a reaper.
+Compose adds init without weakening probe/cap. Last healthy API was preserved.
+Actual local probe reproduction: 16 zombies without init, zero with init;
+restart passes. Real isolated Docker failed-health update restores exact config.
 
-## Verification
+Accepted distinct core-paper support now scopes collaboration views/expansions;
+in-window IDs/counts remain separate from full-period weights/metrics. Unknown or
+unsupported filters reject; hidden controls migrate with disclosure. Complete
+comparison totals precede bounded previews, with R8-backed organization papers.
+Graph/Table/Analytics bookmarks restore layout/scope/selection and workspace
+controls, including Table query/sort/page. Finding return preserves analytical
+controls. Exports preserve provenance. Idempotent CI receipts refresh artifact
+identity after coordinated switching. Frozen release/config/results untouched.
+Material semantics and Table persistence recorded in decisions; capabilities in
+roadmap; app/Azure runbooks updated. [Detailed report and approved-release procedure](../../reports/explorer-final-integration-2026-11-10.md).
 
-In progress; baseline locked environment sync passed. Tests and release plan
-will be recorded before final handoff.
+## Checks and exact outcomes
 
-## Next step
+- `uv sync --locked --group dev --extra analysis --extra report`: passed.
+- `uv run pytest`: 530 passed, 1 existing empty-parameter skip.
+- `PYTHONPATH=apps/research-explorer:src uv run pytest apps/research-explorer/backend/tests -q`: 32 passed, live read-only Neo4j included.
+- `npm --prefix apps/research-explorer/frontend run build` with local API base: passed; chunk warnings remain.
+- `npm --prefix apps/research-explorer/frontend run test:e2e` with base5174: 22 passed; production preview base4174 `-- tests/explorer.spec.ts`: 5 passed.
+- Packaged real API container: 28 smoke checks plus strict/derived assertions, restart readiness; no-data/network image correctly fails readiness. Deployment regressions: 19 passed.
+- Offline schema/synthetic validation, package output/source hashes and `git diff --check`: passed. Frozen-path diff empty; remote still 4a432d6 at final check.
+- 32 production-build visual captures inspected across four projections/five sections, responsive widths, themes/reduced motion; zero unexpected browser errors/alerts/overflow.
 
-Implement resource leak prevention without weakening HTTPS probe or deployment
-health gate; fix paper-support filters/bookmarks and run full local verification.
+Raw logs/screenshots: ignored `reports/runs/WORK-2026-11-10-012/` (see report).
+Earlier CORS/contract/finding-state failures were fixed and rerun. Two intermittent
+Table-follow-up browser failures passed diagnosis and final full rerun; cause not
+proven. Failed probe diagnostics/logs remain retained, not counted as successes.
 
-## Implementation checkpoint — 2026-11-10 22:34 +07:00
+## Artifacts, limitations and next step
 
-Caddy Compose now enables init/reaping while retaining trusted HTTPS health and
-PID limits. Isolated actual health probes reproduce 16 TLS zombies without init,
-zero with init; local restart passes. Actual isolated Docker rollback restores
-exact configuration after injected health failure; no graph mounts/volumes.
-
-Accepted support-paper filtering now scopes R7/R8 overviews and bounded expansions;
-distinct in-window IDs/counts are separate from unchanged full-period weights.
-Unsupported dimensions return 422 and hidden projection controls clear/migrate.
-Constrained expansion, complete pre-truncation comparison sets and source previews,
-workspace/analytical section/control restoration, legacy bookmarks, finding-return
-state and CSV provenance are implemented. Frozen artifacts remain untouched.
-
-Latest checks: 529 repository tests pass / 1 existing skip; 32 backend tests pass
-with live read-only Neo4j; 22 Chromium E2E pass; TypeScript/Vite build passes.
-Compact SQLite runtime passes 28 HTTP checks plus required strict/derived checks.
-Initial CORS test-harness error, stale contract expectation and newly detected
-finding-return control reset are retained in raw logs; fixes rerun successfully.
-Production-build visual/functional checks and final release handoff are ongoing.
-
-
-## Operations checkpoint — 2026-11-10 22:38 +07:00
-
-Built amd64 API image at application commit 75f55e2; portable configuration digest
-`sha256:de96a5348902e16c6cf818d9b978fd7d08612cef3bb98635cdc92acea5347664`.
-Real production-mode container with immutable SQLite artifacts and existing local
-Neo4j passed all 28 smoke checks plus strict/extension assertions and restart
-readiness; the no-network/missing-artifact image smoke correctly rejects readiness.
-Production-build preview: 5 E2E suites pass; 32 screenshot capture checks report
-zero page/console errors, alerts or horizontal overflow. Graph and chart contact
-sheets inspected in both themes, including mobile. Small phone text/dense labels
-remain limits, not a WCAG/performance certification.
-
-Coordinated artifact changes with an unchanged image could leave the idempotent
-CI receipt's artifact directory stale. The no-op branch now refreshes the verified
-active artifact path/service identities; a fault-isolated regression covers it.
-
-## Table restoration checkpoint — 2026-11-10 22:44 +07:00
-
-Final inspection found that Table's own query/sort/pagination controls were local
-component state, outside bookmarks. Persisted and validated that workspace state
-alongside analytical controls; the save/reload regression now restores a real
-Paper/Informer table query as well as the selected tab. No backend/image/runtime
-artifact code changed for this follow-up. Browser/build verification is rerunning.
+[Readiness JSON](../../reports/explorer-runtime-readiness-2026-11-10.json) pins new
+unused runtime-explorer-v2 package hashes, graph binding and tested API image.
+Code checkpoints: 75f55e2, 78485e8, a26dce5; final handoff commit adds this outcome.
+Production remains Pages4a432d6/APIb25f026 with old artifacts and unrepaired Caddy
+probe; live activation/recovery/rollback unverified. Bounded candidates/previews,
+full-period Paths/comparisons, unsupported heterogeneous combinations, dense mobile
+text and missing sustained load/accessibility certification are explicit limits.
+Next: user-authorized Caddy-only recovery, approved source push and coordinated
+immutable artifact switch, then independent live browser/API/health acceptance.

@@ -405,3 +405,22 @@ Verify readiness, manifest hashes, public smoke, actual `.ci-deployment.json` co
 and image, and the Pages deployment's exact source commit separately. Preserve the
 existing Pages project/URL/audience and automatic backend workflow. No production
 operation was performed by WORK-2026-11-10-011.
+
+
+## Caddy health failure and final Explorer package (WORK-012)
+
+A responsive public API can coexist with an unhealthy Caddy Docker probe. The
+observed BusyBox HTTPS wget helper leak exhausted the container PID cap with
+orphaned `ssl_client` zombies. Reviewed Compose enables `init: true`; retain the
+trusted HTTPS probe and PID cap. Apply only through an authorized Caddy recreation,
+preserving certificate volumes, API and Neo4j. A restart of the existing container
+does not apply a changed init configuration. Do not bypass stable-service gates.
+
+The [final integration release plan](../../reports/explorer-final-integration-2026-11-10.md)
+specifies the immutable analytics package, matching source/image identities,
+approval-pin sequencing, smoke checks and exact snapshot rollback. Install updated
+root-owned CI scripts before the approved rollout. After a coordinated artifact
+switch, idempotent CI refreshes the active artifact path in its verified receipt.
+The new manifest declares derived analytics, so verification also requires complete
+strict/derived summaries. Old manifests remain honest optional-unavailable states.
+No production operation was performed by this work.

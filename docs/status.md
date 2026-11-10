@@ -1,59 +1,56 @@
 # Current project status
 
-Updated: **2026-11-10 21:49 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 22:48 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
-Latest earlier completed: [WORK-2026-11-10-010](work-log/2026-11-10-010-projection-order.md), sidebar projection order/default; 5 browser suites, build and 524 repository tests pass. Previous: [WORK-2026-11-10-009](work-log/2026-11-10-009-azure-api-cicd.md), automatic Azure backend deployment and recovery verification. Production setup: [WORK-007](work-log/2026-11-10-007-azure-production.md); cleanup: [WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md).
+Latest: [WORK-2026-11-10-012](work-log/2026-11-10-012-explorer-final-integration.md).
 
-## Remediation and presentation checklist
+## Release phase checklist
 
-- [x] A Topic labels required; original failed scores exactly reproduced.
-- [x] B Versioned observed-ORCID identity correction; frozen facts/topics preserved.
-- [x] C Isolated Neo4j import/integrity/replay and corrected full analysis completed (WORK-012).
-- [x] D Prospective source-backed AI edge audit complete; numeric gates pass.
-- [x] E Measured report and local draft package complete; old artifacts preserved.
-- [x] Presentation: three bounded network maps added; native Site v19 published with current data, six charts and PDF download.
-- [x] Fresh review: exact edge rescore, structure/size, hashes/package checks; 508 tests passed / 1 existing skip.
-- [x] Local interactive explorer (`apps/research-explorer/`): FastAPI + React/TypeScript/Sigma.js/ECharts workspace backed by live `neo4j-five-year` (WORK-016).
-- [x] Explorer design review: [findings](../reports/research-explorer-design-review-2026-11-09.md) recorded (WORK-017).
-- [x] Explorer redesign & verification: `achromatic-ledger` light/dark system, responsive shell (`1440px`/`768px`/`390px`), contextual inspector, collision-free graph labels, name-based entity pickers, and table DB edge counts; `0 FAIL, 0 WARN` browser inspection, 4 Playwright E2E, 14 backend, and 507 repo tests pass (WORK-018).
-- [x] Redesign follow-up review: [findings and priorities](../reports/research-explorer-redesign-review-2026-11-09.md) recorded (WORK-019).
-- [x] Improvement planning: [plan](research-explorer-improvement-plan.md) and [implementation prompt](prompts/implement-explorer-improvements.md) prepared (WORK-020).
-- [x] Explorer improvements implementation: soft graphite dark mode, unified quality contract, 6-breakpoint responsive shell, accessible modal focus/Escape layers, accent-insensitive search (WORK-2026-11-10-001).
-- [x] Graph operations review & prompt: [findings](../reports/research-explorer-graph-operations-review-2026-11-10.md), [plan](research-explorer-graph-usability-plan.md), [prompt](prompts/implement-explorer-graph-usability-plan.md) (WORK-003, WORK-004).
-- [x] Explorer graph usability implementation: authoritative effective view state, collision-free neighbor reading and pinning (Warut 7/7 names, dense node lists), explicit Overview/Ego/Path views with Back navigation, reciprocal/parallel edge preservation in multi-edge graphology, responsive layout and header hit targets, accessible drawers/pickers, and unavailable quality fallback; 15 backend tests, 5 Playwright E2E suites, 507 repo tests, design lint 0 FAIL (WORK-2026-11-10-005).
+- [x] Tooling and release-standard source acquisition/resolution completed.
+- [x] Frozen topics, corrected graph, isolated Neo4j import and analysis completed.
+- [x] Prospective source-backed AI audit and scoring completed; failed gates preserved.
+- [x] Measured report, local submission draft and package QA completed.
+- [x] Native public Site v19 published; publication unchanged by Explorer work.
+- [x] Azure runtime and automatic API delivery implemented and previously verified.
+- [x] Explorer four projections, five analytical sections and reproducible scopes implemented.
+- [x] Final local fixes: accepted support filters, constrained expansion, complete comparison totals, workspace restoration and export provenance.
+- [x] Caddy probe leak reproduced/fixed locally; actual isolated restart/rollback verified.
+- [x] Immutable matching runtime package prepared and real API image/package verified locally.
+- [ ] Authorized production release and independent live acceptance of these fixes.
+- [ ] Personal/course facts and final course submission.
 
-## Current local Explorer checkpoint
+## Current verification and release boundary
 
-- [x] [WORK-011](work-log/2026-11-10-011-explorer-intelligence.md): correctness, reproducible views/exports, stable rendering, five scientific analytics sections and separate derived extension; 527 repo tests/1 skip, 25 backend, 16 E2E, five preview suites and 28 compact API smoke checks.
-- [ ] Broad-audit gaps: constrained expansion, full comparison sets, remaining motion/size options and sustained performance/contrast certification; [receipt](../reports/research-explorer-implementation-2026-11-10.md).
-- Local commits only; production unchanged (Pages f259353 / API b25f026). New immutable artifact package and separate authorization required for rollout.
+530 repository tests pass / 1 existing skip; 32 backend tests pass including read-only
+Neo4j. Full Chromium suite: 22 pass. TypeScript/Vite build passes. Production-preview
+and visual evidence, exact commands and limitations are in the
+[final integration report/release plan](../reports/explorer-final-integration-2026-11-10.md).
+32 visual captures cover projections/sections, both themes and responsive widths.
+Actual packaged API passes 28 smoke checks plus complete strict/derived assertions.
 
-## Current artifacts
+Production observed: Pages source **4a432d6**, API source **b25f026**, old artifact
+`azure-20261110-v1`. Caddy Docker probe exhausted PID capacity with orphaned TLS
+helpers while public HTTPS remained healthy. Last healthy API was preserved.
+No push, VM recreation, artifact switch or deployment occurred in this task.
+New package/manifest identities: [readiness receipt](../reports/explorer-runtime-readiness-2026-11-10.json).
+Push and every production-impacting operation require separate user authorization.
 
-[26-page/nine-figure package QA and paths/hashes](../reports/release-v4/local-package-receipt-v3.json),
-[report source](../reports/final-report/report.md), [results/limitations](../reports/release-v4/README.md),
-and [local research explorer](../apps/research-explorer/README.md).
-Source checkpoint `fb2f0e7`; all 1,410 archive members and 125 historical hashes preserved.
-[Public Site v19](https://ai-research-network-plan.hazy-tern-8113.chatgpt.site/#report):
-[exact publication receipt](reference/sites-corrected-release-publication-2026-11-09.json) (untouched by WORK-016..022).
+## Scientific evidence and artifacts
 
-## Quality and preserved history
+[Release-v4 results/limitations](../reports/release-v4/README.md),
+[final report](../reports/final-report/report.md),
+[package QA](../reports/release-v4/local-package-receipt-v3.json),
+[public Site receipt](reference/sites-corrected-release-publication-2026-11-09.json).
+Frozen graph/results are unchanged. AI precision is not human validation; evaluator
+independence/course accuracy is not established. Topic coverage is not accuracy.
+Affiliation coverage and historical topic-quality failures remain disclosed.
 
-AI-assessed edge precision 193/200 = 96.5%, Wilson 92.95–98.29%; human validation not performed, reviewer independence and verified course accuracy not established. Affiliation coverage 73.71% (FAIL 80%); historical topic F1 .4667/.2301 and precision-target failures persist. Old failed 88% audit, graph versions, classifier, samples and judgments unchanged. No retuning or resampling.
+## Remaining limitations
 
-## Azure production deployment
-
-- [x] Azure VM swap/Docker, guarded dump restore, exact full-content/schema comparison, compact evidence/analytics, HTTPS API functional checks, off-VM backup and restart recovery ([WORK-007](work-log/2026-11-10-007-azure-production.md)).
-- [x] Pages production build and live browser acceptance complete: Azure API, all five live browser suites and 28 public API checks passed. [Runbook](../ops/azure/README.md); [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
-- [x] User-authorized deployment leftover cleanup: unused first graph volume, failed images and obsolete files removed; backups retained; Caddy concurrency bounded and production rechecked ([WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md)).
-- [x] Automatic API CI/CD: hosted build/OIDC delivery, real push/manual runs, isolated rollback, full DB preservation and docs-only negative trigger verified ([WORK-009](work-log/2026-11-10-009-azure-api-cicd.md)).
-- Render/Aura remain retained. Historical migration notes below are superseded as runtime plans by the Azure deployment.
-
-## AuraDB migration handoff
-
-- [ ] Aura import pending: Free-tier upload rejected the uncompressed dump and requires at least 3 GB disk. Target remains empty; verified dump is retained; local source graph is unchanged and healthy. Credential file is mode 0600 and artifact scan is clean. See [migration report](../reports/release-v4/neo4j-auradb-migration.md).
-- Render backend is not ready until the Aura graph, schema, and application queries are verified. The local `graph.json` evidence ledger and analysis artifacts remain separate.
-
-## Remaining personal facts and delivery
-
-Real names/IDs/contributions, lecturer access and course AI-use requirements remain pending. Prior WORK-014 GitHub HEAD 404 means public/lecturer access was `not_verified`. Package remains a local submission draft. Azure deployment commits pushed (WORK-007); no course tag, invitation or submission performed. Supply personal/course facts before a new delivery render. Human annotation is optional.
+Arbitrary narrowed heterogeneous presets reject explicitly. Rendered candidates and
+comparison previews are bounded; Paths/comparisons disclose full-period scope.
+Dense labels, phone text, bundle warnings and sustained load/leak, cross-browser
+and accessibility certification remain incomplete. Live recovery/analytics rollout
+is unverified pending approval. Render/Aura are retained historical alternatives.
+Real names/IDs/contributions, lecturer access and AI-use requirements remain pending;
+no course tag, invitation or submission performed. Human annotation is optional.
