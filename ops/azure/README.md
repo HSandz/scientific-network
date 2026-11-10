@@ -372,3 +372,5 @@ gh workflow enable deploy-azure-api.yml --repo HSandz/scientific-network
 This leaves Pages, Offline checks and the running API untouched. For credential
 revocation, remove the managed identity's VM role assignment or federation. Do not
 change SSH or delete a graph volume to disable deployments.
+
+Acceptance evidence: [10 November CI/CD receipt](../../reports/release-v4/azure-api-cicd-2026-11-10.md), including real push/manual runs, image identities and graph preservation.
