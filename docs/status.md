@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-10 20:09 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 21:49 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
-Latest completed: [WORK-2026-11-10-010](work-log/2026-11-10-010-projection-order.md), sidebar projection order/default; 5 browser suites, build and 524 repository tests pass. Previous: [WORK-2026-11-10-009](work-log/2026-11-10-009-azure-api-cicd.md), automatic Azure backend deployment and recovery verification. Production setup: [WORK-007](work-log/2026-11-10-007-azure-production.md); cleanup: [WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md).
+Latest earlier completed: [WORK-2026-11-10-010](work-log/2026-11-10-010-projection-order.md), sidebar projection order/default; 5 browser suites, build and 524 repository tests pass. Previous: [WORK-2026-11-10-009](work-log/2026-11-10-009-azure-api-cicd.md), automatic Azure backend deployment and recovery verification. Production setup: [WORK-007](work-log/2026-11-10-007-azure-production.md); cleanup: [WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md).
 
 ## Remediation and presentation checklist
 
@@ -21,6 +21,12 @@ Latest completed: [WORK-2026-11-10-010](work-log/2026-11-10-010-projection-order
 - [x] Explorer improvements implementation: soft graphite dark mode, unified quality contract, 6-breakpoint responsive shell, accessible modal focus/Escape layers, accent-insensitive search (WORK-2026-11-10-001).
 - [x] Graph operations review & prompt: [findings](../reports/research-explorer-graph-operations-review-2026-11-10.md), [plan](research-explorer-graph-usability-plan.md), [prompt](prompts/implement-explorer-graph-usability-plan.md) (WORK-003, WORK-004).
 - [x] Explorer graph usability implementation: authoritative effective view state, collision-free neighbor reading and pinning (Warut 7/7 names, dense node lists), explicit Overview/Ego/Path views with Back navigation, reciprocal/parallel edge preservation in multi-edge graphology, responsive layout and header hit targets, accessible drawers/pickers, and unavailable quality fallback; 15 backend tests, 5 Playwright E2E suites, 507 repo tests, design lint 0 FAIL (WORK-2026-11-10-005).
+
+## Current local Explorer checkpoint
+
+- [x] [WORK-011](work-log/2026-11-10-011-explorer-intelligence.md): correctness, reproducible views/exports, stable rendering, five scientific analytics sections and separate derived extension; 527 repo tests/1 skip, 25 backend, 16 E2E, five preview suites and 28 compact API smoke checks.
+- [ ] Broad-audit gaps: constrained expansion, full comparison sets, remaining motion/size options and sustained performance/contrast certification; [receipt](../reports/research-explorer-implementation-2026-11-10.md).
+- Local commits only; production unchanged (Pages f259353 / API b25f026). New immutable artifact package and separate authorization required for rollout.
 
 ## Current artifacts
 

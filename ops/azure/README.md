@@ -374,3 +374,34 @@ revocation, remove the managed identity's VM role assignment or federation. Do n
 change SSH or delete a graph volume to disable deployments.
 
 Acceptance evidence: [10 November CI/CD receipt](../../reports/release-v4/azure-api-cicd-2026-11-10.md), including real push/manual runs, image identities and graph preservation.
+
+## Explorer analytics extension (local implementation, 10 November)
+
+The Explorer now consumes compact frozen strict summaries and the separate
+`reports/explorer-analysis-release-v1/derived.json` extension. Existing runtime
+artifacts remain valid, but cannot provide those new charts; the UI explicitly
+shows unavailable data. Do not edit a mounted analysis/SQLite file in place.
+
+After separate push/deployment authorization, prepare an unused local directory:
+
+```bash
+python ops/azure/scripts/prepare-artifacts.py --root . \
+  --output reports/runs/WORK-2026-11-10-011/runtime-artifacts-new
+```
+
+This copies the existing immutable evidence ledger and compacts existing frozen
+analysis; it does not rerun scientific analyses or import Neo4j. The extension's
+graph hash must equal the manifest graph source hash. Test this directory with the
+matching API image and the existing smoke script before copying to a **new** VM
+artifact directory. Retain previous image, directory and selector/approval files.
+
+For a code-only rollout, the existing backend Actions workflow remains unchanged;
+old artifact directories simply lack the new optional charts. To enable the complete
+new analytical UI, follow **Updates and rollback** and **Coordinated graph/artifact
+releases** above for an operator-reviewed image/artifact switch; update root-owned
+approval pins only after explicit compatibility review. This extension uses the
+same graph, so no dump restore, database volume switch or reimport is required.
+Verify readiness, manifest hashes, public smoke, actual `.ci-deployment.json` commit
+and image, and the Pages deployment's exact source commit separately. Preserve the
+existing Pages project/URL/audience and automatic backend workflow. No production
+operation was performed by WORK-2026-11-10-011.

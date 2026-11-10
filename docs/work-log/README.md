@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-10-011 — Explorer correctness and scientific intelligence](2026-11-10-011-explorer-intelligence.md): partial broad-audit implementation; versioned reproducible views/exports, persistent renderers, frozen analytics and separate deterministic extension; 527 repo tests/1 skip, 25 backend, 16 E2E and five preview suites; local commits only, explicit gaps and no deployment.
+
 - [WORK-2026-11-10-008 — Azure deployment leftover cleanup](2026-11-10-008-azure-leftover-cleanup.md): completed; removed abandoned graph volume, failed images, obsolete settings and duplicate bootstrap; backups preserved; bounded Caddy Go concurrency restored health checks; production checks passed.
 
 - [WORK-2026-11-10-007 — Azure production deployment](2026-11-10-007-azure-production.md): completed; full graph/schema/content equality, HTTPS API and Pages cutover, five live browser suites, bounded runtime, safe swap and off-VM backup/restart recovery passed; original services and migration edits preserved.
