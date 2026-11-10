@@ -1,7 +1,7 @@
 # Azure API automatic deployment — 10 November 2026
 
-Status: backend push/manual deployment and production acceptance passed;
-documentation-only negative push pending.
+Status: **fully implemented and verified**, with the explicit test-scope and
+quota-visibility limitations below.
 Work: [WORK-2026-11-10-009](../../docs/work-log/2026-11-10-009-azure-api-cicd.md).
 [Runbook](../../ops/azure/README.md).
 [Workflow](https://github.com/HSandz/scientific-network/actions/workflows/deploy-azure-api.yml).
@@ -94,8 +94,11 @@ Work: [WORK-2026-11-10-009](../../docs/work-log/2026-11-10-009-azure-api-cicd.md
 - Current rollback snapshot: `.env.rollback-20261110T100342Z-CJCmcZ`;
   it restores the preceding a6fc512 image with the same artifacts. Retained on VM.
 
-Documentation-only finalization push is a separate negative trigger test; its
-observed run list will be recorded in the closing work entry after the push.
+Documentation-only push `c7be9f283acaf4a8270fccc7dc1f819c1c0d0d76`
+started only [Offline checks 42796792487](https://github.com/HSandz/scientific-network/actions/runs/42796792487),
+which passed. The actual commit-filtered run list contains **no Azure deployment**.
+The final installed update script also passed a fresh isolated real-Docker health
+failure/rollback test, using a synthetic HTTP service and no scientific mounts.
 
 ## Operations and limitations
 
@@ -110,7 +113,9 @@ Account-wide billing/minute/storage quota is not visible to the available GitHub
 credential (billing endpoints require user scope); per-run timing/artifact sizes
 were inspected. Image packages are approximately 87 MB and expire after one day.
 Removed only the two failed runs' CI packages (174,657,126 bytes) after recording
-identity/failure evidence, reducing temporary storage. No paid quota was enabled.
+identity/failure evidence, reducing temporary storage. Final repository artifact inventory: eight packages, 349,296,803 bytes. Account-wide
+quota remains unverified; this repository inventory does not measure other repositories.
+No paid quota was enabled.
 Existing pre-task VM images, artifacts and backups are retained.
 
 Frontend-only/PR negative cases use isolated workflow-policy tests, not extra live
@@ -120,3 +125,16 @@ Hosted-only public-smoke recovery is covered by offline failure tests; real Dock
 health failure/rollback was tested in isolation. No deliberate live outage,
 production DB fault, VM reboot or long-duration stability test was performed.
 Raw outputs are ignored under reports/runs/WORK-2026-11-10-009/.
+
+
+## Version-controlled changes
+
+Workflows: `.github/workflows/deploy-azure-api.yml` and `checks.yml`.
+The backend change is only `apps/research-explorer/backend/__init__.py` documentation.
+Operations: `ops/azure/README.md`; scripts `build-image.sh`, `update.sh`,
+`rollback.sh`, `verify.sh`, `activate-ci-image.py`, `rollback-ci-image.py`,
+`deliver-ci-image.py`, `image-identity.py`, `runtime-contract.py`,
+`ci-image-smoke.sh`, `configure-ci-azure.py`, `install-ci-vm.sh`,
+`test-rollback-isolated.sh`. Regression tests: `tests/test_azure_deployment.py`.
+Records: this receipt, `docs/decisions.md`, `docs/status.md`, work entry/index.
+The production Compose, Dockerfile, dependency lock and scientific data were not changed.
