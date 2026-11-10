@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-11 01:08 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-11 01:15 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md).
 Latest: [WORK-2026-11-11-001](work-log/2026-11-11-001-explorer-dashboard-redesign.md).
 
@@ -16,7 +16,7 @@ Latest: [WORK-2026-11-11-001](work-log/2026-11-11-001-explorer-dashboard-redesig
 - [x] Authorized API release/recovery and global bookmark acceptance.
 - [x] Scrolling dashboard, visible figures, accessible motion and zoom-aware labels.
 - [x] Local build, contracts, Chromium screenshots and regressions.
-- [ ] Redesign production deployment and live acceptance (in progress).
+- [x] Redesign production deployment and live acceptance.
 - [ ] Personal/course facts and final course submission.
 
 ## Current verification and release boundary
@@ -29,7 +29,9 @@ chart/graph engines deferred; chart runtime still537KB. No backend/data changes.
 [Redesign report](../reports/explorer-ui-redesign-verification-2026-11-11.md)
 records methodology, screenshots, exact checks and performance limitations.
 
-Existing API deployment, immutable artifacts and public Site remain unchanged.
+Frontend `7fd73d0` deployed on Pages; five production browser suites,18 additional
+UI assertions and28 API smoke checks pass. API/Neo4j IDs, start times and mounts,
+and graph-bound JSON snapshots are unchanged. Existing artifacts/Site are unchanged.
 [Earlier production receipt](../reports/explorer-production-verification-2026-11-10.md).
 
 ## Scientific evidence and artifacts
