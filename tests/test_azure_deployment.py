@@ -214,3 +214,36 @@ def test_unhealthy_proxy_blocks_activation_before_download_or_update(monkeypatch
     monkeypatch.setattr(module, 'run', inspect)
     with pytest.raises(AssertionError, match='caddy unhealthy'):
         module.stable_services()
+
+
+def test_idempotent_verification_refreshes_coordinated_artifact_receipt(monkeypatch, tmp_path):
+    import hashlib
+    import importlib.util
+    import json
+    from types import SimpleNamespace
+    spec = importlib.util.spec_from_file_location('activate_coordinated', ROOT/'ops/azure/scripts/activate-ci-image.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    sha, content_id = 'a'*40, 'sha256:'+'b'*64
+    artifacts = tmp_path/'new-artifacts'
+    artifacts.mkdir()
+    (artifacts/'manifest.json').write_text('{}')
+    state, approval = tmp_path/'state.json', tmp_path/'approval.json'
+    state.write_text(json.dumps({'sha': sha, 'sequence': 5, 'image_id': content_id, 'artifact_dir': '/historical/old-artifacts'}))
+    approval.write_text(json.dumps({'manifest_sha256': hashlib.sha256(b'{}').hexdigest()}))
+    monkeypatch.setattr(module, 'OPS', tmp_path)
+    monkeypatch.setattr(module, 'STATE', state)
+    monkeypatch.setattr(module, 'APPROVAL', approval)
+    monkeypatch.setattr(module, 'env_values', lambda: {'API_IMAGE': 'scientific-network-api:sha-'+sha, 'ARTIFACT_DIR': str(artifacts)})
+    monkeypatch.setattr(module, 'stable_services', lambda: {'caddy': 'unchanged', 'neo4j': 'unchanged'})
+    monkeypatch.setattr(module, 'portable_id', lambda *args: content_id)
+    monkeypatch.setattr(module, 'run', lambda *args: json.dumps([{'Image': 'store-image', 'Id': 'store-image'}]))
+    monkeypatch.setattr(module.os, 'statvfs', lambda *args: SimpleNamespace(f_bavail=20*1024**3, f_frsize=1))
+    calls = []
+    monkeypatch.setattr(module.subprocess, 'run', lambda *a, **kw: calls.append(a[0]))
+    module.activate(SimpleNamespace(sha=sha, checksum='c'*64, image_id=content_id, sequence=6,
+                                    url='https://fixture.blob.core.windows.net/private-artifact'))
+    actual = json.loads(state.read_text())
+    assert actual['operation'] == 'noop' and actual['artifact_dir'] == str(artifacts)
+    assert actual['preserved_services'] == {'caddy': 'unchanged', 'neo4j': 'unchanged'}
+    assert calls == [[str(tmp_path/'scripts/verify.sh')]]  # no download or activation
