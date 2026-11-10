@@ -1,4 +1,4 @@
-import type { AnalyticsFilters, ExplorerFilters } from "../stores/useExplorerStore";
+import type { AnalyticsFilters, ExplorerFilters, TableWorkspaceState } from "../stores/useExplorerStore";
 import type {
   EdgeFilterMode,
   GraphViewScope,
@@ -13,6 +13,7 @@ export interface ViewSpec {
   workspaceTab: WorkspaceTab;
   analyticsSection?: string;
   analyticsFilters?: AnalyticsFilters;
+  tableWorkspace?: TableWorkspaceState;
   filters: ExplorerFilters;
   layoutMode: LayoutMode;
   edgeFilterMode: EdgeFilterMode;
@@ -143,6 +144,23 @@ export function validateSpec(
       ["heterogeneous", "researchers", "organizations", "citations"] as const,
       "heterogeneous",
     ),
+    tableWorkspace: {
+      mode: choice(v.tableWorkspace?.mode, ["nodes", "edges"] as const, "nodes"),
+      nodeSearch: typeof v.tableWorkspace?.nodeSearch === "string" ? v.tableWorkspace.nodeSearch.slice(0,200) : "",
+      nodeLabel: choice(v.tableWorkspace?.nodeLabel, ["", "Researcher", "Paper", "Organization", "Topic", "Venue"] as const, "Researcher"),
+      nodeSector: choice(v.tableWorkspace?.nodeSector, ["", "academia", "industry", "government", "nonprofit", "unknown"] as const, ""),
+      nodeVenue: choice(v.tableWorkspace?.nodeVenue, ["", "venue:aaai", "venue:ijcai"] as const, ""),
+      nodeSortBy: choice(v.tableWorkspace?.nodeSortBy, ["score", "name", "year", "sector", "id"] as const, "score"),
+      nodeSortOrder: choice(v.tableWorkspace?.nodeSortOrder, ["asc", "desc"] as const, "desc"),
+      nodePage: Math.round(number(v.tableWorkspace?.nodePage,1,5000,1)),
+      edgeSearch: typeof v.tableWorkspace?.edgeSearch === "string" ? v.tableWorkspace.edgeSearch.slice(0,200) : "",
+      edgeRelation: choice(v.tableWorkspace?.edgeRelation, ["", ...defaults.relations] as const, "COAUTHORED_WITH"),
+      edgeEvidenceKind: choice(v.tableWorkspace?.edgeEvidenceKind, ["", "observed", "inferred_topic", "curated_taxonomy", "derived"] as const, ""),
+      edgeMinSupport: Math.round(number(v.tableWorkspace?.edgeMinSupport,1,100,1)),
+      edgeSortBy: choice(v.tableWorkspace?.edgeSortBy, ["support_count", "fractional_weight", "relation", "edge_id"] as const, "support_count"),
+      edgeSortOrder: choice(v.tableWorkspace?.edgeSortOrder, ["asc", "desc"] as const, "desc"),
+      edgePage: Math.round(number(v.tableWorkspace?.edgePage,1,5000,1)),
+    },
     analyticsFilters: {
       venue: choice(v.analyticsFilters?.venue, ["venue:aaai", "venue:ijcai"] as const, "venue:aaai"),
       topic: typeof v.analyticsFilters?.topic === "string" ? v.analyticsFilters.topic.slice(0,80) : "",
@@ -180,6 +198,7 @@ export function makeViewSpec(state: {
   workspaceTab: WorkspaceTab;
   analyticsSection?: string;
   analyticsFilters?: AnalyticsFilters;
+  tableWorkspace?: TableWorkspaceState;
   filters: ExplorerFilters;
   layoutMode: LayoutMode;
   edgeFilterMode: EdgeFilterMode;
@@ -204,6 +223,7 @@ export function makeViewSpec(state: {
     workspaceTab: state.workspaceTab,
     analyticsSection: state.analyticsSection,
     analyticsFilters: state.analyticsFilters,
+    tableWorkspace: state.tableWorkspace,
     filters: state.filters,
     layoutMode: state.layoutMode,
     edgeFilterMode: state.edgeFilterMode,

@@ -411,6 +411,7 @@ for (const tab of ["graph", "table", "analytics"] as const) {
       s.getState().updateFilters({ minSupport: 2, limit: 60 });
       s.getState().setLayoutMode("circular");
       s.setState({ analyticsSection: "topics", analyticsFilters: { venue: "venue:ijcai", topic: "", yearMin: 2023, yearMax: 2023, family: "", community: "" } });
+      s.setState({ tableWorkspace: { ...s.getState().tableWorkspace, nodeLabel: "Paper", nodeSearch: "Informer", nodeSortBy: "name", nodeSortOrder: "asc" } });
       s.getState().setWorkspaceTab(tab);
       s.getState().saveCurrentView(`Restore ${tab}`);
     }, tab);
@@ -424,7 +425,11 @@ for (const tab of ["graph", "table", "analytics"] as const) {
       const s = (window as any).__explorerStore.getState();
       return { tab: s.workspaceTab, section: s.analyticsSection, layout: s.layoutMode, projection: s.viewMode, minSupport: s.filters.minSupport, scope: s.graphViewScope.kind };
     })).toEqual({ tab, section: "topics", layout: "circular", projection: "researchers", minSupport: 2, scope: "overview" });
-    if (tab === "table") await expect(page.getByTestId("table-view")).toBeVisible();
+    if (tab === "table") {
+      await expect(page.getByTestId("table-view")).toBeVisible();
+      await expect(page.getByTestId("table-node-search")).toHaveValue("Informer");
+      await expect(page.getByTestId("table-node-label-select")).toHaveValue("Paper");
+    }
     if (tab === "graph") await expect(page.getByTestId("sigma-canvas-container")).toBeVisible();
     if (tab === "analytics") {
       await expect(page.getByRole("navigation", { name: "Analytical sections" }).getByRole("button", { name: /topic/i })).toHaveAttribute("aria-pressed", "true");

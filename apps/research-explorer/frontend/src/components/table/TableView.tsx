@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowDown,
@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { explorerApi } from "../../lib/api";
 import { LABEL_COLORS, PREDICATE_R_CODE } from "../../lib/colors";
-import { useExplorerStore } from "../../stores/useExplorerStore";
+import { useExplorerStore, type TableWorkspaceState } from "../../stores/useExplorerStore";
 import { EvidenceKind, NodeLabel, RelationType } from "../../types/explorer";
 
 interface TableViewProps {
@@ -44,6 +44,14 @@ const EVIDENCE_PILL: Record<EvidenceKind, { label: string; className: string }> 
   derived: { label: "Derived", className: "ledger-pill" },
 };
 
+function useTableField<K extends keyof TableWorkspaceState>(key: K): [TableWorkspaceState[K], React.Dispatch<React.SetStateAction<TableWorkspaceState[K]>>] {
+  const value = useExplorerStore(s => s.tableWorkspace[key]);
+  const setValue: React.Dispatch<React.SetStateAction<TableWorkspaceState[K]>> = next => {
+    useExplorerStore.setState(s => ({ tableWorkspace: { ...s.tableWorkspace, [key]: typeof next === "function" ? next(s.tableWorkspace[key]) : next } }));
+  };
+  return [value, setValue];
+}
+
 export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
   const {
     selectedNodeId,
@@ -52,25 +60,25 @@ export const TableView: React.FC<TableViewProps> = ({ onFocusNodeInGraph }) => {
     selectEdge,
   } = useExplorerStore();
 
-  const [mode, setMode] = useState<"nodes" | "edges">("nodes");
+  const [mode, setMode] = useTableField("mode");
 
   // Node table state
-  const [nodeSearch, setNodeSearch] = useState("");
-  const [nodeLabel, setNodeLabel] = useState<string>("Researcher");
-  const [nodeSector, setNodeSector] = useState<string>("");
-  const [nodeVenue, setNodeVenue] = useState<string>("");
-  const [nodeSortBy, setNodeSortBy] = useState<string>("score");
-  const [nodeSortOrder, setNodeSortOrder] = useState<"asc" | "desc">("desc");
-  const [nodePage, setNodePage] = useState(1);
+  const [nodeSearch, setNodeSearch] = useTableField("nodeSearch");
+  const [nodeLabel, setNodeLabel] = useTableField("nodeLabel");
+  const [nodeSector, setNodeSector] = useTableField("nodeSector");
+  const [nodeVenue, setNodeVenue] = useTableField("nodeVenue");
+  const [nodeSortBy, setNodeSortBy] = useTableField("nodeSortBy");
+  const [nodeSortOrder, setNodeSortOrder] = useTableField("nodeSortOrder");
+  const [nodePage, setNodePage] = useTableField("nodePage");
 
   // Edge table state
-  const [edgeSearch, setEdgeSearch] = useState("");
-  const [edgeRelation, setEdgeRelation] = useState<string>("COAUTHORED_WITH");
-  const [edgeEvidenceKind, setEdgeEvidenceKind] = useState<string>("");
-  const [edgeMinSupport, setEdgeMinSupport] = useState<number>(1);
-  const [edgeSortBy, setEdgeSortBy] = useState<string>("support_count");
-  const [edgeSortOrder, setEdgeSortOrder] = useState<"asc" | "desc">("desc");
-  const [edgePage, setEdgePage] = useState(1);
+  const [edgeSearch, setEdgeSearch] = useTableField("edgeSearch");
+  const [edgeRelation, setEdgeRelation] = useTableField("edgeRelation");
+  const [edgeEvidenceKind, setEdgeEvidenceKind] = useTableField("edgeEvidenceKind");
+  const [edgeMinSupport, setEdgeMinSupport] = useTableField("edgeMinSupport");
+  const [edgeSortBy, setEdgeSortBy] = useTableField("edgeSortBy");
+  const [edgeSortOrder, setEdgeSortOrder] = useTableField("edgeSortOrder");
+  const [edgePage, setEdgePage] = useTableField("edgePage");
 
   const pageSize = 25;
 

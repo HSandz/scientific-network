@@ -71,3 +71,11 @@ remain limits, not a WCAG/performance certification.
 Coordinated artifact changes with an unchanged image could leave the idempotent
 CI receipt's artifact directory stale. The no-op branch now refreshes the verified
 active artifact path/service identities; a fault-isolated regression covers it.
+
+## Table restoration checkpoint — 2026-11-10 22:44 +07:00
+
+Final inspection found that Table's own query/sort/pagination controls were local
+component state, outside bookmarks. Persisted and validated that workspace state
+alongside analytical controls; the save/reload regression now restores a real
+Paper/Informer table query as well as the selected tab. No backend/image/runtime
+artifact code changed for this follow-up. Browser/build verification is rerunning.
