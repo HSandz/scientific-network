@@ -169,7 +169,7 @@ export function validateSpec(
       family: typeof v.analyticsFilters?.family === "string" ? v.analyticsFilters.family.slice(0,80) : "",
       community: typeof v.analyticsFilters?.community === "string" ? v.analyticsFilters.community.slice(0,80) : "",
     },
-    analyticsSection: choice(v.analyticsSection, ["robustness", "topics", "communities", "sectors", "trajectories"] as const, "robustness"),
+    analyticsSection: choice(v.analyticsSection, ["overview", "quality", "robustness", "topics", "communities", "sectors", "trajectories"] as const, "overview"),
     workspaceTab: choice(
       v.workspaceTab,
       ["graph", "table", "analytics"] as const,

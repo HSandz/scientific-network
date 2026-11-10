@@ -1,3 +1,4 @@
+import { labelBudget, zoomBand, type ZoomBand } from "../../lib/labelPolicy";
 import { parallelGroups, lanePath } from "../../lib/edgeLanes";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Graph from "graphology";
@@ -52,20 +53,41 @@ interface SigmaGraphCanvasProps {
   isExpanding: boolean;
 }
 
-function createCustomSigmaRenderers(isDark: boolean) {
+function createCustomSigmaRenderers(isDark: boolean, getSigma: () => Sigma | null = () => null) {
   const tokens = getThemeTokens(isDark);
   const drawnBoxes: Array<{ x1: number; y1: number; x2: number; y2: number }> =
     [];
-  let resetScheduled = false;
-
-  const ensureFrameReset = () => {
-    if (!resetScheduled) {
-      resetScheduled = true;
-      queueMicrotask(() => {
-        drawnBoxes.length = 0;
-        resetScheduled = false;
-      });
-    }
+  let band: ZoomBand = "overview";
+  const eligible = new Set<string>();
+  const obstacles: Array<{ x: number; y: number; radius: number; id: string }> = [];
+  const prepare = () => {
+    drawnBoxes.length = 0;
+    eligible.clear();
+    obstacles.length = 0;
+    const sigma = getSigma();
+    if (!sigma) return;
+    const { width, height } = sigma.getDimensions();
+    band = zoomBand(sigma.getCamera().ratio, band);
+    const budget = labelBudget(band, width, height);
+    const state = useExplorerStore.getState();
+    const focus = state.hoveredNodeId || state.selectedNodeId;
+    const graph = sigma.getGraph();
+    const candidates: Array<{ id: string; priority: number }> = [];
+    graph.forEachNode((id) => {
+      const d = sigma.getNodeDisplayData(id);
+      if (!d || d.hidden) return;
+      const pos = sigma.framedGraphToViewport(d);
+      if (pos.x < 0 || pos.y < 0 || pos.x > width || pos.y > height) return;
+      obstacles.push({ ...pos, radius: sigma.scaleSize(d.size) + 3, id });
+      const adjacent = focus && graph.hasNode(focus) && graph.areNeighbors(id, focus);
+      candidates.push({ id, priority: (adjacent ? 10000 : 0) + graph.degree(id) });
+    });
+    candidates.sort((a,b) => b.priority - a.priority || a.id.localeCompare(b.id));
+    candidates.slice(0, budget).forEach(n => eligible.add(n.id));
+    const container = sigma.getContainer();
+    container.dataset.labelBand = band;
+    container.dataset.labelBudget = String(budget);
+    container.dataset.labelBoxes = "[]";
   };
 
   const overlapsExisting = (rect: {
@@ -90,6 +112,7 @@ function createCustomSigmaRenderers(isDark: boolean) {
   const drawLabel = (
     context: CanvasRenderingContext2D,
     data: {
+      key?: string;
       x: number;
       y: number;
       size: number;
@@ -100,8 +123,7 @@ function createCustomSigmaRenderers(isDark: boolean) {
     },
     settings: { labelSize: number; labelFont: string; labelWeight: string },
   ) => {
-    ensureFrameReset();
-    if (!data.label || data.highlighted) return;
+    if (!data.label || data.highlighted || !data.key || !eligible.has(data.key)) return;
     const text = truncateCanvasLabel(String(data.label), 32);
     const fontSize = settings.labelSize || 12;
     context.save();
@@ -141,33 +163,24 @@ function createCustomSigmaRenderers(isDark: boolean) {
         padded.x2 <= canvasW - 4 &&
         padded.y2 <= canvasH - 4
       ) {
-        if (!overlapsExisting(padded)) {
+        if (!overlapsExisting(padded) && !obstacles.some(n => n.id !== data.key &&
+          n.x + n.radius > padded.x1 && n.x - n.radius < padded.x2 &&
+          n.y + n.radius > padded.y1 && n.y - n.radius < padded.y2)) {
           chosenCandidate = { ...c, rect: padded };
           break;
         }
       }
     }
 
-    const isForced = Boolean(data.forceLabel);
+    // Forced dispatch never bypasses collision rejection. Identity remains in the inspector/hover overlay.
     if (!chosenCandidate) {
-      if (!isForced) {
-        context.restore();
-        return;
-      }
-      // If forced (e.g. focused neighborhood endpoint), pick first candidate
-      const fallback = candidates[0];
-      chosenCandidate = {
-        ...fallback,
-        rect: {
-          x1: fallback.x - 3,
-          y1: fallback.y - 2,
-          x2: fallback.x + boxW + 3,
-          y2: fallback.y + boxH + 2,
-        },
-      };
+      context.restore();
+      return;
     }
 
     drawnBoxes.push(chosenCandidate.rect);
+    const container = getSigma()?.getContainer();
+    if (container) container.dataset.labelBoxes = JSON.stringify(drawnBoxes);
     context.fillStyle = tokens.labelPillBg;
     context.beginPath();
     if (context.roundRect) {
@@ -198,7 +211,7 @@ function createCustomSigmaRenderers(isDark: boolean) {
     },
     settings: { labelSize: number; labelFont: string; labelWeight: string },
   ) => {
-    ensureFrameReset();
+
     const fontSize = settings.labelSize || 12;
     const font = `${settings.labelWeight || "600"} ${fontSize}px ${settings.labelFont}`;
     context.save();
@@ -271,7 +284,7 @@ function createCustomSigmaRenderers(isDark: boolean) {
     context.restore();
   };
 
-  return { drawLabel, drawHover };
+  return { drawLabel, drawHover, prepare };
 }
 
 export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
@@ -488,7 +501,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     }
 
     try {
-      const customRenderers = createCustomSigmaRenderers(darkMode);
+      const customRenderers = createCustomSigmaRenderers(darkMode, () => sigmaRef.current);
       const sigma = new Sigma(graph, container, {
         allowInvalidContainer: true,
         enableEdgeEvents: true,
@@ -497,7 +510,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         labelSize: 12,
         labelWeight: "500",
         labelColor: { color: tokens.labelInk },
-        labelDensity: 0.35,
+        labelDensity: 0,
         labelGridCellSize: 140,
         labelRenderedSizeThreshold: 5.5,
         defaultEdgeType: "line",
@@ -699,7 +712,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     if (!sigma) return;
 
     const tokens = getThemeTokens(darkMode);
-    const customRenderers = createCustomSigmaRenderers(darkMode);
+    const customRenderers = createCustomSigmaRenderers(darkMode, () => sigmaRef.current);
     sigma.setSetting("labelColor", { color: tokens.labelInk });
     sigma.setSetting("defaultDrawNodeLabel", customRenderers.drawLabel);
     sigma.setSetting("defaultDrawNodeHover", customRenderers.drawHover);
@@ -707,25 +720,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     const selectedEdgeObj = selectedEdgeId
       ? edgeById.get(selectedEdgeId)
       : null;
-    const visibleNeighborCount = Math.max(0, focusNeighbors.size - 1);
-
-    const topNeighborIds = new Set<string>();
-    if (visibleNeighborCount > 12 && activeFocusNodeId) {
-      Array.from(focusNeighbors)
-        .filter((id) => id !== activeFocusNodeId)
-        .map((id) => nodeById.get(id))
-        .filter(Boolean)
-        .sort((a, b) => (b!.score || 0) - (a!.score || 0))
-        .slice(0, 6)
-        .forEach((n) => topNeighborIds.add(n!.id));
-    }
-
-    const restLabels = new Set<string>();
-    for (const label of new Set(activeNodes.map(n => n.label))) {
-      activeNodes.filter(n => n.label === label)
-        .sort((a,b) => b.displayed_degree - a.displayed_degree || a.id.localeCompare(b.id))
-        .slice(0,2).forEach(n => restLabels.add(n.id));
-    }
+    sigma.on("beforeRender", customRenderers.prepare);
     sigma.setSetting("nodeReducer", (node, data) => {
       const res = { ...data };
 
@@ -733,7 +728,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         const isEndpoint =
           node === selectedEdgeObj.source || node === selectedEdgeObj.target;
         res.highlighted = isEndpoint;
-        res.forceLabel = isEndpoint;
+        res.forceLabel = false;
         res.zIndex = isEndpoint ? 20 : 1;
         if (!isEndpoint) {
           res.color = tokens.dimmedNode;
@@ -753,23 +748,13 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           res.label = "";
           res.forceLabel = false;
         } else {
-          // Moderate neighborhood (<= 12): force labels on center AND all visible neighbors.
-          // This allows all 7 of Warut Suksompong's neighbors to be readable together.
-          if (isCenter) {
-            res.forceLabel = true;
-          } else if (visibleNeighborCount <= 12) {
-            res.forceLabel = true;
-          } else {
-            // Dense neighborhood (> 12): force labels on center and top 6 prominent neighbors by score.
-            // Remaining neighbors remain visible as nodes, inspectable in the right panel.
-            res.forceLabel = topNeighborIds.has(node);
-          }
+          res.forceLabel = !isCenter;
         }
         return res;
       }
 
-      // A bounded label budget within each entity type keeps the fixed-size overview readable.
-      res.forceLabel = restLabels.has(node);
+      // Dispatch to our screen-space policy; only its bounded eligible set can paint.
+      res.forceLabel = true;
       return res;
     });
 
@@ -800,7 +785,9 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     });
 
     sigma.refresh();
+    return () => { sigma.off("beforeRender", customRenderers.prepare); };
   }, [
+    activeNodes,
     activeFocusNodeId,
     selectedEdgeId,
     focusNeighbors,
@@ -1160,7 +1147,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           >
             <span>
               Dense neighborhood: <strong>{focusNeighbors.size - 1}</strong>{" "}
-              visible neighbors. Prominent labels shown; inspect complete list
+              visible neighbors. Labels appear as you zoom; inspect complete list
               in right panel.
             </span>
           </div>
@@ -1351,7 +1338,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
             <div className="absolute bottom-full left-0 mb-2 w-72 ledger-panel p-3 z-40 text-xs space-y-2">
               <p>Observed facts: graphite; inferred topics: ochre; curated taxonomy: grey; derived aggregations: blue. Arrows follow source → target.</p>
               <p>Parallel lanes: solid observed, dashed inferred, dotted taxonomy, long-dash derived. Each lane is separately selectable. Straight edges use evidence color.</p>
-              <p>Width compares frozen fractional strength only within R7 or within R8. Other predicates have fixed width. Mixed-label nodes have fixed size. Overview labels prioritize two high displayed-degree entities per type, with collision suppression. Coordinates do not measure similarity or geography.</p>
+              <p>Width compares frozen fractional strength only within R7 or within R8. Other predicates have fixed width. Mixed-label nodes have fixed size. Routine labels stay hidden at fit view, then appear within a zoom- and viewport-dependent budget with collision suppression. Coordinates do not measure similarity or geography.</p>
             </div>
           </details>
           {/* Compact mobile Key disclosure */}

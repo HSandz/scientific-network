@@ -76,3 +76,24 @@ export function bridgeRanks(
     strict: strict.findIndex((x) => x.node_id === id) + 1 || null,
   }));
 }
+
+/** First/last selected endpoints must both exist. No interpolation or implicit zero. */
+export function topicChanges(rows: TopicRow[], firstYear: number, lastYear: number) {
+  return [...new Set(rows.map(r => r.topic_id))].flatMap(id => {
+    const first = rows.find(r => r.topic_id === id && r.year === firstYear);
+    const last = rows.find(r => r.topic_id === id && r.year === lastYear);
+    return first && last ? [{ first, last, delta: 100 * (last.share_of_fractional_topic_mass - first.share_of_fractional_topic_mass) }] : [];
+  }).sort((a,b) => b.delta - a.delta || a.first.topic_id.localeCompare(b.first.topic_id));
+}
+export interface CitationCohort {
+  venue_id: string; year: number; paper_denominator: number; zero_in_degree_count: number;
+  distribution: { in_degree: number; paper_count: number }[];
+}
+export function cohortCdf(cohort: CitationCohort): [number, number][] {
+  if (cohort.paper_denominator <= 0) return [];
+  let cumulative = 0;
+  return [...cohort.distribution].sort((a,b) => a.in_degree-b.in_degree).map(row => {
+    cumulative += row.paper_count;
+    return [row.in_degree, 100 * cumulative / cohort.paper_denominator];
+  });
+}

@@ -1033,3 +1033,18 @@ predicate/evidence, sort and pagination state belongs in the versioned saved vie
 with bounded validation and safe legacy defaults. Restoring a tab alone does not
 restore an exploration. Graph/Table/Analytics save/reload tests cover the actual
 workspace controls. No scientific artifact or runtime contract changes.
+
+## D040 amendment — Explorer presentation redesign (2026-11-11)
+
+User authorized a scrollable scientific dashboard, zoom-aware label readability,
+frontend delivery and production audit. This is a presentation decision, not a new
+release method, corpus boundary, graph threshold or evaluation. Existing API values,
+identities, evidence actions and quality caveats are preserved. Topic deltas require
+both selected endpoints; citation distributions retain venue/year denominators;
+out-of-shortlist ranks and unavailable years are never encoded as zero.
+
+ECharts engine and graph/dialog modules load separately. Offscreen chart instances
+are disposed with retained entrance history. Screen-space label rejection wins over
+routine names; selected/hovered identity has dedicated inspection. Existing v2
+bookmark IDs remain compatible; overview/quality extend the section enumeration.
+See WORK-2026-11-11-001 and the dated Explorer redesign verification report.

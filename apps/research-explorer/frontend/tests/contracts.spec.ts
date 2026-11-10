@@ -245,3 +245,25 @@ test("analytic transforms retain unknowns, numerical CCDF tail, missing ranks an
     rows[0],
   ]);
 });
+
+test("zoom policy uses inverse ratio, hysteresis and bounded viewport budgets", async () => {
+  const {zoomBand,labelBudget} = await import('../src/lib/labelPolicy');
+  expect(zoomBand(1,'overview')).toBe('overview');
+  expect(zoomBand(.65,'overview')).toBe('medium');
+  expect(zoomBand(.72,'medium')).toBe('medium');
+  expect(zoomBand(.8,'medium')).toBe('overview');
+  expect(zoomBand(.3,'medium')).toBe('close');
+  expect(zoomBand(.1,'close')).toBe('detail');
+  expect(labelBudget('overview',1440,900)).toBe(0);
+  expect(labelBudget('medium',390,500)).toBeLessThan(labelBudget('medium',1440,900));
+  expect(labelBudget('detail',10000,10000)).toBe(48);
+});
+
+test("temporal transforms require observed endpoints and keep citation cohort denominators", async () => {
+  const {topicChanges,cohortCdf} = await import('../src/lib/analytics');
+  const row = (year:number,share:number) => ({year,topic_id:'invented:topic',topic:'Invented topic',share_of_fractional_topic_mass:share}) as any;
+  expect(topicChanges([row(2022,.4),row(2025,.6)],2021,2025)).toEqual([]);
+  expect(topicChanges([row(2021,.4),row(2025,.3)],2021,2025)[0].delta).toBeCloseTo(-10);
+  expect(cohortCdf({venue_id:'invented',year:2021,paper_denominator:10,zero_in_degree_count:6,distribution:[{in_degree:2,paper_count:4},{in_degree:0,paper_count:6}]})).toEqual([[0,60],[2,100]]);
+  expect(cohortCdf({venue_id:'invented',year:2021,paper_denominator:0,zero_in_degree_count:0,distribution:[]})).toEqual([]);
+});

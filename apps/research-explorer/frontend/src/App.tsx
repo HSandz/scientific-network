@@ -13,14 +13,14 @@ const AnalyticsView = React.lazy(() =>
 );
 import { effectiveSlice } from "./lib/effectiveGraph";
 import { LeftSidebar } from "./components/filters/LeftSidebar";
-import { SigmaGraphCanvas } from "./components/graph/SigmaGraphCanvas";
+const SigmaGraphCanvas = React.lazy(() => import("./components/graph/SigmaGraphCanvas").then(m => ({ default: m.SigmaGraphCanvas })));
 import { RightInspector } from "./components/inspector/RightInspector";
 import { TopHeader } from "./components/layout/TopHeader";
-import { CaveatsModal } from "./components/modals/CaveatsModal";
-import { CompareModal } from "./components/modals/CompareModal";
-import { PathFinderModal } from "./components/modals/PathFinderModal";
-import { SearchCommandModal } from "./components/search/SearchCommandModal";
-import { TableView } from "./components/table/TableView";
+const CaveatsModal = React.lazy(() => import("./components/modals/CaveatsModal").then(m => ({ default: m.CaveatsModal })));
+const CompareModal = React.lazy(() => import("./components/modals/CompareModal").then(m => ({ default: m.CompareModal })));
+const PathFinderModal = React.lazy(() => import("./components/modals/PathFinderModal").then(m => ({ default: m.PathFinderModal })));
+const SearchCommandModal = React.lazy(() => import("./components/search/SearchCommandModal").then(m => ({ default: m.SearchCommandModal })));
+const TableView = React.lazy(() => import("./components/table/TableView").then(m => ({ default: m.TableView })));
 import { explorerApi } from "./lib/api";
 import { useExplorerStore } from "./stores/useExplorerStore";
 import { GraphEdge, GraphNode } from "./types/explorer";
@@ -57,6 +57,7 @@ export const App: React.FC = () => {
   } = useExplorerStore();
 
   const [isExpanding, setIsExpanding] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const workspaceShellRef = useRef<HTMLDivElement>(null);
   const prevViewportWidthRef = useRef<number>(
     typeof window !== "undefined" ? window.innerWidth : 1440,
@@ -71,6 +72,7 @@ export const App: React.FC = () => {
   // Hydrate initial state from URL parameters on mount
   useEffect(() => {
     hydrateFromUrl();
+    setHydrated(true);
   }, [hydrateFromUrl]);
 
   // Synchronize dark mode class on root html element
@@ -208,6 +210,7 @@ export const App: React.FC = () => {
 
   const viewQuery = useQuery({
     queryKey: ["view-subgraph", viewMode, viewQueryParams],
+    enabled: hydrated && workspaceTab === "graph",
     queryFn: ({ signal }) =>
       explorerApi.getViewSubgraph(viewMode, viewQueryParams, signal),
     staleTime: 60_000,
@@ -457,6 +460,8 @@ export const App: React.FC = () => {
     [setWorkspaceTab, selectNode, effectiveGraph.nodes, handleExpandNode],
   );
 
+  if (!hydrated) return <p role="status" className="p-5">Loading workspace…</p>;
+
   return (
     <div className="h-screen w-screen overflow-hidden flex flex-col bg-ground text-ink">
       <div
@@ -525,7 +530,7 @@ export const App: React.FC = () => {
               </div>
             )}
             {workspaceTab === "graph" && (
-              <SigmaGraphCanvas
+              <React.Suspense fallback={<p role="status" className="p-5">Loading graph renderer…</p>}><SigmaGraphCanvas
                 viewData={viewQuery.data}
                 nodes={effectiveGraph.nodes}
                 edges={effectiveGraph.edges}
@@ -535,11 +540,11 @@ export const App: React.FC = () => {
                 onRetry={() => { void viewQuery.refetch(); }}
                 onExpandNode={handleExpandNode}
                 isExpanding={isExpanding}
-              />
+              /></React.Suspense>
             )}
 
             {workspaceTab === "table" && (
-              <TableView onFocusNodeInGraph={handleFocusNodeInGraph} />
+              <React.Suspense fallback={<p role="status" className="p-5">Loading table…</p>}><TableView onFocusNodeInGraph={handleFocusNodeInGraph} /></React.Suspense>
             )}
 
             {workspaceTab === "analytics" && (
@@ -572,10 +577,12 @@ export const App: React.FC = () => {
       </div>
 
       {/* Modals */}
-      <SearchCommandModal onFocusNodeInGraph={handleFocusNodeInGraph} />
-      <PathFinderModal />
-      <CompareModal />
-      <CaveatsModal summary={summaryQuery.data} />
+      <React.Suspense fallback={<p role="status" className="fixed bottom-4 right-4 ledger-panel p-3 z-50">Loading dialog…</p>}>
+        {searchModalOpen && <SearchCommandModal onFocusNodeInGraph={handleFocusNodeInGraph} />}
+        {pathFinderOpen && <PathFinderModal />}
+        {compareModalOpen && <CompareModal />}
+        {caveatsModalOpen && <CaveatsModal summary={summaryQuery.data} />}
+      </React.Suspense>
     </div>
   );
 };

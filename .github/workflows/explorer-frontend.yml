@@ -1,0 +1,28 @@
+name: Explorer frontend checks
+on:
+  push:
+    paths:
+      - 'apps/research-explorer/frontend/**'
+      - '.github/workflows/explorer-frontend.yml'
+  pull_request:
+    paths:
+      - 'apps/research-explorer/frontend/**'
+      - '.github/workflows/explorer-frontend.yml'
+permissions:
+  contents: read
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/research-explorer/frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/research-explorer/frontend/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright test -c playwright.contracts.config.ts

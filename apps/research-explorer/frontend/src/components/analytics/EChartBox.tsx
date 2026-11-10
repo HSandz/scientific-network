@@ -1,71 +1,39 @@
-import React, { useEffect, useRef } from "react";
-import * as echarts from "echarts/core";
-import { BarChart, LineChart, HeatmapChart } from "echarts/charts";
-import {
-  GridComponent,
-  TooltipComponent,
-  VisualMapComponent,
-  LegendComponent,
-  AriaComponent,
-} from "echarts/components";
-import { CanvasRenderer } from "echarts/renderers";
-echarts.use([
-  BarChart,
-  LineChart,
-  HeatmapChart,
-  GridComponent,
-  TooltipComponent,
-  VisualMapComponent,
-  LegendComponent,
-  AriaComponent,
-  CanvasRenderer,
-]);
-export const EChartBox: React.FC<{
-  option: any;
-  label: string;
-  onClick?: (data: any) => void;
-  height?: number;
-}> = ({ option, label, onClick, height = 300 }) => {
-  const el = useRef<HTMLDivElement>(null),
-    chart = useRef<echarts.ECharts | null>(null),
-    click = useRef(onClick);
-  click.current = onClick;
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import type { EChartBoxProps } from "./EChartRuntime";
+export type { ChartClick } from "./EChartRuntime";
+const Runtime = React.lazy(() =>
+  import("./EChartRuntime").then((m) => ({ default: m.EChartRuntime })),
+);
+/** Load the chart engine only when a real chart approaches the viewport. */
+export const EChartBox: React.FC<EChartBoxProps> = (props) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
   useEffect(() => {
-    if (!el.current) return;
-    const instance = echarts.init(el.current);
-    chart.current = instance;
-    instance.on("click", (p: any) => click.current?.(p));
-    const ro = new ResizeObserver(() => instance.resize());
-    ro.observe(el.current);
-    return () => {
-      ro.disconnect();
-      instance.dispose();
-      chart.current = null;
-    };
-  }, []);
-  useEffect(() => {
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    chart.current?.setOption(
-      {
-        backgroundColor: "transparent",
-        textStyle: { fontFamily: "Geist, system-ui, sans-serif" },
-        aria: { enabled: true },
-        ...option,
-        animation: !reduced,
-        animationDuration: 250,
-        animationDurationUpdate: 150,
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setReady(true);
+          observer.disconnect();
+        }
       },
-      { notMerge: true, lazyUpdate: true },
+      { rootMargin: "300px" },
     );
-  }, [option]);
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <div
-      role="img"
-      aria-label={`${label}. Exact values and keyboard actions in the data table below.`}
-      ref={el}
-      style={{ width: "100%", height }}
-    />
+    <div ref={ref} style={{ minHeight: props.height || 300 }}>
+      {ready && (
+        <Suspense
+          fallback={
+            <p role="status" className="text-xs text-muted p-4">
+              Loading {props.label.toLowerCase()}…
+            </p>
+          }
+        >
+          <Runtime {...props} />
+        </Suspense>
+      )}
+    </div>
   );
 };

@@ -9,7 +9,7 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: process.env.EXPLORER_DEV_API_ORIGIN || "http://127.0.0.1:8000",
         changeOrigin: true,
       },
     },
@@ -20,7 +20,7 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: process.env.EXPLORER_DEV_API_ORIGIN || "http://127.0.0.1:8000",
         changeOrigin: true,
       },
     },

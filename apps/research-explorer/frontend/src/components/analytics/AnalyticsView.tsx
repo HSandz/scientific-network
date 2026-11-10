@@ -8,62 +8,22 @@ import {
   componentHistogram,
   sectorCells,
   topicCells,
+  topicChanges,
   TopicRow,
 } from "../../lib/analytics";
 import { useExplorerStore } from "../../stores/useExplorerStore";
 import { GraphSummaryResponse } from "../../types/explorer";
+import { BridgeMatrix, RankedBars, RobustnessCounts } from "./RankedFigures";
+import {
+  CitationFigures,
+  PersistenceFigures,
+  TopicChangeFigures,
+} from "./TemporalFigures";
 import { EChartBox } from "./EChartBox";
 
-const fmt = (n: unknown) =>
-  typeof n === "number" ? n.toLocaleString() : "Unavailable";
-const pct = (n: unknown, digits = 2) =>
-  typeof n === "number" ? `${(n * 100).toFixed(digits)}%` : "Unavailable";
-const Table: React.FC<{
-  headers: string[];
-  rows: React.ReactNode[][];
-  label: string;
-}> = ({ headers, rows, label }) => (
-  <details className="mt-3 text-xs">
-    <summary className="cursor-pointer py-2">
-      {label} · data & keyboard actions ({rows.length} rows)
-    </summary>
-    <div className="overflow-auto max-h-96">
-      <table className="w-full text-left">
-        <caption className="sr-only">{label}</caption>
-        <thead>
-          <tr>
-            {headers.map((h) => (
-              <th key={h} className="p-2 font-medium text-muted">
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r, i) => (
-            <tr key={i} className="border-t border-border">
-              {r.map((v, j) => (
-                <td key={j} className="p-2 tabular-nums">
-                  {v}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </details>
-);
-const Panel: React.FC<{ title: string; children: React.ReactNode }> = ({
-  title,
-  children,
-}) => (
-  <section className="ledger-panel p-4 sm:p-5 min-w-0">
-    <h2 className="text-sm font-semibold mb-2">{title}</h2>
-    {children}
-  </section>
-);
-
+import { fmt, pct, Table, Panel } from "./DashboardPrimitives";
+import { QualityFigures } from "./QualityFigures";
+import { DashboardSection, DashboardNav } from "./DashboardNavigation";
 export const AnalyticsView: React.FC<{
   summary?: GraphSummaryResponse;
   onFocusNodeInGraph: (id: string, name?: string) => void;
@@ -78,9 +38,14 @@ export const AnalyticsView: React.FC<{
     setCompareModalOpen,
     selectNode,
   } = useExplorerStore();
-  const { venue, topic, yearMin, yearMax, family, community } = useExplorerStore(s => s.analyticsFilters);
-  const updateAnalytic = (partial: Partial<import("../../stores/useExplorerStore").AnalyticsFilters>) =>
-    useExplorerStore.setState(s => ({ analyticsFilters: { ...s.analyticsFilters, ...partial } }));
+  const { venue, topic, yearMin, yearMax, family, community } =
+    useExplorerStore((s) => s.analyticsFilters);
+  const updateAnalytic = (
+    partial: Partial<import("../../stores/useExplorerStore").AnalyticsFilters>,
+  ) =>
+    useExplorerStore.setState((s) => ({
+      analyticsFilters: { ...s.analyticsFilters, ...partial },
+    }));
   const setVenue = (venue: string) => updateAnalytic({ venue });
   const setTopic = (topic: string) => updateAnalytic({ topic });
   const setYearMin = (yearMin: number) => updateAnalytic({ yearMin });
@@ -97,14 +62,19 @@ export const AnalyticsView: React.FC<{
   const chart = useMemo(
     () => ({
       tooltip: { trigger: "item" },
-      grid: { top: 35, left: 58, right: 20, bottom: 65 },
+      grid: { top: 45, left: 16, right: 24, bottom: 45, containLabel: true },
       textStyle: { color: tokens.chartAxis },
       xAxis: {
         type: "category",
+        nameLocation: "middle",
+        nameGap: 30,
         axisLabel: { color: tokens.chartAxis, fontSize: 12 },
       },
       yAxis: {
         type: "value",
+        nameLocation: "end",
+        nameGap: 18,
+        nameTextStyle: { align: "left", padding: [0, 0, 0, 12] },
         axisLabel: { color: tokens.chartAxis },
         splitLine: { lineStyle: { color: tokens.chartGrid } },
       },
@@ -170,7 +140,10 @@ export const AnalyticsView: React.FC<{
         </button>
       </div>
     );
-  const q = summary?.quality || data.quality;
+  const q =
+    (summary?.graph_version === data.graph_version
+      ? summary?.quality
+      : undefined) || data.quality;
   const base = data.projections.researcher_collaboration,
     strict = data.robustness?.strict_projections?.researcher_collaboration;
   const sensitivity = data.robustness?.per_projection?.researcher_collaboration;
@@ -192,117 +165,137 @@ export const AnalyticsView: React.FC<{
   const cited = data.cited_papers?.top_by_in_degree || [];
   const pairs = data.academia_industry_pairs || [];
   const derived = data.explorer_derived;
-  const change = [...new Set(cells.map((r) => r.topic_id))].map((id) => {
-    const rows = cells
-      .filter((r) => r.topic_id === id)
-      .sort((a, b) => a.year - b.year);
-    const first = rows[0],
-      last = rows[rows.length - 1];
-    return {
-      first,
-      last,
-      delta:
-        100 *
-        (last.share_of_fractional_topic_mass -
-          first.share_of_fractional_topic_mass),
-    };
-  });
+  const change = topicChanges(cells, yearMin, yearMax);
   return (
     <div
       data-testid="analytics-view"
-      className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4 text-ink"
+      className="analytics-dashboard flex-1 overflow-y-auto text-ink"
     >
-      <div className="flex flex-wrap justify-between gap-2 items-center">
-        <h1 className="text-lg font-semibold">Explore findings</h1>
-        <span className="text-xs text-muted">
-          {data.graph_version} · {data.analysis_method_version}
-        </span>
-      </div>
-      <nav aria-label="Analytical sections" className="flex flex-wrap gap-1">
-        {[
-          ["robustness", "Evidence sensitivity"],
-          ["topics", "Topic evolution"],
-          ["communities", "Components & communities"],
-          ["sectors", "Academia–industry"],
-          ["trajectories", "Citations & annual metrics"],
-        ].map(([id, label]) => (
-          <button
-            key={id}
-            aria-pressed={section === id}
-            className={`ledger-btn px-3 py-2 text-xs ${section === id ? "bg-raised" : ""}`}
-            onClick={() => useExplorerStore.setState({ analyticsSection: id })}
-          >
-            {label}
-          </button>
-        ))}
-      </nav>
-      <section className="ledger-kpis">
-        {[
-          ["Domain nodes", summary?.total_nodes],
-          ["Accepted relationships", summary?.total_edges],
-          ["Core factual edges (R1–R4)", summary?.unique_core_factual_edges],
-          ["Resolved researchers", summary?.resolved_core_researchers],
-        ].map(([label, n]) => (
-          <div key={String(label)} className="ledger-kpi">
-            <div className="text-xs text-muted">{label}</div>
-            <div className="text-xl tabular-nums">{fmt(n)}</div>
-          </div>
-        ))}
-      </section>
-      <section
-        data-testid="quality-audit-panel"
-        aria-label="Scientific quality and coverage audit"
-        className="ledger-panel p-3 text-xs space-y-2"
-      >
-        <div className="grid sm:grid-cols-3 gap-3">
-          <div data-testid="quality-card-edge-precision">
-            <strong>
-              AI-assessed edge precision: {pct(q?.edge_precision)}
-            </strong>
-            <p>
-              {fmt(q?.edge_precision_correct)} / {fmt(q?.edge_precision_total)}{" "}
-              correct · Wilson 95% CI {pct(q?.edge_precision_wilson_lower)}–
-              {pct(q?.edge_precision_wilson_upper)} ·{" "}
-              {q?.edge_precision_status || "Unavailable"}
-            </p>
-          </div>
-          <div data-testid="quality-card-affiliation">
-            <strong>
-              Affiliation coverage: {pct(q?.affiliation_coverage)}
-            </strong>
-            <p>
-              {fmt(q?.affiliation_positions_resolved)} /{" "}
-              {fmt(q?.affiliation_positions_eligible)} matched-work authorship
-              positions · Target {pct(q?.affiliation_target)} ·{" "}
-              {q?.affiliation_status || "Unavailable"}
-            </p>
-          </div>
-          <div data-testid="quality-card-topic">
-            <strong>Topic coverage {pct(q?.topic_coverage)} ≠ accuracy</strong>
-            <p>
-              Precision {pct(q?.topic_precision)} (
-              {fmt(q?.topic_precision_true_positive)} /{" "}
-              {fmt(q?.topic_precision_predicted_labels)} weighted labels) ·
-              Historical micro-F1{" "}
-              {q?.topic_embedding_micro_f1?.toFixed(4) ?? "Unavailable"} vs{" "}
-              {q?.topic_phrase_baseline_f1?.toFixed(4) ?? "Unavailable"} phrase
-              baseline
-            </p>
-            <p>
-              {fmt(q?.topic_papers_labeled)} / {fmt(q?.topic_papers_eligible)}{" "}
-              labeled papers
-            </p>
-          </div>
+      <header className="analytics-heading">
+        <div>
+          <p className="text-xs text-muted mb-1">
+            Analytics · AAAI + IJCAI · 2021–2025
+          </p>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Explore the AI Research Network
+          </h1>
+          <p className="text-sm text-muted mt-2">
+            Evidence, collaboration and inferred research trends in one frozen
+            release.
+          </p>
         </div>
-        <p className="text-muted">
-          No independent human validation; reviewer independence and verified
-          course accuracy not established. Wilson intervals exclude evaluator
-          error. Inferred topics are provisional. Unknown affiliations/sectors
-          do not imply absent collaboration.
+        <details className="text-xs text-muted">
+          <summary className="cursor-pointer py-2">
+            Release & methodology
+          </summary>
+          <p className="mt-2 break-all">
+            {data.graph_version} · {data.analysis_method_version}
+          </p>
+          <p className="mt-2">
+            All figures describe the full frozen projection unless a chart names
+            a narrower denominator. Graph drill-downs show bounded
+            illustrations.
+          </p>
+        </details>
+      </header>
+      <DashboardNav section={section} />
+      <DashboardSection
+        id="overview"
+        title="Research Network Overview"
+        description="Accepted entities and relationships across the cumulative five-year corpus."
+      >
+        <section className="ledger-kpis">
+          {[
+            ["Domain nodes", summary?.total_nodes],
+            ["Accepted relationships", summary?.total_edges],
+            ["Core papers", summary?.core_papers],
+            ["Resolved researchers", summary?.resolved_core_researchers],
+          ].map(([label, n]) => (
+            <div key={String(label)} className="ledger-kpi">
+              <div className="text-xs text-muted">{label}</div>
+              <div className="text-xl tabular-nums">{fmt(n)}</div>
+            </div>
+          ))}
+        </section>
+        <p className="text-sm text-muted mt-3">
+          {fmt(summary?.unique_core_factual_edges)} factual R1–R4 edges;
+          inferred topics, taxonomy and derived relationships are counted
+          separately.
         </p>
-      </section>
-      {section === "robustness" && (
-        <>
+      </DashboardSection>
+      <DashboardSection
+        id="quality"
+        title="Scientific Quality & Coverage"
+        description="Coverage, AI assessment and historical topic agreement answer different questions."
+      >
+        <QualityFigures quality={q} />
+        <section
+          data-testid="quality-audit-panel"
+          aria-label="Scientific quality and coverage audit"
+          className="ledger-panel p-3 text-xs space-y-2"
+        >
+          <details>
+            <summary className="cursor-pointer py-2">
+              Exact denominators & assessment methodology
+            </summary>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div data-testid="quality-card-edge-precision">
+                <strong>
+                  AI-assessed edge precision: {pct(q?.edge_precision)}
+                </strong>
+                <p>
+                  {fmt(q?.edge_precision_correct)} /{" "}
+                  {fmt(q?.edge_precision_total)} correct · Wilson 95% CI{" "}
+                  {pct(q?.edge_precision_wilson_lower)}–
+                  {pct(q?.edge_precision_wilson_upper)} ·{" "}
+                  {q?.edge_precision_status || "Unavailable"}
+                </p>
+              </div>
+              <div data-testid="quality-card-affiliation">
+                <strong>
+                  Affiliation coverage: {pct(q?.affiliation_coverage)}
+                </strong>
+                <p>
+                  {fmt(q?.affiliation_positions_resolved)} /{" "}
+                  {fmt(q?.affiliation_positions_eligible)} matched-work
+                  authorship positions · Target {pct(q?.affiliation_target)} ·{" "}
+                  {q?.affiliation_status || "Unavailable"}
+                </p>
+              </div>
+              <div data-testid="quality-card-topic">
+                <strong>
+                  Topic coverage {pct(q?.topic_coverage)} ≠ accuracy
+                </strong>
+                <p>
+                  Precision {pct(q?.topic_precision)} (
+                  {fmt(q?.topic_precision_true_positive)} /{" "}
+                  {fmt(q?.topic_precision_predicted_labels)} weighted labels) ·
+                  Historical micro-F1{" "}
+                  {q?.topic_embedding_micro_f1?.toFixed(4) ?? "Unavailable"} vs{" "}
+                  {q?.topic_phrase_baseline_f1?.toFixed(4) ?? "Unavailable"}{" "}
+                  phrase baseline
+                </p>
+                <p>
+                  {fmt(q?.topic_papers_labeled)} /{" "}
+                  {fmt(q?.topic_papers_eligible)} labeled papers
+                </p>
+              </div>
+            </div>
+          </details>
+          <p className="text-muted">
+            No independent human validation; reviewer independence and verified
+            course accuracy not established. Wilson intervals exclude evaluator
+            error. Inferred topics are provisional. Unknown affiliations/sectors
+            do not imply absent collaboration.
+          </p>
+        </section>
+      </DashboardSection>
+      <DashboardSection
+        id="robustness"
+        title="Collaboration Robustness"
+        description="Repeated-paper support changes connectivity and the bridge shortlist."
+      >
+        <div className="analytics-grid">
           <Panel title="Which bridge claims survive repeated-paper evidence?">
             <p className="text-sm mb-3">
               {pct(sensitivity?.edge_retention_fraction)} of coauthorship edges
@@ -336,6 +329,7 @@ export const AnalyticsView: React.FC<{
                     ],
                   }}
                 />
+                <RobustnessCounts base={base} strict={strict} />
                 <Table
                   label="Connectivity"
                   headers={[
@@ -420,6 +414,11 @@ export const AnalyticsView: React.FC<{
               Outside top 20 is not a zero centrality. Each stable ID opens its
               collaboration graph and paper evidence.
             </p>
+            <BridgeMatrix
+              ranks={ranks}
+              names={names}
+              onOpen={onFocusNodeInGraph}
+            />
             <Table
               label="Bridge ranking comparison"
               headers={["Researcher / stable ID", "Base rank", "Strict rank"]}
@@ -441,9 +440,13 @@ export const AnalyticsView: React.FC<{
               ))}
             </div>
           </Panel>
-        </>
-      )}
-      {section === "topics" && (
+        </div>
+      </DashboardSection>
+      <DashboardSection
+        id="topics"
+        title="Topic Evolution"
+        description="Fractional inferred-topic prevalence within labeled papers; filters apply only to this section."
+      >
         <Panel title="Which inferred topics changed by venue and year?">
           <div className="flex flex-wrap gap-3 text-xs mb-3">
             <label>
@@ -536,13 +539,28 @@ export const AnalyticsView: React.FC<{
           </p>
           <EChartBox
             label="Year by inferred topic share"
-            height={Math.max(300, topicNames.length * 27 + 100)}
+            height={Math.max(300, topicNames.length * 36 + 100)}
             onClick={(p) => {
               const r = cells[p.dataIndex];
               if (r) openCell(r);
             }}
             option={{
               ...chart,
+              media: [
+                {
+                  query: { maxWidth: 500 },
+                  option: {
+                    yAxis: {
+                      axisLabel: {
+                        width: 110,
+                        fontSize: 11,
+                        overflow: "break",
+                        lineHeight: 13,
+                      },
+                    },
+                  },
+                },
+              ],
               grid: {
                 top: 20,
                 left: 15,
@@ -567,10 +585,19 @@ export const AnalyticsView: React.FC<{
                   ...cells.map((r) => r.share_of_fractional_topic_mass * 100),
                 ),
                 orient: "horizontal",
+                formatter: (v: number) => `${v.toFixed(1)}%`,
                 left: "center",
                 bottom: 0,
                 inRange: { color: tokens.heatmapScale },
                 textStyle: { color: tokens.chartAxis },
+              },
+              tooltip: {
+                formatter: (p: { dataIndex: number }) => {
+                  const r = cells[p.dataIndex];
+                  return r
+                    ? `${r.topic.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!)}<br/>${r.year} · ${pct(r.share_of_fractional_topic_mass)} fractional prevalence<br/>${r.paper_count} papers · ${r.labeled_paper_count} labeled denominator`
+                    : "Unavailable";
+                },
               },
               series: [
                 {
@@ -616,31 +643,13 @@ export const AnalyticsView: React.FC<{
               r.all_core_paper_count - r.labeled_paper_count,
             ])}
           />
-          {topic && (
-            <EChartBox
-              label="Selected topic comparison by venue"
-              option={{
-                ...chart,
-                tooltip: { trigger: "axis" },
-                legend: { textStyle: { color: tokens.chartAxis } },
-                xAxis: { ...chart.xAxis, data: years },
-                yAxis: { ...chart.yAxis, name: "Share of labeled papers (%)" },
-                series: ["venue:aaai", "venue:ijcai"].map((vid) => ({
-                  type: "line",
-                  name: vid === "venue:aaai" ? "AAAI" : "IJCAI",
-                  data: years.map((year) => {
-                    const r = topics.find(
-                      (r) =>
-                        r.topic_id === topic &&
-                        r.venue_id === vid &&
-                        r.year === year,
-                    );
-                    return r ? 100 * r.share_of_fractional_topic_mass : null;
-                  }),
-                })),
-              }}
-            />
-          )}
+          <TopicChangeFigures
+            changes={change}
+            topics={topics}
+            topic={topic}
+            years={years}
+            onOpen={openCell}
+          />
           <Table
             label="Prevalence change in selected venue"
             headers={[
@@ -657,8 +666,12 @@ export const AnalyticsView: React.FC<{
             ])}
           />
         </Panel>
-      )}
-      {section === "communities" && (
+      </DashboardSection>
+      <DashboardSection
+        id="communities"
+        title="Network Components & Communities"
+        description="Connectivity and Louvain membership are distinct structural descriptions."
+      >
         <div className="grid lg:grid-cols-2 gap-4">
           <Panel title="Connected components, including isolates">
             <p className="text-xs text-muted">
@@ -683,7 +696,14 @@ export const AnalyticsView: React.FC<{
                   name: "Components",
                   min: 1,
                 },
-                series: [{ type: "line", data: histogram }],
+                series: [
+                  {
+                    type: "line",
+                    lineStyle: { opacity: 0 },
+                    symbolSize: 8,
+                    data: histogram,
+                  },
+                ],
               }}
             />
             <Table
@@ -711,6 +731,33 @@ export const AnalyticsView: React.FC<{
             </p>
           </Panel>
           <Panel title="What do frozen researcher communities study?">
+            <RankedBars
+              label="Largest stored Louvain communities"
+              unit="researchers"
+              rows={profiles
+                .slice(0, 10)
+                .map((p: { community_id: string; member_count: number }) => ({
+                  id: p.community_id,
+                  name: p.community_id,
+                  value: p.member_count,
+                }))}
+              onOpen={(i) => setCommunity(profiles[i].community_id)}
+            />
+            <Table
+              label="Major community sizes"
+              headers={["Community", "Researchers"]}
+              rows={profiles.map(
+                (p: { community_id: string; member_count: number }) => [
+                  <button
+                    className="underline"
+                    onClick={() => setCommunity(p.community_id)}
+                  >
+                    {p.community_id}
+                  </button>,
+                  p.member_count,
+                ],
+              )}
+            />
             <label className="text-xs">
               Community
               <select
@@ -734,37 +781,20 @@ export const AnalyticsView: React.FC<{
                   the stored top five topics are available. Not in stored
                   profile ≠ zero.
                 </p>
-                <EChartBox
+                <RankedBars
                   label="Community inferred topic portfolio"
-                  option={{
-                    ...chart,
-                    grid: {
-                      left: 15,
-                      right: 15,
-                      top: 20,
-                      bottom: 80,
-                      containLabel: true,
-                    },
-                    xAxis: {
-                      ...chart.xAxis,
-                      data: profile.top_topics.map((t: any) => t.topic),
-                      axisLabel: {
-                        color: tokens.chartAxis,
-                        rotate: 25,
-                        width: 100,
-                        overflow: "truncate",
-                      },
-                    },
-                    yAxis: { ...chart.yAxis, name: "Fractional mass (%)" },
-                    series: [
-                      {
-                        type: "bar",
-                        data: profile.top_topics.map(
-                          (t: any) => 100 * t.share_of_fractional_topic_mass,
-                        ),
-                      },
-                    ],
-                  }}
+                  unit="fractional mass (%)"
+                  rows={profile.top_topics.map(
+                    (t: {
+                      topic_id: string;
+                      topic: string;
+                      share_of_fractional_topic_mass: number;
+                    }) => ({
+                      id: t.topic_id,
+                      name: t.topic,
+                      value: 100 * t.share_of_fractional_topic_mass,
+                    }),
+                  )}
                 />
                 <button
                   className="ledger-btn px-3 py-2 text-xs"
@@ -798,9 +828,13 @@ export const AnalyticsView: React.FC<{
             </p>
           </Panel>
         </div>
-      )}
-      {section === "sectors" && (
-        <>
+      </DashboardSection>
+      <DashboardSection
+        id="sectors"
+        title="Academia–Industry Collaboration"
+        description="Organization-pair evidence, sectors and supported co-publication years."
+      >
+        <div className="analytics-grid">
           <Panel title="Academia–industry co-publication, including unknown sectors">
             <p className="text-xs text-muted">
               Symmetric organization-pair × core-paper support matrix. A pair is
@@ -813,7 +847,17 @@ export const AnalyticsView: React.FC<{
               label="Sector pair-paper supports"
               option={{
                 ...chart,
-                grid: { left: 90, right: 15, top: 10, bottom: 80 },
+                grid: {
+                  left: 10,
+                  right: 15,
+                  top: 10,
+                  bottom: 90,
+                  containLabel: true,
+                },
+                tooltip: {
+                  formatter: (p: { value: number[] }) =>
+                    `${mixing.sectors[p.value[1]]} × ${mixing.sectors[p.value[0]]}<br/>${p.value[2].toLocaleString()} pair-paper supports`,
+                },
                 xAxis: {
                   type: "category",
                   data: mixing.sectors,
@@ -853,6 +897,38 @@ export const AnalyticsView: React.FC<{
             />
           </Panel>
           <Panel title="Repeated cross-sector topic pairs">
+            <p className="text-xs text-muted">
+              Each bar is an organization pair within one inferred topic. Topic
+              supports overlap and must not be summed across topics.
+            </p>
+            <RankedBars
+              label="Leading cross-sector pair-topic evidence"
+              unit="distinct papers"
+              rows={pairs
+                .slice(0, 8)
+                .map(
+                  (
+                    p: {
+                      academia_organization: string;
+                      industry_organization: string;
+                      topic: string;
+                      supported_paper_count: number;
+                    },
+                    i: number,
+                  ) => ({
+                    id: String(i),
+                    name: `${p.academia_organization} ↔ ${p.industry_organization} · ${p.topic}`,
+                    value: p.supported_paper_count,
+                  }),
+                )}
+              onOpen={(i) =>
+                setCompareModalOpen(
+                  true,
+                  pairs[i].academia_organization_id,
+                  pairs[i].industry_organization_id,
+                )
+              }
+            />
             <div className="grid md:grid-cols-2 gap-4">
               {pairs.map((p: any, i: number) => (
                 <div key={i} className="text-xs border-t border-border py-3">
@@ -879,10 +955,67 @@ export const AnalyticsView: React.FC<{
               ))}
             </div>
           </Panel>
-        </>
-      )}
-      {section === "trajectories" && (
-        <>
+          <Panel title="Organization collaboration persistence by supported paper year">
+            <p className="text-xs text-muted">
+              Top 25 accepted organization pairs, sorted by distinct full-period
+              R8 evidence paper support then edge ID. Active years count
+              observed co-publication years; zero years do not prove a
+              partnership ceased. Topic counts overlap for multilabel papers.
+              Exploratory selection, not a preregistered test.
+            </p>
+            <PersistenceFigures
+              pairs={derived?.organization_pair_persistence || []}
+              onOpen={(p) =>
+                setCompareModalOpen(true, p.source_id, p.target_id)
+              }
+            />
+            {derived ? (
+              <Table
+                label="Pair persistence, inferred topics and evidence"
+                headers={[
+                  "Pair / provenance",
+                  "Distinct papers",
+                  "Active years",
+                  "2021–2025 paper counts",
+                  "Inferred topic support",
+                ]}
+                rows={(derived.organization_pair_persistence || []).map(
+                  (p: any) => [
+                    <button
+                      className="underline text-left"
+                      onClick={() => {
+                        setCompareModalOpen(true, p.source_id, p.target_id);
+                      }}
+                    >
+                      {p.source} ↔ {p.target}
+                    </button>,
+                    p.distinct_support_papers,
+                    p.active_year_count,
+                    p.by_year
+                      .map(
+                        (y: any) => `${y.year}: ${y.distinct_support_papers}`,
+                      )
+                      .join(" · "),
+                    p.inferred_topics
+                      .map(
+                        (t: any) => `${t.topic}: ${t.distinct_support_papers}`,
+                      )
+                      .join("; "),
+                  ],
+                )}
+              />
+            ) : (
+              <p className="text-xs">Persistence artifact unavailable.</p>
+            )}
+          </Panel>
+        </div>
+      </DashboardSection>
+      <DashboardSection
+        id="trajectories"
+        title="Citation Patterns & Research Trends"
+        description="Annual activity and within-corpus citations, with venue/year cohort context."
+      >
+        <div className="analytics-grid">
           <Panel title="Annual corpus and collaboration metrics">
             <p className="text-xs text-muted">
               Separate scales retain actual counts. New coauthor pair = an
@@ -890,7 +1023,7 @@ export const AnalyticsView: React.FC<{
               not all pairs active that year. Annual active researcher sets
               overlap and must not be summed.
             </p>
-            <div className="grid lg:grid-cols-3 gap-3">
+            <div className="grid xl:grid-cols-3 gap-3">
               {[
                 ["Core papers", "paper_count"],
                 ["Active researchers", "active_researcher_count"],
@@ -982,6 +1115,11 @@ export const AnalyticsView: React.FC<{
             </p>
             {derived ? (
               <>
+                <CitationFigures
+                  cohorts={derived.citation_cohorts || []}
+                  leaders={derived.cohort_leaders || []}
+                  onOpen={(p) => onFocusNodeInGraph(p.paper_id, p.title)}
+                />
                 <Table
                   label="Citation cohort distributions"
                   headers={[
@@ -991,7 +1129,7 @@ export const AnalyticsView: React.FC<{
                     "Uncited",
                     "In-degree: paper counts",
                   ]}
-                  rows={derived.citation_cohorts.map((r: any) => [
+                  rows={(derived.citation_cohorts || []).map((r: any) => [
                     r.venue_id,
                     r.year,
                     r.paper_denominator,
@@ -1011,7 +1149,7 @@ export const AnalyticsView: React.FC<{
                     "Cohort N",
                     "Empirical percentile",
                   ]}
-                  rows={derived.cohort_leaders.map((p: any) => [
+                  rows={(derived.cohort_leaders || []).map((p: any) => [
                     <button
                       className="underline text-left"
                       onClick={() => {
@@ -1033,47 +1171,6 @@ export const AnalyticsView: React.FC<{
               <p className="text-xs">
                 Exploratory cohort artifact unavailable.
               </p>
-            )}
-          </Panel>
-          <Panel title="Organization collaboration persistence by supported paper year">
-            <p className="text-xs text-muted">
-              Top 25 accepted organization pairs, sorted by distinct full-period
-              R8 evidence paper support then edge ID. Active years count
-              observed co-publication years; zero years do not prove a
-              partnership ceased. Topic counts overlap for multilabel papers.
-              Exploratory selection, not a preregistered test.
-            </p>
-            {derived ? (
-              <Table
-                label="Pair persistence, inferred topics and evidence"
-                headers={[
-                  "Pair / provenance",
-                  "Distinct papers",
-                  "Active years",
-                  "2021–2025 paper counts",
-                  "Inferred topic support",
-                ]}
-                rows={derived.organization_pair_persistence.map((p: any) => [
-                  <button
-                    className="underline text-left"
-                    onClick={() => {
-                      setCompareModalOpen(true, p.source_id, p.target_id);
-                    }}
-                  >
-                    {p.source} ↔ {p.target}
-                  </button>,
-                  p.distinct_support_papers,
-                  p.active_year_count,
-                  p.by_year
-                    .map((y: any) => `${y.year}: ${y.distinct_support_papers}`)
-                    .join(" · "),
-                  p.inferred_topics
-                    .map((t: any) => `${t.topic}: ${t.distinct_support_papers}`)
-                    .join("; "),
-                ])}
-              />
-            ) : (
-              <p className="text-xs">Persistence artifact unavailable.</p>
             )}
           </Panel>
           <Panel title="Citations within the release corpus">
@@ -1101,8 +1198,8 @@ export const AnalyticsView: React.FC<{
               ])}
             />
           </Panel>
-        </>
-      )}
+        </div>
+      </DashboardSection>
       <details className="text-xs text-muted">
         <summary className="cursor-pointer py-2">
           Artifact provenance and limitations
