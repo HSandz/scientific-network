@@ -5,13 +5,13 @@
 
 ## Current capabilities — D040 remediation
 
-**10 November local Explorer intelligence:** versioned reconstructable views and
-faithful effective-slice exports, cancellation-safe expansions, stable Sigma/ECharts,
-frozen sensitivity/topic/community drilldowns, and separate deterministic citation
-cohort/persistence artifacts are implemented locally. This broad audit remains
-partial; [receipt and explicit gaps](../reports/research-explorer-implementation-2026-11-10.md).
-Production is unchanged; operator authorization and coordinated artifact rollout
-remain separate.
+**10 November Explorer final integration:** accepted support-paper windows now
+scope collaboration views/expansions; unsupported filters reject explicitly.
+Complete comparison totals precede bounded previews. Saved Graph/Table/Analytics
+workspaces preserve controls; finding return and exports preserve provenance.
+Caddy orphan reaping, runtime package/strict analytics readiness and transactional
+rollback are locally verified. [Final receipt and authorized-release procedure](../reports/explorer-final-integration-2026-11-10.md).
+Production changes and push await separate approval; no scientific graph rebuild.
 
 **10 November production operations:** the Explorer has an isolated Azure Docker
 runtime with read-only Neo4j, one API worker, indexed SQLite evidence, compact

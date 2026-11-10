@@ -174,12 +174,16 @@ Full-period curated presets reject narrowed year/venue/topic requests with guida
 to select Researcher → Paper → Topic; they never silently ignore those constraints.
 Curated ranking ties use stable IDs.
 
-Current explicit limits: community/country/topic/cross-sector constrained expansion
-is blocked with an explanation (filtered overviews work). Non-custom curated
-presets explain their bounded selection, but expansions use the applicable projection
-rather than reproducing the preset's original ranking. Shared-neighbor comparison
-is capped at 30 and organization supporting papers at 100; complete unique-versus-
-shared sets are not provided. Straight-edge evidence styles use color; dash patterns
-are on parallel lanes. No configurable node-size chooser, staged neighbor fade or
-hover interpolation is implemented. See the [verification and deployment receipt](../../reports/research-explorer-implementation-2026-11-10.md)
-for exact tested scope and remaining gaps.
+Current supported expansion preserves community/country/topic/cross-sector and
+paper-window constraints, with bounded candidate selection and stale-request
+protection. Comparison reports complete distinct shared/unique totals before
+bounded previews, with source-paper traceability. Graph/Table/Analytics bookmarks
+restore their workspace controls, including Table query/sort/page and analytical
+section/filter state. Paths and comparisons explicitly use full-period data.
+
+Unsupported narrowed heterogeneous presets reject requests; selected contextual
+Ego centers may remain with zero matching links. Straight-edge evidence styles use
+color; dash patterns are on parallel lanes. Node-size chooser and sustained
+performance/accessibility certification remain incomplete. See the
+[final integration and release plan](../../reports/explorer-final-integration-2026-11-10.md)
+for exact validation, immutable package identities and production limitations.

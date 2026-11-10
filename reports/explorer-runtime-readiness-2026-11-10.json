@@ -1,0 +1,65 @@
+{
+  "status": "locally_verified_not_deployed",
+  "application_commit": "75f55e2cf06f13ce33ebb0b7af650d9006d15c6f",
+  "operations_followup_commit": "78485e87a099ea87af0f6d7d675d5d8bd822ba89",
+  "local_artifact_dir": "reports/runs/WORK-2026-11-10-012/runtime-explorer-v2",
+  "proposed_vm_artifact_dir": "/opt/scientific-network/artifacts/explorer-20261110-v2",
+  "manifest_sha256": "3b188311e1daefd2083100957f5bc488dc5309b4966b2359136ddd0246ab5820",
+  "runtime_contract": "6ca14fb8375af8d2e0e66c82634f0251141f5fa702b841dd5497e6170e5615ec",
+  "tested_image": "scientific-network-api:sha-75f55e2cf06f13ce33ebb0b7af650d9006d15c6f",
+  "tested_image_configuration_digest": "sha256:de96a5348902e16c6cf818d9b978fd7d08612cef3bb98635cdc92acea5347664",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "derived_sha256": "bb0da2d2d2f9b23cec053ceb3cc31514a614b7a85b7672d38791e409d93eb37d",
+  "ledger_counts": {
+    "evidence": 142928,
+    "affiliations": 56273
+  },
+  "outputs": {
+    "analysis.json": {
+      "sha256": "9b71594952d0a0ad0f6fd3ed546074a51407386ef3e569e5e1e3df6f04a58b81",
+      "bytes": 7550476
+    },
+    "audit.json": {
+      "sha256": "b1111bb9b834469a37216e53ee3e388757a42c44bf3eabc65e48eb9f29a546dd",
+      "bytes": 13784
+    },
+    "ledger.sqlite": {
+      "sha256": "71ea569902da6115bdcb3f79e28c199e26afd7ef2b561833c6884daa1a438e11",
+      "bytes": 145858560
+    },
+    "network-views.json": {
+      "sha256": "48f34122c328de69e161eacf0127be8c539964b6017e7aca86cd037ef9470867",
+      "bytes": 1421789
+    },
+    "quality.yaml": {
+      "sha256": "64b59294eed0fcc85d83850d553ce605fd5bab07832e7d016bb30cc8f533fc88",
+      "bytes": 1417
+    },
+    "summary.json": {
+      "sha256": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408",
+      "bytes": 8037
+    },
+    "topic-eval.json": {
+      "sha256": "49df5456906d271d0b44b5ede63e1ad53675c3dc2dc1adaa871a9353931f3471",
+      "bytes": 44173
+    },
+    "topic-reuse.json": {
+      "sha256": "e0e719b3188dffdda2ebf9ab3f0852a6d7f22e03fbe4aeef998f2be37d037675",
+      "bytes": 1996
+    }
+  },
+  "validation": {
+    "all_output_hashes_verified": true,
+    "real_container_api_checks": 28,
+    "complete_explorer_analytics": true,
+    "local_api_restart_readiness": true,
+    "production_changed": false,
+    "repository_tests_passed": 530,
+    "repository_existing_skips": 1,
+    "backend_tests_passed": 32,
+    "chromium_tests_passed": 22,
+    "production_preview_tests_passed": 5,
+    "visual_captures": 32
+  },
+  "table_frontend_commit": "a26dce56b05c0ed8f301294eb2c35e83a87e607c"
+}
