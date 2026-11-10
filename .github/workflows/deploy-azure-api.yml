@@ -31,11 +31,11 @@ jobs:
       artifact-id: ${{ steps.package.outputs.artifact-id }}
       image-id: ${{ steps.identity.outputs.image-id }}
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc # v6.4.3
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: '0.9.10'
           enable-cache: false
@@ -72,15 +72,16 @@ jobs:
             echo "Image content digest: $(cat image-id.txt)"
             cat image.tar.gz.sha256
           } >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         id: package
         with:
           name: azure-api-image
           path: image.tar.gz
           if-no-files-found: error
+          archive: true
           compression-level: 0
           retention-days: 1
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: azure-api-identity
           path: |
@@ -106,14 +107,14 @@ jobs:
           SUBSCRIPTION: ${{ vars.AZURE_API_SUBSCRIPTION_ID }}
           VM: ${{ vars.AZURE_API_VM_ID }}
         run: test -n "$CLIENT" && test -n "$TENANT" && test -n "$SUBSCRIPTION" && test -n "$VM"
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: azure-api-identity
-      - uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+      - uses: Azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
         with:
           client-id: ${{ vars.AZURE_API_CLIENT_ID }}
           tenant-id: ${{ vars.AZURE_API_TENANT_ID }}
