@@ -199,12 +199,12 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   layoutMode: "seeded",
   edgeFilterMode: "all",
 
-  viewMode: "researchers",
-  filters: { ...DEFAULT_FILTERS },
+  viewMode: "heterogeneous",
+  filters: { ...DEFAULT_FILTERS, limit: 120 },
 
   graphViewScope: {
     kind: "overview",
-    title: "Overview: Researchers",
+    title: "Overview: Knowledge graph",
   },
   cameraState: null,
   expansionError: null,

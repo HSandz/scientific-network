@@ -53,11 +53,11 @@ const PROJECTION_MODES: Array<{
   icon: React.FC<{ className?: string }>;
 }> = [
   {
-    id: "researchers",
-    title: "Researchers",
-    countLabel: "32,189",
-    predicateSummary: "COAUTHORED_WITH (R7) collaboration projection",
-    icon: Users,
+    id: "heterogeneous",
+    title: "Knowledge graph",
+    countLabel: "47,875",
+    predicateSummary: "All 5 entity labels and 10 predicates (R1–R10)",
+    icon: Layers,
   },
   {
     id: "organizations",
@@ -67,18 +67,18 @@ const PROJECTION_MODES: Array<{
     icon: Building2,
   },
   {
+    id: "researchers",
+    title: "Researchers",
+    countLabel: "32,189",
+    predicateSummary: "COAUTHORED_WITH (R7) collaboration projection",
+    icon: Users,
+  },
+  {
     id: "citations",
     title: "Citations",
     countLabel: "13,617",
     predicateSummary: "Directed CITES (R4) within-corpus references",
     icon: BookOpen,
-  },
-  {
-    id: "heterogeneous",
-    title: "Knowledge graph",
-    countLabel: "47,875",
-    predicateSummary: "All 5 entity labels and 10 predicates (R1–R10)",
-    icon: Layers,
   },
 ];
 

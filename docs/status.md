@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-10 17:12 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 20:09 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
-Latest completed: [WORK-2026-11-10-009](work-log/2026-11-10-009-azure-api-cicd.md), automatic Azure backend deployment and recovery verification. Production setup: [WORK-007](work-log/2026-11-10-007-azure-production.md); cleanup: [WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md).
+Latest completed: [WORK-2026-11-10-010](work-log/2026-11-10-010-projection-order.md), sidebar projection order/default; 5 browser suites, build and 524 repository tests pass. Previous: [WORK-2026-11-10-009](work-log/2026-11-10-009-azure-api-cicd.md), automatic Azure backend deployment and recovery verification. Production setup: [WORK-007](work-log/2026-11-10-007-azure-production.md); cleanup: [WORK-008](work-log/2026-11-10-008-azure-leftover-cleanup.md).
 
 ## Remediation and presentation checklist
 
