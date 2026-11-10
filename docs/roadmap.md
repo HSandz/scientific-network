@@ -5,6 +5,8 @@
 
 ## Current capabilities — D040 remediation
 
+**11 November Explorer presentation:** seven scrolling analytical sections, API-backed quality/temporal/ranking figures, viewport-aware charts and inverse-camera zoom labels. Exact tables, evidence actions and v2 saved views remain available. See [redesign verification](../reports/explorer-ui-redesign-verification-2026-11-11.md). No scientific graph or backend change.
+
 **10 November Explorer final integration:** accepted support-paper windows now
 scope collaboration views/expansions; unsupported filters reject explicitly.
 Complete comparison totals precede bounded previews. Saved Graph/Table/Analytics

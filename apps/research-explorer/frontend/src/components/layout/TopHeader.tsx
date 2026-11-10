@@ -171,7 +171,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
     <header className="relative shrink-0 bg-surface border-b border-border px-1.5 sm:px-4 lg:px-5 py-1.5 md:py-2.5 z-30 select-none">
       <div className="flex items-center justify-between gap-1 sm:gap-2.5 lg:gap-4 flex-nowrap">
         {/* Left: Filter drawer toggle + Product Identity + Scope */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink-0">
+        <div className={`flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink-0 ${workspaceTab === "analytics" ? "pl-1.5 sm:pl-0" : ""}`}>
           {workspaceTab === "graph" && (
             <button
               type="button"

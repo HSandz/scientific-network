@@ -243,7 +243,7 @@ interface ExplorerState {
 
 export const useExplorerStore = create<ExplorerState>((set, get) => ({
   insightReturn: false,
-  analyticsSection: "robustness",
+  analyticsSection: "overview",
   analyticsFilters: { ...DEFAULT_ANALYTICS_FILTERS },
   tableWorkspace: { ...DEFAULT_TABLE_WORKSPACE },
   darkMode: getInitialDarkMode(),
@@ -772,7 +772,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       extraEdges: [],
       focusedCenterId: null,
       workspaceTab: spec.workspaceTab,
-      analyticsSection: spec.analyticsSection || "robustness",
+      analyticsSection: spec.analyticsSection || "overview",
       analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
       tableWorkspace: spec.tableWorkspace || { ...DEFAULT_TABLE_WORKSPACE },
       insightReturn: false,
@@ -859,7 +859,7 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
       set({
         viewMode: spec.viewMode,
         workspaceTab: spec.workspaceTab,
-        analyticsSection: spec.analyticsSection || "robustness",
+        analyticsSection: spec.analyticsSection || "overview",
       analyticsFilters: spec.analyticsFilters || { ...DEFAULT_ANALYTICS_FILTERS },
       tableWorkspace: spec.tableWorkspace || { ...DEFAULT_TABLE_WORKSPACE },
         filters: spec.filters,

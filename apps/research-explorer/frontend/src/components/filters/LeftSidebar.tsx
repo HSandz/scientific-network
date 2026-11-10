@@ -79,7 +79,7 @@ const PROJECTION_MODES: Array<{
     id: "citations",
     title: "Citations",
     countLabel: "",
-    predicateSummary: "Directed CITES (R4) within-corpus references",
+    predicateSummary: "Directed CITES (R4) within-corpus references; count = paper nodes",
     icon: BookOpen,
   },
 ];
@@ -290,7 +290,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                               ? "Organization"
                               : "Paper"
                         ]
-                    )?.toLocaleString() ?? "Unavailable"}
+                    )?.toLocaleString() ?? "Unavailable"}{m.id === "citations" ? " papers" : ""}
                   </span>
                 </button>
               );

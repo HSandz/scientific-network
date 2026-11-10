@@ -187,3 +187,54 @@ color; dash patterns are on parallel lanes. Node-size chooser and sustained
 performance/accessibility certification remain incomplete. See the
 [final integration and release plan](../../reports/explorer-final-integration-2026-11-10.md)
 for exact validation, immutable package identities and production limitations.
+
+## 8. Scrollable dashboard and label policy (11 November)
+
+Analytics now presents seven sections in reading order: overview, quality,
+collaboration robustness, topics, components/communities, sectors, and citations.
+Sticky navigation scrolls without removing figures; the active section and filters
+remain in the existing v2 bookmark/share specification. Earlier section IDs still
+restore. Full-projection analytics reuse one five-minute query cache. Entering a
+shared Analytics view waits for URL hydration before requesting a graph slice.
+
+Quality figures use the API quality contract, including failed targets, a Wilson
+point/interval, and historical embedding/phrase micro-F1. New figures cover strict
+connectivity counts, top-20 rank membership, endpoint topic change, venue comparison,
+community sizes, pair/topic support, pair/year persistence, uncited cohort shares,
+within-cohort empirical CDFs and citation leaders. Exact tables retain evidence
+links. No missing rank is zero; missing endpoint years are omitted from changes;
+missing persistence observations stay unavailable. Symmetric sector cells are not
+summed. Component and community terminology remains distinct.
+
+Routine graph labels are hidden at fit view. Sigma's inverse camera ratio controls
+four bands, with boundaries .72/.38/.18 and 6% hysteresis. Viewport area further
+bounds medium/close/detail label candidates to 6/24/48. Only visible candidates are
+ranked (focused neighbors first, then displayed degree and stable ID). Four-way
+placement rejects other label boxes and visible node disks; forced dispatch never
+bypasses rejection. Hover/selected identity remains in the overlay and inspector.
+Camera redraws do not update React state. Coordinates remain illustrative.
+
+ECharts loads near the first actual chart, and instances exist only within 200px
+of the viewport. Initial entrance is 600ms, updates 300ms, with no replay when
+returning to a visited chart. Runtime reduced-motion changes disable both.
+Observers, resize frames, listeners and instances are cleaned up. Graph, table and
+dialog chunks load separately. A remaining chart-engine chunk warning is disclosed
+in the dated verification report rather than suppressed.
+
+Focused checks (from repository root):
+
+```bash
+npm --prefix apps/research-explorer/frontend run build
+(cd apps/research-explorer/frontend && npx playwright test -c playwright.contracts.config.ts)
+PLAYWRIGHT_API_PORT=8001 PLAYWRIGHT_UI_PORT=5174 \
+  npm --prefix apps/research-explorer/frontend run test:e2e
+```
+
+Alternate test ports avoid reusing stale development services; Vite proxies the
+configured isolated API on the same origin. Full browser checks need the existing
+read-only database/artifacts. Pure contracts need no services/browser installation
+and run with build checks in `explorer-frontend.yml`. Reviewed Chromium visual
+baselines are under `frontend/tests/visual.spec.ts-snapshots/`; update intentionally
+with `run test:e2e -- tests/visual.spec.ts --update-snapshots` and inspect images.
+The package has no configured lint script. Cross-browser/device and WCAG
+certification are outside the measured Chromium checks.

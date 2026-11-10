@@ -354,3 +354,44 @@ th,
     animation: none !important;
   }
 }
+
+/* Frozen scientific dashboard: one reading flow, chart-led findings, quiet chrome. */
+.analytics-dashboard { container-type: inline-size; scroll-padding-top: 80px; }
+.analytics-heading { padding: 24px clamp(16px, 3vw, 36px) 20px; display: flex; justify-content: space-between; gap: 24px; }
+.analytics-heading details { max-width: 340px; }
+.analytics-nav { position: sticky; top: 0; z-index: 20; display: flex; gap: 4px; padding: 10px clamp(12px, 3vw, 36px); background: var(--ground); border-bottom: 1px solid var(--border); overflow-x: auto; }
+.analytics-nav button { flex-shrink: 0; font-size: 12px; min-height: 38px; }
+.analytics-nav button[aria-pressed="true"] { background: var(--surface); color: var(--text); border-color: var(--control); }
+.analytics-section { padding: 28px clamp(16px, 3vw, 36px) 12px; scroll-margin-top: 0px; }
+.analytics-section:last-child { padding-bottom: 48px; }
+.analytics-section-heading { margin-bottom: 18px; }
+.analytics-section-heading h2:focus { outline: none; }
+.analytics-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; align-items: start; }
+.analytics-panel { overflow: hidden; }
+.analytics-panel > p { font-size: 13px; line-height: 1.6; }
+.analytics-chart { min-width: 0; margin-top: 14px; }
+.quality-measure { margin: 18px 0 24px; }
+.quality-track { position: relative; height: 8px; margin-top: 10px; background: var(--raised); border-radius: 2px; }
+.quality-fill { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+.quality-fill.below { background: var(--warning); }
+.quality-track i { position: absolute; top: -4px; height: 16px; width: 2px; background: var(--text); }
+@container (max-width: 850px) { .analytics-grid { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 640px) {
+  .analytics-heading { display: block; padding-top: 18px; }
+  .analytics-heading h1 { font-size: 22px; }
+  .analytics-heading details { margin-top: 8px; }
+  .analytics-nav { gap: 0; padding: 6px 8px; }
+  .analytics-nav button { padding: 0 10px; }
+  .analytics-section { padding-top: 24px; }
+  .analytics-panel select { max-width: 100%; }
+}
+.bridge-matrix-head, .bridge-matrix-row { display: grid; grid-template-columns: minmax(0,1fr) 72px 72px; gap: 6px; align-items: center; }
+.bridge-matrix-head { padding-bottom: 8px; }
+.bridge-matrix-row { padding: 3px 0; border-top: 1px solid var(--rule); }
+.rank-cell { padding: 3px 4px; text-align: center; border-radius: 2px; white-space: nowrap; }
+
+.analytics-panel select, .analytics-panel input { max-width: 100%; }
+.analytics-panel label { min-width: 0; }
+@media (max-width: 640px) { .analytics-panel label:has(select) { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; } .analytics-panel label select { margin-left: 0; max-width: 100%; } }
+
+.analytics-panel > .text-3xl { font-size: 30px; line-height: 1.3; }
