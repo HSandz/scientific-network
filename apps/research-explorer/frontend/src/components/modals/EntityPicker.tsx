@@ -219,13 +219,10 @@ export const EntityPicker: React.FC<EntityPickerProps> = ({
       <button
         ref={triggerRef}
         type="button"
-        role="combobox"
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-label={`${label}: ${displayName}`}
         aria-controls={`${testIdPrefix}-listbox`}
-        aria-activedescendant={
-          open && activeIndex >= 0 ? `${testIdPrefix}-opt-${activeIndex}` : undefined
-        }
         onClick={() => setOpen((v) => !v)}
         data-testid={`${testIdPrefix}-picker-trigger`}
         className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-[6px] border border-control bg-surface hover:bg-raised text-left transition-colors"
@@ -262,6 +259,14 @@ export const EntityPicker: React.FC<EntityPickerProps> = ({
               ref={searchInputRef}
               type="text"
               autoFocus
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded={true}
+              aria-label={`Search ${label}`}
+              aria-controls={`${testIdPrefix}-listbox`}
+              aria-activedescendant={
+                activeIndex >= 0 ? `${testIdPrefix}-opt-${activeIndex}` : undefined
+              }
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search entity by name, DOI, or ORCID..."

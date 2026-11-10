@@ -195,7 +195,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             </span>
             <span
               data-testid="graph-version-badge"
-              className="hidden sm:inline text-xs font-mono text-faint whitespace-nowrap"
+              className="hidden lg:inline text-xs font-mono text-faint whitespace-nowrap"
               title="Isolated release Neo4j graph version (D040)"
             >
               {summary?.graph_version || "release-d3c788c3114a"}
@@ -204,13 +204,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         </div>
 
         {/* Center: Primary Entity Search + Workspace Switcher */}
-        <div className="flex items-center gap-1 sm:gap-2 min-w-0 md:flex-1 md:justify-center max-w-2xl">
+        <div className="flex items-center gap-1 sm:gap-2 min-w-0 md:flex-1 md:justify-center max-w-xl z-10">
           <button
             type="button"
             onClick={() => setSearchModalOpen(true)}
             data-testid="open-global-search"
             aria-label="Search all 47,875 entities"
-            className="inline-flex items-center justify-center md:justify-between gap-2 w-11 h-11 md:w-[136px] lg:w-[200px] xl:w-[260px] md:h-[34px] px-0 md:px-2.5 lg:px-3 rounded-[6px] border border-control bg-ground hover:border-ink/40 text-muted hover:text-ink transition-colors shrink-0"
+            className="inline-flex items-center justify-center md:justify-between gap-2 w-11 h-11 md:w-[136px] lg:w-[180px] xl:w-[240px] md:h-[34px] px-0 md:px-2.5 lg:px-3 rounded-[6px] border border-control bg-ground hover:border-ink/40 text-muted hover:text-ink transition-colors shrink-0"
             title="Search all 47,875 entities by name, ID, DOI, or ORCID (Shortcut: /)"
           >
             <span className="flex items-center gap-2 min-w-0 truncate text-[13px]">
@@ -219,14 +219,14 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                 Search 47,875 entities...
               </span>
             </span>
-            <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-xs font-mono bg-surface text-faint rounded border border-border shrink-0">
+            <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-xs font-mono bg-surface text-faint rounded border border-border shrink-0">
               /
             </kbd>
           </button>
 
           <nav
             aria-label="Primary workspace views"
-            className="ledger-segmented shrink-0"
+            className="ledger-segmented shrink-0 relative z-20"
           >
             {tabs.map((t) => {
               const active = workspaceTab === t.id;
@@ -238,7 +238,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                   data-testid={`tab-${t.id}`}
                   aria-pressed={active}
                   data-active={active}
-                  className="!px-2 sm:!px-2.5 !py-1.5 md:!py-1 !text-[12px] sm:!text-[13px]"
+                  className="!px-2.5 sm:!px-3.5 !py-1.5 md:!py-1.5 !text-[12px] sm:!text-[13px] font-medium min-h-[32px] cursor-pointer"
                 >
                   {t.label}
                 </button>
@@ -253,39 +253,39 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             type="button"
             onClick={() => setPathFinderOpen(true)}
             data-testid="open-path-finder"
-            className="hidden md:inline-flex ledger-btn h-[32px] px-2 lg:px-2.5 text-[13px]"
+            className="hidden xl:inline-flex ledger-btn h-[32px] px-2.5 text-[13px]"
             title="Find bounded shortest paths between any two entities"
           >
             <GitBranch className="w-3.5 h-3.5 text-muted" />
-            <span className="hidden lg:inline">Paths</span>
+            <span>Paths</span>
           </button>
 
           <button
             type="button"
             onClick={() => setCompareModalOpen(true)}
             data-testid="open-compare-modal"
-            className="hidden md:inline-flex ledger-btn h-[32px] px-2 lg:px-2.5 text-[13px]"
+            className="hidden xl:inline-flex ledger-btn h-[32px] px-2.5 text-[13px]"
             title="Compare two researchers or organizations side by side"
           >
             <Scale className="w-3.5 h-3.5 text-muted" />
-            <span className="hidden lg:inline">Compare</span>
+            <span>Compare</span>
           </button>
 
           <button
             type="button"
             onClick={() => setCaveatsModalOpen(true)}
             data-testid="open-caveats-modal"
-            className="hidden md:inline-flex ledger-btn h-[32px] px-2 lg:px-2.5 text-[13px]"
-            title="Inspect AI-assessed edge precision (96.5%), affiliation coverage (48,259 / 65,469 = 73.71% FAIL), topic coverage (85.00% PASS), and topic precision (68.63% FAIL)"
+            className="hidden xl:inline-flex ledger-btn h-[32px] px-2.5 text-[13px]"
+            title="Inspect AI-assessed edge precision, affiliation coverage, topic coverage, and topic precision"
           >
             <AlertTriangle className="w-3.5 h-3.5 text-[var(--warning)]" />
-            <span className="hidden xl:inline tabular-nums">
+            <span className="hidden 2xl:inline tabular-nums">
               {edgePrecisionPct ? `${edgePrecisionPct} AI-assessed` : "Caveats"}
             </span>
-            <span className="xl:hidden">Caveats</span>
+            <span className="2xl:hidden">Caveats</span>
           </button>
 
-          {/* Export, Share & Mobile Tools Menu */}
+          {/* Export, Share & Secondary Tools Menu */}
           <div className="relative" ref={menuRef}>
             <button
               type="button"
@@ -301,15 +301,15 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
 
             {exportMenuOpen && (
               <div className="absolute right-0 mt-1.5 w-56 rounded-[8px] bg-surface border border-border py-1.5 z-50">
-                {/* Mobile-only analysis tools */}
-                <div className="md:hidden border-b border-rule pb-1 mb-1">
+                {/* Secondary analysis tools collapsed on smaller screens (< 1280px) */}
+                <div className="xl:hidden border-b border-rule pb-1 mb-1">
                   <button
                     type="button"
                     onClick={() => {
                       setExportMenuOpen(false);
                       setPathFinderOpen(true);
                     }}
-                    className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[13px] text-ink hover:bg-raised transition-colors"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-left text-[13px] text-ink hover:bg-raised transition-colors"
                   >
                     <GitBranch className="w-3.5 h-3.5 text-muted" />
                     <span>Shortest-path finder</span>
@@ -320,7 +320,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                       setExportMenuOpen(false);
                       setCompareModalOpen(true);
                     }}
-                    className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[13px] text-ink hover:bg-raised transition-colors"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-left text-[13px] text-ink hover:bg-raised transition-colors"
                   >
                     <Scale className="w-3.5 h-3.5 text-muted" />
                     <span>Compare entities</span>
@@ -331,11 +331,11 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                       setExportMenuOpen(false);
                       setCaveatsModalOpen(true);
                     }}
-                    className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[13px] text-ink hover:bg-raised transition-colors"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-left text-[13px] text-ink hover:bg-raised transition-colors"
                   >
                     <AlertTriangle className="w-3.5 h-3.5 text-[var(--warning)]" />
                     <span>
-                      Quality & caveats{edgePrecisionPct ? ` (${edgePrecisionPct})` : ""}
+                      Quality &amp; caveats{edgePrecisionPct ? ` (${edgePrecisionPct})` : ""}
                     </span>
                   </button>
                 </div>

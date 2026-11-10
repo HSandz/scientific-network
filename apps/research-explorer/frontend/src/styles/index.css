@@ -193,12 +193,18 @@ th,
 
   @media (max-width: 480px) {
     .ledger-kpis {
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .ledger-kpi:nth-child(2n) {
-      border-left: 0;
+    .ledger-kpi {
+      padding: 8px 10px;
     }
     .ledger-kpi + .ledger-kpi {
+      border-left: 0;
+    }
+    .ledger-kpi:nth-child(2n) {
+      border-left: 1px solid var(--border);
+    }
+    .ledger-kpi:nth-child(n + 3) {
       border-top: 1px solid var(--border);
     }
   }

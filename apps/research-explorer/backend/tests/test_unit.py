@@ -14,6 +14,7 @@ from backend.config import EXPECTED_GRAPH_VERSION, load_settings  # noqa: E402
 from backend.main import create_app  # noqa: E402
 from backend.repositories.artifact_store import ArtifactStore  # noqa: E402
 from backend.repositories.neo4j_repo import fold_diacritics, validate_labels, validate_relations  # noqa: E402
+from backend.services.explorer_service import ExplorerService  # noqa: E402
 
 
 class FakeNeo4jRepository:
@@ -400,3 +401,38 @@ def test_paths_and_compare_and_tables(unit_client: TestClient):
     tbl_e = unit_client.get("/api/table/edges", params={"page": 1, "page_size": 10})
     assert tbl_e.status_code == 200
     assert tbl_e.json()["total"] == 1
+
+
+def test_empty_artifacts_quality_contract_unavailable():
+    """Verify that absent/empty artifact dictionaries produce unavailable status, not fake numbers."""
+    cfg = load_settings()
+    empty_store = ArtifactStore(
+        summary_path=Path("/nonexistent/summary.json"),
+        analysis_path=Path("/nonexistent/analysis.json"),
+        network_views_path=Path("/nonexistent/views.json"),
+        audit_results_path=Path("/nonexistent/audit.json"),
+        graph_artifact_path=Path("/nonexistent/graph.json"),
+        quality_config_path=Path("/nonexistent/quality.yaml"),
+        topic_eval_path=Path("/nonexistent/topic_eval.json"),
+        historical_topic_reuse_path=Path("/nonexistent/reuse.json"),
+    )
+    fake_repo = FakeNeo4jRepository()
+    service = ExplorerService(fake_repo, empty_store)
+    contract = service._build_quality_contract()
+
+    assert contract["edge_precision"] is None
+    assert contract["edge_precision_status"] == "unavailable"
+    assert contract["edge_precision_correct"] is None
+    assert contract["edge_precision_wilson_lower"] is None
+    assert contract["affiliation_coverage"] is None
+    assert contract["affiliation_status"] == "unavailable"
+    assert contract["affiliation_positions_resolved"] is None
+    assert contract["abstract_coverage"] is None
+    assert contract["abstract_coverage_status"] == "unavailable"
+    assert contract["topic_coverage"] is None
+    assert contract["topic_coverage_status"] == "unavailable"
+    assert contract["topic_precision"] is None
+    assert contract["topic_precision_status"] == "unavailable"
+    assert contract["topic_micro_f1"] is None
+    assert contract["topic_eval_status"] == "unavailable"
+

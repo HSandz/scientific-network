@@ -23,6 +23,9 @@ export const App: React.FC = () => {
     filters,
     extraNodes,
     extraEdges,
+    graphViewScope,
+    edgeFilterMode,
+    selectedNodeId,
     leftSidebarOpen,
     setLeftSidebarOpen,
     rightSidebarOpen,
@@ -33,6 +36,8 @@ export const App: React.FC = () => {
     caveatsModalOpen,
     selectNode,
     mergeSubgraph,
+    enterEgoView,
+    setExpansionError,
     hydrateFromUrl,
     setSearchModalOpen,
     setPathFinderOpen,
@@ -189,60 +194,158 @@ export const App: React.FC = () => {
     staleTime: 60_000,
   });
 
-  // Merge base view subgraph with any extra expanded neighborhoods / paths
-  const mergedGraph = useMemo(() => {
-    const baseNodes = viewQuery.data?.nodes || [];
-    const baseEdges = viewQuery.data?.edges || [];
+  // Derive authoritative graph slice according to active graph scope & presentation filters
+  const effectiveGraph = useMemo(() => {
+    let rawNodes: GraphNode[] = [];
+    let rawEdges: GraphEdge[] = [];
 
-    if (extraNodes.length === 0 && extraEdges.length === 0) {
-      return { nodes: baseNodes, edges: baseEdges };
-    }
+    if (graphViewScope.kind === "ego" || graphViewScope.kind === "path") {
+      // In isolated Ego or dedicated Path view, display only the bounded neighborhood or path steps
+      rawNodes = extraNodes;
+      rawEdges = extraEdges;
+    } else {
+      // Overview view: base view subgraph + any appended expansion nodes
+      const baseNodes = viewQuery.data?.nodes || [];
+      const baseEdges = viewQuery.data?.edges || [];
 
-    const nodeMap = new Map<string, GraphNode>();
-    for (const n of baseNodes) nodeMap.set(n.id, n);
-    for (const n of extraNodes) {
-      if (!nodeMap.has(n.id)) {
-        nodeMap.set(n.id, n);
+      if (extraNodes.length === 0 && extraEdges.length === 0) {
+        rawNodes = baseNodes;
+        rawEdges = baseEdges;
+      } else {
+        const nodeMap = new Map<string, GraphNode>();
+        for (const n of baseNodes) nodeMap.set(n.id, n);
+        for (const n of extraNodes) nodeMap.set(n.id, n);
+
+        const edgeMap = new Map<string, GraphEdge>();
+        for (const e of baseEdges) edgeMap.set(e.edge_id, e);
+        for (const e of extraEdges) edgeMap.set(e.edge_id, e);
+
+        rawNodes = Array.from(nodeMap.values());
+        rawEdges = Array.from(edgeMap.values());
       }
     }
 
-    const edgeMap = new Map<string, GraphEdge>();
-    for (const e of baseEdges) {
-      if (nodeMap.has(e.source) && nodeMap.has(e.target)) {
-        edgeMap.set(e.edge_id, e);
+    // 2. Presentation Edge Filtering (all vs strong vs connected)
+    let effectiveEdges = rawEdges;
+    if (edgeFilterMode === "strong") {
+      if (viewMode === "citations") {
+        // Shared-paper support filter is inapplicable on citation graph
+        effectiveEdges = [];
+      } else {
+        effectiveEdges = rawEdges.filter(
+          (e) =>
+            (e.support_count ?? 1) >= 2 ||
+            (typeof e.fractional_weight === "number" && e.fractional_weight >= 0.45)
+        );
       }
     }
-    for (const e of extraEdges) {
-      if (nodeMap.has(e.source) && nodeMap.has(e.target)) {
-        edgeMap.set(e.edge_id, e);
+
+    let effectiveNodes = rawNodes;
+    if (edgeFilterMode === "connected") {
+      const connectedIds = new Set<string>();
+      for (const e of effectiveEdges) {
+        connectedIds.add(e.source);
+        connectedIds.add(e.target);
       }
+      effectiveNodes = rawNodes.filter(
+        (n) => connectedIds.has(n.id) || n.id === selectedNodeId
+      );
     }
+
+    // 3. Compute accurate rendered visible degree & strength metrics from effectiveEdges
+    const visibleDegrees = new Map<string, number>();
+    const visibleStrengths = new Map<string, number>();
+    for (const e of effectiveEdges) {
+      visibleDegrees.set(e.source, (visibleDegrees.get(e.source) || 0) + 1);
+      visibleDegrees.set(e.target, (visibleDegrees.get(e.target) || 0) + 1);
+      const w = e.fractional_weight ?? e.support_count ?? 1;
+      visibleStrengths.set(e.source, (visibleStrengths.get(e.source) || 0) + w);
+      visibleStrengths.set(e.target, (visibleStrengths.get(e.target) || 0) + w);
+    }
+
+    const finalNodes = effectiveNodes.map((n) => ({
+      ...n,
+      displayed_degree: visibleDegrees.get(n.id) || 0,
+      displayed_strength: visibleStrengths.get(n.id) || 0,
+    }));
 
     return {
-      nodes: Array.from(nodeMap.values()),
-      edges: Array.from(edgeMap.values()),
+      nodes: finalNodes,
+      edges: effectiveEdges,
+      rawNodes,
+      rawEdges,
     };
-  }, [viewQuery.data, extraNodes, extraEdges]);
+  }, [
+    graphViewScope.kind,
+    extraNodes,
+    extraEdges,
+    viewQuery.data,
+    edgeFilterMode,
+    viewMode,
+    selectedNodeId,
+  ]);
 
   // Expand 1-hop neighborhood of any entity (even outside top-100 illustration)
   const handleExpandNode = useCallback(
-    async (nodeId: string, replace = false) => {
+    async (nodeId: string, replace = false, exploreAll = false) => {
       try {
         setIsExpanding(true);
-        const res = await explorerApi.getNodeNeighbors(nodeId, {
+        setExpansionError(null);
+
+        const params: Record<string, unknown> = {
           limit: 60,
           year_min: filters.yearMin,
           year_max: filters.yearMax,
-        });
-        mergeSubgraph(res.nodes, res.edges, replace, nodeId);
-        selectNode(nodeId, res.center_node.name);
-      } catch (err) {
+        };
+
+        if (!exploreAll) {
+          if (viewMode === "researchers") {
+            params.relations = ["COAUTHORED_WITH"];
+            params.node_labels = ["Researcher"];
+            if (filters.minSupport > 1) params.min_support = filters.minSupport;
+            if (filters.minWeight > 0) params.min_weight = filters.minWeight;
+            if (filters.venue) params.venue = filters.venue;
+          } else if (viewMode === "organizations") {
+            params.relations = ["COLLABORATED_WITH"];
+            params.node_labels = ["Organization"];
+            if (filters.sector) params.sector = filters.sector;
+          } else if (viewMode === "citations") {
+            params.relations = ["CITES"];
+            params.node_labels = ["Paper"];
+          }
+        }
+
+        const res = await explorerApi.getNodeNeighbors(nodeId, params as any);
+        if (replace) {
+          enterEgoView(res.center_node, res.nodes, res.edges);
+        } else {
+          mergeSubgraph(res.nodes, res.edges, false, nodeId);
+          selectNode(nodeId, res.center_node.name);
+        }
+      } catch (err: any) {
         console.error("Failed to expand neighborhood:", err);
+        setExpansionError({
+          message: `Failed to load neighborhood for ${nodeId}. Server returned an error.`,
+          nodeId,
+          replace,
+        });
       } finally {
         setIsExpanding(false);
       }
     },
-    [filters.yearMin, filters.yearMax, mergeSubgraph, selectNode]
+    [
+      filters.yearMin,
+      filters.yearMax,
+      filters.minSupport,
+      filters.minWeight,
+      filters.venue,
+      filters.sector,
+      viewMode,
+      enterEgoView,
+      mergeSubgraph,
+      selectNode,
+      setExpansionError,
+    ]
   );
 
   // Focus an entity in the Graph tab (from Search, Table, or Analytics)
@@ -250,12 +353,12 @@ export const App: React.FC = () => {
     (nodeId: string, name?: string) => {
       setWorkspaceTab("graph");
       selectNode(nodeId, name);
-      const alreadyOnCanvas = mergedGraph.nodes.some((n) => n.id === nodeId);
+      const alreadyOnCanvas = effectiveGraph.nodes.some((n) => n.id === nodeId);
       if (!alreadyOnCanvas) {
         void handleExpandNode(nodeId, false);
       }
     },
-    [setWorkspaceTab, selectNode, mergedGraph.nodes, handleExpandNode]
+    [setWorkspaceTab, selectNode, effectiveGraph.nodes, handleExpandNode]
   );
 
   return (
@@ -267,8 +370,8 @@ export const App: React.FC = () => {
       >
         <TopHeader
           summary={summaryQuery.data}
-          displayedNodes={mergedGraph.nodes}
-          displayedEdges={mergedGraph.edges}
+          displayedNodes={effectiveGraph.nodes}
+          displayedEdges={effectiveGraph.edges}
         />
 
         <div className="flex-1 flex min-h-0 overflow-hidden relative">
@@ -282,8 +385,9 @@ export const App: React.FC = () => {
             {workspaceTab === "graph" && (
               <SigmaGraphCanvas
                 viewData={viewQuery.data}
-                nodes={mergedGraph.nodes}
-                edges={mergedGraph.edges}
+                nodes={effectiveGraph.nodes}
+                edges={effectiveGraph.edges}
+                rawEdgesCount={effectiveGraph.rawEdges.length}
                 isLoading={viewQuery.isLoading}
                 error={viewQuery.error as Error | null}
                 onExpandNode={handleExpandNode}
@@ -304,7 +408,8 @@ export const App: React.FC = () => {
           </main>
 
           <RightInspector
-            displayedNodes={mergedGraph.nodes}
+            displayedNodes={effectiveGraph.nodes}
+            displayedEdges={effectiveGraph.edges}
             onExpandNode={handleExpandNode}
             isExpanding={isExpanding}
           />

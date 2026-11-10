@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   Share2,
@@ -17,15 +17,17 @@ import {
   Info,
   X,
   ChevronRight,
+  Search,
 } from "lucide-react";
 import { explorerApi } from "../../lib/api";
-import { LABEL_COLORS, PREDICATE_R_CODE } from "../../lib/colors";
+import { LABEL_COLORS, PREDICATE_R_CODE, getNodeColor } from "../../lib/colors";
 import { useExplorerStore } from "../../stores/useExplorerStore";
-import { EvidenceKind, GraphNode, NodeDetailResponse } from "../../types/explorer";
+import { EvidenceKind, GraphEdge, GraphNode, NodeDetailResponse } from "../../types/explorer";
 
 interface RightInspectorProps {
   displayedNodes: GraphNode[];
-  onExpandNode: (nodeId: string, replace?: boolean) => void;
+  displayedEdges: GraphEdge[];
+  onExpandNode: (nodeId: string, replace?: boolean, exploreAll?: boolean) => void;
   isExpanding: boolean;
 }
 
@@ -84,6 +86,7 @@ function buildPrimaryFactSummary(detail: NodeDetailResponse): string {
 
 export const RightInspector: React.FC<RightInspectorProps> = ({
   displayedNodes,
+  displayedEdges,
   onExpandNode,
   isExpanding,
 }) => {
@@ -95,6 +98,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
     selectNode,
     selectEdge,
     clearSelection,
+    setHoveredNodeId,
     selectionHistory,
     goBackSelection,
     setPathFinderOpen,
@@ -102,9 +106,25 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
     updateFilters,
     setViewMode,
     setWorkspaceTab,
+    viewMode,
   } = useExplorerStore();
 
   const [copiedId, setCopiedId] = useState(false);
+  const [visibleFilter, setVisibleFilter] = useState("");
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (selectedEdgeId) {
+          selectEdge(null);
+        } else if (rightSidebarOpen) {
+          setRightSidebarOpen(false);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [rightSidebarOpen, selectedEdgeId, selectEdge, setRightSidebarOpen]);
 
   const nodeQuery = useQuery({
     queryKey: ["node-detail", selectedNodeId],
@@ -119,6 +139,56 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
       explorerApi.getEdgeEvidence(selectedEdgeId!, signal),
     enabled: Boolean(selectedEdgeId),
   });
+
+  // Calculate authoritative visible metrics from displayedEdges
+  const incidentEdges = useMemo(() => {
+    if (!selectedNodeId) return [];
+    return displayedEdges.filter(
+      (e: GraphEdge) => e.source === selectedNodeId || e.target === selectedNodeId
+    );
+  }, [selectedNodeId, displayedEdges]);
+
+  const visibleDegree = incidentEdges.length;
+  const visibleStrength = incidentEdges.reduce(
+    (sum: number, e: GraphEdge) => sum + (e.fractional_weight ?? e.support_count ?? 1),
+    0
+  );
+
+  const visibleNeighborsList = useMemo(() => {
+    if (!selectedNodeId) return [];
+    const nodeMap = new Map<string, GraphNode>();
+    for (const n of displayedNodes) nodeMap.set(n.id, n);
+
+    const map = new Map<
+      string,
+      { neighborNode: GraphNode; edges: GraphEdge[] }
+    >();
+
+    for (const e of incidentEdges) {
+      const otherId = e.source === selectedNodeId ? e.target : e.source;
+      const otherNode = nodeMap.get(otherId);
+      if (!otherNode) continue;
+      if (!map.has(otherId)) {
+        map.set(otherId, { neighborNode: otherNode, edges: [] });
+      }
+      map.get(otherId)!.edges.push(e);
+    }
+
+    return Array.from(map.values()).sort(
+      (a, b) => (b.neighborNode.score || 0) - (a.neighborNode.score || 0)
+    );
+  }, [selectedNodeId, incidentEdges, displayedNodes]);
+
+  const filteredVisibleNeighbors = useMemo(() => {
+    if (!visibleFilter.trim()) return visibleNeighborsList;
+    const q = visibleFilter.toLowerCase();
+    return visibleNeighborsList.filter(
+      ({ neighborNode }: { neighborNode: GraphNode; edges: GraphEdge[] }) =>
+        neighborNode.name.toLowerCase().includes(q) ||
+        neighborNode.id.toLowerCase().includes(q) ||
+        neighborNode.label.toLowerCase().includes(q)
+    );
+  }, [visibleNeighborsList, visibleFilter]);
 
   if (!rightSidebarOpen) return null;
 
@@ -143,6 +213,8 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
 
       <aside
         data-testid="right-inspector"
+        role={typeof window !== "undefined" && window.innerWidth < 1024 ? "dialog" : undefined}
+        aria-modal={typeof window !== "undefined" && window.innerWidth < 1024 ? "true" : undefined}
         aria-label="Entity and relationship evidence inspector"
         className="absolute inset-y-0 right-0 z-40 w-[400px] max-w-[100vw] lg:static lg:w-[392px] border-l border-border bg-surface flex flex-col h-full shrink-0 overflow-y-auto"
       >
@@ -279,6 +351,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       }}
                       data-testid="inspector-expand-neighbors"
                       className="ledger-btn ledger-btn-primary h-[32px] text-xs"
+                      title="Expand 1 hop within active network projection"
                     >
                       <Share2 className="w-3.5 h-3.5" />
                       <span>Expand +1 hop</span>
@@ -293,6 +366,7 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       }}
                       data-testid="inspector-isolate-ego"
                       className="ledger-btn h-[32px] text-xs"
+                      title="Isolate bounded 1-hop ego network and replace overview"
                     >
                       <CircleDot className="w-3.5 h-3.5 text-muted" />
                       <span>Focus ego view</span>
@@ -317,6 +391,23 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       <GitCompare className="w-3.5 h-3.5 text-muted" />
                       <span>Compare</span>
                     </button>
+
+                    {viewMode !== "heterogeneous" && (
+                      <button
+                        type="button"
+                        disabled={isExpanding}
+                        onClick={() => {
+                          setViewMode("heterogeneous");
+                          setWorkspaceTab("graph");
+                          onExpandNode(nodeQuery.data.node.id, false, true);
+                        }}
+                        data-testid="inspector-explore-all-relations"
+                        className="col-span-2 ledger-btn h-[28px] text-[11px] text-muted hover:text-ink"
+                        title="Switch to heterogeneous knowledge graph to explore all 10 relationship types"
+                      >
+                        <span>Explore all relationship types (switch to heterogeneous)</span>
+                      </button>
+                    )}
                   </div>
                 </section>
 
@@ -366,15 +457,15 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                       )}
                   </div>
 
-                  {displayedNodeObj && (
-                    <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
-                      <span className="text-muted">Displayed subgraph degree</span>
-                      <span className="font-medium text-ink tabular-nums">
-                        {displayedNodeObj.displayed_degree} visible edges (weight{" "}
-                        {displayedNodeObj.displayed_strength.toFixed(2)})
-                      </span>
-                    </div>
-                  )}
+                  <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
+                    <span className="text-muted">Displayed subgraph degree</span>
+                    <span
+                      data-testid="inspector-displayed-degree"
+                      className="font-medium text-ink tabular-nums"
+                    >
+                      {visibleDegree} visible edges (weight {visibleStrength.toFixed(2)})
+                    </span>
+                  </div>
 
                   {nodeQuery.data.node.full_metrics?.community_id && (
                     <div className="pt-2 border-t border-border flex items-center justify-between text-xs">
@@ -444,14 +535,163 @@ export const RightInspector: React.FC<RightInspectorProps> = ({
                   </section>
                 )}
 
-                {/* 3. Connections by Predicate */}
+                {/* On This Graph (Visible Neighbors & Incident Edges) */}
                 <section className="space-y-2.5">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-ink">
-                      Connections ({nodeQuery.data.connected_groups.length}{" "}
-                      predicate groups)
+                      On this graph ({visibleNeighborsList.length} visible{" "}
+                      {visibleNeighborsList.length === 1 ? "neighbor" : "neighbors"})
                     </span>
-                    <span className="text-faint">Click Evidence to trace</span>
+                    <span className="text-muted text-[11px] tabular-nums">
+                      {visibleDegree} visible {visibleDegree === 1 ? "edge" : "edges"}
+                    </span>
+                  </div>
+
+                  {visibleNeighborsList.length > 5 && (
+                    <div className="relative">
+                      <Search className="w-3.5 h-3.5 text-faint absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                      <input
+                        type="text"
+                        value={visibleFilter}
+                        onChange={(e) => setVisibleFilter(e.target.value)}
+                        placeholder="Filter visible neighbors by name or ID..."
+                        className="w-full h-7 pl-8 pr-2.5 text-xs rounded-[5px] bg-ground border border-border text-ink placeholder:text-faint focus:outline-none focus:border-accent"
+                      />
+                      {visibleFilter && (
+                        <button
+                          type="button"
+                          onClick={() => setVisibleFilter("")}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 text-faint hover:text-ink text-xs"
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {visibleNeighborsList.length === 0 ? (
+                    <div className="p-3 rounded-[8px] bg-ground border border-border text-xs text-muted">
+                      No visible neighbors on current canvas under active filters.
+                    </div>
+                  ) : filteredVisibleNeighbors.length === 0 ? (
+                    <div className="p-3 rounded-[8px] bg-ground border border-border text-xs text-muted">
+                      No visible neighbors match &ldquo;{visibleFilter}&rdquo;.
+                    </div>
+                  ) : (
+                    <div className="rounded-[8px] border border-border bg-surface divide-y divide-rule max-h-72 overflow-y-auto">
+                      {filteredVisibleNeighbors.map(({ neighborNode, edges }: { neighborNode: GraphNode; edges: GraphEdge[] }) => {
+                        const labelColor = LABEL_COLORS[neighborNode.label] || "#7fa6cc";
+                        return (
+                          <div
+                            key={neighborNode.id}
+                            onMouseEnter={() => setHoveredNodeId(neighborNode.id)}
+                            onMouseLeave={() => setHoveredNodeId(null)}
+                            onFocus={() => setHoveredNodeId(neighborNode.id)}
+                            onBlur={() => setHoveredNodeId(null)}
+                            className="p-2.5 space-y-1.5 hover:bg-raised/60 text-xs transition-colors"
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="min-w-0 flex-1">
+                                <button
+                                  type="button"
+                                  onClick={() => selectNode(neighborNode.id, neighborNode.name)}
+                                  className="font-medium text-ink hover:underline text-left truncate block w-full"
+                                  title={`${neighborNode.name} (${neighborNode.id})`}
+                                >
+                                  {neighborNode.name}
+                                </button>
+                                <div className="flex items-center gap-1.5 text-[11px] text-muted font-mono truncate">
+                                  <span
+                                    className="w-2 h-2 rounded-full shrink-0"
+                                    style={{ backgroundColor: labelColor }}
+                                    title={neighborNode.label}
+                                  />
+                                  <span>{neighborNode.label}</span>
+                                  <span className="text-faint truncate">· {neighborNode.id}</span>
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => selectNode(neighborNode.id, neighborNode.name)}
+                                className="ledger-btn h-6 px-2 text-[11px] shrink-0"
+                                title="Center and inspect this entity"
+                              >
+                                Select
+                              </button>
+                            </div>
+
+                            {/* Edges connecting selectedNodeId and this neighbor */}
+                            <div className="pl-3.5 border-l-2 border-border/70 space-y-1 pt-0.5">
+                              {edges.map((e: GraphEdge) => {
+                                const rCode = PREDICATE_R_CODE[e.relation] || e.relation;
+                                const dirSymbol = e.symmetric || !e.directed
+                                  ? "↔"
+                                  : e.source === selectedNodeId
+                                  ? "→"
+                                  : "←";
+                                return (
+                                  <div
+                                    key={e.edge_id}
+                                    className="flex items-center justify-between gap-2 text-[11px]"
+                                  >
+                                    <div className="flex items-center gap-1 min-w-0 text-muted">
+                                      <span className="font-mono font-medium text-ink">
+                                        {dirSymbol}
+                                      </span>
+                                      <span className="font-mono text-faint">
+                                        {rCode}
+                                      </span>
+                                      <span className="truncate" title={e.relation}>
+                                        {e.relation}
+                                      </span>
+                                      {e.support_count > 1 && (
+                                        <span className="tabular-nums text-faint shrink-0">
+                                          ({e.support_count} {e.relation === "CITES" ? "citations" : "papers"})
+                                        </span>
+                                      )}
+                                      {typeof e.fractional_weight === "number" && (
+                                        <span className="tabular-nums text-faint shrink-0">
+                                          (wt {e.fractional_weight.toFixed(2)})
+                                        </span>
+                                      )}
+                                    </div>
+                                    <button
+                                      type="button"
+                                      data-testid={`inspect-visible-edge-${e.edge_id}`}
+                                      onClick={() =>
+                                        selectEdge(
+                                          e.edge_id,
+                                          `${e.relation}: ${neighborNode.name}`
+                                        )
+                                      }
+                                      className="font-mono text-[10px] text-accent hover:underline shrink-0"
+                                      title="Inspect relationship evidence"
+                                    >
+                                      Evidence
+                                    </button>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
+
+                {/* 3. All database connections by Predicate */}
+                <section className="space-y-2.5">
+                  <div className="flex items-start justify-between gap-2 text-xs">
+                    <div>
+                      <span className="font-medium text-ink">
+                        All database connections ({nodeQuery.data.total_degree.toLocaleString()} total)
+                      </span>
+                      <p className="text-[11px] text-muted">
+                        Stored across all projections and filters. Showing top {nodeQuery.data.connected_groups.reduce((acc, g) => acc + g.items.length, 0)} results.
+                      </p>
+                    </div>
+                    <span className="text-faint text-[11px] shrink-0">Click Evidence to trace</span>
                   </div>
 
                   {nodeQuery.data.connected_groups.map((grp) => {
