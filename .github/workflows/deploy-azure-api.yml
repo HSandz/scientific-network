@@ -1,0 +1,127 @@
+name: Deploy Azure API
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/research-explorer/backend/**'
+      - 'ops/azure/Dockerfile.api'
+      - 'ops/azure/requirements-api.txt'
+      - 'ops/azure/scripts/build-image.sh'
+      - 'ops/azure/scripts/runtime-contract.py'
+      - 'ops/azure/scripts/ci-image-smoke.sh'
+      - 'pyproject.toml'
+      - 'uv.lock'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-azure-api
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'HSandz/scientific-network' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      artifact-id: ${{ steps.package.outputs.artifact-id }}
+      image-id: ${{ steps.identity.outputs.image-id }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc # v6.4.3
+        with:
+          version: '0.9.10'
+          enable-cache: false
+      - name: Install locked dependencies (no NLP/models)
+        run: |
+          uv python install 3.12
+          uv sync --locked --group dev --extra analysis --extra report
+      - name: Repository and production backend checks
+        run: |
+          uv run pytest
+          PYTHONPATH=apps/research-explorer:src uv run pytest apps/research-explorer/backend/tests/test_unit.py apps/research-explorer/backend/tests/test_production.py
+          uv run research-network validate --input tests/fixtures/synthetic_graph.json
+          bash -n ops/azure/scripts/*.sh
+          uv export --locked --no-dev --no-emit-project --prune beautifulsoup4 --prune httpx --prune pyarrow --no-annotate --no-header --output-file /tmp/requirements-api.txt
+          diff -u ops/azure/requirements-api.txt /tmp/requirements-api.txt
+      - name: Build and start production amd64 image
+        env:
+          IMAGE: scientific-network-api:sha-${{ github.sha }}
+        run: |
+          ops/azure/scripts/build-image.sh "sha-$GITHUB_SHA"
+          ops/azure/scripts/ci-image-smoke.sh "$IMAGE"
+      - name: Package private image and record immutable identity
+        id: identity
+        env:
+          IMAGE: scientific-network-api:sha-${{ github.sha }}
+        run: |
+          docker image inspect --format '{{.Id}}' "$IMAGE" > image-id.txt
+          echo "image-id=$(cat image-id.txt)" >> "$GITHUB_OUTPUT"
+          docker save "$IMAGE" | gzip -1 > image.tar.gz
+          sha256sum image.tar.gz > image.tar.gz.sha256
+          {
+            echo "Commit: $GITHUB_SHA"
+            echo "Image: $IMAGE"
+            echo "Image content digest: $(cat image-id.txt)"
+            cat image.tar.gz.sha256
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        id: package
+        with:
+          name: azure-api-image
+          path: image.tar.gz
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: azure-api-identity
+          path: |
+            image-id.txt
+            image.tar.gz.sha256
+          retention-days: 1
+
+  deploy:
+    environment: production-api
+    needs: build
+    if: github.repository == 'HSandz/scientific-network' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      actions: read
+      id-token: write
+    steps:
+      - name: Require configured passwordless Azure identity
+        env:
+          CLIENT: ${{ vars.AZURE_API_CLIENT_ID }}
+          TENANT: ${{ vars.AZURE_API_TENANT_ID }}
+          SUBSCRIPTION: ${{ vars.AZURE_API_SUBSCRIPTION_ID }}
+          VM: ${{ vars.AZURE_API_VM_ID }}
+        run: test -n "$CLIENT" && test -n "$TENANT" && test -n "$SUBSCRIPTION" && test -n "$VM"
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: azure-api-identity
+      - uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ vars.AZURE_API_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_API_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_API_SUBSCRIPTION_ID }}
+      - name: Deliver verified package and activate API only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ needs.build.outputs.artifact-id }}
+          AZURE_VM_ID: ${{ vars.AZURE_API_VM_ID }}
+        run: python3 ops/azure/scripts/deliver-ci-image.py
+      - name: Verify public production contract independently
+        run: python3 ops/azure/scripts/smoke-api.py --base-url https://scientific-network-api.eastasia.cloudapp.azure.com/api
