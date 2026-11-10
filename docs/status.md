@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-10 14:53 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-10 15:03 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md); user adopted [full remediation](prompts/implement-remediation-plan.md).
 Latest completed: [WORK-2026-11-10-005](work-log/2026-11-10-005-research-explorer-usability-implementation.md), Research Explorer usability and graph operations implementation.
 
@@ -38,9 +38,9 @@ AI-assessed edge precision 193/200 = 96.5%, Wilson 92.95–98.29%; human validat
 ## Azure production deployment
 
 - [x] Azure VM swap/Docker, guarded dump restore, exact full-content/schema comparison, compact evidence/analytics, HTTPS API functional checks, off-VM backup and restart recovery ([WORK-007](work-log/2026-11-10-007-azure-production.md)).
-- [ ] Pages production build and live browser acceptance pending; production API setting now targets Azure. [Runbook](../ops/azure/README.md); [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
+- [x] Pages production build and live browser acceptance complete: Azure API, all five live browser suites and 28 public API checks passed. [Runbook](../ops/azure/README.md); [receipt](../reports/release-v4/azure-deployment-2026-11-10.md).
 - Render/Aura remain retained.
 
 ## Remaining personal facts and delivery
 
-Real names/IDs/contributions, lecturer access and course AI-use requirements remain pending. Prior WORK-014 GitHub HEAD 404 means public/lecturer access was `not_verified`. Package remains a local submission draft. No GitHub push, tag, invitation or course submission performed. Supply personal/course facts before a new delivery render. Human annotation is optional.
+Real names/IDs/contributions, lecturer access and course AI-use requirements remain pending. Prior WORK-014 GitHub HEAD 404 means public/lecturer access was `not_verified`. Package remains a local submission draft. Azure deployment commits pushed (WORK-007); no course tag, invitation or submission performed. Supply personal/course facts before a new delivery render. Human annotation is optional.

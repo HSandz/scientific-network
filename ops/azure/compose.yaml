@@ -120,7 +120,7 @@ networks:
 
 volumes:
   neo4j-data:
-    name: ${NEO4J_DATA_VOLUME:-scientific-network-production-neo4j-data-v1}
+    name: ${NEO4J_DATA_VOLUME:?Set the dedicated restored production volume}
     external: true
   neo4j-logs:
     name: scientific-network-production-neo4j-logs-v1
