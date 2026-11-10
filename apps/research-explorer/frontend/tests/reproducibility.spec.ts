@@ -413,14 +413,14 @@ for (const tab of ["graph", "table", "analytics"] as const) {
       s.setState({ analyticsSection: "topics", analyticsFilters: { venue: "venue:ijcai", topic: "", yearMin: 2023, yearMax: 2023, family: "", community: "" } });
       s.setState({ tableWorkspace: { ...s.getState().tableWorkspace, nodeLabel: "Paper", nodeSearch: "Informer", nodeSortBy: "name", nodeSortOrder: "asc" } });
       s.getState().setWorkspaceTab(tab);
-      s.getState().saveCurrentView(`Restore ${tab}`);
     }, tab);
+    await page.getByTestId("open-export-menu").click();
+    await page.getByLabel("Save workspace", { exact: true }).fill(`Restore ${tab}`);
+    await page.getByTestId("save-workspace-bookmark").click();
     await page.reload();
     await page.waitForFunction(() => (window as any).__explorerStore?.getState().savedViews.some((v: any) => v.name.startsWith("Restore")));
-    await page.evaluate((tab) => {
-      const s = (window as any).__explorerStore;
-      s.getState().applySavedView(s.getState().savedViews.find((v: any) => v.name === `Restore ${tab}`));
-    }, tab);
+    await page.getByTestId("open-export-menu").click();
+    await page.getByRole("button", { name: `Restore Restore ${tab}`, exact: true }).click();
     await expect.poll(() => page.evaluate(() => {
       const s = (window as any).__explorerStore.getState();
       return { tab: s.workspaceTab, section: s.analyticsSection, layout: s.layoutMode, projection: s.viewMode, minSupport: s.filters.minSupport, scope: s.graphViewScope.kind };
