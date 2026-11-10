@@ -1,6 +1,6 @@
 # Explorer UI redesign verification — 11 November 2026
 
-Status: local implementation and regression checks complete; production acceptance pending.
+Status: implemented, pushed and verified on production. Receipt recorded 2026-11-11 01:15 +07:00.
 Work: WORK-2026-11-11-001. All times Asia/Bangkok (+07:00).
 
 ## Implementation and scope
@@ -93,7 +93,7 @@ removed. Its >500 KB warning remains visible. Dialogs/table load separately. A
 built-app cold Analytics visit requested neither Sigma nor ECharts before scrolling
 to charts. Existing cached analytics supports all figures without per-chart API calls.
 
-One sequential workstation/software-WebGL run measured old production readiness
+One sequential workstation/software-WebGL profiling run, before the final small navigation/empty-state fixes, measured old production readiness
 3307ms and local built preview 3081ms. Different origins and workload prevent a
 causal speed claim. New dashboard's maximum active chart count was five over 20
 section visits. GC heap was 4.77MB before, 11.73MB after visits, 9.30MB after leaving;
@@ -125,8 +125,32 @@ Raw logs, API snapshots, screenshots and measurement JSON are ignored under
 
 ## Production verification
 
-Pending final tested commit, authorized main push, Pages identity, public browser/API
-checks and unchanged Azure container identity comparison.
+Implementation commit: `7fd73d0379e466212317dc6518990ba99268a87e`, pushed to `main`.
+Cloudflare deployment `458f1a1c-c6ca-4798-8a1c-322f783b2858` succeeded at
+01:13:08 +07:00, with matching Git source. Immutable URL:
+https://458f1a1c.scientific-network-explorer.pages.dev . Public URL:
+https://scientific-network-explorer.pages.dev .
+
+- GitHub [frontend checks](https://github.com/HSandz/scientific-network/actions/runs/42872384443)
+  and [offline checks](https://github.com/HSandz/scientific-network/actions/runs/42872384459): success.
+- Five production Chromium suites: passed (45.5s), including search, evidence,
+  table, paths, comparison, neighborhood, responsive inspectors and theme persistence.
+- Additional public UI-only browser checks: all seven sections at1440×900,
+  1024×768,768×1024 and390×844 in both themes; no document overflow. Saved
+  Analytics venue/section/scroll restored after reload and navigation elsewhere.
+  Live reduced motion passed. All four projections passed overview/close zoom-band
+  checks in both themes, with mobile fit captures. 88 screenshots captured;
+  representative desktop robustness, mobile topics and graph screenshots reviewed.
+  No page or console errors. Local geometry tests supply the stronger collision
+  and hovered/selected-node assertions; production tests also exercise inspectors.
+- Public API smoke:28 checks passed, including complete graph-bound analytics.
+  Summary and analytics JSON compare exactly equal to pre-change snapshots.
+- Azure API and Neo4j IDs, start times and mount descriptors compare byte-for-byte
+  equal before/after. No Azure deployment workflow ran for this frontend commit.
+  Database, frozen release identities and scientific artifacts remain untouched.
+
+A documentation-only follow-up records this receipt with identical frontend source;
+no remaining application deployment step. No backend contract changes were needed.
 
 ## Remaining limitations
 
