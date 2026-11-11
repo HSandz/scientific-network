@@ -50,3 +50,44 @@ the diagnostic reviewer independently saw the same eight paper-topic cases.
 The coordinator later reviewed all flagged packets. Shared models and construction
 sources mean statistical/evaluator independence is not established. Per-run output
 hashes are preserved in `review-completion.json`.
+
+## Optional human packet rubric and allocation amendment
+
+The human packet keeps the existing CSV vocabulary and `correct_when` field; it
+does not add an annotation schema. It makes two evidence states explicit:
+
+- **Source-consistent relationship:** the claim agrees with official publication
+  metadata and accepted provider records, at the evidence depth shown.
+- **Independently verified relationship:** appropriately independent evidence
+  establishes the claim's semantic correctness, including the mapping of a
+  canonical researcher ID to the real person where relevant.
+
+An official byline aligned with an OpenAlex author ID is a construction-consistent
+authorship record, but does not alone independently establish person identity.
+`AFFILIATED_WITH` also depends on that identity mapping. `COAUTHORED_WITH`,
+`COLLABORATED_WITH`, `RESEARCHES_TOPIC`, and `CONTRIBUTES_TO_TOPIC` inherit the
+identity uncertainty of their researcher inputs; mechanical support thresholds
+or correct aggregation do not remove it. If only source consistency is established
+and the semantic claim remains unresolved, reviewers can record `unverifiable`
+and explain the evidence in the existing reason field. A `correct` response is
+not separately coded as independently verified; readers must inspect the evidence
+and the reviewer's stated basis. This is a known limit of the existing form.
+
+Each member receives their own `human-member-{1,2}.html` plus matching CSV. Both
+forms show the same 20-case prespecified random subset, six existing risk
+diagnostics, and all four IDs in `issues.json`. Three flagged cases overlap the
+random subset. The 27 unique displayed cases retain every selection tag; flagged
+cases appear once in a dedicated section. Only the `random` tag contributes to
+probability-based calculations. The random conditional probability remains 20/80;
+its marginal population probability is `(8 / relation population) * (20/80)`.
+Risk and diagnostic-only flagged cases are not a probability sample and must not
+enter that estimator. Do not pool relation strata unweighted.
+
+The initial packet includes the cases' source evidence but withholds Luna's concern.
+Each reviewer has a separate `human-member-{1,2}-flagged-post-blind.html` with the
+issue-ledger concerns and source locators. Reviewers should record and export their
+initial CSV before opening that page. Open each local form in a separate browser
+profile; source links require Internet. Export original CSVs separately before
+comparing answers. Member labels do not fabricate identities or participation.
+Human validation remains **not performed** until actual submissions exist; both
+members' metrics remain unavailable.

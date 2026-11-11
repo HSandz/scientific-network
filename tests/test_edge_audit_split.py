@@ -108,7 +108,9 @@ def test_split_form_carries_reviewer_context_and_an_html_sheet_next_to_it(tmp_pa
     assert all(row["reviewer_id"] in {"A", "B"} and not row["decision"] for row in rows)
     authored = next(row for row in rows if row["relation"] == "AUTHORED")
     assert authored["source_name"] and authored["target_name"]
-    assert authored["correct_when"].startswith("The person is on the official byline")
+    assert authored["correct_when"].startswith("Source-consistent relationship:")
+    assert "Independently verified relationship:" in authored["correct_when"]
+    assert "does not establish the canonical researcher's identity" in authored["correct_when"]
     sheet = sample.with_suffix(".html")
     assert summary["review_sheet"] == str(sheet) and sheet.is_file()
     html = sheet.read_text(encoding="utf-8")

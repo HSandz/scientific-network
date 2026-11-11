@@ -1,6 +1,7 @@
 """Bounded relation-stratified diagnostic draw; no pooled accuracy estimator."""
 from collections import defaultdict
 import hashlib
+import html
 import json
 from pathlib import Path
 
@@ -9,6 +10,7 @@ from scientific_network.evaluation.precision import precision_interval
 
 METHOD = "sprint-relation-audit-release-v1"
 SEED = 2026111107
+HUMAN_PACKET_ID = f"{METHOD}-human-packet-v2"
 
 
 def draw(edges: list[dict], per_relation: int = 8) -> tuple[list[dict], dict]:
@@ -40,6 +42,101 @@ def human_subset(sample: list[dict]) -> tuple[list[str], list[str]]:
                   {"HAS_TOPIC", "RESEARCHES_TOPIC", "COLLABORATED_WITH", "AFFILIATED_WITH"}]
     diagnostic = _sample_ids([r["edge_id"] for r in candidates], 6, SEED, "human-risk")
     return random_ids, diagnostic
+
+
+def human_selection(sample: list[dict], flagged_ids: list[str]) -> dict:
+    """Add flagged cases while preserving the original random and risk selections."""
+    random_ids, risk_ids = human_subset(sample)
+    sample_ids = [row["edge_id"] for row in sample]
+    sample_set = set(sample_ids)
+    if len(flagged_ids) != len(set(flagged_ids)):
+        raise ValueError("flagged issue ledger contains duplicate edge IDs")
+    missing = set(flagged_ids) - sample_set
+    if missing:
+        raise ValueError("flagged issue edge is outside the frozen sample: " + ", ".join(sorted(missing)))
+    flagged = [edge_id for edge_id in flagged_ids if edge_id in sample_set]
+    tags = {}
+    for edge_id in sample_ids:
+        values = []
+        if edge_id in random_ids:
+            values.append("random")
+        if edge_id in risk_ids:
+            values.append("risk_diagnostic")
+        if edge_id in flagged:
+            values.append("flagged_diagnostic")
+        if values:
+            tags[edge_id] = values
+    selected = [edge_id for edge_id in sample_ids if edge_id in tags]
+    flagged_random = len(set(flagged) & set(random_ids))
+    flagged_risk = len(set(flagged) & set(risk_ids))
+    return {
+        "random_ids": random_ids,
+        "diagnostic_ids": risk_ids,
+        "flagged_diagnostic_ids": flagged,
+        "selection_tags": tags,
+        "unique_review_ids": selected,
+        "probability_sample_ids": random_ids,
+        "diagnostic_only_ids": [edge_id for edge_id in selected if edge_id not in random_ids],
+        "selection_summary": {
+            "random_total": len(random_ids),
+            "random_flagged_overlap": flagged_random,
+            "risk_total": len(risk_ids),
+            "risk_flagged_overlap": flagged_risk,
+            "flagged_total": len(flagged),
+            "unique_total": len(selected),
+        },
+    }
+
+
+def _read_issues(path: Path, sample: list[dict]) -> list[dict]:
+    issues = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(issues, list) or any(not isinstance(issue, dict) or not issue.get("edge_id") for issue in issues):
+        raise ValueError("issues input must be a list of records with edge_id")
+    human_selection(sample, [str(issue["edge_id"]) for issue in issues])
+    return issues
+
+
+def _postblind_html(member: str, flagged_issues: list[dict], packet_by_id: dict[str, dict]) -> str:
+    """Render Luna's source locators and concerns separately from initial answers."""
+    cards = []
+    for issue in flagged_issues:
+        edge_id = str(issue["edge_id"])
+        packet = packet_by_id[edge_id]
+        locators = []
+        for locator in issue.get("source_locators", []):
+            text = str(locator)
+            source = text.split(" @ ", 1)[0]
+            if source.startswith(("https://", "http://")):
+                locators.append(f'<li><a href="{html.escape(source, quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(text)}</a></li>')
+            else:
+                locators.append(f"<li>{html.escape(text)}</li>")
+        links = "\n".join(locators) or "<li>No source locators recorded.</li>"
+        context = packet["context"].get("supporting_context", "")
+        cards.append(
+            '<article><h2>' + html.escape(str(issue.get("relation", ""))) + " · "
+            + html.escape(packet["context"].get("source_name", "")) + " → "
+            + html.escape(packet["context"].get("target_name", "")) + "</h2>"
+            + '<p class="id">' + html.escape(edge_id) + "</p>"
+            + '<p><strong>Luna\'s concern (AI-assessed; not a human finding):</strong> '
+            + html.escape(str(issue.get("potential_issue") or "No concise concern supplied.")) + "</p>"
+            + '<p><strong>Source locators from the AI review ledger:</strong></p><ul>' + links + "</ul>"
+            + '<details><summary>Full source and support context shown in the initial packet</summary><pre>'
+            + html.escape(context) + "</pre></details></article>"
+        )
+    return (
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>Post-blind flagged diagnostics</title><style>'
+        ':root{font:15px/1.5 system-ui,sans-serif;color:#1d2327;background:#fafaf7}body{max-width:900px;margin:24px auto;padding:0 16px}'
+        'article{background:#fff;border:1px solid #d9dde1;border-radius:8px;padding:16px;margin:16px 0}'
+        'a{overflow-wrap:anywhere;color:#1b5fa8}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}'
+        '.id{font:11px ui-monospace,monospace;overflow-wrap:anywhere;color:#5d6670}'
+        '</style></head><body><h1>Post-blind flagged diagnostics</h1>'
+        f'<p>For {html.escape(member)}. Open only after recording and exporting the initial review decisions. '
+        'The following are AI-assessed concerns, not human findings or independent verification. '
+        'The initial packet contains the source evidence without these concerns.</p>'
+        + "\n".join(cards) + "</body></html>\n"
+    )
 
 
 def summarize(sample: list[dict], reviews: list[dict]) -> dict:
@@ -76,7 +173,7 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
+def prepare(graph_path: Path, works_path: Path, issues_path: Path, output: Path) -> dict:
     """Prepare inspectable cache-backed witnesses without changing frozen inputs."""
     import csv
     from datetime import datetime
@@ -88,7 +185,11 @@ def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
         raise ValueError("output exists; use an unused versioned directory")
     graph = GraphArtifact.model_validate_json(graph_path.read_bytes())
     sample, strata = draw([e.model_dump(mode='json') for e in graph.edges])
-    random_ids, risk_ids = human_subset(sample)
+    issues = _read_issues(issues_path, sample)
+    selection = human_selection(sample, [str(issue["edge_id"]) for issue in issues])
+    random_ids = selection["random_ids"]
+    risk_ids = selection["diagnostic_ids"]
+    flagged_ids = selection["flagged_diagnostic_ids"]
     context = SheetContext(graph)
     works = {w['paper_id']: w for w in map(json.loads, works_path.open())}
     output.mkdir(parents=True)
@@ -96,6 +197,7 @@ def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
         (output / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
     write('edge-sample.json', sample)
     packets, human = [], []
+    packet_by_id = {}
     for row in sample:
         edge = context.edges_by_id[row['edge_id']]
         desc, links = context.describe(edge)
@@ -112,25 +214,36 @@ def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
                         'support_base_edges': support, 'paper_witnesses': witnesses,
                         'affiliation_observations': [o.model_dump(mode='json') for p in papers
                                                      for o in context.paper_observations[p]]})
-        if edge.edge_id in random_ids + risk_ids:
-            # Existing sheet vocabulary: correct/incorrect/unverifiable; the
-            # separate AI ledger uses supported/unsupported/unknown.
-            desc['correct_when'] = {
-                'AUTHORED': 'Compatible official positional byline and stable OpenAlex author ID on the matched work; identity errors remain possible.',
-                'AFFILIATED_WITH': 'Exact paper authorship maps this researcher to this institution, with raw affiliation-string evidence.',
-                'CITES': 'Cached source work referenced_works contains the uniquely matched in-scope target work ID.',
-            }.get(row['relation'], desc['correct_when'])
-            subset = 'random' if edge.edge_id in random_ids else 'diagnostic'
-            desc['also_show'] = f"Human subset: {subset}. " + desc.get('also_show', '')
+        if edge.edge_id in selection['unique_review_ids']:
+            tags = selection['selection_tags'][edge.edge_id]
+            human_context = {**desc, 'selection_tags': tags,
+                             'also_show': 'Selection tags: ' + ', '.join(tags) + '. ' + desc['also_show']}
             review = {k: '' for k in SPLIT_FIELDS}
-            review.update({'audit_id': METHOD, 'graph_version': graph.graph_version,
+            review.update({'audit_id': HUMAN_PACKET_ID, 'graph_version': graph.graph_version,
                            'graph_sha256': digest(graph_path), 'edge_id': edge.edge_id,
                            'reviewer_id': 'member-1'})
-            review.update(desc)
-            human.append({'review': review, 'context': desc, 'links': links})
-    write('human-allocation.json', {'random_ids': random_ids, 'random_conditional_probability': 20 / len(sample),
-                                   'diagnostic_ids': risk_ids, 'diagnostic_is_probability_sample': False,
-                                   'human_metrics': None})
+            review.update(human_context)
+            packet_row = {'review': review, 'context': human_context, 'links': links}
+            human.append(packet_row)
+            packet_by_id[edge.edge_id] = packet_row
+    flagged_issues = [issue for issue in issues if issue['edge_id'] in set(flagged_ids)]
+    allocation = {
+        **selection,
+        'random_conditional_probability': len(random_ids) / len(sample),
+        'diagnostic_is_probability_sample': False,
+        'flagged_diagnostic_is_probability_sample': False,
+        'flagged_source': str(issues_path),
+        'probability_sample_ids': selection['probability_sample_ids'],
+        'diagnostic_only_ids': selection['diagnostic_only_ids'],
+        'reviewer_ids': ['member-1', 'member-2'],
+        'reviewer_case_ids': {
+            'member-1': selection['unique_review_ids'],
+            'member-2': selection['unique_review_ids'],
+        },
+        'initial_answers': 'blank',
+        'human_metrics': None,
+    }
+    write('human-allocation.json', allocation)
     # Both members independently inspect the same small packet; no completed answers.
     for member in ('member-1', 'member-2'):
         rows = [{**r, 'review': {**r['review'], 'reviewer_id': member}} for r in human]
@@ -138,7 +251,12 @@ def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
             writer = csv.DictWriter(stream, fieldnames=SPLIT_FIELDS, extrasaction='ignore')
             writer.writeheader(); writer.writerows(r['review'] for r in rows)
         (output / f'human-{member}.html').write_text(render_html(
-            {'graph_version': graph.graph_version, 'audit_id': METHOD, 'reviewer_ids': [member]}, SPLIT_FIELDS, rows))
+            {'graph_version': graph.graph_version, 'audit_id': HUMAN_PACKET_ID, 'reviewer_ids': [member],
+             'selection_summary': selection['selection_summary'],
+             'packet_note': 'This packet has a prespecified random subset, the prior risk-diagnostic subset, and all cases listed in the existing AI issue ledger. Overlapping cases appear once and retain every selection tag. Only the random tag carries probability-based inclusion.'},
+            SPLIT_FIELDS, rows))
+        (output / f'human-{member}-flagged-post-blind.html').write_text(
+            _postblind_html(member, flagged_issues, packet_by_id))
     for index in range(2):
         (output / f'edges-{index+1}.jsonl').write_text(''.join(json.dumps(p, ensure_ascii=False) + '\n' for p in packets[index::2]))
     manifest = {'method': METHOD, 'seed': SEED, 'graph_version': graph.graph_version,
@@ -147,9 +265,44 @@ def prepare(graph_path: Path, works_path: Path, output: Path) -> dict:
                 'prepared_at': datetime.now(ZoneInfo('Asia/Bangkok')).isoformat(),
                 'human_validation': 'not_performed', 'pooled_accuracy': None,
                 'witness_limit': 3, 'reviewer_independence': 'not_established',
-                'source_overlap': 'construction caches',
+                'source_overlap': 'construction caches', 'issues_sha256': digest(issues_path),
+                'human_packet_id': HUMAN_PACKET_ID, 'human_selection': allocation,
                 'artifact_hashes': {p.name: digest(p) for p in sorted(output.iterdir())}}
     write('manifest.json', manifest)
+    return manifest
+
+
+def update_sampling_manifest(path: Path, allocation: dict, issues_path: Path,
+                             packet_root: Path, sample_sha256: str) -> dict:
+    """Append the human packet v2 receipt without changing frozen sample fields."""
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    for field, allocation_field in (("human_random_ids", "random_ids"), ("human_diagnostic_ids", "diagnostic_ids")):
+        if manifest.get(field) != allocation[allocation_field]:
+            raise ValueError(f"existing frozen {field} differs from regenerated selection")
+    if manifest.get("human_random_conditional_probability") != allocation["random_conditional_probability"]:
+        raise ValueError("existing random inclusion probability differs from regenerated selection")
+    if manifest.get("sample_sha256") != sample_sha256:
+        raise ValueError("generated edge sample differs from the frozen sample")
+    files = [f"human-{member}.{suffix}" for member in allocation["reviewer_ids"] for suffix in ("csv", "html")]
+    files += ["human-allocation.json"]
+    files += [f"human-{member}-flagged-post-blind.html" for member in allocation["reviewer_ids"]]
+    manifest["human_flagged_diagnostic_ids"] = allocation["flagged_diagnostic_ids"]
+    manifest["human_flagged_diagnostic_probability_sample"] = False
+    manifest["human_packet_v2"] = {
+        "audit_id": HUMAN_PACKET_ID,
+        "issues_source": str(issues_path),
+        "issues_sha256": digest(issues_path),
+        "unique_review_ids": allocation["unique_review_ids"],
+        "unique_review_count": len(allocation["unique_review_ids"]),
+        "selection_tags": allocation["selection_tags"],
+        "probability_sample_ids": allocation["probability_sample_ids"],
+        "diagnostic_only_ids": allocation["diagnostic_only_ids"],
+        "reviewer_case_ids": allocation["reviewer_case_ids"],
+        "initial_answers": allocation["initial_answers"],
+        "human_validation": "not_performed",
+        "packet_sha256": {name: digest(packet_root / name) for name in files},
+    }
+    path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return manifest
 
 
@@ -158,9 +311,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--graph', type=Path, required=True)
     parser.add_argument('--works', type=Path, required=True)
+    parser.add_argument('--issues', type=Path, required=True,
+                        help='authoritative AI-flagged edge ledger (issues.json)')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--sampling-manifest', type=Path,
+                        help='existing frozen manifest to extend with the supplemental packet receipt')
     args = parser.parse_args()
-    print(json.dumps(prepare(args.graph, args.works, args.output), indent=2))
+    prepared = prepare(args.graph, args.works, args.issues, args.output)
+    if args.sampling_manifest:
+        allocation = json.loads((args.output / 'human-allocation.json').read_text(encoding='utf-8'))
+        prepared['updated_sampling_manifest'] = update_sampling_manifest(
+            args.sampling_manifest, allocation, args.issues, args.output, prepared['sample_sha256'])
+    print(json.dumps(prepared, indent=2))
 
 
 if __name__ == '__main__':

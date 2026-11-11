@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-11T22:18:19+07:00**. Plan: [D040](release-plan.md), with
+Updated: **2026-11-11T23:24:41+07:00**. Plan: [D040](release-plan.md), with
 [user-authorized deadline sprint amendment](decisions.md).
-Latest: [WORK-2026-11-11-007](work-log/2026-11-11-007-final-quality-sprint.md).
+Latest: [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-readiness.md).
 
 ## Phase checklist
 
@@ -15,6 +15,9 @@ Latest: [WORK-2026-11-11-007](work-log/2026-11-11-007-final-quality-sprint.md).
 - [x] Research report coverage figure, landscape findings and qualified quality evidence.
 - [x] Python suite, offline validation, frontend build, browser regression and hashes.
 - [x] Local 28-page PDF checks and focused sprint checkpoint.
+- [x] Human rubric distinguishes source consistency from independent verification; flagged cases added without changing frozen probability draws.
+- [x] Report claims and live Explorer denominator/identity notes reviewed.
+- [ ] Clean final-cleanup source package, PDF/HTML and receipt (in progress).
 - [ ] Actual optional human submissions and independently supported quality claims.
 - [ ] Personal/course facts and final authorized submission.
 
@@ -29,7 +32,8 @@ Prior uncommitted Task2D identity-review work remains separate and untouched.
 
 ## Next step
 
-Checked checkpoint-based PDF/ZIP is ready locally; supply real team/course details.
-Optional human packets are available; their absence does not block feasible local
-work. Frontend publication requires explicit authorization and the existing Pages
-workflow; no API/database deployment is needed for these presentation changes.
+Final-cleanup packaging is in progress from a scoped local checkpoint; the earlier
+WORK-007 package is historical. Optional human packets are available; no human
+judgments were supplied. Complete real team/course details before submission.
+The public Pages runtime shows the denominator and identity-sensitivity changes;
+no deployment or API/database change was made.

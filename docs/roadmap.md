@@ -5,6 +5,13 @@
 
 ## Current capabilities — D040 remediation
 
+**11 November final submission cleanup:** review sheets distinguish source-consistent
+support from independent semantic verification, including identity uncertainty
+inherited by researcher-derived relations. Human packet v2 adds issue-ledger cases
+as tagged diagnostics without changing the frozen 80-edge or 20-case random sample;
+post-blind pages separate AI concerns from initial judgments. See [D041](decisions.md)
+and [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-readiness.md).
+
 **11 November Task2C identity validation:** strict local blind A/B review and
 hash-bound adjudication/crosswalk compilation, descriptive partial-reference scoring,
 blocked-pair estimand safeguards, bounded source packets and three-way topology

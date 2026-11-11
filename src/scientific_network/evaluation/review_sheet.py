@@ -29,16 +29,16 @@ ERROR_CATEGORIES = (
 )
 
 CORRECT_WHEN = {
-    R.AUTHORED: "The person is on the official byline at that position, and the OpenAlex author page shows no obvious merge of different people.",
-    R.AFFILIATED_WITH: "The paper's PDF lists that author at that organization.",
+    R.AUTHORED: "Source-consistent relationship: the official byline and accepted OpenAlex authorship align at this position with compatible names. Independently verified relationship: this alignment alone does not establish the canonical researcher's identity as the real person named; that requires person-specific evidence independent of the publication/provider records.",
+    R.AFFILIATED_WITH: "Source-consistent relationship: the paper-specific authorship record maps this author to the institution and retains its raw affiliation string. Independently verified relationship: provider authorship alone does not establish the canonical researcher's identity; identity-dependent claims need person-specific evidence beyond the construction records.",
     R.PUBLISHED_IN: "The official page lists the paper in that venue and year.",
     R.CITES: "The citing paper's reference list contains the cited paper.",
     R.HAS_TOPIC: "The topic is a substantive topic of the paper.",
     R.SUBTOPIC_OF: "The hierarchy matches the taxonomy.",
-    R.COAUTHORED_WITH: "Both people are on that paper's byline.",
-    R.COLLABORATED_WITH: "Two distinct authors are at the two organizations on that paper.",
-    R.RESEARCHES_TOPIC: "The person authored both papers and both papers have the topic.",
-    R.CONTRIBUTES_TO_TOPIC: "Each paper has the topic and an author affiliated with the organization.",
+    R.COAUTHORED_WITH: "Source-consistent relationship: accepted authorship records place both IDs on the same paper. Independently verified relationship: this derivation inherits both researcher identity claims; a mechanical byline match does not independently establish either person's identity.",
+    R.COLLABORATED_WITH: "Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.",
+    R.RESEARCHES_TOPIC: "Source-consistent relationship: accepted authorship and topic records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity and topic-label uncertainty; meeting the count mechanically does not validate either claim.",
+    R.CONTRIBUTES_TO_TOPIC: "Source-consistent relationship: topic records and paper-specific author-affiliation records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity, affiliation and topic-label uncertainty; correct aggregation alone does not validate them.",
 }
 # How many supporting papers to show for derived edges (plan section 5).
 SUPPORT_SHOWN = {R.COAUTHORED_WITH: 1, R.COLLABORATED_WITH: 1, R.RESEARCHES_TOPIC: 2, R.CONTRIBUTES_TO_TOPIC: 3}
@@ -353,6 +353,10 @@ _APP_JS = r"""
     category.addEventListener('change', () => { entry.category = category.value; commit(); });
     reason.addEventListener('input', () => { entry.reason = reason.value; commit(); });
     const badges = [el('span', { class: 'badge', text: c.relation })];
+    (Array.isArray(c.selection_tags) ? c.selection_tags : []).forEach((tag) => {
+      const labels = { random: 'random sample', risk_diagnostic: 'risk diagnostic', flagged_diagnostic: 'flagged diagnostic' };
+      badges.push(el('span', { class: 'badge selection', text: labels[tag] || tag }));
+    });
     if (c.is_overlap === 'true') badges.push(el('span', { class: 'badge overlap', text: 'also reviewed by the other reviewer: decide independently' }));
     const card_ = el('article', { class: 'card' }, [
       el('header', {}, [el('span', { class: 'num', text: '#' + (index + 1) })].concat(badges)),
@@ -372,12 +376,47 @@ _APP_JS = r"""
   function render() {
     list.textContent = '';
     if (!reviewerSelect.value) { list.appendChild(el('p', { class: 'empty', text: 'Choose your reviewer letter to begin.' })); updateProgress(); return; }
-    const rows = mine();
-    rows.forEach((row, index) => {
+    const rows = mine().filter((row) => {
       const complete = answerComplete(answers[answerKey(reviewerSelect.value, row.review.edge_id)]);
-      if (filterSelect.value === 'open' && complete) return;
-      list.appendChild(card(row, index));
+      return filterSelect.value !== 'open' || !complete;
     });
+    const tagged = rows.some((row) => Array.isArray(row.context.selection_tags) && row.context.selection_tags.length);
+    let index = 0;
+    function appendSection(title, note, sectionRows) {
+      if (!sectionRows.length) return;
+      const section = el('section', { class: 'packet-section' }, [
+        el('h2', { text: title }),
+        note ? el('p', { class: 'section-note', text: note }) : el('span', {}),
+      ]);
+      sectionRows.forEach((row) => section.appendChild(card(row, index++)));
+      list.appendChild(section);
+    }
+    if (tagged) {
+      const has = (row, tag) => (row.context.selection_tags || []).includes(tag);
+      const flagged = rows.filter((row) => has(row, 'flagged_diagnostic'));
+      const randomOnly = rows.filter((row) => has(row, 'random') && !has(row, 'flagged_diagnostic'));
+      const riskOnly = rows.filter((row) => has(row, 'risk_diagnostic') && !has(row, 'flagged_diagnostic') && !has(row, 'random'));
+      const other = rows.filter((row) => !has(row, 'flagged_diagnostic') && !has(row, 'random') && !has(row, 'risk_diagnostic'));
+      const summary = DATA.meta.selection_summary || {};
+      appendSection(
+        'Flagged diagnostic cases (' + (summary.flagged_total ?? flagged.length) + ')',
+        'These cases are included because the existing AI issue ledger flags them for targeted inspection. Their source evidence is available below. This initial form withholds the AI concern; make and export your own decisions before opening the separate post-blind diagnostic.',
+        flagged,
+      );
+      appendSection(
+        'Prespecified random sample (' + (summary.random_total ?? randomOnly.length) + ')',
+        (summary.random_flagged_overlap || 0) + ' random case(s) are shown in the flagged section above; selection tags preserve both memberships.',
+        randomOnly,
+      );
+      appendSection(
+        'Existing risk diagnostics (' + (summary.risk_total ?? riskOnly.length) + ')',
+        (summary.risk_flagged_overlap || 0) + ' risk case(s) are shown in the flagged section above; these cases are diagnostic and excluded from probability-based accuracy estimates.',
+        riskOnly,
+      );
+      appendSection('Other assigned cases', '', other);
+    } else {
+      rows.forEach((row) => list.appendChild(card(row, index++)));
+    }
     updateProgress();
   }
   DATA.meta.reviewer_ids.forEach((letter) => reviewerSelect.appendChild(el('option', { value: letter, text: letter })));
@@ -414,6 +453,7 @@ main{max-width:860px;margin:0 auto;padding:16px}.empty{color:var(--muted)}
 .card.done{border-left-color:var(--ok)}.card header{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .num{color:var(--muted);font-variant-numeric:tabular-nums}.badge{font-size:12px;padding:1px 8px;border-radius:99px;border:1px solid var(--line)}
 .badge.overlap{border-color:var(--warn);color:var(--warn)}.card h2{margin:8px 0 6px;font-size:16px;overflow-wrap:anywhere}
+.badge.selection{background:color-mix(in srgb,var(--accent) 9%,var(--card));border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}.packet-section{margin:16px 0 24px}.packet-section>h2{font-size:18px;margin:18px 0 4px}.section-note{color:var(--muted);margin:4px 0 12px}
 .links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0}.links a{color:var(--accent)}.also,.when{margin:6px 0;overflow-wrap:anywhere}.when{color:var(--muted)}
 .decide{display:flex;flex-wrap:wrap;gap:8px 18px;margin:10px 0 4px}.choice{cursor:pointer}.choice.correct{color:var(--ok)}.choice.incorrect{color:var(--bad)}.choice.unverifiable{color:var(--warn)}
 .issue{display:flex;flex-direction:column;gap:6px;margin:6px 0}.issue[hidden]{display:none}.issue select,.issue textarea{font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);width:100%}
@@ -426,16 +466,19 @@ def render_html(meta: dict, fields: list[str], rows: list[dict]) -> str:
     payload = {"meta": {**meta, "error_categories": list(ERROR_CATEGORIES)}, "fields": fields, "rows": rows}
     data = json.dumps(payload, ensure_ascii=True, separators=(",", ":")).replace("<", "\\u003c")
     note = (
-        "Decide each edge from the linked sources, not from the system's output. Unverifiable counts as incorrect. "
-        "Answers are saved in this browser; use Export to download your CSV and send it back."
+        "Judge the claim against the criterion shown. Source consistency is not automatically independent semantic verification: official bylines and provider IDs alone do not establish real-person identity, and derived edges inherit identity errors. If the needed evidence is insufficient, choose unverifiable; the audit precision protocol counts unverifiable as incorrect. "
+        "For flagged cases, record and export your initial decisions before opening the separate post-blind diagnostic. Answers are saved in this browser; use Export to download your CSV and send it back."
     )
+    packet_note = html.escape(str(meta.get("packet_note", "")))
+    packet_note_markup = f'<p class="meta packet-note">{packet_note}</p>' if packet_note else ""
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         "<title>Edge audit review sheet</title><style>" + _CSS + "</style></head><body>"
         '<div class="top"><h1>Edge audit review sheet</h1>'
         f'<p class="meta">graph {html.escape(meta["graph_version"])} · audit {html.escape(meta["audit_id"])} · {note}</p>'
-        '<div class="bar"><label>Reviewer <select id="reviewer"><option value="">choose…</option></select></label>'
+        + packet_note_markup
+        + '<div class="bar"><label>Reviewer <select id="reviewer"><option value="">choose…</option></select></label>'
         '<label>Show <select id="filter"><option value="all">all edges</option><option value="open">not yet complete</option></select></label>'
         '<span id="progress"></span><button id="export" type="button">Export my reviews (CSV)</button></div></div>'
         '<main id="list"></main>'

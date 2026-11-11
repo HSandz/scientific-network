@@ -15,7 +15,7 @@ Independent semantic accuracy and the course's 90% requirement remain unestablis
 
 | Area | Actual behavior / files |
 | --- | --- |
-| Audit | `quality/sprint_audit.py`: existing hash sampler, eight units/relation, witnesses, two-member HTML/CSV reuse; strict complete-review joins |
+| Audit | `quality/sprint_audit.py`: existing hash sampler, eight units/relation, witnesses, source-consistency rubric and versioned two-member HTML/CSV packets; strict complete-review joins |
 | Evidence review | `luna-edges-1.jsonl`, `luna-edges-2.jsonl`, `luna-diagnostics.json`; actual `gpt-6-luna`, reasoning `high`, fresh contexts |
 | Topic interpretation | Coverage figure and CSV reuse frozen analysis; no labels, thresholds, taxonomy, graph counts or historical metrics changed |
 | Explorer | `AnalyticsView.tsx`, `lib/analytics.ts`: topic tooltip separates assigned count, labeled denominator and all-paper coverage; compact Task2C identity-sensitivity note |
@@ -34,10 +34,14 @@ supplemental diagnostics, with **no pooled graph accuracy** or human metrics.
 The coordinator checked the four flagged source packets. No graph edits followed.
 
 Human packets: [member 1](human-member-1.html), [member 2](human-member-2.html),
-matching CSVs and [allocation](human-allocation.json). Each has 20 prespecified
-random cases and six separate risk diagnostics. Use separate browser profiles,
-export original answers independently, and preserve diagnostic flags. Human
-validation is **not performed**; both members' metrics are unavailable.
+matching CSVs and [allocation](human-allocation.json). Each shows the same 20
+prespecified random cases, six existing risk diagnostics and all four cases from
+the issue ledger. Three flagged cases overlap the random draw, so there are 27
+unique cases per reviewer; each overlap keeps both tags. Only the random tag has
+probability-based inclusion. Separate [post-blind diagnostic views for member 1](human-member-1-flagged-post-blind.html)
+and [member 2](human-member-2-flagged-post-blind.html) contain Luna's concerns and
+source locators; reviewers should export their initial judgments before opening
+them. Human validation is **not performed**; both members' metrics are unavailable.
 
 ## Data-quality investigation
 
@@ -114,6 +118,8 @@ uv run pytest -q
 uv run python -m scientific_network.quality.sprint_audit \
   --graph data/processed/release-graph-v4/graph.json \
   --works data/interim/release-v1/works.jsonl \
+  --issues reports/final-quality-sprint/issues.json \
+  --sampling-manifest reports/final-quality-sprint/sampling-manifest.json \
   --output reports/runs/sprint-audit-replay-NEW
 uv run python -m scientific_network.quality.sprint_landscape \
   --analysis reports/release-v4/analysis.json \
@@ -127,8 +133,10 @@ npm run build
 npx playwright test --config playwright.contracts.config.ts
 ```
 
-Replay reproduces all 80 frozen edge records and human selections. Packet layout
-now includes original plain abstracts directly; the actual review's original
+Replay reproduces all 80 frozen edge records. The original sample hash, random IDs,
+conditional probability and six risk IDs are asserted unchanged; the manifest adds a hash-bound
+flagged diagnostic subset and packet hashes. Packet layout includes original plain
+abstracts directly; the actual review's original
 packets and corrective abstract supplement are hash-bound in the sampling manifest.
 Original large evidence packets/cache bytes stay ignored under the work-ID run
 folder. Restore exact graph/works/cache hashes before rerunning; current API
@@ -148,7 +156,14 @@ structural automation: preserve the actual committed Luna ledgers and prompts.
 4. Team names/IDs/contributions and course disclosure/access facts remain pending.
    The report is a checked local draft, not a completed submission.
 
-Production still serves the prior release. After review and explicit deployment
-authorization, build/deploy only the frontend using the existing Pages workflow;
-no API or Neo4j change is required. Do not deploy this working tree wholesale:
-unrelated unfinished Task2D edits remain present. No external delivery authorized.
+## Live deployment status recheck — 11 November 2026
+
+A read-only fetch of `https://scientific-network-explorer.pages.dev/` returned
+HTTP 200. Its served AnalyticsView bundle
+(`AnalyticsView-l2ZOnUQX.js`) contains the topic tooltip's assigned-paper,
+labeled-denominator and all-paper coverage wording, plus the Task2C
+identity-sensitivity note present in the current frontend source. This supersedes
+the earlier sprint note that production still served the prior frontend for these
+changes. The public bundle does not expose its source commit, so this confirms the
+requested behavior is live without claiming commit-level deployment provenance.
+No deployment was performed in this cleanup; the API and graph remain unchanged.
