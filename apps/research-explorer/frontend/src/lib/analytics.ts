@@ -97,3 +97,10 @@ export function cohortCdf(cohort: CitationCohort): [number, number][] {
     return [row.in_degree, 100 * cumulative / cohort.paper_denominator];
   });
 }
+
+/** Distinguish raw label support, fractional-share denominator and coverage. */
+export function topicTooltip(row: TopicRow) {
+  const title = row.topic.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+  const percent = (n: number) => Number.isFinite(n) ? `${(100 * n).toFixed(2)}%` : "Unavailable";
+  return `${title}<br/>${row.year} · ${percent(row.share_of_fractional_topic_mass)} share among labeled papers<br/>${row.paper_count} papers assigned this topic · ${row.labeled_paper_count} labeled denominator / ${row.all_core_paper_count} all papers · ${percent(row.topic_label_coverage)} coverage`;
+}

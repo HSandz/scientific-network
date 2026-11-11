@@ -9,6 +9,7 @@ import {
   sectorCells,
   topicCells,
   topicChanges,
+  topicTooltip,
   TopicRow,
 } from "../../lib/analytics";
 import { useExplorerStore } from "../../stores/useExplorerStore";
@@ -420,6 +421,13 @@ export const AnalyticsView: React.FC<{
               Outside top 20 is not a zero centrality. Each stable ID opens its
               collaboration graph and paper evidence.
             </p>
+            <p className="text-xs text-muted mt-2" data-testid="identity-sensitivity-note">
+              Identity sensitivity is a separate check: Task2C policy candidates
+              retained 19–20 of the frozen v4 degree top 20, but only 11–12 of
+              its betweenness top 20 (paired 256-pivot analysis). These are
+              provider-ID rankings; bridge identities remain provisional.
+              This comparison does not measure the base ↔ strict filter above.
+            </p>
             <BridgeMatrix
               ranks={ranks}
               names={names}
@@ -539,8 +547,10 @@ export const AnalyticsView: React.FC<{
           </div>
           <p className="text-xs text-muted">
             Each labeled paper contributes 1/k to each of its k labels;
-            fractional mass / labeled papers defines prevalence. Coverage
-            includes abstentions; prevalence and percentage-point change are not
+            fractional mass / labeled papers defines the displayed share. Unlabeled
+            papers are excluded from that denominator, so this is not prevalence
+            across all corpus papers. Coverage is labeled / all papers in each
+            venue-year; compare it before interpreting changes. Shares and percentage-point change are not
             accuracy or causal growth. Click a cell or use its data-table button
             for a bounded, illustrative paper-topic graph.
           </p>
@@ -601,9 +611,7 @@ export const AnalyticsView: React.FC<{
               tooltip: {
                 formatter: (p: { dataIndex: number }) => {
                   const r = cells[p.dataIndex];
-                  return r
-                    ? `${r.topic.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!)}<br/>${r.year} · ${pct(r.share_of_fractional_topic_mass)} fractional prevalence<br/>${r.paper_count} papers · ${r.labeled_paper_count} labeled denominator`
-                    : "Unavailable";
+                  return r ? topicTooltip(r) : "Unavailable";
                 },
               },
               series: [

@@ -496,3 +496,9 @@ results; connectedness alone is not quality.
    two-reviewer adjudication and component precision/recall/F1.
 7. Implement separate SNA projections, robustness checks, three business cases and demo.
 8. Produce final report PDF, real GitHub URL/release, rights and reproducibility bundle.
+
+**11 November deadline sprint:** reproducible eight-per-relation supplemental AI
+audit and optional 26-case human packets; frozen-analysis coverage figure, explicit
+topic tooltip denominators and Task2C bridge identity-sensitivity interpretation.
+No graph/classifier changes or production release. See
+[scope and evidence](../reports/final-quality-sprint/README.md).

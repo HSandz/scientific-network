@@ -1,0 +1,1343 @@
+[
+  {
+    "edge_id": "edge:02cb256c61efef23799da992beb9e3002b7eda2ca39e964ef0abdc27d22132b4",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5101700398",
+    "target_id": "paper:aaai:2023:26043",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:afe235a10901bdaca8bd2d16"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 3,
+      "roster_name": "Changchun Li",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:0402fb18eef0a5f92e1d401e927cdf100c1fb3e9edd7990e96f78950c95ec90f",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5062581073",
+    "target_id": "paper:aaai:2024:29081",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:7843bf4d55635aef47a75cce"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 3,
+      "roster_name": "Qing Cui",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:09a941f7ed1413457c4fb46f06345663ae1b8397d7d9f87176fdc68ba77828e2",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:ijcai:2025:58",
+    "target_id": "venue:ijcai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:6830d56e683daa8a5b02323c"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:0dfea6987f0b78779d2fc4bd49d9e3d5e81119fbc648acf1ab7167c40ce85af2",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:generative-modeling",
+    "target_id": "topic:learning-representation",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:2ddcf069b025a9af71aae028"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:145c3863c9b9528a14158b5f9bca9bf7041ad8cc0c4f3e1c401a695cf4651d3d",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5054168288",
+    "target_id": "researcher:openalex:A5082815640",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:145c3863c9b9528a14158b5f9bca9bf7041ad8cc0c4f3e1c401a695cf4651d3d"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.5
+    }
+  },
+  {
+    "edge_id": "edge:16604878c37b346eeb844a0acc542d38cf28d601095c5fe852016095bf82dcef",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5007475662",
+    "target_id": "researcher:openalex:A5035413622",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:16604878c37b346eeb844a0acc542d38cf28d601095c5fe852016095bf82dcef"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.14285714285714285
+    }
+  },
+  {
+    "edge_id": "edge:16e7010ab46d029fea48a622f788cead277c13620d1d77d121942415b8b7e4a0",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2025:34446",
+    "target_id": "paper:aaai:2025:34124",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:9962af4b7191910e09db17eb"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:16ecb90f9e5993a9a4c3d50e85ceb659d5ec60ae30bd218f6d15f8738caefff4",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2025:35464",
+    "target_id": "paper:aaai:2023:26532",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:3f11536e444839da1eface7f"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:19d799564a5022c928a89955d38fced416b719f169c1baebb958abd40c57b0c2",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5089419341",
+    "target_id": "organization:I170215575",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:55031d7a51f0f908bf027228"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "College of Computer Science and Technology, National University of Defense Technology\nNational Key Laboratory of Parallel and Distributed Computing, National University of Defense Technology"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:1bd8a677163f5ab1748e58a5c67564530cf111d50ea6b450d935b390af329871",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I143868143",
+    "target_id": "topic:computer-vision",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:1bd8a677163f5ab1748e58a5c67564530cf111d50ea6b450d935b390af329871"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 6
+    }
+  },
+  {
+    "edge_id": "edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:computer-vision",
+    "target_id": "topic:language-perception",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:694b20008b234abdd637cb6e"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:21ac8c936c75d4c92d4d63022850e7d0bcf248f3f7f75072c45f6d1baeba0b61",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I100532134",
+    "target_id": "organization:I187560010",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:21ac8c936c75d4c92d4d63022850e7d0bcf248f3f7f75072c45f6d1baeba0b61"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2,
+      "fractional_weight": 0.06010452961672474
+    }
+  },
+  {
+    "edge_id": "edge:23bc7fcceb05185ab1595996a3d18a4407579eb8cb793b947a98957c7dbd8a6b",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5026601713",
+    "target_id": "topic:efficient-systems",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:23bc7fcceb05185ab1595996a3d18a4407579eb8cb793b947a98957c7dbd8a6b"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5101873531",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:2da033f7a541a95d9839a2c1368fa92ebae9628715a10174150587916d5cfc24",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I14243506",
+    "target_id": "organization:I204831749",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:2da033f7a541a95d9839a2c1368fa92ebae9628715a10174150587916d5cfc24"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.037037037037037035
+    }
+  },
+  {
+    "edge_id": "edge:2efc9fd73cd7c6b0b64d9afac2e135292130df8e77c776c787e84c86a8ef8a82",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:aaai:2025:34632",
+    "target_id": "venue:aaai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:b39963d369a3a764f4604a6d"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:307b7fae79a7d22d3af3829d99ffc1e210b66eea1f61f59951254011dd555f88",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:aaai:2023:26401",
+    "target_id": "topic:trustworthy-ml",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:307b7fae79a7d22d3af3829d99ffc1e210b66eea1f61f59951254011dd555f88"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.4722542464733124,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:3e3df372a3e0dcd3a4c77561585297cebeb105dcf575ea2c0a994eda33396434",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5051335927",
+    "target_id": "organization:I92403157",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:92c7cb2c1ca9f1d58400f387"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "University of Science and Technology Beijing"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:4261cf86521ffcb62f0172fbd92db33c74214ba7f21b46bcc5034e436f677305",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:aaai:2024:29596",
+    "target_id": "topic:graph-ml",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:4261cf86521ffcb62f0172fbd92db33c74214ba7f21b46bcc5034e436f677305"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.5620753765106201,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:4352e52f13519707822064b277640638b959bab7891df023dc5e98f4eb91932c",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:ijcai:2025:189",
+    "target_id": "venue:ijcai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:6d99eb6e83ff7b9d37bc6e7a"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:4b4cf48b57755040afbec6bd41c54fed72e5f6e9c14b8535ed562d451ae75346",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:multi-agent",
+    "target_id": "topic:decision-interaction",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:c76ef13a826c23132c62428f"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:5138a388a423414a2714f5fab6bb2b9f226ce0344faf3075c72843670cd696a6",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I185261750",
+    "target_id": "organization:I39343248",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:5138a388a423414a2714f5fab6bb2b9f226ce0344faf3075c72843670cd696a6"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.3333333333333333
+    }
+  },
+  {
+    "edge_id": "edge:51ce6c16fea94bdad006a8860b5cc50c922e407d9b6b0d847dcff3f783741504",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5101632899",
+    "target_id": "organization:I4210136793",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:262239c8a5633fa09b27f5f4"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "Peng Cheng Laboratory",
+        "Peking University, Shenzhen; Peng Cheng Laboratory"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:527d4d61fa03c3e7b7763d41bac5cfdd99871bd3959e0482310cfe3bf012f85f",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:aaai:2025:32209",
+    "target_id": "topic:trustworthy-ml",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:527d4d61fa03c3e7b7763d41bac5cfdd99871bd3959e0482310cfe3bf012f85f"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.3656175136566162,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:54e04e072954fb86d17413a28c3ce9217e25326eb4fb1c5c91340f431f58f950",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5101826240",
+    "target_id": "organization:I4405256866",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:0a62183b2c8d21369c1e5bec"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "Bytedance Inc"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:56362716df856b860cea3a01a1d3b273ad40539867b0b7633b50a8d3f4892c6f",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I4387153335",
+    "target_id": "organization:I91807558",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:56362716df856b860cea3a01a1d3b273ad40539867b0b7633b50a8d3f4892c6f"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.2
+    }
+  },
+  {
+    "edge_id": "edge:56dad628919516012a50719d6343c12f2e18cf65076288102a677b392c4db2a4",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:ijcai:2021:385",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:56dad628919516012a50719d6343c12f2e18cf65076288102a677b392c4db2a4"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.5108886361122131,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:574a02eaa580c08eeb564390889397cea2f762caf15abf9f4e5ed01920478e2a",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I1290206253",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:574a02eaa580c08eeb564390889397cea2f762caf15abf9f4e5ed01920478e2a"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 34
+    }
+  },
+  {
+    "edge_id": "edge:586c8ccc98671b310fd3e98e320a5c7264a4f4bcb808497146fd852c577e9e7a",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I145311948",
+    "target_id": "organization:I19820366",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:586c8ccc98671b310fd3e98e320a5c7264a4f4bcb808497146fd852c577e9e7a"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.2
+    }
+  },
+  {
+    "edge_id": "edge:598bc0bacbd75026e37104db4a6dc23fd3c2a45a8cb77fb726533dbefb25a6f6",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5042803178",
+    "target_id": "paper:aaai:2021:17317",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:d5f2b510083669956165ec47"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 1,
+      "roster_name": "Zhengli Zhao",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:5d03a7b5a3ffb5905fa1de7cc67a087f6daf3c3cdaf2abc56f9769844dbb34f7",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5076804411",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:5d03a7b5a3ffb5905fa1de7cc67a087f6daf3c3cdaf2abc56f9769844dbb34f7"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:6685e2b16774de1729678c2e39b37e96127eaafdf0e8129b20484fb003a0e34b",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:optimization-theory",
+    "target_id": "topic:reliability-theory-systems",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:0fd50f28b5fc2d958d6e3c42"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:67bf8f0422daeea4c59570f19c97e1fc0b4960419845dd23f6ce060793c4d591",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5026622910",
+    "target_id": "researcher:openalex:A5100724297",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:67bf8f0422daeea4c59570f19c97e1fc0b4960419845dd23f6ce060793c4d591"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.125
+    }
+  },
+  {
+    "edge_id": "edge:6c4a7dd58d5d680784204aa68f7f6476fc4a89ac007f96d041316f4f658bafcc",
+    "relation": "CITES",
+    "source_id": "paper:ijcai:2025:258",
+    "target_id": "paper:aaai:2025:32229",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:3fb8c28a9776f95677ddf227"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:6ceb3da9bf5ad936f167ea9df819276fa4a4174e739a5c1938fe81fdb8505412",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:nlp-language-models",
+    "target_id": "topic:language-perception",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:17d4719b198f3d40ca1e6665"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I4401726822",
+    "target_id": "topic:efficient-systems",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 3
+    }
+  },
+  {
+    "edge_id": "edge:6edcfefe9c226858eec2fe061ed54a46b054406c49e55f63427909f2dc7718de",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I4391768012",
+    "target_id": "topic:graph-ml",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:6edcfefe9c226858eec2fe061ed54a46b054406c49e55f63427909f2dc7718de"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 6
+    }
+  },
+  {
+    "edge_id": "edge:73e17dd28b6ab5b76389d84c6085baa1f7a7c47467f7bd3a67b00b3b0e985e30",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:aaai:2024:28516",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:73e17dd28b6ab5b76389d84c6085baa1f7a7c47467f7bd3a67b00b3b0e985e30"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.31764233112335205,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:75a482676b17e9dddd584c0343090f0f1da56abe567a90c4056126458b8a2379",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5057995059",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:75a482676b17e9dddd584c0343090f0f1da56abe567a90c4056126458b8a2379"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:785ab4ef76638bcc282cc8e2c2a575bbfeba057b6fac9a9e495580de6e7f591b",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I98301712",
+    "target_id": "topic:computer-vision",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:785ab4ef76638bcc282cc8e2c2a575bbfeba057b6fac9a9e495580de6e7f591b"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 9
+    }
+  },
+  {
+    "edge_id": "edge:7f6112a9498e71674f2a84de18be7cc3f3689df478af0d243f54c59a259647c3",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:ijcai:2023:344",
+    "target_id": "venue:ijcai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:970bf4a8af420c3f0cfbc234"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2023
+    }
+  },
+  {
+    "edge_id": "edge:801a3e146abba01be8c19c8487991690246ff46135ce03e182c05d5b77035618",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:ijcai:2025:947",
+    "target_id": "venue:ijcai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:0fa9cc8b2869c32946f0fe13"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:83fb34e95cfd06c35bdeee90a7066ca7abdc95cf373310a3526f3417a8ce6d62",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:ijcai:2025:905",
+    "target_id": "topic:multimodal",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:83fb34e95cfd06c35bdeee90a7066ca7abdc95cf373310a3526f3417a8ce6d62"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.3561129570007324,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:890f1f98ff406e323eec446f61cfe162e3e3880ee96f2e0cce5b94d2b6293889",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5108969419",
+    "target_id": "paper:aaai:2025:35406",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:b79728725e1a22ea043a5804"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 2,
+      "roster_name": "Yipeng Mo",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:8ad040db2f5c0bd7134e2783675258a5040199bbd870669398dd551f96c9687f",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:aaai:2021:17343",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:8ad040db2f5c0bd7134e2783675258a5040199bbd870669398dd551f96c9687f"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.406637042760849,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:8b9aef9ca536be0ce279307d07e4673b0c6a9e2301114dc519e12cb33343ca7e",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2024:29156",
+    "target_id": "paper:ijcai:2022:310",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:8ddc1c3d71760d04e41bbfef"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:8ed8e44d850fedc98bca90d43f76226fd584d350da27bd59627439055314b019",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I33213144",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:8ed8e44d850fedc98bca90d43f76226fd584d350da27bd59627439055314b019"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 3
+    }
+  },
+  {
+    "edge_id": "edge:91425ae06453765ae48454f8d130f85415857e3ae674c60d3e6bd3202fb2211f",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5070159193",
+    "target_id": "organization:I168719708",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:8de71c4e8afe2d678ad47daa"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "City University of Hong Kong"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:99057d1f446d563c22a9e0e44703faac5c00fc4fbdc93dee2f84117d5809dc9b",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I79891267",
+    "target_id": "organization:I94234084",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:99057d1f446d563c22a9e0e44703faac5c00fc4fbdc93dee2f84117d5809dc9b"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 1.0
+    }
+  },
+  {
+    "edge_id": "edge:9ba99e0b05c6400ff107f54f57862147110f1fd23a64d55f9c549d084a562317",
+    "relation": "HAS_TOPIC",
+    "source_id": "paper:ijcai:2023:215",
+    "target_id": "topic:planning-reasoning",
+    "evidence_kind": "inferred_topic",
+    "evidence_ids": [
+      "evidence:topic:9ba99e0b05c6400ff107f54f57862147110f1fd23a64d55f9c549d084a562317"
+    ],
+    "method_version": "release-embedding-topics-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "cosine_similarity": 0.36937427520751953,
+      "threshold_tau": 0.2708871364593506,
+      "margin_delta": 0.02,
+      "text_source": "abstract",
+      "evaluation_status": "human_review_pending"
+    }
+  },
+  {
+    "edge_id": "edge:9f6a29bd019fef36638267d6b1ca79255298026afb9728318358802190f1be63",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:aaai:2025:33643",
+    "target_id": "venue:aaai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:172a0e111c8fda57a2d095fc"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:a4a52794c087ac0bc9f38055487ce76a4d876c2e3d41a53d3c94e05c545b38ec",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2022:21255",
+    "target_id": "paper:aaai:2021:16886",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:21528f334ab4a750e8baac1f"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:a7a617847730a33791fe81b33dcdad7cc2b78789bffe5611a8b0c9315bc53bce",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5009756467",
+    "target_id": "researcher:openalex:A5058024103",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:a7a617847730a33791fe81b33dcdad7cc2b78789bffe5611a8b0c9315bc53bce"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 5,
+      "fractional_weight": 2.416666666666667
+    }
+  },
+  {
+    "edge_id": "edge:aac0ff2d4f4f60534188a2ff623f351703e9572b050f69e8e4896aa693eefbd2",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5045009020",
+    "target_id": "organization:I19820366",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:d5d475e4943eb13ef4f85b21"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "Institute of Information Engineering, Chinese Academy of Sciences\nSchool of Cyber Security, University of Chinese Academy of Sciences"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:acc03cd1931f6ecf197935a46e5fb29b4ec210887da03d30bdc201710f2d551b",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5057081298",
+    "target_id": "researcher:openalex:A5088115674",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:acc03cd1931f6ecf197935a46e5fb29b4ec210887da03d30bdc201710f2d551b"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.16666666666666666
+    }
+  },
+  {
+    "edge_id": "edge:ae862abe9a2aa79a5cbb82ab5abf8ecdbfe0600645ef6d8757cdb70e6a9bdaf1",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5101753111",
+    "target_id": "paper:aaai:2022:20820",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:f982ccfc4950a6bb47db35e9"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 5,
+      "roster_name": "Daniel Graves",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:b00002c46823489bb616d869fc61cff3af0f0e965fd4bd3a95b3a061b3fc33e9",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:aaai:2025:33646",
+    "target_id": "venue:aaai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:920409309de3bbd6f5a13b26"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2025
+    }
+  },
+  {
+    "edge_id": "edge:b14aa3e25343fc1000e6508509392b595131a6dcd5f5d3eeb29ea013de626ceb",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5027711113",
+    "target_id": "paper:ijcai:2023:528",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:b10f81cf900a780be9be565a"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 4,
+      "roster_name": "Adish Singla",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:b715c38021ec43d652466494a3c5bbf0019b79c5f94461f77b3e8af84276fbed",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I1291425158",
+    "target_id": "organization:I155173764",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:b715c38021ec43d652466494a3c5bbf0019b79c5f94461f77b3e8af84276fbed"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.3333333333333333
+    }
+  },
+  {
+    "edge_id": "edge:b841c7019649ee0730ea21a45753bbb9f174723ed6f3df183662102b2f94e697",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5100880862",
+    "target_id": "topic:nlp-language-models",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:b841c7019649ee0730ea21a45753bbb9f174723ed6f3df183662102b2f94e697"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5016730899",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:bcf6ce547c1ee9479a0dd4dd0cbb5c4c8552e50bdaa3b09c4b3d8dcade8cf967",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I4210103986",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:bcf6ce547c1ee9479a0dd4dd0cbb5c4c8552e50bdaa3b09c4b3d8dcade8cf967"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 9
+    }
+  },
+  {
+    "edge_id": "edge:c64b41548c116283ec77def8f9d02a5b16a28f31b020e073bc8980db38f4b229",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "source_id": "organization:I4210112150",
+    "target_id": "topic:representation-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:c64b41548c116283ec77def8f9d02a5b16a28f31b020e073bc8980db38f4b229"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 48
+    }
+  },
+  {
+    "edge_id": "edge:c7d2361ca4f5b108007e174d0571dde219cd70bd2ef132c3c1fe4480dc8b2113",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5055726968",
+    "target_id": "organization:I185261750",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:a72531d212a517ad0a61bc30"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 1,
+      "raw_affiliation_strings": [
+        "University of Toronto, Canada"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:c997966c01ecb5b748725b144755bf6da50642675939bfcdcb4ce868cd76fa3f",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:graph-ml",
+    "target_id": "topic:learning-representation",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:ae3a6b88d02ca110fa8d0cae"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:cb56d92e66ecf5de356d59d9e510a2114ed0a7b3384c2a53e9ed887bdcfe57d9",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5045563125",
+    "target_id": "paper:aaai:2023:25512",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:517a4a721ac4c5f1ad788c57"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 3,
+      "roster_name": "Hideaki Kim",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:cc8efc4bdc585fe23bd723a4bb5b30395ef2efe664366ba82d4330631e24113e",
+    "relation": "AUTHORED",
+    "source_id": "researcher:openalex:A5068979281",
+    "target_id": "paper:aaai:2025:34377",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:de3b3a8e6e23efac46103f30"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "byline_position": 1,
+      "roster_name": "Kairong Yu",
+      "name_match": "exact"
+    }
+  },
+  {
+    "edge_id": "edge:ccf3a0046b9366f1f76b812eebedac804e9600389f67d91ef5522eb63dfdde9c",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5020877356",
+    "target_id": "researcher:openalex:A5100701650",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:ccf3a0046b9366f1f76b812eebedac804e9600389f67d91ef5522eb63dfdde9c"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.16666666666666666
+    }
+  },
+  {
+    "edge_id": "edge:cf2dd563918ce8a48d8b1610968e2364bff4aa14354017013f8a0028a16f02f1",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:trustworthy-ml",
+    "target_id": "topic:reliability-theory-systems",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:689061366d8e657d2f3dc568"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:d7fecf403dc5717c6a3c2faa92f33f6ebeac61210ed39c9ffc292a2ce4f1c2cc",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2024:30078",
+    "target_id": "paper:aaai:2021:17459",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:02279371d1be04d0ee2215f8"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:dcdc0134434001d36acf1878530bc4ef451d6f805c6ae11dc6a4b56180c4e7de",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5032664588",
+    "target_id": "topic:reinforcement-learning",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:dcdc0134434001d36acf1878530bc4ef451d6f805c6ae11dc6a4b56180c4e7de"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 3
+    }
+  },
+  {
+    "edge_id": "edge:de6b29b5577327f952e3a682b605cdc4a64067df56b408525b0920d0d34d4433",
+    "relation": "SUBTOPIC_OF",
+    "source_id": "topic:causal-inference",
+    "target_id": "topic:reliability-theory-systems",
+    "evidence_kind": "curated_taxonomy",
+    "evidence_ids": [
+      "evidence:taxonomy:4cac037446f4580b6e6844a7"
+    ],
+    "method_version": "taxonomy-release-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:dfd35e30d0250eddf641f2c87c0e5fdb4b12083f1ea1f106299f2b2143a6f22a",
+    "relation": "RESEARCHES_TOPIC",
+    "source_id": "researcher:openalex:A5100330138",
+    "target_id": "topic:multimodal",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:dfd35e30d0250eddf641f2c87c0e5fdb4b12083f1ea1f106299f2b2143a6f22a"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 2
+    }
+  },
+  {
+    "edge_id": "edge:e44a230b49d0c516534b68cccbb720db162a5136c056d80e30bc7611fdbbff6a",
+    "relation": "PUBLISHED_IN",
+    "source_id": "paper:aaai:2024:28321",
+    "target_id": "venue:aaai",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:roster:2e2c9733f5bfe5b1c28c53ad"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "year": 2024
+    }
+  },
+  {
+    "edge_id": "edge:e503e2aaabc28daffbacb2d76e9208b46e835711b919f024b03e6c015a579ffd",
+    "relation": "CITES",
+    "source_id": "paper:aaai:2022:20893",
+    "target_id": "paper:aaai:2021:16871",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:09d49cd7f9c597b3b646f04c"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:eb28dc08cb310e8c9a9d85e6cdfa330f1abdef4eba2f22f3b015c8a5848e3636",
+    "relation": "COLLABORATED_WITH",
+    "source_id": "organization:I177725633",
+    "target_id": "organization:I74801974",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:eb28dc08cb310e8c9a9d85e6cdfa330f1abdef4eba2f22f3b015c8a5848e3636"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.3333333333333333
+    }
+  },
+  {
+    "edge_id": "edge:f611db3e565c42dc495c83821dc45e610e1b5b50d55fd20ac79ae270b1549057",
+    "relation": "AFFILIATED_WITH",
+    "source_id": "researcher:openalex:A5004615610",
+    "target_id": "organization:I76130692",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:1688fd61d0444c1f47473a25",
+      "evidence:openalex:dfa804bc6ecf135ccf9c1b00",
+      "evidence:openalex:1c437745e831fb0683778970",
+      "evidence:openalex:6a4ad6ab2ab1a819eaa3bc28"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_paper_count": 4,
+      "raw_affiliation_strings": [
+        "College of Computer Science and Technology, Zhejiang University",
+        "Zhejiang University"
+      ]
+    }
+  },
+  {
+    "edge_id": "edge:f6c38cdd5f2f4b941f85557f28ccc0a1ee536d84fe9ebd87083e30e5f13660ce",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5024595046",
+    "target_id": "researcher:openalex:A5102780660",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:f6c38cdd5f2f4b941f85557f28ccc0a1ee536d84fe9ebd87083e30e5f13660ce"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.16666666666666666
+    }
+  },
+  {
+    "edge_id": "edge:f87df4f721d60a0c02f5032507d9e02b391fcef4bb74660b1c6bb1180ac22dc0",
+    "relation": "CITES",
+    "source_id": "paper:ijcai:2023:582",
+    "target_id": "paper:aaai:2021:16273",
+    "evidence_kind": "observed",
+    "evidence_ids": [
+      "evidence:openalex:ba34127ed999dbcaf31ffb93"
+    ],
+    "method_version": "release-openalex-graph-v1.1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {}
+  },
+  {
+    "edge_id": "edge:fa19e516a4183fa54532528ed775b91faf0b6efc9fc438a8a5ebec4b8e2300b0",
+    "relation": "COAUTHORED_WITH",
+    "source_id": "researcher:openalex:A5012700093",
+    "target_id": "researcher:openalex:A5111944148",
+    "evidence_kind": "derived",
+    "evidence_ids": [
+      "evidence:derived:fa19e516a4183fa54532528ed775b91faf0b6efc9fc438a8a5ebec4b8e2300b0"
+    ],
+    "method_version": "core-derivation-v1",
+    "graph_version": "release-d3c788c3114a",
+    "validation_status": "accepted",
+    "properties": {
+      "support_count": 1,
+      "fractional_weight": 0.2
+    }
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "method": "sprint-relation-audit-release-v1",
+  "seed": 2026111107,
+  "graph_version": "release-d3c788c3114a",
+  "graph_path": "data/processed/release-graph-v4/graph.json",
+  "graph_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "works_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+  "sample_sha256": "2e5cb63ffe6c6f93c349bd730953c4c06f5cb782e020f9611b7a6446a10ea00d",
+  "design": "deterministic hash-ranked SRS within each relation; 8 each",
+  "strata": {
+    "AFFILIATED_WITH": {
+      "population": 38664,
+      "sample": 8,
+      "inclusion_probability": 0.0002069108214359611,
+      "census": false
+    },
+    "AUTHORED": {
+      "population": 50437,
+      "sample": 8,
+      "inclusion_probability": 0.00015861371612110157,
+      "census": false
+    },
+    "CITES": {
+      "population": 7308,
+      "sample": 8,
+      "inclusion_probability": 0.0010946907498631637,
+      "census": false
+    },
+    "COAUTHORED_WITH": {
+      "population": 80482,
+      "sample": 8,
+      "inclusion_probability": 9.940110832235779e-05,
+      "census": false
+    },
+    "COLLABORATED_WITH": {
+      "population": 13031,
+      "sample": 8,
+      "inclusion_probability": 0.0006139206507558898,
+      "census": false
+    },
+    "CONTRIBUTES_TO_TOPIC": {
+      "population": 2332,
+      "sample": 8,
+      "inclusion_probability": 0.003430531732418525,
+      "census": false
+    },
+    "HAS_TOPIC": {
+      "population": 14222,
+      "sample": 8,
+      "inclusion_probability": 0.0005625087891998312,
+      "census": false
+    },
+    "PUBLISHED_IN": {
+      "population": 13617,
+      "sample": 8,
+      "inclusion_probability": 0.0005875009179701844,
+      "census": false
+    },
+    "RESEARCHES_TOPIC": {
+      "population": 5622,
+      "sample": 8,
+      "inclusion_probability": 0.001422981145499822,
+      "census": false
+    },
+    "SUBTOPIC_OF": {
+      "population": 16,
+      "sample": 8,
+      "inclusion_probability": 0.5,
+      "census": false
+    }
+  },
+  "pooled_accuracy": null,
+  "human_random_ids": [
+    "edge:19d799564a5022c928a89955d38fced416b719f169c1baebb958abd40c57b0c2",
+    "edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35",
+    "edge:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6",
+    "edge:2efc9fd73cd7c6b0b64d9afac2e135292130df8e77c776c787e84c86a8ef8a82",
+    "edge:5138a388a423414a2714f5fab6bb2b9f226ce0344faf3075c72843670cd696a6",
+    "edge:56dad628919516012a50719d6343c12f2e18cf65076288102a677b392c4db2a4",
+    "edge:598bc0bacbd75026e37104db4a6dc23fd3c2a45a8cb77fb726533dbefb25a6f6",
+    "edge:6c4a7dd58d5d680784204aa68f7f6476fc4a89ac007f96d041316f4f658bafcc",
+    "edge:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857",
+    "edge:7f6112a9498e71674f2a84de18be7cc3f3689df478af0d243f54c59a259647c3",
+    "edge:801a3e146abba01be8c19c8487991690246ff46135ce03e182c05d5b77035618",
+    "edge:8b9aef9ca536be0ce279307d07e4673b0c6a9e2301114dc519e12cb33343ca7e",
+    "edge:a4a52794c087ac0bc9f38055487ce76a4d876c2e3d41a53d3c94e05c545b38ec",
+    "edge:b00002c46823489bb616d869fc61cff3af0f0e965fd4bd3a95b3a061b3fc33e9",
+    "edge:b14aa3e25343fc1000e6508509392b595131a6dcd5f5d3eeb29ea013de626ceb",
+    "edge:b715c38021ec43d652466494a3c5bbf0019b79c5f94461f77b3e8af84276fbed",
+    "edge:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43",
+    "edge:ccf3a0046b9366f1f76b812eebedac804e9600389f67d91ef5522eb63dfdde9c",
+    "edge:dcdc0134434001d36acf1878530bc4ef451d6f805c6ae11dc6a4b56180c4e7de",
+    "edge:f87df4f721d60a0c02f5032507d9e02b391fcef4bb74660b1c6bb1180ac22dc0"
+  ],
+  "human_random_conditional_probability": 0.25,
+  "human_random_population_probability": "relation sample probability * 20/80",
+  "human_diagnostic_ids": [
+    "edge:21ac8c936c75d4c92d4d63022850e7d0bcf248f3f7f75072c45f6d1baeba0b61",
+    "edge:2da033f7a541a95d9839a2c1368fa92ebae9628715a10174150587916d5cfc24",
+    "edge:527d4d61fa03c3e7b7763d41bac5cfdd99871bd3959e0482310cfe3bf012f85f",
+    "edge:83fb34e95cfd06c35bdeee90a7066ca7abdc95cf373310a3526f3417a8ce6d62",
+    "edge:91425ae06453765ae48454f8d130f85415857e3ae674c60d3e6bd3202fb2211f",
+    "edge:99057d1f446d563c22a9e0e44703faac5c00fc4fbdc93dee2f84117d5809dc9b"
+  ],
+  "human_diagnostic_probability_sample": false,
+  "human_validation": "not_performed",
+  "model_requested": "gpt-6-luna",
+  "reasoning_effort": "high",
+  "pre_review_frozen_at": "2026-11-11T21:59:39.391415+07:00",
+  "source_overlap": "OpenAlex/official caches overlap construction evidence; no independence established",
+  "witness_limit": 3,
+  "full_support_check": "existing structural validator, separate from semantic review",
+  "packet_sha256": {
+    "doi-diagnostic.json": "dfad8e9d0eee5d548c7941e9d76df273d664ad82135482ff3598ac47cde57779",
+    "topic-diagnostic.json": "d68a3a83574bf560c075759a115d5e1489841ccd36c11cfc0299d341c9c4a939",
+    "edges-1.jsonl": "5d444b1f75c487315cf439dbd7f5c91bbdd285448244e5ff40f7e8b678a7c437",
+    "edges-2.jsonl": "3346b3b3ae848d5e5cac6c223891f9ea98a57109db8f851974c7d0ee3ce6dbe2"
+  },
+  "abstract_supplement": {
+    "path": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json",
+    "sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+    "reason": "Initial packet extractor used absent inverted-index field; retained works contain plain abstract. Supplemental evidence before judgments finalized; same frozen edge IDs."
+  },
+  "timestamp_basis": "actual frozen sample filesystem mtime, recorded before outputs integrated"
+}

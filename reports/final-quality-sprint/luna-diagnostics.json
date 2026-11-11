@@ -1,0 +1,1033 @@
+{
+  "reviewer_model": "gpt-6-luna",
+  "reasoning_effort": "high",
+  "reviewer_kind": "ai",
+  "evaluator_run": "/root/luna_diagnostics",
+  "review_scope": "Prediction-exposed bounded diagnostic review of seven DOI discrepancies and eight frozen HAS_TOPIC packets. This is not a blind topic test, relabel authorization, human review, independence certification, or accuracy certification.",
+  "inputs": {
+    "doi_diagnostic": "reports/runs/WORK-2026-11-11-007/doi-diagnostic.json",
+    "topic_diagnostic": "reports/runs/WORK-2026-11-11-007/topic-diagnostic.json",
+    "abstract_supplement": {
+      "path": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json",
+      "sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "locator_convention": "JSON Pointer /<paper_id>; complete frozen abstract text used for each topic assessment."
+    },
+    "topic_config": "configs/topics-release-v1.yaml",
+    "doi_reconciliation": "reports/quality-v5/task2b-v1/doi-reconciliation.md",
+    "graph_sensitivity": "reports/quality-v5/task2c-v1/graph-sensitivity.md"
+  },
+  "doi_assessments": [
+    {
+      "paper_id": "paper:aaai:2022:20425",
+      "title": "Weighted Fairness Notions for Indivisible Items Revisited",
+      "official_doi": "10.1609/aaai.v36i5.20425",
+      "returned_openalex_doi": "10.1145/3665799",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The exact official DOI has a Crossref record naming the AAAI proceedings, and the returned ACM DOI has the same title and ordered three-author byline but a later date and journal container. This strongly suggests a proceedings-to-journal relationship; no deposited relation or version statement is present. No authoritative replacement for the returned OpenAlex authorships/affiliations or verified equivalence is established.",
+      "official_metadata": {
+        "title": "Weighted Fairness Notions for Indivisible Items Revisited",
+        "authors": [
+          "Mithun Chakraborty",
+          "Erel Segal-Halevi",
+          "Warut Suksompong"
+        ],
+        "source_url": "https://ojs.aaai.org/index.php/AAAI/issue/view/511",
+        "source_locator": "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/20425']",
+        "source_sha256": "f72dc72a61838ccaffeadf21e4e4e094952a87bde0ff3c40b8795c950cc23605",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4226163689",
+        "queried_url": "https://api.openalex.org/works/doi:10.1609/aaai.v36i5.20425",
+        "source_locator": "$",
+        "raw_sha256": "53c19435f0af1774e869b1f6b4937df98e9894bb835b350e120acf8a385e4544",
+        "returned_doi": "10.1145/3665799",
+        "title": "Weighted Fairness Notions for Indivisible Items Revisited",
+        "year": 2022,
+        "byline": [
+          "Mithun Chakraborty",
+          "Erel Segal-Halevi",
+          "Warut Suksompong"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.1609/aaai.v36i5.20425",
+          "type": "journal-article",
+          "title": [
+            "Weighted Fairness Notions for Indivisible Items Revisited"
+          ],
+          "container_title": [
+            "Proceedings of the AAAI Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                6,
+                28
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Mithun Chakraborty",
+              "orcid": null
+            },
+            {
+              "name": "Erel Segal-Halevi",
+              "orcid": null
+            },
+            {
+              "name": "Warut Suksompong",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1609/aaai.v36i5.20425",
+          "source_locator": "$.message",
+          "raw_sha256": "39ac0b90a8ccc96026fe09edf4c4203c7721ba9b124206b2dc461e071bbb89a1"
+        },
+        {
+          "doi": "10.1145/3665799",
+          "type": "journal-article",
+          "title": [
+            "Weighted Fairness Notions for Indivisible Items Revisited"
+          ],
+          "container_title": [
+            "ACM Transactions on Economics and Computation"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2024,
+                9,
+                6
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Mithun Chakraborty",
+              "orcid": "https://orcid.org/0000-0001-6501-9827"
+            },
+            {
+              "name": "Erel Segal-Halevi",
+              "orcid": "https://orcid.org/0000-0002-7497-5834"
+            },
+            {
+              "name": "Warut Suksompong",
+              "orcid": "https://orcid.org/0000-0001-8973-2539"
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1145/3665799",
+          "source_locator": "$.message",
+          "raw_sha256": "a37d51b77d9fb7d68b4f42e0a345ce5ce4af94992aa5d883bc006fad59671f9a"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:aaai:2023:26455",
+      "title": "Fair Short Paths in Vertex-Colored Graphs",
+      "official_doi": "10.1609/aaai.v37i10.26455",
+      "returned_openalex_doi": "10.1016/j.tcs.2026.116201",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The official AAAI DOI record and the later TCS DOI have closely matching title and identical ordered three-author byline, with distinct venue/date metadata. Likely proceedings/journal versions; Crossref relation is empty and no version-equivalence statement is in the packet. Do not transfer the later work record or its identity/affiliation data.",
+      "official_metadata": {
+        "title": "Fair Short Paths in Vertex-Colored Graphs",
+        "authors": [
+          "Matthias Bentert",
+          "Leon Kellerhals",
+          "Rolf Niedermeier"
+        ],
+        "source_url": "https://ojs.aaai.org/index.php/AAAI/issue/view/557",
+        "source_locator": "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/26455']",
+        "source_sha256": "8a23040e6bb4d3a21e94196b1636767bb7c71a88f827f78a4f6fdae3942daf63",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4382203006",
+        "queried_url": "https://api.openalex.org/works/doi:10.1609/aaai.v37i10.26455",
+        "source_locator": "$",
+        "raw_sha256": "e5e3dc674f6eba7d11a1a32721864ece7a0ef69fa983872c8879acf56ee84bd2",
+        "returned_doi": "10.1016/j.tcs.2026.116201",
+        "title": "Fair Short Paths in Vertex-Colored Graphs",
+        "year": 2023,
+        "byline": [
+          "Matthias Bentert",
+          "Leon Kellerhals",
+          "Rolf Niedermeier"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.1609/aaai.v37i10.26455",
+          "type": "journal-article",
+          "title": [
+            "Fair Short Paths in Vertex-Colored Graphs"
+          ],
+          "container_title": [
+            "Proceedings of the AAAI Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                6,
+                26
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Matthias Bentert",
+              "orcid": null
+            },
+            {
+              "name": "Leon Kellerhals",
+              "orcid": null
+            },
+            {
+              "name": "Rolf Niedermeier",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1609/aaai.v37i10.26455",
+          "source_locator": "$.message",
+          "raw_sha256": "65e6013fb187e3da56b8b90b35cc392f7d04c158dd710eebc6b347daace9eb30"
+        },
+        {
+          "doi": "10.1016/j.tcs.2026.116201",
+          "type": "journal-article",
+          "title": [
+            "Fair short paths in vertex-colored graphs"
+          ],
+          "container_title": [
+            "Theoretical Computer Science"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                10
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Matthias Bentert",
+              "orcid": null
+            },
+            {
+              "name": "Leon Kellerhals",
+              "orcid": "https://orcid.org/0000-0001-6565-3983"
+            },
+            {
+              "name": "Rolf Niedermeier",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1016/j.tcs.2026.116201",
+          "source_locator": "$.message",
+          "raw_sha256": "80a3879c66332fdc8f7c0d963e076fe64132d992d675ebba126e9faf36d9a2b3"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:ijcai:2021:43",
+      "title": "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions",
+      "official_doi": "10.24963/ijcai.2021/43",
+      "returned_openalex_doi": "10.1007/s00355-026-01654-w",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The official IJCAI proceedings DOI and 2026 Social Choice and Welfare DOI have the same title and one-author byline. This is a likely later journal version, but the provider records assert no relation. The journal ORCID and any journal affiliation evidence do not establish the proceedings authorship record.",
+      "official_metadata": {
+        "title": "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions",
+        "authors": [
+          "Patrick Lederer"
+        ],
+        "source_url": "https://www.ijcai.org/proceedings/2021/",
+        "source_locator": "a[href='/proceedings/2021/43']",
+        "source_sha256": "418ca105660be37023086c0687e3fa3cf1beb47d06fa78e38fb7dc52090ca092",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W3190796281",
+        "queried_url": "https://api.openalex.org/works/doi:10.24963/ijcai.2021/43",
+        "source_locator": "$",
+        "raw_sha256": "b2c110f3174b87f63045b04a618e294f69ebb19cf246bf543270946faaa3c25e",
+        "returned_doi": "10.1007/s00355-026-01654-w",
+        "title": "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions",
+        "year": 2021,
+        "byline": [
+          "Patrick Lederer"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.24963/ijcai.2021/43",
+          "type": "proceedings-article",
+          "title": [
+            "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions"
+          ],
+          "container_title": [
+            "Proceedings of the Thirtieth International Joint Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2021,
+                8
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Patrick Lederer",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.24963/ijcai.2021/43",
+          "source_locator": "$.message",
+          "raw_sha256": "2a4f136da67c64ebc90272665a1c2f0bd5f91678ae547769b5110afea248dbc7"
+        },
+        {
+          "doi": "10.1007/s00355-026-01654-w",
+          "type": "journal-article",
+          "title": [
+            "Strategyproof randomized social choice for restricted sets of utility functions"
+          ],
+          "container_title": [
+            "Social Choice and Welfare"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                4,
+                17
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Patrick Lederer",
+              "orcid": "https://orcid.org/0000-0001-9787-8941"
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1007/s00355-026-01654-w",
+          "source_locator": "$.message",
+          "raw_sha256": "c92da871dca45478957226bf5163a44d82b9c5efb9d403b0a7dd20aa120f8da1"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:ijcai:2022:34",
+      "title": "The Complexity of Envy-Free Graph Cutting",
+      "official_doi": "10.24963/ijcai.2022/34",
+      "returned_openalex_doi": "10.1016/j.artint.2026.104585",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The IJCAI proceedings DOI and later Artificial Intelligence DOI have matching title and ordered five-author byline. This is a likely journal version of the proceedings work, but Crossref supplies no relation. Later ORCIDs do not establish proceedings-specific author identity or affiliation provenance.",
+      "official_metadata": {
+        "title": "The Complexity of Envy-Free Graph Cutting",
+        "authors": [
+          "Argyrios Deligkas",
+          "Eduard Eiben",
+          "Robert Ganian",
+          "Thekla Hamm",
+          "Sebastian Ordyniak"
+        ],
+        "source_url": "https://www.ijcai.org/proceedings/2022/",
+        "source_locator": "a[href='/proceedings/2022/34']",
+        "source_sha256": "e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4285607100",
+        "queried_url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/34",
+        "source_locator": "$",
+        "raw_sha256": "2df31c36bf682dd5f61d26dd0f7294232db3954641499670c93bf6b0478cb8f5",
+        "returned_doi": "10.1016/j.artint.2026.104585",
+        "title": "The Complexity of Envy-Free Graph Cutting",
+        "year": 2022,
+        "byline": [
+          "Argyrios Deligkas",
+          "Eduard Eiben",
+          "Robert Ganian",
+          "Thekla Hamm",
+          "Sebastian Ordyniak"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.24963/ijcai.2022/34",
+          "type": "proceedings-article",
+          "title": [
+            "The Complexity of Envy-Free Graph Cutting"
+          ],
+          "container_title": [
+            "Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                7
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Argyrios Deligkas",
+              "orcid": null
+            },
+            {
+              "name": "Eduard Eiben",
+              "orcid": null
+            },
+            {
+              "name": "Robert Ganian",
+              "orcid": null
+            },
+            {
+              "name": "Thekla Hamm",
+              "orcid": null
+            },
+            {
+              "name": "Sebastian Ordyniak",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.24963/ijcai.2022/34",
+          "source_locator": "$.message",
+          "raw_sha256": "662f09b8f59832fd5f9be181c6912f58819c82a847bf5c8adadac30b5e78f062"
+        },
+        {
+          "doi": "10.1016/j.artint.2026.104585",
+          "type": "journal-article",
+          "title": [
+            "The complexity of envy-free graph cutting"
+          ],
+          "container_title": [
+            "Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                9
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Argyrios Deligkas",
+              "orcid": "https://orcid.org/0000-0002-6513-6748"
+            },
+            {
+              "name": "Eduard Eiben",
+              "orcid": "https://orcid.org/0000-0003-2628-3435"
+            },
+            {
+              "name": "Robert Ganian",
+              "orcid": "https://orcid.org/0000-0002-7762-8045"
+            },
+            {
+              "name": "Thekla Hamm",
+              "orcid": null
+            },
+            {
+              "name": "Sebastian Ordyniak",
+              "orcid": "https://orcid.org/0000-0003-1935-651X"
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1016/j.artint.2026.104585",
+          "source_locator": "$.message",
+          "raw_sha256": "79bde97c38c27556c6d901f5ef4b938d14559f5a7b9b62c235e9f946909b2839"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:ijcai:2022:635",
+      "title": "Online Bin Packing with Predictions",
+      "official_doi": "10.24963/ijcai.2022/635",
+      "returned_openalex_doi": "10.1613/jair.1.14820",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The IJCAI proceedings DOI and JAIR DOI have matching title and ordered three-author byline, consistent with likely proceedings/journal versions. No relation is deposited. Metadata supports a lead for further provenance review, not a verified-equivalence correction or transfer of authorship/affiliations.",
+      "official_metadata": {
+        "title": "Online Bin Packing with Predictions",
+        "authors": [
+          "Spyros Angelopoulos",
+          "Shahin Kamali",
+          "Kimia Shadkami"
+        ],
+        "source_url": "https://www.ijcai.org/proceedings/2022/",
+        "source_locator": "a[href='/proceedings/2022/635']",
+        "source_sha256": "e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4225709049",
+        "queried_url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/635",
+        "source_locator": "$",
+        "raw_sha256": "64f3245aa8d6c10073eceff9c936200db5d5a8830142c93c73c2a3bb7fa6fc2a",
+        "returned_doi": "10.1613/jair.1.14820",
+        "title": "Online Bin Packing with Predictions",
+        "year": 2022,
+        "byline": [
+          "Spyros Angelopoulos",
+          "Shahin Kamali",
+          "Kimia Shadkami"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.24963/ijcai.2022/635",
+          "type": "proceedings-article",
+          "title": [
+            "Online Bin Packing with Predictions"
+          ],
+          "container_title": [
+            "Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                7
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Spyros Angelopoulos",
+              "orcid": null
+            },
+            {
+              "name": "Shahin Kamali",
+              "orcid": null
+            },
+            {
+              "name": "Kimia Shadkami",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.24963/ijcai.2022/635",
+          "source_locator": "$.message",
+          "raw_sha256": "a926b48abf6068337e2ca6f3fdb6536164ba1e95f5e77f1b2e4e2bc58d3a8d2a"
+        },
+        {
+          "doi": "10.1613/jair.1.14820",
+          "type": "journal-article",
+          "title": [
+            "Online Bin Packing with Predictions"
+          ],
+          "container_title": [
+            "Journal of Artificial Intelligence Research"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                12,
+                20
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Spyros Angelopoulos",
+              "orcid": "https://orcid.org/0000-0001-9819-9158"
+            },
+            {
+              "name": "Shahin Kamali",
+              "orcid": "https://orcid.org/0000-0003-1404-2212"
+            },
+            {
+              "name": "Kimia Shadkami",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1613/jair.1.14820",
+          "source_locator": "$.message",
+          "raw_sha256": "eaaa4719703f86d9d6d9589cee6ef7fa3b26abdddce4015ad2cc6814112dd8cb"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:ijcai:2025:444",
+      "title": "Asymptotic Fair Division: Chores Are Easier Than Goods",
+      "official_doi": "10.24963/ijcai.2025/444",
+      "returned_openalex_doi": "10.1137/25m180161x",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The IJCAI proceedings DOI and 2026 SIAM Journal DOI have matching title and ordered two-author byline. Likely later journal version; no relation or explicit version statement is present. No basis to replace the exact proceedings source or transfer journal metadata into historical proceedings affiliations.",
+      "official_metadata": {
+        "title": "Asymptotic Fair Division: Chores Are Easier Than Goods",
+        "authors": [
+          "Pasin Manurangsi",
+          "Warut Suksompong"
+        ],
+        "source_url": "https://www.ijcai.org/proceedings/2025/",
+        "source_locator": "a[href='/proceedings/2025/444']",
+        "source_sha256": "a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4414359482",
+        "queried_url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/444",
+        "source_locator": "$",
+        "raw_sha256": "a77b4faf1fb0259bfab8d02bcfd51ca4bc141239d6ceb986677cb6c3863fdc4c",
+        "returned_doi": "10.1137/25m180161x",
+        "title": "Asymptotic Fair Division: Chores Are Easier Than Goods",
+        "year": 2025,
+        "byline": [
+          "Pasin Manurangsi",
+          "Warut Suksompong"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.24963/ijcai.2025/444",
+          "type": "proceedings-article",
+          "title": [
+            "Asymptotic Fair Division: Chores Are Easier Than Goods"
+          ],
+          "container_title": [
+            "Proceedings of the Thirty-Fourth International Joint Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                9
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Pasin Manurangsi",
+              "orcid": null
+            },
+            {
+              "name": "Warut Suksompong",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.24963/ijcai.2025/444",
+          "source_locator": "$.message",
+          "raw_sha256": "d60065aa2fd88f3bcc9161c252eee0ed71ee7786b377e210251274330a37d743"
+        },
+        {
+          "doi": "10.1137/25m180161x",
+          "type": "journal-article",
+          "title": [
+            "Asymptotic Fair Division: Chores Are Easier Than Goods"
+          ],
+          "container_title": [
+            "SIAM Journal on Discrete Mathematics"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                7,
+                14
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Pasin Manurangsi",
+              "orcid": null
+            },
+            {
+              "name": "Warut Suksompong",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1137/25m180161x",
+          "source_locator": "$.message",
+          "raw_sha256": "884c66a25f02214c2a4bba36741a79b37bb7adca4e2763f5e79936bdc2a2a50f"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    },
+    {
+      "paper_id": "paper:ijcai:2025:446",
+      "title": "Variety-Seeking Jump Games on Graphs",
+      "official_doi": "10.24963/ijcai.2025/446",
+      "returned_openalex_doi": "10.1613/jair.1.21746",
+      "assessment": "likely_proceedings_journal_version_link; equivalence unverified",
+      "authoritative_localized_correction_supported": false,
+      "likely_version_relationship": true,
+      "verified_equivalence": false,
+      "reasoning": "The IJCAI proceedings DOI and JAIR DOI have matching title and ordered four-author byline, consistent with likely later journal versioning. Crossref has no relation. Similar metadata is not enough to certify equivalence or historical identity/affiliation provenance.",
+      "official_metadata": {
+        "title": "Variety-Seeking Jump Games on Graphs",
+        "authors": [
+          "Lata Narayanan",
+          "Jaroslav Opatrny",
+          "Shanmukha Tummala",
+          "Alexandros A. Voudouris"
+        ],
+        "source_url": "https://www.ijcai.org/proceedings/2025/",
+        "source_locator": "a[href='/proceedings/2025/446']",
+        "source_sha256": "a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b",
+        "cache_hash_verified": true
+      },
+      "openalex_record": {
+        "id": "https://openalex.org/W4414359813",
+        "queried_url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/446",
+        "source_locator": "$",
+        "raw_sha256": "a102f574fb2323363b5412762a309e78e6b9fce60c24d085bc3197de1e236109",
+        "returned_doi": "10.1613/jair.1.21746",
+        "title": "Variety-Seeking Jump Games on Graphs",
+        "year": 2025,
+        "byline": [
+          "Lata Narayanan",
+          "Jaroslav Opatrny",
+          "Shanmukha Tummala",
+          "Alexandros A. Voudouris"
+        ],
+        "alternate_records": []
+      },
+      "crossref_records": [
+        {
+          "doi": "10.24963/ijcai.2025/446",
+          "type": "proceedings-article",
+          "title": [
+            "Variety-Seeking Jump Games on Graphs"
+          ],
+          "container_title": [
+            "Proceedings of the Thirty-Fourth International Joint Conference on Artificial Intelligence"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                9
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Lata Narayanan",
+              "orcid": null
+            },
+            {
+              "name": "Jaroslav Opatrny",
+              "orcid": null
+            },
+            {
+              "name": "Shanmukha Tummala",
+              "orcid": null
+            },
+            {
+              "name": "Alexandros A. Voudouris",
+              "orcid": null
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.24963/ijcai.2025/446",
+          "source_locator": "$.message",
+          "raw_sha256": "34d7b808867615884c494bcaf995e255df87a6c959d0697fdc247da0d179e3b6"
+        },
+        {
+          "doi": "10.1613/jair.1.21746",
+          "type": "journal-article",
+          "title": [
+            "Variety-Seeking Jump Games on Graphs"
+          ],
+          "container_title": [
+            "Journal of Artificial Intelligence Research"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                8,
+                15
+              ]
+            ]
+          },
+          "authors": [
+            {
+              "name": "Lata Narayanan",
+              "orcid": "https://orcid.org/0000-0002-3875-0371"
+            },
+            {
+              "name": "Jaroslav Opatrny",
+              "orcid": "https://orcid.org/0000-0001-6149-003X"
+            },
+            {
+              "name": "Shanmukha Tummala",
+              "orcid": null
+            },
+            {
+              "name": "Alexandros A. Voudouris",
+              "orcid": "https://orcid.org/0000-0003-1105-3856"
+            }
+          ],
+          "relation": {},
+          "source_url": "https://api.crossref.org/works/10.1613/jair.1.21746",
+          "source_locator": "$.message",
+          "raw_sha256": "b16d23aeb8d6a983ad1e8bc5d4111bd358aeb6d72f76622c41f6da359e5ebea4"
+        }
+      ],
+      "action": "Keep the official roster DOI and current ambiguous-mismatch withholding. Do not repair the historical graph from title/byline similarity or import journal ORCIDs/affiliations. A separately versioned correction would require explicit publisher/version equivalence plus proceedings-specific identity and affiliation evidence."
+    }
+  ],
+  "topic_assessments": [
+    {
+      "paper_id": "paper:aaai:2023:26401",
+      "title": "XRand: Differentially Private Defense against Explanation-Guided Attacks",
+      "assigned_label_id": "topic:trustworthy-ml",
+      "assigned_label_name": "Trustworthy machine learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.4722542464733124,
+      "assessment": "clear_match",
+      "recommended_label_ids": [
+        "topic:trustworthy-ml"
+      ],
+      "additional_or_alternative_label_ids": [],
+      "reasoning": "The central contribution is local differential privacy for explanations as a defense against explanation-guided attacks, directly within privacy, security/robustness, and interpretability. The assigned leaf is well supported.",
+      "excerpt": "“we introduce a new concept of achieving local differential privacy (LDP) in the explanations, and from that we establish a defense, called XRand, against such attacks.”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:aaai:2023:26401",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Recent development in the field of explainable artificial intelligence (XAI) has helped improve trust in Machine-Learning-as-a-Service (MLaaS) systems, in which an explanation is provided together with the model prediction in response to each query.",
+      "frozen_source_locator": "openalex-request:c53c984d2c68767e7f0f53c70ed259fe56d9948972c3ebf89ddfa3a1bef6f952#results[3];abstract[0:249]",
+      "frozen_source_url": "https://openalex.org/W4382202898",
+      "frozen_source_sha256": "3199339ddc59def35d942b763190d1648b79c6487a77032d84f8835068dbdd7b",
+      "official_page_url": "https://ojs.aaai.org/index.php/AAAI/article/view/26401",
+      "doi": "10.1609/aaai.v37i10.26401",
+      "openalex_work_url": "https://openalex.org/W4382202898",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:aaai:2024:29596",
+      "title": "HGPrompt: Bridging Homogeneous and Heterogeneous Graphs for Few-Shot Prompt Learning",
+      "assigned_label_id": "topic:graph-ml",
+      "assigned_label_name": "Graph machine learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.5620753765106201,
+      "assessment": "clear_match",
+      "recommended_label_ids": [
+        "topic:graph-ml"
+      ],
+      "additional_or_alternative_label_ids": [
+        "topic:representation-learning"
+      ],
+      "reasoning": "The paper develops pretraining and prompting for homogeneous and heterogeneous graph neural networks; graph-structured learning is central. Representation learning is a plausible secondary label because the paper explicitly addresses graph representations and self-supervised pretraining, but it may be redundant under the taxonomy.",
+      "excerpt": "“we propose HGPROMPT, a novel pre-training and prompting framework to unify not only pre-training and downstream tasks but also homogeneous and heterogeneous graphs via a dual-template design.”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:aaai:2024:29596",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Graph neural networks (GNNs) and heterogeneous graph neural networks (HGNNs) are prominent techniques for homogeneous and heterogeneous graph representation learning, yet their performance in an end-to-end supervised framework greatly depends on the availability of task-specific supervision.",
+      "frozen_source_locator": "openalex-request:6deb08c4968a7971197f8e0e674480daa44bc614741d3599def8f5ffc85ab362#results[4];abstract[0:292]",
+      "frozen_source_url": "https://openalex.org/W4393147197",
+      "frozen_source_sha256": "7161b272923bcbc7b9fe42eff9194c702f77f458978d335d7720ebdc72537556",
+      "official_page_url": "https://ojs.aaai.org/index.php/AAAI/article/view/29596",
+      "doi": "10.1609/aaai.v38i15.29596",
+      "openalex_work_url": "https://openalex.org/W4393147197",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:aaai:2025:32209",
+      "title": "Contrasting Adversarial Perturbations: The Space of Harmless Perturbations",
+      "assigned_label_id": "topic:trustworthy-ml",
+      "assigned_label_name": "Trustworthy machine learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.3656175136566162,
+      "assessment": "clear_match",
+      "recommended_label_ids": [
+        "topic:trustworthy-ml"
+      ],
+      "additional_or_alternative_label_ids": [],
+      "reasoning": "The paper studies robustness/invariance of DNN outputs to perturbations and derives a privacy use for hiding sensitive data. This is a substantive robustness/privacy contribution, not a routine risk disclaimer. The assigned leaf is supported.",
+      "excerpt": "“we solve for a family of general perturbation spaces that are redundant for the DNN’s decision, and can be used to hide sensitive data and serve as a means of model identification.”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:aaai:2025:32209",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Our work highlights the distinctive robustness of DNNs (i.e., consistency under large magnitude perturbations) in contrast to adversarial examples (vulnerability for small noises).",
+      "frozen_source_locator": "openalex-request:c1c9262e50eb3cad37d82e4e43fd5cb7ec21721cc9a62eb930c22b035aa15b69#results[47];abstract[1158:1338]",
+      "frozen_source_url": "https://openalex.org/W4409346469",
+      "frozen_source_sha256": "d4af3206ef5d7cc89af9f98070056a6b791f622e7b0e573190c433f23769e860",
+      "official_page_url": "https://ojs.aaai.org/index.php/AAAI/article/view/32209",
+      "doi": "10.1609/aaai.v39i2.32209",
+      "openalex_work_url": "https://openalex.org/W4409346469",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:ijcai:2021:385",
+      "title": "Average-Reward Reinforcement Learning with Trust Region Methods",
+      "assigned_label_id": "topic:reinforcement-learning",
+      "assigned_label_name": "Reinforcement learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.5108886361122131,
+      "assessment": "clear_match",
+      "recommended_label_ids": [
+        "topic:reinforcement-learning"
+      ],
+      "additional_or_alternative_label_ids": [
+        "topic:optimization-theory"
+      ],
+      "reasoning": "The central task is average-reward policy learning and policy optimization, so reinforcement learning is unambiguous. Trust-region theory and a performance bound form a real secondary theoretical contribution; whether it merits the broad optimization/theory leaf depends on that leaf’s intended scope.",
+      "excerpt": "“we study the reinforcement learning problem with the long-run average criterion… propose a practical algorithm named Average Policy Optimization (APO)”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:ijcai:2021:385",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Most of reinforcement learning algorithms optimize the discounted criterion which is beneficial to accelerate the convergence and reduce the variance of estimates.",
+      "frozen_source_locator": "openalex-request:42406857a30c1ad67bbd24acb41f96fdb1f4b51db51fc584c2254af3289196a5#results[16];abstract[0:163]",
+      "frozen_source_url": "https://openalex.org/W3192314531",
+      "frozen_source_sha256": "0ef42bcadb3e1f55dea9d41f3271890370abe2c11b90bd7fcbfc2e64fb499f61",
+      "official_page_url": "https://www.ijcai.org/proceedings/2021/385",
+      "doi": "10.24963/ijcai.2021/385",
+      "openalex_work_url": "https://openalex.org/W3192314531",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:aaai:2024:28516",
+      "title": "Weakly-Supervised Temporal Action Localization by Inferring Salient Snippet-Feature",
+      "assigned_label_id": "topic:representation-learning",
+      "assigned_label_name": "Representation learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.31764233112335205,
+      "assessment": "likely_overextended_or_false_positive",
+      "recommended_label_ids": [
+        "topic:computer-vision"
+      ],
+      "additional_or_alternative_label_ids": [
+        "topic:representation-learning"
+      ],
+      "reasoning": "Temporal action localization in untrimmed videos is clearly computer vision and is missing from the assigned tags. Feature inference/refinement is task-specific machinery for this localization objective; the abstract does not establish transferable representation learning, so that leaf is a likely overextension if it is the only tag. If secondary labels are permitted, representation learning is arguable but weaker than computer vision.",
+      "excerpt": "“Weakly-supervised temporal action localization aims to locate action regions and identify action categories in untrimmed videos simultaneously”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:aaai:2024:28516",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Finally, we adopt the refined snippet-features to produce high-fidelity pseudo labels, which could be used to supervise the training of the action localization network.",
+      "frozen_source_locator": "openalex-request:bf25b9a25aa316780b2858369334fd614deabc01b25ed7e1f8e239a687dd877b#results[13];abstract[1020:1188]",
+      "frozen_source_url": "https://openalex.org/W4393154133",
+      "frozen_source_sha256": "a28c56ffb449b73bebbf80f78feb3e52774e56ddabe19efe597aed32f970cd6b",
+      "official_page_url": "https://ojs.aaai.org/index.php/AAAI/article/view/28516",
+      "doi": "10.1609/aaai.v38i7.28516",
+      "openalex_work_url": "https://openalex.org/W4393154133",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:ijcai:2025:905",
+      "title": "Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation",
+      "assigned_label_id": "topic:multimodal",
+      "assigned_label_name": "Multimodal learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.3561129570007324,
+      "assessment": "clear_match",
+      "recommended_label_ids": [
+        "topic:multimodal"
+      ],
+      "additional_or_alternative_label_ids": [],
+      "reasoning": "The method explicitly integrates modality-specific utterance representations using a multimodal gated transformer and distillation across weaker modalities. The assigned leaf is clear. The abstract does not specify enough about the actual audio/visual/text channels to add computer vision or NLP confidently.",
+      "excerpt": "“we introduce a multi-modal anchor gated transformer to effectively integrate utterance-level representations across modalities.”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:ijcai:2025:905",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Specifically, prompt learning is employed to enhance textual modality representations, while knowledge distillation is utilized to strengthen representations of weaker modalities.",
+      "frozen_source_locator": "openalex-request:4e4de026fb86db03a20a378f388f1e6d2ab0bd8a0e1281d84b14efac36df355d#results[7];abstract[635:814]",
+      "frozen_source_url": "https://openalex.org/W4414360253",
+      "frozen_source_sha256": "9e4b0b3ae3b6fce1f3adb7679fa69b97ac0177842f6499a9acb6955cffc8c2cb",
+      "official_page_url": "https://www.ijcai.org/proceedings/2025/905",
+      "doi": "10.24963/ijcai.2025/905",
+      "openalex_work_url": "https://openalex.org/W4414360253",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:aaai:2021:17343",
+      "title": "Exploration-Exploitation in Multi-Agent Learning: Catastrophe Theory Meets Game Theory",
+      "assigned_label_id": "topic:reinforcement-learning",
+      "assigned_label_name": "Reinforcement learning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.406637042760849,
+      "assessment": "clear_match_but_missing_obvious_leaf",
+      "recommended_label_ids": [
+        "topic:reinforcement-learning",
+        "topic:multi-agent"
+      ],
+      "additional_or_alternative_label_ids": [
+        "topic:optimization-theory"
+      ],
+      "reasoning": "Smooth Q-learning, regret and policy exploration make reinforcement learning a clear match, while the paper is explicitly about multi-agent learning, games, and equilibria; multi-agent systems is an obvious missing second leaf. The catastrophe/bifurcation analysis is mathematical, but optimization theory is not clearly a substantive third topic.",
+      "excerpt": "“we study a smooth analogue of Q-learning” and “we characterize the geometry of the QRE surface in low-dimensional MAL systems”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:aaai:2021:17343",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Specifically, we prove that smooth Q-learning has bounded regret in arbitrary games for a cost model that explicitly captures the balance between game and exploration costs and that it always converges to the set of quantal-response equilibria (QRE), the standard solution concept for games under bounded rationality, in weighted potential games with heterogeneous learning agents.",
+      "frozen_source_locator": "openalex-request:43254ddcd64c2ce608d52cd6a3f761ec26e7ae99ae5afb0010348e0a4a356f97#results[45];abstract[353:734]",
+      "frozen_source_url": "https://openalex.org/W3174723276",
+      "frozen_source_sha256": "9038ee03180bff0df863079a984d2653718e64c6f72b282c7b408b3398398723",
+      "official_page_url": "https://ojs.aaai.org/index.php/AAAI/article/view/17343",
+      "doi": "10.1609/aaai.v35i13.17343",
+      "openalex_work_url": "https://openalex.org/W3174723276",
+      "taxonomy_version": "taxonomy-release-v1"
+    },
+    {
+      "paper_id": "paper:ijcai:2023:215",
+      "title": "Unifying Core-Guided and Implicit Hitting Set Based Optimization",
+      "assigned_label_id": "topic:planning-reasoning",
+      "assigned_label_name": "Planning and reasoning",
+      "cosine_similarity_recorded_not_used_as_truth": 0.36937427520751953,
+      "assessment": "taxonomy_overlap_ambiguous",
+      "recommended_label_ids": [
+        "topic:optimization-theory",
+        "topic:planning-reasoning"
+      ],
+      "additional_or_alternative_label_ids": [],
+      "reasoning": "The paper is about algorithms for MaxSAT and implicit hitting set methods in combinatorial optimization. Planning is not evident. The planning/reasoning leaf is defensible only through its symbolic inference/logical-reasoning scope; optimization-theory is at least as plausible, though its definition emphasizes learning theory. The assigned label is not a clear false positive, but the taxonomy does not separate solver reasoning from combinatorial optimization cleanly. If the taxonomy requires learning-centric optimization, abstention or a more explicit rule is preferable to forcing either label.",
+      "excerpt": "“algorithmic paradigms implemented in practical solvers for maximum satisfiability (MaxSAT) and other related declarative paradigms for NP-hard combinatorial optimization”",
+      "excerpt_locator": "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#/paper:ijcai:2023:215",
+      "abstract_supplement_sha256": "701799b091def8d2c68acbf6697d4bf13785db1b6fad8ff0c3a3f398b3deedd0",
+      "frozen_source_excerpt": "Two of the most central algorithmic paradigms implemented in practical solvers for maximum satisfiability (MaxSAT) and other related declarative paradigms for NP-hard combinatorial optimization are the core-guided (CG) and implicit hitting set (IHS) approaches.",
+      "frozen_source_locator": "openalex-request:8fbadd4d5611e2cde37692d567262013f0af08c2a4767f5d96cfa2bada53bf69#results[35];abstract[0:261]",
+      "frozen_source_url": "https://openalex.org/W4385768210",
+      "frozen_source_sha256": "7a2e64ae41a687242a99fc98b29089a552aa73e206bf44b0e7c5d3a1ba19ae92",
+      "official_page_url": "https://www.ijcai.org/proceedings/2023/215",
+      "doi": "10.24963/ijcai.2023/215",
+      "openalex_work_url": "https://openalex.org/W4385768210",
+      "taxonomy_version": "taxonomy-release-v1"
+    }
+  ],
+  "analytical_interpretation": {
+    "doi": "None of the seven cases has authoritative replacement evidence that warrants a localized historical correction. Across all seven, the official and returned records have highly matching titles and ordered bylines but distinct proceedings/journal containers or dates; Crossref relation fields are empty and no publisher version statement is included. This supports likely version linking, not verified equivalence. The official records and exact DOI are the appropriate corpus identity. The existing release-openalex-v1.1 requested/returned DOI equality guard (including retry and duplicate selection) addresses future acquisition acceptance; it does not retroactively repair these records or validate journal-derived identities and affiliations.",
+    "topics": "On this exposed diagnostic sample, several assigned leaves are strong central-topic matches (privacy/robustness, graph learning, RL, multimodal learning). The sample also shows likely omissions and a possible overreach: temporal action localization is plainly computer vision, while generic task-specific features alone do not establish representation learning; the multi-agent RL paper merits both RL and multi-agent systems. The frozen extra-label rule requiring similarity within delta=0.02 of the top score can suppress substantively relevant orthogonal leaves. The MaxSAT paper exposes taxonomy overlap between symbolic reasoning and combinatorial optimization. Use full abstracts and central contributions; cosine scores and a supporting sentence alone are not semantic validation. For genuinely ambiguous or taxonomy-uncovered cases, abstain or report the taxonomy limitation instead of stretching a leaf.",
+    "limits": [
+      "Prediction-exposed diagnostic only; no blind topic-test inference.",
+      "AI-assessed; no human validation, reviewer independence, or accuracy certification.",
+      "No DOI graph correction, topic relabeling, acquisition, network access, or source collection performed.",
+      "Full identity-case review was outside scope."
+    ]
+  }
+}

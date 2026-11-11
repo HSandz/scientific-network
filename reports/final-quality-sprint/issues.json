@@ -1,0 +1,121 @@
+[
+  {
+    "edge_id": "edge:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43",
+    "relation": "RESEARCHES_TOPIC",
+    "decision": "unsupported",
+    "evidence_strength": "moderate",
+    "evidence_ids": [
+      "evidence:derived:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43",
+      "evidence:topic:4a7fe65e5e00f2dae5a2440ed958371d882d1de6bdc694ca6388c1c390df6df6",
+      "evidence:openalex:2ed178b126ec711adda1600c",
+      "evidence:topic:61cd10e83bca56aec4f72fe0dc025c57d73989cbc86b3960239d5d3b80fb4248",
+      "evidence:openalex:f563989e7e0abe56310a4a23",
+      "evidence:topic:a727703ff708d80d7f6b12398c6513edef8502b770781ede034f204e64e4fb79"
+    ],
+    "source_locators": [
+      "https://openalex.org/W3174434307 @ openalex-request:503a5fc09b3402c85da772b4bf7c8423e99d81d17916815619aa819289d314be#results[44]",
+      "https://openalex.org/W4393159597 @ openalex-request:91148881ccf3a67d42fd13c7d81072de72ac38363026f3b203fa3f044d507840#results[1]",
+      "https://openalex.org/W4393159597 @ openalex-request:91148881ccf3a67d42fd13c7d81072de72ac38363026f3b203fa3f044d507840#results[1];abstract[1025:1137]",
+      "https://openalex.org/W3174434307 @ openalex-request:503a5fc09b3402c85da772b4bf7c8423e99d81d17916815619aa819289d314be#results[44];abstract[0:160]",
+      "https://ojs.aaai.org/index.php/AAAI/issue/view/385 @ a[href='https://ojs.aaai.org/index.php/AAAI/article/view/16100']",
+      "https://api.openalex.org/works @ results[44]",
+      "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#paper:aaai:2021:16100",
+      "https://ojs.aaai.org/index.php/AAAI/issue/view/586 @ a[href='https://ojs.aaai.org/index.php/AAAI/article/view/29154']",
+      "https://api.openalex.org/works @ results[1]",
+      "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#paper:aaai:2024:29154"
+    ],
+    "reason": "Both support witnesses are present: paper:aaai:2021:16100 contributes an early-stopping MCTS method for NoGo/AlphaZero, with RL only as application context; paper:aaai:2024:29154 substantively studies PPO-Clip. Of the total two support papers, only one meets the RL topic rule.",
+    "potential_issue": "The topic label on the MCTS/AlphaZero paper appears to rely on contextual RL mentions; one substantive RL paper remains below the two-paper threshold.",
+    "reviewer_kind": "ai",
+    "reviewer_model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "evaluator_run": "/root/luna_edges_1",
+    "evidence_depth": "2 of 2 supporting papers inspected: paper:aaai:2021:16100 and paper:aaai:2024:29154; one substantive RL witness",
+    "source_overlap": "construction_cache"
+  },
+  {
+    "edge_id": "edge:cc8efc4bdc585fe23bd723a4bb5b30395ef2efe664366ba82d4330631e24113e",
+    "relation": "AUTHORED",
+    "decision": "unknown",
+    "evidence_strength": "insufficient",
+    "evidence_ids": [
+      "evidence:openalex:de3b3a8e6e23efac46103f30",
+      "evidence:topic:5f55051b45eacd21ea9772789fbc7955398f73b440b93f9313381a41ae0632c3"
+    ],
+    "source_locators": [
+      "https://openalex.org/W4409363287 @ openalex-request:2a8b4a9dd39f46253494f5eee517dab525a5535d24bd536df20b36b8afcb233f#results[2]",
+      "https://ojs.aaai.org/index.php/AAAI/issue/view/644 @ a[href='https://ojs.aaai.org/index.php/AAAI/article/view/34377']",
+      "https://api.openalex.org/works @ results[2]",
+      "reports/runs/WORK-2026-11-11-007/abstract-supplement.json#paper:aaai:2025:34377"
+    ],
+    "reason": "The official byline gives Kairong Yu at position 1, while the matched OpenAlex authorship at that position is named Ke Yu; no evidence in the packet resolves this name mismatch.",
+    "potential_issue": "OpenAlex display name “Ke Yu” is not compatible with official byline “Kairong Yu”; identity is unresolved from this packet.",
+    "reviewer_kind": "ai",
+    "reviewer_model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "evaluator_run": "/root/luna_edges_1",
+    "evidence_depth": "one official record and matched cached OpenAlex work/authorship checked",
+    "source_overlap": "construction_cache"
+  },
+  {
+    "edge_id": "edge:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6",
+    "relation": "RESEARCHES_TOPIC",
+    "decision": "unsupported",
+    "evidence_strength": "moderate",
+    "evidence_ids": [
+      "evidence:derived:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6",
+      "evidence:topic:07e3bab065c214c1b59920b570733511fd70b026d48f6312d929740741cdf932",
+      "evidence:openalex:c55705de7295870b28520ef2",
+      "evidence:openalex:729b405104a87e14413a1a71",
+      "evidence:topic:c8e69486f4ee4b6f0a4d2719baceae7f2169d7736dc0e77ac495d11ad461cb03",
+      "evidence:topic:2b069bddc09d13662e7c60c908fc409d8a086b910e631016783e2e5c6f982e3e"
+    ],
+    "source_locators": [
+      "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/29308']",
+      "openalex-request:f89007c1b473fff928d43af68d182a35ab6dea7ddc8828b8f6cf7b9331509bc4#results[42]",
+      "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/32353']",
+      "openalex-request:4e4a99624134b815f128ae28c4e31367ad9e7c06f102da4f2416093e907eb323#results[6]"
+    ],
+    "reason": "Only one of the two distinct-paper supports substantively fits Representation learning: PointRWKV develops hierarchical point-cloud feature learning, while Density Matters selects samples using an existing feature space and does not claim to learn transferable or structured representations; R9 therefore falls below two papers.",
+    "potential_issue": null,
+    "reviewer_kind": "ai",
+    "reviewer_model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "evaluator_run": "/root/luna_edges_2",
+    "evidence_depth": "2 of 2 reported distinct supporting papers supplied as witnesses; complete support totals/weights not independently validated when witness depth is lower.",
+    "source_overlap": "construction_cache"
+  },
+  {
+    "edge_id": "edge:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857",
+    "relation": "CONTRIBUTES_TO_TOPIC",
+    "decision": "unsupported",
+    "evidence_strength": "moderate",
+    "evidence_ids": [
+      "evidence:derived:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857",
+      "evidence:openalex:951c076ef32648d20ff58193",
+      "evidence:topic:39df6b1058a0948f5083abf6a24af69ede6fbffbfbc7d215975996b332804a55",
+      "evidence:openalex:39f38d08dea1d70fab737820",
+      "evidence:topic:8156626a3b359b075f2ce3934be3cef3f4168c05e83f0a9c6332b094d591c3f9",
+      "evidence:topic:a89c3db42b026e428745233c8c0b9edc976ac93896465cd9341187e212d87172",
+      "evidence:openalex:20b8635373e33eac23622161",
+      "evidence:topic:08c5687a9ab9bfee4332e1e901c9ac810031806a2945461fd482750324828bd8",
+      "evidence:topic:b544d7eb7d6bd6a72857c81db851ae1217f0688f9c17f152464619fe3eb865a8"
+    ],
+    "source_locators": [
+      "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/17241']",
+      "openalex-request:3669aee4cbf41303d5e03bd8821d2754f10dbf0e5491c957bee00ebf713a81eb#results[5]",
+      "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/28993']",
+      "openalex-request:905e4d8b0595fd5eff4f5d112ec79ce13ff5658b7326ed102a875d9a4e263899#results[11]",
+      "a[href='/proceedings/2023/443']",
+      "openalex-request:97c066ddeceadae65844f522772da4df3555e9cf6fb34c820296e8a7ba7b3334#results[6]"
+    ],
+    "reason": "The three supplied papers include only two substantive Efficient machine learning systems contributions: EG-NAS addresses low-cost search and FedET reduces communication cost, while Curriculum-Meta Learning addresses order robustness and relation representations without a computation, memory or systems-efficiency contribution. The R10 threshold of three is not met.",
+    "potential_issue": null,
+    "reviewer_kind": "ai",
+    "reviewer_model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "evaluator_run": "/root/luna_edges_2",
+    "evidence_depth": "3 of 3 reported distinct supporting papers supplied as witnesses; complete support totals/weights not independently validated when witness depth is lower.",
+    "source_overlap": "construction_cache"
+  }
+]

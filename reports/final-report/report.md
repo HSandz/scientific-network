@@ -1,6 +1,6 @@
 # AI Research Network: AAAI and IJCAI, 2021–2025
 
-**Local report, 9 November 2026 — separately corrected graph v4.** The graph
+**Local report, updated 11 November 2026 — separately corrected graph v4.** The graph
 contains **47,875 nodes and 225,731 edges**. Its one prospective source-backed
 AI edge audit scores **193/200 = 96.50%, Wilson 95% 92.95%–98.29%**. The frozen
 point/Wilson numeric checks pass **within AI assessment only**; this does not
@@ -12,6 +12,10 @@ Historical AI-reference topic F1 remains **.4667/.2301** (embedding/phrase).
 Human validation was not performed; evaluator independence and verified course
 accuracy are not established. Real team details and course disclosure/access
 facts remain pending. This local draft has not been published or submitted.
+
+The [11 November quality sprint](../final-quality-sprint/README.md) adds a small
+ten-relation Luna audit, coverage context and identity-sensitivity interpretation.
+It changes no frozen graph, classifier or historical audit result.
 
 ## 1. Team allocation
 
@@ -333,6 +337,27 @@ in section 9. Graph
 Counts include only citing papers inside the release corpus and are not adjusted
 for citation exposure time. Graph `release-d3c788c3114a`.*
 
+### Reading the research landscape with coverage
+
+![Topic-label coverage by venue and year](../final-quality-sprint/figures/coverage.png)
+
+*Figure 5b. Labeled and unlabeled shares of all included papers by venue/year,
+with labeled/all counts printed inside each bar. Reuses the frozen v4 analysis;
+[CSV and input binding](../final-quality-sprint/figures/receipt.json).
+Graph `release-d3c788c3114a`. Coverage measures availability of an inferred
+label, not its correctness.*
+
+The selected corpus grows from **2,240 papers in 2021 to 4,042 in 2025**, with a
+2022 dip to 1,997; these are proceedings counts, not field-wide AI output.
+Among labeled AAAI papers, multimodal fractional share rises from **6.96% to
+16.42%** (9.47 percentage points); IJCAI rises from **7.43% to 12.90%** (5.47
+points). These exploratory classifier-defined shifts describe the selected
+landscape rather than independently verified topic growth. AAAI labeling coverage
+changes from **85.19% to 84.21%**, IJCAI from **81.91% to 83.43%**. Unlabeled
+papers may have a different topic mix; these shares cannot be extrapolated to all
+papers. Source: `reports/release-v4/analysis.json`, `release_metrics.annual_counts`
+and `topic_shares_by_year_venue`; no model rerun or new test labels.
+
 ### Network maps of the corrected release
 
 These three maps add node-and-edge views to the six statistical charts above.
@@ -646,6 +671,27 @@ recorded separately. The ledgers distinguish byline/author-specific institution
 checks, citation records, topic evidence and distinct-paper derived support.
 Reading the same OpenAlex snapshot cannot establish that snapshot's correctness.
 
+#### 9.2.3 Deadline sprint: small cross-relation AI audit
+
+A new frozen stratified draw reviews eight edges per relation on unchanged v4.
+Two fresh `gpt-6-luna` contexts at `high` reasoning each review 40 disjoint units.
+[Per-relation populations, inclusion probabilities, judgments and intervals](../final-quality-sprint/edge-audit.md)
+are reported separately; no overall accuracy is calculated from these oversampled
+strata. All sampled publication, citation, affiliation, coauthorship, organization
+collaboration, paper-topic and taxonomy claims receive supported judgments. Among
+authorships one is unknown; researcher-topic profiles have two unsupported
+judgments and organization-topic profiles have one. Each relation denominator is
+only eight. Even 8/8 gives a Wilson lower bound of approximately 67.6%, conditional
+on AI decisions; this audit cannot establish the 90% course requirement.
+
+The three challenged topic aggregates are structurally supported by frozen labels
+but depend on semantic paper-topic interpretations disputed by Luna. The separate
+eight-paper topic diagnostic also flags likely omitted leaves and a taxonomy
+boundary. These AI findings do not authorize retrospective relabeling. Human
+validation was not performed; construction-source overlap, evaluator error and
+bounded support inspection remain limitations. Blank two-member packets contain
+20 prespecified random cases plus six separately identified diagnostics.
+
 ### 9.3 Topic agreement with AI-assigned reference labels
 
 The held-out set contains 20 AAAI and 30 IJCAI papers, selected before tuning.
@@ -700,6 +746,25 @@ correlation .1882. Topic coverage varies by venue–year
 (81.9%–87.9%), while the held-out AI agreement reveals semantic errors. Business
 findings in section 8 remain candidates for source investigation rather than
 validated recommendations.
+
+### 9.5 Identity-policy sensitivity of collaboration conclusions
+
+Task2C compared the same 256 approximate-betweenness pivots across frozen v4 and
+two identity-policy candidates. This differs from the base/strict support-filter
+comparison above. The [Task2C analysis](../quality-v5/task2c-v1/graph-sensitivity.md)
+reports:
+
+| Candidate versus frozen v4 | Degree top-20 overlap | Betweenness top-20 overlap |
+| --- | ---: | ---: |
+| Candidate-v3 | 19/20 | 11/20 |
+| Task2B | 20/20 | 12/20 |
+
+A large connected component and broad coauthor-degree ordering persist under
+these policies. Bridge shortlist membership is substantially less stable, even
+when whole-population rank correlations are high. Named connectors are hypotheses
+for evidence review, not definitive disambiguated-person rankings or proof of
+influence. Candidate policies are sensitivity scenarios; none has established
+superior semantic identity accuracy. Frozen v4 remains the production graph.
 
 ## 10. Achievements and limitations
 
