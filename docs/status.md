@@ -1,40 +1,39 @@
 # Current project status
 
-Updated: **2026-11-11T18:18:24+07:00**. Plan: [D040](release-plan.md), with
-[user-authorized Task2B amendment](decisions.md).
-Latest: [WORK-2026-11-11-004](work-log/2026-11-11-004-identity-recovery.md).
+Updated: **2026-11-11T19:00:12+07:00**. Plan: [D040](release-plan.md), with
+[user-authorized Task2C amendment](decisions.md).
+Latest: [WORK-2026-11-11-005](work-log/2026-11-11-005-identity-independent-validation.md).
 
 ## Phase checklist
 
-- [x] Historical v4, candidate-v3, original sources and audit judgments preserved.
-- [x] Task2B baseline verification and seven DOI reconciliation investigations.
-- [x] Complete target-ID inventory and prioritized public source review.
-- [x] Prospective identity probability/diagnostic samples, blank packets and scorer.
-- [x] Bounded resolver recovery and isolated final candidate construction.
-- [x] Structural/source checks, deterministic replay and three-way comparison.
-- [x] Full suite:603 passed, one existing skip; focused suite:115 passed.
-- [x] Reports, code/source/config hashes, preservation and local checkpoints.
-- [ ] Independently adjudicated identity references and semantic P/R/F1.
-- [ ] Evidence-supported promotion decision after independent evaluation.
-- [ ] Task3 affiliation work, separately authorized; identity ceiling still below target.
+- [x] Historical v4, candidate-v3, Task2B, sources and frozen judgments preserved.
+- [x] Task2B bounded recovery and prospective evaluation freeze (historical).
+- [x] Task2C scorer audit/fixes and regression tests; frozen membership unchanged.
+- [x] Blind local A/B annotation, strict schemas and hash-bound adjudication compiler.
+- [x] Bounded source retrieval, provenance/verification packets and pending references.
+- [x] Three-way scoring of actual empty references; semantic metrics correctly null.
+- [x] Three-way topology sensitivity and experimental Task3 input ledgers.
+- [x] Full suite, offline checks, deterministic replay and protected-hash verification.
+- [x] Reports, documented decision, work log and local checkpoint; no push.
+- [ ] Actual independent human submissions, crosswalks and adjudicated identity metrics.
+- [ ] Evidence-supported scientific promotion after independent evaluation.
+- [ ] Task3 affiliation/organization implementation, separately scoped.
 - [ ] Personal/course facts and final submission.
 
 ## Scientific boundary
 
-Production remains frozen v4. Task2B final development candidate:
-`release-identity-v5-503aafe10a31`, implementation checkpoint `eab4dce`.
-[Measured report](../reports/quality-v5/task2b-v1/implementation-report.md),
-[reproduction and artifacts](../reports/quality-v5/task2b-v1/README.md),
-[validation](../reports/quality-v5/task2b-v1/validation-report.md).
-Coverage/source support improve over candidate-v3; semantic precision/recall do
-not have independent measurements. Public ORCID declarations are construction
-evidence, not independent gold. DOI ambiguities remain explicit; no source-corrected
-graph is justified. Preserve both candidates; no scientific promotion yet.
-No Task3/topic/Explorer work, DB writes, service changes, push or deployment.
+Production remains frozen v4. Task2B `release-identity-v5-503aafe10a31` is retained
+only as the experimental development foundation. No candidate has demonstrated
+superior semantic accuracy. Source retrieval and topology stability are not gold.
+[Decision](../reports/quality-v5/task2c-v1/candidate-decision.md),
+[reports and reproduction](../reports/quality-v5/task2c-v1/README.md),
+[validation](../reports/quality-v5/task2c-v1/validation-report.md).
+No Task3 resolver, topic/Explorer changes, DB writes, production operations or deployment.
 
 ## Next step
 
-Obtain independent references using the frozen identity packets, adjudicate with
-source-independence evidence, and score v4/v3/revision on the same units. Continue
-targeted identity investigation before treating affiliation enrichment as capable
-of meeting the end-to-end target. Technical Task3 inputs are available separately.
+Distribute the separate A/B role directories using the annotation guide, freeze
+actual independent submissions, document person crosswalks and consensus, then
+compile/score on the original frozen units. Partial references produce descriptive
+subset diagnostics, not population certification. Task3 must preserve the measured
+identity coverage ceiling and unresolved mention ledger.

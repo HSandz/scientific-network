@@ -1,0 +1,32 @@
+{
+  "recommendation": "experimental_task2b_only_not_scientifically_promoted",
+  "graph_version": "release-identity-v5-503aafe10a31",
+  "graph_sha256": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e",
+  "accepted_n": 50000,
+  "unresolved_n": 15507,
+  "matched_positions": 65469,
+  "official_positions": 65507,
+  "affiliated_positions": 47833,
+  "accepted_without_affiliation": 2167,
+  "maximum_matched_affiliation_coverage": 0.7637202340038797,
+  "target_80_percent_minimum_positions": 52376,
+  "additional_identities_needed_even_with_perfect_affiliation": 2376,
+  "withheld_positions_with_provider_institutions": 14930,
+  "withheld_reasons": {
+    "author_id_conflicting_orcids": 8723,
+    "author_id_conflicting_paper_or_profile_orcids": 1,
+    "author_id_incompatible_name_variants": 448,
+    "no_provider_id_or_paper_raw_orcid": 6263,
+    "provider_id_repeated_in_paper": 6,
+    "raw_name_incompatible": 6,
+    "raw_orcid_existing_identity_requires_crosswalk": 1,
+    "work_doi_disagreement": 21,
+    "work_not_matched": 38
+  },
+  "warning": "Provider institution context on unresolved mentions is not an accepted triple; no Cartesian copying or relaxed identity rules",
+  "files": {
+    "accepted-affiliation-observations.jsonl": "8f28cee9bd0bcf42101d117b3432ad93eef86ffde8f2d2b242f1d93375408bbe",
+    "accepted-authorships.jsonl": "6c80958359cd54231075fd7219a67609dc121a648a650d87559707703ad0ddfe",
+    "unresolved-mentions.jsonl": "29d09d2130412e793e32c5767b6766a82daa31f8570038856ce824a89fef7686"
+  }
+}

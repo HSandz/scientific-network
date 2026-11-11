@@ -1,0 +1,18 @@
+{
+  "head": "ac5883e",
+  "graphs": {
+    "v4": {
+      "path": "data/processed/release-graph-v4/graph.json",
+      "sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90"
+    },
+    "candidate_v3": {
+      "path": "data/processed/identity-candidate-v5-release-v3/graph.json",
+      "sha256": "258b1a919f9cd823631cf0245884386de19b5527bf63f8867d3c371be261ac40"
+    },
+    "task2b": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/graph.json",
+      "sha256": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e"
+    }
+  },
+  "freeze_sha256": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7"
+}

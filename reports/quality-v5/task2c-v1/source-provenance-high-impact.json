@@ -1,0 +1,52 @@
+{
+  "plan_sha256": "fc234d1d3110fd93f97a0f8624e4ffba2946acbb93fb6f30e2d8e91e0750f364",
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16142/15949",
+      "category": "high_impact_unresolved",
+      "mention_ids": [
+        "mention:0f8802c0f275582d3ac58fb4"
+      ],
+      "purpose": "Prioritized unresolved provider with 26 withheld positions; printed ownership evidence, not acceptance",
+      "attempted_at": "2026-11-11T11:47:41.657462+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16142/15949",
+        "params": {},
+        "request_id": "26313d34f03fa55e9050dc62711fe5d148ed2d80c5643271d83eaea89b4d20fa",
+        "sha256": "b3ff5a9afcd4f634293b5a4426d8767dac8d93f192a277f7515c0a18ad5ce784",
+        "retrieved_at": "2026-11-11T11:48:03.703794+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16485/16292",
+      "category": "high_impact_unresolved",
+      "mention_ids": [
+        "mention:6f37b853c24a4b3bf57ce676"
+      ],
+      "purpose": "Prioritized unresolved provider with 8 withheld positions; printed ownership evidence, not acceptance",
+      "attempted_at": "2026-11-11T11:48:03.906677+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16485/16292",
+        "params": {},
+        "request_id": "6a22fadd64b789a5acbe5ddba767e9ed6cabb32bf0f0a72f28207ffcd6c5f86b",
+        "sha256": "5c38db7e1764a60f49f9cdf8bdec1abe04135aae06864d76e70fe5a0edd1bf51",
+        "retrieved_at": "2026-11-11T11:48:25.257484+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    }
+  ],
+  "limitation": "source retrieval is not independent adjudication"
+}

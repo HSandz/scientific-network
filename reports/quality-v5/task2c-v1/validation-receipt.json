@@ -1,0 +1,89 @@
+{
+  "recorded_at": "2026-11-11T19:00:12+07:00",
+  "base_head": "ac5883e",
+  "implementation_checkpoint": "3bfec1f",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "uv_lock_sha256": "dc487ad4694429e732fda74b8f02d814bbca22e286109ca0763ac7bede8eea97",
+  "tests": {
+    "focused": {
+      "command": "uv run pytest -q tests/test_identity_validation_v5.py tests/test_identity_recovery_v5.py",
+      "passed": 53,
+      "exit_code": 0,
+      "log_sha256": "4447ea0405ac7a147e779ab9eed0aa486e7f049b932fd3744691bf3ec43b709c"
+    },
+    "full": {
+      "command": "uv run pytest -q",
+      "passed": 632,
+      "skipped": 1,
+      "skip_reason": "existing empty stage parameter in tests/test_cli.py:28",
+      "exit_code": 0,
+      "log_sha256": "dee2a4970732d3b738c2724348150bd57eb57b95184ac79dc63ec278e8784ace"
+    }
+  },
+  "checks": {
+    "sync_locked_dev_analysis_report_exit": 0,
+    "node_syntax_exit": 0,
+    "analysis_cli_exit": 0,
+    "analysis_replay_byte_identical": true,
+    "evidence_inventory_cli_exit": 0,
+    "evidence_replay_byte_identical": true,
+    "workspace_cli_exit": 0,
+    "workspace_replay_byte_identical": true,
+    "frozen_sampling_replay_exact": true,
+    "original_779_files_unchanged": true,
+    "session_148_files_unchanged": true,
+    "protected_directory_membership_unchanged": true,
+    "source_objects_hashed": 45,
+    "review_cases": 511,
+    "human_reviews": 0,
+    "independent_references": 0
+  },
+  "ui": {
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "inspection_failures": 0,
+    "inspection_warnings": 2,
+    "allowed_rule": "headline-lines: preserve full immutable academic paper titles, not short marketing headings",
+    "warning_rationale": "Unequal-length navigation, source detail and evidence form panels are intentional working columns; unused-canvas heuristic targets cards rather than this byline/form workspace",
+    "browser_checks": [
+      "synthetic unknown saved; B remains empty",
+      "candidate claims hidden until both review files supplied",
+      "adjudication progress and unresolved default",
+      "mobile overflow corrected",
+      "strict browser imports reject invalid provenance records"
+    ],
+    "screenshot_paths": [
+      "ui-inspection-final/desktop-fold.jpg",
+      "ui-inspection-final/tablet-fold.jpg",
+      "ui-inspection-final/mobile-fold.jpg"
+    ],
+    "design_skill": "design-taste-frontend: editorial workspace; native fonts for offline operation; no remote font dependency"
+  },
+  "limitations": [
+    "Human review/adjudication not performed",
+    "No Neo4j integration or production change",
+    "Betweenness reused exact hash-bound common-pivot caches; topology censuses recomputed",
+    "No semantic identity metrics or promotion claims"
+  ],
+  "failures_recorded": [
+    "initial design draw kind research unsupported; rerun workspace",
+    "initial inventory passed str instead of Path; corrected without output",
+    "remote screenshot path denied and timeouts; used local Chrome inspector",
+    "initial mobile overflow corrected",
+    "initial inspector headline-lines failure retained as documented full-paper-title exception"
+  ],
+  "code_hashes": {
+    "src/scientific_network/quality/identity_audit.py": "11184511b7caad21eb6bfd412885840372406f96c9bf6cd0ec40e585814ec752",
+    "src/scientific_network/quality/identity_evaluation.py": "2f27d413c66aa60e8cfcd9675d311cdbf450351a3d7ea8ff67e2dc51a0018bcd",
+    "src/scientific_network/quality/identity_evidence.py": "468434fc09e944954c286321c72f226749236bb8f328bf5632287c47bd55a7e0",
+    "src/scientific_network/quality/identity_review.py": "6e8d98db6a836c8796c0a6d5c7a581c9427982ace9449ebacf23e8a39cef98f7",
+    "src/scientific_network/quality/identity_sources.py": "4d63afa1cb921ab8e2ffbe8f9fa9ab29054abbf12fc97f5f80191514d5961e6e",
+    "src/scientific_network/quality/identity_validation.py": "af8d73e8c6f8819464343e0797ffac61e99c6a5a776d42bbb11dff95fb558b95"
+  },
+  "execution_artifacts_sha256": "7d6e7e6b3a1c3b9f0d7b1b454660422b124c59153b877dfee11c2f86d4c27554",
+  "preservation_receipt_sha256": "c7dfa0f496afa85bfee07f45efff19cb73694fe957ce1076f11bd2cd533ac28e"
+}

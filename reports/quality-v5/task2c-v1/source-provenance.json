@@ -1,0 +1,914 @@
+{
+  "plan_sha256": "57db6d56651994a2c6c3d6512a5c81973b5b3e00ee8da1c349dfa1566eb52095",
+  "sources": [
+    {
+      "url": "https://www.kroening.com/publications/view-publications-hjamk2021.html",
+      "category": "alternate",
+      "mention_ids": [
+        "mention:0ac9e36ae28a84b9d93beb33"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:37.654911+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.kroening.com/publications/view-publications-hjamk2021.html",
+        "params": {},
+        "request_id": "9d14872e9c39d0e2eb238cadd5768b0283b6fda2445680a180ed03194f22ce3a",
+        "sha256": "ef7a4b3882585dbba9d12aca4e38be6f0f2727043f6cb19e43ffaded71ec3e55",
+        "retrieved_at": "2026-11-11T11:39:38.393043+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "text/html",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://clarken92.github.io/publications.html",
+      "category": "alternate",
+      "mention_ids": [
+        "mention:09f80af51726d4e1a15a9865"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:38.597279+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://clarken92.github.io/publications.html",
+        "params": {},
+        "request_id": "312491cfb3642f3efb21ce329557f0dbe3de0ff1b86873ca0ba0ffe365fbceb0",
+        "sha256": "7366ba7b68d12fb9cb4440d16e8514c74852a48bfc820e567f3f0f1e3ec73f96",
+        "retrieved_at": "2026-11-11T11:39:39.127199+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "text/html; charset=utf-8",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://harabor.net/daniel/index.php/publications/",
+      "category": "alias",
+      "mention_ids": [
+        "mention:0934ca7e9cb599494bf05e6f"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:39.328897+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://harabor.net/daniel/index.php/publications/",
+        "params": {},
+        "request_id": "5f63f454df8e0eef8468a566744d7ece8d973406d39d599cfdeac98c6feaaf40",
+        "sha256": "e025504152323906ab5b0e3e422839a08cbb3d496a926494e835e2832edf226b",
+        "retrieved_at": "2026-11-11T11:39:40.691642+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "text/html; charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.cs.uni-potsdam.de/wv/publications/DBLP_conf/ijcai/FichteH0M21.html",
+      "category": "alias",
+      "mention_ids": [
+        "mention:0d19c595ef8c320d98b927ef"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:40.893739+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.cs.uni-potsdam.de/wv/publications/DBLP_conf/ijcai/FichteH0M21.html",
+        "params": {},
+        "request_id": "07899e04ee3e1965e0e882f36bc3660cfcf8689108d761465ef4b54de0c71603",
+        "sha256": "2ffaa07b6da0e57346a648ece9b25a08b6f3d9609079587e11bda82e44d7fb5b",
+        "retrieved_at": "2026-11-11T11:39:42.916810+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "text/html",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.csc2.ncsu.edu/faculty/mpsingh/papers/",
+      "category": "alias",
+      "mention_ids": [
+        "mention:a642020adf6eff8838a0d5a6"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:43.118628+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "unavailable",
+      "failure": "www.csc2.ncsu.edu: access/quota HTTP 403; collection stopped"
+    },
+    {
+      "url": "https://proceedings.biocomplexity.virginia.edu/person/anil-vullikanti",
+      "category": "alias",
+      "mention_ids": [
+        "mention:3dc668cca7eca2c3383298af",
+        "mention:487e0fea74c6c041ecbaa5ad",
+        "mention:a44274a9524fafe39abb5fc2",
+        "mention:a1cab2784949a9e2b8ea37d4",
+        "mention:e4741fb86d8c38ad64c43143",
+        "mention:80b1e65508667514fa9559ef",
+        "mention:cec5b94d9b7c97ab1dbace71",
+        "mention:fe230de7e22fe794c1fedaf3",
+        "mention:9c4ee05a3a7ff56d0a04c793",
+        "mention:f4e8b2192ba54211ea983d5a"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:45.087171+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "unavailable",
+      "failure": "proceedings.biocomplexity.virginia.edu: access/quota HTTP 403; collection stopped"
+    },
+    {
+      "url": "https://jpdickerson.com/publications/",
+      "category": "alias",
+      "mention_ids": [
+        "mention:b1601d1490e76e609179ddc1",
+        "mention:4d06ba0e97b7d15d0514723d",
+        "mention:6cf44ce37006299edb246d33",
+        "mention:6dca6929e788a286c29fc810"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:45.736087+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "unavailable",
+      "failure": "jpdickerson.com: HTTP 404"
+    },
+    {
+      "url": "https://www.sigs.tsinghua.edu.cn/xst/main.htm",
+      "category": "formatting",
+      "mention_ids": [
+        "mention:005baf4238151636e4a5dd46",
+        "mention:ae7b0a2baef5a2ad52723408"
+      ],
+      "purpose": "author/institution maintained publication ownership; independently inspect exact-work links",
+      "attempted_at": "2026-11-11T11:39:46.542336+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.sigs.tsinghua.edu.cn/xst/main.htm",
+        "params": {},
+        "request_id": "5be23602e6ee7b54b032f81fea7d735036dfb284fb57c38170daf74a46f74919",
+        "sha256": "c9c0ec83beac94011d20cc516860d0fb5a5e58ac500ce4080a76ca6f1b18d6ec",
+        "retrieved_at": "2026-11-11T11:39:47.629580+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "text/html",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16280/16087",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:6988edd66c623bfb734e4216"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:39:47.831073+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16280/16087",
+        "params": {},
+        "request_id": "bc9932f76bc6c77ff35f5c828dcd09478a5a0624d4e3258d2e589857bfa18f81",
+        "sha256": "82bf2d83002a96ec7261e36b7ab8492e6096dbed40c57ac52ab1cd59b98b0340",
+        "retrieved_at": "2026-11-11T11:40:08.910007+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16355/16162",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:8bd8d1d8acabb3d598012435",
+        "mention:ed46cb2fb995cb959dd3dd40",
+        "mention:229227b5807499e01864478c"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:40:09.111433+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16355/16162",
+        "params": {},
+        "request_id": "d5d08786d9df45a359c9b7c846968448f2ae8198e54de66715203a35330d2b5f",
+        "sha256": "c3734586eba9975d3a751d2fd82f307546733154c39a5c391699a566920cc878",
+        "retrieved_at": "2026-11-11T11:40:31.061252+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16613/16420",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:3dc668cca7eca2c3383298af"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:40:31.266146+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16613/16420",
+        "params": {},
+        "request_id": "30103d87d9e58b55da6e1581d20c0b127f179569f2bf60dd59ecfb1faff21a62",
+        "sha256": "b6fb05991287c6293bcb6c9a1f1a5a7d11c55f2f90924385649a600560293d02",
+        "retrieved_at": "2026-11-11T11:40:52.549480+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16615/16422",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:026fdb09ff429f45c93c80ef"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:40:52.751026+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16615/16422",
+        "params": {},
+        "request_id": "972582d99255264545839f12ca60c13ab9d3288d450f70e5b97843202e904259",
+        "sha256": "6c289e7055970e9c153b1ac175259d0602e1b4f1518b5b86abf35ddfed52c571",
+        "retrieved_at": "2026-11-11T11:41:13.875337+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16880/16687",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:525189a46c45416fcccd91e1"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:41:14.077047+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16880/16687",
+        "params": {},
+        "request_id": "313d5080aa7071fb3540ae794c0c38a52021766c8edafea3266d1b382936e667",
+        "sha256": "c5ef351c8990c870e968919112cde05358b4c80a204b9c23197f03b83d495e07",
+        "retrieved_at": "2026-11-11T11:41:35.447974+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16931/16738",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:a670ef6f1c0b6b833c1768c0"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:41:35.649673+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16931/16738",
+        "params": {},
+        "request_id": "7d190ca66ff3230adfacb269f9676dcb879404754431b29782d61008dc3856e6",
+        "sha256": "9aa58f7fc0c18b2b69490dc72f78003630380999ef45b545b54fe59b0d52a9b0",
+        "retrieved_at": "2026-11-11T11:41:56.798480+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16935/16742",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:9f09602e341c3d2904464914",
+        "mention:fa5672932b0f64e573f7a7a2",
+        "mention:0ac9e36ae28a84b9d93beb33"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:41:57.002111+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16935/16742",
+        "params": {},
+        "request_id": "897279bcf623ac07f3dd0c81e19fadc0bd9f2460eabefb8beda60e2a69ad29e9",
+        "sha256": "90212703e133ed58f7334388997501624067ba1db90a4178c9cf3248bb47b5d5",
+        "retrieved_at": "2026-11-11T11:42:18.363185+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17142/16949",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:28a3b457d52210e10f09d8cd"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:42:18.565111+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17142/16949",
+        "params": {},
+        "request_id": "824e8d793c63dec06079e625ffabebac57d4ca99d4c82eb22a4ce4f93c7877b7",
+        "sha256": "c3411f3e418214ce44c2d9cd5c9bdc12c332da56ffcd028c43f3fee98fbb5d1e",
+        "retrieved_at": "2026-11-11T11:42:40.489633+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17161/16968",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:8b5cf0c89170f68aa8d77e53"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:42:40.692925+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17161/16968",
+        "params": {},
+        "request_id": "65275dacb901842e6fefc212832c5dc547eed5dde92709bf98c08b6428edfc61",
+        "sha256": "98f2be29492b7bfb1e2a2bf7ff2ef92b21f060fbbd907d28e042a23671af6d4a",
+        "retrieved_at": "2026-11-11T11:43:01.945806+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17201/17008",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:4f9bf4659654cfe8bab927c3"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:43:02.147144+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17201/17008",
+        "params": {},
+        "request_id": "6d01f067e344098b9eaf83d3c12ff7d29bcf7f42101043d07186c0fccf472a70",
+        "sha256": "ad1108aed89e60ed47b3072a5f8beeb91929463555a193b3ddf802f83cc25ec7",
+        "retrieved_at": "2026-11-11T11:43:23.516974+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17444/17251",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:62abfa61bc2b5c0152e082b5"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:43:23.719232+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17444/17251",
+        "params": {},
+        "request_id": "1f0b9bb8f66e6ff67b83c5b8fb97eefeac26a87fabbc8aa3256832287e25d7e4",
+        "sha256": "b894e3232ca01cb9128ae88d4121011d64aebd6c639b99dad5b657f3a3af3877",
+        "retrieved_at": "2026-11-11T11:43:44.906591+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17484/17291",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:0040939cfd9810f35e18e7ed"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:43:45.108144+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17484/17291",
+        "params": {},
+        "request_id": "5657e8fd69bf119ae7115550844243d6b2e80d05c312a6c58a875d609dc3a901",
+        "sha256": "d28ef2a587961a19ab3813f952f038d0c757999e9da65a2837a47f3435f91ff2",
+        "retrieved_at": "2026-11-11T11:44:06.541449+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20081/19840",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:baaacef65325b7264fdedcce"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:44:06.742724+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20081/19840",
+        "params": {},
+        "request_id": "53913322a3aad4c7656645e48e6d6676b39a2979bbeed918ebf17f2984d36dda",
+        "sha256": "f5fbf909ab7d5e8f9e2b98237df2e760068427e6795ecd49a6270b848e414408",
+        "retrieved_at": "2026-11-11T11:44:28.303725+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20140/19899",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:02b689e1f5012319b7bdb816"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:44:28.507485+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20140/19899",
+        "params": {},
+        "request_id": "91b5d81b6482a887c5f29ffc100f3f48ad8167c26d16d65ad16305eb63efdde2",
+        "sha256": "258613759f800b1d90d4c3dc4c63d6267e64d9dc8a051d19276fe4eda1d068ab",
+        "retrieved_at": "2026-11-11T11:44:50.446283+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20260/20019",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:3fb728b2f0c221e78bddd6a4"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:44:50.650483+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20260/20019",
+        "params": {},
+        "request_id": "7bd84dca275502b09197615d732f3fd99845aea90306c943680d393169cc705d",
+        "sha256": "df474654fbc0165adb3f334424a937122e73d58da1b20bf4eb69d444ea7b8068",
+        "retrieved_at": "2026-11-11T11:45:12.409559+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20359/20118",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:067f05fe991354ea445342f6"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:45:12.611860+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20359/20118",
+        "params": {},
+        "request_id": "8a02b89276958295ad70f4c365f2416fdfc698b02a00111fdd0fb0b73336b903",
+        "sha256": "02def0eea1af48c18b149247570284f7c82a047bc06f325238db97f1903c5872",
+        "retrieved_at": "2026-11-11T11:45:34.344600+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20526/20285",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:2fe567158f1df27e47fdb330",
+        "mention:6b2233533071243da59d0471"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:45:34.546768+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20526/20285",
+        "params": {},
+        "request_id": "b5883867486ad85521ce69891475f51fedc3829a9f7f71155e3da14cabc2225f",
+        "sha256": "3352eb6b83b8225ada01ccc21a5f5a51301aa08455b19d4f0ebd49cd5a02664c",
+        "retrieved_at": "2026-11-11T11:45:55.548350+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20694/20453",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:09f80af51726d4e1a15a9865"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:45:55.749752+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20694/20453",
+        "params": {},
+        "request_id": "5de93df43bfaa44abcd7922b385942f3c84ca95ca0df0268dcf5591edc731aca",
+        "sha256": "408839b4385de52b708e71aa501542548d84f1eef3f1c0d12dbfd6d3f0b50c25",
+        "retrieved_at": "2026-11-11T11:46:17.538720+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25871/25643",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:019197f4d9c59521ba330661"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:46:17.740901+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25871/25643",
+        "params": {},
+        "request_id": "9f559c19fbb47de724fb763b111627d6576efdb0027d66bba4a42a066a9f5989",
+        "sha256": "639040b377d92b045f48b532a304b2a42794b03acb2476c6e52b1b53c077b584",
+        "retrieved_at": "2026-11-11T11:46:38.764886+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26415/26187",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:0f62dcb3689b2de59da3b73a"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:46:38.965874+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26415/26187",
+        "params": {},
+        "request_id": "1519fe8775d1c3577855d4c50a479794ea27c461b68c77b49cd6b36296238826",
+        "sha256": "9adc9ca1f95022b9eaeca69a1bf7a97f21287bf6ac13810ddb5e4bd1b94ec3a6",
+        "retrieved_at": "2026-11-11T11:47:00.134947+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28559/29087",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:005baf4238151636e4a5dd46"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:47:00.335956+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28559/29087",
+        "params": {},
+        "request_id": "a6bc622e002b208c9131de0de146245b46509ebb99cea0f62f3a046b3de68c99",
+        "sha256": "bdb9d1a413507ee2427f20c851b00281dbe41d65b407a4258b946e4ed54d793e",
+        "retrieved_at": "2026-11-11T11:47:21.746320+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28851/29618",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:02dd460b2867c17478abeab2"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:47:21.947958+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28851/29618",
+        "params": {},
+        "request_id": "e6358f91ddeb46a68c2fd5f5f6a13e67c7f82c9654b8b9e8206a4c61a1166a50",
+        "sha256": "51cf87d4b442eaa86d70b72fb5b6ded598e2d92c109bab0fc73b2acec7bfce4b",
+        "retrieved_at": "2026-11-11T11:47:42.953984+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28870/29653",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:00c8982dbed6d203c7535c2f"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:47:43.156090+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28870/29653",
+        "params": {},
+        "request_id": "618fc5f4e3fe81be0784a3c659cb0fcdf58ecc6d0adf629455c22492bc508913",
+        "sha256": "5e0dbae433ae8ec1a2bc32a0503957cc442e0ab00c1c8940bba981cfc57ed8dd",
+        "retrieved_at": "2026-11-11T11:48:03.783192+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32640/34795",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:07374b133991bfaa43b9d4ec"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:03.985390+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32640/34795",
+        "params": {},
+        "request_id": "90254285166f6e2c17ababad9d4c965ae33625e591bfab10ec3ddd7121933200",
+        "sha256": "311c1a7f604473bf43d85b4fa6475dca96848bd25f1da5939b5881f176fbfcf3",
+        "retrieved_at": "2026-11-11T11:48:25.543183+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33062/35217",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:03a31e3d4cb256e40445f1c2"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:25.747501+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33062/35217",
+        "params": {},
+        "request_id": "edec9457bcefc9eeecd6fa83526082f59b177b72cc6555dc929c5dcb4f7e8aba",
+        "sha256": "0f3ee749f02106de928fdeb9236fe6ecd6bb44b533f75ade15cf2187b2d6a708",
+        "retrieved_at": "2026-11-11T11:48:47.281512+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2021/0259.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:0d19c595ef8c320d98b927ef"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:47.483657+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2021/0259.pdf",
+        "params": {},
+        "request_id": "8fcb4dbc0f54fcd5e61b8403529a60506bcdb8df5d53ab6dd2128d68c5feedc4",
+        "sha256": "2b77b98b83e9bf394b5ee51f4058f8a0d730b49782d56d1f3ea89f0c342472d6",
+        "retrieved_at": "2026-11-11T11:48:48.150172+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2021/0568.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:0934ca7e9cb599494bf05e6f"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:48.352147+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2021/0568.pdf",
+        "params": {},
+        "request_id": "bdea7760da3c469c7864610c577bdba3d6c121c21d8c344b961391899e595164",
+        "sha256": "b79e218303e2c8dee0bb305802b31195147197de39508c0b853fe87415c92c55",
+        "retrieved_at": "2026-11-11T11:48:48.812986+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2022/0134.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:025dcb98e191e10a10516062"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:49.015080+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2022/0134.pdf",
+        "params": {},
+        "request_id": "af882f83d62f024e255815e264210c40b035c1d81ca375c5e9fe961f1e3941b3",
+        "sha256": "63db18122ee014851d622bbf39df828e92b6ae48dd274124e444b1861032275f",
+        "retrieved_at": "2026-11-11T11:48:49.779139+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2022/0662.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:02f439a567ba417ed0f081c5"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:49.983706+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2022/0662.pdf",
+        "params": {},
+        "request_id": "ad2863dd88185d07e89192010ccb858fe5114cb5afcf6f58bfb6ec4e9e8dc97d",
+        "sha256": "7e32b34d344b1f13810414fd2cdff17691ada30f927fe701cfd97097101d52ef",
+        "retrieved_at": "2026-11-11T11:48:50.427364+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2023/0118.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:07d1b81b46721bb00a836464"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:50.630583+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2023/0118.pdf",
+        "params": {},
+        "request_id": "12a9df1e6cf86262661bf572fdf1e1a9a974d12d4dcc328f88ac7624412791fe",
+        "sha256": "323d1f6c1dcd94408381d52806bd596bf170077d7186d9d5cf25c49a02db527a",
+        "retrieved_at": "2026-11-11T11:48:51.662151+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2023/0033.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:30b7759c2d82d0ca10b9f2f2"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:51.869206+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2023/0033.pdf",
+        "params": {},
+        "request_id": "dacc8f446f88eedf44cceca58c2436ce1701737742d0191fd6e9a52cd1485900",
+        "sha256": "9a63001a97079933455cca47e250fc5e80edc20ee42ca66fccddc446fdb2e4be",
+        "retrieved_at": "2026-11-11T11:48:52.145628+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://www.ijcai.org/proceedings/2023/0332.pdf",
+      "category": "paper_specific",
+      "mention_ids": [
+        "mention:03edd034fe9bc0c01dac352d"
+      ],
+      "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner",
+      "attempted_at": "2026-11-11T11:48:52.347109+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://www.ijcai.org/proceedings/2023/0332.pdf",
+        "params": {},
+        "request_id": "bd0253e98ae2f701ed8dd4806675eccd6812f0036c138b202aebd455a0816af0",
+        "sha256": "5cf344bc16cdc42ab465207eba409a0d8d72e8dd4e8e439e0268ba6cbaa3eb3c",
+        "retrieved_at": "2026-11-11T11:48:52.668956+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    }
+  ],
+  "limitation": "source retrieval is not independent adjudication"
+}

@@ -1,0 +1,1142 @@
+{
+  "freeze_sha256": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7",
+  "reference_n": 0,
+  "results": {
+    "assignment": {
+      "status": "unavailable_no_complete_independent_references",
+      "candidates": {
+        "v4": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 148,
+          "coverage": 0.74,
+          "abstention_rate": 0.26,
+          "estimand": "official_authorship_positions",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_incorrect_assignments": 0.0,
+            "estimated_missed_assignments": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        },
+        "candidate_v3": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 147,
+          "coverage": 0.735,
+          "abstention_rate": 0.265,
+          "estimand": "official_authorship_positions",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_incorrect_assignments": 0.0,
+            "estimated_missed_assignments": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        },
+        "task2b": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 147,
+          "coverage": 0.735,
+          "abstention_rate": 0.265,
+          "estimand": "official_authorship_positions",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_incorrect_assignments": 0.0,
+            "estimated_missed_assignments": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        }
+      },
+      "paired_differences": null,
+      "confidence_intervals": null,
+      "verified_subset_paired_differences": [
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        }
+      ]
+    },
+    "pair": {
+      "status": "unavailable_no_complete_independent_references",
+      "candidates": {
+        "v4": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 76,
+          "coverage": 0.38,
+          "abstention_rate": 0.62,
+          "estimand": "within_declared_blocking_frame",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_false_merge_pairs": 0.0,
+            "estimated_false_split_pairs": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        },
+        "candidate_v3": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 76,
+          "coverage": 0.38,
+          "abstention_rate": 0.62,
+          "estimand": "within_declared_blocking_frame",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_false_merge_pairs": 0.0,
+            "estimated_false_split_pairs": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        },
+        "task2b": {
+          "scoring_method": "identity-evaluation-v2",
+          "sample_n": 200,
+          "valid_reference_n": 0,
+          "missing_or_invalid": 200,
+          "accepted_n": 76,
+          "coverage": 0.38,
+          "abstention_rate": 0.62,
+          "estimand": "within_declared_blocking_frame",
+          "intervals": null,
+          "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+          "status": "unavailable_incomplete_independent_references",
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_merge_rate": null,
+          "false_split_rate": null,
+          "verified_subset": {
+            "sample_n": 0,
+            "accepted_n": 0,
+            "coverage": null,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "weighted_tp": 0.0,
+            "weighted_fp": 0.0,
+            "weighted_fn": 0.0,
+            "weighted_tn": 0.0,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "estimated_false_merge_pairs": 0.0,
+            "estimated_false_split_pairs": 0.0,
+            "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+          }
+        }
+      },
+      "paired_differences": null,
+      "confidence_intervals": null,
+      "verified_subset_paired_differences": [
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "task2b",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "candidate_v3",
+          "after": "v4",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "precision",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "recall",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        },
+        {
+          "before": "task2b",
+          "after": "v4",
+          "metric": "f1",
+          "difference": null,
+          "inference": "descriptive_only",
+          "percentile_95": null
+        }
+      ]
+    },
+    "diagnostic": {
+      "diagnostic:doi_disagreement": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 21,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 21,
+            "accepted_n": 21,
+            "coverage": 1.0,
+            "abstention_rate": 0.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "candidate_v3": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 21,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 21,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "task2b": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 21,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 21,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null,
+        "verified_subset_paired_differences": [
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          }
+        ]
+      },
+      "diagnostic:missing_provider_id": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "candidate_v3": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "task2b": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null,
+        "verified_subset_paired_differences": [
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          }
+        ]
+      },
+      "diagnostic:name_variants": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 30,
+            "coverage": 1.0,
+            "abstention_rate": 0.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "candidate_v3": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "task2b": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 11,
+            "coverage": 0.3666666666666667,
+            "abstention_rate": 0.6333333333333333,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null,
+        "verified_subset_paired_differences": [
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          }
+        ]
+      },
+      "diagnostic:orcid_conflict": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "candidate_v3": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          },
+          "task2b": {
+            "scoring_method": "identity-evaluation-v2",
+            "sample_n": 30,
+            "valid_reference_n": 0,
+            "missing_or_invalid": 30,
+            "accepted_n": 0,
+            "coverage": 0.0,
+            "abstention_rate": 1.0,
+            "estimand": "official_authorship_positions",
+            "intervals": null,
+            "interval_limitation": "No Wilson interval on weighted totals; paired_score supplies SRS bootstrap conditional on correct references",
+            "status": "unavailable_incomplete_independent_references",
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "false_merge_rate": null,
+            "false_split_rate": null,
+            "verified_subset": {
+              "sample_n": 0,
+              "accepted_n": 0,
+              "coverage": null,
+              "precision": null,
+              "recall": null,
+              "f1": null,
+              "weighted_tp": 0.0,
+              "weighted_fp": 0.0,
+              "weighted_fn": 0.0,
+              "weighted_tn": 0.0,
+              "false_merge_rate": null,
+              "false_split_rate": null,
+              "estimated_incorrect_assignments": 0.0,
+              "estimated_missed_assignments": 0.0,
+              "inference": "descriptive_only_selection_and_missingness_bias; weights do not repair reference missingness"
+            }
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null,
+        "verified_subset_paired_differences": [
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "task2b",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "candidate_v3",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "precision",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "recall",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          },
+          {
+            "before": "task2b",
+            "after": "v4",
+            "metric": "f1",
+            "difference": null,
+            "inference": "descriptive_only",
+            "percentile_95": null
+          }
+        ]
+      }
+    }
+  },
+  "pair_prediction_states": {
+    "v4": {
+      "endpoint_abstention": 76,
+      "same_id": 76,
+      "both_accepted_different_ids": 48
+    },
+    "candidate_v3": {
+      "endpoint_abstention": 78,
+      "same_id": 76,
+      "both_accepted_different_ids": 46
+    },
+    "task2b": {
+      "endpoint_abstention": 78,
+      "same_id": 76,
+      "both_accepted_different_ids": 46
+    }
+  },
+  "limitation": "No global pairwise estimand. Partial references are descriptive only. No evaluator-error coverage."
+}

@@ -1,0 +1,144 @@
+{
+  "plan_sha256": "a6759422c49aa0cd7a6265742cfaf575d7f1cbbf619efe414d51260e12b2e293",
+  "sources": [
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33583/35738",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:09b7b858aa532c118075a489"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:43:33.741685+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33583/35738",
+        "params": {},
+        "request_id": "d5ea6d872cf637ab2db351c469ee5f668021359e62d9b0d2a1f420abe6034efe",
+        "sha256": "2624358fdc003014ee989aa325e8feaadb95860332b50911f351945d6e4477e1",
+        "retrieved_at": "2026-11-11T11:43:55.548284+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/35399/37554",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:0a648ab0b553ad515bfafe2f"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:43:55.751118+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/35399/37554",
+        "params": {},
+        "request_id": "daf95f51153d8f01b75b7f23e00b5d2d1dbe0d281ec578a227efb23e2efaca05",
+        "sha256": "d7c29ad592eb4f5fae88332f33af76f1c5fbb14f39f2485cfd357492f33b769f",
+        "retrieved_at": "2026-11-11T11:44:17.019300+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28824/29570",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:0f8b203bdb8b5552e544cb17"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:44:17.220970+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28824/29570",
+        "params": {},
+        "request_id": "fee9da0324f0bfbd275fba5c237e78e37696725b50f6ee20ac7cbf1319db812c",
+        "sha256": "cc3487856ff8f8ab74d06035aca5611f635addbf82a8ae5c65e69c45034a6091",
+        "retrieved_at": "2026-11-11T11:44:38.346969+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28566/29100",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:13cc4361a706b32b7b877948"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:44:38.547717+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28566/29100",
+        "params": {},
+        "request_id": "88ad4cdcc6ea916f9c761b387a609b9a925186c30165c5b231eaa98871119064",
+        "sha256": "a076385a7fb46df7fb79a7c106d8419f5bbe6a59dc163707bfc8b2d85aca6d82",
+        "retrieved_at": "2026-11-11T11:45:00.779752+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17698/17505",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:14629380b59cc04c4d873926"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:45:00.982736+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17698/17505",
+        "params": {},
+        "request_id": "744b2a998ca66e73041015202f8a2a4558abe75f8f6188b5caf87b97a3a1042d",
+        "sha256": "db7157a1d19d6a6dbbc35b0893fb882b19c81d8f30ff3753c56ec1f6ee1ff206",
+        "retrieved_at": "2026-11-11T11:45:22.340508+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28418/28816",
+      "category": "unchanged_v4_probability_case",
+      "mention_ids": [
+        "mention:1502d53cd158c3c1e23820b2"
+      ],
+      "purpose": "Unchanged accepted identity from frozen assignment sample; inspect paper-specific identifiers, not name alone",
+      "attempted_at": "2026-11-11T11:45:22.541550+00:00",
+      "source_role": "evaluation_lead_not_gold",
+      "upstream_independence": "not_established",
+      "status": "retrieved",
+      "record": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28418/28816",
+        "params": {},
+        "request_id": "fa2d03ccf7c20270aae6b0a76398bd45e7821413d7f407deafee31e7f96fc51b",
+        "sha256": "856e51aaaf9787e0d9c7cfb90b9cf9113a5b574776a7041a0acead92b8f05331",
+        "retrieved_at": "2026-11-11T11:45:44.303287+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/pdf",
+        "license": "unknown_unless_record_supplies_license"
+      }
+    }
+  ],
+  "limitation": "source retrieval is not independent adjudication"
+}

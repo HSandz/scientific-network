@@ -1,0 +1,12 @@
+{
+  "analysis": "reports/runs/WORK-2026-11-11-005/analysis-release",
+  "analysis_replay": "reports/runs/WORK-2026-11-11-005/analysis-release-replay",
+  "task3": "reports/runs/WORK-2026-11-11-005/analysis-release/task3",
+  "workspace": "reports/runs/WORK-2026-11-11-005/review-workspace-final",
+  "analysis_manifest_sha256": "b4649bcc82b9a38a6b1196af24a67d48a47ed012686cbd7095764eea72a0a2ae",
+  "workspace_manifest_sha256": "578512350abdaf16e9618aa6145aae30ee8fa64856c348d7d37ed9c57d149316",
+  "evidence_replay_equal": true,
+  "analysis_all_files_byte_equal": true,
+  "workspace_replay": "reports/runs/WORK-2026-11-11-005/review-workspace-final-replay",
+  "workspace_all_files_byte_equal": true
+}

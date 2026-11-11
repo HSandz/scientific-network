@@ -1180,3 +1180,41 @@ intermediate; final method `identity-candidate-v5.5` sorts the dictionaries and
 binds additional transitive implementation hashes. This changes no acceptance
 rule or counts. Promotion is not justified by coverage alone; the revised identity
 population still cannot meet 80% affiliation coverage through enrichment alone.
+
+### Task2C amendment — independent identity evaluation tooling and deferred promotion (2026-11-11)
+
+The user authorizes auditing/scoring preparation, a practical local independent A/B
+annotation workspace, bounded public evidence verification, three-way graph sensitivity
+and Task3 input packaging. This does not authorize production replacement, graph DB
+writes, topic/corpus changes, deployment or pushing. See WORK-2026-11-11-005 and
+`reports/quality-v5/task2c-v1/` for measured evidence and exact checks.
+
+Keep the Task2B frozen draw and original blank assignments unchanged. Scorer
+`identity-evaluation-v2` corrects zero-TP F1, accepts explicitly complete empty
+person crosswalks, and preserves descriptive partial-reference results while
+population quality metrics/intervals stay null. Within-block pair estimates never
+become global clustering estimates. Weighted coverage and raw-count conditional
+Wilson intervals are distinguished from weighted totals and paired SRS bootstrap
+intervals; sparse/boundary outcomes and evaluator/source error remain limitations.
+
+Initial reviewer bundles contain official paper context and neutral source leads,
+with no candidate predictions, provider profiles or other reviewer's answers.
+Candidate claims are shipped only to the separate adjudication role and displayed
+for a case after both submissions exist. Export hashes preserve original reviews;
+strict person crosswalks and documented consensus/adjudication are required.
+Two actual teammates may record consensus without fabricating a third reviewer.
+Static local workflow separation is not authentication. AI assessments/adjudications
+remain separate and cannot pass as human-reviewed references.
+
+The bounded source inventory is not identity gold. Same-owner language variants,
+provider duplicates, publisher bylines and alias construction evidence are explicitly
+separated from independent paper/person ownership. No actual independent human
+judgments exist in this session; no AI person votes or gold labels are invented.
+
+Retain `release-identity-v5-503aafe10a31` only as the experimental development
+foundation. Keep frozen v4 in production and preserve candidate-v3. No candidate
+has demonstrated superior precision/recall or acceptable true merge/split risk.
+Topology stability and increased accepted counts do not establish semantic accuracy.
+Task3 receives versioned exact accepted/unresolved ledgers with explicit identity
+ceilings; do not relax identity rules to meet an affiliation target. No Task3
+organization/affiliation resolver change is included.

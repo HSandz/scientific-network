@@ -1,0 +1,9 @@
+{
+  "freeze_sha256": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7",
+  "human_reviews": 0,
+  "adjudications": 0,
+  "independent_references": 0,
+  "ai_identity_assessments": 0,
+  "status": "review_ready_pending_actual_judgments",
+  "note": "Pending rows are not submitted unknown labels; empty references file is intentional"
+}
