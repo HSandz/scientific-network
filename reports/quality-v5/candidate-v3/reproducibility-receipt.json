@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_at": "2026-11-11T16:32:32.896912+07:00",
+  "graph_version": "release-identity-v5-7e6b1a34ffa2",
+  "source_and_frozen_v4_files_checked": 748,
+  "changed_original_files": [],
+  "repeated_graph_and_ledger_hashes_equal": {
+    "centrality-scores.json": true,
+    "graph.json": true,
+    "identity-decisions.jsonl": true,
+    "identity-index.json": true,
+    "review-queue.jsonl": true
+  },
+  "paired_rankings_hash_equal": true,
+  "executed_code_hashes_match_current_files": true,
+  "preservation_manifest_sha256": "7b16470e14eb64b640701745e2ae7a4b5c86f0b49f1678309887f0c9c0a5e605",
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "unicode": "15.0.0",
+    "packages": {
+      "networkx": "3.7",
+      "pydantic": "2.14.2",
+      "numpy": "2.5.4",
+      "pytest": "9.2.0",
+      "pyyaml": "6.0.3"
+    },
+    "uv_lock_sha256": "dc487ad4694429e732fda74b8f02d814bbca22e286109ca0763ac7bede8eea97"
+  },
+  "semantic_accuracy": "not_measured_no_independent_identity_references",
+  "database_and_publication": "not_performed"
+}

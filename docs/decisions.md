@@ -1123,3 +1123,13 @@ prior exclusions. New-position affiliations still use cached authorship mappings
 and conservative copy guards. Assert retained-position organization equality;
 reuse unchanged R2 aggregates. No identity thresholds or decisions change.
 This narrows the comparison to identity-attributable effects;Task3 is deferred.
+
+### V5 multiple-account ambiguity regression
+
+Final candidate-v3 (identity-candidate-v5.3;paper-mention-identity-v5.2) closes
+a synthetic case:two direct raw ORCIDs on the same provider ID with compatible
+names do not establish two people. Mark both account groups ambiguous rather
+than splitting. Distinct raw identifiers plus incompatible independently aligned
+bylines can support separate identities;all unanchored positions remain ambiguous.
+No actual cached conflicting ID has multiple paper raw ORCIDs;this changes no
+observed acceptance threshold or measured candidate population. Preserve v1/v2.

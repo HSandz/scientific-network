@@ -1,0 +1,41 @@
+{
+  "method_version": "identity-candidate-v5.3",
+  "graph_version": "release-identity-v5-7e6b1a34ffa2",
+  "inputs": {
+    "works": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "source_graph": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "source_freeze": "5f2218e5ee1fea59ff043596bd475273a48807d7b7f045010d2317d82decad4b",
+    "quality": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "analysis": "7a8024718111ced17fd946d75b25a93f17f08a733cd3c3d47f55671e5ae23e0e",
+    "baseline_audit": "60c7efb68c9266464039b0ad38ad47df40218d504f9d38d4153ded6b46d3ad36",
+    "config": "0294d55376d6d7a9bf3244db3bad6b2b8220fb49339e5f86a1a7225e2e74662d",
+    "resolver_code": "7fa67af80e93e9e02827edae04f6d2f365aa99e995923231ed7f72ddc0961e03",
+    "candidate_code": "454dd5146643470f6315069444d4f4a1f28003241ec25575d87511ab3f6170df",
+    "network_code": "1451d37c00acd47a42fe706f6fb611b04d82542876ba05713d1c0a62722f40da"
+  },
+  "outputs": {
+    "centrality-scores.json": {
+      "path": "data/processed/identity-candidate-v5-release-v3/centrality-scores.json",
+      "sha256": "2c9b25614c3ba7daf9ba57b57dc31b12e3b92855df94098bd7ae178ca8b5cd37"
+    },
+    "graph.json": {
+      "path": "data/processed/identity-candidate-v5-release-v3/graph.json",
+      "sha256": "258b1a919f9cd823631cf0245884386de19b5527bf63f8867d3c371be261ac40"
+    },
+    "identity-decisions.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v3/identity-decisions.jsonl",
+      "sha256": "3188bbf16721bf1a3395c8c7d04837cc4159e427ca646aba6c02f9d6a9ed51a2"
+    },
+    "identity-index.json": {
+      "path": "data/processed/identity-candidate-v5-release-v3/identity-index.json",
+      "sha256": "529ed20a5fee16b34a46b9d229803ad27add04589e258e964a05eddf7c6b03e3"
+    },
+    "review-queue.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v3/review-queue.jsonl",
+      "sha256": "91e09739c93cb43513087e5978d4ccea7beaf9bca4238a0d675e5bda71cbcbd0"
+    }
+  },
+  "comparison_sha256": "77040fa9c2cd8d322e01caa243d83e05db6bc408da4a3d3469471bab8e8f1bd6",
+  "network_comparison_sha256": "a1acf0b6dea248f56a348c52ff829bd9f71222e6e6b39093c3cadd6408e47429",
+  "status": "development_identity_candidate_not_independently_evaluated"
+}

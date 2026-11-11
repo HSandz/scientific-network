@@ -278,3 +278,76 @@ def test_raw_crosswalk_collision_exposes_canonical_duplicate_as_ambiguity():
     ds=resolved(rows)
     assert [d["resolution_state"] for d in ds[-2:]]==["ambiguous","ambiguous"]
     assert all(d["decision_reason"]=="canonical_id_repeated_in_paper" for d in ds[-2:])
+
+
+def test_materializer_preserves_retained_support_despite_full_byline_guard(tmp_path):
+    names=["Ann One","Bo Two","Cam Three"]
+    people=[raw_person(aid,n,institutions=[inst("I1"),inst("I2")]) for aid,n in zip(["A1","A2",None],names)]
+    rows=[paper(1,names,people)]
+    old,_,_=build(tmp_path,rows)
+    assert len(old.affiliation_observations)==4
+    ds=resolved(rows)
+    new,guard,_=candidate_v5.construct_candidate(old,rows,ds,"release-test-v5",read_config(QUALITY))
+    assert guard and len(new.affiliation_observations)==4
+    assert {o.id for o in old.affiliation_observations}=={o.id for o in new.affiliation_observations}
+    comparison=candidate_v5.compare(old,new,ds)
+    assert comparison["retained_position_affiliation_support"]=={"positions_checked":2,"exact_organization_sets_preserved":True}
+    broken=new.model_copy(update={"affiliation_observations":[]})
+    with pytest.raises(ValueError,match="retained position affiliation"):
+        candidate_v5.compare(old,broken,ds)
+
+
+def test_wrong_provider_identifier_type_and_absent_work_identifier_abstain():
+    ds=resolved([paper(1,["Ann One"],[raw_person("W1","Ann One")])])
+    assert ds[0]["decision_reason"]=="provider_author_identifier_wrong_type"
+    r=paper(1,["Ann One"],[raw_person("A1","Ann One")])
+    r["openalex"]["id"]=None
+    assert resolved([r])[0]["decision_reason"]=="work_identifier_missing_or_invalid"
+
+
+def test_multiple_raw_orcid_accounts_with_compatible_names_do_not_prove_two_people():
+    rows=[paper(1,["Ann One"],[raw_person("A1","Ann One",ONE)]),
+          paper(2,["A. One"],[raw_person("A1","Ann One",TWO)])]
+    ds=resolved(rows)
+    assert all(d["resolution_state"]=="ambiguous" and d["canonical_researcher_id"] is None for d in ds)
+    assert {d["decision_reason"] for d in ds}=={"multiple_paper_orcid_accounts_identity_uncertain"}
+
+
+def downstream_cases():
+    def conflicting(aid,name):
+        a=raw_person(aid,name)
+        a["author"]["observed_orcids"]=[ONE,TWO]
+        return a
+    return [
+        ([paper(1,["Ann One"],[raw_person("A1","Ann One")]),paper(2,["A. One"],[raw_person("A1","Ann One")])],
+         ["resolved","resolved"],1,2,0),
+        ([paper(1,["Ann One","Ann One"],[raw_person("A1","Ann One"),raw_person("A2","Ann One")])],
+         ["resolved","resolved"],2,2,1),
+        ([paper(1,["Ann One"],[conflicting("A1","Ann One")])],
+         ["ambiguous"],0,0,0),
+        ([paper(1,["Ann One"],[raw_person("A1","Ann One",ONE)]),paper(2,["A. One"],[raw_person("A2","Ann One",ONE)])],
+         ["resolved","resolved"],1,2,0),
+        ([paper(1,["Ann One"],[raw_person("A1","Ann One")])],
+         ["resolved"],1,1,0),
+        ([paper(1,["Ann One","Bo Two"],[raw_person("A1","Bo Two"),raw_person("A2","Ann One")])],
+         ["ambiguous","ambiguous"],0,0,0),
+        ([paper(1,["Ann One","Bo Two","Cam Three","Dan Four"],[raw_person("A1","Ann One"),raw_person("A1","Bo Two"),raw_person("A3","Cam Three"),raw_person("A4","Dan Four")])],
+         ["ambiguous","ambiguous","resolved","resolved"],2,2,1),
+        ([paper(1,["Ann One","Bo Two","Cam Three"],[conflicting("A1","Ann One"),raw_person("A2","Bo Two"),raw_person("A3","Cam Three")])],
+         ["ambiguous","resolved","resolved"],2,2,1),
+    ]
+
+
+@pytest.mark.parametrize("rows,states,researchers,authored,coauthored",downstream_cases(),ids=["name_forms","homonyms","conflicting_orcids","corroborated_ids","no_orcid","wrong_alignment","duplicate_positions","one_ambiguous"])
+def test_resolution_state_has_exact_downstream_implications(tmp_path,rows,states,researchers,authored,coauthored):
+    old,_,_=build(tmp_path,rows)
+    ds,_=mentions_v5.resolve_mentions(rows,old)
+    assert [d["resolution_state"] for d in ds]==states
+    new,_,_=candidate_v5.construct_candidate(old,rows,ds,"release-test-v5",read_config(QUALITY))
+    assert sum(n.label=="Researcher" for n in new.nodes)==researchers
+    assert len(edges(new,"AUTHORED"))==authored
+    assert len(edges(new,"COAUTHORED_WITH"))==coauthored
+    assert not new.affiliation_observations
+    assert not edges(new,"AFFILIATED_WITH")
+    assert not edges(new,"COLLABORATED_WITH")
+    assert validate_graph(new,require_derived=True)==[]

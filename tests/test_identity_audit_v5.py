@@ -7,6 +7,7 @@ import json
 import pytest
 
 from scientific_network.quality.identity_audit import census, unused
+from scientific_network.quality.pipeline_inventory import inventory
 from test_release_graph import authorship, build, row
 
 
@@ -56,3 +57,21 @@ def test_unused_rejects_symlinks_and_aliases(tmp_path):
         unused(p)
     with pytest.raises(ValueError, match="unused"):
         unused(tmp_path / "a", tmp_path / "x" / ".." / "a")
+    with pytest.raises(ValueError, match="unused"):
+        unused(tmp_path / "a",tmp_path / "a" / "b")
+
+
+def test_pipeline_inventory_checks_citation_and_affiliation_support(tmp_path):
+    from test_release_graph import rich_rows
+    rows=rich_rows()
+    graph,_,queue=build(tmp_path,rows)
+    result=inventory(rows,graph.model_dump(mode="json"),queue)
+    assert result["claim_support"]["citation_inventory_equal_source_filtered_core_targets"]
+    assert result["claim_support"]["affiliation_triples_without_source_institution"]==0
+    payload=graph.model_dump(mode="json")
+    payload["affiliation_observations"][0]["organization_id"]="organization:I999"
+    payload["edges"]=[e for e in payload["edges"] if e["relation"]!="CITES"]
+    bad=inventory(rows,payload,queue)
+    assert not bad["claim_support"]["citation_inventory_equal_source_filtered_core_targets"]
+    assert bad["claim_support"]["missing_source_supported_core_citations"]==3
+    assert bad["claim_support"]["affiliation_triples_without_source_institution"]==1

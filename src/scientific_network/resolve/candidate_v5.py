@@ -21,7 +21,7 @@ from scientific_network.quality.candidate_network import paired_rankings
 from scientific_network.resolve import mentions_v5
 from scientific_network.resolve.release import SECTOR, _sha, _work_evidence, authorship_institutions
 
-METHOD = "identity-candidate-v5.2"
+METHOD = "identity-candidate-v5.3"
 EXPECTED_POLICIES = {
     "work_doi_must_agree": True,
     "raw_name_required_for_recovery": True,
@@ -35,6 +35,7 @@ EXPECTED_POLICIES = {
     "paper_raw_orcid_name_expansion": "ordered_full_tokens_same_endpoints_and_canonical_agreement",
     "topic_citation_publication_taxonomy": "preserve_exact",
     "existing_affiliation_support": "preserve_exact_for_retained_positions",
+    "multiple_paper_raw_orcids_with_compatible_names": "ambiguous",
     "semantic_accuracy": "unmeasured_without_independent_references",
 }
 
