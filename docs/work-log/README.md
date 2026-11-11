@@ -7,7 +7,7 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
-- [WORK-2026-11-11-008 — Final cleanup and submission readiness](2026-11-11-008-final-cleanup-submission-readiness.md): rubric/source-evidence correction, additive flagged diagnostics, report review and clean local package checkpoint; human judgments and team/course details remain pending.
+- [WORK-2026-11-11-008 — Final cleanup and submission readiness](2026-11-11-008-final-cleanup-submission-readiness.md): rubric/source-evidence correction, additive flagged diagnostics, 644 passing tests, 28-page clean local package with hash receipt; human judgments and team/course details remain pending.
 
 - [WORK-2026-11-11-007 — Final quality sprint](2026-11-11-007-final-quality-sprint.md): ten-relation Luna audit, optional human packets, coverage/report and Explorer interpretation; preserved graph/sources, local-only checkpoint.
 

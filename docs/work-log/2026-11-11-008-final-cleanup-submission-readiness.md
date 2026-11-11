@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress |
-| Recorded | 2026-11-11T23:24:41+07:00 (Asia/Bangkok) |
+| Status | completed scoped engineering, validation and local package; human/course details remain pending |
+| Recorded | 2026-11-11T23:36:40+07:00 (Asia/Bangkok) |
 | Work performed | 11 November 2026 |
 | Contributor | Codex, GPT-6.1 Sol |
 | Related task | [WORK-2026-11-11-007](2026-11-11-007-final-quality-sprint.md) |
-| Git state | `main` at `8219e5fbf194df3bdc67ba85d77cb86fca37b32e`; final-cleanup changes staged separately; four unrelated Task2D identity source files and WORK-006 remain excluded |
+| Git state | scoped implementation checkpoint `f3b00d412769c2a9eff9063b7702412cffe1e700`; final receipt/report records are being committed separately; four unrelated Task2D identity source files and WORK-006 remain excluded |
 
 ## Objective
 
@@ -36,6 +36,9 @@ submission package. Do not change the graph, deploy, push or submit externally.
   topic denominator tooltip text and identity-sensitivity note. The served source
   commit is not exposed; no deployment occurred.
 - Existing uncommitted Task2D identity work is preserved and excluded.
+- Final package artifacts are in the ignored unique run directory. The ZIP contains
+  the permitted tracked source snapshot plus rendered PDF; HTML and PDF are also
+  available separately. No historical receipt or package was overwritten.
 
 ## Verification
 
@@ -48,7 +51,16 @@ submission package. Do not change the graph, deploy, push or submit externally.
 | `uv run research-network validate --input data/processed/release-graph-v4/graph.json --config configs/quality-release-v1.yaml --require-size --output reports/runs/WORK-2026-11-11-008/structural-validation.json` | passed, exit 0; zero errors, 10/10 relations, structural only | Graph `release-d3c788c3114a`; semantic accuracy not measured |
 | Read-only public Explorer check | passed for visible functionality; deployment source commit unknown | Public Analytics chunk includes assigned-topic count, labeled denominator, all-paper denominator, coverage, and identity-sensitivity wording |
 | `git diff --check` | passed, exit 0 | Current final-cleanup diff |
-| Full suite, clean checkpoint, frontend build/browser regressions, final report rendering/package | pending | Run only after scoped checkpoint commit |
+| Clean checkpoint full suite | 644 passed, 1 existing skip, exit 0 | Detached clean checkout of `f3b00d4`; skipped empty historical CLI-stage parameterization |
+| Frontend `npm run build` | passed, exit 0 | Existing ECharts chunk-size warning (>500 kB) remains |
+| `npx playwright test --config playwright.contracts.config.ts` | 8 passed, exit 0 | Contract, denominators, analytics and graph transforms |
+| Selected Playwright browser suites | 37 passed, exit 0 | Dashboard, analytics layout, focus labels and reproducibility; local Vite frontend with read-only production API, four viewport widths and light/dark checks |
+| Human packet browser artifacts | passed; 27 unique cards, zero answers | Desktop/mobile and light/dark captures under `reports/runs/WORK-2026-11-11-008/`; no overflow/page errors |
+| Frozen input hash checks | passed | Graph `6f665a94…a59c90`, works `2b7f3bc1…55047`, 80-edge sample `2e5cb63f…ea00d`, issue ledger `1790008f…7e66`, sampling manifest `3c368bc5…59fe90`; full values in receipt |
+| Report rendering | passed | 52 local report links, ten figures, 13 headings, 28 A4 pages, zero replacement glyphs, PDF local-file annotation check passed; nine external URLs were not crawled |
+| Final package ZIP integrity/scope | passed | 1,754 members; all source manifest hashes match; CRC passes; no raw/intermediate/processed data, credentials, temporary runs or Task2D files |
+| PDF visual check | passed | Final checklist page inspected; remaining team/course fields are explicit blanks |
+| Final handoff report and package receipt | added | [`reports/final-quality-sprint/final-cleanup-report.md`](../../reports/final-quality-sprint/final-cleanup-report.md), [`final-cleanup-package-receipt.json`](../../reports/final-quality-sprint/final-cleanup-package-receipt.json) |
 
 ## Decisions
 
@@ -57,17 +69,19 @@ records the rubric distinction, additive issue-ledger subset and compatibility l
 
 ## Open issues and limitations
 
-Clean-checkpoint full-suite/build/browser validation and the final package/receipt
-remain in progress. Human review has not been performed. The team names, student
-IDs, actual contributions, course identifier/advisor requirements, access rules,
-and submission destination are not available from repository records. No push,
-deployment or external submission is authorized or performed.
+Human review has not been performed. The team names, student IDs, actual
+contributions, course identifier/advisor requirements, access rules, and
+submission destination are not available from repository records. Nine report
+external URLs were not availability-tested. The Pages source commit is not exposed;
+the live bundle does contain the changes checked here. No push, deployment or
+external submission was performed.
 
 ## Next step
 
-Commit only the final-cleanup files, excluding Task2D; then run the clean-checkout
-suite, frontend checks, report renderer and package builder, and record measured
-artifact hashes in a new receipt without overwriting historical receipts.
+The two team members should supply the real submission details listed in the
+final-cleanup report and optionally return human review exports. Render a new
+version only if those facts must be added. External submission or future
+publication remains a separately authorized action.
 
 ## Corrections
 
