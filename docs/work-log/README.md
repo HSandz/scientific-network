@@ -7,7 +7,7 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
-- [WORK-2026-11-11-004 — Task2B identity recovery and evaluation](2026-11-11-004-identity-recovery.md): in progress; seven DOI investigations, complete abstention inventory, bounded recovery, frozen prospective evaluation and final reproducibility checks.
+- [WORK-2026-11-11-004 — Task2B identity recovery and evaluation](2026-11-11-004-identity-recovery.md): completed feasible work; seven DOI investigations, complete abstention inventory, bounded recovery, frozen evaluation, reproducible candidate and honest unmeasured semantic accuracy.
 
 - [WORK-2026-11-11-003 — V5 quality audit and identity candidate](2026-11-11-003-quality-v5.md): completed; source quality audit, conservative candidate, deterministic replay, frozen-v4 preservation and honest unmeasured semantic accuracy.
 

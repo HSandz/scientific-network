@@ -1,0 +1,136 @@
+{
+  "recorded_at": "2026-11-11T18:12:35.881873+07:00",
+  "implementation_commit": "eab4dce",
+  "candidate_graph_version": "release-identity-v5-503aafe10a31",
+  "candidate_graph_sha256": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e",
+  "runtime": {
+    "python": "3.12.3",
+    "packages": {
+      "httpx": "0.28.1",
+      "pydantic": "2.14.2",
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "pytest": "9.2.0"
+    }
+  },
+  "data_replay": {
+    "centrality-scores.json": {
+      "first": "f98ae0d88e3ab5703dc9f11c55a5f4bf6d9eb5df178aed07933f049b27f69b5a",
+      "second": "f98ae0d88e3ab5703dc9f11c55a5f4bf6d9eb5df178aed07933f049b27f69b5a",
+      "equal": true
+    },
+    "graph.json": {
+      "first": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e",
+      "second": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e",
+      "equal": true
+    },
+    "identity-decisions.jsonl": {
+      "first": "9799b4b4fc8e1bd6c6e49a6e524ecc4cf9dc5bf6b42ae9e67efa41fff3755b43",
+      "second": "9799b4b4fc8e1bd6c6e49a6e524ecc4cf9dc5bf6b42ae9e67efa41fff3755b43",
+      "equal": true
+    },
+    "identity-index.json": {
+      "first": "0f9852fd76babce386afba9ea43aca2338bae23a60bf2c133fe0f321fc991694",
+      "second": "0f9852fd76babce386afba9ea43aca2338bae23a60bf2c133fe0f321fc991694",
+      "equal": true
+    },
+    "review-queue.jsonl": {
+      "first": "948068372c33560d8feb4cd12d1d587d50a29e2ccc4be63d5a6f3bd3bd10cff1",
+      "second": "948068372c33560d8feb4cd12d1d587d50a29e2ccc4be63d5a6f3bd3bd10cff1",
+      "equal": true
+    }
+  },
+  "normalized_comparison_equal_except_output_paths": true,
+  "paired_rankings_byte_identical": true,
+  "preservation": {
+    "files_checked": 779,
+    "changed": [],
+    "protected_directory_membership_equal": true,
+    "snapshot_sha256": "4c0bbe98a3040c3ad521f845245d2caf731ee117654f7246057d117ae9c1c70a"
+  },
+  "source_checks": {
+    "original": {
+      "matched_works": 13606,
+      "raw_objects_hashed": 341,
+      "all_equal": true
+    },
+    "new_response_objects_hashed": 40,
+    "public_requests": 40,
+    "evaluation_packet_hashes_equal_freeze": true
+  },
+  "protected_graph_content": {
+    "paper_venue_topic_nodes": {
+      "before_sha256": "130b4aef1ad8d7d6507f39baff1359691b6563a54b8ada74f51f1670e2886153",
+      "after_sha256": "130b4aef1ad8d7d6507f39baff1359691b6563a54b8ada74f51f1670e2886153",
+      "equal": true
+    },
+    "publication_citation_topic_taxonomy_edges": {
+      "before_sha256": "693599b80302578187c38e702edb98a5e312b9e5a5fa6ebc41381580c2efd9ee",
+      "after_sha256": "693599b80302578187c38e702edb98a5e312b9e5a5fa6ebc41381580c2efd9ee",
+      "equal": true
+    },
+    "nonderived_evidence": {
+      "before_sha256": "f86dd684b49b544928789d2bf917d895a3ff13e0fbae0f239d303de4f7e7cdb0",
+      "after_sha256": "f86dd684b49b544928789d2bf917d895a3ff13e0fbae0f239d303de4f7e7cdb0",
+      "equal": true
+    }
+  },
+  "code_hashes": {
+    "works": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "source_graph": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "source_freeze": "5f2218e5ee1fea59ff043596bd475273a48807d7b7f045010d2317d82decad4b",
+    "quality": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "analysis": "7a8024718111ced17fd946d75b25a93f17f08a733cd3c3d47f55671e5ae23e0e",
+    "baseline_audit": "60c7efb68c9266464039b0ad38ad47df40218d504f9d38d4153ded6b46d3ad36",
+    "config": "0fcf9331e1e9e19b9a245888f97aa488f5a2dd77114b6c2d7780eab6dca915d8",
+    "resolver_code": "cd99fbb3c32608b74f6d444fd523eea21c2c1156ca116878396c8004644a8fa4",
+    "candidate_code": "0e3c0b381eb2c9d9d18ef2e4f0c487b8ef935b8e4b8ad030f14d15902dca1ed8",
+    "code:contracts.py": "54a205b45409090a79e8a5f9270fd734423a2a2709dea0bb43124a20c7dc6350",
+    "code:collect/acquire.py": "c8e39a79f2506236b29d880e682b3f7e00c930f6833262bd624e882d0f0e1fa7",
+    "code:collect/openalex_release.py": "9750e75bada26633dcecaa201820173bcfe6e3431cc1dda3ea2e6925bb71a7d1",
+    "code:collect/storage.py": "df80f01aa47ea45f1aff54df29896e3b3e5c2f9ae1b80190b93556b9b572635c",
+    "code:resolve/release.py": "2d6c406657136de3450d10589e23d41ae6b44a116c866bf445c47a87ed2777ca",
+    "code:resolve/release_identity.py": "4cf61edd2bd9d1adde908d00253b7e4759d03b2a0c77975c5dcbc4124be5f42b",
+    "code:quality/identity_audit.py": "11184511b7caad21eb6bfd412885840372406f96c9bf6cd0ec40e585814ec752",
+    "code:graph/materialize.py": "5e8b5aa9964cffdd818aa0ac4c57b4da56b2528cecbf177d491cf314a11e05cd",
+    "code:graph/derive.py": "fa70c0ac8deefbde2927d2ae9932fb68980af9d222145e737ff56ac53f322eee",
+    "code:graph/schema.py": "3addf880ca1315601f8de2fbcb68f2d830ac3a44dff3c5f13d91fc1578714dba",
+    "code:graph/validate.py": "4d521bb1faba8209b125bf08e69698c85c9ca6902fdb076b7c618914f9176ccb",
+    "code:analysis/analyze.py": "75e7893854a55ad3b9efaacdb5fc0cd3c285252d3b136fadb1e634d00be355fc",
+    "recovery_code": "1370f93fdcf6ea5b6f9265e64aecbce6ed6d388d69c7b71a7933a9f6a406c989",
+    "alias_certificates": "98d800cc1239a4ff44bb04cdf9f2d98dc39978a8b7b1faa42f1e2ed574546b47",
+    "network_code": "1451d37c00acd47a42fe706f6fb611b04d82542876ba05713d1c0a62722f40da"
+  },
+  "checks": {
+    "baseline_suite": {
+      "passed": 573,
+      "skipped": 7
+    },
+    "focused_final": {
+      "passed": 115,
+      "skipped": 0
+    },
+    "full_final": {
+      "passed": 603,
+      "skipped": 1
+    },
+    "structural_cli": "passed; zero errors; R7-R10 support and weights checked",
+    "neo4j_integration": "not run; no import/query/service changes",
+    "semantic_identity_evaluation": "not measured; zero independent references"
+  },
+  "failures_retained": [
+    "ignored inspect.py script shadowed stdlib; renamed",
+    "new fixture directory missing; fixed",
+    "initial comparison count-key order unstable; sorted in final v5.5; initial data/rankings replay passed"
+  ],
+  "new_network_requests": "40 free public requests; final cache replay issued no further HTTP requests",
+  "independent_evaluators": {
+    "reference_labels": 0,
+    "ai_semantic_votes": 0
+  },
+  "limitations": [
+    "no independent identity gold or measured semantic improvement",
+    "no DOI version equivalence established",
+    "affiliation ceiling below target"
+  ]
+}

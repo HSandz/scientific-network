@@ -1,0 +1,43 @@
+{
+  "method_version": "identity-candidate-v5.4",
+  "graph_version": "release-identity-v5-f2a6901a3918",
+  "inputs": {
+    "works": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "source_graph": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "source_freeze": "5f2218e5ee1fea59ff043596bd475273a48807d7b7f045010d2317d82decad4b",
+    "quality": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "analysis": "7a8024718111ced17fd946d75b25a93f17f08a733cd3c3d47f55671e5ae23e0e",
+    "baseline_audit": "60c7efb68c9266464039b0ad38ad47df40218d504f9d38d4153ded6b46d3ad36",
+    "config": "e2f06599beac75170998a9a42d0f53e888150b88277a28d6046310b394407ed0",
+    "resolver_code": "cd99fbb3c32608b74f6d444fd523eea21c2c1156ca116878396c8004644a8fa4",
+    "candidate_code": "29b29540bab212b424846093336a7a12ee1359cef5a23ad3c4cc6bdb44ea6ba9",
+    "recovery_code": "1370f93fdcf6ea5b6f9265e64aecbce6ed6d388d69c7b71a7933a9f6a406c989",
+    "alias_certificates": "98d800cc1239a4ff44bb04cdf9f2d98dc39978a8b7b1faa42f1e2ed574546b47",
+    "network_code": "1451d37c00acd47a42fe706f6fb611b04d82542876ba05713d1c0a62722f40da"
+  },
+  "outputs": {
+    "centrality-scores.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4/centrality-scores.json",
+      "sha256": "f98ae0d88e3ab5703dc9f11c55a5f4bf6d9eb5df178aed07933f049b27f69b5a"
+    },
+    "graph.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4/graph.json",
+      "sha256": "8cf079a814af010e14407d8b2a1832dcd3d382f9d17c5dce162f28ae990f2a7a"
+    },
+    "identity-decisions.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v4/identity-decisions.jsonl",
+      "sha256": "9799b4b4fc8e1bd6c6e49a6e524ecc4cf9dc5bf6b42ae9e67efa41fff3755b43"
+    },
+    "identity-index.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4/identity-index.json",
+      "sha256": "0f9852fd76babce386afba9ea43aca2338bae23a60bf2c133fe0f321fc991694"
+    },
+    "review-queue.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v4/review-queue.jsonl",
+      "sha256": "948068372c33560d8feb4cd12d1d587d50a29e2ccc4be63d5a6f3bd3bd10cff1"
+    }
+  },
+  "comparison_sha256": "b1443b075dc5f361341693dc50d13a93a89ae1a3f50e59f91a4ef8dddc180517",
+  "network_comparison_sha256": "50682c3b771b0205708a72beddc8967bfd1b341146147a7868c3aa1999c36ccd",
+  "status": "development_identity_candidate_not_independently_evaluated"
+}
