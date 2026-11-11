@@ -1,0 +1,41 @@
+{
+  "method_version": "identity-candidate-v5.1",
+  "graph_version": "release-identity-v5-3de1782a2e6c",
+  "inputs": {
+    "works": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "source_graph": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "source_freeze": "5f2218e5ee1fea59ff043596bd475273a48807d7b7f045010d2317d82decad4b",
+    "quality": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+    "analysis": "7a8024718111ced17fd946d75b25a93f17f08a733cd3c3d47f55671e5ae23e0e",
+    "baseline_audit": "60c7efb68c9266464039b0ad38ad47df40218d504f9d38d4153ded6b46d3ad36",
+    "config": "087ae12649fd04b83dea1cdffd4fdbf3ea610793d5b4302f15be8722d388579f",
+    "resolver_code": "5980490aef2f60abf0c46696a6ba4879b478edd88fc1eb7671d6ea67d42d1f6c",
+    "candidate_code": "bb6d3d8b48e36deacea43877f033c467a99d228e3e19b0701aabbeac88a7725a",
+    "network_code": "1451d37c00acd47a42fe706f6fb611b04d82542876ba05713d1c0a62722f40da"
+  },
+  "outputs": {
+    "centrality-scores.json": {
+      "path": "data/processed/identity-candidate-v5-release-v1/centrality-scores.json",
+      "sha256": "2c9b25614c3ba7daf9ba57b57dc31b12e3b92855df94098bd7ae178ca8b5cd37"
+    },
+    "graph.json": {
+      "path": "data/processed/identity-candidate-v5-release-v1/graph.json",
+      "sha256": "892f17c69211b818a021be029a5c5ce7561be4d9e058229693a6fc7001354ea2"
+    },
+    "identity-decisions.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v1/identity-decisions.jsonl",
+      "sha256": "581a9266e87999f4161c3f3525db2b350ef030f228017b32b58beccf22846c43"
+    },
+    "identity-index.json": {
+      "path": "data/processed/identity-candidate-v5-release-v1/identity-index.json",
+      "sha256": "529ed20a5fee16b34a46b9d229803ad27add04589e258e964a05eddf7c6b03e3"
+    },
+    "review-queue.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v1/review-queue.jsonl",
+      "sha256": "ed5e8d2f4fa93cac830b2f293869f642cbd80c84f4cbe25d5abe14697b6ad567"
+    }
+  },
+  "comparison_sha256": "975f7de39a00e4c56004b97d983220273bbf14b1c8b9006a410bb7a0a8da5134",
+  "network_comparison_sha256": "a1acf0b6dea248f56a348c52ff829bd9f71222e6e6b39093c3cadd6408e47429",
+  "status": "development_identity_candidate_not_independently_evaluated"
+}

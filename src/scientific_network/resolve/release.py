@@ -26,7 +26,7 @@ from scientific_network.graph.schema import edge_id
 from scientific_network.graph.validate import graph_counts, validate_graph
 from scientific_network.nlp.baseline import METHOD as TOPIC_METHOD, predict
 
-METHOD_VERSION = "release-openalex-graph-v1.2"
+METHOD_VERSION = "release-openalex-graph-v1.3"
 SECTOR = {"education": "academia", "company": "industry", "government": "government", "nonprofit": "nonprofit"}
 VENUES = {
     "venue:aaai": "AAAI Conference on Artificial Intelligence",
@@ -175,7 +175,7 @@ def build_release_graph(
     # Complete-source identity pass, shared with the frozen-prediction correction.
     from scientific_network.resolve.release_identity import collect_identity_evidence
     identity = collect_identity_evidence(rows)
-    orcids, withheld = identity["orcids"], identity["withheld"]
+    orcids, identity_withheld = identity["orcids"], identity["withheld"]
     review.extend(identity["review"])
 
     # ---- venues, papers, authorships, affiliations
@@ -218,25 +218,25 @@ def build_release_graph(
                     unusable.append((index, "name_incompatible"))
                 elif author_id is None:
                     unusable.append((index, "no_author_id"))        # name fits but OpenAlex has no ID: not a person node
-                elif author_id in withheld:
-                    unusable.append((index, withheld[author_id]))
+                elif author_id in identity_withheld:
+                    unusable.append((index, identity_withheld[author_id]))
                 else:
                     positions.append((index, authorship, kind))
             ids = [short_id(a["author"]["id"]) for _, a, _ in positions]
             if bad_names > 1 or len(ids) != len(set(ids)):
-                withheld = "multiple_incompatible_positions" if bad_names > 1 else "author_id_repeated_in_paper"
+                paper_withheld_reason = "multiple_incompatible_positions" if bad_names > 1 else "author_id_repeated_in_paper"
                 reasons_by_position = {index: why for index, why in unusable}
                 position_reviews = []
                 for index, name in enumerate(roster["authors"]):
-                    why = reasons_by_position.get(index, withheld)
+                    why = reasons_by_position.get(index, paper_withheld_reason)
                     position_reviews.append({"position": index + 1, "reason": why, "roster_name": name})
                     counters["author_positions_withheld_" + why] += 1
-                review.append({"kind": "authorships_withheld_for_paper", "paper_id": paper_id, "reason": withheld,
+                review.append({"kind": "authorships_withheld_for_paper", "paper_id": paper_id, "reason": paper_withheld_reason,
                                "positions": position_reviews})
                 counters["papers_all_authorships_withheld"] += 1
                 counters["author_positions_withheld"] += len(roster["authors"])
                 positions, unusable = [], []
-                reason = "authorships_withheld:" + withheld
+                reason = "authorships_withheld:" + paper_withheld_reason
             elif unusable:
                 for index, why in unusable:
                     review.append({"kind": "author_position_withheld", "paper_id": paper_id, "position": index + 1,
