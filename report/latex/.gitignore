@@ -1,1 +1,4 @@
 /build/
+/review/
+/scripts/__pycache__/
+!/figures/*.pdf

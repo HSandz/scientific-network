@@ -50,12 +50,12 @@ The scoring artifact passes the project's AI-assessed point and interval
 comparisons, but it does not certify the course's independently verified
 accuracy requirement.
 
-\begin{table}[tbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Global accepted-edge audit results, kept separate by graph version.}
+  \caption[Accepted-edge audit comparison]{Global accepted-edge audit results, kept separate by graph version.}
   \label{tab:edge-audits}
   \small
-  \begin{tabularx}{0.98\textwidth}{>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{6cm}>{\centering\arraybackslash}p{3cm}>{\raggedright\arraybackslash}X}
+  \begin{tabularx}{0.98\textwidth}{>{\raggedright\arraybackslash}p{2.15cm}>{\raggedright\arraybackslash}p{4.3cm}>{\centering\arraybackslash}p{2.85cm}>{\raggedright\arraybackslash}X}
     \toprule
     \textbf{Audit} & \textbf{Results} & \textbf{Wilson interval} & \textbf{Interpretation}\\
     \midrule
@@ -68,15 +68,17 @@ accuracy requirement.
     \vspace{0.35em}\footnotesize Unknown/unverifiable judgments count as nonsupport in precision. The first two rows sample global accepted-edge frames; the sprint row uses eight cases per relation and is not an estimate for the full graph.
   \end{minipage}
 \end{table}
+\FloatBarrier
 
 The ten-per-relation rows are supplementary diagnostics. Each has $n=10$ and
 wide uncertainty; a perfect 10/10 row still has a Wilson lower bound of about
-72.25\%. In these supplements, `CONTRIBUTES\_TO\_TOPIC` had 9/10 supported and
-one incorrect; `RESEARCHES\_TOPIC` had 8/10 supported and two unverifiable;
+72.25\%. In these supplements, \texttt{CONTRIBUTES\_TO\_TOPIC} had 9/10 supported and
+one incorrect; \texttt{RESEARCHES\_TOPIC} had 8/10 supported and two unverifiable;
 the other eight relations were 10/10 under the AI judgments. These numbers are
 not pooled with the uniform sample.
 
 \input{tables/v4-relation-supplement.tex}
+\FloatBarrier
 
 All 350 assignments reuse construction sources. Evidence designation includes
 both primary-source and secondary-source-only packets, but a primary proceedings
@@ -104,13 +106,14 @@ A later bounded sprint assessed eight accepted edges in each of the ten
 relations, for 80 assignments. Two fresh GPT-6-Luna contexts used high reasoning
 effort and disjoint 40-case packets. They judged 76 cases supported, three
 unsupported, and one unknown. The four flagged cases comprise two unsupported
-`RESEARCHES\_TOPIC` edges, one unsupported `CONTRIBUTES\_TO\_TOPIC` edge, and
-one unknown `AUTHORED` identity mapping. This is a small, deliberately
+\texttt{RESEARCHES\_TOPIC} edges, one unsupported \texttt{CONTRIBUTES\_TO\_TOPIC} edge, and
+one unknown \texttt{AUTHORED} identity mapping. This is a small, deliberately
 relation-stratified diagnostic with unequal population inclusion probabilities;
 it has no pooled population-accuracy estimator. It also reuses construction
 sources and remains AI-assessed, not human ground truth.
 
 \input{tables/sprint-relation-audit.tex}
+\FloatBarrier
 
 \section{Topic-classifier evaluation}
 
@@ -131,9 +134,9 @@ Macro F1 is 0.3627 for embeddings and 0.1473 for the phrase baseline. These are
 historical agreements with AI-assigned references, not independently verified
 topic accuracy.
 
-\begin{table}[tbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Historical topic agreement against AI-assigned reference labels.}
+  \caption[Historical topic-label agreement]{Historical topic agreement against AI-assigned reference labels.}
   \label{tab:topic-evaluation}
   \footnotesize
   \begin{tabularx}{\textwidth}{p{2.4cm}*{7}{>{\centering\arraybackslash}X}}
@@ -148,6 +151,7 @@ topic accuracy.
     \vspace{0.35em}\footnotesize Coverage is the number of papers with at least one assigned topic. Test labels were already exposed in historical AI review; this is not an untouched human test set.
   \end{minipage}
 \end{table}
+\FloatBarrier
 
 \section{Identity and evidence sensitivity}
 
@@ -166,9 +170,9 @@ is stable (19/20 and 20/20 overlap), while betweenness top-20 overlap is 11/20
 and 12/20. Candidate results remain development scenarios with unmeasured
 semantic precision and recall. No v5 identity candidate is promoted.
 
-\begin{table}[tbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Top-20 ranking overlap between frozen production v4 and experimental
+  \caption[Identity-policy ranking sensitivity]{Top-20 ranking overlap between frozen production v4 and experimental
   identity-policy candidates.}
   \label{tab:identity-sensitivity}
   \begin{tabular}{lrr}
@@ -183,6 +187,7 @@ semantic precision and recall. No v5 identity candidate is promoted.
     \vspace{0.35em}\footnotesize These are sensitivity comparisons, not accuracy comparisons or graph promotions. Candidate identity precision and recall were not measured.
   \end{minipage}
 \end{table}
+\FloatBarrier
 
 \section{Metric definitions}
 

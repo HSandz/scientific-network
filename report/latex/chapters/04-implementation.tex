@@ -1,4 +1,4 @@
-\chapter{System Architecture and Implementation}
+\chapter{Architecture and Implementation}
 \label{chap:implementation}
 
 \section{Pipeline architecture}
@@ -11,10 +11,10 @@ small manifests, configurations, and source ledgers are tracked, while raw API
 caches, the full graph JSON, and database volumes remain local. The pipeline
 does not silently replace unavailable stages with empty outputs.
 
-\begin{figure}[tbp]
+\begin{figure}[!htbp]
   \centering
   \input{figures/system-architecture.tex}
-  \caption{Implementation architecture for the frozen v4 release. Batch
+  \caption[System architecture]{Implementation architecture for the frozen v4 release. Batch
   construction and analysis produce versioned local artifacts; the Explorer
   reads the isolated graph and evidence stores. The dashed route supplies
   precomputed analysis artifacts to the Explorer.}
@@ -23,22 +23,19 @@ does not silently replace unavailable stages with empty outputs.
 
 \section{Graph storage and integrity}
 
-The released graph is loaded into the isolated Neo4j Community 5.26 service
-\modelid{neo4j-five-year} \citep{neo4jDocs}. The loader checks the configured graph version and
+The released graph is loaded into an isolated Neo4j Community 5.26 database
+\citep{neo4jDocs}. The loader checks the configured graph version and
 uses bounded transactions. The release's recorded database verification
 reconciles node and relationship counts, executes six integrity queries, and
 compares a repeated import with the original per-label and per-relation maps.
 Those records report 47,875 nodes and 225,731 edges after replay. The pilot and
 extended databases are separate; they are not inputs to this report.
 
-Graph JSON, analysis JSON, configuration hashes, content-freeze receipts, and
-change ledgers bind the analysis to graph \GraphVersion{} and methods
-\modelid{release-openalex-graph-v1.1} and
-\modelid{named-projection-analysis-v2}. Evidence records retain source URLs,
-retrieval times, raw hashes, source locators, and permitted excerpts. Derived
-evidence points to accepted base edges and distinct core-paper support. The
-database is a queryable deployment of the graph artifact; it is not the sole
-record of the graph's meaning or provenance.
+Graph and analysis JSON, configuration hashes, content freezes and change
+ledgers bind the release to \GraphVersion{} and its graph/analysis methods.
+Each edge retains source evidence; derived records identify accepted base edges
+and distinct supporting papers. The database is a queryable deployment, while
+JSON preserves the underlying graph and provenance (Appendix~A).
 
 \section{Analysis implementation}
 
@@ -47,9 +44,9 @@ Offline analysis uses Python, NetworkX \citep{networkxDocs}, and Matplotlib
 produces separate projection metrics, annual counts, community assignments,
 centrality rankings, topic shares, sector/country mixing, and CSV-backed figures.
 The immutable release-v4 output records the graph and configuration hashes,
-seeds, methods, and known limitations. Static figures in this report are copies
-of these measured release artifacts; they were not regenerated from a new graph
-for this manuscript.
+seeds, methods, and known limitations. Report figures are rendered from these frozen
+measurements and accepted graph edges. Report-only scripts adjust presentation
+and document bounded selections; they do not reconstruct or modify the graph.
 
 \section{Research Explorer}
 
@@ -57,7 +54,9 @@ The Explorer is a read-only application for inspecting the same release. Its
 backend uses FastAPI and Pydantic and issues parameterized read queries through
 the Neo4j Python driver. A hybrid artifact store supplies precomputed
 full-projection metrics, while an immutable SQLite ledger indexes evidence and
-author--paper--organization observations. This arrangement keeps provenance
+author--paper--organization observations. The SQLite ledger is built directly
+from the frozen graph's evidence and affiliation records, separately from the
+precomputed analysis artifacts. This arrangement keeps provenance
 inspection available without requiring every request to materialize the full
 graph ledger.
 
@@ -70,14 +69,6 @@ features make the analysis easier to inspect; they do not independently validate
 the underlying claims. The recorded project URLs and access caveat appear in
 \cref{chap:reproduction}.
 
-\section{Reproducibility and version discipline}
-
-The source repository locks Python dependencies in \texttt{uv.lock}. Analyses
-use named configuration versions and new output paths for replays. The v4 graph
-was created as a separate correction from its predecessor, with protected
-paper, citation, topic, taxonomy, and non-derived evidence equality checks. The
-experimental v5 identity work is maintained separately and has not replaced v4.
-Reproduction requires restoring permitted ignored graph and OpenAlex inputs and
-checking their recorded hashes; acquiring current provider responses is not
-byte-identical restoration. Appendix B provides the local commands and source
-identifiers needed to repeat available checks.
+Dependencies are locked in \texttt{uv.lock}. Appendix~B documents versioned
+replays, frozen-input restoration and the separation of production and candidate
+artifacts.

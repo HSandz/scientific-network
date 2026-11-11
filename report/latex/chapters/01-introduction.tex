@@ -43,12 +43,12 @@ networks are a well-established setting for this kind of structural analysis
 The analysis is organized around four answerable questions tied to the available
 release artifacts:
 
-\begin{enumerate}[label=\textbf{RQ\arabic*.}]
+\begin{enumerate}[label=\textbf{RQ\arabic*.},leftmargin=3em,labelwidth=2.4em,labelsep=0.6em,align=left]
   \item How did the number and inferred topic mix of AAAI and IJCAI main-track
   papers in the selected corpus vary from 2021 through 2025?
   \item What collaboration structure is visible in the accepted researcher and
   organization projections, including components, coauthor degree, communities,
-  and cross-sector co-publication support?
+  and cross-sector publication support?
   \item Which researchers and papers rank highly under the project's configured
   betweenness and within-corpus citation measures, and how sensitive are these
   rankings to identity and evidence policies?
@@ -61,8 +61,8 @@ release artifacts:
 
 The project has five practical objectives. First, it defines a reproducible paper
 corpus from official venue records. Second, it links those records to OpenAlex
-works using exact DOI routes and explicit title/byline checks rather than broad
-name or title searches. Third, it builds a typed graph whose observed,
+works through roster-derived DOI requests and explicit title/byline checks,
+with historical DOI exceptions disclosed in \cref{chap:method}. Third, it builds a typed graph whose observed,
 inferred-topic, curated-taxonomy, and derived relationships remain distinguishable.
 Fourth, it computes named network projections and packages the measured results
 as figures, tables, and source-linked findings. Fifth, it evaluates the artifact

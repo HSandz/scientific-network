@@ -1,29 +1,27 @@
-\begin{table}[tbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Deadline-sprint Luna diagnostic: eight sampled accepted edges per
+  \caption[Sprint relation-level AI diagnostics]{Deadline-sprint Luna diagnostic: eight sampled accepted edges per
   relation. Denominators and inclusion probabilities differ across relations.}
   \label{tab:sprint-relation-audit}
-  \scriptsize
-  \begin{adjustbox}{max width=\textwidth}
-  \begin{tabular}{lrrrrrr}
+  \small\setlength{\tabcolsep}{3pt}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm}rrrr>{\raggedright\arraybackslash}X}
     \toprule
-    \textbf{Predicate} & \textbf{Frame} & \textbf{Inclusion prob.} &
-    \textbf{Supported} & \textbf{Unsupported} & \textbf{Unknown} & \textbf{Wilson 95\% interval}\\
+    \textbf{Predicate} & \textbf{Frame} &
+    \textbf{Supported} & \textbf{Unsupported} & \textbf{Unknown} & \makecell[l]{\textbf{Wilson 95\%}\\\textbf{interval}}\\
     \midrule
-    AFFILIATED\_WITH & 38,664 & 0.00020691 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    AUTHORED & 50,437 & 0.00015861 & 7/8 & 0 & 1 & 52.9--97.8\%\\
-    CITES & 7,308 & 0.00109469 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    COAUTHORED\_WITH & 80,482 & 0.00009940 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    COLLABORATED\_WITH & 13,031 & 0.00061392 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    CONTRIBUTES\_TO\_TOPIC & 2,332 & 0.00343053 & 7/8 & 1 & 0 & 52.9--97.8\%\\
-    HAS\_TOPIC & 14,222 & 0.00056251 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    PUBLISHED\_IN & 13,617 & 0.00058750 & 8/8 & 0 & 0 & 67.6--100.0\%\\
-    RESEARCHES\_TOPIC & 5,622 & 0.00142298 & 6/8 & 2 & 0 & 40.9--92.9\%\\
-    SUBTOPIC\_OF & 16 & 0.50000000 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    AFFILIATED\_WITH & 38,664 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    AUTHORED & 50,437 & 7/8 & 0 & 1 & 52.9--97.8\%\\
+    CITES & 7,308 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    COAUTHORED\_WITH & 80,482 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    COLLABORATED\_WITH & 13,031 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    \makecell[l]{CONTRIBUTES\_TO\_\\TOPIC} & 2,332 & 7/8 & 1 & 0 & 52.9--97.8\%\\
+    HAS\_TOPIC & 14,222 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    PUBLISHED\_IN & 13,617 & 8/8 & 0 & 0 & 67.6--100.0\%\\
+    RESEARCHES\_TOPIC & 5,622 & 6/8 & 2 & 0 & 40.9--92.9\%\\
+    SUBTOPIC\_OF & 16 & 8/8 & 0 & 0 & 67.6--100.0\%\\
     \bottomrule
-  \end{tabular}
-  \end{adjustbox}
+  \end{tabularx}
   \begin{minipage}{\textwidth}
-    \vspace{0.35em}\footnotesize Wilson intervals are conditional and descriptive; no finite-population correction or multiplicity adjustment is applied. The relation strata are deliberately not pooled into an overall precision estimate.
+    \vspace{0.35em}\footnotesize Each relation uses inclusion probability $8/N$, where $N$ is its frame count. Wilson intervals are conditional and descriptive; no finite-population correction or multiplicity adjustment is applied. The relation strata are deliberately not pooled into an overall precision estimate.
   \end{minipage}
 \end{table}

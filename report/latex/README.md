@@ -41,17 +41,17 @@ remove generated files.
   official records; do not infer student details.
 - `chapters/`: eight report chapters and three appendices.
 - `tables/`: reusable manuscript tables.
-- `figures/`: local copies of v4 release charts, the v4 topic-coverage chart,
-  and deterministic bounded v4 network maps. `figures/SOURCES.md` records each
+- `figures/`: report-specific renderings of frozen v4 measurements and
+  deterministic bounded v4 network views. `figures/SOURCES.md` records each
   source artifact and the graph version used.
 - `assets/uet.png`: original user-supplied UET logo, moved without alteration.
 - `references.bib`: scholarly literature and authoritative software/data docs.
 
-To update a figure, regenerate it from its pinned source/configuration in the
-repository, inspect its caption and denominator, then replace the corresponding
-local PNG in `figures/`. Keep a source path, graph version, projection, and
-counting rule in `figures/SOURCES.md`. Do not use ignored runtime outputs as
-report dependencies.
+To update a figure, run `scripts/generate-figures.py` from the repository root
+using the existing analysis environment and required pinned inputs. Inspect the
+resulting PDF and PNG, caption, denominator and selection ledger. Keep source
+paths, graph version, projection, and counting rules in `figures/SOURCES.md`.
+Compilation depends only on the local figure files, not ignored source artifacts.
 
 ## Scientific scope and reproduction
 
@@ -60,3 +60,31 @@ The full graph, works cache, and database are intentionally not bundled. See
 `../../docs/reproduce-remediation-v4.md` and Appendix B for the exact local
 reproduction commands and required frozen input hashes. Re-acquiring current
 provider responses is not byte-identical restoration.
+
+## Report quality review (12 November 2026)
+
+The visual/scientific pass is recorded in [REVIEW.md](REVIEW.md). Its write scope
+is this directory only. The full baseline and final page renders/contact sheets
+are local under ignored `review/`; the delivered manuscript is `build/main.pdf`.
+Team/course placeholders remain editable solely in `report-info.tex`, reused by
+the cover and contribution appendix.
+
+The report now uses local vector PDF plots, with PNG inspection copies. Both
+are reproducible from pinned v4 artifacts using `scripts/generate-figures.py`;
+see [figures/SOURCES.md](figures/SOURCES.md) for selection definitions and input
+requirements. Generation changes presentation only, and is unnecessary for
+ordinary compilation. `Makefile` tracks PDF figure dependencies.
+
+Render every page and produce contact sheets with:
+
+```sh
+# Run from repository root using the existing analysis environment.
+.venv/bin/python report/latex/scripts/render-review.py \
+  report/latex/build/main.pdf report/latex/review/final
+.venv/bin/python report/latex/scripts/verify-report.py
+```
+
+Poppler's `pdftoppm`, `pdfinfo` and `pdftotext`, plus Pillow, support the review
+scripts. Compilation continues to use pdfLaTeX and BibTeX. The report additionally
+uses `placeins`, `needspace`, `etoolbox` and `tocloft` for layout/navigation.
+Repository-wide tests and graph rebuilds are not part of this report-only pass.

@@ -1,30 +1,46 @@
-\begin{figure}[tbp]
+\begin{figure}[!htbp]
 \centering
+\begingroup\hyphenpenalty=10000\relax\exhyphenpenalty=10000\relax
 \begin{tikzpicture}[
   font=\small,
-  source/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,text width=5.0cm,minimum height=1.05cm,inner sep=6pt},
-  stage/.style={draw=Slate,fill=white,rounded corners=3pt,align=center,text width=9.0cm,minimum height=1.1cm,inner sep=7pt},
-  arrow/.style={-{Latex[length=2.2mm]},thick,color=UETBlue},
-  node distance=7mm and 10mm
+  box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,
+    text width=4.1cm,minimum height=1.65cm,inner sep=5pt},
+  stage/.style={box,draw=Slate,fill=white,text width=6.1cm,minimum height=1.4cm},
+  wide/.style={stage,text width=13.5cm},
+  arrow/.style={-{Latex[length=2.1mm]},semithick,color=UETBlue}
 ]
-  \node[source] (aaai) {Official AAAI proceedings roster\\2021--2025 main track};
-  \node[source,right=of aaai] (ijcai) {Official IJCAI proceedings roster\\2021--2025 main track};
-  \node[source,below=of ijcai] (openalex) {OpenAlex DOI work records\\cached response bytes and source hashes};
-  \node[stage,below=14mm of $(aaai)!0.5!(ijcai)$] (match) {DOI-derived work matching\\exact DOI, title similarity $\geq 0.90$, and author-count agreement};
-  \node[stage,below=of match] (identity) {Position-specific author resolution and affiliation triples\\compatible names; stable author IDs; conflicting ORCID evidence withheld};
-  \node[stage,below=of identity] (topic) {Frozen text classification and taxonomy\\title/abstract embeddings; one to three leaf labels or abstention};
-  \node[stage,below=of topic] (graph) {Typed graph and evidence ledger\\observed R1--R4; inferred R5; curated R6; derived R7--R10};
-  \node[stage,below=of graph] (validate) {Versioned validation and analysis\\structural checks, size gates, named projections, figures, and source-linked findings};
-  \draw[arrow] (aaai.south) -- (match.north west);
+  \node[box,minimum height=1.05cm] (aaai) at (-5,0) {\textbf{AAAI proceedings}\\Official main-track roster};
+  \node[box,minimum height=1.05cm] (ijcai) at (0,0) {\textbf{IJCAI proceedings}\\Official main-track roster};
+  \node[box,minimum height=1.05cm] (oa) at (5,0) {\textbf{OpenAlex records}\\Cached enrichment data};
+  \node[wide] (match) at (0,-2.0) {\textbf{Corpus construction and work matching}\\
+    Roster-derived DOI requests; title and byline-count checks\\
+    Historical DOI exceptions are disclosed in Section~3.2};
+  \draw[arrow] (aaai.south) -- (aaai.south |- match.north);
   \draw[arrow] (ijcai.south) -- (match.north);
-  \draw[arrow] (openalex.west) -| (match.east);
-  \draw[arrow] (match) -- (identity);
-  \draw[arrow] (identity) -- (topic);
-  \draw[arrow] (topic) -- (graph);
-  \draw[arrow] (graph) -- (validate);
+  \draw[arrow] (oa.south) -- (oa.south |- match.north);
+  \node[stage,minimum height=2cm] (identity) at (-3.7,-4.3) {\textbf{Identity and affiliation handling}\\
+    Compatible OpenAlex author IDs\\ORCID conflict withholding\\Paper-specific affiliations};
+  \node[stage,minimum height=2cm] (topics) at (3.7,-4.3) {\textbf{Text-based topic classification}\\
+    Title/abstract embeddings\\Frozen topic vocabulary\\1--3 leaf topics, or abstention};
+  \draw[arrow] (match.south -| identity.north) -- (identity.north);
+  \draw[arrow] (match.south -| topics.north) -- (topics.north);
+  \node[wide] (graph) at (0,-6.5) {\textbf{Graph materialization and evidence provenance}\\
+    Typed scientific knowledge graph with accepted edges and affiliation triples\\
+    Observed R1--R4; inferred R5; curated R6; derived R7--R10};
+  \draw[arrow] (identity.south) -- (identity.south |- graph.north);
+  \draw[arrow] (topics.south) -- (topics.south |- graph.north);
+  \node[box] (validation) at (-5,-8.6) {\textbf{Quality checks}\\Structure and coverage\\Source-backed AI review};
+  \node[box] (analysis) at (0,-8.6) {\textbf{Network analysis}\\Named projections\\Metrics and figures};
+  \node[box] (explorer) at (5,-8.6) {\textbf{Research Explorer}\\Read-only graph\\Evidence inspection};
+  \draw[arrow] (graph.south -| validation.north) -- (validation.north);
+  \draw[arrow] (graph.south) -- (analysis.north);
+  \draw[arrow] (graph.south -| explorer.north) -- (explorer.north);
 \end{tikzpicture}
-\caption{Data-to-graph workflow for the frozen release. Metadata matching,
-identity resolution, text classification, and relationship derivation are separate
-steps. The official roster defines inclusion; OpenAlex enriches matched works.}
+\endgroup
+\caption[Data-to-graph workflow]{Data-to-graph workflow. Official rosters define
+inclusion; OpenAlex enriches matched records. Identity handling and text-based
+topic assignment are independent branches that meet at graph materialization.
+The frozen graph retains the historical DOI exceptions described in Section~3.2.
+Structural checks and AI assessment have different evidential limits.}
 \label{fig:data-pipeline}
 \end{figure}
