@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,text width=2.8cm,minimum height=1.05cm,inner sep=4pt},
+  store/.style={draw=UETGold,fill=yellow!8,rounded corners=3pt,align=center,text width=2.8cm,minimum height=1.05cm,inner sep=4pt},
+  app/.style={draw=Slate,fill=white,rounded corners=3pt,align=center,text width=3.2cm,minimum height=1.05cm,inner sep=4pt},
+  arrow/.style={-{Latex[length=2.2mm]},thick,color=UETBlue},
+  node distance=5mm and 5mm
+]
+  \node[box] (inputs) {Frozen rosters,\\source cache,\\and configs};
+  \node[box,right=of inputs] (pipeline) {Python pipeline\\DOI matching, resolution,\\topics and validation};
+  \node[store,right=of pipeline] (graph) {Versioned graph JSON\\typed entities and\\evidence ledgers};
+  \node[store,right=of graph] (analysis) {Analysis results\\projections, metrics,\\and figures};
+  \node[store,below=13mm of graph] (neo4j) {Neo4j 5.26\\Community v4 store};
+  \node[store,below=13mm of analysis] (sqlite) {SQLite evidence\\affiliation ledger};
+  \node[app,below=13mm of $(neo4j)!0.5!(sqlite)$] (api) {FastAPI backend\\read-only query service};
+  \node[app,below=of api] (frontend) {React Explorer\\TypeScript, Sigma.js\\Graphology + ECharts};
+  \draw[arrow] (inputs) -- (pipeline);
+  \draw[arrow] (pipeline) -- (graph);
+  \draw[arrow] (graph) -- (analysis);
+  \draw[arrow] (graph.south) -- (neo4j.north);
+  \draw[arrow] (analysis.south) -- (sqlite.north);
+  \draw[arrow] (neo4j.south) -- (api.north west);
+  \draw[arrow] (sqlite.south) -- (api.north east);
+  \draw[arrow,dashed] (analysis.east) -- ++(5mm,0) |- (api.east);
+  \draw[arrow] (api) -- (frontend);
+\end{tikzpicture}

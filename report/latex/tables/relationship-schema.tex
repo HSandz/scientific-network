@@ -1,0 +1,27 @@
+\begin{landscape}
+\begin{table}[p]
+  \centering
+  \caption{The ten graph predicates, their direction, evidence class, and release
+  support rule. Symmetric collaboration predicates are stored once in canonical
+  order and analyzed as undirected.}
+  \label{tab:relationship-schema}
+  \small
+  \begin{tabularx}{\linewidth}{>{\ttfamily\raggedright\arraybackslash}p{3.55cm}p{4.3cm}p{2.0cm}X}
+    \toprule
+    \textbf{Predicate} & \textbf{Source $\rightarrow$ target} &
+    \textbf{Class} & \textbf{Meaning and acceptance rule}\\
+    \midrule
+    AUTHORED & Researcher $\rightarrow$ Paper & Observed & Compatible resolved identity at the official byline position; preserve position and roster name.\\
+    AFFILIATED\_WITH & Researcher $\rightarrow$ Organization & Observed & Accepted author--paper--organization observations, aggregated only after paper-specific triples are preserved; not employment duration.\\
+    PUBLISHED\_IN & Paper $\rightarrow$ Venue & Observed & Official in-scope proceedings record, one primary series per core paper.\\
+    CITES & Paper $\rightarrow$ Paper & Observed & Explicit reference to a verified, deduplicated target; direction is citing to cited.\\
+    HAS\_TOPIC & Paper $\rightarrow$ Topic & Inferred & One to three supported leaf labels from the frozen classifier, or abstention.\\
+    SUBTOPIC\_OF & Topic $\rightarrow$ Topic & Curated & Frozen approved leaf-to-parent taxonomy relation.\\
+    COAUTHORED\_WITH & Researcher $\leftrightarrow$ Researcher & Derived & Distinct resolved people share an accepted core paper; fractional contribution uses the full byline denominator.\\
+    COLLABORATED\_WITH & Organization $\leftrightarrow$ Organization & Derived & One core paper supports two organizations through two distinct authors with aligned paper-specific affiliations; a sole dual-affiliated author is insufficient.\\
+    RESEARCHES\_TOPIC & Researcher $\rightarrow$ Topic & Derived & At least two distinct accepted core papers by the researcher carry the leaf topic.\\
+    \makecell[l]{\texttt{CONTRIBUTES\_TO\_}\\\texttt{TOPIC}} & Organization $\rightarrow$ Topic & Derived & At least three distinct accepted core papers carry the leaf topic and have paper-specific organization support.\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+\end{landscape}

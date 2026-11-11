@@ -400,7 +400,7 @@ _APP_JS = r"""
       const summary = DATA.meta.selection_summary || {};
       appendSection(
         'Flagged diagnostic cases (' + (summary.flagged_total ?? flagged.length) + ')',
-        'These cases are included because the existing AI issue ledger flags them for targeted inspection. Their source evidence is available below. This initial form withholds the AI concern; make and export your own decisions before opening the separate post-blind diagnostic.',
+        DATA.meta.flagged_section_note || 'These cases are included because the existing AI issue ledger flags them for targeted inspection. Their source evidence is available below. The AI concern is withheld from this review sheet.',
         flagged,
       );
       appendSection(
@@ -463,12 +463,23 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}details{margin:8p
 
 def render_html(meta: dict, fields: list[str], rows: list[dict]) -> str:
     """``rows`` are ``{"review": <full CSV row>, "context": <context fields>, "links": [...]}``."""
-    payload = {"meta": {**meta, "error_categories": list(ERROR_CATEGORIES)}, "fields": fields, "rows": rows}
+    payload_meta = {**meta, "error_categories": list(ERROR_CATEGORIES)}
+    if meta.get("postblind_diagnostic_available"):
+        payload_meta["flagged_section_note"] = (
+            "These cases are included because the existing AI issue ledger flags them for targeted inspection. "
+            "Their source evidence is available below. This initial form withholds the AI concern; make and "
+            "export your own decisions before opening the separate post-blind diagnostic."
+        )
+    payload = {"meta": payload_meta, "fields": fields, "rows": rows}
     data = json.dumps(payload, ensure_ascii=True, separators=(",", ":")).replace("<", "\\u003c")
     note = (
-        "Judge the claim against the criterion shown. Source consistency is not automatically independent semantic verification: official bylines and provider IDs alone do not establish real-person identity, and derived edges inherit identity errors. If the needed evidence is insufficient, choose unverifiable; the audit precision protocol counts unverifiable as incorrect. "
-        "For flagged cases, record and export your initial decisions before opening the separate post-blind diagnostic. Answers are saved in this browser; use Export to download your CSV and send it back."
+        "Judge the claim against the criterion shown. Source consistency is not automatically independent semantic verification: official bylines and provider IDs alone do not establish real-person identity, and derived edges inherit identity errors. If the needed evidence is insufficient, choose unverifiable; the audit precision protocol counts unverifiable as incorrect."
     )
+    if meta.get("postblind_diagnostic_available"):
+        note += (
+            " For flagged cases, record and export your initial decisions before opening the separate post-blind diagnostic."
+        )
+    note += " Answers are saved in this browser; use Export to download your CSV and send it back."
     packet_note = html.escape(str(meta.get("packet_note", "")))
     packet_note_markup = f'<p class="meta packet-note">{packet_note}</p>' if packet_note else ""
     return (

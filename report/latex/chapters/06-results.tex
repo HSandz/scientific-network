@@ -1,0 +1,286 @@
+\chapter{Results and Network Analysis}
+\label{chap:results}
+
+\section{Frozen graph and corpus summary}
+
+All results in this chapter refer to the frozen production graph
+\GraphVersion{} unless a subsection explicitly names a historical or
+experimental comparison. The graph contains 47,875 nodes and 225,731
+relationships. It satisfies the project's structural size checks: more than
+2,000 domain nodes, more than 2,000 resolved core researchers, more than 5,000
+observed R1--R4 factual edges, and all ten relation types. These are structural
+requirements, not semantic-accuracy evidence.
+
+\begin{table}[tbp]
+  \centering
+  \caption{Node inventory and evidence classes in the frozen production graph.}
+  \label{tab:graph-inventory}
+  \begin{tabularx}{0.82\textwidth}{Xr}
+    \toprule
+    \textbf{Node label} & \textbf{Count}\\
+    \midrule
+    Researcher & 32,189\\
+    Paper & 13,617\\
+    Organization & 2,047\\
+    Topic & 20\\
+    Venue & 2\\
+    \midrule
+    \textbf{Total nodes} & \textbf{47,875}\\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.7em}
+  \begin{tabularx}{0.82\textwidth}{Xr}
+    \toprule
+    \textbf{Evidence class} & \textbf{Edges}\\
+    \midrule
+    Observed bibliographic (R1--R4) & 110,026\\
+    Derived collaboration/topic (R7--R10) & 101,467\\
+    Inferred topic (R5) & 14,222\\
+    Curated taxonomy (R6) & 16\\
+    \midrule
+    \textbf{Total edges} & \textbf{225,731}\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The division in \cref{tab:graph-inventory} matters for the course's size
+threshold: only the 110,026 observed R1--R4 edges count as factual core edges.
+Derived coauthorship or inferred topic edges do not inflate that total. The
+complete relation-level inventory appears in Appendix A.
+
+\input{tables/relation-counts.tex}
+
+\section{Research landscape over time}
+
+The selected proceedings corpus grows from 2,240 papers in 2021 to 4,042 in
+2025, with a dip to 1,997 in 2022. This pattern describes only the two selected
+conference series and does not measure the size or growth of AI research as a
+whole. AAAI contributes 9,910 papers and IJCAI 3,707 across the five-year
+window.
+
+\input{tables/annual-output.tex}
+
+The number of active resolved researchers and first-observed coauthor pairs
+also increases in later years, especially in 2024--2025. Annual active-researcher
+counts overlap because one researcher can publish in multiple years. The
+``first observed pair'' count assigns a collaboration pair to the earliest
+supported paper year; it is not an annual snapshot of all active relationships.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.93\textwidth]{coverage.png}
+  \caption{Topic-label coverage for every included venue-year group. Counts
+  inside the bars are labeled/all papers. The denominator includes all roster
+  papers; coverage indicates label availability, not label correctness. Graph
+  \GraphVersion.}
+  \label{fig:topic-coverage}
+\end{figure}
+
+Topic labels cover 11,575 of 13,617 papers (85.00\%). The coverage chart shows
+that the unlabeled share is present in every venue-year group, so topic trends
+must be interpreted as trends among labeled papers. AAAI coverage changes from
+85.19\% in 2021 to 84.21\% in 2025; IJCAI changes from 81.91\% to 83.43\%.
+If abstained papers have a different topic distribution, labeled-paper shares
+may not represent all papers.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{topic-trends.png}
+  \caption{Fractional topic portfolio trends among labeled core papers from
+  2021--2025. Each labeled paper contributes total mass one, divided across its
+  accepted labels; AAAI and IJCAI are combined within each year. Inferred labels
+  have not been human-validated. Graph \GraphVersion.}
+  \label{fig:topic-trends}
+\end{figure}
+
+Among labeled AAAI papers, the inferred multimodal share rises from 6.96\% to
+16.42\% between 2021 and 2025. For IJCAI it rises from 7.43\% to 12.90\%.
+The figures show topic shares among classifier-labeled papers rather than
+independent measurements of disciplinary change. The topic test reports
+substantial disagreement with its AI-assigned references, so these movements
+are exploratory signals for inspection.
+
+\section{Researcher collaboration structure}
+
+The researcher coauthorship projection has 32,189 resolved researchers and
+80,482 distinct coauthor pairs. It contains 414 isolates, 2,936 connected
+components, mean degree 5.00, and maximum degree 90. The largest component has
+20,776 researchers (64.5\% of the resolved population). The remaining 2,935
+components and isolates indicate that the accepted coauthorship projection is
+not one connected system.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{researcher-degree-ccdf.png}
+  \caption{Complementary cumulative distribution of distinct coauthor degree.
+  All resolved researchers, including isolates, are in the denominator; both
+  axes use logarithmic scales. The distribution has a long upper tail, but this
+  descriptive plot does not establish a power-law model. Graph \GraphVersion.}
+  \label{fig:degree-ccdf}
+\end{figure}
+
+The degree CCDF shows that most resolved researchers have relatively few
+distinct coauthors while a smaller group has many. The long tail identifies
+variation in observed collaboration breadth, not a claim about a specific
+degree-distribution family. Withheld authors and papers without accepted
+authorships are absent from this projection and can change its shape.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.88\textwidth]{component-sizes.png}
+  \caption{Connected component sizes in the researcher collaboration graph,
+  ranked from largest to smallest. All 32,189 resolved researchers are included,
+  so isolates appear as components of size one; the vertical axis is logarithmic.
+  Graph \GraphVersion.}
+  \label{fig:components}
+\end{figure}
+
+The component plot is dominated by one large component, followed by a steep
+drop to small groups and isolates. This supports a qualitative description of
+concentrated connectivity alongside many small collaboration groups. It does
+not imply that researchers in the large component collaborate directly or share
+a common research program.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.92\textwidth]{community-topic-profiles.png}
+  \caption{Fractional inferred-topic profiles of selected large researcher
+  communities from Louvain seed 17 and resolution 0.8. Distinct papers are
+  fractionally allocated over their labels. Only stored top-five topics per
+  community are shown; grey cells mean outside the stored profile, not zero
+  support. Graph \GraphVersion.}
+  \label{fig:community-topics}
+\end{figure}
+
+The community profiles show different mixtures of inferred topics among the
+largest communities, alongside overlap in widely represented topics such as
+representation learning. Because both community assignments and topic labels
+are method-dependent, the plot is a navigation aid for inspecting groups rather
+than a validated classification of research communities.
+
+\section{Organization collaboration and topic portfolios}
+
+The organization collaboration projection has 2,047 organizations, 13,031
+accepted collaboration edges, 90 isolates, mean degree 12.73, and maximum degree
+257. Its sector-mixing matrix counts distinct organization-pair by core-paper
+supports and retains an explicit unknown sector. Academia--academia supports
+are the largest displayed cell (10,954); academia--industry supports number
+3,533. These are pair-paper supports, not unique pairs, contracts, or current
+partnerships.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.90\textwidth]{sector-mixing.png}
+  \caption{Organization collaboration supports by sector pair. Counts are
+  distinct accepted organization-pair by core-paper supports, shown in a
+  symmetric matrix with unknown sector retained. A support requires two distinct
+  authors with paper-specific organization evidence. Graph \GraphVersion.}
+  \label{fig:sector-mixing}
+\end{figure}
+
+One prominent repeated-support candidate is Shanghai Jiao Tong University and
+Tencent in inferred Representation learning, with 14 distinct core papers. The
+source-linked examples include \href{https://doi.org/10.1609/aaai.v36i1.19954}{\emph{Exploiting Fine-Grained Face Forgery Clues via Progressive Enhancement Learning}}
+and \href{https://doi.org/10.1609/aaai.v36i3.20193}{\emph{DIRL: Domain-Invariant Representation Learning for Generalizable Semantic Segmentation}},
+both published in 2022. These records support co-publication under the graph's
+affiliation rule. They do not establish a current institutional relationship or
+commercial agreement. Sector labels and inferred topics remain provisional.
+
+For inferred Representation learning, Zhejiang University has 156 supported
+papers among 489 organization-associated topic-labeled papers, with a fractional
+portfolio share of 25.1\%. Peking University has 139 among 381, with a 28.8\%
+fractional share. Portfolio shares divide a paper across both accepted topic
+labels and supported organizations, so they are not the same as raw support
+fractions. These denominators omit papers without accepted institution alignment
+or inferred labels.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{organizations-network.png}
+  \caption{Bounded organization collaboration map: 60 selected organizations
+  and 1,119 induced edges from the full 2,047-node/13,031-edge projection.
+  Selection uses full-projection fractional strength; colors show sector and
+  layout positions have no geographic meaning. This map is illustrative, not a
+  complete network sample. Graph \GraphVersion.}
+  \label{fig:organization-map}
+\end{figure}
+
+\section{Centrality and bridge candidates}
+
+Degree, strength, and betweenness answer different questions. Degree counts
+unique partners; strength reflects the sum of fractional coauthorship weights;
+betweenness reflects shortest-path brokerage under inverse-strength distances.
+The configured approximate weighted betweenness ranks Bo An first at 0.042193
+among 32,189 researchers. In the selected Louvain run (seed 17, resolution 0.8),
+the identity belongs to a 367-member community associated with 206 distinct
+papers, 180 of which have topic labels. Representation learning contributes 63
+papers and 52.3333 fractional topic units, or 29.1\% of that community's
+fractional topic mass.
+
+Two source-checked works that support participation are
+\href{https://doi.org/10.1609/aaai.v36i8.20851}{\emph{GearNet: Stepwise Dual Learning for Weakly Supervised Domain Adaptation}}
+(2022) and \href{https://doi.org/10.1609/aaai.v37i6.25871}{\emph{Partial-Label Regression}}
+(2023). They do not explain or cause the centrality score. The prior v3 bridge
+leader was Dacheng Tao (0.054933); only three of the prior top twenty remain in
+the corrected top twenty. On the v4 strict-evidence researcher projection,
+betweenness top-20 overlap with the base projection is zero and the rank
+correlation among shared researchers is 0.1882. Identity withholding changes
+both the network and the population from which 256 approximation pivots are
+drawn. The ranking is therefore a lead for evidence review, not an influence or
+hiring score.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{researchers-network.png}
+  \caption{Bounded researcher collaboration map: 100 selected researchers and
+  90 induced coauthorship edges from the full 32,189-node/80,482-edge projection.
+  Node size uses full-projection fractional strength; colors use the stored
+  Louvain assignment. The layout is seeded and non-geographic. It is an
+  illustration, not a complete network sample. Graph \GraphVersion.}
+  \label{fig:researcher-map}
+\end{figure}
+
+\section{Within-corpus citation structure}
+
+The directed core citation projection contains 13,617 paper nodes, 7,308
+in-scope citation edges, and 7,302 papers with no in-corpus incoming or outgoing
+citation edge. Its mean total degree is 1.07 and maximum in-degree is 51. The
+highest in-degree paper is \emph{Informer: Beyond Efficient Transformer for
+Long Sequence Time-Series Forecasting} (AAAI 2021), with 51 in-scope citing
+papers. References to papers outside the selected corpus are excluded, and
+older papers have had more time to accumulate citations. The count is an
+in-corpus attention measure, not a field-wide impact score.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.94\textwidth]{top-cited-papers.png}
+  \caption{Highest in-degree papers in the directed core citation projection.
+  Each count is the number of distinct citing papers inside the release corpus;
+  citations outside the corpus and unequal citation exposure time are not
+  adjusted. Graph \GraphVersion.}
+  \label{fig:top-cited}
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.92\textwidth]{citations-network.png}
+  \caption{Bounded within-corpus citation map: 80 selected papers and 22 induced
+  directed edges from the 13,617-node/7,308-edge projection. Arrows run from
+  citing to cited; sparse displayed connectivity reflects the bounded selection,
+  not total reference coverage. Graph \GraphVersion.}
+  \label{fig:citation-map}
+\end{figure}
+
+\section{Findings as investigation leads}
+
+The analysis yields three reproducible leads for further investigation. First,
+the academia--industry pair/topic screen has ten candidates with at least eight
+distinct supporting core papers; Shanghai Jiao Tong--Tencent, Xiamen--Tencent,
+and Zhejiang--Alibaba each have 14 Representation-learning supports. Second,
+Bo An ranks highest on the configured approximate betweenness measure, with a
+source-traceable but policy-sensitive community context. Third, Zhejiang and
+Peking universities show different fractional shares in the inferred
+Representation-learning portfolio. Each finding has explicit support counts and
+source examples, but remains subject to incomplete affiliations, inferred-topic
+error, and researcher-identity uncertainty. The accompanying ten-person bridge
+list and partner shortlist are screening devices, not recommendations.

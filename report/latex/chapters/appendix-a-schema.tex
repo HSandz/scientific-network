@@ -1,0 +1,51 @@
+\chapter{Full Graph Schema}
+\label{app:schema}
+
+\section{Entity labels}
+
+\begin{table}[tbp]
+  \centering
+  \caption{Node labels and their role in graph \GraphVersion.}
+  \label{tab:node-labels}
+  \begin{tabularx}{0.92\textwidth}{>{\bfseries}p{2.6cm}rX}
+    \toprule
+    Label & Count & Meaning and core properties\\
+    \midrule
+    Researcher & 32,189 & Resolved person record with stable ID, display name, resolution status, and identity evidence/crosswalk.\\
+    Paper & 13,617 & Deduplicated selected proceedings paper with edition year, official URL, track, and core-scope status.\\
+    Organization & 2,047 & Institution or corporate entity with normalized sector and optional ROR/location properties.\\
+    Topic & 20 & Frozen project vocabulary concept; four parent topics and 16 leaf topics with definitions/version.\\
+    Venue & 2 & AAAI or IJCAI conference series; edition year is carried by Paper.\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Predicate inventory}
+
+The full meanings and support rules for all ten predicates are specified in
+\cref{tab:relationship-schema}. Their measured edge counts are in
+\cref{tab:relation-counts}. The four observed R1--R4 predicates provide 110,026
+unique factual edges for the size-gate calculation. The remaining counts are
+reported separately by evidence class.
+
+\section{Identity, provenance, and derivation rules}
+
+Semantic edge identity is based on the tuple (predicate, source ID, target ID).
+Symmetric relationships are stored once in lexicographically canonical endpoint
+order. Each accepted edge points to one or more EvidenceRecord entries and
+records a method version and graph version. Source evidence includes the URL,
+retrieval time, raw-response SHA-256, locator, and any permitted excerpt.
+
+An affiliation triple is specific to one researcher, one paper, and one
+organization; aggregate Researcher--Organization edges retain paper support.
+Derived evidence points to the accepted base edges and distinct core-paper IDs
+that support the claim. R7 fractional weights account for unresolved byline
+positions in the denominator. R8 excludes a single author's multiple
+affiliations as evidence of organization collaboration. R9 and R10 thresholds
+count distinct accepted works, not alternate versions or repeated records.
+
+The five graph projections remain separate. In particular, the directed citation
+network is not combined with undirected collaboration in a heterogeneous
+PageRank interpretation. Years and countries are properties, not additional
+node labels. Unresolved identity candidates and raw source records remain outside
+the accepted domain graph.

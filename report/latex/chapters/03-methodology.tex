@@ -1,0 +1,154 @@
+\chapter{Data and Graph Construction Methodology}
+\label{chap:method}
+
+\section{Corpus definition and data sources}
+
+The release corpus is the frozen roster-v10 set of AAAI and IJCAI main-track
+papers published from 2021 to 2025. The official proceedings pages establish
+whether a paper is in scope, the edition year, title, byline order, and official
+record URL. The roster contains \num{13617} papers: \num{9910} AAAI and \num{3707}
+IJCAI papers. This two-series release is a subset of a wider source registry and
+must not be interpreted as a census of AI research. The official source portals
+are listed in \cref{chap:reproduction} and the bibliography
+\citep{aaaiProceedings,ijcaiProceedings}.
+
+OpenAlex provides matched work metadata, author records, institution links,
+abstracts, and references. The API is accessed through a source cache that stores
+response bytes, request metadata, retrieval times, and SHA-256 hashes
+\citep{openalexapi,openalexworks}. Raw downloads are treated as immutable inputs;
+the report package does not redistribute the full cache or papers. The source
+roles remain distinct: official rosters govern inclusion and printed bylines,
+while OpenAlex is an enrichment source subject to matching and identity checks.
+
+\section{Acquisition, matching, and duplicate handling}
+
+For each roster record, the acquisition code derives a DOI from the official
+record URL using venue-specific rules. It requests OpenAlex works by DOI rather
+than searching by title. A candidate work is accepted only if its returned DOI
+agrees exactly, its normalized title similarity is at least 0.90, and its
+authorship count matches the official byline count. Title similarity uses
+normalized strings and a sequence-matching ratio; a near match is retained as a
+flag for inspection. When multiple works share a DOI, the official landing-page
+URL can resolve the duplicate only if exactly one matching candidate passes the
+checks. Otherwise the paper remains in review.
+
+The measured acquisition matched \num{13606} of \num{13617} roster papers
+(99.92\%). Eleven records remain in review: nine duplicate-DOI cases without an
+unambiguous eligible work and two author-count mismatches. No paper was reported
+as not found after the acquisition retries. All matched works contain an abstract;
+two accepted matches carry a title-similarity flag. These counts describe work
+matching, not author identity accuracy. Re-running a current API query is not
+guaranteed to reproduce the original bytes, so the versioned cache hashes are
+part of the reproducibility record.
+
+\section{Author and researcher resolution}
+
+Each official author position is compared with the corresponding OpenAlex
+authorship in the DOI-matched work. A researcher node is keyed by the OpenAlex
+author ID only when the position is compatible with the official name under the
+release rule. ORCID is stored when present but is not required; names alone never
+create merges. Positions that lack an author ID, have an incompatible name, or
+participate in a paper-level conflict are withheld rather than forced into a
+canonical person record. Stable internal IDs and external-ID crosswalks preserve
+the distinction between graph identity and display names.
+
+The final correction that produced v4 checks both singular ORCID values and
+retained observed-ORCID arrays across every matched work. Multiple distinct,
+checksum-valid ORCIDs for one provider author ID trigger global withholding;
+missing or null ORCID remains an absence of evidence. The scan found \num{4492}
+conflicting OpenAlex author IDs and no malformed nonempty ORCID values. It removed
+\num{8722} previously accepted authorships, \num{4491} researcher nodes, and 49
+organizations with no surviving affiliation observations. One conflicting
+provider ID was already absent from the graph. The method is a versioned
+correction, not a change to official papers, topic labels, or citation claims.
+
+Of \num{65507} official author positions, \num{65469} occur on matched works.
+The corrected graph contains \num{50437} accepted AUTHORED relationships and
+withholds \num{15032} matched positions. There are 188 matched papers with no
+accepted authorship and 199 across the entire roster, including the 11 unmatched
+papers. These missing positions constrain the researcher projection and can
+change components and centrality rankings.
+
+\section{Affiliation evidence and organization resolution}
+
+Affiliations are first retained as paper-specific authorship observations. Each
+observation ties a particular author position on a particular paper to an
+OpenAlex institution ID and its raw affiliation string. Only after these triples
+are preserved are the graph's researcher--organization edges aggregated. This
+prevents the paper-level institution list from being copied to every author and
+avoids treating a current profile as evidence of historical affiliation.
+
+The evidence supports \num{48259} institution assignments among \num{50437}
+accepted authorships. That is 95.68\% conditional coverage of accepted authors,
+but the course coverage denominator includes withheld matched byline positions:
+\num{48259}/\num{65469}=73.71\%. Against all official positions the ratio is
+73.67\%. Both project-level measures fall below the 80\% target. The conditional
+percentage is useful as a source diagnostic but does not replace the coverage
+gate. Organization sector and country are normalized organization metadata;
+unknown values remain explicitly unknown.
+
+\section{Topic classification}
+
+The project taxonomy has four parent topics and 16 leaf topics. The frozen
+classifier encodes topic definitions and paper title/abstract text using
+\modelid{sentence-transformers/all-MiniLM-L6-v2}, pinned at revision
+\texttt{1110a243fdf4706b3f48f1d95db1a4f5529b4d41}. It applies the development
+calibration thresholds $\tau=0.2708871365$ and $\delta=0.02$, assigns at most
+three leaf topics, and abstains when its rule does not support a label. A source
+sentence from the abstract, or the title for title-only input, is retained as
+topic evidence. The model and its frozen revision are documented with the
+project's topic configuration and model card \citep{reimers2019sentencebert,minilmModelCard}.
+
+The corrected graph retains \num{11575} topic-labeled papers and \num{2042}
+abstentions, for 85.00\% coverage. It contains \num{14222} \texttt{HAS\_TOPIC} edges
+because some papers have multiple leaf labels. The label count is not an
+accuracy score. Thresholds were calibrated on development papers; the reserved
+test IDs were not used to tune the classifier. The only reported topic test
+metrics use historical AI-assigned labels and are discussed separately in
+\cref{chap:evaluation}.
+
+\section{Graph model and edge semantics}
+
+The graph has five entity labels and ten predicates. Observed bibliographic
+relationships are kept distinct from model-inferred topic links, curated
+taxonomy relationships, and social/topic edges derived from accepted core-paper
+evidence. The schema table in \cref{tab:relationship-schema} gives each
+predicate's direction, evidence class, and support rule. In aggregate, every
+edge has a deterministic identity based on predicate and endpoints, accepted
+status, evidence IDs, method version, and graph version.
+
+\input{tables/relationship-schema.tex}
+
+\input{figures/data-pipeline.tex}
+
+\section{Derived relationships and weights}
+
+Derived relationships are materialized only from accepted base evidence. For a
+core paper with $k>1$ byline authors, each eligible resolved researcher pair
+receives fractional coauthorship weight $1/(k-1)$; unresolved authors remain in
+the denominator so that missing identities do not inflate accepted pair weights.
+The distinct shared-paper count is retained alongside the fractional strength.
+
+For organization collaboration, the construction enumerates distinct
+organization pairs supported by distinct authors with paper-specific
+affiliations. A sole author with two affiliations creates no collaboration edge.
+If a paper supports $q>0$ eligible organization pairs, each receives weight
+$1/q$ for that paper; support is deduplicated by paper. Researcher--topic edges
+require at least two distinct accepted core papers, and organization--topic edges
+require at least three distinct papers with the topic and a paper-specific
+organization support. Topic and organization portfolios divide each labeled
+paper's mass fractionally across its accepted labels and, where appropriate,
+supported organizations. Those portfolio weights do not replace the raw-paper
+thresholds used to create R9 and R10.
+
+\section{Network projections}
+
+The analysis keeps five projections separate: undirected researcher
+coauthorship, undirected organization collaboration, directed in-corpus paper
+citations, paper--topic membership, and organization--topic contributions.
+Collaboration pairs are stored once in canonical ID order and analyzed as
+undirected relationships. Citation arrows point from citing paper to cited
+paper. Weighted shortest-path calculations use the inverse of positive
+fractional edge strength. The results report projection boundaries and seeds so
+that a number such as betweenness is interpretable only under its stated graph
+and distance rule.

@@ -1,0 +1,80 @@
+\usepackage[nocaptions,utf8]{vntex}
+\usepackage[T1]{fontenc}
+\usepackage{tgtermes}
+\usepackage{newtxmath}
+\usepackage{textcomp}
+
+\usepackage[margin=27mm,headheight=15pt,headsep=9mm,footskip=13mm]{geometry}
+\usepackage{setspace}
+\setstretch{1.20}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em plus 0.08em minus 0.04em}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\setlist{itemsep=0.2em,topsep=0.25em,leftmargin=1.5em}
+\usepackage{amsmath,mathtools}
+\usepackage{siunitx}
+\sisetup{group-separator={,},group-minimum-digits=4,detect-all}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{UETBlue}{HTML}{1F4F82}
+\definecolor{UETGold}{HTML}{B89A5C}
+\definecolor{Slate}{HTML}{526174}
+\definecolor{PaleBlue}{HTML}{EAF0F6}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric,calc}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=UETBlue},textfont=small,skip=6pt}
+\usepackage{subcaption}
+\usepackage{natbib}
+\setcitestyle{authoryear,round,semicolon}
+\usepackage{xurl}
+\usepackage{seqsplit}
+\usepackage{pdflscape}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=UETBlue,
+  citecolor=UETBlue,
+  urlcolor=UETBlue,
+  pdftitle={Scientific Knowledge Graph Construction and Network Analysis of AAAI and IJCAI Research (2021--2025)},
+  pdfsubject={University course research report},
+  pdfkeywords={scientific knowledge graph, co-authorship, network analysis}
+}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{Slate}AI Research Network}
+\fancyhead[R]{\small\color{Slate}\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{UETBlue}}
+  {\large\MakeUppercase{\chaptername}\ \thechapter}
+  {0.5ex}
+  {\titlerule[0.7pt]\vspace{0.8ex}\huge}
+  [\vspace{0.6ex}\titlerule]
+\titlespacing*{\chapter}{0pt}{-16pt}{22pt}
+\titleformat{\section}{\Large\bfseries\color{UETBlue}}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries\color{Slate}}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{Slate}}{\thesubsubsection}{0.7em}{}
+\graphicspath{{figures/}{assets/}}
+\newcommand{\GraphVersion}{\texttt{release-d3c788c3114a}}
+\newcommand{\EvidenceVersion}{\modelid{release-openalex-graph-v1.1}}
+\newcommand{\pct}[1]{#1\%}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+\newcommand{\sourcepath}[1]{\nolinkurl{#1}}
+\newcommand{\modelid}[1]{\nolinkurl{#1}}
+\newcommand{\hashid}[1]{\texttt{\seqsplit{#1}}}
+\newcommand{\VietnameseText}[1]{{\fontencoding{T5}\selectfont #1}}

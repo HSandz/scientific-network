@@ -1,0 +1,126 @@
+\chapter{Background and Related Work}
+\label{chap:background}
+
+\section{Knowledge graphs and scholarly records}
+
+A knowledge graph represents entities and typed relationships in a form that can
+be queried and combined. In this project, the graph is a property graph: domain
+nodes have stable identifiers and typed labels, and an edge represents one
+predicate between two nodes. The design is intentionally small enough for a
+course analysis but detailed enough to separate papers, people, organizations,
+venues, and inferred topics. Surveys of knowledge-graph systems emphasize that
+representation, construction, quality assessment, and application are connected
+problems \citep{hogan2022knowledgegraphs}. Here, each relationship also carries
+an evidence class and links to source or support records so that the graph can be
+traced back to its construction inputs.
+
+Scholarly metadata is heterogeneous even when records describe the same paper.
+Proceedings pages and index records can differ in title formatting, author
+coverage, identifiers, abstracts, or affiliation detail. Database-level
+affiliation discrepancies have been documented across bibliographic sources
+\citep{purnell2022affiliation}. The project's response is to assign different
+roles to sources: official proceedings define inclusion and byline order, while
+OpenAlex is used for work metadata, author IDs, institutions, and reference lists.
+The second source enriches the record but does not replace the official corpus
+boundary.
+
+\section{Scientific collaboration networks}
+
+Coauthorship networks model researchers as vertices and shared publications as
+evidence of collaboration. Newman showed how scientific collaboration networks
+can be studied through degree, paths, components, and clustering
+\citep{newman2001collaboration}. The meaning of an edge nevertheless depends on
+the counting rule. A pair may have one shared paper or many; a weighted edge can
+retain the number or fractional contribution of those papers. This report
+therefore distinguishes unique coauthor neighbors from fractional strength and
+reports the accepted graph's support rules.
+
+The project also constructs organization collaboration from paper-specific
+affiliations. Two institutions are connected only when at least two distinct
+authors on a core paper have accepted affiliations to the two organizations.
+A single researcher listing two organizations does not establish an
+organization-to-organization collaboration. This rule avoids interpreting a
+dual-affiliation record as evidence of a joint paper between institutions.
+
+\section{Entity resolution and identity uncertainty}
+
+Entity resolution links records that refer to the same real-world object. In
+bibliographic settings, a person can publish under name variants, while two
+different people can share the same name. Record-linkage methods therefore use
+multiple identifying attributes and explicit decisions instead of relying on a
+single normalized string \citep{christen2012datamatching}. A provider's persistent
+author identifier improves record linkage but is still a provider assertion;
+conflicting identifiers or incompatible author names require abstention or
+review.
+
+This project uses OpenAlex author IDs at compatible byline positions and stores
+ORCID when present. It does not merge researchers by name similarity alone.
+The corrected v4 graph also applies a global conflict rule to observed ORCID
+evidence across all matched works. This makes the identity policy conservative
+and reversible, but does not independently prove that every surviving provider
+ID belongs to the printed person. Downstream coauthor and bridge claims inherit
+that uncertainty.
+
+\section{Text classification and topic assignment}
+
+Sentence embeddings represent text in a vector space where semantic similarity
+can be compared. Sentence-BERT introduced a siamese architecture for producing
+useful sentence-level embeddings \citep{reimers2019sentencebert}. This project
+uses a frozen MiniLM sentence-transformer to compare paper title/abstract text
+with definitions in a small curated taxonomy. The classifier is a fixed
+embedding-and-threshold procedure, not an open-ended large-language-model
+judgment. A paper receives between one and three leaf topics or no topic label
+when the confidence rule abstains.
+
+The distinction between coverage and correctness is essential. Coverage records
+the proportion of papers assigned at least one label. Precision, recall, and F1
+compare assigned labels with reference labels and depend on the provenance and
+quality of those references. In this project, the available reference labels are
+AI-assessed, drawn from exposed frozen test papers, and are not independent human
+gold. Topic portfolios and trends are consequently descriptive and provisional.
+
+\section{Network measures and community detection}
+
+Degree counts distinct adjacent nodes; weighted degree, or strength, sums edge
+weights. Betweenness centrality measures how often a vertex lies on shortest
+paths between other vertices, under a specified path length and graph projection
+\citep{freeman1977betweenness}. For collaboration analysis, this project treats
+the inverse of positive fractional strength as edge distance. High betweenness
+therefore identifies a potential structural bridge under that particular
+distance definition, not an individual's research quality or causal influence.
+
+Community detection groups nodes by comparatively dense internal connections.
+The release uses a configured Louvain method run with fixed seed and resolution;
+the method optimizes modularity through multilevel community aggregation
+\citep{blondel2008communities}. A community assignment is conditional on the
+projection, edge weights, seed, and resolution. It should not be treated as an
+official disciplinary boundary or a stable identity label across graph versions.
+
+\section{Evidence provenance and graph quality}
+
+Graph quality has structural and semantic dimensions. Structural checks can
+confirm unique identifiers, valid endpoints, allowed labels and predicates,
+evidence references, support counts, and database reconciliation. They cannot
+establish that a source record is correct or that a provider identity matches a
+real person. The project therefore records evidence URLs, retrieval timestamps,
+raw-response hashes, locators, and method/graph versions for accepted edges.
+Derived edges point to supporting base edges and papers, while ambiguous claims
+remain outside the accepted graph.
+
+The edge review reports precision for sampled accepted edges; it does not sample
+missing relationships and therefore does not estimate recall. For the principal
+AI-assessed audit, a Wilson interval summarizes binomial sampling uncertainty
+conditional on the supplied judgments \citep{wilson1927inference}. It does not
+include evaluator mistakes, shared-model bias, or dependence on construction
+sources. This narrow interpretation is retained throughout the results.
+
+\section{How this project differs from downloading a graph}
+
+The project defines its own corpus from official proceedings rosters, performs
+DOI-based record matching, applies explicit byline and affiliation rules, creates
+topic links from a frozen classifier, derives four social and topic relationships
+from accepted support, and validates the graph's internal evidence structure.
+Existing OpenAlex records supply metadata but are not used as a prebuilt graph
+whose edges are accepted without inspection. The resulting graph is thus a
+versioned analytical artifact with a traceable evidence contract, not a direct
+copy of a third-party knowledge graph.

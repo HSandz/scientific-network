@@ -102,6 +102,8 @@ def _postblind_html(member: str, flagged_issues: list[dict], packet_by_id: dict[
     for issue in flagged_issues:
         edge_id = str(issue["edge_id"])
         packet = packet_by_id[edge_id]
+        potential_issue = str(issue.get("potential_issue") or "").strip()
+        concern = potential_issue or str(issue.get("reason") or "").strip() or "No concise concern supplied."
         locators = []
         for locator in issue.get("source_locators", []):
             text = str(locator)
@@ -118,7 +120,7 @@ def _postblind_html(member: str, flagged_issues: list[dict], packet_by_id: dict[
             + html.escape(packet["context"].get("target_name", "")) + "</h2>"
             + '<p class="id">' + html.escape(edge_id) + "</p>"
             + '<p><strong>Luna\'s concern (AI-assessed; not a human finding):</strong> '
-            + html.escape(str(issue.get("potential_issue") or "No concise concern supplied.")) + "</p>"
+            + html.escape(concern) + "</p>"
             + '<p><strong>Source locators from the AI review ledger:</strong></p><ul>' + links + "</ul>"
             + '<details><summary>Full source and support context shown in the initial packet</summary><pre>'
             + html.escape(context) + "</pre></details></article>"
@@ -253,6 +255,7 @@ def prepare(graph_path: Path, works_path: Path, issues_path: Path, output: Path)
         (output / f'human-{member}.html').write_text(render_html(
             {'graph_version': graph.graph_version, 'audit_id': HUMAN_PACKET_ID, 'reviewer_ids': [member],
              'selection_summary': selection['selection_summary'],
+             'postblind_diagnostic_available': bool(flagged_issues),
              'packet_note': 'This packet has a prespecified random subset, the prior risk-diagnostic subset, and all cases listed in the existing AI issue ledger. Overlapping cases appear once and retain every selection tag. Only the random tag carries probability-based inclusion.'},
             SPLIT_FIELDS, rows))
         (output / f'human-{member}-flagged-post-blind.html').write_text(
