@@ -1,0 +1,134 @@
+{
+  "receipt_id": "WORK-2026-11-11-008-final-cleanup-package-v1",
+  "created_at": "2026-11-11T23:34:06+07:00",
+  "source_commit": "f3b00d412769c2a9eff9063b7702412cffe1e700",
+  "clean_detached_checkout": true,
+  "unrelated_task2d_edits_included": false,
+  "package": {
+    "archive": "reports/runs/WORK-2026-11-11-008/package-v1/scientific-network-submission.zip",
+    "archive_sha256": "74716e5efa9242c50e0c6e9d0605b112843a790ea2fad9bdb637e978be814d50",
+    "archive_member_count": 1754,
+    "source_manifest_member_count": 1753,
+    "manifest": "reports/runs/WORK-2026-11-11-008/package-v1/submission-manifest.json",
+    "manifest_sha256": "e148ccd11d489a0dfa99f1f5590fab96b232aa71037954671241c500b0d9ffef",
+    "report_html": "reports/runs/WORK-2026-11-11-008/package-v1/report.html",
+    "report_html_sha256": "8b47ec22ffe3c66581ad7ffb77f44bad3efac605f6a8a24dfa3de003c84016f3",
+    "report_pdf": "reports/runs/WORK-2026-11-11-008/package-v1/report.pdf",
+    "report_pdf_sha256": "681972e6e6fc7407ad74c8a911859f2b6113bad0f4dac79e96dfca3dd5859772",
+    "report_source": "reports/final-report/report.md",
+    "report_source_sha256": "1716153f9f3da5113b24643ac341ee2aafd65c868f35c8da9f4c89b87b67ade0",
+    "page_count": 28,
+    "page_format": "A4",
+    "embedded_figure_count": 10,
+    "required_headings_verified": 13,
+    "local_report_links_verified": 52,
+    "replacement_glyphs": 0,
+    "external_url_availability": "not_tested"
+  },
+  "frozen_input_hashes": {
+    "graph": {
+      "path": "data/processed/release-graph-v4/graph.json",
+      "sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90"
+    },
+    "works": {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    },
+    "edge_sample": {
+      "path": "reports/final-quality-sprint/edge-sample.json",
+      "sha256": "2e5cb63ffe6c6f93c349bd730953c4c06f5cb782e020f9611b7a6446a10ea00d"
+    },
+    "issues": {
+      "path": "reports/final-quality-sprint/issues.json",
+      "sha256": "1790008ffcf7dd2edc6bace4753a0d758dc88f9a3068c600cb0a283449a7e66f"
+    },
+    "sampling_manifest": {
+      "path": "reports/final-quality-sprint/sampling-manifest.json",
+      "sha256": "3c368bc5b1576d53ff50b49a3846866f65822f06b95c65f32133cd439a59fe90"
+    }
+  },
+  "validation": {
+    "focused_python_tests": {
+      "command": "uv run pytest -q tests/test_sprint_audit.py tests/test_edge_audit_split.py",
+      "result": "passed",
+      "passed": 47,
+      "exit_code": 0
+    },
+    "clean_checkpoint_python_suite": {
+      "command": "PYTHONPATH=/tmp/scientific-network-clean-008-f3b00d4/src /home/san/Code/scientific-network/.venv/bin/python -m pytest -q",
+      "result": "passed",
+      "passed": 644,
+      "skipped": 1,
+      "skip_reason": "existing empty CLI-stage parameterization",
+      "exit_code": 0
+    },
+    "graph_validation": {
+      "result": "passed",
+      "scope": "structural_only",
+      "graph_version": "release-d3c788c3114a",
+      "errors": 0,
+      "nonempty_relations": "10/10",
+      "semantic_accuracy": "not_measured"
+    },
+    "frontend_build": {
+      "command": "npm run build",
+      "result": "passed",
+      "exit_code": 0,
+      "note": "Existing ECharts chunk-size warning; no build failure"
+    },
+    "playwright_contracts": {
+      "command": "npx playwright test --config playwright.contracts.config.ts",
+      "passed": 8,
+      "exit_code": 0
+    },
+    "playwright_selected_browser_suites": {
+      "suites": [
+        "dashboard.spec.ts",
+        "analytics-layout.spec.ts",
+        "focus-labels.spec.ts",
+        "reproducibility.spec.ts"
+      ],
+      "passed": 37,
+      "exit_code": 0,
+      "environment": "local Vite frontend and read-only production API"
+    },
+    "zip_integrity_and_scope": {
+      "result": "passed",
+      "crc_test": "passed",
+      "manifest_hashes": "matched",
+      "raw_intermediate_processed_data": "excluded",
+      "local_credentials": "excluded",
+      "temporary_runs_and_caches": "excluded",
+      "uncommitted_task2d_files": "excluded"
+    },
+    "production_explorer": {
+      "read_only": true,
+      "page_status": "HTTP 200",
+      "live_topic_denominators_and_identity_note": "present in loaded Analytics bundle",
+      "deployed_source_commit": "not exposed",
+      "deployment_performed": false
+    },
+    "human_review": {
+      "status": "not_performed",
+      "reviewer_packets": 2,
+      "cases_per_reviewer": 27,
+      "answers_fabricated": false
+    },
+    "preservation_evidence": {
+      "current_graph_and_works_hashes_rechecked": true,
+      "frozen_sample_hash_rechecked": true,
+      "issue_ledger_hash_rechecked": true,
+      "broader_1040_file_and_341_cached_object_audit": "historical WORK-2026-11-11-007 evidence; not rerun"
+    }
+  },
+  "remaining_submission_details": [
+    "Official names and student IDs for both team members",
+    "Actual contribution summary for each team member",
+    "Exact course title and identifier; advisor/instructor details if required",
+    "Lecturer access requirements for the repository and public demo",
+    "Course-specific AI-use rules and disclosure wording",
+    "Submission destination and date"
+  ],
+  "external_submission": "not_performed",
+  "this_task_external_push_or_deployment": "not_performed"
+}

@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-11T23:24:41+07:00**. Plan: [D040](release-plan.md), with
+Updated: **2026-11-11T23:36:40+07:00**. Plan: [D040](release-plan.md), with
 [user-authorized deadline sprint amendment](decisions.md).
 Latest: [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-readiness.md).
 
@@ -17,7 +17,7 @@ Latest: [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-r
 - [x] Local 28-page PDF checks and focused sprint checkpoint.
 - [x] Human rubric distinguishes source consistency from independent verification; flagged cases added without changing frozen probability draws.
 - [x] Report claims and live Explorer denominator/identity notes reviewed.
-- [ ] Clean final-cleanup source package, PDF/HTML and receipt (in progress).
+- [x] Clean final-cleanup source package, PDF/HTML and hash-bound local receipt.
 - [ ] Actual optional human submissions and independently supported quality claims.
 - [ ] Personal/course facts and final authorized submission.
 
@@ -32,8 +32,8 @@ Prior uncommitted Task2D identity-review work remains separate and untouched.
 
 ## Next step
 
-Final-cleanup packaging is in progress from a scoped local checkpoint; the earlier
-WORK-007 package is historical. Optional human packets are available; no human
+The final-cleanup PDF/HTML/ZIP were rendered from clean checkpoint `f3b00d4`; the
+receipt binds their hashes. Optional human packets are available; no human
 judgments were supplied. Complete real team/course details before submission.
 The public Pages runtime shows the denominator and identity-sensitivity changes;
 no deployment or API/database change was made.

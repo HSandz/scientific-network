@@ -112,6 +112,12 @@ draft has **28 A4 pages**; [package receipt](package-receipt.json) binds the cle
 341 original OpenAlex objects and exact retained authorship/reference locators.
 Raw cache equality establishes reproducibility, not provider correctness.
 
+The later final-cleanup checkpoint `f3b00d4` reran the full suite, frontend build,
+Playwright contracts and selected browser regressions before producing the final
+local PDF/HTML/ZIP. See the concise [final-cleanup report](final-cleanup-report.md)
+and its [artifact receipt](final-cleanup-package-receipt.json); these supersede the
+WORK-007 package for local handoff without overwriting that historical receipt.
+
 ```bash
 uv sync --locked --group dev --extra analysis --extra report
 uv run pytest -q
