@@ -4,7 +4,7 @@ Work: WORK-2026-11-11-002. Scope: frontend presentation, tests and documentation
 Initial clean main/remote HEAD: `5e4da480dbdb6aff01edfd838744c4bb6d3e5856`.
 The matching production Pages deployment was `7bb4d637-2ec8-4a18-8a9a-8c2f380456de`.
 No API, database, graph, frozen analytics, dependencies or infrastructure edits.
-Delivery status: implementation complete; consolidated regression and delivery receipt below.
+Delivery status: implemented, deployed and verified on production; receipt below.
 All recorded times use Asia/Bangkok (+07:00).
 
 ## Before-change reproduction
@@ -132,5 +132,37 @@ HTTP API through a local read-only proxy. No database was started or modified.
 
 ## Production receipt
 
-Pending authorized frontend push, exact-SHA Pages confirmation, public browser
-smoke checks, API smoke checks and before/after read-only preservation comparisons.
+Implementation commit: `1b7b3ab36599fce1965d7e2a34437b5439bc52a0`, pushed to main.
+Cloudflare canonical production deployment:
+[`99ee8ec4-1269-4f28-a1de-b6ea19bdada8`](https://99ee8ec4.scientific-network-explorer.pages.dev),
+exact commit confirmed by Cloudflare project/deployment metadata. Deploy completed
+2026-11-11 12:09:40 +07:00. Public URL:
+<https://scientific-network-explorer.pages.dev>.
+
+- Public Chromium Explorer suites:5 passed (37.8s), covering navigation, all modes,
+  database search, expansion, edge evidence, table, paths, comparisons, responsive
+  drawers, theme persistence, Ego and empty filters.
+- Additional public browser checks instrument real canvas fillText without dev
+  hooks. Neighbor names shown:researchers9/12,organizations12/26,citations3/3,
+  heterogeneous12/22; every labeled neighbor agrees with API adjacency. Overview
+  labels zero; exit clears hover text; selection retains focus; zoom/reset work.
+- Production Analytics geometry:24 section/view/theme combinations (three sections,
+  four requested sizes,two themes), no horizontal overflow or unequal-row gaps;
+  sticky headings remain clear. Partnership selector/details/comparison verified.
+- A real production persistence-cell hover shows Chinese Academy of Sciences ↔
+  Institute of Software,2025,17 distinct supporting papers. Clicking it opens that
+  exact comparison. Local regressions additionally cover reordered/filtered rows,
+  missing values and markup injection. Full bridge40-row table/link and ranked-bar
+  clicks covered locally; public screenshots reviewed for layout and legibility.
+- No page errors in supplemental public checks. Production screenshot PNGs and
+  JSON receipts are in the ignored run directory (`production-*`).
+- Post-delivery API smoke:28 passed. Parsed health,graph summary and complete
+  analytics response exactly equal before/after snapshots. Release remains
+  `release-d3c788c3114a`,47,875 nodes /225,731 relationships.
+- Read-only Azure docker-inspect output exactly matches before:API/Neo4j container
+  IDs,start times and mount descriptors unchanged. No service restart or DB write.
+- GitHub frontend checks and Offline checks both passed for the implementation
+  commit. Azure deployment workflow was excluded by existing path filters.
+
+A subsequent documentation-only checkpoint records this receipt; it changes no
+frontend asset. Its automatic Pages delivery is checked separately at handoff.
