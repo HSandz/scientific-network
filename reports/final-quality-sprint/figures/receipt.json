@@ -1,0 +1,12 @@
+{
+  "graph_version": "release-d3c788c3114a",
+  "analysis_path": "reports/release-v4/analysis.json",
+  "analysis_sha256": "580d1a6dbc21ef2ac17b820979830f3de157fc1b04d1c89f2580731f141701c9",
+  "method": "reuse frozen venue-year denominators; no classifier run",
+  "all_papers": 13617,
+  "labeled_papers": 11575,
+  "artifact_sha256": {
+    "coverage.csv": "e0909a4b5de09590aecc9a01f72052a68441322ddc367bc9771b83f801426b28",
+    "coverage.png": "7f241296e41d6728cff8a951096a0db28a237a0e57e60c157490439203ab4003"
+  }
+}

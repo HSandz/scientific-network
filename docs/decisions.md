@@ -1218,3 +1218,29 @@ Topology stability and increased accepted counts do not establish semantic accur
 Task3 receives versioned exact accepted/unresolved ledgers with explicit identity
 ceilings; do not relax identity rules to meet an affiliation target. No Task3
 organization/affiliation resolver change is included.
+
+### D040 amendment — deadline quality sprint, supplemental Luna audit (2026-11-11)
+
+The user's deadline sprint authorizes a bounded new relation-stratified diagnostic,
+optional human packet, targeted metadata/topic review and local Explorer/report
+clarifications. It does not require waiting for Task2C human exports and does not
+authorize candidate promotion, production writes, frozen artifact replacement,
+push or deployment. See WORK-2026-11-11-007 and `reports/final-quality-sprint/`.
+
+Freeze eight accepted v4 edges per relation with seed 2026111107 and preserve
+relation populations/inclusion probabilities. Use two fresh `gpt-6-luna` contexts,
+reasoning `high`, for disjoint evidence reviews, plus one bounded metadata/topic
+diagnostic context. These are AI assessments with shared construction caches;
+no human gold, evaluator independence or overall graph accuracy is inferred.
+Per-relation Wilson intervals condition on these judgments and exclude judge error.
+The historical uniform release audit remains unchanged and separate. Optional
+human forms use 20 prespecified random audit units plus six separate diagnostics.
+
+Three topic-derived aggregates are challenged and one authorship remains unknown;
+all raw judgments and coordinator dispositions are retained. These exposed cases
+are development diagnostics only. No post-audit relabeling, threshold change,
+identity repair or graph rebuild follows. The seven DOI cases still lack verified
+equivalence; Task2B's exact-DOI guard already covers future acquisition. Safe changes
+are coverage/denominator explanations, a bounded topic-coverage figure from frozen
+analysis and qualification of identity-sensitive bridge shortlists. Historical
+results, graphs, source caches and prior Task2D user edits are preserved.

@@ -1,0 +1,22 @@
+{
+  "status": "completed_ai_review",
+  "reviewer_model": "gpt-6-luna",
+  "reasoning_effort": "high",
+  "runs": [
+    "/root/luna_edges_1",
+    "/root/luna_edges_2",
+    "/root/luna_diagnostics"
+  ],
+  "human_validation": "not_performed",
+  "reviewer_independence": "not_established",
+  "sample_units": 80,
+  "judgments": 80,
+  "all_review_evidence_ids_resolve": true,
+  "review_hashes": {
+    "luna-diagnostics.json": "f0471c74f7355728438823153eeb77e61ef3b4feb44e85b356ebc0eac972f851",
+    "luna-edges-1.jsonl": "3025a23cbe9b972e1bf5b515aeb3b11db766ece5d10da610c65c4a53b1438419",
+    "luna-edges-2.jsonl": "848a4db455dbd2eaba4309d1b4d891e23986173599631e6738d57d406d0369fa"
+  },
+  "sample_sha256": "2e5cb63ffe6c6f93c349bd730953c4c06f5cb782e020f9611b7a6446a10ea00d",
+  "sampling_manifest_sha256": "3ff3a084edb6253bae2f009becab4fefde06e775d514fbf9f0f4e21408a19a4e"
+}

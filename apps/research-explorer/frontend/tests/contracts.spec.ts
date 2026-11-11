@@ -278,3 +278,16 @@ test('interactive budgets stay independent of overview and tooltip names are esc
   expect(escapeTooltip('<img onerror="x"> & \'a\'')).toBe('&lt;img onerror=&quot;x&quot;&gt; &amp; &#39;a&#39;');
   expect(pairKey('b','a')).toBe(pairKey('a','b'));
 });
+
+// Invented counts deliberately differ: raw topic count is never the corpus denominator.
+test("topic tooltip separates topic support, labeled denominator and all-paper coverage", async () => {
+  const { topicTooltip } = await import("../src/lib/analytics");
+  const row = { year: 2025, venue_id: "venue:test", venue: "Test", topic_id: "topic:test", topic: "A < B", paper_count: 27, fractional_paper_count: 20, labeled_paper_count: 80, all_core_paper_count: 100, topic_label_coverage: .8, share_of_fractional_topic_mass: .25 };
+  const text = topicTooltip(row);
+  expect(text).toContain("25.00% share among labeled papers");
+  expect(text).toContain("27 papers assigned this topic");
+  expect(text).toContain("80 labeled denominator / 100 all papers");
+  expect(text).toContain("80.00% coverage");
+  expect(text).toContain("A &lt; B");
+  expect(topicTooltip({ ...row, topic_label_coverage: NaN })).toContain("Unavailable coverage");
+});
