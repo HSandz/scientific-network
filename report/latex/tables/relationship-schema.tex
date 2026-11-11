@@ -1,27 +1,28 @@
-\begin{landscape}
-\begin{table}[p]
-  \centering
-  \caption{The ten graph predicates, their direction, evidence class, and release
-  support rule. Symmetric collaboration predicates are stored once in canonical
-  order and analyzed as undirected.}
+\Needspace{11cm}
+\begingroup
+  \centering\captionsetup{hypcap=false}
+  \captionof{table}[Ten graph relationship types]{The ten graph relationship types.
+  Collaboration pairs are stored in canonical order and analyzed as undirected.
+  Detailed acceptance and weighting rules appear in Appendix~A and Section~3.7.}
   \label{tab:relationship-schema}
   \small
-  \begin{tabularx}{\linewidth}{>{\ttfamily\raggedright\arraybackslash}p{3.55cm}p{4.3cm}p{2.0cm}X}
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.0cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1.55cm}>{\raggedright\arraybackslash}X}
     \toprule
-    \textbf{Predicate} & \textbf{Source $\rightarrow$ target} &
-    \textbf{Class} & \textbf{Meaning and acceptance rule}\\
+    \textbf{Relation} & \textbf{Source $\rightarrow$ target} &
+    \textbf{Evidence} & \textbf{Semantic rule}\\
     \midrule
-    AUTHORED & Researcher $\rightarrow$ Paper & Observed & Compatible resolved identity at the official byline position; preserve position and roster name.\\
-    AFFILIATED\_WITH & Researcher $\rightarrow$ Organization & Observed & Accepted author--paper--organization observations, aggregated only after paper-specific triples are preserved; not employment duration.\\
-    PUBLISHED\_IN & Paper $\rightarrow$ Venue & Observed & Official in-scope proceedings record, one primary series per core paper.\\
-    CITES & Paper $\rightarrow$ Paper & Observed & Explicit reference to a verified, deduplicated target; direction is citing to cited.\\
-    HAS\_TOPIC & Paper $\rightarrow$ Topic & Inferred & One to three supported leaf labels from the frozen classifier, or abstention.\\
-    SUBTOPIC\_OF & Topic $\rightarrow$ Topic & Curated & Frozen approved leaf-to-parent taxonomy relation.\\
-    COAUTHORED\_WITH & Researcher $\leftrightarrow$ Researcher & Derived & Distinct resolved people share an accepted core paper; fractional contribution uses the full byline denominator.\\
-    COLLABORATED\_WITH & Organization $\leftrightarrow$ Organization & Derived & One core paper supports two organizations through two distinct authors with aligned paper-specific affiliations; a sole dual-affiliated author is insufficient.\\
-    RESEARCHES\_TOPIC & Researcher $\rightarrow$ Topic & Derived & At least two distinct accepted core papers by the researcher carry the leaf topic.\\
-    \makecell[l]{\texttt{CONTRIBUTES\_TO\_}\\\texttt{TOPIC}} & Organization $\rightarrow$ Topic & Derived & At least three distinct accepted core papers carry the leaf topic and have paper-specific organization support.\\
+    \texttt{AUTHORED} & Researcher $\rightarrow$ Paper & Observed & Compatible identity at an official byline position.\\
+    \texttt{AFFILIATED\_WITH} & Researcher $\rightarrow$ Organization & Observed & Aggregate paper-specific affiliation triples.\\
+    \texttt{PUBLISHED\_IN} & Paper $\rightarrow$ Venue & Observed & Official in-scope proceedings record.\\
+    \texttt{CITES} & Paper $\rightarrow$ Paper & Observed & Captured in-scope reference; citing to cited.\\
+    \texttt{HAS\_TOPIC} & Paper $\rightarrow$ Topic & Inferred & One to three leaf topics, or abstention.\\
+    \texttt{SUBTOPIC\_OF} & Topic $\rightarrow$ Topic & Curated & Frozen leaf-to-parent taxonomy.\\
+    \texttt{COAUTHORED\_WITH} & Researcher $\leftrightarrow$ Researcher & Derived & Shared core paper with accepted authorship.\\
+    \texttt{COLLABORATED\_WITH} & Organization $\leftrightarrow$ Organization & Derived & Core paper supported by two distinct authors' affiliations.\\
+    \texttt{RESEARCHES\_TOPIC} & Researcher $\rightarrow$ Topic & Derived & At least two distinct accepted core papers with the topic.\\
+    \makecell[l]{\texttt{CONTRIBUTES\_TO\_}\\\texttt{TOPIC}} & Organization $\rightarrow$ Topic & Derived & At least three distinct core papers with topic and organization support.\\
     \bottomrule
-  \end{tabularx}
-\end{table}
-\end{landscape}
+  \end{tabularx}\par
+\endgroup

@@ -37,7 +37,25 @@
 \setcitestyle{authoryear,round,semicolon}
 \usepackage{xurl}
 \usepackage{seqsplit}
-\usepackage{pdflscape}
+\usepackage[section]{placeins}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{1}
+\renewcommand{\cftsecfont}{\small}
+\setlength{\cftbeforechapskip}{0.65em}
+\setlength{\cftbeforesecskip}{0pt}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.65}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -63,10 +81,10 @@
   {\normalfont\bfseries\color{UETBlue}}
   {\large\MakeUppercase{\chaptername}\ \thechapter}
   {0.5ex}
-  {\titlerule[0.7pt]\vspace{0.8ex}\huge}
+  {\titlerule[0.7pt]\vspace{0.8ex}\huge\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000}
   [\vspace{0.6ex}\titlerule]
 \titlespacing*{\chapter}{0pt}{-16pt}{22pt}
-\titleformat{\section}{\Large\bfseries\color{UETBlue}}{\thesection}{0.8em}{}
+\titleformat{\section}{\Large\bfseries\color{UETBlue}\raggedright}{\thesection}{0.8em}{}
 \titleformat{\subsection}{\large\bfseries\color{Slate}}{\thesubsection}{0.8em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\color{Slate}}{\thesubsubsection}{0.7em}{}
 \graphicspath{{figures/}{assets/}}
@@ -78,3 +96,5 @@
 \newcommand{\modelid}[1]{\nolinkurl{#1}}
 \newcommand{\hashid}[1]{\texttt{\seqsplit{#1}}}
 \newcommand{\VietnameseText}[1]{{\fontencoding{T5}\selectfont #1}}
+
+\AtBeginEnvironment{thebibliography}{\small\setstretch{1.0}\setlength{\bibsep}{2pt}}

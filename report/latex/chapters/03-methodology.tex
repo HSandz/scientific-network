@@ -1,4 +1,4 @@
-\chapter{Data and Graph Construction Methodology}
+\chapter{Graph Construction Methodology}
 \label{chap:method}
 
 \section{Corpus definition and data sources}
@@ -22,15 +22,24 @@ while OpenAlex is an enrichment source subject to matching and identity checks.
 
 \section{Acquisition, matching, and duplicate handling}
 
-For each roster record, the acquisition code derives a DOI from the official
-record URL using venue-specific rules. It requests OpenAlex works by DOI rather
-than searching by title. A candidate work is accepted only if its returned DOI
-agrees exactly, its normalized title similarity is at least 0.90, and its
-authorship count matches the official byline count. Title similarity uses
-normalized strings and a sequence-matching ratio; a near match is retained as a
-flag for inspection. When multiple works share a DOI, the official landing-page
-URL can resolve the duplicate only if exactly one matching candidate passes the
-checks. Otherwise the paper remains in review.
+For each roster record, acquisition derives a DOI from the official record
+URL and requests OpenAlex works through that DOI route rather than title search.
+The historical acquisition underlying frozen v4 checked normalized title
+similarity (at least 0.90) and authorship-count agreement. Near-exact titles were
+flagged; official landing-page URLs helped disambiguate duplicate DOI results.
+However, a singleton fallback omitted the returned-DOI equality check. A later
+source census found seven accepted work records whose returned DOI differs from
+the roster-derived DOI, affecting 21 byline positions.
+
+The subsequent acquisition fix enforces exact requested/returned DOI equality,
+including singleton retries and duplicate selection. This current guard does
+not retroactively describe v4: the frozen graph was not rebuilt from corrected
+source records. Investigation found proceedings and later-journal DOIs with
+matching titles and bylines, but no explicit deposited version relation.
+All seven cases remain ambiguous; neither work equivalence nor transfer of
+historical authorship/affiliation evidence is verified. The unchanged match
+count below includes these records. The source census and reconciliation ledger
+are identified in Appendix~B.
 
 The measured acquisition matched \num{13606} of \num{13617} roster papers
 (99.92\%). Eleven records remain in review: nine duplicate-DOI cases without an
@@ -78,9 +87,13 @@ are preserved are the graph's researcher--organization edges aggregated. This
 prevents the paper-level institution list from being copied to every author and
 avoids treating a current profile as evidence of historical affiliation.
 
-The evidence supports \num{48259} institution assignments among \num{50437}
-accepted authorships. That is 95.68\% conditional coverage of accepted authors,
-but the course coverage denominator includes withheld matched byline positions:
+Of \num{50437} accepted authorship positions, \num{48259} have at least one
+institution assignment: 95.68\% conditional coverage of accepted positions.
+The source census separately counts \num{74485} author--institution assignment
+observations across matched bylines, including multiple institutions per
+position and positions withheld from the graph. That source count is not a count
+of accepted positions or aggregate researcher--organization edges.
+The release coverage denominator includes withheld matched byline positions:
 \num{48259}/\num{65469}=73.71\%. Against all official positions the ratio is
 73.67\%. Both project-level measures fall below the 80\% target. The conditional
 percentage is useful as a source diagnostic but does not replace the coverage
@@ -118,8 +131,8 @@ edge has a deterministic identity based on predicate and endpoints, accepted
 status, evidence IDs, method version, and graph version.
 
 \input{tables/relationship-schema.tex}
+\FloatBarrier
 
-\input{figures/data-pipeline.tex}
 
 \section{Derived relationships and weights}
 
@@ -152,3 +165,5 @@ paper. Weighted shortest-path calculations use the inverse of positive
 fractional edge strength. The results report projection boundaries and seeds so
 that a number such as betweenness is interpretable only under its stated graph
 and distance rule.
+
+\input{figures/data-pipeline.tex}

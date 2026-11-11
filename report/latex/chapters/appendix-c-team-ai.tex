@@ -1,4 +1,4 @@
-\chapter{Team Allocation and AI-Use Disclosure}
+\chapter{Team Contributions and AI Use}
 \label{app:team-ai}
 
 \section{Human team allocation}
@@ -9,19 +9,20 @@ and the fields below must be completed from official records before submission.
 The illustrative role descriptions in the project records are not evidence of
 who performed the work.
 
-\begin{table}[tbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Human contribution record to be completed by the team.}
+  \caption[Editable human contribution record]{Human contribution record to be completed by the team.}
   \label{tab:team-contributions}
   \begin{tabularx}{0.95\textwidth}{p{2.2cm}p{4.1cm}X}
     \toprule
     \textbf{Member} & \textbf{Name / student ID} & \textbf{Actual contribution summary}\\
     \midrule
-    Member 1 & [Insert from official record] & [Describe work actually completed]\\[1.2em]
-    Member 2 & [Insert from official record] & [Describe work actually completed]\\[1.2em]
+    Member 1 & \VietnameseText{\TeamMemberOneName}\par Student ID: \TeamMemberOneID & \TeamMemberOneContribution\\[1.2em]
+    Member 2 & \VietnameseText{\TeamMemberTwoName}\par Student ID: \TeamMemberTwoID & \TeamMemberTwoContribution\\[1.2em]
     \bottomrule
   \end{tabularx}
 \end{table}
+\FloatBarrier
 
 \section{AI assistance and evaluation disclosure}
 
@@ -32,10 +33,11 @@ sprint used two GPT-6-Luna contexts with high reasoning effort. Both audits reus
 construction sources; evaluator independence and human validation remain
 unestablished.
 
-For this report, GPT-6.1 Sol synthesized the evidence, wrote the manuscript, and
-checked the build. A delegated read-only reviewer checked selected claims and
-references, but its task exposed no model or effort override and its inherited
-settings are unavailable. The requested GPT-6-Luna High configuration is
-therefore unverified. This remains AI editorial input, not human validation.
+GPT-6.1 Sol prepared the report and performed the subsequent scientific and
+visual editing pass, including full rendered-page inspection. For that editing
+pass, a fresh GPT-6-Luna context was explicitly configured with high reasoning
+effort for bounded, read-only factual review. Report-only plotting scripts use
+frozen v4 artifacts. This editorial review is AI assistance, not human validation
+or a new semantic audit.
 The team must confirm course disclosure requirements; this draft claims no
 lecturer approval of AI-only evaluation.

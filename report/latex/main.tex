@@ -42,16 +42,19 @@
 \pagenumbering{roman}
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-This report describes the construction and analysis of a versioned scientific knowledge graph for main-track papers published by AAAI and IJCAI from 2021 through 2025. The frozen production graph, version \GraphVersion, contains 13,617 papers represented by 47,875 nodes and 225,731 relationships across five entity labels and ten predicates. Official proceedings rosters define the corpus; OpenAlex works are matched through roster-derived DOIs and checked for title and byline-count agreement. Researcher identities use compatible, position-specific OpenAlex authorships, with ORCID evidence retained and conflicting identifiers withheld. Affiliations are stored as author--paper--organization observations before aggregation. Topic labels come from a frozen sentence-embedding classifier over titles and abstracts, with abstention for uncertain papers.
+This report describes the construction and analysis of a versioned scientific knowledge graph for main-track papers published by AAAI and IJCAI from 2021 through 2025. The frozen production graph, version \GraphVersion, contains 13,617 papers represented by 47,875 nodes and 225,731 relationships across five entity labels and ten predicates. Official proceedings rosters define the corpus; OpenAlex works are requested through roster-derived DOIs and checked for title and byline-count agreement, with seven unresolved historical returned-DOI disagreements. Researcher identities use compatible, position-specific OpenAlex authorships, with ORCID evidence retained and conflicting identifiers withheld. Affiliations are stored as author--paper--organization observations before aggregation. Topic labels come from a frozen sentence-embedding classifier over titles and abstracts, with abstention for uncertain papers.
 
 The graph separates observed bibliographic relationships, inferred topic edges, curated taxonomy links, and relationships derived from accepted core-paper support. Network analysis covers researcher and organization collaboration, in-corpus citations, topic portfolios, components, communities, centrality, and temporal distributions. Structural validation and Neo4j integrity checks pass in the recorded release evidence. Topic coverage is 85.0\% (11,575 of 13,617 papers); author--paper affiliation coverage is 73.71\% of matched byline positions and misses the project’s 80\% target. A prospective AI-assessed edge audit reports 193 supported judgments among 200 uniformly sampled accepted edges, with a Wilson 95\% interval of 92.95\%--98.29\%. Human validation was not performed, reviewer independence is not established, and verified course accuracy therefore remains unestablished. Historical topic-label agreement is modest and based on AI-assigned references. Results are descriptive of the selected venues and graph version; they do not establish current employment, causal influence, or field-wide trends.
 
 \vspace{0.6em}
 \noindent\textbf{Keywords:} scientific knowledge graph; bibliographic network; co-authorship; entity resolution; topic classification; provenance; network analysis; AAAI; IJCAI.
 
+\begingroup
+\small\setstretch{1.04}
 \tableofcontents
 \listoffigures
 \listoftables
+\endgroup
 
 \clearpage
 \pagenumbering{arabic}
@@ -65,10 +68,14 @@ The graph separates observed bibliographic relationships, inferred topic edges, 
 \input{chapters/08-conclusion.tex}
 
 \appendix
+\renewcommand{\chaptername}{Appendix}
 \input{chapters/appendix-a-schema.tex}
 \input{chapters/appendix-b-reproduction.tex}
 \input{chapters/appendix-c-team-ai.tex}
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{plainnat}
 \bibliography{references}
 \end{document}

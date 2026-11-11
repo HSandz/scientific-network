@@ -1,12 +1,14 @@
 \chapter{Full Graph Schema}
 \label{app:schema}
+\begingroup\small\setstretch{1.0}\titlespacing*{\section}{0pt}{12pt}{6pt}
 
 \section{Entity labels}
 
-\begin{table}[tbp]
+\begin{table}[!hbtp]
   \centering
-  \caption{Node labels and their role in graph \GraphVersion.}
+  \caption[Entity labels and core properties]{Node labels and their role in graph \GraphVersion.}
   \label{tab:node-labels}
+  \small
   \begin{tabularx}{0.92\textwidth}{>{\bfseries}p{2.6cm}rX}
     \toprule
     Label & Count & Meaning and core properties\\
@@ -19,6 +21,7 @@
     \bottomrule
   \end{tabularx}
 \end{table}
+\FloatBarrier
 
 \section{Predicate inventory}
 
@@ -30,11 +33,10 @@ reported separately by evidence class.
 
 \section{Identity, provenance, and derivation rules}
 
-Semantic edge identity is based on the tuple (predicate, source ID, target ID).
-Symmetric relationships are stored once in lexicographically canonical endpoint
-order. Each accepted edge points to one or more EvidenceRecord entries and
-records a method version and graph version. Source evidence includes the URL,
-retrieval time, raw-response SHA-256, locator, and any permitted excerpt.
+An accepted edge is identified by (predicate, source ID, target ID), with
+symmetric endpoints in canonical ID order. It records evidence IDs, method and
+graph versions. Source evidence retains URLs, retrieval times, raw-response
+hashes, locators and permitted excerpts.
 
 An affiliation triple is specific to one researcher, one paper, and one
 organization; aggregate Researcher--Organization edges retain paper support.
@@ -44,8 +46,8 @@ positions in the denominator. R8 excludes a single author's multiple
 affiliations as evidence of organization collaboration. R9 and R10 thresholds
 count distinct accepted works, not alternate versions or repeated records.
 
-The five graph projections remain separate. In particular, the directed citation
-network is not combined with undirected collaboration in a heterogeneous
-PageRank interpretation. Years and countries are properties, not additional
-node labels. Unresolved identity candidates and raw source records remain outside
-the accepted domain graph.
+The five projections remain separate: directed citation rankings do not mix
+with undirected collaboration. Year and country are properties. Unresolved
+identities and raw source records are outside the accepted domain graph.
+
+\endgroup

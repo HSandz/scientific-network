@@ -1,26 +1,33 @@
+\begingroup\hyphenpenalty=10000\relax\exhyphenpenalty=10000\relax
 \begin{tikzpicture}[
-  font=\small,
-  box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,text width=2.8cm,minimum height=1.05cm,inner sep=4pt},
-  store/.style={draw=UETGold,fill=yellow!8,rounded corners=3pt,align=center,text width=2.8cm,minimum height=1.05cm,inner sep=4pt},
-  app/.style={draw=Slate,fill=white,rounded corners=3pt,align=center,text width=3.2cm,minimum height=1.05cm,inner sep=4pt},
-  arrow/.style={-{Latex[length=2.2mm]},thick,color=UETBlue},
-  node distance=5mm and 5mm
+  font=\small,yscale=0.85,
+  box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,
+    text width=6.2cm,minimum height=1.4cm,inner sep=5pt},
+  store/.style={box,draw=UETGold,fill=UETGold!8,text width=4.1cm,minimum height=1.8cm},
+  wide/.style={box,text width=13.5cm,minimum height=1.1cm},
+  layer/.style={font=\small\bfseries,color=Slate,anchor=west},
+  arrow/.style={-{Latex[length=2.1mm]},semithick,color=UETBlue}
 ]
-  \node[box] (inputs) {Frozen rosters,\\source cache,\\and configs};
-  \node[box,right=of inputs] (pipeline) {Python pipeline\\DOI matching, resolution,\\topics and validation};
-  \node[store,right=of pipeline] (graph) {Versioned graph JSON\\typed entities and\\evidence ledgers};
-  \node[store,right=of graph] (analysis) {Analysis results\\projections, metrics,\\and figures};
-  \node[store,below=13mm of graph] (neo4j) {Neo4j 5.26\\Community v4 store};
-  \node[store,below=13mm of analysis] (sqlite) {SQLite evidence\\affiliation ledger};
-  \node[app,below=13mm of $(neo4j)!0.5!(sqlite)$] (api) {FastAPI backend\\read-only query service};
-  \node[app,below=of api] (frontend) {React Explorer\\TypeScript, Sigma.js\\Graphology + ECharts};
-  \draw[arrow] (inputs) -- (pipeline);
-  \draw[arrow] (pipeline) -- (graph);
-  \draw[arrow] (graph) -- (analysis);
-  \draw[arrow] (graph.south) -- (neo4j.north);
-  \draw[arrow] (analysis.south) -- (sqlite.north);
-  \draw[arrow] (neo4j.south) -- (api.north west);
-  \draw[arrow] (sqlite.south) -- (api.north east);
-  \draw[arrow,dashed] (analysis.east) -- ++(5mm,0) |- (api.east);
-  \draw[arrow] (api) -- (frontend);
+  \node[layer] at (-7.2,1.2) {OFFLINE CONSTRUCTION};
+  \node[box] (input) at (-3.7,0) {\textbf{Source inputs}\\Frozen rosters and source cache\\Versioned configuration};
+  \node[box] (pipeline) at (3.7,0) {\textbf{Python processing pipeline}\\Matching, identity and topics\\Graph building and validation};
+  \draw[arrow] (input) -- (pipeline);
+  \node[wide] (graph) at (0,-1.8) {\textbf{Versioned graph and evidence artifacts}\\
+    Graph JSON, accepted edges, source evidence and author--paper--organization records};
+  \draw[arrow] (pipeline.south) -- (pipeline.south |- graph.north);
+  \node[store] (neo4j) at (-5,-4.15) {\textbf{Neo4j Community}\\Isolated release graph\\Typed graph queries};
+  \node[store] (sqlite) at (0,-4.15) {\textbf{SQLite ledger}\\Evidence / affiliations\\Graph JSON index};
+  \node[store] (analysis) at (5,-4.15) {\textbf{Offline analysis}\\Frozen projection metrics\\Report figure artifacts};
+  \draw[arrow] (graph.south -| neo4j.north) -- (neo4j.north);
+  \draw[arrow] (graph.south) -- (sqlite.north);
+  \draw[arrow] (graph.south -| analysis.north) -- (analysis.north);
+  \node[wide] (api) at (0,-6.65) {\textbf{Serving layer: FastAPI backend}\\
+    Read-only graph/evidence queries and precomputed analytics};
+  \draw[arrow] (neo4j.south) -- (neo4j.south |- api.north);
+  \draw[arrow] (sqlite.south) -- (api.north);
+  \draw[arrow,dashed] (analysis.south) -- (analysis.south |- api.north);
+  \node[wide] (react) at (0,-8.95) {\textbf{Presentation layer: React / TypeScript Explorer}\\
+    Sigma.js + Graphology: graph views\qquad ECharts: analytical views};
+  \draw[arrow] (api.south) -- (react.north);
 \end{tikzpicture}
+\endgroup
