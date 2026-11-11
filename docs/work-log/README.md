@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-12-001 — Final repository stabilization](2026-11-12-001-final-stabilization.md): 650 Python tests passed, v4 structural/hash checks passed, two DOI regressions and a local Explorer filter fix; frozen packets and uncommitted Task2D work preserved; lecturer access remains blocked by private repository visibility.
+
 - [WORK-2026-11-11-009 — Final cleanup and LaTeX research report](2026-11-11-009-latex-research-report.md): post-blind fallback and instruction fixes; regenerated frozen human-review pages; 50-page production-v4 report built in `report/latex/build/main.pdf`; team/course placeholders and human validation remain outstanding.
 
 - [WORK-2026-11-11-008 — Final cleanup and submission readiness](2026-11-11-008-final-cleanup-submission-readiness.md): rubric/source-evidence correction, additive flagged diagnostics, 644 passing tests, 28-page clean local package with hash receipt; human judgments and team/course details remain pending.
