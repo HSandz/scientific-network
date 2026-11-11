@@ -63,3 +63,23 @@ text extraction and portable annotations. The coverage figure and its rendered
 page were visually inspected. This intermediate draft archive includes tracked
 working-tree bytes, including prior Task2D edits; it is not the final source bundle.
 A clean local checkpoint snapshot is used for the isolated final draft package.
+
+## Isolated final draft package
+
+A detached clean checkout of **198e108** was packaged with the same renderer:
+
+```bash
+git worktree add --detach /tmp/scientific-network-sprint-198e108 198e108
+uv run python -m scientific_network.reporting.release_package \
+  --report /tmp/scientific-network-sprint-198e108/reports/final-report/report.md \
+  --output-dir reports/runs/WORK-2026-11-11-007/checkpoint-package
+```
+
+Exit 0: 28 A4 pages, ten images, 13 headings. The clean snapshot's full Python
+suite also passed **635 tests / one skip**, using the existing venv and explicit
+snapshot `PYTHONPATH`; this excludes unrelated uncommitted Task2D changes.
+[Receipt](package-receipt.json) binds the exact source commit, ZIP/manifest hashes
+and local PDF/HTML paths. The 75 MiB local draft ZIP contains only permitted
+checkpoint source bytes plus the rendered report; it is not published or submitted.
+Personal/course facts still need completion. The temporary checkout was removed
+after verification; exact commands are retained here and in the run logs.

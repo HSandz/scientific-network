@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-11T22:16:27+07:00**. Plan: [D040](release-plan.md), with
+Updated: **2026-11-11T22:18:19+07:00**. Plan: [D040](release-plan.md), with
 [user-authorized deadline sprint amendment](decisions.md).
 Latest: [WORK-2026-11-11-007](work-log/2026-11-11-007-final-quality-sprint.md).
 
@@ -29,7 +29,7 @@ Prior uncommitted Task2D identity-review work remains separate and untouched.
 
 ## Next step
 
-Finish the checked local PDF and checkpoint, then supply real team/course details.
+Checked checkpoint-based PDF/ZIP is ready locally; supply real team/course details.
 Optional human packets are available; their absence does not block feasible local
 work. Frontend publication requires explicit authorization and the existing Pages
 workflow; no API/database deployment is needed for these presentation changes.
