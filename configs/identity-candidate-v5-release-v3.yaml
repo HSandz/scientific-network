@@ -1,0 +1,25 @@
+version: identity-candidate-v5-release-v3
+status: development_candidate_not_release
+decision: D040-user-v5-amendment-2026-11-11
+source_graph: data/processed/release-graph-v4/graph.json
+source_freeze: reports/release-v4/content-freeze-v4.json
+works: data/interim/release-v1/works.jsonl
+cache_dir: data/raw/openalex-release-v1
+quality: configs/quality-release-v1.yaml
+analysis: configs/analysis-release-v1.yaml
+baseline_audit: reports/quality-v5/baseline-audit.json
+policies:
+  work_doi_must_agree: true
+  raw_name_required_for_recovery: true
+  unique_raw_position_anchor_on_damaged_byline: true
+  duplicate_provider_positions: ambiguous
+  profile_orcid_conflict_without_paper_raw_orcid: ambiguous
+  provider_id_incompatible_name_variants: ambiguous_without_paper_identifier
+  malformed_paper_raw_orcid: ambiguous
+  missing_provider_id_without_paper_raw_orcid: unresolved
+  names_or_coauthors_alone_merge: false
+  paper_raw_orcid_name_expansion: ordered_full_tokens_same_endpoints_and_canonical_agreement
+  topic_citation_publication_taxonomy: preserve_exact
+  semantic_accuracy: unmeasured_without_independent_references
+  existing_affiliation_support: preserve_exact_for_retained_positions
+  multiple_paper_raw_orcids_with_compatible_names: ambiguous

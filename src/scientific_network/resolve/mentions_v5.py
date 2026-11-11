@@ -16,7 +16,7 @@ from scientific_network.collect.openalex_release import normalize_doi, title_sim
 from scientific_network.resolve.release import _roster_evidence, _work_evidence, short_id
 from scientific_network.resolve.release_identity import collect_identity_evidence, valid_orcid
 
-METHOD = "paper-mention-identity-v5.1"
+METHOD = "paper-mention-identity-v5.2"
 
 
 def ordered_tokens(name):
@@ -134,7 +134,21 @@ def resolve_mentions(rows, baseline=None):
             if n.label == "Researcher" and valid_orcid(n.properties.get("orcid")):
                 baseline_claims[valid_orcid(n.properties["orcid"])].add(n.id)
     raw_targets, raw_conflicts, aliases = {}, {}, {}
+    provider_raw_mentions=defaultdict(list)
+    for orcid,group in raw_groups.items():
+        for paper,index,aid,name in group:
+            if aid:
+                provider_raw_mentions[aid].append((orcid,name))
+    ambiguous_accounts=set()
+    for aid,group in provider_raw_mentions.items():
+        if any(left!=right and (positional_name(a,b) or anchored_middle_expansion(a,b,a)
+                                or anchored_middle_expansion(b,a,b))
+               for left,a in group for right,b in group):
+            ambiguous_accounts.update(orcid for orcid,name in group)
     for orcid, group in sorted(raw_groups.items()):
+        if orcid in ambiguous_accounts:
+            raw_conflicts[orcid]="multiple_paper_orcid_accounts_identity_uncertain"
+            continue
         names = [g[3] for g in group]
         same_paper = Counter(g[0] for g in group)
         if any(n > 1 for n in same_paper.values()):
