@@ -100,7 +100,10 @@ These are reused measured analyses, not independently verified identity findings
 
 ## Validation and reproducibility
 
-Final outcomes and commands: [validation.md](validation.md).
+Final outcomes and commands: [validation.md](validation.md). The checked local
+draft has **28 A4 pages**; [package receipt](package-receipt.json) binds the clean
+`198e108` checkpoint and local PDF/ZIP paths. The clean snapshot also passes
+635 Python tests with one skip, excluding unrelated Task2D edits.
 [Preservation](preservation-verification.json) checks 1,040 protected files,
 341 original OpenAlex objects and exact retained authorship/reference locators.
 Raw cache equality establishes reproducibility, not provider correctness.

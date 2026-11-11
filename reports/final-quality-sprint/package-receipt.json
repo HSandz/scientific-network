@@ -1,0 +1,25 @@
+{
+  "archive": "/home/san/Code/scientific-network/reports/runs/WORK-2026-11-11-007/checkpoint-package/scientific-network-submission.zip",
+  "archive_sha256": "fec4d01349511ff0877aef9c0f8159652eb30b7769c92f8ba396e454dc08c5ad",
+  "manifest": "/home/san/Code/scientific-network/reports/runs/WORK-2026-11-11-007/checkpoint-package/submission-manifest.json",
+  "manifest_sha256": "f8030e3d931944b565e3583cbe94362549e17add24bbf4f2ecf61b9bed1f3911",
+  "source_commit": "198e108b7099c55750db3e42564e63972e02a9f8",
+  "member_count": 1750,
+  "report_html": "/home/san/Code/scientific-network/reports/runs/WORK-2026-11-11-007/checkpoint-package/report.html",
+  "report_pdf": "/home/san/Code/scientific-network/reports/runs/WORK-2026-11-11-007/checkpoint-package/report.pdf",
+  "page_count": 28,
+  "image_count": 10,
+  "section_headings_verified": 13,
+  "external_url_availability": "not_tested",
+  "snapshot_worktree_clean": true,
+  "checkpoint_tests": {
+    "passed": 635,
+    "skipped": 1,
+    "exit_code": 0,
+    "command": "PYTHONPATH=/tmp/scientific-network-sprint-198e108/src /home/san/Code/scientific-network/.venv/bin/python -m pytest -q",
+    "cwd": "/tmp/scientific-network-sprint-198e108"
+  },
+  "package_scope": "clean committed checkpoint; excludes unrelated Task2D working-tree changes",
+  "human_validation": "not_performed",
+  "submission_status": "local_draft_personal_course_facts_pending"
+}
