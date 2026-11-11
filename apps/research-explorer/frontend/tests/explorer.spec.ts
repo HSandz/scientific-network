@@ -6,6 +6,68 @@ const ARTIFACT_DIR =
   "/home/san/.gemini/antigravity/brain/012e53a9-c43f-4eab-8ce5-fcf839a45122";
 
 test.describe("Scientific Network Explorer E2E Verification", () => {
+  test("paper filters use a compatible heterogeneous slice and clear when switching away", async ({ page }) => {
+    const requests: URLSearchParams[] = [];
+    const summary = {
+      graph_version: "filter-contract-fixture",
+      graph_sha256: "0".repeat(64),
+      database_verified: true,
+      warnings: [],
+      nodes_by_label: { Researcher: 0, Paper: 0, Organization: 0, Topic: 0, Venue: 0 },
+      edges_by_relation: {},
+      edges_by_evidence_kind: {},
+      total_nodes: 0,
+      total_edges: 0,
+      unique_core_factual_edges: 0,
+      core_papers: 0,
+      resolved_core_researchers: 0,
+      quality: {},
+      size_gates: {},
+      scientific_caveats: [],
+    };
+    const view = {
+      view: "heterogeneous",
+      title: "Filter contract fixture",
+      description: "Invented UI fixture",
+      relation: "MULTI_RELATION",
+      directed: true,
+      full_node_count: 0,
+      full_edge_count: 0,
+      displayed_node_count: 0,
+      displayed_edge_count: 0,
+      score_name: "fixture",
+      color_meaning: "fixture",
+      metric_scope_note: "Invented fixture only",
+      scientific_caveat: "Invented fixture only",
+      layout_seed: 1,
+      applied_filters: {},
+      available_communities: [],
+      nodes: [],
+      edges: [],
+    };
+
+    await page.route("**/api/graph/summary", (route) => route.fulfill({ json: summary }));
+    await page.route("**/api/views/heterogeneous**", async (route) => {
+      requests.push(new URL(route.request().url()).searchParams);
+      await route.fulfill({ json: view });
+    });
+    await page.goto("/");
+    await expect(page.getByTestId("filter-preset")).toHaveValue("topic_taxonomy_ecosystem");
+
+    await page.getByTestId("filter-venue").selectOption("venue:ijcai");
+    await expect(page.getByTestId("filter-preset")).toHaveValue("researcher_paper_topic");
+    await expect.poll(() => requests.at(-1)?.get("venue")).toBe("venue:ijcai");
+    expect(requests.at(-1)?.get("preset")).toBe("researcher_paper_topic");
+
+    await page.getByTestId("filter-preset").selectOption("researcher_organization");
+    await expect(page.getByTestId("filter-venue")).toHaveValue("");
+    await expect(page.getByLabel("Start year")).toHaveValue("2021");
+    await expect(page.getByLabel("End year")).toHaveValue("2025");
+    expect(requests.every((params) =>
+      !params.get("venue") || params.get("preset") === "researcher_paper_topic",
+    )).toBe(true);
+  });
+
   test("1. Defaults to Knowledge graph, verifies projection order and release-v4 inventory, switches modes, and toggles theme", async ({
     page,
   }) => {

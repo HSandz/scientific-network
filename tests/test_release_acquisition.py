@@ -288,6 +288,22 @@ def test_missing_batch_dois_are_retried_once_as_singletons_and_recovered(tmp_pat
     assert report["matched"] == 2 and report["not_found"] == 0
 
 
+def test_mismatched_batch_work_is_rejected_after_singleton_retry(tmp_path):
+    row = aaai("1")
+    requested = release.derive_doi(row)
+    redirected = work(row, doi="https://doi.org/10.1145/3665799")
+    config = make_release(tmp_path, [row])
+    cache = FakeCache({requested: redirected})
+
+    release.acquire(config, cache=cache, client=mock_client())
+
+    result = json.loads((tmp_path / "works.jsonl").read_text().splitlines()[0])
+    assert result["match"]["status"] == "review"
+    assert result["match"]["reasons"] == ["doi_disagreement"]
+    assert result["match"]["doi_verification"]["state"] == "ambiguous_mismatch"
+    assert ["singleton" if "/works/doi:" in url else "batch" for url, _, _ in cache.calls] == ["batch", "singleton"]
+
+
 def test_works_rows_keep_evidence_source_authorships_references_and_abstract(tmp_path):
     rows = [aaai("1")]
     _, cache, _ = full_run(tmp_path, rows, {release.derive_doi(rows[0]): work(rows[0])})
@@ -392,6 +408,18 @@ def test_duplicate_doi_resolves_to_the_record_linked_to_the_official_page():
     assert "duplicate_doi_resolved_by_official_landing_page" in result["flags"]
     assert result["alternate_work_ids"] == ["https://openalex.org/W200"] and result["duplicate_author_ids_agree"] is True
     assert result["candidate_count"] == 2
+
+
+def test_official_landing_page_cannot_rescue_a_duplicate_with_the_wrong_doi():
+    row = aaai()
+    pair = duplicate_pair(row)
+    pair[1]["doi"] = "10.1145/3665799"
+
+    result = release.evaluate_match(row, pair)
+
+    assert result["status"] == "review"
+    assert result["reasons"] == ["duplicate_doi_works"]
+    assert result["chosen"] is None
 
 
 @pytest.mark.parametrize("landing", ["http://www.ojs.aaai.org/index.php/AAAI/article/view/16071/",

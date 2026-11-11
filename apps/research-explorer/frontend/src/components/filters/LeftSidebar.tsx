@@ -20,6 +20,7 @@ import {
   ViewMode,
 } from "../../types/explorer";
 import { LABEL_COLORS, PREDICATE_R_CODE } from "../../lib/colors";
+import type { ExplorerFilters } from "../../stores/useExplorerStore";
 
 interface LeftSidebarProps {
   availableCommunities: CommunityOption[];
@@ -107,6 +108,35 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   } = useExplorerStore();
 
   const [bookmarkName, setBookmarkName] = useState("");
+
+  const hasPaperScopeFilters = (
+    candidate: Pick<ExplorerFilters, "venue" | "topicId" | "yearMin" | "yearMax">,
+  ) => Boolean(
+    candidate.venue || candidate.topicId || candidate.yearMin > 2021 || candidate.yearMax < 2025,
+  );
+
+  const updatePaperScope = (
+    partial: Partial<Pick<ExplorerFilters, "venue" | "topicId" | "yearMin" | "yearMax">>,
+  ) => {
+    const next = { ...filters, ...partial };
+    updateFilters({
+      ...partial,
+      ...(viewMode === "heterogeneous" && hasPaperScopeFilters(next)
+        ? { preset: "researcher_paper_topic" }
+        : {}),
+    });
+  };
+
+  const changePreset = (preset: string) => {
+    const clearPaperScope =
+      preset !== "researcher_paper_topic" && hasPaperScopeFilters(filters);
+    updateFilters({
+      preset,
+      ...(clearPaperScope
+        ? { venue: "", topicId: "", yearMin: 2021, yearMax: 2025 }
+        : {}),
+    });
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -440,7 +470,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                 <select
                   id="filter-venue"
                   value={filters.venue}
-                  onChange={(e) => updateFilters({ venue: e.target.value })}
+                  onChange={(e) => updatePaperScope({ venue: e.target.value })}
                   data-testid="filter-venue"
                   className="w-full ledger-input text-[13px]"
                 >
@@ -464,7 +494,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     aria-label="Start year"
                     value={filters.yearMin}
                     onChange={(e) =>
-                      updateFilters({
+                      updatePaperScope({
                         yearMin: Math.min(
                           Number(e.target.value),
                           filters.yearMax,
@@ -483,7 +513,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     aria-label="End year"
                     value={filters.yearMax}
                     onChange={(e) =>
-                      updateFilters({
+                      updatePaperScope({
                         yearMax: Math.max(
                           Number(e.target.value),
                           filters.yearMin,
@@ -518,7 +548,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
               <select
                 id="filter-preset"
                 value={filters.preset}
-                onChange={(e) => updateFilters({ preset: e.target.value })}
+                onChange={(e) => changePreset(e.target.value)}
                 data-testid="filter-preset"
                 className="w-full ledger-input text-[13px]"
               >
@@ -539,6 +569,9 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                 </option>
                 <option value="custom">Custom label & predicate slice</option>
               </select>
+              <p className="mt-2 text-xs text-muted leading-relaxed">
+                Venue, topic, and narrowed-year filters use the Researcher → Paper → Topic slice. Applying one switches to that slice; switching away resets those paper filters.
+              </p>
             </div>
           )}
 
