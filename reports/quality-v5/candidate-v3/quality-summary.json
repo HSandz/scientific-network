@@ -1,0 +1,45 @@
+{
+  "source_code_commit": "18f98d0",
+  "candidate_graph_version": "release-identity-v5-7e6b1a34ffa2",
+  "denominators": {
+    "official_author_positions": 65507,
+    "matched_author_positions": 65469,
+    "v4_identity_correction_removed_authorships": 8722,
+    "all_conflicting_provider_source_positions": 8727
+  },
+  "authorship_coverage": {
+    "v4_accepted": 50437,
+    "candidate_accepted": 49747,
+    "v4_matched_rate": 0.7703951488490736,
+    "candidate_matched_rate": 0.75985580961982,
+    "candidate_official_rate": 0.7594150243485429
+  },
+  "affiliation_coverage": {
+    "v4_supported": 48259,
+    "candidate_supported": 47586,
+    "v4_matched_rate": 0.7371274954558646,
+    "candidate_matched_rate": 0.7268478211061724,
+    "candidate_official_rate": 0.7264261834613095,
+    "candidate_conditional_on_accepted_authorship": 0.9565601945845981
+  },
+  "recovery": {
+    "gained_v4_withheld_positions": 15,
+    "v4_global_identity_withholding_recovered": 1,
+    "historically_removed_authorship_recovery_rate": 0.00011465260261407934,
+    "remaining_conflicting_provider_source_positions": 8726,
+    "source_provider_ids_with_multiple_paper_raw_orcids": 0,
+    "unmatched_official_positions_sharing_globally_withheld_provider_id": 1
+  },
+  "candidate_total_nodes": 47704,
+  "candidate_total_edges": 222599,
+  "semantic_metrics": {
+    "identity_pairwise_precision": null,
+    "identity_pairwise_recall": null,
+    "identity_pairwise_f1": null,
+    "authorship_precision": null,
+    "authorship_recall": null,
+    "false_merges": null,
+    "false_splits": null
+  },
+  "semantic_evaluation_status": "not_measured; no independent identity gold; historical edge labels not reused"
+}

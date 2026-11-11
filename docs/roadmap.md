@@ -5,6 +5,15 @@
 
 ## Current capabilities — D040 remediation
 
+**11 November v5 identity candidate:** reproducible source/graph quality census,
+historical guard and citation inventory, explicit paper mention states, checksum
+and source-aware ORCID decisions, conservative crosswalks and positional recovery,
+isolated materialization, exact retained affiliation support and paired centrality
+comparison. Two runs reproduce byte-identical artifacts while preserving frozen v4.
+This is a development candidate with unmeasured semantic precision/recall and lower
+coverage; no promotion, collection or production change. See
+[implementation and limitations](../reports/quality-v5/implementation-report.md).
+
 **11 November focus/layout follow-up:** interactive canvas neighborhood labels at
 all zooms, bounded collision-aware callouts, exact remaining-neighbor disclosure,
 section-specific dashboard layouts, selected partnership evidence and stable-ID

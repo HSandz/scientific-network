@@ -1,32 +1,39 @@
 # Current project status
 
-Updated: **2026-11-11 +07:00**. Plan: [D040](release-plan.md),with
+Updated: **2026-11-11T16:44+07:00**. Plan: [D040](release-plan.md), with
 [user-authorized v5 candidate amendment](decisions.md).
 Latest: [WORK-2026-11-11-003](work-log/2026-11-11-003-quality-v5.md).
 
-## Current phase checklist
+## Phase checklist
 
-- [x] Historical v4 graph,source snapshots,AI evaluation and package preserved.
-- [x] Historical Site/Explorer delivery remains separate from this task.
-- [x] V5 Task1 baseline source/data/pipeline audit and issue priorities.
-- [x] Baseline hashes,raw object equality and structural validation checked.
-- [x] Audit tests and full repository suite:533 passed,one existing skip.
-- [ ] V5 Task2 conservative mention resolver and regression tests.
-- [ ] Isolated candidate,deterministic reproduction and v4 comparison.
-- [ ] Final identity implementation/validation report and handoff.
+- [x] Historical v4 graph, sources, AI evaluation and package preserved.
+- [x] Existing Site/Explorer delivery remains separate from this task.
+- [x] V5 Task1 baseline pipeline/source/graph audit and issue inventory.
+- [x] Task2 explicit mention resolver, shared ORCID policy and state bug fix.
+- [x] Conservative isolated candidate and v4 comparison, with derived recomputation.
+- [x] Retained affiliation sets and protected topics/citations/metadata verified.
+- [x] Two-run deterministic replay and original-file preservation checks.
+- [x] Full suite:579 passed, one existing skip; structural CLI passes.
+- [x] Final implementation, validation, reproduction and artifact reports.
+- [ ] Independent identity references and candidate promotion decision.
+- [ ] Task3 affiliation resolution, separately authorized future work.
 - [ ] Personal/course facts and final course submission.
 
-## Findings and boundary
+## Scientific boundary
 
-[Baseline audit](../reports/quality-v5/baseline-audit.md),
-[machine census](../reports/quality-v5/baseline-audit.json),
-[priorities](../reports/quality-v5/issue-inventory.csv).
-Current builder state shadowing confirmed;frozen v4 uses a different historical
-path. Singleton DOI disagreements and missing identifiers require abstention.
-Paper raw identity evidence is sparse;aggregate ORCID arrays cannot assign people
-to papers. Independent identity precision/recall remain unmeasured.
+Production remains frozen v4. Final local development candidate:
+`release-identity-v5-7e6b1a34ffa2`, implementation checkpoint `18f98d0`.
+[Implementation/comparison](../reports/quality-v5/implementation-report.md),
+[baseline](../reports/quality-v5/baseline-audit.md),
+[validation](../reports/quality-v5/validation-report.md),
+[artifacts/reproduction](../reports/quality-v5/README.md).
+Candidate gains15 authorships and quarantines705; coverage decreases.
+Independent precision/recall/F1 and actual false merge/split counts are unmeasured.
+Historical AI precision does not certify this candidate or course accuracy.
+No source collection, DB writes, Explorer/production edits, push or deployment.
 
-No source collection,database writes,production/Explorer changes,push or deploy.
-Historical [v4 evidence](../reports/release-v4/README.md) remains frozen.
-AI-assessed precision is not independent human validation or verified course accuracy.
-Next: implement the separately versioned identity candidate from Task1 findings.
+## Next step
+
+Review DOI/name/crosswalk ambiguities and reserve independent references before
+future tuning. Task3 can consume preserved paper triples, exclusions and explicit
+unresolved mentions; no Task3–8 implementation occurred in this session.
