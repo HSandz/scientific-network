@@ -32,7 +32,8 @@ def file_hash(path):
 
 def unused(*paths):
     resolved = [p.resolve() for p in paths]
-    if len(set(resolved)) != len(paths) or any(p.exists() or p.is_symlink() for p in paths):
+    if (len(set(resolved)) != len(paths) or any(p.exists() or p.is_symlink() for p in paths)
+            or any(a != b and a.is_relative_to(b) for a in resolved for b in resolved)):
         raise ValueError("outputs must be distinct unused versioned paths (including symlinks)")
 
 

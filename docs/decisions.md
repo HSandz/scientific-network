@@ -1078,3 +1078,37 @@ No independently adjudicated identity references are available. Historical audit
 errors are exposed development diagnostics and cannot certify the candidate.
 See WORK-2026-11-11-003. Candidate acceptance policy will be documented separately
 before execution; no source collection or name-only identity merges authorized.
+
+### V5 candidate acceptance policy — frozen before candidate execution
+
+`configs/identity-candidate-v5-release-v1.yaml` declares a development candidate,
+not the final v5 release. Full-source ORCID collection is shared with v4; the
+historical collector/correction semantics remain intact. The old builder state
+bug is fixed in v1.3 without regenerating frozen outputs.
+
+Each official mention remains in a deterministic decision ledger. Raw names
+validate a position; compatible names/coauthors never create identity crosswalks.
+Normal unconflicted provider IDs remain allowed without ORCID. Conflicting
+profile identifiers or incompatible full-name variants make provider identity
+ambiguous globally. Only paper raw ORCID with compatible name evidence can anchor
+an identity independently. Multiple provider IDs may crosswalk only through direct
+paper raw ORCID with compatible names and no collision. Unsupported aliases,
+malformed values, repeated provider/canonical positions and ambiguous initials
+abstain. Initials require equal token counts and a full-token anchor; middle-name
+expansion requires direct raw ORCID, preserved token order/endpoints and canonical
+agreement. No byline permutation or fuzzy spelling search is inferred.
+
+Matching returned DOI/title/count are prerequisites for candidate identity claims;
+seven historical DOI disagreements are quarantined separately in comparison.
+Uniquely anchored exact raw positions may recover alongside other bad positions.
+No threshold is tuned against historical labels or held-out errors. No semantic
+accuracy score is inferred from this development census.
+
+Materialization preserves citations,publication,taxonomy,topics and nonderived
+source evidence. Only enumerated identity-specific paper unresolved reasons can
+change. Rebuild R1/R2 and R7–R10 from accepted mentions/triples;retain historical
+no-affiliation exclusions for existing positions and conservatively apply copy
+guard to both full source and accepted bylines. No affiliation mapping or topic
+model improvement. Centrality comparison uses identical common-node pivots,
+clearly separate from the frozen v4 ranking computation. All output hashes and
+code/config/input versions are recorded;no Neo4j load or deployment.
