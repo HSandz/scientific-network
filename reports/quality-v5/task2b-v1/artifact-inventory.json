@@ -1,0 +1,74 @@
+{
+  "implementation_commit": "eab4dce",
+  "final_graph_version": "release-identity-v5-503aafe10a31",
+  "report_files": {
+    "README.md": "ff75b349d9f50f4983f69248c943d5d3ffebfc02e1a705d225aa891cc8756e99",
+    "alias-work-request-ledger.json": "d32c256a7ce414d3a640106b727d80f53c68b82ee386857b37ea80258aff42b2",
+    "candidate-v4/README.md": "b87fa5ed6fc81992cd79d5d662d65203839572193bbe470765a35de09c70372c",
+    "candidate-v4/candidate-manifest.json": "72178c40fe31d9a468399ffb6a20a9b648154ef054df7e77baefa73552d8ea04",
+    "candidate-v4/comparison.json": "b1443b075dc5f361341693dc50d13a93a89ae1a3f50e59f91a4ef8dddc180517",
+    "candidate-v4/network-comparison.json": "50682c3b771b0205708a72beddc8967bfd1b341146147a7868c3aa1999c36ccd",
+    "candidate-v4/structural-validation.json": "8312f7f1276ac8aa2f88e5749e247b207873d40614025de0b3a33233f41b9698",
+    "candidate-v4-final/candidate-manifest.json": "9b619301ca4e5236811a94a7c5976866b4e2eed4496d063ee08a116ef434d1c3",
+    "candidate-v4-final/comparison.json": "fa6d9f869ed5286c0bb9c794951f630e99d7c49f40ebb42baaf035eca5d24ff1",
+    "candidate-v4-final/network-comparison.json": "50682c3b771b0205708a72beddc8967bfd1b341146147a7868c3aa1999c36ccd",
+    "candidate-v4-final/structural-validation.json": "71bb1cc0df032ecdc16fb28f45037edff9e0aee8d82bc510019dfdebfbe38bb7",
+    "comparison/README.md": "d832d1f0fd848d86dea25446d923ecefdbc1a0252deae86fe9120dd402714293",
+    "comparison/comparison-summary.json": "4cbe0180993e8fa8cf65654e8526dd4524f6633893643af244a095407ca13043",
+    "comparison/recovered-versus-v3.jsonl": "fa98d2a63e652220ee8c96d9a6d4343d63f0d0cbf74a08c1bb8f2af53b74f47a",
+    "comparison/rejected-versus-v3.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparison/semantic-evaluation.json": "ded31f26c2d5052c6456330cb41957e1292e3c523ba6341041f7d66a34bfcca4",
+    "comparison/three-way-rankings.json": "64fbaf262e38d677d57006ce28ba0e79d7d1126e96390db59cf5e3e4cde8deb8",
+    "comparison/versus-candidate-v3.json": "fe0c44c7444dbff95314ac765b7a8a32b129f8d598d172449bb26df2028796b8",
+    "comparison-final/comparison-summary.json": "576909edbe02a97393f102b634cfee7edc120b51c688af95be44384f3659ca36",
+    "comparison-final/recovered-versus-v3.jsonl": "fa98d2a63e652220ee8c96d9a6d4343d63f0d0cbf74a08c1bb8f2af53b74f47a",
+    "comparison-final/rejected-versus-v3.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparison-final/semantic-evaluation.json": "ded31f26c2d5052c6456330cb41957e1292e3c523ba6341041f7d66a34bfcca4",
+    "comparison-final/three-way-rankings.json": "64fbaf262e38d677d57006ce28ba0e79d7d1126e96390db59cf5e3e4cde8deb8",
+    "comparison-final/versus-candidate-v3.json": "f962d007e57ba64ad5df16b97e1ee19ecd6d877b2ff41d68ee9abfdff32cb461",
+    "doi-reconciliation.md": "b92dc488839cb1ceb6e5e0da5e24cf004d95f12cf17810a7f0c501ce0557ff07",
+    "evaluation/assignment-sample.jsonl": "978f99282ad196cd96afc0ef24178116bf8dc0a40683cf460e72750cb5d0f394",
+    "evaluation/blank-reviewer-assignments.jsonl": "382ba041bd66d7c6cd04ec056effbad35f94f3b32a2736c7f62791a06f75a09f",
+    "evaluation/diagnostic-sample.jsonl": "21b4cd3e64c7eea24d8c7dd299766cddaaa6baf6db79bd0d6ff2ca5364974896",
+    "evaluation/evidence-packets.jsonl": "14c9729699e4e81843f1194f3d58889b9196e6a991876a58e88048a7ebf59047",
+    "evaluation/freeze.json": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7",
+    "evaluation/pair-sample.jsonl": "e90f3d393231d2cdb54db48fe471e20d60bce8a90ee981bd44f47c04b4bd9e83",
+    "evaluation-protocol.md": "050d6b3610c4f676d0029bca5b5c6ea8c5cfcec2c3ef20456f2b5b4b8ab4b61f",
+    "external-request-ledger.json": "6981bf5d92381ebbffbefe9f42778997d42ead722ff922225216ee5dbbec1861",
+    "identity-abstention-analysis.md": "e6acc671e49cf53da2d0ea289e0a31875ec36799b9d151497cee6843e9ce8ae6",
+    "implementation-report.md": "f11b8c317f68df6672b18e07c5e46164b687c11a106d221e8b4f8705ce6cc224",
+    "investigation/alias-certificates.json": "98d800cc1239a4ff44bb04cdf9f2d98dc39978a8b7b1faa42f1e2ed574546b47",
+    "investigation/doi-ledger.json": "dfad8e9d0eee5d548c7941e9d76df273d664ad82135482ff3598ac47cde57779",
+    "investigation/investigation-summary.json": "56417761cb1569a6eed1c55c226825f9c506fa394f3ee45bb97d69593f72d198",
+    "investigation/provider-classification.csv": "c5f9ff2327c4366c4c445f4a0fdbb748781ea91508fd969bdfb7fc61a8eeaeae",
+    "investigation/provider-context.json": "95244d78fcdc7ac4e783076170c1a0599dd9608f7aee73ca1c79fd967d81b6c2",
+    "investigation/provider-ledger.json": "1320e232910df20f77e0894e838dcfdeb69f533ca9992b8704060bca4c68050c",
+    "preservation-baseline.json": "4c0bbe98a3040c3ad521f845245d2caf731ee117654f7246057d117ae9c1c70a",
+    "validation-receipt.json": "3f507d2690205205165b211b03abc449104ae2bd6d0f1a5fd062aa08cfbb3ffe",
+    "validation-report.md": "8122eed510ad9fba730fa142b68936acf2194990ad2234dcf5108f4c4e93cb13"
+  },
+  "ignored_candidate_outputs": {
+    "centrality-scores.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/centrality-scores.json",
+      "sha256": "f98ae0d88e3ab5703dc9f11c55a5f4bf6d9eb5df178aed07933f049b27f69b5a"
+    },
+    "graph.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/graph.json",
+      "sha256": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e"
+    },
+    "identity-decisions.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/identity-decisions.jsonl",
+      "sha256": "9799b4b4fc8e1bd6c6e49a6e524ecc4cf9dc5bf6b42ae9e67efa41fff3755b43"
+    },
+    "identity-index.json": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/identity-index.json",
+      "sha256": "0f9852fd76babce386afba9ea43aca2338bae23a60bf2c133fe0f321fc991694"
+    },
+    "review-queue.jsonl": {
+      "path": "data/processed/identity-candidate-v5-release-v4-final/review-queue.jsonl",
+      "sha256": "948068372c33560d8feb4cd12d1d587d50a29e2ccc4be63d5a6f3bd3bd10cff1"
+    }
+  },
+  "original_preservation_baseline_sha256": "4c0bbe98a3040c3ad521f845245d2caf731ee117654f7246057d117ae9c1c70a",
+  "excludes": "this self-referential inventory; console/run logs, raw source responses and full graph remain ignored"
+}

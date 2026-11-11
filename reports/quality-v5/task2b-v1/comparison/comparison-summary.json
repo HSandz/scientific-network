@@ -1,0 +1,499 @@
+{
+  "method": "identity-task2b-comparison-v1",
+  "checkpoints": {
+    "v4": {
+      "counts": {
+        "nodes_by_label": {
+          "Organization": 2047,
+          "Paper": 13617,
+          "Researcher": 32189,
+          "Topic": 20,
+          "Venue": 2
+        },
+        "edges_by_relation": {
+          "AUTHORED": 50437,
+          "COAUTHORED_WITH": 80482,
+          "PUBLISHED_IN": 13617,
+          "COLLABORATED_WITH": 13031,
+          "RESEARCHES_TOPIC": 5622,
+          "AFFILIATED_WITH": 38664,
+          "HAS_TOPIC": 14222,
+          "CONTRIBUTES_TO_TOPIC": 2332,
+          "CITES": 7308,
+          "SUBTOPIC_OF": 16
+        },
+        "edges_by_evidence_kind": {
+          "observed": 110026,
+          "derived": 101467,
+          "inferred_topic": 14222,
+          "curated_taxonomy": 16
+        },
+        "core_papers": 13617,
+        "resolved_core_researchers": 32189,
+        "unique_core_factual_edges": 110026
+      },
+      "total_nodes": 47875,
+      "total_edges": 225731,
+      "accepted_authorships": 50437,
+      "authorship_coverage": {
+        "numerator": 50437,
+        "matched_denominator": 65469,
+        "rate": 0.7703951488490736,
+        "official_denominator": 65507,
+        "official_rate": 0.7699482498053644
+      },
+      "affiliation_coverage": {
+        "numerator": 48259,
+        "matched_denominator": 65469,
+        "rate": 0.7371274954558646,
+        "official_denominator": 65507,
+        "official_rate": 0.7366998946677454,
+        "accepted_denominator": 50437,
+        "conditional_rate": 0.9568174157860301
+      },
+      "affiliation_coverage_ceiling": {
+        "numerator": 50437,
+        "denominator": 65469,
+        "rate": 0.7703951488490736
+      },
+      "collaboration": {
+        "researchers": 32189,
+        "coauthorship_pairs": 80482,
+        "components": 2936,
+        "isolates": 414,
+        "largest_component": 20776,
+        "top_degree": [
+          {
+            "id": "researcher:openalex:A5023834700",
+            "degree": 90
+          },
+          {
+            "id": "researcher:openalex:A5008056593",
+            "degree": 88
+          },
+          {
+            "id": "researcher:openalex:A5029021362",
+            "degree": 82
+          },
+          {
+            "id": "researcher:openalex:A5084218062",
+            "degree": 80
+          },
+          {
+            "id": "researcher:openalex:A5047509839",
+            "degree": 71
+          },
+          {
+            "id": "researcher:openalex:A5087818121",
+            "degree": 70
+          },
+          {
+            "id": "researcher:openalex:A5003217535",
+            "degree": 65
+          },
+          {
+            "id": "researcher:openalex:A5101727888",
+            "degree": 65
+          },
+          {
+            "id": "researcher:openalex:A5034104790",
+            "degree": 64
+          },
+          {
+            "id": "researcher:openalex:A5089404640",
+            "degree": 63
+          },
+          {
+            "id": "researcher:openalex:A5048237545",
+            "degree": 62
+          },
+          {
+            "id": "researcher:openalex:A5086397952",
+            "degree": 62
+          },
+          {
+            "id": "researcher:openalex:A5036357902",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5068837264",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5090455375",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5009013876",
+            "degree": 58
+          },
+          {
+            "id": "researcher:openalex:A5079007635",
+            "degree": 57
+          },
+          {
+            "id": "researcher:openalex:A5028731909",
+            "degree": 56
+          },
+          {
+            "id": "researcher:openalex:A5087158377",
+            "degree": 54
+          },
+          {
+            "id": "researcher:openalex:A5100726984",
+            "degree": 54
+          }
+        ]
+      }
+    },
+    "candidate_v3": {
+      "counts": {
+        "nodes_by_label": {
+          "Organization": 2042,
+          "Paper": 13617,
+          "Researcher": 32023,
+          "Topic": 20,
+          "Venue": 2
+        },
+        "edges_by_relation": {
+          "AUTHORED": 49747,
+          "COAUTHORED_WITH": 78694,
+          "PUBLISHED_IN": 13617,
+          "COLLABORATED_WITH": 12797,
+          "RESEARCHES_TOPIC": 5477,
+          "AFFILIATED_WITH": 38399,
+          "HAS_TOPIC": 14222,
+          "CONTRIBUTES_TO_TOPIC": 2322,
+          "CITES": 7308,
+          "SUBTOPIC_OF": 16
+        },
+        "edges_by_evidence_kind": {
+          "observed": 109071,
+          "derived": 99290,
+          "inferred_topic": 14222,
+          "curated_taxonomy": 16
+        },
+        "core_papers": 13617,
+        "resolved_core_researchers": 32023,
+        "unique_core_factual_edges": 109071
+      },
+      "total_nodes": 47704,
+      "total_edges": 222599,
+      "accepted_authorships": 49747,
+      "authorship_coverage": {
+        "numerator": 49747,
+        "matched_denominator": 65469,
+        "rate": 0.75985580961982,
+        "official_denominator": 65507,
+        "official_rate": 0.7594150243485429
+      },
+      "affiliation_coverage": {
+        "numerator": 47586,
+        "matched_denominator": 65469,
+        "rate": 0.7268478211061724,
+        "official_denominator": 65507,
+        "official_rate": 0.7264261834613095,
+        "accepted_denominator": 49747,
+        "conditional_rate": 0.9565601945845981
+      },
+      "affiliation_coverage_ceiling": {
+        "numerator": 49747,
+        "denominator": 65469,
+        "rate": 0.75985580961982
+      },
+      "collaboration": {
+        "researchers": 32023,
+        "coauthorship_pairs": 78694,
+        "components": 3069,
+        "isolates": 452,
+        "largest_component": 20191,
+        "top_degree": [
+          {
+            "id": "researcher:openalex:A5023834700",
+            "degree": 90
+          },
+          {
+            "id": "researcher:openalex:A5008056593",
+            "degree": 86
+          },
+          {
+            "id": "researcher:openalex:A5029021362",
+            "degree": 81
+          },
+          {
+            "id": "researcher:openalex:A5084218062",
+            "degree": 78
+          },
+          {
+            "id": "researcher:openalex:A5047509839",
+            "degree": 70
+          },
+          {
+            "id": "researcher:openalex:A5087818121",
+            "degree": 70
+          },
+          {
+            "id": "researcher:openalex:A5003217535",
+            "degree": 65
+          },
+          {
+            "id": "researcher:openalex:A5101727888",
+            "degree": 63
+          },
+          {
+            "id": "researcher:openalex:A5048237545",
+            "degree": 61
+          },
+          {
+            "id": "researcher:openalex:A5036357902",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5086397952",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5090455375",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5068837264",
+            "degree": 59
+          },
+          {
+            "id": "researcher:openalex:A5089404640",
+            "degree": 59
+          },
+          {
+            "id": "researcher:openalex:A5009013876",
+            "degree": 58
+          },
+          {
+            "id": "researcher:openalex:A5079007635",
+            "degree": 57
+          },
+          {
+            "id": "researcher:openalex:A5028731909",
+            "degree": 56
+          },
+          {
+            "id": "researcher:openalex:A5087158377",
+            "degree": 54
+          },
+          {
+            "id": "researcher:openalex:A5100726984",
+            "degree": 53
+          },
+          {
+            "id": "researcher:openalex:A5039883116",
+            "degree": 51
+          }
+        ]
+      }
+    },
+    "revised_candidate_v4": {
+      "counts": {
+        "nodes_by_label": {
+          "Organization": 2042,
+          "Paper": 13617,
+          "Researcher": 32077,
+          "Topic": 20,
+          "Venue": 2
+        },
+        "edges_by_relation": {
+          "AUTHORED": 50000,
+          "COAUTHORED_WITH": 79389,
+          "PUBLISHED_IN": 13617,
+          "COLLABORATED_WITH": 12843,
+          "RESEARCHES_TOPIC": 5528,
+          "AFFILIATED_WITH": 38484,
+          "HAS_TOPIC": 14222,
+          "CONTRIBUTES_TO_TOPIC": 2323,
+          "CITES": 7308,
+          "SUBTOPIC_OF": 16
+        },
+        "edges_by_evidence_kind": {
+          "observed": 109409,
+          "derived": 100083,
+          "inferred_topic": 14222,
+          "curated_taxonomy": 16
+        },
+        "core_papers": 13617,
+        "resolved_core_researchers": 32077,
+        "unique_core_factual_edges": 109409
+      },
+      "total_nodes": 47758,
+      "total_edges": 223730,
+      "accepted_authorships": 50000,
+      "authorship_coverage": {
+        "numerator": 50000,
+        "matched_denominator": 65469,
+        "rate": 0.7637202340038797,
+        "official_denominator": 65507,
+        "official_rate": 0.7632772070160441
+      },
+      "affiliation_coverage": {
+        "numerator": 47833,
+        "matched_denominator": 65469,
+        "rate": 0.7306205990621516,
+        "official_denominator": 65507,
+        "official_rate": 0.7301967728639688,
+        "accepted_denominator": 50000,
+        "conditional_rate": 0.95666
+      },
+      "affiliation_coverage_ceiling": {
+        "numerator": 50000,
+        "denominator": 65469,
+        "rate": 0.7637202340038797
+      },
+      "collaboration": {
+        "researchers": 32077,
+        "coauthorship_pairs": 79389,
+        "components": 3032,
+        "isolates": 440,
+        "largest_component": 20414,
+        "top_degree": [
+          {
+            "id": "researcher:openalex:A5023834700",
+            "degree": 90
+          },
+          {
+            "id": "researcher:openalex:A5008056593",
+            "degree": 87
+          },
+          {
+            "id": "researcher:openalex:A5029021362",
+            "degree": 82
+          },
+          {
+            "id": "researcher:openalex:A5084218062",
+            "degree": 79
+          },
+          {
+            "id": "researcher:openalex:A5047509839",
+            "degree": 70
+          },
+          {
+            "id": "researcher:openalex:A5087818121",
+            "degree": 70
+          },
+          {
+            "id": "researcher:openalex:A5003217535",
+            "degree": 65
+          },
+          {
+            "id": "researcher:openalex:A5034104790",
+            "degree": 64
+          },
+          {
+            "id": "researcher:openalex:A5101727888",
+            "degree": 64
+          },
+          {
+            "id": "researcher:openalex:A5089404640",
+            "degree": 62
+          },
+          {
+            "id": "researcher:openalex:A5048237545",
+            "degree": 61
+          },
+          {
+            "id": "researcher:openalex:A5086397952",
+            "degree": 61
+          },
+          {
+            "id": "researcher:openalex:A5036357902",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5068837264",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5090455375",
+            "degree": 60
+          },
+          {
+            "id": "researcher:openalex:A5009013876",
+            "degree": 58
+          },
+          {
+            "id": "researcher:openalex:A5079007635",
+            "degree": 57
+          },
+          {
+            "id": "researcher:openalex:A5028731909",
+            "degree": 56
+          },
+          {
+            "id": "researcher:openalex:A5087158377",
+            "degree": 54
+          },
+          {
+            "id": "researcher:openalex:A5100726984",
+            "degree": 53
+          }
+        ]
+      }
+    }
+  },
+  "versus_v3": {
+    "gained_positions": 253,
+    "lost_positions": 0,
+    "mechanisms": {
+      "provider_id_full_letter_boundary_normalization": 185,
+      "provider_id_public_orcid_declared_aliases": 50,
+      "missing_id_exact_doi_alternate_work": 18
+    },
+    "remaining_states": {
+      "resolved": 50000,
+      "ambiguous": 9206,
+      "unresolved": 6301
+    }
+  },
+  "selective_coverage": [
+    {
+      "policy": "v3",
+      "accepted": 49747,
+      "matched_denominator": 65469,
+      "coverage": 0.75985580961982,
+      "independent_precision": null
+    },
+    {
+      "policy": "v3+formatting",
+      "accepted": 49932,
+      "matched_denominator": 65469,
+      "coverage": 0.7626815744856345,
+      "independent_precision": null
+    },
+    {
+      "policy": "v3+formatting+declared_aliases",
+      "accepted": 49982,
+      "matched_denominator": 65469,
+      "coverage": 0.7634452947196383,
+      "independent_precision": null
+    },
+    {
+      "policy": "full_revised",
+      "accepted": 50000,
+      "matched_denominator": 65469,
+      "coverage": 0.7637202340038797,
+      "independent_precision": null
+    }
+  ],
+  "independent_precision_recall_f1": null,
+  "construction_evidence_recovery_not_measured_semantic_recall": true,
+  "comparison_scope": "identity-only; no corrected work sources, classifier, citation or affiliation enrichment",
+  "task3_target_feasible_with_current_identities": false,
+  "source_evidence": {
+    "original_matched_works": 13606,
+    "original_cache_objects_verified": 341,
+    "new_public_requests": 40,
+    "independent_evaluation_labels": 0
+  },
+  "input_graph_hashes": {
+    "v4": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "candidate_v3": "258b1a919f9cd823631cf0245884386de19b5527bf63f8867d3c371be261ac40",
+    "revised_candidate_v4": "8cf079a814af010e14407d8b2a1832dcd3d382f9d17c5dce162f28ae990f2a7a"
+  }
+}

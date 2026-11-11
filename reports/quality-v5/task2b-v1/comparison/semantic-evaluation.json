@@ -1,0 +1,195 @@
+{
+  "results": {
+    "assignment": {
+      "status": "unavailable_no_complete_independent_references",
+      "candidates": {
+        "v4": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        },
+        "candidate_v3": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        },
+        "revised_candidate_v4": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "paired_differences": null,
+      "confidence_intervals": null
+    },
+    "pair": {
+      "status": "unavailable_no_complete_independent_references",
+      "candidates": {
+        "v4": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        },
+        "candidate_v3": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        },
+        "revised_candidate_v4": {
+          "status": "unavailable_incomplete_independent_references",
+          "sample_n": 200,
+          "missing_or_invalid": 200,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "paired_differences": null,
+      "confidence_intervals": null
+    },
+    "diagnostic": {
+      "diagnostic:doi_disagreement": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 21,
+            "missing_or_invalid": 21,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "candidate_v3": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 21,
+            "missing_or_invalid": 21,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "revised_candidate_v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 21,
+            "missing_or_invalid": 21,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null
+      },
+      "diagnostic:missing_provider_id": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "candidate_v3": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "revised_candidate_v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null
+      },
+      "diagnostic:name_variants": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "candidate_v3": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "revised_candidate_v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null
+      },
+      "diagnostic:orcid_conflict": {
+        "status": "unavailable_no_complete_independent_references",
+        "candidates": {
+          "v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "candidate_v3": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "revised_candidate_v4": {
+            "status": "unavailable_incomplete_independent_references",
+            "sample_n": 30,
+            "missing_or_invalid": 30,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "paired_differences": null,
+        "confidence_intervals": null
+      }
+    }
+  },
+  "independent_labels": 0,
+  "semantic_accuracy": "unavailable; construction certificates are not gold",
+  "evaluation_freeze_sha256": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7"
+}

@@ -1,0 +1,2787 @@
+{
+  "same_256_pivots": true,
+  "v4_versus_revised": {
+    "method_version": "identity-common-pivot-centrality-v1",
+    "seed": 20261101,
+    "pivots": [
+      "researcher:openalex:A5101177172",
+      "researcher:openalex:A5003976825",
+      "researcher:openalex:A5052882677",
+      "researcher:openalex:A5035876043",
+      "researcher:openalex:A5014986852",
+      "researcher:openalex:A5049109106",
+      "researcher:openalex:A5011376608",
+      "researcher:openalex:A5055185956",
+      "researcher:openalex:A5070195011",
+      "researcher:openalex:A5037140985",
+      "researcher:openalex:A5062113707",
+      "researcher:openalex:A5102916455",
+      "researcher:openalex:A5070122826",
+      "researcher:openalex:A5021845515",
+      "researcher:openalex:A5007465102",
+      "researcher:openalex:A5027349784",
+      "researcher:openalex:A5111061946",
+      "researcher:openalex:A5101810682",
+      "researcher:openalex:A5051709720",
+      "researcher:openalex:A5032718392",
+      "researcher:openalex:A5101876783",
+      "researcher:openalex:A5034379753",
+      "researcher:openalex:A5091674853",
+      "researcher:openalex:A5112944846",
+      "researcher:openalex:A5024845005",
+      "researcher:openalex:A5100328224",
+      "researcher:openalex:A5100406150",
+      "researcher:openalex:A5056328124",
+      "researcher:openalex:A5044476192",
+      "researcher:openalex:A5045625243",
+      "researcher:openalex:A5102635257",
+      "researcher:openalex:A5101896699",
+      "researcher:openalex:A5100565194",
+      "researcher:openalex:A5053718371",
+      "researcher:openalex:A5041645570",
+      "researcher:openalex:A5051706630",
+      "researcher:openalex:A5030548922",
+      "researcher:openalex:A5009237755",
+      "researcher:openalex:A5022166793",
+      "researcher:openalex:A5100655630",
+      "researcher:openalex:A5016603628",
+      "researcher:openalex:A5127992435",
+      "researcher:openalex:A5036320427",
+      "researcher:openalex:A5087093956",
+      "researcher:openalex:A5026630627",
+      "researcher:openalex:A5100349407",
+      "researcher:openalex:A5025280323",
+      "researcher:openalex:A5063777072",
+      "researcher:openalex:A5083194913",
+      "researcher:openalex:A5055916281",
+      "researcher:openalex:A5044610449",
+      "researcher:openalex:A5076262596",
+      "researcher:openalex:A5074809370",
+      "researcher:openalex:A5068223297",
+      "researcher:openalex:A5089600727",
+      "researcher:openalex:A5101153180",
+      "researcher:openalex:A5103234988",
+      "researcher:openalex:A5100325863",
+      "researcher:openalex:A5100350192",
+      "researcher:openalex:A5018729965",
+      "researcher:openalex:A5038994071",
+      "researcher:openalex:A5004953265",
+      "researcher:openalex:A5020686363",
+      "researcher:openalex:A5113192926",
+      "researcher:openalex:A5109473684",
+      "researcher:openalex:A5115592179",
+      "researcher:openalex:A5079750750",
+      "researcher:openalex:A5087192873",
+      "researcher:openalex:A5100985690",
+      "researcher:openalex:A5020106541",
+      "researcher:openalex:A5101514813",
+      "researcher:openalex:A5003875114",
+      "researcher:openalex:A5024843689",
+      "researcher:openalex:A5019408798",
+      "researcher:openalex:A5034850281",
+      "researcher:openalex:A5017968528",
+      "researcher:openalex:A5115590684",
+      "researcher:openalex:A5101069335",
+      "researcher:openalex:A5079634733",
+      "researcher:openalex:A5100340721",
+      "researcher:openalex:A5041275817",
+      "researcher:openalex:A5067246755",
+      "researcher:openalex:A5064520982",
+      "researcher:openalex:A5052067052",
+      "researcher:openalex:A5055684232",
+      "researcher:openalex:A5100768238",
+      "researcher:openalex:A5021445324",
+      "researcher:openalex:A5100600322",
+      "researcher:openalex:A5101504657",
+      "researcher:openalex:A5050611028",
+      "researcher:openalex:A5050385116",
+      "researcher:openalex:A5055549371",
+      "researcher:openalex:A5112899826",
+      "researcher:openalex:A5070582509",
+      "researcher:openalex:A5004453915",
+      "researcher:openalex:A5100697315",
+      "researcher:openalex:A5061165176",
+      "researcher:openalex:A5069806977",
+      "researcher:openalex:A5151921012",
+      "researcher:openalex:A5100757355",
+      "researcher:openalex:A5101904182",
+      "researcher:openalex:A5043151044",
+      "researcher:openalex:A5113258509",
+      "researcher:openalex:A5101325356",
+      "researcher:openalex:A5078613647",
+      "researcher:openalex:A5100687489",
+      "researcher:openalex:A5110284741",
+      "researcher:openalex:A5102652318",
+      "researcher:openalex:A5003147292",
+      "researcher:openalex:A5003236530",
+      "researcher:openalex:A5052937695",
+      "researcher:openalex:A5073431580",
+      "researcher:openalex:A5075539888",
+      "researcher:openalex:A5102972678",
+      "researcher:openalex:A5104303603",
+      "researcher:openalex:A5056833841",
+      "researcher:openalex:A5013821073",
+      "researcher:openalex:A5033254559",
+      "researcher:openalex:A5060411498",
+      "researcher:openalex:A5075500139",
+      "researcher:openalex:A5100778668",
+      "researcher:openalex:A5045518550",
+      "researcher:openalex:A5100461350",
+      "researcher:openalex:A5067046312",
+      "researcher:openalex:A5049277889",
+      "researcher:openalex:A5112904358",
+      "researcher:openalex:A5017609232",
+      "researcher:openalex:A5100666072",
+      "researcher:openalex:A5080479612",
+      "researcher:openalex:A5100741720",
+      "researcher:openalex:A5013198246",
+      "researcher:openalex:A5043524154",
+      "researcher:openalex:A5101681766",
+      "researcher:openalex:A5100566923",
+      "researcher:openalex:A5113096046",
+      "researcher:openalex:A5112976777",
+      "researcher:openalex:A5077542219",
+      "researcher:openalex:A5047410441",
+      "researcher:openalex:A5101438229",
+      "researcher:openalex:A5114047346",
+      "researcher:openalex:A5041125572",
+      "researcher:openalex:A5108047728",
+      "researcher:openalex:A5045680312",
+      "researcher:openalex:A5035140547",
+      "researcher:openalex:A5034044616",
+      "researcher:openalex:A5022489287",
+      "researcher:openalex:A5083330692",
+      "researcher:openalex:A5020940244",
+      "researcher:openalex:A5076532055",
+      "researcher:openalex:A5062065250",
+      "researcher:openalex:A5111214371",
+      "researcher:openalex:A5152014482",
+      "researcher:openalex:A5090741314",
+      "researcher:openalex:A5069570508",
+      "researcher:openalex:A5039050944",
+      "researcher:openalex:A5056959868",
+      "researcher:openalex:A5101013086",
+      "researcher:openalex:A5046158385",
+      "researcher:openalex:A5050660610",
+      "researcher:openalex:A5102907240",
+      "researcher:openalex:A5037419606",
+      "researcher:openalex:A5081614352",
+      "researcher:openalex:A5015387461",
+      "researcher:openalex:A5102651649",
+      "researcher:openalex:A5084050368",
+      "researcher:openalex:A5108728858",
+      "researcher:openalex:A5091792127",
+      "researcher:openalex:A5001534492",
+      "researcher:openalex:A5111270292",
+      "researcher:openalex:A5100427440",
+      "researcher:openalex:A5059194708",
+      "researcher:openalex:A5107303715",
+      "researcher:openalex:A5100363470",
+      "researcher:openalex:A5063248074",
+      "researcher:openalex:A5016440514",
+      "researcher:openalex:A5034278506",
+      "researcher:openalex:A5024496324",
+      "researcher:openalex:A5101415161",
+      "researcher:openalex:A5069028297",
+      "researcher:openalex:A5112683216",
+      "researcher:openalex:A5012345107",
+      "researcher:openalex:A5016401744",
+      "researcher:openalex:A5061256037",
+      "researcher:openalex:A5117515568",
+      "researcher:openalex:A5092249392",
+      "researcher:openalex:A5079723268",
+      "researcher:openalex:A5100456725",
+      "researcher:openalex:A5114259459",
+      "researcher:openalex:A5100587152",
+      "researcher:openalex:A5101593091",
+      "researcher:openalex:A5049708660",
+      "researcher:openalex:A5100787275",
+      "researcher:openalex:A5126974630",
+      "researcher:openalex:A5100379252",
+      "researcher:openalex:A5007639805",
+      "researcher:openalex:A5001954281",
+      "researcher:openalex:A5016017109",
+      "researcher:openalex:A5069964397",
+      "researcher:openalex:A5041591967",
+      "researcher:openalex:A5100339742",
+      "researcher:openalex:A5046979072",
+      "researcher:openalex:A5068788334",
+      "researcher:openalex:A5101233226",
+      "researcher:openalex:A5082787229",
+      "researcher:openalex:A5100584301",
+      "researcher:openalex:A5102979521",
+      "researcher:openalex:A5101133561",
+      "researcher:openalex:A5071212806",
+      "researcher:openalex:A5098691155",
+      "researcher:openalex:A5101897826",
+      "researcher:openalex:A5046712504",
+      "researcher:openalex:A5085237554",
+      "researcher:openalex:A5100395323",
+      "researcher:openalex:A5069048014",
+      "researcher:openalex:A5100533675",
+      "researcher:openalex:A5100580483",
+      "researcher:openalex:A5028984678",
+      "researcher:openalex:A5007287914",
+      "researcher:openalex:A5024374739",
+      "researcher:openalex:A5101369358",
+      "researcher:openalex:A5077570468",
+      "researcher:openalex:A5062990010",
+      "researcher:openalex:A5047387636",
+      "researcher:openalex:A5045149071",
+      "researcher:openalex:A5084201755",
+      "researcher:openalex:A5077652555",
+      "researcher:openalex:A5050562058",
+      "researcher:openalex:A5026363649",
+      "researcher:openalex:A5011195666",
+      "researcher:openalex:A5101951560",
+      "researcher:openalex:A5026685273",
+      "researcher:openalex:A5041913327",
+      "researcher:openalex:A5133542292",
+      "researcher:openalex:A5115695281",
+      "researcher:openalex:A5075633314",
+      "researcher:openalex:A5088896420",
+      "researcher:openalex:A5028570408",
+      "researcher:openalex:A5008792986",
+      "researcher:openalex:A5020693991",
+      "researcher:openalex:A5100326221",
+      "researcher:openalex:A5013493958",
+      "researcher:openalex:A5059888118",
+      "researcher:openalex:A5032781939",
+      "researcher:openalex:A5100441570",
+      "researcher:openalex:A5031045561",
+      "researcher:openalex:A5008357796",
+      "researcher:openalex:A5032411139",
+      "researcher:openalex:A5037346243",
+      "researcher:openalex:A5101672534",
+      "researcher:openalex:A5021332177",
+      "researcher:openalex:A5038221812",
+      "researcher:openalex:A5100667506",
+      "researcher:openalex:A5037387583",
+      "researcher:openalex:A5110269964",
+      "researcher:openalex:A5100730800",
+      "researcher:openalex:A5082034927"
+    ],
+    "pivots_count": 256,
+    "scope": "researcher collaboration; identical SHA256-ranked common-node pivots; all nodes as targets",
+    "distance": "inverse positive fractional coauthorship strength",
+    "limitation": "approximate paired diagnostic conditional on common pivots; not frozen-v4 rank reproduction or semantic accuracy",
+    "rankings": {
+      "degree": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 90.0
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 88.0
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 82.0
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 80.0
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 71.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 64.0
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 63.0
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 62.0
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "score": 62.0
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 58.0
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 57.0
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "score": 56.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 54.0
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 54.0
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 90.0
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 87.0
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 82.0
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 79.0
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 64.0
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 64.0
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 62.0
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 61.0
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "score": 61.0
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 58.0
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 57.0
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "score": 56.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 54.0
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 53.0
+          }
+        ],
+        "top20_overlap": 20,
+        "spearman_common_nodes": 0.996762647748,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "before": 7,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 2,
+            "after": 2
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "before": 16,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 1,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "before": 18,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 3,
+            "after": 3
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 9,
+            "after": 8
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "before": 13,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "before": 5,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "before": 11,
+            "after": 11
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "before": 14,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "before": 17,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 4,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "before": 12,
+            "after": 12
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "before": 19,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "before": 6,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "before": 10,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "before": 15,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "before": 20,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "before": 8,
+            "after": 9
+          }
+        ]
+      },
+      "strength": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "score": 27.666666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "score": 20.714285714286
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 20.482142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "score": 19.5
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "score": 19.266666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 19.215476190476
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 19.129761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "score": 18.766666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 18.582142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 18.420238095238
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "score": 18.383333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 18.361904761905
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "score": 18.333333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 18.154761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5056989280",
+            "score": 18.083333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5064839018",
+            "score": 17.716666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 16.787698412698
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "score": 16.64880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "score": 16.597619047619
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 16.275
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "score": 25.666666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "score": 20.714285714286
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 20.482142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "score": 19.5
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "score": 19.266666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 19.04880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 18.879761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 18.582142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "score": 18.566666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 18.420238095238
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 18.361904761905
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "score": 18.333333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5056989280",
+            "score": 18.083333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 17.904761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "score": 16.64880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 16.644841269841
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "score": 16.597619047619
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 16.275
+          },
+          {
+            "node_id": "researcher:openalex:A5064839018",
+            "score": 16.216666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 16.122222222222
+          }
+        ],
+        "top20_overlap": 19,
+        "spearman_common_nodes": 0.988937805715,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "before": 9,
+            "after": 8
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 6,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "before": 3,
+            "after": 3
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "before": 18,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "before": 5,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "before": 11,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "before": 2,
+            "after": 2
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 10,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 21,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 12,
+            "after": 11
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "before": 4,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "before": 8,
+            "after": 9
+          },
+          {
+            "node_id": "researcher:openalex:A5056989280",
+            "before": 15,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5064839018",
+            "before": 16,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "before": 20,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "before": 14,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "before": 1,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 17,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "before": 19,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "before": 7,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "before": 13,
+            "after": 12
+          }
+        ]
+      },
+      "betweenness": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "score": 0.034159033443
+          },
+          {
+            "node_id": "researcher:openalex:A5100682348",
+            "score": 0.028463589753
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 0.025891546352
+          },
+          {
+            "node_id": "researcher:openalex:A5046420136",
+            "score": 0.023102935705
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 0.021993017092
+          },
+          {
+            "node_id": "researcher:openalex:A5070914351",
+            "score": 0.018831180931
+          },
+          {
+            "node_id": "researcher:openalex:A5012035228",
+            "score": 0.018378645685
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "score": 0.017307258784
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 0.017134093352
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 0.016952408105
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 0.016402635318
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 0.016277843904
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 0.015672403069
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 0.015639208619
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "score": 0.015159588776
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 0.015111767902
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 0.014134751086
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "score": 0.013646133772
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 0.01287107107
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "score": 0.01239444162
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 0.022348857561
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "score": 0.016854994553
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 0.016577613305
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 0.015911372122
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "score": 0.014963259459
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 0.01490818227
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 0.014783450368
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 0.014012680285
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 0.013593907893
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "score": 0.012819722508
+          },
+          {
+            "node_id": "researcher:openalex:A5081710233",
+            "score": 0.012577136573
+          },
+          {
+            "node_id": "researcher:openalex:A5100336360",
+            "score": 0.01242272912
+          },
+          {
+            "node_id": "researcher:openalex:A5100741750",
+            "score": 0.01231099178
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "score": 0.012139865255
+          },
+          {
+            "node_id": "researcher:openalex:A5037340457",
+            "score": 0.012110296801
+          },
+          {
+            "node_id": "researcher:openalex:A5009539513",
+            "score": 0.011992155116
+          },
+          {
+            "node_id": "researcher:openalex:A5103119953",
+            "score": 0.011806630366
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 0.011785489012
+          },
+          {
+            "node_id": "researcher:openalex:A5100418485",
+            "score": 0.011501702259
+          },
+          {
+            "node_id": "researcher:openalex:A5069353502",
+            "score": 0.011342280882
+          }
+        ],
+        "top20_overlap": 12,
+        "spearman_common_nodes": 0.993427159796,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 5,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5009539513",
+            "before": 67,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5012035228",
+            "before": 7,
+            "after": 187
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "before": 1,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "before": 15,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 13,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 11,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 19,
+            "after": 9
+          },
+          {
+            "node_id": "researcher:openalex:A5037340457",
+            "before": 40,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5046420136",
+            "before": 4,
+            "after": 176
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "before": 3,
+            "after": 29
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "before": 17,
+            "after": 3
+          },
+          {
+            "node_id": "researcher:openalex:A5069353502",
+            "before": 68,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5070914351",
+            "before": 6,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "before": 12,
+            "after": 37
+          },
+          {
+            "node_id": "researcher:openalex:A5081710233",
+            "before": 46,
+            "after": 11
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "before": 20,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 10,
+            "after": 8
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "before": 14,
+            "after": 22
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "before": 16,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5100336360",
+            "before": 30,
+            "after": 12
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "before": 18,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5100418485",
+            "before": 159,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5100682348",
+            "before": 2,
+            "after": 55
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "before": 9,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5100741750",
+            "before": 22,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5103119953",
+            "before": 70,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "before": 8,
+            "after": 2
+          }
+        ]
+      }
+    }
+  },
+  "v4_versus_v3": {
+    "method_version": "identity-common-pivot-centrality-v1",
+    "seed": 20261101,
+    "pivots": [
+      "researcher:openalex:A5101177172",
+      "researcher:openalex:A5003976825",
+      "researcher:openalex:A5052882677",
+      "researcher:openalex:A5035876043",
+      "researcher:openalex:A5014986852",
+      "researcher:openalex:A5049109106",
+      "researcher:openalex:A5011376608",
+      "researcher:openalex:A5055185956",
+      "researcher:openalex:A5070195011",
+      "researcher:openalex:A5037140985",
+      "researcher:openalex:A5062113707",
+      "researcher:openalex:A5102916455",
+      "researcher:openalex:A5070122826",
+      "researcher:openalex:A5021845515",
+      "researcher:openalex:A5007465102",
+      "researcher:openalex:A5027349784",
+      "researcher:openalex:A5111061946",
+      "researcher:openalex:A5101810682",
+      "researcher:openalex:A5051709720",
+      "researcher:openalex:A5032718392",
+      "researcher:openalex:A5101876783",
+      "researcher:openalex:A5034379753",
+      "researcher:openalex:A5091674853",
+      "researcher:openalex:A5112944846",
+      "researcher:openalex:A5024845005",
+      "researcher:openalex:A5100328224",
+      "researcher:openalex:A5100406150",
+      "researcher:openalex:A5056328124",
+      "researcher:openalex:A5044476192",
+      "researcher:openalex:A5045625243",
+      "researcher:openalex:A5102635257",
+      "researcher:openalex:A5101896699",
+      "researcher:openalex:A5100565194",
+      "researcher:openalex:A5053718371",
+      "researcher:openalex:A5041645570",
+      "researcher:openalex:A5051706630",
+      "researcher:openalex:A5030548922",
+      "researcher:openalex:A5009237755",
+      "researcher:openalex:A5022166793",
+      "researcher:openalex:A5100655630",
+      "researcher:openalex:A5016603628",
+      "researcher:openalex:A5127992435",
+      "researcher:openalex:A5036320427",
+      "researcher:openalex:A5087093956",
+      "researcher:openalex:A5026630627",
+      "researcher:openalex:A5100349407",
+      "researcher:openalex:A5025280323",
+      "researcher:openalex:A5063777072",
+      "researcher:openalex:A5083194913",
+      "researcher:openalex:A5055916281",
+      "researcher:openalex:A5044610449",
+      "researcher:openalex:A5076262596",
+      "researcher:openalex:A5074809370",
+      "researcher:openalex:A5068223297",
+      "researcher:openalex:A5089600727",
+      "researcher:openalex:A5101153180",
+      "researcher:openalex:A5103234988",
+      "researcher:openalex:A5100325863",
+      "researcher:openalex:A5100350192",
+      "researcher:openalex:A5018729965",
+      "researcher:openalex:A5038994071",
+      "researcher:openalex:A5004953265",
+      "researcher:openalex:A5020686363",
+      "researcher:openalex:A5113192926",
+      "researcher:openalex:A5109473684",
+      "researcher:openalex:A5115592179",
+      "researcher:openalex:A5079750750",
+      "researcher:openalex:A5087192873",
+      "researcher:openalex:A5100985690",
+      "researcher:openalex:A5020106541",
+      "researcher:openalex:A5101514813",
+      "researcher:openalex:A5003875114",
+      "researcher:openalex:A5024843689",
+      "researcher:openalex:A5019408798",
+      "researcher:openalex:A5034850281",
+      "researcher:openalex:A5017968528",
+      "researcher:openalex:A5115590684",
+      "researcher:openalex:A5101069335",
+      "researcher:openalex:A5079634733",
+      "researcher:openalex:A5100340721",
+      "researcher:openalex:A5041275817",
+      "researcher:openalex:A5067246755",
+      "researcher:openalex:A5064520982",
+      "researcher:openalex:A5052067052",
+      "researcher:openalex:A5055684232",
+      "researcher:openalex:A5100768238",
+      "researcher:openalex:A5021445324",
+      "researcher:openalex:A5100600322",
+      "researcher:openalex:A5101504657",
+      "researcher:openalex:A5050611028",
+      "researcher:openalex:A5050385116",
+      "researcher:openalex:A5055549371",
+      "researcher:openalex:A5112899826",
+      "researcher:openalex:A5070582509",
+      "researcher:openalex:A5004453915",
+      "researcher:openalex:A5100697315",
+      "researcher:openalex:A5061165176",
+      "researcher:openalex:A5069806977",
+      "researcher:openalex:A5151921012",
+      "researcher:openalex:A5100757355",
+      "researcher:openalex:A5101904182",
+      "researcher:openalex:A5043151044",
+      "researcher:openalex:A5113258509",
+      "researcher:openalex:A5101325356",
+      "researcher:openalex:A5078613647",
+      "researcher:openalex:A5100687489",
+      "researcher:openalex:A5110284741",
+      "researcher:openalex:A5102652318",
+      "researcher:openalex:A5003147292",
+      "researcher:openalex:A5003236530",
+      "researcher:openalex:A5052937695",
+      "researcher:openalex:A5073431580",
+      "researcher:openalex:A5075539888",
+      "researcher:openalex:A5102972678",
+      "researcher:openalex:A5104303603",
+      "researcher:openalex:A5056833841",
+      "researcher:openalex:A5013821073",
+      "researcher:openalex:A5033254559",
+      "researcher:openalex:A5060411498",
+      "researcher:openalex:A5075500139",
+      "researcher:openalex:A5100778668",
+      "researcher:openalex:A5045518550",
+      "researcher:openalex:A5100461350",
+      "researcher:openalex:A5067046312",
+      "researcher:openalex:A5049277889",
+      "researcher:openalex:A5112904358",
+      "researcher:openalex:A5017609232",
+      "researcher:openalex:A5100666072",
+      "researcher:openalex:A5080479612",
+      "researcher:openalex:A5100741720",
+      "researcher:openalex:A5013198246",
+      "researcher:openalex:A5043524154",
+      "researcher:openalex:A5101681766",
+      "researcher:openalex:A5100566923",
+      "researcher:openalex:A5113096046",
+      "researcher:openalex:A5112976777",
+      "researcher:openalex:A5077542219",
+      "researcher:openalex:A5047410441",
+      "researcher:openalex:A5101438229",
+      "researcher:openalex:A5114047346",
+      "researcher:openalex:A5041125572",
+      "researcher:openalex:A5108047728",
+      "researcher:openalex:A5045680312",
+      "researcher:openalex:A5035140547",
+      "researcher:openalex:A5034044616",
+      "researcher:openalex:A5022489287",
+      "researcher:openalex:A5083330692",
+      "researcher:openalex:A5020940244",
+      "researcher:openalex:A5076532055",
+      "researcher:openalex:A5062065250",
+      "researcher:openalex:A5111214371",
+      "researcher:openalex:A5152014482",
+      "researcher:openalex:A5090741314",
+      "researcher:openalex:A5069570508",
+      "researcher:openalex:A5039050944",
+      "researcher:openalex:A5056959868",
+      "researcher:openalex:A5101013086",
+      "researcher:openalex:A5046158385",
+      "researcher:openalex:A5050660610",
+      "researcher:openalex:A5102907240",
+      "researcher:openalex:A5037419606",
+      "researcher:openalex:A5081614352",
+      "researcher:openalex:A5015387461",
+      "researcher:openalex:A5102651649",
+      "researcher:openalex:A5084050368",
+      "researcher:openalex:A5108728858",
+      "researcher:openalex:A5091792127",
+      "researcher:openalex:A5001534492",
+      "researcher:openalex:A5111270292",
+      "researcher:openalex:A5100427440",
+      "researcher:openalex:A5059194708",
+      "researcher:openalex:A5107303715",
+      "researcher:openalex:A5100363470",
+      "researcher:openalex:A5063248074",
+      "researcher:openalex:A5016440514",
+      "researcher:openalex:A5034278506",
+      "researcher:openalex:A5024496324",
+      "researcher:openalex:A5101415161",
+      "researcher:openalex:A5069028297",
+      "researcher:openalex:A5112683216",
+      "researcher:openalex:A5012345107",
+      "researcher:openalex:A5016401744",
+      "researcher:openalex:A5061256037",
+      "researcher:openalex:A5117515568",
+      "researcher:openalex:A5092249392",
+      "researcher:openalex:A5079723268",
+      "researcher:openalex:A5100456725",
+      "researcher:openalex:A5114259459",
+      "researcher:openalex:A5100587152",
+      "researcher:openalex:A5101593091",
+      "researcher:openalex:A5049708660",
+      "researcher:openalex:A5100787275",
+      "researcher:openalex:A5126974630",
+      "researcher:openalex:A5100379252",
+      "researcher:openalex:A5007639805",
+      "researcher:openalex:A5001954281",
+      "researcher:openalex:A5016017109",
+      "researcher:openalex:A5069964397",
+      "researcher:openalex:A5041591967",
+      "researcher:openalex:A5100339742",
+      "researcher:openalex:A5046979072",
+      "researcher:openalex:A5068788334",
+      "researcher:openalex:A5101233226",
+      "researcher:openalex:A5082787229",
+      "researcher:openalex:A5100584301",
+      "researcher:openalex:A5102979521",
+      "researcher:openalex:A5101133561",
+      "researcher:openalex:A5071212806",
+      "researcher:openalex:A5098691155",
+      "researcher:openalex:A5101897826",
+      "researcher:openalex:A5046712504",
+      "researcher:openalex:A5085237554",
+      "researcher:openalex:A5100395323",
+      "researcher:openalex:A5069048014",
+      "researcher:openalex:A5100533675",
+      "researcher:openalex:A5100580483",
+      "researcher:openalex:A5028984678",
+      "researcher:openalex:A5007287914",
+      "researcher:openalex:A5024374739",
+      "researcher:openalex:A5101369358",
+      "researcher:openalex:A5077570468",
+      "researcher:openalex:A5062990010",
+      "researcher:openalex:A5047387636",
+      "researcher:openalex:A5045149071",
+      "researcher:openalex:A5084201755",
+      "researcher:openalex:A5077652555",
+      "researcher:openalex:A5050562058",
+      "researcher:openalex:A5026363649",
+      "researcher:openalex:A5011195666",
+      "researcher:openalex:A5101951560",
+      "researcher:openalex:A5026685273",
+      "researcher:openalex:A5041913327",
+      "researcher:openalex:A5133542292",
+      "researcher:openalex:A5115695281",
+      "researcher:openalex:A5075633314",
+      "researcher:openalex:A5088896420",
+      "researcher:openalex:A5028570408",
+      "researcher:openalex:A5008792986",
+      "researcher:openalex:A5020693991",
+      "researcher:openalex:A5100326221",
+      "researcher:openalex:A5013493958",
+      "researcher:openalex:A5059888118",
+      "researcher:openalex:A5032781939",
+      "researcher:openalex:A5100441570",
+      "researcher:openalex:A5031045561",
+      "researcher:openalex:A5008357796",
+      "researcher:openalex:A5032411139",
+      "researcher:openalex:A5037346243",
+      "researcher:openalex:A5101672534",
+      "researcher:openalex:A5021332177",
+      "researcher:openalex:A5038221812",
+      "researcher:openalex:A5100667506",
+      "researcher:openalex:A5037387583",
+      "researcher:openalex:A5110269964",
+      "researcher:openalex:A5100730800",
+      "researcher:openalex:A5082034927"
+    ],
+    "pivots_count": 256,
+    "scope": "researcher collaboration; identical SHA256-ranked common-node pivots; all nodes as targets",
+    "distance": "inverse positive fractional coauthorship strength",
+    "limitation": "approximate paired diagnostic conditional on common pivots; not frozen-v4 rank reproduction or semantic accuracy",
+    "rankings": {
+      "degree": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 90.0
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 88.0
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 82.0
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 80.0
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 71.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 64.0
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 63.0
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 62.0
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "score": 62.0
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 58.0
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 57.0
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "score": 56.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 54.0
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 54.0
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 90.0
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 86.0
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 81.0
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 78.0
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "score": 70.0
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 65.0
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 63.0
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 61.0
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "score": 60.0
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "score": 59.0
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 59.0
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 58.0
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 57.0
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "score": 56.0
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 54.0
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 53.0
+          },
+          {
+            "node_id": "researcher:openalex:A5039883116",
+            "score": 51.0
+          }
+        ],
+        "top20_overlap": 19,
+        "spearman_common_nodes": 0.995439773419,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "before": 7,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 2,
+            "after": 2
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "before": 16,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 1,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5028731909",
+            "before": 18,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 3,
+            "after": 3
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 9,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "before": 13,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5039883116",
+            "before": 22,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "before": 5,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "before": 11,
+            "after": 9
+          },
+          {
+            "node_id": "researcher:openalex:A5068837264",
+            "before": 14,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "before": 17,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 4,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "before": 12,
+            "after": 11
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "before": 19,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5087818121",
+            "before": 6,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "before": 10,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5090455375",
+            "before": 15,
+            "after": 12
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "before": 20,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "before": 8,
+            "after": 8
+          }
+        ]
+      },
+      "strength": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "score": 27.666666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "score": 20.714285714286
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 20.482142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "score": 19.5
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "score": 19.266666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 19.215476190476
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 19.129761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "score": 18.766666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 18.582142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 18.420238095238
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "score": 18.383333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 18.361904761905
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "score": 18.333333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 18.154761904762
+          },
+          {
+            "node_id": "researcher:openalex:A5056989280",
+            "score": 18.083333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5064839018",
+            "score": 17.716666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 16.787698412698
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "score": 16.64880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "score": 16.597619047619
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 16.275
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "score": 25.666666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "score": 20.714285714286
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "score": 20.482142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "score": 19.266666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "score": 19.0
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 18.84880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "score": 18.713095238095
+          },
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "score": 18.582142857143
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 18.420238095238
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "score": 18.366666666667
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "score": 18.333333333333
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 17.761904761905
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "score": 16.64880952381
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 16.353174603175
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "score": 16.275
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 15.997222222222
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "score": 15.777380952381
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "score": 15.064285714286
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "score": 15.019841269841
+          },
+          {
+            "node_id": "researcher:openalex:A5078141810",
+            "score": 15.015476190476
+          }
+        ],
+        "top20_overlap": 16,
+        "spearman_common_nodes": 0.985460631922,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5003217535",
+            "before": 9,
+            "after": 8
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 6,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5009013876",
+            "before": 3,
+            "after": 3
+          },
+          {
+            "node_id": "researcher:openalex:A5012455357",
+            "before": 18,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5013290512",
+            "before": 5,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "before": 11,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5023571961",
+            "before": 2,
+            "after": 2
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 10,
+            "after": 9
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 21,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 12,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5036357902",
+            "before": 22,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5037092803",
+            "before": 4,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5041528950",
+            "before": 8,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5056989280",
+            "before": 15,
+            "after": 25
+          },
+          {
+            "node_id": "researcher:openalex:A5064839018",
+            "before": 16,
+            "after": 29
+          },
+          {
+            "node_id": "researcher:openalex:A5078141810",
+            "before": 24,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5079007635",
+            "before": 20,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "before": 14,
+            "after": 12
+          },
+          {
+            "node_id": "researcher:openalex:A5082525642",
+            "before": 1,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 17,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5086397952",
+            "before": 23,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5101499733",
+            "before": 19,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5101727888",
+            "before": 7,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5103285429",
+            "before": 13,
+            "after": 11
+          }
+        ]
+      },
+      "betweenness": {
+        "before_top20": [
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "score": 0.034159033443
+          },
+          {
+            "node_id": "researcher:openalex:A5100682348",
+            "score": 0.028463589753
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "score": 0.025891546352
+          },
+          {
+            "node_id": "researcher:openalex:A5046420136",
+            "score": 0.023102935705
+          },
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 0.021993017092
+          },
+          {
+            "node_id": "researcher:openalex:A5070914351",
+            "score": 0.018831180931
+          },
+          {
+            "node_id": "researcher:openalex:A5012035228",
+            "score": 0.018378645685
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "score": 0.017307258784
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 0.017134093352
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 0.016952408105
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 0.016402635318
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "score": 0.016277843904
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 0.015672403069
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "score": 0.015639208619
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "score": 0.015159588776
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 0.015111767902
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 0.014134751086
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "score": 0.013646133772
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "score": 0.01287107107
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "score": 0.01239444162
+          }
+        ],
+        "after_top20": [
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "score": 0.022025189563
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "score": 0.017626899065
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "score": 0.017255304559
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "score": 0.016097361574
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "score": 0.015724972073
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "score": 0.014997106678
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "score": 0.014802892125
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "score": 0.014530631868
+          },
+          {
+            "node_id": "researcher:openalex:A5100336360",
+            "score": 0.013413298384
+          },
+          {
+            "node_id": "researcher:openalex:A5081710233",
+            "score": 0.013270524372
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "score": 0.012875623578
+          },
+          {
+            "node_id": "researcher:openalex:A5100741750",
+            "score": 0.012820463864
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "score": 0.012721115673
+          },
+          {
+            "node_id": "researcher:openalex:A5009539513",
+            "score": 0.012688704173
+          },
+          {
+            "node_id": "researcher:openalex:A5037340457",
+            "score": 0.012601037785
+          },
+          {
+            "node_id": "researcher:openalex:A5103119953",
+            "score": 0.012503842498
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "score": 0.011923483323
+          },
+          {
+            "node_id": "researcher:openalex:A5069353502",
+            "score": 0.011887630429
+          },
+          {
+            "node_id": "researcher:openalex:A5100638710",
+            "score": 0.011779777509
+          },
+          {
+            "node_id": "researcher:openalex:A5014793986",
+            "score": 0.011600263241
+          }
+        ],
+        "top20_overlap": 11,
+        "spearman_common_nodes": 0.989649524863,
+        "selected_rank_changes": [
+          {
+            "node_id": "researcher:openalex:A5008056593",
+            "before": 5,
+            "after": 1
+          },
+          {
+            "node_id": "researcher:openalex:A5009539513",
+            "before": 67,
+            "after": 14
+          },
+          {
+            "node_id": "researcher:openalex:A5012035228",
+            "before": 7,
+            "after": 197
+          },
+          {
+            "node_id": "researcher:openalex:A5014793986",
+            "before": 76,
+            "after": 20
+          },
+          {
+            "node_id": "researcher:openalex:A5017743551",
+            "before": 1,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5019708391",
+            "before": 15,
+            "after": 13
+          },
+          {
+            "node_id": "researcher:openalex:A5023834700",
+            "before": 13,
+            "after": 6
+          },
+          {
+            "node_id": "researcher:openalex:A5029021362",
+            "before": 11,
+            "after": 7
+          },
+          {
+            "node_id": "researcher:openalex:A5034104790",
+            "before": 19,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5037340457",
+            "before": 40,
+            "after": 15
+          },
+          {
+            "node_id": "researcher:openalex:A5046420136",
+            "before": 4,
+            "after": 173
+          },
+          {
+            "node_id": "researcher:openalex:A5047509839",
+            "before": 3,
+            "after": 29
+          },
+          {
+            "node_id": "researcher:openalex:A5048237545",
+            "before": 17,
+            "after": 2
+          },
+          {
+            "node_id": "researcher:openalex:A5069353502",
+            "before": 68,
+            "after": 18
+          },
+          {
+            "node_id": "researcher:openalex:A5070914351",
+            "before": 6,
+            "after": null
+          },
+          {
+            "node_id": "researcher:openalex:A5079083101",
+            "before": 12,
+            "after": 32
+          },
+          {
+            "node_id": "researcher:openalex:A5081710233",
+            "before": 46,
+            "after": 10
+          },
+          {
+            "node_id": "researcher:openalex:A5082634513",
+            "before": 20,
+            "after": 11
+          },
+          {
+            "node_id": "researcher:openalex:A5084218062",
+            "before": 10,
+            "after": 8
+          },
+          {
+            "node_id": "researcher:openalex:A5087158377",
+            "before": 14,
+            "after": 21
+          },
+          {
+            "node_id": "researcher:openalex:A5089404640",
+            "before": 16,
+            "after": 5
+          },
+          {
+            "node_id": "researcher:openalex:A5100336360",
+            "before": 30,
+            "after": 9
+          },
+          {
+            "node_id": "researcher:openalex:A5100401164",
+            "before": 18,
+            "after": 4
+          },
+          {
+            "node_id": "researcher:openalex:A5100638710",
+            "before": 84,
+            "after": 19
+          },
+          {
+            "node_id": "researcher:openalex:A5100682348",
+            "before": 2,
+            "after": 54
+          },
+          {
+            "node_id": "researcher:openalex:A5100726984",
+            "before": 9,
+            "after": 17
+          },
+          {
+            "node_id": "researcher:openalex:A5100741750",
+            "before": 22,
+            "after": 12
+          },
+          {
+            "node_id": "researcher:openalex:A5103119953",
+            "before": 70,
+            "after": 16
+          },
+          {
+            "node_id": "researcher:openalex:A5103140908",
+            "before": 8,
+            "after": 3
+          }
+        ]
+      }
+    }
+  },
+  "v3_versus_revised": {
+    "degree": {
+      "v3_top20": [
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 90.0
+        },
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 86.0
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 81.0
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 78.0
+        },
+        {
+          "node_id": "researcher:openalex:A5047509839",
+          "score": 70.0
+        },
+        {
+          "node_id": "researcher:openalex:A5087818121",
+          "score": 70.0
+        },
+        {
+          "node_id": "researcher:openalex:A5003217535",
+          "score": 65.0
+        },
+        {
+          "node_id": "researcher:openalex:A5101727888",
+          "score": 63.0
+        },
+        {
+          "node_id": "researcher:openalex:A5048237545",
+          "score": 61.0
+        },
+        {
+          "node_id": "researcher:openalex:A5036357902",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5086397952",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5090455375",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5068837264",
+          "score": 59.0
+        },
+        {
+          "node_id": "researcher:openalex:A5089404640",
+          "score": 59.0
+        },
+        {
+          "node_id": "researcher:openalex:A5009013876",
+          "score": 58.0
+        },
+        {
+          "node_id": "researcher:openalex:A5079007635",
+          "score": 57.0
+        },
+        {
+          "node_id": "researcher:openalex:A5028731909",
+          "score": 56.0
+        },
+        {
+          "node_id": "researcher:openalex:A5087158377",
+          "score": 54.0
+        },
+        {
+          "node_id": "researcher:openalex:A5100726984",
+          "score": 53.0
+        },
+        {
+          "node_id": "researcher:openalex:A5039883116",
+          "score": 51.0
+        }
+      ],
+      "revised_top20": [
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 90.0
+        },
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 87.0
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 82.0
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 79.0
+        },
+        {
+          "node_id": "researcher:openalex:A5047509839",
+          "score": 70.0
+        },
+        {
+          "node_id": "researcher:openalex:A5087818121",
+          "score": 70.0
+        },
+        {
+          "node_id": "researcher:openalex:A5003217535",
+          "score": 65.0
+        },
+        {
+          "node_id": "researcher:openalex:A5034104790",
+          "score": 64.0
+        },
+        {
+          "node_id": "researcher:openalex:A5101727888",
+          "score": 64.0
+        },
+        {
+          "node_id": "researcher:openalex:A5089404640",
+          "score": 62.0
+        },
+        {
+          "node_id": "researcher:openalex:A5048237545",
+          "score": 61.0
+        },
+        {
+          "node_id": "researcher:openalex:A5086397952",
+          "score": 61.0
+        },
+        {
+          "node_id": "researcher:openalex:A5036357902",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5068837264",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5090455375",
+          "score": 60.0
+        },
+        {
+          "node_id": "researcher:openalex:A5009013876",
+          "score": 58.0
+        },
+        {
+          "node_id": "researcher:openalex:A5079007635",
+          "score": 57.0
+        },
+        {
+          "node_id": "researcher:openalex:A5028731909",
+          "score": 56.0
+        },
+        {
+          "node_id": "researcher:openalex:A5087158377",
+          "score": 54.0
+        },
+        {
+          "node_id": "researcher:openalex:A5100726984",
+          "score": 53.0
+        }
+      ],
+      "top20_overlap": 19,
+      "top20_denominator": 20,
+      "spearman_common_nodes": 0.998270322672,
+      "common_nodes": 32023
+    },
+    "strength": {
+      "v3_top20": [
+        {
+          "node_id": "researcher:openalex:A5082525642",
+          "score": 25.666666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5023571961",
+          "score": 20.714285714286
+        },
+        {
+          "node_id": "researcher:openalex:A5009013876",
+          "score": 20.482142857143
+        },
+        {
+          "node_id": "researcher:openalex:A5013290512",
+          "score": 19.266666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5037092803",
+          "score": 19.0
+        },
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 18.84880952381
+        },
+        {
+          "node_id": "researcher:openalex:A5101727888",
+          "score": 18.713095238095
+        },
+        {
+          "node_id": "researcher:openalex:A5003217535",
+          "score": 18.582142857143
+        },
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 18.420238095238
+        },
+        {
+          "node_id": "researcher:openalex:A5041528950",
+          "score": 18.366666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5103285429",
+          "score": 18.333333333333
+        },
+        {
+          "node_id": "researcher:openalex:A5079083101",
+          "score": 17.761904761905
+        },
+        {
+          "node_id": "researcher:openalex:A5012455357",
+          "score": 16.64880952381
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 16.353174603175
+        },
+        {
+          "node_id": "researcher:openalex:A5079007635",
+          "score": 16.275
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 15.997222222222
+        },
+        {
+          "node_id": "researcher:openalex:A5036357902",
+          "score": 15.777380952381
+        },
+        {
+          "node_id": "researcher:openalex:A5101499733",
+          "score": 15.064285714286
+        },
+        {
+          "node_id": "researcher:openalex:A5086397952",
+          "score": 15.019841269841
+        },
+        {
+          "node_id": "researcher:openalex:A5078141810",
+          "score": 15.015476190476
+        }
+      ],
+      "revised_top20": [
+        {
+          "node_id": "researcher:openalex:A5082525642",
+          "score": 25.666666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5023571961",
+          "score": 20.714285714286
+        },
+        {
+          "node_id": "researcher:openalex:A5009013876",
+          "score": 20.482142857143
+        },
+        {
+          "node_id": "researcher:openalex:A5037092803",
+          "score": 19.5
+        },
+        {
+          "node_id": "researcher:openalex:A5013290512",
+          "score": 19.266666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 19.04880952381
+        },
+        {
+          "node_id": "researcher:openalex:A5101727888",
+          "score": 18.879761904762
+        },
+        {
+          "node_id": "researcher:openalex:A5003217535",
+          "score": 18.582142857143
+        },
+        {
+          "node_id": "researcher:openalex:A5041528950",
+          "score": 18.566666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 18.420238095238
+        },
+        {
+          "node_id": "researcher:openalex:A5034104790",
+          "score": 18.361904761905
+        },
+        {
+          "node_id": "researcher:openalex:A5103285429",
+          "score": 18.333333333333
+        },
+        {
+          "node_id": "researcher:openalex:A5056989280",
+          "score": 18.083333333333
+        },
+        {
+          "node_id": "researcher:openalex:A5079083101",
+          "score": 17.904761904762
+        },
+        {
+          "node_id": "researcher:openalex:A5012455357",
+          "score": 16.64880952381
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 16.644841269841
+        },
+        {
+          "node_id": "researcher:openalex:A5101499733",
+          "score": 16.597619047619
+        },
+        {
+          "node_id": "researcher:openalex:A5079007635",
+          "score": 16.275
+        },
+        {
+          "node_id": "researcher:openalex:A5064839018",
+          "score": 16.216666666667
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 16.122222222222
+        }
+      ],
+      "top20_overlap": 17,
+      "top20_denominator": 20,
+      "spearman_common_nodes": 0.995692717575,
+      "common_nodes": 32023
+    },
+    "betweenness": {
+      "v3_top20": [
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 0.022025189563
+        },
+        {
+          "node_id": "researcher:openalex:A5048237545",
+          "score": 0.017626899065
+        },
+        {
+          "node_id": "researcher:openalex:A5103140908",
+          "score": 0.017255304559
+        },
+        {
+          "node_id": "researcher:openalex:A5100401164",
+          "score": 0.016097361574
+        },
+        {
+          "node_id": "researcher:openalex:A5089404640",
+          "score": 0.015724972073
+        },
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 0.014997106678
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 0.014802892125
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 0.014530631868
+        },
+        {
+          "node_id": "researcher:openalex:A5100336360",
+          "score": 0.013413298384
+        },
+        {
+          "node_id": "researcher:openalex:A5081710233",
+          "score": 0.013270524372
+        },
+        {
+          "node_id": "researcher:openalex:A5082634513",
+          "score": 0.012875623578
+        },
+        {
+          "node_id": "researcher:openalex:A5100741750",
+          "score": 0.012820463864
+        },
+        {
+          "node_id": "researcher:openalex:A5019708391",
+          "score": 0.012721115673
+        },
+        {
+          "node_id": "researcher:openalex:A5009539513",
+          "score": 0.012688704173
+        },
+        {
+          "node_id": "researcher:openalex:A5037340457",
+          "score": 0.012601037785
+        },
+        {
+          "node_id": "researcher:openalex:A5103119953",
+          "score": 0.012503842498
+        },
+        {
+          "node_id": "researcher:openalex:A5100726984",
+          "score": 0.011923483323
+        },
+        {
+          "node_id": "researcher:openalex:A5069353502",
+          "score": 0.011887630429
+        },
+        {
+          "node_id": "researcher:openalex:A5100638710",
+          "score": 0.011779777509
+        },
+        {
+          "node_id": "researcher:openalex:A5014793986",
+          "score": 0.011600263241
+        }
+      ],
+      "revised_top20": [
+        {
+          "node_id": "researcher:openalex:A5008056593",
+          "score": 0.022348857561
+        },
+        {
+          "node_id": "researcher:openalex:A5103140908",
+          "score": 0.016854994553
+        },
+        {
+          "node_id": "researcher:openalex:A5048237545",
+          "score": 0.016577613305
+        },
+        {
+          "node_id": "researcher:openalex:A5089404640",
+          "score": 0.015911372122
+        },
+        {
+          "node_id": "researcher:openalex:A5100401164",
+          "score": 0.014963259459
+        },
+        {
+          "node_id": "researcher:openalex:A5023834700",
+          "score": 0.01490818227
+        },
+        {
+          "node_id": "researcher:openalex:A5029021362",
+          "score": 0.014783450368
+        },
+        {
+          "node_id": "researcher:openalex:A5084218062",
+          "score": 0.014012680285
+        },
+        {
+          "node_id": "researcher:openalex:A5034104790",
+          "score": 0.013593907893
+        },
+        {
+          "node_id": "researcher:openalex:A5019708391",
+          "score": 0.012819722508
+        },
+        {
+          "node_id": "researcher:openalex:A5081710233",
+          "score": 0.012577136573
+        },
+        {
+          "node_id": "researcher:openalex:A5100336360",
+          "score": 0.01242272912
+        },
+        {
+          "node_id": "researcher:openalex:A5100741750",
+          "score": 0.01231099178
+        },
+        {
+          "node_id": "researcher:openalex:A5082634513",
+          "score": 0.012139865255
+        },
+        {
+          "node_id": "researcher:openalex:A5037340457",
+          "score": 0.012110296801
+        },
+        {
+          "node_id": "researcher:openalex:A5009539513",
+          "score": 0.011992155116
+        },
+        {
+          "node_id": "researcher:openalex:A5103119953",
+          "score": 0.011806630366
+        },
+        {
+          "node_id": "researcher:openalex:A5100726984",
+          "score": 0.011785489012
+        },
+        {
+          "node_id": "researcher:openalex:A5100418485",
+          "score": 0.011501702259
+        },
+        {
+          "node_id": "researcher:openalex:A5069353502",
+          "score": 0.011342280882
+        }
+      ],
+      "top20_overlap": 18,
+      "top20_denominator": 20,
+      "spearman_common_nodes": 0.99538323743,
+      "common_nodes": 32023
+    }
+  },
+  "limitation": "paired descriptive approximation, not semantic quality or reproduction of frozen release ranking"
+}

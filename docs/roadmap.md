@@ -5,6 +5,16 @@
 
 ## Current capabilities — D040 remediation
 
+
+**11 November Task2B identity recovery:** targeted DOI/ORCID evidence inventory,
+complete 170-ID abstention classification, formatting and declared-alias recovery,
+exact-DOI alternate-source recovery for missing IDs, frozen probability/diagnostic
+identity evaluation packets and a paired independent-reference scorer. A final
+isolated candidate gains253 positions over candidate-v3; semantic precision/recall
+remain unmeasured and the affiliation ceiling remains below80%. No promotion or
+Task3 work. [Measured report](../reports/quality-v5/task2b-v1/implementation-report.md).
+
+
 **11 November v5 identity candidate:** reproducible source/graph quality census,
 historical guard and citation inventory, explicit paper mention states, checksum
 and source-aware ORCID decisions, conservative crosswalks and positional recovery,

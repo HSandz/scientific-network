@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "validation_scope": "structural_only",
+  "release_status": "not_assessed",
+  "semantic_accuracy": "not_measured",
+  "graph_version": "release-identity-v5-503aafe10a31",
+  "is_synthetic": false,
+  "run_at": "2026-11-11T11:09:32.507155+00:00",
+  "input_sha256": "85ff09d0a5e6a42160a3c98fad3f63941a2b412213490f4c7f744ed5e2ba4d4e",
+  "config_sha256": "66945c3ec8e2efc13cbd9234ac2d9417f60e3fda93076a6dbe43c02606e0239f",
+  "counts": {
+    "nodes_by_label": {
+      "Organization": 2042,
+      "Paper": 13617,
+      "Researcher": 32077,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_by_relation": {
+      "AUTHORED": 50000,
+      "COAUTHORED_WITH": 79389,
+      "PUBLISHED_IN": 13617,
+      "COLLABORATED_WITH": 12843,
+      "RESEARCHES_TOPIC": 5528,
+      "AFFILIATED_WITH": 38484,
+      "HAS_TOPIC": 14222,
+      "CONTRIBUTES_TO_TOPIC": 2323,
+      "CITES": 7308,
+      "SUBTOPIC_OF": 16
+    },
+    "edges_by_evidence_kind": {
+      "observed": 109409,
+      "derived": 100083,
+      "inferred_topic": 14222,
+      "curated_taxonomy": 16
+    },
+    "core_papers": 13617,
+    "resolved_core_researchers": 32077,
+    "unique_core_factual_edges": 109409
+  },
+  "size_targets": {
+    "min_domain_nodes": 2000,
+    "min_resolved_core_researchers": 2000,
+    "min_unique_factual_edges": 5000,
+    "required_relation_types": 10,
+    "factual_relations": [
+      "AUTHORED",
+      "AFFILIATED_WITH",
+      "PUBLISHED_IN",
+      "CITES"
+    ]
+  },
+  "size_checks": {
+    "resolved_core_researchers": true,
+    "unique_core_factual_edges": true,
+    "all_relation_types_present": true
+  },
+  "errors": [],
+  "limitations": [
+    "Source correctness, actual raw-file hashes and NLP quality are not independently verified.",
+    "Derived support/weights are recomputed when present; DBMS reconciliation requires the build stage.",
+    "Independent global/per-type audits, recall and coverage are required before release."
+  ]
+}
