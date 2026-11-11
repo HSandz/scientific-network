@@ -63,17 +63,24 @@ These exposed examples are future development diagnostics, never a new untouched
 
 ## Optional human packet
 
-Each member receives their own `human-member-{1,2}.html` plus matching CSV.
-Both forms contain the same 26 units: a prespecified 20-case pseudorandom draw
-from the 80 audit units and a separate six-case risk diagnostic subset. Conditional
-random probability is 20/80; marginal population probability for a random case is
-`(8 / relation population) * (20/80)`. Thus even the human random subset is not a
-uniform sample of all graph edges. Diagnostic cases are not a probability sample
-and must never enter the random estimator. Do not pool relation strata unweighted.
+Each member receives their own `human-member-{1,2}.html` plus matching CSV. Both
+forms retain the same prespecified 20-case pseudorandom draw and six risk
+diagnostics, and add all four IDs from the issue ledger. Three flagged cases
+overlap the random subset, producing 27 unique cards; overlapping tags remain
+visible. Only IDs carrying the `random` tag have probability-based inclusion. The
+conditional probability stays 20/80; marginal population probability for a random
+case is `(8 / relation population) * (20/80)`. Risk and diagnostic-only flagged
+cases are not a probability sample and must not enter the random estimator. Do not
+pool relation strata unweighted.
 
-Open each local HTML directly in separate browser profiles; source links require
-Internet. The existing form uses `correct`, `incorrect`, `unverifiable` (equivalent
-to supported, unsupported, unknown here). Export original CSVs separately before
-comparing answers. Member labels do not fabricate identities or participation.
-Human metrics remain unavailable until actual submissions exist; no completed
-human annotations were produced. Source-backed independent checking remains useful.
+The form groups the flagged cases in a dedicated section and provides their source
+evidence without showing Luna's concern. Separate member-specific post-blind HTML
+views contain the concerns and source locators; reviewers should export their
+initial decisions before opening those pages. The form retains `correct`,
+`incorrect`, `unverifiable`. Its rubric distinguishes source consistency from
+independent semantic verification; official byline/provider-ID alignment alone
+does not establish researcher identity, and derived claims inherit input identity
+uncertainty. See the [rubric amendment](review-protocol.md#optional-human-packet-rubric-and-allocation-amendment).
+Export original CSVs separately before comparing answers. Member labels do not
+fabricate identities or participation. Human metrics remain unavailable until
+actual submissions exist; no completed human annotations were produced.

@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-11-008 — Final cleanup and submission readiness](2026-11-11-008-final-cleanup-submission-readiness.md): rubric/source-evidence correction, additive flagged diagnostics, report review and clean local package checkpoint; human judgments and team/course details remain pending.
+
 - [WORK-2026-11-11-007 — Final quality sprint](2026-11-11-007-final-quality-sprint.md): ten-relation Luna audit, optional human packets, coverage/report and Explorer interpretation; preserved graph/sources, local-only checkpoint.
 
 - [WORK-2026-11-11-005 — Task2C independent identity validation](2026-11-11-005-identity-independent-validation.md): completed feasible engineering, source packets, three-way sensitivity and experimental Task3 handoff; actual independent human identity judgments remain pending, promotion deferred.

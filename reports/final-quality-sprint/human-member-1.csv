@@ -1,6 +1,6 @@
 audit_id,method_version,graph_version,graph_sha256,quality_config_sha256,readiness_sha256,frame_sha256,sampling_seed,edge_id,in_global_sample,in_type_sample,is_type_census,reviewer_id,endpoints_correct,predicate_correct,paper_time_correct,evidence_verifiable,decision,reason,reviewed_at,error_category,relation,is_overlap,source_id,source_name,target_id,target_name,official_page_url,pdf_url,doi_url,openalex_work_url,openalex_entity_url,also_show,correct_when,supporting_context
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:19d799564a5022c928a89955d38fced416b719f169c1baebb958abd40c57b0c2,,,,member-1,,,,,,,,,AFFILIATED_WITH,,researcher:openalex:A5089419341,Zhouyu He,organization:I170215575,National University of Defense Technology,https://ojs.aaai.org/index.php/AAAI/article/view/33886,https://ojs.aaai.org/index.php/AAAI/article/view/33886/36041,https://doi.org/10.1609/aaai.v39i16.33886,https://openalex.org/W4409364409,https://openalex.org/A5089419341 https://openalex.org/I170215575,"Human subset: random. supporting papers: 1; raw affiliation: College of Computer Science and Technology, National University of Defense Technology
-National Key Laboratory of Parallel and Distributed Computing, National University of Defense Technology; organization: National University of Defense Technology; papers shown: Highly Parallelized Reinforcement Learning Training with Relaxed Assignment Dependencies (2025)","Exact paper authorship maps this researcher to this institution, with raw affiliation-string evidence.","{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:19d799564a5022c928a89955d38fced416b719f169c1baebb958abd40c57b0c2,,,,member-1,,,,,,,,,AFFILIATED_WITH,,researcher:openalex:A5089419341,Zhouyu He,organization:I170215575,National University of Defense Technology,https://ojs.aaai.org/index.php/AAAI/article/view/33886,https://ojs.aaai.org/index.php/AAAI/article/view/33886/36041,https://doi.org/10.1609/aaai.v39i16.33886,https://openalex.org/W4409364409,https://openalex.org/A5089419341 https://openalex.org/I170215575,"Selection tags: random. supporting papers: 1; raw affiliation: College of Computer Science and Technology, National University of Defense Technology
+National Key Laboratory of Parallel and Distributed Computing, National University of Defense Technology; organization: National University of Defense Technology; papers shown: Highly Parallelized Reinforcement Learning Training with Relaxed Assignment Dependencies (2025)",Source-consistent relationship: the paper-specific authorship record maps this author to the institution and retains its raw affiliation string. Independently verified relationship: provider authorship alone does not establish the canonical researcher's identity; identity-dependent claims need person-specific evidence beyond the construction records.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -101,7 +101,7 @@ National Key Laboratory of Parallel and Distributed Computing, National Universi
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35,,,,member-1,,,,,,,,,SUBTOPIC_OF,,topic:computer-vision,Computer vision,topic:language-perception,Language and perception,,,,,,Human subset: random. leaf topic: Computer vision; parent topic: Language and perception,The hierarchy matches the taxonomy.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35,,,,member-1,,,,,,,,,SUBTOPIC_OF,,topic:computer-vision,Computer vision,topic:language-perception,Language and perception,,,,,,Selection tags: random. leaf topic: Computer vision; parent topic: Language and perception,The hierarchy matches the taxonomy.,"{
   ""affiliation_observations"": [],
   ""edge"": {
     ""edge_id"": ""edge:1c75a0123784df8a913eb091a5d17fda52918b7c2feb595f8db6100efda8ff35"",
@@ -171,7 +171,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:21ac8c936c75d4c92d4d63022850e7d0bcf248f3f7f75072c45f6d1baeba0b61,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I100532134,Lyon 1 Université,organization:I187560010,University of Béjaïa,https://ojs.aaai.org/index.php/AAAI/article/view/34498,https://ojs.aaai.org/index.php/AAAI/article/view/34498/36653,https://doi.org/10.1609/aaai.v39i22.34498,https://openalex.org/W4392115850,https://openalex.org/I100532134 https://openalex.org/I187560010,"Human subset: diagnostic. organizations: Lyon 1 Université and University of Béjaïa; supporting paper: A Multiagent Path Search Algorithm for Large-Scale Coalition Structure Generation (2025); authors: Djamila Boukredera at University of Béjaïa (raw: Laboratory of Applied Mathematics, Faculty of Exact Sciences, University of Bejaia, Bejaia, Algeria / Laboratory of Applied Mathematics, Faculty of Exact Sciences, University of Bejaia, 06000 Bejaia, Algeria) | Samir Aknine at Lyon 1 Université (raw: Univ Lyon, UCBL, CNRS, INSA Lyon, Centrale Lyon, Univ Lyon 2, LIRIS, UMR5205, Lyon, France / Univ Lyon, UCBL, CNRS, INSA Lyon, Centrale Lyon, Univ Lyon 2, LIRIS, UMR5205)",Two distinct authors are at the two organizations on that paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:21ac8c936c75d4c92d4d63022850e7d0bcf248f3f7f75072c45f6d1baeba0b61,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I100532134,Lyon 1 Université,organization:I187560010,University of Béjaïa,https://ojs.aaai.org/index.php/AAAI/article/view/34498,https://ojs.aaai.org/index.php/AAAI/article/view/34498/36653,https://doi.org/10.1609/aaai.v39i22.34498,https://openalex.org/W4392115850,https://openalex.org/I100532134 https://openalex.org/I187560010,"Selection tags: risk_diagnostic. organizations: Lyon 1 Université and University of Béjaïa; supporting paper: A Multiagent Path Search Algorithm for Large-Scale Coalition Structure Generation (2025); authors: Djamila Boukredera at University of Béjaïa (raw: Laboratory of Applied Mathematics, Faculty of Exact Sciences, University of Bejaia, Bejaia, Algeria / Laboratory of Applied Mathematics, Faculty of Exact Sciences, University of Bejaia, 06000 Bejaia, Algeria) | Samir Aknine at Lyon 1 Université (raw: Univ Lyon, UCBL, CNRS, INSA Lyon, Centrale Lyon, Univ Lyon 2, LIRIS, UMR5205, Lyon, France / Univ Lyon, UCBL, CNRS, INSA Lyon, Centrale Lyon, Univ Lyon 2, LIRIS, UMR5205)",Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -666,7 +666,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5101873531,Jinlong Peng,topic:representation-learning,Representation learning,https://ojs.aaai.org/index.php/AAAI/article/view/29308,https://ojs.aaai.org/index.php/AAAI/article/view/29308/30468,https://doi.org/10.1609/aaai.v38i12.29308,https://openalex.org/W4393153122,https://openalex.org/A5101873531,Human subset: random. person: Jinlong Peng; topic: Representation learning; supporting papers: Density Matters: Improved Core-Set for Active Domain Adaptive Segmentation (2024) | PointRWKV: Efficient RWKV-Like Model for Hierarchical Point Cloud Learning (2025),The person authored both papers and both papers have the topic.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:26b2191684c60e3b1bd58b1f690620b61168c2d3eb5020f4a89bd6482a685db6,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5101873531,Jinlong Peng,topic:representation-learning,Representation learning,https://ojs.aaai.org/index.php/AAAI/article/view/29308,https://ojs.aaai.org/index.php/AAAI/article/view/29308/30468,https://doi.org/10.1609/aaai.v38i12.29308,https://openalex.org/W4393153122,https://openalex.org/A5101873531,"Selection tags: random, flagged_diagnostic. person: Jinlong Peng; topic: Representation learning; supporting papers: Density Matters: Improved Core-Set for Active Domain Adaptive Segmentation (2024) | PointRWKV: Efficient RWKV-Like Model for Hierarchical Point Cloud Learning (2025)",Source-consistent relationship: accepted authorship and topic records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity and topic-label uncertainty; meeting the count mechanically does not validate either claim.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -979,7 +979,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:2da033f7a541a95d9839a2c1368fa92ebae9628715a10174150587916d5cfc24,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I14243506,Hong Kong Polytechnic University,organization:I204831749,Southwestern University of Finance and Economics,https://ojs.aaai.org/index.php/AAAI/article/view/33436,https://ojs.aaai.org/index.php/AAAI/article/view/33436/35591,https://doi.org/10.1609/aaai.v39i12.33436,https://openalex.org/W4409366006,https://openalex.org/I14243506 https://openalex.org/I204831749,"Human subset: diagnostic. organizations: Hong Kong Polytechnic University and Southwestern University of Finance and Economics; supporting paper: Rethinking Cancer Gene Identification Through Graph Anomaly Analysis (2025); authors: Lingfei Ren at Southwestern University of Finance and Economics (raw: School of Computing and Artificial Intelligence, Southwest University of Finance and Economics / Southwestern University of Finance and Economics) | Yilong Zang at Hong Kong Polytechnic University (raw: School of Hotel and Tourism Management, The Hong Kong Polytechnic University)",Two distinct authors are at the two organizations on that paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:2da033f7a541a95d9839a2c1368fa92ebae9628715a10174150587916d5cfc24,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I14243506,Hong Kong Polytechnic University,organization:I204831749,Southwestern University of Finance and Economics,https://ojs.aaai.org/index.php/AAAI/article/view/33436,https://ojs.aaai.org/index.php/AAAI/article/view/33436/35591,https://doi.org/10.1609/aaai.v39i12.33436,https://openalex.org/W4409366006,https://openalex.org/I14243506 https://openalex.org/I204831749,"Selection tags: risk_diagnostic. organizations: Hong Kong Polytechnic University and Southwestern University of Finance and Economics; supporting paper: Rethinking Cancer Gene Identification Through Graph Anomaly Analysis (2025); authors: Lingfei Ren at Southwestern University of Finance and Economics (raw: School of Computing and Artificial Intelligence, Southwest University of Finance and Economics / Southwestern University of Finance and Economics) | Yilong Zang at Hong Kong Polytechnic University (raw: School of Hotel and Tourism Management, The Hong Kong Polytechnic University)",Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1238,7 +1238,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:2efc9fd73cd7c6b0b64d9afac2e135292130df8e77c776c787e84c86a8ef8a82,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:aaai:2025:34632,Implicit Word Reordering with Knowledge Distillation for Cross-Lingual Dependency Parsing,venue:aaai,AAAI Conference on Artificial Intelligence,https://ojs.aaai.org/index.php/AAAI/article/view/34632,https://ojs.aaai.org/index.php/AAAI/article/view/34632/36787,https://doi.org/10.1609/aaai.v39i23.34632,https://openalex.org/W4409362614,,Human subset: random. paper: Implicit Word Reordering with Knowledge Distillation for Cross-Lingual Dependency Parsing (2025); venue: AAAI Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:2efc9fd73cd7c6b0b64d9afac2e135292130df8e77c776c787e84c86a8ef8a82,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:aaai:2025:34632,Implicit Word Reordering with Knowledge Distillation for Cross-Lingual Dependency Parsing,venue:aaai,AAAI Conference on Artificial Intelligence,https://ojs.aaai.org/index.php/AAAI/article/view/34632,https://ojs.aaai.org/index.php/AAAI/article/view/34632/36787,https://doi.org/10.1609/aaai.v39i23.34632,https://openalex.org/W4409362614,,Selection tags: random. paper: Implicit Word Reordering with Knowledge Distillation for Cross-Lingual Dependency Parsing (2025); venue: AAAI Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1309,8 +1309,8 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:5138a388a423414a2714f5fab6bb2b9f226ce0344faf3075c72843670cd696a6,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I185261750,University of Toronto,organization:I39343248,Humboldt-Universität zu Berlin,https://ojs.aaai.org/index.php/AAAI/article/view/26412,https://ojs.aaai.org/index.php/AAAI/article/view/26412/26184,https://doi.org/10.1609/aaai.v37i10.26412,https://openalex.org/W4382202912,https://openalex.org/I185261750 https://openalex.org/I39343248,"Human subset: random. organizations: University of Toronto and Humboldt-Universität zu Berlin; supporting paper: Privacy Attacks on Schedule-Driven Data (2023); authors: J. Christopher Beck at University of Toronto (raw: University of Toronto / Department of Mechanical & Industrial Engineering, University of Toronto, Toronto, Canada) | Ali Kaan Tutak at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin) | Stephan A. Fahrenkrog-Petersen at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin / Humboldt-Universität zu Berlin
-Weizenbaum Institute) | Alexandra Tichauer at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin)",Two distinct authors are at the two organizations on that paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:5138a388a423414a2714f5fab6bb2b9f226ce0344faf3075c72843670cd696a6,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I185261750,University of Toronto,organization:I39343248,Humboldt-Universität zu Berlin,https://ojs.aaai.org/index.php/AAAI/article/view/26412,https://ojs.aaai.org/index.php/AAAI/article/view/26412/26184,https://doi.org/10.1609/aaai.v37i10.26412,https://openalex.org/W4382202912,https://openalex.org/I185261750 https://openalex.org/I39343248,"Selection tags: random. organizations: University of Toronto and Humboldt-Universität zu Berlin; supporting paper: Privacy Attacks on Schedule-Driven Data (2023); authors: J. Christopher Beck at University of Toronto (raw: University of Toronto / Department of Mechanical & Industrial Engineering, University of Toronto, Toronto, Canada) | Ali Kaan Tutak at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin) | Stephan A. Fahrenkrog-Petersen at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin / Humboldt-Universität zu Berlin
+Weizenbaum Institute) | Alexandra Tichauer at Humboldt-Universität zu Berlin (raw: Humboldt-Universität zu Berlin)",Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1631,7 +1631,7 @@ Weizenbaum Institute) | Alexandra Tichauer at Humboldt-Universität zu Berlin (r
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:527d4d61fa03c3e7b7763d41bac5cfdd99871bd3959e0482310cfe3bf012f85f,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:aaai:2025:32209,Contrasting Adversarial Perturbations: The Space of Harmless Perturbations,topic:trustworthy-ml,Trustworthy machine learning,https://ojs.aaai.org/index.php/AAAI/article/view/32209,https://ojs.aaai.org/index.php/AAAI/article/view/32209/34364,https://doi.org/10.1609/aaai.v39i2.32209,https://openalex.org/W4409346469,,"Human subset: diagnostic. title: Contrasting Adversarial Perturbations: The Space of Harmless Perturbations; excerpt: Our work highlights the distinctive robustness of DNNs (i.e., consistency under large magnitude perturbations) in contrast to adversarial examples (vulnerability for small noises).; topic: Trustworthy machine learning; definition: Reliability, robustness, safety, fairness, privacy or interpretability of learning systems.",The topic is a substantive topic of the paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:527d4d61fa03c3e7b7763d41bac5cfdd99871bd3959e0482310cfe3bf012f85f,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:aaai:2025:32209,Contrasting Adversarial Perturbations: The Space of Harmless Perturbations,topic:trustworthy-ml,Trustworthy machine learning,https://ojs.aaai.org/index.php/AAAI/article/view/32209,https://ojs.aaai.org/index.php/AAAI/article/view/32209/34364,https://doi.org/10.1609/aaai.v39i2.32209,https://openalex.org/W4409346469,,"Selection tags: risk_diagnostic. title: Contrasting Adversarial Perturbations: The Space of Harmless Perturbations; excerpt: Our work highlights the distinctive robustness of DNNs (i.e., consistency under large magnitude perturbations) in contrast to adversarial examples (vulnerability for small noises).; topic: Trustworthy machine learning; definition: Reliability, robustness, safety, fairness, privacy or interpretability of learning systems.",The topic is a substantive topic of the paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1772,7 +1772,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:56dad628919516012a50719d6343c12f2e18cf65076288102a677b392c4db2a4,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:ijcai:2021:385,Average-Reward Reinforcement Learning with Trust Region Methods,topic:reinforcement-learning,Reinforcement learning,https://www.ijcai.org/proceedings/2021/385,https://www.ijcai.org/proceedings/2021/0385.pdf,https://doi.org/10.24963/ijcai.2021/385,https://openalex.org/W3192314531,,Human subset: random. title: Average-Reward Reinforcement Learning with Trust Region Methods; excerpt: Most of reinforcement learning algorithms optimize the discounted criterion which is beneficial to accelerate the convergence and reduce the variance of estimates.; topic: Reinforcement learning; definition: Learning policies from reward or feedback in sequential decisions.,The topic is a substantive topic of the paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:56dad628919516012a50719d6343c12f2e18cf65076288102a677b392c4db2a4,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:ijcai:2021:385,Average-Reward Reinforcement Learning with Trust Region Methods,topic:reinforcement-learning,Reinforcement learning,https://www.ijcai.org/proceedings/2021/385,https://www.ijcai.org/proceedings/2021/0385.pdf,https://doi.org/10.24963/ijcai.2021/385,https://openalex.org/W3192314531,,Selection tags: random. title: Average-Reward Reinforcement Learning with Trust Region Methods; excerpt: Most of reinforcement learning algorithms optimize the discounted criterion which is beneficial to accelerate the convergence and reduce the variance of estimates.; topic: Reinforcement learning; definition: Learning policies from reward or feedback in sequential decisions.,The topic is a substantive topic of the paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1890,7 +1890,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:598bc0bacbd75026e37104db4a6dc23fd3c2a45a8cb77fb726533dbefb25a6f6,,,,member-1,,,,,,,,,AUTHORED,,researcher:openalex:A5042803178,Zhengli Zhao,paper:aaai:2021:17317,Improved Consistency Regularization for GANs,https://ojs.aaai.org/index.php/AAAI/article/view/17317,https://ojs.aaai.org/index.php/AAAI/article/view/17317/17124,https://doi.org/10.1609/aaai.v35i12.17317,https://openalex.org/W3175491752,https://openalex.org/A5042803178,Human subset: random. byline position 1; roster name: Zhengli Zhao; OpenAlex name: Zhengli Zhao; paper: Improved Consistency Regularization for GANs (2021),Compatible official positional byline and stable OpenAlex author ID on the matched work; identity errors remain possible.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:598bc0bacbd75026e37104db4a6dc23fd3c2a45a8cb77fb726533dbefb25a6f6,,,,member-1,,,,,,,,,AUTHORED,,researcher:openalex:A5042803178,Zhengli Zhao,paper:aaai:2021:17317,Improved Consistency Regularization for GANs,https://ojs.aaai.org/index.php/AAAI/article/view/17317,https://ojs.aaai.org/index.php/AAAI/article/view/17317/17124,https://doi.org/10.1609/aaai.v35i12.17317,https://openalex.org/W3175491752,https://openalex.org/A5042803178,Selection tags: random. byline position 1; roster name: Zhengli Zhao; OpenAlex name: Zhengli Zhao; paper: Improved Consistency Regularization for GANs (2021),Source-consistent relationship: the official byline and accepted OpenAlex authorship align at this position with compatible names. Independently verified relationship: this alignment alone does not establish the canonical researcher's identity as the real person named; that requires person-specific evidence independent of the publication/provider records.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -1990,7 +1990,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:6c4a7dd58d5d680784204aa68f7f6476fc4a89ac007f96d041316f4f658bafcc,,,,member-1,,,,,,,,,CITES,,paper:ijcai:2025:258,DToMA: Training-free Dynamic Token MAnipulation for Long Video Understanding,paper:aaai:2025:32229,Recoverable Compression: A Multimodal Vision Token Recovery Mechanism Guided by Text Information,https://www.ijcai.org/proceedings/2025/258,https://www.ijcai.org/proceedings/2025/0258.pdf,https://doi.org/10.24963/ijcai.2025/258,https://openalex.org/W4414360630,,Human subset: random. citing paper: DToMA: Training-free Dynamic Token MAnipulation for Long Video Understanding (2025); cited paper: Recoverable Compression: A Multimodal Vision Token Recovery Mechanism Guided by Text Information (2025),Cached source work referenced_works contains the uniquely matched in-scope target work ID.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:6c4a7dd58d5d680784204aa68f7f6476fc4a89ac007f96d041316f4f658bafcc,,,,member-1,,,,,,,,,CITES,,paper:ijcai:2025:258,DToMA: Training-free Dynamic Token MAnipulation for Long Video Understanding,paper:aaai:2025:32229,Recoverable Compression: A Multimodal Vision Token Recovery Mechanism Guided by Text Information,https://www.ijcai.org/proceedings/2025/258,https://www.ijcai.org/proceedings/2025/0258.pdf,https://doi.org/10.24963/ijcai.2025/258,https://openalex.org/W4414360630,,Selection tags: random. citing paper: DToMA: Training-free Dynamic Token MAnipulation for Long Video Understanding (2025); cited paper: Recoverable Compression: A Multimodal Vision Token Recovery Mechanism Guided by Text Information (2025),The citing paper's reference list contains the cited paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -2084,7 +2084,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857,,,,member-1,,,,,,,,,CONTRIBUTES_TO_TOPIC,,organization:I4401726822,Ping An (China),topic:efficient-systems,Efficient machine learning systems,https://ojs.aaai.org/index.php/AAAI/article/view/17241,https://ojs.aaai.org/index.php/AAAI/article/view/17241/17048,https://doi.org/10.1609/aaai.v35i12.17241,https://openalex.org/W3118855211,https://openalex.org/I4401726822,Human subset: random. organization: Ping An (China); topic: Efficient machine learning systems; supporting papers: Curriculum-Meta Learning for Order-Robust Continual Relation Extraction (2021) | EG-NAS: Neural Architecture Search with Fast Evolutionary Exploration (2024) | FedET: A Communication-Efficient Federated Class-Incremental Learning Framework Based on Enhanced Transformer (2023),Each paper has the topic and an author affiliated with the organization.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:6e05724228b61bdc1ae5bf917cc0937bc6cfd6296ea8e24eaba915368d25d857,,,,member-1,,,,,,,,,CONTRIBUTES_TO_TOPIC,,organization:I4401726822,Ping An (China),topic:efficient-systems,Efficient machine learning systems,https://ojs.aaai.org/index.php/AAAI/article/view/17241,https://ojs.aaai.org/index.php/AAAI/article/view/17241/17048,https://doi.org/10.1609/aaai.v35i12.17241,https://openalex.org/W3118855211,https://openalex.org/I4401726822,"Selection tags: random, flagged_diagnostic. organization: Ping An (China); topic: Efficient machine learning systems; supporting papers: Curriculum-Meta Learning for Order-Robust Continual Relation Extraction (2021) | EG-NAS: Neural Architecture Search with Fast Evolutionary Exploration (2024) | FedET: A Communication-Efficient Federated Class-Incremental Learning Framework Based on Enhanced Transformer (2023)","Source-consistent relationship: topic records and paper-specific author-affiliation records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity, affiliation and topic-label uncertainty; correct aggregation alone does not validate them.","{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -2755,7 +2755,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:7f6112a9498e71674f2a84de18be7cc3f3689df478af0d243f54c59a259647c3,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:ijcai:2023:344,Spatial-Temporal Self-Attention for Asynchronous Spiking Neural Networks,venue:ijcai,International Joint Conference on Artificial Intelligence,https://www.ijcai.org/proceedings/2023/344,https://www.ijcai.org/proceedings/2023/0344.pdf,https://doi.org/10.24963/ijcai.2023/344,https://openalex.org/W4385764425,,Human subset: random. paper: Spatial-Temporal Self-Attention for Asynchronous Spiking Neural Networks (2023); venue: International Joint Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:7f6112a9498e71674f2a84de18be7cc3f3689df478af0d243f54c59a259647c3,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:ijcai:2023:344,Spatial-Temporal Self-Attention for Asynchronous Spiking Neural Networks,venue:ijcai,International Joint Conference on Artificial Intelligence,https://www.ijcai.org/proceedings/2023/344,https://www.ijcai.org/proceedings/2023/0344.pdf,https://doi.org/10.24963/ijcai.2023/344,https://openalex.org/W4385764425,,Selection tags: random. paper: Spatial-Temporal Self-Attention for Asynchronous Spiking Neural Networks (2023); venue: International Joint Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -2862,7 +2862,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:801a3e146abba01be8c19c8487991690246ff46135ce03e182c05d5b77035618,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:ijcai:2025:947,Robust Finite-Memory Policy Gradients for Hidden-Model POMDPs,venue:ijcai,International Joint Conference on Artificial Intelligence,https://www.ijcai.org/proceedings/2025/947,https://www.ijcai.org/proceedings/2025/0947.pdf,https://doi.org/10.24963/ijcai.2025/947,https://openalex.org/W4414360425,,Human subset: random. paper: Robust Finite-Memory Policy Gradients for Hidden-Model POMDPs (2025); venue: International Joint Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:801a3e146abba01be8c19c8487991690246ff46135ce03e182c05d5b77035618,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:ijcai:2025:947,Robust Finite-Memory Policy Gradients for Hidden-Model POMDPs,venue:ijcai,International Joint Conference on Artificial Intelligence,https://www.ijcai.org/proceedings/2025/947,https://www.ijcai.org/proceedings/2025/0947.pdf,https://doi.org/10.24963/ijcai.2025/947,https://openalex.org/W4414360425,,Selection tags: random. paper: Robust Finite-Memory Policy Gradients for Hidden-Model POMDPs (2025); venue: International Joint Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -2969,7 +2969,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:83fb34e95cfd06c35bdeee90a7066ca7abdc95cf373310a3526f3417a8ce6d62,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:ijcai:2025:905,Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation,topic:multimodal,Multimodal learning,https://www.ijcai.org/proceedings/2025/905,https://www.ijcai.org/proceedings/2025/0905.pdf,https://doi.org/10.24963/ijcai.2025/905,https://openalex.org/W4414360253,,"Human subset: diagnostic. title: Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation; excerpt: Specifically, prompt learning is employed to enhance textual modality representations, while knowledge distillation is utilized to strengthen representations of weaker modalities.; topic: Multimodal learning; definition: Learning that substantively combines or aligns multiple data modalities.",The topic is a substantive topic of the paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:83fb34e95cfd06c35bdeee90a7066ca7abdc95cf373310a3526f3417a8ce6d62,,,,member-1,,,,,,,,,HAS_TOPIC,,paper:ijcai:2025:905,Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation,topic:multimodal,Multimodal learning,https://www.ijcai.org/proceedings/2025/905,https://www.ijcai.org/proceedings/2025/0905.pdf,https://doi.org/10.24963/ijcai.2025/905,https://openalex.org/W4414360253,,"Selection tags: risk_diagnostic. title: Multi-modal Anchor Gated Transformer with Knowledge Distillation for Emotion Recognition in Conversation; excerpt: Specifically, prompt learning is employed to enhance textual modality representations, while knowledge distillation is utilized to strengthen representations of weaker modalities.; topic: Multimodal learning; definition: Learning that substantively combines or aligns multiple data modalities.",The topic is a substantive topic of the paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3087,7 +3087,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:8b9aef9ca536be0ce279307d07e4673b0c6a9e2301114dc519e12cb33343ca7e,,,,member-1,,,,,,,,,CITES,,paper:aaai:2024:29156,Measuring Task Similarity and Its Implication in Fine-Tuning Graph Neural Networks,paper:ijcai:2022:310,Beyond Homophily: Structure-aware Path Aggregation Graph Neural Network,https://ojs.aaai.org/index.php/AAAI/article/view/29156,https://ojs.aaai.org/index.php/AAAI/article/view/29156/30186,https://doi.org/10.1609/aaai.v38i11.29156,https://openalex.org/W4393147349,,Human subset: random. citing paper: Measuring Task Similarity and Its Implication in Fine-Tuning Graph Neural Networks (2024); cited paper: Beyond Homophily: Structure-aware Path Aggregation Graph Neural Network (2022),Cached source work referenced_works contains the uniquely matched in-scope target work ID.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:8b9aef9ca536be0ce279307d07e4673b0c6a9e2301114dc519e12cb33343ca7e,,,,member-1,,,,,,,,,CITES,,paper:aaai:2024:29156,Measuring Task Similarity and Its Implication in Fine-Tuning Graph Neural Networks,paper:ijcai:2022:310,Beyond Homophily: Structure-aware Path Aggregation Graph Neural Network,https://ojs.aaai.org/index.php/AAAI/article/view/29156,https://ojs.aaai.org/index.php/AAAI/article/view/29156/30186,https://doi.org/10.1609/aaai.v38i11.29156,https://openalex.org/W4393147349,,Selection tags: random. citing paper: Measuring Task Similarity and Its Implication in Fine-Tuning Graph Neural Networks (2024); cited paper: Beyond Homophily: Structure-aware Path Aggregation Graph Neural Network (2022),The citing paper's reference list contains the cited paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3244,7 +3244,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:91425ae06453765ae48454f8d130f85415857e3ae674c60d3e6bd3202fb2211f,,,,member-1,,,,,,,,,AFFILIATED_WITH,,researcher:openalex:A5070159193,Qianfen Jiao,organization:I168719708,City University of Hong Kong,https://ojs.aaai.org/index.php/AAAI/article/view/17017,https://ojs.aaai.org/index.php/AAAI/article/view/17017/16824,https://doi.org/10.1609/aaai.v35i9.17017,https://openalex.org/W3177496794,https://openalex.org/A5070159193 https://openalex.org/I168719708,Human subset: diagnostic. supporting papers: 1; raw affiliation: City University of Hong Kong; organization: City University of Hong Kong; papers shown: High Fidelity GAN Inversion via Prior Multi-Subspace Feature Composition (2021),"Exact paper authorship maps this researcher to this institution, with raw affiliation-string evidence.","{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:91425ae06453765ae48454f8d130f85415857e3ae674c60d3e6bd3202fb2211f,,,,member-1,,,,,,,,,AFFILIATED_WITH,,researcher:openalex:A5070159193,Qianfen Jiao,organization:I168719708,City University of Hong Kong,https://ojs.aaai.org/index.php/AAAI/article/view/17017,https://ojs.aaai.org/index.php/AAAI/article/view/17017/16824,https://doi.org/10.1609/aaai.v35i9.17017,https://openalex.org/W3177496794,https://openalex.org/A5070159193 https://openalex.org/I168719708,Selection tags: risk_diagnostic. supporting papers: 1; raw affiliation: City University of Hong Kong; organization: City University of Hong Kong; papers shown: High Fidelity GAN Inversion via Prior Multi-Subspace Feature Composition (2021),Source-consistent relationship: the paper-specific authorship record maps this author to the institution and retains its raw affiliation string. Independently verified relationship: provider authorship alone does not establish the canonical researcher's identity; identity-dependent claims need person-specific evidence beyond the construction records.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3345,7 +3345,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:99057d1f446d563c22a9e0e44703faac5c00fc4fbdc93dee2f84117d5809dc9b,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I79891267,Singapore Management University,organization:I94234084,Indian Institute of Technology Kanpur,https://ojs.aaai.org/index.php/AAAI/article/view/20568,https://ojs.aaai.org/index.php/AAAI/article/view/20568/20327,https://doi.org/10.1609/aaai.v36i6.20568,https://openalex.org/W4221155573,https://openalex.org/I79891267 https://openalex.org/I94234084,Human subset: diagnostic. organizations: Singapore Management University and Indian Institute of Technology Kanpur; supporting paper: Multiscale Generative Models: Improving Performance of a Generative Model Using Feedback from Other Dependent Generative Models (2022); authors: Shih-Fen Cheng at Singapore Management University (raw: Singapore Management University) | Arunesh Sinha at Singapore Management University (raw: Singapore Management University) | Avinandan Bose at Indian Institute of Technology Kanpur (raw: Indian Institute of Technology Kanpur) | Changyu Chen at Singapore Management University (raw: Singapore Management University),Two distinct authors are at the two organizations on that paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:99057d1f446d563c22a9e0e44703faac5c00fc4fbdc93dee2f84117d5809dc9b,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I79891267,Singapore Management University,organization:I94234084,Indian Institute of Technology Kanpur,https://ojs.aaai.org/index.php/AAAI/article/view/20568,https://ojs.aaai.org/index.php/AAAI/article/view/20568/20327,https://doi.org/10.1609/aaai.v36i6.20568,https://openalex.org/W4221155573,https://openalex.org/I79891267 https://openalex.org/I94234084,Selection tags: risk_diagnostic. organizations: Singapore Management University and Indian Institute of Technology Kanpur; supporting paper: Multiscale Generative Models: Improving Performance of a Generative Model Using Feedback from Other Dependent Generative Models (2022); authors: Shih-Fen Cheng at Singapore Management University (raw: Singapore Management University) | Arunesh Sinha at Singapore Management University (raw: Singapore Management University) | Avinandan Bose at Indian Institute of Technology Kanpur (raw: Indian Institute of Technology Kanpur) | Changyu Chen at Singapore Management University (raw: Singapore Management University),Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3630,7 +3630,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:a4a52794c087ac0bc9f38055487ce76a4d876c2e3d41a53d3c94e05c545b38ec,,,,member-1,,,,,,,,,CITES,,paper:aaai:2022:21255,Fourier Representations for Black-Box Optimization over Categorical Variables,paper:aaai:2021:16886,Mercer Features for Efficient Combinatorial Bayesian Optimization,https://ojs.aaai.org/index.php/AAAI/article/view/21255,https://ojs.aaai.org/index.php/AAAI/article/view/21255/21004,https://doi.org/10.1609/aaai.v36i9.21255,https://openalex.org/W3121625894,,Human subset: random. citing paper: Fourier Representations for Black-Box Optimization over Categorical Variables (2022); cited paper: Mercer Features for Efficient Combinatorial Bayesian Optimization (2021),Cached source work referenced_works contains the uniquely matched in-scope target work ID.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:a4a52794c087ac0bc9f38055487ce76a4d876c2e3d41a53d3c94e05c545b38ec,,,,member-1,,,,,,,,,CITES,,paper:aaai:2022:21255,Fourier Representations for Black-Box Optimization over Categorical Variables,paper:aaai:2021:16886,Mercer Features for Efficient Combinatorial Bayesian Optimization,https://ojs.aaai.org/index.php/AAAI/article/view/21255,https://ojs.aaai.org/index.php/AAAI/article/view/21255/21004,https://doi.org/10.1609/aaai.v36i9.21255,https://openalex.org/W3121625894,,Selection tags: random. citing paper: Fourier Representations for Black-Box Optimization over Categorical Variables (2022); cited paper: Mercer Features for Efficient Combinatorial Bayesian Optimization (2021),The citing paper's reference list contains the cited paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3751,7 +3751,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b00002c46823489bb616d869fc61cff3af0f0e965fd4bd3a95b3a061b3fc33e9,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:aaai:2025:33646,A Modal Logic for Joint Abilities of Structured Strategies with Bounded Complexity,venue:aaai,AAAI Conference on Artificial Intelligence,https://ojs.aaai.org/index.php/AAAI/article/view/33646,https://ojs.aaai.org/index.php/AAAI/article/view/33646/35801,https://doi.org/10.1609/aaai.v39i14.33646,https://openalex.org/W4409364899,,Human subset: random. paper: A Modal Logic for Joint Abilities of Structured Strategies with Bounded Complexity (2025); venue: AAAI Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b00002c46823489bb616d869fc61cff3af0f0e965fd4bd3a95b3a061b3fc33e9,,,,member-1,,,,,,,,,PUBLISHED_IN,,paper:aaai:2025:33646,A Modal Logic for Joint Abilities of Structured Strategies with Bounded Complexity,venue:aaai,AAAI Conference on Artificial Intelligence,https://ojs.aaai.org/index.php/AAAI/article/view/33646,https://ojs.aaai.org/index.php/AAAI/article/view/33646/35801,https://doi.org/10.1609/aaai.v39i14.33646,https://openalex.org/W4409364899,,Selection tags: random. paper: A Modal Logic for Joint Abilities of Structured Strategies with Bounded Complexity (2025); venue: AAAI Conference on Artificial Intelligence,The official page lists the paper in that venue and year.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3822,7 +3822,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b14aa3e25343fc1000e6508509392b595131a6dcd5f5d3eeb29ea013de626ceb,,,,member-1,,,,,,,,,AUTHORED,,researcher:openalex:A5027711113,Adish Kumar Singla,paper:ijcai:2023:528,Specifying and Testing k-Safety Properties for Machine-Learning Models,https://www.ijcai.org/proceedings/2023/528,https://www.ijcai.org/proceedings/2023/0528.pdf,https://doi.org/10.24963/ijcai.2023/528,https://openalex.org/W4385768198,https://openalex.org/A5027711113,Human subset: random. byline position 4; roster name: Adish Singla; OpenAlex name: Adish Kumar Singla; ORCID: 0000-0001-9922-0668; paper: Specifying and Testing k-Safety Properties for Machine-Learning Models (2023),Compatible official positional byline and stable OpenAlex author ID on the matched work; identity errors remain possible.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b14aa3e25343fc1000e6508509392b595131a6dcd5f5d3eeb29ea013de626ceb,,,,member-1,,,,,,,,,AUTHORED,,researcher:openalex:A5027711113,Adish Kumar Singla,paper:ijcai:2023:528,Specifying and Testing k-Safety Properties for Machine-Learning Models,https://www.ijcai.org/proceedings/2023/528,https://www.ijcai.org/proceedings/2023/0528.pdf,https://doi.org/10.24963/ijcai.2023/528,https://openalex.org/W4385768198,https://openalex.org/A5027711113,Selection tags: random. byline position 4; roster name: Adish Singla; OpenAlex name: Adish Kumar Singla; ORCID: 0000-0001-9922-0668; paper: Specifying and Testing k-Safety Properties for Machine-Learning Models (2023),Source-consistent relationship: the official byline and accepted OpenAlex authorship align at this position with compatible names. Independently verified relationship: this alignment alone does not establish the canonical researcher's identity as the real person named; that requires person-specific evidence independent of the publication/provider records.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -3913,7 +3913,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ""support_edges"": [],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b715c38021ec43d652466494a3c5bbf0019b79c5f94461f77b3e8af84276fbed,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I1291425158,Google (United States),organization:I155173764,Rochester Institute of Technology,https://www.ijcai.org/proceedings/2025/628,https://www.ijcai.org/proceedings/2025/0628.pdf,https://doi.org/10.24963/ijcai.2025/628,https://openalex.org/W4414359559,https://openalex.org/I1291425158 https://openalex.org/I155173764,Human subset: random. organizations: Google (United States) and Rochester Institute of Technology; supporting paper: FAST: A Lightweight Mechanism Unleashing Arbitrary Client Participation in Federated Learning (2025); authors: Haibo Yang at Rochester Institute of Technology (raw: Rochester Institute of Technology) | Bicheng Ying at Google (United States) (raw: Google Inc),Two distinct authors are at the two organizations on that paper.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b715c38021ec43d652466494a3c5bbf0019b79c5f94461f77b3e8af84276fbed,,,,member-1,,,,,,,,,COLLABORATED_WITH,,organization:I1291425158,Google (United States),organization:I155173764,Rochester Institute of Technology,https://www.ijcai.org/proceedings/2025/628,https://www.ijcai.org/proceedings/2025/0628.pdf,https://doi.org/10.24963/ijcai.2025/628,https://openalex.org/W4414359559,https://openalex.org/I1291425158 https://openalex.org/I155173764,Selection tags: random. organizations: Google (United States) and Rochester Institute of Technology; supporting paper: FAST: A Lightweight Mechanism Unleashing Arbitrary Client Participation in Federated Learning (2025); authors: Haibo Yang at Rochester Institute of Technology (raw: Rochester Institute of Technology) | Bicheng Ying at Google (United States) (raw: Google Inc),Source-consistent relationship: paper-specific authorship and affiliation records support distinct authors at the two organizations. Independently verified relationship: the derived edge inherits researcher identity and affiliation uncertainty; correct aggregation alone does not validate those source claims.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -4108,7 +4108,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5016730899,I‐Chen Wu,topic:reinforcement-learning,Reinforcement learning,https://ojs.aaai.org/index.php/AAAI/article/view/16100,https://ojs.aaai.org/index.php/AAAI/article/view/16100/15907,https://doi.org/10.1609/aaai.v35i1.16100,https://openalex.org/W3174434307,https://openalex.org/A5016730899,Human subset: random. person: I‐Chen Wu; topic: Reinforcement learning; supporting papers: Learning to Stop: Dynamic Simulation Monte-Carlo Tree Search (2021) | PPO-Clip Attains Global Optimality: Towards Deeper Understandings of Clipping (2024),The person authored both papers and both papers have the topic.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:b8ad1484fd0d7a0fb87280461e102431358e8cff5157ccb90323457ef2052e43,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5016730899,I‐Chen Wu,topic:reinforcement-learning,Reinforcement learning,https://ojs.aaai.org/index.php/AAAI/article/view/16100,https://ojs.aaai.org/index.php/AAAI/article/view/16100/15907,https://doi.org/10.1609/aaai.v35i1.16100,https://openalex.org/W3174434307,https://openalex.org/A5016730899,"Selection tags: random, flagged_diagnostic. person: I‐Chen Wu; topic: Reinforcement learning; supporting papers: Learning to Stop: Dynamic Simulation Monte-Carlo Tree Search (2021) | PPO-Clip Attains Global Optimality: Towards Deeper Understandings of Clipping (2024)",Source-consistent relationship: accepted authorship and topic records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity and topic-label uncertainty; meeting the count mechanically does not validate either claim.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -4403,7 +4403,89 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:ccf3a0046b9366f1f76b812eebedac804e9600389f67d91ef5522eb63dfdde9c,,,,member-1,,,,,,,,,COAUTHORED_WITH,,researcher:openalex:A5020877356,Yulu Gan,researcher:openalex:A5100701650,Lin Luo,https://ojs.aaai.org/index.php/AAAI/article/view/25922,https://ojs.aaai.org/index.php/AAAI/article/view/25922/25694,https://doi.org/10.1609/aaai.v37i6.25922,https://openalex.org/W4382239347,https://openalex.org/A5020877356 https://openalex.org/A5100701650,Human subset: random. people: Yulu Gan and Lin Luo; supporting paper: Decorate the Newcomers: Visual Domain Prompt for Continual Test Time Adaptation (2023),Both people are on that paper's byline.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:cc8efc4bdc585fe23bd723a4bb5b30395ef2efe664366ba82d4330631e24113e,,,,member-1,,,,,,,,,AUTHORED,,researcher:openalex:A5068979281,Ke Yu,paper:aaai:2025:34377,FSTA-SNN:Frequency-Based Spatial-Temporal Attention Module for Spiking Neural Networks,https://ojs.aaai.org/index.php/AAAI/article/view/34377,https://ojs.aaai.org/index.php/AAAI/article/view/34377/36532,https://doi.org/10.1609/aaai.v39i21.34377,https://openalex.org/W4409363287,https://openalex.org/A5068979281,Selection tags: flagged_diagnostic. byline position 1; roster name: Kairong Yu; OpenAlex name: Ke Yu; ORCID: 0000-0001-9882-5729; paper: FSTA-SNN:Frequency-Based Spatial-Temporal Attention Module for Spiking Neural Networks (2025),Source-consistent relationship: the official byline and accepted OpenAlex authorship align at this position with compatible names. Independently verified relationship: this alignment alone does not establish the canonical researcher's identity as the real person named; that requires person-specific evidence independent of the publication/provider records.,"{
+  ""affiliation_observations"": [
+    {
+      ""evidence_ids"": [
+        ""evidence:openalex:de3b3a8e6e23efac46103f30""
+      ],
+      ""id"": ""affiliation:34619e629476f996aa46e629"",
+      ""organization_id"": ""organization:I27357992"",
+      ""paper_id"": ""paper:aaai:2025:34377"",
+      ""researcher_id"": ""researcher:openalex:A5100786564""
+    },
+    {
+      ""evidence_ids"": [
+        ""evidence:openalex:de3b3a8e6e23efac46103f30""
+      ],
+      ""id"": ""affiliation:8f005f74b3fca557048447e3"",
+      ""organization_id"": ""organization:I76130692"",
+      ""paper_id"": ""paper:aaai:2025:34377"",
+      ""researcher_id"": ""researcher:openalex:A5068979281""
+    },
+    {
+      ""evidence_ids"": [
+        ""evidence:openalex:de3b3a8e6e23efac46103f30""
+      ],
+      ""id"": ""affiliation:ab7f87aedf9022dd7cfe0b2f"",
+      ""organization_id"": ""organization:I76130692"",
+      ""paper_id"": ""paper:aaai:2025:34377"",
+      ""researcher_id"": ""researcher:openalex:A5114860891""
+    }
+  ],
+  ""edge"": {
+    ""edge_id"": ""edge:cc8efc4bdc585fe23bd723a4bb5b30395ef2efe664366ba82d4330631e24113e"",
+    ""evidence_ids"": [
+      ""evidence:openalex:de3b3a8e6e23efac46103f30""
+    ],
+    ""evidence_kind"": ""observed"",
+    ""graph_version"": ""release-d3c788c3114a"",
+    ""method_version"": ""release-openalex-graph-v1.1"",
+    ""properties"": {
+      ""byline_position"": 1,
+      ""name_match"": ""exact"",
+      ""roster_name"": ""Kairong Yu""
+    },
+    ""relation"": ""AUTHORED"",
+    ""source_id"": ""researcher:openalex:A5068979281"",
+    ""target_id"": ""paper:aaai:2025:34377"",
+    ""validation_status"": ""accepted""
+  },
+  ""evidence"": [
+    {
+      ""excerpt"": null,
+      ""id"": ""evidence:openalex:de3b3a8e6e23efac46103f30"",
+      ""kind"": ""observed"",
+      ""raw_sha256"": ""0c02c7a1ca14648cb85b0c7f33a57ef29e90696a80bd85bcada3ccbf4b1c1e6c"",
+      ""retrieved_at"": ""2026-11-07T20:29:25.049223Z"",
+      ""source_locator"": ""openalex-request:2a8b4a9dd39f46253494f5eee517dab525a5535d24bd536df20b36b8afcb233f#results[2]"",
+      ""source_url"": ""https://openalex.org/W4409363287"",
+      ""support_edge_ids"": [],
+      ""support_paper_ids"": []
+    }
+  ],
+  ""papers"": [
+    {
+      ""id"": ""paper:aaai:2025:34377"",
+      ""label"": ""Paper"",
+      ""name"": ""FSTA-SNN:Frequency-Based Spatial-Temporal Attention Module for Spiking Neural Networks"",
+      ""properties"": {
+        ""doi"": ""10.1609/aaai.v39i21.34377"",
+        ""is_core"": true,
+        ""official_author_count"": 4,
+        ""official_url"": ""https://ojs.aaai.org/index.php/AAAI/article/view/34377"",
+        ""openalex_id"": ""W4409363287"",
+        ""pdf_url"": ""https://ojs.aaai.org/index.php/AAAI/article/view/34377/36532"",
+        ""topic_text"": ""title_and_abstract"",
+        ""track"": ""main"",
+        ""year"": 2025
+      }
+    }
+  ],
+  ""support_edges"": [],
+  ""topic_definitions"": []
+}"
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:ccf3a0046b9366f1f76b812eebedac804e9600389f67d91ef5522eb63dfdde9c,,,,member-1,,,,,,,,,COAUTHORED_WITH,,researcher:openalex:A5020877356,Yulu Gan,researcher:openalex:A5100701650,Lin Luo,https://ojs.aaai.org/index.php/AAAI/article/view/25922,https://ojs.aaai.org/index.php/AAAI/article/view/25922/25694,https://doi.org/10.1609/aaai.v37i6.25922,https://openalex.org/W4382239347,https://openalex.org/A5020877356 https://openalex.org/A5100701650,Selection tags: random. people: Yulu Gan and Lin Luo; supporting paper: Decorate the Newcomers: Visual Domain Prompt for Continual Test Time Adaptation (2023),Source-consistent relationship: accepted authorship records place both IDs on the same paper. Independently verified relationship: this derivation inherits both researcher identity claims; a mechanical byline match does not independently establish either person's identity.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -4582,7 +4664,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
   ],
   ""topic_definitions"": []
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:dcdc0134434001d36acf1878530bc4ef451d6f805c6ae11dc6a4b56180c4e7de,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5032664588,Yuhang Jiang,topic:reinforcement-learning,Reinforcement learning,https://ojs.aaai.org/index.php/AAAI/article/view/20645,https://ojs.aaai.org/index.php/AAAI/article/view/20645/20404,https://doi.org/10.1609/aaai.v36i6.20645,https://openalex.org/W3205046940,https://openalex.org/A5032664588,Human subset: random. person: Yuhang Jiang; topic: Reinforcement learning; supporting papers: Wasserstein Unsupervised Reinforcement Learning (2022) | State Deviation Correction for Offline Reinforcement Learning (2022),The person authored both papers and both papers have the topic.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:dcdc0134434001d36acf1878530bc4ef451d6f805c6ae11dc6a4b56180c4e7de,,,,member-1,,,,,,,,,RESEARCHES_TOPIC,,researcher:openalex:A5032664588,Yuhang Jiang,topic:reinforcement-learning,Reinforcement learning,https://ojs.aaai.org/index.php/AAAI/article/view/20645,https://ojs.aaai.org/index.php/AAAI/article/view/20645/20404,https://doi.org/10.1609/aaai.v36i6.20645,https://openalex.org/W3205046940,https://openalex.org/A5032664588,Selection tags: random. person: Yuhang Jiang; topic: Reinforcement learning; supporting papers: Wasserstein Unsupervised Reinforcement Learning (2022) | State Deviation Correction for Offline Reinforcement Learning (2022),Source-consistent relationship: accepted authorship and topic records meet the distinct-paper rule. Independently verified relationship: the result inherits researcher identity and topic-label uncertainty; meeting the count mechanically does not validate either claim.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [
@@ -5001,7 +5083,7 @@ sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e88
     }
   ]
 }"
-sprint-relation-audit-release-v1,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:f87df4f721d60a0c02f5032507d9e02b391fcef4bb74660b1c6bb1180ac22dc0,,,,member-1,,,,,,,,,CITES,,paper:ijcai:2023:582,Learning Summary-Worthy Visual Representation for Abstractive Summarization in Video,paper:aaai:2021:16273,Structured Co-reference Graph Attention for Video-grounded Dialogue,https://www.ijcai.org/proceedings/2023/582,https://www.ijcai.org/proceedings/2023/0582.pdf,https://doi.org/10.24963/ijcai.2023/582,https://openalex.org/W4385767852,,Human subset: random. citing paper: Learning Summary-Worthy Visual Representation for Abstractive Summarization in Video (2023); cited paper: Structured Co-reference Graph Attention for Video-grounded Dialogue (2021),Cached source work referenced_works contains the uniquely matched in-scope target work ID.,"{
+sprint-relation-audit-release-v1-human-packet-v2,,release-d3c788c3114a,6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90,,,,,edge:f87df4f721d60a0c02f5032507d9e02b391fcef4bb74660b1c6bb1180ac22dc0,,,,member-1,,,,,,,,,CITES,,paper:ijcai:2023:582,Learning Summary-Worthy Visual Representation for Abstractive Summarization in Video,paper:aaai:2021:16273,Structured Co-reference Graph Attention for Video-grounded Dialogue,https://www.ijcai.org/proceedings/2023/582,https://www.ijcai.org/proceedings/2023/0582.pdf,https://doi.org/10.24963/ijcai.2023/582,https://openalex.org/W4385767852,,Selection tags: random. citing paper: Learning Summary-Worthy Visual Representation for Abstractive Summarization in Video (2023); cited paper: Structured Co-reference Graph Attention for Video-grounded Dialogue (2021),The citing paper's reference list contains the cited paper.,"{
   ""affiliation_observations"": [
     {
       ""evidence_ids"": [

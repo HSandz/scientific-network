@@ -1244,3 +1244,28 @@ equivalence; Task2B's exact-DOI guard already covers future acquisition. Safe ch
 are coverage/denominator explanations, a bounded topic-coverage figure from frozen
 analysis and qualification of identity-sensitive bridge shortlists. Historical
 results, graphs, source caches and prior Task2D user edits are preserved.
+
+## D041 — Human-review evidence distinction and flagged diagnostic supplement (2026-11-11)
+
+For the optional deadline-sprint human packet, keep the existing `correct`,
+`incorrect`, `unverifiable` vocabulary and CSV fields. The rubric must distinguish
+a **source-consistent relationship** from an **independently verified
+relationship**. An official positional byline aligned to an accepted OpenAlex
+author ID is construction evidence, not independent proof that the canonical
+researcher node represents the named person. `AFFILIATED_WITH` and the derived
+`COAUTHORED_WITH`, `COLLABORATED_WITH`, `RESEARCHES_TOPIC`, and
+`CONTRIBUTES_TO_TOPIC` claims inherit researcher-identity uncertainty. A
+mechanically correct derivation does not validate its inputs. The existing form
+cannot store source consistency and independent verification as separate coded
+answers; its criteria and reviewer explanation therefore state this limitation.
+
+Add every edge in the current `issues.json` ledger to both reviewers' dedicated
+flagged diagnostic section, with overlapping random/risk tags retained and each
+edge shown once. Preserve the existing frozen 80-edge sample, 20-case human random
+draw and six risk diagnostics. Only the random tag contributes to probability
+calculations; diagnostic-only cases are excluded. Keep AI concerns and their
+source locators in separate post-blind views so initial decisions can be exported
+before reviewers see the AI concerns. The issue file is the source of flagged IDs;
+none are hardcoded in application logic. No human judgments are created by packet
+generation. See [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-readiness.md)
+and `reports/final-quality-sprint/`.

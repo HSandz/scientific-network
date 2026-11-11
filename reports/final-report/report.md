@@ -689,8 +689,12 @@ but depend on semantic paper-topic interpretations disputed by Luna. The separat
 eight-paper topic diagnostic also flags likely omitted leaves and a taxonomy
 boundary. These AI findings do not authorize retrospective relabeling. Human
 validation was not performed; construction-source overlap, evaluator error and
-bounded support inspection remain limitations. Blank two-member packets contain
-20 prespecified random cases plus six separately identified diagnostics.
+bounded support inspection remain limitations. The optional two-member packet
+contains the unchanged 20-case random subset and six existing risk diagnostics,
+plus all four issue-ledger cases. Three flagged cases overlap the random draw, so
+there are 27 unique cards per reviewer; only the random tag carries probability
+weight. Separate post-blind views hold Luna's concerns so initial answers can be
+recorded first.
 
 ### 9.3 Topic agreement with AI-assigned reference labels
 
@@ -888,15 +892,15 @@ uv run --extra report python -m scientific_network.reporting.release_package \
   --output-dir reports/runs/manual-v4-package
 ```
 
-The current build's measured paths, source commit, page count, SHA-256 values,
-archive member hashes/CRC and visual checks belong in
-`reports/release-v4/local-package-receipt-v2.json`, written after the source
-commit. That later receipt is intentionally outside its own source snapshot;
-this report does not preclaim its measured page count or package QA. The old
-checked package and receipt remain unchanged and describe only their historical
-checkpoint. Raw caches, full graph JSON, models, paper PDFs, credentials and
-database volumes remain excluded from Git/source bundles. The final rendered
-report PDF belongs to local delivery and is not tracked as source.
+`reports/release-v4/local-package-receipt-v2.json` and the 28-page receipt in the
+[quality sprint](../final-quality-sprint/README.md) each bind their own earlier
+source checkpoint; both remain historical and unchanged. This final cleanup
+builds a separate package from its clean committed checkpoint. Its exact source
+commit, HTML/PDF/ZIP paths, page count, hashes and validation results are recorded
+in the [final-cleanup work entry](../../docs/work-log/2026-11-11-008-final-cleanup-submission-readiness.md).
+Raw caches, full graph JSON, models, paper PDFs, credentials and database volumes
+remain excluded from Git/source bundles. The final rendered report PDF belongs to
+local delivery and is not tracked as source.
 
 ## Remaining personal facts and external delivery
 
@@ -904,9 +908,18 @@ V4 graph correction, database checks, fresh analysis and this report draft are
 complete, and the one new AI edge audit is scored. Follow the committed-source
 render procedure above; the corresponding receipt records actual local delivery
 artifacts. Historical receipts apply only to their old source versions.
-Human annotation is optional. Real names, student IDs, actual human contributions,
-lecturer access and course-specific AI-use rules remain explicitly pending from supplied records.
-The local package is a submission draft until those facts are reflected in a new
-render. A release tag/push, Site publication, invitations and submission require
-separate authorization after this concrete local result is reviewed; follow
-[the delivery checklist](../../docs/local-submission-checklist.md).
+Human annotation is optional. Complete these fields from real records before
+submission; none is inferred from repository accounts or AI reviewer labels:
+
+- [ ] Official names and student IDs for both team members.
+- [ ] Actual contribution summary for each team member.
+- [ ] Exact course title and identifier, plus advisor/instructor details only if
+  the submission requires them.
+- [ ] Lecturer access requirements for the repository and public demo.
+- [ ] Course-specific AI-use rules and the required disclosure wording.
+- [ ] Actual submission destination and date when supplied by the course.
+
+The local package remains a submission draft until required facts are reflected
+in a new versioned render. A release tag/push, Site publication, invitations and
+submission require separate authorization after this concrete local result is
+reviewed; follow [the delivery checklist](../../docs/local-submission-checklist.md).
