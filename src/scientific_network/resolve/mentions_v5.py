@@ -177,9 +177,12 @@ def resolve_mentions(rows, baseline=None):
             if oa:
                 ev = _work_evidence(row)
                 evidence.append({"evidence_id": ev.id, "raw_sha256": ev.raw_sha256,
-                                 "source_url": str(ev.source_url),"retrieved_at": ev.retrieved_at.isoformat(),
+                                 "source_url": str(ev.source_url) if re.fullmatch(r"W\d+",short_id(oa.get("id")) or "") else oa["source"].get("url","https://api.openalex.org/works"),
+                                 "retrieved_at": ev.retrieved_at.isoformat(),
                                  "source_locator": ev.source_locator,
-                                 "field": f"authorships[{index}]", "work_id": oa.get("id")})
+                                 "field": f"authorships[{index}]" if index<len(authorships) else "authorships",
+                                 "requested_authorship_position_present": index<len(authorships),
+                                 "work_id": oa.get("id")})
             indicators = []
             if aid in blocked:
                 indicators.append(blocked[aid])
