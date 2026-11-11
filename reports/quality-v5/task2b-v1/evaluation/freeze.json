@@ -1,0 +1,22 @@
+{
+  "method": "identity-evaluation-v1",
+  "seed": 2026111104,
+  "inputs": {
+    "decisions": "3188bbf16721bf1a3395c8c7d04837cc4159e427ca646aba6c02f9d6a9ed51a2"
+  },
+  "assignment_population": 65507,
+  "pair_population": 146065,
+  "assignment_n": 200,
+  "pair_n": 200,
+  "diagnostic_n": 111,
+  "pair_scope": "union of same-provider and exact normalized-name blocks; outside-block false splits not estimable",
+  "semantic_metrics_status": "unavailable_no_independent_adjudicated_labels",
+  "source_exposure": "construction metadata inspected; no independent reference labels used; historical audit labels excluded",
+  "files": {
+    "assignment-sample.jsonl": "978f99282ad196cd96afc0ef24178116bf8dc0a40683cf460e72750cb5d0f394",
+    "blank-reviewer-assignments.jsonl": "382ba041bd66d7c6cd04ec056effbad35f94f3b32a2736c7f62791a06f75a09f",
+    "diagnostic-sample.jsonl": "21b4cd3e64c7eea24d8c7dd299766cddaaa6baf6db79bd0d6ff2ca5364974896",
+    "evidence-packets.jsonl": "14c9729699e4e81843f1194f3d58889b9196e6a991876a58e88048a7ebf59047",
+    "pair-sample.jsonl": "e90f3d393231d2cdb54db48fe471e20d60bce8a90ee981bd44f47c04b4bd9e83"
+  }
+}

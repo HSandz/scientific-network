@@ -1,0 +1,119 @@
+{
+  "method": "public-orcid-declared-aliases-v1",
+  "certificates": [
+    {
+      "provider_id": "A5020679327",
+      "orcid": "0000-0003-3599-3893",
+      "declared_names": [
+        "Munindar P. Singh",
+        "Munindar Singh"
+      ],
+      "source": {
+        "url": "https://pub.orcid.org/v3.0/0000-0003-3599-3893/person",
+        "params": {},
+        "request_id": "a0c99107ed8394a74ed8296c3cc164cf54d64d90c944ff2ab4bd72f91882a9a3",
+        "sha256": "ec00be305e9ea418f03331dffdfbdd7d9258c0499064061a07278224d28bd92f",
+        "retrieved_at": "2026-11-11T10:51:00.918678+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/json;charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      },
+      "claim": "public_owner_declared_name_variants",
+      "independent_gold": false,
+      "limitation": "provider may ingest this ORCID account; ownership and every paper not independently verified"
+    },
+    {
+      "provider_id": "A5035664456",
+      "orcid": "0000-0001-6828-7712",
+      "declared_names": [
+        "Daniel Damir Harabor",
+        "Daniel Harabor"
+      ],
+      "source": {
+        "url": "https://pub.orcid.org/v3.0/0000-0001-6828-7712/person",
+        "params": {},
+        "request_id": "57c5ca4b509d3bb8f77c55f2a36115d369f9c244105dda37fb317fe0883ec5b6",
+        "sha256": "cc7987bdd7921625afd77d7ec9ecdb2ab823e9197b342496eb4ca05bfc4ebaa0",
+        "retrieved_at": "2026-11-11T10:50:54.184070+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/json;charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      },
+      "claim": "public_owner_declared_name_variants",
+      "independent_gold": false,
+      "limitation": "provider may ingest this ORCID account; ownership and every paper not independently verified"
+    },
+    {
+      "provider_id": "A5044848288",
+      "orcid": "0000-0002-8597-6197",
+      "declared_names": [
+        "Anil Kumar S Vullikanti",
+        "Anil Kumar Vullikanti",
+        "Anil Vullikanti",
+        "V. S. Anil Kumar"
+      ],
+      "source": {
+        "url": "https://pub.orcid.org/v3.0/0000-0002-8597-6197/person",
+        "params": {},
+        "request_id": "187d06a7b1eaf7563411199a4904509e5b2788a135af0ea50e29f09f5e2198dc",
+        "sha256": "628ea71e2a77f09e36fe4402badb27b9bbd1c1233a380aa96df59768f14592ba",
+        "retrieved_at": "2026-11-11T10:50:54.671749+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/json;charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      },
+      "claim": "public_owner_declared_name_variants",
+      "independent_gold": false,
+      "limitation": "provider may ingest this ORCID account; ownership and every paper not independently verified"
+    },
+    {
+      "provider_id": "A5071538560",
+      "orcid": "0000-0003-2231-680X",
+      "declared_names": [
+        "JP Dickerson",
+        "John Dickerson",
+        "John P Dickerson"
+      ],
+      "source": {
+        "url": "https://pub.orcid.org/v3.0/0000-0003-2231-680X/person",
+        "params": {},
+        "request_id": "6fe435ad1b55a695e9c26ffb5cb94e00dd62ed59363f39351d5691092300f779",
+        "sha256": "50709a155a08ce52f53b56217151a4d691b206f327e790b624bd0e903f104fe9",
+        "retrieved_at": "2026-11-11T10:50:56.604857+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/json;charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      },
+      "claim": "public_owner_declared_name_variants",
+      "independent_gold": false,
+      "limitation": "provider may ingest this ORCID account; ownership and every paper not independently verified"
+    },
+    {
+      "provider_id": "A5089442472",
+      "orcid": "0000-0002-8681-7470",
+      "declared_names": [
+        "Johannes Fichte",
+        "Johannes K. Fichte",
+        "Johannes Klaus Fichte"
+      ],
+      "source": {
+        "url": "https://pub.orcid.org/v3.0/0000-0002-8681-7470/person",
+        "params": {},
+        "request_id": "197e1e01836f7cec2bdce84415d8c53a8a79b62a65a7961086bf5e953e0ce2cd",
+        "sha256": "5426a7355da11d597cae2e5623ea4c6d6197b554399fecb91f486f8c8bd28bbc",
+        "retrieved_at": "2026-11-11T10:50:55.164374+00:00",
+        "status": 200,
+        "attempts": 1,
+        "content_type": "application/json;charset=UTF-8",
+        "license": "unknown_unless_record_supplies_license"
+      },
+      "claim": "public_owner_declared_name_variants",
+      "independent_gold": false,
+      "limitation": "provider may ingest this ORCID account; ownership and every paper not independently verified"
+    }
+  ]
+}

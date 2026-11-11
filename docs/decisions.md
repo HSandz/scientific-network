@@ -1133,3 +1133,50 @@ than splitting. Distinct raw identifiers plus incompatible independently aligned
 bylines can support separate identities;all unanchored positions remain ambiguous.
 No actual cached conflicting ID has multiple paper raw ORCIDs;this changes no
 observed acceptance threshold or measured candidate population. Preserve v1/v2.
+
+### Task2B amendment — bounded identity recovery and prospective references (2026-11-11)
+
+The user authorizes targeted public enrichment and a new isolated candidate while
+preserving v4, candidate-v3, all previous judgments and topic/application artifacts.
+No Task3 affiliation enrichment, graph DB writes, production operations or push.
+See WORK-2026-11-11-004 and `reports/quality-v5/task2b-v1/`.
+
+Keep exact DOI agreement for identity construction. Seven proceedings/journal DOI
+pairs have separate Crossref registrations and matching titles/bylines, but no
+explicit deposited version relation. Preserve them as ambiguous mixed-version
+metadata; no journal ORCIDs/affiliations are transferred to proceedings authors.
+The singleton acquisition matcher now enforces DOI equality (method v1.1).
+
+Extend the existing resolver, rather than substituting a parallel builder:
+
+- A stable unconflicted provider ID can survive a full-given-letter boundary
+  difference when all aligned official/raw bylines retain the ordered full letters
+  and same surname. Do not omit middle tokens, substitute letters or merge IDs.
+- Public ORCID person records may corroborate **explicitly declared** aliases for
+  an otherwise unconflicted stable provider ID. Require hash-verified bytes,
+  exact account path and agreement with all original profile ORCID observations.
+  These owner declarations are construction evidence; upstream independence and
+  correctness of every attached paper are not established.
+- A missing selected provider ID can use a hash-verified cached alternate only
+  with exact DOI/title/count, compatible uniquely aligned complete bylines,
+  agreement of all nonmissing selected IDs, no duplicate positions and no
+  source/alternate ORCID or name conflict. Preserve all contrary evidence.
+  Use distinct locator-bound evidence IDs to retain the original batch record.
+
+Retain existing affiliation sets/exclusions for retained positions; newly accepted
+positions use original paper-specific mappings and copy guards only. Recompute
+R7–R10 with the existing materializer. No source-corrected graph is justified yet.
+
+Freeze one SRS assignment frame and a separately declared blocked pair frame before
+recovery implementation, plus separate diagnostic samples. Construction metadata
+has been exposed; no new independent labels exist. Blinded reviewer forms, source
+packets, independence/adjudication requirements and a deterministic paired scorer
+are provided, but AI/provider agreement cannot certify identity precision/recall.
+Report unmeasured semantic metrics as null and preserve old audit judgments.
+
+The initial Task2B candidate and replay have identical data and rankings but reveal
+unstable reason-dictionary serialization in comparison reports. Preserve that
+intermediate; final method `identity-candidate-v5.5` sorts the dictionaries and
+binds additional transitive implementation hashes. This changes no acceptance
+rule or counts. Promotion is not justified by coverage alone; the revised identity
+population still cannot meet 80% affiliation coverage through enrichment alone.

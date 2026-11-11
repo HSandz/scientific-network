@@ -1,0 +1,527 @@
+[
+  {
+    "source": "crossref",
+    "key": "paper:aaai:2022:20425",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1609/aaai.v36i5.20425",
+      "params": {},
+      "request_id": "32a08cb13ab1aa6a0d9249bb4a8bf723668fbb4d1e280de588310ca7ef8be892",
+      "sha256": "39ac0b90a8ccc96026fe09edf4c4203c7721ba9b124206b2dc461e071bbb89a1",
+      "retrieved_at": "2026-11-11T10:50:46.121358+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:aaai:2022:20425",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1145/3665799",
+      "params": {},
+      "request_id": "050edbec226ff7056e033310459d0b35b3708e7108141681420f7190c11191f1",
+      "sha256": "a37d51b77d9fb7d68b4f42e0a345ce5ce4af94992aa5d883bc006fad59671f9a",
+      "retrieved_at": "2026-11-11T10:50:46.584270+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:aaai:2023:26455",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1609/aaai.v37i10.26455",
+      "params": {},
+      "request_id": "f05d38b126685f8d289ea46dae35c9cb7995b24c0420564b48171a510173f5b6",
+      "sha256": "65e6013fb187e3da56b8b90b35cc392f7d04c158dd710eebc6b347daace9eb30",
+      "retrieved_at": "2026-11-11T10:50:47.059069+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:aaai:2023:26455",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1016/j.tcs.2026.116201",
+      "params": {},
+      "request_id": "c31505139d2fd6366aaaa9a77ee8330049b5e8c3f6aa573bc11ee03764a1231e",
+      "sha256": "80a3879c66332fdc8f7c0d963e076fe64132d992d675ebba126e9faf36d9a2b3",
+      "retrieved_at": "2026-11-11T10:50:47.520425+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2021:43",
+    "record": {
+      "url": "https://api.crossref.org/works/10.24963/ijcai.2021/43",
+      "params": {},
+      "request_id": "b566bf073c7b1676426bf33a3268d1d70a74f633328c25a2eaa653c203223e9b",
+      "sha256": "2a4f136da67c64ebc90272665a1c2f0bd5f91678ae547769b5110afea248dbc7",
+      "retrieved_at": "2026-11-11T10:50:47.984081+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2021:43",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1007/s00355-026-01654-w",
+      "params": {},
+      "request_id": "418d1d6bab9ef72f9d47bc7ae66c1e27ae48f3e9a46f27c0864b27a22ecfcefe",
+      "sha256": "c92da871dca45478957226bf5163a44d82b9c5efb9d403b0a7dd20aa120f8da1",
+      "retrieved_at": "2026-11-11T10:50:48.448823+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2022:34",
+    "record": {
+      "url": "https://api.crossref.org/works/10.24963/ijcai.2022/34",
+      "params": {},
+      "request_id": "42302c04149b81f55cd8081e236c496c65fff970685c6a1b677555744cabf08e",
+      "sha256": "662f09b8f59832fd5f9be181c6912f58819c82a847bf5c8adadac30b5e78f062",
+      "retrieved_at": "2026-11-11T10:50:48.911968+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2022:34",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1016/j.artint.2026.104585",
+      "params": {},
+      "request_id": "09b1f6abd8b79c9ca51f207688be0352290c6a60ab64a6c28194eae1e47ea905",
+      "sha256": "79bde97c38c27556c6d901f5ef4b938d14559f5a7b9b62c235e9f946909b2839",
+      "retrieved_at": "2026-11-11T10:50:49.369343+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2022:635",
+    "record": {
+      "url": "https://api.crossref.org/works/10.24963/ijcai.2022/635",
+      "params": {},
+      "request_id": "b2396e3fd5d64685c324a1a22c9bf7dc8495bd4f903839750c8c21518a223dae",
+      "sha256": "a926b48abf6068337e2ca6f3fdb6536164ba1e95f5e77f1b2e4e2bc58d3a8d2a",
+      "retrieved_at": "2026-11-11T10:50:49.832700+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2022:635",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1613/jair.1.14820",
+      "params": {},
+      "request_id": "1a2d9d339698ec6554cf05f526246033235856d96847cb95f494e061ad16ec41",
+      "sha256": "eaaa4719703f86d9d6d9589cee6ef7fa3b26abdddce4015ad2cc6814112dd8cb",
+      "retrieved_at": "2026-11-11T10:50:50.290083+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2025:444",
+    "record": {
+      "url": "https://api.crossref.org/works/10.24963/ijcai.2025/444",
+      "params": {},
+      "request_id": "125919a00843c6ff745422380ec7eabc114bf44997b903df902c53e6598a1ce8",
+      "sha256": "d60065aa2fd88f3bcc9161c252eee0ed71ee7786b377e210251274330a37d743",
+      "retrieved_at": "2026-11-11T10:50:50.763815+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2025:444",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1137/25m180161x",
+      "params": {},
+      "request_id": "0df781df4a3549d05536c5529015c83160902e3a7bb9b99d356d9b8eb3487fb3",
+      "sha256": "884c66a25f02214c2a4bba36741a79b37bb7adca4e2763f5e79936bdc2a2a50f",
+      "retrieved_at": "2026-11-11T10:50:51.225249+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2025:446",
+    "record": {
+      "url": "https://api.crossref.org/works/10.24963/ijcai.2025/446",
+      "params": {},
+      "request_id": "eb2b79bb7a2187db4301a22b61153d9a392fab9dcfb76e78d7292f5c1abeeadb",
+      "sha256": "34d7b808867615884c494bcaf995e255df87a6c959d0697fdc247da0d179e3b6",
+      "retrieved_at": "2026-11-11T10:50:51.685859+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "crossref",
+    "key": "paper:ijcai:2025:446",
+    "record": {
+      "url": "https://api.crossref.org/works/10.1613/jair.1.21746",
+      "params": {},
+      "request_id": "c19d6174388d15420cc2bec0d965962cdd21f83e9364ac968ea706e6e51e0f7d",
+      "sha256": "b16d23aeb8d6a983ad1e8bc5d4111bd358aeb6d72f76622c41f6da359e5ebea4",
+      "retrieved_at": "2026-11-11T10:50:52.154834+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5017743551",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-7064-7438/person",
+      "params": {},
+      "request_id": "d289916f14f10cf8c0acc12f540e7fb50074bf7269f227359f2568dda514cf4c",
+      "sha256": "9ab20fdef14afcef5ec98c95bdc88d5ea33c66c222f3394002f5a98459d6d18d",
+      "retrieved_at": "2026-11-11T10:50:52.732871+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5034104790",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-8639-982X/person",
+      "params": {},
+      "request_id": "25a4abe60d6b9cf03860f3eaccb78a8cf335e9eeed9d9d62461cf603d59f3bd7",
+      "sha256": "c00749cdcc1cbc5c5f114ffcaca6bdab1f89a089a9169f156408be6df827617c",
+      "retrieved_at": "2026-11-11T10:50:53.218368+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5101596072",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-5164-0070/person",
+      "params": {},
+      "request_id": "2bd1203e4e42650a5c5417a3919ec4a38454b3f2ddd13f786c925770f1da885d",
+      "sha256": "c67346600a5573cda5449b0bbe04177bd96c1053f2d79957f7c67398edb54feb",
+      "retrieved_at": "2026-11-11T10:50:53.704151+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5035664456",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-6828-7712/person",
+      "params": {},
+      "request_id": "57c5ca4b509d3bb8f77c55f2a36115d369f9c244105dda37fb317fe0883ec5b6",
+      "sha256": "cc7987bdd7921625afd77d7ec9ecdb2ab823e9197b342496eb4ca05bfc4ebaa0",
+      "retrieved_at": "2026-11-11T10:50:54.184070+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5044848288",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-8597-6197/person",
+      "params": {},
+      "request_id": "187d06a7b1eaf7563411199a4904509e5b2788a135af0ea50e29f09f5e2198dc",
+      "sha256": "628ea71e2a77f09e36fe4402badb27b9bbd1c1233a380aa96df59768f14592ba",
+      "retrieved_at": "2026-11-11T10:50:54.671749+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5089442472",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-8681-7470/person",
+      "params": {},
+      "request_id": "197e1e01836f7cec2bdce84415d8c53a8a79b62a65a7961086bf5e953e0ce2cd",
+      "sha256": "5426a7355da11d597cae2e5623ea4c6d6197b554399fecb91f486f8c8bd28bbc",
+      "retrieved_at": "2026-11-11T10:50:55.164374+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5108050904",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-8327-0003/person",
+      "params": {},
+      "request_id": "11bea0422072f6cd05be9c34c19472f318acc1bf9a85c5e90ed64af9e6979c95",
+      "sha256": "d6c15c592ccce0c7afa41bfb3300d99bbefa2e6e93d6874cf37094e155a919a3",
+      "retrieved_at": "2026-11-11T10:50:55.647345+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5022672030",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-5128-5649/person",
+      "params": {},
+      "request_id": "71ee93f59788769351fb9b059ba50f527dd6c4d7302efb17db896aec83f5c832",
+      "sha256": "32297453dad3ccd669b06a95117e28d37f8f9298214dec55688febcf33f27930",
+      "retrieved_at": "2026-11-11T10:50:56.120487+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5071538560",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-2231-680X/person",
+      "params": {},
+      "request_id": "6fe435ad1b55a695e9c26ffb5cb94e00dd62ed59363f39351d5691092300f779",
+      "sha256": "50709a155a08ce52f53b56217151a4d691b206f327e790b624bd0e903f104fe9",
+      "retrieved_at": "2026-11-11T10:50:56.604857+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5012773300",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-9480-0356/person",
+      "params": {},
+      "request_id": "e7612edb13ab569257d0acddb87a2f8c86ff414f55505799dd54918d055300dd",
+      "sha256": "86fdaefabc8b093affa788520ed0028ee75f97620830a5dbf11b1575eb0c1362",
+      "retrieved_at": "2026-11-11T10:50:57.086509+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5012862284",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-6054-7145/person",
+      "params": {},
+      "request_id": "61df6ee8d990920dae111314da1c375c7427fa9e7080951729cc2f9ea17342b9",
+      "sha256": "d419ef9951e1c559bac3d77870a7c5541903b6c2720ba9c3ecc5e624c0ee606a",
+      "retrieved_at": "2026-11-11T10:50:57.565978+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5017626590",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-6795-2311/person",
+      "params": {},
+      "request_id": "4cae05db6d662edf9635e8722f946525638ef1331e6aa5f7e76c8e2d741f035b",
+      "sha256": "774bb021605947fb3385ac4fb3ad1c2668d1372f04a68a06cc6b27009891a0db",
+      "retrieved_at": "2026-11-11T10:50:58.043152+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5041415709",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-4318-2791/person",
+      "params": {},
+      "request_id": "7c40bf9f50bb582c361543c0a946ae2b269e9a03bdb53ddf23a383dc3194b6c3",
+      "sha256": "3b81615c41c9e71562f12d0b14a05e146fcc5802ad2b2399d96d33af6980c7d9",
+      "retrieved_at": "2026-11-11T10:50:58.526240+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5057464374",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-1059-0441/person",
+      "params": {},
+      "request_id": "016372a951f9d392161d9065ce8adcefa3ae2044d72094e87be11e3d4d629535",
+      "sha256": "27cbc14ed97ec80aaf2a02a540c9b75538ebbc5a99ef277e6cf4313a4df6a39b",
+      "retrieved_at": "2026-11-11T10:50:59.006971+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5081837918",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-0426-5407/person",
+      "params": {},
+      "request_id": "37d3698928c9277fe9c2e5f5be39e0ac14e4f7fcafa52cec612c106662ee7352",
+      "sha256": "38049ddce584e3649a3399b34f95fd069311aebc8157c2c4107b3d2faf378bd3",
+      "retrieved_at": "2026-11-11T10:50:59.479509+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5084688255",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-5487-9845/person",
+      "params": {},
+      "request_id": "d2a54eb5e266d9ef71bb5a1cfaed966ba1143741817b1e589faddcc916c9681a",
+      "sha256": "cb1ca4cc10aad1b31c1421e45aad8a9dd415a66733a7558290c96e9835f04b2a",
+      "retrieved_at": "2026-11-11T10:50:59.960208+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5111876448",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-4842-0533/person",
+      "params": {},
+      "request_id": "09266bd47f732d04618ef942003a1554672d2546ecc7dbbc2502edc2026beb74",
+      "sha256": "ba4295bf730225d178f95c116d7ddd74ee564d8d6dee2cae0ed225f63abd8128",
+      "retrieved_at": "2026-11-11T10:51:00.436077+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5020679327",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-3599-3893/person",
+      "params": {},
+      "request_id": "a0c99107ed8394a74ed8296c3cc164cf54d64d90c944ff2ab4bd72f91882a9a3",
+      "sha256": "ec00be305e9ea418f03331dffdfbdd7d9258c0499064061a07278224d28bd92f",
+      "retrieved_at": "2026-11-11T10:51:00.918678+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5051305025",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-4535-2902/person",
+      "params": {},
+      "request_id": "56756a2a6fdc15b06e13148867979287d1b3cae1bedccdc910545df3e020e5e8",
+      "sha256": "1dd8d28b9e7965a8914fe54b9cff9c67d2f3b6f6fe9ab9ed8638e668883449c1",
+      "retrieved_at": "2026-11-11T10:51:01.407764+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid",
+    "key": "A5053345000",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0009-0006-3971-4176/person",
+      "params": {},
+      "request_id": "aea7e93ffbac89f6f25c56f51a9a2d5119b300420d7ee723fc52baf30df00372",
+      "sha256": "fc5e2ea9472bb844d7e9e7a3d790aacf315d98907d4907dd9f9c151c1df4dcf3",
+      "retrieved_at": "2026-11-11T10:51:01.883520+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "profile",
+    "key": "A5034104790",
+    "record": {
+      "url": "https://www.sigs.tsinghua.edu.cn/xst_en/main.htm",
+      "params": {},
+      "request_id": "01079f8272410fa86f7abcbbded88a4d7bab80ca98ae1a3d3f4dad1cdb60aded",
+      "sha256": "5fdd007105785c109491dd1379e1406203db9bc6fccadc1a77cdd978a37d37b9",
+      "retrieved_at": "2026-11-11T10:51:03.973062+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "text/html",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  }
+]

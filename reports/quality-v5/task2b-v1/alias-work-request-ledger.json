@@ -1,0 +1,77 @@
+[
+  {
+    "source": "orcid_works",
+    "key": "A5035664456",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0001-6828-7712/works",
+      "params": {},
+      "request_id": "7491b6ced3f1c684183a41fca95b8eac9134abafebdbe1bcd2c20bab3cdc35d0",
+      "sha256": "abaa3faa8ce23086dfe06f6727633f0e89839d377b316bca4bdee89d5f737302",
+      "retrieved_at": "2026-11-11T10:52:17.895624+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid_works",
+    "key": "A5044848288",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-8597-6197/works",
+      "params": {},
+      "request_id": "895689370cd13b9d5040d0acb3f79d199948f8c4eac5ed0ca98cea947909baf8",
+      "sha256": "966dc0e8d5ecd409e61d94c739285e989d327f96feafb88b67c76a083c26300c",
+      "retrieved_at": "2026-11-11T10:52:18.785794+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid_works",
+    "key": "A5089442472",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0002-8681-7470/works",
+      "params": {},
+      "request_id": "7067d7853266136e79076fb94ea02ed1cdc94b9c015002ed3f1d5272fde59b35",
+      "sha256": "5a9b36580da20539069047ad96ba6bcbb01005580dd9e1e7f9321e8ca619d8e5",
+      "retrieved_at": "2026-11-11T10:52:19.269509+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid_works",
+    "key": "A5071538560",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-2231-680X/works",
+      "params": {},
+      "request_id": "0fc3b404f18bfc470c2453519e4e551912b34083e55530198d6e445ab3556d31",
+      "sha256": "56b21a56a47a49e5858876dbf6803f3acb60b7cab3537e3dc7313d7b9af3c6f4",
+      "retrieved_at": "2026-11-11T10:52:19.731658+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  },
+  {
+    "source": "orcid_works",
+    "key": "A5020679327",
+    "record": {
+      "url": "https://pub.orcid.org/v3.0/0000-0003-3599-3893/works",
+      "params": {},
+      "request_id": "db2306b6c6f253832a76ed75b2e50a2ad25fdec35aba10cea86c602fb72c00f1",
+      "sha256": "47985b162d420692c79811c5d39099cf1d6a801cf2eb91a520dff705f3c425c5",
+      "retrieved_at": "2026-11-11T10:52:21.013135+00:00",
+      "status": 200,
+      "attempts": 1,
+      "content_type": "application/json;charset=UTF-8",
+      "license": "unknown_unless_record_supplies_license"
+    }
+  }
+]

@@ -83,7 +83,7 @@ def work_rejection(row):
     return None
 
 
-def resolve_mentions(rows, baseline=None):
+def resolve_mentions(rows, baseline=None, *, recovery=False, alias_certificates=None, cache_dir=None):
     """One deterministic decision per official mention, including unmatched works.
 
     ``baseline`` is a frozen GraphArtifact used only to avoid creating an ORCID
@@ -126,7 +126,14 @@ def resolve_mentions(rows, baseline=None):
         blocked[aid] = "author_id_malformed_paper_orcid"
     name_inconsistencies = {aid for aid,names in provider_names.items()
                             if any(not positional_name(a,b) for a in names for b in names)}
+    name_recoveries = {}
     for aid in sorted(name_inconsistencies):
+        if recovery and aid not in blocked:
+            from scientific_network.resolve.recovery_v5 import consistent_names
+            support = consistent_names(provider_names[aid], (alias_certificates or {}).get(aid))
+            if support:
+                name_recoveries[aid] = support
+                continue
         blocked.setdefault(aid,"author_id_incompatible_name_variants")
     baseline_claims = defaultdict(set)
     if baseline:
@@ -234,7 +241,7 @@ def resolve_mentions(rows, baseline=None):
                 state, reason = "unresolved", "no_provider_id_or_paper_raw_orcid"
             elif kind:
                 canonical, state = aliases.get(aid,"researcher:openalex:"+aid), "resolved"
-                reason = "unique_raw_position_recovered" if damaged else "provider_id_raw_name_position"
+                reason = name_recoveries.get(aid) or ("unique_raw_position_recovered" if damaged else "provider_id_raw_name_position")
             else:
                 reason = "insufficient_identity_evidence"
             decision = {
@@ -248,7 +255,7 @@ def resolve_mentions(rows, baseline=None):
                 "profile_orcid": author.get("orcid"),"profile_observed_orcids": author.get("observed_orcids"),
                 "canonical_researcher_id": canonical,"resolution_state": state,
                 "matching_method": kind or ("raw_orcid_middle_expansion" if expansion else None),
-                "method_version": METHOD,"decision_reason": reason,
+                "method_version": "paper-mention-identity-v5.3" if recovery else METHOD,"decision_reason": reason,
                 "conflict_indicators": sorted(indicators),"review_required": state != "resolved",
                 "supporting_evidence": evidence,
                 "identity_conflict_record_id": "provider-conflict:"+aid if aid in blocked else None,
@@ -258,8 +265,60 @@ def resolve_mentions(rows, baseline=None):
                     "source_record": evidence[-1]} for indicator in sorted(indicators)],
                 "evidence_scope": "cached_work_authorship_and_official_byline_not_independent_owner_verification",
             }
+            if aid in name_recoveries:
+                decision["name_variation_evidence"] = {
+                    "mechanism": name_recoveries[aid],
+                    "all_provider_byline_names": sorted(provider_names[aid]),
+                    "public_alias_certificate": (alias_certificates or {}).get(aid),
+                    "limitation": "construction_evidence_not_independent_identity_gold",
+                }
+                if name_recoveries[aid] == "provider_id_public_orcid_declared_aliases":
+                    from scientific_network.contracts import EvidenceRecord
+                    certificate = alias_certificates[aid]
+                    record = certificate["source"]
+                    external = EvidenceRecord(id="evidence:identity-alias:"+_digest(certificate)[:24],kind="observed",
+                        source_url=record["url"],retrieved_at=record["retrieved_at"],raw_sha256=record["sha256"],
+                        source_locator="$.name + $.other-names.other-name[*].content")
+                    decision["additional_identity_evidence"] = [external.model_dump(mode="json")]
             decision["decision_id"] = "identity-decision:"+_digest(decision)[:24]
             decisions.append(decision)
+    alternate_diagnostics = []
+    if recovery and cache_dir is not None:
+        from scientific_network.resolve.recovery_v5 import alternate_recoveries
+        recoveries, alternate_diagnostics = alternate_recoveries(rows, decisions, cache_dir, blocked)
+        for d in decisions:
+            c = recoveries.get((d["paper_id"], d["author_position"]))
+            if not c:
+                continue
+            # Require compatibility with every observed name of the target ID,
+            # not just the alternate's display name at this position.
+            if any(not (positional_name(d["official_name"], n) or
+                        (c["source_author_id"] in name_recoveries))
+                   for n in provider_names.get(c["source_author_id"], set())):
+                continue
+            a = c["alternate_authorship"].get("author") or {}
+            observed = a.get("observed_orcids") or []
+            values = {valid_orcid(x) for x in [a.get("orcid"), *observed] if x}
+            target_values = identity["orcids"].get(c["source_author_id"], set())
+            if None in values or len(values | target_values) > 1:
+                continue
+            ev = _work_evidence(c["source_record"])
+            # The historical work evidence ID hashes paper+response bytes, so two
+            # works in the same batch need a distinct locator-bound identity ID.
+            ev = ev.model_copy(update={"id":"evidence:identity-alternate:"+_digest(
+                [d["paper_id"],c["alternate_work_id"],c["source"]["raw_sha256"],c["source"]["locator"]])[:24]})
+            d["original_source_author_id"] = d["source_author_id"]
+            d.update({k:c[k] for k in ("source_author_id", "canonical_researcher_id", "decision_reason")})
+            d.update(resolution_state="resolved", review_required=False,
+                     recovery_source_work_id=c["alternate_work_id"],
+                     recovery_evidence_record=ev.model_dump(mode="json"),
+                     recovery_source_locator=c["source"]["locator"],
+                     evidence_scope="exact_doi_duplicate_work_raw_authorship_not_independent_owner_verification")
+            d["supporting_evidence"].append({"evidence_id":ev.id,"raw_sha256":ev.raw_sha256,
+                "source_url":str(ev.source_url),"retrieved_at":ev.retrieved_at.isoformat(),
+                "source_locator":ev.source_locator,"field":f"authorships[{d['author_position']-1}]"})
+            d.pop("decision_id")
+            d["decision_id"]="identity-decision:"+_digest(d)[:24]
     canonical_positions = defaultdict(list)
     for d in decisions:
         if d["resolution_state"]=="resolved":
@@ -277,6 +336,8 @@ def resolve_mentions(rows, baseline=None):
                        "provider_withholding": dict(sorted(blocked.items())),
                        "corroborated_provider_crosswalks": dict(sorted(aliases.items())),
                        "paper_raw_orcid_conflicts": dict(sorted(raw_conflicts.items())),
+                       **({"name_variation_recoveries":dict(sorted(name_recoveries.items())),
+                           "alternate_work_diagnostics":alternate_diagnostics} if recovery else {}),
                        "incompatible_provider_names": {a:sorted(provider_names[a]) for a in sorted(name_inconsistencies)},
                        "provider_conflict_records": {"provider-conflict:"+a:{"author_id":a,"reason":why,
                            "normalized_orcids":sorted(identity["orcids"].get(a,set()) | raw_by_id.get(a,set())),
