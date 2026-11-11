@@ -74,3 +74,12 @@ README commands on the original freeze. Keep promotion deferred until justified.
 
 Historical final records unchanged. Intermediate Task2C runs remain labeled as
 engineering checks; final execution paths/hashes are in `execution-artifacts.json`.
+
+### 2026-11-11T19:03:00+07:00 — Final documentation check
+
+An optional README wording script invoked system `python` rather than `uv run
+python` and failed to import the package before writing anything. The existing
+README baseline wording remains correct. The check was rerun with `uv run python`:
+all finalized report inventory hashes match (exit 0). No code, results or candidate
+artifacts changed; production previews used only for this task were stopped.
+Documentation checkpoint:794db4c; implementation checkpoint:3bfec1f. No push.
