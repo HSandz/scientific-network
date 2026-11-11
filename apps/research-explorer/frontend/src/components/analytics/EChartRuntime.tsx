@@ -26,6 +26,7 @@ export interface ChartClick {
   dataIndex: number;
   seriesIndex: number;
   value: unknown;
+  data?: unknown;
 }
 export interface EChartBoxProps {
   option: EChartsCoreOption;

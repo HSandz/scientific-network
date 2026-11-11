@@ -1,3 +1,4 @@
+import { pairKey, escapeTooltip } from "../../lib/persistence";
 import React, { useState } from "react";
 import { EChartBox } from "./EChartBox";
 import { RankedBars, useFigureTheme } from "./RankedFigures";
@@ -21,22 +22,12 @@ const shortVenue = (id: string) => id.split(":").at(-1)?.toUpperCase();
 export const PersistenceFigures: React.FC<{
   pairs: PersistencePair[];
   onOpen: (pair: PersistencePair) => void;
-}> = ({ pairs, onOpen }) => {
+  selectedPair?: string;
+}> = ({ pairs, onOpen, selectedPair }) => {
   const t = useFigureTheme();
   const years = [2021, 2022, 2023, 2024, 2025];
-  const visible = pairs.slice(0, 12);
   return (
     <>
-      <RankedBars
-        label="Leading organization co-publication pairs"
-        unit="distinct papers"
-        rows={visible.map((p, i) => ({
-          id: String(i),
-          name: `${p.source} ↔ ${p.target}`,
-          value: p.distinct_support_papers,
-        }))}
-        onOpen={(i) => onOpen(visible[i])}
-      />
       <h4 className="text-sm font-medium mt-4">
         Supported activity by year · top 25 pairs
       </h4>
@@ -48,8 +39,23 @@ export const PersistenceFigures: React.FC<{
         <EChartBox
           label="Organization pair-by-year persistence"
           height={Math.max(300, pairs.length * 28 + 100)}
-          onClick={(p) => onOpen(pairs[Math.floor(p.dataIndex / years.length)])}
+          onClick={(event) => {
+            const cell = event.data as
+              { sourceId?: string; targetId?: string } | undefined;
+            const pair = pairs.find(
+              (p) =>
+                p.source_id === cell?.sourceId &&
+                p.target_id === cell?.targetId,
+            );
+            if (pair) onOpen(pair);
+          }}
           option={{
+            media: [
+              {
+                query: { maxWidth: 600 },
+                option: { yAxis: { axisLabel: { width: 110 } } },
+              },
+            ],
             grid: {
               left: 12,
               right: 20,
@@ -68,15 +74,26 @@ export const PersistenceFigures: React.FC<{
               data: pairs.map((p) => `${p.source} ↔ ${p.target}`),
               axisLabel: {
                 color: t.chartAxis,
-                width: 170,
+                width: 300,
                 overflow: "truncate",
                 fontSize: 11,
               },
             },
             tooltip: {
-              formatter: (p: { value: number[] }) => {
-                const [x, y, n] = p.value;
-                return `${years[x]} · Pair ${y + 1}<br/>${n == null ? "Unavailable" : n + " distinct supporting papers"}`;
+              confine: true,
+              extraCssText:
+                "max-width: min(420px, 80vw); white-space: normal; overflow-wrap: anywhere",
+              formatter: (event: {
+                data: { sourceId: string; targetId: string };
+                value: (number | null)[];
+              }) => {
+                const pair = pairs.find(
+                  (p) =>
+                    p.source_id === event.data.sourceId &&
+                    p.target_id === event.data.targetId,
+                );
+                if (!pair) return "Unavailable";
+                return `${escapeTooltip(pair.source)} ↔ ${escapeTooltip(pair.target)}<br/>Year: ${years[event.value[0] as number]}<br/>Distinct supporting papers: ${event.value[2] ?? "Unavailable"}`;
               },
             },
             visualMap: {
@@ -97,12 +114,20 @@ export const PersistenceFigures: React.FC<{
               {
                 type: "heatmap",
                 data: pairs.flatMap((p, y) =>
-                  years.map((year, x) => [
-                    x,
-                    y,
-                    p.by_year.find((v) => v.year === year)
-                      ?.distinct_support_papers ?? null,
-                  ]),
+                  years.map((year, x) => ({
+                    value: [
+                      x,
+                      y,
+                      p.by_year.find((v) => v.year === year)
+                        ?.distinct_support_papers ?? null,
+                    ],
+                    sourceId: p.source_id,
+                    targetId: p.target_id,
+                    itemStyle:
+                      pairKey(p.source_id, p.target_id) === selectedPair
+                        ? { borderColor: t.chartAxis, borderWidth: 2 }
+                        : undefined,
+                  })),
                 ),
                 label: {
                   show: true,
@@ -299,72 +324,76 @@ export const CitationFigures: React.FC<{
     : [];
   return (
     <>
-      <RankedBars
-        label="Uncited share by venue/year cohort"
-        unit="% of cohort papers"
-        rows={cohorts
-          .filter((c) => c.paper_denominator > 0)
-          .map((c) => ({
-            id: key(c),
-            name: key(c),
-            value: (100 * c.zero_in_degree_count) / c.paper_denominator,
-          }))}
-      />
-      <label className="text-xs block mt-4">
-        Citation distribution cohort
-        <select
-          aria-label="Citation distribution cohort"
-          className="ledger-input ml-2 max-w-full"
-          value={cohort ? key(cohort) : ""}
-          onChange={(e) => setSelected(e.target.value)}
-        >
-          {cohorts.map((c) => (
-            <option key={key(c)}>{key(c)}</option>
-          ))}
-        </select>
-      </label>
-      {cohort && (
-        <EChartBox
-          label="Within-cohort incoming citation distribution"
-          option={{
-            grid: {
-              top: 45,
-              left: 12,
-              right: 24,
-              bottom: 50,
-              containLabel: true,
-            },
-            tooltip: {
-              trigger: "axis",
-              valueFormatter: (v: number) => `${v.toFixed(2)}% of cohort`,
-            },
-            xAxis: {
-              type: "value",
-              name: "Incoming in-corpus citations",
-              nameLocation: "middle",
-              nameGap: 32,
-              axisLabel: { color: t.chartAxis },
-            },
-            yAxis: {
-              type: "value",
-              max: 100,
-              name: "Cumulative papers (%)",
-              nameTextStyle: { align: "left" },
-              axisLabel: { color: t.chartAxis },
-              splitLine: { lineStyle: { color: t.chartGrid } },
-            },
-            series: [
-              {
-                type: "line",
-                step: "end",
-                showSymbol: false,
-                data: cohortCdf(cohort),
-                itemStyle: { color: t.chartPrimarySeries },
-              },
-            ],
-          }}
+      <div className="cohort-overview">
+        <RankedBars
+          label="Uncited share by venue/year cohort"
+          unit="% of cohort papers"
+          rows={cohorts
+            .filter((c) => c.paper_denominator > 0)
+            .map((c) => ({
+              id: key(c),
+              name: key(c),
+              value: (100 * c.zero_in_degree_count) / c.paper_denominator,
+            }))}
         />
-      )}
+        <div>
+          <label className="text-xs block mt-4">
+            Citation distribution cohort
+            <select
+              aria-label="Citation distribution cohort"
+              className="ledger-input ml-2 max-w-full"
+              value={cohort ? key(cohort) : ""}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              {cohorts.map((c) => (
+                <option key={key(c)}>{key(c)}</option>
+              ))}
+            </select>
+          </label>
+          {cohort && (
+            <EChartBox
+              label="Within-cohort incoming citation distribution"
+              option={{
+                grid: {
+                  top: 45,
+                  left: 12,
+                  right: 24,
+                  bottom: 50,
+                  containLabel: true,
+                },
+                tooltip: {
+                  trigger: "axis",
+                  valueFormatter: (v: number) => `${v.toFixed(2)}% of cohort`,
+                },
+                xAxis: {
+                  type: "value",
+                  name: "Incoming in-corpus citations",
+                  nameLocation: "middle",
+                  nameGap: 32,
+                  axisLabel: { color: t.chartAxis },
+                },
+                yAxis: {
+                  type: "value",
+                  max: 100,
+                  name: "Cumulative papers (%)",
+                  nameTextStyle: { align: "left" },
+                  axisLabel: { color: t.chartAxis },
+                  splitLine: { lineStyle: { color: t.chartGrid } },
+                },
+                series: [
+                  {
+                    type: "line",
+                    step: "end",
+                    showSymbol: false,
+                    data: cohortCdf(cohort),
+                    itemStyle: { color: t.chartPrimarySeries },
+                  },
+                ],
+              }}
+            />
+          )}
+        </div>
+      </div>
       <h4 className="text-sm font-medium mt-4">
         Within-cohort citation leaders {cohort ? `· ${key(cohort)}` : ""}
       </h4>

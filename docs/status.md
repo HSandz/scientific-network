@@ -1,8 +1,8 @@
 # Current project status
 
-Updated: **2026-11-11 01:15 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-11 12:08 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md).
-Latest: [WORK-2026-11-11-001](work-log/2026-11-11-001-explorer-dashboard-redesign.md).
+Latest: [WORK-2026-11-11-002](work-log/2026-11-11-002-explorer-focus-layout.md).
 
 ## Release phase checklist
 
@@ -14,25 +14,24 @@ Latest: [WORK-2026-11-11-001](work-log/2026-11-11-001-explorer-dashboard-redesig
 - [x] Azure runtime and automatic API delivery previously verified.
 - [x] Explorer projections, evidence, comparisons, paths and workspace restoration.
 - [x] Authorized API release/recovery and global bookmark acceptance.
-- [x] Scrolling dashboard, visible figures, accessible motion and zoom-aware labels.
+- [x] Scrolling dashboard, motion and zoom-aware labels deployed previously.
+- [x] Interaction-aware neighborhood canvas labels and section-specific Analytics.
 - [x] Local build, contracts, Chromium screenshots and regressions.
-- [x] Redesign production deployment and live acceptance.
+- [ ] Focus/layout follow-up production deployment and live acceptance.
 - [ ] Personal/course facts and final course submission.
 
 ## Current verification and release boundary
 
-Repository tests: 530 pass / one existing skip. Six pure frontend contracts pass.
-Full Chromium suite: 36 pass; margin follow-up: ten dashboard/two visual pass;
-final missing-quality/saved-scroll regressions: two pass.
-TypeScript/Vite build passes. Main bundle reduced from540KB to293KB, with
-chart/graph engines deferred; chart runtime still537KB. No backend/data changes.
-[Redesign report](../reports/explorer-ui-redesign-verification-2026-11-11.md)
-records methodology, screenshots, exact checks and performance limitations.
-
-Frontend `7fd73d0` deployed on Pages; five production browser suites,18 additional
-UI assertions and28 API smoke checks pass. API/Neo4j IDs, start times and mounts,
-and graph-bound JSON snapshots are unchanged. Existing artifacts/Site are unchanged.
-[Earlier production receipt](../reports/explorer-production-verification-2026-11-10.md).
+Repository:530 pass /one existing skip. Frontend contracts:7 pass.
+Full Chromium suite:52 pass, including actual canvas text, four projections,
+dense fixtures, exact chart clicks, saved views and reviewed visual baselines.
+Four requested viewport sizes and both themes pass measured layout checks.
+TypeScript/Vite build passes; deferred ECharts chunk remains537KB.
+Backend:23 pass /9 local-Neo4j integrations unavailable /one warning.
+Offline synthetic structural check passes; no scientific accuracy inference.
+[Focus/layout report](../reports/explorer-focus-layout-verification-2026-11-11.md)
+records before/after screenshots, performance and delivery receipt.
+No API, Neo4j, graph, frozen analytics or infrastructure edits.
 
 ## Scientific evidence and artifacts
 
@@ -44,7 +43,6 @@ failed affiliation/topic-quality criteria remain visible. No graph rebuild.
 
 ## Remaining limitations
 
-Long-session memory/load, physical devices, Firefox/Safari and formal accessibility
-certification remain unverified. Deferred ECharts bundle remains large. Graph and
-comparison previews are bounded; Paths/comparisons disclose full-period scope.
-Real names/IDs, lecturer access and final course submission remain pending.
+Long-session load, physical devices, Firefox/Safari and formal accessibility
+certification remain unverified. Graph/comparison previews are bounded;
+Paths/comparisons disclose full-period scope. Final course submission remains pending.

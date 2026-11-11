@@ -395,3 +395,13 @@ th,
 @media (max-width: 640px) { .analytics-panel label:has(select) { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; } .analytics-panel label select { margin-left: 0; max-width: 100%; } }
 
 .analytics-panel > .text-3xl { font-size: 30px; line-height: 1.3; }
+
+/* Each section follows its evidence hierarchy; no dense packing or CSS column reorder. */
+.robustness-layout, .trajectory-layout, .community-layout { display: flex; flex-direction: column; gap: 16px; }
+.robustness-figures, .cohort-overview, .sector-layout, .community-figures { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; align-items: start; }
+.sector-layout > .analytics-panel:last-child { grid-column: 1 / -1; }
+.robustness-figures > * { min-width: 0; }
+.partnership-details { border-top: 1px solid var(--border); padding-top: 12px; line-height: 1.65; }
+@container (max-width: 850px) {
+  .robustness-figures, .cohort-overview, .sector-layout, .community-figures { grid-template-columns: minmax(0,1fr); }
+}

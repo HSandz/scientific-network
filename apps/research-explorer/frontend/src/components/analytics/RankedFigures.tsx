@@ -19,7 +19,8 @@ export const RankedBars: React.FC<{
   unit: string;
   onOpen?: (index: number) => void;
   signed?: boolean;
-}> = ({ label, rows, unit, onOpen, signed }) => {
+  selectedIndex?: number;
+}> = ({ label, rows, unit, onOpen, signed, selectedIndex }) => {
   const t = useFigureTheme();
   if (!rows.length)
     return (
@@ -69,9 +70,11 @@ export const RankedBars: React.FC<{
           {
             type: "bar",
             barMaxWidth: 18,
-            data: rows.map((r) => ({
+            data: rows.map((r, i) => ({
               value: r.value,
               itemStyle: {
+                opacity:
+                  selectedIndex == null || selectedIndex === i ? 1 : 0.45,
                 color:
                   signed && r.value < 0
                     ? t.chartSecondarySeries
@@ -100,43 +103,50 @@ export const BridgeMatrix: React.FC<{
     <div
       className="bridge-matrix mt-4"
       role="group"
-      aria-label="Top-20 bridge rank matrix"
+      aria-label="Leading bridge rank comparison"
     >
       <div className="bridge-matrix-head text-xs text-muted">
         <span>Researcher</span>
         <span>Base rank</span>
         <span>Strict rank</span>
       </div>
-      {ranks.map((r) => (
-        <div key={r.id} className="bridge-matrix-row text-xs">
-          <button
-            className="underline truncate text-left"
-            title={names.get(r.id) || r.id}
-            onClick={() => onOpen(r.id, names.get(r.id))}
-          >
-            {names.get(r.id) || r.id.split(":").at(-1)}
-          </button>
-          {[r.base, r.strict].map((rank, i) => (
-            <span
-              key={i}
-              className="rank-cell num"
-              style={
-                rank == null
-                  ? undefined
-                  : {
-                      background: `color-mix(in srgb, var(--accent) ${Math.round(12 + (21 - rank) * 1.8)}%, var(--surface))`,
-                    }
-              }
+      {ranks
+        .filter(
+          (r) =>
+            (r.base != null && r.base <= 3) ||
+            (r.strict != null && r.strict <= 3),
+        )
+        .map((r) => (
+          <div key={r.id} className="bridge-matrix-row text-xs">
+            <button
+              className="underline truncate text-left"
+              title={names.get(r.id) || r.id}
+              onClick={() => onOpen(r.id, names.get(r.id))}
             >
-              {rank == null ? "Outside 20" : `#${rank}`}
-            </span>
-          ))}
-        </div>
-      ))}
+              {names.get(r.id) || r.id.split(":").at(-1)}
+            </button>
+            {[r.base, r.strict].map((rank, i) => (
+              <span
+                key={i}
+                className="rank-cell num"
+                style={
+                  rank == null
+                    ? undefined
+                    : {
+                        background: `color-mix(in srgb, var(--accent) ${Math.round(12 + (21 - rank) * 1.8)}%, var(--surface))`,
+                      }
+                }
+              >
+                {rank == null ? "Outside 20" : `#${rank}`}
+              </span>
+            ))}
+          </div>
+        ))}
     </div>
     <p className="text-xs text-muted mt-3">
-      Shading encodes rank 1–20 within each list. An absent rank means outside
-      the stored shortlist; no rank or score is imputed.
+      Top three in each stored list shown here; expand the comparison table for
+      all researchers. Shading encodes rank 1–20 within each list. An absent
+      rank means outside the stored shortlist; no rank or score is imputed.
     </p>
   </>
 );
@@ -154,7 +164,7 @@ export const RobustnessCounts: React.FC<{
     weak_or_undirected_component_sizes: number[];
   };
 }> = ({ base, strict }) => (
-  <div className="grid sm:grid-cols-3 gap-3 mt-4">
+  <div className="grid gap-3 mt-4">
     {[
       ["Accepted edges", base.edge_count, strict.edge_count],
       ["Isolates", base.isolate_count, strict.isolate_count],
@@ -166,29 +176,31 @@ export const RobustnessCounts: React.FC<{
     ].map(([title, a, b]) => (
       <div key={String(title)}>
         <p className="text-xs font-medium">{title}</p>
-        {[
-          ["Base", a],
-          ["Strict", b],
-        ].map(([name, v]) => (
-          <div key={String(name)} className="mt-2 text-xs">
-            <div className="flex justify-between">
-              <span>{name}</span>
-              <span className="num">{fmt(v)}</span>
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            ["Base", a],
+            ["Strict", b],
+          ].map(([name, v]) => (
+            <div key={String(name)} className="mt-2 text-xs">
+              <div className="flex justify-between">
+                <span>{name}</span>
+                <span className="num">{fmt(v)}</span>
+              </div>
+              <div className="quality-track">
+                <span
+                  className="quality-fill"
+                  style={{
+                    width: `${(Number(v) / Math.max(Number(a), Number(b), 1)) * 100}%`,
+                    opacity: name === "Base" ? 1 : 0.5,
+                  }}
+                />
+              </div>
             </div>
-            <div className="quality-track">
-              <span
-                className="quality-fill"
-                style={{
-                  width: `${(Number(v) / Math.max(Number(a), Number(b), 1)) * 100}%`,
-                  opacity: name === "Base" ? 1 : 0.5,
-                }}
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     ))}
-    <p className="text-xs text-muted sm:col-span-3">
+    <p className="text-xs text-muted">
       Separate count scales per metric. Both networks retain{" "}
       {fmt(base.node_count)} researchers, including isolates.
     </p>

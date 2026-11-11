@@ -1,4 +1,4 @@
-import { labelBudget, zoomBand, type ZoomBand } from "../../lib/labelPolicy";
+import { createCustomSigmaRenderers } from "./focusLabels";
 import { parallelGroups, lanePath } from "../../lib/edgeLanes";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Graph from "graphology";
@@ -51,240 +51,6 @@ interface SigmaGraphCanvasProps {
     exploreAll?: boolean,
   ) => void;
   isExpanding: boolean;
-}
-
-function createCustomSigmaRenderers(isDark: boolean, getSigma: () => Sigma | null = () => null) {
-  const tokens = getThemeTokens(isDark);
-  const drawnBoxes: Array<{ x1: number; y1: number; x2: number; y2: number }> =
-    [];
-  let band: ZoomBand = "overview";
-  const eligible = new Set<string>();
-  const obstacles: Array<{ x: number; y: number; radius: number; id: string }> = [];
-  const prepare = () => {
-    drawnBoxes.length = 0;
-    eligible.clear();
-    obstacles.length = 0;
-    const sigma = getSigma();
-    if (!sigma) return;
-    const { width, height } = sigma.getDimensions();
-    band = zoomBand(sigma.getCamera().ratio, band);
-    const budget = labelBudget(band, width, height);
-    const state = useExplorerStore.getState();
-    const focus = state.hoveredNodeId || state.selectedNodeId;
-    const graph = sigma.getGraph();
-    const candidates: Array<{ id: string; priority: number }> = [];
-    graph.forEachNode((id) => {
-      const d = sigma.getNodeDisplayData(id);
-      if (!d || d.hidden) return;
-      const pos = sigma.framedGraphToViewport(d);
-      if (pos.x < 0 || pos.y < 0 || pos.x > width || pos.y > height) return;
-      obstacles.push({ ...pos, radius: sigma.scaleSize(d.size) + 3, id });
-      const adjacent = focus && graph.hasNode(focus) && graph.areNeighbors(id, focus);
-      candidates.push({ id, priority: (adjacent ? 10000 : 0) + graph.degree(id) });
-    });
-    candidates.sort((a,b) => b.priority - a.priority || a.id.localeCompare(b.id));
-    candidates.slice(0, budget).forEach(n => eligible.add(n.id));
-    const container = sigma.getContainer();
-    container.dataset.labelBand = band;
-    container.dataset.labelBudget = String(budget);
-    container.dataset.labelBoxes = "[]";
-  };
-
-  const overlapsExisting = (rect: {
-    x1: number;
-    y1: number;
-    x2: number;
-    y2: number;
-  }) => {
-    for (const b of drawnBoxes) {
-      if (
-        rect.x1 < b.x2 &&
-        rect.x2 > b.x1 &&
-        rect.y1 < b.y2 &&
-        rect.y2 > b.y1
-      ) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const drawLabel = (
-    context: CanvasRenderingContext2D,
-    data: {
-      key?: string;
-      x: number;
-      y: number;
-      size: number;
-      label?: string | null;
-      color?: string;
-      forceLabel?: boolean;
-      highlighted?: boolean;
-    },
-    settings: { labelSize: number; labelFont: string; labelWeight: string },
-  ) => {
-    if (!data.label || data.highlighted || !data.key || !eligible.has(data.key)) return;
-    const text = truncateCanvasLabel(String(data.label), 32);
-    const fontSize = settings.labelSize || 12;
-    context.save();
-    context.font = `${settings.labelWeight || "500"} ${fontSize}px ${settings.labelFont}`;
-    const textWidth = context.measureText(text).width;
-    const boxW = textWidth + 8;
-    const boxH = fontSize + 6;
-
-    const canvasW =
-      context.canvas?.clientWidth || context.canvas?.width || 1440;
-    const canvasH =
-      context.canvas?.clientHeight || context.canvas?.height || 900;
-
-    // 4-way candidate placement: Right, Left, Above, Below
-    const candidates = [
-      { x: data.x + data.size + 4, y: data.y - fontSize / 2 - 3 },
-      { x: data.x - data.size - boxW - 4, y: data.y - fontSize / 2 - 3 },
-      { x: data.x - boxW / 2, y: data.y - data.size - boxH - 4 },
-      { x: data.x - boxW / 2, y: data.y + data.size + 4 },
-    ];
-
-    let chosenCandidate: {
-      x: number;
-      y: number;
-      rect: { x1: number; y1: number; x2: number; y2: number };
-    } | null = null;
-    for (const c of candidates) {
-      const padded = {
-        x1: c.x - 3,
-        y1: c.y - 2,
-        x2: c.x + boxW + 3,
-        y2: c.y + boxH + 2,
-      };
-      if (
-        padded.x1 >= 4 &&
-        padded.y1 >= 4 &&
-        padded.x2 <= canvasW - 4 &&
-        padded.y2 <= canvasH - 4
-      ) {
-        if (!overlapsExisting(padded) && !obstacles.some(n => n.id !== data.key &&
-          n.x + n.radius > padded.x1 && n.x - n.radius < padded.x2 &&
-          n.y + n.radius > padded.y1 && n.y - n.radius < padded.y2)) {
-          chosenCandidate = { ...c, rect: padded };
-          break;
-        }
-      }
-    }
-
-    // Forced dispatch never bypasses collision rejection. Identity remains in the inspector/hover overlay.
-    if (!chosenCandidate) {
-      context.restore();
-      return;
-    }
-
-    drawnBoxes.push(chosenCandidate.rect);
-    const container = getSigma()?.getContainer();
-    if (container) container.dataset.labelBoxes = JSON.stringify(drawnBoxes);
-    context.fillStyle = tokens.labelPillBg;
-    context.beginPath();
-    if (context.roundRect) {
-      context.roundRect(
-        chosenCandidate.x - 2,
-        chosenCandidate.y,
-        boxW,
-        boxH,
-        4,
-      );
-      context.fill();
-    } else {
-      context.fillRect(chosenCandidate.x - 2, chosenCandidate.y, boxW, boxH);
-    }
-    context.fillStyle = tokens.labelInk;
-    context.fillText(text, chosenCandidate.x + 2, chosenCandidate.y + fontSize);
-    context.restore();
-  };
-
-  const drawHover = (
-    context: CanvasRenderingContext2D,
-    data: {
-      x: number;
-      y: number;
-      size: number;
-      label?: string | null;
-      color?: string;
-    },
-    settings: { labelSize: number; labelFont: string; labelWeight: string },
-  ) => {
-
-    const fontSize = settings.labelSize || 12;
-    const font = `${settings.labelWeight || "600"} ${fontSize}px ${settings.labelFont}`;
-    context.save();
-    context.font = font;
-
-    const bgFill = tokens.hoverBg;
-    const strokeColor = tokens.hoverStroke;
-    const textColor = tokens.hoverInk;
-
-    const labelText = data.label
-      ? truncateCanvasLabel(String(data.label), 48)
-      : "";
-    if (labelText) {
-      const textWidth = context.measureText(labelText).width;
-      const boxW = textWidth + 12;
-      const boxH = fontSize + 8;
-      let boxX = data.x + data.size + 4;
-      let boxY = data.y - fontSize / 2 - 4;
-      let textY = data.y + fontSize / 3;
-
-      const candidateRight = {
-        x1: boxX - 2,
-        y1: boxY - 2,
-        x2: boxX + boxW + 2,
-        y2: boxY + boxH + 2,
-      };
-      if (overlapsExisting(candidateRight)) {
-        // Flip to left of node if right side overlaps another highlighted endpoint
-        const leftX = data.x - data.size - boxW - 4;
-        const candidateLeft = {
-          x1: leftX - 2,
-          y1: boxY - 2,
-          x2: leftX + boxW + 2,
-          y2: boxY + boxH + 2,
-        };
-        if (!overlapsExisting(candidateLeft) && leftX >= 6) {
-          boxX = leftX;
-        } else {
-          // Place above node
-          boxY = data.y - data.size - boxH - 6;
-          textY = boxY + fontSize + 1;
-        }
-      }
-
-      drawnBoxes.push({
-        x1: boxX - 2,
-        y1: boxY - 2,
-        x2: boxX + boxW + 2,
-        y2: boxY + boxH + 2,
-      });
-
-      context.fillStyle = bgFill;
-      context.strokeStyle = strokeColor;
-      context.lineWidth = 1;
-      context.beginPath();
-      context.roundRect(boxX, boxY, boxW, boxH, 4);
-      context.fill();
-      context.stroke();
-
-      context.fillStyle = textColor;
-      context.fillText(labelText, boxX + 6, textY);
-    }
-
-    // Outer focus ring around the node
-    context.beginPath();
-    context.arc(data.x, data.y, data.size + 3, 0, Math.PI * 2);
-    context.strokeStyle = tokens.focusRing;
-    context.lineWidth = 1.75;
-    context.stroke();
-    context.restore();
-  };
-
-  return { drawLabel, drawHover, prepare };
 }
 
 export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
@@ -628,7 +394,22 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
         selectEdge(edge, label);
       });
 
+      // Sigma 3 retains its internal hovered node on leaveStage and emits no new
+      // enterNode when the pointer returns directly to the same disk. Restore our
+      // transient state at the boundary using only public graph/viewport methods.
+      let lastHoveredNode: string | null = null;
+      sigma.on("enterStage", ({ event }) => {
+        if (!lastHoveredNode || !graph.hasNode(lastHoveredNode)) return;
+        const display = sigma.getNodeDisplayData(lastHoveredNode);
+        if (!display || display.hidden) return;
+        const point = sigma.graphToViewport(graph.getNodeAttributes(lastHoveredNode) as {x:number;y:number});
+        if (Math.hypot(point.x-event.x,point.y-event.y) <= sigma.scaleSize(display.size)) {
+          setHoveredNodeId(lastHoveredNode);
+          container.style.cursor = "pointer";
+        }
+      });
       sigma.on("enterNode", ({ node }) => {
+        lastHoveredNode = node;
         setHoveredNodeId(node);
         container.style.cursor = "pointer";
       });
@@ -721,14 +502,15 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
       ? edgeById.get(selectedEdgeId)
       : null;
     sigma.on("beforeRender", customRenderers.prepare);
+    sigma.on("afterRender", customRenderers.afterRender);
     sigma.setSetting("nodeReducer", (node, data) => {
       const res = { ...data };
 
-      if (selectedEdgeObj) {
+      if (selectedEdgeObj && !activeFocusNodeId) {
         const isEndpoint =
           node === selectedEdgeObj.source || node === selectedEdgeObj.target;
         res.highlighted = isEndpoint;
-        res.forceLabel = false;
+        res.forceLabel = isEndpoint;
         res.zIndex = isEndpoint ? 20 : 1;
         if (!isEndpoint) {
           res.color = tokens.dimmedNode;
@@ -739,8 +521,9 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
 
       if (activeFocusNodeId) {
         const isCenter = node === activeFocusNodeId;
-        const isNeighbor = focusNeighbors.has(node);
-        res.highlighted = isCenter;
+        const isEndpoint = node === selectedEdgeObj?.source || node === selectedEdgeObj?.target;
+        const isNeighbor = focusNeighbors.has(node) || isEndpoint;
+        res.highlighted = isCenter || isEndpoint;
         res.zIndex = isCenter ? 25 : isNeighbor ? 12 : 1;
 
         if (!isNeighbor) {
@@ -748,7 +531,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           res.label = "";
           res.forceLabel = false;
         } else {
-          res.forceLabel = !isCenter;
+          res.forceLabel = true;
         }
         return res;
       }
@@ -762,7 +545,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
       const res = { ...data };
       const eObj = edgeById.get(edge);
 
-      if (selectedEdgeId) {
+      if (selectedEdgeId && (!activeFocusNodeId || edge === selectedEdgeId)) {
         const isSelected = edge === selectedEdgeId;
         res.color = isSelected ? tokens.focusedEdge : tokens.dimmedEdge;
         res.size = isSelected ? Math.max(3.6, (data.size || 1.5) * 1.9) : 0.85;
@@ -785,7 +568,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
     });
 
     sigma.refresh();
-    return () => { sigma.off("beforeRender", customRenderers.prepare); };
+    return () => { sigma.off("beforeRender", customRenderers.prepare); sigma.off("afterRender", customRenderers.afterRender); };
   }, [
     activeNodes,
     activeFocusNodeId,
@@ -1139,19 +922,8 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
           </div>
         )}
 
-        {/* Dense neighborhood badge */}
-        {activeFocusNodeId && focusNeighbors.size - 1 > 12 && (
-          <div
-            data-testid="dense-neighborhood-badge"
-            className="absolute top-12 left-4 z-20 bg-surface border border-border rounded-[6px] px-2.5 py-1 text-[11px] text-muted"
-          >
-            <span>
-              Dense neighborhood: <strong>{focusNeighbors.size - 1}</strong>{" "}
-              visible neighbors. Labels appear as you zoom; inspect complete list
-              in right panel.
-            </span>
-          </div>
-        )}
+        <div data-focus-label-summary data-testid="dense-neighborhood-badge" hidden
+          className="pointer-events-none absolute top-2 left-4 right-4 z-20 w-fit max-w-[calc(100%-2rem)] bg-surface border border-border rounded-[6px] px-2.5 py-1 text-[11px] text-muted" />
 
         <svg
           ref={laneOverlayRef}
@@ -1249,7 +1021,7 @@ export const SigmaGraphCanvas: React.FC<SigmaGraphCanvasProps> = ({
 
         {/* Transient Hover Preview Card (only while hovering a node) */}
         {hoveredNode && (
-          <div className="pointer-events-none absolute bottom-4 left-5 z-20 max-w-sm bg-surface border border-border rounded-[8px] px-3.5 py-2.5">
+          <div data-label-obstacle className="pointer-events-none absolute bottom-4 left-5 z-20 max-w-sm bg-surface border border-border rounded-[8px] px-3.5 py-2.5">
             <div className="flex items-center justify-between gap-3 mb-1">
               <span className="text-xs font-medium text-muted">
                 {hoveredNode.label} · {hoveredNode.group}
