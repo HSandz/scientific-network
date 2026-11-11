@@ -1,52 +1,32 @@
 # Current project status
 
-Updated: **2026-11-11 12:12 +07:00**. Deadline: **11 November 2026**.
-Plan: [D040](release-plan.md).
-Latest: [WORK-2026-11-11-002](work-log/2026-11-11-002-explorer-focus-layout.md).
+Updated: **2026-11-11 +07:00**. Plan: [D040](release-plan.md),with
+[user-authorized v5 candidate amendment](decisions.md).
+Latest: [WORK-2026-11-11-003](work-log/2026-11-11-003-quality-v5.md).
 
-## Release phase checklist
+## Current phase checklist
 
-- [x] Tooling/source acquisition and resolution completed.
-- [x] Frozen topics, corrected graph, isolated import and analysis completed.
-- [x] Source-backed AI audit/scoring; failed criteria remain disclosed.
-- [x] Measured report, local submission package and QA completed.
-- [x] Native public Site v19 published, unchanged by Explorer work.
-- [x] Azure runtime and automatic API delivery previously verified.
-- [x] Explorer projections, evidence, comparisons, paths and workspace restoration.
-- [x] Authorized API release/recovery and global bookmark acceptance.
-- [x] Scrolling dashboard, motion and zoom-aware labels deployed previously.
-- [x] Interaction-aware neighborhood canvas labels and section-specific Analytics.
-- [x] Local build, contracts, Chromium screenshots and regressions.
-- [x] Focus/layout follow-up production deployment and live acceptance.
+- [x] Historical v4 graph,source snapshots,AI evaluation and package preserved.
+- [x] Historical Site/Explorer delivery remains separate from this task.
+- [x] V5 Task1 baseline source/data/pipeline audit and issue priorities.
+- [x] Baseline hashes,raw object equality and structural validation checked.
+- [x] Audit tests and full repository suite:533 passed,one existing skip.
+- [ ] V5 Task2 conservative mention resolver and regression tests.
+- [ ] Isolated candidate,deterministic reproduction and v4 comparison.
+- [ ] Final identity implementation/validation report and handoff.
 - [ ] Personal/course facts and final course submission.
 
-## Current verification and release boundary
+## Findings and boundary
 
-Repository:530 pass /one existing skip. Frontend contracts:7 pass.
-Full Chromium suite:52 pass, including actual canvas text, four projections,
-dense fixtures, exact chart clicks, saved views and reviewed visual baselines.
-Four requested viewport sizes and both themes pass measured layout checks.
-TypeScript/Vite build passes; deferred ECharts chunk remains537KB.
-Backend:23 pass /9 local-Neo4j integrations unavailable /one warning.
-Offline synthetic structural check passes; no scientific accuracy inference.
-[Focus/layout report](../reports/explorer-focus-layout-verification-2026-11-11.md)
-records before/after screenshots, performance and delivery receipt.
-Implementation `1b7b3ab` deployed on Pages (`99ee8ec4`);5 public Explorer suites,
-four actual-canvas projections,24 responsive/theme section layouts and exact
-persistence-cell interaction pass. Post API smoke28 pass. Health/summary/analytics
-and Azure container IDs/start times/mounts exactly match before snapshots.
-No API, Neo4j, graph, frozen analytics or infrastructure edits or service restarts.
+[Baseline audit](../reports/quality-v5/baseline-audit.md),
+[machine census](../reports/quality-v5/baseline-audit.json),
+[priorities](../reports/quality-v5/issue-inventory.csv).
+Current builder state shadowing confirmed;frozen v4 uses a different historical
+path. Singleton DOI disagreements and missing identifiers require abstention.
+Paper raw identity evidence is sparse;aggregate ORCID arrays cannot assign people
+to papers. Independent identity precision/recall remain unmeasured.
 
-## Scientific evidence and artifacts
-
-[Release-v4 limitations](../reports/release-v4/README.md),
-[final report](../reports/final-report/report.md),
-[package QA](../reports/release-v4/local-package-receipt-v3.json).
-AI precision is not independent human validation. Topic coverage is not accuracy;
-failed affiliation/topic-quality criteria remain visible. No graph rebuild.
-
-## Remaining limitations
-
-Long-session load, physical devices, Firefox/Safari and formal accessibility
-certification remain unverified. Graph/comparison previews are bounded;
-Paths/comparisons disclose full-period scope. Final course submission remains pending.
+No source collection,database writes,production/Explorer changes,push or deploy.
+Historical [v4 evidence](../reports/release-v4/README.md) remains frozen.
+AI-assessed precision is not independent human validation or verified course accuracy.
+Next: implement the separately versioned identity candidate from Task1 findings.

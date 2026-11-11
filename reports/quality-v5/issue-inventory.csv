@@ -1,0 +1,12 @@
+issue_id,severity,evidence_status,category,affected_count,population,root_cause,priority_action,cost
+Q01,critical,confirmed_bug,current_builder_state,8696,later compatible conflict positions exposed not frozen-v4 corruption,lookup dictionary overwritten by rejection string,rename states and regress both branches,low
+Q02,high,confirmed_bug_and_observation,work_DOI,7,works with returned DOI different from requested official DOI,singleton retry lacks DOI equality acceptance gate,quarantine candidate identity decisions and report source-gate effects,low
+Q03,high,observed_missing_evidence,no_provider_ID,6285,source positions with null author ID including overlapping reasons,provider identifier absent,retain unresolved mentions and require direct identifier evidence,medium
+Q04,high,observed_conflict,global_ORCID,8727,source positions across4492 provider IDs of which8722 removed from v3,aggregate ORCIDs cannot locate person to paper,recover only paper-specific anchored positions and retain others,medium
+Q05,medium,observed_policy_loss,whole_byline,20,compatible positions rejected by whole-paper guards,unrelated positions discarded along with ambiguity,unique raw-position anchors with repeated-ID positions blocked,medium
+Q06,high,observed_quality_limit,affiliation_coverage,48259,affiliated accepted positions over65469 matched positions,identity withholding plus missing institutions and copy guard,preserve exact triples and defer affiliation improvement to Task3,medium
+Q07,medium,observed_risk,canonical_name_fallback,5,source positions whose canonical name alone matches official byline,profile display can mask incompatible raw name,require raw anchors for newly recovered positions,low
+Q08,medium,inspection_lead,same_name_multiple_provider,3461,normalized-name groups not confirmed false splits,names cannot distinguish aliases and homonyms,no name-only merges,high
+Q09,medium,inspection_lead,shared_ORCID_multiple_provider,535,ORCID groups not confirmed crosswalks,aggregate author evidence not paper-specific,require direct paper identifier provenance,high
+Q10,high,observed_evaluation_limit,independent_identity_gold,0,independent identity references available,historical AI and same-source checks not independent gold,keep semantic metrics null and reserve prospective references,high
+Q11,medium,observed_quality_limit,topics_and_citations,1048,matched works without reference lists,frozen topics imperfect and core references incomplete,report existing evidence only in this phase,high
