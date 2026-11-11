@@ -1,0 +1,668 @@
+{
+  "submission": {
+    "$defs": {
+      "Evidence": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "minLength": 1,
+            "title": "Evidence Id",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "retrieved_at": {
+            "title": "Retrieved At",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256",
+            "type": "string"
+          },
+          "locator": {
+            "minLength": 1,
+            "title": "Locator",
+            "type": "string"
+          },
+          "excerpt": {
+            "minLength": 1,
+            "title": "Excerpt",
+            "type": "string"
+          },
+          "source_owner": {
+            "minLength": 1,
+            "title": "Source Owner",
+            "type": "string"
+          },
+          "provenance": {
+            "minLength": 1,
+            "title": "Provenance",
+            "type": "string"
+          },
+          "independence": {
+            "enum": [
+              "independent",
+              "construction",
+              "shared_upstream",
+              "unknown"
+            ],
+            "title": "Independence",
+            "type": "string"
+          },
+          "independence_rationale": {
+            "minLength": 1,
+            "title": "Independence Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "url",
+          "retrieved_at",
+          "sha256",
+          "locator",
+          "excerpt",
+          "source_owner",
+          "provenance",
+          "independence",
+          "independence_rationale"
+        ],
+        "title": "Evidence",
+        "type": "object"
+      },
+      "Review": {
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "minLength": 1,
+            "title": "Unit Id",
+            "type": "string"
+          },
+          "reviewer": {
+            "enum": [
+              "A",
+              "B"
+            ],
+            "title": "Reviewer",
+            "type": "string"
+          },
+          "reviewer_identity": {
+            "minLength": 1,
+            "title": "Reviewer Identity",
+            "type": "string"
+          },
+          "reviewer_kind": {
+            "enum": [
+              "human",
+              "ai"
+            ],
+            "title": "Reviewer Kind",
+            "type": "string"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Model"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Run Id"
+          },
+          "label": {
+            "enum": [
+              "identity",
+              "unresolvable",
+              "unknown",
+              "same",
+              "different"
+            ],
+            "title": "Label",
+            "type": "string"
+          },
+          "reference_identity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reference Identity"
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ],
+            "title": "Confidence",
+            "type": "string"
+          },
+          "notes": {
+            "minLength": 1,
+            "title": "Notes",
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/$defs/Evidence"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "submitted_at": {
+            "title": "Submitted At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "unit_id",
+          "reviewer",
+          "reviewer_identity",
+          "reviewer_kind",
+          "label",
+          "confidence",
+          "notes",
+          "evidence",
+          "submitted_at"
+        ],
+        "title": "Review",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "schema_version": {
+        "const": "identity-review-v2",
+        "title": "Schema Version",
+        "type": "string"
+      },
+      "freeze_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "title": "Freeze Sha256",
+        "type": "string"
+      },
+      "reviewer": {
+        "enum": [
+          "A",
+          "B"
+        ],
+        "title": "Reviewer",
+        "type": "string"
+      },
+      "reviews": {
+        "items": {
+          "$ref": "#/$defs/Review"
+        },
+        "title": "Reviews",
+        "type": "array"
+      }
+    },
+    "required": [
+      "schema_version",
+      "freeze_sha256",
+      "reviewer",
+      "reviews"
+    ],
+    "title": "Submission",
+    "type": "object"
+  },
+  "evidence": {
+    "additionalProperties": false,
+    "properties": {
+      "evidence_id": {
+        "minLength": 1,
+        "title": "Evidence Id",
+        "type": "string"
+      },
+      "url": {
+        "title": "Url",
+        "type": "string"
+      },
+      "retrieved_at": {
+        "title": "Retrieved At",
+        "type": "string"
+      },
+      "sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "title": "Sha256",
+        "type": "string"
+      },
+      "locator": {
+        "minLength": 1,
+        "title": "Locator",
+        "type": "string"
+      },
+      "excerpt": {
+        "minLength": 1,
+        "title": "Excerpt",
+        "type": "string"
+      },
+      "source_owner": {
+        "minLength": 1,
+        "title": "Source Owner",
+        "type": "string"
+      },
+      "provenance": {
+        "minLength": 1,
+        "title": "Provenance",
+        "type": "string"
+      },
+      "independence": {
+        "enum": [
+          "independent",
+          "construction",
+          "shared_upstream",
+          "unknown"
+        ],
+        "title": "Independence",
+        "type": "string"
+      },
+      "independence_rationale": {
+        "minLength": 1,
+        "title": "Independence Rationale",
+        "type": "string"
+      }
+    },
+    "required": [
+      "evidence_id",
+      "url",
+      "retrieved_at",
+      "sha256",
+      "locator",
+      "excerpt",
+      "source_owner",
+      "provenance",
+      "independence",
+      "independence_rationale"
+    ],
+    "title": "Evidence",
+    "type": "object"
+  },
+  "adjudication": {
+    "$defs": {
+      "Crosswalk": {
+        "additionalProperties": false,
+        "properties": {
+          "reference_identity": {
+            "minLength": 1,
+            "title": "Reference Identity",
+            "type": "string"
+          },
+          "accepted_canonical_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Accepted Canonical Ids",
+            "type": "array"
+          },
+          "complete": {
+            "const": true,
+            "title": "Complete",
+            "type": "boolean"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/$defs/Evidence"
+            },
+            "minItems": 1,
+            "title": "Evidence",
+            "type": "array"
+          },
+          "rationale": {
+            "minLength": 1,
+            "title": "Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reference_identity",
+          "accepted_canonical_ids",
+          "complete",
+          "evidence",
+          "rationale"
+        ],
+        "title": "Crosswalk",
+        "type": "object"
+      },
+      "Evidence": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "minLength": 1,
+            "title": "Evidence Id",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "retrieved_at": {
+            "title": "Retrieved At",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256",
+            "type": "string"
+          },
+          "locator": {
+            "minLength": 1,
+            "title": "Locator",
+            "type": "string"
+          },
+          "excerpt": {
+            "minLength": 1,
+            "title": "Excerpt",
+            "type": "string"
+          },
+          "source_owner": {
+            "minLength": 1,
+            "title": "Source Owner",
+            "type": "string"
+          },
+          "provenance": {
+            "minLength": 1,
+            "title": "Provenance",
+            "type": "string"
+          },
+          "independence": {
+            "enum": [
+              "independent",
+              "construction",
+              "shared_upstream",
+              "unknown"
+            ],
+            "title": "Independence",
+            "type": "string"
+          },
+          "independence_rationale": {
+            "minLength": 1,
+            "title": "Independence Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "url",
+          "retrieved_at",
+          "sha256",
+          "locator",
+          "excerpt",
+          "source_owner",
+          "provenance",
+          "independence",
+          "independence_rationale"
+        ],
+        "title": "Evidence",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "unit_id": {
+        "minLength": 1,
+        "title": "Unit Id",
+        "type": "string"
+      },
+      "review_a_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "title": "Review A Sha256",
+        "type": "string"
+      },
+      "review_b_sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "title": "Review B Sha256",
+        "type": "string"
+      },
+      "adjudicator_identity": {
+        "minLength": 1,
+        "title": "Adjudicator Identity",
+        "type": "string"
+      },
+      "adjudicator_kind": {
+        "enum": [
+          "human",
+          "ai"
+        ],
+        "title": "Adjudicator Kind",
+        "type": "string"
+      },
+      "model": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Model"
+      },
+      "run_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Run Id"
+      },
+      "resolution": {
+        "enum": [
+          "consensus",
+          "adjudicated",
+          "unresolved"
+        ],
+        "title": "Resolution",
+        "type": "string"
+      },
+      "label": {
+        "enum": [
+          "identity",
+          "unresolvable",
+          "unknown",
+          "same",
+          "different"
+        ],
+        "title": "Label",
+        "type": "string"
+      },
+      "reference_identity": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Reference Identity"
+      },
+      "rationale": {
+        "minLength": 1,
+        "title": "Rationale",
+        "type": "string"
+      },
+      "evidence": {
+        "items": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "title": "Evidence",
+        "type": "array"
+      },
+      "crosswalk": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Crosswalk"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "decided_at": {
+        "title": "Decided At",
+        "type": "string"
+      }
+    },
+    "required": [
+      "unit_id",
+      "review_a_sha256",
+      "review_b_sha256",
+      "adjudicator_identity",
+      "adjudicator_kind",
+      "resolution",
+      "label",
+      "rationale",
+      "evidence",
+      "decided_at"
+    ],
+    "title": "Adjudication",
+    "type": "object"
+  },
+  "crosswalk": {
+    "$defs": {
+      "Evidence": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": {
+            "minLength": 1,
+            "title": "Evidence Id",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "retrieved_at": {
+            "title": "Retrieved At",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256",
+            "type": "string"
+          },
+          "locator": {
+            "minLength": 1,
+            "title": "Locator",
+            "type": "string"
+          },
+          "excerpt": {
+            "minLength": 1,
+            "title": "Excerpt",
+            "type": "string"
+          },
+          "source_owner": {
+            "minLength": 1,
+            "title": "Source Owner",
+            "type": "string"
+          },
+          "provenance": {
+            "minLength": 1,
+            "title": "Provenance",
+            "type": "string"
+          },
+          "independence": {
+            "enum": [
+              "independent",
+              "construction",
+              "shared_upstream",
+              "unknown"
+            ],
+            "title": "Independence",
+            "type": "string"
+          },
+          "independence_rationale": {
+            "minLength": 1,
+            "title": "Independence Rationale",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evidence_id",
+          "url",
+          "retrieved_at",
+          "sha256",
+          "locator",
+          "excerpt",
+          "source_owner",
+          "provenance",
+          "independence",
+          "independence_rationale"
+        ],
+        "title": "Evidence",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "reference_identity": {
+        "minLength": 1,
+        "title": "Reference Identity",
+        "type": "string"
+      },
+      "accepted_canonical_ids": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Accepted Canonical Ids",
+        "type": "array"
+      },
+      "complete": {
+        "const": true,
+        "title": "Complete",
+        "type": "boolean"
+      },
+      "evidence": {
+        "items": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "minItems": 1,
+        "title": "Evidence",
+        "type": "array"
+      },
+      "rationale": {
+        "minLength": 1,
+        "title": "Rationale",
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_identity",
+      "accepted_canonical_ids",
+      "complete",
+      "evidence",
+      "rationale"
+    ],
+    "title": "Crosswalk",
+    "type": "object"
+  }
+}

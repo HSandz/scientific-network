@@ -5,6 +5,12 @@
 
 ## Current capabilities — D040 remediation
 
+**11 November Task2C identity validation:** strict local blind A/B review and
+hash-bound adjudication/crosswalk compilation, descriptive partial-reference scoring,
+blocked-pair estimand safeguards, bounded source packets and three-way topology
+sensitivity. Task3 ledgers are prepared; independent human references remain pending
+and scientific promotion is deferred. [Deliverables and reproduction](../reports/quality-v5/task2c-v1/README.md).
+
 
 **11 November Task2B identity recovery:** targeted DOI/ORCID evidence inventory,
 complete 170-ID abstention classification, formatting and declared-alias recovery,

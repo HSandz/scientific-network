@@ -1,0 +1,45 @@
+{
+  "source_urls": 48,
+  "retrieval_status": {
+    "retrieved": 45,
+    "unavailable": 3
+  },
+  "targeted_positions": 60,
+  "human_reviews": 0,
+  "independent_adjudicated_references": 0,
+  "categories": {
+    "author_id_incompatible_name_variants": {
+      "targeted_positions": 8,
+      "with_retrieved_source": 8,
+      "independent_person_references": 0
+    },
+    "missing_id_exact_doi_alternate_work": {
+      "targeted_positions": 18,
+      "with_retrieved_source": 18,
+      "independent_person_references": 0
+    },
+    "provider_id_full_letter_boundary_normalization": {
+      "targeted_positions": 9,
+      "with_retrieved_source": 9,
+      "independent_person_references": 0
+    },
+    "provider_id_public_orcid_declared_aliases": {
+      "targeted_positions": 17,
+      "with_retrieved_source": 5,
+      "independent_person_references": 0
+    },
+    "provider_id_raw_name_position": {
+      "targeted_positions": 8,
+      "with_retrieved_source": 6,
+      "independent_person_references": 0
+    }
+  },
+  "pdfs_with_printed_identifier_patterns": 0,
+  "method": "source-inventory-not-identity-evaluation; regex identifiers are leads, not verified identifiers",
+  "provenance_hashes": {
+    "reports/quality-v5/task2c-v1/source-provenance.json": "b09d53f2c307434fbe5ff57da13f34775bdb151d43609da8da1c7f1e59f59bc4",
+    "reports/quality-v5/task2c-v1/source-provenance-unchanged.json": "9adb9987cbaa9cf9391490442eafc2e6e60b3e8b7919082971c7d050b9a7d158",
+    "reports/quality-v5/task2c-v1/source-provenance-high-impact.json": "7d13473e93f58a893d699f5059cabb914803e27cf00fa6c9ca933b323533f7b5"
+  },
+  "decisions_sha256": "9799b4b4fc8e1bd6c6e49a6e524ecc4cf9dc5bf6b42ae9e67efa41fff3755b43"
+}

@@ -1,0 +1,340 @@
+[
+  {
+    "url": "https://www.kroening.com/publications/view-publications-hjamk2021.html",
+    "category": "alternate",
+    "mention_ids": [
+      "mention:0ac9e36ae28a84b9d93beb33"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://clarken92.github.io/publications.html",
+    "category": "alternate",
+    "mention_ids": [
+      "mention:09f80af51726d4e1a15a9865"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://harabor.net/daniel/index.php/publications/",
+    "category": "alias",
+    "mention_ids": [
+      "mention:0934ca7e9cb599494bf05e6f"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://www.cs.uni-potsdam.de/wv/publications/DBLP_conf/ijcai/FichteH0M21.html",
+    "category": "alias",
+    "mention_ids": [
+      "mention:0d19c595ef8c320d98b927ef"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://www.csc2.ncsu.edu/faculty/mpsingh/papers/",
+    "category": "alias",
+    "mention_ids": [
+      "mention:a642020adf6eff8838a0d5a6"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://proceedings.biocomplexity.virginia.edu/person/anil-vullikanti",
+    "category": "alias",
+    "mention_ids": [
+      "mention:3dc668cca7eca2c3383298af",
+      "mention:487e0fea74c6c041ecbaa5ad",
+      "mention:a44274a9524fafe39abb5fc2",
+      "mention:a1cab2784949a9e2b8ea37d4",
+      "mention:e4741fb86d8c38ad64c43143",
+      "mention:80b1e65508667514fa9559ef",
+      "mention:cec5b94d9b7c97ab1dbace71",
+      "mention:fe230de7e22fe794c1fedaf3",
+      "mention:9c4ee05a3a7ff56d0a04c793",
+      "mention:f4e8b2192ba54211ea983d5a"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://jpdickerson.com/publications/",
+    "category": "alias",
+    "mention_ids": [
+      "mention:b1601d1490e76e609179ddc1",
+      "mention:4d06ba0e97b7d15d0514723d",
+      "mention:6cf44ce37006299edb246d33",
+      "mention:6dca6929e788a286c29fc810"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://www.sigs.tsinghua.edu.cn/xst/main.htm",
+    "category": "formatting",
+    "mention_ids": [
+      "mention:005baf4238151636e4a5dd46",
+      "mention:ae7b0a2baef5a2ad52723408"
+    ],
+    "purpose": "author/institution maintained publication ownership; independently inspect exact-work links"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16280/16087",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:6988edd66c623bfb734e4216"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16355/16162",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:8bd8d1d8acabb3d598012435",
+      "mention:ed46cb2fb995cb959dd3dd40",
+      "mention:229227b5807499e01864478c"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16613/16420",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:3dc668cca7eca2c3383298af"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16615/16422",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:026fdb09ff429f45c93c80ef"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16880/16687",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:525189a46c45416fcccd91e1"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16931/16738",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:a670ef6f1c0b6b833c1768c0"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16935/16742",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:9f09602e341c3d2904464914",
+      "mention:fa5672932b0f64e573f7a7a2",
+      "mention:0ac9e36ae28a84b9d93beb33"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17142/16949",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:28a3b457d52210e10f09d8cd"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17161/16968",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:8b5cf0c89170f68aa8d77e53"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17201/17008",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:4f9bf4659654cfe8bab927c3"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17444/17251",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:62abfa61bc2b5c0152e082b5"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17484/17291",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:0040939cfd9810f35e18e7ed"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20081/19840",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:baaacef65325b7264fdedcce"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20140/19899",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:02b689e1f5012319b7bdb816"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20260/20019",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:3fb728b2f0c221e78bddd6a4"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20359/20118",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:067f05fe991354ea445342f6"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20526/20285",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:2fe567158f1df27e47fdb330",
+      "mention:6b2233533071243da59d0471"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20694/20453",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:09f80af51726d4e1a15a9865"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25871/25643",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:019197f4d9c59521ba330661"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26415/26187",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:0f62dcb3689b2de59da3b73a"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28559/29087",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:005baf4238151636e4a5dd46"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28851/29618",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:02dd460b2867c17478abeab2"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28870/29653",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:00c8982dbed6d203c7535c2f"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32640/34795",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:07374b133991bfaa43b9d4ec"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33062/35217",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:03a31e3d4cb256e40445f1c2"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2021/0259.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:0d19c595ef8c320d98b927ef"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2021/0568.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:0934ca7e9cb599494bf05e6f"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2022/0134.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:025dcb98e191e10a10516062"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2022/0662.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:02f439a567ba417ed0f081c5"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2023/0118.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:07d1b81b46721bb00a836464"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2023/0033.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:30b7759c2d82d0ca10b9f2f2"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2023/0332.pdf",
+    "category": "paper_specific",
+    "mention_ids": [
+      "mention:03edd034fe9bc0c01dac352d"
+    ],
+    "purpose": "printed byline/email/identifier check; byline alone cannot identify canonical owner"
+  }
+]

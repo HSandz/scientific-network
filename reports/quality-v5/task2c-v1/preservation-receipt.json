@@ -1,0 +1,16 @@
+{
+  "original_pre_task2b_files_verified": 779,
+  "session_baseline_files_verified": 148,
+  "all_hashes_match": true,
+  "protected_directory_membership_unchanged": true,
+  "frozen_draw_replay_exact": true,
+  "source_freeze_sha256": "d262a6fff656cc407a8f5e558791edc2972513f1568b57e4ae5a672b929d29d7",
+  "graph_versions": {
+    "v4": "release-d3c788c3114a",
+    "candidate_v3": "release-identity-v5-7e6b1a34ffa2",
+    "task2b": "release-identity-v5-503aafe10a31"
+  },
+  "deterministic_analysis_replay": true,
+  "task3_ledgers_byte_identical": true,
+  "session_preservation_baseline_sha256": "2add4cd75b27ce03d165e6d5e3d68af204045ae7b2d91c8e19712b380189f31b"
+}
