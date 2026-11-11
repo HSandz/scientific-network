@@ -12,7 +12,7 @@ from pathlib import Path
 import re
 
 from scientific_network.collect.storage import read_config, read_jsonl, write_bytes, write_json, write_jsonl
-from scientific_network.contracts import AffiliationObservation, Edge, GraphArtifact, Node
+from scientific_network.contracts import AffiliationObservation, Edge, EvidenceRecord, GraphArtifact, Node
 from scientific_network.graph.materialize import materialize
 from scientific_network.graph.schema import edge_id
 from scientific_network.graph.validate import graph_counts, validate_graph
@@ -21,7 +21,7 @@ from scientific_network.quality.candidate_network import paired_rankings
 from scientific_network.resolve import mentions_v5
 from scientific_network.resolve.release import SECTOR, _sha, _work_evidence, authorship_institutions
 
-METHOD = "identity-candidate-v5.3"
+METHOD = "identity-candidate-v5.5"
 EXPECTED_POLICIES = {
     "work_doi_must_agree": True,
     "raw_name_required_for_recovery": True,
@@ -121,11 +121,20 @@ def construct_candidate(old,rows,decisions,version,quality):
                     nodes[person]=previous[person]
                 else:
                     nodes[person]=Node(id=person,label="Researcher",name=d["official_name"],properties={
-                        "resolution_status":"resolved","identity_method":mentions_v5.METHOD,
+                        "resolution_status":"resolved","identity_method":d["method_version"],
                         **({"openalex_id":d["source_author_id"]} if person.startswith("researcher:openalex:") else {}),
                         **({"orcid":d["paper_raw_orcid"]} if d["paper_raw_orcid"] else {})})
+            identity_evidence = [ev.id]
+            if d.get("recovery_evidence_record"):
+                alternate_ev = EvidenceRecord.model_validate(d["recovery_evidence_record"])
+                evidence[alternate_ev.id] = alternate_ev
+                identity_evidence.append(alternate_ev.id)
+            for source_record in d.get("additional_identity_evidence", []):
+                added_ev = EvidenceRecord.model_validate(source_record)
+                evidence[added_ev.id] = added_ev
+                identity_evidence.append(added_ev.id)
             edges.append(Edge(edge_id=edge_id("AUTHORED",person,paper),relation="AUTHORED",source_id=person,target_id=paper,
-                              evidence_kind="observed",evidence_ids=[ev.id],method_version=mentions_v5.METHOD,
+                              evidence_kind="observed",evidence_ids=sorted(set(identity_evidence)),method_version=d["method_version"],
                               graph_version=version,validation_status="accepted",properties={
                                   "byline_position":d["author_position"],"roster_name":d["official_name"],
                                   "name_match":d["matching_method"],"identity_decision_id":d["decision_id"]}))
@@ -247,8 +256,8 @@ def compare(old,new,decisions):
             "by_venue_year":{k:dict(sorted(v.items())) for k,v in sorted(strata.items())},
             "accepted_authorships":{"before":len(a),"after":len(b),"gained_positions":len(gained),"lost_positions":len(lost),
                                     "retained_positions_reassigned":sum(a[k]!=b[k] for k in a.keys()&b.keys()),
-                                    "gained_by_reason":dict(Counter(by_mention[k]["decision_reason"] for k in gained)),
-                                    "lost_by_reason":dict(Counter(by_mention[k]["decision_reason"] for k in lost))},
+                                    "gained_by_reason":dict(sorted(Counter(by_mention[k]["decision_reason"] for k in gained).items())),
+                                    "lost_by_reason":dict(sorted(Counter(by_mention[k]["decision_reason"] for k in lost).items()))},
             "previously_globally_withheld_positions_recovered":sum(d["resolution_state"]=="resolved" and d["was_v4_global_identity_withheld"] for d in decisions),
             "remaining_states":dict(Counter(d["resolution_state"] for d in decisions)),
             "remaining_reasons":dict(sorted(Counter(d["decision_reason"] for d in decisions if d["resolution_state"]!="resolved").items())),
@@ -265,13 +274,30 @@ def compare(old,new,decisions):
 def build(config_path,output_dir,report_dir):
     unused(output_dir,report_dir)
     config=read_config(config_path)
-    if config.get("policies")!=EXPECTED_POLICIES:
+    expected = dict(EXPECTED_POLICIES)
+    recovery = config.get("identity_recovery") == "evidence-bounded-v1"
+    if config.get("identity_recovery") and not recovery:
+        raise ValueError("unsupported recovery method")
+    if recovery:
+        expected["provider_id_incompatible_name_variants"] = "formatting_or_public_declared_aliases_else_ambiguous"
+        expected["missing_provider_id_without_paper_raw_orcid"] = "exact_doi_consistent_alternate_else_unresolved"
+    if config.get("policies")!=expected:
         raise ValueError("unsupported candidate policy; change method/version explicitly")
     sources={k:Path(config[k]) for k in ("works","source_graph","source_freeze","quality","analysis","baseline_audit")}
     hashes={k:file_hash(p) for k,p in sources.items()}
     hashes["config"]=file_hash(config_path)
     hashes["resolver_code"]=file_hash(Path(mentions_v5.__file__))
     hashes["candidate_code"]=file_hash(Path(__file__))
+    source_root = Path(__file__).parents[1]
+    for module in ("contracts.py", "collect/acquire.py", "collect/openalex_release.py", "collect/storage.py",
+                   "resolve/release.py", "resolve/release_identity.py", "quality/identity_audit.py",
+                   "graph/materialize.py", "graph/derive.py", "graph/schema.py", "graph/validate.py",
+                   "analysis/analyze.py"):
+        hashes["code:"+module] = file_hash(source_root/module)
+    if recovery:
+        from scientific_network.resolve import recovery_v5
+        hashes["recovery_code"] = file_hash(Path(recovery_v5.__file__))
+        hashes["alias_certificates"] = file_hash(Path(config["alias_certificates"]))
     from scientific_network.quality import candidate_network
     hashes["network_code"]=file_hash(Path(candidate_network.__file__))
     freeze=json.loads(sources["source_freeze"].read_bytes())
@@ -292,7 +318,12 @@ def build(config_path,output_dir,report_dir):
     if len(rows)!=len({n.id for n in old.nodes if n.label=="Paper"}) or {r["paper_id"] for r in rows}!={n.id for n in old.nodes if n.label=="Paper"}:
         raise ValueError("source paper population mismatch")
     source_check=verify_sources(rows,Path(config["cache_dir"]))
-    decisions,index=mentions_v5.resolve_mentions(rows,old)
+    certificates = {}
+    if recovery:
+        certificates = recovery_v5.load_alias_certificates(Path(config["alias_certificates"]),
+            Path(config["recovery_cache"]), rows)
+    decisions,index=mentions_v5.resolve_mentions(rows,old,recovery=recovery,
+        alias_certificates=certificates,cache_dir=Path(config["cache_dir"]) if recovery else None)
     version="release-identity-v5-"+_canonical_digest([METHOD,mentions_v5.METHOD,hashes])[:12]
     graph,guard,paper_changes=construct_candidate(old,rows,decisions,version,quality)
     # Prove exact protected metadata after accounting for the enumerated reason-only changes.
@@ -307,7 +338,10 @@ def build(config_path,output_dir,report_dir):
                 props["unresolved_author_reason"]=changes[n.id]["before"]
             n=n.model_copy(update={"properties":props})
         proof_nodes.append(n)
-    proof_graph=graph.model_copy(update={"nodes":proof_nodes})
+    added_identity_evidence={d["recovery_evidence_record"]["id"] for d in decisions if d.get("recovery_evidence_record")}
+    added_identity_evidence.update(e["id"] for d in decisions for e in d.get("additional_identity_evidence", []))
+    proof_graph=graph.model_copy(update={"nodes":proof_nodes,
+        "evidence":[e for e in graph.evidence if e.id not in added_identity_evidence or e.id in {x.id for x in old.evidence}]})
     proof=protected_content(old,proof_graph)
     errors=validate_graph(graph,require_derived=True,max_topic_labels=quality["topics"]["max_labels_per_paper"],
                           researcher_min=quality["derived"]["researcher_topic_min_distinct_papers"],

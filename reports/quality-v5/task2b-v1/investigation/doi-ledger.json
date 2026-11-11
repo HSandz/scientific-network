@@ -1,0 +1,1010 @@
+[
+  {
+    "paper_id": "paper:aaai:2022:20425",
+    "official_doi": "10.1609/aaai.v36i5.20425",
+    "returned_doi": "10.1145/3665799",
+    "official_metadata": {
+      "authors": [
+        "Mithun Chakraborty",
+        "Erel Segal-Halevi",
+        "Warut Suksompong"
+      ],
+      "issue_series": "Vol. 36 No. 5",
+      "official_record_id": "20425",
+      "official_url": "https://ojs.aaai.org/index.php/AAAI/article/view/20425",
+      "pdf_url": "https://ojs.aaai.org/index.php/AAAI/article/view/20425/20184",
+      "retrieved_at": "2026-11-06T16:24:12.922038+00:00",
+      "source_locator": "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/20425']",
+      "source_sha256": "f72dc72a61838ccaffeadf21e4e4e094952a87bde0ff3c40b8795c950cc23605",
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/issue/view/511",
+      "title": "Weighted Fairness Notions for Indivisible Items Revisited"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4226163689",
+      "title": "Weighted Fairness Notions for Indivisible Items Revisited",
+      "year": 2022,
+      "byline": [
+        "Mithun Chakraborty",
+        "Erel Segal-Halevi",
+        "Warut Suksompong"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "53c19435f0af1774e869b1f6b4937df98e9894bb835b350e120acf8a385e4544",
+        "request_id": "d339da8beef82f88ea46fa1bbc017c504a4b85bf74152d485d026e6206efada5",
+        "retrieved_at": "2026-11-07T20:31:23.726267+00:00",
+        "url": "https://api.openalex.org/works/doi:10.1609/aaai.v36i5.20425"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/f72dc72a61838ccaffeadf21e4e4e094952a87bde0ff3c40b8795c950cc23605"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.1609/aaai.v36i5.20425",
+        "type": "journal-article",
+        "title": [
+          "Weighted Fairness Notions for Indivisible Items Revisited"
+        ],
+        "container_title": [
+          "Proceedings of the AAAI Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              6,
+              28
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Mithun Chakraborty",
+            "orcid": null
+          },
+          {
+            "name": "Erel Segal-Halevi",
+            "orcid": null
+          },
+          {
+            "name": "Warut Suksompong",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1609/aaai.v36i5.20425",
+          "params": {},
+          "request_id": "32a08cb13ab1aa6a0d9249bb4a8bf723668fbb4d1e280de588310ca7ef8be892",
+          "sha256": "39ac0b90a8ccc96026fe09edf4c4203c7721ba9b124206b2dc461e071bbb89a1",
+          "retrieved_at": "2026-11-11T10:50:46.121358+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1145/3665799",
+        "type": "journal-article",
+        "title": [
+          "Weighted Fairness Notions for Indivisible Items Revisited"
+        ],
+        "container_title": [
+          "ACM Transactions on Economics and Computation"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              9,
+              6
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Mithun Chakraborty",
+            "orcid": "https://orcid.org/0000-0001-6501-9827"
+          },
+          {
+            "name": "Erel Segal-Halevi",
+            "orcid": "https://orcid.org/0000-0002-7497-5834"
+          },
+          {
+            "name": "Warut Suksompong",
+            "orcid": "https://orcid.org/0000-0001-8973-2539"
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1145/3665799",
+          "params": {},
+          "request_id": "050edbec226ff7056e033310459d0b35b3708e7108141681420f7190c11191f1",
+          "sha256": "a37d51b77d9fb7d68b4f42e0a345ce5ce4af94992aa5d883bc006fad59671f9a",
+          "retrieved_at": "2026-11-11T10:50:46.584270+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 3,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:aaai:2023:26455",
+    "official_doi": "10.1609/aaai.v37i10.26455",
+    "returned_doi": "10.1016/j.tcs.2026.116201",
+    "official_metadata": {
+      "authors": [
+        "Matthias Bentert",
+        "Leon Kellerhals",
+        "Rolf Niedermeier"
+      ],
+      "issue_series": "Vol. 37 No. 10",
+      "official_record_id": "26455",
+      "official_url": "https://ojs.aaai.org/index.php/AAAI/article/view/26455",
+      "pdf_url": "https://ojs.aaai.org/index.php/AAAI/article/view/26455/26227",
+      "retrieved_at": "2026-11-06T16:24:34.736882+00:00",
+      "source_locator": "a[href='https://ojs.aaai.org/index.php/AAAI/article/view/26455']",
+      "source_sha256": "8a23040e6bb4d3a21e94196b1636767bb7c71a88f827f78a4f6fdae3942daf63",
+      "source_url": "https://ojs.aaai.org/index.php/AAAI/issue/view/557",
+      "title": "Fair Short Paths in Vertex-Colored Graphs"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4382203006",
+      "title": "Fair Short Paths in Vertex-Colored Graphs",
+      "year": 2023,
+      "byline": [
+        "Matthias Bentert",
+        "Leon Kellerhals",
+        "Rolf Niedermeier"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "e5e3dc674f6eba7d11a1a32721864ece7a0ef69fa983872c8879acf56ee84bd2",
+        "request_id": "2307fc7f19cc46040092eb1c43689ba73e428532304122c038af50d316053cb4",
+        "retrieved_at": "2026-11-07T20:31:24.193583+00:00",
+        "url": "https://api.openalex.org/works/doi:10.1609/aaai.v37i10.26455"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/8a23040e6bb4d3a21e94196b1636767bb7c71a88f827f78a4f6fdae3942daf63"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.1609/aaai.v37i10.26455",
+        "type": "journal-article",
+        "title": [
+          "Fair Short Paths in Vertex-Colored Graphs"
+        ],
+        "container_title": [
+          "Proceedings of the AAAI Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              6,
+              26
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Matthias Bentert",
+            "orcid": null
+          },
+          {
+            "name": "Leon Kellerhals",
+            "orcid": null
+          },
+          {
+            "name": "Rolf Niedermeier",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1609/aaai.v37i10.26455",
+          "params": {},
+          "request_id": "f05d38b126685f8d289ea46dae35c9cb7995b24c0420564b48171a510173f5b6",
+          "sha256": "65e6013fb187e3da56b8b90b35cc392f7d04c158dd710eebc6b347daace9eb30",
+          "retrieved_at": "2026-11-11T10:50:47.059069+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1016/j.tcs.2026.116201",
+        "type": "journal-article",
+        "title": [
+          "Fair short paths in vertex-colored graphs"
+        ],
+        "container_title": [
+          "Theoretical Computer Science"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              10
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Matthias Bentert",
+            "orcid": null
+          },
+          {
+            "name": "Leon Kellerhals",
+            "orcid": "https://orcid.org/0000-0001-6565-3983"
+          },
+          {
+            "name": "Rolf Niedermeier",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1016/j.tcs.2026.116201",
+          "params": {},
+          "request_id": "c31505139d2fd6366aaaa9a77ee8330049b5e8c3f6aa573bc11ee03764a1231e",
+          "sha256": "80a3879c66332fdc8f7c0d963e076fe64132d992d675ebba126e9faf36d9a2b3",
+          "retrieved_at": "2026-11-11T10:50:47.520425+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 3,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:ijcai:2021:43",
+    "official_doi": "10.24963/ijcai.2021/43",
+    "returned_doi": "10.1007/s00355-026-01654-w",
+    "official_metadata": {
+      "authors": [
+        "Patrick Lederer"
+      ],
+      "issue_series": null,
+      "official_record_id": "43",
+      "official_url": "https://www.ijcai.org/proceedings/2021/43",
+      "pdf_url": "https://www.ijcai.org/proceedings/2021/0043.pdf",
+      "retrieved_at": "2026-11-06T08:04:23.206982+00:00",
+      "source_locator": "a[href='/proceedings/2021/43']",
+      "source_sha256": "418ca105660be37023086c0687e3fa3cf1beb47d06fa78e38fb7dc52090ca092",
+      "source_url": "https://www.ijcai.org/proceedings/2021/",
+      "title": "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W3190796281",
+      "title": "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions",
+      "year": 2021,
+      "byline": [
+        "Patrick Lederer"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "b2c110f3174b87f63045b04a618e294f69ebb19cf246bf543270946faaa3c25e",
+        "request_id": "62d1774da2c7a82dcee3f5652c421adf6eebbed427ca911cc5ecbc089d46b301",
+        "retrieved_at": "2026-11-07T20:31:24.892737+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2021/43"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/418ca105660be37023086c0687e3fa3cf1beb47d06fa78e38fb7dc52090ca092"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.24963/ijcai.2021/43",
+        "type": "proceedings-article",
+        "title": [
+          "Strategyproof Randomized Social Choice for Restricted Sets of Utility Functions"
+        ],
+        "container_title": [
+          "Proceedings of the Thirtieth International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              8
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Patrick Lederer",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.24963/ijcai.2021/43",
+          "params": {},
+          "request_id": "b566bf073c7b1676426bf33a3268d1d70a74f633328c25a2eaa653c203223e9b",
+          "sha256": "2a4f136da67c64ebc90272665a1c2f0bd5f91678ae547769b5110afea248dbc7",
+          "retrieved_at": "2026-11-11T10:50:47.984081+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1007/s00355-026-01654-w",
+        "type": "journal-article",
+        "title": [
+          "Strategyproof randomized social choice for restricted sets of utility functions"
+        ],
+        "container_title": [
+          "Social Choice and Welfare"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              4,
+              17
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Patrick Lederer",
+            "orcid": "https://orcid.org/0000-0001-9787-8941"
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1007/s00355-026-01654-w",
+          "params": {},
+          "request_id": "418d1d6bab9ef72f9d47bc7ae66c1e27ae48f3e9a46f27c0864b27a22ecfcefe",
+          "sha256": "c92da871dca45478957226bf5163a44d82b9c5efb9d403b0a7dd20aa120f8da1",
+          "retrieved_at": "2026-11-11T10:50:48.448823+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 1,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:ijcai:2022:34",
+    "official_doi": "10.24963/ijcai.2022/34",
+    "returned_doi": "10.1016/j.artint.2026.104585",
+    "official_metadata": {
+      "authors": [
+        "Argyrios Deligkas",
+        "Eduard Eiben",
+        "Robert Ganian",
+        "Thekla Hamm",
+        "Sebastian Ordyniak"
+      ],
+      "issue_series": null,
+      "official_record_id": "34",
+      "official_url": "https://www.ijcai.org/proceedings/2022/34",
+      "pdf_url": "https://www.ijcai.org/proceedings/2022/0034.pdf",
+      "retrieved_at": "2026-11-06T08:09:55.675077+00:00",
+      "source_locator": "a[href='/proceedings/2022/34']",
+      "source_sha256": "e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8",
+      "source_url": "https://www.ijcai.org/proceedings/2022/",
+      "title": "The Complexity of Envy-Free Graph Cutting"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4285607100",
+      "title": "The Complexity of Envy-Free Graph Cutting",
+      "year": 2022,
+      "byline": [
+        "Argyrios Deligkas",
+        "Eduard Eiben",
+        "Robert Ganian",
+        "Thekla Hamm",
+        "Sebastian Ordyniak"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "2df31c36bf682dd5f61d26dd0f7294232db3954641499670c93bf6b0478cb8f5",
+        "request_id": "0edbc1f96b4f7a58422fc5d659a74ea27b849505168a75a48f8720163ae29c31",
+        "retrieved_at": "2026-11-07T20:31:25.376364+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/34"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.24963/ijcai.2022/34",
+        "type": "proceedings-article",
+        "title": [
+          "The Complexity of Envy-Free Graph Cutting"
+        ],
+        "container_title": [
+          "Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              7
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Argyrios Deligkas",
+            "orcid": null
+          },
+          {
+            "name": "Eduard Eiben",
+            "orcid": null
+          },
+          {
+            "name": "Robert Ganian",
+            "orcid": null
+          },
+          {
+            "name": "Thekla Hamm",
+            "orcid": null
+          },
+          {
+            "name": "Sebastian Ordyniak",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.24963/ijcai.2022/34",
+          "params": {},
+          "request_id": "42302c04149b81f55cd8081e236c496c65fff970685c6a1b677555744cabf08e",
+          "sha256": "662f09b8f59832fd5f9be181c6912f58819c82a847bf5c8adadac30b5e78f062",
+          "retrieved_at": "2026-11-11T10:50:48.911968+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1016/j.artint.2026.104585",
+        "type": "journal-article",
+        "title": [
+          "The complexity of envy-free graph cutting"
+        ],
+        "container_title": [
+          "Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              9
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Argyrios Deligkas",
+            "orcid": "https://orcid.org/0000-0002-6513-6748"
+          },
+          {
+            "name": "Eduard Eiben",
+            "orcid": "https://orcid.org/0000-0003-2628-3435"
+          },
+          {
+            "name": "Robert Ganian",
+            "orcid": "https://orcid.org/0000-0002-7762-8045"
+          },
+          {
+            "name": "Thekla Hamm",
+            "orcid": null
+          },
+          {
+            "name": "Sebastian Ordyniak",
+            "orcid": "https://orcid.org/0000-0003-1935-651X"
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1016/j.artint.2026.104585",
+          "params": {},
+          "request_id": "09b1f6abd8b79c9ca51f207688be0352290c6a60ab64a6c28194eae1e47ea905",
+          "sha256": "79bde97c38c27556c6d901f5ef4b938d14559f5a7b9b62c235e9f946909b2839",
+          "retrieved_at": "2026-11-11T10:50:49.369343+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 5,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:ijcai:2022:635",
+    "official_doi": "10.24963/ijcai.2022/635",
+    "returned_doi": "10.1613/jair.1.14820",
+    "official_metadata": {
+      "authors": [
+        "Spyros Angelopoulos",
+        "Shahin Kamali",
+        "Kimia Shadkami"
+      ],
+      "issue_series": null,
+      "official_record_id": "635",
+      "official_url": "https://www.ijcai.org/proceedings/2022/635",
+      "pdf_url": "https://www.ijcai.org/proceedings/2022/0635.pdf",
+      "retrieved_at": "2026-11-06T08:09:55.675077+00:00",
+      "source_locator": "a[href='/proceedings/2022/635']",
+      "source_sha256": "e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8",
+      "source_url": "https://www.ijcai.org/proceedings/2022/",
+      "title": "Online Bin Packing with Predictions"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4225709049",
+      "title": "Online Bin Packing with Predictions",
+      "year": 2022,
+      "byline": [
+        "Spyros Angelopoulos",
+        "Shahin Kamali",
+        "Kimia Shadkami"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "64f3245aa8d6c10073eceff9c936200db5d5a8830142c93c73c2a3bb7fa6fc2a",
+        "request_id": "78b75952e9694e90cbc4663d9cb8bbe825035f60cca31e2e44ef474295705466",
+        "retrieved_at": "2026-11-07T20:31:25.848099+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/635"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/e0415ade96a76ed9bbde4c9255a976f7c2c4081e6f094991b944803b161cf4c8"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.24963/ijcai.2022/635",
+        "type": "proceedings-article",
+        "title": [
+          "Online Bin Packing with Predictions"
+        ],
+        "container_title": [
+          "Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              7
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Spyros Angelopoulos",
+            "orcid": null
+          },
+          {
+            "name": "Shahin Kamali",
+            "orcid": null
+          },
+          {
+            "name": "Kimia Shadkami",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.24963/ijcai.2022/635",
+          "params": {},
+          "request_id": "b2396e3fd5d64685c324a1a22c9bf7dc8495bd4f903839750c8c21518a223dae",
+          "sha256": "a926b48abf6068337e2ca6f3fdb6536164ba1e95f5e77f1b2e4e2bc58d3a8d2a",
+          "retrieved_at": "2026-11-11T10:50:49.832700+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1613/jair.1.14820",
+        "type": "journal-article",
+        "title": [
+          "Online Bin Packing with Predictions"
+        ],
+        "container_title": [
+          "Journal of Artificial Intelligence Research"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              12,
+              20
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Spyros Angelopoulos",
+            "orcid": "https://orcid.org/0000-0001-9819-9158"
+          },
+          {
+            "name": "Shahin Kamali",
+            "orcid": "https://orcid.org/0000-0003-1404-2212"
+          },
+          {
+            "name": "Kimia Shadkami",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1613/jair.1.14820",
+          "params": {},
+          "request_id": "1a2d9d339698ec6554cf05f526246033235856d96847cb95f494e061ad16ec41",
+          "sha256": "eaaa4719703f86d9d6d9589cee6ef7fa3b26abdddce4015ad2cc6814112dd8cb",
+          "retrieved_at": "2026-11-11T10:50:50.290083+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 3,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:ijcai:2025:444",
+    "official_doi": "10.24963/ijcai.2025/444",
+    "returned_doi": "10.1137/25m180161x",
+    "official_metadata": {
+      "authors": [
+        "Pasin Manurangsi",
+        "Warut Suksompong"
+      ],
+      "issue_series": null,
+      "official_record_id": "444",
+      "official_url": "https://www.ijcai.org/proceedings/2025/444",
+      "pdf_url": "https://www.ijcai.org/proceedings/2025/0444.pdf",
+      "retrieved_at": "2026-11-06T08:10:14.943508+00:00",
+      "source_locator": "a[href='/proceedings/2025/444']",
+      "source_sha256": "a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b",
+      "source_url": "https://www.ijcai.org/proceedings/2025/",
+      "title": "Asymptotic Fair Division: Chores Are Easier Than Goods"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4414359482",
+      "title": "Asymptotic Fair Division: Chores Are Easier Than Goods",
+      "year": 2025,
+      "byline": [
+        "Pasin Manurangsi",
+        "Warut Suksompong"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "a77b4faf1fb0259bfab8d02bcfd51ca4bc141239d6ceb986677cb6c3863fdc4c",
+        "request_id": "b3f5ce266651e1b1c5806f869443df33fb18ac812bbe8110dbc1025b32355ab6",
+        "retrieved_at": "2026-11-07T20:31:26.316349+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/444"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.24963/ijcai.2025/444",
+        "type": "proceedings-article",
+        "title": [
+          "Asymptotic Fair Division: Chores Are Easier Than Goods"
+        ],
+        "container_title": [
+          "Proceedings of the Thirty-Fourth International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              9
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Pasin Manurangsi",
+            "orcid": null
+          },
+          {
+            "name": "Warut Suksompong",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.24963/ijcai.2025/444",
+          "params": {},
+          "request_id": "125919a00843c6ff745422380ec7eabc114bf44997b903df902c53e6598a1ce8",
+          "sha256": "d60065aa2fd88f3bcc9161c252eee0ed71ee7786b377e210251274330a37d743",
+          "retrieved_at": "2026-11-11T10:50:50.763815+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1137/25m180161x",
+        "type": "journal-article",
+        "title": [
+          "Asymptotic Fair Division: Chores Are Easier Than Goods"
+        ],
+        "container_title": [
+          "SIAM Journal on Discrete Mathematics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              7,
+              14
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Pasin Manurangsi",
+            "orcid": null
+          },
+          {
+            "name": "Warut Suksompong",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1137/25m180161x",
+          "params": {},
+          "request_id": "0df781df4a3549d05536c5529015c83160902e3a7bb9b99d356d9b8eb3487fb3",
+          "sha256": "884c66a25f02214c2a4bba36741a79b37bb7adca4e2763f5e79936bdc2a2a50f",
+          "retrieved_at": "2026-11-11T10:50:51.225249+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 2,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  },
+  {
+    "paper_id": "paper:ijcai:2025:446",
+    "official_doi": "10.24963/ijcai.2025/446",
+    "returned_doi": "10.1613/jair.1.21746",
+    "official_metadata": {
+      "authors": [
+        "Lata Narayanan",
+        "Jaroslav Opatrny",
+        "Shanmukha Tummala",
+        "Alexandros A. Voudouris"
+      ],
+      "issue_series": null,
+      "official_record_id": "446",
+      "official_url": "https://www.ijcai.org/proceedings/2025/446",
+      "pdf_url": "https://www.ijcai.org/proceedings/2025/0446.pdf",
+      "retrieved_at": "2026-11-06T08:10:14.943508+00:00",
+      "source_locator": "a[href='/proceedings/2025/446']",
+      "source_sha256": "a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b",
+      "source_url": "https://www.ijcai.org/proceedings/2025/",
+      "title": "Variety-Seeking Jump Games on Graphs"
+    },
+    "returned_work": {
+      "id": "https://openalex.org/W4414359813",
+      "title": "Variety-Seeking Jump Games on Graphs",
+      "year": 2025,
+      "byline": [
+        "Lata Narayanan",
+        "Jaroslav Opatrny",
+        "Shanmukha Tummala",
+        "Alexandros A. Voudouris"
+      ],
+      "source": {
+        "locator": "$",
+        "params": {
+          "select": "id,doi,title,publication_year,authorships,abstract_inverted_index,referenced_works,type,primary_location"
+        },
+        "raw_sha256": "a102f574fb2323363b5412762a309e78e6b9fce60c24d085bc3197de1e236109",
+        "request_id": "c8582a47662e6431e106d45b2389c8d191c642c529e7eef3c56f7d274f060440",
+        "retrieved_at": "2026-11-07T20:31:26.784692+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/446"
+      },
+      "alternates": []
+    },
+    "official_source_hash_verified": true,
+    "official_cached_paths": [
+      "data/raw/five-year-source-cache-v1/objects/a2d0ca0d46b7d49ad3f4f42008ca31f256fbc49d0e33a313d8d843144b7c781b"
+    ],
+    "crossref_records": [
+      {
+        "DOI": "10.24963/ijcai.2025/446",
+        "type": "proceedings-article",
+        "title": [
+          "Variety-Seeking Jump Games on Graphs"
+        ],
+        "container_title": [
+          "Proceedings of the Thirty-Fourth International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              9
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Lata Narayanan",
+            "orcid": null
+          },
+          {
+            "name": "Jaroslav Opatrny",
+            "orcid": null
+          },
+          {
+            "name": "Shanmukha Tummala",
+            "orcid": null
+          },
+          {
+            "name": "Alexandros A. Voudouris",
+            "orcid": null
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.24963/ijcai.2025/446",
+          "params": {},
+          "request_id": "eb2b79bb7a2187db4301a22b61153d9a392fab9dcfb76e78d7292f5c1abeeadb",
+          "sha256": "34d7b808867615884c494bcaf995e255df87a6c959d0697fdc247da0d179e3b6",
+          "retrieved_at": "2026-11-11T10:50:51.685859+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      },
+      {
+        "DOI": "10.1613/jair.1.21746",
+        "type": "journal-article",
+        "title": [
+          "Variety-Seeking Jump Games on Graphs"
+        ],
+        "container_title": [
+          "Journal of Artificial Intelligence Research"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              8,
+              15
+            ]
+          ]
+        },
+        "authors": [
+          {
+            "name": "Lata Narayanan",
+            "orcid": "https://orcid.org/0000-0002-3875-0371"
+          },
+          {
+            "name": "Jaroslav Opatrny",
+            "orcid": "https://orcid.org/0000-0001-6149-003X"
+          },
+          {
+            "name": "Shanmukha Tummala",
+            "orcid": null
+          },
+          {
+            "name": "Alexandros A. Voudouris",
+            "orcid": "https://orcid.org/0000-0003-1105-3856"
+          }
+        ],
+        "relation": {},
+        "source": {
+          "url": "https://api.crossref.org/works/10.1613/jair.1.21746",
+          "params": {},
+          "request_id": "c19d6174388d15420cc2bec0d965962cdd21f83e9364ac968ea706e6e51e0f7d",
+          "sha256": "b16d23aeb8d6a983ad1e8bc5d4111bd358aeb6d72f76622c41f6da359e5ebea4",
+          "retrieved_at": "2026-11-11T10:50:52.154834+00:00",
+          "status": 200,
+          "attempts": 1,
+          "content_type": "application/json",
+          "license": "unknown_unless_record_supplies_license"
+        }
+      }
+    ],
+    "decision": "ambiguous_mismatch",
+    "cause": "likely_proceedings_journal_version_linking; provider canonical DOI differs",
+    "evidence_strength": "two registered DOI records, matching titles/bylines, different publication dates; no explicit relation deposited",
+    "identity_action": "withhold all positions; do not transfer journal ORCIDs or historical affiliations",
+    "potential_authorship_positions": 4,
+    "source_correction": null,
+    "remaining_uncertainty": "explicit version equivalence and provenance of authorship/affiliations not established"
+  }
+]

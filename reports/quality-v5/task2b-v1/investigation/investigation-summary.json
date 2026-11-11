@@ -1,0 +1,25 @@
+{
+  "inputs": {
+    "data/interim/release-v1/works.jsonl": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+    "data/processed/identity-candidate-v5-release-v3/identity-decisions.jsonl": "3188bbf16721bf1a3395c8c7d04837cc4159e427ca646aba6c02f9d6a9ed51a2",
+    "reports/quality-v5/task2b-v1/external-request-ledger.json": "6981bf5d92381ebbffbefe9f42778997d42ead722ff922225216ee5dbbec1861"
+  },
+  "provider_ids": 170,
+  "affected_positions": 683,
+  "classification_ids": {
+    "different_full_names_or_spelling_unverified": 35,
+    "given_name_token_boundaries": 37,
+    "public_declared_aliases": 5,
+    "middle_name_or_initial_variation_unverified": 93
+  },
+  "classification_positions": {
+    "given_name_token_boundaries": 185,
+    "different_full_names_or_spelling_unverified": 133,
+    "public_declared_aliases": 50,
+    "middle_name_or_initial_variation_unverified": 315
+  },
+  "doi_cases": 7,
+  "doi_positions": 21,
+  "alias_certificates": 5,
+  "semantic_accuracy": "not_measured"
+}

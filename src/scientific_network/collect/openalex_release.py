@@ -28,7 +28,7 @@ from scientific_network.collect.storage import (
     QuotaError, SourceCache, SourceError, digest, read_config, write_json, write_jsonl,
 )
 
-METHOD_VERSION = "release-openalex-v1"
+METHOD_VERSION = "release-openalex-v1.1"
 ROSTER_FIELDS = (
     "title", "authors", "official_url", "pdf_url", "official_record_id", "issue_series",
     "source_url", "source_sha256", "retrieved_at", "source_locator",
@@ -107,7 +107,8 @@ def reconstruct_abstract(inverted_index) -> str | None:
 
 
 def _agrees(row: dict, work: dict, title_accept: float) -> bool:
-    return (title_similarity(row["title"], work.get("title")) >= title_accept
+    return (normalize_doi(row.get("_doi") or row.get("doi") or derive_doi(row)) == normalize_doi(work.get("doi"))
+            and title_similarity(row["title"], work.get("title")) >= title_accept
             and len(work.get("authorships") or []) == len(row["authors"]))
 
 
@@ -138,6 +139,9 @@ def evaluate_match(row: dict, candidates: list[dict], title_accept: float = 0.9)
     similarity = title_similarity(row["title"], work.get("title"))
     official_count, openalex_count = len(row["authors"]), len(work.get("authorships") or [])
     reasons = []
+    doi_check = verify_work_doi(row.get("_doi") or row.get("doi") or derive_doi(row), work)
+    if doi_check["state"] != "exact_doi":
+        reasons.append("doi_disagreement")
     if similarity < title_accept:
         reasons.append("title_mismatch")
     elif similarity < 1.0:
@@ -149,7 +153,30 @@ def evaluate_match(row: dict, candidates: list[dict], title_accept: float = 0.9)
         "reasons": reasons, "flags": flags, "chosen": chosen, "candidate_count": len(candidates),
         "title_similarity": round(similarity, 4),
         "author_count_official": official_count, "author_count_openalex": openalex_count, **extra,
+        "doi_verification": doi_check,
     }
+
+
+def verify_work_doi(requested, work, reconciliation=None):
+    """Classify DOI evidence; a similar title never verifies a version crosswalk.
+
+    Reconciliations are explicit, separately reviewed ledgers, not OpenAlex
+    redirects. Version equivalence alone does not authorize historical affiliations.
+    The acquisition matcher continues to require exact DOI agreement.
+    """
+    official, returned = normalize_doi(requested), normalize_doi(work.get("doi"))
+    if not official or not returned:
+        state = "unresolved_source"
+    elif official == returned:
+        state = "exact_doi"
+    elif (reconciliation and reconciliation.get("official_doi") == official
+          and reconciliation.get("returned_doi") == returned
+          and reconciliation.get("evidence")
+          and reconciliation.get("decision") in {"verified_equivalent_version", "incorrect_match"}):
+        state = reconciliation["decision"]
+    else:
+        state = "ambiguous_mismatch"
+    return {"state": state, "official_doi": official, "returned_doi": returned}
 
 
 # --- scope --------------------------------------------------------------------------------------
