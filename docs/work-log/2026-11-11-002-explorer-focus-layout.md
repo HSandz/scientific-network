@@ -2,9 +2,9 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress — local checkpoint, production delivery next |
+| Status | completed |
 | Recorded | 2026-11-11 11:36 +07:00 (Asia/Bangkok) |
-| Checkpoint | 2026-11-11 12:07 +07:00 |
+| Checkpoint | 2026-11-11 12:12 +07:00 |
 | Contributor | Codex |
 | Initial Git state | Clean main, 5e4da480dbdb |
 
@@ -53,7 +53,15 @@ use a local read-only HTTP proxy to production because local Bolt is unavailable
 No DB was started. ECharts537KB warning remains. Physical devices,Firefox/Safari,
 formal screen-reader and long-session memory certification remain untested.
 
-## Next step
+## Production and next step
 
-Commit/push authorized frontend checkpoint, verify exact-SHA
-Pages production and public browser/API behavior, then finalize this record.
+Implementation `1b7b3ab36599fce1965d7e2a34437b5439bc52a0` pushed; exact-SHA
+Pages deployment `99ee8ec4-1269-4f28-a1de-b6ea19bdada8` succeeded12:09:40 +07:00.
+Public Explorer5 suites pass; supplemental four-mode actual canvas text/selection,
+24 responsive/theme Analytics layouts and exact heatmap-cell tooltip/click pass.
+No supplemental page errors. Post API smoke28 pass; parsed health,summary,analytics
+and Azure API/Neo4j IDs,start times,mounts exactly unchanged. Both GitHub checks
+passed; no Azure deploy triggered. Production screenshots visually reviewed.
+
+Next: final documentation checkpoint delivery; remaining optional work is physical
+browser/device and sustained load testing. No implementation blocker remains.

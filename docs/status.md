@@ -1,6 +1,6 @@
 # Current project status
 
-Updated: **2026-11-11 12:08 +07:00**. Deadline: **11 November 2026**.
+Updated: **2026-11-11 12:12 +07:00**. Deadline: **11 November 2026**.
 Plan: [D040](release-plan.md).
 Latest: [WORK-2026-11-11-002](work-log/2026-11-11-002-explorer-focus-layout.md).
 
@@ -17,7 +17,7 @@ Latest: [WORK-2026-11-11-002](work-log/2026-11-11-002-explorer-focus-layout.md).
 - [x] Scrolling dashboard, motion and zoom-aware labels deployed previously.
 - [x] Interaction-aware neighborhood canvas labels and section-specific Analytics.
 - [x] Local build, contracts, Chromium screenshots and regressions.
-- [ ] Focus/layout follow-up production deployment and live acceptance.
+- [x] Focus/layout follow-up production deployment and live acceptance.
 - [ ] Personal/course facts and final course submission.
 
 ## Current verification and release boundary
@@ -31,7 +31,11 @@ Backend:23 pass /9 local-Neo4j integrations unavailable /one warning.
 Offline synthetic structural check passes; no scientific accuracy inference.
 [Focus/layout report](../reports/explorer-focus-layout-verification-2026-11-11.md)
 records before/after screenshots, performance and delivery receipt.
-No API, Neo4j, graph, frozen analytics or infrastructure edits.
+Implementation `1b7b3ab` deployed on Pages (`99ee8ec4`);5 public Explorer suites,
+four actual-canvas projections,24 responsive/theme section layouts and exact
+persistence-cell interaction pass. Post API smoke28 pass. Health/summary/analytics
+and Azure container IDs/start times/mounts exactly match before snapshots.
+No API, Neo4j, graph, frozen analytics or infrastructure edits or service restarts.
 
 ## Scientific evidence and artifacts
 
