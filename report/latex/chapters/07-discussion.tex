@@ -1,0 +1,122 @@
+\chapter{Discussion}
+\label{chap:discussion}
+
+\section{Answers to the research questions}
+
+\textbf{RQ1: research landscape.} The selected two-venue corpus increases from
+2,240 papers in 2021 to 4,042 in 2025, with a dip in 2022. The embedding
+classifier assigns topics to 85.00\% of papers. Within labeled papers, the
+multimodal share rises in both venue series. These are measured changes in the
+selected proceedings and model-defined topic assignments, not evidence of
+field-wide growth or independently verified topic shifts.
+
+\textbf{RQ2: collaboration structure.} The researcher graph is sparse on average
+(mean distinct degree 5.00), has a large component containing 64.5\% of resolved
+researchers, and includes many small components and isolates. Organization
+collaboration includes substantial within-academia support and 3,533 distinct
+academia--industry pair-paper supports. The structure supports candidate maps for
+further review, not claims about current partnerships or employment.
+
+\textbf{RQ3: bridges and citation attention.} Bo An is the highest-ranked
+researcher under the configured approximate betweenness measure, while the
+Informer paper leads in in-corpus citation in-degree with 51 incoming edges.
+Both measures depend on a restricted graph and have different limitations:
+identity-policy changes materially alter bridge rankings, and citation counts
+exclude external targets and do not normalize paper age.
+
+\textbf{RQ4: reliability.} Structural and database integrity checks pass, but
+these validate consistency rather than meaning. The v4 global audit passes its
+numeric thresholds only under AI judgments; the historical v3 audit failed its
+numeric checks. Topic agreement is modest against AI-assigned reference labels,
+affiliation coverage misses its target, and bridge rankings are sensitive to
+identity and evidence choices. Verified course accuracy remains unestablished.
+
+\section{Methodological strengths}
+
+The construction has a clear corpus boundary and source hierarchy. DOI-derived
+matching, title similarity and byline-count checks restrict work-level joins.
+Author-position compatibility and global ORCID conflict handling prevent
+name-only merging. Paper-specific affiliation triples preserve the evidence
+needed for later filtering. Accepted edges retain deterministic IDs, source
+references, method versions, and graph versions. Separate edge classes keep
+observed publication facts apart from inferred topics and derived social links.
+
+The analysis also records its projection and counting rules. Collaboration
+weights retain fractional contributions, citation direction is explicit, topic
+shares use fractional allocation, and all plots preserve the full graph
+denominators or state when they show a bounded selection. These practices make
+the results easier to reproduce and reduce ambiguity in interpretation.
+
+\section{Limitations and threats to validity}
+
+\subsection{Coverage and metadata}
+
+Eleven roster papers remain unmatched to OpenAlex and 15,032 matched byline
+positions are withheld. Affiliation evidence covers 73.71\% of matched
+positions, below the 80\% target. Missing positions may not be random across
+venues, years, or institutions, so the observed researcher and organization
+networks can be a selective view. The graph covers AAAI and IJCAI only; it cannot
+support conclusions about all AI publication venues.
+
+\subsection{Researcher identity and derived edges}
+
+The v4 correction resolves a concrete observed-ORCID omission by withholding
+provider IDs with conflicting ORCID evidence. It does not provide independent
+identity verification for every remaining OpenAlex author ID. The six global
+v4 audit uncertainties are identity-related, and coauthorship, organization
+collaboration, and researcher centrality inherit identity errors from their
+inputs. Since identity candidates change the largest component and bridge
+rankings, stable IDs in a provider are not equivalent to guaranteed semantic
+identity.
+
+\subsection{Topic labels and temporal interpretation}
+
+Topic assignment is inferred from titles and abstracts under one fixed model,
+taxonomy, and threshold set. Coverage is not accuracy. The historical evaluation
+uses exposed test papers and AI-generated references, with embedding micro F1
+0.4667 and phrase-baseline F1 0.2301. The v4 audit creates no new topic labels.
+Consequently topic profiles, organization portfolios, and year-to-year shifts
+should be treated as exploratory. Abstained papers may have a different topic
+mix from labeled papers.
+
+\subsection{Evaluation dependence}
+
+AI reviewers used the same general model family and construction sources. Fresh
+contexts avoid shared answer exposure but do not establish reviewer or model
+independence. The prospective audit corrected a graph after an earlier audit
+found a resolver issue; the new source snapshot and sample history are therefore
+not equivalent to a pristine external test. The Wilson interval covers sampling
+uncertainty conditional on judgments only. It does not cover evaluator errors,
+source overlap, systematic model bias, or identity mapping uncertainty. Human
+validation was not performed.
+
+\subsection{Network measures and business use}
+
+Betweenness depends on edge weights, the inverse-strength distance rule, the
+projection, and the approximate pivot set. A high rank is a structural signal
+for inspection, not a person's quality or causal influence. Citation in-degree
+uses only within-corpus edges and gives older papers more exposure time. Sector
+and country labels are institutional metadata, not attributes of individual
+researchers. None of the reported network measures implies hiring value,
+commercial readiness, or a current institutional partnership.
+
+\section{Practical implications}
+
+For a research-program analyst, the graph can help locate repeated
+co-publication supports, examine bridge candidates, and compare topic portfolios
+within the selected venues. The appropriate next action is source inspection:
+check supporting papers, author positions, institution strings, and topic
+definitions before using a shortlist. The report does not rank organizations or
+people as business recommendations. It presents an evidence-linked starting
+point and makes the uncertainty visible alongside the result.
+
+\section{Future work}
+
+Future work should prioritize independent, source-backed annotation for a
+properly frozen sample; identity resolution with person-specific evidence;
+additional source coverage for unmatched or affiliation-poor papers; and a
+topic evaluation with an untouched human reference set. Recall requires an
+evaluation frame that includes plausible missing edges, not only accepted graph
+claims. Temporal citation normalization and documented sensitivity analysis
+would improve comparisons across years. Any changes to the production graph
+should create a new version and a new audit rather than overwrite v4.

@@ -1,0 +1,66 @@
+\chapter{Reproduction and Project Artifacts}
+\label{chap:reproduction}
+
+\section{Version and source bindings}
+
+The principal artifact is graph \GraphVersion{} with SHA-256
+\hashid{6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90}.
+The graph was produced by correction method
+\modelid{release-observed-orcid-identity-correction-v1} from the
+\modelid{release-openalex-graph-v1.1} base graph. The fresh analysis uses
+\modelid{named-projection-analysis-v2}, the frozen analysis and quality configs,
+and the graph hash recorded in \sourcepath{reports/release-v4/analysis.json}.
+The summary and audit artifacts bind their own input and configuration hashes.
+No ignored raw cache, graph JSON, or database volume is embedded in this report.
+
+\section{Local reproduction commands}
+
+With Python 3.12, \texttt{uv}, and the frozen inputs restored, the project records
+these offline commands:
+
+\begin{verbatim}
+uv sync --locked --group dev --extra analysis --extra report
+uv run research-network schema
+uv run pytest
+
+mkdir -p reports/reproduction-v4
+
+uv run research-network validate \
+  --input data/processed/release-graph-v4/graph.json \
+  --config configs/quality-release-v1.yaml \
+  --require-size \
+  --output reports/reproduction-v4/validation.json
+
+uv run research-network analyze \
+  --input data/processed/release-graph-v4/graph.json \
+  --config configs/analysis-release-v1.yaml \
+  --quality-config configs/quality-release-v1.yaml \
+  --output reports/reproduction-v4/analysis.json
+\end{verbatim}
+
+Replay commands use new output locations; they should not overwrite the frozen
+graph, analysis, or audit results. The exact frozen-input restoration procedure,
+source hashes, and graph correction details are documented in
+\sourcepath{docs/reproduce-remediation-v4.md}. Reacquiring current API data is
+not a byte-identical substitute for the original cached responses.
+
+\section{Code and evidence pointers}
+
+The tracked source repository is recorded as
+\url{https://github.com/HSandz/scientific-network}.
+The last bounded repository-access check in the project records an HTTP 404, so
+lecturer access is not established by this link alone. The project Explorer is
+recorded at
+\url{https://scientific-network-explorer.pages.dev};
+confirm current availability and course access requirements before submission.
+
+Primary tracked artifacts include:
+\begin{itemize}
+  \item Graph and coverage counts: \sourcepath{reports/release-v4/graph-summary.json}.
+  \item Fresh network metrics: \sourcepath{reports/release-v4/analysis.json}.
+  \item Source-backed candidate findings: \sourcepath{reports/release-v4/findings.md}.
+  \item Prospective edge audit and its limitations: \sourcepath{reports/release-v4/audit-results-agent-v2.json} and \sourcepath{reports/release-v4/README.md}.
+  \item Historical topic metrics and preserved v3 results: \sourcepath{reports/release-v3/topic-eval-agent.json} and \sourcepath{reports/release-v3/audit-results-agent.json}.
+  \item Corrected graph and source bindings: \sourcepath{reports/release-v4/content-freeze-v4.json}, \sourcepath{reports/release-v4/change-manifest.json}, and \sourcepath{reports/release-v4/completion-receipt-v2.json}.
+  \item This report's figure-copy manifest: \sourcepath{report/latex/figures/SOURCES.md}.
+\end{itemize}

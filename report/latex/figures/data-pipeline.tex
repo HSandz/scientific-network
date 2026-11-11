@@ -1,0 +1,30 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  source/.style={draw=UETBlue,fill=PaleBlue,rounded corners=3pt,align=center,text width=5.0cm,minimum height=1.05cm,inner sep=6pt},
+  stage/.style={draw=Slate,fill=white,rounded corners=3pt,align=center,text width=9.0cm,minimum height=1.1cm,inner sep=7pt},
+  arrow/.style={-{Latex[length=2.2mm]},thick,color=UETBlue},
+  node distance=7mm and 10mm
+]
+  \node[source] (aaai) {Official AAAI proceedings roster\\2021--2025 main track};
+  \node[source,right=of aaai] (ijcai) {Official IJCAI proceedings roster\\2021--2025 main track};
+  \node[source,below=of ijcai] (openalex) {OpenAlex DOI work records\\cached response bytes and source hashes};
+  \node[stage,below=14mm of $(aaai)!0.5!(ijcai)$] (match) {DOI-derived work matching\\exact DOI, title similarity $\geq 0.90$, and author-count agreement};
+  \node[stage,below=of match] (identity) {Position-specific author resolution and affiliation triples\\compatible names; stable author IDs; conflicting ORCID evidence withheld};
+  \node[stage,below=of identity] (topic) {Frozen text classification and taxonomy\\title/abstract embeddings; one to three leaf labels or abstention};
+  \node[stage,below=of topic] (graph) {Typed graph and evidence ledger\\observed R1--R4; inferred R5; curated R6; derived R7--R10};
+  \node[stage,below=of graph] (validate) {Versioned validation and analysis\\structural checks, size gates, named projections, figures, and source-linked findings};
+  \draw[arrow] (aaai.south) -- (match.north west);
+  \draw[arrow] (ijcai.south) -- (match.north);
+  \draw[arrow] (openalex.west) -| (match.east);
+  \draw[arrow] (match) -- (identity);
+  \draw[arrow] (identity) -- (topic);
+  \draw[arrow] (topic) -- (graph);
+  \draw[arrow] (graph) -- (validate);
+\end{tikzpicture}
+\caption{Data-to-graph workflow for the frozen release. Metadata matching,
+identity resolution, text classification, and relationship derivation are separate
+steps. The official roster defines inclusion; OpenAlex enriches matched works.}
+\label{fig:data-pipeline}
+\end{figure}

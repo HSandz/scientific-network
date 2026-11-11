@@ -1,0 +1,218 @@
+\chapter{Experimental Design and Evaluation}
+\label{chap:evaluation}
+
+\section{Evaluation objectives}
+
+Evaluation addresses six distinct questions: (1) whether the graph obeys its
+structural contract; (2) whether source objects and graph evidence are bound to
+the recorded inputs; (3) whether sampled accepted edges are semantically
+supported; (4) how well the topic classifier agrees with the available reference
+labels; (5) how much coverage is lost through unresolved identities and
+affiliations; and (6) whether important network conclusions persist under
+specified identity or support policies. These objectives use different
+denominators and are not combined into one accuracy number.
+
+\section{Structural integrity and source consistency}
+
+The graph validator checks unique IDs, valid typed endpoints, allowed labels and
+predicates, accepted status, evidence existence, and recomputed support/weight
+rules for derived edges. The release reports all ten predicates as nonempty and
+passes the stated size gates. Neo4j inventory, integrity queries, and replay
+checks independently confirm that the stored graph matches the frozen artifact.
+These checks establish internal consistency of the data representation, not
+whether the source record or person identity is semantically correct.
+
+The v4 source-population check compares retained author and reference objects
+for all 13,606 matched works, covering 65,469 positions and 341 raw response
+hashes, against the immutable OpenAlex cache. This is byte/source consistency.
+Because the same provider records informed graph construction, it is not an
+independent external validation of authorship, affiliation, or identity.
+
+\section{Accepted-edge precision audits}
+
+\subsection{Prospective v4 audit}
+
+The prospective audit sampled accepted edges from the frozen v4 frame of
+225,731 edges. It drew 200 uniform global edges and ten supplementary edges per
+relation; the supplements were kept separate from the global estimate. The
+result comprised 300 unique edges and 350 assignments, including 50 global
+overlap edges judged by both evaluators. Two separate fresh GPT-6 review contexts
+completed 175 assignments each. Their model/provider build identifiers were not
+available. Separate contexts and nonshared answers do not establish statistical
+independence.
+
+The uniform sample received 193 correct/supportable, one incorrect, six
+unverifiable, and zero missing judgments. Unverifiable is counted as incorrect
+for the precision denominator, yielding $193/200=96.50\%$. The Wilson 95\%
+interval is 92.95\%--98.29\%. There was one categorical disagreement among the
+50 overlap edges before adjudication (49/50 agreement; Cohen's $\kappa=0.6599$).
+The scoring artifact passes the project's AI-assessed point and interval
+comparisons, but it does not certify the course's independently verified
+accuracy requirement.
+
+\begin{table}[tbp]
+  \centering
+  \caption{Global accepted-edge audit results, kept separate by graph version.}
+  \label{tab:edge-audits}
+  \small
+  \begin{tabularx}{0.98\textwidth}{>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{6cm}>{\centering\arraybackslash}p{3cm}>{\raggedright\arraybackslash}X}
+    \toprule
+    \textbf{Audit} & \textbf{Results} & \textbf{Wilson interval} & \textbf{Interpretation}\\
+    \midrule
+    Corrected v4 & 193/200 supported; 1 incorrect; 6 unverifiable & 92.95--98.29\% & AI-assessed precision; not human-verified\\
+    Historical v3 & 176/200 supported; 23 incorrect; 1 unverifiable & 82.77--91.80\% & Historical result; numeric checks failed\\
+    Sprint, ten relations & 76/80 supported; 3 unsupported; 1 unknown & Not pooled & Relation-stratified diagnostic only\\
+    \bottomrule
+  \end{tabularx}
+  \begin{minipage}{0.98\textwidth}
+    \vspace{0.35em}\footnotesize Unknown/unverifiable judgments count as nonsupport in precision. The first two rows sample global accepted-edge frames; the sprint row uses eight cases per relation and is not an estimate for the full graph.
+  \end{minipage}
+\end{table}
+
+The ten-per-relation rows are supplementary diagnostics. Each has $n=10$ and
+wide uncertainty; a perfect 10/10 row still has a Wilson lower bound of about
+72.25\%. In these supplements, `CONTRIBUTES\_TO\_TOPIC` had 9/10 supported and
+one incorrect; `RESEARCHES\_TOPIC` had 8/10 supported and two unverifiable;
+the other eight relations were 10/10 under the AI judgments. These numbers are
+not pooled with the uniform sample.
+
+\input{tables/v4-relation-supplement.tex}
+
+All 350 assignments reuse construction sources. Evidence designation includes
+both primary-source and secondary-source-only packets, but a primary proceedings
+byline does not authenticate the mapping from an OpenAlex ID to a real person.
+Some aggregate support counts were checked only through bounded paper witnesses.
+The audit assesses sampled accepted-edge precision and cannot estimate the
+recall of missing edges. Its interval also excludes evaluator errors and
+source/model dependence.
+
+\subsection{Preserved historical v3 audit}
+
+The prior frozen v3 graph, \texttt{release-9d4a6fb20f63}, remains intact as a
+historical result. Its 200-edge uniform sample was assessed as 176/200 (88.00\%),
+with 23 incorrect and one unverifiable judgment; its Wilson 95\% interval was
+82.77\%--91.80\%. The course point comparison and project precision checks
+failed. These numbers describe v3, not corrected production v4. The audit
+identified a missing observed-ORCID conflict path, which led to a separately
+versioned v4 correction. The new score cannot be read as an independently
+verified causal improvement: the old review motivated the correction, the source
+snapshot is reused, and the new sample was not an untouched independent study.
+
+\subsection{Deadline-sprint ten-relation review}
+
+A later bounded sprint assessed eight accepted edges in each of the ten
+relations, for 80 assignments. Two fresh GPT-6-Luna contexts used high reasoning
+effort and disjoint 40-case packets. They judged 76 cases supported, three
+unsupported, and one unknown. The four flagged cases comprise two unsupported
+`RESEARCHES\_TOPIC` edges, one unsupported `CONTRIBUTES\_TO\_TOPIC` edge, and
+one unknown `AUTHORED` identity mapping. This is a small, deliberately
+relation-stratified diagnostic with unequal population inclusion probabilities;
+it has no pooled population-accuracy estimator. It also reuses construction
+sources and remains AI-assessed, not human ground truth.
+
+\input{tables/sprint-relation-audit.tex}
+
+\section{Topic-classifier evaluation}
+
+The topic evaluation uses 50 frozen test papers. Two historical AI contexts each
+reviewed 30 papers with ten overlapping assignments; their labels are reference
+judgments, not human gold. Each paper contributes total weight one, and paired
+overlap labels split that paper's weight between reviewers. Precision, recall,
+and F1 are computed over the explicit considered-label sets; coverage is reported
+separately from label agreement. The test papers were already exposed in earlier
+review work, and the v4 edge audit generated no new topic labels.
+
+The embedding method has test coverage 45/50 (90\%) and micro precision, recall,
+and F1 of 0.6863, 0.3535, and 0.4667. The phrase baseline has coverage 13/50
+(26\%) and micro scores 0.9286, 0.1313, and 0.2301. The embedding method
+increases coverage and recall, while the phrase baseline is more precise on its
+smaller set of assigned labels. Neither reaches the 0.95 precision target.
+Macro F1 is 0.3627 for embeddings and 0.1473 for the phrase baseline. These are
+historical agreements with AI-assigned references, not independently verified
+topic accuracy.
+
+\begin{table}[tbp]
+  \centering
+  \caption{Historical topic agreement against AI-assigned reference labels.}
+  \label{tab:topic-evaluation}
+  \footnotesize
+  \begin{tabularx}{\textwidth}{p{2.4cm}*{7}{>{\centering\arraybackslash}X}}
+    \toprule
+    \textbf{Classifier} & \makecell{Coverage} & \makecell{Micro\\P} & \makecell{Micro\\R} & \makecell{Micro\\F1} & \makecell{Macro\\P} & \makecell{Macro\\R} & \makecell{Macro\\F1}\\
+    \midrule
+    Phrase baseline & 13/50 (26\%) & 0.9286 & 0.1313 & 0.2301 & 0.4167 & 0.0943 & 0.1473\\
+    Embedding & 45/50 (90\%) & 0.6863 & 0.3535 & 0.4667 & 0.4986 & 0.3066 & 0.3627\\
+    \bottomrule
+  \end{tabularx}
+  \begin{minipage}{\textwidth}
+    \vspace{0.35em}\footnotesize Coverage is the number of papers with at least one assigned topic. Test labels were already exposed in historical AI review; this is not an untouched human test set.
+  \end{minipage}
+\end{table}
+
+\section{Identity and evidence sensitivity}
+
+Sensitivity experiments compare network rankings under policy changes; they do
+not label a candidate graph as more accurate. A strict evidence filter on v4
+retains 7.78\% of researcher collaboration edges and 26.1\% of organization
+collaboration edges. It removes citation and paper-topic edges because those
+base predicates lack the aggregate support count used by that filter, while
+retaining all R10 organization-topic edges because construction already requires
+three supporting papers. These mechanical retention outcomes are not accuracy
+estimates.
+
+The separate Task2C study compares two experimental identity candidates with
+frozen v4 on the same approximate-betweenness analysis. Degree top-20 membership
+is stable (19/20 and 20/20 overlap), while betweenness top-20 overlap is 11/20
+and 12/20. Candidate results remain development scenarios with unmeasured
+semantic precision and recall. No v5 identity candidate is promoted.
+
+\begin{table}[tbp]
+  \centering
+  \caption{Top-20 ranking overlap between frozen production v4 and experimental
+  identity-policy candidates.}
+  \label{tab:identity-sensitivity}
+  \begin{tabular}{lrr}
+    \toprule
+    \textbf{Candidate versus v4} & \textbf{Degree overlap} & \textbf{Betweenness overlap}\\
+    \midrule
+    Candidate-v3 & 19/20 & 11/20\\
+    Task2B & 20/20 & 12/20\\
+    \bottomrule
+  \end{tabular}
+  \begin{minipage}{0.82\textwidth}
+    \vspace{0.35em}\footnotesize These are sensitivity comparisons, not accuracy comparisons or graph promotions. Candidate identity precision and recall were not measured.
+  \end{minipage}
+\end{table}
+
+\section{Metric definitions}
+
+For a set of reviewed accepted edges, precision is the proportion of reviewed
+claims judged supported:
+\begin{equation}
+  \widehat{P}=\frac{n_{\text{supported}}}{n_{\text{reviewed}}},
+  \qquad
+  n_{\text{reviewed}}=n_{\text{supported}}+n_{\text{unsupported}}+
+  n_{\text{unknown}}+n_{\text{missing}}.
+\end{equation}
+The project counts unknown/unverifiable and missing items as nonsupport for the
+precision calculation. Recall would require a defensible sample of absent as
+well as present edges; the accepted-edge audit does not provide one. For topic
+labels, $P=TP/(TP+FP)$, $R=TP/(TP+FN)$, and $F_1=2PR/(P+R)$, with micro scores
+pooling decisions and macro scores averaging label-level results.
+
+The Wilson interval for an observed proportion $\widehat{p}=x/n$ uses a normal
+quantile $z$ and is
+\begin{align}
+  c &= \frac{\widehat{p}+z^2/(2n)}{1+z^2/n},\\
+  h &= \frac{z}{1+z^2/n}
+       \sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}+\frac{z^2}{4n^2}},\\
+  CI_{95\%} &= [c-h, c+h], \qquad z\approx1.96.
+\end{align}
+This interval describes sampling variability conditional on the judgments. It is
+not an uncertainty interval for evaluator reliability or source correctness.
+
+For a collaboration graph, degree is the number of distinct neighbors and
+strength is the sum of incident fractional weights. Betweenness is normalized
+in the analysis output and approximated with 256 pivots on weighted shortest
+paths. Citation in-degree counts accepted incoming CITES edges from within the
+corpus. None of these metrics is a universal measure of scientific influence.

@@ -3,7 +3,7 @@ import pytest
 from scientific_network.contracts import Relation
 from scientific_network.evaluation.review_sheet import CORRECT_WHEN, render_html
 from scientific_network.quality.sprint_audit import (
-    draw, human_selection, human_subset, summarize, update_sampling_manifest,
+    _postblind_html, draw, human_selection, human_subset, summarize, update_sampling_manifest,
 )
 
 
@@ -65,13 +65,59 @@ def test_human_packet_renderer_explains_selection_and_source_identity_limits():
     page = render_html({
         'graph_version': 'v4', 'audit_id': 'packet-v2', 'reviewer_ids': ['member-1'],
         'selection_summary': {'random_total': 20, 'flagged_total': 4},
+        'postblind_diagnostic_available': True,
         'packet_note': 'Initial review only.',
     }, ['decision'], [row])
     assert 'Source consistency is not automatically independent semantic verification' in page
     assert 'Flagged diagnostic cases' in page and 'Prespecified random sample' in page
     assert 'selection_tags' in page and 'flagged_diagnostic' in page
     assert 'Initial review only.' in page
+    assert 'before opening the separate post-blind diagnostic' in page
     assert '"decision":""' in page
+
+
+def test_postblind_renderer_falls_back_to_reason_for_null_and_empty_concerns_safely():
+    packet = {'context': {'source_name': 'Author', 'target_name': 'Paper', 'supporting_context': ''}}
+    for value in (None, ''):
+        page = _postblind_html('member-1', [{
+            'edge_id': 'edge-x', 'relation': 'AUTHORED', 'potential_issue': value,
+            'reason': '<script>useful reason</script>',
+        }], {'edge-x': packet})
+        assert '&lt;script&gt;useful reason&lt;/script&gt;' in page
+        assert '<script>useful reason</script>' not in page
+        assert 'No concise concern supplied.' not in page
+
+
+def test_postblind_renderer_prefers_nonempty_potential_issue_then_generic_fallback():
+    packet = {'context': {'source_name': 'Author', 'target_name': 'Paper', 'supporting_context': ''}}
+    preferred = _postblind_html('member-1', [{
+        'edge_id': 'edge-x', 'relation': 'AUTHORED', 'potential_issue': '  primary concern  ',
+        'reason': 'secondary reason',
+    }], {'edge-x': packet})
+    generic = _postblind_html('member-1', [{
+        'edge_id': 'edge-x', 'relation': 'AUTHORED', 'potential_issue': ' ', 'reason': None,
+    }], {'edge-x': packet})
+    assert 'primary concern' in preferred and 'secondary reason' not in preferred
+    assert 'No concise concern supplied.' in generic
+
+
+def test_review_sheet_without_flagged_diagnostics_keeps_general_rubric_only():
+    page = render_html({
+        'graph_version': 'v4', 'audit_id': 'edge-audit-v1', 'reviewer_ids': ['A'],
+        'selection_summary': {'flagged_total': 0},
+        'postblind_diagnostic_available': False,
+    }, ['decision'], [])
+    assert 'Source consistency is not automatically independent semantic verification' in page
+    assert 'before opening the separate post-blind diagnostic' not in page
+    assert 'Export my reviews (CSV)' in page
+
+
+def test_legacy_review_sheet_metadata_remains_supported_without_postblind_page():
+    # Older edge-audit callers provide no post-blind metadata at all.
+    page = render_html({'graph_version': 'legacy-v1', 'audit_id': 'legacy-audit'}, [], [])
+    assert '<title>Edge audit review sheet</title>' in page
+    assert 'Source consistency is not automatically independent semantic verification' in page
+    assert 'before opening the separate post-blind diagnostic' not in page
 
 
 @pytest.mark.parametrize('relation', [

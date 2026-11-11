@@ -1,0 +1,108 @@
+\chapter{Introduction}
+
+\section{Motivation}
+
+Research activity is recorded across proceedings websites, bibliographic indexes,
+author profiles, and institutional records. Each source describes only part of a
+publication: an official page establishes a venue record and byline, while a
+metadata index can add author identifiers, abstracts, references, and affiliation
+strings. These records do not automatically agree, and an author name is not a
+stable person identifier. As a result, counting papers alone can conceal the
+collaboration structure that shapes research communities.
+
+A scientific knowledge graph offers a way to represent those records and their
+relationships explicitly. It can connect papers to researchers, organizations,
+venues, and topics while retaining the source evidence and method that produced
+each claim. This is useful for a research-program analyst who needs to ask not
+only how much a venue publishes, but how collaboration groups connect, where
+cross-sector co-publication occurs, and how the selected publication landscape
+changes over time. Knowledge-graph design is relevant here because the graph's
+meaning depends on explicit entity types, relation definitions, and provenance,
+not merely on a collection of nodes and links \citep{hogan2022knowledgegraphs}.
+
+AAAI and IJCAI provide a bounded, recognizable domain for this course project.
+The selected records cover five consecutive years of main-track proceedings from
+two established artificial-intelligence conference series. They provide both an
+official publication boundary and enough repeated coauthorship to study
+collaboration networks. The project does not treat these venues as a complete
+sample of AI research. Instead, it uses the corpus as a defined window through
+which to explore publication, collaboration, and citation relationships.
+
+Network analysis can reveal patterns that publication totals do not show. A
+researcher may appear in a large collaboration component, bridge communities, or
+have a high number of distinct collaborators. An organization may co-publish with
+partners in several sectors. A directed citation projection can identify papers
+that receive many in-scope references. Such measures are structural summaries of
+the selected graph; they do not by themselves demonstrate research quality,
+causal influence, or a current business relationship. Scientific collaboration
+networks are a well-established setting for this kind of structural analysis
+\citep{newman2001collaboration}.
+
+\section{Research questions}
+
+The analysis is organized around four answerable questions tied to the available
+release artifacts:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*.}]
+  \item How did the number and inferred topic mix of AAAI and IJCAI main-track
+  papers in the selected corpus vary from 2021 through 2025?
+  \item What collaboration structure is visible in the accepted researcher and
+  organization projections, including components, coauthor degree, communities,
+  and cross-sector co-publication support?
+  \item Which researchers and papers rank highly under the project's configured
+  betweenness and within-corpus citation measures, and how sensitive are these
+  rankings to identity and evidence policies?
+  \item What do the measured coverage, structural checks, AI-assessed edge
+  reviews, historical topic evaluation, and identity-policy comparisons permit
+  us to conclude about the reliability of those patterns?
+\end{enumerate}
+
+\section{Objectives and contributions}
+
+The project has five practical objectives. First, it defines a reproducible paper
+corpus from official venue records. Second, it links those records to OpenAlex
+works using exact DOI routes and explicit title/byline checks rather than broad
+name or title searches. Third, it builds a typed graph whose observed,
+inferred-topic, curated-taxonomy, and derived relationships remain distinguishable.
+Fourth, it computes named network projections and packages the measured results
+as figures, tables, and source-linked findings. Fifth, it evaluates the artifact
+while reporting limitations in identity resolution, affiliation coverage, topic
+labels, and AI-assisted assessment.
+
+The project's contribution is an auditable construction and analysis workflow,
+not a new entity-resolution algorithm or a claim that the graph is a complete
+record of AI research. Its main deliverables are a frozen v4 graph, versioned
+analysis artifacts, reproducible static visualizations, structural validation
+and database receipts, a read-only interactive Explorer, and a written account
+that keeps candidate identity experiments separate from production results.
+
+\section{Scope}
+
+The production release contains \num{13617} roster-v10 papers from AAAI and
+IJCAI main-track proceedings dated 2021--2025. The broader project source registry
+is larger, but the release boundary is deliberately restricted to these two
+series; unresolved or unavailable records from other eligible editions are
+coverage limits rather than hidden graph members. The graph's five entity labels
+are Researcher, Paper, Organization, Topic, and Venue. Its ten predicates are
+defined in \cref{tab:relationship-schema}. The release graph is
+\GraphVersion{}; experimental v5 identity candidates are discussed only as
+sensitivity scenarios.
+
+The report makes no inference about current employment, nationality, commercial
+readiness, contract value, or causal impact. Organization sectors and countries
+are metadata properties. Topic trends are based on inferred labels and exclude
+papers for which the classifier abstained. Citation counts cover only references
+whose target is another paper inside this corpus. These limits define how each
+finding should be read.
+
+\section{Report organization}
+
+\Cref{chap:background} reviews knowledge graphs, scholarly networks, entity
+resolution, topic classification, and graph-quality practice. \Cref{chap:method}
+describes the data sources, matching and resolution rules, topic classifier, and
+graph semantics. \Cref{chap:implementation} documents the software and Explorer
+architecture. \Cref{chap:evaluation} defines the evaluation samples and
+distinguishes structural validation from semantic assessment. \Cref{chap:results}
+presents the graph, landscape, collaboration, centrality, citation, and sensitivity
+results. The final chapters discuss interpretation and limitations, then conclude
+with the supported findings and remaining submission details.
