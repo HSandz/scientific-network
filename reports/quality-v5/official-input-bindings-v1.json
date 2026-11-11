@@ -1,0 +1,10 @@
+{
+  "scope": "frozen input hash and retained-field equality only;no roster reconstruction or collection",
+  "release_config_sha256": "40c8461a1ddd426e02b4cb10d2260fc4a98b4c4638e7abfc53f8860f4aedb5eb",
+  "roster_manifest_sha256": "84ff8ca78073e5d5e0d94f909aac63d18d71435cbd60f30630b7c3090b3c1cbe",
+  "roster_hash_matches_frozen_config": true,
+  "official_retained_fields_equal_works_rows": 13617,
+  "derived_dois_equal_works_rows": true,
+  "work_input_sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047",
+  "limitation": "does not independently validate official parser decisions or paper/author identities"
+}

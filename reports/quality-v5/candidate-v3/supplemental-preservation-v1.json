@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "checked_at": "2026-11-11T16:40:20.900055+07:00",
+  "original_reproducibility_receipt_sha256": "dcac956f6e2d495f98cdf4b89771ba8c15214ee1a402a0ba0ff1e77a039caae3",
+  "recovered_conflict_position_confirmed_in_original_v4_removal_ledger": true,
+  "protected_tree_file_membership_unchanged": true,
+  "scope": "additive checks;original committed receipt preserved exactly"
+}
