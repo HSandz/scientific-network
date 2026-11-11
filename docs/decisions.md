@@ -1062,3 +1062,19 @@ Compact rankings retain full linked tables; selected pair evidence replaces
 repeated cards. Persistence cells carry stable endpoint IDs. Missing ranks/years
 and bounded paper previews retain explicit meanings. No scientific/API/backend
 change. See WORK-2026-11-11-002 and its verification report.
+
+## D040 amendment — V5 quality audit and isolated identity development (2026-11-11)
+
+The user authorizes Task1 census followed by Task2 implementation and a separate
+identity candidate, superseding the no-post-audit-graph-change restriction for
+this candidate only. Frozen v4, caches, original samples/votes/reports, topics,
+public Explorer, services and deployment are protected. No push or publication.
+
+Task1 checkpoint: `reports/quality-v5/baseline-audit.md` and JSON establish source
+missingness, global-versus-paper ORCID scope, seven DOI-disagreement works, and
+current builder dictionary/string shadowing. Frozen v4 uses the older builder
+plus independent global filtering; no evidence the new state bug affected it.
+No independently adjudicated identity references are available. Historical audit
+errors are exposed development diagnostics and cannot certify the candidate.
+See WORK-2026-11-11-003. Candidate acceptance policy will be documented separately
+before execution; no source collection or name-only identity merges authorized.

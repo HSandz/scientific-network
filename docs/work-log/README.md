@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-11-003 — V5 quality audit and identity candidate](2026-11-11-003-quality-v5.md): in progress; frozen-source audit before isolated identity development.
+
 - [WORK-2026-11-11-002 — Explorer focus labels and analytical layouts](2026-11-11-002-explorer-focus-layout.md): interaction-aware canvas labels, section layouts, linked partnerships and regression/production verification.
 
 - [WORK-2026-11-11-001 — Explorer dashboard and graph readability](2026-11-11-001-explorer-dashboard-redesign.md): completed; seven sections, figures, accessible viewport chart lifecycle and progressive graph labels; tested main push/Pages acceptance, unchanged Azure/graph verified.
