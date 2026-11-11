@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { explorerApi } from "../../lib/api";
 import { getThemeTokens } from "../../lib/colors";
@@ -19,6 +19,8 @@ import {
   PersistenceFigures,
   TopicChangeFigures,
 } from "./TemporalFigures";
+import { pairKey } from "../../lib/persistence";
+import { PartnershipFigures } from "./PartnershipFigures";
 import { EChartBox } from "./EChartBox";
 
 import { fmt, pct, Table, Panel } from "./DashboardPrimitives";
@@ -28,6 +30,7 @@ export const AnalyticsView: React.FC<{
   summary?: GraphSummaryResponse;
   onFocusNodeInGraph: (id: string, name?: string) => void;
 }> = ({ summary, onFocusNodeInGraph }) => {
+  const [selectedPair, setSelectedPair] = useState("");
   const {
     darkMode,
     analyticsSection: section,
@@ -295,7 +298,7 @@ export const AnalyticsView: React.FC<{
         title="Collaboration Robustness"
         description="Repeated-paper support changes connectivity and the bridge shortlist."
       >
-        <div className="analytics-grid">
+        <div className="robustness-layout">
           <Panel title="Which bridge claims survive repeated-paper evidence?">
             <p className="text-sm mb-3">
               {pct(sensitivity?.edge_retention_fraction)} of coauthorship edges
@@ -304,32 +307,35 @@ export const AnalyticsView: React.FC<{
             </p>
             {strict && sensitivity ? (
               <>
-                <EChartBox
-                  label="Base versus strict researcher connectivity"
-                  option={{
-                    ...chart,
-                    xAxis: {
-                      ...chart.xAxis,
-                      data: ["Base", "Strict ≥2 papers"],
-                    },
-                    yAxis: {
-                      ...chart.yAxis,
-                      name: "Largest component (%)",
-                      max: 100,
-                    },
-                    series: [
-                      {
-                        name: "Largest component share",
-                        type: "bar",
-                        data: [
-                          100 * sensitivity.largest_component_share_base,
-                          100 * sensitivity.largest_component_share_strict,
-                        ],
+                <div className="robustness-figures">
+                  <EChartBox
+                    label="Base versus strict researcher connectivity"
+                    option={{
+                      ...chart,
+                      legend: { show: false },
+                      xAxis: {
+                        ...chart.xAxis,
+                        data: ["Base", "Strict ≥2 papers"],
                       },
-                    ],
-                  }}
-                />
-                <RobustnessCounts base={base} strict={strict} />
+                      yAxis: {
+                        ...chart.yAxis,
+                        name: "Largest component (%)",
+                        max: 100,
+                      },
+                      series: [
+                        {
+                          name: "Largest component share",
+                          type: "bar",
+                          data: [
+                            100 * sensitivity.largest_component_share_base,
+                            100 * sensitivity.largest_component_share_strict,
+                          ],
+                        },
+                      ],
+                    }}
+                  />
+                  <RobustnessCounts base={base} strict={strict} />
+                </div>
                 <Table
                   label="Connectivity"
                   headers={[
@@ -421,24 +427,25 @@ export const AnalyticsView: React.FC<{
             />
             <Table
               label="Bridge ranking comparison"
-              headers={["Researcher / stable ID", "Base rank", "Strict rank"]}
+              headers={[
+                "Researcher / stable ID",
+                "Base rank",
+                "Strict rank",
+                "Base betweenness",
+                "Strict betweenness",
+              ]}
               rows={ranks.map((r) => [
                 button(r.id, names.get(r.id)),
                 r.base ?? "Outside top 20",
                 r.strict ?? "Outside top 20",
+                base?.top_betweenness?.find(
+                  (v: { node_id: string }) => v.node_id === r.id,
+                )?.score ?? "Outside top 20",
+                strict?.top_betweenness?.find(
+                  (v: { node_id: string }) => v.node_id === r.id,
+                )?.score ?? "Outside top 20",
               ])}
             />
-            <div className="grid sm:grid-cols-2 gap-2 mt-3">
-              {bridges.slice(0, 6).map((b: any) => (
-                <div key={b.researcher_id} className="text-xs py-2">
-                  {button(b.researcher_id, b.researcher)} ·{" "}
-                  {b.betweenness.toFixed(6)}
-                  <p className="text-muted">
-                    {b.community_id} · {fmt(b.community_member_count)} members
-                  </p>
-                </div>
-              ))}
-            </div>
           </Panel>
         </div>
       </DashboardSection>
@@ -672,7 +679,7 @@ export const AnalyticsView: React.FC<{
         title="Network Components & Communities"
         description="Connectivity and Louvain membership are distinct structural descriptions."
       >
-        <div className="grid lg:grid-cols-2 gap-4">
+        <div className="community-layout">
           <Panel title="Connected components, including isolates">
             <p className="text-xs text-muted">
               {fmt(base?.component_sizes?.length)} components /{" "}
@@ -731,96 +738,104 @@ export const AnalyticsView: React.FC<{
             </p>
           </Panel>
           <Panel title="What do frozen researcher communities study?">
-            <RankedBars
-              label="Largest stored Louvain communities"
-              unit="researchers"
-              rows={profiles
-                .slice(0, 10)
-                .map((p: { community_id: string; member_count: number }) => ({
-                  id: p.community_id,
-                  name: p.community_id,
-                  value: p.member_count,
-                }))}
-              onOpen={(i) => setCommunity(profiles[i].community_id)}
-            />
-            <Table
-              label="Major community sizes"
-              headers={["Community", "Researchers"]}
-              rows={profiles.map(
-                (p: { community_id: string; member_count: number }) => [
-                  <button
-                    className="underline"
-                    onClick={() => setCommunity(p.community_id)}
-                  >
-                    {p.community_id}
-                  </button>,
-                  p.member_count,
-                ],
-              )}
-            />
-            <label className="text-xs">
-              Community
-              <select
-                aria-label="Community profile"
-                className="ledger-input w-full my-2"
-                value={profile?.community_id || ""}
-                onChange={(e) => setCommunity(e.target.value)}
-              >
-                {profiles.map((p: any) => (
-                  <option key={p.community_id} value={p.community_id}>
-                    {p.community_id} · {p.member_count} researchers
-                  </option>
-                ))}
-              </select>
-            </label>
-            {profile && (
-              <>
-                <p className="text-xs">
-                  {fmt(profile.paper_count)} distinct papers;{" "}
-                  {fmt(profile.topic_labeled_paper_count)} labeled papers. Only
-                  the stored top five topics are available. Not in stored
-                  profile ≠ zero.
-                </p>
+            <div className="community-figures">
+              <div>
                 <RankedBars
-                  label="Community inferred topic portfolio"
-                  unit="fractional mass (%)"
-                  rows={profile.top_topics.map(
-                    (t: {
-                      topic_id: string;
-                      topic: string;
-                      share_of_fractional_topic_mass: number;
-                    }) => ({
-                      id: t.topic_id,
-                      name: t.topic,
-                      value: 100 * t.share_of_fractional_topic_mass,
-                    }),
+                  label="Largest stored Louvain communities"
+                  unit="researchers"
+                  rows={profiles
+                    .slice(0, 10)
+                    .map(
+                      (p: { community_id: string; member_count: number }) => ({
+                        id: p.community_id,
+                        name: p.community_id,
+                        value: p.member_count,
+                      }),
+                    )}
+                  onOpen={(i) => setCommunity(profiles[i].community_id)}
+                />
+                <Table
+                  label="Major community sizes"
+                  headers={["Community", "Researchers"]}
+                  rows={profiles.map(
+                    (p: { community_id: string; member_count: number }) => [
+                      <button
+                        className="underline"
+                        onClick={() => setCommunity(p.community_id)}
+                      >
+                        {p.community_id}
+                      </button>,
+                      p.member_count,
+                    ],
                   )}
                 />
-                <button
-                  className="ledger-btn px-3 py-2 text-xs"
-                  onClick={() => {
-                    setViewMode("researchers");
-                    updateFilters({ communityId: profile.community_id });
-                    setWorkspaceTab("graph");
-                  }}
-                >
-                  Open representative community graph →
-                </button>
-                <Table
-                  label="Stored community topic profile"
-                  headers={[
-                    "Inferred topic",
-                    "Distinct papers",
-                    "Fractional share",
-                  ]}
-                  rows={profile.top_topics.map((t: any) => [
-                    t.topic,
-                    t.paper_count,
-                    pct(t.share_of_fractional_topic_mass),
-                  ])}
-                />
-              </>
-            )}
+              </div>
+              <div>
+                <label className="text-xs">
+                  Community
+                  <select
+                    aria-label="Community profile"
+                    className="ledger-input w-full my-2"
+                    value={profile?.community_id || ""}
+                    onChange={(e) => setCommunity(e.target.value)}
+                  >
+                    {profiles.map((p: any) => (
+                      <option key={p.community_id} value={p.community_id}>
+                        {p.community_id} · {p.member_count} researchers
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                {profile && (
+                  <>
+                    <p className="text-xs">
+                      {fmt(profile.paper_count)} distinct papers;{" "}
+                      {fmt(profile.topic_labeled_paper_count)} labeled papers.
+                      Only the stored top five topics are available. Not in
+                      stored profile ≠ zero.
+                    </p>
+                    <RankedBars
+                      label="Community inferred topic portfolio"
+                      unit="fractional mass (%)"
+                      rows={profile.top_topics.map(
+                        (t: {
+                          topic_id: string;
+                          topic: string;
+                          share_of_fractional_topic_mass: number;
+                        }) => ({
+                          id: t.topic_id,
+                          name: t.topic,
+                          value: 100 * t.share_of_fractional_topic_mass,
+                        }),
+                      )}
+                    />
+                    <button
+                      className="ledger-btn px-3 py-2 text-xs"
+                      onClick={() => {
+                        setViewMode("researchers");
+                        updateFilters({ communityId: profile.community_id });
+                        setWorkspaceTab("graph");
+                      }}
+                    >
+                      Open representative community graph →
+                    </button>
+                    <Table
+                      label="Stored community topic profile"
+                      headers={[
+                        "Inferred topic",
+                        "Distinct papers",
+                        "Fractional share",
+                      ]}
+                      rows={profile.top_topics.map((t: any) => [
+                        t.topic,
+                        t.paper_count,
+                        pct(t.share_of_fractional_topic_mass),
+                      ])}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
             <p className="text-xs text-muted mt-3">
               Louvain NetworkX seed 17, resolution 0.8. IDs are run-specific and
               unstable across graph versions. Community paper sets may overlap;
@@ -834,7 +849,7 @@ export const AnalyticsView: React.FC<{
         title="Academia–Industry Collaboration"
         description="Organization-pair evidence, sectors and supported co-publication years."
       >
-        <div className="analytics-grid">
+        <div className="sector-layout">
           <Panel title="Academia–industry co-publication, including unknown sectors">
             <p className="text-xs text-muted">
               Symmetric organization-pair × core-paper support matrix. A pair is
@@ -897,63 +912,13 @@ export const AnalyticsView: React.FC<{
             />
           </Panel>
           <Panel title="Repeated cross-sector topic pairs">
-            <p className="text-xs text-muted">
-              Each bar is an organization pair within one inferred topic. Topic
-              supports overlap and must not be summed across topics.
-            </p>
-            <RankedBars
-              label="Leading cross-sector pair-topic evidence"
-              unit="distinct papers"
-              rows={pairs
-                .slice(0, 8)
-                .map(
-                  (
-                    p: {
-                      academia_organization: string;
-                      industry_organization: string;
-                      topic: string;
-                      supported_paper_count: number;
-                    },
-                    i: number,
-                  ) => ({
-                    id: String(i),
-                    name: `${p.academia_organization} ↔ ${p.industry_organization} · ${p.topic}`,
-                    value: p.supported_paper_count,
-                  }),
-                )}
-              onOpen={(i) =>
-                setCompareModalOpen(
-                  true,
-                  pairs[i].academia_organization_id,
-                  pairs[i].industry_organization_id,
-                )
-              }
+            <PartnershipFigures
+              pairs={pairs}
+              persistence={derived?.organization_pair_persistence || []}
+              onSelect={setSelectedPair}
+              onOpen={(a, b) => setCompareModalOpen(true, a, b)}
+              onPaper={onFocusNodeInGraph}
             />
-            <div className="grid md:grid-cols-2 gap-4">
-              {pairs.map((p: any, i: number) => (
-                <div key={i} className="text-xs border-t border-border py-3">
-                  <strong>
-                    {p.academia_organization} ↔ {p.industry_organization}
-                  </strong>
-                  <p>
-                    {p.topic}: {p.supported_paper_count} distinct supporting
-                    papers
-                  </p>
-                  <button
-                    className="ledger-btn px-3 py-2 mt-2"
-                    onClick={() =>
-                      setCompareModalOpen(
-                        true,
-                        p.academia_organization_id,
-                        p.industry_organization_id,
-                      )
-                    }
-                  >
-                    Compare portfolios & supporting papers
-                  </button>
-                </div>
-              ))}
-            </div>
           </Panel>
           <Panel title="Organization collaboration persistence by supported paper year">
             <p className="text-xs text-muted">
@@ -965,6 +930,15 @@ export const AnalyticsView: React.FC<{
             </p>
             <PersistenceFigures
               pairs={derived?.organization_pair_persistence || []}
+              selectedPair={
+                selectedPair ||
+                (pairs[0]
+                  ? pairKey(
+                      pairs[0].academia_organization_id,
+                      pairs[0].industry_organization_id,
+                    )
+                  : "")
+              }
               onOpen={(p) =>
                 setCompareModalOpen(true, p.source_id, p.target_id)
               }
@@ -1015,7 +989,7 @@ export const AnalyticsView: React.FC<{
         title="Citation Patterns & Research Trends"
         description="Annual activity and within-corpus citations, with venue/year cohort context."
       >
-        <div className="analytics-grid">
+        <div className="trajectory-layout">
           <Panel title="Annual corpus and collaboration metrics">
             <p className="text-xs text-muted">
               Separate scales retain actual counts. New coauthor pair = an

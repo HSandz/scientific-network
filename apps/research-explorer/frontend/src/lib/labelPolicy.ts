@@ -21,3 +21,9 @@ export function labelBudget(
     Math.min(limits[band], Math.floor((width * height) / area)),
   );
 }
+
+/** Interactive neighbors have an independent budget, including at overview. */
+export function focusLabelBudget(band: ZoomBand, width: number, height: number): number {
+  const cap = { overview: 12, medium: 16, close: 24, detail: 32 }[band];
+  return Math.max(3, Math.min(cap, Math.floor(width * height / 45000)));
+}

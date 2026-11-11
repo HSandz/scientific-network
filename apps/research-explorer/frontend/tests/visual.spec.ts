@@ -37,3 +37,19 @@ test("graph fit-view and close-view visual baselines", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test('analytical section layouts desktop and phone in both themes',async({page})=>{
+  test.setTimeout(90000);
+  await page.goto('/?tab=analytics');await expect(page.getByTestId('analytics-view')).toBeVisible();
+  for(const width of [1440,390]) {
+    await page.setViewportSize({width,height:width===1440?900:844});
+    for(const dark of [true,false]) {
+      await page.evaluate(d=>{const s=(window as any).__explorerStore;if(s.getState().darkMode!==d)s.getState().toggleDarkMode();},dark);
+      for(const section of ['robustness','sectors','trajectories']) {
+        const el=page.locator('#analytics-'+section);await el.evaluate(e=>e.scrollIntoView({block:'start'}));
+        await expect(el.locator('[data-chart-label]').first()).toHaveAttribute('data-chart-active','true');
+        await expect(page).toHaveScreenshot(`analytics-${section}-${width}-${dark?'dark':'light'}.png`,{maxDiffPixelRatio:.01});
+      }
+    }
+  }
+});

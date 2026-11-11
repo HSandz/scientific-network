@@ -1048,3 +1048,17 @@ are disposed with retained entrance history. Screen-space label rejection wins o
 routine names; selected/hovered identity has dedicated inspection. Existing v2
 bookmark IDs remain compatible; overview/quality extend the section enumeration.
 See WORK-2026-11-11-001 and the dated Explorer redesign verification report.
+## D040 amendment — Interactive labels and analytical hierarchy (2026-11-11)
+
+The user authorized frontend implementation and direct production delivery for
+hover-neighborhood identification, dashboard whitespace and related UX defects.
+Routine overview sparsity does not constrain interactive identification: focus,
+selected endpoints and a bounded direct-neighbor set have their own screen-space
+placement policy. Label collision rejection and remaining-neighbor disclosure
+prevent dense neighborhoods from implying missing connections.
+
+Section layouts follow analytical hierarchy instead of uniform mixed-height rows.
+Compact rankings retain full linked tables; selected pair evidence replaces
+repeated cards. Persistence cells carry stable endpoint IDs. Missing ranks/years
+and bounded paper previews retain explicit meanings. No scientific/API/backend
+change. See WORK-2026-11-11-002 and its verification report.

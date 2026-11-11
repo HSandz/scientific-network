@@ -267,3 +267,14 @@ test("temporal transforms require observed endpoints and keep citation cohort de
   expect(cohortCdf({venue_id:'invented',year:2021,paper_denominator:10,zero_in_degree_count:6,distribution:[{in_degree:2,paper_count:4},{in_degree:0,paper_count:6}]})).toEqual([[0,60],[2,100]]);
   expect(cohortCdf({venue_id:'invented',year:2021,paper_denominator:0,zero_in_degree_count:0,distribution:[]})).toEqual([]);
 });
+
+test('interactive budgets stay independent of overview and tooltip names are escaped',async()=>{
+  const {labelBudget,focusLabelBudget}=await import('../src/lib/labelPolicy');
+  const {escapeTooltip,pairKey}=await import('../src/lib/persistence');
+  expect(labelBudget('overview',1440,900)).toBe(0);
+  expect(focusLabelBudget('overview',1440,900)).toBe(12);
+  expect(focusLabelBudget('overview',390,500)).toBeLessThan(12);
+  expect(focusLabelBudget('detail',1440,900)).toBeGreaterThan(12);
+  expect(escapeTooltip('<img onerror="x"> & \'a\'')).toBe('&lt;img onerror=&quot;x&quot;&gt; &amp; &#39;a&#39;');
+  expect(pairKey('b','a')).toBe(pairKey('a','b'));
+});

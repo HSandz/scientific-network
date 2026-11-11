@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-11-002 — Explorer focus labels and analytical layouts](2026-11-11-002-explorer-focus-layout.md): interaction-aware canvas labels, section layouts, linked partnerships and regression/production verification.
+
 - [WORK-2026-11-11-001 — Explorer dashboard and graph readability](2026-11-11-001-explorer-dashboard-redesign.md): completed; seven sections, figures, accessible viewport chart lifecycle and progressive graph labels; tested main push/Pages acceptance, unchanged Azure/graph verified.
 
 - [WORK-2026-11-10-013 — Explorer production release](2026-11-10-013-explorer-production-release.md): completed; authorized push, Caddy init recovery, API/immutable analytics activation and idempotent verification, restart and public acceptance; global bookmark menu follow-up; frozen database preserved.

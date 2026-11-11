@@ -238,3 +238,23 @@ baselines are under `frontend/tests/visual.spec.ts-snapshots/`; update intention
 with `run test:e2e -- tests/visual.spec.ts --update-snapshots` and inspect images.
 The package has no configured lint script. Cross-browser/device and WCAG
 certification are outside the measured Chromium checks.
+
+### Interactive labels and dashboard hierarchy (11 November follow-up)
+
+Hover/selection labels have a separate viewport budget even at overview zoom.
+The focus and selected-edge endpoints take priority; direct neighbors follow in
+stable displayed-degree order. Collision-aware callouts remain inside the canvas,
+and the neighborhood summary discloses unlabeled connections. Returning to the
+same node after leaving the canvas restores hover identification. The inspector
+retains all displayed connections and database evidence actions.
+
+Robustness uses a full-width comparison and compact bridge preview with all stored
+ranks/scores in its expandable table. Sectors has a selected pair/topic evidence
+panel and full-width persistence heatmap; selection highlights the matching row.
+Heatmap tooltips use escaped full names, and cell clicks use endpoint IDs. Citation
+cohorts and community portfolios have dedicated layouts. Missing years/ranks and
+bounded paper previews retain explicit meanings. Sticky navigation keeps its
+active section visible on phones. Existing saved-section/filter IDs are unchanged.
+
+See [focus/layout verification](../../reports/explorer-focus-layout-verification-2026-11-11.md)
+for screenshots, regression commands, performance limits and delivery evidence.

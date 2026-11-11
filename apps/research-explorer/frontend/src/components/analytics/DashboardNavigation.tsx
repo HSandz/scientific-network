@@ -60,6 +60,21 @@ export const DashboardNav: React.FC<{ section: string }> = ({ section }) => {
     }
   }, [section]);
   useEffect(() => {
+    const container = nav.current;
+    const active = container?.querySelector<HTMLElement>(
+      '[aria-pressed="true"]',
+    );
+    if (!container || !active) return;
+    if (active.offsetLeft < container.scrollLeft)
+      container.scrollLeft = active.offsetLeft - 8;
+    else if (
+      active.offsetLeft + active.offsetWidth >
+      container.scrollLeft + container.clientWidth
+    )
+      container.scrollLeft =
+        active.offsetLeft + active.offsetWidth - container.clientWidth + 8;
+  }, [section]);
+  useEffect(() => {
     const root = nav.current?.closest('[data-testid="analytics-view"]');
     if (!root) return;
     let frame = 0;
