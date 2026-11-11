@@ -1112,3 +1112,14 @@ guard to both full source and accepted bylines. No affiliation mapping or topic
 model improvement. Centrality comparison uses identical common-node pivots,
 clearly separate from the frozen v4 ranking computation. All output hashes and
 code/config/input versions are recorded;no Neo4j load or deployment.
+
+### V5 candidate materialization correction - prior affiliation support
+
+Initial candidate-v1 (source commit dfaa01b) revealed affiliation changes on
+retained author positions caused by rechecking copy guards. Preserve its outputs
+as a diagnostic. Candidate-v2 uses method identity-candidate-v5.2 and new config:
+for every retained position,preserve exactly its existing organization set and
+prior exclusions. New-position affiliations still use cached authorship mappings
+and conservative copy guards. Assert retained-position organization equality;
+reuse unchanged R2 aggregates. No identity thresholds or decisions change.
+This narrows the comparison to identity-attributable effects;Task3 is deferred.

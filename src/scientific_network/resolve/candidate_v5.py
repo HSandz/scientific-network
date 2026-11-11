@@ -21,7 +21,7 @@ from scientific_network.quality.candidate_network import paired_rankings
 from scientific_network.resolve import mentions_v5
 from scientific_network.resolve.release import SECTOR, _sha, _work_evidence, authorship_institutions
 
-METHOD = "identity-candidate-v5.1"
+METHOD = "identity-candidate-v5.2"
 EXPECTED_POLICIES = {
     "work_doi_must_agree": True,
     "raw_name_required_for_recovery": True,
@@ -34,6 +34,7 @@ EXPECTED_POLICIES = {
     "names_or_coauthors_alone_merge": False,
     "paper_raw_orcid_name_expansion": "ordered_full_tokens_same_endpoints_and_canonical_agreement",
     "topic_citation_publication_taxonomy": "preserve_exact",
+    "existing_affiliation_support": "preserve_exact_for_retained_positions",
     "semantic_accuracy": "unmeasured_without_independent_references",
 }
 
@@ -99,7 +100,10 @@ def construct_candidate(old,rows,decisions,version,quality):
     observations,pair_support=[],{}
     copy_guard=[]
     old_authored={(e.target_id,e.properties["byline_position"]):e.source_id for e in old.edges if e.relation=="AUTHORED"}
-    old_affiliated={(o.researcher_id,o.paper_id) for o in old.affiliation_observations}
+    old_affiliations=defaultdict(set)
+    for o in old.affiliation_observations:
+        old_affiliations[o.researcher_id,o.paper_id].add(o.organization_id)
+    old_r2={(e.source_id,e.target_id):e for e in old.edges if e.relation=="AFFILIATED_WITH"}
     for paper, group in sorted(accepted.items()):
         if len({d["canonical_researcher_id"] for d in group}) != len(group):
             raise ValueError("candidate has repeated canonical person on one byline")
@@ -127,20 +131,23 @@ def construct_candidate(old,rows,decisions,version,quality):
             old_person=old_authored.get((paper,d["author_position"]))
             # Preserve all prior exclusions for retained positions. Rechecking a
             # smaller post-withholding team must not reverse an old copy guard.
-            keep_exclusion=old_person is not None and (old_person,paper) not in old_affiliated
-            per_author.append((person,authorship_institutions(authorship),keep_exclusion))
-        sets=[frozenset(i["id"] for i in insts) for _,insts,_ in per_author]
+            per_author.append((person,authorship_institutions(authorship),old_person,old_affiliations[old_person,paper]))
+        sets=[frozenset(i["id"] for i in insts) for _,insts,_,_ in per_author]
         # Frozen affiliation guard,applied to all candidate-accepted positions.
         # No affiliation inference or institution normalization changes.
         full_sets=[frozenset(i["id"] for i in authorship_institutions(a)) for a in row["openalex"]["authorships"]]
         copied=(len(sets)>=3 and len(set(sets))==1 and len(sets[0])>=2) or (
             len(full_sets)>=3 and len(set(full_sets))==1 and len(full_sets[0])>=2)
         if copied:
-            copy_guard.append({"paper_id":paper,"kind":"paper_level_affiliation_copy","positions":len(group)})
-            continue
-        for person,institutions,keep_exclusion in per_author:
-            if keep_exclusion:
+            copy_guard.append({"paper_id":paper,"kind":"paper_level_affiliation_copy","positions":len(group),
+                               "applies_to":"new_positions_only; prior_support_and_exclusions_preserved"})
+        for person,institutions,old_person,old_orgs in per_author:
+            if old_person is None and copied:
                 continue
+            if old_person is not None:
+                institutions=[i for i in institutions if "organization:"+i["id"] in old_orgs]
+                if {"organization:"+i["id"] for i in institutions}!=old_orgs:
+                    raise ValueError("retained affiliation no longer matches frozen raw institutions")
             for inst in institutions:
                 org="organization:"+inst["id"]
                 if org not in nodes:
@@ -153,6 +160,11 @@ def construct_candidate(old,rows,decisions,version,quality):
                 support=pair_support.setdefault((person,org),{"evidence":set(),"papers":set(),"raw":set()})
                 support["evidence"].add(ev.id);support["papers"].add(paper);support["raw"].update(inst["raw_strings"])
     for (person,org),s in sorted(pair_support.items()):
+        previous_edge=old_r2.get((person,org))
+        if (previous_edge is not None and set(previous_edge.evidence_ids)==s["evidence"]
+                and previous_edge.properties.get("support_paper_count")==len(s["papers"])):
+            edges.append(previous_edge.model_copy(update={"graph_version":version}))
+            continue
         edges.append(Edge(edge_id=edge_id("AFFILIATED_WITH",person,org),relation="AFFILIATED_WITH",source_id=person,target_id=org,
                           evidence_kind="observed",evidence_ids=sorted(s["evidence"]),method_version=METHOD,
                           graph_version=version,validation_status="accepted",properties={
@@ -202,7 +214,7 @@ def compare(old,new,decisions):
     for rel in sorted({str(e.relation) for e in old.edges+new.edges}):
         sa={k for k,e in ea.items() if str(e.relation)==rel};sb={k for k,e in eb.items() if str(e.relation)==rel}
         relation_delta[rel]={"before":len(sa),"after":len(sb),"gained":len(sb-sa),"lost":len(sa-sb),
-                             "support_or_weight_changed":sum(ea[k].properties!=eb[k].properties or ea[k].evidence_ids!=eb[k].evidence_ids for k in sa&sb)}
+                             "properties_or_evidence_changed":sum(ea[k].properties!=eb[k].properties or ea[k].evidence_ids!=eb[k].evidence_ids for k in sa&sb)}
     crosswalk=defaultdict(set)
     for d in decisions:
         if d["resolution_state"]=="resolved" and d["source_author_id"]:
@@ -212,6 +224,12 @@ def compare(old,new,decisions):
         for target in targets:canonical_sources[target].add(source)
     old_people={n.id for n in old.nodes if n.label=="Researcher"}
     new_people={n.id for n in new.nodes if n.label=="Researcher"}
+    before_orgs,after_orgs=defaultdict(set),defaultdict(set)
+    for o in old.affiliation_observations:before_orgs[o.researcher_id,o.paper_id].add(o.organization_id)
+    for o in new.affiliation_observations:after_orgs[o.researcher_id,o.paper_id].add(o.organization_id)
+    for key in a.keys()&b.keys():
+        if before_orgs[a[key],key[0]] != after_orgs[b[key],key[0]]:
+            raise ValueError("identity-only candidate changed retained position affiliation support")
     strata=defaultdict(Counter)
     for key,d in by_mention.items():
         s=strata[f"{d['venue_id']}:{d['year']}"]
@@ -236,6 +254,7 @@ def compare(old,new,decisions):
             "provider_ids_split_by_direct_evidence":sum(len(t)>1 for t in crosswalk.values()),
             "canonical_identities_with_multiple_provider_crosswalks":sum(len(t)>1 for t in canonical_sources.values()),
             "affiliated_positions":{"before":af(old),"after":af(new)},
+            "retained_position_affiliation_support":{"positions_checked":len(a.keys()&b.keys()),"exact_organization_sets_preserved":True},
             "affiliation_observations":{"before":len(oa),"after":len(ob),"gained":len(ob-oa),"lost":len(oa-ob)},
             "relationship_changes":relation_delta,"network_before":network_summary(old),"network_after":network_summary(new),
             "semantic_metrics":{k:None for k in ("identity_pairwise_precision","identity_pairwise_recall","identity_pairwise_f1","authorship_precision","authorship_recall","false_merges","false_splits")},

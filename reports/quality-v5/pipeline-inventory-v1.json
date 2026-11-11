@@ -1,0 +1,211 @@
+{
+  "method_version": "pipeline-inventory-v5.1",
+  "by_venue_year": {
+    "venue:aaai:2021": {
+      "accepted_positions_without_source_institution": 199,
+      "citation_accepted": 147,
+      "citation_out_of_scope": 68828,
+      "citation_self": 21,
+      "papers": 1654,
+      "topic_assignments": 1759,
+      "topic_labeled_papers": 1409
+    },
+    "venue:aaai:2022": {
+      "accepted_positions_without_source_institution": 133,
+      "citation_accepted": 687,
+      "citation_out_of_scope": 53902,
+      "citation_self": 13,
+      "papers": 1319,
+      "topic_assignments": 1410,
+      "topic_labeled_papers": 1154
+    },
+    "venue:aaai:2023": {
+      "accepted_positions_without_source_institution": 203,
+      "citation_accepted": 1552,
+      "citation_out_of_scope": 63382,
+      "papers": 1578,
+      "topic_assignments": 1695,
+      "topic_labeled_papers": 1387
+    },
+    "venue:aaai:2024": {
+      "accepted_positions_without_source_institution": 322,
+      "citation_accepted": 2641,
+      "citation_out_of_scope": 88496,
+      "papers": 2331,
+      "topic_assignments": 2486,
+      "topic_labeled_papers": 2009
+    },
+    "venue:aaai:2025": {
+      "accepted_positions_without_source_institution": 494,
+      "citation_accepted": 1015,
+      "citation_out_of_scope": 32874,
+      "papers": 3028,
+      "topic_assignments": 3151,
+      "topic_labeled_papers": 2550
+    },
+    "venue:ijcai:2021": {
+      "accepted_positions_without_source_institution": 30,
+      "citation_accepted": 97,
+      "citation_out_of_scope": 17061,
+      "papers": 586,
+      "topic_assignments": 572,
+      "topic_labeled_papers": 480
+    },
+    "venue:ijcai:2022": {
+      "accepted_positions_without_source_institution": 54,
+      "citation_accepted": 392,
+      "citation_out_of_scope": 17844,
+      "papers": 678,
+      "topic_assignments": 677,
+      "topic_labeled_papers": 560
+    },
+    "venue:ijcai:2023": {
+      "accepted_positions_without_source_institution": 49,
+      "citation_accepted": 755,
+      "citation_out_of_scope": 21416,
+      "papers": 639,
+      "topic_assignments": 652,
+      "topic_labeled_papers": 524
+    },
+    "venue:ijcai:2024": {
+      "accepted_positions_without_source_institution": 53,
+      "citation_accepted": 102,
+      "citation_out_of_scope": 3334,
+      "papers": 790,
+      "topic_assignments": 784,
+      "topic_labeled_papers": 656
+    },
+    "venue:ijcai:2025": {
+      "accepted_positions_without_source_institution": 116,
+      "citation_accepted": 107,
+      "citation_out_of_scope": 3694,
+      "papers": 1014,
+      "topic_assignments": 1036,
+      "topic_labeled_papers": 846
+    }
+  },
+  "doi_disagreements": [
+    {
+      "paper_id": "paper:aaai:2022:20425",
+      "official_doi": "10.1609/aaai.v36i5.20425",
+      "returned_doi": "https://doi.org/10.1145/3665799",
+      "author_positions": 3,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "53c19435f0af1774e869b1f6b4937df98e9894bb835b350e120acf8a385e4544",
+        "request_id": "d339da8beef82f88ea46fa1bbc017c504a4b85bf74152d485d026e6206efada5",
+        "retrieved_at": "2026-11-07T20:31:23.726267+00:00",
+        "url": "https://api.openalex.org/works/doi:10.1609/aaai.v36i5.20425"
+      }
+    },
+    {
+      "paper_id": "paper:aaai:2023:26455",
+      "official_doi": "10.1609/aaai.v37i10.26455",
+      "returned_doi": "https://doi.org/10.1016/j.tcs.2026.116201",
+      "author_positions": 3,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "e5e3dc674f6eba7d11a1a32721864ece7a0ef69fa983872c8879acf56ee84bd2",
+        "request_id": "2307fc7f19cc46040092eb1c43689ba73e428532304122c038af50d316053cb4",
+        "retrieved_at": "2026-11-07T20:31:24.193583+00:00",
+        "url": "https://api.openalex.org/works/doi:10.1609/aaai.v37i10.26455"
+      }
+    },
+    {
+      "paper_id": "paper:ijcai:2021:43",
+      "official_doi": "10.24963/ijcai.2021/43",
+      "returned_doi": "https://doi.org/10.1007/s00355-026-01654-w",
+      "author_positions": 1,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "b2c110f3174b87f63045b04a618e294f69ebb19cf246bf543270946faaa3c25e",
+        "request_id": "62d1774da2c7a82dcee3f5652c421adf6eebbed427ca911cc5ecbc089d46b301",
+        "retrieved_at": "2026-11-07T20:31:24.892737+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2021/43"
+      }
+    },
+    {
+      "paper_id": "paper:ijcai:2022:34",
+      "official_doi": "10.24963/ijcai.2022/34",
+      "returned_doi": "https://doi.org/10.1016/j.artint.2026.104585",
+      "author_positions": 5,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "2df31c36bf682dd5f61d26dd0f7294232db3954641499670c93bf6b0478cb8f5",
+        "request_id": "0edbc1f96b4f7a58422fc5d659a74ea27b849505168a75a48f8720163ae29c31",
+        "retrieved_at": "2026-11-07T20:31:25.376364+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/34"
+      }
+    },
+    {
+      "paper_id": "paper:ijcai:2022:635",
+      "official_doi": "10.24963/ijcai.2022/635",
+      "returned_doi": "https://doi.org/10.1613/jair.1.14820",
+      "author_positions": 3,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "64f3245aa8d6c10073eceff9c936200db5d5a8830142c93c73c2a3bb7fa6fc2a",
+        "request_id": "78b75952e9694e90cbc4663d9cb8bbe825035f60cca31e2e44ef474295705466",
+        "retrieved_at": "2026-11-07T20:31:25.848099+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2022/635"
+      }
+    },
+    {
+      "paper_id": "paper:ijcai:2025:444",
+      "official_doi": "10.24963/ijcai.2025/444",
+      "returned_doi": "https://doi.org/10.1137/25m180161x",
+      "author_positions": 2,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "a77b4faf1fb0259bfab8d02bcfd51ca4bc141239d6ceb986677cb6c3863fdc4c",
+        "request_id": "b3f5ce266651e1b1c5806f869443df33fb18ac812bbe8110dbc1025b32355ab6",
+        "retrieved_at": "2026-11-07T20:31:26.316349+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/444"
+      }
+    },
+    {
+      "paper_id": "paper:ijcai:2025:446",
+      "official_doi": "10.24963/ijcai.2025/446",
+      "returned_doi": "https://doi.org/10.1613/jair.1.21746",
+      "author_positions": 4,
+      "source": {
+        "locator": "$",
+        "raw_sha256": "a102f574fb2323363b5412762a309e78e6b9fce60c24d085bc3197de1e236109",
+        "request_id": "c8582a47662e6431e106d45b2389c8d191c642c529e7eef3c56f7d274f060440",
+        "retrieved_at": "2026-11-07T20:31:26.784692+00:00",
+        "url": "https://api.openalex.org/works/doi:10.24963/ijcai.2025/446"
+      }
+    }
+  ],
+  "historical_affiliation_copy_guard": {
+    "original_papers": 147,
+    "original_positions": 609,
+    "v4_surviving_positions_on_original_guard_papers": 525,
+    "v4_institution_supported_positions_missing_graph_affiliations": 525,
+    "missing_supported_positions_explained_by_original_guard": 525,
+    "unexplained_missing_supported_positions": 0
+  },
+  "claim_support": {
+    "accepted_conflicting_provider_positions": [],
+    "authorship_provider_position_disagreements": [],
+    "affiliation_triples_without_source_institution": 0,
+    "citation_inventory_equal_source_filtered_core_targets": true,
+    "unsupported_citations": 0,
+    "missing_source_supported_core_citations": 0
+  },
+  "limits": "source-consistency only; no independent semantic accuracy,reference completeness,ORCID ownership,topic labels or historical affiliation gold",
+  "inputs": {
+    "works": {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    },
+    "graph": {
+      "path": "data/processed/release-graph-v4/graph.json",
+      "sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90"
+    },
+    "historical_review_queue": {
+      "path": "data/processed/release-graph-v1/review-queue.jsonl",
+      "sha256": "5ed1c90cb4325874ee8357942e72e52d55bef1e8886eaa4f6f899f15ef5da726"
+    }
+  }
+}
