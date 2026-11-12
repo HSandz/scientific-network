@@ -179,3 +179,150 @@ artifact paths: [submission update](WORK-2026-11-12-submission-details.md).
 
 - `build/report-en.pdf`: `fd0f3321e769359edebdadd433d3ddb67ff2532b677ed144f4e4e8c842d3e6e1`
 - `build/report-vi.pdf`: `5ccb464ed34f328971d1747de31a7e58572d917fabc201c5191313cf79ba1e6c`
+
+## Equal-contribution page addendum — 12 November 2026
+
+Contributions now occupy a separate front-matter page (PDF page 2), with a
+translated table and TOC entry. Each member has **50%**, with the same shared
+responsibilities as requested by the user. All supplied names, IDs and course
+details remain filled; no contribution placeholders remain. Both editions now
+have **24 portrait A4 pages**, compared with 23 immediately before this update
+and 46 in the original English report.
+
+Both builds and the report verifier pass. All 48 pages were rendered again and
+all six contact sheets inspected. Both contribution tables were inspected at
+1800px resolution, along with the Vietnamese cover, TOC and conclusion. The
+Vietnamese names, headings and table text retain their diacritics; there are no
+missing glyphs, overlapping columns, clipped text or unresolved citations.
+The second member's name wraps naturally to two lines in both tables.
+
+New PDF pages 5–22 and 24 are pixel-identical to the corresponding pages of the
+preceding edition; scientific results and figures are unchanged. The conclusion
+only drops the obsolete request to fill personal/course placeholders. Outside
+the report, the tracked diff is identical to the preserved baseline.
+
+Checks, minor verification/layout fixes and exact scope are recorded in
+[the contribution update](WORK-2026-11-12-contributions.md). Local renders and
+focused results: `review/contributions-2026-11-12/`; full automated receipt:
+`review/redesign/verification.json`. This update remains **uncommitted** at the
+user's request. The following hashes supersede previous PDF hashes:
+
+- `build/report-en.pdf`: `dcfb3751cb4ec7cc8e35291583a272ceb4e614b0f444e599061f656d6b0228ff`
+- `build/report-vi.pdf`: `98e11998adff056554280edc6890e6b0316915b2703635b34b203882e9dff817`
+
+## Formal-cover addendum — 12 November 2026
+
+Both covers now use a more formal institutional layout and include the
+user-supplied **Group 9 / Topic 29**. The Vietnamese title is preserved exactly:
+“Mạng lưới các tác giả và tổ chức nghiên cứu về Trí tuệ nhân tạo (AI) Quốc tế.”
+The English title is “International Network of Authors and Research
+Organizations in Artificial Intelligence (AI).” Group, topic and translated
+title are editable in `report-info.tex`; the shared layout is in `cover.tex`.
+
+The original UET logo, faculty, course/code, instructor, member names/IDs and
+date remain correct. The separate equal-contribution page is preserved. Both
+editions remain **24 portrait A4 pages** and pass the build and full report
+verifier. All 48 pages were rendered again and all six contact sheets inspected;
+both covers were also inspected at 1800px resolution. Long titles, bold accents
+and member details fit cleanly. Every page after the cover is pixel-identical
+to the preceding edition.
+
+Full checks and scope: [formal-cover update](WORK-2026-11-12-formal-cover.md).
+Local artifacts: `review/formal-cover-2026-11-12/`. All changes remain
+**uncommitted**. Current hashes supersede the preceding hashes:
+
+- `build/report-en.pdf`: `4dc2674f42ee32846dad4d95a574269373334b22947e20ee69b63b8977de4ddf`
+- `build/report-vi.pdf`: `04a631c72c5ad1b0ee01c8c281c123c53e3208f3946943b25e2bffa34c3d5921`
+
+## Contribution introduction removed — 2026-11-12T08:37:20+07:00
+
+Removed the exact bilingual introductory paragraph at the user's request.
+The dedicated page, table and 50% shares remain. Both PDFs rebuilt successfully
+and remain 24 pages. Both changed pages were rendered and inspected: the table
+follows the heading cleanly and Vietnamese accents remain intact. Build logs
+are clean and the report verifier passes. Its text-density heuristic now treats
+the dedicated contribution table separately from body pages. Checks/renders:
+`build/contribution-paragraph-removal*.log` and
+`build/contributions-{en,vi}-updated.png`. No commit was made.
+
+Current PDF hashes supersede previous hashes:
+
+- `build/report-en.pdf`: `15e9d367b0519dd48e6b1e16133fdfaab28b492cf195bfc419e40e5b10e91d6f`
+- `build/report-vi.pdf`: `0c28d9a441155ae3b67a3bf0cf5d3bb060b81cddbd500f23aa9b0b22f6fbe2ed`
+
+## Complementary contribution descriptions — 2026-11-12T08:39:13+07:00
+
+At the user's request, replaced the identical descriptions with complementary
+responsibilities in both languages, retaining 50% each. San's entry covers data
+collection/preprocessing, paper matching, entity resolution, graph construction
+and researcher/organization collaboration analysis. Minh's entry covers NLP
+topics, graph validation, topic/citation analysis and visualization. Both entries
+include shared report writing and review. These editable descriptions supersede
+the earlier shared-description wording.
+
+`make -C report/latex all` and the report verifier passed (exit 0). Both PDFs
+remain 24 pages with clean build logs. Both changed contribution pages were
+rendered at 1400px and inspected: no clipping, overlap or broken Vietnamese
+accents. Checks/renders: `build/contribution-roles*.log` and
+`build/contributions-{en,vi}-updated.png`. README editing guidance updated.
+No commit was made. Current hashes supersede earlier hashes:
+
+- `build/report-en.pdf`: `7fd283002ba1aeaa7d2c57251b4d7a471391e1c2024995395ceff8d249018e80`
+- `build/report-vi.pdf`: `27f8ceb107c4453d6a6a9f4f2aeed4ae3fa5ac2ef2ca1f268f089c7625890c5e`
+
+## Formal-heading addendum — 2026-11-12T08:44:27+07:00
+
+Replaced question-style and conversational section headings with formal
+noun phrases in both editions (11 matching revisions per language). The
+analysis headings now describe publication/topic trends, researcher and
+organization collaboration, community structure/centrality, and within-corpus
+citations. Both TOCs are updated. All chapter text other than the section
+heading strings is byte-identical to the task-start sources.
+
+Both PDFs remain 24 portrait A4 pages and pass compilation and the full report
+verifier. All 48 pages were rendered and all six contact sheets inspected; both
+TOCs and the longest Vietnamese heading were additionally inspected at 1800px.
+No layout or Vietnamese accent problems were found. Build logs are clean.
+Full checks: [formal-heading update](WORK-2026-11-12-formal-headings.md).
+Local artifacts: `review/formal-headings-2026-11-12/`.
+Changes remain **uncommitted**. Current hashes supersede previous hashes:
+
+- `build/report-en.pdf`: `3ba6f490dd3aef2e6afed26a60ff908dbe9d2719588c27141e66625b9055bdf8`
+- `build/report-vi.pdf`: `dc51fb55b3c212b03752eb1c6ebbaac00b0c391bb2c5880795bb9fb2fc15c552`
+
+
+## Graph-version labels removed — 2026-11-12T08:59:47+07:00
+
+Removed graph-version references from both rendered reports, including the
+overview, chapters and diagram captions. Exact frozen source provenance remains
+in internal manifests and verification inputs. Findings and material limitations
+are unchanged, including the seven unresolved DOI discrepancies.
+
+Both editions compile and pass the report verifier, remaining 24 portrait A4
+pages each. All 48 final pages were rendered and all six contact sheets inspected;
+high-resolution data pages in both languages and the Vietnamese pipeline also
+passed visual inspection. No broken diacritics, clipping or layout defects remain.
+An initial sparse-page spill from an expanded DOI caveat was corrected by concise
+wording preserving its meaning; the final checks passed.
+
+Full record: [graph-version label update](WORK-2026-11-12-graph-version-labels.md).
+Artifacts: `review/graph-version-label-removal-2026-11-12/`.
+Changes remain **uncommitted**. Current PDF hashes supersede earlier hashes:
+
+- `build/report-en.pdf`: `e2f1e78d4e4189483e0b7d778add9ad0db9e621c26201012dc32241c8545f89f`
+- `build/report-vi.pdf`: `4327c71155b2d93d11ecc5787cea2ca3105b6328e250019568ff200fb418e1b2`
+
+
+## Consolidated LLM review wording — 12 November 2026
+
+One neutral review passage per edition identifies GPT-6.1-Sol for report review.
+Repeated evaluator-related caveats and the concluding AI-use disclosure removed.
+Recorded numerical outcomes remain unchanged. Both builds and the full verifier
+pass; each PDF remains 24 portrait A4 pages. Quality and conclusion pages in both
+languages were rendered and visually checked, including Vietnamese diacritics.
+See [work record](WORK-2026-11-12-llm-wording.md) and
+`review/llm-wording-2026-11-12/`. Changes remain uncommitted.
+Current hashes supersede previous hashes:
+
+- `build/report-en.pdf`: `5419661c7a37c7bd361e90bbf7d01ed2d9de109e2db8b056771a63fb6ea53b5e`
+- `build/report-vi.pdf`: `2a6bf4a48a024f59d03374d54094b30e8eed9c850e17f44643866941ef7e51e1`

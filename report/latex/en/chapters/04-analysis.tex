@@ -2,12 +2,12 @@
 \label{ch:analysis}
 Analysis separates five projections: researcher coauthorship, organization
 collaboration, directed within-corpus citations, paper--topic membership and
-organization--topic contributions. Metrics come from the frozen v4 analysis,
+organization--topic contributions. Metrics come from analysis of the graph,
 computed offline with NetworkX \citep{networkxDocs}. Each projection includes
 its eligible nodes and isolates; collaboration graphs are undirected and
 citation arrows run from citing to cited paper.
 
-\section{How did the publication landscape change?}
+\section{Publication and topic trends}
 The official counts in Figure~\ref{fig:publications} show about 80\% more
 papers in 2025 than in 2021, with a decline in 2022. The expansion is uneven
 and specific to the selected main-track proceedings.
@@ -34,7 +34,7 @@ However, it remains a shift in classifier-assigned shares, conditional on
 labeled papers. Abstentions and the topic-evaluation limits in
 Chapter~\ref{ch:quality} constrain a claim about the entire research landscape.
 
-\section{How connected are the researchers?}
+\section{Researcher collaboration network}
 The coauthorship projection connects \Researchers{} researchers through
 \CoauthorPairs{} distinct pairs. Degree counts different collaborators, while
 fractional strength accumulates team-size-adjusted support. Mean degree is
@@ -73,7 +73,7 @@ and a wider accepted collaboration network. Identity withholding can remove
 links unevenly, so the graph cannot distinguish every real change in research
 activity from metadata coverage effects.
 
-\section{Where do organizations collaborate?}
+\section{Organization collaboration network}
 The organization projection contains \Organizations{} organizations and
 \OrganizationPairs{} unique collaboration pairs. It has
 \OrganizationIsolates{} isolates, mean degree 12.73 and maximum degree 257.
@@ -137,7 +137,7 @@ while Peking allocates a greater fractional share to that topic. This is a usefu
 comparison of volume and specialization, conditional on retained affiliations
 and inferred labels.
 
-\section{Which communities and researchers connect the network?}
+\section{Community structure and researcher centrality}
 Community detection finds relatively dense collaboration groups. The selected
 Louvain run uses seed 17 and resolution 0.8 \citep{blondel2008communities}.
 Figure~\ref{fig:communities} shows inferred-topic profiles for twelve large
@@ -201,7 +201,7 @@ reason to treat bridge rankings as structural inspection leads. Betweenness
 measures paths under the chosen graph definition, not research quality or
 real-world influence.
 
-\section{Which papers receive citations within the corpus?}
+\section{Within-corpus citation network}
 The directed citation projection includes all \Papers{} papers and
 \CitationEdges{} accepted within-corpus citation edges. A reference to a paper
 outside these proceedings is excluded; ambiguous target mappings and self-loops

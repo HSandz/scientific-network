@@ -1,7 +1,7 @@
 # Scientific Network — bilingual course reports
 
 The English and Vietnamese editions use the same frozen production v4 graph,
-`release-d3c788c3114a`. Each is **23 pages**, reduced from the previous 46-page
+`release-d3c788c3114a`. Each is **24 pages**, reduced from the previous 46-page
 English report. The five chapters emphasize data, graph construction, inventory,
 network insights, and conclusions. Ten figures appear in each edition.
 
@@ -42,8 +42,10 @@ The separate glyph proof and rendered reports were inspected visually; see
 | Path | Purpose |
 | --- | --- |
 | `main-en.tex`, `main-vi.tex` | Independently compilable language entry points |
-| `document.tex`, `preamble.tex` | Shared cover, chapter order, typography and navigation |
-| `report-info.tex` | Editable names, IDs, contributions, faculty, instructor, course code and date |
+| `cover.tex` | Formal bilingual cover with institution, group and official topic |
+| `document.tex`, `preamble.tex` | Shared chapter order, typography and navigation |
+| `contributions.tex` | Dedicated bilingual page with contribution percentages and descriptions |
+| `report-info.tex` | Editable names, IDs, contributions, group/topic, faculty, instructor, course code and date |
 | `en/`, `vi/` | Separate overview and five chapter sources |
 | `data/facts.tex`, `data/fact-manifest.json` | Generated shared counts and pinned sources |
 | `data/construction-example.json` | Actual accepted v4 example nodes, edges and observations |
@@ -53,10 +55,14 @@ The separate glyph proof and rendered reports were inspected visually; see
 | `assets/uet.png` | Original UET logo, unchanged |
 | `references.bib` | Shared bibliography; localized access notes |
 
-Names, IDs, faculty, instructor, course code and submission date are populated
-from the user's supplied details. Only the actual-contribution fields remain
-as placeholders; no contributions were inferred. `\VietnameseText{...}` supports
-accented names in the English cover. Rebuild and inspect the covers after edits.
+Names, IDs, faculty, instructor, course code, Group 9, Topic 29 and submission
+date are populated from the user's supplied details. The cover uses the official
+Vietnamese topic, “Mạng lưới các tác giả và tổ chức nghiên cứu về Trí tuệ nhân tạo
+(AI) Quốc tế,” with its English translation. The separate contribution page records the
+requested 50%–50% split, complementary responsibilities, and shared report writing
+and review. Percentages and
+descriptions remain editable in `report-info.tex`. `\VietnameseText{...}` supports
+accented names in the English edition. Rebuild and inspect the front matter after edits.
 
 ## Regenerating shared tables and figures
 

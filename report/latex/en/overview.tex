@@ -7,7 +7,7 @@ and which papers receive citations within a defined collection. It covers
 proceedings define the collection; OpenAlex supplies additional metadata for
 \MatchedWorks{} matched works.
 
-The frozen production v4 graph contains \TotalNodes{} nodes and \TotalEdges{}
+The graph contains \TotalNodes{} nodes and \TotalEdges{}
 edges across five entity types and ten relationships. Construction combines
 DOI-based paper matching, position-specific researcher identification,
 paper-specific affiliation mapping, and a frozen MiniLM topic classifier.
@@ -27,15 +27,11 @@ citation ranking with 51 citing papers. These results describe the selected
 publication network; missing identities and affiliations, inferred-topic errors,
 and the restricted citation boundary limit wider interpretation.
 
-\vspace{0.4em}
-\textbf{Version used throughout:} production v4, \GraphVersion.
-All measurements and figure selections use that frozen graph.
-
 \textbf{Project resources}
 \begin{itemize}
 \item Repository: \url{https://github.com/HSandz/scientific-network}
 \item Explorer: \url{https://scientific-network-explorer.pages.dev/}
-\item Reproduction guide: \href{https://github.com/HSandz/scientific-network/blob/main/docs/reproduce-remediation-v4.md}{\sourcepath{docs/reproduce-remediation-v4.md}}
+\item \href{https://github.com/HSandz/scientific-network/blob/main/docs/reproduce-remediation-v4.md}{Data and analysis reproduction guide}
 \end{itemize}
 The repository is private in the latest recorded access check; lecturer access
 still needs to be arranged. The Explorer is a separate public interface.
