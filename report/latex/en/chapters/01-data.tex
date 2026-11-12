@@ -4,7 +4,7 @@
 This project supports research-landscape and collaboration analysis for the
 course \emph{Social Media Network Analysis for Business}: find repeated
 co-publication, inspect connections between groups, and compare visible
-research areas. The final official roster, v10, contains \Papers{} main-track
+research areas. The official roster contains \Papers{} main-track
 papers from AAAI and IJCAI, 2021--2025: 9,910 AAAI and 3,707 IJCAI papers.
 Edition year is a paper property. Workshops, other tracks and other venues are
 excluded, so this is a bounded two-venue view rather than a census of AI research.
@@ -15,7 +15,7 @@ Official proceedings define inclusion and printed bylines
 \citep{openalexworks}. An index record cannot silently add a paper to the roster.
 
 \begin{table}[!htbp]\centering\small
-\caption{Sources used in the released graph.}\label{tab:sources}
+\caption{Sources used to construct the graph.}\label{tab:sources}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}YY}\toprule
 Source & Contribution & Handling\\\midrule
 AAAI proceedings & Main-track roster, title, byline, edition, official URL & Corpus boundary and DOI derivation\\
@@ -28,7 +28,7 @@ Crossref and official-page spot checks later investigated DOI discrepancies;
 they did not replace the frozen records. PDFs and GROBID extraction are not
 required production inputs.
 
-\section{From official records to matched works}
+\section{Publication matching and metadata processing}
 The pipeline normalizes roster fields and derives DOIs from proceedings records:
 AAAI uses volume, issue and record number; IJCAI uses year and paper number.
 All 13,617 requested DOIs are distinct. OpenAlex is queried in cached batches,
@@ -44,12 +44,12 @@ mismatches. No record was reported as not found after retries. Unmatched papers
 remain in the corpus with venue edges but no unsupported researcher identities.
 All matched records have abstracts.
 
-\textbf{Historical source caveat.} V4 acquisition lacked returned-DOI equality
-checking in its singleton fallback. Seven accepted records have returned DOIs
-different from the roster-derived DOIs, separate from the 11 unmatched records.
-Title/byline agreement does not verify version equivalence or affiliation
-transfer. The later code guard protects future acquisition; frozen v4 was not
-retroactively repaired. All seven discrepancies remain unresolved.
+\textbf{DOI matching limitation.} The singleton fallback used during acquisition
+lacked returned-DOI equality checking. Seven accepted records have DOIs that
+differ from roster-derived DOIs, separate from the 11 unmatched records.
+Title/byline agreement alone does not resolve publication or affiliation
+ambiguity. A later code correction added the check without changing these
+records; all seven discrepancies remain unresolved.
 
 Immutable caches retain requests, retrieval times and content hashes; evidence
 locators connect claims to records. Current API responses cannot replace the

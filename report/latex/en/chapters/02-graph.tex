@@ -10,13 +10,13 @@ evidence, and derives collaboration and topic-profile edges.
 
 \input{figures/bilingual-pipeline.tex}
 
-The final graph is stored as a versioned JSON artifact and loaded into the
-isolated Neo4j Community 5.26 release database \citep{neo4jDocs}. Named
+The graph is stored in JSON and loaded into an
+isolated Neo4j Community 5.26 database \citep{neo4jDocs}. Named
 projections support offline analysis; the Explorer provides read-only access to
-entities, relationships and source evidence. The graph version and frozen
-configuration bind all results in this report.
+entities, relationships and source evidence. All reported measurements use
+the same graph and analysis configuration.
 
-\section{NLP processing: text becomes topic links}
+\section{NLP-based topic classification}
 The project uses natural language processing (NLP) to connect papers to research topics. For each matched
 work, the input is its title followed by its reconstructed abstract; title-only
 processing is supported when an abstract is absent. The same frozen
@@ -62,7 +62,7 @@ remain source evidence; a current profile or a paper-wide institution list is
 not copied to every author. A guard withholds suspicious identical multi-institution
 sets copied across several authors. Unknown institutions or sectors remain unknown.
 
-\section{Schema and relationship meaning}
+\section{Graph schema and relationship semantics}
 The five node types are Researcher, Paper, Organization, Topic and Venue.
 Table~\ref{tab:schema} summarizes the ten relationships. The four evidence
 classes distinguish observed metadata, model inference, curated vocabulary and
@@ -72,7 +72,7 @@ derivation from accepted base edges.
 \FloatBarrier
 
 Each semantic edge has a deterministic ID, accepted status, endpoint IDs,
-evidence references and graph/method versions. Symmetric collaboration pairs
+evidence references and construction-method metadata. Symmetric collaboration pairs
 are stored once in canonical ID order and analyzed as undirected. Source
 confirmations and reverse copies do not create additional edges.
 
@@ -87,7 +87,7 @@ Both relationships also retain the distinct supporting-paper count.
 does not increase those counts.
 
 \Needspace{18cm}
-\section{A real publication becomes a small graph}
+\section{Graph construction example}
 Consider \emph{ECG ODE-GAN: Learning Ordinary Differential Equations of ECG
 Dynamics via Generative Adversarial Learning} (AAAI 2021). Its
 \href{https://ojs.aaai.org/index.php/AAAI/article/view/16086}{official record}
@@ -96,7 +96,7 @@ becomes \sourcepath{paper:aaai:2021:16086}. DOI
 matches \href{https://openalex.org/W3176135934}{OpenAlex W3176135934} with exact
 title agreement and three authors in both records.
 
-Frozen v4 accepts Tomer Golany (A5022512211, position 1) and Kira Radinsky
+Accepted authorships link the paper to Tomer Golany (A5022512211, position 1) and Kira Radinsky
 (A5029708595, position 3). The official middle author, Daniel Freedman, has no
 accepted authorship edge in this graph. Two accepted paper-specific observations
 link Golany and Radinsky to Technion (I174306211). The classifier assigns
@@ -107,7 +107,7 @@ excerpt about learning dynamics through a generative adversarial network.
 \FloatBarrier
 
 The displayed authorship, affiliation, venue, topic and coauthor edges all exist
-in frozen v4. This paper contributes $1/(3-1)=0.5$ to the accepted coauthor
+in the graph. This paper contributes $1/(3-1)=0.5$ to the accepted coauthor
 pair's fractional weight; the edge can also aggregate other papers. Both
 accepted authors point to the same institution, so this example supplies no
 organization--organization collaboration. One paper alone also cannot establish

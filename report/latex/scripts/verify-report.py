@@ -74,12 +74,14 @@ for lang in ['en','vi']:
    if x0<0 or y0<0 or x1>595.4 or y1>842:outliers.append([i,w.text])
    if x0<65 or x1>531:wide.append([i,w.text,round(x0,2),round(x1,2)])
  assert not outliers,(lang,outliers)
- assert min(counts)>65,(lang,counts)
+ # Cover and dedicated contribution table intentionally use less text.
+ assert counts[1]>30 and min(counts[2:])>65,(lang,counts)
  txt=run('pdftotext','-layout',pdf,'-');(OUT/f'{lang}-text.txt').write_text(txt)
  assert not re.search(r'(?<![\d.])90\s*%',txt)
  for v in ['47,875','225,731','13,617','13,606','32,189','2,047','80,482','13,031','7,308','48,259','65,469','11,575','2,042','0.042193']:
   assert v in txt,(lang,v)
- assert 'release-d3c788c3114a' in txt
+ # Graph provenance stays pinned above; version labels are omitted from the report.
+ assert not re.search(r'\bv(?:3|4|5|10)\b|release-[0-9a-f]{12}|graph\s+version|phiên bản đồ thị',txt,re.I)
  assert not re.search(r'candidate-v3|release-9d4a6fb20f63|Task2[BCD]',txt)
  if lang=='vi':
   for term in ['Thu thập','đồ thị','nghiên cứu','Tài liệu tham khảo','Mục lục','ĐẠI HỌC QUỐC GIA HÀ NỘI']:

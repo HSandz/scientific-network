@@ -10,13 +10,13 @@ nhận, giữ bằng chứng và dẫn xuất quan hệ hợp tác cùng hồ s�
 
 \input{figures/bilingual-pipeline.tex}
 
-Đồ thị cuối được lưu dưới dạng JSON có phiên bản và nạp vào cơ sở dữ liệu
-Neo4j Community 5.26 riêng cho bản chính thức \citep{neo4jDocs}. Các phép chiếu
+Đồ thị được lưu dưới dạng JSON và nạp vào cơ sở dữ liệu
+Neo4j Community 5.26 riêng biệt \citep{neo4jDocs}. Các phép chiếu
 được định nghĩa riêng phục vụ phân tích ngoại tuyến; Explorer cho phép đọc
-thực thể, quan hệ và bằng chứng nguồn. Mọi kết quả trong báo cáo đều gắn với
-phiên bản đồ thị và cấu hình đã cố định.
+thực thể, quan hệ và bằng chứng nguồn. Mọi số liệu trong báo cáo đều được tính
+từ cùng một đồ thị và cấu hình phân tích.
 
-\section{Xử lý NLP: từ văn bản đến liên kết chủ đề}
+\section{Phân loại chủ đề bằng NLP}
 Dự án dùng xử lý ngôn ngữ tự nhiên (NLP) để nối bài báo với chủ đề nghiên cứu.
 Với mỗi công trình đối sánh, đầu vào là tiêu đề nối với tóm tắt được khôi phục;
 hệ thống hỗ trợ chỉ dùng tiêu đề khi thiếu tóm tắt. Cùng một mô hình cố định
@@ -62,7 +62,7 @@ mọi tác giả. Quy tắc bảo vệ giữ lại các tập nhiều tổ chứ
 hiện đáng ngờ ở nhiều tác giả. Tổ chức hoặc khu vực chưa xác định được giữ ở
 trạng thái chưa rõ.
 
-\section{Lược đồ và ý nghĩa các quan hệ}
+\section{Lược đồ đồ thị và ngữ nghĩa quan hệ}
 Năm loại nút là nhà nghiên cứu, bài báo, tổ chức, chủ đề và hội nghị.
 Bảng~\ref{tab:schema} tóm tắt mười quan hệ. Bốn loại bằng chứng phân biệt siêu
 dữ liệu quan sát, suy luận mô hình, hệ từ vựng biên soạn và quan hệ dẫn xuất từ
@@ -72,7 +72,7 @@ cạnh cơ sở được chấp nhận.
 \FloatBarrier
 
 Mỗi cạnh ngữ nghĩa có ID xác định, trạng thái chấp nhận, ID hai đầu, tham chiếu
-bằng chứng và phiên bản đồ thị/phương pháp. Cặp hợp tác đối xứng chỉ lưu một lần
+bằng chứng và thông tin về phương pháp xây dựng. Cặp hợp tác đối xứng chỉ lưu một lần
 theo thứ tự ID chuẩn tắc và được phân tích như quan hệ vô hướng. Xác nhận từ
 nhiều nguồn hoặc bản sao đảo chiều không tạo cạnh mới.
 
@@ -86,7 +86,7 @@ tập lõi; \texttt{CONTRIBUTES\_TO\_TOPIC} cần ba bài. Bằng chứng lặp 
 không làm tăng số đếm.
 
 \Needspace{18cm}
-\section{Ví dụ từ một bài báo thực tế}
+\section{Ví dụ xây dựng đồ thị từ bài báo}
 Xét \emph{ECG ODE-GAN: Learning Ordinary Differential Equations of ECG Dynamics
 via Generative Adversarial Learning} (AAAI 2021).
 \href{https://ojs.aaai.org/index.php/AAAI/article/view/16086}{Bản ghi chính thức}
@@ -95,7 +95,7 @@ trở thành \sourcepath{paper:aaai:2021:16086}. DOI
 đối sánh với \href{https://openalex.org/W3176135934}{OpenAlex W3176135934}, với
 tiêu đề khớp hoàn toàn và cùng ba tác giả.
 
-V4 cố định chấp nhận Tomer Golany (A5022512211, vị trí 1) và Kira Radinsky
+Các quan hệ tác giả được chấp nhận nối bài báo với Tomer Golany (A5022512211, vị trí 1) và Kira Radinsky
 (A5029708595, vị trí 3). Daniel Freedman, tác giả ở giữa trên danh sách chính
 thức, không có cạnh tác giả được chấp nhận trong đồ thị này. Hai quan sát theo
 bài nối Golany và Radinsky với Technion (I174306211). Bộ phân loại gán chủ đề
@@ -106,7 +106,7 @@ bài nối Golany và Radinsky với Technion (I174306211). Bộ phân loại g�
 \FloatBarrier
 
 Các cạnh tác giả, đơn vị công tác, hội nghị, chủ đề và đồng tác giả trong hình
-đều tồn tại ở v4. Bài này đóng góp $1/(3-1)=0.5$ vào trọng số phân bổ của cặp
+đều tồn tại trong đồ thị. Bài này đóng góp $1/(3-1)=0.5$ vào trọng số phân bổ của cặp
 đồng tác giả được chấp nhận; cạnh có thể tổng hợp thêm bài khác. Hai tác giả
 đều liên kết với một tổ chức, nên ví dụ không tạo hợp tác giữa hai tổ chức.
 Một bài riêng lẻ cũng chưa đủ lập cạnh hồ sơ chủ đề cho nhà nghiên cứu hoặc tổ

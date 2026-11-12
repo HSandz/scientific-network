@@ -2,11 +2,11 @@
 \label{ch:analysis}
 Phân tích tách năm phép chiếu: đồng tác giả, hợp tác tổ chức, trích dẫn có hướng
 trong tập dữ liệu, bài báo--chủ đề và đóng góp tổ chức--chủ đề. Các chỉ số lấy
-từ phân tích v4 cố định, tính ngoại tuyến bằng NetworkX \citep{networkxDocs}.
+từ phân tích đồ thị, tính ngoại tuyến bằng NetworkX \citep{networkxDocs}.
 Mỗi phép chiếu giữ các nút thuộc phạm vi, kể cả nút cô lập; mạng hợp tác là vô
 hướng, còn cạnh trích dẫn đi từ bài trích dẫn tới bài được trích dẫn.
 
-\section{Bức tranh công bố thay đổi như thế nào?}
+\section{Xu hướng công bố và chủ đề nghiên cứu}
 Số liệu chính thức ở Hình~\ref{fig:publications} cho thấy năm 2025 có nhiều
 bài hơn năm 2021 khoảng 80\%, với bước giảm vào năm 2022. Sự mở rộng không
 đều và chỉ phản ánh các tập kỷ yếu luồng chính đã chọn.
@@ -32,7 +32,7 @@ Tuy nhiên, kết quả vẫn là biến động tỷ trọng nhãn mô hình tr
 gán nhãn. Các bài bị từ chối gán nhãn và giới hạn đánh giá ở Chương~\ref{ch:quality}
 hạn chế kết luận về toàn bộ bức tranh nghiên cứu.
 
-\section{Các nhà nghiên cứu kết nối ra sao?}
+\section{Mạng hợp tác giữa các nhà nghiên cứu}
 Phép chiếu đồng tác giả nối \Researchers{} nhà nghiên cứu bằng
 \CoauthorPairs{} cặp phân biệt. Bậc đếm số người cộng tác khác nhau, còn độ
 mạnh phân bổ cộng dồn hỗ trợ sau điều chỉnh theo quy mô nhóm tác giả. Bậc trung
@@ -69,7 +69,7 @@ nhận rộng hơn. Việc giữ lại định danh có thể loại cạnh khô
 thị không tách được hoàn toàn biến động hoạt động thực tế khỏi ảnh hưởng của
 độ bao phủ siêu dữ liệu.
 
-\section{Các tổ chức hợp tác ở đâu?}
+\section{Mạng hợp tác giữa các tổ chức}
 Phép chiếu tổ chức gồm \Organizations{} tổ chức và \OrganizationPairs{} cặp
 hợp tác duy nhất. Có \OrganizationIsolates{} nút cô lập, bậc trung bình 12.73
 và bậc lớn nhất 257. Mỗi cạnh cần bằng chứng đơn vị công tác theo cùng bài của
@@ -131,7 +131,7 @@ còn Peking dành tỷ trọng phân bổ lớn hơn cho chủ đề này. Đây
 ích giữa quy mô và mức tập trung, với điều kiện dựa trên liên kết tổ chức được
 giữ lại và nhãn suy ra.
 
-\section{Cộng đồng và nhà nghiên cứu nào kết nối mạng?}
+\section{Cấu trúc cộng đồng và độ trung tâm của nhà nghiên cứu}
 Phát hiện cộng đồng tìm các nhóm có kết nối đồng tác giả tương đối dày bên
 trong. Lần chạy Louvain được chọn dùng hạt giống 17 và độ phân giải 0.8
 \citep{blondel2008communities}. Hình~\ref{fig:communities} trình bày hồ sơ chủ
@@ -195,7 +195,7 @@ hợp tác lặp lại và làm mạng phân mảnh mạnh. Đây là lý do c�
 nối như gợi ý để khảo sát cấu trúc. Độ trung tâm trung gian đo đường đi theo
 định nghĩa đồ thị đã chọn, không đo chất lượng nghiên cứu hay ảnh hưởng thực tế.
 
-\section{Bài nào được trích dẫn trong tập dữ liệu?}
+\section{Mạng trích dẫn trong tập dữ liệu}
 Phép chiếu trích dẫn có hướng gồm toàn bộ \Papers{} bài và \CitationEdges{}
 cạnh trích dẫn nội bộ được chấp nhận. Tham chiếu tới bài ngoài hai tập kỷ yếu
 bị loại; ánh xạ đích mơ hồ và cạnh tự nối bị bỏ, còn tham chiếu lặp tới
