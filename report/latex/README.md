@@ -53,9 +53,10 @@ The separate glyph proof and rendered reports were inspected visually; see
 | `assets/uet.png` | Original UET logo, unchanged |
 | `references.bib` | Shared bibliography; localized access notes |
 
-Complete bracketed submission fields from official team records; no personal
-information was inferred. `\VietnameseText{...}` supports accented names in the
-English cover. Rebuild and inspect the cover after entering longer names.
+Names, IDs, faculty, instructor, course code and submission date are populated
+from the user's supplied details. Only the actual-contribution fields remain
+as placeholders; no contributions were inferred. `\VietnameseText{...}` supports
+accented names in the English cover. Rebuild and inspect the covers after edits.
 
 ## Regenerating shared tables and figures
 

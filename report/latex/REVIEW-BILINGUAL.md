@@ -165,3 +165,17 @@ deployment was modified. Nothing was pushed or published.
 
 - `build/report-en.pdf`: `45129ca86a44417ffc519488e905930f5baeb01de04d7608f1d98f231a992a8c`
 - `build/report-vi.pdf`: `568d7a9f3957d0ca0d96674befa95fea70639471d32be8ed1f958112014f29da`
+
+## Submission-details addendum — 12 November 2026
+
+The user-supplied team/course/faculty/instructor/date fields are now filled
+in `report-info.tex`; only actual contributions remain placeholders. Both
+editions rebuild to 23 pages and pass the report verifier. New cover renders
+were inspected for names, diacritics and layout. All pages were rendered again;
+pages 2–23 are pixel-identical to the previously inspected renders.
+
+Current hashes supersede the preceding PDF hashes. Full checks and local
+artifact paths: [submission update](WORK-2026-11-12-submission-details.md).
+
+- `build/report-en.pdf`: `fd0f3321e769359edebdadd433d3ddb67ff2532b677ed144f4e4e8c842d3e6e1`
+- `build/report-vi.pdf`: `5ccb464ed34f328971d1747de31a7e58572d917fabc201c5191313cf79ba1e6c`
