@@ -1,90 +1,124 @@
-# LaTeX research report
+# Scientific Network — bilingual course reports
 
-This directory contains the independently buildable academic report source for
-the AAAI/IJCAI 2021--2025 scientific knowledge graph. The manuscript uses the
-frozen production v4 graph and release-v4 analysis. Its AI assessment, historical
-results, coverage gaps, and human-review status are kept distinct in the text.
-
-## Build requirements
-
-- TeX Live or an equivalent TeX distribution with pdfLaTeX, `latexmk`, BibTeX,
-  `natbib`, `booktabs`, `tabularx`, `longtable`, `tikz`, `hyperref`,
-  `cleveref`, and the other packages loaded by `preamble.tex`.
-- The TeX Gyre Termes, New TX Math, and VnTeX packages (distributed as open TeX
-  font/package resources).
-
-XeLaTeX was not available in the authoring environment, and its installed
-LuaLaTeX binary failed because the local `luaotfload` module was missing. The
-project therefore uses pdfLaTeX with UTF-8 input, VnTeX's T5 encoding for
-Vietnamese names, and TeX Gyre Termes text with New TX mathematics. The
-`\VietnameseText{...}` macro in `preamble.tex` can wrap editable Vietnamese
-names. No font files are bundled.
+The English and Vietnamese editions use the same frozen production v4 graph,
+`release-d3c788c3114a`. Each is **23 pages**, reduced from the previous 46-page
+English report. The five chapters emphasize data, graph construction, inventory,
+network insights, and conclusions. Ten figures appear in each edition.
 
 ## Build
 
-From this directory, run:
-
 ```sh
-make
+cd report/latex
+make en       # build/report-en.pdf
+make vi       # build/report-vi.pdf
+make all      # both editions
 ```
 
-The compiler and bibliography passes are handled by `latexmk`. The output is
-`build/main.pdf`; all auxiliary files remain under `build/`. Use `make clean` to
-remove generated files.
+`latexmk` runs pdfLaTeX and BibTeX until cross-references settle. `make clean`
+removes the two editions' generated build files. `main.tex` is a compatibility
+entry point for the English edition; the supported output names are above.
 
-## Structure and editing
+Ordinary compilation uses only the report's local sources, tables, figures and
+logo. The graph, API caches, models and database are not needed. Both languages'
+vector figure PDFs are included as source assets; PNGs are inspection copies.
+`build/` and `review/` are ignored local output directories.
 
-- `main.tex`: cover, front matter, chapter order, appendices, and bibliography.
-- `preamble.tex`: typography, page layout, headings, links, tables, and figures.
-- `report-info.tex`: editable title, university/course, team, contribution,
-  instructor, and submission-date fields. Replace bracketed values only from
-  official records; do not infer student details.
-- `chapters/`: eight report chapters and three appendices.
-- `tables/`: reusable manuscript tables.
-- `figures/`: report-specific renderings of frozen v4 measurements and
-  deterministic bounded v4 network views. `figures/SOURCES.md` records each
-  source artifact and the graph version used.
-- `assets/uet.png`: original user-supplied UET logo, moved without alteration.
-- `references.bib`: scholarly literature and authoritative software/data docs.
+Required: a TeX Live installation with `latexmk`, pdfLaTeX, BibTeX, VnTeX,
+TeX Gyre Termes, New TX Math, and the packages in `preamble.tex` (including
+TikZ, `natbib`, `booktabs`, `tabularx`, `siunitx`, `hyperref`, `xurl`,
+`titlesec`, `tocloft`, `fancyhdr`, `placeins`, `needspace` and `microtype`).
+No font files are distributed.
 
-To update a figure, run `scripts/generate-figures.py` from the repository root
-using the existing analysis environment and required pinned inputs. Inspect the
-resulting PDF and PNG, caption, denominator and selection ledger. Keep source
-paths, graph version, projection, and counting rules in `figures/SOURCES.md`.
-Compilation depends only on the local figure files, not ignored source artifacts.
+XeLaTeX is unavailable in this authoring environment. The installed LuaLaTeX
+fails because `luaotfload-main` and associated font metrics are unavailable.
+The tested fallback is **pdfLaTeX + UTF-8 VnTeX/T5 + TeX Gyre Termes**.
+Vietnamese uses T5 throughout, including bold, italic, captions and TikZ;
+English uses T1 with T5 available for names. Plot labels use DejaVu Sans.
+The separate glyph proof and rendered reports were inspected visually; see
+[REVIEW-BILINGUAL.md](REVIEW-BILINGUAL.md).
 
-## Scientific scope and reproduction
+## Editing
 
-The report references tracked release artifacts for counts and method versions.
-The full graph, works cache, and database are intentionally not bundled. See
-`../../docs/reproduce-remediation-v4.md` and Appendix B for the exact local
-reproduction commands and required frozen input hashes. Re-acquiring current
-provider responses is not byte-identical restoration.
+| Path | Purpose |
+| --- | --- |
+| `main-en.tex`, `main-vi.tex` | Independently compilable language entry points |
+| `document.tex`, `preamble.tex` | Shared cover, chapter order, typography and navigation |
+| `report-info.tex` | Editable names, IDs, contributions, faculty, instructor, course code and date |
+| `en/`, `vi/` | Separate overview and five chapter sources |
+| `data/facts.tex`, `data/fact-manifest.json` | Generated shared counts and pinned sources |
+| `data/construction-example.json` | Actual accepted v4 example nodes, edges and observations |
+| `tables/bilingual-*.tex` | Shared tables with language-specific labels |
+| `figures/bilingual-*.tex` | Shared pipeline and real-example TikZ diagrams |
+| `figures/en/`, `figures/vi/` | Localized plots with identical data and selections |
+| `assets/uet.png` | Original UET logo, unchanged |
+| `references.bib` | Shared bibliography; localized access notes |
 
-## Report quality review (12 November 2026)
+Complete bracketed submission fields from official team records; no personal
+information was inferred. `\VietnameseText{...}` supports accented names in the
+English cover. Rebuild and inspect the cover after entering longer names.
 
-The visual/scientific pass is recorded in [REVIEW.md](REVIEW.md). Its write scope
-is this directory only. The full baseline and final page renders/contact sheets
-are local under ignored `review/`; the delivered manuscript is `build/main.pdf`.
-Team/course placeholders remain editable solely in `report-info.tex`, reused by
-the cover and contribution appendix.
+## Regenerating shared tables and figures
 
-The report now uses local vector PDF plots, with PNG inspection copies. Both
-are reproducible from pinned v4 artifacts using `scripts/generate-figures.py`;
-see [figures/SOURCES.md](figures/SOURCES.md) for selection definitions and input
-requirements. Generation changes presentation only, and is unnecessary for
-ordinary compilation. `Makefile` tracks PDF figure dependencies.
-
-Render every page and produce contact sheets with:
+Optional regeneration requires the repository's existing `.venv` environment
+(Matplotlib, NumPy and NetworkX) and the **exact frozen inputs**, including the
+ignored v4 graph. It does not collect data, infer new topics or rerun network
+analysis. From this directory:
 
 ```sh
-# Run from repository root using the existing analysis environment.
-.venv/bin/python report/latex/scripts/render-review.py \
-  report/latex/build/main.pdf report/latex/review/final
+make figures
+```
+
+This runs `scripts/prepare-data.py` and
+`scripts/generate-figures.py --language en`, then `--language vi`. The scripts
+check input SHA-256 pins and write only inside this report directory. Do not
+edit generated numerical tables manually. See [figures/SOURCES.md](figures/SOURCES.md)
+for denominators, selection rules, input paths and receipts. Reacquiring current
+API responses cannot restore the original source bytes.
+
+## Verification and rendered review
+
+From the repository root, with Poppler (`pdftoppm`, `pdfinfo`, `pdftotext`,
+`pdffonts`) and Pillow installed:
+
+```sh
 .venv/bin/python report/latex/scripts/verify-report.py
+.venv/bin/python report/latex/scripts/render-review.py \
+  report/latex/build/report-en.pdf report/latex/review/redesign/en-final
+.venv/bin/python report/latex/scripts/render-review.py \
+  report/latex/build/report-vi.pdf report/latex/review/redesign/vi-final
 ```
 
-Poppler's `pdftoppm`, `pdfinfo` and `pdftotext`, plus Pillow, support the review
-scripts. Compilation continues to use pdfLaTeX and BibTeX. The report additionally
-uses `placeins`, `needspace`, `etoolbox` and `tocloft` for layout/navigation.
-Repository-wide tests and graph rebuilds are not part of this report-only pass.
+The verifier needs the pinned graph/analysis inputs. It checks counts, numerical
+source parity, accepted example edges, figure selections, fonts, references,
+page geometry, overflow and protected hashes. It writes
+`review/redesign/verification.json`; it does **not** certify visual quality.
+Inspect all page images/contact sheets and important pages at higher resolution.
+The language checklist is [BILINGUAL-CHECKS.md](BILINGUAL-CHECKS.md); final build,
+visual review and content changes are in [REVIEW-BILINGUAL.md](REVIEW-BILINGUAL.md).
+
+The standalone typography proof can be rebuilt from this directory:
+
+```sh
+mkdir -p review/redesign
+pdflatex -interaction=nonstopmode -halt-on-error \
+  -output-directory=review/redesign scripts/vietnamese-proof.tex
+pdftoppm -scale-to 1800 -singlefile -png \
+  review/redesign/vietnamese-proof.pdf review/redesign/vietnamese-proof
+```
+
+## Preserved original and project resources
+
+The complete original report source remains in Git at `4b265c8`; the previous
+chapters, tables, root figure assets and [REVIEW.md](REVIEW.md) are retained as
+historical material and are not included by the new entry points. The exact
+46-page baseline PDF and a complete source ZIP are preserved locally under
+`review/redesign/baseline/`. Original figure provenance is retained byte-for-byte
+in [figures/SOURCES-46-PAGE.md](figures/SOURCES-46-PAGE.md).
+
+- [Repository](https://github.com/HSandz/scientific-network)
+- [Research Explorer](https://scientific-network-explorer.pages.dev/)
+- [Frozen-v4 reproduction guide](../../docs/reproduce-remediation-v4.md)
+
+Repository access for the lecturer still needs to be arranged according to the
+latest recorded private-repository access check. No publication or deployment
+is part of this report task.

@@ -1,0 +1,243 @@
+\chapter{Phân tích mạng và kết quả}
+\label{ch:analysis}
+Phân tích tách năm phép chiếu: đồng tác giả, hợp tác tổ chức, trích dẫn có hướng
+trong tập dữ liệu, bài báo--chủ đề và đóng góp tổ chức--chủ đề. Các chỉ số lấy
+từ phân tích v4 cố định, tính ngoại tuyến bằng NetworkX \citep{networkxDocs}.
+Mỗi phép chiếu giữ các nút thuộc phạm vi, kể cả nút cô lập; mạng hợp tác là vô
+hướng, còn cạnh trích dẫn đi từ bài trích dẫn tới bài được trích dẫn.
+
+\section{Bức tranh công bố thay đổi như thế nào?}
+Số liệu chính thức ở Hình~\ref{fig:publications} cho thấy năm 2025 có nhiều
+bài hơn năm 2021 khoảng 80\%, với bước giảm vào năm 2022. Sự mở rộng không
+đều và chỉ phản ánh các tập kỷ yếu luồng chính đã chọn.
+
+Góc nhìn chủ đề trả lời câu hỏi khác: phần có nhãn của tập dữ liệu phân bố thế
+nào giữa các lĩnh vực do mô hình định nghĩa? Bài có $L$ nhãn được chấp nhận
+đóng góp $1/L$ cho mỗi nhãn. Tỷ trọng hằng năm chia tổng phần đóng góp cho số
+bài có nhãn, nên một bài đa nhãn không bị tính thành nhiều bài trọn vẹn.
+Hình~\ref{fig:topics} gộp hai hội nghị và chọn tám chủ đề có tổng phần đóng góp
+lớn nhất.
+
+\plot{topic-trends}{Xu hướng suy ra của tám chủ đề có tổng phần đóng góp lớn
+nhất. Mỗi bài có nhãn đóng góp tổng cộng một đơn vị, chia giữa các nhãn; mẫu số
+hằng năm là tổng bài có nhãn AAAI và IJCAI. Các ô dùng chung thang trục đứng.}{fig:topics}
+\FloatBarrier
+
+Học biểu diễn nổi bật trong toàn giai đoạn, còn tỷ trọng học đa phương thức
+suy ra tăng ở cả hai hội nghị. Trong bảng riêng từng hội nghị, tỷ trọng đa
+phương thức của AAAI tăng từ 6.96\% năm 2021 lên 16.42\% năm 2025; IJCAI tăng
+từ 7.43\% lên 12.90\%. Cùng chiều thay đổi ở hai chuỗi hội nghị khiến đây là
+một tín hiệu đáng khảo sát, bên cạnh tác động do cơ cấu hội nghị thay đổi.
+Tuy nhiên, kết quả vẫn là biến động tỷ trọng nhãn mô hình trong nhóm bài được
+gán nhãn. Các bài bị từ chối gán nhãn và giới hạn đánh giá ở Chương~\ref{ch:quality}
+hạn chế kết luận về toàn bộ bức tranh nghiên cứu.
+
+\section{Các nhà nghiên cứu kết nối ra sao?}
+Phép chiếu đồng tác giả nối \Researchers{} nhà nghiên cứu bằng
+\CoauthorPairs{} cặp phân biệt. Bậc đếm số người cộng tác khác nhau, còn độ
+mạnh phân bổ cộng dồn hỗ trợ sau điều chỉnh theo quy mô nhóm tác giả. Bậc trung
+bình là 5.00, lớn nhất là 90. Giá trị trung bình thấp đi cùng đuôi trên dài cho
+thấy một nhóm nhỏ định danh có phạm vi cộng tác rộng hơn đáng kể so với phần
+đông nhà nghiên cứu.
+
+\plot{researcher-structure}{Cấu trúc mạng đồng tác giả. Trái: tỷ lệ trong toàn
+bộ 32,189 nhà nghiên cứu có bậc ít nhất $k$; chỉ vẽ bậc dương trên trục log,
+nhưng mẫu số vẫn giữ nút cô lập. Phải: toàn bộ 2,936 thành phần xếp theo kích
+thước, gồm cả nút cô lập; trục đứng dùng thang log. Đường cong không đủ xác
+lập mô hình luật lũy thừa.}{fig:structure}
+
+Thành phần liên thông lớn nhất gồm \LargestComponent{} nhà nghiên cứu, tương
+đương 64.5\% phép chiếu. Tổng cộng có \ResearcherComponents{} thành phần và
+\ResearcherIsolates{} nhà nghiên cứu cô lập. Đường đi trong thành phần lớn
+nhất thể hiện một chuỗi quan hệ đồng tác giả, không có nghĩa mọi thành viên
+đều trực tiếp làm việc cùng nhau. Một thành phần lớn bên cạnh nhiều nhóm nhỏ
+cho thấy lõi kết nối rộng cùng sự phân mảnh cục bộ đáng kể.
+
+Chiều thời gian bổ sung ngữ cảnh. Bảng~\ref{tab:annual} đếm nhà nghiên cứu có
+ít nhất một quan hệ tác giả được chấp nhận trong mỗi năm, đồng thời gán từng
+cặp đồng tác giả về năm sớm nhất trong các bài hỗ trợ. Một người có thể xuất
+hiện ở nhiều dòng. Cột cuối đo cặp được quan sát lần đầu trong cửa sổ năm năm,
+không phải mọi cặp hoạt động trong năm hay lần đầu cộng tác trong sự nghiệp.
+
+\input{tables/bilingual-annual.tex}
+\FloatBarrier
+
+Số định danh hoạt động tăng từ 6,337 năm 2021 lên 13,082 năm 2025; số cặp xuất
+hiện lần đầu tăng từ 12,599 lên 26,708. Kết hợp với xu hướng công bố, các số
+liệu cho thấy phần cuối giai đoạn có nhiều bài hơn và mạng hợp tác được chấp
+nhận rộng hơn. Việc giữ lại định danh có thể loại cạnh không đồng đều, nên đồ
+thị không tách được hoàn toàn biến động hoạt động thực tế khỏi ảnh hưởng của
+độ bao phủ siêu dữ liệu.
+
+\section{Các tổ chức hợp tác ở đâu?}
+Phép chiếu tổ chức gồm \Organizations{} tổ chức và \OrganizationPairs{} cặp
+hợp tác duy nhất. Có \OrganizationIsolates{} nút cô lập, bậc trung bình 12.73
+và bậc lớn nhất 257. Mỗi cạnh cần bằng chứng đơn vị công tác theo cùng bài của
+hai tác giả khác nhau tới hai tổ chức khác nhau. Như vậy, quan hệ cùng công bố
+được xác định bằng quy tắc cụ thể.
+
+\textbf{Cặp duy nhất khác với lượt hỗ trợ cặp--bài.} Một cặp tổ chức chỉ tạo
+một cạnh dù xuất hiện trong nhiều bài. Số bài hỗ trợ đếm các bài phân biệt.
+Một bài có nhiều cặp đủ điều kiện đóng góp một lượt hỗ trợ cho mỗi cặp; trọng
+số phân bổ còn chia tổng đóng góp của bài giữa các cặp. Ma trận khu vực ở
+Hình~\ref{fig:sectors} cộng lượt hỗ trợ cặp--bài, không đếm bài duy nhất hay
+cạnh duy nhất. Hai ô đối xứng biểu diễn cùng lượt hỗ trợ liên khu vực, không
+được cộng hai lần.
+
+\plot{sector-mixing}{Hợp tác tổ chức theo khu vực hoạt động. Mỗi ô đếm lượt hỗ
+trợ cặp tổ chức--bài thuộc tập lõi. Ma trận đối xứng giữ nhóm chưa rõ khu vực;
+mỗi cặp đủ điều kiện cần hai tác giả khác nhau có bằng chứng tổ chức tương ứng
+trên cùng bài.}{fig:sectors}
+\FloatBarrier
+
+Học thuật--học thuật là ô lớn nhất, với 10,956 lượt hỗ trợ. Học thuật--doanh
+nghiệp có 3,533 lượt. Kết quả cho thấy cùng công bố giữa các tổ chức học thuật
+là kiểu phổ biến nhất trong dữ liệu, đồng thời kết nối liên khu vực cũng hiện
+diện đáng kể. Khu vực là thuộc tính tổ chức do OpenAlex cung cấp; siêu dữ liệu
+chưa rõ được giữ tường minh. Số liệu thể hiện hỗ trợ công bố, không xác lập
+quan hệ hợp đồng.
+
+\Needspace{17cm}
+Hình~\ref{fig:orgpairs} chọn mười hai cặp học thuật--doanh nghiệp có nhiều bài
+hỗ trợ phân biệt nhất trên mọi chủ đề. Cách trình bày này chuyển mạng dày thành
+so sánh dễ đọc về cùng công bố lặp lại. Mười hai cặp gồm mười một tổ chức duy
+nhất, nên một tổ chức có thể xuất hiện ở nhiều dòng. Đây không phải đồ thị con
+cảm sinh trên các tổ chức đó.
+
+\plot{organizations-network}{Mười hai cặp học thuật--doanh nghiệp dẫn đầu theo
+số bài hỗ trợ phân biệt được chấp nhận, gộp mọi chủ đề. Trường hợp bằng nhau
+được xếp theo ID hai đầu. Tổ chức lặp giữa các dòng là có chủ ý; mỗi dòng là
+một cặp duy nhất.}{fig:orgpairs}
+\FloatBarrier
+
+Góc nhìn theo chủ đề cung cấp ví dụ cụ thể hơn. Shanghai Jiao Tong
+University--Tencent có 14 bài hỗ trợ phân biệt mang nhãn \emph{Học biểu diễn},
+đồng hạng với Xiamen University--Tencent và Zhejiang University--Alibaba. Hai
+bài của cặp Shanghai Jiao Tong--Tencent đã được kiểm tra nguồn là
+\href{https://doi.org/10.1609/aaai.v36i1.19954}{\emph{Exploiting Fine-Grained
+Face Forgery Clues via Progressive Enhancement Learning}} và
+\href{https://doi.org/10.1609/aaai.v36i3.20193}{\emph{DIRL: Domain-Invariant
+Representation Learning for Generalizable Semantic Segmentation}} (2022).
+Các quan sát được chấp nhận nối hai tổ chức với hai tác giả khác nhau.
+Kết quả 14 bài áp dụng bộ lọc chủ đề, còn Hình~\ref{fig:orgpairs} gộp mọi chủ đề.
+
+Hồ sơ chủ đề của tổ chức cũng phụ thuộc mẫu số. Với chủ đề suy ra Học biểu
+diễn, Zhejiang University có 156 bài hỗ trợ trong 489 bài có nhãn gắn với tổ
+chức; Peking University có 139 trong 381 bài. Tỷ trọng hồ sơ theo phân bổ lần
+lượt là 25.1\% và 28.8\%. Mỗi bài có nhãn được chia đóng góp giữa các tổ chức
+hỗ trợ và giữa các nhãn, nên các tỷ trọng khác với tỷ số thô 156/489 và
+139/381. Trong phần hồ sơ quan sát được, Zhejiang có nhiều bài hỗ trợ hơn,
+còn Peking dành tỷ trọng phân bổ lớn hơn cho chủ đề này. Đây là so sánh hữu
+ích giữa quy mô và mức tập trung, với điều kiện dựa trên liên kết tổ chức được
+giữ lại và nhãn suy ra.
+
+\section{Cộng đồng và nhà nghiên cứu nào kết nối mạng?}
+Phát hiện cộng đồng tìm các nhóm có kết nối đồng tác giả tương đối dày bên
+trong. Lần chạy Louvain được chọn dùng hạt giống 17 và độ phân giải 0.8
+\citep{blondel2008communities}. Hình~\ref{fig:communities} trình bày hồ sơ chủ
+đề suy ra của mười hai cộng đồng lớn. Bài được loại trùng trong từng cộng đồng
+và chia đóng góp giữa các nhãn. Một bài có thể gắn với nhiều cộng đồng qua các
+tác giả của nó.
+
+\plot{community-topic-profiles}{Hồ sơ chủ đề của mười hai cộng đồng đầu tiên
+theo thứ tự kích thước đã lưu. Hình chọn mười chủ đề có tổng phần đóng góp lớn
+nhất trong các hồ sơ này. Mỗi cộng đồng chỉ lưu năm chủ đề đứng đầu: ô xám là
+không được báo cáo, không phải bằng không. Mã cộng đồng chỉ thuộc phân hoạch
+cố định này.}{fig:communities}
+\FloatBarrier
+
+Hồ sơ cho thấy các hỗn hợp chủ đề khác nhau, không phải mỗi cộng đồng chỉ ứng
+với một chủ đề. Học biểu diễn xuất hiện ở nhiều nhóm, trong khi một số chủ đề
+khác tập trung hơn ở những hồ sơ nhất định. Sự giao thoa hữu ích khi tìm nhóm
+nghiên cứu lân cận có mối quan tâm liên quan. Ranh giới cộng đồng phụ thuộc
+đồ thị và tham số Louvain; đây là nhóm phân tích, không phải khoa hay ngành
+chính thức, ổn định.
+
+Độ trung tâm bổ sung một góc nhìn khác. Độ trung tâm bậc phản ánh phạm vi cộng
+tác trực tiếp; độ mạnh phản ánh cộng tác lặp lại có trọng số phân bổ. Độ trung
+tâm trung gian đo mức một nhà nghiên cứu nằm trên các đường đi ngắn nhất giữa
+những người khác \citep{freeman1977betweenness}. Phân tích cố định dùng nghịch
+đảo độ mạnh phân bổ dương làm độ dài cạnh và xấp xỉ độ trung tâm trung gian có
+trọng số bằng 256 nút mốc. Bảng~\ref{tab:bridges} bổ sung ngữ cảnh cộng đồng
+cho năm định danh đầu tiên, thay vì chỉ diễn giải thứ hạng.
+
+\input{tables/bilingual-bridges.tex}
+
+Bo An (A5017743551) đứng đầu với 0.042193 trong 32,189 nhà nghiên cứu.
+Định danh này thuộc cộng đồng 367 thành viên, gắn với 206 bài phân biệt, trong
+đó 180 bài có nhãn. Học biểu diễn có 63 bài và 52.3333 đơn vị chủ đề phân bổ,
+chiếm 29.1\% tổng phần đóng góp chủ đề của cộng đồng. Lei Feng, định danh đứng
+thứ hai, thuộc cùng cộng đồng được chọn. Ví dụ này cho thấy nhiều định danh
+cầu nối có thể cùng thuộc một bối cảnh hợp tác rộng hơn, thay vì là những cá
+nhân dẫn đầu hoàn toàn tách biệt.
+
+Hai bài có Bo An tham gia đã được kiểm tra nguồn là
+\href{https://doi.org/10.1609/aaai.v36i8.20851}{\emph{GearNet: Stepwise Dual
+Learning for Weakly Supervised Domain Adaptation}} (2022) và
+\href{https://doi.org/10.1609/aaai.v37i6.25871}{\emph{Partial-Label Regression}}
+(2023). Chúng minh họa sự tham gia được chấp nhận, nhưng riêng hai bài không
+giải thích điểm trung gian.
+
+\plot{researchers-network}{Bo An (màu vàng) và mười hai láng giềng một bước được
+chấp nhận, chọn theo số bài hỗ trợ giảm dần, trọng số phân bổ và ID. Hiển thị
+mọi cạnh được chấp nhận giữa mười ba ID đã chọn: 24 cạnh. Cạnh xanh lam chạm
+Bo An và có độ rộng theo số bài hỗ trợ; cạnh xám nối các láng giềng. Hạt giống
+bố trí là 17; hình không bao gồm toàn bộ mạng lân cận của Bo An.}{fig:ego}
+\FloatBarrier
+
+Mạng lân cận có cạnh giữa các đồng tác giả được chọn, không chỉ là hình sao
+quanh Bo An. Vì vậy, hình hỗ trợ khảo sát bối cảnh hợp tác cục bộ; vai trò
+trung gian toàn cục vẫn là thuộc tính của phép chiếu đầy đủ. Diễn giải còn phụ
+thuộc quy tắc hỗ trợ: bộ lọc cố định chỉ giữ cặp có ít nhất hai bài giữ lại
+7.78\% cạnh đồng tác giả và không có định danh nào chung với danh sách hai mươi
+định danh đứng đầu độ trung tâm trung gian của mạng cơ sở. Bộ lọc biểu diễn
+hợp tác lặp lại và làm mạng phân mảnh mạnh. Đây là lý do cần xem thứ hạng cầu
+nối như gợi ý để khảo sát cấu trúc. Độ trung tâm trung gian đo đường đi theo
+định nghĩa đồ thị đã chọn, không đo chất lượng nghiên cứu hay ảnh hưởng thực tế.
+
+\section{Bài nào được trích dẫn trong tập dữ liệu?}
+Phép chiếu trích dẫn có hướng gồm toàn bộ \Papers{} bài và \CitationEdges{}
+cạnh trích dẫn nội bộ được chấp nhận. Tham chiếu tới bài ngoài hai tập kỷ yếu
+bị loại; ánh xạ đích mơ hồ và cạnh tự nối bị bỏ, còn tham chiếu lặp tới
+cùng đích được gộp. Có \CitationIsolates{} bài không có cạnh trích dẫn nội bộ
+vào hoặc ra; tổng bậc trung bình là 1.07 và bậc vào lớn nhất là 51.
+
+\plot{top-cited-papers}{Mười bài có bậc vào cao nhất trong mạng trích dẫn thu
+thập được. Mỗi số đếm là số bài trích dẫn phân biệt bên trong tập dữ liệu.
+Giữ nguyên tiêu đề chính thức. Số đếm không gồm trích dẫn ngoài tập và chưa
+chuẩn hóa theo tuổi công bố.}{fig:cited}
+\FloatBarrier
+
+\emph{Informer: Beyond Efficient Transformer for Long Sequence Time-Series
+Forecasting} (AAAI 2021, \sourcepath{paper:aaai:2021:17325}) dẫn đầu với 51
+bài trích dẫn nội bộ. Đây là ví dụ một bài dự báo chuỗi thời gian thu hút sự
+chú ý lặp lại trong các kỷ yếu AI đã chọn. Thứ hạng giúp người đọc tìm điểm
+xuất phát về phương pháp thường được tham chiếu, nhưng không phải bảng xếp
+hạng trích dẫn toàn ngành.
+
+Nhiều nút cô lập trong mạng trích dẫn cũng có ý nghĩa: giới hạn cả hai đầu
+trong hai chuỗi hội nghị loại đi phần lớn mạng tài liệu tham khảo rộng hơn.
+Một bài cô lập ở đây vẫn có thể trích dẫn và được trích dẫn nhiều ở nơi khác.
+Bài cũ cũng có nhiều thời gian tích lũy trích dẫn hơn. Hai giới hạn này giúp
+tránh diễn giải số trích dẫn nội bộ thấp thành mức chú ý tổng thể thấp.
+
+\section{Các phát hiện chính}
+\begin{enumerate}
+\item \textbf{Quy mô công bố mở rộng nhưng không đều.} Số bài tăng từ 2,240
+lên 4,042 sau bước giảm năm 2022. Tỷ trọng đa phương thức tăng trong phần có
+nhãn ở cả hai hội nghị, tạo tín hiệu chủ đề đáng khảo sát cùng mức tăng số bài.
+\item \textbf{Mạng đồng tác giả có lõi lớn cùng nhiều nhóm cục bộ.} Thành
+phần lớn nhất chứa 20,776 trong 32,189 nhà nghiên cứu, trong khi toàn mạng có
+2,936 thành phần. Kết quả hỗ trợ cả điều hướng mạng rộng và khảo sát từng nhóm.
+\item \textbf{Cùng công bố liên khu vực có tính lặp lại.} Học thuật--doanh
+nghiệp có 3,533 lượt hỗ trợ cặp--bài. Các ví dụ 14 bài về Học biểu diễn chỉ ra
+những liên kết công bố cụ thể phục vụ lập kế hoạch nghiên cứu, trong phạm vi
+bằng chứng tổ chức được giữ lại.
+\item \textbf{Vị trí cầu nối và phạm vi cộng tác trả lời hai câu hỏi khác nhau.}
+Bo An dẫn đầu độ trung tâm trung gian xấp xỉ với 0.042193, nhưng bộ lọc hỗ trợ
+lặp lại thay đổi toàn bộ hai mươi vị trí đầu. Danh sách cần đi kèm phép chiếu
+và quy tắc hỗ trợ, không chỉ tên người.
+\item \textbf{Sự chú ý qua trích dẫn nằm trong một cửa sổ hẹp.} Informer có
+bậc vào lớn nhất là 51, trong khi 7,302 bài là nút cô lập trích dẫn. Cả hai
+kết quả phản ánh giới hạn hai hội nghị và danh sách tham chiếu thu thập được.
+\end{enumerate}

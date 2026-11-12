@@ -1,0 +1,173 @@
+{
+  "graph_version": "release-d3c788c3114a",
+  "inputs_sha256": {
+    "data/processed/release-graph-v4/graph.json": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+    "reports/release-v4/analysis.json": "580d1a6dbc21ef2ac17b820979830f3de157fc1b04d1c89f2580731f141701c9",
+    "reports/release-v4/graph-summary.json": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408",
+    "reports/final-report/figures-v4/community-topic-profiles.csv": "ba3b2bdbf3b41ceceabbb8a0abcb08a44ca22461fc536de2e79356c7dee0e884",
+    "reports/final-report/figures-v4/component-sizes.csv": "7812d49a1246db12b9eafeac07a033925984e9f819e98860d6fa8331d543f3e2",
+    "reports/final-report/figures-v4/researcher-degree-ccdf.csv": "116aa1cb00475ace3c0ef4a6ff5283b52a13e37623de90e08240af5ceff8864c",
+    "reports/final-report/figures-v4/sector-mixing.csv": "0d79755312468f8c2292afee5006b2628d1669e246cca987127ab9b2e865be66",
+    "reports/final-report/figures-v4/top-cited-papers.csv": "315f6040d1909a844f3692f2bc2dd76dd575861162e2aabecb147d4026b158b9",
+    "reports/final-report/figures-v4/topic-trends.csv": "b51a988acc8fdb3de2fd36efffe290349fe6a7586a748711d2484e75211ea24a"
+  },
+  "selections": {
+    "organizations-network": {
+      "selection_rule": "Top 12 accepted academia–industry pairs by distinct-paper support, descending; stable endpoint ID tie-break. Edge ranking, not an induced graph. All topics.",
+      "nodes": [
+        {
+          "id": "organization:I126520041",
+          "name": "University of Science and Technology of China"
+        },
+        {
+          "id": "organization:I183067930",
+          "name": "Shanghai Jiao Tong University"
+        },
+        {
+          "id": "organization:I191208505",
+          "name": "Xiamen University"
+        },
+        {
+          "id": "organization:I20231570",
+          "name": "Peking University"
+        },
+        {
+          "id": "organization:I2250653659",
+          "name": "Tencent (China)"
+        },
+        {
+          "id": "organization:I2250955327",
+          "name": "Huawei Technologies (China)"
+        },
+        {
+          "id": "organization:I4210165038",
+          "name": "University of Chinese Academy of Sciences"
+        },
+        {
+          "id": "organization:I4405270328",
+          "name": "Ant Group (China)"
+        },
+        {
+          "id": "organization:I45928872",
+          "name": "Alibaba Group (China)"
+        },
+        {
+          "id": "organization:I76130692",
+          "name": "Zhejiang University"
+        },
+        {
+          "id": "organization:I99065089",
+          "name": "Tsinghua University"
+        }
+      ],
+      "edge_ids": [
+        "edge:50016db3e693b7940d2059e1ccbd833a36e8970c699bc2e9653623ee340cf25e",
+        "edge:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8",
+        "edge:2bc82f1c9c990cac9a34d5fb9c59a8b0b35b2dc59925429d3bd38d77567e22dc",
+        "edge:5418aeb8851de23b2aff25e77351fcbc227006babd8850d1d43a8f68da762a97",
+        "edge:bda68b592bd76f128c75f2cf554bf0c0457ff809d20fab974d6ce2b182bbce4b",
+        "edge:ec15b08997c9f4173d7e8e5403419e42d75c49039420d472f69a53440594a4c5",
+        "edge:7b27df90be938bad99d6c22219a2762b2c46e81a0b4b4f13f669d63720d55ce4",
+        "edge:482f9e823e8cb695fd5e45136be03e78f7589be08d0425ac64e477ab39da6f9f",
+        "edge:e9b643bc669506c7414aec1869fca10845a4668ad3e6f468824a2cbb1d25b600",
+        "edge:13d447e9669bcd1cc375c9d419b46b92da02159e5791e67e339a49a50f6c8ef3",
+        "edge:01284d4a173d4314a1f8e3ec5c0ea5de0dd303079669a043ebe30be07d3598fc",
+        "edge:59d2c1533fd2715e3f9e528ecffde2ced8f07b4b3f4d0962ff97d2475ac8f086"
+      ],
+      "node_count": 11,
+      "edge_count": 12
+    },
+    "researchers-network": {
+      "selection_rule": "Bo An (A5017743551) plus 12 one-hop neighbors ranked by descending support_count, fractional_weight, then stable neighbor ID; all accepted coauthorship edges induced on those 13 IDs. Spring seed 17; center gold, other nodes teal.",
+      "nodes": [
+        {
+          "id": "researcher:openalex:A5006146465",
+          "name": "Chai Kiat Yeo"
+        },
+        {
+          "id": "researcher:openalex:A5017743551",
+          "name": "Bo An"
+        },
+        {
+          "id": "researcher:openalex:A5020027500",
+          "name": "Hongxin Wei"
+        },
+        {
+          "id": "researcher:openalex:A5038645035",
+          "name": "V. S. Subrahmanian"
+        },
+        {
+          "id": "researcher:openalex:A5049724462",
+          "name": "Viliam Lisý"
+        },
+        {
+          "id": "researcher:openalex:A5049783685",
+          "name": "Xinrun Wang"
+        },
+        {
+          "id": "researcher:openalex:A5057971949",
+          "name": "Haochong Xia"
+        },
+        {
+          "id": "researcher:openalex:A5063743533",
+          "name": "Pengdeng Li"
+        },
+        {
+          "id": "researcher:openalex:A5091265949",
+          "name": "Shufeng Kong"
+        },
+        {
+          "id": "researcher:openalex:A5100552914",
+          "name": "Runsheng Yu"
+        },
+        {
+          "id": "researcher:openalex:A5100629118",
+          "name": "Youzhi Zhang"
+        },
+        {
+          "id": "researcher:openalex:A5100682348",
+          "name": "Lei Feng"
+        },
+        {
+          "id": "researcher:openalex:A5101042096",
+          "name": "Yanchen Deng"
+        }
+      ],
+      "edge_ids": [
+        "edge:004fe3db81574e79a8f682c324a83e52cf6ceb09070199f1e8ef6bd09a7df6f8",
+        "edge:10f196f18a68682d91ea7999cfe28ec1d77da21d3b46e21e5a8783810e8d40b7",
+        "edge:186c9f3c112e3fbfa7abd82659a4b3c4334de355932c91730f96d767c8cd7703",
+        "edge:219bce66196d332de055080fe868b14cab47534242942a721cdd85a776a58284",
+        "edge:33a6700f77ce5cb7c4d163ca39a0adc733df0ac3c3f31463358b24dd512eefdf",
+        "edge:38eda7abd92f8d757f82dc623d97db790a4045ce37be7b79ec9b840aa278ee06",
+        "edge:3962373382da27f3dfb9cf5a0092271736484c4e1850da7dbaf0d61d3c6735bd",
+        "edge:437e963d0e9a4fd2651f01e305508b097b85b156e809e0821ccefb7cf40540b0",
+        "edge:43e00424a43b0a2dcc95c8f663c7213f201856b92a9e0652cf2219d874599164",
+        "edge:59b7aebe370df34134e98feb147d2b20c6a3b09238abb7938d07db7b555093d3",
+        "edge:72a0ef05fda042485c2dcdbc81e3e7a324d6cb60e1f5f91d5e7d840aec522646",
+        "edge:7ce3db5eddf879b35dd2d3cf356b7bc8ebf6f6046db2b17d81dfc742f849e4e4",
+        "edge:84dcfea3ebbfc330c4152d8eca64b10d3fe64803ab8c3cf027b2583440d4610a",
+        "edge:8a7c248fad2e0b30f97be0b14cf46a5dd21ed09c07bb8cc07372516e27cf5d68",
+        "edge:938cd8365785ba05295ea2033aa2e7bbbd016e2465e5af1e4c05312bc6982ce0",
+        "edge:a59f45055a3fb8dbdcc89db10858337a3077ed6c0034fec1af5cc2b4aa8e9890",
+        "edge:acb91cb749dbce23e8480f08ff7279f306f099c88829e7b7f053183d53c562a0",
+        "edge:bc280065d9338c88f9600d64e728f4bb19c9e0ea5c958710dd0f90828e06f51c",
+        "edge:cc60844b061b8a2065f9f40cd308e22e1240defd27199ab30fc6cc22ef5a301a",
+        "edge:ccbf096b50aecf103c601c5326aebdffbb9730aba0d88c525c7c330d31c596a8",
+        "edge:d02535622e7ac88b1565201002e0cc8475988eec2726aa3473435f7ada1c6fac",
+        "edge:d8b14699a7c01b8470b796ec3938cd7e2a7ae2d4289621e29309adf1fb80fcf5",
+        "edge:db82e6312a876c1843eeb22bb8f33f72bb920e54327335668cba2708dc0b376c",
+        "edge:ed1dc4a7775c0aa5287ba022aabac45e8fa4b44a1451ca13abba3a5f1e3a9c0f"
+      ],
+      "node_count": 13,
+      "edge_count": 24
+    }
+  },
+  "language": "vi",
+  "renderer": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "networkx": "3.7"
+  },
+  "data_series_sha256": "8e2d7309b0f4dd4093b5fa13e3a910e5c664c0c5f6c519f23aeffed8bc4ece1a"
+}

@@ -1,0 +1,24 @@
+\begin{figure}[!htbp]\centering
+\begin{tikzpicture}[font=\small,
+ box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=2pt,align=center,text width=4.0cm,minimum height=0.9cm,inner sep=4pt},
+ arrow/.style={-{Latex[length=1.8mm]},color=UETBlue},lab/.style={font=\footnotesize,fill=white,inner sep=1.5pt}]
+\node[box,text width=5.5cm] (org) at (0,3.4) {Technion\\\texttt{I174306211}};
+\node[box] (a) at (-4.4,1.6) {Tomer Golany\\\texttt{A5022512211}};
+\node[box] (b) at (4.4,1.6) {Kira Radinsky\\\texttt{A5029708595}};
+\node[box,text width=5.5cm] (paper) at (0,-0.2) {ECG ODE-GAN (AAAI 2021)\\\texttt{paper:aaai:2021:16086}};
+\node[box] (venue) at (-4.4,-2.2) {AAAI\\\texttt{venue:aaai}};
+\node[box] (topic) at (4.4,-2.2) {\lang{Generative modeling}{Mô hình sinh}\\{\footnotesize\texttt{topic:}\\[-2pt]\texttt{generative-modeling}}};
+\draw[arrow] (a.north)--node[lab,above]{R2}(org.west);
+\draw[arrow] (b.north)--node[lab,above]{R2}(org.east);
+\draw[arrow] (a.south)--node[lab,below]{R1}(paper.west);
+\draw[arrow] (b.south)--node[lab,above]{R1}(paper.east);
+\draw[dashed,color=UETGold,thick] (a.east)--node[lab,above]{R7}(b.west);
+\draw[arrow] (paper.south west)--node[lab,below]{R3}(venue.north);
+\draw[arrow,dashed] (paper.south east)--node[lab,above]{R5}(topic.north);
+\end{tikzpicture}
+\par\smallskip
+{\footnotesize\lang{Relationships}{Quan hệ}: R1 \texttt{AUTHORED}; R2 \texttt{AFFILIATED\_WITH};
+R3 \texttt{PUBLISHED\_IN};\\
+R5 \texttt{HAS\_TOPIC}; R7 \texttt{COAUTHORED\_WITH}.\par}
+\caption{\lang{Accepted v4 relationships for the example. IDs are shortened to provider IDs where shown. Solid arrows are observed; dashed topic arrow is inferred; the dashed undirected line is derived. Affiliation edges aggregate paper-specific observations; both displayed observations exist for this paper.}{Các quan hệ v4 được chấp nhận trong ví dụ. Một số ID được rút gọn thành ID nhà cung cấp. Mũi tên liền là quan sát; mũi tên nét đứt tới chủ đề là suy ra; đường vô hướng nét đứt là dẫn xuất. Cạnh liên kết tổ chức tổng hợp các quan sát theo bài; cả hai quan sát được thể hiện đều tồn tại ở bài này.}}
+\label{fig:example}\end{figure}

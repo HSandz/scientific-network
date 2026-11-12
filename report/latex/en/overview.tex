@@ -1,0 +1,41 @@
+\chapter*{Project Overview}
+\addcontentsline{toc}{chapter}{Project Overview}
+This course project turns publication records into a network for exploring who
+publishes together, which organizations co-publish, how research topics vary,
+and which papers receive citations within a defined collection. It covers
+\Papers{} main-track papers from AAAI and IJCAI, 2021--2025. Official
+proceedings define the collection; OpenAlex supplies additional metadata for
+\MatchedWorks{} matched works.
+
+The frozen production v4 graph contains \TotalNodes{} nodes and \TotalEdges{}
+edges across five entity types and ten relationships. Construction combines
+DOI-based paper matching, position-specific researcher identification,
+paper-specific affiliation mapping, and a frozen MiniLM topic classifier.
+The classifier compares titles and abstracts with topic definitions, allows
+several labels per paper, and abstains on uncertain inputs. Observed publication
+facts, inferred topics and derived collaboration links remain distinguishable.
+Neo4j Community stores the graph; offline analysis supplies the report and the
+read-only Research Explorer.
+
+The selected corpus grows from 2,240 papers in 2021 to 4,042 in 2025, after a
+2022 dip. Its researcher network has \CoauthorPairs{} distinct coauthor pairs;
+20,776 of 32,189 researchers lie in the largest connected component. Organization
+analysis identifies 3,533 academia--industry pair--paper supports and repeated
+co-publication around several inferred topics. Multimodal learning gains share
+among labeled papers in both venues. \emph{Informer} leads the within-corpus
+citation ranking with 51 citing papers. These results describe the selected
+publication network; missing identities and affiliations, inferred-topic errors,
+and the restricted citation boundary limit wider interpretation.
+
+\vspace{0.4em}
+\textbf{Version used throughout:} production v4, \GraphVersion.
+All measurements and figure selections use that frozen graph.
+
+\textbf{Project resources}
+\begin{itemize}
+\item Repository: \url{https://github.com/HSandz/scientific-network}
+\item Explorer: \url{https://scientific-network-explorer.pages.dev/}
+\item Reproduction guide: \href{https://github.com/HSandz/scientific-network/blob/main/docs/reproduce-remediation-v4.md}{\sourcepath{docs/reproduce-remediation-v4.md}}
+\end{itemize}
+The repository is private in the latest recorded access check; lecturer access
+still needs to be arranged. The Explorer is a separate public interface.

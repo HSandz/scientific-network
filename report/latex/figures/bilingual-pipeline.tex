@@ -1,0 +1,19 @@
+\begin{figure}[!htbp]\centering
+\begin{tikzpicture}[font=\small,
+ box/.style={draw=UETBlue,fill=PaleBlue,rounded corners=2pt,align=center,text width=6.3cm,minimum height=1.1cm,inner sep=4pt},
+ wide/.style={box,text width=14cm}, arrow/.style={-{Latex[length=2mm]},semithick,color=UETBlue}]
+\node[wide] (source) at (0,0) {\textbf{\lang{1. Source collection}{1. Thu thập nguồn}}\\\lang{Official AAAI/IJCAI rosters + cached OpenAlex metadata}{Danh mục AAAI/IJCAI chính thức + siêu dữ liệu OpenAlex lưu đệm}};
+\node[wide] (match) at (0,-1.6) {\textbf{\lang{2. Paper matching and cleaning}{2. Đối sánh và làm sạch bản ghi bài báo}}\\\lang{Roster-derived DOI; title and byline-count checks}{DOI từ danh mục; kiểm tra tiêu đề và số tác giả}};
+\draw[arrow] (source)--(match);
+\node[box,minimum height=1.65cm] (identity) at (-3.8,-3.6) {\textbf{\lang{3--4. People and organizations}{3--4. Tác giả và tổ chức}}\\\lang{Compatible author IDs; ORCID conflicts; paper-specific affiliation triples}{ID tác giả phù hợp; xung đột ORCID; bộ ba liên kết tổ chức theo từng bài}};
+\node[box,minimum height=1.65cm] (nlp) at (3.8,-3.6) {\textbf{\lang{5. NLP topic classification}{5. Phân loại chủ đề bằng NLP}}\\\lang{Title/abstract MiniLM embeddings; frozen taxonomy; labels or abstention}{Vector MiniLM từ tiêu đề/tóm tắt; hệ chủ đề cố định; gán nhãn hoặc từ chối}};
+\draw[arrow] (match.south -| identity.north)--(identity.north);
+\draw[arrow] (match.south -| nlp.north)--(nlp.north);
+\node[wide] (graph) at (0,-5.6) {\textbf{\lang{6. Graph materialization}{6. Tạo các quan hệ đồ thị}}\\\lang{Five entity types; observed, inferred, curated and derived edges; evidence links}{Năm loại thực thể; cạnh quan sát, suy ra, biên soạn và dẫn xuất; liên kết bằng chứng}};
+\draw[arrow] (identity.south)--(identity.south |- graph.north);
+\draw[arrow] (nlp.south)--(nlp.south |- graph.north);
+\node[wide] (validate) at (0,-7.25) {\textbf{\lang{7. Validation and storage}{7. Kiểm tra và lưu trữ}}\\\lang{Schema, endpoints, evidence, support counts; Neo4j; analysis and Explorer}{Lược đồ, đầu mút, bằng chứng, số bài hỗ trợ; Neo4j; phân tích và Explorer}};
+\draw[arrow] (graph)--(validate);
+\end{tikzpicture}
+\caption{\lang{Data-to-graph workflow. Identity/affiliation handling and topic assignment are parallel dependencies. Frozen v4 retains the seven historical DOI exceptions described in Chapter~\ref{ch:data}.}{Quy trình từ dữ liệu đến đồ thị. Xử lý định danh/liên kết tổ chức và gán chủ đề là hai nhánh song song. V4 cố định vẫn giữ bảy trường hợp DOI lịch sử nêu ở Chương~\ref{ch:data}.}}
+\label{fig:pipeline}\end{figure}
