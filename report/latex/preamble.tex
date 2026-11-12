@@ -1,100 +1,83 @@
+% Unicode input, T5 Vietnamese text, matching Termes faces in both editions.
 \usepackage[nocaptions,utf8]{vntex}
-\usepackage[T1]{fontenc}
-\usepackage{tgtermes}
-\usepackage{newtxmath}
-\usepackage{textcomp}
-
-\usepackage[margin=27mm,headheight=15pt,headsep=9mm,footskip=13mm]{geometry}
+\ifVietnamese
+  \usepackage[T1,T5]{fontenc}
+\else
+  \usepackage[T5,T1]{fontenc}
+\fi
+\usepackage{tgtermes,newtxmath,textcomp}
+\usepackage[margin=25mm,headheight=16pt,headsep=7mm,footskip=11mm]{geometry}
 \usepackage{setspace}
-\setstretch{1.20}
+\setstretch{1.14}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.42em plus 0.08em minus 0.04em}
-\usepackage{microtype}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{makecell}
-\usepackage{multirow}
-\usepackage{adjustbox}
+\setlength{\parskip}{0.36em plus 0.06em minus 0.04em}
+\usepackage{microtype,graphicx,booktabs,tabularx,array,makecell,amsmath}
+\ifVietnamese\microtypesetup{protrusion=false}\fi
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \usepackage{enumitem}
-\setlist{itemsep=0.2em,topsep=0.25em,leftmargin=1.5em}
-\usepackage{amsmath,mathtools}
+\setlist{itemsep=0.15em,topsep=0.25em,leftmargin=1.4em}
 \usepackage{siunitx}
 \sisetup{group-separator={,},group-minimum-digits=4,detect-all}
 \usepackage[dvipsnames]{xcolor}
 \definecolor{UETBlue}{HTML}{1F4F82}
-\definecolor{UETGold}{HTML}{B89A5C}
 \definecolor{Slate}{HTML}{526174}
 \definecolor{PaleBlue}{HTML}{EAF0F6}
+\definecolor{UETGold}{HTML}{B89A5C}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric,calc}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
 \usepackage{caption}
-\captionsetup{font=small,labelfont={bf,color=UETBlue},textfont=small,skip=6pt}
-\usepackage{subcaption}
-\usepackage{natbib}
-\setcitestyle{authoryear,round,semicolon}
-\usepackage{xurl}
-\usepackage{seqsplit}
-\usepackage[section]{placeins}
-\usepackage{needspace}
-\usepackage{etoolbox}
+\captionsetup{font=small,labelfont={bf,color=UETBlue},skip=6pt}
+\usepackage{natbib,xurl}
+\setcitestyle{numbers,square,comma}
+\usepackage{placeins,needspace,etoolbox}
 \usepackage[titles]{tocloft}
 \setcounter{tocdepth}{1}
 \renewcommand{\cftsecfont}{\small}
-\setlength{\cftbeforechapskip}{0.65em}
+\setlength{\cftbeforechapskip}{0.5em}
 \setlength{\cftbeforesecskip}{0pt}
-\renewcommand{\topfraction}{0.90}
+\renewcommand{\topfraction}{0.92}
 \renewcommand{\bottomfraction}{0.85}
 \renewcommand{\textfraction}{0.08}
 \renewcommand{\floatpagefraction}{0.65}
 \setcounter{topnumber}{3}
-\setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
 \raggedbottom
 \clubpenalty=10000
 \widowpenalty=10000
-\displaywidowpenalty=10000
+\emergencystretch=1.5em
 \usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=UETBlue,
-  citecolor=UETBlue,
-  urlcolor=UETBlue,
-  pdftitle={Scientific Knowledge Graph Construction and Network Analysis of AAAI and IJCAI Research (2021--2025)},
-  pdfsubject={University course research report},
-  pdfkeywords={scientific knowledge graph, co-authorship, network analysis}
-}
-\usepackage[nameinlink,noabbrev]{cleveref}
+\hypersetup{colorlinks=true,linkcolor=UETBlue,citecolor=UETBlue,urlcolor=UETBlue,
+ pdfsubject={UET course project report: AAAI and IJCAI 2021--2025}}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{Slate}AI Research Network}
-\fancyhead[R]{\small\color{Slate}\nouppercase{\leftmark}}
+\fancyhead[L]{\small\color{Slate}\lang{AI Research Network}{Mạng nghiên cứu AI}}
+\fancyhead[R]{\small\color{Slate}\lang{Course project report}{Báo cáo bài tập lớn}}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.35pt}
-\renewcommand{\footrulewidth}{0pt}
-\setlength{\headheight}{15pt}
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\bfseries\color{UETBlue}}
-  {\large\MakeUppercase{\chaptername}\ \thechapter}
-  {0.5ex}
-  {\titlerule[0.7pt]\vspace{0.8ex}\huge\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000}
-  [\vspace{0.6ex}\titlerule]
-\titlespacing*{\chapter}{0pt}{-16pt}{22pt}
-\titleformat{\section}{\Large\bfseries\color{UETBlue}\raggedright}{\thesection}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries\color{Slate}}{\thesubsection}{0.8em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{Slate}}{\thesubsubsection}{0.7em}{}
-\graphicspath{{figures/}{assets/}}
+\titleformat{\chapter}[display]{\normalfont\bfseries\color{UETBlue}}
+ {\large\chaptername\ \thechapter}{0.4ex}{\huge\raggedright}
+\titlespacing*{\chapter}{0pt}{-18pt}{17pt}
+\titleformat{\section}{\large\bfseries\color{UETBlue}\raggedright}{\thesection}{0.7em}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.4em}
+\titleformat{\subsection}{\normalsize\bfseries\color{Slate}\raggedright}{\thesubsection}{0.7em}{}
+\newcommand{\lang}[2]{\ifVietnamese #2\else #1\fi}
+\ifVietnamese
+ \renewcommand{\chaptername}{Chương}
+ \renewcommand{\contentsname}{Mục lục}
+ \renewcommand{\figurename}{Hình}
+ \renewcommand{\tablename}{Bảng}
+ \renewcommand{\bibname}{Tài liệu tham khảo}
+ \def\LangDir{vi}
+\else
+ \def\LangDir{en}
+\fi
+\graphicspath{{figures/\LangDir/}{assets/}}
 \newcommand{\GraphVersion}{\texttt{release-d3c788c3114a}}
-\newcommand{\EvidenceVersion}{\modelid{release-openalex-graph-v1.1}}
-\newcommand{\pct}[1]{#1\%}
-\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
 \newcommand{\sourcepath}[1]{\nolinkurl{#1}}
 \newcommand{\modelid}[1]{\nolinkurl{#1}}
-\newcommand{\hashid}[1]{\texttt{\seqsplit{#1}}}
 \newcommand{\VietnameseText}[1]{{\fontencoding{T5}\selectfont #1}}
-
-\AtBeginEnvironment{thebibliography}{\small\setstretch{1.0}\setlength{\bibsep}{2pt}}
+\newcommand{\plot}[3]{\begin{figure}[!htbp]\centering\includegraphics[width=\textwidth]{#1.pdf}\caption{#2}\label{#3}\end{figure}}
+\AtBeginEnvironment{thebibliography}{\small\setstretch{1.0}\setlength{\bibsep}{3pt}}
+\input{data/facts.tex}

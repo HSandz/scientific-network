@@ -1,0 +1,32 @@
+{
+  "graph_version": "release-d3c788c3114a",
+  "inputs_sha256": {
+    "reports/release-v4/graph-summary.json": "c6c6e78195500bfaf68cf1f758215824ea239056eefa9ae442edfb0a378b8408",
+    "reports/release-v4/analysis.json": "580d1a6dbc21ef2ac17b820979830f3de157fc1b04d1c89f2580731f141701c9"
+  },
+  "values": {
+    "Papers": 13617,
+    "MatchedWorks": 13606,
+    "UnmatchedWorks": 11,
+    "TotalNodes": 47875,
+    "TotalEdges": 225731,
+    "Researchers": 32189,
+    "Organizations": 2047,
+    "AcceptedAuthorships": 50437,
+    "WithheldAuthorships": 15032,
+    "MatchedPositions": 65469,
+    "OfficialPositions": 65507,
+    "AffiliatedPositions": 48259,
+    "LabeledPapers": 11575,
+    "AbstainedPapers": 2042,
+    "TopicEdges": 14222,
+    "CoauthorPairs": 80482,
+    "OrganizationPairs": 13031,
+    "CitationEdges": 7308,
+    "ResearcherIsolates": 414,
+    "ResearcherComponents": 2936,
+    "LargestComponent": 20776,
+    "OrganizationIsolates": 90,
+    "CitationIsolates": 7302
+  }
+}

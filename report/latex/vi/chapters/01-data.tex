@@ -1,0 +1,81 @@
+\chapter{Thu thập và xử lý dữ liệu}
+\label{ch:data}
+\section{Phạm vi dự án}
+Dự án phục vụ phân tích bức tranh nghiên cứu và mạng hợp tác trong học phần
+\emph{Phân tích mạng truyền thông xã hội trong kinh doanh}: tìm cùng công bố
+lặp lại, khảo sát kết nối giữa các nhóm và so sánh lĩnh vực quan sát được.
+Danh mục chính thức cuối cùng v10 gồm \Papers{} bài luồng chính AAAI và IJCAI
+giai đoạn 2021--2025: 9,910 bài AAAI và 3,707 bài IJCAI. Năm hội nghị là thuộc
+tính bài báo. Hội thảo chuyên đề, luồng khác và hội nghị khác bị loại; đây là
+góc nhìn giới hạn ở hai hội nghị, không phải thống kê toàn bộ nghiên cứu AI.
+
+\section{Nguồn dữ liệu và vai trò}
+Kỷ yếu chính thức xác định phạm vi và danh sách tác giả
+\citep{aaaiProceedings,ijcaiProceedings}; OpenAlex bổ sung cho bản ghi đối sánh
+được \citep{openalexworks}. Một bản ghi chỉ mục không tự động được thêm vào danh mục.
+
+\begin{table}[!htbp]\centering\small
+\caption{Các nguồn được sử dụng trong đồ thị chính thức.}\label{tab:sources}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}YY}\toprule
+Nguồn & Nội dung cung cấp & Cách sử dụng\\\midrule
+Kỷ yếu AAAI & Danh mục luồng chính, tiêu đề, tác giả, kỳ hội nghị, URL chính thức & Xác định phạm vi và suy ra DOI\\
+Kỷ yếu IJCAI & Danh mục luồng chính, tiêu đề, tác giả, kỳ hội nghị, URL chính thức & Vai trò tương tự cho IJCAI\\
+OpenAlex & ID công trình, tác giả, tổ chức; liên kết tổ chức, tóm tắt, trích dẫn & Bổ sung sau kiểm tra công trình và vị trí tác giả\\
+Hệ chủ đề cố định & Bốn chủ đề cha, 16 chủ đề lá và định nghĩa & Nhãn mô hình và quan hệ phân cấp\\\bottomrule
+\end{tabularx}\end{table}
+
+Crossref và một số trang chính thức được kiểm tra sau đó để điều tra bất đồng
+DOI, không thay thế bản ghi cố định. PDF và trích xuất GROBID không phải đầu
+vào bắt buộc của bản chính thức.
+
+\section{Từ danh mục chính thức đến công trình đối sánh}
+Quy trình chuẩn hóa trường danh mục và suy ra DOI từ kỷ yếu: AAAI dùng số tập,
+số kỳ và mã bản ghi; IJCAI dùng năm và số bài. Cả 13,617 DOI yêu cầu đều phân
+biệt. OpenAlex được truy vấn theo lô có lưu đệm, kèm bước thử lại cho yêu cầu
+chưa giải quyết. Ứng viên cần độ tương đồng tiêu đề chuẩn hóa ít nhất 0.90 và
+số tác giả khớp; tiêu đề gần khớp được đánh dấu. Trang chính thức hỗ trợ phân
+biệt các ứng viên trùng DOI. Đối sánh mơ hồ được đưa vào hàng đợi rà soát.
+Tham chiếu lặp được gộp, còn đích ánh xạ tới nhiều bài trong danh mục bị giữ lại.
+
+Kết quả ghi nhận \MatchedWorks{} đối sánh (99.92\%) và \UnmatchedWorks{} bản
+ghi cần rà soát: chín trường hợp trùng DOI chưa phân biệt được ứng viên và hai
+trường hợp lệch số tác giả. Không bản ghi nào được báo là không tìm thấy sau
+thử lại. Bài chưa đối sánh vẫn giữ cạnh hội nghị trong tập dữ liệu, nhưng
+không nhận định danh tác giả thiếu bằng chứng. Mọi bản ghi đối sánh đều có tóm tắt.
+
+\textbf{Lưu ý về nguồn lịch sử.} Quá trình thu thập cho v4 từng thiếu kiểm tra
+DOI trả về bằng DOI yêu cầu ở nhánh dự phòng chỉ có một kết quả. Bảy bản ghi
+được chấp nhận có DOI trả về khác DOI từ danh mục, tách biệt với 11 bản ghi
+chưa đối sánh. Tiêu đề và tác giả khớp chưa chứng minh tương đương phiên bản
+hay cho phép chuyển bằng chứng tổ chức. Mã nguồn sửa sau đó chỉ bảo vệ lần thu
+thập mới; v4 không được sửa hồi tố. Cả bảy bất đồng vẫn chưa giải quyết.
+
+Bộ nhớ đệm bất biến giữ yêu cầu, thời điểm truy xuất và mã băm; bộ định vị bằng
+chứng nối khẳng định với bản ghi. Phản hồi API hiện tại không thay thế byte gốc
+khi tái lập chính xác.
+
+\section{Đặc điểm dữ liệu và độ bao phủ}
+Hình~\ref{fig:publications} đếm mọi bài trong danh mục, bất kể có giữ lại tác
+giả hay chủ đề. Tổng số giảm năm 2022 rồi tăng về sau, đặc biệt ở AAAI.
+
+\plot{publications}{Số bài luồng chính theo năm và hội nghị, gồm cả 11 bài chưa
+có đối sánh công trình được chấp nhận.}{fig:publications}
+
+\begin{table}[!htbp]\centering\small
+\caption{Siêu dữ liệu sẵn có và bằng chứng giữ lại, với mẫu số tường minh.}\label{tab:coverage}
+\begin{tabularx}{\textwidth}{Yr}\toprule
+Chỉ tiêu & Số lượng / mẫu số\\\midrule
+Công trình đối sánh có tóm tắt / bài chính thức & \MatchedWorks{} / \Papers{}\\
+Quan hệ tác giả được chấp nhận / vị trí đã đối sánh & \AcceptedAuthorships{} / \MatchedPositions{}\\
+Vị trí có bằng chứng tổ chức / vị trí đã đối sánh & \AffiliatedPositions{} / \MatchedPositions{}\\
+Bài có chủ đề suy ra / bài chính thức & \LabeledPapers{} / \Papers{}\\
+Bài được từ chối gán nhãn / bài chính thức & \AbstainedPapers{} / \Papers{}\\\bottomrule
+\end{tabularx}\end{table}
+
+Danh sách chính thức có \OfficialPositions{} vị trí, 38 thuộc bài chưa đối sánh.
+Trong \MatchedPositions{} vị trí đã đối sánh, \WithheldAuthorships{} bị giữ lại.
+Độ bao phủ tổ chức là 73.71\% vị trí đã đối sánh (95.68\% nếu chỉ xét vị trí
+được chấp nhận). Quan sát tác giả--tổ chức có thể gồm nhiều tổ chức, khác với
+số vị trí hay cạnh tổng hợp. Độ bao phủ chủ đề là 85.00\%; từ chối gán nhãn
+không phải nhãn âm đã xác nhận. Tỷ trọng chủ đề dùng bài có nhãn, còn tổng số
+công bố dùng cả danh mục.

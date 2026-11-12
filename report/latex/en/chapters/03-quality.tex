@@ -1,0 +1,52 @@
+\chapter{Graph Statistics and Quality}
+\label{ch:quality}
+\section{What the released graph contains}
+Production v4 contains \TotalNodes{} nodes and \TotalEdges{} accepted edges.
+Tables~\ref{tab:nodes} and~\ref{tab:edges} give the inventory. The 20 topics
+comprise four parents and 16 leaves; the two venues represent conference
+series, with years stored on paper nodes.
+
+\input{tables/bilingual-nodes.tex}
+\input{tables/bilingual-edges.tex}
+\FloatBarrier
+
+Observed bibliographic relationships contribute 110,026 edges. The other
+classes contain 14,222 inferred-topic edges, 16 curated taxonomy links and
+101,467 derived edges. In particular, an authorship count, an aggregated
+affiliation count and a coauthor-pair count measure different objects. They
+cannot be added and interpreted as unique scientific observations.
+
+\Needspace{15cm}
+\section{Construction checks and evidence quality}
+The recorded structural validator passes for v4. It checks unique IDs, permitted
+labels and predicates, valid endpoint types, accepted status, evidence references,
+and recomputed support and weights for derived relations. All ten predicates are
+present. The recorded Neo4j load reconciles node and relationship counts;
+six integrity queries and an idempotent repeated import also pass. These are
+release records, not newly executed database checks for this manuscript.
+
+A full-source consistency check compared the retained authorship and reference
+objects for all 13,606 matched works, covering 65,469 positions and 341 cached
+response hashes. It establishes agreement with the preserved source snapshot.
+Structural consistency and source-byte equality cannot establish the correctness
+of provider identities or affiliations.
+
+The prospective source-backed automated review judged 193 of 200 uniformly
+sampled accepted edges supported (96.50\%; Wilson 95\% interval
+92.95--98.29\%), with one incorrect and six unverifiable judgments. Unverifiable
+cases count as nonsupport. These are \textbf{AI-assisted assessments}, not human
+annotations or independent validation: construction sources were reused,
+evaluator independence is unestablished, and the interval covers sampling
+variation rather than evaluator error. A later relation-stratified diagnostic
+flagged three topic-derived links and one uncertain authorship; it did not
+change the frozen graph and is not pooled into the uniform estimate.
+
+Coverage losses in Table~\ref{tab:coverage} affect what can be seen in the
+networks. The graph has 199 papers without accepted authorship, and affiliation
+evidence is absent for part of the official byline population. Topic coverage
+also measures availability rather than correctness. On 50 historical test
+papers, embedding labels had micro precision 0.6863, recall 0.3535 and F1 0.4667
+against AI-assigned references, compared with phrase-baseline F1 0.2301.
+Those exposed references do not provide an independent human topic test.
+Accordingly, inferred topic trends and portfolios are exploratory; observed
+paper counts and accepted-edge inventories remain directly measurable.

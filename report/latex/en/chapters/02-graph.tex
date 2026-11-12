@@ -1,0 +1,116 @@
+\chapter{Knowledge Graph Construction}
+\label{ch:graph}
+\section{Construction pipeline}
+Figure~\ref{fig:pipeline} traces the flow from official records to a validated
+graph. Work matching produces enriched paper records. Identity/affiliation
+processing and topic classification then operate as parallel branches: missing
+person evidence does not erase the official paper, and a topic label does not
+resolve an author. Graph materialization combines accepted records, retains
+evidence, and derives collaboration and topic-profile edges.
+
+\input{figures/bilingual-pipeline.tex}
+
+The final graph is stored as a versioned JSON artifact and loaded into the
+isolated Neo4j Community 5.26 release database \citep{neo4jDocs}. Named
+projections support offline analysis; the Explorer provides read-only access to
+entities, relationships and source evidence. The graph version and frozen
+configuration bind all results in this report.
+
+\section{NLP processing: text becomes topic links}
+The project uses natural language processing (NLP) to connect papers to research topics. For each matched
+work, the input is its title followed by its reconstructed abstract; title-only
+processing is supported when an abstract is absent. The same frozen
+\modelid{sentence-transformers/all-MiniLM-L6-v2} model encodes paper text and
+leaf-topic descriptions \citep{reimers2019sentencebert,minilmModelCard}.
+Descriptions combine the topic name, definition, included concepts and synonyms.
+The pinned model revision is recorded in the repository configuration.
+
+The classifier compares normalized vectors by cosine similarity. It accepts
+the best leaf when its score reaches the development-calibrated threshold
+$\tau\approx0.2709$. It can add up to two more leaves if they also exceed that
+threshold and lie within $\delta=0.02$ of the best score. Otherwise it abstains.
+This produces multi-label \texttt{HAS\_TOPIC} edges rather than forcing every
+paper into one category. A supporting abstract sentence is selected by semantic
+similarity and retained with a source locator; the title supplies evidence for
+title-only input. Similarity scores are not calibrated probabilities.
+
+The taxonomy contains four parent and 16 leaf topics. Its curated
+\texttt{SUBTOPIC\_OF} links are separate from model-assigned paper labels.
+Researcher and organization topic profiles are derived later from accepted
+paper support. The classifier and thresholds remain frozen; no new topic
+inference was run for this report.
+
+\section{Entity resolution and affiliation mapping}
+\textbf{Papers.} The official roster ID identifies the proceedings record;
+DOI, title and byline checks link it to an OpenAlex work. Ambiguous candidates
+stay outside accepted matches. The historical DOI caveat is described in
+Chapter~\ref{ch:data}.
+
+\textbf{Researchers.} At each byline position, a compatible official name and
+OpenAlex authorship supply the researcher ID. The internal key contains the
+OpenAlex author ID; a shared normalized name alone never merges people. ORCID is
+retained when present, but is not mandatory. Conflicting checksum-valid ORCIDs
+for one provider ID cause global withholding. More than one incompatible
+position or a repeated author ID can withhold a paper's full authorship mapping.
+Thus an accepted work match does not mean all its printed authors are resolved.
+
+\textbf{Organizations.} Institutions must have OpenAlex IDs and appear on the
+specific accepted authorship. Organization records retain normalized sector and
+country metadata. The pipeline stores each researcher--paper--organization
+observation before aggregating \texttt{AFFILIATED\_WITH}. Raw affiliation strings
+remain source evidence; a current profile or a paper-wide institution list is
+not copied to every author. A guard withholds suspicious identical multi-institution
+sets copied across several authors. Unknown institutions or sectors remain unknown.
+
+\section{Schema and relationship meaning}
+The five node types are Researcher, Paper, Organization, Topic and Venue.
+Table~\ref{tab:schema} summarizes the ten relationships. The four evidence
+classes distinguish observed metadata, model inference, curated vocabulary and
+derivation from accepted base edges.
+
+\input{tables/bilingual-schema.tex}
+\FloatBarrier
+
+Each semantic edge has a deterministic ID, accepted status, endpoint IDs,
+evidence references and graph/method versions. Symmetric collaboration pairs
+are stored once in canonical ID order and analyzed as undirected. Source
+confirmations and reverse copies do not create additional edges.
+
+For a paper with $k$ official authors, each accepted coauthor pair receives
+fractional weight $1/(k-1)$. Unresolved authors remain in $k$. For organization
+collaboration, two distinct authors must support two distinct institutions on
+that paper; a sole dual-affiliated author cannot create the edge. A paper
+supporting $q$ eligible organization pairs contributes $1/q$ to each pair.
+Both relationships also retain the distinct supporting-paper count.
+\texttt{RESEARCHES\_TOPIC} requires two distinct core papers;
+\texttt{CONTRIBUTES\_TO\_TOPIC} requires three. Repeated evidence for one paper
+does not increase those counts.
+
+\Needspace{18cm}
+\section{A real publication becomes a small graph}
+Consider \emph{ECG ODE-GAN: Learning Ordinary Differential Equations of ECG
+Dynamics via Generative Adversarial Learning} (AAAI 2021). Its
+\href{https://ojs.aaai.org/index.php/AAAI/article/view/16086}{official record}
+becomes \sourcepath{paper:aaai:2021:16086}. DOI
+\href{https://doi.org/10.1609/aaai.v35i1.16086}{\texttt{10.1609/aaai.v35i1.16086}}
+matches \href{https://openalex.org/W3176135934}{OpenAlex W3176135934} with exact
+title agreement and three authors in both records.
+
+Frozen v4 accepts Tomer Golany (A5022512211, position 1) and Kira Radinsky
+(A5029708595, position 3). The official middle author, Daniel Freedman, has no
+accepted authorship edge in this graph. Two accepted paper-specific observations
+link Golany and Radinsky to Technion (I174306211). The classifier assigns
+\emph{Generative modeling}, with stored cosine similarity 0.3753 and an abstract
+excerpt about learning dynamics through a generative adversarial network.
+
+\input{figures/bilingual-example.tex}
+\FloatBarrier
+
+The displayed authorship, affiliation, venue, topic and coauthor edges all exist
+in frozen v4. This paper contributes $1/(3-1)=0.5$ to the accepted coauthor
+pair's fractional weight; the edge can also aggregate other papers. Both
+accepted authors point to the same institution, so this example supplies no
+organization--organization collaboration. One paper alone also cannot establish
+a researcher-topic or organization-topic profile edge. Full stable IDs,
+accepted edge IDs and the two affiliation observations are recorded in
+\sourcepath{report/latex/data/construction-example.json}.

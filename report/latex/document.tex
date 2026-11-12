@@ -1,0 +1,43 @@
+\begin{document}
+\hypersetup{pdftitle={\ProjectTitle},pageanchor=false}
+\begin{titlepage}
+\thispagestyle{empty}\centering
+{\large\lang{Vietnam National University, Hanoi}{ĐẠI HỌC QUỐC GIA HÀ NỘI}\par}
+\vspace{0.2cm}
+{\Large\bfseries\lang{University of Engineering and Technology}{TRƯỜNG ĐẠI HỌC CÔNG NGHỆ}\par}
+\vspace{0.65cm}
+\includegraphics[width=2.8cm,keepaspectratio]{uet.png}\par
+\vspace{0.2cm}{\ReportFaculty\par}
+\vspace{0.6cm}{\color{UETBlue}\rule{0.90\textwidth}{1pt}\par}
+\vspace{0.4cm}{\large\CourseTitle\par}
+\vspace{0.5cm}{\LARGE\bfseries\color{UETBlue}\ProjectTitle\par}
+\vspace{0.3cm}{\large\ReportSubtitle\par}
+\vspace{0.4cm}{\large\lang{Course Project Report}{BÁO CÁO BÀI TẬP LỚN}\par}
+\vspace{0.3cm}{\color{UETBlue}\rule{0.90\textwidth}{1pt}\par}
+\vfill
+\begin{tabularx}{0.94\textwidth}{>{\bfseries}p{3.5cm}Y}
+\lang{Team member 1}{Thành viên 1} & \VietnameseText{\TeamMemberOneName} --- \TeamMemberOneID\\[0.15em]
+\lang{Contribution}{Đóng góp} & \TeamMemberOneContribution\\[0.5em]
+\lang{Team member 2}{Thành viên 2} & \VietnameseText{\TeamMemberTwoName} --- \TeamMemberTwoID\\[0.15em]
+\lang{Contribution}{Đóng góp} & \TeamMemberTwoContribution\\[0.5em]
+\lang{Instructor}{Giảng viên} & \VietnameseText{\InstructorName}\\
+\lang{Course code}{Mã học phần} & \CourseIdentifier\\
+\lang{Submission date}{Ngày nộp} & \ReportSubmissionDate
+\end{tabularx}
+\vfill{\large\lang{Hanoi, Vietnam}{Hà Nội, Việt Nam}\par}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\input{\LangDir/overview.tex}
+\begingroup\small\setstretch{1.0}\tableofcontents\endgroup
+\clearpage\pagenumbering{arabic}
+\input{\LangDir/chapters/01-data.tex}
+\input{\LangDir/chapters/02-graph.tex}
+\input{\LangDir/chapters/03-quality.tex}
+\input{\LangDir/chapters/04-analysis.tex}
+\input{\LangDir/chapters/05-conclusion.tex}
+\clearpage\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\end{document}

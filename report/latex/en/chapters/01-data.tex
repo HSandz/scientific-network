@@ -1,0 +1,82 @@
+\chapter{Data Collection and Processing}
+\label{ch:data}
+\section{Project scope}
+This project supports research-landscape and collaboration analysis for the
+course \emph{Social Media Network Analysis for Business}: find repeated
+co-publication, inspect connections between groups, and compare visible
+research areas. The final official roster, v10, contains \Papers{} main-track
+papers from AAAI and IJCAI, 2021--2025: 9,910 AAAI and 3,707 IJCAI papers.
+Edition year is a paper property. Workshops, other tracks and other venues are
+excluded, so this is a bounded two-venue view rather than a census of AI research.
+
+\section{Data sources and their roles}
+Official proceedings define inclusion and printed bylines
+\citep{aaaiProceedings,ijcaiProceedings}; OpenAlex enriches matched records
+\citep{openalexworks}. An index record cannot silently add a paper to the roster.
+
+\begin{table}[!htbp]\centering\small
+\caption{Sources used in the released graph.}\label{tab:sources}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}YY}\toprule
+Source & Contribution & Handling\\\midrule
+AAAI proceedings & Main-track roster, title, byline, edition, official URL & Corpus boundary and DOI derivation\\
+IJCAI proceedings & Main-track roster, title, byline, edition, official URL & Same role for IJCAI\\
+OpenAlex & Work, author and institution IDs; affiliations, abstracts, references & Enrichment after work and authorship checks\\
+Frozen topic vocabulary & Four parent and 16 leaf concepts with definitions & Model labels and taxonomy links\\\bottomrule
+\end{tabularx}\end{table}
+
+Crossref and official-page spot checks later investigated DOI discrepancies;
+they did not replace the frozen records. PDFs and GROBID extraction are not
+required production inputs.
+
+\section{From official records to matched works}
+The pipeline normalizes roster fields and derives DOIs from proceedings records:
+AAAI uses volume, issue and record number; IJCAI uses year and paper number.
+All 13,617 requested DOIs are distinct. OpenAlex is queried in cached batches,
+with retries for unresolved requests. Candidates require normalized title
+similarity of at least 0.90 and matching author counts; near-exact titles are
+flagged. Official landing pages help distinguish duplicate-DOI candidates.
+Ambiguous matches stay in review. Duplicate references collapse, and citation
+targets mapping to multiple roster papers are withheld.
+
+Acquisition recorded \MatchedWorks{} matches (99.92\%) and \UnmatchedWorks{}
+review records: nine ambiguous duplicate-DOI cases and two author-count
+mismatches. No record was reported as not found after retries. Unmatched papers
+remain in the corpus with venue edges but no unsupported researcher identities.
+All matched records have abstracts.
+
+\textbf{Historical source caveat.} V4 acquisition lacked returned-DOI equality
+checking in its singleton fallback. Seven accepted records have returned DOIs
+different from the roster-derived DOIs, separate from the 11 unmatched records.
+Title/byline agreement does not verify version equivalence or affiliation
+transfer. The later code guard protects future acquisition; frozen v4 was not
+retroactively repaired. All seven discrepancies remain unresolved.
+
+Immutable caches retain requests, retrieval times and content hashes; evidence
+locators connect claims to records. Current API responses cannot replace the
+original bytes for exact reproduction.
+
+\section{Data characteristics and coverage}
+Figure~\ref{fig:publications} counts all roster papers, regardless of retained
+authors or topics. The combined 2022 dip precedes later growth, especially in AAAI.
+
+\plot{publications}{Official main-track papers by edition year and venue.
+Totals include the 11 papers without an accepted work match.}{fig:publications}
+
+\begin{table}[!htbp]\centering\small
+\caption{Metadata availability and retained evidence, with explicit denominators.}\label{tab:coverage}
+\begin{tabularx}{\textwidth}{Yr}\toprule
+Measure & Count / denominator\\\midrule
+Matched works with abstract / official papers & \MatchedWorks{} / \Papers{}\\
+Accepted authorships / matched byline positions & \AcceptedAuthorships{} / \MatchedPositions{}\\
+Positions with institution evidence / matched positions & \AffiliatedPositions{} / \MatchedPositions{}\\
+Papers with inferred topics / official papers & \LabeledPapers{} / \Papers{}\\
+Topic abstentions / official papers & \AbstainedPapers{} / \Papers{}\\\bottomrule
+\end{tabularx}\end{table}
+
+The official byline has \OfficialPositions{} positions, 38 on unmatched papers.
+Of the \MatchedPositions{} matched positions, \WithheldAuthorships{} are withheld.
+Institution coverage is 73.71\% of matched positions (95.68\% conditional on
+accepted positions). Author--institution observations can span several
+institutions, unlike position counts or aggregate edges. Topic coverage is
+85.00\%; abstentions are not confirmed negative labels. Topic shares use
+labeled papers; publication totals use the full roster.

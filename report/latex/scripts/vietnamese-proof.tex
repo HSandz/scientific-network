@@ -1,0 +1,35 @@
+% Typography proof only. Sample surnames below are not submission identities.
+\documentclass[12pt,a4paper]{report}
+\newif\ifVietnamese\Vietnamesetrue
+\input{preamble.tex}
+\newcommand{\GlyphSample}{ă â ê ô ơ ư đ; ắ ằ ẳ ẵ ặ; ấ ầ ẩ ẫ ậ; ế ề ể ễ ệ; ố ồ ổ ỗ ộ; ớ ờ ở ỡ ợ; ứ ừ ử ữ ự; á à ả ã ạ; é è ẻ ẽ ẹ; í ì ỉ ĩ ị; ó ò ỏ õ ọ; ú ù ủ ũ ụ; ý ỳ ỷ ỹ ỵ.}
+\newcommand{\UpperSample}{Ă Â Ê Ô Ơ Ư Đ; Ắ Ằ Ẳ Ẵ Ặ; Ấ Ầ Ẩ Ẫ Ậ; Ế Ề Ể Ễ Ệ; Ố Ồ Ổ Ỗ Ộ; Ớ Ờ Ở Ỡ Ợ; Ứ Ừ Ử Ữ Ự; Á À Ả Ã Ạ; É È Ẻ Ẽ Ẹ; Í Ì Ỉ Ĩ Ị; Ó Ò Ỏ Õ Ọ; Ú Ù Ủ Ũ Ụ; Ý Ỳ Ỷ Ỹ Ỵ.}
+\begin{document}
+\chapter*{Kiểm tra chữ tiếng Việt trong báo cáo}
+Thu thập và xử lý dữ liệu; phân giải thực thể; đồ thị tri thức;
+độ trung tâm trung gian; thành phần liên thông.
+
+\textbf{Chữ thường và toàn bộ dấu thanh}\par
+\GlyphSample
+
+\textbf{Chữ hoa}\par
+\UpperSample
+
+\textbf{\GlyphSample}
+
+\textit{\GlyphSample}
+
+\textbf{\textit{\GlyphSample}}
+
+Mẫu họ để kiểm tra dấu, không phải thông tin thành viên: Nguyễn, Trần, Đặng.
+\textbf{Nguyễn, Trần, Đặng.} \textit{Nguyễn, Trần, Đặng.}
+\textbf{\textit{Nguyễn, Trần, Đặng.}}
+
+\begin{center}
+\begin{tikzpicture}
+\node[draw=UETBlue,fill=PaleBlue,text width=12cm,align=center,inner sep=7pt]
+ {\textbf{Phân biệt định danh nhà nghiên cứu và ánh xạ liên kết tổ chức}\\
+ Mỗi quan sát gắn với đúng tác giả, bài báo và tổ chức.};
+\end{tikzpicture}
+\end{center}
+\end{document}

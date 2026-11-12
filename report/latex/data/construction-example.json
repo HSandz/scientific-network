@@ -1,0 +1,238 @@
+{
+  "graph_version": "release-d3c788c3114a",
+  "paper_id": "paper:aaai:2021:16086",
+  "nodes": [
+    {
+      "id": "organization:I174306211",
+      "label": "Organization",
+      "name": "Technion – Israel Institute of Technology",
+      "properties": {
+        "sector": "academia",
+        "openalex_id": "I174306211",
+        "ror": "https://ror.org/03qryx823",
+        "country_code": "IL"
+      }
+    },
+    {
+      "id": "paper:aaai:2021:16086",
+      "label": "Paper",
+      "name": "ECG ODE-GAN: Learning Ordinary Differential Equations of ECG Dynamics via Generative Adversarial Learning",
+      "properties": {
+        "year": 2021,
+        "official_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16086",
+        "pdf_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16086/15893",
+        "track": "main",
+        "is_core": true,
+        "official_author_count": 3,
+        "doi": "10.1609/aaai.v35i1.16086",
+        "openalex_id": "W3176135934",
+        "topic_text": "title_and_abstract"
+      }
+    },
+    {
+      "id": "researcher:openalex:A5022512211",
+      "label": "Researcher",
+      "name": "Tomer Golany",
+      "properties": {
+        "resolution_status": "resolved",
+        "identity_method": "openalex_author_id",
+        "openalex_id": "A5022512211"
+      }
+    },
+    {
+      "id": "researcher:openalex:A5029708595",
+      "label": "Researcher",
+      "name": "Kira Radinsky",
+      "properties": {
+        "resolution_status": "resolved",
+        "identity_method": "openalex_author_id",
+        "openalex_id": "A5029708595",
+        "orcid": "0009-0007-7918-2204"
+      }
+    },
+    {
+      "id": "topic:generative-modeling",
+      "label": "Topic",
+      "name": "Generative modeling",
+      "properties": {
+        "parent_id": "topic:learning-representation",
+        "definition": "Learning data distributions to generate or reconstruct samples; estimating a stochastic or social diffusion process without sample generation does not qualify.",
+        "synonyms": [
+          "generative model",
+          "diffusion model",
+          "normalizing flow"
+        ],
+        "include": [
+          "diffusion models",
+          "adversarial generation",
+          "variational generation"
+        ],
+        "exclude": [
+          "data augmentation without a substantive generative contribution"
+        ],
+        "level": "leaf",
+        "taxonomy_version": "taxonomy-release-v1",
+        "taxonomy_status": "frozen"
+      }
+    },
+    {
+      "id": "venue:aaai",
+      "label": "Venue",
+      "name": "AAAI Conference on Artificial Intelligence",
+      "properties": {}
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "edge:1119350e61dc5a87511ae36ca18ab37290861fc18f216e8a2ec96f21ee8928fb",
+      "relation": "AUTHORED",
+      "source_id": "researcher:openalex:A5022512211",
+      "target_id": "paper:aaai:2021:16086",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92"
+      ],
+      "method_version": "release-openalex-graph-v1.1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 1,
+        "roster_name": "Tomer Golany",
+        "name_match": "exact"
+      }
+    },
+    {
+      "edge_id": "edge:227d01ba6aae2cbfda90551c6f27f2f4472a747d32f7a9868773ab0a7fab3d10",
+      "relation": "AUTHORED",
+      "source_id": "researcher:openalex:A5029708595",
+      "target_id": "paper:aaai:2021:16086",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92"
+      ],
+      "method_version": "release-openalex-graph-v1.1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "byline_position": 3,
+        "roster_name": "Kira Radinsky",
+        "name_match": "exact"
+      }
+    },
+    {
+      "edge_id": "edge:b7ec79d6e1fa0c348ded14cd234f51994228f1724017244828a647eca8fc5b8a",
+      "relation": "PUBLISHED_IN",
+      "source_id": "paper:aaai:2021:16086",
+      "target_id": "venue:aaai",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:roster:4a38b59368f167cf8fa4bba4"
+      ],
+      "method_version": "release-openalex-graph-v1.1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "year": 2021
+      }
+    },
+    {
+      "edge_id": "edge:dab933c7c3e4cb3eebf6ffded80b07c30e34e03ee51502352ef9777a8ce16d79",
+      "relation": "HAS_TOPIC",
+      "source_id": "paper:aaai:2021:16086",
+      "target_id": "topic:generative-modeling",
+      "evidence_kind": "inferred_topic",
+      "evidence_ids": [
+        "evidence:topic:dab933c7c3e4cb3eebf6ffded80b07c30e34e03ee51502352ef9777a8ce16d79"
+      ],
+      "method_version": "release-embedding-topics-v1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "cosine_similarity": 0.3753219246864319,
+        "threshold_tau": 0.2708871364593506,
+        "margin_delta": 0.02,
+        "text_source": "abstract",
+        "evaluation_status": "human_review_pending"
+      }
+    },
+    {
+      "edge_id": "edge:08e28640c4871374d9efbfe6102e27a200be71428be80356b3f82ee3b7dec565",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:openalex:A5022512211",
+      "target_id": "organization:I174306211",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92"
+      ],
+      "method_version": "release-openalex-graph-v1.1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "support_paper_count": 1,
+        "raw_affiliation_strings": [
+          "Technion - Israel Institute of Technology"
+        ]
+      }
+    },
+    {
+      "edge_id": "edge:7c36e49448730a2742f271a854c27bf323e8f380162e72ca27234a0fd117a533",
+      "relation": "COAUTHORED_WITH",
+      "source_id": "researcher:openalex:A5022512211",
+      "target_id": "researcher:openalex:A5029708595",
+      "evidence_kind": "derived",
+      "evidence_ids": [
+        "evidence:derived:7c36e49448730a2742f271a854c27bf323e8f380162e72ca27234a0fd117a533"
+      ],
+      "method_version": "core-derivation-v1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "support_count": 1,
+        "fractional_weight": 0.5
+      }
+    },
+    {
+      "edge_id": "edge:e62afe9d300d052177ee93b8b2870805808926bb60ef47488736798cfda8aeba",
+      "relation": "AFFILIATED_WITH",
+      "source_id": "researcher:openalex:A5029708595",
+      "target_id": "organization:I174306211",
+      "evidence_kind": "observed",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92",
+        "evidence:openalex:bbff740faf287b18633186e1",
+        "evidence:openalex:2a910256562c6f5c55fb130d"
+      ],
+      "method_version": "release-openalex-graph-v1.1",
+      "graph_version": "release-d3c788c3114a",
+      "validation_status": "accepted",
+      "properties": {
+        "support_paper_count": 3,
+        "raw_affiliation_strings": [
+          "Technion - Israel Institute Of Technology",
+          "Technion, Israel Institute of Technology",
+          "Technion - Israel Institute of Technology"
+        ]
+      }
+    }
+  ],
+  "affiliation_observations": [
+    {
+      "id": "affiliation:10b384ed325fd53827b040b9",
+      "researcher_id": "researcher:openalex:A5029708595",
+      "paper_id": "paper:aaai:2021:16086",
+      "organization_id": "organization:I174306211",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92"
+      ]
+    },
+    {
+      "id": "affiliation:3608c7e46ce212eb895d8c2e",
+      "researcher_id": "researcher:openalex:A5022512211",
+      "paper_id": "paper:aaai:2021:16086",
+      "organization_id": "organization:I174306211",
+      "evidence_ids": [
+        "evidence:openalex:4207a7e7b75136621190ed92"
+      ]
+    }
+  ]
+}

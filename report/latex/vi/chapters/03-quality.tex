@@ -1,0 +1,55 @@
+\chapter{Thống kê và chất lượng đồ thị}
+\label{ch:quality}
+\section{Thành phần đồ thị chính thức}
+V4 chính thức gồm \TotalNodes{} nút và \TotalEdges{} cạnh được chấp nhận.
+Bảng~\ref{tab:nodes} và~\ref{tab:edges} trình bày thống kê theo loại. Trong
+20 chủ đề có bốn chủ đề cha và 16 chủ đề lá; hai nút hội nghị biểu diễn chuỗi
+hội nghị, còn năm được lưu trên nút bài báo.
+
+\input{tables/bilingual-nodes.tex}
+\input{tables/bilingual-edges.tex}
+\FloatBarrier
+
+Nhóm quan hệ thư mục quan sát được có 110,026 cạnh. Các nhóm còn lại gồm
+14,222 cạnh chủ đề suy ra, 16 cạnh phân cấp biên soạn và 101,467 cạnh dẫn xuất.
+Đặc biệt, số quan hệ tác giả, số liên kết tổ chức tổng hợp và số cặp đồng tác
+giả đo những đối tượng khác nhau. Không thể cộng chúng rồi diễn giải thành số
+quan sát khoa học độc lập.
+
+\Needspace{15cm}
+\section{Kiểm tra xây dựng và chất lượng bằng chứng}
+Bộ kiểm tra cấu trúc đã ghi nhận kết quả đạt cho v4: ID duy nhất, nhãn và quan
+hệ hợp lệ, loại thực thể ở hai đầu đúng quy định, trạng thái chấp nhận, tham
+chiếu bằng chứng và phép tính lại số bài hỗ trợ/trọng số của quan hệ dẫn xuất.
+Cả mười quan hệ đều hiện diện. Lần nạp Neo4j được ghi nhận đã đối soát số nút
+và cạnh; sáu truy vấn toàn vẹn và phép nạp lại không làm thay đổi dữ liệu cũng
+đạt. Đây là hồ sơ kiểm tra của phiên bản, không phải các lần kiểm tra cơ sở dữ
+liệu mới thực hiện khi viết báo cáo.
+
+Kiểm tra tính nhất quán toàn bộ nguồn đã so sánh đối tượng tác giả và tham
+chiếu được giữ lại cho cả 13,606 công trình đối sánh, bao phủ 65,469 vị trí và
+341 mã băm phản hồi lưu đệm. Kết quả xác nhận sự trùng khớp với ảnh chụp nguồn
+đã lưu. Tính nhất quán cấu trúc và byte nguồn không chứng minh định danh hay
+đơn vị công tác do nhà cung cấp ghi nhận là đúng.
+
+Đợt rà soát tự động dựa trên nguồn, được thiết kế trước khi đánh giá, nhận định
+193 trong 200 cạnh được lấy mẫu ngẫu nhiên đều là có hỗ trợ (96.50\%; khoảng
+Wilson 95\%: 92.95--98.29\%), với một trường hợp được đánh giá là sai và sáu
+trường hợp chưa thể xác minh.
+Trường hợp chưa xác minh được được tính là không có hỗ trợ. Đây là
+\textbf{đánh giá có hỗ trợ AI}, không phải nhãn do người gán hay kiểm chứng độc
+lập: nguồn dùng khi xây dựng được sử dụng lại, tính độc lập của bên đánh giá
+chưa được xác lập, và khoảng thống kê chỉ phản ánh biến động lấy mẫu chứ không
+bao gồm sai số đánh giá. Một chẩn đoán phân tầng theo quan hệ thực hiện sau đó
+đánh dấu ba liên kết dẫn xuất từ chủ đề và một quan hệ tác giả chưa chắc chắn;
+nó không sửa đồ thị cố định và không được gộp vào ước lượng mẫu ngẫu nhiên đều.
+
+Các khoảng trống ở Bảng~\ref{tab:coverage} ảnh hưởng đến phần mạng quan sát
+được. Có 199 bài không có quan hệ tác giả được chấp nhận, và bằng chứng tổ chức
+còn thiếu ở một phần danh sách tác giả chính thức. Độ bao phủ chủ đề cũng đo
+khả năng có nhãn, không đo tính đúng của nhãn. Trên 50 bài kiểm tra lịch sử,
+nhãn dùng vector có độ chính xác dự đoán dương (precision) vi mô 0.6863, độ thu hồi (recall) vi mô 0.3535 và F1 0.4667 khi so với nhãn tham chiếu do AI gán; F1 của phương
+pháp cơ sở dùng cụm từ là 0.2301. Các nhãn tham chiếu đã xuất hiện trong các lần rà soát trước này không tạo
+thành một tập kiểm tra chủ đề độc lập do con người thực hiện.
+Vì vậy, xu hướng và hồ sơ chủ đề mang tính thăm dò; số bài quan sát và thống kê
+cạnh được chấp nhận vẫn là các đại lượng đo trực tiếp được.

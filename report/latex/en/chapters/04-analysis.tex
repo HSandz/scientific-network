@@ -1,0 +1,253 @@
+\chapter{Network Analysis and Insights}
+\label{ch:analysis}
+Analysis separates five projections: researcher coauthorship, organization
+collaboration, directed within-corpus citations, paper--topic membership and
+organization--topic contributions. Metrics come from the frozen v4 analysis,
+computed offline with NetworkX \citep{networkxDocs}. Each projection includes
+its eligible nodes and isolates; collaboration graphs are undirected and
+citation arrows run from citing to cited paper.
+
+\section{How did the publication landscape change?}
+The official counts in Figure~\ref{fig:publications} show about 80\% more
+papers in 2025 than in 2021, with a decline in 2022. The expansion is uneven
+and specific to the selected main-track proceedings.
+
+The topic view asks a different question: how is the labeled part of that
+corpus distributed across model-defined research areas? A paper with $L$
+accepted labels contributes $1/L$ to each. Annual shares divide the resulting
+mass by the number of labeled papers, so a multi-label paper is not counted as
+several whole papers. Figure~\ref{fig:topics} combines both venues and displays
+the eight topics with the greatest total fractional mass.
+
+\plot{topic-trends}{Inferred topic trends for the eight largest topics by total
+fractional mass. A labeled paper contributes total mass one across its labels;
+annual denominators combine labeled AAAI and IJCAI papers. Panels share the same
+vertical scale.}{fig:topics}
+\FloatBarrier
+
+Representation learning is prominent across the period, while the inferred
+multimodal share increases in both venues. In the venue-specific frozen tables,
+AAAI's multimodal share rises from 6.96\% in 2021 to 16.42\% in 2025;
+IJCAI's rises from 7.43\% to 12.90\%. Seeing the same direction in both series
+makes this a useful pattern to inspect beyond the changing venue mixture.
+However, it remains a shift in classifier-assigned shares, conditional on
+labeled papers. Abstentions and the topic-evaluation limits in
+Chapter~\ref{ch:quality} constrain a claim about the entire research landscape.
+
+\section{How connected are the researchers?}
+The coauthorship projection connects \Researchers{} researchers through
+\CoauthorPairs{} distinct pairs. Degree counts different collaborators, while
+fractional strength accumulates team-size-adjusted support. Mean degree is
+5.00 and the maximum is 90. The low mean alongside a long upper tail indicates
+that a relatively small set of records has much broader collaboration reach
+than the typical researcher.
+
+\plot{researcher-structure}{Researcher collaboration structure. Left: fraction
+of all 32,189 researchers with degree at least $k$; positive degrees are plotted
+on log axes, with isolates retained in the denominator. Right: all 2,936
+components ranked by size, including isolates; vertical scale is logarithmic.
+The curve alone does not establish a power-law model.}{fig:structure}
+
+The largest connected component contains \LargestComponent{} researchers,
+or 64.5\% of the projection. There are \ResearcherComponents{} components in
+all and \ResearcherIsolates{} isolated researchers. A path through the largest
+component means a chain of coauthorships, not that every member has worked
+directly with every other member. The contrast between one large component and
+many small groups indicates a connected core alongside substantial local
+fragmentation.
+
+The time dimension adds context. Table~\ref{tab:annual} counts researchers with
+at least one accepted authorship in each year, and assigns each coauthor pair
+to the earliest year of its supporting papers. Active researchers can recur in
+several rows. The last column therefore measures newly observed pairs within
+this five-year window, not all pairs active that year or first collaboration
+in a person's career.
+
+\input{tables/bilingual-annual.tex}
+\FloatBarrier
+
+Active researcher records increase from 6,337 in 2021 to 13,082 in 2025;
+first-observed pairs increase from 12,599 to 26,708. Together with the
+publication trend, this shows that the later corpus contains both more papers
+and a wider accepted collaboration network. Identity withholding can remove
+links unevenly, so the graph cannot distinguish every real change in research
+activity from metadata coverage effects.
+
+\section{Where do organizations collaborate?}
+The organization projection contains \Organizations{} organizations and
+\OrganizationPairs{} unique collaboration pairs. It has
+\OrganizationIsolates{} isolates, mean degree 12.73 and maximum degree 257.
+An edge requires paper-specific affiliations of two distinct authors to two
+different organizations. This gives a co-publication relation with a concrete
+construction rule.
+
+\textbf{Unique pairs and pair--paper supports differ.} An organization pair is
+one graph edge even if it appears on many papers. Its support count records the
+number of distinct papers. A paper with several eligible pairs contributes one
+support to each pair, and fractional weights additionally divide its total mass
+across those pairs. The sector matrix in Figure~\ref{fig:sectors} sums
+pair--paper supports, not unique papers or unique graph edges. Its mirrored
+cells show the same cross-sector supports and should not be added twice.
+
+\plot{sector-mixing}{Organization collaboration by sector. Cells count distinct
+organization-pair by core-paper supports. The symmetric matrix retains unknown
+sectors; each eligible pair requires two distinct authors with aligned
+paper-specific affiliations.}{fig:sectors}
+\FloatBarrier
+
+Academia--academia has the largest displayed cell, with 10,956 supports.
+Academia--industry has 3,533. This indicates that academic co-publication is the
+largest visible sector pattern while a substantial cross-sector connection is
+also present. Sector is an OpenAlex organization property; unknown metadata is
+kept explicit. The counts describe publication support rather than contractual
+partnerships.
+
+\Needspace{17cm}
+Figure~\ref{fig:orgpairs} focuses on the twelve academia--industry pairs with the
+most distinct supporting papers across all topics. It turns a dense graph into
+a readable comparison of repeated co-publication. This edge ranking contains
+eleven unique organizations, so institutions can occur in several rows. It is
+not an induced network on those organizations.
+
+\plot{organizations-network}{Twelve leading academia--industry pairs by
+accepted distinct-paper support across all topics. Ties use stable endpoint IDs.
+Repeated organizations are intentional; rows are unique pairs.}{fig:orgpairs}
+\FloatBarrier
+
+A topic-specific view reveals a more focused example. Shanghai Jiao Tong
+University--Tencent has 14 distinct supporting papers labeled
+\emph{Representation learning}, tied with Xiamen University--Tencent and
+Zhejiang University--Alibaba. Two source-checked Shanghai Jiao Tong--Tencent
+papers are \href{https://doi.org/10.1609/aaai.v36i1.19954}{\emph{Exploiting
+Fine-Grained Face Forgery Clues via Progressive Enhancement Learning}} and
+\href{https://doi.org/10.1609/aaai.v36i3.20193}{\emph{DIRL: Domain-Invariant
+Representation Learning for Generalizable Semantic Segmentation}} (2022).
+Accepted observations align the two organizations to distinct authors. The
+14-paper result uses a topic filter, whereas Figure~\ref{fig:orgpairs} uses
+all topics.
+
+Organization portfolios also depend on the denominator. For inferred
+Representation learning, Zhejiang University has 156 supported papers among
+489 organization-associated topic-labeled papers; Peking University has
+139 among 381. Their fractional portfolio shares are 25.1\% and 28.8\%.
+These shares divide each labeled paper across both its supported organizations
+and its labels. They are consequently different from the raw ratios 156/489
+and 139/381. Within the observed portfolio, Zhejiang has more supporting papers,
+while Peking allocates a greater fractional share to that topic. This is a useful
+comparison of volume and specialization, conditional on retained affiliations
+and inferred labels.
+
+\section{Which communities and researchers connect the network?}
+Community detection finds relatively dense collaboration groups. The selected
+Louvain run uses seed 17 and resolution 0.8 \citep{blondel2008communities}.
+Figure~\ref{fig:communities} shows inferred-topic profiles for twelve large
+communities. Papers are deduplicated within each community and divide their
+mass across accepted topic labels. One paper can be associated with several
+communities through its authors.
+
+\plot{community-topic-profiles}{Topic profiles of the first twelve communities
+in the stored size order. The ten topics with greatest summed fractional mass
+in these profiles are displayed. Each community stores only its top five topics:
+grey means unreported, not zero. Community IDs belong to this fixed partition.}{fig:communities}
+\FloatBarrier
+
+The profiles show different mixtures rather than a one-community/one-topic
+mapping. Representation learning occurs across several groups, while other
+inferred topics are more concentrated in particular profiles. Such overlap is
+useful for finding neighboring research groups with related interests.
+Community boundaries depend on the graph and Louvain settings, so they are
+analytical groupings rather than official departments or stable disciplines.
+
+Centrality provides a complementary view. Degree measures the breadth of direct
+collaboration; strength reflects repeated, fractionally weighted collaboration.
+Betweenness measures how often a researcher lies on shortest paths between
+others \citep{freeman1977betweenness}. The frozen analysis uses inverse positive
+fractional strength as path distance and approximates weighted betweenness with
+256 pivots. Table~\ref{tab:bridges} adds community context to the first five
+records instead of interpreting rank alone.
+
+\input{tables/bilingual-bridges.tex}
+
+Bo An (A5017743551) ranks first at 0.042193 among 32,189 researchers. This
+identity belongs to a 367-member community linked to 206 distinct papers,
+including 180 with topic labels. Representation learning accounts for 63 papers
+and 52.3333 fractional topic units, or 29.1\% of its fractional topic mass.
+Lei Feng, the second-ranked record, belongs to the same selected community.
+This illustrates how several bridge records can arise within one broader
+collaboration setting rather than representing unrelated isolated leaders.
+
+Two source-checked participations for Bo An are
+\href{https://doi.org/10.1609/aaai.v36i8.20851}{\emph{GearNet: Stepwise Dual
+Learning for Weakly Supervised Domain Adaptation}} (2022) and
+\href{https://doi.org/10.1609/aaai.v37i6.25871}{\emph{Partial-Label Regression}}
+(2023). These demonstrate accepted participation; they do not explain the
+betweenness score on their own.
+
+\plot{researchers-network}{Bo An (gold) and twelve accepted one-hop neighbors,
+selected by descending paper support, fractional weight and stable ID. All
+accepted edges among the thirteen selected IDs are shown: 24 edges. Blue edges
+touch Bo An and vary in width with support; grey edges connect selected neighbors.
+Layout seed 17; this is a bounded neighborhood, not the full ego network.}{fig:ego}
+\FloatBarrier
+
+The neighborhood includes links among selected coauthors, not only a star
+centered on Bo An. It therefore helps inspect the local collaboration setting,
+while global brokerage remains a property of the complete projection.
+Interpretation also depends on the support rule: the frozen minimum-two-paper
+filter retains only 7.78\% of researcher collaboration edges and has zero
+members in common with the base betweenness top twenty. The filter represents
+repeated collaboration and strongly fragments the network. This is a material
+reason to treat bridge rankings as structural inspection leads. Betweenness
+measures paths under the chosen graph definition, not research quality or
+real-world influence.
+
+\section{Which papers receive citations within the corpus?}
+The directed citation projection includes all \Papers{} papers and
+\CitationEdges{} accepted within-corpus citation edges. A reference to a paper
+outside these proceedings is excluded; ambiguous target mappings and self-loops
+are dropped, and repeated references to the same target collapse. The graph
+has \CitationIsolates{} papers with neither incoming nor outgoing in-corpus
+citations, mean total degree 1.07 and maximum in-degree 51.
+
+\plot{top-cited-papers}{Ten highest in-degree papers in the captured citation
+network. Each count is the number of distinct citing papers inside this corpus.
+Official titles remain unchanged. Counts exclude external citations and do not
+normalize publication age.}{fig:cited}
+\FloatBarrier
+
+\emph{Informer: Beyond Efficient Transformer for Long Sequence Time-Series
+Forecasting} (AAAI 2021, \texttt{paper:aaai:2021:17325}) leads with 51 in-corpus
+citing papers. It is an example of a time-series forecasting paper attracting
+repeated attention within the selected AI proceedings. The ranking can help a
+reader locate frequently referenced methodological starting points, but it is
+not a field-wide citation ranking.
+
+The many citation isolates are also meaningful: restricting both endpoints to
+two venue series removes most of the wider reference network. An isolated paper
+here can still cite, and be cited by, substantial literature elsewhere. Older
+papers also have more time to collect citations. Reading the ranking alongside
+these two boundaries avoids interpreting a low in-corpus count as low overall
+attention.
+
+\section{Key findings}
+\begin{enumerate}
+\item \textbf{The selected publication landscape expands unevenly.} Output
+rises from 2,240 to 4,042 papers after a 2022 dip. Multimodal share rises in both
+venues' labeled subsets, suggesting a useful topic trend to inspect alongside
+the broader increase in volume.
+\item \textbf{Coauthorship combines a large core and many local groups.}
+The largest component holds 20,776 of 32,189 researchers, while the graph has
+2,936 components. This supports both broad network navigation and local
+group-level exploration.
+\item \textbf{Cross-sector co-publication is recurrent.} Academia--industry
+accounts for 3,533 pair--paper supports. The 14-paper Representation-learning
+examples identify concrete repeated publication links for research-program
+planning, within the retained affiliation evidence.
+\item \textbf{Bridge position and collaboration breadth answer different
+questions.} Bo An leads approximate betweenness at 0.042193, but the repeated-support
+filter changes the entire top twenty. A shortlist needs its projection and
+support rule alongside its names.
+\item \textbf{Citation attention is concentrated within a narrow window.}
+Informer has the highest in-degree, 51, while 7,302 papers are citation isolates.
+Both results reflect the two-venue citation boundary and captured references.
+\end{enumerate}

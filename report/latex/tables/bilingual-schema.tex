@@ -1,0 +1,17 @@
+\begin{table}[!htbp]\centering\small
+\caption{\lang{The ten relationships and their support rules. Arrows specify direction.}{Mười quan hệ và quy tắc hỗ trợ. Mũi tên chỉ chiều quan hệ.}}
+\label{tab:schema}
+\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{3.7cm}Y}\toprule
+\lang{Predicate / class}{Quan hệ / loại} & \lang{Endpoints}{Hai đầu quan hệ} & \lang{Meaning}{Ý nghĩa}\\\midrule
+\texttt{AUTHORED} & \lang{Researcher $\to$ Paper}{Nhà nghiên cứu $\to$ Bài báo} & \lang{Observed: accepted byline identity.}{Quan sát: định danh tác giả được chấp nhận.}\\
+\texttt{AFFILIATED\_WITH} & \lang{Researcher $\to$ Organization}{Nhà nghiên cứu $\to$ Tổ chức} & \lang{Observed: aggregate paper-specific affiliations.}{Quan sát: tổng hợp liên kết tổ chức theo từng bài.}\\
+\texttt{PUBLISHED\_IN} & \lang{Paper $\to$ Venue}{Bài báo $\to$ Hội nghị} & \lang{Observed: official proceedings entry.}{Quan sát: bản ghi kỷ yếu chính thức.}\\
+\texttt{CITES} & \lang{Paper $\to$ Paper}{Bài báo $\to$ Bài báo} & \lang{Observed: in-scope citing-to-cited reference.}{Quan sát: trích dẫn tới bài trong phạm vi.}\\
+\texttt{HAS\_TOPIC} & \lang{Paper $\to$ Topic}{Bài báo $\to$ Chủ đề} & \lang{Inferred: one to three leaf labels, or abstention.}{Suy ra từ mô hình: một đến ba nhãn lá, hoặc không gán.}\\
+\texttt{SUBTOPIC\_OF} & \lang{Topic $\to$ Topic}{Chủ đề $\to$ Chủ đề} & \lang{Curated: leaf-to-parent taxonomy.}{Biên soạn: chủ đề lá thuộc chủ đề cha.}\\
+\texttt{COAUTHORED\_WITH} & \lang{Researcher $\leftrightarrow$ Researcher}{Nhà nghiên cứu $\leftrightarrow$ Nhà nghiên cứu} & \lang{Derived: shared accepted core paper.}{Dẫn xuất: cùng bài thuộc tập lõi, tác giả được chấp nhận.}\\
+\texttt{COLLABORATED\_WITH} & \lang{Organization $\leftrightarrow$ Organization}{Tổ chức $\leftrightarrow$ Tổ chức} & \lang{Derived: distinct authors with aligned affiliations.}{Dẫn xuất: tác giả khác nhau có liên kết tổ chức tương ứng.}\\
+\texttt{RESEARCHES\_TOPIC} & \lang{Researcher $\to$ Topic}{Nhà nghiên cứu $\to$ Chủ đề} & \lang{Derived: at least two distinct core papers.}{Dẫn xuất: ít nhất hai bài phân biệt thuộc tập lõi.}\\
+\makecell[l]{\texttt{CONTRIBUTES\_TO\_}\\\texttt{TOPIC}} & \lang{Organization $\to$ Topic}{Tổ chức $\to$ Chủ đề} & \lang{Derived: at least three distinct core papers.}{Dẫn xuất: ít nhất ba bài phân biệt thuộc tập lõi.}\\\bottomrule
+\end{tabularx}\end{table}

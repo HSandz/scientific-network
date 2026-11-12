@@ -2,3 +2,5 @@
 /review/
 /scripts/__pycache__/
 !/figures/*.pdf
+!/figures/en/*.pdf
+!/figures/vi/*.pdf
