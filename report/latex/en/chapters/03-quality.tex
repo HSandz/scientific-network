@@ -16,6 +16,25 @@ classes contain 14,222 inferred-topic edges, 16 curated taxonomy links and
 affiliation count and a coauthor-pair count measure different objects. They
 cannot be added and interpreted as unique scientific observations.
 
+
+Figure~\ref{fig:full-graph} shows the complete result of graph construction:
+all entities and all accepted relationships, rather than a selected neighborhood.
+Colors distinguish entity types. The two conference nodes link the publication
+corpus, while researchers and organizations connect papers through authorship
+and affiliation. All nodes lie in one connected component in this combined
+network. Shared venue and other entity links join groups that remain separate
+in the coauthorship projection examined in Chapter~\ref{ch:analysis}.
+
+\plot{full-knowledge-graph}{Complete knowledge graph: all 47,875 nodes and
+225,731 accepted edges across five entity types and ten relationship types.
+No nodes or edges are sampled. Node colors identify entity types; topics and
+venues use larger markers for visibility. All edges use thin grey strokes;
+arrowheads are suppressed at this scale, without changing relation semantics.
+Positions come from an unweighted force-directed layout and have no geographic
+or temporal meaning.}{fig:full-graph}
+\FloatBarrier
+\clearpage
+
 \Needspace{15cm}
 \section{Structural validation and evidence quality}
 The recorded structural checks pass for the graph. They check unique IDs, permitted

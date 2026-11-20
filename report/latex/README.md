@@ -1,7 +1,7 @@
 # Scientific Network — bilingual course reports
 
 The English and Vietnamese editions use the same frozen production v4 graph,
-`release-d3c788c3114a`. Each is **24 pages**, reduced from the previous 46-page
+`release-d3c788c3114a`. Each is **25 pages**, reduced from the previous 46-page
 English report. The five chapters emphasize data, graph construction, inventory,
 network insights, and conclusions. Ten figures appear in each edition.
 
@@ -129,3 +129,27 @@ in [figures/SOURCES-46-PAGE.md](figures/SOURCES-46-PAGE.md).
 Repository access for the lecturer still needs to be arranged according to the
 latest recorded private-repository access check. No publication or deployment
 is part of this report task.
+
+## Complete network overviews
+
+The inventory chapter includes every entity and accepted relationship; the
+collaboration chapter includes every researcher and accepted coauthor pair.
+Detailed individual labels remain in the smaller neighborhood view.
+
+To regenerate these two complete views from the pinned local graph, install the
+optional layout renderer inside the ignored report build directory (no project
+lockfile changes):
+
+```sh
+# From the repository root:
+uv pip install --target report/latex/build/visualization-deps 'igraph==1.0.0'
+.venv/bin/python report/latex/scripts/generate-network-overviews.py --language all
+make -C report/latex all
+```
+
+`--language en` and `--language vi` are also supported. A shared, hash-bound
+coordinate cache in `build/` ensures the same geometry for both editions.
+`make figures` regenerates these views after the existing figures; it requires
+the optional renderer. Building existing figures into the PDFs needs no igraph.
+Full inclusion counts, layout settings and source provenance are documented in
+[figures/SOURCES.md](figures/SOURCES.md).

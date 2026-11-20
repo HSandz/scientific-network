@@ -1,0 +1,32 @@
+{
+  "source_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "node_ids_sha256": "eadfd841bd9a3f8372cbbc9a53c0eba8888e486271265dd6b030f52d70a70c51",
+  "edge_ids_sha256": "47e4f00159edbf36a7c6262716080416ae6b6c40ffc0debcd9d71214dd8b0057",
+  "igraph": "1.0.0",
+  "algorithm": "Fruchterman-Reingold, grid, unweighted, 350 iterations, seed 17",
+  "node_count": 47875,
+  "edge_count": 225731,
+  "nodes_by_type": {
+    "Organization": 2047,
+    "Paper": 13617,
+    "Researcher": 32189,
+    "Topic": 20,
+    "Venue": 2
+  },
+  "edges_by_relation": {
+    "AUTHORED": 50437,
+    "COAUTHORED_WITH": 80482,
+    "PUBLISHED_IN": 13617,
+    "COLLABORATED_WITH": 13031,
+    "RESEARCHES_TOPIC": 5622,
+    "AFFILIATED_WITH": 38664,
+    "HAS_TOPIC": 14222,
+    "CONTRIBUTES_TO_TOPIC": 2332,
+    "CITES": 7308,
+    "SUBTOPIC_OF": 16
+  },
+  "layout_sha256": "fb7162fc8dd28bdab3592c3742953bf2aa6b942e98a31a29a6cc6f09bd5659f7",
+  "components": 1,
+  "largest_component": 47875,
+  "selection": "All eligible nodes and all accepted edges; no sampling or support threshold; direction suppressed for overview only."
+}

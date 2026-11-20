@@ -2,8 +2,10 @@
 
 Every measured figure uses frozen production v4, `release-d3c788c3114a`.
 No graph, classifier, analysis result or evaluation judgment was changed.
-Each basename below has a vector PDF and a 250 dpi PNG in both `en/` and `vi/`.
-Eight plots plus two shared TikZ diagrams produce ten numbered figures per PDF.
+Each measured figure has a PDF and a 250 dpi PNG in both `en/` and `vi/`.
+The two complete network PDFs retain vector text and rasterize dense nodes/edges
+at 400 dpi. Ten measured plots plus two shared TikZ diagrams produce twelve
+numbered figures per report.
 The original manifest remains in [SOURCES-46-PAGE.md](SOURCES-46-PAGE.md).
 
 ## Reproduction and pins
@@ -96,3 +98,35 @@ TikZ diagram (implementation detail). Original files and provenance remain.
 Final page renders, six contact sheets, high-resolution details and typography
 proof are local in `../review/redesign/`. Their inspection is recorded in
 [../REVIEW-BILINGUAL.md](../REVIEW-BILINGUAL.md).
+
+## Complete network views (12 November 2026)
+
+`full-knowledge-graph` displays every node (47,875) and every accepted edge
+(225,731) from the same pinned production graph. `full-coauthorship-network`
+displays all Researcher nodes (32,189) and all accepted COAUTHORED_WITH edges
+(80,482), including isolates and every component. Neither view samples or
+filters by support. The coauthorship view colors the largest component
+(20,776 researchers) teal and all remaining 11,413 researchers grey.
+
+Renderer: [generate-network-overviews.py](../scripts/generate-network-overviews.py),
+igraph 1.0.0, unweighted Fruchterman–Reingold with grid acceleration, 350 iterations,
+seed 17 and stable sorted IDs. All accepted edges participate in layout; directed
+relations are displayed without arrowheads only for the heterogeneous overview.
+Distances are layout coordinates, not geographic, temporal or strength measures.
+Disconnected component placement is illustrative, with no implied edges between
+components. Node sizes distinguish entity types in the heterogeneous view only.
+Grey edge strokes are thin and translucent to preserve the node distribution;
+dense overlap means individual edges cannot be traced at report scale.
+
+Both languages share exact cached coordinates. `full-*-receipt.json` in each
+language folder records source, sorted node-ID/edge-ID and coordinate hashes,
+counts by type/relation, and the selection rule. The report verifier compares
+these against the complete frozen graph and checks language parity. The layout
+cache and optional Python dependencies are local under ignored `build/`.
+These figures are additional report-only renderings; no analysis result changed.
+
+The coauthorship figure pairs the complete view (left) with an enlargement of
+the entire largest component (right), using unchanged coordinates. This makes
+its internal connections visible while retaining all other components and
+isolates in the complete panel. The enlargement includes every accepted edge
+whose endpoints belong to that component.

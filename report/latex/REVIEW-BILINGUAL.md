@@ -326,3 +326,28 @@ Current hashes supersede previous hashes:
 
 - `build/report-en.pdf`: `5419661c7a37c7bd361e90bbf7d01ed2d9de109e2db8b056771a63fb6ea53b5e`
 - `build/report-vi.pdf`: `2a6bf4a48a024f59d03374d54094b30e8eed9c850e17f44643866941ef7e51e1`
+
+
+## Complete network views and reference dates — 2026-11-12T10:23:54+07:00
+
+Added the complete knowledge graph (47,875 nodes, 225,731 edges) in Chapter 3
+and complete coauthorship network (32,189 researchers, 80,482 pairs) in Chapter 4.
+Both include every eligible node/accepted edge, with identical geometry and
+translated labels. The coauthor figure enlarges the entire largest component;
+the existing named local neighborhood remains. Reference access dates removed
+in both editions, with source URLs and descriptive notes retained.
+
+Both builds and the enhanced report verifier pass. Each edition is now 25
+portrait A4 pages with twelve figures, versus 24 pages before this update.
+All 50 pages rendered; contact sheets inspected and final affected pages checked
+individually at 1700px. Vietnamese labels and diacritics pass; no clipping,
+overflow, missing references or broken pages. The full graph has its own page,
+keeping the quality section intact. Requested GPT-6-Luna High bounded review
+confirmed factual/bilingual consistency; its presentation findings were resolved.
+
+[Full record](WORK-2026-11-12-full-network.md); artifacts under
+`review/full-network-2026-11-12/`. All new changes remain uncommitted.
+Current PDF hashes supersede earlier hashes:
+
+- `build/report-en.pdf`: `e7cb8d3b15d9810fcac0dd4688545fd5b26fe4fd348321136943f5c7916b5d80`
+- `build/report-vi.pdf`: `7c44de86f5b6349b3752a0a07fe703d2f82a7f74476e00bb770b2ddee85a6f05`

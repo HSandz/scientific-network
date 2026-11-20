@@ -53,6 +53,21 @@ nhất thể hiện một chuỗi quan hệ đồng tác giả, không có nghĩ
 đều trực tiếp làm việc cùng nhau. Một thành phần lớn bên cạnh nhiều nhóm nhỏ
 cho thấy lõi kết nối rộng cùng sự phân mảnh cục bộ đáng kể.
 
+
+\plot{full-coauthorship-network}{Toàn bộ mạng hợp tác giữa các nhà nghiên cứu:
+32,189 nhà nghiên cứu và 80,482 cặp đồng tác giả được chấp nhận, gồm nút cô lập
+và toàn bộ 2,936 thành phần liên thông. Màu xanh ngọc biểu diễn thành phần lớn nhất
+(20,776 nhà nghiên cứu); màu xám biểu diễn 11,413 người còn lại. Hiển thị mọi
+nút và cạnh ở khung trái, không áp dụng ngưỡng số bài hỗ trợ; khung phải phóng
+to thành phần lớn nhất bằng cùng hệ tọa độ. Bố trí lực phục vụ quan sát
+tính kết nối; khoảng cách không đo độ mạnh hợp tác.}{fig:full-coauthors}
+
+Hình~\ref{fig:full-coauthors} đặt các thống kê thành phần vào một góc nhìn mạng.
+Thành phần lớn nhất kết nối nhà nghiên cứu qua nhiều nhóm hợp tác cục bộ, còn
+các thành phần khác tách rời trong phép chiếu đồng tác giả. Góc nhìn lân cận
+ở Mục~\ref{sec:centrality} cho phép đọc tên từng người ở quy mô nhỏ hơn.
+\FloatBarrier
+
 Chiều thời gian bổ sung ngữ cảnh. Bảng~\ref{tab:annual} đếm nhà nghiên cứu có
 ít nhất một quan hệ tác giả được chấp nhận trong mỗi năm, đồng thời gán từng
 cặp đồng tác giả về năm sớm nhất trong các bài hỗ trợ. Một người có thể xuất
@@ -132,6 +147,7 @@ còn Peking dành tỷ trọng phân bổ lớn hơn cho chủ đề này. Đây
 giữ lại và nhãn suy ra.
 
 \section{Cấu trúc cộng đồng và độ trung tâm của nhà nghiên cứu}
+\label{sec:centrality}
 Phát hiện cộng đồng tìm các nhóm có kết nối đồng tác giả tương đối dày bên
 trong. Lần chạy Louvain được chọn dùng hạt giống 17 và độ phân giải 0.8
 \citep{blondel2008communities}. Hình~\ref{fig:communities} trình bày hồ sơ chủ

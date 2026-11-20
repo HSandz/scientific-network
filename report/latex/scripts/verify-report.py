@@ -46,6 +46,21 @@ for receipt in receipts.values():
   assert all(e['validation_status']=='accepted' and e['source_id'] in ns and e['target_id'] in ns for e in es)
   if name=='researchers-network':
    assert {e['edge_id'] for e in g['edges'] if e['relation']=='COAUTHORED_WITH' and e['validation_status']=='accepted' and e['source_id'] in ns and e['target_id'] in ns}==set(sel['edge_ids'])
+# Full-network figures include every eligible node and accepted edge.
+for name,eligible_nodes,eligible_edges in [
+ ('full-knowledge-graph',g['nodes'],[e for e in g['edges'] if e['validation_status']=='accepted']),
+ ('full-coauthorship-network',[n for n in g['nodes'] if n['label']=='Researcher'],[e for e in g['edges'] if e['validation_status']=='accepted' and e['relation']=='COAUTHORED_WITH'])]:
+ rs=[json.loads((BASE/f'figures/{lang}/{name}-receipt.json').read_text()) for lang in ['en','vi']]
+ assert rs[0]==rs[1],name
+ r=rs[0]
+ digest=lambda ids:hashlib.sha256(('\n'.join(sorted(ids))+'\n').encode()).hexdigest()
+ assert r['source_sha256']==sha(ROOT/'data/processed/release-graph-v4/graph.json')
+ assert r['node_count']==len(eligible_nodes) and r['edge_count']==len(eligible_edges)
+ assert r['node_ids_sha256']==digest(n['id'] for n in eligible_nodes)
+ assert r['edge_ids_sha256']==digest(e['edge_id'] for e in eligible_edges)
+ if name=='full-coauthorship-network':assert (r['components'],r['largest_component'])==(2936,20776)
+ else:assert (r['components'],r['largest_component'])==(1,47875)
+
 example=json.loads((BASE/'data/construction-example.json').read_text())
 assert all(nodes[n['id']]==n for n in example['nodes'])
 assert all(edges[e['edge_id']]==e and e['validation_status']=='accepted' for e in example['edges'])
@@ -78,6 +93,7 @@ for lang in ['en','vi']:
  assert counts[1]>30 and min(counts[2:])>65,(lang,counts)
  txt=run('pdftotext','-layout',pdf,'-');(OUT/f'{lang}-text.txt').write_text(txt)
  assert not re.search(r'(?<![\d.])90\s*%',txt)
+ assert not re.search(r'\baccessed\b|truy cập ngày',txt,re.I)
  for v in ['47,875','225,731','13,617','13,606','32,189','2,047','80,482','13,031','7,308','48,259','65,469','11,575','2,042','0.042193']:
   assert v in txt,(lang,v)
  # Graph provenance stays pinned above; version labels are omitted from the report.
@@ -94,7 +110,7 @@ for lang in ['en','vi']:
  keys={k for group in re.findall(r'\\citation\{([^}]+)\}',aux) for k in group.split(',')}
  bibkeys=set(re.findall(r'@\w+\{([^,]+),',(BASE/'references.bib').read_text()))
  assert keys<=bibkeys
- labels=set(re.findall(r'\\newlabel\{(fig:[^}]+)\}',aux));assert len(labels)==10,(lang,labels)
+ labels=set(re.findall(r'\\newlabel\{(fig:[^}]+)\}',aux));assert len(labels)==12,(lang,labels)
  fonts=run('pdffonts',pdf);(OUT/f'{lang}-fonts.txt').write_text(fonts)
  assert not re.search(r'\sno\s+(?:yes|no)\s+(?:yes|no)\s+\d+\s+\d+\s*$',fonts,re.M),'Unembedded PDF font'
  result['editions'][lang]={'pages':n,'portrait_A4':True,'zero_rotated_pages':True,'no_overfull_boxes':True,'no_missing_characters_or_references':True,'figure_count':len(labels),'cited_keys':sorted(keys),'page_word_counts':counts,'words_outside_page':outliers,'text_width_outliers_for_visual_inspection':wide,'sha256':sha(pdf),'bytes':pdf.stat().st_size}

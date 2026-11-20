@@ -56,6 +56,23 @@ directly with every other member. The contrast between one large component and
 many small groups indicates a connected core alongside substantial local
 fragmentation.
 
+
+\plot{full-coauthorship-network}{Complete researcher collaboration network:
+all 32,189 researchers and 80,482 accepted coauthor pairs, including isolates
+and all 2,936 connected components. Teal marks the largest component
+(20,776 researchers); grey marks the remaining 11,413. Every node and edge is
+shown in the left panel, without a minimum paper-support filter; the right panel
+enlarges the largest component using the same coordinates. Force-directed positions support
+an overview of connectivity; distances are not a measure of collaboration
+strength.}{fig:full-coauthors}
+
+Figure~\ref{fig:full-coauthors} puts the component statistics in a network view.
+The largest component links researchers across many local collaboration groups,
+while the other components remain disconnected in this coauthorship projection.
+The detailed neighborhood in Section~\ref{sec:centrality} provides readable
+individual names at a smaller scale.
+\FloatBarrier
+
 The time dimension adds context. Table~\ref{tab:annual} counts researchers with
 at least one accepted authorship in each year, and assigns each coauthor pair
 to the earliest year of its supporting papers. Active researchers can recur in
@@ -138,6 +155,7 @@ comparison of volume and specialization, conditional on retained affiliations
 and inferred labels.
 
 \section{Community structure and researcher centrality}
+\label{sec:centrality}
 Community detection finds relatively dense collaboration groups. The selected
 Louvain run uses seed 17 and resolution 0.8 \citep{blondel2008communities}.
 Figure~\ref{fig:communities} shows inferred-topic profiles for twelve large

@@ -1,0 +1,19 @@
+{
+  "source_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+  "node_ids_sha256": "be9bf4c28ac6673901a4f92eaaa2ae1b0d20e95ce76eb8384b207906e2345c86",
+  "edge_ids_sha256": "fb18a992baa7022901a1a887631690c9fec255e149e290a933c0e8ece7f8f1cd",
+  "igraph": "1.0.0",
+  "algorithm": "Fruchterman-Reingold, grid, unweighted, 350 iterations, seed 17",
+  "node_count": 32189,
+  "edge_count": 80482,
+  "nodes_by_type": {
+    "Researcher": 32189
+  },
+  "edges_by_relation": {
+    "COAUTHORED_WITH": 80482
+  },
+  "layout_sha256": "9c0981a6051f3acfd0f10d79aaa9c99dffb028bb7b64fa92d5bcb4b5cc77db25",
+  "components": 2936,
+  "largest_component": 20776,
+  "selection": "All eligible nodes and all accepted edges; no sampling or support threshold; direction suppressed for overview only."
+}

@@ -15,6 +15,7 @@ figures:
 	../../.venv/bin/python scripts/prepare-data.py
 	../../.venv/bin/python scripts/generate-figures.py --language en
 	../../.venv/bin/python scripts/generate-figures.py --language vi
+	../../.venv/bin/python scripts/generate-network-overviews.py --language all
 verify:
 	../../.venv/bin/python scripts/verify-report.py
 clean:
