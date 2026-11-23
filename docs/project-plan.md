@@ -1,5 +1,10 @@
 # Project specification
 
+> **Final exam (from 23 November 2026):** the grading target is now the
+> [final exam requirements](final-exam/requirements.md), with the
+> [specification](final-exam/specification.md) under D042. The brief below is the
+> original major-assignment brief; its minimums still hold and are met by v4.
+
 The course brief and business questions that every release must answer. The
 release that implemented them is [D040](release-plan.md) (AAAI and IJCAI
 2021–2025, roster v10); its [requirement-to-evidence table](release-plan.md#1-what-done-means)

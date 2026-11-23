@@ -12,6 +12,13 @@ work-log entry. Open the release plan and other documents only when a task needs
 a specific fact from them; [`docs/README.md`](docs/README.md) is the index and
 superseded documents are in `docs/archive/`.
 
+**Final exam phase (D042, due 20 December 2026):** the current work is the
+Research Trend Navigator in [`docs/final-exam/`](docs/final-exam/README.md):
+an enriched graph v5 built from v4 plus a text-derived enrichment layer, network
+analysis, and a GraphRAG and multi-hop application with a ≤9B language model.
+Read its specification before working on enrichment, analysis or the app. v4
+stays frozen; the enrichment layer's labels and predicates are authorized by D042.
+
 **9 November user amendment:** agents perform all feasible audit, scoring, report
 and local packaging work. Human annotation is optional, not a prerequisite.
 Follow [the agent audit workflow](docs/agent-audit-workflow.md) and its frozen

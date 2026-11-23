@@ -5,6 +5,12 @@ and the next step. Results and evidence live under [`reports/`](../reports/),
 mainly [release v4](../reports/release-v4/README.md) and the
 [final report](../reports/final-report/report.md).
 
+## Final exam (current phase, due 20 December 2026)
+
+- [Final exam overview](final-exam/README.md)
+- [Requirements, interpretation and rubric traceability](final-exam/requirements.md)
+- [Research Trend Navigator specification](final-exam/specification.md)
+
 ## Requirements and plan
 
 - [Project specification](project-plan.md): course brief, business questions and evaluation caveats

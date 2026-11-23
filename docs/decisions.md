@@ -2,6 +2,8 @@
 
 ## Index
 
+**Current phase:** [D042 — Final exam phase: research-trend application on an enriched graph](#d042--final-exam-phase-research-trend-application-on-an-enriched-graph-2026-11-23).
+
 **Governing the frozen v4 release:** [D040 — Release reset for the 11 November submission](#d040--release-reset-for-the-11-november-submission-2026-11-08); [D040 amendment — Explorer presentation redesign](#d040-amendment--explorer-presentation-redesign-2026-11-11); [D040 amendment — Interactive labels and analytical hierarchy](#d040-amendment--interactive-labels-and-analytical-hierarchy-2026-11-11); [D040 amendment — V5 quality audit and isolated identity development](#d040-amendment--v5-quality-audit-and-isolated-identity-development-2026-11-11); [D041 — Human-review evidence distinction and flagged diagnostic supplement](#d041--human-review-evidence-distinction-and-flagged-diagnostic-supplement-2026-11-11).
 
 **Historical** (pilot, five-year collection and pregraph holds; superseded for the release by D040): [D015](#d015--authorized-additive-expanded-collection-2026-11-03), [D016](#d016--standalone-read-only-visual-report-2026-11-03), [D017](#d017--input-bound-development-source-review-2026-11-04), [D018](#d018--five-year-core-scope-planning-only-2026-11-04), [D019](#d019--existing-site-for-plan-and-evolving-report-2026-11-04), [D020](#d020--native-report-integration-in-the-existing-site-2026-11-04), [D021](#d021--deadline-driven-execution-readiness-planning-only-2026-11-06), [D022](#d022--authorized-five-year-staged-collection-2026-11-06), [D023](#d023--corrected-roster-contracts-and-prospective-five-year-diagnostics-2026-11-06), [D024](#d024--frozen-development-pdf-headers-and-source-candidates-2026-11-06), [D025](#d025--reviewed-source-overlays-and-public-identifier-corroboration-2026-11-06), [D026](#d026--pregraph-evidence-closure-without-graph-construction-2026-11-06), [D027](#d027--bounded-official-ojs-source-recovery-with-frozen-leakage-guards-2026-11-06), [D028](#d028--complete-pregraph-prerequisite-plan-documentation-only-2026-11-06), [D029](#d029--icaps-2025-roster-correction-and-enrichment-no-go-2026-11-07), [D030](#d030--official-route-closure-and-coling-joint-edition-mapping-2026-11-07), [D031](#d031--aamas-official-roster-closure-and-2023-reconciliation-hold-2026-11-07), [D032](#d032--miccai-roster-closure-and-unresolved-edition-counts-2026-11-07), [D033](#d033--miccai-2024-full-proceedings-reconciliation-2026-11-07), [D034](#d034--miccai-2022-official-route-follow-up-2026-11-07), [D035](#d035--acm-multimedia-2024-official-source-hold-2026-11-07), [D036](#d036--icdm-2021-official-source-hold-2026-11-07), [D037](#d037--icdm-2025-accepted-list-audit-2026-11-08), [D038](#d038--acm-multimedia-2024-browser-source-follow-up-2026-11-08), [D039](#d039--cikm-2025-browser-source-audit-2026-11-08).
@@ -1277,3 +1279,42 @@ before reviewers see the AI concerns. The issue file is the source of flagged ID
 none are hardcoded in application logic. No human judgments are created by packet
 generation. See [WORK-2026-11-11-008](work-log/2026-11-11-008-final-cleanup-submission-readiness.md)
 and `reports/final-quality-sprint/`.
+
+## D042 — Final exam phase: research-trend application on an enriched graph (2026-11-23)
+
+The user supplied new final-exam requirements (10 points: enrichment, network
+analysis, a knowledge-graph application with a ≤9B language model, and slides,
+presentation and an arXiv report) due 20 December 2026, 23:59. They selected the
+research-trend application and decided:
+
+- the corpus stays AAAI and IJCAI 2021–2025 (13,617 papers); enrichment adds
+  entities and relations about these papers only, with any source allowed;
+- no training or fine-tuning; any suitable model with ≤9B parameters, not
+  necessarily offline;
+- quality evaluation stays AI-assessed, with the D040 labelling and integrity rules;
+- the application scope can be large.
+
+Consequences: graph v4 and its database, audit and reports stay frozen. A new
+version, v5-enriched, keeps every v4 node and edge unchanged and adds a separate
+enrichment layer. That layer has three labels (`Method`, `Task`, `Dataset`) and seven
+predicates (`USES_METHOD`, `ADDRESSES_TASK`, `USES_DATASET`, `APPLIED_TO`,
+`EVALUATED_ON`, `PART_OF`, `RELATED_TO`). This is the explicit decision `AGENTS.md`
+requires for a schema change; the v4 five labels and ten predicates are unchanged.
+v5-enriched loads into a new isolated Neo4j service. The Research Explorer is
+extended instead of replaced. Defaults (models, thresholds, splits, milestones)
+are in [the final exam specification](final-exam/specification.md); changes to
+them are recorded here as dated D042 amendments. Rubric phrases that read as
+translations are interpreted in [requirements](final-exam/requirements.md),
+pending team confirmation. Recorded in WORK-2026-11-23-002.
+
+## D042 amendment — Current models and strict parameter counting (2026-11-23)
+
+At the user's request, the specification uses models current as of November 2026.
+Extraction: GLiNER2.5 (`fastino/gliner2.5-base-v1`, 194M) by default, with
+GLiNER-Relex (`knowledgator/gliner-relex-large-v1.0`, 467M) as the comparison.
+Language model: chosen by experiment, as the user decided. Only checkpoints whose
+total Hugging Face parameter count is ≤9.0B are eligible: Gemma-4-E4B-it (8.00B) and
+Qwen3.5-4B (4.66B). Qwen3.5-9B (9.65B in total, including its vision encoder) is a
+reference point. It is adopted only under the margin rule in specification §6.1
+and a further recorded amendment. Parameter counts and licences were read from
+Hugging Face model metadata on 23 November 2026.

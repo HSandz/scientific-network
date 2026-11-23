@@ -7,6 +7,10 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-23-003 — Git checkpoint](2026-11-23-003-git-checkpoint.md): verified the current D042 documentation and separate, incomplete Task2D checkpoint for the requested push.
+
+- [WORK-2026-11-23-002 — Final exam requirements and specification](2026-11-23-002-final-exam-specification.md): rubric, interpretation and traceability; Research Trend Navigator specification; D042; documentation only, awaiting team review.
+
 - [WORK-2026-11-23-001 — Documentation reorganization](2026-11-23-001-docs-reorganization.md): 14 superseded docs and prompts archived with links rewritten, project plan and roadmap split into current and archived history, new docs/root README and decision index, AGENTS.md updated for the post-submission state; 650 tests pass and every receipt-bound file still matches.
 
 - [WORK-2026-11-12-001 — Final repository stabilization](2026-11-12-001-final-stabilization.md): 650 Python tests passed, v4 structural/hash checks passed, two DOI regressions and a local Explorer filter fix; frozen packets and uncommitted Task2D work preserved; lecturer access remains blocked by private repository visibility.
@@ -16,6 +20,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 - [WORK-2026-11-11-008 — Final cleanup and submission readiness](2026-11-11-008-final-cleanup-submission-readiness.md): rubric/source-evidence correction, additive flagged diagnostics, 644 passing tests, 28-page clean local package with hash receipt; human judgments and team/course details remain pending.
 
 - [WORK-2026-11-11-007 — Final quality sprint](2026-11-11-007-final-quality-sprint.md): ten-relation Luna audit, optional human packets, coverage/report and Explorer interpretation; preserved graph/sources, local-only checkpoint.
+
+- [WORK-2026-11-11-006 — Task2D pre-review hardening](2026-11-11-006-pre-review-hardening.md): incomplete identity review tooling checkpoint.
 
 - [WORK-2026-11-11-005 — Task2C independent identity validation](2026-11-11-005-identity-independent-validation.md): completed feasible engineering, source packets, three-way sensitivity and experimental Task3 handoff; actual independent human identity judgments remain pending, promotion deferred.
 

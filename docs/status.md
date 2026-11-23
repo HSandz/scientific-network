@@ -1,47 +1,44 @@
 # Current project status
 
-Updated: **2026-11-23T12:35:00+07:00**. Plan: [D040](release-plan.md), with
-the authorized deadline amendment. Latest: [WORK-2026-11-23-001](work-log/2026-11-23-001-docs-reorganization.md)
-(documentation reorganization only). Last project-state entry:
-[WORK-2026-11-12-001](work-log/2026-11-12-001-final-stabilization.md) and its
-[stabilization report](archive/milestones/final-stabilization-2026-11-12.md).
-Later bilingual LaTeX report work is recorded under `report/latex/WORK-*.md`.
-Documentation index: [docs/README.md](README.md); superseded documents are in
-[docs/archive/](archive/README.md).
+Updated: **2026-11-23T13:30:00+07:00**. Phase: **final exam**, decision
+[D042](decisions.md#d042--final-exam-phase-research-trend-application-on-an-enriched-graph-2026-11-23),
+due **20 December 2026, 23:59**. Specification: [docs/final-exam/](final-exam/README.md).
+Latest: [WORK-2026-11-23-003](work-log/2026-11-23-003-git-checkpoint.md).
+Documentation index: [docs/README.md](README.md).
 
-## Phase checklist
+## Final exam checklist (milestones in specification §8)
 
-- [x] Frozen production v4, historical v3, source records, candidate artifacts and review samples preserved.
-- [x] Final-quality diagnostics and optional human review packets checked; no judgments were fabricated.
-- [x] DOI retry/duplicate guards covered by focused regressions; the seven historical disagreements remain unresolved.
-- [x] Explorer filter/preset mismatch corrected in local source and covered by a focused browser regression.
-- [x] Python suite, structural graph validation, frontend build/contracts and artifact hashes checked.
-- [x] Local package integrity checked; its source snapshot remains historical and predates this stabilization.
-- [ ] Optional human submissions and independently supported quality claims.
-- [ ] Official team/course facts, lecturer access, and separately authorized delivery.
+- [x] Requirements recorded, interpreted and traced; specification drafted (needs team review).
+- [ ] M0 set-up: splits frozen, LLM client and runtime, model selection (K1).
+- [ ] M1 enrichment: sources (E1), entities (E2), relations (E3), v5-enriched validated and loaded.
+- [ ] M2 quality and SNA: frozen AI-assessed audit (E4); small world, ranking, communities, trends (S1–S3).
+- [ ] M3 application core: GraphRAG index, multi-hop engine, new Explorer pages (K2, K3).
+- [ ] M4 QA benchmark, UI polish, deployment.
+- [ ] M5 arXiv report submitted by 15 December.
+- [ ] M6 slides, demo script, fallback video, Q&A sheet; final resubmission.
 
-## Scientific boundary
+## Carried over from the v4 release
 
-Production remains frozen v4. Structural validation passed; semantic accuracy,
-human validation and evaluator independence remain unestablished. The seven DOI
-disagreements, four AI-flagged graph cases, evidence-locator mismatches and
-historical affiliation/topic limits remain disclosed. Task2D identity work stays
-uncommitted and separate. No graph, database, LaTeX report, figure or PDF changed.
+- Production graph v4 `release-d3c788c3114a` stays frozen; v5-enriched will be a
+  new version in a new Neo4j service.
+- Semantic accuracy, human validation and evaluator independence remain
+  unestablished. The seven DOI disagreements and the affiliation/topic limits stay
+  disclosed.
+- Task2D identity work is an incomplete, separate
+  [checkpoint](work-log/2026-11-11-006-pre-review-hardening.md).
+- The GitHub repository is private, and the final exam needs public code and data
+  links. Decide what can be published (source policy) before December.
+- Public Explorer: <https://scientific-network-explorer.pages.dev/>. Restoring v4:
+  [reproduce-remediation-v4.md](reproduce-remediation-v4.md).
 
-## Reproduction and access
+## Open questions for the team
 
-Install with `uv sync --locked --group dev --extra analysis --extra report`, then
-follow [the v4 restoration and reproduction guide](reproduce-remediation-v4.md).
-A clean clone lacks the ignored graph, works file and original source caches; exact
-restoration and recorded SHA-256 checks are required. Reacquisition is not a
-byte-identical substitute. The local package receipt is bound to commit `f3b00d4`,
-not this stabilized checkout. The GitHub repository is private (anonymous request
-returns 404); lecturer access is unresolved. The public Explorer remains available
-at <https://scientific-network-explorer.pages.dev/>. No push, deployment, invitation
-or submission was made.
+1. Confirm "forum icons" means communities ([requirements](final-exam/requirements.md#interpretation-notes)).
+2. Hosted SLM provider and budget.
+3. arXiv endorser for cs.SI.
 
 ## Next step
 
-Resolve lecturer/repository access and official course/team facts, then review and
-authorize the exact delivery. Keep the optional human review optional; do not
-change the frozen graph or claim verified course accuracy from AI assessment.
+Team review of the specification. Then start M0: write D042 amendments for any
+changed defaults, freeze `data/manifests/enrichment-splits-v1/`, and run the
+model-selection experiment (specification §6.1).

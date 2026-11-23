@@ -14,6 +14,10 @@ checked against title and author count. It is frozen as graph **v4
 deadline was 11 November 2026. See [current status](docs/status.md) for what
 remains open.
 
+**Current phase:** the final exam (due 20 December 2026) builds a research-trend
+application on an enriched version of this graph. See the
+[final exam specification](docs/final-exam/README.md).
+
 ## Results
 
 | Requirement or artifact | Frozen v4 evidence |
