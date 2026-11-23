@@ -26,7 +26,7 @@ both check that the Site Report separates targets, historical results and new
 measurements before publication. See [Site workflow](sites-workflow.md).
 
 Actual course deadline: **11 November 2026**, confirmed by the user on 6 November.
-Follow the [dated execution plan](five-year-execution-plan.md). The exact submission
+Follow the [dated execution plan](archive/plans/five-year-execution-plan.md). The exact submission
 time is unspecified; internal packaging target is 10 November, 18:00 +07:00.
 Weekly availability/review budget remain unspecified and are not requested as
 blocking inputs. Do not infer committed hours from the illustrative effort ranges.

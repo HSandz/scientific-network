@@ -1,8 +1,8 @@
 # Research Explorer — combined graph and website improvement plan
 
 Prepared 10 November 2026. **Planning only; no application implementation yet.**
-Based on [the website verification review](../reports/research-explorer-improvements-review-2026-11-10.md)
-and [the graph operations review](../reports/research-explorer-graph-operations-review-2026-11-10.md).
+Based on [the website verification review](../../../reports/research-explorer-improvements-review-2026-11-10.md)
+and [the graph operations review](../../../reports/research-explorer-graph-operations-review-2026-11-10.md).
 This is the current combined implementation handoff; the earlier
 [improvement plan](research-explorer-improvement-plan.md) remains historical context.
 

@@ -16,8 +16,8 @@ including the user's preference for softer dark-mode contrast. Documentation onl
 
 ## Changes and findings
 
-Created [improvement plan](../research-explorer-improvement-plan.md) and
-[fresh-session implementation prompt](../prompts/implement-explorer-improvements.md).
+Created [improvement plan](../archive/plans/research-explorer-improvement-plan.md) and
+[fresh-session implementation prompt](../archive/prompts/implement-explorer-improvements.md).
 The plan covers quality facts/development parity, softer dark tokens across all
 renderers, responsive screen composition, graph relationships, keyboard and search,
 with measurable acceptance criteria and focused regression checks. It retains

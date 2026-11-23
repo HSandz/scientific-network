@@ -21,7 +21,7 @@ publication only.
 
 ## Changes and decisions
 
-- Added [conference scope](../conference-scope.md) and planning-only
+- Added [conference scope](../archive/scope/conference-scope.md) and planning-only
   `configs/conference-scope.yaml`: **34 series / 31 planned 2023 editions**, across
   seven areas. ECCV, NAACL and COLING have no 2023 edition and remain explicit
   no-edition entries; no neighboring year is substituted.

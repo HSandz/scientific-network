@@ -18,7 +18,7 @@ At session start, read in this order:
 4. The latest docs/work-log/ entry
 
 Then read the complete implementation specification and evidence:
-- docs/research-explorer-graph-usability-plan.md — authoritative combined plan
+- docs/archive/plans/research-explorer-graph-usability-plan.md — authoritative combined plan
 - reports/research-explorer-graph-operations-review-2026-11-10.md — graph
   operations findings and reproductions
 - reports/research-explorer-improvements-review-2026-11-10.md — earlier website,
@@ -77,7 +77,7 @@ private source text.
 
 ## Implementation sequence
 
-Implement all sections of docs/research-explorer-graph-usability-plan.md. Use this
+Implement all sections of docs/archive/plans/research-explorer-graph-usability-plan.md. Use this
 sequence to keep correctness ahead of polish:
 
 1. **Make the rendered view authoritative.** Establish one effective graph state
@@ -149,7 +149,7 @@ sequence to keep correctness ahead of polish:
    readability in both themes.
 
 The plan's precise paths and acceptance details are in
-`docs/research-explorer-graph-usability-plan.md`; use it as the full specification.
+`docs/archive/plans/research-explorer-graph-usability-plan.md`; use it as the full specification.
 Do not silently narrow scope. If a planned behavior conflicts with graph evidence,
 release constraints or actual runtime, document the exact conflict and implement
 what is safe and supported while continuing independent work.

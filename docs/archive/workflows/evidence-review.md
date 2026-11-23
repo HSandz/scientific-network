@@ -1,10 +1,10 @@
 # Development evidence review
 
-This records the 2023 development iteration. The current [five-year plan](five-year-scope.md)
+This records the 2023 development iteration. The current [five-year plan](../scope/five-year-scope.md)
 is planning-only; do not run new pipeline stages under D018.
 
-The first review iteration is recorded in [the results](../reports/evidence-review-v1.md)
-and [work entry](work-log/2026-11-04-001-evidence-review.md). Policy: [D017](decisions.md#d017--input-bound-development-source-review-2026-11-04).
+The first review iteration is recorded in [the results](../../../reports/evidence-review-v1.md)
+and [work entry](../../work-log/2026-11-04-001-evidence-review.md). Policy: [D017](../../decisions.md#d017--input-bound-development-source-review-2026-11-04).
 Run from the repository root. Every output below already exists locally; choose
 new output versions when rerunning. Original inputs and ledgers stay unchanged.
 

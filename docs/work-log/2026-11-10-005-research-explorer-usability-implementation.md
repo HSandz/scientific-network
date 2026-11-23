@@ -11,7 +11,7 @@
 
 ## Objective
 
-Implement the complete combined Research Explorer improvement plan ([docs/research-explorer-graph-usability-plan.md](../research-explorer-graph-usability-plan.md)) across `apps/research-explorer/`. Address all graph operations findings (G01–G11) and website verification findings:
+Implement the complete combined Research Explorer improvement plan ([docs/research-explorer-graph-usability-plan.md](../archive/plans/research-explorer-graph-usability-plan.md)) across `apps/research-explorer/`. Address all graph operations findings (G01–G11) and website verification findings:
 1. Authoritative effective-graph view state (canvas, counts, legend, metrics, neighbor list, exports, shared URLs agree).
 2. Neighborhood reading on hover/pinning with collision-free labels, 7/7 legible neighbor names for moderate neighborhoods (Warut example), honest totals and complete searchable/selectable neighbor lists for dense nodes (Zhejiang, Representation learning).
 3. Explicit Overview, Ego/neighborhood, and Path views with Back navigation, projection/filter-bounded expansion (+1 hop), reciprocal/parallel edge preservation in multi-edge graphology, and retryable error states.

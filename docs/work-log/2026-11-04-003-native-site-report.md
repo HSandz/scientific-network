@@ -35,7 +35,7 @@ full Plan, public audience, historical artifacts and D018 collection pause.
   `fc30366f0f9e8a1748d87a030b882de076a4c438cab3881062f26fb8b50b3d8f`.
   Distinguish 402/538 unimported candidate and 2021–2025 planned target. Corrected
   native verification prose to date original task 007 graph/hash checks honestly.
-- Updated [workflow](../sites-workflow.md), [visual report](../visual-report.md),
+- Updated [workflow](../sites-workflow.md), [visual report](../archive/workflows/visual-report.md),
   [report prose](../../reports/site-report.md), [project plan](../project-plan.md),
   README, contributor guidance, roadmap and status. Added D020; preserved D019,
   finalized logs, original reports and earlier publication receipts/snapshots.

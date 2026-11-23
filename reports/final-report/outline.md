@@ -3,7 +3,7 @@
 Status: outline only; no final ten-page report exists. The [historical pilot](../pilot-v1.md)
 has measured two-venue diagnostics; [expanded 2023 results](../extended-v1.md) and
 [the reviewed candidate](../evidence-review-v1.md) are partial diagnostics.
-The [current scope](../../docs/five-year-scope.md) covers **2021–2025**, 34 series
+The [current scope](../../docs/archive/scope/five-year-scope.md) covers **2021–2025**, 34 series
 and 170 venue–year candidates requiring edition verification, not 170 confirmed
 editions. Five-year collection has not started. Explain edition/no-edition states,
 cross-year versions, temporal coverage and stratified evaluation. Keep all

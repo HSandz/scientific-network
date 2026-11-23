@@ -2,7 +2,7 @@
 
 ```text
 Work in /home/san/Code/scientific-network. Implement the Research Explorer
-improvement plan in docs/research-explorer-improvement-plan.md. You have explicit
+improvement plan in docs/archive/plans/research-explorer-improvement-plan.md. You have explicit
 authorization to implement this bounded local-app task. Do not stop at another
 review or plan, and do not ask routine permission to proceed.
 
@@ -17,7 +17,7 @@ the requested skill.
 
 At session start, in order, read AGENTS.md, docs/release-plan.md, docs/status.md
 and the latest work-log entry. Then read:
-- docs/research-explorer-improvement-plan.md (implementation specification)
+- docs/archive/plans/research-explorer-improvement-plan.md (implementation specification)
 - reports/research-explorer-redesign-review-2026-11-09.md (confirmed failures)
 - apps/research-explorer/README.md and the affected source/tests/configuration.
 Verify current files, Git state and runtime; logs and review counts are historical.

@@ -47,7 +47,7 @@ registry. No confirmed five-year edition count is asserted. Future ledger keys m
 (e.g. venue + year + official record ID) because IDs can collide across publishers.
 Track no-edition/unavailable/review states separately from paper exclusions.
 Preserve the original pilot tables; new scope, split, taxonomy and graph versions
-need fresh paths and explicit crosswalks. See [the scope policy](conference-scope.md).
+need fresh paths and explicit crosswalks. See [the scope policy](archive/scope/conference-scope.md).
 
 ## Small graph artifact
 

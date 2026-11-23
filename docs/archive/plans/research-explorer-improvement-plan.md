@@ -1,8 +1,8 @@
 # Research Explorer improvement plan
 
 Prepared 9–10 November 2026 for the user's request; **proposed, not implemented**.
-Basis: [follow-up review](../reports/research-explorer-redesign-review-2026-11-09.md).
-Execution handoff: [fresh-session prompt](prompts/implement-explorer-improvements.md).
+Basis: [follow-up review](../../../reports/research-explorer-redesign-review-2026-11-09.md).
+Execution handoff: [fresh-session prompt](../prompts/implement-explorer-improvements.md).
 
 ## Outcome and scope
 

@@ -1,6 +1,6 @@
 # Historical NeurIPS/ICML pilot workflow and current implementation limits
 
-**Historical 2023 pilot.** The current target is [2021–2025](five-year-scope.md);
+**Historical 2023 pilot.** The current target is [2021–2025](archive/scope/five-year-scope.md);
 pipeline implementation/collection are paused under D018. Commands below document
 reproduction of old artifacts, not authorization to run a new corpus.
 

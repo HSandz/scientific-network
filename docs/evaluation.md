@@ -202,7 +202,7 @@ population. Preserve its IDs and freeze supplemental cross-venue leakage groups
 and a feasible prospective annotation allocation before collection/tuning. Equal
 per-venue quotas require venue sampling weights for corpus-wide TP/FP/FN totals;
 report tiny-stratum uncertainty and rare-topic diagnostics separately. See
-[the scope policy](conference-scope.md). The independent 600-edge global audit
+[the scope policy](archive/scope/conference-scope.md). The independent 600-edge global audit
 still samples uniformly from the complete frozen release edge frame; do not
 substitute the legacy pilot or pool targeted supplemental inspections into it.
 

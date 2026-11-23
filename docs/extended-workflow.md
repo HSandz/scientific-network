@@ -2,7 +2,7 @@
 
 **Historical 2023 execution instructions.** D018 extends the planned release to
 2021–2025 and pauses pipeline implementation/collection. Do not rerun these commands
-under the planning-only request. See [five-year scope](five-year-scope.md).
+under the planning-only request. See [five-year scope](archive/scope/five-year-scope.md).
 
 The user authorized expanded implementation and acquisition on 2026-11-03 (D015).
 Run from the repository root after `uv sync --locked --group dev`. Credentials stay
@@ -10,7 +10,7 @@ in ignored `.env`; existing process variables take precedence. No model is requi
 Read [current status](status.md) for measured results and remaining source gaps.
 
 The commands below preserve the first expanded run. The subsequent
-[evidence-review workflow](evidence-review.md) documents recovered metadata v4,
+[evidence-review workflow](archive/workflows/evidence-review.md) documents recovered metadata v4,
 headers v5, source-review v2 and the separate graph-v2 candidate. Current loaded
 databases and HTML remain graph-v1 until an explicit migration.
 

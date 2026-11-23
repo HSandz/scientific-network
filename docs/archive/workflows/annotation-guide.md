@@ -38,7 +38,7 @@ after authorization. Cross-year and cross-venue versions share leakage protectio
 new versions of old tests remain held out, and exposed papers cannot become fresh
 tests. Finalize annotation hours and sampling weights prospectively; 170
 venue–year candidates are not a feasible sample-size promise. New training data
-stays separate. No new split or annotation is created by this planning task. See [scope and staged pilot](conference-scope.md).
+stays separate. No new split or annotation is created by this planning task. See [scope and staged pilot](../scope/conference-scope.md).
 Rare-topic/difficult-layout diagnostics stay separate from probability-sample estimates.
 The current taxonomy is a draft and needs development examples for new fields;
 never use test errors to add labels or tune thresholds.

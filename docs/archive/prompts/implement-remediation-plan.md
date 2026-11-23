@@ -5,7 +5,7 @@ This prompt supersedes the older pre-evaluation execution prompt for this task.
 
 ```text
 Work in /home/san/Code/scientific-network. Implement all five steps of
-docs/remediation-plan.md, continuing through a corrected, source-audited graph,
+docs/archive/plans/remediation-plan.md, continuing through a corrected, source-audited graph,
 updated analysis/report and verified local submission package. Execute the work;
 do not stop after planning, fixing only the scorer, or creating empty scaffolding.
 
@@ -28,7 +28,7 @@ Start by reading, in order:
 1. AGENTS.md
 2. docs/release-plan.md
 3. docs/status.md and its latest work-log entry
-4. docs/remediation-plan.md
+4. docs/archive/plans/remediation-plan.md
 5. docs/work-log/2026-11-09-007-agent-release-review.md
 6. docs/agent-audit-workflow.md, docs/reproduce-agent-evaluation.md,
    docs/post-audit-findings.md and reports/release-v3/reviewer-rubric-v1.md

@@ -3,7 +3,7 @@
 The course's NeurIPS/ICML examples do not restrict venue selection (D014). The
 current core target is **2021–2025** (D018), retaining the same 34 flagship series.
 **Staged collection authorized by D022 on 6 November 2026.** The new
-[roster workflow](five-year-collection.md) begins official source verification;
+[roster workflow](../../five-year-collection.md) begins official source verification;
 unsupported/unavailable editions remain explicit gaps. The planning registry is
 preserved. See [the temporal plan](five-year-scope.md) for enrichment prerequisites.
 
@@ -41,7 +41,7 @@ records remain historical for that year, not exclusions from all five years.
   Applied Data Science and other tracks require a separate decision.
 - D027 implements official AAAI main Technical Tracks and ICAPS Main Track roster
   recovery. Non-main issues/sections are excluded; unknown ICAPS 2025 categories
-  stay in review. [Literal section/edition rules](../reports/five-year-source-recovery-v5.md)
+  stay in review. [Literal section/edition rules](../../../reports/five-year-source-recovery-v5.md)
   preserve source evidence without expanding the scope.
 - Preserve conservative COLT Original Papers and AAMAS regular research policies
   from D015; verify edition-specific layouts and track changes before future use.
@@ -66,8 +66,8 @@ Keep `configs/conference-scope.yaml` (D014's 2023 planning registry),
 `configs/corpus-extended-v2.yaml`, frozen inputs and Sites snapshots unchanged.
 Historical 2023 work covered 17 of 31 planned in-year editions; 14 unresolved and
 three no-edition cases remain in that ledger. Those counts do not describe the
-five-year target. [Existing workflow](extended-workflow.md),
-[measured evidence review](../reports/evidence-review-v1.md).
+five-year target. [Existing workflow](../../extended-workflow.md),
+[measured evidence review](../../../reports/evidence-review-v1.md).
 
 Preserve all legacy/expanded held-out IDs. Design supplemental venue–year sampling,
 version leakage protection, annotation hours and population weights before a later

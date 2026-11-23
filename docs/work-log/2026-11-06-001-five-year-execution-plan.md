@@ -21,7 +21,7 @@ implementation, research discovery/collection, new splits or graph imports.
 
 ## Changes and findings
 
-- Added [execution plan](../five-year-execution-plan.md): P01 planning plus E01–E09
+- Added [execution plan](../archive/plans/five-year-execution-plan.md): P01 planning plus E01–E09
   conditional work packages; dependencies, outputs/acceptance checks, stable IDs,
   cross-year leakage protection, publication-time triples, temporal support,
   isolated Neo4j storage, independent evaluation and truthful partial delivery.

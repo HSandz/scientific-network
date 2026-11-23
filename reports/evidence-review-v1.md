@@ -93,5 +93,5 @@ were not annotated or used for tuning. No models or GDS were installed.
 
 Next: adjudicate the two source-version conflicts and identity/affiliation gaps
 on development evidence; annotate development topics. Loading the candidate
-requires an explicit migration or isolated instance. See [reproduction commands](../docs/evidence-review.md)
+requires an explicit migration or isolated instance. See [reproduction commands](../docs/archive/workflows/evidence-review.md)
 and [the work record](../docs/work-log/2026-11-04-001-evidence-review.md).

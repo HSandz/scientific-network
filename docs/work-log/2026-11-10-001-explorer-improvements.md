@@ -11,7 +11,7 @@
 
 ## Objective
 
-Implement the Research Explorer improvement plan in [`docs/research-explorer-improvement-plan.md`](../research-explorer-improvement-plan.md) following [`docs/prompts/implement-explorer-improvements.md`](../prompts/implement-explorer-improvements.md) and `design-taste-frontend` app-screen workflow (`achromatic-ledger`, seed `103171675`, with user-requested soft graphite dark-mode override):
+Implement the Research Explorer improvement plan in [`docs/research-explorer-improvement-plan.md`](../archive/plans/research-explorer-improvement-plan.md) following [`docs/prompts/implement-explorer-improvements.md`](../archive/prompts/implement-explorer-improvements.md) and `design-taste-frontend` app-screen workflow (`achromatic-ledger`, seed `103171675`, with user-requested soft graphite dark-mode override):
 1. Resolve development/build appearance parity and unify quality-fact display across API, Analytics, Caveats, header, and README.
 2. Implement soft graphite dark mode across CSS, Sigma.js, ECharts, and native controls while preserving light mode and >=4.5:1 text / >=3:1 graphical contrast.
 3. Improve responsive composition across 390px, 768px, 1024px, 1100px, 1280px, and 1440px (including >=422px mobile graph height, >=600px remaining graph width before keeping both rails open, wide Analytics/Table layouts, and sticky/compact mobile table).

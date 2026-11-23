@@ -1,8 +1,8 @@
 # Five-year execution plan — deadline 11 November 2026
 
 > **Superseded for the 11 Nov 2026 submission** by
-> [D040](decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08)
-> and the [release plan](release-plan.md). Kept as history.
+> [D040](../../decisions.md#d040--release-reset-for-the-11-november-submission-2026-11-08)
+> and the [release plan](../../release-plan.md). Kept as history.
 
 Planning revision: **6 November 2026, Asia/Bangkok (UTC+07:00)**. The user confirmed
 **11 November 2026** as the submission date; the time of day was not specified.
@@ -14,7 +14,7 @@ not a claimed lecturer deadline time.
 authorized collection. E01/E02 roster work and preliminary E03 leakage triage have
 started; D023 now freezes 68 development diagnostics / 170 new tests and records
 67 acquired metadata papers, one byline withheld. No five-year import has run.
-See [collection workflow](five-year-collection.md) and [status](status.md). The conditional language below records
+See [collection workflow](../../five-year-collection.md) and [status](../../status.md). The conditional language below records
 the original planning state; D022 supplies the later authorization.
 
 **This planning document itself authorizes no execution.** The user's “proceed” accepted writing
@@ -28,12 +28,12 @@ do not silently change the course requirement or claim a measured score.
 ## 1. Scope, baseline and deadline priorities
 
 Retain the planned **2021–2025** scope, **34 flagship series**, five entity labels,
-ten predicates and existing release gates. The [readiness ledger](five-year-edition-readiness.csv)
+ten predicates and existing release gates. The [readiness ledger](../../five-year-edition-readiness.csv)
 has **170 venue–year candidates**, all pending new-scope verification. They are
 review slots, not 170 confirmed editions or collected rosters. Source catalog
 links are inherited leads, not newly checked endpoints. See
-[scope policy](conference-scope.md), [temporal rules](five-year-scope.md),
-[graph schema](graph-schema.md) and [evaluation protocol](evaluation.md).
+[scope policy](../scope/conference-scope.md), [temporal rules](../scope/five-year-scope.md),
+[graph schema](../../graph-schema.md) and [evaluation protocol](../../evaluation.md).
 
 Recorded historical evidence, not new scientific results in this task:
 
@@ -59,7 +59,7 @@ narrowing of the core year/venue boundary requires a separate documented decisio
 
 ## 2. Ordered work packages and acceptance checks
 
-Roles A/B follow [the existing team responsibilities](team.md); they are role
+Roles A/B follow [the existing team responsibilities](../../team.md); they are role
 labels, not invented names, attendance or committed working hours. Both review
 scientific evidence independently where the evaluation protocol requires it.
 
@@ -149,7 +149,7 @@ release. No date is evidence that a task has run.
 
 ## 4. Resource and annotation estimates
 
-[Machine-readable assumptions and arithmetic](../reports/five-year-planning-estimates-2026-11-06.json)
+[Machine-readable assumptions and arithmetic](../../../reports/five-year-planning-estimates-2026-11-06.json)
 separate local historical summaries from hypothetical future scenarios. No paid
 API/service spend is authorized; existing Neo4j/OpenAlex setup is sufficient to
 plan the work. Current connectivity, quotas, pricing and container health were
@@ -255,4 +255,4 @@ writing report methods, freeze leakage/sample membership before enrichment, and
 prioritize identity/affiliation quality. The 11 November deadline does not lift
 D018 or make an unrun audit a passing result. Publish subsequent measured progress
 on the same [Plan & Report Site](https://ai-research-network-plan.hazy-tern-8113.chatgpt.site)
-using [the native publication workflow](sites-workflow.md).
+using [the native publication workflow](../../sites-workflow.md).

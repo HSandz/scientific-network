@@ -16,7 +16,7 @@ preparation. Planning only; preserve implementation, graph, audit and package.
 
 ## Changes and findings
 
-- Added [the remediation plan](../remediation-plan.md): immediate scorer guard,
+- Added [the remediation plan](../archive/plans/remediation-plan.md): immediate scorer guard,
   proposed versioned identity correction, affected database/analysis, prospective
   source-backed agent audit and replacement local package, with acceptance checks.
 - The correction applies the existing conflict rule across full matched sources;

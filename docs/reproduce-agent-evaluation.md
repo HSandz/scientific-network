@@ -5,6 +5,20 @@ judgments, establish independent gold labels or certify course accuracy. The
 immutable content receipt remains `reports/release-v2/freeze-v3.json`; the separate
 evaluator receipt is `reports/release-v3/evaluation-freeze-v1.json`.
 
+**Correction, 23 November 2026 (WORK-2026-11-23-001):** the evaluator receipt binds
+the SHA-256 of `AGENTS.md`, which was later updated for the post-submission state.
+Before rescoring v3, restore the bound copy and put the current one back afterwards:
+
+```bash
+cp AGENTS.md /tmp/AGENTS.current.md
+git show 2305632:AGENTS.md > AGENTS.md   # sha256 fda35261e32e…f2f, as bound
+# … run the scoring commands below …
+cp /tmp/AGENTS.current.md AGENTS.md
+```
+
+The v4 evaluation (`reports/release-v4/evaluation-freeze-v2.json`) does not bind
+`AGENTS.md` and needs no restoration.
+
 ## Environment and inputs
 
 ```bash

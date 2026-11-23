@@ -1,8 +1,13 @@
 # Current project status
 
-Updated: **2026-11-12T01:54:51+07:00**. Plan: [D040](release-plan.md), with
-the authorized deadline amendment. Latest: [final stabilization report](final-stabilization-2026-11-12.md)
-and [WORK-2026-11-12-001](work-log/2026-11-12-001-final-stabilization.md).
+Updated: **2026-11-23T12:35:00+07:00**. Plan: [D040](release-plan.md), with
+the authorized deadline amendment. Latest: [WORK-2026-11-23-001](work-log/2026-11-23-001-docs-reorganization.md)
+(documentation reorganization only). Last project-state entry:
+[WORK-2026-11-12-001](work-log/2026-11-12-001-final-stabilization.md) and its
+[stabilization report](archive/milestones/final-stabilization-2026-11-12.md).
+Later bilingual LaTeX report work is recorded under `report/latex/WORK-*.md`.
+Documentation index: [docs/README.md](README.md); superseded documents are in
+[docs/archive/](archive/README.md).
 
 ## Phase checklist
 

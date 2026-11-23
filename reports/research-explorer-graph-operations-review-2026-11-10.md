@@ -3,7 +3,7 @@
 10 November 2026; `main` at `41852c6`; review only using
 `design-taste-frontend` app-screen rules. Extends the
 [website review](research-explorer-improvements-review-2026-11-10.md).
-Implementation handoff: [combined plan](../docs/research-explorer-graph-usability-plan.md).
+Implementation handoff: [combined plan](../docs/archive/plans/research-explorer-graph-usability-plan.md).
 
 ## Overall assessment
 

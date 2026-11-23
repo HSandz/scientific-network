@@ -48,7 +48,7 @@ The user started Docker during the task and authorized needed service work.
 - New [source ledger](../../data/manifests/reviews/source-review-v2.json),
   [review report](../../reports/evidence-review-v1.md),
   [machine summary](../../reports/evidence-review-v1.metrics.json),
-  [workflow](../evidence-review.md), README/roadmap/status updates and regression tests.
+  [workflow](../archive/workflows/evidence-review.md), README/roadmap/status updates and regression tests.
 - Candidate graph: **402 nodes / 538 edges**, 248 papers, 85 researchers,
   32 organizations, 20 topics, 17 venues; 372 factual, 110 inferred-topic,
   16 taxonomy and 40 derived edges. 38 triples; 723 mixed-unit review rows.

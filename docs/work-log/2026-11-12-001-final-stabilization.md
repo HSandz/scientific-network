@@ -42,7 +42,7 @@ LaTeX report, figures and compiled PDF were out of scope.
   `identity_validation.py`, `identity_integrity.py` and WORK-006 were not staged or
   changed by this task.
 
-See the [technical stabilization report](../final-stabilization-2026-11-12.md).
+See the [technical stabilization report](../archive/milestones/final-stabilization-2026-11-12.md).
 
 ## Verification
 

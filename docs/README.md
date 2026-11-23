@@ -1,43 +1,53 @@
 # Project documentation
 
-- [Current status and next steps](status.md)
-- [Task history and logging workflow](work-log/README.md)
-- [Work-entry template](templates/work-log.md)
-- [Project plan and acceptance criteria](project-plan.md)
-- [Complete pregraph prerequisite plan — planning only](pregraph-completion-plan.md)
-- [Expanded conference roster and track policy](conference-scope.md)
-- [Five-year 2021–2025 planning and temporal controls](five-year-scope.md)
-- [Authorized five-year collection workflow](five-year-collection.md)
-- [Five-year measured roster and diagnostic results](../reports/five-year-collection-v2.md)
-- [Latest official source recovery and scope gaps](../reports/five-year-source-recovery-v6.md)
-- [Shared Plan/Report Site and update workflow](sites-workflow.md)
-- [Latest publishable progress report](../reports/site-report.md)
-- [Setup and commands](setup.md)
-- [Expanded acquisition, protected splits and separate Neo4j workflow](extended-workflow.md)
-- [Historical pilot acquisition, NLP and Neo4j workflow](pilot-workflow.md)
-- [Measured expanded diagnostic results and limitations](../reports/extended-v1.md)
-- [Interactive HTML report](../reports/extended-v1.html) and [usage/regeneration](visual-report.md)
-- [Measured first-pilot results and limitations](../reports/pilot-v1.md)
-- [Graph schema and derivation](graph-schema.md)
+Start with [status](status.md). It records the current state, what is still open
+and the next step. Results and evidence live under [`reports/`](../reports/),
+mainly [release v4](../reports/release-v4/README.md) and the
+[final report](../reports/final-report/report.md).
+
+## Requirements and plan
+
+- [Project specification](project-plan.md): course brief, business questions and evaluation caveats
+- [Release plan (D040)](release-plan.md): scope, evidence rules and requirement-to-evidence table for the 11 November release
+- [Correction amendment, 9 November](correction-amendment-2026-11-09.md): authorizes the v4 identity correction and its single edge audit
+- [Decision register](decisions.md), with an index of current and historical decisions
+- [Roadmap](roadmap.md): implemented capabilities
+- [Team and contributions](team.md)
+
+## Design and data
+
+- [Graph schema and derivation](graph-schema.md): five labels, ten predicates, evidence and weight rules
 - [Data dictionary and storage](data-dictionary.md)
 - [Sources, collection and redistribution](source-policy.md)
-- [Annotation guide](annotation-guide.md)
-- [Independent evaluation protocol](evaluation.md)
-- [Implementation roadmap](roadmap.md)
-- [Team and contributions](team.md)
-- [Decision register](decisions.md)
-- [Captured original plan](reference/sites-project-plan-2026-11-02.txt)
-- [Current published Plan snapshot](reference/sites-project-plan-2026-11-04.md)
-- [Current published Report snapshot](reference/sites-progress-report-2026-11-04.md)
-- [Verified unified Site publication](reference/sites-publication-2026-11-04.json)
-- [Final report outline](../reports/final-report/outline.md)
+- [Network analysis](analysis.md): named projections and metrics
+- [Quality evaluation](evaluation.md): what is measured and how results may be stated
 
-The original plan is a specification. The roadmap and measured reports determine
-what has actually been implemented and achieved.
+## Reproduce, evaluate and deliver
 
-- [Selective five-year PDF/header diagnostics](../reports/five-year-headers-v1.md)
-  and [D024 workflow](five-year-collection.md#selective-frozen-development-pdf-headers-d024).
+- [Restore and reproduce frozen v4](reproduce-remediation-v4.md) (cited by the submitted report)
+- [Agent audit workflow](agent-audit-workflow.md) and [historical v3 scoring/rendering](reproduce-agent-evaluation.md)
+- [Post-audit findings on the v3 graph](post-audit-findings.md)
+- [Local submission and delivery checklist](local-submission-checklist.md)
+- [Shared Plan & Report Site workflow](sites-workflow.md), [current Site report source](../reports/site-report.md) and [publication records](reference/README.md)
 
-- [Development corroboration report](../reports/five-year-corroboration-v1.md): D025 staging support, limits and measured checks.
+## Working on the project
 
-- [Pregraph readiness](../reports/five-year-pregraph-v3.md): frozen diagnostic bundle and explicit failed full-population gates.
+- [Work log](work-log/README.md): one entry per session, from the [template](templates/work-log.md)
+- [Fresh-session release prompt](prompts/agent-release-completion.md)
+- [Review and annotation CSV templates](templates/)
+
+## Historical, kept in place
+
+These describe superseded work. They stay at their original paths because frozen
+receipts, the release plan or `AGENTS.md` refer to them by path. The historical
+measured reports are listed here too.
+
+- [Optional human reviewer handoff, 9 November](reviewer-handoff.md): superseded by agent-led evaluation
+- [Complete pregraph prerequisite plan](pregraph-completion-plan.md) (D028) and [five-year source-route triage](five-year-source-triage.md)
+- [Five-year collection workflow](five-year-collection.md) and [edition readiness table](five-year-edition-readiness.csv)
+- [2023 expanded collection workflow](extended-workflow.md) and [NeurIPS/ICML pilot workflow](pilot-workflow.md)
+- Measured historical reports: [pilot](../reports/pilot-v1.md), [expanded 2023](../reports/extended-v1.md),
+  [five-year collection](../reports/five-year-collection-v2.md), [latest source recovery](../reports/five-year-source-recovery-v10.md),
+  [pregraph readiness](../reports/five-year-pregraph-v3.md)
+
+Everything else that was superseded is in the [archive](archive/README.md).

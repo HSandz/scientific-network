@@ -2,7 +2,7 @@
 
 ## Expanded source families (D022 staged collection)
 
-The [2021–2025 scope registry](five-year-scope.md) retains PMLR/OpenReview, CVF/ECVA, ACL
+The [2021–2025 scope registry](archive/scope/five-year-scope.md) retains PMLR/OpenReview, CVF/ECVA, ACL
 Anthology, AAAI/IJCAI, ACM/IEEE/SIAM/Springer and dedicated robotics/reasoning
 proceedings. All 170 venue–year candidates require independent edition/track
 verification; registry catalog URLs are leads, not verified edition rosters.

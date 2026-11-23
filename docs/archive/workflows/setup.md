@@ -1,6 +1,6 @@
 # Development setup
 
-The current release plan covers [2021–2025](five-year-scope.md) (D018). Existing
+The current release plan covers [2021–2025](../scope/five-year-scope.md) (D018). Existing
 services/configs support historical 2023 work; no additional setup, collection or
 pipeline changes are authorized by this planning-only revision.
 
@@ -36,7 +36,7 @@ python3.12 -m venv .venv
 D015 records the user's authorization for expanded collection.
 `configs/conference-scope.yaml` remains a non-executable historical planning
 registry; `configs/corpus.yaml` retains the old pilot. Use the separately versioned
-`configs/corpus-extended-v2.yaml` and [expanded workflow](extended-workflow.md).
+`configs/corpus-extended-v2.yaml` and [expanded workflow](../../extended-workflow.md).
 A separate Neo4j service on 7475/7688 protects the old database. Some sources remain
 unavailable; consult the edition ledger instead of assuming full-scope coverage.
 
@@ -48,7 +48,7 @@ unavailable; consult the edition ledger instead of assuming full-scope coverage.
 | `validate --input GRAPH --config configs/quality.yaml [--output SUMMARY]` | Parse the small JSON contract; check structural invariants; report counts and size targets |
 | `validate ... --require-size` | Additionally return nonzero on the implemented size checks; still no release certification |
 | `audit-precision --correct N --total M` | Wilson interval for supplied counts only; performs no sampling/review |
-| `discover`, `split`, `acquire`, `extract`, `resolve`, `classify`, `build` | Implemented pilot stages; see [exact commands and limitations](pilot-workflow.md) |
+| `discover`, `split`, `acquire`, `extract`, `resolve`, `classify`, `build` | Implemented pilot stages; see [exact commands and limitations](../../pilot-workflow.md) |
 | `analyze`, `evaluate` | Stage contracts only; exit 2, no output file |
 
 Pending stages accept `--config`, `--input`, and `--output`; these define the future

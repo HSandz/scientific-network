@@ -5,10 +5,10 @@ contains the current five-year plan and a dated evolving report, with native
 graph controls, charts, conference coverage and evidence inspection in its Report
 tab. No iframe or separate embedded document is used (D020). The standalone
 HTML below remains an immutable **2023 snapshot**; the Site identifies it separately
-from the 402/538 local candidate. See [publication/update workflow](sites-workflow.md).
+from the 402/538 local candidate. See [publication/update workflow](../../sites-workflow.md).
 Five-year pipeline work and collection are paused under D018.
 
-Open [the standalone HTML report](../reports/extended-v1.html) directly in a browser.
+Open [the standalone HTML report](../../../reports/extended-v1.html) directly in a browser.
 It embeds the graph, charts, source references, scripts and licensed fonts; no
 server, internet connection, API key or Neo4j connection is required. Opening an
 external source link requires internet access.
@@ -77,5 +77,5 @@ explicit allowlist; no `.env` file is read by the generator.
 
 Implementation: `src/scientific_network/reporting/`; NumPy is an explicit core
 dependency for NetworkX's seeded force layout. Report method:
-`standalone-html-report-v1`. See [D016](decisions.md#d016--standalone-read-only-visual-report-2026-11-03)
-and [WORK-2026-11-03-007](work-log/2026-11-03-007-html-report.md) for checks and limits.
+`standalone-html-report-v1`. See [D016](../../decisions.md#d016--standalone-read-only-visual-report-2026-11-03)
+and [WORK-2026-11-03-007](../../work-log/2026-11-03-007-html-report.md) for checks and limits.

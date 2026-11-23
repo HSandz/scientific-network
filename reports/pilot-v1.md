@@ -91,7 +91,7 @@ The local, ignored `data/annotations/pilot-affiliation-review-v1.csv` has 20 dia
 fields: five automatically accepted triples and 15 unresolved institution candidates.
 It is a targeted pilot diagnostic packet, not the independent release audit. Both
 reviewers should inspect official PDF/TEI markers, record decisions and seconds
-independently, then adjudicate using [the annotation guide](../docs/annotation-guide.md).
+independently, then adjudicate using [the annotation guide](../docs/archive/workflows/annotation-guide.md).
 
 Commands and immutable output conventions are in [the pilot workflow](../docs/pilot-workflow.md).
 The [machine-readable metrics](pilot-v1.metrics.json) preserve full input/config hashes,

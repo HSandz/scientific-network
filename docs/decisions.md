@@ -1,5 +1,13 @@
 # Decision register
 
+## Index
+
+**Governing the frozen v4 release:** [D040 — Release reset for the 11 November submission](#d040--release-reset-for-the-11-november-submission-2026-11-08); [D040 amendment — Explorer presentation redesign](#d040-amendment--explorer-presentation-redesign-2026-11-11); [D040 amendment — Interactive labels and analytical hierarchy](#d040-amendment--interactive-labels-and-analytical-hierarchy-2026-11-11); [D040 amendment — V5 quality audit and isolated identity development](#d040-amendment--v5-quality-audit-and-isolated-identity-development-2026-11-11); [D041 — Human-review evidence distinction and flagged diagnostic supplement](#d041--human-review-evidence-distinction-and-flagged-diagnostic-supplement-2026-11-11).
+
+**Historical** (pilot, five-year collection and pregraph holds; superseded for the release by D040): [D015](#d015--authorized-additive-expanded-collection-2026-11-03), [D016](#d016--standalone-read-only-visual-report-2026-11-03), [D017](#d017--input-bound-development-source-review-2026-11-04), [D018](#d018--five-year-core-scope-planning-only-2026-11-04), [D019](#d019--existing-site-for-plan-and-evolving-report-2026-11-04), [D020](#d020--native-report-integration-in-the-existing-site-2026-11-04), [D021](#d021--deadline-driven-execution-readiness-planning-only-2026-11-06), [D022](#d022--authorized-five-year-staged-collection-2026-11-06), [D023](#d023--corrected-roster-contracts-and-prospective-five-year-diagnostics-2026-11-06), [D024](#d024--frozen-development-pdf-headers-and-source-candidates-2026-11-06), [D025](#d025--reviewed-source-overlays-and-public-identifier-corroboration-2026-11-06), [D026](#d026--pregraph-evidence-closure-without-graph-construction-2026-11-06), [D027](#d027--bounded-official-ojs-source-recovery-with-frozen-leakage-guards-2026-11-06), [D028](#d028--complete-pregraph-prerequisite-plan-documentation-only-2026-11-06), [D029](#d029--icaps-2025-roster-correction-and-enrichment-no-go-2026-11-07), [D030](#d030--official-route-closure-and-coling-joint-edition-mapping-2026-11-07), [D031](#d031--aamas-official-roster-closure-and-2023-reconciliation-hold-2026-11-07), [D032](#d032--miccai-roster-closure-and-unresolved-edition-counts-2026-11-07), [D033](#d033--miccai-2024-full-proceedings-reconciliation-2026-11-07), [D034](#d034--miccai-2022-official-route-follow-up-2026-11-07), [D035](#d035--acm-multimedia-2024-official-source-hold-2026-11-07), [D036](#d036--icdm-2021-official-source-hold-2026-11-07), [D037](#d037--icdm-2025-accepted-list-audit-2026-11-08), [D038](#d038--acm-multimedia-2024-browser-source-follow-up-2026-11-08), [D039](#d039--cikm-2025-browser-source-audit-2026-11-08).
+
+The summary table below covers D001–D014 and later one-line entries; full records follow it.
+
 | ID | Date | Decision/status | Reason |
 | --- | --- | --- | --- |
 | D001 | 2026-11-02 | Retain original Sites corpus, five labels, ten predicates and stronger size targets | Scaffold follows the existing plan |
@@ -16,7 +24,7 @@
 | D012 | 2026-11-03 | Clarify R7 denominator as full official byline size, while emitting pairs only for resolved people | Using only resolved authors inflates weight on incompletely resolved papers. This explicitly supersedes the earlier resolved-author denominator wording; raw support counts, predicates and release gates stay unchanged. Offline four-author case verifies the distinction. Review pending |
 | D013 | 2026-11-03 | Use an uncalibrated literal-phrase topic baseline with explicit abstention for the first pilot | Keeps evidence inspectable without downloading a model or consulting held-out papers. Draft taxonomy, exclusions/context rules and substantive-label accuracy require development annotation before freezing. No semantic accuracy claim |
 
-| D014 | 2026-11-03 | Expand the target from the NeurIPS/ICML examples to the explicit flagship AI/related venue registry, retaining 2023; planning only, collection paused | Explicit user correction authorizes a scope change. 34 series / 31 planned editions; ECCV, NAACL and COLING have no 2023 edition. Supersedes D001's venue boundary only; five labels, ten predicates and release gates remain. Preserve legacy configs/data/splits/reports; new adapters, cross-venue leakage controls, annotation budget and resource estimates precede a separately authorized run. See [scope policy](conference-scope.md). |
+| D014 | 2026-11-03 | Expand the target from the NeurIPS/ICML examples to the explicit flagship AI/related venue registry, retaining 2023; planning only, collection paused | Explicit user correction authorizes a scope change. 34 series / 31 planned editions; ECCV, NAACL and COLING have no 2023 edition. Supersedes D001's venue boundary only; five labels, ten predicates and release gates remain. Preserve legacy configs/data/splits/reports; new adapters, cross-venue leakage controls, annotation budget and resource estimates precede a separately authorized run. See [scope policy](archive/scope/conference-scope.md). |
 | D032 | 2026-11-07 | Add count-reconciled MICCAI 2021/2023/2025 rosters; hold 2022/2024 unresolved | Preserve source/index counts separately, retain D015 byline requirements, do not redistribute per-record metadata; no scope, threshold, split or enrichment change |
 | D035 | 2026-11-07 | Keep ACM Multimedia 2024 unavailable pending complete roster and track/proceedings reconciliation | Official ID file has 1,149 unique numeric values while the research-track statistics report 1,150 acceptances; do not infer the missing record or track boundary. No roster, split, enrichment or graph change |
 | D036 | 2026-11-07 | Keep ICDM 2021 unresolved pending proceedings reconciliation and reuse authorization | The official list has 197 IDs and the schedule's 42 additional IDs are in separately named workshop/PhD Panel events; IEEE Xplore returned HTTP 418 and source ownership/reuse terms remain unclear. No roster or frozen assignment change |
@@ -86,7 +94,7 @@ full abstracts and arbitrary node properties. Embed licensed fonts and include
 SIL OFL text. Distinguish freshly checked structure/hashes from historical source
 and database checks; the report does not measure accuracy or replace the final
 course report. Implementation/review: Codex; independent semantic audit pending.
-See [report documentation](visual-report.md) and
+See [report documentation](archive/workflows/visual-report.md) and
 [task 007](work-log/2026-11-03-007-html-report.md).
 
 ## D017 — Input-bound development source review (2026-11-04)
@@ -144,7 +152,7 @@ recompute annual/cumulative support within explicit windows. Protect cross-year
 versions of old tests, budget annotation prospectively and disclose citation-age/
 snapshot bias. No 2023 count becomes a five-year result. Re-estimate resources,
 schedule and samples before a later implementation instruction.
-See [temporal design](five-year-scope.md). Requested by user; documented by Codex.
+See [temporal design](archive/scope/five-year-scope.md). Requested by user; documented by Codex.
 
 ## D019 — Existing Site for Plan and evolving Report (2026-11-04)
 
@@ -202,7 +210,7 @@ The user's “proceed” authorizes this plan and native Site updates, not E01�
 execution. D018's source-discovery/collection/pipeline/split/import pause remains.
 Future work needs a later explicit instruction. Use proposed new versions and
 isolated Neo4j storage rather than overwriting current snapshots. See
-[execution plan](five-year-execution-plan.md) and
+[execution plan](archive/plans/five-year-execution-plan.md) and
 [WORK-2026-11-06-001](work-log/2026-11-06-001-five-year-execution-plan.md).
 
 ## D022 — Authorized five-year staged collection (2026-11-06)

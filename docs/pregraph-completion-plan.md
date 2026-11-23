@@ -12,7 +12,7 @@ Submission date: **11 November 2026**; exact submission time is unspecified.
 
 This is the current task-level completion plan for work **before final graph
 construction**. It expands E01–E06 and the preparation parts of E07–E09 in the
-[execution plan](five-year-execution-plan.md). Existing scope, schema, acceptance
+[execution plan](archive/plans/five-year-execution-plan.md). Existing scope, schema, acceptance
 thresholds, protected samples and evidence rules remain in force. Old planning
 language and historical measurements must be interpreted with their dates.
 See the planning-boundary record [D028](decisions.md#d028--complete-pregraph-prerequisite-plan-documentation-only-2026-11-06).

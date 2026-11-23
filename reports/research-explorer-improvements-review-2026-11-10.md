@@ -1,7 +1,7 @@
 # Research Explorer — improvement verification review
 
 Reviewed 10 November 2026, Asia/Bangkok, against `41852c6` and
-[the improvement plan](../docs/research-explorer-improvement-plan.md), using
+[the improvement plan](../docs/archive/plans/research-explorer-improvement-plan.md), using
 `design-taste-frontend` app-screen rules. Review only; application files unchanged.
 
 ## Verdict

@@ -3,14 +3,14 @@
 Decision **D018**, 4 November 2026, extends the core release from 2023 to
 **2021, 2022, 2023, 2024 and 2025**. D022 (6 November 2026) subsequently authorizes necessary implementation and
 staged collection, superseding the D018 execution pause. The new roster-only
-config and [collection workflow](five-year-collection.md) preserve historical
+config and [collection workflow](../../five-year-collection.md) preserve historical
 2023 staging and all frozen assignments. Enrichment remains gated on cross-year
 version review and prospective sample freezing.
 
 
 Execution update (D023): corrected roster v2, frozen 68-paper diagnostic selection,
 170 new reserved tests and a 67-record metadata tranche are now recorded. Preserve
-these new test IDs in all future versions. [Measured revision 2](../reports/five-year-collection-v2.md).
+these new test IDs in all future versions. [Measured revision 2](../../../reports/five-year-collection-v2.md).
 
 ## Conference and edition boundary
 
@@ -103,11 +103,11 @@ citation features.
 ## Deadline and execution readiness
 
 The user confirmed **11 November 2026** as the deadline on 6 November. The
-[execution plan](five-year-execution-plan.md) and
-[170-row readiness queue](five-year-edition-readiness.csv) define dated work,
+[execution plan](../plans/five-year-execution-plan.md) and
+[170-row readiness queue](../../five-year-edition-readiness.csv) define dated work,
 acceptance checks, cross-year safety, effort scenarios and truthful partial delivery.
 The readiness-planning task performed no new edition verification or execution.
-D022 now authorizes staged collection; see [measured roster results](../reports/five-year-collection-v1.md).
+D022 now authorizes staged collection; see [measured roster results](../../../reports/five-year-collection-v1.md).
 Deadline/capacity questions are not prerequisites.
 
 ## Work sequence after this planning revision
@@ -125,7 +125,7 @@ Deadline/capacity questions are not prerequisites.
    before new acquisition or split freeze. Stage authorized diagnostics by source
    layout/edition before full acquisition.
 6. Publish dated measured progress on the existing Site's Report tab, separate
-   from Plan targets. Follow [the publication workflow](sites-workflow.md).
+   from Plan targets. Follow [the publication workflow](../../sites-workflow.md).
 
 Current graph evidence remains 2023-only: loaded expanded graph 399 nodes / 533 edges;
 reviewed local candidate 402 / 538, not imported; independent accuracy unmeasured.

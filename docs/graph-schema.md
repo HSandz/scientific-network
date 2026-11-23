@@ -30,7 +30,7 @@ node totals. A year/country is a property unless a later analysis justifies a no
 | R9 | RESEARCHES_TOPIC | Researcher → Topic | derived | ≥2 distinct accepted core papers with that leaf topic |
 | R10 | CONTRIBUTES_TO_TOPIC | Organization → Topic | derived | ≥3 distinct accepted core papers with that leaf and paper-specific organization support |
 
-The Venue label applies to all series in [the expanded scope](conference-scope.md),
+The Venue label applies to all series in [the expanded scope](archive/scope/conference-scope.md),
 not just the two legacy pilot venues. Planned scope is **2021–2025** (D018);
 existing artifacts cover 2023 only. The year remains the conference edition year
 on Paper. No sixth label or extra predicate is introduced. Expanding venue

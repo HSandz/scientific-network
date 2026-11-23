@@ -16,7 +16,7 @@ including the separate graph correction and prospective agent audit.
 
 ## Changes and findings
 
-- Added [the fresh-session prompt](../prompts/implement-remediation-plan.md) for
+- Added [the fresh-session prompt](../archive/prompts/implement-remediation-plan.md) for
   all five plan steps, with code/artifact anchors and concrete acceptance checks.
 - Pasting it adopts the separate correction track and directs the execution agent
   to record a dated amendment without rewriting hash-bound historical files.

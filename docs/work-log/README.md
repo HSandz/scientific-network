@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-23-001 — Documentation reorganization](2026-11-23-001-docs-reorganization.md): 14 superseded docs and prompts archived with links rewritten, project plan and roadmap split into current and archived history, new docs/root README and decision index, AGENTS.md updated for the post-submission state; 650 tests pass and every receipt-bound file still matches.
+
 - [WORK-2026-11-12-001 — Final repository stabilization](2026-11-12-001-final-stabilization.md): 650 Python tests passed, v4 structural/hash checks passed, two DOI regressions and a local Explorer filter fix; frozen packets and uncommitted Task2D work preserved; lecturer access remains blocked by private repository visibility.
 
 - [WORK-2026-11-11-009 — Final cleanup and LaTeX research report](2026-11-11-009-latex-research-report.md): post-blind fallback and instruction fixes; regenerated frozen human-review pages; 50-page production-v4 report built in `report/latex/build/main.pdf`; team/course placeholders and human validation remain outstanding.

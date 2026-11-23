@@ -18,7 +18,7 @@ prioritized implementation plan. Planning/review only.
 ## Changes and findings
 
 - Added the [graph operations review](../../reports/research-explorer-graph-operations-review-2026-11-10.md)
-  and the [combined implementation plan](../research-explorer-graph-usability-plan.md).
+  and the [combined implementation plan](../archive/plans/research-explorer-graph-usability-plan.md).
 - Confirmed that Warut's 7 visible neighbors show 1 name; the selected topic's 28
   neighbors show 1; a dense organization's 53 neighbors show 10; the small citation
   example shows both neighbor names.

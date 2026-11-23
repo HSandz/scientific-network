@@ -26,7 +26,7 @@ held-out assignments, graphs and measured outcomes.
 - Updated AGENTS, README, project/conference/temporal scope, roadmap, schema
   temporal notes, source policy, dictionary, evaluation, annotation, setup, team,
   historical workflow notices, visual-report guidance and final-report outline.
-  Added [five-year design](../five-year-scope.md), [Site workflow](../sites-workflow.md)
+  Added [five-year design](../archive/scope/five-year-scope.md), [Site workflow](../sites-workflow.md)
   and mutable [publishable progress report](../../reports/site-report.md).
 - Planned cross-year work versions/leakage protection, edition-year authority,
   annual/cumulative support recomputation, citation-age/snapshot controls and

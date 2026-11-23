@@ -109,7 +109,7 @@ or PDF was generated.
 Installation uses the locked `uv` command above. Reproducing graph or analysis
 requires restoring the ignored v3/v4 graphs, matched works, roster and original
 source caches and verifying their recorded hashes; current API reacquisition is
-not byte-identical restoration. See [the reproduction guide](reproduce-remediation-v4.md).
+not byte-identical restoration. See [the reproduction guide](../../reproduce-remediation-v4.md).
 The repository is private (`gh repo view` reports `PRIVATE`; an anonymous GitHub
 request returns 404), so lecturer access to source is unresolved. The local package
 is historical and ignored. The public Explorer URL remains available, but does not

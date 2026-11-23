@@ -1,14 +1,16 @@
 # Contributor and agent instructions
 
-## Current release plan — read first
+## Current state — read first
 
-Until the 11 November 2026 submission, all work follows
-[`docs/release-plan.md`](docs/release-plan.md) under D040. Where older plans,
-decisions or gates conflict with it (the P00–P10 sequence, gates G01–G12, the P02
-enrichment no-go, D022–D039 source holds, readiness receipts), the release plan
-wins. At session start read, in order: this file, `docs/release-plan.md`,
-`docs/status.md` (phase checklist) and the latest work-log entry. Open other
-documents only when a task needs a specific fact from them.
+The 11 November 2026 deadline has passed. The release is frozen graph v4
+(`release-d3c788c3114a`) built under D040 ([`docs/release-plan.md`](docs/release-plan.md));
+D040's scope, evidence standard and evaluation rules still define it. Do not
+change the frozen v4 graph, database, audit or report artifacts. A correction
+needs a new dated decision and new versioned outputs. At session start read, in
+order: this file, `docs/status.md` (open items and next step) and the latest
+work-log entry. Open the release plan and other documents only when a task needs
+a specific fact from them; [`docs/README.md`](docs/README.md) is the index and
+superseded documents are in `docs/archive/`.
 
 **9 November user amendment:** agents perform all feasible audit, scoring, report
 and local packaging work. Human annotation is optional, not a prerequisite.
@@ -88,6 +90,10 @@ engine.
 - Keep Python code under `src/scientific_network/`; organize by pipeline stage.
   Keep standalone project documentation under `docs/`, results/report material
   under `reports/`, and runnable Cypher under `queries/`.
+- Move superseded documents into `docs/archive/` with `git mv`, contents unchanged
+  apart from relative links, and list them in `docs/archive/README.md`. Keep a
+  document in place if a frozen receipt binds its bytes or the submitted report
+  cites its path.
 - Keep changes focused and preserve unrelated user edits. Check regular files and
   symlinks before replacing instructions or other existing content.
 - Raw downloads are immutable and ignored. Track small manifests, configuration,
@@ -114,7 +120,7 @@ engine.
 ## Task history and session handoff
 
 - At the start of substantive project work, read the files listed under "Current
-  release plan" above, then verify the actual files and Git state. Logs are
+  state" above, then verify the actual files and Git state. Logs are
   context, not proof that older checks still pass.
 - Create a work entry from `docs/templates/work-log.md` under `docs/work-log/`,
   using an unused `YYYY-MM-DD-NNN-short-slug.md` filename and matching
@@ -161,7 +167,7 @@ engine.
   no readiness receipt and record the size gates, and `audit.review_design:
   split_with_overlap` writes a review CSV plus an HTML sheet.
 - OpenAlex DOI acquisition, OpenAlex-based resolution, embedding topics, the
-  isolated Neo4j load and release analysis are
-  already completed for the corrected graph. Do not rebuild them for an evaluator
-  change. Agent provenance/ledger support and real agent evaluation are the next
-  implementation/execution task; the new protocol config alone implements none.
+  isolated Neo4j load, release analysis, agent provenance/ledger support and the
+  v4 agent edge audit are complete (`reports/release-v4/`). Do not rebuild them
+  for an evaluator change. Identity-candidate work under `reports/quality-v5/` and
+  `configs/identity-candidate-v5-*` is experimental and does not replace v4.

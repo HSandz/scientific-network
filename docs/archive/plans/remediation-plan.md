@@ -1,12 +1,12 @@
 # Plan after the agent-release review — 9 November 2026
 
-Status: **proposed; planning only**. Basis: [WORK-007](work-log/2026-11-09-007-agent-release-review.md).
-Read the current [status](status.md) and D040 [release plan](release-plan.md)
+Status: **proposed; planning only**. Basis: [WORK-007](../../work-log/2026-11-09-007-agent-release-review.md).
+Read the current [status](../../status.md) and D040 [release plan](../../release-plan.md)
 first. This is a bounded continuation of the existing release phases, not a new
 readiness framework. Human annotation remains optional; agents perform feasible
 implementation, source review, scoring, analysis and packaging.
 
-Execution handoff: [fresh-session prompt](prompts/implement-remediation-plan.md).
+Execution handoff: [fresh-session prompt](../prompts/implement-remediation-plan.md).
 Pasting that prompt adopts its explicit correction scope; drafting it here does
 not execute the correction or change an existing frozen artifact.
 
@@ -141,7 +141,7 @@ source commit and actual byte hashes. Do not publish or submit as part of this p
 
 Real student identities/contributions and unavailable course AI-use/access facts
 come from supplied records; keep clearly pending fields while agents complete
-other work. Follow [the delivery checklist](local-submission-checklist.md) for
+other work. Follow [the delivery checklist](../../local-submission-checklist.md) for
 separately authorized external actions.
 
 ## Deadline and stopping rule

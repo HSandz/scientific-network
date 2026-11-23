@@ -4,7 +4,7 @@ D022 (6 November 2026) authorizes staged collection under the unchanged 2021–2
 scope and 11 November deadline. This supersedes the D018 execution pause.
 The planning registry/readiness CSV remain historical planning inputs; do not edit
 old executable configs or frozen memberships. Read [current status](status.md)
-and the [execution plan](five-year-execution-plan.md) before continuing.
+and the [execution plan](archive/plans/five-year-execution-plan.md) before continuing.
 
 ## Official rosters first
 
