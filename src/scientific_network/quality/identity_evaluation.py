@@ -128,13 +128,29 @@ def _ratios(sample, refs, predictions, pair):
             'estimated_false_split_pairs' if pair else 'estimated_missed_assignments': fn}
 
 
-def score(sample, references, predictions, *, pair=False):
+def candidate_references(references, candidate=None):
+    result = []
+    for r in references:
+        r = dict(r)
+        if r.get('candidate_mappings') is not None:
+            if candidate is None or candidate not in r['candidate_mappings']:
+                raise ValueError('candidate-specific reference requires declared scoring candidate')
+            mapping = r['candidate_mappings'][candidate]
+            if mapping['status'] == 'unknown':
+                r['label'] = 'unknown'
+            r['accepted_canonical_ids'] = mapping['accepted_canonical_ids']
+        result.append(r)
+    return result
+
+
+def score(sample, references, predictions, *, pair=False, candidate=None):
     """Population ratios only with complete references; descriptive subset always.
 
     Inverse inclusion weights estimate frame totals, not a missing-label model.
     Pair estimands are restricted to the sampled blocking frame. Correct abstention
     requires an affirmative unresolvable reference; unknowns never become negatives.
     """
+    references = candidate_references(references, candidate)
     keys = [s['unit_id'] for s in sample]
     if len(keys) != len(set(keys)):
         raise ValueError('duplicate sampled unit')
@@ -201,7 +217,9 @@ def paired_score(sample, references, predictions, *, pair=False, replicates=1000
     Ratios use inverse inclusion weights. This bootstrap is for one declared SRS
     frame, with no finite-population correction. Diagnostic frames stay separate.
     """
-    results={name:score(sample,references,pred,pair=pair) for name,pred in predictions.items()}
+    if not pair and any(r.get('candidate_mappings') for r in references):
+        references = [dict(r, label='unknown') if r.get('candidate_mappings') and any(r['candidate_mappings'].get(n, {}).get('status') == 'unknown' for n in predictions) else r for r in references]
+    results={name:score(sample,references,pred,pair=pair,candidate=name) for name,pred in predictions.items()}
     if any(r['status']!='scored' for r in results.values()):
         return {'status':'unavailable_no_complete_independent_references','candidates':results,
                 'paired_differences':None,'confidence_intervals':None,
@@ -220,7 +238,7 @@ def paired_score(sample, references, predictions, *, pair=False, replicates=1000
         bs=[dict(sample[i],unit_id=f'replicate:{j}') for j,i in enumerate(indices)]
         lookup={r['unit_id']:r for r in references}
         br=[dict(lookup[sample[i]['unit_id']],unit_id=f'replicate:{j}') for j,i in enumerate(indices)]
-        scores={n:score(bs,br,{f'replicate:{j}':predictions[n][sample[i]['unit_id']] for j,i in enumerate(indices)},pair=pair) for n in names}
+        scores={n:score(bs,br,{f'replicate:{j}':predictions[n][sample[i]['unit_id']] for j,i in enumerate(indices)},pair=pair,candidate=n) for n in names}
         for name in names:
             for metric in ('precision', 'recall', 'f1'):
                 value = scores[name][metric]

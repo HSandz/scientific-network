@@ -53,6 +53,11 @@ def run(bindings_path,evaluation,decisions_path,works_path,references_path,outpu
         if (reference_manifest['freeze_sha256']!=freeze_hash or
                 reference_manifest['outputs'][references_path.name]!=file_hash(references_path)):
             raise ValueError('reference manifest does not bind this frozen study')
+    for r in refs:
+        if r.get('label') == 'identity':
+            expected = {n:dict(sha256=bindings['graphs'][n]['sha256'],graph_version=g['version']) for n,g in graphs.items()}
+            if r.get('candidate_bindings') != expected or r.get('structural_verification') != 'verified':
+                raise ValueError('unbound identity reference; migrate legacy crosswalk to v3 and recompile')
     predictions={name:{d['mention_id']:g['authored'].get((d['paper_id'],d['author_position'])) for d in ds} for name,g in graphs.items()}
     semantic={}
     for frame in ('assignment','pair','diagnostic'):

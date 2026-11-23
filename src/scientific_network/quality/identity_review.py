@@ -90,12 +90,28 @@ class Submission(Strict):
             raise ValueError('duplicate review')
         if any(r.reviewer != self.reviewer for r in self.reviews):
             raise ValueError('mixed reviewer file')
+        if len({(r.reviewer_kind, r.model, r.run_id) for r in self.reviews}) > 1:
+            raise ValueError('one consistent reviewer kind/model/run per file')
+        if any(r.reviewer_kind == 'human' and (r.model or r.run_id) for r in self.reviews):
+            raise ValueError('human submission cannot carry model/run identity')
         if len({r.reviewer_identity for r in self.reviews}) > 1:
             raise ValueError('one actual reviewer per file')
         return self
 
 
+class CandidateAssignment(Strict):
+    graph_version: str = Field(min_length=1)
+    graph_sha256: str = Field(pattern=r'^[0-9a-f]{64}$')
+    predicted_canonical_id: str | None
+    cluster_sha256: str | None = Field(default=None, pattern=r'^[0-9a-f]{64}$')
+    accepted_canonical_ids: list[str]
+    ownership: Literal['supported', 'rejected', 'unknown']
+    rationale: str = Field(min_length=1)
+
+
 class Crosswalk(Strict):
+    schema_version: Literal['identity-crosswalk-v2', 'identity-crosswalk-v3'] = 'identity-crosswalk-v2'
+    candidate_assignments: dict[str, CandidateAssignment] | None = None
     reference_identity: str = Field(min_length=1)
     accepted_canonical_ids: list[str]
     complete: Literal[True]
@@ -104,6 +120,10 @@ class Crosswalk(Strict):
 
     @model_validator(mode='after')
     def supported(self):
+        if self.schema_version == 'identity-crosswalk-v3' and (self.accepted_canonical_ids or not self.candidate_assignments):
+            raise ValueError('v3 uses candidate-specific mappings only; legacy global IDs must be empty')
+        if self.schema_version == 'identity-crosswalk-v2' and self.candidate_assignments is not None:
+            raise ValueError('candidate-specific mappings require v3 schema')
         if (len(set(self.accepted_canonical_ids)) != len(self.accepted_canonical_ids)
                 or any(not i.strip() for i in self.accepted_canonical_ids)
                 or not any(e.independence == 'independent' for e in self.evidence)):
@@ -178,13 +198,16 @@ def validate_submission(value, evaluation):
     return submission
 
 
-def compile_references(evaluation, a_path, b_path, decisions_path, output):
+def compile_references(evaluation, a_path, b_path, decisions_path, output, candidates_path=None, source_registry=None):
     """Compile only explicit consensus/adjudications; AI-only outputs stay separate."""
     unused(output)
     a = validate_submission(json.loads(a_path.read_bytes()), evaluation)
     b = validate_submission(json.loads(b_path.read_bytes()), evaluation)
     if (a.reviewer, b.reviewer) != ('A', 'B'):
         raise ValueError('separate A and B submissions required')
+    from scientific_network.quality.identity_integrity import load_candidates, verify_crosswalk, EvidenceVerifier
+    candidates = load_candidates(candidates_path, verify_freeze(evaluation)) if candidates_path else None
+    verifier = EvidenceVerifier(read_jsonl(source_registry) if source_registry else [])
     aa, bb = ({r.unit_id: r for r in s.reviews} for s in (a,b))
     if {r.reviewer_identity for r in a.reviews} & {r.reviewer_identity for r in b.reviews}:
         raise ValueError('A/B must be different actual reviewers')
@@ -207,8 +230,20 @@ def compile_references(evaluation, a_path, b_path, decisions_path, output):
             raise ValueError('consensus must match original reviews')
         if d.label != 'unknown' and ((d.label in ('same','different')) != (frame[d.unit_id]['category']=='pair')):
             raise ValueError('wrong adjudication case type')
+        if datetime.fromisoformat(d.decided_at) < max(datetime.fromisoformat(ra.submitted_at), datetime.fromisoformat(rb.submitted_at)):
+            raise ValueError('adjudication timestamp precedes original submission')
+        candidate_mappings = None
+        if d.crosswalk and d.crosswalk.schema_version == 'identity-crosswalk-v3':
+            if candidates is None:
+                raise ValueError('v3 crosswalk requires declared candidate bindings')
+            candidate_mappings = verify_crosswalk(d.crosswalk, frame[d.unit_id], candidates)
+        elif d.crosswalk and candidates is not None:
+            raise ValueError('legacy crosswalk is unbound; explicitly migrate to v3 per case/candidate')
+        verification = [verifier.verify(e) for e in ra.evidence + rb.evidence + d.evidence + (d.crosswalk.evidence if d.crosswalk else [])]
+        if any(set(v['flags']) & {'hash_mismatch', 'metadata_contradiction'} for v in verification):
+            raise ValueError('contradictory source object or metadata; preserve originals and correct in a new export')
         human = all(x == 'human' for x in (ra.reviewer_kind, rb.reviewer_kind, d.adjudicator_kind))
-        if human and d.crosswalk:
+        if human and d.crosswalk and candidate_mappings is None:
             ids = frozenset(d.crosswalk.accepted_canonical_ids)
             if d.reference_identity in identity_crosswalk and identity_crosswalk[d.reference_identity] != ids:
                 raise ValueError('inconsistent completed reference crosswalk')
@@ -217,7 +252,11 @@ def compile_references(evaluation, a_path, b_path, decisions_path, output):
                 if cid in canonical_owner and canonical_owner[cid] != d.reference_identity:
                     raise ValueError('canonical ID maps to conflicting reference people')
                 canonical_owner[cid] = d.reference_identity
-        record = {'unit_id': d.unit_id, 'label': d.label, 'reference_identity': d.reference_identity,
+        record = {'reference_schema': 'identity-reference-v3' if candidates else 'identity-reference-v2-unbound',
+                  'candidate_mappings': candidate_mappings, 'candidate_bindings': {n:{k:g[k] for k in ('sha256','graph_version')} for n,g in candidates.items()} if candidates else None,
+                  'structural_verification': 'verified' if candidate_mappings else 'unverified',
+                  'evidence_verification': verification,
+                  'unit_id': d.unit_id, 'label': d.label, 'reference_identity': d.reference_identity,
                   'accepted_canonical_ids': d.crosswalk.accepted_canonical_ids if d.crosswalk else [],
                   'crosswalk_complete': bool(d.crosswalk),
                   'evidence': [e.model_dump() for e in d.evidence],
@@ -230,7 +269,8 @@ def compile_references(evaluation, a_path, b_path, decisions_path, output):
     write_jsonl(output/'references.jsonl', sorted(refs,key=lambda r:r['unit_id']))
     write_jsonl(output/'ai-assessments.jsonl', sorted(ai,key=lambda r:r['unit_id']))
     write_json(output/'manifest.json', {'freeze_sha256': verify_freeze(evaluation),
-        'inputs': {str(p): file_hash(p) for p in (a_path,b_path,decisions_path)},
+        'inputs': {str(p): file_hash(p) for p in (a_path,b_path,decisions_path,candidates_path,source_registry) if p},
+        'candidate_bindings': {n:{k:g[k] for k in ('sha256','graph_version')} for n,g in candidates.items()} if candidates else None,
         'reference_n': len(refs), 'ai_n': len(ai), 'pending_n': len(frame)-len(seen),
         'outputs': {p.name:file_hash(p) for p in sorted(output.iterdir())}})
 
@@ -297,12 +337,13 @@ def main():
         if name in ('prepare','compile'): a.add_argument('--output',type=Path,required=True)
         if name=='validate': a.add_argument('--submission',type=Path,required=True)
         if name=='compile':
+            a.add_argument('--candidates',type=Path); a.add_argument('--source-registry',type=Path)
             for arg in ('review-a','review-b','adjudications'): a.add_argument('--'+arg,type=Path,required=True)
     args=p.parse_args()
     if args.command=='prepare':prepare(args.evaluation,args.works,args.output,args.evidence,args.candidates)
     elif args.command=='validate':
         result=validate_submission(json.loads(args.submission.read_bytes()),args.evaluation)
         print(json.dumps({'reviewer':result.reviewer,'submitted':len(result.reviews)}))
-    else:compile_references(args.evaluation,args.review_a,args.review_b,args.adjudications,args.output)
+    else:compile_references(args.evaluation,args.review_a,args.review_b,args.adjudications,args.output,args.candidates,args.source_registry)
 
 if __name__=='__main__':main()
