@@ -1,0 +1,60 @@
+{
+  "fetches": {
+    "by_source": {
+      "wikidata_sparql": 156,
+      "wikipedia_lead": 81,
+      "wikipedia_wikitext": 81
+    },
+    "manifest": "data/raw/enrichment-v1/fetch-manifest.jsonl",
+    "raw_dir": "data/raw/enrichment-v1",
+    "rows": 318
+  },
+  "publication_default": "IDs, offsets and spans; Wikipedia text is CC BY-SA and is not republished wholesale",
+  "report_version": "enrichment-sources-v1",
+  "retrieved_with": {
+    "min_interval_seconds": 1.0,
+    "user_agent": "scientific-network-coursework/0.1 (academic research project; Wikimedia API etiquette followed)"
+  },
+  "rules": "Every fetched document is stored once, immutable, with URL, parameters, retrieval time, revision ID and SHA-256.",
+  "sources": {
+    "news_blogs": {
+      "reason": "stretch source, only after M3",
+      "status": "not_run"
+    },
+    "openalex_abstracts": {
+      "licence": "CC0 (OpenAlex); redistribution of abstract text not assumed, see docs/source-policy.md",
+      "papers": 13617,
+      "path": "data/interim/release-v1/works.jsonl",
+      "selection": "all core papers; papers without an abstract use the title only",
+      "title_only": 9,
+      "with_abstract": 13608
+    },
+    "wikidata_organizations": {
+      "licence": "CC0",
+      "matched_by_ror": 2044,
+      "matched_by_sector": {
+        "academia": 1259,
+        "government": 55,
+        "industry": 270,
+        "nonprofit": 36,
+        "unknown": 424
+      },
+      "openalex_id_agrees": 930,
+      "openalex_id_disagrees": 202,
+      "organizations": 2047,
+      "ror_conflicts": 0,
+      "selection": "v4 organizations with a ROR ID, matched on Wikidata P6782 only; no name matching",
+      "with_ror": 2047
+    },
+    "wikidata_researchers": {
+      "reason": "optional; exact ORCID/OpenAlex-ID matches only if time allows",
+      "status": "not_run"
+    },
+    "wikipedia_organization_pages": {
+      "licence": "CC BY-SA 4.0",
+      "orgs_linked": 1462,
+      "pages": 1468,
+      "selection": "English Wikipedia lead section and infobox of pages linked from a matched Wikidata item; revision ID stored"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+ "decision": {
+  "d042_amendment_for_model": false,
+  "disclosed_bias": "prompt versions (verify-v1..v5, relations-v1) were tuned on dev with Qwen3.5-4B in the loop; Gemma and Qwen3.5-9B ran the final prompts unchanged, so the comparison favours Qwen3.5-4B",
+  "extractor": "GLiNER-Relex-large candidates (entity 0.4 / relation 0.3 for the SLM step) + SLM verification and relation generation",
+  "language_model": "Qwen3.5-4B Q4_K_M",
+  "nine_b_gain": {
+   "entity_f1": -0.008,
+   "entity_f1_slm_only": 0.015,
+   "relation_f1": -0.027
+  },
+  "pending": "the dev answer-accuracy arm cannot be evaluated until v5 exists",
+  "reference_label_caveat": "reference labels are conservative AI-assessed labels; precision is understated for every system and F1 is a development comparison, not a quality claim",
+  "rule": "spec §6.1: Qwen3.5-9B may replace the best eligible model only with >=5 F1 on extraction or >=10 points of dev answer accuracy, plus an accepted D042 amendment",
+  "rule_met": false
+ },
+ "dev_papers": 100,
+ "encoder_only": {
+  "GLiNER-Relex-large (entity 0.7, relation 0.9)": {
+   "entity_f1": 0.5555,
+   "entity_precision": 0.4805,
+   "entity_recall": 0.6581,
+   "relation_f1": 0.2009
+  },
+  "GLiNER2.5-base (entity 0.4, relation 0.3)": {
+   "entity_f1": 0.4683,
+   "entity_precision": 0.378,
+   "entity_recall": 0.6154,
+   "relation_f1": 0.1875
+  }
+ },
+ "encoder_plus_qwen4b_verify7": {
+  "GLiNER-Relex candidates": {
+   "f1": 0.6701,
+   "precision": 0.6531,
+   "predicted": 493,
+   "recall": 0.688,
+   "reference": 468,
+   "tp": 322
+  },
+  "GLiNER2.5 candidates": {
+   "f1": 0.5881,
+   "precision": 0.7012,
+   "predicted": 338,
+   "recall": 0.5064,
+   "reference": 468,
+   "tp": 237
+  }
+ },
+ "evaluation_kind": "ai_assessed_reference_labels",
+ "matching": "lenient token-set Jaccard >= 0.5, one-to-one, type-aware (primary); strict = identical normalized string",
+ "models": {
+  "gemma": {
+   "eligible": true,
+   "gguf": "unsloth/gemma-4-E4B-it-GGUF@bfc15c382204943c3a8fff0c750b94ae2364d7a3",
+   "hf": "google/gemma-4-E4B-it",
+   "model": "Gemma-4-E4B-it Q4_K_M",
+   "sha256": "85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87",
+   "total_parameters_b": 8.0
+  },
+  "qwen4b": {
+   "eligible": true,
+   "gguf": "unsloth/Qwen3.5-4B-GGUF@e87f176479d0855a907a41277aca2f8ee7a09523",
+   "hf": "Qwen/Qwen3.5-4B",
+   "model": "Qwen3.5-4B Q4_K_M",
+   "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+   "total_parameters_b": 4.66
+  },
+  "qwen9b": {
+   "eligible": false,
+   "gguf": "unsloth/Qwen3.5-9B-GGUF@3885219b6810b007914f3a7950a8d1b469d598a5",
+   "hf": "Qwen/Qwen3.5-9B",
+   "model": "Qwen3.5-9B Q4_K_M (reference only)",
+   "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+   "total_parameters_b": 9.65
+  }
+ },
+ "reference": "data/manifests/enrichment-dev-labels-v1",
+ "rows": [
+  {
+   "completion_tokens": 32213,
+   "completion_tokens_per_second": 91.1,
+   "dataset_f1": 0.5524,
+   "eligible": true,
+   "entity_f1": 0.6629,
+   "entity_f1_strict": 0.5905,
+   "entity_precision": 0.5979,
+   "entity_recall": 0.7436,
+   "gpu_mib": 4966,
+   "method_f1": 0.6785,
+   "model": "Qwen3.5-4B Q4_K_M",
+   "name": "Qwen3.5-4B Q4_K_M | SLM only (extract-v2)",
+   "relation_f1": 0.3183,
+   "relation_f1_strict": 0.2328,
+   "task_f1": 0.6667,
+   "total_parameters_b": 4.66,
+   "valid_json_rate": 1.0,
+   "variant": "SLM only (extract-v2)",
+   "wall_seconds": 353.8
+  },
+  {
+   "completion_tokens": 9720,
+   "completion_tokens_per_second": 66.3,
+   "dataset_f1": 0.8387,
+   "eligible": true,
+   "entity_f1": 0.6701,
+   "entity_f1_strict": 0.564,
+   "entity_precision": 0.6531,
+   "entity_recall": 0.688,
+   "gpu_mib": 4966,
+   "method_f1": 0.6677,
+   "model": "Qwen3.5-4B Q4_K_M",
+   "name": "Qwen3.5-4B Q4_K_M | GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "relation_f1": 0.4,
+   "relation_f1_strict": 0.2746,
+   "task_f1": 0.632,
+   "total_parameters_b": 4.66,
+   "valid_json_rate": 1.0,
+   "variant": "GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "wall_seconds": 146.6
+  },
+  {
+   "completion_tokens": 20899,
+   "completion_tokens_per_second": 81.4,
+   "dataset_f1": 0.8116,
+   "eligible": true,
+   "entity_f1": 0.6535,
+   "entity_f1_strict": 0.4926,
+   "entity_precision": 0.7765,
+   "entity_recall": 0.5641,
+   "gpu_mib": 4794,
+   "method_f1": 0.6459,
+   "model": "Gemma-4-E4B-it Q4_K_M",
+   "name": "Gemma-4-E4B-it Q4_K_M | SLM only (extract-v2)",
+   "relation_f1": 0.4403,
+   "relation_f1_strict": 0.2687,
+   "task_f1": 0.6186,
+   "total_parameters_b": 8.0,
+   "valid_json_rate": 1.0,
+   "variant": "SLM only (extract-v2)",
+   "wall_seconds": 256.8
+  },
+  {
+   "completion_tokens": 21056,
+   "completion_tokens_per_second": 61.0,
+   "dataset_f1": 0.7342,
+   "eligible": true,
+   "entity_f1": 0.6238,
+   "entity_f1_strict": 0.5362,
+   "entity_precision": 0.5361,
+   "entity_recall": 0.7457,
+   "gpu_mib": 4794,
+   "method_f1": 0.639,
+   "model": "Gemma-4-E4B-it Q4_K_M",
+   "name": "Gemma-4-E4B-it Q4_K_M | GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "relation_f1": 0.2716,
+   "relation_f1_strict": 0.2016,
+   "task_f1": 0.5548,
+   "total_parameters_b": 8.0,
+   "valid_json_rate": 1.0,
+   "variant": "GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "wall_seconds": 345.4
+  },
+  {
+   "completion_tokens": 33112,
+   "completion_tokens_per_second": 57.6,
+   "dataset_f1": 0.7532,
+   "eligible": false,
+   "entity_f1": 0.6778,
+   "entity_f1_strict": 0.5983,
+   "entity_precision": 0.6639,
+   "entity_recall": 0.6923,
+   "gpu_mib": 6879,
+   "method_f1": 0.6817,
+   "model": "Qwen3.5-9B Q4_K_M (reference only)",
+   "name": "Qwen3.5-9B Q4_K_M (reference only) | SLM only (extract-v2)",
+   "relation_f1": 0.3326,
+   "relation_f1_strict": 0.2729,
+   "task_f1": 0.6462,
+   "total_parameters_b": 9.65,
+   "valid_json_rate": 1.0,
+   "variant": "SLM only (extract-v2)",
+   "wall_seconds": 574.8
+  },
+  {
+   "completion_tokens": 14584,
+   "completion_tokens_per_second": 37.3,
+   "dataset_f1": 0.9206,
+   "eligible": false,
+   "entity_f1": 0.6622,
+   "entity_f1_strict": 0.5538,
+   "entity_precision": 0.5969,
+   "entity_recall": 0.7436,
+   "gpu_mib": 6879,
+   "method_f1": 0.6478,
+   "model": "Qwen3.5-9B Q4_K_M (reference only)",
+   "name": "Qwen3.5-9B Q4_K_M (reference only) | GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "relation_f1": 0.3727,
+   "relation_f1_strict": 0.2467,
+   "task_f1": 0.6397,
+   "total_parameters_b": 9.65,
+   "valid_json_rate": 1.0,
+   "variant": "GLiNER-Relex candidates + SLM verify-v5 + relations-v1",
+   "wall_seconds": 390.5
+  }
+ ]
+}

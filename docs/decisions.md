@@ -1318,3 +1318,21 @@ Qwen3.5-4B (4.66B). Qwen3.5-9B (9.65B in total, including its vision encoder) is
 reference point. It is adopted only under the margin rule in specification §6.1
 and a further recorded amendment. Parameter counts and licences were read from
 Hugging Face model metadata on 23 November 2026.
+
+## D042 amendment — Development-selected models for enrichment (2026-11-24)
+
+The K1 experiment ran on the 100 development papers only
+([k1-model-selection.md](../reports/enrichment-v1/k1-model-selection.md); WORK-2026-11-24-003),
+scored against AI-assessed reference labels frozen before any model ran.
+
+- **Language model: Qwen3.5-4B Q4_K_M** (the default in `ops/llm/`). It had the best eligible
+  entity F1 and the best relation F1 among encoder-plus-SLM variants, ran about 2.4 times faster than
+  Gemma-4-E4B-it and used less GPU memory. Qwen3.5-9B (reference only, 9.65B total) did not reach the
+  specification §6.1 margin, so no model amendment is needed. The dev answer-accuracy arm of the rule
+  cannot run until v5 exists; it is recorded as pending.
+- **Candidate extractor: GLiNER-Relex-large**, replacing GLiNER2.5 as the default. Specification §4.2
+  lets the development split pick the extractor. Encoder-only entity F1 was 0.556 against 0.468, and
+  it stayed ahead after SLM verification. GLiNER2.5 stays as the documented comparison.
+- Disclosed bias: prompts were tuned on development with Qwen3.5-4B in the loop; the other models ran
+  the final prompts unchanged. Reference labels are conservative, so precision is understated for all
+  systems. These are development comparisons, not quality claims.

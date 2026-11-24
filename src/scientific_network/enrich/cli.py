@@ -4,7 +4,6 @@ import argparse
 from pathlib import Path
 
 PLANNED = {
-    "fetch-sources": "Phase 1 (E1): Wikidata/Wikipedia acquisition",
     "extract-entities": "Phase 2 (E2): mention detection, verification, linking",
     "extract-relations": "Phase 3 (E3): relation extraction",
     "build-graph": "Phase 4: v5-enriched build",
@@ -26,6 +25,32 @@ def add_enrich_parser(commands) -> None:
     splits.add_argument("--topic-test", type=Path)
     bench = stages.add_parser("freeze-benchmark", help="hash-freeze the QA benchmark question text")
     bench.add_argument("--output", type=Path, required=True)
+    slm = stages.add_parser("run-slm", help="run the SLM extract or verify step over a JSONL of {id, text} (development experiments)")
+    slm.add_argument("--mode", choices=["extract", "verify", "verify-batch", "verify-pairs", "verify-gen"], required=True)
+    slm.add_argument("--llm-config", type=Path, required=True)
+    slm.add_argument("--texts", type=Path, required=True)
+    slm.add_argument("--encoder-output", type=Path)
+    slm.add_argument("--entity-threshold", type=float, default=0.3)
+    slm.add_argument("--relation-threshold", type=float, default=0.3)
+    slm.add_argument("--workers", type=int, default=2)
+    slm.add_argument("--call-log", type=Path)
+    slm.add_argument("--output", type=Path, required=True)
+    score = stages.add_parser("score-dev", help="score a run on the frozen development reference labels")
+    score.add_argument("--labels", type=Path, required=True)
+    score.add_argument("--texts", type=Path, required=True)
+    score.add_argument("--slm-output", type=Path)
+    score.add_argument("--encoder-output", type=Path)
+    score.add_argument("--entity-threshold", type=float, default=0.5)
+    score.add_argument("--relation-threshold", type=float, default=0.5)
+    score.add_argument("--tune", action="store_true", help="grid-search encoder thresholds on the development papers")
+    fetch = stages.add_parser("fetch-sources", help="Phase 1 (E1): fetch Wikidata organization facts and linked Wikipedia pages")
+    fetch.add_argument("--graph", type=Path, required=True, help="frozen v4 graph.json (read only)")
+    fetch.add_argument("--works", type=Path, required=True)
+    fetch.add_argument("--raw-dir", type=Path, default=Path("data/raw/enrichment-v1"))
+    fetch.add_argument("--manifest", type=Path, default=Path("data/raw/enrichment-v1/fetch-manifest.jsonl"))
+    fetch.add_argument("--output-dir", type=Path, default=Path("data/interim/enrichment-v1"))
+    fetch.add_argument("--report", type=Path, default=Path("reports/enrichment-v1/sources.json"))
+    fetch.add_argument("--min-interval", type=float, default=1.0)
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -39,5 +64,33 @@ def run_enrich(args) -> tuple[dict, int]:
     if args.enrich_command == "freeze-benchmark":
         from scientific_network.enrich.benchmark import freeze_benchmark
         return freeze_benchmark(args.output), 0
+    if args.enrich_command == "fetch-sources":
+        from scientific_network.enrich.sources import acquire_organization_sources
+        return acquire_organization_sources(args.graph, args.works, args.raw_dir, args.manifest, args.output_dir,
+                                            args.report, min_interval=args.min_interval), 0
+    if args.enrich_command == "run-slm":
+        from scientific_network.enrich.k1 import client_from_config, read_jsonl, run_slm
+        client = client_from_config(args.llm_config, log_path=args.call_log)
+        return run_slm(args.mode, client, read_jsonl(args.texts), args.output, encoder_path=args.encoder_output,
+                       entity_threshold=args.entity_threshold, relation_threshold=args.relation_threshold,
+                       workers=args.workers), 0
+    if args.enrich_command == "score-dev":
+        from scientific_network.enrich.k1 import (predictions_from_encoder, predictions_from_slm, read_jsonl,
+                                                  score_predictions, tune_encoder)
+        labels = read_jsonl(args.labels)
+        texts = {r["id"]: r["text"] for r in read_jsonl(args.texts)}
+        out = {}
+        if args.encoder_output and (args.tune or not args.slm_output):
+            encoded = read_jsonl(args.encoder_output)
+            if args.tune:
+                out["tuning"] = tune_encoder(encoded, labels, texts)
+            else:
+                ents, rels = predictions_from_encoder(encoded, texts, entity_threshold=args.entity_threshold,
+                                                      relation_threshold=args.relation_threshold)
+                out["encoder_only"] = score_predictions(ents, rels, labels, texts)
+        if args.slm_output:
+            ents, rels = predictions_from_slm(read_jsonl(args.slm_output))
+            out["slm"] = score_predictions(ents, rels, labels, texts)
+        return out, 0
     return {"stage": f"enrich {args.enrich_command}", "status": "not_implemented",
             "note": PLANNED[args.enrich_command], "output_written": False}, 2

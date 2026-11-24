@@ -1,0 +1,12 @@
+{
+  "base_url": "http://127.0.0.1:8080/v1",
+  "model": "qwen3.5-4b-q4_k_m",
+  "revision": "unsloth/Qwen3.5-4B-GGUF@e87f176479d0855a907a41277aca2f8ee7a09523 Qwen3.5-4B-Q4_K_M.gguf sha256:00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+  "provider": "local-llama.cpp b12648-44d50873b",
+  "temperature": 0.0,
+  "seed": 20261124,
+  "max_tokens": 1500,
+  "enable_thinking": false,
+  "timeout": 600,
+  "cache_dir": "data/interim/enrichment-v1/llm-cache"
+}

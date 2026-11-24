@@ -1,0 +1,37 @@
+{
+  "config_version": "enrichment-v1-encoders-0",
+  "status": "development_before_tuning",
+  "entity_types": {
+    "method": "A named model, algorithm, architecture or technique that the paper proposes, uses or compares against",
+    "task": "A research problem or task the paper addresses",
+    "dataset": "A named dataset, benchmark or corpus used for training or evaluation"
+  },
+  "relations": [
+    [
+      "applied_to",
+      "method",
+      "task",
+      "applied to"
+    ],
+    [
+      "evaluated_on",
+      "method",
+      "dataset",
+      "evaluated on"
+    ],
+    [
+      "task_evaluated_on",
+      "task",
+      "dataset",
+      "evaluated on"
+    ]
+  ],
+  "gliner2.5-base": {
+    "entity_threshold": 0.3
+  },
+  "gliner-relex-large": {
+    "threshold": 0.3,
+    "relation_threshold": 0.3,
+    "adjacency_threshold": 0.3
+  }
+}
