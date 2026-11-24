@@ -3,9 +3,7 @@
 import argparse
 from pathlib import Path
 
-PLANNED = {
-    "audit-sample": "Phase 5 (E4): frozen audit sample",
-}
+PLANNED: dict[str, str] = {}
 
 
 def add_enrich_parser(commands) -> None:
@@ -82,6 +80,23 @@ def add_enrich_parser(commands) -> None:
     load = stages.add_parser("load-graph", help="Phase 4: import v5-enriched into neo4j-enriched (bolt port 7690 only)")
     load.add_argument("--graph", type=Path, required=True)
     load.add_argument("--report", type=Path, required=True)
+    audit = stages.add_parser("audit-sample", help="Phase 5 (E4): freeze the audit sample and write evaluator packets (before any judgement)")
+    audit.add_argument("--graph", type=Path, required=True)
+    audit.add_argument("--mentions", type=Path, required=True)
+    audit.add_argument("--texts", type=Path, required=True)
+    audit.add_argument("--test", type=Path, default=Path("data/manifests/enrichment-splits-v1/test.jsonl"))
+    audit.add_argument("--link-dir", type=Path, required=True)
+    audit.add_argument("--slm-only", type=Path, help="extract-mode SLM output on the test papers (ablation variant)")
+    audit.add_argument("--output-dir", type=Path, required=True)
+    audit.add_argument("--seed", type=int, required=True)
+    scorea = stages.add_parser("score-audit", help="Phase 5 (E4): score the answered packets with Wilson intervals and Cohen's kappa")
+    scorea.add_argument("--audit-dir", type=Path, required=True)
+    scorea.add_argument("--graph", type=Path, required=True)
+    scorea.add_argument("--mentions", type=Path, required=True)
+    scorea.add_argument("--texts", type=Path, required=True)
+    scorea.add_argument("--test", type=Path, default=Path("data/manifests/enrichment-splits-v1/test.jsonl"))
+    scorea.add_argument("--slm-only", type=Path)
+    scorea.add_argument("--output", type=Path, required=True)
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -122,6 +137,14 @@ def run_enrich(args) -> tuple[dict, int]:
     if args.enrich_command == "load-graph":
         from scientific_network.enrich.load5 import build as load_enriched
         return load_enriched(args.graph, args.report), 0
+    if args.enrich_command == "audit-sample":
+        from scientific_network.enrich.quality import freeze_audit
+        return freeze_audit(graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts, test_path=args.test,
+                            link_dir=args.link_dir, slm_only_path=args.slm_only, out_dir=args.output_dir, seed=args.seed), 0
+    if args.enrich_command == "score-audit":
+        from scientific_network.enrich.quality import score_audit
+        return score_audit(audit_dir=args.audit_dir, graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts,
+                           test_path=args.test, slm_only_path=args.slm_only, output=args.output), 0
     if args.enrich_command == "run-slm":
         from scientific_network.enrich.k1 import client_from_config, read_jsonl, run_slm
         client = client_from_config(args.llm_config, log_path=args.call_log)
