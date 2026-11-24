@@ -7,6 +7,10 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-24-002 — Runtime checkpoint](2026-11-24-002-runtime-checkpoint.md): verified the local runtime changes for the requested Git checkpoint.
+
+- [WORK-2026-11-24-001 — Local LLM server and extraction encoders](2026-11-24-001-local-llm-server.md): llama.cpp CUDA server in Docker (`ops/llm/`), Qwen3.5-4B Q4_K_M pinned and hash-checked, smoke and load tests pass (peak 5.7 of 8.1 GB), thinking mode slow so default off; GLiNER2.5-base and GLiNER-Relex-large in an isolated CUDA env (`ops/extract/`), both run on GPU and CPU (~30 min per corpus on CPU).
+
 - [WORK-2026-11-23-003 — Git checkpoint](2026-11-23-003-git-checkpoint.md): verified the current D042 documentation and separate, incomplete Task2D checkpoint for the requested push.
 
 - [WORK-2026-11-23-002 — Final exam requirements and specification](2026-11-23-002-final-exam-specification.md): rubric, interpretation and traceability; Research Trend Navigator specification; D042; documentation only, awaiting team review.

@@ -1,0 +1,50 @@
+# Local small-language-model server for the final exam (D042, specification §6.1).
+# llama.cpp llama-server, CUDA build, one GGUF model at a time, OpenAI-compatible
+# API on 127.0.0.1:8080. Model files live outside the repository (LLM_MODEL_DIR).
+#
+#   docker compose -f ops/llm/compose.yaml --env-file ops/llm/qwen3.5-4b-q4km.env up -d
+#   docker compose -f ops/llm/compose.yaml --env-file ops/llm/qwen3.5-4b-q4km.env down
+#
+# Switch models by bringing the service down and up with another env file.
+name: scientific-network-llm
+
+services:
+  llm:
+    image: ${LLM_IMAGE:-ghcr.io/ggml-org/llama.cpp:server-cuda@sha256:f8e7c336e3660804f6bc35a4147dbfdf1ddae9b7c3c50d412fab49b323e28fea}
+    container_name: sn-llm
+    restart: 'no'
+    gpus: all
+    ports:
+      - '127.0.0.1:${LLM_PORT:-8080}:8080'
+    volumes:
+      - ${LLM_MODEL_DIR:-${HOME}/models/gguf}:/models:ro
+    command:
+      - --model
+      - /models/${LLM_MODEL_FILE:?Set LLM_MODEL_FILE in the model env file}
+      - --alias
+      - ${LLM_ALIAS:?Set LLM_ALIAS in the model env file}
+      - --n-gpu-layers
+      - '${LLM_GPU_LAYERS:-99}'
+      - --ctx-size
+      - '${LLM_CTX:-16384}'
+      - --parallel
+      - '${LLM_PARALLEL:-2}'
+      - --flash-attn
+      - 'on'
+      - --cache-type-k
+      - ${LLM_KV_TYPE:-q8_0}
+      - --cache-type-v
+      - ${LLM_KV_TYPE:-q8_0}
+      - --jinja
+      - --metrics
+      - --no-webui
+      - --host
+      - 0.0.0.0
+      - --port
+      - '8080'
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -fsS http://localhost:8080/health >/dev/null || exit 1']
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
