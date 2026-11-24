@@ -227,3 +227,5 @@ text into the journal.
 - [WORK-2026-11-10-009 — Automatic Azure API deployment](2026-11-10-009-azure-api-cicd.md): completed; real automatic/manual deployment, OIDC, API-only rollback, full graph preservation and trigger checks passed.
 
 - [WORK-2026-11-10-010 — Explorer projection order and default](2026-11-10-010-projection-order.md): completed; Knowledge graph first/default, production build, 5 browser suites and 524 repository tests pass.
+
+- [WORK-2026-11-24-003 — Enrichment track A, Phase 0](2026-11-24-003-enrichment-m0.md): in progress.

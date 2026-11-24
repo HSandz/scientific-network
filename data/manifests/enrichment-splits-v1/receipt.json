@@ -1,0 +1,115 @@
+{
+  "corpus_papers": 13617,
+  "discipline": "Every prompt, threshold, cosine cut-off and support minimum is tuned on the development papers only. Test-paper extraction outputs are not opened until the E4 audit sample is frozen.",
+  "eligible_papers": 13608,
+  "file_sha256": {
+    "development.jsonl": "71e7d53c0ad69e08fbf3008e85d4bdc3c241972b9d11d2c48bf027a1449eb365",
+    "test.jsonl": "9bee04571432ec1a6d8f28e5fd8d08aefd6ec7c538cbce7fba1ffa1dd7de23d1"
+  },
+  "inputs": {
+    "five_year_splits_membership": {
+      "path": "data/manifests/five-year-splits-v1/membership.jsonl",
+      "sha256": "fdaa5e742c7c2e4a96c2d1d70df48103f758ec82fbbe01f8005adb4598aa674f"
+    },
+    "works": {
+      "path": "data/interim/release-v1/works.jsonl",
+      "sha256": "2b7f3bc15ad46398e9f55ece060536050215238355e9580d2689f00005f55047"
+    }
+  },
+  "method_version": "enrichment-splits-v1",
+  "overlap": {
+    "audit_samples": {
+      "reports/release-v3/completed/edge-ledger.jsonl": {
+        "in_development": 0,
+        "in_test": 1,
+        "sample_papers": 166,
+        "test_paper_ids": [
+          "paper:ijcai:2024:372"
+        ]
+      },
+      "reports/release-v3/completed/topic-ledger.jsonl": {
+        "in_development": 1,
+        "in_test": 0,
+        "sample_papers": 50,
+        "test_paper_ids": []
+      },
+      "reports/release-v4/completed/edge-ledger.jsonl": {
+        "in_development": 2,
+        "in_test": 6,
+        "sample_papers": 168,
+        "test_paper_ids": [
+          "paper:aaai:2023:25853",
+          "paper:aaai:2024:29280",
+          "paper:aaai:2024:29523",
+          "paper:aaai:2025:32733",
+          "paper:aaai:2025:33508",
+          "paper:ijcai:2025:137"
+        ]
+      }
+    },
+    "five_year_splits_v1": {
+      "development": {
+        "absent_from_five_year_splits_v1": 73,
+        "pool": 25,
+        "test": 2
+      },
+      "test": {
+        "absent_from_five_year_splits_v1": 145,
+        "development": 1,
+        "pool": 53,
+        "test": 1
+      }
+    },
+    "topic_test": {
+      "in_development": 1,
+      "in_test": 0,
+      "papers": 50,
+      "path": "data/manifests/release-v1/topic-test.jsonl"
+    }
+  },
+  "papers_without_abstract": 9,
+  "rule": "Eligible papers have a non-empty OpenAlex abstract. Strata are venue|year. Per-stratum quotas are proportional (largest remainder), separately for each split. Within a stratum papers are ranked by sha256(seed NUL paper_id); development takes the first ranks, test the next, so the splits are disjoint.",
+  "seed": 20261124,
+  "sizes": {
+    "development": 100,
+    "test": 200
+  },
+  "stratum_counts": {
+    "development": {
+      "venue:aaai|2021": 12,
+      "venue:aaai|2022": 10,
+      "venue:aaai|2023": 12,
+      "venue:aaai|2024": 17,
+      "venue:aaai|2025": 22,
+      "venue:ijcai|2021": 4,
+      "venue:ijcai|2022": 5,
+      "venue:ijcai|2023": 5,
+      "venue:ijcai|2024": 6,
+      "venue:ijcai|2025": 7
+    },
+    "test": {
+      "venue:aaai|2021": 24,
+      "venue:aaai|2022": 19,
+      "venue:aaai|2023": 23,
+      "venue:aaai|2024": 34,
+      "venue:aaai|2025": 45,
+      "venue:ijcai|2021": 9,
+      "venue:ijcai|2022": 10,
+      "venue:ijcai|2023": 9,
+      "venue:ijcai|2024": 12,
+      "venue:ijcai|2025": 15
+    }
+  },
+  "stratum_population": {
+    "venue:aaai|2021": 1648,
+    "venue:aaai|2022": 1317,
+    "venue:aaai|2023": 1578,
+    "venue:aaai|2024": 2331,
+    "venue:aaai|2025": 3028,
+    "venue:ijcai|2021": 585,
+    "venue:ijcai|2022": 678,
+    "venue:ijcai|2023": 639,
+    "venue:ijcai|2024": 790,
+    "venue:ijcai|2025": 1014
+  }
+}

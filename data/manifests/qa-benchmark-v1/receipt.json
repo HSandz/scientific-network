@@ -1,0 +1,37 @@
+{
+  "benchmark_version": "qa-benchmark-v1",
+  "counts": {
+    "development": {
+      "1": 5,
+      "2": 6,
+      "3": 5,
+      "global": 4
+    },
+    "test": {
+      "1": 20,
+      "2": 25,
+      "3": 20,
+      "global": 15
+    }
+  },
+  "generator_sha256": "0c6b8b34e60c7dc5aa0e8ec2e57c37f4037bfc3a7b59450428f08493b7cacdcc",
+  "hop_definition": "hops is the minimum number of edge traversals the reference query needs: 1, 2, or 3 (three or more, with the exact count in traversals); global questions have no traversal count",
+  "intents": {
+    "comparison": 1,
+    "count": 6,
+    "first_year": 2,
+    "global_summary": 7,
+    "lookup": 38,
+    "ranking": 19,
+    "trend": 7
+  },
+  "judging": {
+    "exact": "exact match",
+    "pairwise_ai": "global questions, pairwise judged by the AI evaluator, labelled AI-assessed",
+    "set_f1": "set F1 against the Cypher reference"
+  },
+  "questions_sha256": "0e8fc52dc72410d5d8127828e2ec95701723f7092ca6d7cbe13e3399c2886dee",
+  "reference_answers": "pending_v5; computed by deterministic Cypher after v5-enriched is loaded, before any system is tuned or run on the test questions",
+  "slot_sources": "v4 organizations and topics; well-known AI concepts; entities absent from v5 are dropped and reported",
+  "written_without": "any v5 graph, extraction output or language-model output"
+}

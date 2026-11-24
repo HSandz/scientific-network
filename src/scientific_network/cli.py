@@ -177,6 +177,8 @@ def parser() -> argparse.ArgumentParser:
     agent_edges.add_argument("--adjudication-ledger", type=Path)
     agent_edges.add_argument("--adjudication-start-receipt", type=Path)
     agent_edges.add_argument("--allow-partial", action="store_true")
+    from scientific_network.enrich.cli import add_enrich_parser
+    add_enrich_parser(commands)
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -445,6 +447,12 @@ def main(argv: list[str] | None = None) -> int:
             result, exit_code = score_agent_review(**{
                 key: value for key, value in vars(args).items() if key != "command"
             })
+        elif args.command == "enrich":
+            from scientific_network.enrich.cli import run_enrich
+            result, exit_code = run_enrich(args)
+            if exit_code == 2:
+                print(json.dumps(result, indent=2), file=sys.stderr)
+                return 2
         elif args.command == "score-agent-edge-review":
             from scientific_network.evaluation.agent_edge_review import score_agent_edge_review
             result, exit_code = score_agent_edge_review(**{
