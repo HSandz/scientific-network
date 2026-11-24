@@ -1,0 +1,120 @@
+{"item_id": "entity:4700aa1b9dc9abc6", "verdict": "correct", "note": "Named evaluation dataset for empathetic response generation."}
+{"item_id": "entity:474a0ea720928d16", "verdict": "incorrect", "note": "Contrastive describes the approach to multi-view clustering."}
+{"item_id": "entity:48c97cc223f6ef60", "verdict": "incorrect", "note": "Generic reference to underlying training data."}
+{"item_id": "entity:495d47c8e2841c0d", "verdict": "incorrect", "note": "Generic data structure with no named graph collection."}
+{"item_id": "entity:49a45808e1b45d77", "verdict": "correct", "note": "Proposed network that samples risk measures."}
+{"item_id": "entity:4b7810830ec6295b", "verdict": "incorrect", "note": "Describes a category of datasets without naming any."}
+{"item_id": "entity:4b7baa08c0bd74cb", "verdict": "correct", "note": "Specific segmentation problem in an unsupervised adaptation setting."}
+{"item_id": "entity:4c3c983a0850c30b", "verdict": "correct", "note": "Specific summarization problem for spoken dialogue."}
+{"item_id": "entity:4c6ad4adea768242", "verdict": "correct", "note": "Specific ranked prediction task used to assess GLPocket."}
+{"item_id": "entity:4eec220ba3a68140", "verdict": "incorrect", "note": "Outdoor benchmarking context gives no dataset names."}
+{"item_id": "entity:4f96adb5740d0b13", "verdict": "correct", "note": "Named dataset used to compare contact prediction performance."}
+{"item_id": "entity:502165815203cd38", "verdict": "correct", "note": "Introduced feature fusion module with audio-based weights."}
+{"item_id": "entity:503046dd8f347c0c", "verdict": "correct", "note": "Introduced foundation model identified as LSDM."}
+{"item_id": "entity:512d3d35173b417d", "verdict": "incorrect", "note": "Lists the number and domain of datasets without names."}
+{"item_id": "entity:5170dda71e5dfa11", "verdict": "incorrect", "note": "The phrase names a classifier architecture."}
+{"item_id": "entity:5198b16a1b9168d0", "verdict": "incorrect", "note": "The count and description leave all datasets unnamed."}
+{"item_id": "entity:52f00bab3c091461", "verdict": "incorrect", "note": "PDF names a document format."}
+{"item_id": "entity:533456b3962ce1e6", "verdict": "correct", "note": "Specific meta-learning technique used by LeapRec."}
+{"item_id": "entity:5589c48b900c9cef", "verdict": "incorrect", "note": "No prediction target or specific research problem is identified."}
+{"item_id": "entity:55982f6a2df29b5d", "verdict": "unclear", "note": "The algorithm is named in prior work, but its role in this paper is unstated."}
+{"item_id": "entity:55daf6485538637e", "verdict": "correct", "note": "Specific graph prediction task used to evaluate EARL."}
+{"item_id": "entity:55eea1459f6ed9f3", "verdict": "incorrect", "note": "Dynamic replanning is the technique used for the public transport routing problem."}
+{"item_id": "entity:562ed82d55f75a63", "verdict": "incorrect", "note": "Medical images describe an input domain."}
+{"item_id": "entity:5681a415f6520f9c", "verdict": "incorrect", "note": "Describes model inputs without naming a dataset."}
+{"item_id": "entity:56b419f3c1ce4f0c", "verdict": "correct", "note": "The paper conducts clustering in an end-to-end setting."}
+{"item_id": "entity:57488523fcd99809", "verdict": "correct", "note": "Mapping between images and text is a defined research problem."}
+{"item_id": "entity:5782c718acb74d68", "verdict": "incorrect", "note": "Generic reference to the authors' method."}
+{"item_id": "entity:58f062e38380d84a", "verdict": "incorrect", "note": "The phrase refers to the rule for choosing which subproblem to explore."}
+{"item_id": "entity:59131689f6a59925", "verdict": "incorrect", "note": "A point cloud is a data representation without a collection name."}
+{"item_id": "entity:59c66d0d64cbc5a8", "verdict": "incorrect", "note": "Election data are described without naming a collection."}
+{"item_id": "entity:5a40025e434873d9", "verdict": "correct", "note": "Code generation is the benchmarked task, with a Turducken-style specialization."}
+{"item_id": "entity:5a48c5114d4ef871", "verdict": "correct", "note": "The sentence formulates the research problem as constrained empirical risk minimization."}
+{"item_id": "entity:5a704a50aa4f7b90", "verdict": "correct", "note": "Specific synthesizers used in the empirical demonstration."}
+{"item_id": "entity:5b04d3b24fdce0b3", "verdict": "correct", "note": "Specific video-based expression recognition task."}
+{"item_id": "entity:5b0e58995f964689", "verdict": "correct", "note": "Named benchmark used in the experiments."}
+{"item_id": "entity:5b1547cbb63be889", "verdict": "correct", "note": "Named encoder introduced to locate phrase breaks."}
+{"item_id": "entity:5c03b0b8643aad6b", "verdict": "incorrect", "note": "The bare phrase describes a broad modeling activity. The specific problem involves continuous conditioning."}
+{"item_id": "entity:5d8a81113a587ad6", "verdict": "correct", "note": "Explicitly listed time series analysis task."}
+{"item_id": "entity:5d9d89fb72e7f34b", "verdict": "correct", "note": "The search for SPD neural architectures is the problem addressed by the algorithm."}
+{"item_id": "entity:5e8b4c2bb800248a", "verdict": "correct", "note": "Named dataset used for evaluation."}
+{"item_id": "entity:5f7cad46cf83a7ee", "verdict": "incorrect", "note": "Describes classes of planning domains without naming a benchmark."}
+{"item_id": "entity:6055ab732c372da5", "verdict": "correct", "note": "Specific contrastive learning technique named in the title."}
+{"item_id": "entity:613986f6c002c083", "verdict": "correct", "note": "Specific representation learning problem for heterogeneous graphs."}
+{"item_id": "entity:61f412f1a7cc53df", "verdict": "correct", "note": "The title identifies task-agnostic safe exploration as the problem addressed."}
+{"item_id": "entity:62500e39317dc3d6", "verdict": "correct", "note": "Named dataset used in comparative experiments."}
+{"item_id": "entity:62f257ec6e5fafa9", "verdict": "correct", "note": "Named pretrained model used to extract co-evolution information."}
+{"item_id": "entity:6385dce3128cfe5d", "verdict": "correct", "note": "Named model used to detect abnormal frames."}
+{"item_id": "entity:63c949eb523d4edf", "verdict": "correct", "note": "Identifies the search technique used in the synthesizers."}
+{"item_id": "entity:645a66e1384d1bd6", "verdict": "correct", "note": "Named game used as an evaluation environment."}
+{"item_id": "entity:646c678c0e8872e8", "verdict": "correct", "note": "Named benchmark used to assess WebPilot."}
+{"item_id": "entity:65d978e3f68a9d6f", "verdict": "unclear", "note": "Image editing is a specific task, but its role beyond this example is unstated."}
+{"item_id": "entity:65dabe56b0eee01f", "verdict": "correct", "note": "Explicitly listed time series prediction task."}
+{"item_id": "entity:677a273caba945b3", "verdict": "incorrect", "note": "The title identifies a game formulation studied through forward and inverse problems."}
+{"item_id": "entity:678eaaec157b95dc", "verdict": "correct", "note": "The title identifies object removal as the problem the diffusion technique addresses."}
+{"item_id": "entity:67abc5a139c7df32", "verdict": "correct", "note": "Explicitly stated detection problem and zero-shot setting."}
+{"item_id": "entity:6907e4cd50920c86", "verdict": "correct", "note": "Specific probabilistic model used to compute query distributions."}
+{"item_id": "entity:691ce07ef01e1b3a", "verdict": "incorrect", "note": "The simulated collections are described without a name."}
+{"item_id": "entity:69dddb8c515bccc8", "verdict": "correct", "note": "The title gives this method name and its acronym, ERL-MPP."}
+{"item_id": "entity:6a629a65f3b489ba", "verdict": "incorrect", "note": "The isolated term leaves the adaptation problem unspecified."}
+{"item_id": "entity:6a8e580a4c158d54", "verdict": "correct", "note": "Image restoration is the problem the diffusion method addresses."}
+{"item_id": "entity:6b56ccc2df90d5a9", "verdict": "incorrect", "note": "The phrase describes task length without identifying a research problem."}
+{"item_id": "entity:6b8000b2d7d15d35", "verdict": "correct", "note": "Named analysis technique for assessing bias metrics."}
+{"item_id": "entity:6b8f24550e9ec687", "verdict": "correct", "note": "Specific search problem addressed using hashing."}
+{"item_id": "entity:6c4aa528bdcbfade", "verdict": "correct", "note": "The title states the scene graph generation task."}
+{"item_id": "entity:6d373986e2799f91", "verdict": "correct", "note": "Specific encoder component in the described distillation architecture."}
+{"item_id": "entity:6d8c299a06670b84", "verdict": "incorrect", "note": "The sentence defines WV@R as the model's risk measure."}
+{"item_id": "entity:6dd6cb4b59cbdd4f", "verdict": "correct", "note": "Upsampling low-resolution images is a concrete super-resolution task."}
+{"item_id": "entity:6e4c3ac3c65bb387", "verdict": "correct", "note": "The sentence explicitly identifies inverse reward learning as a research problem."}
+{"item_id": "entity:6e6367f9e84fa3a4", "verdict": "correct", "note": "Named tool with a defined counting architecture."}
+{"item_id": "entity:6e95b112f3b1573f", "verdict": "correct", "note": "Specific class of algorithms designed to learn equilibria."}
+{"item_id": "entity:6f7c40ac6b42d744", "verdict": "incorrect", "note": "The experimental datasets are unnamed."}
+{"item_id": "entity:7052a7e590eb1df2", "verdict": "incorrect", "note": "RDDL describes the planning domains the method supports without naming a benchmark."}
+{"item_id": "entity:712d1ce4006d6088", "verdict": "correct", "note": "The title identifies the statistical criterion used to construct the posterior coreset."}
+{"item_id": "entity:722e965059f1a52d", "verdict": "correct", "note": "The title specifies an anomaly detection problem in the unsupervised setting."}
+{"item_id": "entity:727dbe4413c132a9", "verdict": "correct", "note": "Named expression dataset used in experiments."}
+{"item_id": "entity:72d25528b3600b8a", "verdict": "unclear", "note": "The title identifies a full network, but gives little evidence about a separate Time Encoding technique."}
+{"item_id": "entity:72e317fc1510f103", "verdict": "correct", "note": "Named method introduced as an extension of DSR."}
+{"item_id": "entity:74899ad64f2a84cf", "verdict": "incorrect", "note": "The benchmarks are counted and described without names."}
+{"item_id": "entity:74b6acd3bfd1b371", "verdict": "correct", "note": "Named dataset for personalized dialog generation."}
+{"item_id": "entity:75b03448a9e67ad5", "verdict": "incorrect", "note": "Supervised learning is a broad category without a specific task."}
+{"item_id": "entity:75db25105916d46c", "verdict": "incorrect", "note": "The text identifies a comparison scenario with fusion disabled."}
+{"item_id": "entity:75f14229749254d2", "verdict": "incorrect", "note": "The experimental datasets are unnamed."}
+{"item_id": "entity:75f3333bdf243a0e", "verdict": "correct", "note": "Specific network architecture proposed for segmentation."}
+{"item_id": "entity:76dbedcc0a7c877e", "verdict": "correct", "note": "The title gives generation of search strategies as the research problem."}
+{"item_id": "entity:76ffca3b8b464de8", "verdict": "correct", "note": "The method uses this established geometric transformation technique."}
+{"item_id": "entity:772e187524601748", "verdict": "correct", "note": "The title states the detection problem and its zero-shot setting."}
+{"item_id": "entity:78a3994ffb659114", "verdict": "unclear", "note": "The architecture is identified in prior work, but direct use or comparison is unstated."}
+{"item_id": "entity:78e28d543272b82e", "verdict": "incorrect", "note": "The evaluation datasets are counted without names."}
+{"item_id": "entity:79d9f876659d5a78", "verdict": "correct", "note": "Named dataset used in the reported experiments."}
+{"item_id": "entity:79df6c0cfe6db7d2", "verdict": "incorrect", "note": "The evaluation datasets are described without names."}
+{"item_id": "entity:7b1702d890fcbb20", "verdict": "correct", "note": "The title identifies a replanning technique for public transport routing."}
+{"item_id": "entity:7b1813870962324a", "verdict": "correct", "note": "Specific graph prediction problem named in the title."}
+{"item_id": "entity:7be6935f0bd8a03a", "verdict": "correct", "note": "Newly constructed benchmark dataset with an explicit name."}
+{"item_id": "entity:7c337e7093be764a", "verdict": "correct", "note": "Specific contrastive learning technique for translation."}
+{"item_id": "entity:7efa664485157ed6", "verdict": "correct", "note": "Recognizable segmentation task with a specified zero-shot setting."}
+{"item_id": "entity:8063d0d2bce8a6c4", "verdict": "incorrect", "note": "Natural language processing names the field encompassing the unspecified tasks."}
+{"item_id": "entity:80a927df714b2007", "verdict": "correct", "note": "Named visual question answering benchmark."}
+{"item_id": "entity:80b771cf44c41f78", "verdict": "correct", "note": "Established optimization algorithm used for driver scheduling."}
+{"item_id": "entity:80bd0dc8339db345", "verdict": "incorrect", "note": "The phrase identifies the graph component of a larger contrastive hashing technique."}
+{"item_id": "entity:80ec9f742731c8e2", "verdict": "correct", "note": "Specific recurrent architecture incorporated into TE-ESN."}
+{"item_id": "entity:81ec373f4f514dc5", "verdict": "correct", "note": "The title identifies recognition of LaTeX for tables and formulae as the problem."}
+{"item_id": "entity:829ee650ce20d06a", "verdict": "incorrect", "note": "The title describes a detection capability and its application without identifying a model or technique."}
+{"item_id": "entity:82cb2c8259bd2af1", "verdict": "correct", "note": "Specific clustering problem named in the title."}
+{"item_id": "entity:82d88149e420a13f", "verdict": "correct", "note": "Named benchmark used in the experiments."}
+{"item_id": "entity:83f91feffd26ab42", "verdict": "correct", "note": "Recognizable control problem with a continuous setting."}
+{"item_id": "entity:847967b156e5d834", "verdict": "correct", "note": "The title gives forward policy design as a research problem studied."}
+{"item_id": "entity:84c980fb46242b49", "verdict": "correct", "note": "Specific attention module used to fuse image and text features."}
+{"item_id": "entity:84ef9a2cadcce04b", "verdict": "incorrect", "note": "The phrase identifies a technique for adapting vision models using prompts."}
+{"item_id": "entity:85020b219b87e80c", "verdict": "incorrect", "note": "Describes an input type without naming a corpus."}
+{"item_id": "entity:854a796bdb22551e", "verdict": "correct", "note": "Named fake news detection model proposed by the paper."}
+{"item_id": "entity:85a88124b71f79ac", "verdict": "correct", "note": "Specific scarce-resource allocation problem studied in the experiments."}
+{"item_id": "entity:8658e091985525ab", "verdict": "incorrect", "note": "The evaluation benchmarks are unnamed."}
+{"item_id": "entity:8713b9f93452aafe", "verdict": "correct", "note": "Parameter estimation is the research problem addressed by the algorithms discussed."}
+{"item_id": "entity:877241f66698a215", "verdict": "correct", "note": "Named Chinese-English translation benchmark used in experiments."}
+{"item_id": "entity:88f424623058d54e", "verdict": "incorrect", "note": "The sentence identifies L1000 landmark genes, without identifying an L1000 dataset."}
+{"item_id": "entity:893fc53fd84a8899", "verdict": "incorrect", "note": "Describes graph size without naming a graph dataset."}
+{"item_id": "entity:89f7b7c8444c7f93", "verdict": "correct", "note": "Specific detection component in the proposed watermarking architecture."}
+{"item_id": "entity:8a1440d8fd63a95e", "verdict": "correct", "note": "Named method used as a comparison baseline."}
+{"item_id": "entity:8a76116cc54f7fe7", "verdict": "unclear", "note": "The architecture class appears in prior work, but use or direct comparison is unstated."}
+{"item_id": "entity:8bbdf7b18b424fbd", "verdict": "correct", "note": "Specific loss formulation applied during training."}

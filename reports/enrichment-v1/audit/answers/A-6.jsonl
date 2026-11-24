@@ -1,0 +1,67 @@
+{"item_id":"pedge:f4aef57bf10d9e9e","verdict":"correct","note":"Title states meta-learning is the paper's approach."}
+{"item_id":"pedge:f6e30962740480d4","verdict":"correct","note":"Title: network for facial expression recognition."}
+{"item_id":"pedge:f743d5ceab6408a3","verdict":"correct","note":"Explicitly: we use deep neural networks."}
+{"item_id":"pedge:f80583c8ab59fd20","verdict":"correct","note":"Title: representation for human pose estimation."}
+{"item_id":"pedge:f91f0bd65d7bf167","verdict":"correct","note":"Evaluated on GLUE benchmark."}
+{"item_id":"pedge:fb9b063fd7287bab","verdict":"correct","note":"Title: model for session-based recommendation."}
+{"item_id":"pedge:fbf334b36a77d107","verdict":"unclear","note":"Background sentence only; does not show the paper itself addresses graph representation learning."}
+{"item_id":"pedge:fe105c679b8408a2","verdict":"correct","note":"Adopts neural CDE technology."}
+{"item_id":"part:04fcb654ebc9a0ae","verdict":"correct","note":"Queens College is a CUNY senior college."}
+{"item_id":"part:07ed45d944c62c0e","verdict":"incorrect","note":"A list is not an organization; not part-of."}
+{"item_id":"part:083322a45f280475","verdict":"correct","note":"State-owned enterprise held and supervised by SASAC."}
+{"item_id":"part:0dcbe526a8909e88","verdict":"correct","note":"LLNL is a DOE national laboratory."}
+{"item_id":"part:0e0505ed19fcddd8","verdict":"incorrect","note":"Sōkei is not a parent organization of Keio University."}
+{"item_id":"part:113b6489a3f6af32","verdict":"incorrect","note":"LIX is an École Polytechnique/CNRS unit, not part of Inria."}
+{"item_id":"part:26b86b7bb60144d3","verdict":"correct","note":"NII is an institute of ROIS."}
+{"item_id":"part:33b6280d0973e3c6","verdict":"unclear","note":"Membership of Newcastle in ELIXIR UK node cannot be confirmed from shown text."}
+{"item_id":"part:38262533e0b80cca","verdict":"correct","note":"Founding member hospital of Mass General Brigham."}
+{"item_id":"part:430f639e5ef8cfc7","verdict":"correct","note":"ENSTA was a member school of ParisTech."}
+{"item_id":"part:453a6c4d1d79f1c6","verdict":"correct","note":"LIFEWARE is an Inria project-team."}
+{"item_id":"part:490bbaa9c66e24a2","verdict":"correct","note":"IHPC is an A*STAR research institute."}
+{"item_id":"part:4df26fe16504aa31","verdict":"incorrect","note":"Stock index constituent, not an organizational part."}
+{"item_id":"part:5462212b67e6692c","verdict":"incorrect","note":"Stock index constituent, not an organizational part."}
+{"item_id":"part:752368a7181e2c58","verdict":"incorrect","note":"Ranking list, not an organization."}
+{"item_id":"part:8613e60f789ea693","verdict":"correct","note":"IRI is a joint CSIC-UPC research institute."}
+{"item_id":"part:864b152573d8df87","verdict":"correct","note":"Porsche SE holds majority voting control of Volkswagen Group."}
+{"item_id":"part:88b6ec86b73e4e69","verdict":"unclear","note":"Ambiguous ministry; funded/overseen institution, not clearly a unit."}
+{"item_id":"part:8e2d500a348a1eaa","verdict":"correct","note":"AMSE is an Aix-Marseille Université research unit."}
+{"item_id":"part:8e66d2131ceb7537","verdict":"unclear","note":"State university under ministry oversight; whether that is part-of is debatable."}
+{"item_id":"part:8ee167d8b7038777","verdict":"incorrect","note":"Hubert Curien lab belongs to Saint-Étienne/CNRS, not CPE Lyon."}
+{"item_id":"part:94fdac33fad05386","verdict":"correct","note":"Grenoble INP was a member of the ComUE Université Grenoble Alpes."}
+{"item_id":"part:9b19a332809e0245","verdict":"correct","note":"IRISA is a CNRS joint unit attached to INS2I."}
+{"item_id":"part:a2360c0c9ac5009b","verdict":"correct","note":"iQIYI is majority-owned subsidiary of Baidu."}
+{"item_id":"part:ab4b8d367466f6ba","verdict":"correct","note":"Description states NIDA is a branch of NIH."}
+{"item_id":"part:b0a506a339c0e9ed","verdict":"correct","note":"CVC is a CERCA research centre."}
+{"item_id":"part:b2e3acf37887089e","verdict":"correct","note":"LMS is a CNRS/École polytechnique joint unit."}
+{"item_id":"part:bbc5d772d60cdf69","verdict":"correct","note":"ISRO operates under India's Department of Space."}
+{"item_id":"part:c14e7234339b6d2b","verdict":"correct","note":"Kakao Enterprise is a Kakao subsidiary."}
+{"item_id":"part:c89b678addd50b55","verdict":"correct","note":"LAAS-CNRS unit attached to CNRS institutes including INS2I."}
+{"item_id":"part:e0c039adef45a59b","verdict":"incorrect","note":"Stock index constituent, not an organizational part."}
+{"item_id":"part:e45ccf4ce52ad865","verdict":"correct","note":"UCSD is a UC campus."}
+{"item_id":"part:f2710b5fb9c8ff1f","verdict":"correct","note":"CNRS joint unit attached to institute of biological sciences (INSB)."}
+{"item_id":"part:f37ed3b40a464dc6","verdict":"incorrect","note":"Stock index constituent, not an organizational part."}
+{"item_id":"part:fe55ae781590a947","verdict":"correct","note":"NEC Germany is a subsidiary of NEC Corporation."}
+{"item_id":"rel2:3a69b87543418d57","verdict":"incorrect","note":"Distinct model families; not closely related."}
+{"item_id":"rel2:5273b08ee634a38f","verdict":"correct","note":"ViT is a transformer variant."}
+{"item_id":"rel2:5812ebb53d479c06","verdict":"correct","note":"Link prediction is a canonical GNN application."}
+{"item_id":"rel2:5c5463d6909a0b14","verdict":"correct","note":"Deep RL is a subfield of RL."}
+{"item_id":"rel2:700675b51a716450","verdict":"incorrect","note":"Generic compression technique; not closely related to GNNs."}
+{"item_id":"rel2:733722e333a70e56","verdict":"incorrect","note":"Different architectures and domains; only loosely combined."}
+{"item_id":"rel2:c3f07a4dd6912e43","verdict":"incorrect","note":"Broad task; GNNs are only one of many approaches, not closely related."}
+{"item_id":"rel2:c5476cfb24be2dc9","verdict":"incorrect","note":"Architecture vs learning paradigm; not closely related."}
+{"item_id":"rel2:dfbd947f8389c74a","verdict":"correct","note":"Transformers viewed as GNNs on complete graphs; graph transformers are neighbouring techniques."}
+{"item_id":"rel2:e404a8db9c1d7597","verdict":"incorrect","note":"Training setting vs architecture; not closely related."}
+{"item_id":"rel:215153d098b1cc3b","verdict":"correct","supported_in":2,"note":"Both papers use ViT backbone for PAR."}
+{"item_id":"rel:223c1e257c403a4f","verdict":"correct","supported_in":2,"note":"Both ILP approaches applied to program synthesis."}
+{"item_id":"rel:38142d7d9ea73eaf","verdict":"correct","supported_in":2,"note":"Both analyse NSGA-II on OneJumpZeroJump."}
+{"item_id":"rel:4c821b8b5668d633","verdict":"correct","supported_in":2,"note":"Both use contrastive learning for emotion recognition tasks."}
+{"item_id":"rel:500d724c9eb12e10","verdict":"correct","supported_in":2,"note":"U-KAN redesigns U-Net; WMREN uses UNet structure for segmentation."}
+{"item_id":"rel:57f22563e2172f3f","verdict":"correct","supported_in":2,"note":"Paper 1 enhances diffusion model; paper 2 states diffusion models used for sequential recommendation."}
+{"item_id":"rel:6fb9c4e4b12b5c83","verdict":"correct","supported_in":2,"note":"Both analyse NSGA-II on OneMinMax."}
+{"item_id":"rel:963887c40bd9b54f","verdict":"incorrect","supported_in":1,"note":"Paper 2 uses linear regression for explanation, not forecasting."}
+{"item_id":"rel:a3e544aa0e6b763e","verdict":"correct","supported_in":2,"note":"Both apply ViT to image classification."}
+{"item_id":"rel:a3fe920edeb006b2","verdict":"correct","supported_in":2,"note":"Both use self-supervised learning for anomaly detection."}
+{"item_id":"rel:b2a477fc81df3c3b","verdict":"correct","supported_in":2,"note":"Both propose GNN-based anomaly detection."}
+{"item_id":"rel:cb403bfebd8e72de","verdict":"correct","supported_in":2,"note":"Both report GCN results on Cora."}
+{"item_id":"rel:cdb15b55a5a99be4","verdict":"correct","supported_in":2,"note":"Both apply distillation to semantic segmentation."}
+{"item_id":"rel:eaac3a36d27b0b1e","verdict":"correct","supported_in":2,"note":"Both state GNNs are used for session-based recommendation."}

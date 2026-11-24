@@ -1,0 +1,120 @@
+{"item_id": "entity:8c976a357b071bee", "verdict": "incorrect", "note": "The sentence refers to experiments generally and supplies no dataset name."}
+{"item_id": "entity:8dfe8b966b67527b", "verdict": "correct", "note": "The title gives Disambiguated Contrastive Alignment as the expanded name of DiCA."}
+{"item_id": "entity:8ed6e5573b6d6920", "verdict": "correct", "note": "Evaluating the proportionality of voting rules is the specific research problem addressed."}
+{"item_id": "entity:8fd29f0c21ca099b", "verdict": "correct", "note": "MNIST is explicitly named among the experiment datasets."}
+{"item_id": "entity:905778c4b3da517b", "verdict": "incorrect", "note": "Open-source PLMs are the models used in evaluation."}
+{"item_id": "entity:92396d3904dd2a81", "verdict": "incorrect", "note": "The phrase gives the number of benchmark datasets without naming them."}
+{"item_id": "entity:927d5fa6526f415e", "verdict": "incorrect", "note": "Potential games are a class of games in which equilibria are computed."}
+{"item_id": "entity:938dc09d301fd8d4", "verdict": "correct", "note": "The authors devise this module to extract and present knowledge for language models."}
+{"item_id": "entity:93fe1d91f1c9906b", "verdict": "correct", "note": "TRAIL is the introduced system for saturation-based theorem proving."}
+{"item_id": "entity:9484eb73216f907d", "verdict": "correct", "note": "The sentence names this specific voting rule among those considered."}
+{"item_id": "entity:952ed5b536dd1bef", "verdict": "correct", "note": "Predicting low-frequency words is a specific machine translation problem."}
+{"item_id": "entity:959d70e1f754a34a", "verdict": "correct", "note": "The title identifies session-based recommendation as the problem Re2LLM addresses."}
+{"item_id": "entity:96dd098767e9275f", "verdict": "correct", "note": "The title names multi-modal classification as the target problem for the search method."}
+{"item_id": "entity:97aa2c287cefcbfa", "verdict": "correct", "note": "The sentence identifies a specific heuristic search algorithm and describes how it is used."}
+{"item_id": "entity:989433be90d1153f", "verdict": "correct", "note": "The title identifies dependency-aware spatial crowdsourcing as the target optimization problem."}
+{"item_id": "entity:98eb85410268c9a9", "verdict": "incorrect", "note": "Formula identifies one category of extraction results and provides no dataset name."}
+{"item_id": "entity:993ef499a0fe427d", "verdict": "incorrect", "note": "The term denotes an adversarial attack norm or setting."}
+{"item_id": "entity:9a436be292eac17e", "verdict": "correct", "note": "The authors propose this technique to modify self-attention in diffusion models."}
+{"item_id": "entity:9aab210669aafccd", "verdict": "incorrect", "note": "The phrase refers to experimental findings and gives no dataset name."}
+{"item_id": "entity:9af850307d09d0e7", "verdict": "correct", "note": "The paper explicitly introduces an approach to the problem of interpreting models."}
+{"item_id": "entity:9b1aba508abba107", "verdict": "correct", "note": "The title identifies a specific medical image segmentation problem."}
+{"item_id": "entity:9b664e5ad6fa85bb", "verdict": "correct", "note": "SCAN uses the spatial attention mechanism to encode nearby neighbors' influence."}
+{"item_id": "entity:9b92031e8bb8914b", "verdict": "correct", "note": "UniCATS is a named text-to-speech framework."}
+{"item_id": "entity:9bb773d61afddf0a", "verdict": "incorrect", "note": "Occurrence dynamics denotes the phenomenon being modeled, while modeling sequential event occurrences is the problem."}
+{"item_id": "entity:9c72a5f9e96e68dc", "verdict": "correct", "note": "The proposed module uses topology refinement as a graph learning technique."}
+{"item_id": "entity:9c8f25c96a0639dc", "verdict": "incorrect", "note": "Finance is cited as an application domain."}
+{"item_id": "entity:9df56fdd4ec0b4f5", "verdict": "correct", "note": "ANLI is explicitly identified as a benchmark used to assess MAT."}
+{"item_id": "entity:9fa2313000bd78d1", "verdict": "incorrect", "note": "Temporal graphs describe a data type without identifying any particular dataset."}
+{"item_id": "entity:9fc238a58733df90", "verdict": "correct", "note": "The authors design a pipeline specifying planning, acting, and reflecting phases for agent control."}
+{"item_id": "entity:9fd4106dd8990f1b", "verdict": "incorrect", "note": "The phrase refers generically to a class of mechanisms without identifying a specific technique."}
+{"item_id": "entity:a0086a0345101efc", "verdict": "correct", "note": "ImageNet is explicitly identified as the dataset used for pretraining the described networks."}
+{"item_id": "entity:a11b12026ee7806e", "verdict": "correct", "note": "The sentence defines a specific cross-modality person re-identification problem."}
+{"item_id": "entity:a1a36a73cf1647de", "verdict": "correct", "note": "The sentence defines a concrete planning problem with probabilistic temporal logic constraints."}
+{"item_id": "entity:a209e023bb37151a", "verdict": "correct", "note": "Adaptive Robust Loss is a proposed training function that changes sensitivity to noisy supervision."}
+{"item_id": "entity:a2487e517fc4c7da", "verdict": "correct", "note": "The authors design a specific sampling algorithm that uses restarts."}
+{"item_id": "entity:a47332f96cb35a27", "verdict": "correct", "note": "The title names MultiDreamer3D as the system for multi-concept 3D customization."}
+{"item_id": "entity:a4f23430ad476906", "verdict": "correct", "note": "Behavioral cloning is the technique used to learn programmatic strategy sketches."}
+{"item_id": "entity:a4fbb3ab6ded080d", "verdict": "correct", "note": "The sentence explicitly names the proposed ConvNet SCR-Net."}
+{"item_id": "entity:a5fc3725fb7026ef", "verdict": "incorrect", "note": "The phrase gives no names for the datasets used in the experiments."}
+{"item_id": "entity:a744b19223b555ea", "verdict": "correct", "note": "The title identifies group-level cognitive diagnosis as the problem DGCD addresses."}
+{"item_id": "entity:a7bce2584147c4eb", "verdict": "correct", "note": "Human pose estimation is the specific prediction problem named in the title."}
+{"item_id": "entity:a7f93ecb083605c5", "verdict": "correct", "note": "Subtask matching is a defined part of the task assignment problem that the framework addresses."}
+{"item_id": "entity:a8396e3bbcd430c3", "verdict": "incorrect", "note": "The phrase denotes challenging scenarios within the OOD detection task."}
+{"item_id": "entity:a9641b0f6f82e206", "verdict": "incorrect", "note": "The phrase describes the weather conditions of datasets without providing a dataset name."}
+{"item_id": "entity:aa3b860abf94bdd0", "verdict": "correct", "note": "Shallow GAEs are a specific architecture class used by the existing methods discussed."}
+{"item_id": "entity:ab09bb335f85d434", "verdict": "correct", "note": "The matching utility evaluation function is a component of the proposed joint optimization process."}
+{"item_id": "entity:ac3fcbc1dcd08381", "verdict": "correct", "note": "MIMIC-CXR is explicitly named as one of the public datasets used for comparison."}
+{"item_id": "entity:ac4a7a0bcde4c8b9", "verdict": "correct", "note": "The title identifies link prediction as the problem addressed by the graph autoencoders."}
+{"item_id": "entity:acc06f417f6640b2", "verdict": "correct", "note": "The title identifies Memorization Weights as the technique for instance reweighting."}
+{"item_id": "entity:acd83aa49d3137d2", "verdict": "correct", "note": "The title identifies 3D semantic segmentation as the problem in which AdaCo addresses noise."}
+{"item_id": "entity:ad78f01519088fbc", "verdict": "incorrect", "note": "The phrase describes data with a privacy property."}
+{"item_id": "entity:af1597d9375358cb", "verdict": "incorrect", "note": "Selected examples are an unnamed collection used in an ablation experiment."}
+{"item_id": "entity:af4d432158c7ce3b", "verdict": "correct", "note": "Semi supervised pseudo-labeling is a recognized technique used to construct the baseline models."}
+{"item_id": "entity:afda5fa7914365f4", "verdict": "correct", "note": "The experiment explicitly lists retrieval among the tasks evaluated."}
+{"item_id": "entity:b017a7f8906c6404", "verdict": "correct", "note": "JPLEG-5 is explicitly named as a dataset used to evaluate ERL-MPP."}
+{"item_id": "entity:b049fa5d826939b8", "verdict": "correct", "note": "Score matching is identified as a technique incorporated into the proposed model."}
+{"item_id": "entity:b0673ca3613827fa", "verdict": "incorrect", "note": "The sentence explicitly classifies WEAT as a bias metric."}
+{"item_id": "entity:b0e4fac3a38ad3fb", "verdict": "correct", "note": "Locomotion is the control problem in one of the evaluated scenarios."}
+{"item_id": "entity:b1f38bd775b7789e", "verdict": "correct", "note": "The title identifies document information extraction as the problem SAIL addresses."}
+{"item_id": "entity:b39dc02f1e40708a", "verdict": "correct", "note": "The DUC 2005-2007 datasets are named evaluation corpora for multi-document summarization."}
+{"item_id": "entity:b46d3c5f090decdf", "verdict": "correct", "note": "Constructing LHLs is the specific graph problem for which the paper devises algorithms."}
+{"item_id": "entity:b58edccd247beb29", "verdict": "correct", "note": "The COCO validation set is an identified benchmark split used for evaluation."}
+{"item_id": "entity:b5a4eb6abc48ecb1", "verdict": "incorrect", "note": "PSNR is a reported image quality metric measured in decibels."}
+{"item_id": "entity:b5ad8913afb2208b", "verdict": "correct", "note": "The title identifies calibration of graph neural networks as the problem addressed."}
+{"item_id": "entity:b63640f9f7fe360e", "verdict": "correct", "note": "Subject-agnostic face swapping is the specific problem the proposed network targets."}
+{"item_id": "entity:b8608810852c09e8", "verdict": "correct", "note": "The paper explicitly targets improved performance on mesh reconstruction."}
+{"item_id": "entity:b8859c00ee9d7b88", "verdict": "correct", "note": "The authors introduce a specific loss function to distinguish low-intensity expressions during training."}
+{"item_id": "entity:b93ddf0aeaf79b0a", "verdict": "correct", "note": "The paper proposes this module to transmit semantic information between layers."}
+{"item_id": "entity:b97674a0bbcbe6a9", "verdict": "incorrect", "note": "YouTube is the source platform for videos in the named Instruct-V2Xum dataset."}
+{"item_id": "entity:b97f2edfe8a85994", "verdict": "unclear", "note": "The sentence gives sentiment classification as a prior example and leaves its role in this study unspecified."}
+{"item_id": "entity:b9f5b40793fcbc6c", "verdict": "correct", "note": "The title names the problem of automatically segmenting tasks in deep reinforcement learning."}
+{"item_id": "entity:ba9c8d8a25c52961", "verdict": "correct", "note": "Equirectangular projection is the technique used in the proposed point reconstruction network."}
+{"item_id": "entity:bb34b0aae1a23e4a", "verdict": "incorrect", "note": "These verbs omit the object of the task, the variance of returns from off-policy data."}
+{"item_id": "entity:bb3b7315087e65e1", "verdict": "correct", "note": "Heuristic search is a specific family of techniques used in the experimental comparison."}
+{"item_id": "entity:bb47bde3842b1941", "verdict": "correct", "note": "The paper introduces a named embedding technique for representing incomplete time series."}
+{"item_id": "entity:bbb3df6788162b23", "verdict": "correct", "note": "The Multi-Spectral Fusion module is a specific component of the proposed network."}
+{"item_id": "entity:bc1990320ebda733", "verdict": "correct", "note": "Protein contact map prediction is a specific structure prediction problem."}
+{"item_id": "entity:bc4e2a707405181a", "verdict": "correct", "note": "The paper uses sequential action sampling to obtain joint policies from its model."}
+{"item_id": "entity:bcbd6408a3b44d43", "verdict": "correct", "note": "The paper explicitly identifies conditional multi-document summarization as an evaluated task."}
+{"item_id": "entity:bcfa7af41dc757a7", "verdict": "correct", "note": "The title identifies graph representation learning as a technique used to generate cloud security policies."}
+{"item_id": "entity:bdc075201b626ed6", "verdict": "correct", "note": "The title identifies Class-Independent Regularization as a technique for learning with noisy labels."}
+{"item_id": "entity:be0796992d321930", "verdict": "correct", "note": "The title identifies Adaptive Label Correction as AdaCo's technique for handling foundation-model noise."}
+{"item_id": "entity:be1f569da19e23d9", "verdict": "correct", "note": "The title identifies scene graph generation as the target research problem."}
+{"item_id": "entity:bee14840f1b1b558", "verdict": "incorrect", "note": "Molecular SMILES identifies an input representation and gives no corpus name."}
+{"item_id": "entity:beee6bc77057c625", "verdict": "correct", "note": "The paper designs a probabilistic language for expressing and solving logic-based queries."}
+{"item_id": "entity:bef7e31686b451e7", "verdict": "correct", "note": "The Atari suite is a named environment suite used to assess training speed."}
+{"item_id": "entity:bf0500c85c240d8d", "verdict": "correct", "note": "The paper proposes a strategy for assigning tetrahedron labels using votes from sampled locations."}
+{"item_id": "entity:bf5bfaa685adaec3", "verdict": "incorrect", "note": "The sentence mentions continuous RNNs as an analogue to the adopted neural CDE technique."}
+{"item_id": "entity:c08e226887fbdf9b", "verdict": "correct", "note": "MiniWoB++ is a named benchmark on which WebPilot is evaluated."}
+{"item_id": "entity:c1b5742ecbbff717", "verdict": "incorrect", "note": "The phrase identifies the type of model being fine-tuned."}
+{"item_id": "entity:c22bf78d10216705", "verdict": "correct", "note": "The paper uses quantal response equilibria to incorporate bounded rationality into its models."}
+{"item_id": "entity:c3137b8905d8e358", "verdict": "correct", "note": "The title names ScaleFormer as a model for medical image segmentation."}
+{"item_id": "entity:c54392170a731e8e", "verdict": "incorrect", "note": "The sentence explicitly identifies volatility cluster statistics as an evaluation metric."}
+{"item_id": "entity:c6f50737ed42a5d3", "verdict": "correct", "note": "Image recognition is the problem addressed by the reported evaluations."}
+{"item_id": "entity:c719365ff57a53d7", "verdict": "correct", "note": "Visual Foundation Models are a model class whose noise AdaCo addresses in 3D segmentation."}
+{"item_id": "entity:c727f7d49b4e068a", "verdict": "incorrect", "note": "Robot navigation is the earlier application cited for verbalization space. The present application is plan description."}
+{"item_id": "entity:c7aa2d4cb56cdb11", "verdict": "correct", "note": "CIA-SSD is a named single-stage object detector for point clouds."}
+{"item_id": "entity:c7ab46f2913d760b", "verdict": "correct", "note": "CAMERA25 is explicitly named among the datasets used for evaluation."}
+{"item_id": "entity:c7acc01d52162f7f", "verdict": "correct", "note": "The title identifies a specific contrastive hashing method for cross-modal search."}
+{"item_id": "entity:c8049a5a3f2af77a", "verdict": "correct", "note": "Image generation is a concrete task involving the diffusion models used in the paper."}
+{"item_id": "entity:c9f2db37c3a9d138", "verdict": "correct", "note": "The authors use a differentiable neural architecture search algorithm in their continuous search space."}
+{"item_id": "entity:cb513f5afc6877d5", "verdict": "correct", "note": "The title identifies model-based reinforcement learning as the problem targeted by posterior coreset construction."}
+{"item_id": "entity:cbb3610dbdc8b3dd", "verdict": "correct", "note": "Low-pass filters are a specific filtering technique incorporated into the graph kernel design."}
+{"item_id": "entity:cc034e508335a9cb", "verdict": "correct", "note": "S3 is explicitly introduced as the Submodular Span Summarization framework."}
+{"item_id": "entity:cca761b4c256ef0c", "verdict": "correct", "note": "The KITTI test set is a named benchmark split used for 3D car detection evaluation."}
+{"item_id": "entity:ccf934bbb6347ead", "verdict": "incorrect", "note": "The sentence gives a dataset count and graph characteristics without naming individual datasets."}
+{"item_id": "entity:cd80a783abccda89", "verdict": "correct", "note": "Zero-shot OOD detection is the stated problem addressed by the confidence-scoring procedure."}
+{"item_id": "entity:cdc336a79cd64a46", "verdict": "correct", "note": "VI-ReID is explicitly defined as the abbreviation for visible-infrared person re-identification."}
+{"item_id": "entity:ce4f0b68c6ec6784", "verdict": "unclear", "note": "The sentence identifies an established technique in prior work and leaves its use in the current paper unspecified."}
+{"item_id": "entity:ce65546fcbedf7b7", "verdict": "correct", "note": "The title identifies multi-concept 3D customization as the problem MultiDreamer3D addresses."}
+{"item_id": "entity:cf48e5208e2adeff", "verdict": "correct", "note": "The sentence explicitly identifies the kidney cancer WSI dataset from TCGA as an evaluation set."}
+{"item_id": "entity:cf9b36c3d055de1e", "verdict": "incorrect", "note": "The phrase refers generically to evaluation benchmarks and gives no dataset name."}
+{"item_id": "entity:d27f6b1d0ce7d4dd", "verdict": "incorrect", "note": "The phrase describes a potential data access condition and identifies no named dataset."}
+{"item_id": "entity:d3ae34a3f190e55b", "verdict": "correct", "note": "The title identifies polyp segmentation in colonoscopy videos as the target problem."}
+{"item_id": "entity:d3f76c0f598b5beb", "verdict": "correct", "note": "Per-voxel binary mask classification is the concrete prediction problem performed by the framework."}
+{"item_id": "entity:d48aaff595763df3", "verdict": "incorrect", "note": "Safety-critical applications describe a broad application setting without naming a particular task."}
+{"item_id": "entity:d4ab17cd1382d484", "verdict": "correct", "note": "The authors propose a domain adaptation technique that injects feature perturbations."}
+{"item_id": "entity:d4b55743d4e94e25", "verdict": "correct", "note": "The sentence explicitly identifies the esophageal cancer WSI dataset from TCGA as an evaluation set."}
+{"item_id": "entity:d4fdc73cd4244b11", "verdict": "correct", "note": "Zero-shot node classification is a specific graph prediction task identified in the sentence."}
+{"item_id": "entity:d61635ae821dfa2c", "verdict": "incorrect", "note": "Discriminative ability denotes a property used in the calibration discussion without identifying a specific technique."}

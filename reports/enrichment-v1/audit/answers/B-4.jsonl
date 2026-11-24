@@ -1,0 +1,120 @@
+{"item_id": "entity:d68e24c775cf5546", "verdict": "correct", "note": "STCrowd is named as an evaluation dataset."}
+{"item_id": "entity:d70a12200451ca28", "verdict": "correct", "note": "The sentence defines the problem of recovering cause-effect relationships from observational data."}
+{"item_id": "entity:d7d7c063f23caa31", "verdict": "correct", "note": "The text identifies speech synthesis from text as the task."}
+{"item_id": "entity:d96f7abd9e81b344", "verdict": "correct", "note": "SDGMNet is proposed for contrastive learning of local descriptors."}
+{"item_id": "entity:d99941a0cd28d3ee", "verdict": "correct", "note": "The title identifies T-NNGP as the method used to solve multi-physics PDEs."}
+{"item_id": "entity:da34ad49628dab6c", "verdict": "correct", "note": "The sentence identifies 3D car detection as the task evaluated on KITTI."}
+{"item_id": "entity:da993e0de526d0a3", "verdict": "correct", "note": "The sentence discusses a specific GAN architecture family and identifies its control limitation."}
+{"item_id": "entity:da9fe3951bcf6f00", "verdict": "correct", "note": "The sentence introduces S3 as a named two-stage summarization framework."}
+{"item_id": "entity:db912026d7a32027", "verdict": "correct", "note": "Gradient-based optimization is the stated technique for jointly training the network layers."}
+{"item_id": "entity:dc0a46588d5b3932", "verdict": "correct", "note": "Removing the influence of an entire class is an experimental unlearning task."}
+{"item_id": "entity:dc36279c159857d9", "verdict": "correct", "note": "The title identifies multi-label projection as the technique used for online hashing."}
+{"item_id": "entity:dc52e88b2a4e25c8", "verdict": "correct", "note": "The sentence identifies customizing multiple concepts as a research problem."}
+{"item_id": "entity:dd6ee607a2d61f30", "verdict": "incorrect", "note": "The phrase denotes properties to which the bound applies. The sentence separately identifies robust control problems."}
+{"item_id": "entity:dd9ea5ab5a713e7b", "verdict": "correct", "note": "DAIR-V2X is a named benchmark used in the experiments."}
+{"item_id": "entity:ddf1d627f96d2e9e", "verdict": "correct", "note": "The sentence proposes CIR as a regularization method for noisy labels."}
+{"item_id": "entity:de45ea39ca4c414b", "verdict": "correct", "note": "The paper designs this graph aggregation operator to distinguish frequency signals."}
+{"item_id": "entity:df3f7d9487e26f64", "verdict": "incorrect", "note": "The phrase describes a general category of data without naming a dataset."}
+{"item_id": "entity:df4b8939236d7c5c", "verdict": "incorrect", "note": "NuScenes-QA is the benchmark name. Visual question answering is the task."}
+{"item_id": "entity:dfce39abbb1aff76", "verdict": "correct", "note": "Recognizing emotions from EEG signals is a specific research task."}
+{"item_id": "entity:dfe0753323c8e73f", "verdict": "incorrect", "note": "The phrase gives the number and domain of datasets without naming any."}
+{"item_id": "entity:e07b1a598cd9e51d", "verdict": "incorrect", "note": "The phrase describes the corpus by language and domain without giving it a name."}
+{"item_id": "entity:e0b29df6379cab89", "verdict": "incorrect", "note": "The sentence presents SFER as a comparison point for the video-based recognition task."}
+{"item_id": "entity:e1ac12388aec7ef2", "verdict": "correct", "note": "Monte Carlo Tree Search is a specific search algorithm discussed and used in the described approach."}
+{"item_id": "entity:e2358a58da94e700", "verdict": "correct", "note": "The paper proposes an independence test based on estimated mutual information."}
+{"item_id": "entity:e2ef20daa3791422", "verdict": "correct", "note": "Warp-COCO is explicitly named as one of the evaluation datasets."}
+{"item_id": "entity:e34b514328a8335f", "verdict": "unclear", "note": "The title and experiment excerpt leave GigaHumanDet's role unspecified."}
+{"item_id": "entity:e387bcbfe3da6291", "verdict": "correct", "note": "The global readout function is a specific aggregation technique used to increase expressive power."}
+{"item_id": "entity:e45a578dceed18a2", "verdict": "incorrect", "note": "The title describes an input graph type without naming a dataset."}
+{"item_id": "entity:e4c67c6ec5a63ce8", "verdict": "correct", "note": "Dex-YCB is explicitly identified as an experimental benchmark."}
+{"item_id": "entity:e61054039536cb1c", "verdict": "correct", "note": "Sketch-based synthesizers are a specific technique compared with their original counterparts."}
+{"item_id": "entity:e6bc8cf7ee871d21", "verdict": "incorrect", "note": "The phrase describes an intermediate estimate without specifying a research problem."}
+{"item_id": "entity:e6f04e1dfe757d0e", "verdict": "incorrect", "note": "Speech is the input modality for gesture generation."}
+{"item_id": "entity:e786ec525d37ce45", "verdict": "incorrect", "note": "Zero-shot classification is the classification setting. Representation learning is the technique described."}
+{"item_id": "entity:e78e3c793dd7f501", "verdict": "correct", "note": "The title identifies cross-modal search as the problem addressed by the hashing technique."}
+{"item_id": "entity:e84646c04a706774", "verdict": "incorrect", "note": "The sentence explicitly lists RNSB as a bias metric."}
+{"item_id": "entity:e8a71aa570198271", "verdict": "correct", "note": "ImageNet is named as the dataset used for conditional image corpus summarization."}
+{"item_id": "entity:e8da54811e0ba5ee", "verdict": "correct", "note": "The title identifies iterative reasoning as a technique used for policy design and reward learning."}
+{"item_id": "entity:e94a4b82b0ac9023", "verdict": "correct", "note": "UCI is named as one of the benchmark sources used for evaluation."}
+{"item_id": "entity:e9c1b903aef4b609", "verdict": "incorrect", "note": "The phrase names a term in the error correction strategy."}
+{"item_id": "entity:e9d17199332df22b", "verdict": "incorrect", "note": "The title contains the architecture phrase “Subtree Convolutional Networks,” with no standalone “subtree convolution” mention."}
+{"item_id": "entity:ea8cecd5a4bcf4bf", "verdict": "correct", "note": "The named phase specifies a local optimization procedure using tailored MCTS to execute each subtask."}
+{"item_id": "entity:eb2379b9ee4e0bbd", "verdict": "correct", "note": "SHaRPose-Base is the named model variant evaluated against ViTPose."}
+{"item_id": "entity:ebad53075ded33b0", "verdict": "correct", "note": "The paper uses probabilistic programs to encode CBMA databases."}
+{"item_id": "entity:ec1c578c165845c1", "verdict": "correct", "note": "The named network component implements a specific technique for generating distant object points."}
+{"item_id": "entity:ec551407d733a8df", "verdict": "incorrect", "note": "The phrase groups unnamed comparators without identifying any specific technique."}
+{"item_id": "entity:ec656ce4f3abe840", "verdict": "unclear", "note": "The excerpt mentions GANs as background and leaves their use or direct comparison unspecified."}
+{"item_id": "entity:ecbcccae182adc3c", "verdict": "correct", "note": "T-NNGP uses deep reinforcement learning to generate candidate symbolic expressions."}
+{"item_id": "entity:ee000e3ecb0e6ca4", "verdict": "correct", "note": "The sentence explicitly identifies class-agnostic object segmentation as the task."}
+{"item_id": "entity:f0b59e153963afb4", "verdict": "correct", "note": "The title expands FAMNet as the name of the proposed matching network."}
+{"item_id": "entity:f0cddbaffee1b62d", "verdict": "incorrect", "note": "The phrase names a broad reasoning capability without specifying a research problem."}
+{"item_id": "entity:f12ed3e7f8519ca1", "verdict": "correct", "note": "The title identifies neural machine translation as the problem addressed."}
+{"item_id": "entity:f1a0400dbb16c078", "verdict": "correct", "note": "Detecting out-of-distribution inputs without training on in-distribution data is a specific task."}
+{"item_id": "entity:f1a3bc4dca31e2c9", "verdict": "correct", "note": "The title names conditional data summarization as an application of the proposed work."}
+{"item_id": "entity:f1a9af986940e140", "verdict": "correct", "note": "The paper designs this denoising component to model student-exercise edge reliability."}
+{"item_id": "entity:f218da37bc7e06b6", "verdict": "correct", "note": "WebPilot is the named multi-agent system described in the title."}
+{"item_id": "entity:f262da207bca026a", "verdict": "correct", "note": "The paper explicitly proposes this named graph neural network architecture."}
+{"item_id": "entity:f26569c053487583", "verdict": "correct", "note": "The text identifies feature clustering as a problem the framework is used to perform."}
+{"item_id": "entity:f31033fcaa68e9ae", "verdict": "incorrect", "note": "The sentence explicitly identifies Nash social welfare as a measure."}
+{"item_id": "entity:f35d6517d28f0b2e", "verdict": "incorrect", "note": "The phrase describes inputs modified by transformations without naming a dataset."}
+{"item_id": "entity:f35f4fd3169a4d29", "verdict": "correct", "note": "The title identifies detecting multimodal fake news as the task."}
+{"item_id": "entity:f4d6babc8a0d29ca", "verdict": "correct", "note": "The title identifies a reinforcement learning approach conditioned on varying risk measures."}
+{"item_id": "entity:f53227566683e893", "verdict": "incorrect", "note": "The sentence describes pose variation as a condition in the evaluation."}
+{"item_id": "entity:f58b4efde3769ed2", "verdict": "incorrect", "note": "Reinforcement learning is the research setting. Safe, efficient exploration under an unknown task is the specific problem."}
+{"item_id": "entity:f5ea299406b27fa5", "verdict": "correct", "note": "Removing the influence of individual samples is an experimental unlearning task."}
+{"item_id": "entity:f78feb2b0d57ed82", "verdict": "incorrect", "note": "Baselines are comparators in the experiment, and the sentence names no dataset."}
+{"item_id": "entity:f9072954451d31de", "verdict": "incorrect", "note": "The phrase groups several distinct problems, including forecasting, imputation, and anomaly detection."}
+{"item_id": "entity:f96f8c2748d6e0d4", "verdict": "correct", "note": "Hawkes processes are a specific modeling technique for sequential events."}
+{"item_id": "entity:fa0bef7e8d793f48", "verdict": "incorrect", "note": "The sentence describes TGNNs as models used in experiments."}
+{"item_id": "entity:fa4e094a277bf7d4", "verdict": "correct", "note": "The sentence discusses a specific family of neural point-process models and identifies its limitations."}
+{"item_id": "entity:fb084ee3312d774c", "verdict": "correct", "note": "Maximizing CVaR is the explicit optimization problem addressed by the online algorithm."}
+{"item_id": "entity:fce0bdd5803e5002", "verdict": "correct", "note": "The title identifies entity-agnostic representation learning as the technique for knowledge graph embedding."}
+{"item_id": "entity:fdf808d6fbae96cb", "verdict": "correct", "note": "SPoRt names the Safe Policy Ratio approach for certified policy training and deployment."}
+{"item_id": "entity:ff6c89cc8b307a51", "verdict": "correct", "note": "Real-time gesture generation is the task addressed by DIDiffGes."}
+{"item_id": "entity:fff1ea3e79d6f98c", "verdict": "correct", "note": "The title specifies node classification under few-shot and zero-shot conditions."}
+{"item_id": "link:07c037faa8373513", "verdict": "incorrect", "note": "The page covers 3D pose tracking, a narrower problem than the visual tracking represented by the examples."}
+{"item_id": "link:08b4236184f16210", "verdict": "correct", "note": "The page describes the same named ten-class image dataset."}
+{"item_id": "link:0f3a8afc845244da", "verdict": "correct", "note": "The page covers compiling representations in advance to support tractable queries."}
+{"item_id": "link:13b93b61960fa6ee", "verdict": "correct", "note": "The page describes the same broadly reusable class of pretrained models."}
+{"item_id": "link:1934ca7f1151786a", "verdict": "correct", "note": "The page defines the same atmospheric prediction task."}
+{"item_id": "link:1a6c93643088fde0", "verdict": "incorrect", "note": "The bottleneck variant minimizes the largest edge weight, making it a distinct problem."}
+{"item_id": "link:1e40e4e81e5667a7", "verdict": "correct", "note": "The page addresses the task of counting people in a crowd."}
+{"item_id": "link:1e75d91597f7c66f", "verdict": "correct", "note": "The page names NER and defines it as locating and classifying named entities."}
+{"item_id": "link:1f753279ef95f380", "verdict": "correct", "note": "The page describes the same DrugBank database of drugs and drug targets."}
+{"item_id": "link:2a25570e2533ef25", "verdict": "correct", "note": "The page defines the same learning paradigm of updating a model as new data arrives."}
+{"item_id": "link:2a50da3ceb8ce606", "verdict": "correct", "note": "The page describes the named VALL-E speech synthesis system."}
+{"item_id": "link:2fc3878621c9d941", "verdict": "correct", "note": "The page describes algorithms that adapt their behavior using information available at run time."}
+{"item_id": "link:3e40e5e56e8ea4bc", "verdict": "correct", "note": "The page describes the same declarative constraint-based problem-solving paradigm."}
+{"item_id": "link:3f9bc38744eb59a7", "verdict": "incorrect", "note": "The page focuses on structured sparsity, a particular extension of sparsity regularization."}
+{"item_id": "link:4630604c553eb33d", "verdict": "correct", "note": "The page defines the same collision-free multi-agent pathfinding problem."}
+{"item_id": "link:4aecd74daf6dc4e1", "verdict": "correct", "note": "The page describes the same neural network family for graph inputs."}
+{"item_id": "link:4af5171932b54973", "verdict": "correct", "note": "The page defines adaptation between source and target data domains."}
+{"item_id": "link:4b021a29b0dd095e", "verdict": "correct", "note": "The page describes the same neural network family based on discrete spikes."}
+{"item_id": "link:4c93340631a5b25f", "verdict": "incorrect", "note": "Anytime A* is one family within the broader class of anytime algorithms."}
+{"item_id": "link:5a4580dfd8f550ef", "verdict": "correct", "note": "The page describes collaborative model training with decentralized client data."}
+{"item_id": "link:5ebf45035df322e6", "verdict": "correct", "note": "The page describes collaborative filtering using preferences collected from multiple users."}
+{"item_id": "link:61e9935caf67b0fd", "verdict": "correct", "note": "The page explicitly covers the wavelet transform."}
+{"item_id": "link:62c0fcbc880a07bf", "verdict": "correct", "note": "The page describes clustering based on the spectrum of a similarity matrix."}
+{"item_id": "link:633cb3102824ba48", "verdict": "correct", "note": "The page identifies the same XGBoost gradient boosting framework."}
+{"item_id": "link:647dc9623d4bea0b", "verdict": "incorrect", "note": "The page describes an inference library that can run LLaMA, a separate model."}
+{"item_id": "link:64d6fbafd577eba5", "verdict": "correct", "note": "The page identifies GPT-2 as the same named language model."}
+{"item_id": "link:67c2ea92a9ba4803", "verdict": "correct", "note": "The page describes assigning unique identities to entities mentioned in text."}
+{"item_id": "link:67ca091cce003ec8", "verdict": "correct", "note": "The lead defines the same image restoration task in the AI setting shown by the papers."}
+{"item_id": "link:742a5514f15815ca", "verdict": "correct", "note": "The page defines drug design as the process of designing new medications."}
+{"item_id": "link:7d32a06f6229d2c1", "verdict": "incorrect", "note": "Relief is one algorithm for the broader feature selection problem."}
+{"item_id": "link:838b930fe49170bc", "verdict": "correct", "note": "The page describes the same task of automating neural architecture design."}
+{"item_id": "link:87468469125c80d3", "verdict": "incorrect", "note": "The page restricts reconstruction to multiple input images. The entity names the general 3D reconstruction task."}
+{"item_id": "link:87cf5b3944d296d7", "verdict": "correct", "note": "The page covers class activation mapping and the class-specific heatmaps it produces."}
+{"item_id": "link:9027c242c6a0af24", "verdict": "correct", "note": "The page describes speech recognition using both audio and visual inputs."}
+{"item_id": "link:905c89375db70b8d", "verdict": "correct", "note": "The page describes the same self-exciting point process."}
+{"item_id": "link:9094d1117f81c40b", "verdict": "correct", "note": "The page addresses matching between graphs, the problem named in the examples."}
+{"item_id": "link:93338840d5b0451c", "verdict": "incorrect", "note": "Incremental heuristic search adds reuse of earlier search information to the broader heuristic search concept."}
+{"item_id": "link:94855d10d6b8dc8f", "verdict": "correct", "note": "The page describes the same techniques for rendering sampled volumetric data."}
+{"item_id": "link:98d56b025daa58eb", "verdict": "correct", "note": "The page defines checking a system model against a specification."}
+{"item_id": "link:9aac6c4f11abbb76", "verdict": "correct", "note": "The page describes the same graph-structured representation of knowledge."}
+{"item_id": "link:a9be33e6b7f973e4", "verdict": "correct", "note": "The page describes generating programs that satisfy a specification."}
+{"item_id": "link:ad8131c8b4d6ebb6", "verdict": "correct", "note": "The page describes computing topological features across multiple scales."}
+{"item_id": "link:b0f182486838d9df", "verdict": "correct", "note": "The page identifies the same probabilistic optimization technique."}
+{"item_id": "link:b937bfbdd6da4a9e", "verdict": "incorrect", "note": "The page is specific to video signals, while the examples include image denoising."}
+{"item_id": "link:b93f86a0e4008b49", "verdict": "correct", "note": "The page defines the same model-to-model knowledge transfer process."}
+{"item_id": "link:bd0afd554b28ebf0", "verdict": "incorrect", "note": "The page focuses on collaborative filtering, while the examples concern matrix factorization outside recommendation."}

@@ -1,0 +1,24 @@
+{"item_id": "entity:0138ea7bb50ae9d5", "verdict": "incorrect", "note": "Describes an internal process, not a recognisable research problem."}
+{"item_id": "entity:0ebd962daeea27d2", "verdict": "unclear", "note": "Recognisable task, but sentence cites it as prior-success example; paper's role unstated."}
+{"item_id": "entity:1d97d8ae7228e5b7", "verdict": "correct", "note": "Established technique class framing the paper's methodological line of work."}
+{"item_id": "entity:31e46e2eee230505", "verdict": "incorrect", "note": "Contrasted with the paper's multimodal summarization problem; not addressed by the paper."}
+{"item_id": "entity:43dcd0aa6b00aa61", "verdict": "incorrect", "note": "Surface form including 'method' does not appear in the text."}
+{"item_id": "entity:55eea1459f6ed9f3", "verdict": "incorrect", "note": "Title presents dynamic replanning as the approach; the task is public transport routing."}
+{"item_id": "entity:5c03b0b8643aad6b", "verdict": "correct", "note": "Generative modeling (conditional) is a recognisable problem the CcGAN work addresses."}
+{"item_id": "entity:65d978e3f68a9d6f", "verdict": "incorrect", "note": "Downstream motivation example; the paper addresses watermark handling, not image editing."}
+{"item_id": "entity:75db25105916d46c", "verdict": "correct", "note": "Named baseline setting directly compared against; guideline counts compared methods."}
+{"item_id": "entity:8ed6e5573b6d6920", "verdict": "correct", "note": "Measuring proportionality of voting rules is the specific problem studied."}
+{"item_id": "entity:c22bf78d10216705", "verdict": "correct", "note": "Established solution concept the paper uses as its modelling technique."}
+{"item_id": "entity:e34b514328a8335f", "verdict": "correct", "note": "Named system proposed in the title."}
+{"item_id": "entity:e9d17199332df22b", "verdict": "incorrect", "note": "Truncates 'Subtree Convolutional Networks' mid-word; not the natural surface form."}
+{"item_id": "entity:ea8cecd5a4bcf4bf", "verdict": "incorrect", "note": "Generic phase name; the method used is the tailored MCTS."}
+{"item_id": "entity:ec656ce4f3abe840", "verdict": "correct", "note": "Established technique underpinning the face synthesis line of work."}
+{"item_id": "link:dda835c1669c53e5", "verdict": "correct", "note": "Most usages are the state-space architecture; one homonym title does not change the link."}
+{"item_id": "part:8ee167d8b7038777", "verdict": "incorrect", "note": "Hubert Curien lab belongs to Université Jean Monnet Saint-Étienne and CNRS, not CPE Lyon."}
+{"item_id": "part:a2360c0c9ac5009b", "verdict": "correct", "note": "iQIYI is a majority-owned Baidu subsidiary."}
+{"item_id": "part:bbc5d772d60cdf69", "verdict": "correct", "note": "ISRO is the agency of India's Department of Space."}
+{"item_id": "part:c89b678addd50b55", "verdict": "correct", "note": "LAAS is a CNRS unit attached to the INS2I institute."}
+{"item_id": "pedge:025b3b1212c364fc", "verdict": "correct", "note": "Co-speech gesture generation paper builds on diffusion models."}
+{"item_id": "pedge:674da68f5f141b62", "verdict": "correct", "note": "Paper addresses entity typing with less annotated data."}
+{"item_id": "pedge:cf2abb9a1b3ee6ac", "verdict": "correct", "note": "Graph auto-encoders are GNN-based; the paper uses GNNs."}
+{"item_id": "rel2:c3f07a4dd6912e43", "verdict": "correct", "note": "Graph anomaly detection is a major GNN application area."}

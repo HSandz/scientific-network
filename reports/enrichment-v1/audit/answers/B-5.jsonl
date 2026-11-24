@@ -1,0 +1,120 @@
+{"item_id": "link:bd332cd5c2ab0079", "verdict": "correct", "note": "The page describes the locality-sensitive hashing technique for grouping similar inputs."}
+{"item_id": "link:bd778776898cd3d8", "verdict": "correct", "note": "The page describes learning from expert demonstrations, the imitation-learning paradigm named in the packet."}
+{"item_id": "link:c595063d6e943b65", "verdict": "correct", "note": "The page covers altering images, including digital image editing as illustrated by the paper titles."}
+{"item_id": "link:c94e62b844cee06e", "verdict": "correct", "note": "The page describes reducing the size and resource demands of trained models."}
+{"item_id": "link:cd60f606e13d7d0b", "verdict": "correct", "note": "The article describes the information bottleneck technique underlying the named methodological variants."}
+{"item_id": "link:d0208249a1f57eb0", "verdict": "correct", "note": "The lead defines the variational autoencoder architecture named in the paper titles."}
+{"item_id": "link:d0df7ca3de6b6dc7", "verdict": "incorrect", "note": "The page concerns satisfiability modulo theories, while the titles include Boolean k-SAT."}
+{"item_id": "link:d2fd7e04ff092a4c", "verdict": "incorrect", "note": "The lead identifies SAT as Boolean satisfiability and defines the page subject as software for solving it."}
+{"item_id": "link:d6f98d8aa67b1faf", "verdict": "correct", "note": "The page defines Bayesian networks as directed graphical models of conditional dependencies."}
+{"item_id": "link:d702f4c15c95adde", "verdict": "correct", "note": "The page describes recognizing people from characteristics of their voices."}
+{"item_id": "link:dda835c1669c53e5", "verdict": "unclear", "note": "One title explicitly expands MAMBA as a memory-bank method, while other titles suggest the state-space architecture."}
+{"item_id": "link:ddc8f254b7df7d1e", "verdict": "correct", "note": "The page identifies The Cancer Genome Atlas, the named project that catalogues cancer genomic alterations."}
+{"item_id": "link:dde8640402fe2687", "verdict": "correct", "note": "The page covers detecting pedestrians in video and automotive applications."}
+{"item_id": "link:de0a5349b9a5d457", "verdict": "correct", "note": "The lead defines the Kolmogorov\u2013Arnold neural network architecture named in the packet."}
+{"item_id": "link:dffd464fdf61d9f0", "verdict": "correct", "note": "The lead defines the kernel-based probability density estimation technique."}
+{"item_id": "link:e0f8e278694850a4", "verdict": "correct", "note": "The page covers policy gradient algorithms for learning differentiably parameterized policies."}
+{"item_id": "link:ea8ec8936adff046", "verdict": "correct", "note": "The lead describes the branch-and-bound algorithm and how it prunes subproblems."}
+{"item_id": "link:eec4ab48e5ef4715", "verdict": "correct", "note": "The page defines the local differential privacy model named in the titles."}
+{"item_id": "link:f0e03ad4b03524d0", "verdict": "correct", "note": "The lead describes the alternating expectation and maximization steps of the named EM algorithm."}
+{"item_id": "link:f31309f80967bffc", "verdict": "correct", "note": "The page defines the Tsetlin machine, the propositional-logic learning algorithm."}
+{"item_id": "link:f5e3043318e48575", "verdict": "incorrect", "note": "The page lists multiple meanings of EFX and points to EFX item allocation separately."}
+{"item_id": "link:f9e45c5d98f6fb2b", "verdict": "correct", "note": "The page describes the attention-based neural architecture used in the titles' deep learning context."}
+{"item_id": "link:fabd7e237786fc0a", "verdict": "correct", "note": "The lead defines imputation as replacing missing data values, matching the named task."}
+{"item_id": "link:ffaaf16ba33a0bd1", "verdict": "correct", "note": "The lead describes XLNet, the pretrained Transformer named in the titles."}
+{"item_id": "pedge:025b3b1212c364fc", "verdict": "unclear", "note": "The sentence credits diffusion models with synthesis results generally and leaves their role in this paper unspecified."}
+{"item_id": "pedge:02f547d2b0ce6aca", "verdict": "correct", "note": "The packet defines video anomaly detection and says the paper uses CLIP to detect abnormal video frames."}
+{"item_id": "pedge:04193d2c19e4559d", "verdict": "correct", "note": "The paper reports testing its descriptor on pose estimation."}
+{"item_id": "pedge:083a6089ee2c9184", "verdict": "correct", "note": "WebPilot is reported to achieve its WebArena results with GPT-4."}
+{"item_id": "pedge:0ae32482d06ce900", "verdict": "correct", "note": "The authors explicitly evaluate their method on image classification."}
+{"item_id": "pedge:0c2c4981792a25b9", "verdict": "correct", "note": "The proposed RMO framework uses multi-agent reinforcement learning to recommend subtasks."}
+{"item_id": "pedge:0c852c77a5617aef", "verdict": "correct", "note": "The excerpt describes integrating linear-programming computations with the planning algorithm."}
+{"item_id": "pedge:0e8aa4f71bd0ae0c", "verdict": "unclear", "note": "The sentence describes generic neural network training and leaves the paper's own optimization procedure unspecified."}
+{"item_id": "pedge:1dbd12344930ead6", "verdict": "correct", "note": "Super-resolution is one of the image restoration tasks used to evaluate the approach."}
+{"item_id": "pedge:21e13729e04e9a63", "verdict": "correct", "note": "The paper reports ResNet50 accuracy on ImageNet after reducing its computational cost."}
+{"item_id": "pedge:2541d608db6704e7", "verdict": "correct", "note": "The title identifies unbiased scene graph generation as the target of CogTree."}
+{"item_id": "pedge:2712e34febb9bece", "verdict": "correct", "note": "The title proposes an abstraction method for generalized planning with baggable types."}
+{"item_id": "pedge:2726f98b6d402df8", "verdict": "correct", "note": "The title identifies improving link prediction as the goal of the deepened graph auto-encoders."}
+{"item_id": "pedge:2a3885645ea0c4f6", "verdict": "correct", "note": "The authors explicitly combine stochastic gradient descent with variational EM to train their framework."}
+{"item_id": "pedge:302aa2731627b494", "verdict": "correct", "note": "The proposed framework uses learned centroid proxies for mutual information learning."}
+{"item_id": "pedge:322e4beb2b944376", "verdict": "correct", "note": "The proposed contrastive unlearning framework explicitly leverages representation learning."}
+{"item_id": "pedge:33d3cd5e46a1e155", "verdict": "unclear", "note": "The sentence describes advances in GANs and leaves their role in this paper unspecified."}
+{"item_id": "pedge:36028004936ad70f", "verdict": "incorrect", "note": "CNNs serve as an architectural analogy for HA-SCN's convolution mechanism."}
+{"item_id": "pedge:3a5925165595ed66", "verdict": "correct", "note": "The title proposes mask reconstruction for video object segmentation."}
+{"item_id": "pedge:3cd1ce32f57ea5d5", "verdict": "correct", "note": "The authors introduce a knowledge distillation method to stabilize training."}
+{"item_id": "pedge:3e65cf0620db39eb", "verdict": "correct", "note": "The title presents a baseline for multi-camera 3D object detection."}
+{"item_id": "pedge:40606ca475d8795a", "verdict": "correct", "note": "MNIST is explicitly listed among the benchmarks used to evaluate IGD."}
+{"item_id": "pedge:42b9b50d8ba6b9e0", "verdict": "correct", "note": "The title presents AdaCo for handling foundation-model noise in 3D semantic segmentation."}
+{"item_id": "pedge:4aee03988c64e495", "verdict": "correct", "note": "The title identifies improving link prediction as the goal of the graph augmentation."}
+{"item_id": "pedge:4ee80ca4de469c90", "verdict": "incorrect", "note": "The sentence identifies BERT as a pretrained model used in benchmarking."}
+{"item_id": "pedge:4fcb80faa13d14a9", "verdict": "correct", "note": "LATTE's exact-match performance is directly compared with GPT-4V."}
+{"item_id": "pedge:5522a025d7a092b8", "verdict": "correct", "note": "The authors explicitly use a BERT model for text to instantiate submodular functions."}
+{"item_id": "pedge:571e15877aadd642", "verdict": "correct", "note": "The authors propose actor-critic-style policy iteration algorithms for the E-step."}
+{"item_id": "pedge:5a3b548f7e2a627e", "verdict": "correct", "note": "SROIE is explicitly listed among the benchmarks used for experiments."}
+{"item_id": "pedge:5c45ce2ece07b6ff", "verdict": "correct", "note": "The paper compares EARL's link prediction performance with baselines."}
+{"item_id": "pedge:5d06a0d50fcfc922", "verdict": "unclear", "note": "The sentence describes what CcGANs enable and leaves their role in the paper unspecified."}
+{"item_id": "pedge:5f6ee97b3ed8195c", "verdict": "unclear", "note": "The sentence describes existing attention-based KT models and leaves the proposed model's use of attention unspecified."}
+{"item_id": "pedge:5fee4f16a4b1738a", "verdict": "correct", "note": "The paper's title and node-ranking excerpt show that it generates search policies for branch and bound."}
+{"item_id": "pedge:60601b65dc4e10f3", "verdict": "unclear", "note": "The sentence describes prior vision transformer development and leaves its role in this paper unspecified."}
+{"item_id": "pedge:614fae46d6b43ad6", "verdict": "correct", "note": "The authors report evaluating their method on emotion recognition."}
+{"item_id": "pedge:62feadd8c840f2f1", "verdict": "correct", "note": "The authors report pose-estimation results on the REAL275 dataset."}
+{"item_id": "pedge:632e6554417a9e61", "verdict": "correct", "note": "The title proposes InfoLM to evaluate summarization."}
+{"item_id": "pedge:65afa4b2c9444602", "verdict": "correct", "note": "The packet says the proposed LHGNN leverages both LLMs and GNNs."}
+{"item_id": "pedge:674da68f5f141b62", "verdict": "unclear", "note": "The excerpt describes previous entity typing approaches and leaves this paper's task unspecified."}
+{"item_id": "pedge:6ad350838d82354d", "verdict": "correct", "note": "The authors explicitly list CelebA among the datasets used in their experiments."}
+{"item_id": "pedge:6c0ddda170c9b590", "verdict": "correct", "note": "The tuning process uses class descriptions generated by an LLM."}
+{"item_id": "pedge:7054c0abef6bc087", "verdict": "unclear", "note": "The subject of the described efforts is unspecified, leaving the authors' model architecture uncertain."}
+{"item_id": "pedge:739dc1a3090cf211", "verdict": "unclear", "note": "The sentence describes earlier research and leaves this paper's use of semantic segmentation unspecified."}
+{"item_id": "pedge:75140d89fc7d266e", "verdict": "correct", "note": "The authors define their search strategy as best-first search using a node ranking."}
+{"item_id": "pedge:75160f4f79d9aefb", "verdict": "correct", "note": "MVTec AD is explicitly listed among the benchmarks used to evaluate IGD."}
+{"item_id": "pedge:76db32d7518750fe", "verdict": "correct", "note": "The authors train a shared encoder with contrastive learning to learn robust features."}
+{"item_id": "pedge:8295462a5aba4257", "verdict": "correct", "note": "The generator is one of the two modules the authors use in their minimax training game."}
+{"item_id": "pedge:82c8c71c203267c1", "verdict": "incorrect", "note": "The phrase is an unnamed reference to the authors' approach."}
+{"item_id": "pedge:86e04e9273e79733", "verdict": "correct", "note": "The same paper describes integrating linear programming with the PLTL-dual heuristic search algorithm."}
+{"item_id": "pedge:89313b3f2af00dda", "verdict": "correct", "note": "The proposed training strategy assigns image classification to the class-dependent classifier."}
+{"item_id": "pedge:8b26e9089b80e997", "verdict": "correct", "note": "Fashion MNIST is explicitly listed among the benchmarks used to evaluate IGD."}
+{"item_id": "pedge:90f50953249381a8", "verdict": "correct", "note": "The authors explicitly evaluate SimMOD on the nuScenes 3D object detection benchmark."}
+{"item_id": "pedge:92841bb2eeabce41", "verdict": "correct", "note": "CIFAR10 is explicitly listed among the benchmarks used to evaluate IGD."}
+{"item_id": "pedge:95de8cebeb799049", "verdict": "correct", "note": "The paper reports conditional image corpus summarization results on ImageNet."}
+{"item_id": "pedge:9995037bf6e5939e", "verdict": "correct", "note": "The authors explicitly use CLIP's vision-language association to detect abnormal frames."}
+{"item_id": "pedge:999adce9fe5c8fae", "verdict": "correct", "note": "GTSRB is explicitly listed among the datasets used for experiments."}
+{"item_id": "pedge:a00f243039c073ac", "verdict": "correct", "note": "The paper reports 3D super-resolution results on NeRF-Synthetic."}
+{"item_id": "pedge:a039af634075d2bd", "verdict": "correct", "note": "The proposed visual prompt tuning model is evaluated on image classification benchmarks."}
+{"item_id": "pedge:a1d3c19827bd1e5b", "verdict": "unclear", "note": "The sentence attributes ImageNet pretraining to existing networks and leaves this paper's training data unspecified."}
+{"item_id": "pedge:a305b7bac688ae1e", "verdict": "correct", "note": "The packet reports direct comparison with sampling-based diffusion models on image restoration tasks."}
+{"item_id": "pedge:a59e1ec5bcee78bf", "verdict": "unclear", "note": "The sentence describes recent efforts using implicit neural representations and leaves this paper's use unspecified."}
+{"item_id": "pedge:aa385e40e8c90842", "verdict": "unclear", "note": "The excerpt defines conventional knowledge graph embeddings and leaves their role in EARL unspecified."}
+{"item_id": "pedge:ab9e46c16c2456c4", "verdict": "correct", "note": "The paper reports forecasting as a task addressed by its time series foundation models."}
+{"item_id": "pedge:acb8c6945e4a13ef", "verdict": "unclear", "note": "The sentence attributes EM to previous algorithms and leaves the paper's own use unspecified."}
+{"item_id": "pedge:ad7516bac08fc909", "verdict": "correct", "note": "The title identifies molecular representation learning as LagNet's target task."}
+{"item_id": "pedge:b01267c5f15b377e", "verdict": "correct", "note": "The title explicitly names genetic programming as the method for generating search strategies."}
+{"item_id": "pedge:b0e193b69a31c722", "verdict": "correct", "note": "The authors demonstrate behavioral cloning for learning sketches of programmatic strategies."}
+{"item_id": "pedge:b25d2a2e5c2da459", "verdict": "correct", "note": "The authors use a simulated annealing synthesizer in their empirical demonstration."}
+{"item_id": "pedge:b3e23d0255405a3e", "verdict": "correct", "note": "TANGO uses a graph neural network to encode the world state."}
+{"item_id": "pedge:b59cbbea785b2d47", "verdict": "correct", "note": "The title explicitly bases zero-shot out-of-distribution detection on pretrained CLIP."}
+{"item_id": "pedge:b63a9d8408d31bc1", "verdict": "correct", "note": "The authors directly compare their approach with a graph neural network-based method."}
+{"item_id": "pedge:b66868e586b2f5e7", "verdict": "correct", "note": "The proposed CPA conforms to the centralized training with decentralized execution paradigm."}
+{"item_id": "pedge:b8e98641126d9c0d", "verdict": "unclear", "note": "The sentence credits sequence-to-sequence models with prior progress and leaves this paper's use unspecified."}
+{"item_id": "pedge:b9c090173602613a", "verdict": "correct", "note": "The authors report anomaly detection as a task addressed by their time series foundation models."}
+{"item_id": "pedge:ba1ece15a318cd4f", "verdict": "correct", "note": "The authors demonstrate that their pretrained embeddings improve classifiers including XGBoost."}
+{"item_id": "pedge:bbefdb02b4ea14d6", "verdict": "correct", "note": "Retrieval is explicitly among the tasks used to evaluate the proposed descriptor."}
+{"item_id": "pedge:c2e975980da3655c", "verdict": "correct", "note": "The authors explicitly propose a convolutional neural network for polyp segmentation."}
+{"item_id": "pedge:c3766f6899b27ba9", "verdict": "correct", "note": "The packet frames the problem as one-class classification and reports IGD's detection results on multiple benchmarks."}
+{"item_id": "pedge:c3947de2ee1eac00", "verdict": "correct", "note": "The paper directly compares ScreenAgent's computer control capabilities with GPT-4V."}
+{"item_id": "pedge:c39983a650f40c6b", "verdict": "correct", "note": "The paper explicitly reports experimental results for motion deblurring."}
+{"item_id": "pedge:c4e02de9436864fa", "verdict": "correct", "note": "The proposed ProsodyFM model uses a flow-matching backbone."}
+{"item_id": "pedge:c4ea73c0daba4843", "verdict": "correct", "note": "The authors explicitly evaluate their method on semantic segmentation."}
+{"item_id": "pedge:c616eb4a26f559d4", "verdict": "correct", "note": "The authors use teacher forcing to promote consistency in two-stage training."}
+{"item_id": "pedge:cd66f7dd9a127d79", "verdict": "correct", "note": "The excerpt explicitly states that LHGNN leverages a GNN."}
+{"item_id": "pedge:cd6bf55b69381f2d", "verdict": "correct", "note": "The title identifies denoising as one of the two jointly addressed tasks."}
+{"item_id": "pedge:ce8d1697dc6f684b", "verdict": "unclear", "note": "The excerpt attributes GCNs to existing methods and leaves the paper's own use unspecified."}
+{"item_id": "pedge:cf2abb9a1b3ee6ac", "verdict": "unclear", "note": "The packet mentions widespread GNN use and names graph auto-encoders without specifying their components."}
+{"item_id": "pedge:cf6c6ffe6405f5d3", "verdict": "correct", "note": "The title identifies ODEs as the technique used for chunk dynamic updating."}
+{"item_id": "pedge:d65542bb8628d500", "verdict": "correct", "note": "The authors explicitly test CIA-SSD on the KITTI test set."}
+{"item_id": "pedge:d77820e7f9862999", "verdict": "correct", "note": "The title identifies graph classification as the task for HA-SCN."}
+{"item_id": "pedge:da234867d9fa0023", "verdict": "unclear", "note": "The sentence credits diffusion models with prior image generation results and leaves this paper's task unspecified."}
+{"item_id": "pedge:de6f2077925bad0d", "verdict": "correct", "note": "T-NNGP generates candidate symbolic expressions using deep reinforcement learning."}
+{"item_id": "pedge:e09f801d204d2bcc", "verdict": "correct", "note": "The authors explicitly conduct experiments on the SMAC benchmark."}
+{"item_id": "pedge:e276de1a16cac58a", "verdict": "correct", "note": "The same paper's experimental excerpt explicitly lists LLMs among SAIL's base models."}
+{"item_id": "pedge:e9e134bf9b609df3", "verdict": "correct", "note": "The title identifies short text classification as the task being improved."}
+{"item_id": "pedge:eb514031ee2cf7d7", "verdict": "correct", "note": "The title explicitly identifies contrastive learning as ContraNovo's approach."}

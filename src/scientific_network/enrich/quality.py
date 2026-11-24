@@ -328,6 +328,19 @@ def load_answers(answers_dir: Path) -> tuple[dict[str, dict[str, dict]], dict[st
     return judged, listed
 
 
+def sample_to_item_ids(sample: dict) -> dict:
+    """The frozen sample lists graph ids (edge or node ids); packets and answers use hashed item ids (entity ids already are)."""
+    def to_item(prefix: str, ids: list[str]) -> list[str]:
+        return [item_id(prefix, i) for i in ids]
+    return {**sample,
+            "paper_edge_sample": {r: to_item("pedge", ids) for r, ids in sample["paper_edge_sample"].items()},
+            "related_sample": {r: to_item("rel2", ids) for r, ids in sample["related_sample"].items()},
+            "part_of_sample": {r: to_item("part", ids) for r, ids in sample["part_of_sample"].items()},
+            "link_sample": {r: to_item("link", ids) for r, ids in sample["link_sample"].items()},
+            "relation_sample": {r: {**smp, "ids": {k: to_item("rel", ids) for k, ids in smp["ids"].items()}}
+                                for r, smp in sample["relation_sample"].items()}}
+
+
 def final_verdict(answers: dict[str, dict]) -> dict | None:
     """The adjudicator (C) decides A/B disagreements; otherwise A, else B."""
     a, b = answers.get("A"), answers.get("B")
@@ -450,6 +463,7 @@ def score_audit(*, audit_dir: Path, graph_path: Path, mentions_path: Path, texts
     slm_only = {r["id"]: r for r in read_jsonl(slm_only_path)} if slm_only_path else {}
     judged, listed = load_answers(audit_dir / "answers")
     answered = sum(1 for i in items if i in judged)
+    sample = sample_to_item_ids(sample)
     entity = {v: {t: precision(ids, judged) for t, ids in by_type.items()} for v, by_type in sample["entity_sample"].items()}
     for v, by_type in sample["entity_sample"].items():
         entity[v]["all_types"] = precision([i for ids in by_type.values() for i in ids], judged)

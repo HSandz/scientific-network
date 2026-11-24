@@ -1,9 +1,9 @@
 # Current project status
 
-Updated: **2026-11-24T14:00:00+07:00**. Phase: **final exam**, decision
+Updated: **2026-11-25T02:00:00+07:00**. Phase: **final exam**, decision
 [D042](decisions.md#d042--final-exam-phase-research-trend-application-on-an-enriched-graph-2026-11-23),
 due **20 December 2026, 23:59**. Specification: [docs/final-exam/](final-exam/README.md).
-Latest: [WORK-2026-11-24-003](work-log/2026-11-24-003-enrichment-m0.md).
+Latest: [WORK-2026-11-24-004](work-log/2026-11-24-004-enrichment-e1-e4.md).
 Documentation index: [docs/README.md](README.md).
 
 ## Final exam checklist (milestones in specification §8)
@@ -12,8 +12,9 @@ Documentation index: [docs/README.md](README.md).
 - [x] M0 set-up: splits and QA question text frozen, LLM client, K1 chose Qwen3.5-4B and
   GLiNER-Relex on dev ([report](../reports/enrichment-v1/k1-model-selection.md); D042 amendment).
   The dev answer-accuracy arm of the model rule stays pending until v5 exists.
-- [ ] M1 enrichment: sources (E1: organizations fetched), entities (E2), relations (E3), v5-enriched validated and loaded.
-- [ ] M2 quality and SNA: frozen AI-assessed audit (E4); small world, ranking, communities, trends (S1–S3).
+- [x] M1 enrichment: sources, entities (1,991 nodes), relations, v5-enriched `enriched-c0f7d1dd4abd` validated and loaded on 7690.
+- [x] M2-E4 AI-assessed audit ([quality](../reports/enrichment-v1/quality.md)): entity precision 0.927 (met), extracted relations about 0.92-0.95 (met), linking 0.800 (target 0.85 missed), PART_OF 0.69.
+- [ ] M2 network analysis: small world, ranking, communities, trends (S1–S3).
 - [ ] M3 application core: GraphRAG index, multi-hop engine, new Explorer pages (K2, K3).
 - [ ] M4 QA benchmark, UI polish, deployment.
 - [ ] M5 arXiv report submitted by 15 December.
@@ -41,5 +42,5 @@ Documentation index: [docs/README.md](README.md).
 
 ## Next step
 
-E2: freeze `configs/enrichment-v1.yaml`, run GLiNER-Relex over the 13,608 abstracts, SLM
-verification, normalization and linking, then E3 relations and the v5-enriched build.
+S1-S3 network analysis on the v5 graph, then K2/K3 (GraphRAG, multi-hop). Open: linking accuracy and thin
+APPLIED_TO/EVALUATED_ON (32 and 4 edges); any rule change needs a dated decision and dev-only tuning. Keep `sn-llm` stopped while Neo4j loads (RAM).

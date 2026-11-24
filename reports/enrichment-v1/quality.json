@@ -1,0 +1,595 @@
+{
+ "agreement": {
+  "cohens_kappa": 0.759,
+  "observed_agreement": 0.8919,
+  "overlap_items_judged_by_both": 222
+ },
+ "entity_precision_by_variant": {
+  "default": {
+   "Dataset": {
+    "estimate": 0.9348,
+    "high": 0.9698,
+    "judged": 92,
+    "k": 86,
+    "low": 0.8649,
+    "n": 92,
+    "sampled": 92,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.9348,
+     "high": 0.9698,
+     "k": 86,
+     "low": 0.8649,
+     "n": 92
+    },
+    "unclear": 0
+   },
+   "Method": {
+    "estimate": 0.9495,
+    "high": 0.9782,
+    "judged": 100,
+    "k": 94,
+    "low": 0.8872,
+    "n": 99,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.94,
+     "high": 0.9722,
+     "k": 94,
+     "low": 0.8752,
+     "n": 100
+    },
+    "unclear": 1
+   },
+   "Task": {
+    "estimate": 0.8969,
+    "high": 0.943,
+    "judged": 100,
+    "k": 87,
+    "low": 0.8205,
+    "n": 97,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.87,
+     "high": 0.9224,
+     "k": 87,
+     "low": 0.7902,
+     "n": 100
+    },
+    "unclear": 3
+   },
+   "all_types": {
+    "estimate": 0.9271,
+    "high": 0.9518,
+    "judged": 292,
+    "k": 267,
+    "low": 0.8911,
+    "n": 288,
+    "sampled": 292,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.9144,
+     "high": 0.9413,
+     "k": 267,
+     "low": 0.8767,
+     "n": 292
+    },
+    "unclear": 4
+   }
+  },
+  "encoder_only": {
+   "Dataset": {
+    "estimate": 0.28,
+    "high": 0.3749,
+    "judged": 100,
+    "k": 28,
+    "low": 0.2014,
+    "n": 100,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.28,
+     "high": 0.3749,
+     "k": 28,
+     "low": 0.2014,
+     "n": 100
+    },
+    "unclear": 0
+   },
+   "Method": {
+    "estimate": 0.8542,
+    "high": 0.9111,
+    "judged": 100,
+    "k": 82,
+    "low": 0.77,
+    "n": 96,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.82,
+     "high": 0.883,
+     "k": 82,
+     "low": 0.7333,
+     "n": 100
+    },
+    "unclear": 4
+   },
+   "Task": {
+    "estimate": 0.7071,
+    "high": 0.7876,
+    "judged": 100,
+    "k": 70,
+    "low": 0.611,
+    "n": 99,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.7,
+     "high": 0.7811,
+     "k": 70,
+     "low": 0.6042,
+     "n": 100
+    },
+    "unclear": 1
+   },
+   "all_types": {
+    "estimate": 0.6102,
+    "high": 0.6641,
+    "judged": 300,
+    "k": 180,
+    "low": 0.5534,
+    "n": 295,
+    "sampled": 300,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.6,
+     "high": 0.6538,
+     "k": 180,
+     "low": 0.5436,
+     "n": 300
+    },
+    "unclear": 5
+   }
+  },
+  "slm_only": {
+   "Dataset": {
+    "estimate": 0.59,
+    "high": 0.6813,
+    "judged": 100,
+    "k": 59,
+    "low": 0.492,
+    "n": 100,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.59,
+     "high": 0.6813,
+     "k": 59,
+     "low": 0.492,
+     "n": 100
+    },
+    "unclear": 0
+   },
+   "Method": {
+    "estimate": 0.8571,
+    "high": 0.913,
+    "judged": 100,
+    "k": 84,
+    "low": 0.7744,
+    "n": 98,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.84,
+     "high": 0.899,
+     "k": 84,
+     "low": 0.7558,
+     "n": 100
+    },
+    "unclear": 2
+   },
+   "Task": {
+    "estimate": 0.7143,
+    "high": 0.7943,
+    "judged": 100,
+    "k": 70,
+    "low": 0.6181,
+    "n": 98,
+    "sampled": 100,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.7,
+     "high": 0.7811,
+     "k": 70,
+     "low": 0.6042,
+     "n": 100
+    },
+    "unclear": 2
+   },
+   "all_types": {
+    "estimate": 0.7196,
+    "high": 0.7677,
+    "judged": 300,
+    "k": 213,
+    "low": 0.6659,
+    "n": 296,
+    "sampled": 300,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.71,
+     "high": 0.7584,
+     "k": 213,
+     "low": 0.6563,
+     "n": 300
+    },
+    "unclear": 4
+   }
+  }
+ },
+ "evaluation_kind": "ai_assessed",
+ "graph_sha256": "011d5fe274ddbbaaa9b13138fe393308f14c4f469b9f9d2dde56ca57ea3d5b8c",
+ "graph_version": "enriched-c0f7d1dd4abd",
+ "interpretation": "AI-assessed by an agent evaluator from a different model family than the extractors; not human annotation and not independently validated gold labels. Wilson 95% intervals exclude evaluator error.",
+ "items_frozen": 1111,
+ "items_with_an_answer": 1111,
+ "linking_accuracy": {
+  "link": {
+   "estimate": 0.8,
+   "high": 0.8666,
+   "judged": 100,
+   "k": 80,
+   "low": 0.7112,
+   "n": 100,
+   "sampled": 100,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.8,
+    "high": 0.8666,
+    "k": 80,
+    "low": 0.7112,
+    "n": 100
+   },
+   "unclear": 0
+  }
+ },
+ "predicate_precision": {
+  "entity_relations": {
+   "APPLIED_TO": {
+    "note": "the weighted figure has no interval here; per-stratum Wilson intervals are shown",
+    "population": {
+     "cross_sentence": 31,
+     "same_sentence": 1
+    },
+    "population_total": 32,
+    "population_weighted_estimate": {
+     "at_least_half_support": 1.0,
+     "every_shown_paper_supports": 0.9375,
+     "sensitivity_unclear_as_incorrect": 0.9375
+    },
+    "strata": {
+     "cross_sentence": {
+      "at_least_half_support": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 31,
+       "low": 0.8897,
+       "n": 31
+      },
+      "every_shown_paper_supports": {
+       "estimate": 0.9355,
+       "high": 0.9821,
+       "k": 29,
+       "low": 0.7928,
+       "n": 31
+      },
+      "population": 31,
+      "sampled": 31,
+      "sensitivity_unclear_as_incorrect": {
+       "estimate": 0.9355,
+       "high": 0.9821,
+       "k": 29,
+       "low": 0.7928,
+       "n": 31
+      },
+      "unclear": 0
+     },
+     "same_sentence": {
+      "at_least_half_support": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 1,
+       "low": 0.2065,
+       "n": 1
+      },
+      "every_shown_paper_supports": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 1,
+       "low": 0.2065,
+       "n": 1
+      },
+      "population": 1,
+      "sampled": 1,
+      "sensitivity_unclear_as_incorrect": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 1,
+       "low": 0.2065,
+       "n": 1
+      },
+      "unclear": 0
+     }
+    }
+   },
+   "EVALUATED_ON": {
+    "note": "the weighted figure has no interval here; per-stratum Wilson intervals are shown",
+    "population": {
+     "cross_sentence": 2,
+     "same_sentence": 2
+    },
+    "population_total": 4,
+    "population_weighted_estimate": {
+     "at_least_half_support": 1.0,
+     "every_shown_paper_supports": 1.0,
+     "sensitivity_unclear_as_incorrect": 1.0
+    },
+    "strata": {
+     "cross_sentence": {
+      "at_least_half_support": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "every_shown_paper_supports": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "population": 2,
+      "sampled": 2,
+      "sensitivity_unclear_as_incorrect": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "unclear": 0
+     },
+     "same_sentence": {
+      "at_least_half_support": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "every_shown_paper_supports": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "population": 2,
+      "sampled": 2,
+      "sensitivity_unclear_as_incorrect": {
+       "estimate": 1.0,
+       "high": 1.0,
+       "k": 2,
+       "low": 0.3424,
+       "n": 2
+      },
+      "unclear": 0
+     }
+    }
+   }
+  },
+  "paper_edges": {
+   "ADDRESSES_TASK": {
+    "estimate": 0.9455,
+    "high": 0.9813,
+    "judged": 58,
+    "k": 52,
+    "low": 0.8515,
+    "n": 55,
+    "sampled": 58,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8966,
+     "high": 0.9517,
+     "k": 52,
+     "low": 0.7921,
+     "n": 58
+    },
+    "unclear": 3
+   },
+   "USES_DATASET": {
+    "estimate": 0.9231,
+    "high": 0.9786,
+    "judged": 27,
+    "k": 24,
+    "low": 0.7586,
+    "n": 26,
+    "sampled": 27,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8889,
+     "high": 0.9615,
+     "k": 24,
+     "low": 0.7194,
+     "n": 27
+    },
+    "unclear": 1
+   },
+   "USES_METHOD": {
+    "estimate": 0.939,
+    "high": 0.9737,
+    "judged": 94,
+    "k": 77,
+    "low": 0.8651,
+    "n": 82,
+    "sampled": 94,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8191,
+     "high": 0.8839,
+     "k": 77,
+     "low": 0.7293,
+     "n": 94
+    },
+    "unclear": 12
+   }
+  },
+  "part_of": {
+   "PART_OF": {
+    "estimate": 0.6944,
+    "high": 0.82,
+    "judged": 50,
+    "k": 25,
+    "low": 0.5314,
+    "n": 36,
+    "sampled": 50,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.5,
+     "high": 0.6336,
+     "k": 25,
+     "low": 0.3664,
+     "n": 50
+    },
+    "unclear": 14
+   }
+  },
+  "related_to": {
+   "RELATED_TO": {
+    "estimate": 0.625,
+    "high": 0.8152,
+    "judged": 16,
+    "k": 10,
+    "low": 0.3864,
+    "n": 16,
+    "sampled": 16,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.625,
+     "high": 0.8152,
+     "k": 10,
+     "low": 0.3864,
+     "n": 16
+    },
+    "unclear": 0
+   }
+  }
+ },
+ "recall_estimate_by_variant": {
+  "default": {
+   "Dataset": {
+    "estimate": 0.8611,
+    "high": 0.9392,
+    "k": 31,
+    "low": 0.7134,
+    "n": 36
+   },
+   "Method": {
+    "estimate": 0.6111,
+    "high": 0.6736,
+    "k": 132,
+    "low": 0.5447,
+    "n": 216
+   },
+   "Task": {
+    "estimate": 0.4146,
+    "high": 0.5227,
+    "k": 34,
+    "low": 0.3142,
+    "n": 82
+   },
+   "all": {
+    "estimate": 0.5898,
+    "high": 0.6413,
+    "k": 197,
+    "low": 0.5363,
+    "n": 334
+   }
+  },
+  "encoder_only": {
+   "Dataset": {
+    "estimate": 0.9167,
+    "high": 0.9713,
+    "k": 33,
+    "low": 0.7817,
+    "n": 36
+   },
+   "Method": {
+    "estimate": 0.5741,
+    "high": 0.6382,
+    "k": 124,
+    "low": 0.5074,
+    "n": 216
+   },
+   "Task": {
+    "estimate": 0.5854,
+    "high": 0.6858,
+    "k": 48,
+    "low": 0.4773,
+    "n": 82
+   },
+   "all": {
+    "estimate": 0.6138,
+    "high": 0.6644,
+    "k": 205,
+    "low": 0.5605,
+    "n": 334
+   }
+  },
+  "slm_only": {
+   "Dataset": {
+    "estimate": 0.9722,
+    "high": 0.9951,
+    "k": 35,
+    "low": 0.8583,
+    "n": 36
+   },
+   "Method": {
+    "estimate": 0.6713,
+    "high": 0.7305,
+    "k": 145,
+    "low": 0.6061,
+    "n": 216
+   },
+   "Task": {
+    "estimate": 0.5854,
+    "high": 0.6858,
+    "k": 48,
+    "low": 0.4773,
+    "n": 82
+   },
+   "all": {
+    "estimate": 0.6826,
+    "high": 0.7302,
+    "k": 228,
+    "low": 0.6309,
+    "n": 334
+   }
+  }
+ },
+ "recall_papers_answered": 50,
+ "run_info": {
+  "evaluators": "A: fresh Claude Opus subagent contexts (7 runs: shards 1-6 and recall); B: OpenAI Codex CLI 0.171.0 (default model of the CLI, exact model ID not exposed in its output) fresh `codex exec` runs, one per packet; C: fresh Claude Opus subagent adjudicator (24 disputed A/B items)",
+  "isolation": "each evaluator ran in its own directory holding only its packet and a copy of docs/final-exam/enrichment-labeling-guideline-v1.md; isolation of the filesystem was by instruction (Claude) and by working-directory sandbox (Codex), not by a hard barrier. A and C share a model family; B is a different family. The session that built the pipeline did not judge.",
+  "judgments_are_ai_assessed": true,
+  "runs_started": "2026-11-25T01:41 to 01:47 +07:00"
+ },
+ "seed": 20261124,
+ "structure_and_coverage": {
+  "coverage": {
+   "core_papers": 13617,
+   "organizations": 2047,
+   "organizations_with_wikidata_qid": 2044,
+   "organizations_with_wikipedia_page": 1462,
+   "papers_with_dataset": 0.1182,
+   "papers_with_method": 0.4017,
+   "papers_with_method_task_and_dataset": 0.0214,
+   "papers_with_task": 0.2758
+  },
+  "duplicate_entities_same_qid_under_two_ids": 0,
+  "entity_nodes": 1991,
+  "keys_with_type_conflict": 61,
+  "orphan_entity_nodes": 0,
+  "validator_errors": 0
+ },
+ "targets": {
+  "entity_precision": 0.85,
+  "linking_accuracy": 0.85,
+  "relation_precision": 0.8
+ }
+}

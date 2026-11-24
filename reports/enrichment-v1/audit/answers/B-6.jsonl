@@ -1,0 +1,66 @@
+{"item_id": "pedge:edcf2457a9adc26f", "verdict": "correct", "note": "The excerpt defines visible-infrared person re-identification as the image retrieval problem under discussion."}
+{"item_id": "pedge:f4aef57bf10d9e9e", "verdict": "correct", "note": "The title presents meta-learning as the method for online recommender updates."}
+{"item_id": "pedge:f769fb4caf23fbf9", "verdict": "correct", "note": "The title identifies image matching as one of MatchDet’s two tasks."}
+{"item_id": "pedge:f8ff803db54e937d", "verdict": "incorrect", "note": "The excerpt describes PDL mimicking an ALM trajectory while training primal and dual neural networks."}
+{"item_id": "pedge:fe105c679b8408a2", "verdict": "correct", "note": "HP-CDE explicitly adopts neural controlled differential equations."}
+{"item_id": "part:04fcb654ebc9a0ae", "verdict": "correct", "note": "CUNY in the college name identifies it as a college of the City University of New York."}
+{"item_id": "part:07ed45d944c62c0e", "verdict": "incorrect", "note": "The proposed parent is a list. The description identifies Alphabet as Google’s corporate parent."}
+{"item_id": "part:269d54784b64b627", "verdict": "incorrect", "note": "The S&P 500 is a stock index, so inclusion would be index listing."}
+{"item_id": "part:2a3d0c1af21fafab", "verdict": "unclear", "note": "The names provide no affiliation linking the research group to the university."}
+{"item_id": "part:31c0dec491bee1b9", "verdict": "unclear", "note": "The text identifies UBC as a university and establishes no membership in the health research institute."}
+{"item_id": "part:3498dbe32a1a00b1", "verdict": "unclear", "note": "The description identifies a Chinese government ministry and leaves its reporting relationship to the State Council unspecified."}
+{"item_id": "part:4df26fe16504aa31", "verdict": "incorrect", "note": "The Dow Jones Industrial Average is a stock index, so inclusion would be index listing."}
+{"item_id": "part:5462212b67e6692c", "verdict": "incorrect", "note": "The IBEX 35 is a stock index, so inclusion would be index listing."}
+{"item_id": "part:6daa5dd194918549", "verdict": "unclear", "note": "Federal ownership is stated. Organizational membership in the Government of Russia is unspecified."}
+{"item_id": "part:71433a264512d488", "verdict": "incorrect", "note": "The faculty name places the faculty within North-West University, reversing the proposed direction."}
+{"item_id": "part:86a0a5b4c29dacdc", "verdict": "unclear", "note": "The descriptions identify a Chinese research institute and academy without specifying any affiliation."}
+{"item_id": "part:8ee167d8b7038777", "verdict": "unclear", "note": "The description identifies a joint research unit and leaves its institutional partners unnamed."}
+{"item_id": "part:98fe4fa77a7507a1", "verdict": "unclear", "note": "The description identifies a research university and leaves its relationship with the ministry unspecified."}
+{"item_id": "part:a2360c0c9ac5009b", "verdict": "unclear", "note": "The descriptions give each company’s business area and leave ownership unspecified."}
+{"item_id": "part:ad3ada8939696568", "verdict": "unclear", "note": "The laboratory is described as federal. Its supervising agency is unspecified."}
+{"item_id": "part:bbc5d772d60cdf69", "verdict": "unclear", "note": "The description identifies a national space agency and leaves its relationship to the Department of Space unspecified."}
+{"item_id": "part:c337db91e71a7bd2", "verdict": "unclear", "note": "The university description and consortium name leave Ghent’s membership unspecified."}
+{"item_id": "part:c89b678addd50b55", "verdict": "unclear", "note": "The text identifies a research laboratory and gives no affiliation with the named institute."}
+{"item_id": "part:ce81bf4e7f5247b7", "verdict": "unclear", "note": "The university fits the association’s broad scope, while membership is unspecified."}
+{"item_id": "part:d2c1c207d80bcee3", "verdict": "correct", "note": "The Sony name identifies Computer Science Laboratories as a Sony research institute."}
+{"item_id": "part:e67bc24cc4383dba", "verdict": "unclear", "note": "The location fits the state system’s scope, but the text leaves system membership unspecified."}
+{"item_id": "part:e85c411190a2a684", "verdict": "correct", "note": "The Delhi institute’s name identifies it as one of the Indian Institutes of Technology."}
+{"item_id": "part:f37ed3b40a464dc6", "verdict": "incorrect", "note": "The S&P 500 is a stock index, so inclusion would be index listing."}
+{"item_id": "part:f49f9abd22692b81", "verdict": "unclear", "note": "The names and description give no affiliation between the laboratory and the research organization."}
+{"item_id": "rel2:5273b08ee634a38f", "verdict": "correct", "note": "A Vision Transformer is a Transformer designed for computer vision."}
+{"item_id": "rel2:5812ebb53d479c06", "verdict": "correct", "note": "Predicting missing links is a graph-input task that graph neural networks can address."}
+{"item_id": "rel2:733722e333a70e56", "verdict": "incorrect", "note": "The leads describe graph-input architectures and natural-language sequence models without a close technical connection."}
+{"item_id": "rel2:89dcb4036bb2b41a", "verdict": "correct", "note": "Mamba is a sequence architecture developed to address limitations of Transformers."}
+{"item_id": "rel2:92465ad7ba30aa4b", "verdict": "correct", "note": "Q-learning is explicitly defined as a reinforcement learning algorithm."}
+{"item_id": "rel2:93fa11128ae5295b", "verdict": "incorrect", "note": "The leads describe a convolutional segmentation architecture and an attention architecture, with overlap only at the broad architecture level."}
+{"item_id": "rel2:96fbb5678963148d", "verdict": "correct", "note": "Both are proportional voting methods with roots in multiwinner elections."}
+{"item_id": "rel2:c3f07a4dd6912e43", "verdict": "correct", "note": "Anomaly detection is an application of graph neural networks when the observations and their relationships form a graph."}
+{"item_id": "rel2:c5476cfb24be2dc9", "verdict": "incorrect", "note": "Graph neural networks encode graph structure, while reinforcement learning optimizes actions from rewards. The descriptions establish distinct roles."}
+{"item_id": "rel2:e404a8db9c1d7597", "verdict": "incorrect", "note": "Graph neural networks specify a model architecture, while federated learning specifies decentralized training across clients."}
+{"item_id": "rel2:f96a43655d87374f", "verdict": "correct", "note": "Tree search and reinforcement learning are neighboring approaches to sequential decision problems such as board games."}
+{"item_id": "rel2:fb542b396366ff71", "verdict": "correct", "note": "Both are techniques for representing and rendering 3D scenes."}
+{"item_id": "rel:14fdbe003f1b7b0a", "verdict": "correct", "supported_in": 2, "note": "Both apply reinforcement learning to trading order execution, using hybrid actions or hierarchical control."}
+{"item_id": "rel:18d0d916b91beda0", "verdict": "correct", "supported_in": 2, "note": "Both use convolutional networks in pansharpening, through learned proximal operators or adaptive kernels."}
+{"item_id": "rel:215153d098b1cc3b", "verdict": "correct", "supported_in": 2, "note": "Both explicitly use a Vision Transformer backbone for pedestrian attribute recognition."}
+{"item_id": "rel:38142d7d9ea73eaf", "verdict": "correct", "supported_in": 2, "note": "Both analyze NSGA-II runtime on the OneJumpZeroJump benchmark."}
+{"item_id": "rel:3bab65d9512eb21d", "verdict": "correct", "supported_in": 2, "note": "UniGNN links GNNs to graph representation learning, and the proximity-enhanced method learns graph representations with GNNs."}
+{"item_id": "rel:41d4975dadfe0658", "verdict": "correct", "supported_in": 2, "note": "Both use federated learning to train models for weather forecasting."}
+{"item_id": "rel:4363fa33a53b5dc0", "verdict": "correct", "supported_in": 2, "note": "The first describes Shapley valuation for credit assignment, and STAS uses it to distribute individual payoffs."}
+{"item_id": "rel:563fcba678a974d4", "verdict": "correct", "supported_in": 2, "note": "BANANAS and ProxyBO both use Bayesian optimization for neural architecture search."}
+{"item_id": "rel:57f22563e2172f3f", "verdict": "correct", "supported_in": 2, "note": "DAE4Rec uses diffusion, and FMRec explicitly identifies diffusion models as existing sequential recommendation methods."}
+{"item_id": "rel:5c1217bcfe7ded08", "verdict": "correct", "supported_in": 2, "note": "Both use large neighborhood search to replan paths for multiple agents."}
+{"item_id": "rel:64c9c7b198994b31", "verdict": "correct", "supported_in": 2, "note": "Both analyze SMS-EMOA’s runtime on OneJumpZeroJump and report empirical validation."}
+{"item_id": "rel:69eff1d2ec55faa8", "verdict": "correct", "supported_in": 2, "note": "SURER and DFMVC both use graph neural networks to learn representations for multi-view clustering."}
+{"item_id": "rel:6acedb459a68838f", "verdict": "correct", "supported_in": 2, "note": "Both use self-supervised training for optical flow estimation."}
+{"item_id": "rel:7ab6a219615cba05", "verdict": "correct", "supported_in": 2, "note": "Both identify Conflict-Based Search as a multi-agent path finding solver and develop improvements to it."}
+{"item_id": "rel:904ff9bca2637fb0", "verdict": "correct", "supported_in": 2, "note": "Both abstracts identify CLIP as a pretrained model applied to text-video retrieval."}
+{"item_id": "rel:97e9437a433a6cf4", "verdict": "correct", "supported_in": 2, "note": "Both evaluate a reinforcement learning approach on machine translation."}
+{"item_id": "rel:9e69ebd3ea2cbe1e", "verdict": "correct", "supported_in": 2, "note": "Both use contrastive learning to improve text classification."}
+{"item_id": "rel:a9bd3ac530dd8b09", "verdict": "correct", "supported_in": 2, "note": "Both apply variants of knowledge distillation to train dialogue generation models."}
+{"item_id": "rel:adeac79b6cc6b856", "verdict": "correct", "supported_in": 2, "note": "ATFL and AT-BMC both use adversarial training to improve text classifier robustness."}
+{"item_id": "rel:b038568ecf3eef53", "verdict": "correct", "supported_in": 2, "note": "The first proposes LaCAM for multi-agent pathfinding, and the second extends it for the same task."}
+{"item_id": "rel:decb63a69fcb181b", "verdict": "correct", "supported_in": 2, "note": "Both explicitly describe genetic programming as a method for solving symbolic regression."}
+{"item_id": "rel:e3289911372ef43a", "verdict": "correct", "supported_in": 2, "note": "Both explicitly describe graph neural networks being applied to graph-based fraud detection."}
+{"item_id": "rel:eaadb8c6b0ce8735", "verdict": "correct", "supported_in": 2, "note": "Both incorporate adversarial training into unsupervised domain adaptation."}
+{"item_id": "rel:f25fab8955cec302", "verdict": "incorrect", "supported_in": 1, "note": "The first explicitly uses BERT for text classification. The second names BERT for GLUE and leaves the classification model unspecified."}
+{"item_id": "rel:ff8e7fa589fe3fbb", "verdict": "correct", "supported_in": 2, "note": "Both propose knowledge distillation methods for object detection."}

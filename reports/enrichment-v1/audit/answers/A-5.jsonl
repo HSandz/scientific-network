@@ -1,0 +1,120 @@
+{"item_id": "link:c94e62b844cee06e", "verdict": "correct", "note": "Page matches the concept exactly."}
+{"item_id": "link:cd60f606e13d7d0b", "verdict": "correct", "note": "Information bottleneck method is the right concept."}
+{"item_id": "link:ce25ad400b5c7503", "verdict": "incorrect", "note": "Page is about social insects, not computational task allocation."}
+{"item_id": "link:d3ac5ecb4b4b6c77", "verdict": "incorrect", "note": "Vector quantization is a specific technique; papers mean neural network weight quantization."}
+{"item_id": "link:d4bad10feb638093", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:dda835c1669c53e5", "verdict": "correct", "note": "Mamba architecture page matches state space model usage."}
+{"item_id": "link:ddc8f254b7df7d1e", "verdict": "correct", "note": "TCGA project page is the correct concept."}
+{"item_id": "link:e0f8e278694850a4", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:e987fb3fdd12b6d6", "verdict": "incorrect", "note": "Video super-resolution is narrower; entity covers image super-resolution too."}
+{"item_id": "link:f5e3043318e48575", "verdict": "incorrect", "note": "Disambiguation page, not the EFX fair allocation concept."}
+{"item_id": "link:fabd7e237786fc0a", "verdict": "correct", "note": "Imputation (statistics) is the right concept."}
+{"item_id": "pedge:025b3b1212c364fc", "verdict": "correct", "note": "Paper on co-speech gesture diffusion; another sentence shows diffusion model sampling used."}
+{"item_id": "pedge:02f547d2b0ce6aca", "verdict": "correct", "note": "Paper addresses video anomaly detection."}
+{"item_id": "pedge:036e0bbce0fbf972", "verdict": "correct", "note": "Title names object detection as addressed task."}
+{"item_id": "pedge:04acc7ccfcb2912f", "verdict": "correct", "note": "Experiments on CORD benchmark."}
+{"item_id": "pedge:0ae32482d06ce900", "verdict": "correct", "note": "Method evaluated on image classification."}
+{"item_id": "pedge:0c2c4981792a25b9", "verdict": "correct", "note": "Framework leverages multi-agent reinforcement learning."}
+{"item_id": "pedge:10966b6bb6bbf077", "verdict": "correct", "note": "Agent taught with reinforcement learning in their method."}
+{"item_id": "pedge:1194305e8bff57e2", "verdict": "correct", "note": "They use AlexNet for video frames."}
+{"item_id": "pedge:1651722bb56bd673", "verdict": "correct", "note": "Descriptor evaluated on 3D reconstruction task."}
+{"item_id": "pedge:188d7e444d797414", "verdict": "incorrect", "note": "Background mention of prior generic methods, not used."}
+{"item_id": "pedge:189d1afbd1fab824", "verdict": "correct", "note": "Evaluated on IU X-Ray dataset."}
+{"item_id": "pedge:1950685be5d87329", "verdict": "incorrect", "note": "RoBERTa is a model, not a dataset."}
+{"item_id": "pedge:198d6213b12a0978", "verdict": "correct", "note": "Algorithm integrates deep learning."}
+{"item_id": "pedge:1c02f566ec2ea8c5", "verdict": "correct", "note": "Experiments conducted on locomotion tasks."}
+{"item_id": "pedge:1c42ec8f11c82d55", "verdict": "correct", "note": "Paper utilizes self-supervised representation learning."}
+{"item_id": "pedge:1f8a4fb43cac3903", "verdict": "correct", "note": "Title names 3D object detection."}
+{"item_id": "pedge:21e13729e04e9a63", "verdict": "correct", "note": "Results reported on ImageNet."}
+{"item_id": "pedge:2541d608db6704e7", "verdict": "correct", "note": "Title names scene graph generation."}
+{"item_id": "pedge:264a687d1df7f995", "verdict": "incorrect", "note": "Background mention of prompt learning successes; no evidence paper addresses it."}
+{"item_id": "pedge:2712e34febb9bece", "verdict": "correct", "note": "Title names generalized planning."}
+{"item_id": "pedge:2726f98b6d402df8", "verdict": "correct", "note": "Title names link prediction."}
+{"item_id": "pedge:280ff4156467ef97", "verdict": "correct", "note": "They design data augmentation."}
+{"item_id": "pedge:2a3885645ea0c4f6", "verdict": "correct", "note": "SGD used to train framework."}
+{"item_id": "pedge:2d03d1d742b96a02", "verdict": "correct", "note": "Evaluated on ModelNet40."}
+{"item_id": "pedge:2ea0f322b0446820", "verdict": "correct", "note": "Approach leverages GANs."}
+{"item_id": "pedge:3015c5ca4eb457f2", "verdict": "correct", "note": "Experiments on DAIR-V2X."}
+{"item_id": "pedge:3247bf1ea33d6b12", "verdict": "correct", "note": "Title says using constraint programming."}
+{"item_id": "pedge:33d3cd5e46a1e155", "verdict": "unclear", "note": "Background sentence only; use of GANs not shown."}
+{"item_id": "pedge:3499277dc1c2b632", "verdict": "correct", "note": "Benchmarks compiled from DrugBank for evaluation."}
+{"item_id": "pedge:36028004936ad70f", "verdict": "incorrect", "note": "Only conceptual similarity to CNNs; not used or compared experimentally."}
+{"item_id": "pedge:3a5925165595ed66", "verdict": "correct", "note": "Title names video object segmentation."}
+{"item_id": "pedge:3b0ab1908b7c55b6", "verdict": "correct", "note": "Introduces label distribution learning method."}
+{"item_id": "pedge:3b0f891e438c7390", "verdict": "correct", "note": "Proposes diffusion-based image restoration."}
+{"item_id": "pedge:3d9ba143c4cb623d", "verdict": "correct", "note": "They learn a deep neural network."}
+{"item_id": "pedge:3feb4786de01569e", "verdict": "correct", "note": "Discriminator module is part of their method."}
+{"item_id": "pedge:4025461c14e35b55", "verdict": "correct", "note": "They use expectation maximization."}
+{"item_id": "pedge:425e3781e0409b9e", "verdict": "correct", "note": "MCTS framed as suited approach the paper builds on."}
+{"item_id": "pedge:42dec4e3880de148", "verdict": "correct", "note": "Title names few-shot class-incremental learning."}
+{"item_id": "pedge:44401269b752d15d", "verdict": "correct", "note": "Paper studies watermarking effects on membership inference attacks."}
+{"item_id": "pedge:4aee7e393f9002d7", "verdict": "correct", "note": "Title names multi-view graph clustering."}
+{"item_id": "pedge:4d40430ec57fb777", "verdict": "correct", "note": "Paper addresses zero-shot OOD detection."}
+{"item_id": "pedge:4ee80ca4de469c90", "verdict": "incorrect", "note": "BERT is a model, not a dataset."}
+{"item_id": "pedge:571e15877aadd642", "verdict": "correct", "note": "Proposes actor-critic style algorithms."}
+{"item_id": "pedge:572aadab266ea7f0", "verdict": "incorrect", "note": "Background mention only; no evidence paper addresses NLI."}
+{"item_id": "pedge:58e895bb51a48b0c", "verdict": "correct", "note": "Proposes a new NAS problem."}
+{"item_id": "pedge:5e36342ce0f7500d", "verdict": "correct", "note": "Title names unsupervised anomaly detection."}
+{"item_id": "pedge:5fee4f16a4b1738a", "verdict": "correct", "note": "Branch-and-bound is the paper's working setting, compared with SCIP."}
+{"item_id": "pedge:60334abdf724b8f0", "verdict": "correct", "note": "Point clouds initialized into 3D Gaussian Splatting."}
+{"item_id": "pedge:614fae46d6b43ad6", "verdict": "correct", "note": "Evaluated on emotion recognition tasks."}
+{"item_id": "pedge:644e3221dfa811b2", "verdict": "correct", "note": "Introduces federated learning into WSVAD."}
+{"item_id": "pedge:64683f07ed8967d8", "verdict": "correct", "note": "Paper addresses probabilistic planning problem."}
+{"item_id": "pedge:674da68f5f141b62", "verdict": "correct", "note": "Paper addresses entity typing."}
+{"item_id": "pedge:6ad350838d82354d", "verdict": "correct", "note": "Experiments on CelebA."}
+{"item_id": "pedge:6c6cee2a35643789", "verdict": "correct", "note": "Paper concerns face swapping methods."}
+{"item_id": "pedge:6f64ea80da1ca030", "verdict": "correct", "note": "Approach evaluated on trajectory prediction."}
+{"item_id": "pedge:71ceec862fddab09", "verdict": "correct", "note": "Title: importance sampling for training."}
+{"item_id": "pedge:75160f4f79d9aefb", "verdict": "correct", "note": "Experiments on MVTec AD."}
+{"item_id": "pedge:76db32d7518750fe", "verdict": "correct", "note": "Uses contrastive learning."}
+{"item_id": "pedge:7a19a000ec07f0bf", "verdict": "correct", "note": "Title names consistency regularization method."}
+{"item_id": "pedge:7a5ea6002e6f3b1b", "verdict": "correct", "note": "Uses gating network to learn weights."}
+{"item_id": "pedge:7bc46b251d0bfd28", "verdict": "unclear", "note": "Existing HGNNs criticized; use or comparison not shown."}
+{"item_id": "pedge:876d68c00ccc8adc", "verdict": "correct", "note": "Establishes unified gradient descent process."}
+{"item_id": "pedge:8ac69a075ab2ed84", "verdict": "correct", "note": "Directly compared against AutoAttack."}
+{"item_id": "pedge:931c86af9ebac6db", "verdict": "correct", "note": "Score-based generative models introduced as paper's subject."}
+{"item_id": "pedge:970a8756e5760c4b", "verdict": "correct", "note": "MeLON optimized following meta-learning approach."}
+{"item_id": "pedge:97f28fd239f6047c", "verdict": "correct", "note": "Learns subgraph under reinforcement learning paradigm."}
+{"item_id": "pedge:9995037bf6e5939e", "verdict": "correct", "note": "Utilizes CLIP."}
+{"item_id": "pedge:9d6eff514d7ab6e5", "verdict": "correct", "note": "Title names medical image segmentation."}
+{"item_id": "pedge:a039af634075d2bd", "verdict": "correct", "note": "Benchmarks for image classification."}
+{"item_id": "pedge:a123b430bbf776cb", "verdict": "correct", "note": "Paper addresses post-training quantization of diffusion models."}
+{"item_id": "pedge:a305b7bac688ae1e", "verdict": "correct", "note": "Paper proposes diffusion-based image restoration."}
+{"item_id": "pedge:aa385e40e8c90842", "verdict": "unclear", "note": "Background description of conventional methods; use not shown."}
+{"item_id": "pedge:aa9cf22cc1e8f51c", "verdict": "correct", "note": "Model evaluated on imputation tasks."}
+{"item_id": "pedge:ab9e46c16c2456c4", "verdict": "correct", "note": "Model evaluated on forecasting."}
+{"item_id": "pedge:ae0d9a4e076a374b", "verdict": "correct", "note": "Uses a memory network."}
+{"item_id": "pedge:af2b77096a78d66a", "verdict": "correct", "note": "Experiments on FUNSD."}
+{"item_id": "pedge:b3e23d0255405a3e", "verdict": "correct", "note": "TANGO uses a graph neural network."}
+{"item_id": "pedge:b59cbbea785b2d47", "verdict": "correct", "note": "Title: based on CLIP."}
+{"item_id": "pedge:b63a9d8408d31bc1", "verdict": "correct", "note": "Compared against GNN-based method."}
+{"item_id": "pedge:b92c5dc6466676a5", "verdict": "correct", "note": "SAM introduced as base the paper builds on."}
+{"item_id": "pedge:bbefdb02b4ea14d6", "verdict": "correct", "note": "Evaluated on retrieval task."}
+{"item_id": "pedge:bceb0a932ac28524", "verdict": "correct", "note": "Experiments on MNIST."}
+{"item_id": "pedge:bdd23cedb5ea5aa5", "verdict": "correct", "note": "Title names multimodal fake news detection."}
+{"item_id": "pedge:c07fac65609c1a4e", "verdict": "correct", "note": "Title: delving into optimal transport."}
+{"item_id": "pedge:c33a0732143a49e2", "verdict": "correct", "note": "Constructs network with a normalizing flow."}
+{"item_id": "pedge:c39983a650f40c6b", "verdict": "correct", "note": "Evaluated on motion deblurring."}
+{"item_id": "pedge:c4e02de9436864fa", "verdict": "correct", "note": "Flow-matching backbone."}
+{"item_id": "pedge:c616eb4a26f559d4", "verdict": "correct", "note": "Designs teacher forcing method."}
+{"item_id": "pedge:c7a8b3e6f3b67f98", "verdict": "correct", "note": "Sampling from their autoregressive model."}
+{"item_id": "pedge:c7fed0c925a08ec7", "verdict": "correct", "note": "Explores large language models for CI-ToD."}
+{"item_id": "pedge:cbb2d63a2ed47e25", "verdict": "correct", "note": "Paper addresses EEG emotion recognition."}
+{"item_id": "pedge:cbf1e7d6294e160e", "verdict": "correct", "note": "Title names knowledge tracing."}
+{"item_id": "pedge:cc11e92b8b2e7f6c", "verdict": "correct", "note": "Zero-shot OOD built on vision-language models like CLIP."}
+{"item_id": "pedge:cc4a9729eee213a2", "verdict": "correct", "note": "Transformer adopted as baseline."}
+{"item_id": "pedge:cd66f7dd9a127d79", "verdict": "correct", "note": "LHGNN leverages GNN."}
+{"item_id": "pedge:cf2abb9a1b3ee6ac", "verdict": "correct", "note": "Deepened graph auto-encoders are GNN-based."}
+{"item_id": "pedge:cf6c6ffe6405f5d3", "verdict": "correct", "note": "Title: group lasso with ODEs."}
+{"item_id": "pedge:d0767afa30e97a99", "verdict": "correct", "note": "Title: deep reinforcement learning approach."}
+{"item_id": "pedge:d2c4bf4a44e3ff6e", "verdict": "correct", "note": "Evaluated on MIMIC-CXR."}
+{"item_id": "pedge:d3ba7bec7eb7ad6e", "verdict": "correct", "note": "Integrates state space models."}
+{"item_id": "pedge:d6f6a26e74562054", "verdict": "correct", "note": "Paper designs graph filter within GNN setting."}
+{"item_id": "pedge:d77820e7f9862999", "verdict": "correct", "note": "Title names graph classification."}
+{"item_id": "pedge:d8c2d942dfb780b5", "verdict": "incorrect", "note": "Prompt learning is the method, not a task."}
+{"item_id": "pedge:dbf43b4eb4f7a681", "verdict": "correct", "note": "Title says using graph representation learning."}
+{"item_id": "pedge:deaaabef15c69b19", "verdict": "incorrect", "note": "Previous approaches only; generic, not used by paper."}
+{"item_id": "pedge:e276de1a16cac58a", "verdict": "correct", "note": "Experiments use LLMs as base models."}
+{"item_id": "pedge:e2eb3d7c441f4b3f", "verdict": "correct", "note": "Embeddings used with logistic regression."}
+{"item_id": "pedge:e5cabacab64623bb", "verdict": "correct", "note": "Evaluated on image recognition datasets."}
+{"item_id": "pedge:e79b5b6cf7d11ebc", "verdict": "correct", "note": "Evaluated on ScanObjectNN."}

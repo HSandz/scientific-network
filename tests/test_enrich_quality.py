@@ -64,3 +64,14 @@ def test_recall_matches_by_type_and_lenient_overlap():
     pools = {"default": [{"paper_id": "p", "type": "Method", "text": "graph neural networks"}, {"paper_id": "p", "type": "Task", "text": "Cora"}]}
     out = recall_scores(listed, pools)["default"]
     assert out["Method"]["k"] == 1 and out["Dataset"]["k"] == 0 and out["Task"]["k"] == 0 and out["all"]["n"] == 3
+
+
+def test_sample_graph_ids_map_to_hashed_item_ids_used_by_answers():
+    from scientific_network.enrich.quality import item_id, sample_to_item_ids
+    sample = {"paper_edge_sample": {"USES_METHOD": ["edge:1"]}, "related_sample": {"RELATED_TO": ["edge:2"]},
+              "part_of_sample": {"PART_OF": ["edge:3"]}, "link_sample": {"link": ["method:Q1"]},
+              "relation_sample": {"APPLIED_TO": {"population": {}, "ids": {"same_sentence": ["edge:4"]}}}}
+    out = sample_to_item_ids(sample)
+    assert out["paper_edge_sample"]["USES_METHOD"] == [item_id("pedge", "edge:1")]
+    assert out["link_sample"]["link"] == [item_id("link", "method:Q1")]
+    assert out["relation_sample"]["APPLIED_TO"]["ids"]["same_sentence"] == [item_id("rel", "edge:4")]

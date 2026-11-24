@@ -1,0 +1,120 @@
+{"item_id": "entity:d4b55743d4e94e25", "verdict": "correct", "note": "Named TCGA esophageal cancer WSI dataset used for evaluation."}
+{"item_id": "entity:d4cd25c9e6b67d63", "verdict": "correct", "note": "Specific research problem addressed in title."}
+{"item_id": "entity:d67f4a4c809971d5", "verdict": "correct", "note": "Named computational problem introduced by the paper."}
+{"item_id": "entity:d876084b43971429", "verdict": "incorrect", "note": "Problem state space, not a named dataset or benchmark."}
+{"item_id": "entity:d9684593789d7fb2", "verdict": "incorrect", "note": "Vague phrase, not a recognisable research task."}
+{"item_id": "entity:d98f3239ec0bc2f3", "verdict": "correct", "note": "Named proposed contrastive learning scheme."}
+{"item_id": "entity:d9dbe063d494a724", "verdict": "correct", "note": "Named domain adaptation benchmark."}
+{"item_id": "entity:dc10b1017fec71cf", "verdict": "correct", "note": "Named model proposed in the paper."}
+{"item_id": "entity:dc4bd549ffa55f2c", "verdict": "correct", "note": "Established generic technique used by the method."}
+{"item_id": "entity:dd020c25252e717b", "verdict": "incorrect", "note": "Evaluation procedure, not a dataset."}
+{"item_id": "entity:ddd83666137c218c", "verdict": "correct", "note": "Standard Atari environment used for evaluation."}
+{"item_id": "entity:ddf1d627f96d2e9e", "verdict": "correct", "note": "Named proposed regularization method."}
+{"item_id": "entity:de01b50da63e2dba", "verdict": "correct", "note": "Designed architectural component of the proposed method."}
+{"item_id": "entity:de39f256c5a7f70f", "verdict": "incorrect", "note": "Generic term, not a specific method."}
+{"item_id": "entity:de45ea39ca4c414b", "verdict": "correct", "note": "Designed technique component of the proposed method."}
+{"item_id": "entity:deafc98e22901aef", "verdict": "incorrect", "note": "Size description; dataset is NuScenes-QA."}
+{"item_id": "entity:df3f7d9487e26f64", "verdict": "incorrect", "note": "Generic data description, not a named dataset."}
+{"item_id": "entity:dfb03bb0d62aece3", "verdict": "correct", "note": "Named facial expression dataset used for experiments."}
+{"item_id": "entity:e03dc720200f8612", "verdict": "correct", "note": "Specific research task."}
+{"item_id": "entity:e0bc3911a89093d5", "verdict": "correct", "note": "Recognisable problem the paper addresses."}
+{"item_id": "entity:e186544aa2084be9", "verdict": "correct", "note": "Recognisable research task in title."}
+{"item_id": "entity:e1ab0af36f421bf4", "verdict": "correct", "note": "Knowledge distillation technique used for training."}
+{"item_id": "entity:e21987e6e3bc8fb3", "verdict": "correct", "note": "Recognisable robotics/navigation task."}
+{"item_id": "entity:e3219db3080c1b18", "verdict": "incorrect", "note": "Generic input, not a named dataset."}
+{"item_id": "entity:e34b514328a8335f", "verdict": "correct", "note": "Named proposed detection method."}
+{"item_id": "entity:e387bcbfe3da6291", "verdict": "correct", "note": "Established GNN technique used in method."}
+{"item_id": "entity:e3b716fbb452e971", "verdict": "incorrect", "note": "Object of generation; task is co-speech gesture generation, not this phrase."}
+{"item_id": "entity:e4cf4ab224611c0f", "verdict": "correct", "note": "Named proposed model."}
+{"item_id": "entity:e5738a46c8234f1c", "verdict": "correct", "note": "Named vision-language model."}
+{"item_id": "entity:e5ef641efdb11a46", "verdict": "correct", "note": "Recognisable optimization problem addressed."}
+{"item_id": "entity:e61054039536cb1c", "verdict": "correct", "note": "Program synthesis method studied in paper."}
+{"item_id": "entity:e6bc8cf7ee871d21", "verdict": "incorrect", "note": "Intermediate output, not a research task."}
+{"item_id": "entity:e6f04e1dfe757d0e", "verdict": "incorrect", "note": "Input modality, not a task."}
+{"item_id": "entity:e724945f5596a4c9", "verdict": "correct", "note": "Recognised voting problem (control) addressed."}
+{"item_id": "entity:e7352298d31b07e1", "verdict": "incorrect", "note": "Vague goal; task is relation extraction."}
+{"item_id": "entity:e786ec525d37ce45", "verdict": "incorrect", "note": "A task, not a method."}
+{"item_id": "entity:e84646c04a706774", "verdict": "incorrect", "note": "Bias metric, not a method."}
+{"item_id": "entity:e8a71aa570198271", "verdict": "correct", "note": "Named dataset used for evaluation."}
+{"item_id": "entity:e8ab82ec60a82902", "verdict": "correct", "note": "Established optimization technique."}
+{"item_id": "entity:e8da54811e0ba5ee", "verdict": "correct", "note": "Reasoning technique used in method per title."}
+{"item_id": "entity:e9d17199332df22b", "verdict": "correct", "note": "Specific convolution technique in proposed network."}
+{"item_id": "entity:ea8cecd5a4bcf4bf", "verdict": "incorrect", "note": "Generic phase name; method is tailored MCTS."}
+{"item_id": "entity:eaa9f898ef6d3c00", "verdict": "incorrect", "note": "Whole field/method family, not a task."}
+{"item_id": "entity:ec315e8e58980154", "verdict": "incorrect", "note": "Broad field; not a specific task as stated."}
+{"item_id": "entity:ec656ce4f3abe840", "verdict": "correct", "note": "Established generative technique."}
+{"item_id": "entity:ecef30ddd878f79b", "verdict": "correct", "note": "Technique family compared against."}
+{"item_id": "entity:ecf876c3fe661885", "verdict": "correct", "note": "Recognisable evaluation task."}
+{"item_id": "entity:ed5923502023c8be", "verdict": "correct", "note": "Named public mammography dataset."}
+{"item_id": "entity:ede6255312e000d1", "verdict": "correct", "note": "Named benchmark dataset."}
+{"item_id": "entity:ee22510afb8beaee", "verdict": "correct", "note": "Specific image processing task."}
+{"item_id": "entity:eea7a713cea71779", "verdict": "correct", "note": "Specific research task in title."}
+{"item_id": "entity:efca2680e10e7321", "verdict": "correct", "note": "Recognisable problem addressed."}
+{"item_id": "entity:efd96735f2235a87", "verdict": "correct", "note": "Text names it the temporal dynamics problem in recommendation."}
+{"item_id": "entity:f005073e3588c93d", "verdict": "correct", "note": "Named computational problem introduced."}
+{"item_id": "entity:f0b59e153963afb4", "verdict": "correct", "note": "Named proposed network."}
+{"item_id": "entity:f0cfe305b94c7739", "verdict": "incorrect", "note": "Data type, not a task."}
+{"item_id": "entity:f19276f3eb3220e2", "verdict": "incorrect", "note": "Vague phrase, not a specific task."}
+{"item_id": "entity:f1ce3dc58c6e959e", "verdict": "correct", "note": "Named proposed system."}
+{"item_id": "entity:f24d5c7c8a8027c3", "verdict": "correct", "note": "Proposed specific initialization algorithm."}
+{"item_id": "entity:f31033fcaa68e9ae", "verdict": "incorrect", "note": "Welfare measure, not a method."}
+{"item_id": "entity:f4268e1104ef5f38", "verdict": "correct", "note": "Proposed contrastive learning framework."}
+{"item_id": "entity:f45e19adca8e247a", "verdict": "correct", "note": "Recognisable NLP task."}
+{"item_id": "entity:f4d81d3b859f461a", "verdict": "correct", "note": "Established technique used."}
+{"item_id": "entity:f6d2ece427ecd35e", "verdict": "correct", "note": "Recognisable optimization problem."}
+{"item_id": "entity:f940cb7b35574320", "verdict": "incorrect", "note": "Prompt learning is a method, not a task."}
+{"item_id": "entity:f96f8c2748d6e0d4", "verdict": "correct", "note": "Established modelling technique."}
+{"item_id": "entity:f9d00563f684d209", "verdict": "correct", "note": "Named benchmark split used for evaluation."}
+{"item_id": "entity:fa4e094a277bf7d4", "verdict": "correct", "note": "Method family compared against."}
+{"item_id": "entity:fa73d47c753cffad", "verdict": "correct", "note": "Specific research task."}
+{"item_id": "entity:fad3251eee72a1e8", "verdict": "correct", "note": "Specific research task."}
+{"item_id": "entity:fb54f21208316b17", "verdict": "incorrect", "note": "Generic unnamed benchmarks."}
+{"item_id": "entity:fdf808d6fbae96cb", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:fe95682b8863c156", "verdict": "incorrect", "note": "Generic phrase, no dataset name."}
+{"item_id": "entity:ff0073e1a9785119", "verdict": "correct", "note": "Recognisable vision task."}
+{"item_id": "entity:ff7250f7f3530f88", "verdict": "correct", "note": "Specific prediction task."}
+{"item_id": "entity:ffa6c8c5bc5e0f72", "verdict": "incorrect", "note": "Ontology objects computed, not a method."}
+{"item_id": "entity:ffd705ea9188846e", "verdict": "correct", "note": "Recognisable planning problem."}
+{"item_id": "entity:fffdc3a4e644817e", "verdict": "incorrect", "note": "Baseline model, not a dataset."}
+{"item_id": "link:0879f2169c6eb2ae", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:0f3a8afc845244da", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:112a672bac331114", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:116d20e52a182b83", "verdict": "incorrect", "note": "Probabilistic variant page, narrower than context-free grammar."}
+{"item_id": "link:1934ca7f1151786a", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:19bfe8ebabd945b2", "verdict": "incorrect", "note": "Neural MT is a narrower subtopic of machine translation."}
+{"item_id": "link:1a6c93643088fde0", "verdict": "incorrect", "note": "Bottleneck TSP is a different variant."}
+{"item_id": "link:26645e6f1cb62597", "verdict": "correct", "note": "Gurobi solver page."}
+{"item_id": "link:2687b85a1284d5e4", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:2b920b35fcf602bb", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:3bcd36a558c18656", "verdict": "correct", "note": "Same test concept underlying the benchmark."}
+{"item_id": "link:3eedbd1805714973", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:3f9bc38744eb59a7", "verdict": "incorrect", "note": "Structured sparsity is a narrower extension."}
+{"item_id": "link:49822d7248b2275e", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:4b021a29b0dd095e", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:4c93340631a5b25f", "verdict": "incorrect", "note": "Anytime A* is a specific variant, not anytime algorithm."}
+{"item_id": "link:4f1b47296df64a00", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:5351fd1d14fb878e", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:5ef492a891fbeaf1", "verdict": "incorrect", "note": "Statistical change-point page; entity mostly image change detection."}
+{"item_id": "link:62c0fcbc880a07bf", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:633cb3102824ba48", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:647dc9623d4bea0b", "verdict": "incorrect", "note": "Llama.cpp inference library, not the LLaMA model."}
+{"item_id": "link:67c2ea92a9ba4803", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:6975986e0ed91f0d", "verdict": "correct", "note": "BERT language model page is right concept."}
+{"item_id": "link:714bdd70a061fc4f", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:742a5514f15815ca", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:76ca758da7720df8", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:7d32a06f6229d2c1", "verdict": "incorrect", "note": "Relief is a specific algorithm, not feature selection."}
+{"item_id": "link:7eb670d3cd9ce45b", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:84d64f850ef35a66", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:87cf5b3944d296d7", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:905c89375db70b8d", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:91c43115e6b98b12", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:93338840d5b0451c", "verdict": "incorrect", "note": "Incremental heuristic search is a narrower subtopic."}
+{"item_id": "link:96c059bbecbf15d2", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:a00f43cc44681772", "verdict": "incorrect", "note": "Page is OCR text translation, not image-to-image translation."}
+{"item_id": "link:a07903e57549149c", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:b020e115e5f56de4", "verdict": "correct", "note": "Page covers artificial neural networks."}
+{"item_id": "link:b3630ea56ca65a97", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:b54e828151ef33b1", "verdict": "correct", "note": "General extrapolation concept matches."}
+{"item_id": "link:b9d2fb6324a89b8e", "verdict": "correct", "note": "Exact concept page."}
+{"item_id": "link:bd0afd554b28ebf0", "verdict": "incorrect", "note": "Recommender-specific page, narrower than general matrix factorization."}

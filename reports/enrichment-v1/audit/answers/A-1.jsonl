@@ -1,0 +1,120 @@
+{"item_id": "entity:001ca18c03d3d53e", "verdict": "correct", "note": "Proposed loss technique."}
+{"item_id": "entity:002409c52029d4fd", "verdict": "correct", "note": "Established technique class used by the paper."}
+{"item_id": "entity:00728edc5c17991a", "verdict": "correct", "note": "Recognisable classification task addressed."}
+{"item_id": "entity:00de372a3a6b596d", "verdict": "correct", "note": "Optimization model used as master problem."}
+{"item_id": "entity:0103416caa0f5535", "verdict": "correct", "note": "Standard task evaluated."}
+{"item_id": "entity:0138ea7bb50ae9d5", "verdict": "incorrect", "note": "Process description, not a recognisable research problem."}
+{"item_id": "entity:02ae2c6581142608", "verdict": "incorrect", "note": "Generic dataset phrase without a name."}
+{"item_id": "entity:02ba882f17060915", "verdict": "correct", "note": "Recognisable research problem."}
+{"item_id": "entity:03125e627db9c903", "verdict": "correct", "note": "Specific pruning technique discussed."}
+{"item_id": "entity:0365e9a79ecdb75b", "verdict": "correct", "note": "Proposed algorithm with specific name."}
+{"item_id": "entity:03cdcafe76351619", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:04d7704bc4bf54d6", "verdict": "correct", "note": "Named dataset used for evaluation."}
+{"item_id": "entity:05bedc44cab16b2d", "verdict": "incorrect", "note": "Generic benchmark phrase, no name given."}
+{"item_id": "entity:05c411a6c05ff42f", "verdict": "correct", "note": "Expanded name of proposed method RPSC."}
+{"item_id": "entity:0728f5d45dc2a9c2", "verdict": "correct", "note": "Technique compared against."}
+{"item_id": "entity:073b31532b781eed", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:07f5bfbd7819734b", "verdict": "correct", "note": "Proposed model."}
+{"item_id": "entity:07f632f46252b5e1", "verdict": "correct", "note": "Named data source for evaluation datasets."}
+{"item_id": "entity:088b633b7f32455d", "verdict": "correct", "note": "Established algorithm used for training."}
+{"item_id": "entity:08bed646e2b46170", "verdict": "correct", "note": "Technique component of method."}
+{"item_id": "entity:0992b2313774fce4", "verdict": "incorrect", "note": "Representation stage, not a task."}
+{"item_id": "entity:09b718f559d538ab", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:0a5a46d37abbbd76", "verdict": "correct", "note": "Named proposed network."}
+{"item_id": "entity:0a768aed86c92af6", "verdict": "correct", "note": "Problem addressed by the paper."}
+{"item_id": "entity:0b866bfb1373cb4e", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:0b990712b622100a", "verdict": "incorrect", "note": "Vague setting, not a named task."}
+{"item_id": "entity:0bdb240f40a4388d", "verdict": "correct", "note": "Named evaluation dataset."}
+{"item_id": "entity:0bffdd89d2689cb3", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:0d337ccb77a5cd6f", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:0ebd962daeea27d2", "verdict": "correct", "note": "Recognisable NLP task."}
+{"item_id": "entity:0eeb12c50d2f6782", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:0f41b59b6c9c98c5", "verdict": "correct", "note": "Named evaluation dataset."}
+{"item_id": "entity:11e26720aa88f931", "verdict": "correct", "note": "Newly released named dataset."}
+{"item_id": "entity:129966d5a3fac683", "verdict": "incorrect", "note": "Reward shaping is a technique, not a task."}
+{"item_id": "entity:12d47c5451ffa068", "verdict": "correct", "note": "Named proposed loss method."}
+{"item_id": "entity:135c6833761d0097", "verdict": "correct", "note": "Learning technique proposed."}
+{"item_id": "entity:13e2e0e05525d310", "verdict": "correct", "note": "Named benchmark used."}
+{"item_id": "entity:14b1efb0a4f4e6ce", "verdict": "correct", "note": "Proposed technique."}
+{"item_id": "entity:15592262696544dc", "verdict": "incorrect", "note": "Data description, not a named dataset."}
+{"item_id": "entity:190364b3a8fab312", "verdict": "correct", "note": "Proposed loss method."}
+{"item_id": "entity:19841a8d0ac0c636", "verdict": "correct", "note": "Recognisable generation task."}
+{"item_id": "entity:19c7c06bcc82a394", "verdict": "incorrect", "note": "Generic dataset phrase."}
+{"item_id": "entity:19db760c9fd9395e", "verdict": "correct", "note": "Established technique."}
+{"item_id": "entity:1ae90f7cc9830726", "verdict": "correct", "note": "Recognisable task evaluated."}
+{"item_id": "entity:1b18d64a090ce073", "verdict": "incorrect", "note": "Devices, not a dataset."}
+{"item_id": "entity:1c0a71bcfd167f93", "verdict": "incorrect", "note": "Whole paper title, not a method mention."}
+{"item_id": "entity:1d6347ac7451b0a6", "verdict": "incorrect", "note": "Solved problem space, not a named dataset."}
+{"item_id": "entity:1d8cd4ada0ac9e3b", "verdict": "incorrect", "note": "Generic phrase, no name."}
+{"item_id": "entity:1d97d8ae7228e5b7", "verdict": "correct", "note": "Established technique class."}
+{"item_id": "entity:1ede4460a38b5178", "verdict": "correct", "note": "Optimization technique used."}
+{"item_id": "entity:1f1ccef5f884eab8", "verdict": "correct", "note": "Named data source for benchmarks."}
+{"item_id": "entity:1f42f278ed70d69d", "verdict": "correct", "note": "Task named in benchmark title."}
+{"item_id": "entity:1f551c52f5366e85", "verdict": "correct", "note": "Specific task addressed."}
+{"item_id": "entity:1ffbfcfa8fcbcec5", "verdict": "correct", "note": "Named architecture."}
+{"item_id": "entity:20c320da71dfd89d", "verdict": "correct", "note": "Established technique."}
+{"item_id": "entity:20db3a2cae5e1bd3", "verdict": "incorrect", "note": "Setting, not a task."}
+{"item_id": "entity:22420a9e64c657bd", "verdict": "correct", "note": "Established algorithm."}
+{"item_id": "entity:2303972532e990fc", "verdict": "incorrect", "note": "Generic data phrase, not named dataset."}
+{"item_id": "entity:2317ed11f6318c9d", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:234bcfe90f7c8f6c", "verdict": "incorrect", "note": "This is a task, not a method."}
+{"item_id": "entity:23ca539f9bf2f528", "verdict": "incorrect", "note": "Generic dataset phrase."}
+{"item_id": "entity:24594109e8388375", "verdict": "correct", "note": "Transfer learning architecture describing CALI-Net."}
+{"item_id": "entity:24807c96e873d9f1", "verdict": "incorrect", "note": "Generic benchmark phrase."}
+{"item_id": "entity:2543697a29822e29", "verdict": "correct", "note": "Named compared system."}
+{"item_id": "entity:260af64bdf854e28", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:2758fee91b6b4f07", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:282c1508cabcfbea", "verdict": "correct", "note": "Named proposed framework."}
+{"item_id": "entity:2b3f2b8f5023ee9b", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:2cc92a68a93544a4", "verdict": "correct", "note": "Proposed network."}
+{"item_id": "entity:2cdd4414b51ef333", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:2ce2125df951c8d6", "verdict": "correct", "note": "Multimodal learning technique; descriptor of InTense."}
+{"item_id": "entity:2d52d7fe4b193c62", "verdict": "correct", "note": "Task the framework performs."}
+{"item_id": "entity:2d7164fd0126b036", "verdict": "incorrect", "note": "Metric, not a method."}
+{"item_id": "entity:2ddd99d004d79bd6", "verdict": "incorrect", "note": "Generic benchmark phrase."}
+{"item_id": "entity:2e7f1505c2fe079f", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:2eb7b8b54cc03bdc", "verdict": "incorrect", "note": "Not a dataset."}
+{"item_id": "entity:2f5e7377786e4ed3", "verdict": "correct", "note": "Inductive logic programming is a recognisable problem."}
+{"item_id": "entity:2fab2bc4833e59c9", "verdict": "incorrect", "note": "Norm/threat model, not a dataset."}
+{"item_id": "entity:2fc522e9fdb9579d", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:2fefdc7cdeaf142f", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:30877c238113ebba", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:30b8b3b1b97cfcc7", "verdict": "correct", "note": "Established technique."}
+{"item_id": "entity:31902cb1966ef843", "verdict": "correct", "note": "Recognisable problem."}
+{"item_id": "entity:31e46e2eee230505", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:343e9338b64cafa2", "verdict": "correct", "note": "Newly released named benchmark."}
+{"item_id": "entity:34559a6c65bb8ab0", "verdict": "incorrect", "note": "Generic task phrase."}
+{"item_id": "entity:34692a06d74dd080", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:34d74f06053afb52", "verdict": "correct", "note": "Proposed network."}
+{"item_id": "entity:35d5fa2e2830ad33", "verdict": "correct", "note": "Task addressed."}
+{"item_id": "entity:363a7257f4cb9fdf", "verdict": "correct", "note": "Problem addressed."}
+{"item_id": "entity:3652492213041532", "verdict": "incorrect", "note": "Generic dataset phrase."}
+{"item_id": "entity:3683385c1dd0ee7b", "verdict": "incorrect", "note": "Generic dataset phrase."}
+{"item_id": "entity:36f81863bee0c855", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:3741dac2fa39dc9c", "verdict": "correct", "note": "Established solver technique."}
+{"item_id": "entity:375fde95bea030d1", "verdict": "incorrect", "note": "Policies, not a research task."}
+{"item_id": "entity:37d4ed2b1fa29acc", "verdict": "correct", "note": "Recognisable problem."}
+{"item_id": "entity:387a4c04e3592f4d", "verdict": "correct", "note": "Task addressed."}
+{"item_id": "entity:38d1f446c9b4a06d", "verdict": "correct", "note": "Image restoration task with modifier."}
+{"item_id": "entity:38db2137e84ddcc4", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:39e56803e656f698", "verdict": "correct", "note": "Established model class."}
+{"item_id": "entity:3a1656348cd61ac3", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:3a36b34c8c0d1128", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:3a86065df4ebb331", "verdict": "correct", "note": "Named technique."}
+{"item_id": "entity:3a90beae425b5d05", "verdict": "incorrect", "note": "Generic dataset phrase, no name."}
+{"item_id": "entity:3be8749ec01dab6a", "verdict": "correct", "note": "Recognisable problem."}
+{"item_id": "entity:3c4fa9361845c28a", "verdict": "incorrect", "note": "Data modality, not a dataset."}
+{"item_id": "entity:3c7b5c6bd2fe5c9c", "verdict": "correct", "note": "Reasoning over multiple KBs is the addressed task."}
+{"item_id": "entity:3ce53523aa0593f7", "verdict": "correct", "note": "Newly released named dataset."}
+{"item_id": "entity:3f02557babbc645a", "verdict": "incorrect", "note": "Generic dataset phrase."}
+{"item_id": "entity:3fda4c9739916ff3", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:40678e786f1ff9b6", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:40956a62d89c7b76", "verdict": "correct", "note": "Problem the paper addresses."}
+{"item_id": "entity:40b5334b77aa1b3a", "verdict": "correct", "note": "Task addressed."}
+{"item_id": "entity:40b84fe10300f203", "verdict": "correct", "note": "Task addressed."}
+{"item_id": "entity:4182fb79cde9b7f5", "verdict": "incorrect", "note": "Metric, not a method."}
+{"item_id": "entity:43195745bc673dda", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:4332937cd6bc325f", "verdict": "correct", "note": "Named proposed strategy."}
+{"item_id": "entity:435503f10d140e48", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:43dcd0aa6b00aa61", "verdict": "incorrect", "note": "Surface form with 'method' not in text."}
+{"item_id": "entity:44ee76dbc8612586", "verdict": "correct", "note": "Named dataset."}

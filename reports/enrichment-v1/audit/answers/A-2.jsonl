@@ -1,0 +1,120 @@
+{"item_id": "entity:451d583d912491b2", "verdict": "correct", "note": "Named proposed method acronym."}
+{"item_id": "entity:4527622960d99324", "verdict": "correct", "note": "Mixture-of-experts is an established technique integrated into the method."}
+{"item_id": "entity:458d64717a4f7c98", "verdict": "incorrect", "note": "Generic unnamed system, not a named dataset."}
+{"item_id": "entity:4591b3a27398b025", "verdict": "correct", "note": "Named benchmark used in experiments."}
+{"item_id": "entity:45bac407cbc6a944", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:46cc6d717e7afc67", "verdict": "incorrect", "note": "Generic word, not a named dataset."}
+{"item_id": "entity:46e2b666e6f8a173", "verdict": "correct", "note": "Named technique proposed for error correction."}
+{"item_id": "entity:46fd555291198da3", "verdict": "correct", "note": "Named benchmark introduced by the paper."}
+{"item_id": "entity:47c8e380fc8d07ce", "verdict": "incorrect", "note": "Text calls it a problem; it is a Task, not a Method."}
+{"item_id": "entity:48385155cabc7005", "verdict": "correct", "note": "Established loss-based learning technique compared with GANs, not a numeric value."}
+{"item_id": "entity:4924bf6d0cfc01fe", "verdict": "correct", "note": "Named proposed method in title."}
+{"item_id": "entity:4999fc9d2a072caa", "verdict": "correct", "note": "Established generic technique adopted."}
+{"item_id": "entity:4a212b2c2a699e01", "verdict": "correct", "note": "Named model directly compared against."}
+{"item_id": "entity:4a84729594f692c5", "verdict": "incorrect", "note": "Generic phrase, no named dataset."}
+{"item_id": "entity:4b434d5281c8f772", "verdict": "correct", "note": "Named proposed pipeline."}
+{"item_id": "entity:4b7baa08c0bd74cb", "verdict": "correct", "note": "Recognisable research task."}
+{"item_id": "entity:4bada15a85011617", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:4c3c983a0850c30b", "verdict": "correct", "note": "Specific task in title."}
+{"item_id": "entity:4d0165222cb17405", "verdict": "incorrect", "note": "BERT is a model, not a dataset."}
+{"item_id": "entity:4f96adb5740d0b13", "verdict": "correct", "note": "Named evaluation dataset."}
+{"item_id": "entity:500d342102b13aa8", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:502165815203cd38", "verdict": "correct", "note": "Named proposed module."}
+{"item_id": "entity:50b40f60ce9aecd6", "verdict": "correct", "note": "Recognisable research task."}
+{"item_id": "entity:50cbb04fc9a3569a", "verdict": "correct", "note": "Specific task in title."}
+{"item_id": "entity:5170dda71e5dfa11", "verdict": "incorrect", "note": "A classifier component, not a task."}
+{"item_id": "entity:52b527b000b7ea17", "verdict": "correct", "note": "Named proposed method in title."}
+{"item_id": "entity:54693376f301b918", "verdict": "correct", "note": "Established technique used."}
+{"item_id": "entity:5518012c6ef08d1b", "verdict": "correct", "note": "Established model class."}
+{"item_id": "entity:5521c0c9b244a920", "verdict": "incorrect", "note": "Code repository name, not a dataset."}
+{"item_id": "entity:55bd13ac52bfeee5", "verdict": "correct", "note": "Recognisable research task."}
+{"item_id": "entity:55daf6485538637e", "verdict": "correct", "note": "Recognisable research task evaluated."}
+{"item_id": "entity:55eea1459f6ed9f3", "verdict": "unclear", "note": "Could be the approach or the problem; text does not decide."}
+{"item_id": "entity:57425649d7283d9a", "verdict": "incorrect", "note": "Mathematical object; task would be solving PDEs."}
+{"item_id": "entity:57488523fcd99809", "verdict": "correct", "note": "Problem of mapping images and text stated as challenge."}
+{"item_id": "entity:577974d130d103c5", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:5782c718acb74d68", "verdict": "incorrect", "note": "Bare generic phrase excluded."}
+{"item_id": "entity:58c934ffc6dec55a", "verdict": "incorrect", "note": "A problem class, not a dataset."}
+{"item_id": "entity:59007c44f1edc563", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:59131689f6a59925", "verdict": "incorrect", "note": "Data modality, not a named dataset."}
+{"item_id": "entity:5ab21516874bb843", "verdict": "correct", "note": "Specific task."}
+{"item_id": "entity:5afcdf4eecb2f5a4", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:5b04d3b24fdce0b3", "verdict": "correct", "note": "Named task explicitly."}
+{"item_id": "entity:5b0e58995f964689", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:5b7ed0e82b7e3f6a", "verdict": "correct", "note": "Architecture component used."}
+{"item_id": "entity:5b8489632075ac9d", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:5bac37d37f775a5a", "verdict": "incorrect", "note": "A card game domain; problem is solving double dummy deals."}
+{"item_id": "entity:5c03b0b8643aad6b", "verdict": "correct", "note": "Conditional generative modeling problem addressed."}
+{"item_id": "entity:5c68ef7fa45741b5", "verdict": "correct", "note": "Model class leveraged."}
+{"item_id": "entity:5d93c7ef73b61281", "verdict": "correct", "note": "Specific task."}
+{"item_id": "entity:5d9d89fb72e7f34b", "verdict": "correct", "note": "Specific search problem addressed."}
+{"item_id": "entity:605fb6a5d7230462", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:61d12b4598c4c1dd", "verdict": "correct", "note": "Named database used for benchmarks."}
+{"item_id": "entity:625f45125ab56653", "verdict": "correct", "note": "Specific network used in method."}
+{"item_id": "entity:645a66e1384d1bd6", "verdict": "correct", "note": "Named game environment used for evaluation."}
+{"item_id": "entity:646c678c0e8872e8", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:65a5016579cf49d1", "verdict": "correct", "note": "Established generic technique used."}
+{"item_id": "entity:65d978e3f68a9d6f", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:66a412f25b659a0a", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:66c49703ca6e71b5", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:68d5e7279a20deef", "verdict": "incorrect", "note": "Data modality, not a method."}
+{"item_id": "entity:691ce07ef01e1b3a", "verdict": "incorrect", "note": "Generic unnamed simulated data."}
+{"item_id": "entity:69f4f433c24a1bd2", "verdict": "incorrect", "note": "Generic phrase excluded."}
+{"item_id": "entity:6a437059c0250112", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:6a629a65f3b489ba", "verdict": "incorrect", "note": "Vague generic word."}
+{"item_id": "entity:6b5747be62ec36ea", "verdict": "correct", "note": "Recognisable problem class."}
+{"item_id": "entity:6b62f17e6152ecae", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:6d456fee797962f5", "verdict": "correct", "note": "Specific task in title."}
+{"item_id": "entity:6d7a76180137cf84", "verdict": "correct", "note": "Clustering task; longer form semantic clustering preferable."}
+{"item_id": "entity:6d8c299a06670b84", "verdict": "incorrect", "note": "A risk measure representation, not a model or algorithm."}
+{"item_id": "entity:6e6367f9e84fa3a4", "verdict": "correct", "note": "Named tool."}
+{"item_id": "entity:6f48e2d443412ce0", "verdict": "correct", "note": "Named sub-task."}
+{"item_id": "entity:70382fdf52a37c01", "verdict": "correct", "note": "Technique employed."}
+{"item_id": "entity:70b08d8d30ae9592", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:712d1ce4006d6088", "verdict": "correct", "note": "Established technique used."}
+{"item_id": "entity:71372e889ae585b8", "verdict": "correct", "note": "Model trained in method."}
+{"item_id": "entity:727dbe4413c132a9", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:72e317fc1510f103", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:735c861b9025680a", "verdict": "incorrect", "note": "Generic data type, not a named dataset."}
+{"item_id": "entity:75db25105916d46c", "verdict": "correct", "note": "Baseline fusion setting compared against."}
+{"item_id": "entity:7604844b1ff16ecd", "verdict": "correct", "note": "Established technique used."}
+{"item_id": "entity:76a69bf7f8a1f9e7", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:76baf23302b7fdac", "verdict": "correct", "note": "Voting rules compared as methods."}
+{"item_id": "entity:76cf4291aa0f6838", "verdict": "correct", "note": "Recognisable research problem."}
+{"item_id": "entity:76ffca3b8b464de8", "verdict": "correct", "note": "Technique applied to latent representation."}
+{"item_id": "entity:772e187524601748", "verdict": "correct", "note": "Specific task."}
+{"item_id": "entity:772ead86b54c6527", "verdict": "incorrect", "note": "Learned features, not a task."}
+{"item_id": "entity:776e70076eb63d6f", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:779df6f800f8e064", "verdict": "correct", "note": "Acronym for omnidirectional image super-resolution task."}
+{"item_id": "entity:79bce4bd461e56af", "verdict": "incorrect", "note": "Generic unnamed benchmark set."}
+{"item_id": "entity:79c9f6c0411456c0", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:79f1223bf7532187", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:7a4cd6fcdaa48e88", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:7ac132964dc7db18", "verdict": "correct", "note": "Problem of learning equilibria addressed."}
+{"item_id": "entity:7b667f1da08ea6a4", "verdict": "correct", "note": "Established algorithm used."}
+{"item_id": "entity:7c337e7093be764a", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:7c3c1691f376175f", "verdict": "correct", "note": "Named module."}
+{"item_id": "entity:7c812bd0c6e5eceb", "verdict": "correct", "note": "Specific task."}
+{"item_id": "entity:7cd830a5b41a514c", "verdict": "incorrect", "note": "Data domain, not a task."}
+{"item_id": "entity:7d0f0905e7e68d69", "verdict": "correct", "note": "Recognisable application problem."}
+{"item_id": "entity:7efa664485157ed6", "verdict": "correct", "note": "Specific task."}
+{"item_id": "entity:7efd27fe831cc668", "verdict": "correct", "note": "Proposed network."}
+{"item_id": "entity:7f9e2039f2be6d43", "verdict": "correct", "note": "Named dataset."}
+{"item_id": "entity:80bc21102e61180a", "verdict": "incorrect", "note": "Generic outputs, not a dataset."}
+{"item_id": "entity:81520c15cdcdc5e5", "verdict": "incorrect", "note": "Generic unnamed instances."}
+{"item_id": "entity:81ec373f4f514dc5", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:822619d1f62818fd", "verdict": "incorrect", "note": "Data type, not a named dataset."}
+{"item_id": "entity:827c26253c7e3935", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:829ee650ce20d06a", "verdict": "incorrect", "note": "Whole title describing a task, not a method name."}
+{"item_id": "entity:82ff7b6204df94f8", "verdict": "correct", "note": "Named benchmark."}
+{"item_id": "entity:834086841a0ed781", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:8347645fde793946", "verdict": "incorrect", "note": "Title names an estimation problem, not a method."}
+{"item_id": "entity:845ad39407309562", "verdict": "correct", "note": "Established solver technique."}
+{"item_id": "entity:84c980fb46242b49", "verdict": "correct", "note": "Module adopted."}
+{"item_id": "entity:8504dde8fe91b743", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:85a88124b71f79ac", "verdict": "correct", "note": "Named allocation problem studied in experiments."}
+{"item_id": "entity:85b533c25b89e9ba", "verdict": "correct", "note": "Voting rule considered."}
+{"item_id": "entity:8713b9f93452aafe", "verdict": "correct", "note": "Recognisable task."}
+{"item_id": "entity:874bdb96b707468f", "verdict": "correct", "note": "Named proposed method."}
+{"item_id": "entity:87515800263e6c9a", "verdict": "incorrect", "note": "Bare generic phrase excluded."}
+{"item_id": "entity:877241f66698a215", "verdict": "correct", "note": "Named benchmark."}
