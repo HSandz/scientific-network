@@ -74,7 +74,10 @@ def run_slm(mode: str, client: LLMClient, texts: list[dict], output: Path, *, en
         with output.open(encoding="utf-8") as handle:
             for line in handle:
                 if line.strip():
-                    record = json.loads(line)
+                    try:
+                        record = json.loads(line)
+                    except json.JSONDecodeError:  # a write cut short by a crash: that paper is redone
+                        continue
                     done[record["id"]] = record
     todo = [row for row in texts if row["id"] not in done]
     output.parent.mkdir(parents=True, exist_ok=True)

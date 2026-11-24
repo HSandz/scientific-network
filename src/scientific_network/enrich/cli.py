@@ -63,6 +63,7 @@ def add_enrich_parser(commands) -> None:
     link.add_argument("--raw-dir", type=Path, default=Path("data/raw/enrichment-v1"))
     link.add_argument("--manifest", type=Path, default=Path("data/raw/enrichment-v1/fetch-manifest.jsonl"))
     link.add_argument("--threshold", type=float, required=True)
+    link.add_argument("--min-interval", type=float, default=1.2)
     link.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
     link.add_argument("--report", type=Path, default=Path("reports/enrichment-v1/linking.json"))
     build = stages.add_parser("build-graph", help="Phases 3-4: relations, enrichment layer and the v5-enriched graph")
@@ -122,7 +123,7 @@ def run_enrich(args) -> tuple[dict, int]:
     if args.enrich_command == "link-entities":
         from scientific_network.enrich.e3 import run_link_entities
         report = run_link_entities(args.e2_dir, args.texts, args.raw_dir, args.manifest, args.output_dir, threshold=args.threshold,
-                                   device=args.device)
+                                   device=args.device, min_interval=args.min_interval)
         import json as _json
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(_json.dumps(report, indent=1, sort_keys=True) + "\n")

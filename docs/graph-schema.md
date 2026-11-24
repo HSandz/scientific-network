@@ -111,8 +111,8 @@ from label and normalized name (`method:<16 hex>`) with `linked: false`.
 organizations are `Organization` nodes with `source: wikidata_parent`,
 `is_core: false` and `wikidata_qid`. They never count toward core size gates.
 Existing v4 organizations gain properties only through `node_enrichments`
-(`wikidata_qid`, description, types, country, inception, Wikipedia URL and revision),
-stored with a `wiki_` prefix in Neo4j.
+(`wikidata_qid`, `wikidata_description`, `wikidata_types`, `wikidata_country`,
+`wikidata_inception`, `wikipedia_url`, `wikipedia_revision_id`), stored under those names in Neo4j.
 
 **New predicates.**
 

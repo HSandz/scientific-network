@@ -437,3 +437,40 @@ def score_audit(*, audit_dir: Path, graph_path: Path, mentions_path: Path, texts
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
     return report
+
+
+def _fmt(w: dict | None) -> str:
+    if not w or w.get("estimate") is None:
+        return "n/a"
+    return f"{w['estimate']:.3f} [{w['low']:.3f}, {w['high']:.3f}] (k={w['k']}, n={w['n']})"
+
+
+def render_quality_md(report: dict, run_info: dict) -> str:
+    """Markdown summary of quality.json; every figure is AI-assessed and keeps its denominator."""
+    t = report["targets"]
+    lines = ["# Enrichment quality (AI-assessed)", "",
+             f"Graph `{report['graph_version']}` (SHA-256 `{report['graph_sha256'][:16]}...`), sample seed {report['seed']}, "
+             f"{report['items_frozen']} frozen items, {report['items_with_an_answer']} answered. {report['interpretation']}", "",
+             f"Evaluator: {run_info.get('evaluator', 'unknown')}. Extractors: GLiNER-Relex-large and Qwen3.5-4B Q4_K_M (a different model family).", "",
+             "## Entity precision by variant (test papers; ablation)", "", "| Variant | Method | Task | Dataset | All types |", "|---|---|---|---|---|"]
+    for variant, by_type in report["entity_precision_by_variant"].items():
+        lines.append(f"| {variant} | " + " | ".join(_fmt(by_type.get(k)) for k in (*TYPES, "all_types")) + " |")
+    lines += ["", f"Target: entity precision at least {t['entity_precision']}. Judged items with verdict unclear are excluded and counted in the JSON.", "",
+              "## Predicate precision", "", "| Predicate | Precision |", "|---|---|"]
+    for group in ("paper_edges", "related_to", "part_of"):
+        for name, w in report["predicate_precision"][group].items():
+            lines.append(f"| {name} | {_fmt(w)} |")
+    for name, w in report["predicate_precision"]["entity_relations"].items():
+        lines.append(f"| {name} (supported in at least half of the shown papers) | {_fmt(w['at_least_half_support'])} |")
+        lines.append(f"| {name} (supported in every shown paper) | {_fmt(w['all_shown_papers_support'])} |")
+    lines += ["", f"Target: relation precision at least {t['relation_precision']}.", "", "## Linking accuracy", ""]
+    lines += [f"- {name}: {_fmt(w)} (target at least {t['linking_accuracy']})" for name, w in report["linking_accuracy"].items()]
+    lines += ["", "## Recall estimate (50 test abstracts listed blind by the evaluator)", "", "| Variant | Method | Task | Dataset | All |", "|---|---|---|---|---|"]
+    for variant, by_type in report["recall_estimate_by_variant"].items():
+        lines.append(f"| {variant} | " + " | ".join(_fmt(by_type.get(k)) for k in (*TYPES, "all")) + " |")
+    a = report["agreement"]
+    lines += ["", "## Agreement", "", f"A/B overlap: {a['overlap_items_judged_by_both']} items judged by both channels, observed agreement "
+              f"{a['observed_agreement']}, Cohen's kappa {a['cohens_kappa']}.", "", "## Structure and coverage (whole graph)", "",
+              "```json", json.dumps(report["structure_and_coverage"], indent=1), "```", "",
+              "Wilson 95% intervals describe sampling error only; they exclude evaluator error."]
+    return "\n".join(lines) + "\n"

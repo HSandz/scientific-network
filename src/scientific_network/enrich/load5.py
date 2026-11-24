@@ -58,7 +58,7 @@ def import_enrichment(session, graph: dict, *, batch_size: int = BATCH_SIZE) -> 
                 for n in enrich["nodes"] if n["label"] == label]
         if rows:
             transactions += _run_batches(session, f"UNWIND $rows AS row MERGE (n:{label} {{id: row.id}}) SET n += row.props", rows, batch_size)
-    rows = [{"id": node_id, "props": flat({f"wiki_{k}" if not k.startswith("wiki") else k: v for k, v in props.items()})}
+    rows = [{"id": node_id, "props": flat(props)}
             for node_id, props in graph.get("node_enrichments", {}).items()]
     if rows:
         transactions += _run_batches(session, "UNWIND $rows AS row MATCH (n:Organization {id: row.id}) SET n += row.props", rows, batch_size)

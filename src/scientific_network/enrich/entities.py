@@ -5,6 +5,7 @@ deterministic given those files and the frozen config. Mentions of dropped spans
 reason; the encoder-only baseline membership is recorded on every mention.
 """
 
+import re
 from collections import Counter, defaultdict
 from hashlib import sha256
 
@@ -13,6 +14,19 @@ import numpy as np
 from scientific_network.enrich.candidates import merge_entities
 from scientific_network.enrich.k1 import encoder_candidates
 from scientific_network.enrich.textutil import normalize, split_sentences, sentence_index
+
+
+_TRAILING_ACRONYM = re.compile(r"\s*\(\s*[A-Za-z][A-Za-z0-9\-]{1,9}s?\s*\)\s*$")
+_LETTER_DIGIT = re.compile(r"([a-z])(\d)")
+
+
+def entity_key(surface: str) -> str:
+    """Normalized key for an entity: lemmatized, lowercase, no trailing acronym in parentheses, letters and digits split.
+
+    "Large Language Models (LLMs)" and "large language model" share a key; "CIFAR10" and "CIFAR-10" share a key.
+    """
+    stripped = _TRAILING_ACRONYM.sub("", surface)
+    return normalize(_LETTER_DIGIT.sub(r"\1 \2", stripped.lower())) or normalize(surface)
 
 
 def entity_id(entity_type: str, key: str) -> str:
@@ -39,7 +53,7 @@ def paper_mentions(paper_id: str, text: str, encoded: dict, slm: dict, *, entity
         first_mention = next((m for m in cand["mentions"] if m["start"] == first), cand["mentions"][0])
         records.append({
             "paper_id": paper_id, "type": final_type, "proposed_type": cand["type"], "text": cand["text"],
-            "key": normalize(cand["text"]), "status": status,
+            "key": entity_key(cand["text"]), "status": status,
             "drop_reason": None if verdict else (dropped.get(cid) or {}).get("reason", "no_decision"),
             "retyped_from": verdict["retyped_from"] if verdict else None,
             "start": first_mention["start"], "end": first_mention["end"],
@@ -56,7 +70,7 @@ def paper_relations(paper_id: str, text: str, slm: dict, mentions: list[dict]) -
     by_key = {m["key"]: m for m in mentions if m["status"] == "kept"}
     out = []
     for rel in slm["relations"]:
-        head, tail = by_key.get(normalize(rel["head"])), by_key.get(normalize(rel["tail"]))
+        head, tail = by_key.get(entity_key(rel["head"])), by_key.get(entity_key(rel["tail"]))
         if head is None or tail is None:
             continue
         out.append({"paper_id": paper_id, "relation": rel["relation"], "head_type": head["type"], "head_key": head["key"],

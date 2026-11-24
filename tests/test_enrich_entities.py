@@ -91,3 +91,12 @@ def test_finalize_merges_nodes_that_link_to_the_same_qid():
     assert out["lookup"][("Method", "transformer")] == out["lookup"][("Method", "transformer model")] == "method:Q42"
     unlinked = finalize_entities(mentions, {}, pre, {}, min_papers=3, enrichment_version="e1")
     assert [n["properties"]["paper_count"] for n in unlinked["nodes"]] == [3] and not unlinked["nodes"][0]["properties"]["linked"]
+
+
+def test_entity_key_strips_trailing_acronym_and_splits_letters_from_digits():
+    from scientific_network.enrich.entities import entity_key
+    assert entity_key("Large Language Models (LLMs)") == entity_key("large language model") == "large language model"
+    assert entity_key("CIFAR10") == entity_key("CIFAR-10") == "cifar 10"
+    assert entity_key("ResNet-50") == entity_key("ResNet50") == "resnet 50"
+    assert entity_key("(GNN)") == "gnn"  # never empty
+    assert entity_key("3D object detection") == "3d object detection"
