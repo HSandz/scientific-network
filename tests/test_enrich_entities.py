@@ -74,3 +74,20 @@ def test_node_threshold_counts_distinct_papers_not_mentions():
     assert [n["name"] for n in out["nodes"]] == ["Diffusion model"] and out["nodes"][0]["paper_count"] == 3
     assert out["nodes"][0]["id"] == entity_id("Method", "diffusion model") and out["below_threshold"] == 1
     assert entity_id("Method", "x") != entity_id("Task", "x")
+
+
+def test_finalize_merges_nodes_that_link_to_the_same_qid():
+    from scientific_network.enrich.finalize import finalize_entities
+    def m(paper, key):
+        return {"status": "kept", "type": "Method", "key": key, "text": key, "paper_id": paper}
+    mentions = [m("a", "transformer"), m("b", "transformer"), m("c", "transformer model"), m("d", "transformer model"),
+                m("e", "transformer model"), m("f", "lonely")]
+    pre = [{"id": "p1", "type": "Method", "keys": ["transformer"], "paper_count": 2},
+           {"id": "p2", "type": "Method", "keys": ["transformer model"], "paper_count": 3}]
+    links = {"p1": {"linked": True, "wikibase_item": "Q42", "wikipedia_title": "Transformer", "wikipedia_url": "u", "revision_id": 1, "link_score": 0.7},
+             "p2": {"linked": True, "wikibase_item": "Q42", "wikipedia_title": "Transformer", "wikipedia_url": "u", "revision_id": 1, "link_score": 0.8}}
+    out = finalize_entities(mentions, {}, pre, links, min_papers=3, enrichment_version="e1")
+    assert [(n["id"], n["properties"]["paper_count"]) for n in out["nodes"]] == [("method:Q42", 5)]
+    assert out["lookup"][("Method", "transformer")] == out["lookup"][("Method", "transformer model")] == "method:Q42"
+    unlinked = finalize_entities(mentions, {}, pre, {}, min_papers=3, enrichment_version="e1")
+    assert [n["properties"]["paper_count"] for n in unlinked["nodes"]] == [3] and not unlinked["nodes"][0]["properties"]["linked"]

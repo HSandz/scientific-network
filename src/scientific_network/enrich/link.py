@@ -27,6 +27,43 @@ def title_overlap(name: str, title: str) -> float:
     return len(left & right) / len(left | right) if left and right else 0.0
 
 
+_NONALNUM = re.compile(r"[^a-z0-9]+")
+_EXCLUDED_TITLE = re.compile(r"\(disambiguation\)|^list of |^lists of |^glossary of |^index of |^outline of ", re.IGNORECASE)
+
+
+def squash(value: str) -> str:
+    return _NONALNUM.sub("", value.lower())
+
+
+def excluded_page(title: str) -> bool:
+    """Disambiguation pages and list-like pages are never an entity's page."""
+    return bool(_EXCLUDED_TITLE.search(title))
+
+
+def name_variants(name: str) -> set[str]:
+    """Squashed forms of an entity name: full, without a trailing parenthetical, and a parenthetical acronym of 3+ letters."""
+    variants = {squash(name)}
+    base = _PAREN.sub("", name).strip()
+    variants.add(squash(base))
+    for inner in re.findall(r"\(([^)]+)\)", name):
+        if len(squash(inner)) >= 3:
+            variants.add(squash(inner))
+    variants.discard("")
+    return variants
+
+
+def name_in_page(name: str, title: str, lead: str, *, window: int = 600) -> bool:
+    """The entity name (or its acronym) occurs in the page title or the start of the lead, ignoring case and punctuation."""
+    haystack = squash(title) + "|" + squash(lead[:window])
+    return any(v in haystack for v in name_variants(name))
+
+
+def title_match(name: str, title: str) -> bool:
+    """The squashed entity name is inside the squashed page title, or the title (without parenthetical) inside the name."""
+    page = squash(_PAREN.sub("", title))
+    return any(v and (v in squash(title) or (page and page in v)) for v in name_variants(name))
+
+
 def search_titles(fetcher: Fetcher, name: str, *, limit: int = 5) -> list[str]:
     payload, _row = fetcher.get("wikipedia_search", WIKIPEDIA_API,
                                 {"action": "query", "format": "json", "formatversion": "2", "list": "search",
@@ -63,6 +100,8 @@ def link_entities(nodes: list[dict], support_titles: dict[str, list[str]], fetch
             if page is None or title not in lead_vec:
                 continue
             scored.append({"title": page["title"], "url": page["url"], "wikibase_item": page["wikibase_item"],
+                           "excluded": excluded_page(page["title"]), "name_in_page": name_in_page(node["name"], page["title"], page["lead"]),
+                           "title_match": title_match(node["name"], page["title"]),
                            "revision_id": page["revision_id"], "page_id": page["page_id"],
                            "score": round(float(context_vec[node["id"]] @ lead_vec[title]), 4),
                            "title_overlap": round(title_overlap(node["name"], page["title"]), 4),
@@ -96,12 +135,16 @@ def fetch_wikipedia_leads(fetcher: Fetcher, titles: list[str], *, batch: int = 2
     return pages
 
 
-def apply_threshold(links: list[dict], *, threshold: float, min_title_overlap: float) -> list[dict]:
-    """Accept the best candidate when its score and title overlap pass; otherwise leave the entity unlinked."""
+def apply_threshold(links: list[dict], *, threshold: float, require_title_match: bool = True) -> list[dict]:
+    """Accept the best eligible candidate when it clears the score threshold and matches by title; else leave unlinked.
+
+    Eligible: has a Wikidata item, is not a disambiguation or list page, and the entity name occurs in the page
+    title or lead. Frozen on development data (reports/enrichment-v1/link-dev.md).
+    """
     out = []
     for link in links:
-        best = next((c for c in link["candidates"] if c["wikibase_item"]), None)
-        accepted = best is not None and best["score"] >= threshold and best["title_overlap"] >= min_title_overlap
+        best = next((c for c in link["candidates"] if c["wikibase_item"] and not c["excluded"] and c["name_in_page"]), None)
+        accepted = best is not None and best["score"] >= threshold and (best["title_match"] or not require_title_match)
         out.append({"id": link["id"], "linked": accepted, "wikibase_item": best["wikibase_item"] if accepted else None,
                     "wikipedia_title": best["title"] if accepted else None, "wikipedia_url": best["url"] if accepted else None,
                     "revision_id": best["revision_id"] if accepted else None, "link_score": best["score"] if best else None})

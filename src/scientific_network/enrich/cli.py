@@ -25,7 +25,7 @@ def add_enrich_parser(commands) -> None:
     bench = stages.add_parser("freeze-benchmark", help="hash-freeze the QA benchmark question text")
     bench.add_argument("--output", type=Path, required=True)
     slm = stages.add_parser("run-slm", help="run the SLM extract or verify step over a JSONL of {id, text} (development experiments)")
-    slm.add_argument("--mode", choices=["extract", "verify", "verify-batch", "verify-pairs", "verify-gen"], required=True)
+    slm.add_argument("--mode", choices=["extract", "verify", "verify-batch", "verify-pairs", "verify-gen", "verify-text"], required=True)
     slm.add_argument("--llm-config", type=Path, required=True)
     slm.add_argument("--texts", type=Path, required=True)
     slm.add_argument("--encoder-output", type=Path)

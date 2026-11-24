@@ -300,3 +300,50 @@ def slm_relations(client: LLMClient, text: str, entities: list[dict], hints: lis
             seen.add(key)
             out.append(item)
     return out, result.prompt_tokens, result.completion_tokens
+
+
+RELATION_TEXT_VERSION = "enrich-slm-relations-v2-text"
+RELATION_TEXT_SYSTEM = (
+    "You list the relations that the title and abstract of a computer-science paper state between the numbered "
+    "entities given. One relation per line, in the form `head_number code tail_number`, with code A or E:\n"
+    "A = APPLIED_TO: a Method (head) is applied to, or proposed for, a Task (tail).\n"
+    "E = EVALUATED_ON: a Method or Task (head) is evaluated or benchmarked on a Dataset (tail).\n"
+    "List a relation only if the text supports it; list every supported one. Hints from an automatic tagger may be "
+    "wrong or incomplete. If there is none, answer `none`. Use only the entity numbers, nothing else.")
+_REL_LINE = re.compile(r"(\d+)\s*[,>:\-]*\s*([AE])\b\s*[,>:\-]*\s*(\d+)", re.IGNORECASE)
+_CODE = {"A": "APPLIED_TO", "E": "EVALUATED_ON"}
+
+
+def parse_relation_lines(content: str) -> list[tuple[int, str, int]]:
+    out, seen = [], set()
+    for head, code, tail in _REL_LINE.findall(content):
+        item = (int(head), _CODE[code.upper()], int(tail))
+        if item not in seen:
+            seen.add(item)
+            out.append(item)
+    return out
+
+
+def slm_relations_text(client: LLMClient, text: str, entities: list[dict], hints: list[dict]) -> tuple[list[dict], int, int]:
+    heads = [e for e in entities if e["type"] in ("Method", "Task")]
+    tails = [e for e in entities if e["type"] in ("Task", "Dataset")]
+    if not heads or not tails:
+        return [], 0, 0
+    by_id = {e["id"]: e for e in entities}
+    lines = [f"{e['id']}. {e['text']} ({e['type']})" for e in entities]
+    hint_lines = [f"{r['head']} --{r['relation']}--> {r['tail']}" for r in hints] or ["(none)"]
+    user = (f"Title and abstract:\n{text}\n\nEntities:\n" + "\n".join(lines) + "\n\nTagger hints:\n"
+            + "\n".join(hint_lines) + "\n\nRelations:")
+    result = client.complete(prompt_version=RELATION_TEXT_VERSION, system=RELATION_TEXT_SYSTEM, user=user,
+                             max_tokens=8 * len(entities) + 16)
+    out, seen = [], set()
+    for head_id, relation, tail_id in parse_relation_lines(result.content):
+        head, tail = by_id.get(head_id), by_id.get(tail_id)
+        if head is None or tail is None:
+            continue
+        item = {"head": head["text"], "relation": relation, "tail": tail["text"]}
+        names = {normalize(head["text"]): head, normalize(tail["text"]): tail}
+        if (head_id, relation, tail_id) not in seen and _endpoint_ok(item, names):
+            seen.add((head_id, relation, tail_id))
+            out.append(item)
+    return out, result.prompt_tokens, result.completion_tokens

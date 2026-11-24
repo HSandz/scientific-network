@@ -108,3 +108,14 @@ def test_generative_relations_use_entity_ids_and_endpoint_types():
     assert rels == [{"head": "GraphMix", "relation": "APPLIED_TO", "tail": "link prediction"},
                     {"head": "GraphMix", "relation": "EVALUATED_ON", "tail": "Cora"}]
     assert slm_relations(client([]), TEXT, [entities[2]], []) == ([], 0, 0)
+
+
+def test_text_relations_parse_lines_and_enforce_endpoint_types():
+    from scientific_network.enrich.slm import parse_relation_lines, slm_relations_text
+    assert parse_relation_lines("1 A 2\n1 E 3\n1 > A > 2\nnone") == [(1, "APPLIED_TO", 2), (1, "EVALUATED_ON", 3)]
+    entities = [{"id": 1, "text": "GraphMix", "type": "Method"}, {"id": 2, "text": "link prediction", "type": "Task"},
+                {"id": 3, "text": "Cora", "type": "Dataset"}]
+    rels, _p, _c = slm_relations_text(letters(["1 A 2\n3 E 1\n1 E 3\n9 A 2"]), TEXT, entities, [])
+    assert rels == [{"head": "GraphMix", "relation": "APPLIED_TO", "tail": "link prediction"},
+                    {"head": "GraphMix", "relation": "EVALUATED_ON", "tail": "Cora"}]
+    assert slm_relations_text(letters([]), TEXT, [entities[2]], []) == ([], 0, 0)

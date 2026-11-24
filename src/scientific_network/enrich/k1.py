@@ -11,7 +11,7 @@ import time
 
 from scientific_network.enrich.candidates import merge_entities, merge_relations
 from scientific_network.enrich.scoring import score_entities, score_relations
-from scientific_network.enrich.slm import slm_extract, slm_relations, slm_verify, slm_verify_batch
+from scientific_network.enrich.slm import slm_extract, slm_relations, slm_relations_text, slm_verify, slm_verify_batch
 from scientific_network.rag.llm import LLMClient, LLMConfig
 
 
@@ -55,6 +55,10 @@ def run_slm(mode: str, client: LLMClient, texts: list[dict], output: Path, *, en
             elif mode == "verify-gen":
                 result = slm_verify_batch(client, row["text"], cands, [])
                 rels, pt, ct = slm_relations(client, row["text"], result["entities"], relations)
+                result["relations"], result["prompt_tokens"], result["completion_tokens"] = rels, result["prompt_tokens"] + pt, result["completion_tokens"] + ct
+            elif mode == "verify-text":
+                result = slm_verify_batch(client, row["text"], cands, [])
+                rels, pt, ct = slm_relations_text(client, row["text"], result["entities"], relations)
                 result["relations"], result["prompt_tokens"], result["completion_tokens"] = rels, result["prompt_tokens"] + pt, result["completion_tokens"] + ct
             elif mode == "verify-batch":
                 result = slm_verify_batch(client, row["text"], cands, relations)

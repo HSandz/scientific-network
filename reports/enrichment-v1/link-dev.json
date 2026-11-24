@@ -1,0 +1,55 @@
+{
+ "evaluator": "Claude Sonnet 5.5, single judge, AI-assessed, dev entities only (120 sampled from the 100 development papers' verified entities)",
+ "judgement_basis": "entity name, entity type, candidate page title and first sentence of its lead",
+ "top1_correct_by_embedding_alone": 11,
+ "rule": {
+  "threshold": 0.4,
+  "guards": [
+   "Wikidata item present",
+   "not a disambiguation or list page",
+   "entity name in page title or lead",
+   "entity name and page title match (squashed, parenthetical removed)"
+  ]
+ },
+ "accepted": 8,
+ "accepted_correct": 7,
+ "accepted_broader": 1,
+ "accepted_wrong": 0,
+ "accepted_pages": [
+  [
+   2,
+   "BERT (language model)"
+  ],
+  [
+   17,
+   "Fuzzy clustering"
+  ],
+  [
+   42,
+   "Reinforcement learning from human feedback"
+  ],
+  [
+   67,
+   "Iteratively reweighted least squares"
+  ],
+  [
+   87,
+   "Reproducing kernel Hilbert space"
+  ],
+  [
+   106,
+   "Fashion-MNIST"
+  ],
+  [
+   117,
+   "Spiking neural network"
+  ],
+  [
+   118,
+   "Combinatorial search"
+  ]
+ ],
+ "entities_with_a_correct_page_in_sample": 11,
+ "note": "small sample; test-set linking accuracy is measured in E4 and may differ. Recall of existing pages is low by design (precision over recall).",
+ "judgement_note": "entity 118 was judged on the accepted page ('Combinatorial search'), not the top-scored page; its per-entity row reflects the top-scored page"
+}
