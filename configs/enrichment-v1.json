@@ -38,5 +38,17 @@
   "applied_to_min_papers": 2,
   "related_to_min_cooccurring_papers": 3
  },
- "linking": "set in Phase 2 step 4"
+ "linking": {
+  "candidates": "Wikipedia search, top 5",
+  "score": "cosine(all-MiniLM-L6-v2) between 'name + titles of up to 3 supporting papers' and the page lead",
+  "threshold": 0.4,
+  "guards": [
+   "Wikidata item present",
+   "not a disambiguation or list page",
+   "entity name in page title or lead (case and punctuation ignored)",
+   "entity name matches page title (squashed, parenthetical removed)"
+  ],
+  "dev_report": "reports/enrichment-v1/link-dev.json"
+ },
+ "merge_threshold": 0.97
 }

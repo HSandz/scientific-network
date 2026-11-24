@@ -1,0 +1,8 @@
+{
+ "evaluator": "Claude Sonnet 5.5, single judge, AI-assessed",
+ "sample": "70 same-type, same-head-token surface pairs with cosine >= 0.80, drawn at random from 377 such pairs among surfaces of the first 900 papers (AAAI 2021) excluding test papers; embedding all-MiniLM-L6-v2",
+ "judgement": "a pair counts as correct only if both surfaces denote the same method, task or dataset (modifiers such as hierarchical, conservative, universal or version numbers make them different)",
+ "by_band": "not tabulated: reading the sorted sample, about half of the pairs at cosine >= 0.90 were the same entity (for example 'visual object tracking' and 'visual tracking') and the large majority below 0.90 were not (they differ by a modifier such as hierarchical, universal or a version number)",
+ "decision": "no threshold reaches 90% precision on this sample (roughly half at >= 0.90), so the embedding merge is set to 0.97 and effectively disabled; duplicates are handled by lemmatized keys, same-abstract acronym expansion and the shared Wikidata QID merge",
+ "limits": "a qualitative reading of one 70-pair sample, not an exhaustive labelling; the sample uses non-test papers rather than only the 100 development papers because the development papers are too few to contain cross-paper pairs"
+}
