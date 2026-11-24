@@ -1,0 +1,42 @@
+{
+ "config_version": "enrichment-v1",
+ "status": "frozen_after_development_tuning",
+ "frozen_at": "2026-11-24",
+ "tuned_on": "data/manifests/enrichment-splits-v1/development.jsonl (100 papers) only; reference labels data/manifests/enrichment-dev-labels-v1",
+ "decision": "docs/decisions.md D042 amendment 'Development-selected models for enrichment'; reports/enrichment-v1/k1-model-selection.md",
+ "text": "title, newline, OpenAlex abstract (title only when no abstract)",
+ "encoder": {
+  "extractor": "gliner-relex-large",
+  "repo": "knowledgator/gliner-relex-large-v1.0",
+  "revision": "4aedc9226a5ac9e2f6b5ea3e91c1ee577c88a290",
+  "options_file": "configs/enrichment-v1-encoders.json",
+  "options": {
+   "threshold": 0.3,
+   "relation_threshold": 0.3,
+   "adjacency_threshold": 0.3
+  },
+  "device": "cuda (outputs identical to CPU on the 100 dev papers)"
+ },
+ "slm": {
+  "llm_config": "configs/enrichment-v1-llm-qwen3.5-4b.json",
+  "mode": "verify-gen",
+  "candidate_entity_threshold": 0.4,
+  "candidate_relation_threshold": 0.3,
+  "prompt_versions": [
+   "enrich-slm-verify-v5-batch",
+   "enrich-slm-verify-v5-batch-relation",
+   "enrich-slm-relations-v1"
+  ]
+ },
+ "baselines_kept": {
+  "encoder_only": "candidates at entity 0.7 / relation 0.9 (dev-tuned) from the same encoder run",
+  "slm_only": "extract-v2 prompt, run on the 200 test papers for the ablation only"
+ },
+ "node_threshold_papers": 3,
+ "relation_thresholds": {
+  "evaluated_on_min_papers": 2,
+  "applied_to_min_papers": 2,
+  "related_to_min_cooccurring_papers": 3
+ },
+ "linking": "set in Phase 2 step 4"
+}

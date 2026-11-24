@@ -4,7 +4,6 @@ import argparse
 from pathlib import Path
 
 PLANNED = {
-    "extract-entities": "Phase 2 (E2): mention detection, verification, linking",
     "extract-relations": "Phase 3 (E3): relation extraction",
     "build-graph": "Phase 4: v5-enriched build",
     "audit-sample": "Phase 5 (E4): frozen audit sample",
@@ -51,6 +50,16 @@ def add_enrich_parser(commands) -> None:
     fetch.add_argument("--output-dir", type=Path, default=Path("data/interim/enrichment-v1"))
     fetch.add_argument("--report", type=Path, default=Path("reports/enrichment-v1/sources.json"))
     fetch.add_argument("--min-interval", type=float, default=1.0)
+    ent = stages.add_parser("extract-entities", help="Phase 2 (E2): verified mentions, surface-form merging, node threshold")
+    ent.add_argument("--texts", type=Path, required=True)
+    ent.add_argument("--encoder-output", type=Path, required=True)
+    ent.add_argument("--slm-output", type=Path, required=True)
+    ent.add_argument("--config", type=Path, required=True)
+    ent.add_argument("--output-dir", type=Path, required=True)
+    ent.add_argument("--report", type=Path, default=Path("reports/enrichment-v1/entities.json"))
+    ent.add_argument("--merge-threshold", type=float, required=True)
+    ent.add_argument("--min-papers", type=int, default=3)
+    ent.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -68,6 +77,11 @@ def run_enrich(args) -> tuple[dict, int]:
         from scientific_network.enrich.sources import acquire_organization_sources
         return acquire_organization_sources(args.graph, args.works, args.raw_dir, args.manifest, args.output_dir,
                                             args.report, min_interval=args.min_interval), 0
+    if args.enrich_command == "extract-entities":
+        from scientific_network.enrich.e2 import run_extract_entities
+        return run_extract_entities(args.texts, args.encoder_output, args.slm_output, args.config, args.output_dir,
+                                    args.report, merge_threshold=args.merge_threshold, min_papers=args.min_papers,
+                                    device=args.device), 0
     if args.enrich_command == "run-slm":
         from scientific_network.enrich.k1 import client_from_config, read_jsonl, run_slm
         client = client_from_config(args.llm_config, log_path=args.call_log)

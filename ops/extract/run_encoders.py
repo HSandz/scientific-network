@@ -106,25 +106,38 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     parser.add_argument("--stats", type=Path)
+    parser.add_argument("--resume", action="store_true", help="append, skipping ids already in the output")
+    parser.add_argument("--chunk", type=int, default=64, help="documents per flushed chunk")
+    parser.add_argument("--progress", action="store_true")
     args = parser.parse_args()
     cfg = json.loads(args.config.read_text())
     with args.input.open(encoding="utf-8") as handle:  # not splitlines(): abstracts may contain U+2028
         rows = [json.loads(line) for line in handle if line.strip()]
+    done: set[str] = set()
+    if args.resume and args.output.exists():
+        with args.output.open(encoding="utf-8") as handle:
+            done = {json.loads(line)["id"] for line in handle if line.strip()}
+    todo = [row for row in rows if row["id"] not in done]
     started = time.perf_counter()
     model = load(args.extractor, args.device)
     load_s = time.perf_counter() - started
     started = time.perf_counter()
     run = run_gliner25 if args.extractor == "gliner2.5-base" else run_relex
-    results = run(model, rows, cfg)
-    run_s = time.perf_counter() - started
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("w", encoding="utf-8") as handle:
-        for record in results:
-            handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
+    count = 0
+    with args.output.open("a" if args.resume else "w", encoding="utf-8") as handle:
+        for index in range(0, len(todo), args.chunk):
+            for record in run(model, todo[index:index + args.chunk], cfg):
+                handle.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
+                count += 1
+            handle.flush()
+            if args.progress:
+                print(f"{len(done) + count}/{len(rows)} documents", flush=True)
+    run_s = time.perf_counter() - started
     stats = {"extractor": args.extractor, "repo": MODELS[args.extractor][0], "revision": MODELS[args.extractor][1],
-             "device": args.device, "torch": torch.__version__, "documents": len(rows),
+             "device": args.device, "torch": torch.__version__, "documents": len(rows), "newly_processed": count, "resumed_from_disk": len(done),
              "load_seconds": round(load_s, 1), "run_seconds": round(run_s, 1),
-             "ms_per_document": round(run_s / max(len(rows), 1) * 1000, 1),
+             "ms_per_document": round(run_s / max(count, 1) * 1000, 1),
              "peak_cuda_mib": round(torch.cuda.max_memory_allocated() / 2**20) if args.device == "cuda" else None}
     if args.stats:
         args.stats.parent.mkdir(parents=True, exist_ok=True)
