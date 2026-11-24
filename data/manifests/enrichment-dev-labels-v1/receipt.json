@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "datasets": 29,
+    "methods": 326,
+    "papers": 100,
+    "papers_without_dataset": 82,
+    "papers_without_task": 12,
+    "relations": {
+      "APPLIED_TO": 84,
+      "EVALUATED_ON": 28
+    },
+    "tasks": 113
+  },
+  "evaluation_kind": "ai_agent_labels",
+  "guideline": "docs/final-exam/enrichment-labeling-guideline-v1.md",
+  "guideline_sha256": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "human_validation": "not_performed",
+  "independence": "not_established",
+  "label_version": "enrichment-dev-labels-v1",
+  "labelled_before": "any extractor or language model ran on a development paper (verified: none had run; first model output on development papers is dated later in this work entry)",
+  "labelled_on": "2026-11-24 (Asia/Bangkok)",
+  "labeller": {
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "provider": "unknown",
+    "run_id": "unknown",
+    "session": "WORK-2026-11-24-003",
+    "tool": "Claude Code CLI"
+  },
+  "labels_sha256": "70af65b4b4af460a36b774c032c8410cac76a2409b6ba6f9bdbb3758245c1690",
+  "limits": "single labeller, no second pass, boundary choices subjective; reference labels not gold",
+  "splits_development_sha256": "71e7d53c0ad69e08fbf3008e85d4bdc3c241972b9d11d2c48bf027a1449eb365",
+  "text_definition": "title + \"\\n\" + abstract; every label string occurs verbatim (case-insensitive) in this text, checked by script"
+}
