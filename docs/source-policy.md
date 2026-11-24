@@ -61,3 +61,17 @@ license covers official PDFs. Choose the repository's code license separately.
 Core citation analysis is core → core. Keep unmatched/external references in staging;
 an optional one-hop context layer is separately labeled and cannot satisfy core size.
 Never recursively acquire external authors/affiliations/references by default.
+
+## Enrichment sources (D042, final exam)
+
+Fetched 2026-11-24 into the ignored `data/raw/enrichment-v1/` store with a tracked-style
+fetch manifest (URL, parameters, retrieval time, SHA-256, revision IDs). Requests use a generic
+client name and at least one second between calls.
+
+| Source | Use | Licence | What the repository publishes |
+| --- | --- | --- | --- |
+| OpenAlex abstracts (already in the v4 works table) | text for entity extraction | CC0 metadata; abstract redistribution not assumed | IDs, character offsets, sentence indices and text hashes, not abstract text |
+| Wikidata (SPARQL by ROR, P6782) | organization QIDs, types, parents, country, inception | CC0 | structured facts |
+| English Wikipedia (lead, infobox, page links, revision IDs) | entity linking, descriptions, `RELATED_TO` links | CC BY-SA 4.0 | page title, URL, revision ID, QID; page text stays local, and any displayed excerpt carries attribution and a link |
+| Wikidata researchers, news and blogs | not used | | |
+

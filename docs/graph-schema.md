@@ -90,3 +90,55 @@ Named projections: researcher collaboration, organization collaboration, core
 citations, paper topics and organization topics. Use inverse positive strength
 for weighted shortest-path distance when intended. Report direction, isolates,
 counting, seeds, algorithm versions and corpus boundary for every result.
+
+## Enrichment layer (v5-enriched, D042)
+
+Added for the final exam. The sections above describe the frozen v4 graph and are
+unchanged: v5-enriched carries every v4 node, edge, evidence record and affiliation
+observation as is (a canonical hash of that layer is recorded in the artifact and
+checked by the validator) and adds a separate enrichment layer. The artifact is
+`schema_version: 0.2.0-enrichment` with the v4 keys plus `base_graph_version`,
+`base_layer_sha256`, `enrichment_version` and `node_enrichments`.
+
+**New labels.** `Method`, `Task`, `Dataset`. Properties: `name`, `key` (normalized
+form), `paper_count` (distinct supporting papers, at least 3), `linked`,
+`wikidata_qid`, `wikipedia_title`, `wikipedia_url`, `wikipedia_revision_id`,
+`link_score`, `surfaces`, `enrichment_version`. A linked entity's ID is
+`<label>:<QID>` (for example `method:Q42`); an unlinked one gets a deterministic ID
+from label and normalized name (`method:<16 hex>`) with `linked: false`.
+
+**Added Organization nodes.** Parents named by Wikidata P749 or P361 that are not v4
+organizations are `Organization` nodes with `source: wikidata_parent`,
+`is_core: false` and `wikidata_qid`. They never count toward core size gates.
+Existing v4 organizations gain properties only through `node_enrichments`
+(`wikidata_qid`, description, types, country, inception, Wikipedia URL and revision),
+stored with a `wiki_` prefix in Neo4j.
+
+**New predicates.**
+
+| Predicate | From → to | Evidence kind | Rule |
+| --- | --- | --- | --- |
+| `USES_METHOD` | Paper → Method | `extracted` | verified Method mention in the paper's title or abstract |
+| `ADDRESSES_TASK` | Paper → Task | `extracted` | verified Task mention |
+| `USES_DATASET` | Paper → Dataset | `extracted` | verified Dataset mention |
+| `APPLIED_TO` | Method → Task | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
+| `EVALUATED_ON` | Method or Task → Dataset | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
+| `PART_OF` | Organization → Organization | `wikidata` | Wikidata P749 or P361 |
+| `RELATED_TO` | Method or Task → Method or Task | `aggregated` | Wikipedia link between the two linked pages in either direction and at least 3 shared papers; source ID sorts before target ID |
+
+Every enrichment edge has `edge_id` (SHA-256 of relation, source, target and method
+version), `evidence_ids` that resolve in the evidence list, `method_version`,
+`graph_version` (the enriched version) and `validation_status: accepted`.
+Extracted evidence stores the paper ID, a hash of the title-and-abstract text, character
+offsets and sentence indices, the extractor and confidence, and **not** the abstract text
+(`docs/source-policy.md`). Aggregated edges carry `support_count` and `support_paper_ids`;
+`APPLIED_TO` and `EVALUATED_ON` also count the papers whose two endpoints sit in one sentence.
+
+Organization-level interest ("organization X works on method Y") is not an edge; it is
+computed from `AUTHORED`, `AFFILIATED_WITH` and `USES_METHOD` so every answer traces to papers.
+
+Counts are reported by layer (v4, enrichment by evidence kind, total). The R1-R4 factual-edge
+gate of D040 applies to the v4 layer only. Structural validation (`enrich.graph5.validate_enriched`)
+checks endpoint labels, deterministic IDs, evidence resolution, support thresholds, the node
+threshold, paper-count consistency, parent-node rules and the v4 layer hash, and re-runs the frozen v4
+validator on the v4 layer. It does not establish semantic accuracy.
