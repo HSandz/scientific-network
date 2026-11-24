@@ -4,8 +4,6 @@ import argparse
 from pathlib import Path
 
 PLANNED = {
-    "extract-relations": "Phase 3 (E3): relation extraction",
-    "build-graph": "Phase 4: v5-enriched build",
     "audit-sample": "Phase 5 (E4): frozen audit sample",
 }
 
@@ -60,6 +58,30 @@ def add_enrich_parser(commands) -> None:
     ent.add_argument("--merge-threshold", type=float, required=True)
     ent.add_argument("--min-papers", type=int, default=3)
     ent.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
+    link = stages.add_parser("link-entities", help="Phase 2 (E2 step 4): link entity nodes to Wikipedia pages and Wikidata QIDs")
+    link.add_argument("--e2-dir", type=Path, required=True)
+    link.add_argument("--texts", type=Path, required=True)
+    link.add_argument("--output-dir", type=Path, required=True)
+    link.add_argument("--raw-dir", type=Path, default=Path("data/raw/enrichment-v1"))
+    link.add_argument("--manifest", type=Path, default=Path("data/raw/enrichment-v1/fetch-manifest.jsonl"))
+    link.add_argument("--threshold", type=float, required=True)
+    link.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
+    link.add_argument("--report", type=Path, default=Path("reports/enrichment-v1/linking.json"))
+    build = stages.add_parser("build-graph", help="Phases 3-4: relations, enrichment layer and the v5-enriched graph")
+    build.add_argument("--e2-dir", type=Path, required=True)
+    build.add_argument("--link-dir", type=Path, required=True)
+    build.add_argument("--texts", type=Path, required=True)
+    build.add_argument("--base-graph", type=Path, required=True, help="frozen v4 graph.json (read only)")
+    build.add_argument("--config", type=Path, required=True)
+    build.add_argument("--org-wikidata", type=Path, default=Path("data/interim/enrichment-v1/org-wikidata.json"))
+    build.add_argument("--org-wikipedia", type=Path, default=Path("data/interim/enrichment-v1/org-wikipedia.json"))
+    build.add_argument("--manifest", type=Path, default=Path("data/raw/enrichment-v1/fetch-manifest.jsonl"))
+    build.add_argument("--quality-config", type=Path, default=Path("configs/quality-release-v1.yaml"),
+                       help="v4 release quality config for the frozen structural validator")
+    build.add_argument("--output-dir", type=Path, required=True)
+    load = stages.add_parser("load-graph", help="Phase 4: import v5-enriched into neo4j-enriched (bolt port 7690 only)")
+    load.add_argument("--graph", type=Path, required=True)
+    load.add_argument("--report", type=Path, required=True)
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -82,6 +104,24 @@ def run_enrich(args) -> tuple[dict, int]:
         return run_extract_entities(args.texts, args.encoder_output, args.slm_output, args.config, args.output_dir,
                                     args.report, merge_threshold=args.merge_threshold, min_papers=args.min_papers,
                                     device=args.device), 0
+    if args.enrich_command == "link-entities":
+        from scientific_network.enrich.e3 import run_link_entities
+        report = run_link_entities(args.e2_dir, args.texts, args.raw_dir, args.manifest, args.output_dir, threshold=args.threshold,
+                                   device=args.device)
+        import json as _json
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(_json.dumps(report, indent=1, sort_keys=True) + "\n")
+        return report, 0
+    if args.enrich_command == "build-graph":
+        import json as _json
+        from scientific_network.enrich.e3 import run_build_enrichment
+        summary = run_build_enrichment(args.e2_dir, args.link_dir, args.texts, args.org_wikidata, args.org_wikipedia, args.base_graph,
+                                       args.manifest, args.output_dir, _json.loads(args.config.read_text()),
+                                       quality_config=args.quality_config)
+        return summary, 0 if summary["validation"]["status"] == "passed" else 1
+    if args.enrich_command == "load-graph":
+        from scientific_network.enrich.load5 import build as load_enriched
+        return load_enriched(args.graph, args.report), 0
     if args.enrich_command == "run-slm":
         from scientific_network.enrich.k1 import client_from_config, read_jsonl, run_slm
         client = client_from_config(args.llm_config, log_path=args.call_log)

@@ -149,3 +149,22 @@ def apply_threshold(links: list[dict], *, threshold: float, require_title_match:
                     "wikipedia_title": best["title"] if accepted else None, "wikipedia_url": best["url"] if accepted else None,
                     "revision_id": best["revision_id"] if accepted else None, "link_score": best["score"] if best else None})
     return out
+
+
+def fetch_page_links(fetcher: Fetcher, titles: list[str], *, batch: int = 20) -> dict[str, set[str]]:
+    """Main-namespace Wikipedia links of each page (continuations followed); the basis of RELATED_TO."""
+    links: dict[str, set[str]] = {t: set() for t in titles}
+    for start in range(0, len(titles), batch):
+        chunk = titles[start:start + batch]
+        cont: dict = {}
+        while True:
+            payload, _row = fetcher.get("wikipedia_links", WIKIPEDIA_API,
+                                        {"action": "query", "format": "json", "formatversion": "2", "titles": "|".join(chunk),
+                                         "prop": "links", "pllimit": "max", "plnamespace": "0", **cont})
+            for page in payload["query"]["pages"]:
+                if page["title"] in links:
+                    links[page["title"]].update(link["title"] for link in page.get("links", []))
+            if "continue" not in payload:
+                break
+            cont = {k: str(v) for k, v in payload["continue"].items()}
+    return links
