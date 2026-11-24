@@ -90,6 +90,7 @@ def add_enrich_parser(commands) -> None:
     audit.add_argument("--slm-only", type=Path, help="extract-mode SLM output on the test papers (ablation variant)")
     audit.add_argument("--output-dir", type=Path, required=True)
     audit.add_argument("--seed", type=int, required=True)
+    audit.add_argument("--rules", type=Path, default=Path("configs/enrichment-v1-audit.json"))
     scorea = stages.add_parser("score-audit", help="Phase 5 (E4): score the answered packets with Wilson intervals and Cohen's kappa")
     scorea.add_argument("--audit-dir", type=Path, required=True)
     scorea.add_argument("--graph", type=Path, required=True)
@@ -98,8 +99,16 @@ def add_enrich_parser(commands) -> None:
     scorea.add_argument("--test", type=Path, default=Path("data/manifests/enrichment-splits-v1/test.jsonl"))
     scorea.add_argument("--slm-only", type=Path)
     scorea.add_argument("--output", type=Path, required=True)
+    scorea.add_argument("--run-info", type=Path, help="JSON with the actual evaluator models, run IDs and isolation notes")
+    adj = stages.add_parser("audit-adjudicate", help="Phase 5 (E4): write packets for channel C from the A/B disagreements")
+    adj.add_argument("--audit-dir", type=Path, required=True)
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
+
+
+def _json_load(path):
+    import json as _j
+    return _j.loads(path.read_text()) if path else None
 
 
 def run_enrich(args) -> tuple[dict, int]:
@@ -141,11 +150,16 @@ def run_enrich(args) -> tuple[dict, int]:
     if args.enrich_command == "audit-sample":
         from scientific_network.enrich.quality import freeze_audit
         return freeze_audit(graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts, test_path=args.test,
-                            link_dir=args.link_dir, slm_only_path=args.slm_only, out_dir=args.output_dir, seed=args.seed), 0
+                            link_dir=args.link_dir, slm_only_path=args.slm_only, out_dir=args.output_dir, seed=args.seed,
+                            rules_path=args.rules), 0
     if args.enrich_command == "score-audit":
         from scientific_network.enrich.quality import score_audit
         return score_audit(audit_dir=args.audit_dir, graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts,
-                           test_path=args.test, slm_only_path=args.slm_only, output=args.output), 0
+                           test_path=args.test, slm_only_path=args.slm_only, output=args.output,
+                           run_info=_json_load(args.run_info)), 0
+    if args.enrich_command == "audit-adjudicate":
+        from scientific_network.enrich.quality import write_adjudication_packet
+        return write_adjudication_packet(args.audit_dir), 0
     if args.enrich_command == "run-slm":
         from scientific_network.enrich.k1 import client_from_config, read_jsonl, run_slm
         client = client_from_config(args.llm_config, log_path=args.call_log)

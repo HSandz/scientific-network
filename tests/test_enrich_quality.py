@@ -39,12 +39,24 @@ def test_precision_excludes_unclear_and_prefers_channel_a_and_kappa_on_overlap()
     assert ag["overlap_items_judged_by_both"] == 2 and ag["observed_agreement"] == 0.5
 
 
-def test_relation_precision_counts_papers_that_support_the_relation():
-    items = {"r1": {"papers": [1, 2]}, "r2": {"papers": [1, 2]}, "r3": {"papers": [1, 2]}}
+def test_relation_precision_is_stratified_and_every_shown_paper_is_primary():
+    items = {k: {"papers": [1, 2]} for k in ("r1", "r2", "r3", "r4")}
     judged = {"r1": {"A": {"verdict": "correct", "supported_in": 2}}, "r2": {"A": {"verdict": "correct", "supported_in": 1}},
-              "r3": {"A": {"verdict": "incorrect", "supported_in": 0}}}
-    out = relation_precision(["r1", "r2", "r3"], judged, items)
-    assert out["all_shown_papers_support"]["k"] == 1 and out["at_least_half_support"]["k"] == 2 and out["at_least_half_support"]["n"] == 3
+              "r3": {"A": {"verdict": "incorrect", "supported_in": 0}}, "r4": {"A": {"verdict": "unclear"}}}
+    sample = {"population": {"same_sentence": 10, "cross_sentence": 90}, "ids": {"same_sentence": ["r1", "r2"], "cross_sentence": ["r3", "r4"]}}
+    out = relation_precision(sample, judged, items)
+    same, cross = out["strata"]["same_sentence"], out["strata"]["cross_sentence"]
+    assert same["every_shown_paper_supports"]["k"] == 1 and same["at_least_half_support"]["k"] == 2 and same["every_shown_paper_supports"]["n"] == 2
+    assert cross["unclear"] == 1 and cross["every_shown_paper_supports"]["n"] == 1 and cross["sensitivity_unclear_as_incorrect"]["n"] == 2
+    assert out["population_weighted_estimate"]["every_shown_paper_supports"] == 0.05  # 0.5 * 10/100 + 0.0 * 90/100
+
+
+def test_adjudicator_c_decides_disagreements_and_sensitivity_counts_unclear():
+    judged = {"1": {"A": {"verdict": "correct"}, "B": {"verdict": "incorrect"}, "C": {"verdict": "incorrect"}},
+              "2": {"A": {"verdict": "correct"}, "B": {"verdict": "incorrect"}}, "3": {"A": {"verdict": "unclear"}}}
+    assert final_verdict(judged["1"])["verdict"] == "incorrect" and final_verdict(judged["2"])["verdict"] == "correct"
+    p = precision(["1", "2", "3"], judged)
+    assert p["k"] == 1 and p["n"] == 2 and p["unclear"] == 1 and p["sensitivity_unclear_as_incorrect"]["n"] == 3
 
 
 def test_recall_matches_by_type_and_lenient_overlap():

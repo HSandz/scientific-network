@@ -1,0 +1,19 @@
+{
+  "audit_version": "enrichment-v1-audit-1",
+  "declared_before_freezing": true,
+  "evaluation_kind": "ai_assessed",
+  "seed": 20261124,
+  "sample_sizes": {"entity_mentions_per_type_per_variant": 100, "edges_per_extracted_predicate": 100, "part_of_edges": 50, "linked_entities": 100, "recall_abstracts": 50},
+  "relation_rules": {
+    "primary": "every shown supporting paper supports the relation (at most 2 papers shown per edge)",
+    "secondary": "supported in at least half of the shown papers",
+    "strata": "same_sentence (every shown paper has both endpoints in one sentence) and cross_sentence; up to 50 edges per stratum and predicate, all when fewer",
+    "overall": "population-weighted across strata; per-stratum Wilson intervals are reported"
+  },
+  "unclear_verdicts": "excluded from the primary figure; counted as incorrect in a sensitivity figure; the unclear count is reported on every row",
+  "overlap": "20% of items judged by both channels A and B; kappa on the raw A/B answers; every A/B disagreement is decided by a third fresh-context adjudicator C",
+  "isolation": "channels A, B and C are fresh contexts that see only their packet and docs/final-exam/enrichment-labeling-guideline-v1.md; the session that built the pipeline does not judge",
+  "ablation_variants": ["default (encoder + SLM)", "encoder_only (threshold 0.7)", "slm_only (extract prompt)"],
+  "targets": {"entity_precision": 0.85, "relation_precision": 0.80, "linking_accuracy": 0.85},
+  "targets_are_not_tuned": true
+}
