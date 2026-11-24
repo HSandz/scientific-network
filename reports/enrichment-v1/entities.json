@@ -1,43 +1,43 @@
 {
- "candidate_mentions": 141889,
+ "candidate_mentions": 141815,
  "config_version": "enrichment-v1",
- "distinct_surface_forms": 47937,
+ "distinct_surface_forms": 47904,
  "drop_reasons": {
-  "no_decision": 15,
-  "slm_drop": 77982
+  "no_decision": 16,
+  "slm_drop": 77919
  },
- "dropped_mentions": 77997,
+ "dropped_mentions": 77935,
  "encoder_only_baseline": {
-  "mentions": 89782,
-  "nodes": 3167,
+  "mentions": 89759,
+  "nodes": 3174,
   "nodes_by_type": {
-   "Dataset": 912,
-   "Method": 1075,
-   "Task": 1180
+   "Dataset": 909,
+   "Method": 1084,
+   "Task": 1181
   },
   "threshold": 0.7
  },
- "entity_groups_before_threshold": 47800,
- "entity_groups_below_threshold": 45788,
- "kept_mentions": 63892,
+ "entity_groups_before_threshold": 47767,
+ "entity_groups_below_threshold": 45750,
+ "kept_mentions": 63880,
  "kept_mentions_by_type": {
-  "Dataset": 6204,
-  "Method": 42926,
-  "Task": 14762
+  "Dataset": 6200,
+  "Method": 42922,
+  "Task": 14758
  },
  "merge_threshold": 0.97,
  "node_threshold_papers": 3,
- "nodes": 2012,
+ "nodes": 2017,
  "nodes_by_type": {
-  "Dataset": 372,
-  "Method": 957,
+  "Dataset": 371,
+  "Method": 963,
   "Task": 683
  },
  "outputs": "data/interim/enrichment-v1/e2",
- "paper_relations": 30251,
- "paper_relations_same_sentence": 4886,
+ "paper_relations": 30186,
+ "paper_relations_same_sentence": 4883,
  "papers": 13617,
  "papers_without_valid_slm_output": 0,
- "retyped_mentions": 410,
+ "retyped_mentions": 409,
  "surface_forms_merged": 137
 }

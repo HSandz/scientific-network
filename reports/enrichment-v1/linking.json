@@ -1,0 +1,16 @@
+{
+ "link_threshold": 0.4,
+ "linked": 287,
+ "linked_by_type": {
+  "Dataset": 10,
+  "Method": 171,
+  "Task": 106
+ },
+ "nodes_before_link_merge": 2017,
+ "nodes_by_type": {
+  "Dataset": 371,
+  "Method": 963,
+  "Task": 683
+ },
+ "pages_with_links_fetched": 244
+}

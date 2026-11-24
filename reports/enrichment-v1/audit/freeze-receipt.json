@@ -1,0 +1,95 @@
+{
+ "frozen": true,
+ "graph_version": "enriched-c0f7d1dd4abd",
+ "items_sha256": "8a28c4f2b3df85f6988c6cdc5f5c854c31ffb5cf5b1f7f0b3e4176fe6721a3e8",
+ "packets": [
+  {
+   "channel": "A",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/A-1.json",
+   "sha256": "0f97a231c48dfec9c0d6e42992e252b2094b3eb4f1e654c07c14f492d6d41786"
+  },
+  {
+   "channel": "A",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/A-2.json",
+   "sha256": "97e6c129909aa190e5a728d53c02d67b64cef6b53dd54d3b62ae9a15222a93cc"
+  },
+  {
+   "channel": "A",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/A-3.json",
+   "sha256": "6e5c2321810819958a709fd4b83271944413cf02fe0490b0ea714785dcc463ad"
+  },
+  {
+   "channel": "A",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/A-4.json",
+   "sha256": "c0d75c83e4758c2d509aa65a2209d49525fc46160a7414db3fe4f3dff9412474"
+  },
+  {
+   "channel": "A",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/A-5.json",
+   "sha256": "4dab9c3e3c1af912eb0217d08c07a008d52f9798861a8147282fbdd1fc44bd5e"
+  },
+  {
+   "channel": "A",
+   "items": 67,
+   "path": "data/processed/enrichment-audit-v1/packets/A-6.json",
+   "sha256": "cdd6b1591abf6e1c845b8d3bfcfa540f67bc3ff17f15e9b0a940a0e15a6e691f"
+  },
+  {
+   "channel": "A",
+   "papers": 30,
+   "path": "data/processed/enrichment-audit-v1/packets/A-recall.json",
+   "sha256": "4762c208456cff0f8c20c0929df4ee9d16d98c24870cfb64af3688022a510954"
+  },
+  {
+   "channel": "B",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/B-1.json",
+   "sha256": "b27856dc46e0752836aa1e98e75bf0bdbe33e2cbe17bbe7a872736c3eb30f99e"
+  },
+  {
+   "channel": "B",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/B-2.json",
+   "sha256": "358f2d16d52aefcaf50ca8c04d81f0ac10fbb12ec7416cf3bd9ce8b5b98e4278"
+  },
+  {
+   "channel": "B",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/B-3.json",
+   "sha256": "7405fd44f414c72139b8cea14bbd9007aa9ae6f72b005295a25382a2487b1fa0"
+  },
+  {
+   "channel": "B",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/B-4.json",
+   "sha256": "24767655edd63e1c17e9e9ec7c4bdb8a578411f673ade67cd7cb37a77c81c12a"
+  },
+  {
+   "channel": "B",
+   "items": 120,
+   "path": "data/processed/enrichment-audit-v1/packets/B-5.json",
+   "sha256": "c6f4faf97b234f562365a6075f2657491d32dc0eb84385abb84fc750c8079dfb"
+  },
+  {
+   "channel": "B",
+   "items": 66,
+   "path": "data/processed/enrichment-audit-v1/packets/B-6.json",
+   "sha256": "11d72f5e4f3f7acc7eee41e7813111450a04695822547c6c03cfd34ac743fd0e"
+  },
+  {
+   "channel": "B",
+   "papers": 30,
+   "path": "data/processed/enrichment-audit-v1/packets/B-recall.json",
+   "sha256": "c9d5ac359abdaa1ca96e42d0148fb1cbe1a152f3cd7d01cff13644d65041a8ef"
+  }
+ ],
+ "purpose": "E4 AI-assessed audit sample, written before any judgement",
+ "rules_sha256": "73b01c1b482b266f561e7c5949345a3e9ce1114dfe3e3b5d0cf7f2c88ae5c427",
+ "sample_sha256": "e3b318dd0b6795de2d9201e7a0e308146f09c8891738f11877fe1dd2e990dd15",
+ "seed": 20261124
+}
