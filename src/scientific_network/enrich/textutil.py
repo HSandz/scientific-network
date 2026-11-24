@@ -4,7 +4,7 @@ import re
 
 _ARTICLES = {"a", "an", "the"}
 _TOKEN = re.compile(r"[a-z0-9]+")
-_ACRONYM = re.compile(r"([A-Za-z][A-Za-z0-9/\-' ]{3,90}?)\s*\(\s*([A-Za-z][A-Za-z0-9\-]{1,11}s?)\s*\)")
+_ACRONYM = re.compile(r"([A-Za-z0-9][A-Za-z0-9/\-' ]{3,90}?)\s*\(\s*([A-Za-z0-9][A-Za-z0-9\-]{1,11}s?)\s*\)")
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'(\[])")
 
 
@@ -13,10 +13,21 @@ def paper_text(title: str, abstract: str) -> str:
     return f"{title.strip()}\n{(abstract or '').strip()}".strip()
 
 
+_KEEP_S = {"bias", "series", "species", "atlas", "canvas", "alias", "lens", "news", "physics", "mathematics", "statistics"}
+_ES_PLURAL = ("sses", "xes", "ches", "shes", "zes")
+
+
 def _stem(token: str) -> str:
-    if len(token) > 3 and token.endswith("s") and not token.endswith("ss"):
-        return token[:-1]
-    return token
+    """Plural to singular for ordinary English plurals; keeps -ss, -us and -is endings (class, bias, analysis)."""
+    if len(token) <= 3 or not token.endswith("s") or token in _KEEP_S:
+        return token
+    if token.endswith("ies") and len(token) > 4:
+        return token[:-3] + "y"
+    if token.endswith(_ES_PLURAL):
+        return token[:-2]
+    if token.endswith(("ss", "us", "is")):
+        return token
+    return token[:-1]
 
 
 def normalize(surface: str) -> str:

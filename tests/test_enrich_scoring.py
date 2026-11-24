@@ -44,3 +44,13 @@ def test_relation_scoring_needs_both_endpoints_and_type():
     assert wrong_type["micro"]["tp"] == 0
     wrong_tail = score_relations({"p": [("GNN", "APPLIED_TO", "Cora")]}, labels, texts)
     assert wrong_tail["micro"]["tp"] == 0
+
+
+def test_stemmer_handles_es_and_ies_plurals_and_keeps_ss_us_is_endings():
+    from scientific_network.enrich.textutil import acronym_map, normalize
+    assert normalize("Gaussian Processes") == normalize("Gaussian Process") == "gaussian process"
+    assert normalize("Markov Decision Processes") == "markov decision process"
+    assert normalize("policies") == "policy" and normalize("classes") == "class" and normalize("searches") == "search"
+    assert normalize("bias") == "bias" and normalize("series") == "series" and normalize("analysis") == "analysis"
+    assert normalize("graph neural networks") == "graph neural network"
+    assert acronym_map("We use 3D Gaussian Splatting (3DGS) for rendering.")["3dgs"] == "3D Gaussian Splatting"

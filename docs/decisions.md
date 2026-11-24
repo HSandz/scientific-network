@@ -1336,3 +1336,14 @@ scored against AI-assessed reference labels frozen before any model ran.
 - Disclosed bias: prompts were tuned on development with Qwen3.5-4B in the loop; the other models ran
   the final prompts unchanged. Reference labels are conservative, so precision is understated for all
   systems. These are development comparisons, not quality claims.
+
+## D042 amendment — Normalization fixes after the full-corpus run and extraction deviations (2026-11-24)
+
+- `entities.entity_key` (trailing parenthetical acronym removed, letters split from digits) and a corrected plural stemmer in
+  `textutil._stem` (-ies, -es; -ss/-us/-is kept) were changed after the full-corpus SLM run. They are generic text-normalization
+  fixes, not thresholds, and dev scores are unchanged. They came from aggregate lists of frequent node names and a reviewer's
+  duplicate-node report, not from item-level inspection of test-paper outputs; those aggregates include test-paper mentions, so test
+  papers were not entirely unseen. Node counts before and after are in WORK-2026-11-24-004.
+- Deviations from specification §4.2/§4.3: the SLM verifies candidates per paper (title and abstract), not per sentence, and `APPLIED_TO`
+  and `EVALUATED_ON` are generated from the whole abstract. The same-sentence share is stored per edge and the audit samples
+  same-sentence and cross-sentence edges separately.
