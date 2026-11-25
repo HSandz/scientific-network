@@ -1,0 +1,9 @@
+{
+ "evaluation_kind": "ai_assessed_development_material",
+ "labeler": "building session (Claude Sonnet 5.5)",
+ "labels": "reports/enrichment-v2/dev/member-of-dev-labels.jsonl",
+ "note": "development material only; not an independent audit; frozen before the rule was applied",
+ "purpose": "enrichment v2 MEMBER_OF development candidates: 20 rule candidates outside the 50 audited and outside the PART_OF dev sample (seed 2026112501, purpose dev-member-of). correct = the first is a current member of the consortium, association, alliance or group",
+ "rows": 20,
+ "sha256": "4777ffedba17b593342d6d33591c93cfed8cdef5f583c00264fc5a146e14d5d3"
+}

@@ -1,0 +1,9 @@
+{
+ "evaluation_kind": "ai_assessed_development_material",
+ "labeler": "building session (Claude Sonnet 5.5)",
+ "labels": "reports/enrichment-v2/dev/part-of-dev-labels.jsonl",
+ "note": "development material only; not an independent audit; frozen before the rule was applied",
+ "purpose": "enrichment v2 PART_OF development sample: 50 edges outside the 50 audited (seed 2026112501, purpose dev-part-of). Labels: correct = part, unit, subsidiary or constituent; member_only = member of a consortium, association or group (not a part); incorrect; unclear",
+ "rows": 50,
+ "sha256": "5f0f6acaa1486a812105a77f43d7ed96f7d63833b6210f9be95f0f4a8a2395ed"
+}
