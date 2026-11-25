@@ -121,10 +121,10 @@ Existing v4 organizations gain properties only through `node_enrichments`
 | `USES_METHOD` | Paper → Method | `extracted` | verified Method mention in the paper's title or abstract |
 | `ADDRESSES_TASK` | Paper → Task | `extracted` | verified Task mention |
 | `USES_DATASET` | Paper → Dataset | `extracted` | verified Dataset mention |
-| `APPLIED_TO` | Method → Task | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
+| `APPLIED_TO` | Method → Task | `extracted` | stated in the abstract; at least 2 distinct supporting papers, or (enrichment v3) one paper whose two endpoints sit in one sentence (`support_rule`) |
 | `EVALUATED_ON` | Method or Task → Dataset | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
-| `PART_OF` | Organization → Organization | `wikidata` | Wikidata P749 or P361 |
-| `MEMBER_OF` | Organization → Organization | `wikidata` | enrichment v2 only: Wikidata P749 or P361 whose parent's direct instance-of class is a consortium, association, alliance, network or group (class list in `configs/enrichment-v2.json`); a member of the second organization, not a unit of it |
+| `PART_OF` | Organization → Organization | `wikidata` | Wikidata P749 or P361; from enrichment v3 only for a parent that passes the `part_of_v2` rule (an organization of an allowed kind, no index, list or ranking, statement not end-dated, plausible direction) |
+| `MEMBER_OF` | Organization → Organization | `wikidata` | enrichment v2 only: Wikidata P749 or P361 whose parent's direct instance-of class is a consortium, association, alliance, network or group (class list in `configs/enrichment-v2.json`); a member of the second organization, not a unit of it; from v3 a pair carries this edge **instead of** `PART_OF` |
 | `RELATED_TO` | Method or Task → Method or Task | `aggregated` | Wikipedia link between the two linked pages in either direction and at least 3 shared papers; source ID sorts before target ID |
 
 Every enrichment edge has `edge_id` (SHA-256 of relation, source, target and method
@@ -142,6 +142,14 @@ sentence; `support_count` 1; adopted only for `EVALUATED_ON`). `MEMBER_OF` is **
 because the PART_OF v2 rule failed its declared criterion, so a pair that is a consortium membership can carry both a `PART_OF` edge
 (known to be weak, see `reports/enrichment-v2/quality.md`) and a `MEMBER_OF` edge. Consumers that roll organizations up to parents should
 prefer `MEMBER_OF` for such pairs and should not treat `PART_OF` targets that are indices or lists as organizations.
+
+**Enrichment v3 (`schema_version: 0.4.0-enrichment`, D042 amendment 2026-11-25, graph `enriched-cb371912e308`).** No new predicate. Three
+rules were adopted post hoc or on a re-declared criterion (see the amendment; the reviewer judged the v2 absolute criteria badly chosen): the
+`part_of_v2` rule now filters `PART_OF` (783 edges instead of 1,129; the dropped statements are end-dated, point to an index, list or
+non-organization, run in the wrong direction or put a university under a faculty or institute), so **each organization pair carries exactly one of
+`PART_OF` and `MEMBER_OF`** (the validator checks it, and every `PART_OF` evidence record names the rule); the narrower-page link guard unlinks
+an entity whose best Wikipedia page is narrower than its name; and single-paper same-sentence `APPLIED_TO` edges are admitted (`support_rule`
+`single_paper_same_sentence`, `support_count` 1). The v1 and v2 graphs keep their own schema versions and stay loadable.
 
 Organization-level interest ("organization X works on method Y") is not an edge; it is
 computed from `AUTHORED`, `AFFILIATED_WITH` and `USES_METHOD` so every answer traces to papers.

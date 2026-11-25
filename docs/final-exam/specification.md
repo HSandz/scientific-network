@@ -258,6 +258,14 @@ weights, following the v4 edge rules.
 > and is added as the separate predicate `MEMBER_OF` (85 edges), so a pair can carry both. The reasons and figures are in
 > `reports/enrichment-v2/`.
 
+> **Note, 2026-11-25 (enrichment v3, graph `enriched-cb371912e308`; D042 amendment "Enrichment v3").** A reviewer judged the v2 absolute
+> criteria badly chosen. On a **relative, post-hoc** criterion (decided after the v2 development results), the v2 `PART_OF` rule and the
+> link guard are adopted unchanged: `PART_OF` 1,129 → 783, each organization pair carries one of `PART_OF` and `MEMBER_OF`, the 36, 14 and 2
+> organizations under S&P 500, Dow Jones and Forbes Global 2000 are gone, and 43 of 287 raw links were removed by the guard (linked entities
+> 261 → 231). Single-paper same-sentence `APPLIED_TO` is adopted after its criterion was re-declared on the audit scale (38 of 40 correct on a
+> fresh sample labeled by a fresh evaluator context): `APPLIED_TO` 32 → 167. Development checks are not evidence for v3; the only accuracy
+> claims are the fresh E4 v3 audit in §4.5.
+
 ### 4.4 Enriched graph schema and build
 
 - v5-enriched = all v4 nodes and edges unchanged, plus the enrichment layer.
@@ -314,6 +322,14 @@ Rules:
 > partner of a consortium node counts as a member), so its figure carries that caveat. Axes whose rule was not adopted (`PART_OF` 0.69,
 > linking 0.80, both below target) keep their v1 figures, labelled as carried over in `reports/enrichment-v2/quality.md`. These are
 > AI-assessed figures; the Wilson intervals exclude evaluator error.
+
+> **Note, 2026-11-25 (E4 v3, graph `enriched-cb371912e308`).** Fresh items only (not v1- or v2-audited, not in any development or informational
+> sample); every item judged by A (`claude-opus-5-5`) and B (`gpt-6.2-sol`), disputes by a separate `gpt-6.2-sol` session as adjudicator C, which
+> is a different family from A but the same model as B. Fewer fresh items existed than requested except for `PART_OF`. Point estimates with
+> Wilson 95% intervals: `PART_OF` 0.951 (39/41 decided, 9 unclear; **0.78 with unclear counted as incorrect**), linking 0.895 (68/76), single-paper
+> `APPLIED_TO` 0.983 (59/60), `MEMBER_OF` 13/13 decided but 13 of 26 unclear (sensitivity 0.50; the v2 `MEMBER_OF` figure drops from 0.97 to 0.63
+> when the non-Claude adjudicator replaces the Claude one). Relation and linking targets are met on the primary rule; `PART_OF` meets 0.80 only
+> when unclear is excluded. Evaluators are AI agents, so none of this is human annotation.
 
 ## 5. Social network analysis (S1–S3)
 

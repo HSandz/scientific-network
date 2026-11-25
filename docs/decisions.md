@@ -1517,3 +1517,16 @@ not among the 30 informational `APPLIED_TO` items. The resulting figures are rep
 **Post-hoc adoption paragraph for the report.** A reviewer judged the v2 absolute criteria badly chosen. The PART_OF and link rules are
 adopted on a relative criterion decided after the v2 development results were seen, and the `APPLIED_TO` criterion was re-declared on the
 E4 scale after its first result. v3 accuracy therefore rests only on the fresh audit.
+
+### Outcome of the enrichment v3 amendment (2026-11-25, same amendment)
+
+- **Adopted:** the v2 PART_OF rule and the narrower-page link guard (post hoc, relative criterion) and single-paper same-sentence `APPLIED_TO` (38 of
+  40 correct, 0.95, on the fresh E4-scale development sample, labels written by a fresh `claude-opus-5-5` subagent and committed before the decision).
+  Config `configs/enrichment-v3.json`; graph `enriched-cb371912e308`; schema `0.4.0-enrichment`.
+- **Fresh E4 v3 audit** (`reports/enrichment-v3/quality.md`): `PART_OF` 39/41 decided (0.951), 9 unclear (0.78 with unclear as incorrect, below 0.80);
+  linking 68/76 (0.895, above 0.85); single-paper `APPLIED_TO` 59/60 (0.983); `MEMBER_OF` 13/13 decided with 13 of 26 unclear.
+- **Limits.** The adjudicator (C) is the same model as B, so on `MEMBER_OF` and `PART_OF` it followed B's cautious reading; the report shows A-alone and
+  B-alone figures. Fewer fresh items existed than requested on three axes (linking 76 of 100, `MEMBER_OF` 26 of 30, `APPLIED_TO` 60 of 100). The v2
+  `MEMBER_OF` result (29/29 with the Claude adjudicator) is 19/30 with unclear counted as incorrect under the non-Claude one; no channel judged any
+  `MEMBER_OF` item incorrect, so the evidence is of ambiguity about what "member of a national node" means, not of wrong edges.
+- **Not changed:** no threshold, class list or guard after the amendment; v1, v2 graphs, audits and v4 untouched.
