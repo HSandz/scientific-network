@@ -179,6 +179,8 @@ def parser() -> argparse.ArgumentParser:
     agent_edges.add_argument("--allow-partial", action="store_true")
     from scientific_network.enrich.cli import add_enrich_parser
     add_enrich_parser(commands)
+    from scientific_network.analysis.fx_cli import add_fx_parser
+    add_fx_parser(commands)
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -447,6 +449,9 @@ def main(argv: list[str] | None = None) -> int:
             result, exit_code = score_agent_review(**{
                 key: value for key, value in vars(args).items() if key != "command"
             })
+        elif args.command == "final-analysis":
+            from scientific_network.analysis.fx_cli import run_final_analysis
+            result, exit_code = run_final_analysis(args)
         elif args.command == "enrich":
             from scientific_network.enrich.cli import run_enrich
             result, exit_code = run_enrich(args)

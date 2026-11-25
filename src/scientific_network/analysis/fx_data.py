@@ -117,7 +117,9 @@ def load_inputs(graph_path: Path, *, expected_sha256: str | None = None, expecte
     for e in by_rel["PART_OF"]:
         classes = sorted({c for r in e["evidence_ids"] for c in evidence[r].get("parent_instance_of", [])})
         part_of.append({"child": e["source_id"], "parent": e["target_id"], "parent_classes": classes,
-                        "ministry": any("ministry" in c.lower() for c in classes)})
+                        # declared rule (config change 2026-11-25): the parent's name contains "ministry"; the class-label variant over-reaches
+                        "ministry": "ministry" in nodes[e["target_id"]]["name"].lower(),
+                        "ministry_by_class_label": any("ministry" in c.lower() for c in classes)})
     counts = {"nodes": len(nodes), "edges": len(graph["edges"]), "n4_simple_edges": n4.ecount(), "n4_edges_before_simplify": n4_multi_edges,
               "papers_with_year": len(paper_year), "papers_by_year": {str(y): sum(1 for v in paper_year.values() if v == y) for y in YEARS}}
     return Inputs(graph["graph_version"], digest, nodes, {"N1": n1, "N2": n2, "N3": n3, "N4": n4}, paper_year, dict(paper_authors), dict(paper_topics),
