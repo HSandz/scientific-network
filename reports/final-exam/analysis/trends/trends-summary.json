@@ -1,0 +1,454 @@
+{
+ "caveats": [
+  "Only two venues (AAAI and IJCAI) are covered, so a trend is a trend in these proceedings, not in the field.",
+  "Venue size changes from 2,240 papers in 2021 to 4,042 in 2025; shares correct for it, raw counts do not.",
+  "Topic labels come from an embedding classifier with known limits; the topic evaluation is human_review_pending / AI-assessed.",
+  "Method, task and dataset labels exist for only part of the papers (about 40%, 28% and 12%); a share is a share of all papers, so low coverage lowers every share.",
+  "All enrichment quality figures (entity, relation and linking precision) are AI-assessed, not human annotation; Wilson intervals cover sampling error only."
+ ],
+ "classes": {
+  "Topic": {
+   "stable": 14,
+   "rising": 1,
+   "declining": 1,
+   "subjects": 16
+  },
+  "Method": {
+   "stable": 53,
+   "emerging": 21,
+   "rising": 5,
+   "declining": 11,
+   "insufficient_data": 864,
+   "subjects": 954
+  },
+  "Task": {
+   "stable": 37,
+   "declining": 4,
+   "rising": 4,
+   "emerging": 7,
+   "insufficient_data": 627,
+   "subjects": 679
+  },
+  "Dataset": {
+   "declining": 5,
+   "stable": 18,
+   "rising": 2,
+   "emerging": 1,
+   "insufficient_data": 345,
+   "subjects": 371
+  }
+ },
+ "examples": {
+  "Topic": {
+   "rising": [
+    {
+     "name": "Multimodal learning",
+     "total": 1702,
+     "base": 367,
+     "recent": 1108,
+     "slope": 0.021440815577372353,
+     "p": 0.007146221922777932
+    }
+   ],
+   "emerging": [],
+   "declining": [
+    {
+     "name": "Probabilistic and Bayesian learning",
+     "total": 168,
+     "base": 66,
+     "recent": 69,
+     "slope": -0.0020609471536398,
+     "p": 0.03320041611330685
+    }
+   ]
+  },
+  "Method": {
+   "rising": [
+    {
+     "name": "Large Language Models (LLMs)",
+     "total": 136,
+     "base": 7,
+     "recent": 126,
+     "slope": 0.0052214253235922225,
+     "p": 0.07148323062416603
+    },
+    {
+     "name": "U-Net",
+     "total": 29,
+     "base": 4,
+     "recent": 22,
+     "slope": 0.0006136827748002519,
+     "p": 0.07089605747422989
+    },
+    {
+     "name": "Graph Contrastive Learning",
+     "total": 31,
+     "base": 6,
+     "recent": 20,
+     "slope": 0.0004886611260869658,
+     "p": 0.021507528846477254
+    },
+    {
+     "name": "Federated Learning",
+     "total": 27,
+     "base": 6,
+     "recent": 18,
+     "slope": 0.00038970021564658976,
+     "p": 0.0678582981334936
+    },
+    {
+     "name": "Answer Set Programming",
+     "total": 17,
+     "base": 3,
+     "recent": 11,
+     "slope": 0.0002850912969015744,
+     "p": 0.01605479457778616
+    }
+   ],
+   "emerging": [
+    {
+     "name": "diffusion models",
+     "total": 149,
+     "base": 0,
+     "recent": 140,
+     "slope": 0.006090170480065052,
+     "p": 0.015154029279052184
+    },
+    {
+     "name": "CLIP",
+     "total": 75,
+     "base": 2,
+     "recent": 66,
+     "slope": 0.0027121343083653807,
+     "p": 0.006026176563718503
+    },
+    {
+     "name": "Mamba",
+     "total": 28,
+     "base": 1,
+     "recent": 27,
+     "slope": 0.0012466865766593625,
+     "p": 0.21631080471409064
+    },
+    {
+     "name": "3D Gaussian Splatting",
+     "total": 24,
+     "base": 0,
+     "recent": 24,
+     "slope": 0.0011700914825603195,
+     "p": 0.15599045244358745
+    },
+    {
+     "name": "GPT-4",
+     "total": 23,
+     "base": 0,
+     "recent": 23,
+     "slope": 0.0009985349282707792,
+     "p": 0.0406292144590303
+    },
+    {
+     "name": "vision-language model",
+     "total": 21,
+     "base": 1,
+     "recent": 20,
+     "slope": 0.0008872156635621777,
+     "p": 0.10754708989908777
+    },
+    {
+     "name": "Segment Anything Model",
+     "total": 20,
+     "base": 0,
+     "recent": 20,
+     "slope": 0.0008675330053344085,
+     "p": 0.0406974118206589
+    },
+    {
+     "name": "Neural Radiance Fields (NeRF)",
+     "total": 20,
+     "base": 0,
+     "recent": 19,
+     "slope": 0.0007657342219416409,
+     "p": 0.08186150045836807
+    }
+   ],
+   "declining": [
+    {
+     "name": "deep neural networks",
+     "total": 100,
+     "base": 40,
+     "recent": 43,
+     "slope": -0.0011042064650677486,
+     "p": 0.00016919863776263845
+    },
+    {
+     "name": "convolutional neural networks",
+     "total": 79,
+     "base": 39,
+     "recent": 32,
+     "slope": -0.0015112191461998474,
+     "p": 0.06586315874555923
+    },
+    {
+     "name": "graph convolutional network",
+     "total": 66,
+     "base": 31,
+     "recent": 28,
+     "slope": -0.0011299265003692108,
+     "p": 0.09501834673065575
+    },
+    {
+     "name": "adversarial training",
+     "total": 63,
+     "base": 27,
+     "recent": 27,
+     "slope": -0.0008134880880589975,
+     "p": 0.022925843585945863
+    },
+    {
+     "name": "generative adversarial networks",
+     "total": 72,
+     "base": 38,
+     "recent": 24,
+     "slope": -0.0018656511076289971,
+     "p": 0.016062983741305204
+    },
+    {
+     "name": "meta-learning",
+     "total": 39,
+     "base": 22,
+     "recent": 13,
+     "slope": -0.0012078522857923574,
+     "p": 0.08465447350186076
+    },
+    {
+     "name": "recurrent neural networks",
+     "total": 29,
+     "base": 13,
+     "recent": 10,
+     "slope": -0.0005004038947089135,
+     "p": 0.03343608559284768
+    },
+    {
+     "name": "BERT",
+     "total": 58,
+     "base": 36,
+     "recent": 10,
+     "slope": -0.0022402905103466554,
+     "p": 0.007076537965639875
+    }
+   ]
+  },
+  "Task": {
+   "rising": [
+    {
+     "name": "Medical Image Segmentation",
+     "total": 36,
+     "base": 7,
+     "recent": 25,
+     "slope": 0.000690320005687227,
+     "p": 0.09379407519730289
+    },
+    {
+     "name": "Visual Question Answering",
+     "total": 30,
+     "base": 5,
+     "recent": 22,
+     "slope": 0.0006071499799162836,
+     "p": 0.09962407851350703
+    },
+    {
+     "name": "Out-of-Distribution Detection",
+     "total": 20,
+     "base": 3,
+     "recent": 15,
+     "slope": 0.00048301311778232645,
+     "p": 0.0472087471724129
+    },
+    {
+     "name": "language modeling",
+     "total": 16,
+     "base": 3,
+     "recent": 11,
+     "slope": 0.0003025307396257676,
+     "p": 0.06651233064986489
+    }
+   ],
+   "emerging": [
+    {
+     "name": "multi-view clustering",
+     "total": 31,
+     "base": 1,
+     "recent": 27,
+     "slope": 0.0010374132639690446,
+     "p": 0.03352603074955775
+    },
+    {
+     "name": "image editing",
+     "total": 15,
+     "base": 1,
+     "recent": 14,
+     "slope": 0.0005336828879001454,
+     "p": 0.1027749661081871
+    },
+    {
+     "name": "Deepfake Detection",
+     "total": 15,
+     "base": 2,
+     "recent": 13,
+     "slope": 0.0004341273200109539,
+     "p": 0.11794589741722225
+    },
+    {
+     "name": "image restoration",
+     "total": 15,
+     "base": 0,
+     "recent": 13,
+     "slope": 0.0005211698187930923,
+     "p": 0.0683050318169273
+    },
+    {
+     "name": "node classification tasks",
+     "total": 16,
+     "base": 2,
+     "recent": 11,
+     "slope": 0.00037437701118728863,
+     "p": 0.03482031640264664
+    },
+    {
+     "name": "Multivariate Time Series Forecasting",
+     "total": 15,
+     "base": 2,
+     "recent": 11,
+     "slope": 0.00040925589663567497,
+     "p": 0.10591448242702246
+    },
+    {
+     "name": "Point Cloud Completion",
+     "total": 15,
+     "base": 2,
+     "recent": 10,
+     "slope": 0.0002856859543503899,
+     "p": 0.03391098624898291
+    }
+   ],
+   "declining": [
+    {
+     "name": "link prediction",
+     "total": 49,
+     "base": 24,
+     "recent": 18,
+     "slope": -0.0009386367140109675,
+     "p": 0.03911410911127892
+    },
+    {
+     "name": "image captioning",
+     "total": 26,
+     "base": 13,
+     "recent": 6,
+     "slope": -0.0008333969631639911,
+     "p": 0.0997951193821627
+    },
+    {
+     "name": "person re-identification",
+     "total": 22,
+     "base": 14,
+     "recent": 6,
+     "slope": -0.0007876114298753798,
+     "p": 0.02762506971007113
+    },
+    {
+     "name": "text classification",
+     "total": 34,
+     "base": 23,
+     "recent": 6,
+     "slope": -0.001416901009255772,
+     "p": 0.008801626339982343
+    }
+   ]
+  },
+  "Dataset": {
+   "rising": [
+    {
+     "name": "nuScenes",
+     "total": 60,
+     "base": 4,
+     "recent": 44,
+     "slope": 0.0016106112818042029,
+     "p": 0.03937970585572905
+    },
+    {
+     "name": "DomainNet",
+     "total": 18,
+     "base": 3,
+     "recent": 11,
+     "slope": 0.0002850912969015744,
+     "p": 0.0987193934968514
+    }
+   ],
+   "emerging": [
+    {
+     "name": "S3DIS",
+     "total": 16,
+     "base": 2,
+     "recent": 12,
+     "slope": 0.0003105573777256688,
+     "p": 0.20848251129163614
+    }
+   ],
+   "declining": [
+    {
+     "name": "ImageNet",
+     "total": 155,
+     "base": 70,
+     "recent": 56,
+     "slope": -0.002782417423108906,
+     "p": 0.0036601817014895372
+    },
+    {
+     "name": "CIFAR-10",
+     "total": 139,
+     "base": 68,
+     "recent": 47,
+     "slope": -0.0030360623649633013,
+     "p": 0.0036704857154322315
+    },
+    {
+     "name": "MNIST",
+     "total": 49,
+     "base": 26,
+     "recent": 16,
+     "slope": -0.0013076979828120622,
+     "p": 0.017280637730904033
+    },
+    {
+     "name": "MuJoCo",
+     "total": 27,
+     "base": 13,
+     "recent": 9,
+     "slope": -0.0005673237926532946,
+     "p": 0.0025696526243776433
+    },
+    {
+     "name": "UCF101",
+     "total": 21,
+     "base": 10,
+     "recent": 7,
+     "slope": -0.00048118047963827387,
+     "p": 0.06134118489381937
+    }
+   ]
+  }
+ },
+ "group_interest": {
+  "groups": 281,
+  "rows": 9165,
+  "organizations": 192,
+  "n1_communities": 89,
+  "kinds": [
+   "Topic",
+   "Method",
+   "Task"
+  ],
+  "note": "datasets are skipped for group interest (12% coverage leaves most cells at 0 or 1 paper)"
+ }
+}
