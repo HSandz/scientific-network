@@ -1,0 +1,52 @@
+# Supplementary, post-hoc, AI-assessed literature-supported precision (WORK-2026-11-26-001).
+# Uses the frozen qa-eval-v1 raw outputs only; no system is run. Frozen with the sample manifest
+# before any evaluator sees an item. Reported next to, never replacing, the graph-agreement scores.
+protocol_version: supplementary-precision-v1
+reason: >-
+  The qa-eval-v1 factual score measures agreement with the graph's edges, not truth. Vector RAG (S2)
+  answered "Which tasks is transformer applied to?" with plausible tasks cited from abstracts and
+  scored 0 because they are not the graph's APPLIED_TO edges. This post-hoc check asks whether each
+  listed item is a correct answer supported by the AAAI/IJCAI 2021-2025 literature shown with it.
+
+inputs:
+  raw_outputs: reports/final-exam/qa-eval-v1/raw-outputs.jsonl
+  raw_outputs_sha256: d55218eb3e73e7393d57f115887e5c743374f633dd9a76aa93e07a8785210273
+  references: data/manifests/qa-benchmark-v1/references-v1.jsonl
+  works_jsonl: data/interim/release-v1/works.jsonl
+
+sample:
+  systems: [S2_vector_rag, S4_multihop]
+  hops: [1, 2]
+  # Listed answers only (number/year answers have no list items).
+  answer_types: [set, ranked_list]
+  max_items_per_system: 60
+  seed: 20261126
+  stratification: round-robin over questions in seeded order; items shuffled within question
+  evidence_rule: >-
+    Papers cited on the item's line; else up to 3 of the system's shown papers whose title+abstract
+    contain every content word of the item; else the first 3 shown papers. Same rule for S2 and S4.
+  blinding: S2 and S4 items interleaved in seeded order under neutral IDs; system names not shown.
+
+judging:
+  question: "Is this item a correct answer to the question, supported by the AAAI/IJCAI 2021-2025 literature shown?"
+  batch_size: 12
+  workdir: /tmp/claude-1000/-home-san-Code-scientific-network/fe9211ba-e3ad-4999-ab6f-a6c482d13ca7/scratchpad/supp-judges
+  cli:
+    claude: /home/san/.local/bin/claude
+    codex: /home/san/.local/bin/codex
+    codex_model_label: "gpt-6.2-sol (9router)"
+  evaluators:
+    A: "fresh isolated Claude Code 2.1.332 (claude -p --output-format json), run outside the repository"
+    B: "fresh isolated codex exec (codex-cli 0.172.0, gpt-6.2-sol via 9router), run outside the repository"
+    C: >-
+      separate fresh codex exec session (same CLI and model as B) on A/B disagreements only. C differs
+      in model family from A but shares B's family, so it is not independent of B. The Gemini CLI
+      (0.26.0) was re-checked on 2026-11-26 and still fails with code 41 (unauthenticated).
+  building_session_judges: false
+
+outputs:
+  manifest: reports/final-exam/qa-eval-v1/supplementary-precision-manifest.json
+  packet: reports/runs/WORK-2026-11-26-001/supp/packet.jsonl
+  run_dir: reports/runs/WORK-2026-11-26-001/supp
+  evaluator_evidence: reports/final-exam/qa-eval-v1/supplementary-precision-evidence.json
+  result: reports/final-exam/qa-eval-v1/supplementary-precision.json

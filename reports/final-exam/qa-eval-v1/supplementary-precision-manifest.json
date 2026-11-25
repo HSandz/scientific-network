@@ -1,0 +1,2077 @@
+{
+  "protocol_version": "supplementary-precision-v1",
+  "post_hoc": true,
+  "ai_assessed": true,
+  "raw_outputs_sha256": "d55218eb3e73e7393d57f115887e5c743374f633dd9a76aa93e07a8785210273",
+  "seed": 20261126,
+  "pool_sizes": {
+    "S2_vector_rag": 112,
+    "S4_multihop": 118
+  },
+  "sampled_per_system": {
+    "S2_vector_rag": 60,
+    "S4_multihop": 60
+  },
+  "evidence_rule_counts": {
+    "S2_vector_rag": {
+      "cited_on_item_line": 60,
+      "shown_paper_mentions_item": 0,
+      "first_shown_papers_no_mention": 0,
+      "no_paper_shown": 0
+    },
+    "S4_multihop": {
+      "cited_on_item_line": 18,
+      "shown_paper_mentions_item": 27,
+      "first_shown_papers_no_mention": 1,
+      "no_paper_shown": 14
+    }
+  },
+  "evaluator_question": "Is this item a correct answer to the question, supported by the AAAI/IJCAI 2021-2025 literature shown?",
+  "items": [
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t024",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing machine translation belong to?",
+      "item_position": 5,
+      "item_text": "Neural machine translation",
+      "cited_paper_ids": [
+        "paper:aaai:2022:21399"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:21399"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-001"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t024",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing machine translation belong to?",
+      "item_position": 0,
+      "item_text": "Molecule caption translation",
+      "cited_paper_ids": [
+        "paper:aaai:2025:31983"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:31983"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-002"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 2,
+      "item_text": "Answer Set Programming",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33619"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-003"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t025",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing image segmentation belong to?",
+      "item_position": 1,
+      "item_text": "Medical image segmentation",
+      "cited_paper_ids": [
+        "paper:aaai:2024:28418",
+        "paper:aaai:2025:32482",
+        "paper:aaai:2022:20068",
+        "paper:aaai:2024:28007"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28418",
+        "paper:aaai:2025:32482",
+        "paper:aaai:2022:20068"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-004"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t042",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which tasks are addressed in IJCAI 2023 papers that use transformer?",
+      "item_position": 0,
+      "item_text": "Visual Question Answering",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:92"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:92"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-005"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 3,
+      "item_text": "Information Retrieval",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16572"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16572"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-006"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t030",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Zhejiang University, excluding Zhejiang University and its direct collaborators?",
+      "item_position": 11,
+      "item_text": "Fudan University",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-007"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 2,
+      "item_text": "Knowledge distillation",
+      "cited_paper_ids": [
+        "paper:aaai:2022:21431"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:21431"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-008"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 5,
+      "item_text": "Deep Q-learning",
+      "cited_paper_ids": [
+        "paper:aaai:2023:26274"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26274"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-009"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 2,
+      "item_text": "Molecular data",
+      "cited_paper_ids": [
+        "paper:aaai:2022:20643"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20643"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-010"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 0,
+      "item_text": "KITTI appears in papers",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:216",
+        "paper:ijcai:2025:85",
+        "paper:aaai:2023:25256"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:216",
+        "paper:ijcai:2025:85",
+        "paper:aaai:2023:25256"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-011"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t034",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use contrastive learning?",
+      "item_position": 7,
+      "item_text": "Richong Zhang",
+      "cited_paper_ids": [
+        "paper:aaai:2022:21428",
+        "paper:aaai:2025:34612"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:21428",
+        "paper:aaai:2025:34612"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-012"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 3,
+      "item_text": "Multivariate Time Series Forecasting",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:34082"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-013"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t031",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Carnegie Mellon University, excluding Carnegie Mellon University and its direct collaborators?",
+      "item_position": 1,
+      "item_text": "Tencent",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-014"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t013",
+      "hops": "1",
+      "answer_type": "ranked_list",
+      "question_text": "Which five organizations does Tsinghua University collaborate with most often, by number of joint papers?",
+      "item_position": 0,
+      "item_text": "Tsinghua Shenzhen International Graduate School",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-015"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 2,
+      "item_text": "Integer Programming",
+      "cited_paper_ids": [
+        "paper:aaai:2022:21218"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:21218"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-016"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t038",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Natural language processing and language models papers published in 2025?",
+      "item_position": 8,
+      "item_text": "ACE04, ACE05, GENIA, and KBP17",
+      "cited_paper_ids": [
+        "paper:aaai:2023:26625"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26625"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-017"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t031",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Carnegie Mellon University, excluding Carnegie Mellon University and its direct collaborators?",
+      "item_position": 6,
+      "item_text": "Peking University",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-018"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 4,
+      "item_text": "Visual Tracking",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2022:127"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-019"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t026",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing recommendation belong to?",
+      "item_position": 3,
+      "item_text": "Learning Path Recommendation",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25630"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25630"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-020"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 1,
+      "item_text": "Long-horizon forecasting literature datasets",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25854"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25854"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-021"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t031",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Carnegie Mellon University, excluding Carnegie Mellon University and its direct collaborators?",
+      "item_position": 0,
+      "item_text": "Tsinghua Shenzhen International Graduate School",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-022"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t013",
+      "hops": "1",
+      "answer_type": "ranked_list",
+      "question_text": "Which five organizations does Tsinghua University collaborate with most often, by number of joint papers?",
+      "item_position": 2,
+      "item_text": "Chinese Academy of Sciences",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-023"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 0,
+      "item_text": "Sequential Recommendation",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33370",
+        "paper:ijcai:2025:346"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-024"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 0,
+      "item_text": "Contrastive learning",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25870",
+        "paper:aaai:2022:20248",
+        "paper:aaai:2021:16447"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25870",
+        "paper:aaai:2022:20248",
+        "paper:aaai:2021:16447"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-025"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 9,
+      "item_text": "node classification",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28773",
+        "paper:aaai:2025:33444",
+        "paper:aaai:2025:34063"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-026"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 3,
+      "item_text": "diffusion models",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32588",
+        "paper:aaai:2025:33819",
+        "paper:ijcai:2024:183"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-027"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t036",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Computer vision papers published in 2023?",
+      "item_position": 4,
+      "item_text": "HRSC2016, UCAS-AOD, and ICDAR2015",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16426"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16426"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-028"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t022",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply diffusion model?",
+      "item_position": 1,
+      "item_text": "Two regeneration datasets spanning content-diverse and style-diverse evaluation used to assess text-to-image models",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32651"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32651"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-029"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t026",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing recommendation belong to?",
+      "item_position": 10,
+      "item_text": "Policy Gradient",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25630"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25630"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-030"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 6,
+      "item_text": "DOTA-v1.0 appears in paper",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:101"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:101"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-031"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 2,
+      "item_text": "Video Captioning",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32221"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32221"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-032"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t037",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Graph machine learning papers published in 2024?",
+      "item_position": 5,
+      "item_text": "Several graph classification benchmarks",
+      "cited_paper_ids": [
+        "paper:ijcai:2022:497"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2022:497"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-033"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t036",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Computer vision papers published in 2023?",
+      "item_position": 6,
+      "item_text": "MNIST and OpenML-155",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29235"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29235"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-034"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 7,
+      "item_text": "Learning correspondences",
+      "cited_paper_ids": [
+        "paper:aaai:2024:28187"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28187"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-035"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t034",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use contrastive learning?",
+      "item_position": 0,
+      "item_text": "Yiyu Shi",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25388",
+        "paper:ijcai:2022:323"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25388",
+        "paper:ijcai:2022:323"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-036"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t035",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use proximal policy optimization?",
+      "item_position": 1,
+      "item_text": "Haiyin Piao",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25864"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25864"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-037"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t043",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which tasks are addressed in AAAI 2024 papers that use graph neural network?",
+      "item_position": 0,
+      "item_text": "Graph Classification",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29648"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29648"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-038"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 2,
+      "item_text": "Modeling graph data",
+      "cited_paper_ids": [
+        "paper:ijcai:2022:270"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2022:270"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-039"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 5,
+      "item_text": "GOT-10k appears in papers",
+      "cited_paper_ids": [
+        "paper:ijcai:2022:127",
+        "paper:aaai:2023:25155"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2022:127",
+        "paper:aaai:2023:25155"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-040"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 8,
+      "item_text": "node classification tasks",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28773",
+        "paper:aaai:2025:33444",
+        "paper:aaai:2025:34063"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-041"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 9,
+      "item_text": "COCO appears in paper",
+      "cited_paper_ids": [
+        "paper:aaai:2022:20397"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20397"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-042"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t038",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Natural language processing and language models papers published in 2025?",
+      "item_position": 0,
+      "item_text": "EAVIT",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:934"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:934"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-043"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 0,
+      "item_text": "causal model",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2023:505"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-044"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 3,
+      "item_text": "Bayesian neural networks",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:607"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:607"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-045"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 0,
+      "item_text": "Multi-Task Learning of Dense Prediction",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25411"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25411"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-046"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 1,
+      "item_text": "Various types of graph datasets",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17211"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17211"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-047"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t031",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Carnegie Mellon University, excluding Carnegie Mellon University and its direct collaborators?",
+      "item_position": 10,
+      "item_text": "Harbin Institute of Technology",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-048"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t025",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing image segmentation belong to?",
+      "item_position": 6,
+      "item_text": "Semi-supervised medical image segmentation",
+      "cited_paper_ids": [
+        "paper:aaai:2024:28007"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28007"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-049"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 2,
+      "item_text": "A dataset named GearFormer",
+      "cited_paper_ids": [
+        "paper:aaai:2025:33812"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33812"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-050"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 4,
+      "item_text": "knowledge distillation",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:98",
+        "paper:aaai:2025:32112",
+        "paper:aaai:2025:35505"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-051"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 0,
+      "item_text": "Various graph classification datasets",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17293"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17293"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-052"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 6,
+      "item_text": "nuScenes",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20007"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-053"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t042",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which tasks are addressed in IJCAI 2023 papers that use transformer?",
+      "item_position": 1,
+      "item_text": "Pedestrian Trajectory Prediction",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:174"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:174"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-054"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 4,
+      "item_text": "Bellman operator",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:35393"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-055"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t037",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Graph machine learning papers published in 2024?",
+      "item_position": 3,
+      "item_text": "Six graph classification datasets",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17303"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17303"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-056"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t037",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Graph machine learning papers published in 2024?",
+      "item_position": 0,
+      "item_text": "Cora, Citeseer, and Pubmed citation network datasets",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17203"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17203"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-057"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 3,
+      "item_text": "Open Graph Benchmark",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:425",
+        "paper:ijcai:2021:214"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-058"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t030",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Zhejiang University, excluding Zhejiang University and its direct collaborators?",
+      "item_position": 2,
+      "item_text": "Xiamen University",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-059"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 7,
+      "item_text": "Bird's Eye View Perception",
+      "cited_paper_ids": [
+        "paper:aaai:2024:28620"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28620"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-060"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t045",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which three topics are most associated with papers that use Atari?",
+      "item_position": 1,
+      "item_text": "Representation Learning",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16880",
+        "paper:aaai:2022:20913",
+        "paper:aaai:2023:26311"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16880",
+        "paper:aaai:2022:20913",
+        "paper:aaai:2023:26311"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-061"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 4,
+      "item_text": "3D Object Detection",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25139"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25139"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-062"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 2,
+      "item_text": "Large Language Models",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28361",
+        "paper:aaai:2024:29540",
+        "paper:aaai:2025:34386"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-063"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 1,
+      "item_text": "Diffusion models",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29395",
+        "paper:aaai:2024:27861"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29395",
+        "paper:aaai:2024:27861"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-064"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t025",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing image segmentation belong to?",
+      "item_position": 5,
+      "item_text": "Classical seeded segmentation approaches",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32686"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32686"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-065"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 4,
+      "item_text": "Monte Carlo tree search",
+      "cited_paper_ids": [
+        "paper:aaai:2024:30059"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:30059"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-066"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t045",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which three topics are most associated with papers that use Atari?",
+      "item_position": 0,
+      "item_text": "Reinforcement Learning",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:476",
+        "paper:aaai:2021:16880",
+        "paper:aaai:2021:17180",
+        "paper:aaai:2023:26311"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:476",
+        "paper:aaai:2021:16880",
+        "paper:aaai:2021:17180"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-067"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 2,
+      "item_text": "USPTO-50K",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:368",
+        "paper:aaai:2021:16131"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-068"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t038",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Natural language processing and language models papers published in 2025?",
+      "item_position": 2,
+      "item_text": "Multi-Modal Grounded Planning",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32455"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32455"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-069"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t031",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Carnegie Mellon University, excluding Carnegie Mellon University and its direct collaborators?",
+      "item_position": 5,
+      "item_text": "Institut national de recherche en sciences et technologies du numérique",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-070"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 13,
+      "item_text": "CIFAR-100",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:425",
+        "paper:aaai:2024:29417",
+        "paper:aaai:2021:17203"
+      ],
+      "evidence_rule": "first_shown_papers_no_mention",
+      "item_id": "sp-071"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 1,
+      "item_text": "generative adversarial networks",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17559",
+        "paper:ijcai:2021:103",
+        "paper:ijcai:2025:842",
+        "paper:ijcai:2024:125",
+        "paper:ijcai:2021:350",
+        "paper:ijcai:2021:293",
+        "paper:ijcai:2022:400",
+        "paper:ijcai:2025:694",
+        "paper:ijcai:2021:479",
+        "paper:ijcai:2021:140",
+        "paper:aaai:2025:34634",
+        "paper:aaai:2021:16316",
+        "paper:aaai:2022:20675",
+        "paper:aaai:2025:33324",
+        "paper:aaai:2021:16425"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17559",
+        "paper:ijcai:2021:103",
+        "paper:ijcai:2025:842"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-072"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t036",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Computer vision papers published in 2023?",
+      "item_position": 8,
+      "item_text": "AGNews, DBPedia, PubMed, and SST-2",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29235"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29235"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-073"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 1,
+      "item_text": "Quantitative Phase Imaging",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32271"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32271"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-074"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t034",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use contrastive learning?",
+      "item_position": 6,
+      "item_text": "Nanqing Dong",
+      "cited_paper_ids": [
+        "paper:aaai:2024:27765",
+        "paper:ijcai:2022:406"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:27765",
+        "paper:ijcai:2022:406"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-075"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t030",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Zhejiang University, excluding Zhejiang University and its direct collaborators?",
+      "item_position": 8,
+      "item_text": "Tsinghua University",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-076"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 7,
+      "item_text": "Hierarchical Reinforcement Learning",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29384"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29384"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-077"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 4,
+      "item_text": "Auxiliary generative models",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:607"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:607"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-078"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 1,
+      "item_text": "Anomaly Detection",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16523",
+        "paper:aaai:2022:20629"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-079"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t013",
+      "hops": "1",
+      "answer_type": "ranked_list",
+      "question_text": "Which five organizations does Tsinghua University collaborate with most often, by number of joint papers?",
+      "item_position": 4,
+      "item_text": "University of Chinese Academy of Sciences",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-080"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t035",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use proximal policy optimization?",
+      "item_position": 8,
+      "item_text": "Bo An",
+      "cited_paper_ids": [
+        "paper:ijcai:2024:30"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2024:30"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-081"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 1,
+      "item_text": "Multimodal Sarcasm Explanation",
+      "cited_paper_ids": [
+        "paper:aaai:2022:21300"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:21300"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-082"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 1,
+      "item_text": "3D Human Pose Estimation",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33112"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-083"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t013",
+      "hops": "1",
+      "answer_type": "ranked_list",
+      "question_text": "Which five organizations does Tsinghua University collaborate with most often, by number of joint papers?",
+      "item_position": 1,
+      "item_text": "Tencent",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-084"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t030",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Zhejiang University, excluding Zhejiang University and its direct collaborators?",
+      "item_position": 3,
+      "item_text": "Beijing National Research Center for Information Science and Technology",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-085"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 0,
+      "item_text": "CLIP",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33050",
+        "paper:ijcai:2025:616",
+        "paper:aaai:2025:35398"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-086"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t035",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use proximal policy optimization?",
+      "item_position": 3,
+      "item_text": "Zhaopeng Meng",
+      "cited_paper_ids": [
+        "paper:aaai:2022:20820"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20820"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-087"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t030",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which organizations collaborate with the collaborators of Zhejiang University, excluding Zhejiang University and its direct collaborators?",
+      "item_position": 9,
+      "item_text": "Shenzhen University",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [],
+      "evidence_rule": "no_paper_shown",
+      "item_id": "sp-088"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 2,
+      "item_text": "image editing",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32901"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-089"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t034",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use contrastive learning?",
+      "item_position": 9,
+      "item_text": "Shaohui Lin",
+      "cited_paper_ids": [
+        "paper:aaai:2025:33180",
+        "paper:ijcai:2021:84"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33180",
+        "paper:ijcai:2021:84"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-090"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t045",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which three topics are most associated with papers that use Atari?",
+      "item_position": 2,
+      "item_text": "Environment/Task Specifics",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:476",
+        "paper:aaai:2024:29241",
+        "paper:aaai:2023:26311"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:476",
+        "paper:aaai:2024:29241",
+        "paper:aaai:2023:26311"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-091"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 0,
+      "item_text": "PIE and JAAD",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:174"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:174"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-092"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t041",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Multimodal learning papers?",
+      "item_position": 1,
+      "item_text": "contrastive learning",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:ijcai:2024:159",
+        "paper:aaai:2024:28361",
+        "paper:aaai:2025:34384"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-093"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 1,
+      "item_text": "singular value decomposition",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26157"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-094"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t035",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use proximal policy optimization?",
+      "item_position": 6,
+      "item_text": "P. B. Sujit",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29043"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29043"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-095"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t024",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing machine translation belong to?",
+      "item_position": 3,
+      "item_text": "Natural language understanding",
+      "cited_paper_ids": [
+        "paper:aaai:2023:26617"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26617"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-096"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 1,
+      "item_text": "Graph-Based Imitation Learning",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29998"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29998"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-097"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t023",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply graph neural network?",
+      "item_position": 10,
+      "item_text": "Sr3D",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16253"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-098"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t035",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use proximal policy optimization?",
+      "item_position": 9,
+      "item_text": "Changmin Yu",
+      "cited_paper_ids": [
+        "paper:aaai:2022:20820"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20820"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-099"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t021",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply transformer?",
+      "item_position": 11,
+      "item_text": "WikiText-103 appears in paper",
+      "cited_paper_ids": [
+        "paper:aaai:2021:17485"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:17485"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-100"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 0,
+      "item_text": "diffusion models",
+      "cited_paper_ids": [
+        "paper:ijcai:2024:251",
+        "paper:aaai:2025:33819",
+        "paper:ijcai:2023:546",
+        "paper:aaai:2025:34194",
+        "paper:aaai:2025:34472",
+        "paper:aaai:2025:33754",
+        "paper:aaai:2025:34829",
+        "paper:ijcai:2024:82",
+        "paper:ijcai:2024:125",
+        "paper:ijcai:2023:201",
+        "paper:ijcai:2025:346",
+        "paper:aaai:2025:34038",
+        "paper:aaai:2025:33996",
+        "paper:aaai:2025:33571",
+        "paper:ijcai:2024:270"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2024:251",
+        "paper:aaai:2025:33819",
+        "paper:ijcai:2023:546"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-101"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t034",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which ten researchers authored the most papers that use contrastive learning?",
+      "item_position": 5,
+      "item_text": "Yawen Wu",
+      "cited_paper_ids": [
+        "paper:aaai:2023:25388",
+        "paper:ijcai:2022:323"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:25388",
+        "paper:ijcai:2022:323"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-102"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t024",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing machine translation belong to?",
+      "item_position": 2,
+      "item_text": "Speech translation",
+      "cited_paper_ids": [
+        "paper:aaai:2025:34785"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:34785"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-103"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 4,
+      "item_text": "Event Causality Identification",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29840"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-104"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t022",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in papers that apply diffusion model?",
+      "item_position": 0,
+      "item_text": "A dataset created using diffusion perturbations to measure fairness in computer vision",
+      "cited_paper_ids": [
+        "paper:aaai:2024:29333"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:29333"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-105"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 5,
+      "item_text": "Node/graph classification and link prediction",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16602"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16602"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-106"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 0,
+      "item_text": "Time Series Forecasting",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:33747",
+        "paper:aaai:2025:34082"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-107"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t025",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing image segmentation belong to?",
+      "item_position": 0,
+      "item_text": "Classical image classification and semantic segmentation tasks",
+      "cited_paper_ids": [
+        "paper:aaai:2022:20834",
+        "paper:aaai:2023:26245"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2022:20834",
+        "paper:aaai:2023:26245"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-108"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t002",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is graph neural network applied to?",
+      "item_position": 4,
+      "item_text": "graph representation learning",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16578",
+        "paper:aaai:2024:29478",
+        "paper:ijcai:2024:535"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-109"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t039",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Reinforcement learning papers?",
+      "item_position": 3,
+      "item_text": "vector quantization",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26061"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-110"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 0,
+      "item_text": "Generative Adversarial Networks",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16438",
+        "paper:aaai:2022:20782",
+        "paper:aaai:2022:20745",
+        "paper:aaai:2024:27861"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16438",
+        "paper:aaai:2022:20782",
+        "paper:aaai:2022:20745"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-111"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 3,
+      "item_text": "Medical Image Segmentation and Generation",
+      "cited_paper_ids": [
+        "paper:aaai:2025:32491"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2025:32491"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-112"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t026",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing recommendation belong to?",
+      "item_position": 11,
+      "item_text": "Tucker Decomposition",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16521"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16521"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-113"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t036",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Computer vision papers published in 2023?",
+      "item_position": 5,
+      "item_text": "PlotQA",
+      "cited_paper_ids": [
+        "paper:aaai:2021:16227"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2021:16227"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-114"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t003",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is diffusion model applied to?",
+      "item_position": 3,
+      "item_text": "image super-resolution",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28746"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-115"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t040",
+      "hops": "2",
+      "answer_type": "ranked_list",
+      "question_text": "Which five methods are used by the most Generative modeling papers?",
+      "item_position": 2,
+      "item_text": "variational autoencoder",
+      "cited_paper_ids": [
+        "paper:ijcai:2025:1008",
+        "paper:aaai:2025:34215",
+        "paper:ijcai:2022:621",
+        "paper:ijcai:2023:160",
+        "paper:ijcai:2025:597",
+        "paper:ijcai:2022:402",
+        "paper:ijcai:2025:842",
+        "paper:aaai:2025:33757",
+        "paper:aaai:2024:28904",
+        "paper:aaai:2022:20665",
+        "paper:aaai:2024:29570",
+        "paper:aaai:2022:20369"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2025:1008",
+        "paper:aaai:2025:34215",
+        "paper:ijcai:2022:621"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-116"
+    },
+    {
+      "system": "S4_multihop",
+      "question_id": "qa-v1-t001",
+      "hops": "1",
+      "answer_type": "set",
+      "question_text": "Which tasks is transformer applied to?",
+      "item_position": 2,
+      "item_text": "Crowd Counting",
+      "cited_paper_ids": [],
+      "evidence_paper_ids": [
+        "paper:aaai:2024:28126"
+      ],
+      "evidence_rule": "shown_paper_mentions_item",
+      "item_id": "sp-117"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t026",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which topics do papers addressing recommendation belong to?",
+      "item_position": 9,
+      "item_text": "Contrastive Learning",
+      "cited_paper_ids": [
+        "paper:ijcai:2022:333",
+        "paper:ijcai:2022:481"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2022:333",
+        "paper:ijcai:2022:481"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-118"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t038",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Natural language processing and language models papers published in 2025?",
+      "item_position": 4,
+      "item_text": "ASP",
+      "cited_paper_ids": [
+        "paper:aaai:2023:26559"
+      ],
+      "evidence_paper_ids": [
+        "paper:aaai:2023:26559"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-119"
+    },
+    {
+      "system": "S2_vector_rag",
+      "question_id": "qa-v1-t037",
+      "hops": "2",
+      "answer_type": "set",
+      "question_text": "Which datasets are used in Graph machine learning papers published in 2024?",
+      "item_position": 4,
+      "item_text": "Fifteen graph classification real-world datasets",
+      "cited_paper_ids": [
+        "paper:ijcai:2021:317"
+      ],
+      "evidence_paper_ids": [
+        "paper:ijcai:2021:317"
+      ],
+      "evidence_rule": "cited_on_item_line",
+      "item_id": "sp-120"
+    }
+  ]
+}
