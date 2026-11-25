@@ -1,11 +1,13 @@
 import { expect, test, type Page } from "@playwright/test";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SCREENSHOT_DIR =
   process.env.NAVIGATOR_SCREENSHOT_DIR ||
-  path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/screenshots-phase0");
+  path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/screenshots");
+const TIMINGS_PATH = path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/load-timings.json");
 
 async function expectChartRendered(page: Page, label: string) {
   const container = page.locator(`[data-chart-label="${label}"]`);
@@ -152,14 +154,41 @@ test.describe("Research Trend Navigator pages (M4)", () => {
     expect(errors).toEqual([]);
   });
 
-  test("9. About page renders E4 intervals, enriched version, and AI-assessed disclosure", async ({ page }) => {
+  test("9. About page renders E4 intervals, Phase 2 QA benchmark results, and disclosures", async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("/?tab=about");
     await expect(page.getByTestId("page-about-data")).toBeVisible({ timeout: 15_000 });
     await expect(page.getByTestId("page-about-data")).toContainText("enriched-cb371912e308");
     await expect(page.getByTestId("page-about-data")).toContainText("AI-assessed");
-    await page.screenshot({ path: path.join(SCREENSHOT_DIR, "08-about-data.png") });
+    await expect(page.getByTestId("page-about-data")).toContainText("qa-eval-v1");
+    await expect(page.getByTestId("page-about-data")).toContainText("0.4273");
+    await expect(page.getByTestId("page-about-data")).toContainText("S4 · Full multi-hop");
+    await page.screenshot({ path: path.join(SCREENSHOT_DIR, "08-about-data.png"), fullPage: true });
     expect(errors).toEqual([]);
+  });
+
+  test("10. Precomputed Navigator dashboard routes load in < 2000ms locally", async ({ page }) => {
+    const routes: Array<{ tab: string; testId: string; readyText: string }> = [
+      { tab: "trends", testId: "page-trends", readyText: "Matching:" },
+      { tab: "groups", testId: "page-groups", readyText: "Organization-Anchored Communities" },
+      { tab: "communities", testId: "page-communities", readyText: "Super-Node" },
+      { tab: "network", testId: "page-network-science", readyText: "igraph average local clustering" },
+    ];
+    // Warm the API/Vite runtime before timing interactive precomputed route switches
+    await page.goto("/?tab=trends");
+    await expect(page.getByTestId("page-trends")).toContainText("Matching:", { timeout: 15_000 });
+
+    const timings: Record<string, number> = {};
+    for (const r of routes) {
+      const t0 = Date.now();
+      await page.getByTestId(`tab-${r.tab}`).click();
+      await expect(page.getByTestId(r.testId)).toContainText(r.readyText, { timeout: 5_000 });
+      const dt = Date.now() - t0;
+      timings[r.tab] = dt;
+      expect(dt).toBeLessThan(2000);
+    }
+    fs.mkdirSync(path.dirname(TIMINGS_PATH), { recursive: true });
+    fs.writeFileSync(TIMINGS_PATH, JSON.stringify({ measured_ms: timings, budget_ms: 2000 }, null, 2) + "\n");
   });
 });

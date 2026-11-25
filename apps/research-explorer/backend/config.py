@@ -69,6 +69,7 @@ class Settings:
     enrichment_summary_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "graph-summary.json"
     enrichment_quality_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "quality.json"
     cooccurrence_path: Path = REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"
+    qa_eval_results_path: Path = REPO_ROOT / "reports" / "final-exam" / "qa-eval-v1" / "results.json"
 
 
 def load_settings() -> Settings:
@@ -215,6 +216,12 @@ def load_settings() -> Settings:
             os.environ.get(
                 "EXPLORER_COOCCURRENCE_PATH",
                 str(REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"),
+            )
+        ),
+        qa_eval_results_path=Path(
+            os.environ.get(
+                "EXPLORER_QA_EVAL_RESULTS_PATH",
+                str(REPO_ROOT / "reports" / "final-exam" / "qa-eval-v1" / "results.json"),
             )
         ),
     )

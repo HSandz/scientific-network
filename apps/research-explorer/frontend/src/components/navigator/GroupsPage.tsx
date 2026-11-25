@@ -192,9 +192,16 @@ export const GroupsPage: React.FC<GroupsPageProps> = ({ selectedGroupId, onSelec
                   </div>
                   {gd.description && (
                     <div className="p-2 rounded bg-ground border border-rule space-y-1">
-                      <span className="text-[10px] uppercase tracking-wide text-faint block">
-                        {gd.description.provenance_label || "Graph profile"}
-                      </span>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="text-[10px] uppercase tracking-wide text-faint">
+                          {gd.description.provenance_label || "Graph profile"}
+                        </span>
+                        {gd.description.source_kind !== "wikipedia" && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-raised text-muted">
+                            AI-generated from graph data
+                          </span>
+                        )}
+                      </div>
                       <p className="text-ink">{gd.description.description}</p>
                       {gd.description.wikipedia_url && (
                         <p className="text-[10px] text-faint">

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
 import { CommunityNodeItem } from "../../types/navigator";
 import { Panel, Table } from "../analytics/DashboardPrimitives";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface CommunitiesPageProps {
   selectedCommunityId: string | null;
@@ -256,11 +257,15 @@ export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
                   {detail.centrality_rating !== null && detail.centrality_rating !== undefined && (
                     <span>· Centrality {detail.centrality_rating}/10</span>
                   )}
+                  <MetricTooltip
+                    label="Leiden & Centrality"
+                    definition="Multi-resolution Leiden communities on paper co-occurrence and coauthorship networks; centrality rating (1–10) reflects GraphRAG summary importance."
+                  />
                 </div>
 
-                {detail.ai_generated_label && (
+                {(detail.ai_generated_label || detail.summary) && (
                   <span className="inline-block px-2 py-0.5 rounded bg-raised font-medium">
-                    {detail.ai_generated_label}
+                    {detail.ai_generated_label || "AI-generated from graph data"}
                   </span>
                 )}
 

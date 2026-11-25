@@ -207,13 +207,18 @@ export const TrendsPage: React.FC<TrendsPageProps> = ({ onOpenSubject }) => {
         <>
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
             <Panel title={`${kind} Annual Paper Share (${data.period})`}>
-              <div className="text-xs text-muted mb-2 flex items-center gap-3">
+              <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-3">
                 <MetricTooltip
-                  label="Annual share definition"
+                  label="Annual share"
                   definition={data.metric_definitions?.share?.definition || "Fraction of year papers mentioning subject."}
                   denominator={data.metric_definitions?.share?.denominator}
                   network={data.metric_definitions?.share?.network}
                   graphVersion={data.metric_definitions?.share?.graph_version}
+                />
+                <MetricTooltip
+                  label="Period Δ (pp) & Leaderboard p"
+                  definition="Percentage-point share shift from base year to recent year; Rising/Declining require descriptive linear slope p <= 0.10 without claiming causal forecasting."
+                  network={kind}
                 />
                 <span>· Matching: {data.total_matching.toLocaleString()}</span>
               </div>

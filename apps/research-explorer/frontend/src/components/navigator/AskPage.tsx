@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
 import { AskResult } from "../../types/navigator";
 import { Panel } from "../analytics/DashboardPrimitives";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface AskPageProps {
   onOpenNode360: (id: string) => void;
@@ -354,16 +355,22 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
                   {result?.ai_generated_label || "AI-generated from graph data"}
                 </span>
                 {result?.faithfulness && (
-                  <span
-                    data-testid="faithfulness-badge"
-                    className={`px-2 py-0.5 rounded font-medium ${
-                      result.faithfulness.passed
-                        ? "bg-[var(--pill-positive-bg)] text-[var(--pill-positive-ink)]"
-                        : "bg-[var(--pill-warning-bg)] text-[var(--pill-warning-ink)]"
-                    }`}
-                  >
-                    Faithfulness: {result.faithfulness.passed ? "Verified" : `Warnings (${result.faithfulness.errors.length})`}
-                  </span>
+                  <>
+                    <span
+                      data-testid="faithfulness-badge"
+                      className={`px-2 py-0.5 rounded font-medium ${
+                        result.faithfulness.passed
+                          ? "bg-[var(--pill-positive-bg)] text-[var(--pill-positive-ink)]"
+                          : "bg-[var(--pill-warning-bg)] text-[var(--pill-warning-ink)]"
+                      }`}
+                    >
+                      Faithfulness: {result.faithfulness.passed ? "Verified" : `Warnings (${result.faithfulness.errors.length})`}
+                    </span>
+                    <MetricTooltip
+                      label="Faithfulness check"
+                      definition="Verifies every number, bracketed paper/entity ID, and named entity in the answer appears verbatim in the retrieved graph trace."
+                    />
+                  </>
                 )}
               </div>
               {streamedText ? (

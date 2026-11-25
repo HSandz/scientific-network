@@ -106,10 +106,14 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
             <Panel title="Annual Share & Descriptive Trend">
               {d.trend ? (
                 <>
-                  <div className="text-xs text-muted mb-2 flex flex-wrap gap-3">
+                  <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-3">
                     <span>Class: <strong className="text-ink">{d.trend.class}</strong></span>
                     <span>Total papers: <strong className="text-ink">{d.trend.total_papers.toLocaleString()}</strong></span>
                     <span>Recent share: <strong className="text-ink">{pct(d.trend.recent_share, 2)}</strong></span>
+                    <MetricTooltip
+                      label="Share & Growth"
+                      definition="Annual share of main-track papers linked to this subject; Period delta & slope are descriptive 2021–2025 measures."
+                    />
                   </div>
                   <EChartBox option={trendOption} label="Subject annual share chart" height={210} />
                 </>
@@ -121,9 +125,16 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
             <Panel title="Summary">
               {d.summary ? (
                 <div className="space-y-2 text-xs">
-                  <span className="inline-block px-2 py-0.5 rounded bg-raised text-ink font-medium">
-                    {d.summary.label}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="inline-block px-2 py-0.5 rounded bg-raised text-ink font-medium">
+                      {d.summary.label}
+                    </span>
+                    {d.summary.source_kind !== "wikipedia" && (
+                      <span className="inline-block px-2 py-0.5 rounded border border-border text-[11px] text-muted">
+                        AI-generated from graph data
+                      </span>
+                    )}
+                  </div>
                   <p className="text-ink leading-relaxed">{d.summary.text}</p>
                   {d.summary.wikipedia_url && (
                     <p className="text-[11px] text-faint">

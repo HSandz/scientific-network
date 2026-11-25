@@ -105,6 +105,13 @@ Committed BEFORE running any `split == "test"` question (run-once policy):
   - `S1_slm_only`: `3/0/87` (`0.0333`, consistent `1/45 = 0.0222`)
 - **Latency cache disclosure**: Across `483` logged test LLM calls (`llm-calls.jsonl`), `16` calls hit the `qa-eval-v1` cache because on the 15 global questions `S4_multihop` routed `7` questions to `global` (reusing S3's global map-reduce cache from the same question) and `8` questions to `multi_hop`, explaining S4's lower mean global latency (`20.778s`, first-event `2.912s`) vs S3's uncached global map-reduce (`48.275s`).
 
+### Phase 3 — UI Polish, About Benchmark Results, Load Timing & Demo Script (§6.4–6.5)
+
+- **Benchmark results in About Data (`backend/config.py`, `navigator_service.py`, `AboutDataPage.tsx`)**: Exposed `reports/final-exam/qa-eval-v1/results.json` via `get_about_data()` and rendered a full QA Benchmark Comparison panel (factual S1–S4 table by hop class + 95% bootstrap CIs, automatic faithfulness + AI-assessed citation validity with 95% Wilson CIs & κ=`0.6199`, AI-assessed global pairwise table & κ=`0.7988`, and all required AI-assessed / evaluator-independence / coverage disclosures).
+- **Metric tooltips & `"AI-generated from graph data"` badges**: Audited and completed `MetricTooltip` definitions across `TrendsPage`, `SubjectPage`, `GroupsPage`, `CommunitiesPage`, `NetworkSciencePage`, `Node360Page`, `AskPage`, and `AboutDataPage`, and ensured non-Wikipedia generated entity/community descriptions and Ask answers display `"AI-generated from graph data"`.
+- **Local dashboard load timing (`navigator.spec.ts` Test 10 -> `load-timings.json`)**: Precomputed routes rendered in `< 2000ms` (`trends: 129ms`, `groups: 1541ms`, `communities: 66ms`, `network: 65ms`).
+- **Demo script draft (`docs/final-exam/demo-script-draft.md`)**: 5–7 minute walkthrough using strictly the 7 cached scripted demos (`demo-01`..`demo-07`, disjoint from test) plus live-demo cached fallback plan.
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |

@@ -108,12 +108,21 @@ export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNo
       {data && (
         <>
           <Panel title="S1: Small-World Analysis Against Both Null Baselines">
-            <div className="text-xs text-muted mb-2">
+            <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-3">
               <MetricTooltip
-                label="Small-world formula & σ"
+                label="Small-world σ = (C/C_rand)/(L/L_rand)"
                 definition={defs.small_world_sigma?.definition || "(C / C_rand) / (L / L_rand)"}
                 denominator={defs.small_world_sigma?.denominator}
                 network={defs.small_world_sigma?.network}
+              />
+              <MetricTooltip
+                label="Clustering C & Path Length L"
+                definition="C is igraph average local clustering (mode='zero') on the largest connected component; L is unweighted mean shortest path length."
+                denominator="Largest connected component (LCC)"
+              />
+              <MetricTooltip
+                label="PageRank & Degree"
+                definition="Weighted/unweighted PageRank damping=0.85 on canonical graph networks N1–N4 alongside observed vertex degree."
               />
             </div>
             <div className="overflow-x-auto">

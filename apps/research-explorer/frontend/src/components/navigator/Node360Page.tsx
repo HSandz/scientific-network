@@ -4,6 +4,7 @@ import { navigatorApi } from "../../lib/navigatorApi";
 import { useExplorerStore } from "../../stores/useExplorerStore";
 import { Panel, Table } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface Node360PageProps {
   nodeId: string | null;
@@ -88,9 +89,16 @@ export const Node360Page: React.FC<Node360PageProps> = ({ nodeId, onSelectNode }
             <Panel title="Properties & Enrichment">
               {d.description && (
                 <div className="mb-3 p-2.5 rounded bg-ground border border-rule text-xs space-y-1.5">
-                  <span className="inline-block px-1.5 py-0.5 rounded bg-raised font-medium">
-                    {d.description.label}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="inline-block px-1.5 py-0.5 rounded bg-raised font-medium">
+                      {d.description.label}
+                    </span>
+                    {!d.description.wikipedia_url && (
+                      <span className="inline-block px-1.5 py-0.5 rounded border border-border text-[10px] text-muted">
+                        AI-generated from graph data
+                      </span>
+                    )}
+                  </div>
                   <p className="text-ink leading-relaxed">{d.description.text}</p>
                   {d.description.wikipedia_url && (
                     <p className="text-[11px] text-faint">
@@ -115,6 +123,12 @@ export const Node360Page: React.FC<Node360PageProps> = ({ nodeId, onSelectNode }
             </Panel>
 
             <Panel title="Centrality & Ranking Metrics">
+              <div className="text-xs text-muted mb-2">
+                <MetricTooltip
+                  label="PageRank & Degree"
+                  definition="Node PageRank rank (damping=0.85) and observed unweighted degree across networks N1–N4."
+                />
+              </div>
               {Object.keys(d.metrics || {}).length === 0 ? (
                 <p className="text-xs text-muted">Not in top-20 summary rankings (live neighbor count: {(d.neighbors || []).length}).</p>
               ) : (

@@ -1230,6 +1230,7 @@ class NavigatorService:
     def get_about_data(self) -> dict[str, Any]:
         rag_summary = _read_json(self.rag_dir / "index-summary.json") or {}
         rag_stats = _read_json(self.rag_dir / "report-stats.json") or {}
+        qa_eval = _read_json(self.settings.qa_eval_results_path) or None
         return {
             "versions": {
                 "v4_base": self.enrichment_summary.get("base_graph_version", "release-d3c788c3114a"),
@@ -1243,6 +1244,7 @@ class NavigatorService:
             "counts_v1_v2_v3": self.enrichment_quality.get("counts_v1_v2_v3", {}),
             "rag_index": rag_summary,
             "rag_reports": rag_stats,
+            "qa_eval_v1": qa_eval,
             "runtime_model": {
                 "model_id": "Qwen/Qwen3.5-4B (Q4_K_M, llama.cpp)",
                 "temperature": 0.0,
@@ -1250,8 +1252,9 @@ class NavigatorService:
                 "embeddings": "sentence-transformers/all-MiniLM-L6-v2",
             },
             "ai_assessment_disclosure": (
-                "All quality estimates (Wilson 95% confidence intervals) and GraphRAG summaries in this release "
-                "are AI-assessed or AI-generated from graph data. They are not human annotations or independently validated gold labels."
+                "All quality estimates (Wilson 95% confidence intervals), citation validity, global pairwise wins, "
+                "and GraphRAG summaries in this release are AI-assessed or AI-generated from graph data. "
+                "They are not human annotations or independently validated gold labels."
             ),
         }
 
