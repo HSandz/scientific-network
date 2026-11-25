@@ -1423,3 +1423,28 @@ fewer), C adjudicates, unclear is excluded from the primary figure and counted a
 and packets are frozen, hashed and committed before any judgement; the building session does not judge. Evaluator working
 directories, Codex sessions and subagent transcripts are archived immediately. Unchanged axes are carried over from v1 and
 labeled as such.
+
+### Outcome of the enrichment v2 criteria (2026-11-25, same amendment)
+
+Measured on development material outside every v1-audited item, with labels frozen and committed before each rule was applied
+(`reports/enrichment-v2/dev/`, `reports/enrichment-v2/*-check.json`, `relation-rule-decision.json`):
+
+| Rule | Declared criterion | Result | Decision |
+| --- | --- | --- | --- |
+| PART_OF v2 | kept precision ≥0.85 and ≥70% of correct edges kept | 0.778 (28 of 36 decided), 28 of 29 correct edges kept | **not adopted**; v1 `PART_OF` stays |
+| `MEMBER_OF` | ≥15 edges and ≥0.85 of up to 20 candidates correct | 85 edges; 18 of 18 decided (2 unclear) | **adopted** as an additional predicate |
+| single paper, same sentence, `APPLIED_TO` | dev same-sentence precision ≥0.80 and ≥0.15 above cross-sentence | 0.452 against 0.258 | **not adopted** |
+| single paper, same sentence, `EVALUATED_ON` | ≥0.80 on a supplementary dev sample | 23 of 24 (pool had 24, not 30) | **adopted**: 27 new edges |
+| linking guard (narrower page) | kept accuracy ≥0.85 and ≥65% of correct links kept | 0.821 (46 of 56), 46 of 47 correct kept | **not adopted**; v1 links stay |
+
+Process notes. (1) Before any label existed, the PART_OF rule was changed twice because the unlabeled reason counts showed it over-fired:
+the type-order check and the consortium check were restricted to the parent's direct instance-of classes (closure made a ministry a
+"department" and Fraunhofer a "voluntary association"). Both changes are in the git history before the labels. (2) The `APPLIED_TO`
+criterion compares paper-level precision with the conservative dev reference labels (84 relations labeled against 182 extracted), a
+different scale from the E4 abstract-support rubric; an informational sample of 30 on the E4-style rubric scored 29 of 30 after the decision
+and was not used for it. Whether to re-declare an `APPLIED_TO` criterion on the E4-style scale is a separate user decision that would need a
+new amendment and new development labels. (3) `MEMBER_OF` was adopted on its own criterion while PART_OF v2 failed, so the 85 pairs carry
+both predicates in the v2 graph; `docs/graph-schema.md` says so. (4) The linking development errors were mostly exact-title pages of a
+different sense (Distributed learning, Crossover, Data augmentation), which a title-token guard cannot catch; a lead-based guard is an open
+option. (5) The v2 graph is `enriched-827be09bc987`, built from the cached v1 inputs (no SLM run); rebuilding v1 with the same code reproduces
+`enriched-c0f7d1dd4abd` exactly.
