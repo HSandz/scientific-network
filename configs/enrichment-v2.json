@@ -6,6 +6,8 @@
  "decision": "docs/decisions.md D042 amendment 'Enrichment v2: rules and acceptance criteria declared before measurement' (2026-11-25)",
  "disclosure": "Rules were motivated by v1 E4 audit findings; they were designed and measured on material outside the v1 audited items (see the amendment).",
  "base_config": "configs/enrichment-v1.json",
+ "node_threshold_papers": 3,
+ "merge_threshold": 0.97,
  "inherits_unchanged": [
   "text",
   "encoder",

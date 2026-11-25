@@ -6,7 +6,7 @@ from hashlib import sha256
 from pathlib import Path
 
 from scientific_network.enrich.finalize import finalize_entities
-from scientific_network.enrich.graph5 import build_enriched_graph, enriched_counts, validate_enriched
+from scientific_network.enrich.graph5 import (SCHEMA_VERSION, SCHEMA_VERSION_V2, build_enriched_graph, enriched_counts, validate_enriched)
 from scientific_network.enrich.k1 import read_jsonl, write_jsonl
 from scientific_network.enrich.link import apply_threshold, fetch_page_links, link_entities
 from scientific_network.enrich.relations import (entity_relation_edges, paper_entity_edges, part_of_edges, related_to_edges)
@@ -77,8 +77,13 @@ def frozen_v4_validator(quality_config: Path):
 
 
 def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wikidata: Path, org_wikipedia: Path, base_graph_path: Path,
-                         fetch_manifest: Path, output_dir: Path, config: dict, *, quality_config: Path | None = None) -> dict:
+                         fetch_manifest: Path, output_dir: Path, config: dict, *, quality_config: Path | None = None,
+                         org_facts_path: Path | None = None, v2_manifest: Path | None = None) -> dict:
+    """Build the enriched graph. ``config["rules"]`` (enrichment v2) switches on the rules that passed their declared criteria;
+    without it the build reproduces v1 exactly."""
     version = config["config_version"]
+    rules = config.get("rules") or {}
+    v2 = bool(rules)
     min_papers = config["node_threshold_papers"]
     texts = {r["id"]: r["text"] for r in read_jsonl(texts_path)}
     mentions = read_jsonl(e2_dir / "mentions.jsonl")
@@ -94,7 +99,8 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
         read_jsonl(e2_dir / "paper-relations.jsonl"), lookup, mentions, texts,
         min_papers={"APPLIED_TO": config["relation_thresholds"]["applied_to_min_papers"],
                     "EVALUATED_ON": config["relation_thresholds"]["evaluated_on_min_papers"]},
-        method_version=version, graph_version=graph_version)
+        method_version=version, graph_version=graph_version,
+        single_paper_same_sentence=(frozenset(r for r, on in rules["single_paper_same_sentence"]["relations"].items() if on) if v2 else None))
     base = json.loads(base_graph_path.read_text(encoding="utf-8"))
     org_ids = {n["id"] for n in base["nodes"] if n["label"] == "Organization"}
     wikidata = json.loads(org_wikidata.read_text())
@@ -110,6 +116,19 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
     fetch_rows = {"retrieved_at": max((r["retrieved_at"] for r in sparql), default=None),
                   "sha256": sha256("".join(sorted(r["sha256"] for r in sparql)).encode()).hexdigest()}
     part_edges, part_ev = part_of_edges(wikidata["matches"], org_ids, parent_nodes, fetch_rows, method_version=version, graph_version=graph_version)
+    member_edges, member_ev, member_decisions = [], [], None
+    part_rule = rules.get("part_of") or {}
+    if v2 and part_rule.get("member_of", {}).get("adopted"):
+        from scientific_network.enrich.org_facts import statement_response_index
+        from scientific_network.enrich.part_of_rule import apply_rule, member_of_edges
+        facts = json.loads(org_facts_path.read_text(encoding="utf-8"))
+        member_decisions = apply_rule(part_edges, {e["id"]: e for e in part_ev}, facts, part_rule)
+        statements = statement_response_index(v2_manifest, v2_manifest.parent)
+        member_edges, member_ev = member_of_edges(part_edges, {e["id"]: e for e in part_ev}, member_decisions["decisions"], facts, statements,
+                                                  part_rule["id"] + ":consortium_or_association", method_version=version, graph_version=graph_version)
+        # PART_OF stays as in v1 when its rule is not adopted (declared criterion failed); only an adopted rule would filter it
+        if part_rule.get("adopted"):
+            raise NotImplementedError("PART_OF v2 filtering was not adopted and is not built")
     used_parents = {e["target_id"] for e in part_edges}
     parent_list = sorted((p for p in parent_nodes.values() if p["id"] in used_parents), key=lambda n: n["id"])
     page_links = {t: set(v) for t, v in json.loads((link_dir / "page-links.json").read_text()).items()}
@@ -119,9 +138,10 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
         paper_entities[e["source_id"]].add(e["target_id"])
     related_edges, related_ev, related_stats = related_to_edges(linked, page_links, paper_entities, min_papers=config["relation_thresholds"]["related_to_min_cooccurring_papers"],
                                                                 method_version=version, graph_version=graph_version)
-    enrichment = {"nodes": entity_nodes + parent_list, "edges": paper_edges + rel_edges + part_edges + related_edges,
-                  "evidence": paper_ev + rel_ev + part_ev + related_ev, "node_enrichments": additions}
-    graph = build_enriched_graph(base, enrichment, base_file_sha256=sha256(base_graph_path.read_bytes()).hexdigest(), enrichment_version=version)
+    enrichment = {"nodes": entity_nodes + parent_list, "edges": paper_edges + rel_edges + part_edges + member_edges + related_edges,
+                  "evidence": paper_ev + rel_ev + part_ev + member_ev + related_ev, "node_enrichments": additions}
+    graph = build_enriched_graph(base, enrichment, base_file_sha256=sha256(base_graph_path.read_bytes()).hexdigest(), enrichment_version=version,
+                                 schema_version=SCHEMA_VERSION_V2 if v2 else SCHEMA_VERSION)
     output_dir.mkdir(parents=True, exist_ok=True)
     graph_path = output_dir / "graph.json"
     graph_path.write_text(json.dumps(graph, ensure_ascii=False, sort_keys=True), encoding="utf-8")
@@ -129,6 +149,7 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
     summary = {"graph_version": graph["graph_version"], "base_graph_version": graph["base_graph_version"], "enrichment_version": version,
                "graph_sha256": sha256(graph_path.read_bytes()).hexdigest(), "base_graph_file_sha256": graph["base_graph_file_sha256"],
                "counts": enriched_counts(graph), "relation_stats": {**rel_stats, **related_stats},
+               **({"member_of_decisions": member_decisions["counts"], "rules": {k: (v.get("adopted") if k != "single_paper_same_sentence" else v["relations"]) for k, v in rules.items()}} if member_decisions else {}),
                "nodes_below_threshold_after_merge": final["below_threshold"], "validation": {"scope": "structural_only", "errors": errors[:50], "error_count": len(errors),
                "status": "failed" if errors else "passed"}, "semantic_accuracy": "not_measured_by_validation"}
     (output_dir / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False, sort_keys=True) + "\n")

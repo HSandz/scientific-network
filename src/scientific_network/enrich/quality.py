@@ -417,6 +417,25 @@ def recall_scores(listed: dict, pools: dict[str, list[dict]]) -> dict:
     return out
 
 
+def type_conflicts(graph: dict) -> dict:
+    """Entity keys that appear under more than one type (Method/Task/Dataset): key, the types and the paper counts of each node.
+
+    Typing is not changed by this report (D042 amendment 2026-11-25); it lists the cases so a rule can be designed on development material.
+    """
+    by_key: dict[str, list[dict]] = defaultdict(list)
+    for n in graph["nodes"]:
+        if n["label"] in TYPES:
+            by_key[n["properties"]["key"]].append({"type": n["label"], "node_id": n["id"], "name": n["name"],
+                                                   "paper_count": n["properties"]["paper_count"], "linked": bool(n["properties"].get("linked"))})
+    rows = [{"key": key, "types": sorted(x["type"] for x in nodes), "nodes": sorted(nodes, key=lambda x: (-x["paper_count"], x["type"])),
+             "papers_total": sum(x["paper_count"] for x in nodes)}
+            for key, nodes in by_key.items() if len({x["type"] for x in nodes}) > 1]
+    rows.sort(key=lambda r: (-r["papers_total"], r["key"]))
+    pairs = Counter("+".join(r["types"]) for r in rows)
+    return {"graph_version": graph["graph_version"], "keys_with_type_conflict": len(rows), "by_type_combination": dict(sorted(pairs.items())),
+            "note": "reported only; typing is unchanged", "conflicts": rows}
+
+
 def structure_and_coverage(graph: dict, validation_errors: list[str]) -> dict:
     nodes = [n for n in graph["nodes"] if n["label"] in TYPES]
     by_qid: dict[tuple[str, str], list[str]] = defaultdict(list)

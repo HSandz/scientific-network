@@ -77,6 +77,8 @@ def add_enrich_parser(commands) -> None:
     build.add_argument("--manifest", type=Path, default=Path("data/raw/enrichment-v1/fetch-manifest.jsonl"))
     build.add_argument("--quality-config", type=Path, default=Path("configs/quality-release-v1.yaml"),
                        help="v4 release quality config for the frozen structural validator")
+    build.add_argument("--org-facts", type=Path, help="enrichment v2: Wikidata facts (P31, qualifiers, reverse statements) from the v2 fetch")
+    build.add_argument("--v2-manifest", type=Path, help="enrichment v2: fetch manifest of the v2 raw store")
     build.add_argument("--output-dir", type=Path, required=True)
     load = stages.add_parser("load-graph", help="Phase 4: import v5-enriched into neo4j-enriched (bolt port 7690 only)")
     load.add_argument("--graph", type=Path, required=True)
@@ -108,6 +110,9 @@ def add_enrich_parser(commands) -> None:
     cooc.add_argument("--entity", help="entity id, e.g. method:Q...; prints its partners of --partner-type")
     cooc.add_argument("--partner-type", choices=["Method", "Task", "Dataset"])
     cooc.add_argument("--min-papers", type=int, default=1)
+    tc = stages.add_parser("type-conflicts", help="list entity keys that carry more than one type (no typing change)")
+    tc.add_argument("--graph", type=Path, required=True)
+    tc.add_argument("--output", type=Path, required=True)
     pv2 = stages.add_parser("audit-partof-v2", help="Build PART_OF packet v2 (same 50 frozen items, Wikidata statement shown) and its receipt")
     pv2.add_argument("--audit-dir", type=Path, required=True)
     pv2.add_argument("--graph", type=Path, required=True)
@@ -156,8 +161,15 @@ def run_enrich(args) -> tuple[dict, int]:
         from scientific_network.enrich.e3 import run_build_enrichment
         summary = run_build_enrichment(args.e2_dir, args.link_dir, args.texts, args.org_wikidata, args.org_wikipedia, args.base_graph,
                                        args.manifest, args.output_dir, _json.loads(args.config.read_text()),
-                                       quality_config=args.quality_config)
+                                       quality_config=args.quality_config, org_facts_path=args.org_facts, v2_manifest=args.v2_manifest)
         return summary, 0 if summary["validation"]["status"] == "passed" else 1
+    if args.enrich_command == "type-conflicts":
+        import json as _json
+        from scientific_network.enrich.quality import type_conflicts
+        report = type_conflicts(_json.loads(args.graph.read_text(encoding="utf-8")))
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(_json.dumps(report, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        return {k: v for k, v in report.items() if k != "conflicts"}, 0
     if args.enrich_command == "load-graph":
         from scientific_network.enrich.load5 import build as load_enriched
         return load_enriched(args.graph, args.report), 0

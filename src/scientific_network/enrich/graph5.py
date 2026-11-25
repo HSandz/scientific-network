@@ -22,10 +22,13 @@ RELATION_SPEC = {  # relation -> (source labels, target labels, evidence kind)
     "APPLIED_TO": ({"Method"}, {"Task"}, "extracted"),
     "EVALUATED_ON": ({"Method", "Task"}, {"Dataset"}, "extracted"),
     "PART_OF": ({"Organization"}, {"Organization"}, "wikidata"),
+    "MEMBER_OF": ({"Organization"}, {"Organization"}, "wikidata"),  # enrichment v2: member of a consortium, association or group
     "RELATED_TO": ({"Method", "Task"}, {"Method", "Task"}, "aggregated"),
 }
 MIN_SUPPORT = {"APPLIED_TO": 2, "EVALUATED_ON": 2, "RELATED_TO": 3}
 SCHEMA_VERSION = "0.2.0-enrichment"
+SCHEMA_VERSION_V2 = "0.3.0-enrichment"  # adds MEMBER_OF and the optional support_rule property
+SUPPORT_RULES = ("two_or_more_papers", "single_paper_same_sentence")
 V4_EVIDENCE_KINDS = ("observed", "inferred_topic", "curated_taxonomy", "derived")
 V4_LAYER_KEYS = ("nodes", "edges", "evidence", "affiliation_observations")
 
@@ -43,7 +46,8 @@ def v4_layer_sha256(graph: dict) -> str:
     return digest.hexdigest()
 
 
-def build_enriched_graph(base: dict, enrichment: dict, *, base_file_sha256: str, enrichment_version: str) -> dict:
+def build_enriched_graph(base: dict, enrichment: dict, *, base_file_sha256: str, enrichment_version: str,
+                         schema_version: str = SCHEMA_VERSION) -> dict:
     """Combine the v4 graph dict with ``enrichment`` = {nodes, edges, evidence, node_enrichments}."""
     layer_sha = v4_layer_sha256(base)
     payload = sha256(layer_sha.encode() + canonical([enrichment["nodes"], enrichment["edges"]])).hexdigest()[:12]
@@ -51,7 +55,7 @@ def build_enriched_graph(base: dict, enrichment: dict, *, base_file_sha256: str,
     edges = [{**e, "graph_version": version} for e in enrichment["edges"]]
     # edge IDs do not contain the graph version, so they stay valid after the version is stamped
     return {
-        "schema_version": SCHEMA_VERSION, "graph_version": version, "base_graph_version": base["graph_version"],
+        "schema_version": schema_version, "graph_version": version, "base_graph_version": base["graph_version"],
         "base_graph_file_sha256": base_file_sha256, "base_layer_sha256": layer_sha, "enrichment_version": enrichment_version,
         "is_synthetic": False,
         "nodes": base["nodes"] + enrichment["nodes"], "edges": base["edges"] + edges,
@@ -89,7 +93,7 @@ def node_id_for(node: dict) -> str:
 def validate_enriched(graph: dict, *, base_validator=None) -> list[str]:
     """Structural checks for the enrichment layer and for the integrity of the v4 layer. Not a semantic accuracy claim."""
     errors: list[str] = []
-    if graph.get("schema_version") != SCHEMA_VERSION:
+    if graph.get("schema_version") not in (SCHEMA_VERSION, SCHEMA_VERSION_V2):
         errors.append(f"unexpected schema_version {graph.get('schema_version')!r}")
     base, enrich = split_layers(graph)
     if v4_layer_sha256(base) != graph.get("base_layer_sha256"):
@@ -133,6 +137,17 @@ def validate_enriched(graph: dict, *, base_validator=None) -> list[str]:
             errors.append(f"{edge['edge_id']}: evidence missing or unresolved")
         props = edge.get("properties", {})
         minimum = MIN_SUPPORT.get(edge["relation"])
+        rule = props.get("support_rule")
+        if rule is not None and rule not in SUPPORT_RULES:
+            errors.append(f"{edge['edge_id']}: unknown support_rule {rule!r}")
+        if rule == "single_paper_same_sentence":  # enrichment v2: one paper, both endpoints in one sentence
+            minimum = 1
+            if edge["relation"] not in ("APPLIED_TO", "EVALUATED_ON") or props.get("support_count") != 1:
+                errors.append(f"{edge['edge_id']}: single_paper_same_sentence needs APPLIED_TO or EVALUATED_ON and support_count 1")
+            if any(not evidence[r].get("same_sentence") for r in edge["evidence_ids"] if r in evidence):
+                errors.append(f"{edge['edge_id']}: single_paper_same_sentence evidence is not same-sentence")
+        elif rule == "two_or_more_papers" and (props.get("support_count", 0) < 2):
+            errors.append(f"{edge['edge_id']}: two_or_more_papers with fewer than two papers")
         if minimum and (props.get("support_count", 0) < minimum or len(props.get("support_paper_ids", [])) != props.get("support_count")):
             errors.append(f"{edge['edge_id']}: support below {minimum} papers or inconsistent")
         if edge["relation"] in ("USES_METHOD", "ADDRESSES_TASK", "USES_DATASET"):

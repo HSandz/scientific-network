@@ -95,3 +95,15 @@ def test_part_of_v2_scores_next_to_v1_and_reads_separate_answers(tmp_path):
     assert out["v2"]["k"] == 2 and out["v2"]["n"] == 3 and out["v2"]["unclear"] == 1 and out["v2"]["sensitivity_unclear_as_incorrect"]["n"] == 4
     assert out["agreement_raw_ab"]["observed_agreement"] == 0.75
     assert score(tmp_path / "missing", {}) is None
+
+
+def test_type_conflicts_lists_keys_under_two_types_and_ignores_the_rest():
+    from scientific_network.enrich.quality import type_conflicts
+    def node(label, key, count):
+        return {"id": f"{label.lower()}:{key}", "label": label, "name": key, "properties": {"key": key, "paper_count": count, "linked": False}}
+    graph = {"graph_version": "g", "nodes": [node("Method", "transformer", 9), node("Task", "transformer", 3), node("Method", "gnn", 5), node("Dataset", "cora", 4),
+                                             {"id": "paper:1", "label": "Paper", "name": "p", "properties": {}}]}
+    report = type_conflicts(graph)
+    assert report["keys_with_type_conflict"] == 1 and report["by_type_combination"] == {"Method+Task": 1}
+    row = report["conflicts"][0]
+    assert row["key"] == "transformer" and row["papers_total"] == 12 and [n["paper_count"] for n in row["nodes"]] == [9, 3]

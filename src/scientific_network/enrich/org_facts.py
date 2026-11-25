@@ -110,3 +110,20 @@ def collect_part_of_qids(graph: dict) -> list[str]:
 def write_facts(facts: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(facts, indent=1, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def statement_response_index(manifest_path: Path, raw_dir: Path) -> dict[tuple[str, str, str], dict]:
+    """(child QID, parent QID, property) -> the v2 raw-store response that contains the statement (SHA-256 and retrieval time)."""
+    import re
+    index: dict[tuple[str, str, str], dict] = {}
+    for line in manifest_path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        match = re.search(r"\?item p:(P\d+) \?st", row["params"].get("query", ""))
+        if row["source"] != "wikidata_sparql" or not match or match.group(1) not in ("P749", "P361"):
+            continue
+        body = json.loads((raw_dir / row["sha256"][:2] / f"{row['sha256']}.json").read_text(encoding="utf-8"))
+        for b in body["results"]["bindings"]:
+            index[(qid(b["item"]["value"]), qid(b["target"]["value"]), match.group(1))] = {"raw_response_sha256": row["sha256"], "retrieved_at": row["retrieved_at"]}
+    return index

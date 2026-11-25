@@ -74,3 +74,33 @@ def apply_rule(edges: list[dict], evidence: dict[str, dict], facts: dict, rule: 
             "kept": sum(d["decision"] == "keep" for d in decisions.values()),
             "member_of": sum(d["decision"] == "member_of" for d in decisions.values()),
             "dropped": sum(d["decision"] == "drop" for d in decisions.values())}
+
+
+def member_of_edges(part_edges: list[dict], evidence: dict[str, dict], decisions: dict, facts: dict, statements: dict, rule_id: str, *,
+                    method_version: str, graph_version: str) -> tuple[list[dict], list[dict]]:
+    """``MEMBER_OF`` edges for the PART_OF statements the rule routes to consortia, associations and groups.
+
+    The evidence is the Wikidata statement (per-statement raw response hash from the v2 raw store) plus the parent's instance-of classes
+    that made it a consortium; the PART_OF edge itself is not touched here.
+    """
+    from scientific_network.enrich.relations import edge_id, evidence_id
+    edges, out = [], []
+    for edge in part_edges:
+        decision = decisions[edge["edge_id"]]
+        if decision["decision"] != "member_of":
+            continue
+        old = evidence[edge["evidence_ids"][0]]
+        child, parent = old["wikidata_item"], old["parent_item"]
+        props = [p for p in ("P749", "P361") if p in edge["properties"]["wikidata_property"].split("+")]
+        prop = decision["property"] or props[0]
+        found = statements.get((child, parent, prop), {})
+        ev = {"id": evidence_id("wikidata-member", edge["source_id"], prop, parent), "kind": "wikidata", "source_url": f"https://www.wikidata.org/wiki/{child}",
+              "wikidata_item": child, "property": prop, "parent_item": parent, "source": "wikidata_sparql",
+              "retrieved_at": found.get("retrieved_at"), "raw_sha256": found.get("raw_response_sha256"), "rule": rule_id,
+              "parent_instance_of": sorted(facts["types"].get(parent, {}).values())}
+        out.append(ev)
+        edges.append({"edge_id": edge_id("MEMBER_OF", edge["source_id"], edge["target_id"], method_version), "relation": "MEMBER_OF",
+                      "source_id": edge["source_id"], "target_id": edge["target_id"], "evidence_kind": "wikidata", "evidence_ids": [ev["id"]],
+                      "method_version": method_version, "graph_version": graph_version, "validation_status": "accepted",
+                      "properties": {"wikidata_property": prop, "rule": rule_id, "parent_in_v4": edge["properties"]["parent_in_v4"]}})
+    return edges, out
