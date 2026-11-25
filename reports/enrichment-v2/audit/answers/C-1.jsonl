@@ -1,0 +1,14 @@
+{"item_id": "member:21b7b554cb2c3a9c", "verdict": "correct", "note": "Wageningen is a partner institution of ELIXIR-NL (DTL)."}
+{"item_id": "member:6dd2fbd471b95b26", "verdict": "correct", "note": "Juelich is a de.NBI partner, the ELIXIR Germany node."}
+{"item_id": "member:73527d221c1b9aca", "verdict": "correct", "note": "University of Turin is a partner of the ELIXIR Italy joint research unit."}
+{"item_id": "member:7c15524c047e9c21", "verdict": "correct", "note": "KU Leuven is a participating institution of ELIXIR Belgium."}
+{"item_id": "member:88b3805ea105db48", "verdict": "correct", "note": "IMT Mines Albi was a member of the Toulouse ComUE during most of 2021-2025."}
+{"item_id": "member:90cac066240e571a", "verdict": "correct", "note": "IRD is a member of IFB, the ELIXIR France node."}
+{"item_id": "member:a9387529b367b7b1", "verdict": "correct", "note": "University of Padua is a partner of ELIXIR Italy."}
+{"item_id": "member:a9ec5c6b7edc02dd", "verdict": "correct", "note": "CISPA became a Helmholtz Association member centre in 2019."}
+{"item_id": "member:b2e8b78fb503eb50", "verdict": "correct", "note": "University of Milan is a partner of ELIXIR Italy."}
+{"item_id": "member:b39e433c0f42abb5", "verdict": "correct", "note": "Toulouse Capitole was a member of the Toulouse ComUE within the release period."}
+{"item_id": "member:c38cd2126c4d6e44", "verdict": "correct", "note": "Bielefeld coordinates de.NBI, the ELIXIR Germany node."}
+{"item_id": "member:e12ae1e4592fefda", "verdict": "correct", "note": "INRAE is a founding member of IFB, the ELIXIR France node."}
+{"item_id": "member:f20ac22b474b58e6", "verdict": "correct", "note": "IST participates in BioData.pt, the ELIXIR Portugal node."}
+{"item_id": "rel:7e01645109f66a96", "verdict": "correct", "supported_in": 1, "note": "Sentence states GSEMO runtime guarantees on the OneMinMax benchmark, used as comparison."}

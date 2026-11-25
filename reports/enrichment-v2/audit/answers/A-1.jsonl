@@ -1,0 +1,57 @@
+{"item_id": "member:0b4e24fb1be6b165", "verdict": "correct", "note": "IIT Ropar is one of the Indian Institutes of Technology."}
+{"item_id": "member:0fcc96108dd07e4f", "verdict": "correct", "note": "Lyon 1 is a member institution of Université de Lyon."}
+{"item_id": "member:21b7b554cb2c3a9c", "verdict": "correct", "note": "Wageningen is a partner in the Dutch ELIXIR node."}
+{"item_id": "member:319d8631ec22293e", "verdict": "correct", "note": "IIT Goa is one of the Indian Institutes of Technology."}
+{"item_id": "member:3f69a8c71a14deae", "verdict": "correct", "note": "IIT Patna is one of the Indian Institutes of Technology."}
+{"item_id": "member:6dd2fbd471b95b26", "verdict": "correct", "note": "Jülich hosts de.NBI administration; member of ELIXIR Germany."}
+{"item_id": "member:6f4d028d8c994b39", "verdict": "correct", "note": "INSA Toulouse is a member/component of the University of Toulouse."}
+{"item_id": "member:73527d221c1b9aca", "verdict": "correct", "note": "University of Turin is a partner of ELIXIR Italy."}
+{"item_id": "member:747d05cabaf4578b", "verdict": "correct", "note": "IIT Hyderabad is one of the Indian Institutes of Technology."}
+{"item_id": "member:7c15524c047e9c21", "verdict": "correct", "note": "KU Leuven is a partner of ELIXIR Belgium."}
+{"item_id": "member:88b3805ea105db48", "verdict": "unclear", "note": "Was ComUE member; current status after 2023 Toulouse restructuring uncertain."}
+{"item_id": "member:88bffc2822f53250", "verdict": "correct", "note": "IIT Palakkad is one of the Indian Institutes of Technology."}
+{"item_id": "member:90cac066240e571a", "verdict": "correct", "note": "IRD participates in the French Institute of Bioinformatics (ELIXIR France)."}
+{"item_id": "member:9201740431880626", "verdict": "correct", "note": "Sogang is a Jesuit university, member of IAJU."}
+{"item_id": "member:a9387529b367b7b1", "verdict": "correct", "note": "University of Padua is a partner of ELIXIR Italy."}
+{"item_id": "member:a9ec5c6b7edc02dd", "verdict": "correct", "note": "CISPA joined the Helmholtz Association in 2019."}
+{"item_id": "member:aa1a7d12341f0048", "verdict": "correct", "note": "École Centrale de Lyon belongs to Groupe des Écoles Centrales."}
+{"item_id": "member:b2e8b78fb503eb50", "verdict": "correct", "note": "University of Milan is a partner of ELIXIR Italy."}
+{"item_id": "member:b39e433c0f42abb5", "verdict": "unclear", "note": "Former ComUE member; may not have joined 2023 Université de Toulouse."}
+{"item_id": "member:c38cd2126c4d6e44", "verdict": "correct", "note": "Bielefeld coordinates de.NBI, ELIXIR Germany node."}
+{"item_id": "member:c41873af83095c35", "verdict": "correct", "note": "IIT Kanpur is one of the Indian Institutes of Technology."}
+{"item_id": "member:c911a6dca5b5800c", "verdict": "unclear", "note": "UKCEH membership in ELIXIR UK cannot be confirmed from shown text."}
+{"item_id": "member:cbb841f6401ccb44", "verdict": "correct", "note": "University of Utah is part of the Utah System of Higher Education."}
+{"item_id": "member:dad707b65502dd84", "verdict": "correct", "note": "Open Universiteit is a member of the OpenEU alliance."}
+{"item_id": "member:de4628d2c7970b6b", "verdict": "correct", "note": "École Centrale de Lyon is a member of Université de Lyon."}
+{"item_id": "member:def98ce11ca58fb3", "verdict": "correct", "note": "Vassar is one of the Seven Sisters colleges."}
+{"item_id": "member:e12ae1e4592fefda", "verdict": "correct", "note": "INRAE is a founding member of IFB (ELIXIR France)."}
+{"item_id": "member:f20ac22b474b58e6", "verdict": "correct", "note": "IST participates in BioData.pt, ELIXIR Portugal node."}
+{"item_id": "member:f882d5a57a090197", "verdict": "correct", "note": "Centrale Lille belongs to Groupe des Écoles Centrales."}
+{"item_id": "member:fb48fac573d6bd4c", "verdict": "correct", "note": "IIT Roorkee is one of the Indian Institutes of Technology."}
+{"item_id": "rel:0a5b7c1ca67099d5", "verdict": "correct", "supported_in": 1, "note": "ResNet with TDAF improves on ImageNet."}
+{"item_id": "rel:186693f297d01b75", "verdict": "correct", "supported_in": 1, "note": "Few-shot image classification shown on CIFAR-FS."}
+{"item_id": "rel:1ac9689566962431", "verdict": "correct", "supported_in": 1, "note": "Few-shot image classification shown on mini-ImageNet."}
+{"item_id": "rel:20dc6d71f85d5368", "verdict": "correct", "supported_in": 1, "note": "Mask R-CNN compared on COCO dataset."}
+{"item_id": "rel:25c51caad32d73bf", "verdict": "correct", "supported_in": 1, "note": "VoteNet evaluated on ScanNetV2."}
+{"item_id": "rel:3f1e51e088ccffb1", "verdict": "correct", "supported_in": 1, "note": "Object detection evaluated on MSCOCO."}
+{"item_id": "rel:48b4786e031b063c", "verdict": "incorrect", "supported_in": 0, "note": "Head 'proposed approach' is a generic phrase, not a valid Method entity."}
+{"item_id": "rel:56778b4d1a0a8ae5", "verdict": "correct", "supported_in": 1, "note": "ViT-B improvement reported on Mini-ImageNet."}
+{"item_id": "rel:57313f9cc8b4b722", "verdict": "correct", "supported_in": 1, "note": "RetinaNet with P2P loss evaluated on DOTA."}
+{"item_id": "rel:585690a486062cc1", "verdict": "correct", "supported_in": 1, "note": "RetinaNet used in experiments on MS COCO."}
+{"item_id": "rel:596b8f42af68371b", "verdict": "correct", "supported_in": 1, "note": "Self-supervised learning evaluated on ImageNet classification."}
+{"item_id": "rel:597ef9077edfb542", "verdict": "correct", "supported_in": 1, "note": "Object detection evaluated on PASCAL VOC."}
+{"item_id": "rel:5f63c4c6016fa42a", "verdict": "correct", "supported_in": 1, "note": "ResNet architecture evaluated on ImageNet-1K."}
+{"item_id": "rel:65a1a6b3192036a2", "verdict": "correct", "supported_in": 1, "note": "Image classification experiments on CIFAR-100."}
+{"item_id": "rel:66f49cc0eef71657", "verdict": "correct", "supported_in": 1, "note": "ResNet-50 used in ImageNet experiments."}
+{"item_id": "rel:6b907e1442d569b2", "verdict": "correct", "supported_in": 1, "note": "ResNet-18 classification results on CIFAR-100."}
+{"item_id": "rel:7179eec9bea2e6a1", "verdict": "correct", "supported_in": 1, "note": "Audio classification evaluated on ESC50."}
+{"item_id": "rel:771051181338d015", "verdict": "correct", "supported_in": 1, "note": "Action recognition evaluated on UCF101."}
+{"item_id": "rel:7e01645109f66a96", "verdict": "correct", "supported_in": 1, "note": "GSEMO runtime on OneMinMax benchmark function."}
+{"item_id": "rel:8433dd56bbffb00b", "verdict": "correct", "supported_in": 1, "note": "VoteNet evaluated on SUN RGB-D."}
+{"item_id": "rel:9c46bfbc12c709ba", "verdict": "correct", "supported_in": 1, "note": "ViT-B improvement reported on ImageNet."}
+{"item_id": "rel:cf8608dcd609dd7a", "verdict": "correct", "supported_in": 1, "note": "SimCLR compared under ImageNet linear evaluation."}
+{"item_id": "rel:d863885d0684a665", "verdict": "correct", "supported_in": 1, "note": "RetinaNet results on COCO 2017."}
+{"item_id": "rel:e2ac0704754429e2", "verdict": "correct", "supported_in": 1, "note": "Faster-RCNN results on MS COCO."}
+{"item_id": "rel:e2d16803f545b955", "verdict": "correct", "supported_in": 1, "note": "ViT-B results on ImageNet-1K."}
+{"item_id": "rel:f4832ab5b5882aed", "verdict": "correct", "supported_in": 1, "note": "AlexNet used in ImageNet experiments."}
+{"item_id": "rel:f5d9ae2fd01f6b7b", "verdict": "correct", "supported_in": 1, "note": "Faster R-CNN results on COCO 2017."}

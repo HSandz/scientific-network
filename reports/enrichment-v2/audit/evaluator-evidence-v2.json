@@ -1,0 +1,65 @@
+{
+ "archive_dir": "reports/runs/WORK-2026-11-25-002/eval",
+ "claude_subagents": [
+  {
+   "agent_id": "a53a792fa97f3efa4",
+   "description": "E4 v2 channel C adjudication",
+   "file": "agent-a53a792fa97f3efa4.jsonl",
+   "first_timestamp": "2026-11-25T04:53:26.322Z",
+   "last_timestamp": "2026-11-25T04:53:52.220Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "a8577873b9cb7c0f3",
+   "description": "E4 v2 channel A judging",
+   "file": "agent-a8577873b9cb7c0f3.jsonl",
+   "first_timestamp": "2026-11-25T04:41:30.244Z",
+   "last_timestamp": "2026-11-25T04:42:31.506Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  }
+ ],
+ "codex_sessions": [
+  {
+   "file": "rollout-2026-11-25T11-41-31-01a21102-4466-7b11-b4e5-c40284422d8e.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-v2",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a21102-4466-7b11-b4e5-c40284422d8e",
+   "started": "2026-11-25T04:41:31.035Z"
+  }
+ ],
+ "file_count": 20,
+ "files_sha256": {
+  "A-v2/answers/A-1.jsonl": "0fc44d341b2d0abdea3d4259d0166d9667b0d9bb993a2a792719c08738b2fc88",
+  "A-v2/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "A-v2/packet.json": "df9ae287dfa9a60834830a04a8c22a56b4e46b88a39b3ba2bca4346d5342e419",
+  "B-v2/answers/B-1.jsonl": "784b8be3384eef3a4a70313586c69d0fde8c42b6ccf499c5bf2022ad990c0446",
+  "B-v2/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "B-v2/last-message.txt": "b090800083e19eb955051437aaacdacd3d2cde26285328ebf9630424c99add1b",
+  "B-v2/packet.json": "e7933db4d78c38a493874ee83e8cb9590fcf2b47af47b7631e85a1d8737b3ba0",
+  "B-v2/run.log": "d91a10e29b82f76e57f059f1bfb94173fb917724c4d4544b15b714fd4a25dc88",
+  "C-v2/answers/C-1.jsonl": "44dc31d3592bc5295aa408562bf43b774fff5071de81743666036962f5499dea",
+  "C-v2/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "C-v2/packet.json": "78a8d29bd82f1d9453938ab32d77702c082c06dab526a95f91ff91c54940f296",
+  "claude-subagents/agent-a53a792fa97f3efa4.jsonl": "fd3796edfc5bcc637d787540ff6ccfe778d6e0e2c1aac78c9cf3e6f61c5dcc89",
+  "claude-subagents/agent-a53a792fa97f3efa4.meta.json": "3fadf1855287d59654c0caffcb5f036f766bc6b144f8f54107d3c40b3dcf66af",
+  "claude-subagents/agent-a8577873b9cb7c0f3.jsonl": "bf41edf9a49b834de567e0092f4deb2041b6b2e0fecba91563310e3e847fd41a",
+  "claude-subagents/agent-a8577873b9cb7c0f3.meta.json": "2174c5db688c922deb936ab131e3d409eebbda10ce7154ac310a306feb1eb2da",
+  "codex-sessions/rollout-2026-11-25T11-41-31-01a21102-4466-7b11-b4e5-c40284422d8e.jsonl": "f2428adc52154ffc49f7c7230461091941e66ca792e4754dffd24788bb4c859f",
+  "packets/A-1.json": "df9ae287dfa9a60834830a04a8c22a56b4e46b88a39b3ba2bca4346d5342e419",
+  "packets/B-1.json": "e7933db4d78c38a493874ee83e8cb9590fcf2b47af47b7631e85a1d8737b3ba0",
+  "packets/C-1.json": "78a8d29bd82f1d9453938ab32d77702c082c06dab526a95f91ff91c54940f296",
+  "run_codex.sh": "f4a28ee57d4c359875fb27cd88d977c927cb5355d1093b8dd064cb5c40092b0f"
+ },
+ "label": "enrichment v2 E4 audit evaluators (WORK-2026-11-25-002)"
+}

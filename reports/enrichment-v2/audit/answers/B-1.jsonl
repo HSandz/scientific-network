@@ -1,0 +1,57 @@
+{"item_id": "member:0b4e24fb1be6b165", "verdict": "correct", "note": "The statement identifies IIT Ropar as a constituent institute of the Indian Institutes of Technology group."}
+{"item_id": "member:0fcc96108dd07e4f", "verdict": "correct", "note": "Wikidata identifies the university group as Lyon 1’s parent organization, supporting its inclusion in the group."}
+{"item_id": "member:21b7b554cb2c3a9c", "verdict": "unclear", "note": "The part-of statement links Wageningen to the national node. Its membership role is unspecified."}
+{"item_id": "member:319d8631ec22293e", "verdict": "correct", "note": "The statement identifies IIT Goa as a constituent institute of the Indian Institutes of Technology group."}
+{"item_id": "member:3f69a8c71a14deae", "verdict": "correct", "note": "The statement identifies IIT Patna as a constituent institute of the Indian Institutes of Technology group."}
+{"item_id": "member:6dd2fbd471b95b26", "verdict": "unclear", "note": "The part-of statement links Jülich to ELIXIR Germany. The node classification leaves its membership role unspecified."}
+{"item_id": "member:6f4d028d8c994b39", "verdict": "correct", "note": "The engineering school has a direct organizational link to the University of Toulouse group of institutions."}
+{"item_id": "member:73527d221c1b9aca", "verdict": "unclear", "note": "The part-of statement links Turin to the Italian node. The node classification leaves its membership role unspecified."}
+{"item_id": "member:747d05cabaf4578b", "verdict": "correct", "note": "The statement places IIT Hyderabad within the Indian Institutes of Technology group as a constituent institute."}
+{"item_id": "member:7c15524c047e9c21", "verdict": "unclear", "note": "The part-of statement links KU Leuven to ELIXIR Belgium. Its membership role within the node is unspecified."}
+{"item_id": "member:88b3805ea105db48", "verdict": "correct", "note": "The group is recorded as the engineering school’s parent organization, supporting the school’s inclusion in it."}
+{"item_id": "member:88bffc2822f53250", "verdict": "correct", "note": "The statement places IIT Palakkad within the Indian Institutes of Technology group as a constituent institute."}
+{"item_id": "member:90cac066240e571a", "verdict": "unclear", "note": "The institute is listed as part of the French node. Its membership status within the node is unspecified."}
+{"item_id": "member:9201740431880626", "verdict": "correct", "note": "The part-of statement places Sogang University within the named voluntary association of universities."}
+{"item_id": "member:a9387529b367b7b1", "verdict": "unclear", "note": "The part-of statement links Padua to the Italian node. The type of participation is unspecified."}
+{"item_id": "member:a9ec5c6b7edc02dd", "verdict": "unclear", "note": "The parent-organization statement leaves the center’s status as an association member or an operating unit unspecified."}
+{"item_id": "member:aa1a7d12341f0048", "verdict": "correct", "note": "The part-of statement places École Centrale de Lyon within the Centrale university network."}
+{"item_id": "member:b2e8b78fb503eb50", "verdict": "unclear", "note": "The part-of statement links the university to ELIXIR Italy. Its membership role within the node is unspecified."}
+{"item_id": "member:b39e433c0f42abb5", "verdict": "correct", "note": "The statement names the University of Toulouse institutional group as Toulouse Capitole’s parent organization."}
+{"item_id": "member:c38cd2126c4d6e44", "verdict": "unclear", "note": "The statement places Bielefeld within the German node. Its membership role is unspecified."}
+{"item_id": "member:c41873af83095c35", "verdict": "correct", "note": "The statement identifies IIT Kanpur as a constituent institute of the Indian Institutes of Technology group."}
+{"item_id": "member:c911a6dca5b5800c", "verdict": "unclear", "note": "The part-of statement links the research organization to the UK node. Its membership status is unspecified."}
+{"item_id": "member:cbb841f6401ccb44", "verdict": "correct", "note": "The University of Utah is linked as a constituent university to the consortium named as its parent."}
+{"item_id": "member:dad707b65502dd84", "verdict": "correct", "note": "The part-of statement places the Open University of the Netherlands within the named European University Alliance."}
+{"item_id": "member:de4628d2c7970b6b", "verdict": "correct", "note": "The statement names the Université de Lyon institutional group as École Centrale de Lyon’s parent organization."}
+{"item_id": "member:def98ce11ca58fb3", "verdict": "correct", "note": "The part-of statement includes Vassar in the Seven Sisters group, classified as a consortium and voluntary association."}
+{"item_id": "member:e12ae1e4592fefda", "verdict": "unclear", "note": "The part-of statement links the institute to ELIXIR France. Its membership role within the node is unspecified."}
+{"item_id": "member:f20ac22b474b58e6", "verdict": "unclear", "note": "The part-of statement links the school to the Portuguese node. The school’s membership status within the node is unspecified."}
+{"item_id": "member:f882d5a57a090197", "verdict": "correct", "note": "The part-of statement identifies Centrale Lille Institut as part of the Centrale university network."}
+{"item_id": "member:fb48fac573d6bd4c", "verdict": "correct", "note": "The statement identifies IIT Roorkee as a constituent institute of the Indian Institutes of Technology group."}
+{"item_id": "rel:0a5b7c1ca67099d5", "verdict": "correct", "supported_in": 1, "note": "The abstract reports a 2.0% ImageNet improvement for ResNet with TDAF."}
+{"item_id": "rel:186693f297d01b75", "verdict": "correct", "supported_in": 1, "note": "The authors explicitly verify their results empirically for few-shot image classification on CIFAR-FS."}
+{"item_id": "rel:1ac9689566962431", "verdict": "correct", "supported_in": 1, "note": "The authors explicitly verify their results empirically for few-shot image classification on mini-ImageNet."}
+{"item_id": "rel:20dc6d71f85d5368", "verdict": "correct", "supported_in": 1, "note": "The abstract compares EmbedMask with Mask R-CNN on the COCO dataset."}
+{"item_id": "rel:25c51caad32d73bf", "verdict": "correct", "supported_in": 1, "note": "The abstract reports a 7.7-point VoteNet improvement in mAP@0.5 on ScanNetV2."}
+{"item_id": "rel:3f1e51e088ccffb1", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly reports object detection performance on MSCOCO."}
+{"item_id": "rel:48b4786e031b063c", "verdict": "incorrect", "supported_in": 0, "note": "ImageNet testing is explicit. The generic phrase “proposed approach” fails the Method labeling rule."}
+{"item_id": "rel:56778b4d1a0a8ae5", "verdict": "correct", "supported_in": 1, "note": "The reported Mini-ImageNet improvements are listed for ViT-B and Swin-B, with ViT-B first."}
+{"item_id": "rel:57313f9cc8b4b722", "verdict": "correct", "supported_in": 1, "note": "The abstract reports 79.15% mAP for RetinaNet using P2P Loss on DOTA."}
+{"item_id": "rel:585690a486062cc1", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly names RetinaNet as a framework used in the MS COCO experiments."}
+{"item_id": "rel:596b8f42af68371b", "verdict": "correct", "supported_in": 1, "note": "The abstract reports self-supervised learning performance on ImageNet classification."}
+{"item_id": "rel:597ef9077edfb542", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly reports object detection performance on PASCAL VOC."}
+{"item_id": "rel:5f63c4c6016fa42a", "verdict": "correct", "supported_in": 1, "note": "The abstract reports 77.1% on ImageNet-1K using an enhanced 104-layer ResNet."}
+{"item_id": "rel:65a1a6b3192036a2", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly describes CIFAR-100 experiments for image classification."}
+{"item_id": "rel:66f49cc0eef71657", "verdict": "correct", "supported_in": 1, "note": "ResNet-50 is explicitly listed among the models used in the ImageNet experiments."}
+{"item_id": "rel:6b907e1442d569b2", "verdict": "correct", "supported_in": 1, "note": "The reported CIFAR-100 classification result uses a single ResNet-18."}
+{"item_id": "rel:7179eec9bea2e6a1", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly evaluates audio classification transfer on ESC50."}
+{"item_id": "rel:771051181338d015", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly evaluates action recognition transfer on UCF101."}
+{"item_id": "rel:7e01645109f66a96", "verdict": "incorrect", "supported_in": 0, "note": "GSEMO supplies a theoretical runtime comparison. The evaluation described focuses on NSGA-II, and OneMinMax is a benchmark function."}
+{"item_id": "rel:8433dd56bbffb00b", "verdict": "correct", "supported_in": 1, "note": "The abstract reports a 5.0-point VoteNet improvement in mAP@0.5 on SUN RGB-D."}
+{"item_id": "rel:9c46bfbc12c709ba", "verdict": "correct", "supported_in": 1, "note": "The abstract reports a 1.20% improvement in ViT-B top-1 accuracy on ImageNet."}
+{"item_id": "rel:cf8608dcd609dd7a", "verdict": "correct", "supported_in": 1, "note": "The abstract identifies SimCLR as a comparison method under the ImageNet linear evaluation protocol."}
+{"item_id": "rel:d863885d0684a665", "verdict": "correct", "supported_in": 1, "note": "The abstract reports RetinaNet mAP improving from 37.4% to 40.3% on COCO 2017."}
+{"item_id": "rel:e2ac0704754429e2", "verdict": "correct", "supported_in": 1, "note": "The abstract reports a 1.9-point average precision improvement for Faster-RCNN on MS COCO."}
+{"item_id": "rel:e2d16803f545b955", "verdict": "correct", "supported_in": 1, "note": "The abstract reports 84.5% top-1 accuracy on ImageNet-1K with a ViT-B backbone."}
+{"item_id": "rel:f4832ab5b5882aed", "verdict": "correct", "supported_in": 1, "note": "AlexNet is explicitly listed among the models used in the ImageNet experiments."}
+{"item_id": "rel:f5d9ae2fd01f6b7b", "verdict": "correct", "supported_in": 1, "note": "The abstract reports Faster R-CNN mAP improving from 38.4% to 41.6% on COCO 2017."}
