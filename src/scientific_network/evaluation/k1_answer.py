@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import fields as dataclass_fields
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -318,6 +319,26 @@ def _plan_json_validity(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return res
 
 
+def _schema_call_validity(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Call-level JSON validity for every schema-constrained prompt (parse, plan, global map)."""
+    out: dict[str, Any] = {}
+    for r in rows:
+        for c in r.get("llm_calls") or []:
+            pv = str(c.get("prompt_version"))
+            if not pv.startswith(("rag-parse", "rag-plan", "rag-global-v2-map")):
+                continue
+            d = out.setdefault(pv, {"calls": 0, "first_pass_valid": 0, "valid_after_correction": 0, "failed": 0})
+            d["calls"] += 1
+            if c.get("error") is None:
+                if int(c.get("attempts") or 1) == 1:
+                    d["first_pass_valid"] += 1
+                else:
+                    d["valid_after_correction"] += 1
+            else:
+                d["failed"] += 1
+    return out
+
+
 def _throughput(rows: list[dict[str, Any]], meta: dict[str, Any]) -> dict[str, Any]:
     calls = [c for r in rows for c in r.get("llm_calls") or [] if not c.get("cache_hit")]
     comp = sum(int(c.get("completion_tokens") or 0) for c in calls)
@@ -347,7 +368,7 @@ def _throughput(rows: list[dict[str, Any]], meta: dict[str, Any]) -> dict[str, A
     }
 
 
-def score_all(cfg: dict[str, Any]) -> dict[str, Any]:
+def score_all(cfg: dict[str, Any], *, write: bool = True) -> dict[str, Any]:
     base = cfg["_base"]
     results_dir = Path(cfg["outputs"]["results_dir"])
     refs = {r["question_id"]: r for r in load_dev_questions(cfg)}
@@ -433,6 +454,11 @@ def score_all(cfg: dict[str, Any]) -> dict[str, Any]:
             "faithfulness_all": _rate_ci(sum(1 for x in scored if x["faithfulness_passed"]), len(scored)),
             "planner_json_validity": _plan_json_validity(rows),
             "parser_json_validity": _json_validity(rows, "rag-parse-v2", None),
+            "schema_call_validity": _schema_call_validity(rows),
+            "global_map_truncated_calls": sum(
+                1 for r in rows for c in r.get("llm_calls") or []
+                if str(c.get("prompt_version")) == "rag-global-v2-map" and c.get("error") and c.get("finish_reason") == "length"
+            ),
             "latency_all": {
                 "mean_first_event_s": round(sum(fe_all) / len(fe_all), 3) if fe_all else None,
                 "mean_total_s": round(sum(tot_all) / len(tot_all), 3) if tot_all else None,
@@ -457,9 +483,34 @@ def score_all(cfg: dict[str, Any]) -> dict[str, Any]:
         "caveats": cfg["caveats"],
         "items": items_out,
     }
-    results_dir.mkdir(parents=True, exist_ok=True)
-    (results_dir / "results.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (results_dir / "results.md").write_text(render_markdown(payload), encoding="utf-8")
+    payload["python_hash_seed"] = os.environ.get("PYTHONHASHSEED")
+    sens_path = results_dir / "hashseed-sensitivity.json"
+    if sens_path.exists():
+        sens = json.loads(sens_path.read_text(encoding="utf-8"))
+        gains = []
+        gemma_gains = []
+        for seed, r in sorted(sens["per_seed"].items(), key=lambda kv: int(kv[0])):
+            a4 = r["qwen3.5-4b"]["factual_overall"]
+            ag = r["gemma-4-e4b"]["factual_overall"]
+            a9 = r["qwen3.5-9b"]["factual_overall"]
+            gains.append(round(a9 - max(a4, ag), 4))
+            gemma_gains.append(round(ag - a4, 4))
+        payload["hashseed_sensitivity"] = {
+            "file": str(sens_path),
+            "seeds": sens["seeds"],
+            "summary": sens["summary"],
+            "reference_9b_gain_min": min(gains),
+            "reference_9b_gain_max": max(gains),
+            "reference_9b_meets_margin_at_all_seeds": all(g >= 0.10 for g in gains),
+            "gemma_gain_max": max(gemma_gains),
+        }
+        outcome["reference_9b_meets_margin_at_all_hash_seeds"] = all(g >= 0.10 for g in gains)
+    if write:
+        if payload["python_hash_seed"] != "0":
+            raise RuntimeError("write K1 results under PYTHONHASHSEED=0 (the scorer iterates a set; see results.md)")
+        results_dir.mkdir(parents=True, exist_ok=True)
+        (results_dir / "results.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        (results_dir / "results.md").write_text(render_markdown(payload), encoding="utf-8")
     return payload
 
 
@@ -553,6 +604,16 @@ def render_markdown(p: dict[str, Any]) -> str:
             f"| {gpu['peak_used_mib']} ({gpu['peak_over_idle_mib']}) "
             f"| {_f(th['decode_tokens_per_s'], 1)} | {_f(th['prompt_tokens_per_s'], 1)} |"
         )
+    lines += [
+        "",
+        "## Call-level JSON validity of schema-constrained prompts",
+        "",
+        "| Model | Prompt | Calls | First-pass valid | Valid after correction | Failed |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for k in order:
+        for pv, d in sorted(p["models"][k]["schema_call_validity"].items()):
+            lines.append(f"| {k} | `{pv}` | {d['calls']} | {d['first_pass_valid']} | {d['valid_after_correction']} | {d['failed']} |")
     d = p["decision"]
     lines += [
         "",
@@ -572,7 +633,54 @@ def render_markdown(p: dict[str, Any]) -> str:
             f"- Gemma-4-E4B-it gain over Qwen3.5-4B: {d['gemma_gain_over_4b']:+.3f} "
             f"(flag-for-user margin 0.10 {'met' if d['gemma_flag_for_user'] else 'not met'})."
         )
-    lines += [f"- **Outcome:** {d['outcome']}", "", "## Caveats", ""]
+    hs = p.get("hashseed_sensitivity")
+    if hs:
+        lines.append(
+            f"- Hash-seed robustness: over PYTHONHASHSEED {hs['seeds'][0]}–{hs['seeds'][-1]} the 9B gain ranges "
+            f"{hs['reference_9b_gain_min']:+.3f} to {hs['reference_9b_gain_max']:+.3f} "
+            f"(margin met at every seed: {'yes' if hs['reference_9b_meets_margin_at_all_seeds'] else 'no'}); "
+            f"Gemma's best gain over the 4B is {hs['gemma_gain_max']:+.3f}."
+        )
+    lines += [f"- **Outcome:** {d['outcome']}", ""]
+    if hs:
+        lines += [
+            "## Scorer hash-seed sensitivity",
+            "",
+            "The qa-eval-v1 unified entity resolver iterates a Python `set` when it accepts exact alias matches, so "
+            "the order of resolved IDs, and the top-k slice used for ranked-list answers, depends on the process's "
+            "`PYTHONHASHSEED`. The primary figures above use `PYTHONHASHSEED=0`. Re-scoring the same raw outputs under "
+            f"{len(hs['seeds'])} hash seeds gives (factual overall, min / mean / max):",
+            "",
+            "| Model | Min | Mean | Max |",
+            "| --- | --- | --- | --- |",
+        ]
+        for k in order:
+            fo = hs["summary"].get(k, {}).get("factual_overall")
+            if fo:
+                lines.append(f"| {k} | {_f(fo['min'])} | {_f(fo['mean'])} | {_f(fo['max'])} |")
+        lines += ["", f"Per-seed values: `{Path(hs['file']).name}`.", ""]
+    lines += [
+        "## Parameter scale (the rubric's \"parameter scale\" point)",
+        "",
+        "| Total parameters | Model | Answer accuracy (15 factual) | Faithfulness (19) | Mean total s | Decode tok/s | GPU over idle MiB |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for k in order:
+        m = p["models"][k]
+        lines.append(
+            f"| {m['model']['total_params_b']:.2f}B | {m['model']['hf_repo']} | {_f(m['by_hop']['factual_overall']['mean_score'])} "
+            f"| {_f(m['faithfulness_all']['rate'])} | {_f(m['latency_all']['mean_total_s'], 2)} "
+            f"| {_f(m['throughput']['decode_tokens_per_s'], 1)} | {m['gpu']['peak_over_idle_mib']} |"
+        )
+    lines += [
+        "",
+        "Accuracy is not monotonic in total size: Gemma-4-E4B-it counts 8.00B total parameters, but most are "
+        "per-layer embeddings (about 4B effective), so its compute per token is close to the 4B's. Within the Qwen3.5 "
+        "family the 9.65B reference scores higher than the 4.66B on this small development set, at about two-thirds "
+        "of the decode speed and about 1.5x the GPU memory. With 15 factual questions every interval overlaps.",
+        "",
+    ]
+    lines += ["## Caveats", ""]
     lines += [f"- {c}" for c in p["caveats"]]
     lines += [
         "- Planner JSON validity counts the first `rag-plan-v4` call per question: first-pass valid means schema-valid "
@@ -580,6 +688,12 @@ def render_markdown(p: dict[str, Any]) -> str:
         "expected to be high for every model.",
         "- GPU memory is total device use from `nvidia-smi`; the host display holds part of it (idle baseline shown "
         "in `results.json`).",
+        "- Global map stage: `rag-global-v2-map` caps output at 512 tokens, and the JSON of "
+        + ", ".join(f"{k} {p['models'][k]['global_map_truncated_calls']}/{p['models'][k]['schema_call_validity'].get('rag-global-v2-map', {}).get('calls', 0)}" for k in order)
+        + " map calls was truncated (`finish_reason: length`) and dropped, so those global answers rest on the "
+        "remaining map points or the reduce step alone. The same limit applies to the frozen qa-eval-v1 run; it is a "
+        "product limitation, not a model-comparison artifact, and is left unchanged here.",
+        "- Not comparable with `reports/final-exam/rag-v1/dev-eval.json`, which used the older row-based development scorer.",
         "",
     ]
     return "\n".join(lines)

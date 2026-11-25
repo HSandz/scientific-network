@@ -32,3 +32,45 @@ With Qwen3.5-4B verification: GLiNER2.5 candidates entity F1 0.588; GLiNER-Relex
 - The dev answer-accuracy arm of the rule needs v5 and cannot run yet.
 - Reference labels are conservative, so precision is understated for every system. Wilson intervals do not cover evaluator error.
 - The 4B encoder+SLM run-stats file was transcribed from console output; call logs are in the ignored run directory.
+
+## Answer-quality arm (added 2026-11-26, WORK-2026-11-26-001)
+
+The "Limits" item above recorded the answer-accuracy arm as pending until v5 existed. It was run on
+2026-11-26 under the protocol [`configs/k1-answer-v1.yaml`](../../configs/k1-answer-v1.yaml), committed
+before any run. **Development figures only:** the 19 kept development questions of qa-benchmark-v1
+(15 factual, 4 global). No test question was run. Pipeline: the qa-eval-v1 S4 multi-hop system
+(automatic mode, prompts `rag-parse-v2`, `rag-plan-v4`, `rag-answer-v3`, `rag-global-v2`, RAG code
+unchanged since the frozen qa-eval-v1 commit). Scorer: the qa-eval-v1 unified entity resolver with
+integer exact match. Decoding is identical for every model: temperature 0, seed 0, thinking off,
+uncached, llama.cpp, 16,384-token context, Q4_K_M. Only the model changes. Full results:
+[`reports/final-exam/k1-answer/results.md`](../final-exam/k1-answer/results.md).
+
+| Total params | Model (Q4_K_M GGUF) | Answer accuracy, 15 factual (bootstrap 95% CI) | Hop 1 / 2 / 3 | Faithfulness (19) | Planner JSON first-pass valid | Mean first event / total s | Decode tok/s | GPU over idle MiB |
+|---|---|---|---|---|---|---|---|---|
+| 4.66B | Qwen3.5-4B (chosen) | 0.502 [0.273, 0.735] | 0.950 / 0.284 / 0.407 | 19/19 | 18/18 | 1.05 / 9.35 | 79.4 | 3,336 |
+| 8.00B | Gemma-4-E4B-it | 0.469 [0.260, 0.685] | 0.600 / 0.468 / 0.367 | 18/19 | 18/18 | 1.14 / 8.75 | 67.0 | 3,425 |
+| 9.65B | Qwen3.5-9B (reference only) | 0.634 [0.420, 0.829] | 1.000 / 0.574 / 0.415 | 18/19 | 18/18 | 1.22 / 12.01 | 52.0 | 5,103 |
+
+Hop-class values and intervals for every model are in the results file (primary run under
+`PYTHONHASHSEED=0`; see the scorer note below).
+
+**Parameter scale.** Answer accuracy is not monotonic in total size. Gemma-4-E4B-it has 8.00B total
+parameters, but most are per-layer embeddings (about 4B effective), and it scores slightly below the
+4.66B Qwen. Within the Qwen3.5 family the 9.65B reference scores higher than the 4.66B, at about
+two-thirds of the decode speed and about 1.5x the GPU memory. With 15 factual questions all intervals
+overlap.
+
+**§6.1 outcome.** The best eligible model on this arm is still Qwen3.5-4B (Gemma −0.033; Gemma is
+never within 10 points of the 4B at any hash seed). **Qwen3.5-9B (reference only) beats it by +0.132,
+which meets the 10-point answer-accuracy margin** (+0.112 to +0.152 across hash seeds 0–19, met at
+every seed). Under §6.1 the 9B may replace the 4B only if the team also accepts the "9B language
+model" argument (9.65B total, above the 9.0B total-parameter rule) and records a D042 amendment.
+**No such decision has been made; Qwen3.5-4B remains the model in use.** This is a decision for the
+user and team.
+
+**Caveats.** 15 factual development questions: a 10-point difference is within sampling noise. The
+parser, planner and answer prompts were developed with Qwen3.5-4B in the loop, which favours the 4B,
+so the 9B's gain is, if anything, understated. The factual score measures agreement with the graph's
+edges, not truth. The qa-eval-v1 scorer depends on `PYTHONHASHSEED` (it iterates a Python `set`);
+the spread is reported in the results file. The global map stage truncates JSON at its 512-token
+limit for both Qwen models (4B 3/3 map calls, 9B 2/3), a product limitation shared with qa-eval-v1.

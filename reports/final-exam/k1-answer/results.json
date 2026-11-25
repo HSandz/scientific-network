@@ -1,0 +1,1479 @@
+{
+  "protocol_version": "k1-answer-v1",
+  "development_figures_only": true,
+  "split": "development",
+  "pipeline": "S4_multihop",
+  "scorer": "qa-eval-v1 unified entity resolver + numeric exact match (src/scientific_network/evaluation/qa_eval.py)",
+  "references_sha256": "d2fcf2c0cba2fae7e5cfa7f6dd030971a9083604081ea4bebdb93ddf424b2c19",
+  "graph_version": "enriched-cb371912e308",
+  "scored_at": "2026-11-26T03:01:17+0700",
+  "models": {
+    "qwen3.5-4b": {
+      "model": {
+        "alias": "qwen3.5-4b-q4_k_m",
+        "hf_repo": "Qwen/Qwen3.5-4B",
+        "gguf_repo": "unsloth/Qwen3.5-4B-GGUF",
+        "gguf_revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+        "gguf_sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+        "quantization": "Q4_K_M",
+        "total_params_b": 4.66,
+        "eligible": true,
+        "role": "chosen at M0"
+      },
+      "code_commit": "c790eb6759defa8884c2dd500acdfe21efafe598",
+      "raw_outputs_sha256": "e052b42a5cf792ce1873e058823032b6a621140ed6c48ac43443f601b73cb3a2",
+      "by_hop": {
+        "1": {
+          "count": 4,
+          "mean_score": 0.95,
+          "bootstrap_95_ci": [
+            0.85,
+            1.0
+          ],
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.112,
+          "mean_total_s": 5.918,
+          "max_total_s": 9.157
+        },
+        "2": {
+          "count": 6,
+          "mean_score": 0.2842,
+          "bootstrap_95_ci": [
+            0.0162,
+            0.5979
+          ],
+          "faithfulness": {
+            "passed": 6,
+            "total": 6,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.6097,
+              1.0
+            ]
+          },
+          "status_ok": 6,
+          "mean_first_event_s": 0.774,
+          "mean_total_s": 7.928,
+          "max_total_s": 11.359
+        },
+        "3": {
+          "count": 5,
+          "mean_score": 0.4067,
+          "bootstrap_95_ci": [
+            0.04,
+            0.7733
+          ],
+          "faithfulness": {
+            "passed": 5,
+            "total": 5,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5655,
+              1.0
+            ]
+          },
+          "status_ok": 5,
+          "mean_first_event_s": 1.353,
+          "mean_total_s": 7.307,
+          "max_total_s": 9.103
+        },
+        "factual_overall": {
+          "count": 15,
+          "mean_score": 0.5025,
+          "bootstrap_95_ci": [
+            0.2731,
+            0.7352
+          ],
+          "faithfulness": {
+            "passed": 15,
+            "total": 15,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.7961,
+              1.0
+            ]
+          },
+          "status_ok": 15,
+          "mean_first_event_s": 1.057,
+          "mean_total_s": 7.185,
+          "max_total_s": 11.359
+        },
+        "global": {
+          "count": 4,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.002,
+          "mean_total_s": 17.46,
+          "max_total_s": 48.181
+        }
+      },
+      "faithfulness_all": {
+        "passed": 19,
+        "total": 19,
+        "rate": 1.0,
+        "wilson_95_ci": [
+          0.8318,
+          1.0
+        ]
+      },
+      "planner_json_validity": {
+        "prompt_version": "rag-plan-v4",
+        "questions_reaching_call": 18,
+        "first_pass_valid": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0,
+        "rag_plan_v4_retry_used": 0
+      },
+      "parser_json_validity": {
+        "prompt_version": "rag-parse-v2",
+        "questions_reaching_call": 19,
+        "first_pass_valid": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0
+      },
+      "schema_call_validity": {
+        "rag-parse-v2": {
+          "calls": 19,
+          "first_pass_valid": 19,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-plan-v4": {
+          "calls": 18,
+          "first_pass_valid": 18,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-global-v2-map": {
+          "calls": 3,
+          "first_pass_valid": 0,
+          "valid_after_correction": 0,
+          "failed": 3
+        }
+      },
+      "global_map_truncated_calls": 3,
+      "latency_all": {
+        "mean_first_event_s": 1.046,
+        "mean_total_s": 9.348,
+        "max_total_s": 48.181
+      },
+      "gpu": {
+        "idle_baseline_mib": 2539,
+        "peak_used_mib": 5875,
+        "peak_over_idle_mib": 3336,
+        "samples": 298
+      },
+      "throughput": {
+        "uncached_calls": 61,
+        "cache_hits": 0,
+        "prompt_tokens": 65217,
+        "completion_tokens": 9093,
+        "decode_tokens_per_s": 79.37,
+        "prompt_tokens_per_s": 1051.24,
+        "end_to_end_completion_tokens_per_s": 54.88,
+        "source": "llama.cpp /metrics counter deltas over the run; end-to-end = completion tokens / summed call latency"
+      }
+    },
+    "gemma-4-e4b": {
+      "model": {
+        "alias": "gemma-4-e4b-it-q4_k_m",
+        "hf_repo": "google/gemma-4-E4B-it",
+        "gguf_repo": "unsloth/gemma-4-E4B-it-GGUF",
+        "gguf_revision": "bfc15c382204943c3a8fff0c750b94ae2364d7a3",
+        "gguf_sha256": "85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87",
+        "quantization": "Q4_K_M",
+        "total_params_b": 8.0,
+        "eligible": true,
+        "role": "eligible alternative"
+      },
+      "code_commit": "c790eb6759defa8884c2dd500acdfe21efafe598",
+      "raw_outputs_sha256": "b3931418e65ecaf222de1d224f23a274c04428e9d1bb139c4bee0319dfb68d94",
+      "by_hop": {
+        "1": {
+          "count": 4,
+          "mean_score": 0.6,
+          "bootstrap_95_ci": [
+            0.2,
+            1.0
+          ],
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.335,
+          "mean_total_s": 5.287,
+          "max_total_s": 8.962
+        },
+        "2": {
+          "count": 6,
+          "mean_score": 0.4677,
+          "bootstrap_95_ci": [
+            0.152,
+            0.8333
+          ],
+          "faithfulness": {
+            "passed": 5,
+            "total": 6,
+            "rate": 0.8333,
+            "wilson_95_ci": [
+              0.4365,
+              0.9699
+            ]
+          },
+          "status_ok": 6,
+          "mean_first_event_s": 0.997,
+          "mean_total_s": 7.307,
+          "max_total_s": 11.403
+        },
+        "3": {
+          "count": 5,
+          "mean_score": 0.3667,
+          "bootstrap_95_ci": [
+            0.04,
+            0.6867
+          ],
+          "faithfulness": {
+            "passed": 5,
+            "total": 5,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5655,
+              1.0
+            ]
+          },
+          "status_ok": 5,
+          "mean_first_event_s": 1.156,
+          "mean_total_s": 7.613,
+          "max_total_s": 9.855
+        },
+        "factual_overall": {
+          "count": 15,
+          "mean_score": 0.4693,
+          "bootstrap_95_ci": [
+            0.2604,
+            0.6848
+          ],
+          "faithfulness": {
+            "passed": 14,
+            "total": 15,
+            "rate": 0.9333,
+            "wilson_95_ci": [
+              0.7018,
+              0.9881
+            ]
+          },
+          "status_ok": 15,
+          "mean_first_event_s": 1.14,
+          "mean_total_s": 6.871,
+          "max_total_s": 11.403
+        },
+        "global": {
+          "count": 4,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.159,
+          "mean_total_s": 15.78,
+          "max_total_s": 47.119
+        }
+      },
+      "faithfulness_all": {
+        "passed": 18,
+        "total": 19,
+        "rate": 0.9474,
+        "wilson_95_ci": [
+          0.7536,
+          0.9906
+        ]
+      },
+      "planner_json_validity": {
+        "prompt_version": "rag-plan-v4",
+        "questions_reaching_call": 18,
+        "first_pass_valid": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0,
+        "rag_plan_v4_retry_used": 0
+      },
+      "parser_json_validity": {
+        "prompt_version": "rag-parse-v2",
+        "questions_reaching_call": 19,
+        "first_pass_valid": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0
+      },
+      "schema_call_validity": {
+        "rag-parse-v2": {
+          "calls": 19,
+          "first_pass_valid": 19,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-plan-v4": {
+          "calls": 18,
+          "first_pass_valid": 18,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-global-v2-map": {
+          "calls": 3,
+          "first_pass_valid": 0,
+          "valid_after_correction": 3,
+          "failed": 0
+        }
+      },
+      "global_map_truncated_calls": 0,
+      "latency_all": {
+        "mean_first_event_s": 1.144,
+        "mean_total_s": 8.746,
+        "max_total_s": 47.119
+      },
+      "gpu": {
+        "idle_baseline_mib": 2105,
+        "peak_used_mib": 5530,
+        "peak_over_idle_mib": 3425,
+        "samples": 307
+      },
+      "throughput": {
+        "uncached_calls": 56,
+        "cache_hits": 0,
+        "prompt_tokens": 67838,
+        "completion_tokens": 9573,
+        "decode_tokens_per_s": 66.99,
+        "prompt_tokens_per_s": 3144.72,
+        "end_to_end_completion_tokens_per_s": 60.7,
+        "source": "llama.cpp /metrics counter deltas over the run; end-to-end = completion tokens / summed call latency"
+      }
+    },
+    "qwen3.5-9b": {
+      "model": {
+        "alias": "qwen3.5-9b-q4_k_m",
+        "hf_repo": "Qwen/Qwen3.5-9B",
+        "gguf_repo": "unsloth/Qwen3.5-9B-GGUF",
+        "gguf_revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+        "gguf_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+        "quantization": "Q4_K_M",
+        "total_params_b": 9.65,
+        "eligible": false,
+        "role": "reference only (above the 9.0B total-parameter rule)"
+      },
+      "code_commit": "c790eb6759defa8884c2dd500acdfe21efafe598",
+      "raw_outputs_sha256": "4cb2558dc8b00870c76da556f400c71e8675046fd9b6b7f068dee0394a84e677",
+      "by_hop": {
+        "1": {
+          "count": 4,
+          "mean_score": 1.0,
+          "bootstrap_95_ci": [
+            1.0,
+            1.0
+          ],
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.181,
+          "mean_total_s": 6.201,
+          "max_total_s": 8.073
+        },
+        "2": {
+          "count": 6,
+          "mean_score": 0.5735,
+          "bootstrap_95_ci": [
+            0.25,
+            0.8971
+          ],
+          "faithfulness": {
+            "passed": 5,
+            "total": 6,
+            "rate": 0.8333,
+            "wilson_95_ci": [
+              0.4365,
+              0.9699
+            ]
+          },
+          "status_ok": 6,
+          "mean_first_event_s": 1.044,
+          "mean_total_s": 10.837,
+          "max_total_s": 24.568
+        },
+        "3": {
+          "count": 5,
+          "mean_score": 0.415,
+          "bootstrap_95_ci": [
+            0.13,
+            0.765
+          ],
+          "faithfulness": {
+            "passed": 5,
+            "total": 5,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5655,
+              1.0
+            ]
+          },
+          "status_ok": 5,
+          "mean_first_event_s": 1.482,
+          "mean_total_s": 10.431,
+          "max_total_s": 15.8
+        },
+        "factual_overall": {
+          "count": 15,
+          "mean_score": 0.6344,
+          "bootstrap_95_ci": [
+            0.42,
+            0.8294
+          ],
+          "faithfulness": {
+            "passed": 14,
+            "total": 15,
+            "rate": 0.9333,
+            "wilson_95_ci": [
+              0.7018,
+              0.9881
+            ]
+          },
+          "status_ok": 15,
+          "mean_first_event_s": 1.226,
+          "mean_total_s": 9.465,
+          "max_total_s": 24.568
+        },
+        "global": {
+          "count": 4,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness": {
+            "passed": 4,
+            "total": 4,
+            "rate": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1.0
+            ]
+          },
+          "status_ok": 4,
+          "mean_first_event_s": 1.19,
+          "mean_total_s": 21.57,
+          "max_total_s": 57.394
+        }
+      },
+      "faithfulness_all": {
+        "passed": 18,
+        "total": 19,
+        "rate": 0.9474,
+        "wilson_95_ci": [
+          0.7536,
+          0.9906
+        ]
+      },
+      "planner_json_validity": {
+        "prompt_version": "rag-plan-v4",
+        "questions_reaching_call": 18,
+        "first_pass_valid": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 18,
+          "total": 18,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8241,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0,
+        "rag_plan_v4_retry_used": 0
+      },
+      "parser_json_validity": {
+        "prompt_version": "rag-parse-v2",
+        "questions_reaching_call": 19,
+        "first_pass_valid": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "valid_after_retries": {
+          "passed": 19,
+          "total": 19,
+          "rate": 1.0,
+          "wilson_95_ci": [
+            0.8318,
+            1.0
+          ]
+        },
+        "deterministic_fallback": 0
+      },
+      "schema_call_validity": {
+        "rag-parse-v2": {
+          "calls": 19,
+          "first_pass_valid": 19,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-plan-v4": {
+          "calls": 18,
+          "first_pass_valid": 18,
+          "valid_after_correction": 0,
+          "failed": 0
+        },
+        "rag-global-v2-map": {
+          "calls": 3,
+          "first_pass_valid": 1,
+          "valid_after_correction": 0,
+          "failed": 2
+        }
+      },
+      "global_map_truncated_calls": 2,
+      "latency_all": {
+        "mean_first_event_s": 1.219,
+        "mean_total_s": 12.014,
+        "max_total_s": 57.394
+      },
+      "gpu": {
+        "idle_baseline_mib": 2105,
+        "peak_used_mib": 7208,
+        "peak_over_idle_mib": 5103,
+        "samples": 409
+      },
+      "throughput": {
+        "uncached_calls": 57,
+        "cache_hits": 0,
+        "prompt_tokens": 61283,
+        "completion_tokens": 9215,
+        "decode_tokens_per_s": 52.05,
+        "prompt_tokens_per_s": 1132.0,
+        "end_to_end_completion_tokens_per_s": 41.83,
+        "source": "llama.cpp /metrics counter deltas over the run; end-to-end = completion tokens / summed call latency"
+      }
+    }
+  },
+  "decision": {
+    "answer_accuracy": {
+      "qwen3.5-4b": 0.5025,
+      "gemma-4-e4b": 0.4693,
+      "qwen3.5-9b": 0.6344
+    },
+    "best_eligible_model": "qwen3.5-4b",
+    "margin_required": 0.1,
+    "reference_9b_gain_over_best_eligible": 0.1319,
+    "reference_9b_meets_margin": true,
+    "gemma_gain_over_4b": -0.0332,
+    "gemma_flag_for_user": false,
+    "outcome": "A margin is met; a model change needs a recorded team decision (not made by the agent).",
+    "reference_9b_meets_margin_at_all_hash_seeds": true
+  },
+  "caveats": [
+    "Development figures only; 15 factual questions, so differences of 10 points are within sampling noise.",
+    "The parser, planner and answer prompts were developed with Qwen3.5-4B in the loop; the other models run the same prompts unchanged, which favours the 4B.",
+    "The factual score measures agreement with the graph's edges, not truth."
+  ],
+  "items": [
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d001",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 2.138,
+      "total_latency_s": 9.157
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d003",
+      "hops": "1",
+      "judged": "exact",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.112,
+      "total_latency_s": 6.278
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d004",
+      "hops": "1",
+      "judged": "exact",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.575,
+      "total_latency_s": 4.159
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d005",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 0.8,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.623,
+      "total_latency_s": 4.079
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d006",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.9412,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.515,
+      "total_latency_s": 7.662
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d007",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.529,
+      "total_latency_s": 1.514
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d008",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.6667,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.782,
+      "total_latency_s": 10.548
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d009",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.097,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.564,
+      "total_latency_s": 10.69
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d010",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.826,
+      "total_latency_s": 5.797
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d011",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.426,
+      "total_latency_s": 11.359
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d012",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 3.1,
+      "total_latency_s": 8.335
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d013",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.2,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.08,
+      "total_latency_s": 7.572
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d014",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.809,
+      "total_latency_s": 9.103
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d015",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.29,
+      "total_latency_s": 5.732
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d016",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.8333,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.487,
+      "total_latency_s": 5.792
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d017",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "global",
+      "faithfulness_passed": true,
+      "first_event_s": 0.786,
+      "total_latency_s": 48.181
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d018",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.601,
+      "total_latency_s": 4.221
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d019",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.427,
+      "total_latency_s": 13.148
+    },
+    {
+      "model_key": "qwen3.5-4b",
+      "question_id": "qa-v1-d020",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.195,
+      "total_latency_s": 4.291
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d001",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 2.631,
+      "total_latency_s": 6.007
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d003",
+      "hops": "1",
+      "judged": "exact",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.855,
+      "total_latency_s": 3.112
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d004",
+      "hops": "1",
+      "judged": "exact",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.878,
+      "total_latency_s": 3.069
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d005",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 0.4,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.977,
+      "total_latency_s": 8.962
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d006",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.852,
+      "total_latency_s": 6.559
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d007",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.853,
+      "total_latency_s": 3.211
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d008",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": false,
+      "first_event_s": 0.893,
+      "total_latency_s": 11.403
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d009",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.1061,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.904,
+      "total_latency_s": 7.754
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d010",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.7,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.834,
+      "total_latency_s": 8.741
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d011",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.647,
+      "total_latency_s": 6.174
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d012",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.8,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.85,
+      "total_latency_s": 9.855
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d013",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.2,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.322,
+      "total_latency_s": 5.019
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d014",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.233,
+      "total_latency_s": 7.677
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d015",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.22,
+      "total_latency_s": 8.442
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d016",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.8333,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.156,
+      "total_latency_s": 7.073
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d017",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "global",
+      "faithfulness_passed": true,
+      "first_event_s": 0.79,
+      "total_latency_s": 47.119
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d018",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.452,
+      "total_latency_s": 3.859
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d019",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.808,
+      "total_latency_s": 5.689
+    },
+    {
+      "model_key": "gemma-4-e4b",
+      "question_id": "qa-v1-d020",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.588,
+      "total_latency_s": 6.451
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d001",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 2.563,
+      "total_latency_s": 8.073
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d003",
+      "hops": "1",
+      "judged": "exact",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.716,
+      "total_latency_s": 4.304
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d004",
+      "hops": "1",
+      "judged": "exact",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.69,
+      "total_latency_s": 5.081
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d005",
+      "hops": "1",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.755,
+      "total_latency_s": 7.345
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d006",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.9412,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.648,
+      "total_latency_s": 8.016
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d007",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.671,
+      "total_latency_s": 2.939
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d008",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.8,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.889,
+      "total_latency_s": 8.532
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d009",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": false,
+      "first_event_s": 1.125,
+      "total_latency_s": 24.568
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d010",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 0.7,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.794,
+      "total_latency_s": 12.411
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d011",
+      "hops": "2",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 2.138,
+      "total_latency_s": 8.555
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d012",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 1.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.399,
+      "total_latency_s": 15.8
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d013",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.2,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.47,
+      "total_latency_s": 8.067
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d014",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.25,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.591,
+      "total_latency_s": 12.696
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d015",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.0,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.837,
+      "total_latency_s": 5.828
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d016",
+      "hops": "3",
+      "judged": "set_f1",
+      "score": 0.625,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.111,
+      "total_latency_s": 9.766
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d017",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "global",
+      "faithfulness_passed": true,
+      "first_event_s": 0.85,
+      "total_latency_s": 57.394
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d018",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 0.996,
+      "total_latency_s": 5.951
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d019",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.141,
+      "total_latency_s": 17.237
+    },
+    {
+      "model_key": "qwen3.5-9b",
+      "question_id": "qa-v1-d020",
+      "hops": "global",
+      "judged": "pairwise_ai",
+      "score": null,
+      "status": "ok",
+      "mode": "multi_hop",
+      "faithfulness_passed": true,
+      "first_event_s": 1.773,
+      "total_latency_s": 5.7
+    }
+  ],
+  "python_hash_seed": "0",
+  "hashseed_sensitivity": {
+    "file": "reports/final-exam/k1-answer/hashseed-sensitivity.json",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "summary": {
+      "gemma-4-e4b": {
+        "1": {
+          "min": 0.55,
+          "mean": 0.5875,
+          "max": 0.6,
+          "n_seeds": 20
+        },
+        "2": {
+          "min": 0.4177,
+          "mean": 0.4585,
+          "max": 0.501,
+          "n_seeds": 20
+        },
+        "3": {
+          "min": 0.3267,
+          "mean": 0.4127,
+          "max": 0.4867,
+          "n_seeds": 20
+        },
+        "factual_overall": {
+          "min": 0.436,
+          "mean": 0.4776,
+          "max": 0.5093,
+          "n_seeds": 20
+        }
+      },
+      "qwen3.5-4b": {
+        "1": {
+          "min": 0.95,
+          "mean": 0.9525,
+          "max": 1.0,
+          "n_seeds": 20
+        },
+        "2": {
+          "min": 0.2842,
+          "mean": 0.2842,
+          "max": 0.2842,
+          "n_seeds": 20
+        },
+        "3": {
+          "min": 0.3667,
+          "mean": 0.4667,
+          "max": 0.5667,
+          "n_seeds": 20
+        },
+        "factual_overall": {
+          "min": 0.4892,
+          "mean": 0.5232,
+          "max": 0.5559,
+          "n_seeds": 20
+        }
+      },
+      "qwen3.5-9b": {
+        "1": {
+          "min": 1.0,
+          "mean": 1.0,
+          "max": 1.0,
+          "n_seeds": 20
+        },
+        "2": {
+          "min": 0.5235,
+          "mean": 0.5644,
+          "max": 0.6069,
+          "n_seeds": 20
+        },
+        "3": {
+          "min": 0.375,
+          "mean": 0.479,
+          "max": 0.575,
+          "n_seeds": 20
+        },
+        "factual_overall": {
+          "min": 0.6011,
+          "mean": 0.6521,
+          "max": 0.6811,
+          "n_seeds": 20
+        }
+      }
+    },
+    "reference_9b_gain_min": 0.1119,
+    "reference_9b_gain_max": 0.1518,
+    "reference_9b_meets_margin_at_all_seeds": true,
+    "gemma_gain_max": -0.0133
+  }
+}

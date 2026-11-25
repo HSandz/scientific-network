@@ -1,0 +1,77 @@
+{
+  "protocol_version": "k1-answer-v1",
+  "model_key": "qwen3.5-9b",
+  "model": {
+    "alias": "qwen3.5-9b-q4_k_m",
+    "hf_repo": "Qwen/Qwen3.5-9B",
+    "gguf_repo": "unsloth/Qwen3.5-9B-GGUF",
+    "gguf_revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "gguf_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+    "quantization": "Q4_K_M",
+    "total_params_b": 9.65,
+    "eligible": false,
+    "role": "reference only (above the 9.0B total-parameter rule)"
+  },
+  "server": {
+    "compose_file": "ops/llm/compose.yaml",
+    "base_url": "http://127.0.0.1:8081/v1",
+    "llm_port": 8081,
+    "ctx": 16384,
+    "parallel": 2,
+    "kv_type": "q8_0",
+    "gpu_layers": 99
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "seed": 0,
+    "enable_thinking": false,
+    "max_tokens": 1200,
+    "timeout": 180.0,
+    "fresh_cache_per_model": true
+  },
+  "code_commit": "c790eb6759defa8884c2dd500acdfe21efafe598",
+  "started_at": "2026-11-26T02:36:15+0700",
+  "completed_at": "2026-11-26T02:40:03+0700",
+  "question_count": 19,
+  "raw_outputs_sha256": "4cb2558dc8b00870c76da556f400c71e8675046fd9b6b7f068dee0394a84e677",
+  "gpu": {
+    "idle_baseline_mib": 2105,
+    "peak_used_mib": 7208,
+    "peak_over_idle_mib": 5103,
+    "samples": 409
+  },
+  "server_metrics_before": {
+    "llamacpp:prompt_tokens_total": 0.0,
+    "llamacpp:prompt_tokens_cached_total": 0.0,
+    "llamacpp:prompt_seconds_total": 0.0,
+    "llamacpp:tokens_predicted_total": 0.0,
+    "llamacpp:tokens_predicted_seconds_total": 0.0,
+    "llamacpp:n_decode_total": 0.0,
+    "llamacpp:n_tokens_max": 0.0,
+    "llamacpp:spec_decode_num_draft_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_accepted_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_drafts_total": 0.0,
+    "llamacpp:prompt_tokens_seconds": 0.0,
+    "llamacpp:predicted_tokens_seconds": 0.0,
+    "llamacpp:requests_processing": 0.0,
+    "llamacpp:requests_deferred": 0.0,
+    "llamacpp:n_busy_slots_per_decode": 0.0
+  },
+  "server_metrics_after": {
+    "llamacpp:prompt_tokens_total": 35928.0,
+    "llamacpp:prompt_tokens_cached_total": 25355.0,
+    "llamacpp:prompt_seconds_total": 31.7384,
+    "llamacpp:tokens_predicted_total": 9215.0,
+    "llamacpp:tokens_predicted_seconds_total": 177.045,
+    "llamacpp:n_decode_total": 9313.0,
+    "llamacpp:n_tokens_max": 3895.0,
+    "llamacpp:spec_decode_num_draft_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_accepted_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_drafts_total": 0.0,
+    "llamacpp:prompt_tokens_seconds": 1132.01,
+    "llamacpp:predicted_tokens_seconds": 51.7157,
+    "llamacpp:requests_processing": 0.0,
+    "llamacpp:requests_deferred": 0.0,
+    "llamacpp:n_busy_slots_per_decode": 1.0
+  }
+}
