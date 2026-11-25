@@ -36,6 +36,11 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
   - Test kept: **69 / 80** (`>= 60` gate passed): hop-1 `14/20`, hop-2 `22/25`, hop-3 `18/20`, global `15/15` (11 dropped for `empty_reference_result`: 6 hop-1, 3 hop-2, 2 hop-3).
   - Development kept: **19 / 20**: hop-1 `4/5`, hop-2 `6/6`, hop-3 `5/5`, global `4/4` (1 dropped: `qa-v1-d002`, `empty_reference_result`).
 
+- **Phase 2 (closed 9-tool layer):**
+  - Added `src/scientific_network/rag/tools.py` (`find`, `neighbors`, `path`, `papers`, `aggregate`, `rank`, `community`, `community_report`, `trend`) with `Neo4jToolBackend` (read-only `READ_ACCESS`, 15s timeouts, `LIMIT` caps, label/predicate allowlists) and `InMemoryGraphBackend`.
+  - Same-name researchers return `ambiguous: true` with an OpenAlex-ID choice list; Method/Task/Dataset neighbors supplement sparse extracted edges with shared-paper co-occurrence tagged `source_kind: "paper_cooccurrence"`; `trend` and `find` resolve Phase 0 display aliases.
+  - Added `tests/test_rag_tools.py` (2 passed: synthetic offline fixture + live Neo4j 7690 integration test).
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -44,6 +49,7 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 | `research-network final-analysis` (sanity, smallworld `--reuse-baselines`, ranking, communities, trends, report) with `configs/analysis-final-exam-v2.yaml` | exit 0; 20/20 v4 sanity match; N1/N2 2025 `C` equals headline | `reports/final-exam/analysis-v2/`, `reports/runs/WORK-2026-11-25-005/analysis-v2.log` |
 | `uv run pytest -q tests/test_qa_references.py` | exit 0; 2 passed | `tests/test_qa_references.py` |
 | `uv run research-network qa-references` (against Neo4j 7690) | exit 0; 69/80 test kept, 19/20 dev kept | `data/manifests/qa-benchmark-v1/references-v1.jsonl`, `references-v1-receipt.json` |
+| `uv run pytest -v tests/test_rag_tools.py` | exit 0; 2 passed (synthetic + live 7690) | `tests/test_rag_tools.py` |
 
 ## Decisions
 
