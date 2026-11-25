@@ -183,3 +183,14 @@ def test_group_interest_rca():
     rows = trends.group_interest(inputs, "Topic", {"g": {f"p{i}" for i in range(10)}}, CFG)
     assert rows[0]["group_papers_in_subject"] == 10 and rows[0]["share_of_group"] == 1.0
     assert rows[0]["rca"] == pytest.approx(1.0 / 0.2)
+
+
+def test_eigenvector_computed_on_undirected_and_not_fatal_on_dag():
+    g = _two_cliques()
+    g.es["distance"] = [1.0] * g.ecount()
+    df, meta = ranking.centralities(g, CFG, 1, weighted=True, betweenness_mode="none")
+    assert df["eigenvector"].notna().all() and "eigenvector_error" not in meta
+    dag = ig.Graph([(0, 1), (1, 2)], directed=True)
+    dag.vs["id"] = ["a", "b", "c"]
+    df, _meta = ranking.centralities(dag, CFG, 1, weighted=False, betweenness_mode="none")  # must not raise
+    assert len(df) == 3

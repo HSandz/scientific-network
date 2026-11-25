@@ -58,7 +58,10 @@ def centralities(g: ig.Graph, cfg: dict, seed: int, *, weighted: bool, betweenne
     t = time.time()
     if eigenvector:
         try:
-            data["eigenvector"] = g.eigenvector_centrality(directed=g.is_directed(), scale=True, weights="weight" if weighted else None)
+            # igraph 1.0 rejects an explicit directed=False ("Invalid mode"), so pass directed only for a directed graph.
+            # On a disconnected graph the leading eigenvector concentrates on the largest component (igraph documents this); reported as a caveat.
+            kwargs = {"directed": True} if g.is_directed() else {}
+            data["eigenvector"] = g.eigenvector_centrality(scale=True, weights="weight" if weighted else None, **kwargs)
         except Exception as error:  # a directed acyclic graph has no leading eigenvector
             data["eigenvector"] = [float("nan")] * g.vcount()
             meta["eigenvector_error"] = str(error)

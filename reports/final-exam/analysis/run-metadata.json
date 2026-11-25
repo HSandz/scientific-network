@@ -7,6 +7,10 @@
   "smallworld": {
    "seconds": 1083.5,
    "peak_rss_mb_so_far": 1502
+  },
+  "ranking": {
+   "seconds": 197.5,
+   "peak_rss_mb_so_far": 1502
   }
  },
  "config": "analysis-final-exam-v1",

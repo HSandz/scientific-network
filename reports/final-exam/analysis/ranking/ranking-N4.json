@@ -1,0 +1,1447 @@
+{
+ "nodes": 50144,
+ "edges": 241767,
+ "directed": false,
+ "weighted_pagerank": false,
+ "meta": {
+  "betweenness": {
+   "method": "not computed"
+  },
+  "seconds": 0.0728914737701416
+ },
+ "comparison_with_pagerank": {
+  "degree": {
+   "spearman": 0.9536628390486463,
+   "top20_overlap": 19
+  },
+  "strength": {
+   "spearman": 0.9536628390486463,
+   "top20_overlap": 19
+  },
+  "betweenness": {
+   "spearman": null,
+   "top20_overlap": null,
+   "note": "not computed"
+  },
+  "eigenvector": {
+   "spearman": 0.44938480306813616,
+   "top20_overlap": 19
+  }
+ },
+ "top_by_label": {
+  "Researcher": [
+   {
+    "rank": 156,
+    "id": "researcher:openalex:A5008056593",
+    "name": "Shirui Pan",
+    "label": "Researcher",
+    "pagerank": 0.00020462254405460674,
+    "degree": 123,
+    "strength": 123.0,
+    "community": null
+   },
+   {
+    "rank": 185,
+    "id": "researcher:openalex:A5023834700",
+    "name": "Chengjie Wang",
+    "label": "Researcher",
+    "pagerank": 0.0001727260080481803,
+    "degree": 118,
+    "strength": 118.0,
+    "community": null
+   },
+   {
+    "rank": 197,
+    "id": "researcher:openalex:A5084218062",
+    "name": "Lizhuang Ma",
+    "label": "Researcher",
+    "pagerank": 0.00016368868583313645,
+    "degree": 107,
+    "strength": 107.0,
+    "community": null
+   },
+   {
+    "rank": 201,
+    "id": "researcher:openalex:A5029021362",
+    "name": "Ying Yu Tai",
+    "label": "Researcher",
+    "pagerank": 0.00016055991707694418,
+    "degree": 107,
+    "strength": 107.0,
+    "community": null
+   },
+   {
+    "rank": 209,
+    "id": "researcher:openalex:A5047509839",
+    "name": "Jianye Hao",
+    "label": "Researcher",
+    "pagerank": 0.00015415590636271717,
+    "degree": 96,
+    "strength": 96.0,
+    "community": null
+   },
+   {
+    "rank": 211,
+    "id": "researcher:openalex:A5068837264",
+    "name": "Xiaochun Cao",
+    "label": "Researcher",
+    "pagerank": 0.00015196509272609538,
+    "degree": 93,
+    "strength": 93.0,
+    "community": null
+   },
+   {
+    "rank": 214,
+    "id": "researcher:openalex:A5003217535",
+    "name": "Zheng-Jun Zha",
+    "label": "Researcher",
+    "pagerank": 0.00015010988532549604,
+    "degree": 92,
+    "strength": 92.0,
+    "community": null
+   },
+   {
+    "rank": 216,
+    "id": "researcher:openalex:A5048237545",
+    "name": "Enhong Chen",
+    "label": "Researcher",
+    "pagerank": 0.0001496629117488748,
+    "degree": 92,
+    "strength": 92.0,
+    "community": null
+   },
+   {
+    "rank": 217,
+    "id": "researcher:openalex:A5009013876",
+    "name": "Dongxiao He",
+    "label": "Researcher",
+    "pagerank": 0.00014908548070881471,
+    "degree": 92,
+    "strength": 92.0,
+    "community": null
+   },
+   {
+    "rank": 218,
+    "id": "researcher:openalex:A5087818121",
+    "name": "Wanli Ouyang",
+    "label": "Researcher",
+    "pagerank": 0.0001489670821699765,
+    "degree": 94,
+    "strength": 94.0,
+    "community": null
+   },
+   {
+    "rank": 219,
+    "id": "researcher:openalex:A5034104790",
+    "name": "Shu\u2010Tao Xia",
+    "label": "Researcher",
+    "pagerank": 0.0001474993793212798,
+    "degree": 95,
+    "strength": 95.0,
+    "community": null
+   },
+   {
+    "rank": 225,
+    "id": "researcher:openalex:A5101727888",
+    "name": "Xinwang Liu",
+    "label": "Researcher",
+    "pagerank": 0.0001435973596438347,
+    "degree": 95,
+    "strength": 95.0,
+    "community": null
+   },
+   {
+    "rank": 226,
+    "id": "researcher:openalex:A5017743551",
+    "name": "Bo An",
+    "label": "Researcher",
+    "pagerank": 0.00014274764179923196,
+    "degree": 79,
+    "strength": 79.0,
+    "community": null
+   },
+   {
+    "rank": 230,
+    "id": "researcher:openalex:A5036357902",
+    "name": "Philip S. Yu",
+    "label": "Researcher",
+    "pagerank": 0.00014007900646446212,
+    "degree": 87,
+    "strength": 87.0,
+    "community": null
+   },
+   {
+    "rank": 237,
+    "id": "researcher:openalex:A5100726984",
+    "name": "Jian Jun Yang",
+    "label": "Researcher",
+    "pagerank": 0.00013564534155963617,
+    "degree": 79,
+    "strength": 79.0,
+    "community": null
+   },
+   {
+    "rank": 238,
+    "id": "researcher:openalex:A5087158377",
+    "name": "Junchi Yan",
+    "label": "Researcher",
+    "pagerank": 0.0001354925139420798,
+    "degree": 79,
+    "strength": 79.0,
+    "community": null
+   },
+   {
+    "rank": 244,
+    "id": "researcher:openalex:A5086397952",
+    "name": "Shouhong Ding",
+    "label": "Researcher",
+    "pagerank": 0.00013103836669233924,
+    "degree": 86,
+    "strength": 86.0,
+    "community": null
+   },
+   {
+    "rank": 251,
+    "id": "researcher:openalex:A5079007635",
+    "name": "Xueyang Fu",
+    "label": "Researcher",
+    "pagerank": 0.00012929005750118332,
+    "degree": 79,
+    "strength": 79.0,
+    "community": null
+   },
+   {
+    "rank": 254,
+    "id": "researcher:openalex:A5089404640",
+    "name": "Tat\u2010Seng Chua",
+    "label": "Researcher",
+    "pagerank": 0.0001276985598950886,
+    "degree": 81,
+    "strength": 81.0,
+    "community": null
+   },
+   {
+    "rank": 256,
+    "id": "researcher:openalex:A5085496384",
+    "name": "Zhenya Huang",
+    "label": "Researcher",
+    "pagerank": 0.00012726037023275865,
+    "degree": 75,
+    "strength": 75.0,
+    "community": null
+   }
+  ],
+  "Organization": [
+   {
+    "rank": 11,
+    "id": "organization:I76130692",
+    "name": "Zhejiang University",
+    "label": "Organization",
+    "pagerank": 0.0021577035567963794,
+    "degree": 1223,
+    "strength": 1223.0,
+    "community": null
+   },
+   {
+    "rank": 12,
+    "id": "organization:I19820366",
+    "name": "Chinese Academy of Sciences",
+    "label": "Organization",
+    "pagerank": 0.0020762151761802602,
+    "degree": 1296,
+    "strength": 1296.0,
+    "community": null
+   },
+   {
+    "rank": 15,
+    "id": "organization:I99065089",
+    "name": "Tsinghua University",
+    "label": "Organization",
+    "pagerank": 0.0017749613645817559,
+    "degree": 1011,
+    "strength": 1011.0,
+    "community": null
+   },
+   {
+    "rank": 16,
+    "id": "organization:I20231570",
+    "name": "Peking University",
+    "label": "Organization",
+    "pagerank": 0.001569192977153274,
+    "degree": 878,
+    "strength": 878.0,
+    "community": null
+   },
+   {
+    "rank": 17,
+    "id": "organization:I4210165038",
+    "name": "University of Chinese Academy of Sciences",
+    "label": "Organization",
+    "pagerank": 0.001558660596182399,
+    "degree": 976,
+    "strength": 976.0,
+    "community": null
+   },
+   {
+    "rank": 18,
+    "id": "organization:I126520041",
+    "name": "University of Science and Technology of China",
+    "label": "Organization",
+    "pagerank": 0.0014351250755321985,
+    "degree": 801,
+    "strength": 801.0,
+    "community": null
+   },
+   {
+    "rank": 19,
+    "id": "organization:I183067930",
+    "name": "Shanghai Jiao Tong University",
+    "label": "Organization",
+    "pagerank": 0.0013757776903041948,
+    "degree": 759,
+    "strength": 759.0,
+    "community": null
+   },
+   {
+    "rank": 20,
+    "id": "organization:I204983213",
+    "name": "Harbin Institute of Technology",
+    "label": "Organization",
+    "pagerank": 0.0010541575138112798,
+    "degree": 597,
+    "strength": 597.0,
+    "community": null
+   },
+   {
+    "rank": 21,
+    "id": "organization:I2250653659",
+    "name": "Tencent (China)",
+    "label": "Organization",
+    "pagerank": 0.001029241882298844,
+    "degree": 629,
+    "strength": 629.0,
+    "community": null
+   },
+   {
+    "rank": 22,
+    "id": "organization:I881766915",
+    "name": "Nanjing University",
+    "label": "Organization",
+    "pagerank": 0.0010107777168412114,
+    "degree": 545,
+    "strength": 545.0,
+    "community": null
+   },
+   {
+    "rank": 23,
+    "id": "organization:I82880672",
+    "name": "Beihang University",
+    "label": "Organization",
+    "pagerank": 0.0010052303390616696,
+    "degree": 555,
+    "strength": 555.0,
+    "community": null
+   },
+   {
+    "rank": 24,
+    "id": "organization:I45928872",
+    "name": "Alibaba Group (China)",
+    "label": "Organization",
+    "pagerank": 0.000982530209815674,
+    "degree": 582,
+    "strength": 582.0,
+    "community": null
+   },
+   {
+    "rank": 25,
+    "id": "organization:I24943067",
+    "name": "Fudan University",
+    "label": "Organization",
+    "pagerank": 0.0009596184089801398,
+    "degree": 544,
+    "strength": 544.0,
+    "community": null
+   },
+   {
+    "rank": 26,
+    "id": "organization:I157773358",
+    "name": "Sun Yat-sen University",
+    "label": "Organization",
+    "pagerank": 0.0009463529501075921,
+    "degree": 521,
+    "strength": 521.0,
+    "community": null
+   },
+   {
+    "rank": 27,
+    "id": "organization:I165932596",
+    "name": "National University of Singapore",
+    "label": "Organization",
+    "pagerank": 0.0008648458002578448,
+    "degree": 484,
+    "strength": 484.0,
+    "community": null
+   },
+   {
+    "rank": 28,
+    "id": "organization:I150229711",
+    "name": "University of Electronic Science and Technology of China",
+    "label": "Organization",
+    "pagerank": 0.0008456646357806347,
+    "degree": 463,
+    "strength": 463.0,
+    "community": null
+   },
+   {
+    "rank": 29,
+    "id": "organization:I139759216",
+    "name": "Beijing University of Posts and Telecommunications",
+    "label": "Organization",
+    "pagerank": 0.0008197214301952331,
+    "degree": 440,
+    "strength": 440.0,
+    "community": null
+   },
+   {
+    "rank": 30,
+    "id": "organization:I87445476",
+    "name": "Xi'an Jiaotong University",
+    "label": "Organization",
+    "pagerank": 0.0008187239789543486,
+    "degree": 443,
+    "strength": 443.0,
+    "community": null
+   },
+   {
+    "rank": 31,
+    "id": "organization:I149594827",
+    "name": "Xidian University",
+    "label": "Organization",
+    "pagerank": 0.0008145118955894736,
+    "degree": 435,
+    "strength": 435.0,
+    "community": null
+   },
+   {
+    "rank": 32,
+    "id": "organization:I1294671590",
+    "name": "Centre National de la Recherche Scientifique",
+    "label": "Organization",
+    "pagerank": 0.0007959460314482852,
+    "degree": 481,
+    "strength": 481.0,
+    "community": null
+   }
+  ],
+  "Paper": [
+   {
+    "rank": 358,
+    "id": "paper:aaai:2021:17325",
+    "name": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+    "label": "Paper",
+    "pagerank": 0.00010174882487343548,
+    "degree": 58,
+    "strength": 58.0,
+    "community": null
+   },
+   {
+    "rank": 1002,
+    "id": "paper:aaai:2024:28226",
+    "name": "T2I-Adapter: Learning Adapters to Dig Out More Controllable Ability for Text-to-Image Diffusion Models",
+    "label": "Paper",
+    "pagerank": 5.386291370445596e-05,
+    "degree": 31,
+    "strength": 31.0,
+    "community": null
+   },
+   {
+    "rank": 1092,
+    "id": "paper:aaai:2021:16514",
+    "name": "Beyond Low-frequency Information in Graph Convolutional Networks",
+    "label": "Paper",
+    "pagerank": 5.154937120540104e-05,
+    "degree": 31,
+    "strength": 31.0,
+    "community": null
+   },
+   {
+    "rank": 1136,
+    "id": "paper:ijcai:2021:214",
+    "name": "Masked Label Prediction: Unified Message Passing Model for Semi-Supervised Classification",
+    "label": "Paper",
+    "pagerank": 5.028131227190714e-05,
+    "degree": 28,
+    "strength": 28.0,
+    "community": null
+   },
+   {
+    "rank": 1194,
+    "id": "paper:ijcai:2021:324",
+    "name": "Time-Series Representation Learning via Temporal and Contextual Contrasting",
+    "label": "Paper",
+    "pagerank": 4.88724496266258e-05,
+    "degree": 28,
+    "strength": 28.0,
+    "community": null
+   },
+   {
+    "rank": 1246,
+    "id": "paper:aaai:2021:17320",
+    "name": "Going Deeper With Directly-Trained Larger Spiking Neural Networks",
+    "label": "Paper",
+    "pagerank": 4.792874518014792e-05,
+    "degree": 28,
+    "strength": 28.0,
+    "community": null
+   },
+   {
+    "rank": 1282,
+    "id": "paper:aaai:2022:20881",
+    "name": "TS2Vec: Towards Universal Representation of Time Series",
+    "label": "Paper",
+    "pagerank": 4.7131281123440675e-05,
+    "degree": 27,
+    "strength": 27.0,
+    "community": null
+   },
+   {
+    "rank": 1329,
+    "id": "paper:aaai:2021:17344",
+    "name": "Lifelong Multi-Agent Path Finding in Large-Scale Warehouses",
+    "label": "Paper",
+    "pagerank": 4.6239768571692396e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   },
+   {
+    "rank": 1417,
+    "id": "paper:aaai:2022:20726",
+    "name": "Deep Graph Clustering via Dual Correlation Reduction",
+    "label": "Paper",
+    "pagerank": 4.4853774542341816e-05,
+    "degree": 28,
+    "strength": 28.0,
+    "community": null
+   },
+   {
+    "rank": 1444,
+    "id": "paper:aaai:2023:26317",
+    "name": "Are Transformers Effective for Time Series Forecasting?",
+    "label": "Paper",
+    "pagerank": 4.442842834023735e-05,
+    "degree": 24,
+    "strength": 24.0,
+    "community": null
+   },
+   {
+    "rank": 1555,
+    "id": "paper:aaai:2023:25233",
+    "name": "BEVDepth: Acquisition of Reliable Depth for Multi-View 3D Object Detection",
+    "label": "Paper",
+    "pagerank": 4.282640720600387e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   },
+   {
+    "rank": 1561,
+    "id": "paper:aaai:2021:16207",
+    "name": "Voxel R-CNN: Towards High Performance Voxel-based 3D Object Detection",
+    "label": "Paper",
+    "pagerank": 4.2765054471500635e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   },
+   {
+    "rank": 1598,
+    "id": "paper:ijcai:2023:184",
+    "name": "Action Recognition with Multi-stream Motion Modeling and Mutual Information Maximization",
+    "label": "Paper",
+    "pagerank": 4.206475144801443e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   },
+   {
+    "rank": 1641,
+    "id": "paper:aaai:2021:17315",
+    "name": "Data Augmentation for Graph Neural Networks",
+    "label": "Paper",
+    "pagerank": 4.144786332980472e-05,
+    "degree": 22,
+    "strength": 22.0,
+    "community": null
+   },
+   {
+    "rank": 1656,
+    "id": "paper:aaai:2021:16651",
+    "name": "The Price of Connectivity in Fair Division",
+    "label": "Paper",
+    "pagerank": 4.1209866190791244e-05,
+    "degree": 21,
+    "strength": 21.0,
+    "community": null
+   },
+   {
+    "rank": 1657,
+    "id": "paper:aaai:2021:17276",
+    "name": "Improving Sample Efficiency in Model-Free Reinforcement Learning from Images",
+    "label": "Paper",
+    "pagerank": 4.120112755618757e-05,
+    "degree": 22,
+    "strength": 22.0,
+    "community": null
+   },
+   {
+    "rank": 1669,
+    "id": "paper:aaai:2025:32540",
+    "name": "Pamba: Enhancing Global Interaction in Point Clouds via State Space Model",
+    "label": "Paper",
+    "pagerank": 4.104411075304737e-05,
+    "degree": 23,
+    "strength": 23.0,
+    "community": null
+   },
+   {
+    "rank": 1706,
+    "id": "paper:aaai:2025:33684",
+    "name": "Even-if Explanations: Formal Foundations, Priorities and Complexity",
+    "label": "Paper",
+    "pagerank": 4.057283304472285e-05,
+    "degree": 22,
+    "strength": 22.0,
+    "community": null
+   },
+   {
+    "rank": 1717,
+    "id": "paper:aaai:2021:16647",
+    "name": "Fair and Truthful Mechanisms for Dichotomous Valuations",
+    "label": "Paper",
+    "pagerank": 4.044636996116551e-05,
+    "degree": 20,
+    "strength": 20.0,
+    "community": null
+   },
+   {
+    "rank": 1726,
+    "id": "paper:aaai:2021:17198",
+    "name": "Deep Fusion Clustering Network",
+    "label": "Paper",
+    "pagerank": 4.025407932035648e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   }
+  ],
+  "Topic": [
+   {
+    "rank": 2,
+    "id": "topic:representation-learning",
+    "name": "Representation learning",
+    "label": "Topic",
+    "pagerank": 0.008725984112595921,
+    "degree": 5097,
+    "strength": 5097.0,
+    "community": null
+   },
+   {
+    "rank": 4,
+    "id": "topic:multimodal",
+    "name": "Multimodal learning",
+    "label": "Topic",
+    "pagerank": 0.004567172276785413,
+    "degree": 2690,
+    "strength": 2690.0,
+    "community": null
+   },
+   {
+    "rank": 5,
+    "id": "topic:reinforcement-learning",
+    "name": "Reinforcement learning",
+    "label": "Topic",
+    "pagerank": 0.00377180612513171,
+    "degree": 2080,
+    "strength": 2080.0,
+    "community": null
+   },
+   {
+    "rank": 6,
+    "id": "topic:efficient-systems",
+    "name": "Efficient machine learning systems",
+    "label": "Topic",
+    "pagerank": 0.0037313673533651594,
+    "degree": 2122,
+    "strength": 2122.0,
+    "community": null
+   },
+   {
+    "rank": 7,
+    "id": "topic:graph-ml",
+    "name": "Graph machine learning",
+    "label": "Topic",
+    "pagerank": 0.0035431617998309224,
+    "degree": 2089,
+    "strength": 2089.0,
+    "community": null
+   },
+   {
+    "rank": 8,
+    "id": "topic:planning-reasoning",
+    "name": "Planning and reasoning",
+    "label": "Topic",
+    "pagerank": 0.002627488564233941,
+    "degree": 1444,
+    "strength": 1444.0,
+    "community": null
+   },
+   {
+    "rank": 9,
+    "id": "topic:generative-modeling",
+    "name": "Generative modeling",
+    "label": "Topic",
+    "pagerank": 0.002614126050229558,
+    "degree": 1480,
+    "strength": 1480.0,
+    "community": null
+   },
+   {
+    "rank": 10,
+    "id": "topic:trustworthy-ml",
+    "name": "Trustworthy machine learning",
+    "label": "Topic",
+    "pagerank": 0.0023137369923864133,
+    "degree": 1290,
+    "strength": 1290.0,
+    "community": null
+   },
+   {
+    "rank": 13,
+    "id": "topic:nlp-language-models",
+    "name": "Natural language processing and language models",
+    "label": "Topic",
+    "pagerank": 0.0019573045306969955,
+    "degree": 1133,
+    "strength": 1133.0,
+    "community": null
+   },
+   {
+    "rank": 14,
+    "id": "topic:computer-vision",
+    "name": "Computer vision",
+    "label": "Topic",
+    "pagerank": 0.0019312641494118323,
+    "degree": 1133,
+    "strength": 1133.0,
+    "community": null
+   },
+   {
+    "rank": 38,
+    "id": "topic:multi-agent",
+    "name": "Multi-agent systems",
+    "label": "Topic",
+    "pagerank": 0.0007154099316502828,
+    "degree": 394,
+    "strength": 394.0,
+    "community": null
+   },
+   {
+    "rank": 39,
+    "id": "topic:optimization-theory",
+    "name": "Optimization and learning theory",
+    "label": "Topic",
+    "pagerank": 0.0006977639575778191,
+    "degree": 375,
+    "strength": 375.0,
+    "community": null
+   },
+   {
+    "rank": 58,
+    "id": "topic:causal-inference",
+    "name": "Causal inference",
+    "label": "Topic",
+    "pagerank": 0.0005093621434669535,
+    "degree": 276,
+    "strength": 276.0,
+    "community": null
+   },
+   {
+    "rank": 75,
+    "id": "topic:probabilistic-bayesian",
+    "name": "Probabilistic and Bayesian learning",
+    "label": "Topic",
+    "pagerank": 0.00040317152580522035,
+    "degree": 213,
+    "strength": 213.0,
+    "community": null
+   },
+   {
+    "rank": 79,
+    "id": "topic:retrieval-recommendation",
+    "name": "Information retrieval and recommendation",
+    "label": "Topic",
+    "pagerank": 0.0003925941384246293,
+    "degree": 216,
+    "strength": 216.0,
+    "community": null
+   },
+   {
+    "rank": 103,
+    "id": "topic:robotics-embodied",
+    "name": "Robotics and embodied AI",
+    "label": "Topic",
+    "pagerank": 0.00029752088935863747,
+    "degree": 160,
+    "strength": 160.0,
+    "community": null
+   },
+   {
+    "rank": 47114,
+    "id": "topic:decision-interaction",
+    "name": "Decision and interaction",
+    "label": "Topic",
+    "pagerank": 9.20337653279011e-06,
+    "degree": 4,
+    "strength": 4.0,
+    "community": null
+   },
+   {
+    "rank": 47208,
+    "id": "topic:reliability-theory-systems",
+    "name": "Reliability, theory and systems",
+    "label": "Topic",
+    "pagerank": 9.160883304256677e-06,
+    "degree": 4,
+    "strength": 4.0,
+    "community": null
+   },
+   {
+    "rank": 47519,
+    "id": "topic:learning-representation",
+    "name": "Learning and representation",
+    "label": "Topic",
+    "pagerank": 8.998516743211239e-06,
+    "degree": 4,
+    "strength": 4.0,
+    "community": null
+   },
+   {
+    "rank": 47711,
+    "id": "topic:language-perception",
+    "name": "Language and perception",
+    "label": "Topic",
+    "pagerank": 8.896758510131743e-06,
+    "degree": 4,
+    "strength": 4.0,
+    "community": null
+   }
+  ],
+  "Method": [
+   {
+    "rank": 54,
+    "id": "method:Q107750691",
+    "name": "graph neural networks",
+    "label": "Method",
+    "pagerank": 0.0005454329675365024,
+    "degree": 315,
+    "strength": 315.0,
+    "community": null
+   },
+   {
+    "rank": 90,
+    "id": "method:3b092cae8d3d0380",
+    "name": "contrastive learning",
+    "label": "Method",
+    "pagerank": 0.0003337687583972879,
+    "degree": 192,
+    "strength": 192.0,
+    "community": null
+   },
+   {
+    "rank": 115,
+    "id": "method:Q114617315",
+    "name": "diffusion models",
+    "label": "Method",
+    "pagerank": 0.0002799952619296839,
+    "degree": 155,
+    "strength": 155.0,
+    "community": null
+   },
+   {
+    "rank": 118,
+    "id": "method:Q85810444",
+    "name": "Transformer",
+    "label": "Method",
+    "pagerank": 0.00027633129227412596,
+    "degree": 160,
+    "strength": 160.0,
+    "community": null
+   },
+   {
+    "rank": 124,
+    "id": "method:Q830687",
+    "name": "reinforcement learning",
+    "label": "Method",
+    "pagerank": 0.0002666947659578614,
+    "degree": 146,
+    "strength": 146.0,
+    "community": null
+   },
+   {
+    "rank": 131,
+    "id": "method:Q3621696",
+    "name": "Large Language Models (LLMs)",
+    "label": "Method",
+    "pagerank": 0.00024724578157314474,
+    "degree": 138,
+    "strength": 138.0,
+    "community": null
+   },
+   {
+    "rank": 170,
+    "id": "method:fc9f3ae32eeea8b0",
+    "name": "deep neural networks",
+    "label": "Method",
+    "pagerank": 0.00018864683905152357,
+    "degree": 102,
+    "strength": 102.0,
+    "community": null
+   },
+   {
+    "rank": 172,
+    "id": "method:13a94d2abc753266",
+    "name": "attention mechanism",
+    "label": "Method",
+    "pagerank": 0.00018763215639027635,
+    "degree": 104,
+    "strength": 104.0,
+    "community": null
+   },
+   {
+    "rank": 223,
+    "id": "method:fae7780f22ec4f2a",
+    "name": "convolutional neural networks",
+    "label": "Method",
+    "pagerank": 0.00014364416460270027,
+    "degree": 80,
+    "strength": 80.0,
+    "community": null
+   },
+   {
+    "rank": 229,
+    "id": "method:Q74253442",
+    "name": "knowledge distillation",
+    "label": "Method",
+    "pagerank": 0.00014042068080707197,
+    "degree": 80,
+    "strength": 80.0,
+    "community": null
+   },
+   {
+    "rank": 235,
+    "id": "method:f58ca558af650e28",
+    "name": "CLIP",
+    "label": "Method",
+    "pagerank": 0.00013703736017615912,
+    "degree": 78,
+    "strength": 78.0,
+    "community": null
+   },
+   {
+    "rank": 240,
+    "id": "method:Q12811862",
+    "name": "neural networks",
+    "label": "Method",
+    "pagerank": 0.00013395677920068953,
+    "degree": 70,
+    "strength": 70.0,
+    "community": null
+   },
+   {
+    "rank": 241,
+    "id": "method:959d780dec41bdff",
+    "name": "generative adversarial networks",
+    "label": "Method",
+    "pagerank": 0.00013327171392314284,
+    "degree": 72,
+    "strength": 72.0,
+    "community": null
+   },
+   {
+    "rank": 249,
+    "id": "method:946026262bf03eaf",
+    "name": "self-supervised learning",
+    "label": "Method",
+    "pagerank": 0.0001296883304862179,
+    "degree": 72,
+    "strength": 72.0,
+    "community": null
+   },
+   {
+    "rank": 270,
+    "id": "method:Q65079156",
+    "name": "deep reinforcement learning",
+    "label": "Method",
+    "pagerank": 0.00012353071579967708,
+    "degree": 66,
+    "strength": 66.0,
+    "community": null
+   },
+   {
+    "rank": 276,
+    "id": "method:2ebf0983ede08b6f",
+    "name": "adversarial training",
+    "label": "Method",
+    "pagerank": 0.00012185215683547448,
+    "degree": 67,
+    "strength": 67.0,
+    "community": null
+   },
+   {
+    "rank": 287,
+    "id": "method:650b62aa39cbdc7b",
+    "name": "graph convolutional network",
+    "label": "Method",
+    "pagerank": 0.00011817547650610931,
+    "degree": 67,
+    "strength": 67.0,
+    "community": null
+   },
+   {
+    "rank": 316,
+    "id": "method:3b2e71071f7aec8a",
+    "name": "self-attention mechanism",
+    "label": "Method",
+    "pagerank": 0.00010916750768519349,
+    "degree": 63,
+    "strength": 63.0,
+    "community": null
+   },
+   {
+    "rank": 329,
+    "id": "method:917c667e8cb4dec5",
+    "name": "BERT",
+    "label": "Method",
+    "pagerank": 0.00010674833420217046,
+    "degree": 60,
+    "strength": 60.0,
+    "community": null
+   },
+   {
+    "rank": 372,
+    "id": "method:Q107675654",
+    "name": "Vision Transformer",
+    "label": "Method",
+    "pagerank": 9.912419726019351e-05,
+    "degree": 57,
+    "strength": 57.0,
+    "community": null
+   }
+  ],
+  "Task": [
+   {
+    "rank": 161,
+    "id": "task:1fa654aed2b0ed89",
+    "name": "image classification",
+    "label": "Task",
+    "pagerank": 0.00020086086713903608,
+    "degree": 115,
+    "strength": 115.0,
+    "community": null
+   },
+   {
+    "rank": 194,
+    "id": "task:5ef763e002edfb6a",
+    "name": "semantic segmentation",
+    "label": "Task",
+    "pagerank": 0.00016500115507120768,
+    "degree": 97,
+    "strength": 97.0,
+    "community": null
+   },
+   {
+    "rank": 200,
+    "id": "task:66162611936a341d",
+    "name": "object detection",
+    "label": "Task",
+    "pagerank": 0.0001609259208581442,
+    "degree": 95,
+    "strength": 95.0,
+    "community": null
+   },
+   {
+    "rank": 335,
+    "id": "task:7677d8c51175f30d",
+    "name": "node classification",
+    "label": "Task",
+    "pagerank": 0.00010600545156190336,
+    "degree": 61,
+    "strength": 61.0,
+    "community": null
+   },
+   {
+    "rank": 401,
+    "id": "task:Q98925312",
+    "name": "link prediction",
+    "label": "Task",
+    "pagerank": 9.403706126879588e-05,
+    "degree": 52,
+    "strength": 52.0,
+    "community": null
+   },
+   {
+    "rank": 402,
+    "id": "task:Q3560506",
+    "name": "Anomaly Detection",
+    "label": "Task",
+    "pagerank": 9.398042336822575e-05,
+    "degree": 50,
+    "strength": 50.0,
+    "community": null
+   },
+   {
+    "rank": 404,
+    "id": "task:c57e89fdcae5d91c",
+    "name": "classification",
+    "label": "Task",
+    "pagerank": 9.280672194119051e-05,
+    "degree": 51,
+    "strength": 51.0,
+    "community": null
+   },
+   {
+    "rank": 503,
+    "id": "task:061857179e1a8023",
+    "name": "3D Object Detection",
+    "label": "Task",
+    "pagerank": 8.05827358791671e-05,
+    "degree": 44,
+    "strength": 44.0,
+    "community": null
+   },
+   {
+    "rank": 517,
+    "id": "task:2b189273784bfa8a",
+    "name": "Time Series Forecasting",
+    "label": "Task",
+    "pagerank": 7.9396251477331e-05,
+    "degree": 42,
+    "strength": 42.0,
+    "community": null
+   },
+   {
+    "rank": 610,
+    "id": "task:d10fb5b5f0862622",
+    "name": "Medical Image Segmentation",
+    "label": "Task",
+    "pagerank": 7.14692421037467e-05,
+    "degree": 39,
+    "strength": 39.0,
+    "community": null
+   },
+   {
+    "rank": 619,
+    "id": "task:f1456901921cb85b",
+    "name": "text classification",
+    "label": "Task",
+    "pagerank": 7.085329649238012e-05,
+    "degree": 39,
+    "strength": 39.0,
+    "community": null
+   },
+   {
+    "rank": 852,
+    "id": "task:d77297048601664a",
+    "name": "multi-view clustering",
+    "label": "Task",
+    "pagerank": 5.8766535873951454e-05,
+    "degree": 33,
+    "strength": 33.0,
+    "community": null
+   },
+   {
+    "rank": 855,
+    "id": "task:Q110797734",
+    "name": "few-shot learning",
+    "label": "Task",
+    "pagerank": 5.868135951896834e-05,
+    "degree": 31,
+    "strength": 31.0,
+    "community": null
+   },
+   {
+    "rank": 950,
+    "id": "task:44de33167d1b5101",
+    "name": "Visual Question Answering",
+    "label": "Task",
+    "pagerank": 5.55414460287237e-05,
+    "degree": 30,
+    "strength": 30.0,
+    "community": null
+   },
+   {
+    "rank": 962,
+    "id": "task:Q112842184",
+    "name": "Multi-Agent Path Finding",
+    "label": "Task",
+    "pagerank": 5.510557696716878e-05,
+    "degree": 31,
+    "strength": 31.0,
+    "community": null
+   },
+   {
+    "rank": 1051,
+    "id": "task:c1b9a2a1e999e1a5",
+    "name": "graph classification",
+    "label": "Task",
+    "pagerank": 5.2272562805827716e-05,
+    "degree": 29,
+    "strength": 29.0,
+    "community": null
+   },
+   {
+    "rank": 1093,
+    "id": "task:02dbbba279318de5",
+    "name": "instance segmentation",
+    "label": "Task",
+    "pagerank": 5.1539269458950753e-05,
+    "degree": 28,
+    "strength": 28.0,
+    "community": null
+   },
+   {
+    "rank": 1147,
+    "id": "task:2e3d4b251bec90f9",
+    "name": "clustering",
+    "label": "Task",
+    "pagerank": 5.008417800513708e-05,
+    "degree": 26,
+    "strength": 26.0,
+    "community": null
+   },
+   {
+    "rank": 1174,
+    "id": "task:035576a3a86ff29c",
+    "name": "segmentation",
+    "label": "Task",
+    "pagerank": 4.9271436919490086e-05,
+    "degree": 27,
+    "strength": 27.0,
+    "community": null
+   },
+   {
+    "rank": 1352,
+    "id": "task:dbe4691e5c878c5f",
+    "name": "Sequential Recommendation",
+    "label": "Task",
+    "pagerank": 4.585875391866874e-05,
+    "degree": 25,
+    "strength": 25.0,
+    "community": null
+   }
+  ],
+  "Dataset": [
+   {
+    "rank": 116,
+    "id": "dataset:dd4ffb155bf2eb19",
+    "name": "ImageNet",
+    "label": "Dataset",
+    "pagerank": 0.0002775956225691454,
+    "degree": 161,
+    "strength": 161.0,
+    "community": null
+   },
+   {
+    "rank": 139,
+    "id": "dataset:Q45037095",
+    "name": "CIFAR-10",
+    "label": "Dataset",
+    "pagerank": 0.00024028023706982508,
+    "degree": 139,
+    "strength": 139.0,
+    "community": null
+   },
+   {
+    "rank": 202,
+    "id": "dataset:4f1f711b796b295b",
+    "name": "CIFAR-100",
+    "label": "Dataset",
+    "pagerank": 0.00016031972352789194,
+    "degree": 93,
+    "strength": 93.0,
+    "community": null
+   },
+   {
+    "rank": 337,
+    "id": "dataset:0633a5703a78bd81",
+    "name": "nuScenes",
+    "label": "Dataset",
+    "pagerank": 0.00010571239961654456,
+    "degree": 60,
+    "strength": 60.0,
+    "community": null
+   },
+   {
+    "rank": 403,
+    "id": "dataset:d3583d965eed8daa",
+    "name": "MS-COCO",
+    "label": "Dataset",
+    "pagerank": 9.370972916632714e-05,
+    "degree": 55,
+    "strength": 55.0,
+    "community": null
+   },
+   {
+    "rank": 438,
+    "id": "dataset:6c75023fee55c40b",
+    "name": "MNIST",
+    "label": "Dataset",
+    "pagerank": 8.765964006971166e-05,
+    "degree": 49,
+    "strength": 49.0,
+    "community": null
+   },
+   {
+    "rank": 460,
+    "id": "dataset:1e84d0426c2f5b23",
+    "name": "COCO",
+    "label": "Dataset",
+    "pagerank": 8.50387551444996e-05,
+    "degree": 49,
+    "strength": 49.0,
+    "community": null
+   },
+   {
+    "rank": 656,
+    "id": "dataset:0750953b68d95f1b",
+    "name": "KITTI",
+    "label": "Dataset",
+    "pagerank": 6.809993362396298e-05,
+    "degree": 37,
+    "strength": 37.0,
+    "community": null
+   },
+   {
+    "rank": 685,
+    "id": "dataset:900e3460fc29a82c",
+    "name": "Cityscapes",
+    "label": "Dataset",
+    "pagerank": 6.634040748117752e-05,
+    "degree": 38,
+    "strength": 38.0,
+    "community": null
+   },
+   {
+    "rank": 723,
+    "id": "dataset:925781ac56c99617",
+    "name": "PASCAL VOC",
+    "label": "Dataset",
+    "pagerank": 6.42067470373472e-05,
+    "degree": 37,
+    "strength": 37.0,
+    "community": null
+   },
+   {
+    "rank": 774,
+    "id": "dataset:9c1d6ff6a7d819db",
+    "name": "ImageNet-1K",
+    "label": "Dataset",
+    "pagerank": 6.170991122131481e-05,
+    "degree": 35,
+    "strength": 35.0,
+    "community": null
+   },
+   {
+    "rank": 1064,
+    "id": "dataset:39038d0dd55ccc5d",
+    "name": "MuJoCo",
+    "label": "Dataset",
+    "pagerank": 5.2092793923850024e-05,
+    "degree": 27,
+    "strength": 27.0,
+    "community": null
+   },
+   {
+    "rank": 1405,
+    "id": "dataset:1d783c7549cdd4b4",
+    "name": "SemanticKITTI",
+    "label": "Dataset",
+    "pagerank": 4.4995107488012975e-05,
+    "degree": 24,
+    "strength": 24.0,
+    "community": null
+   },
+   {
+    "rank": 1572,
+    "id": "dataset:63c82174176c7502",
+    "name": "Tiny-ImageNet",
+    "label": "Dataset",
+    "pagerank": 4.249672808954386e-05,
+    "degree": 23,
+    "strength": 23.0,
+    "community": null
+   },
+   {
+    "rank": 1742,
+    "id": "dataset:1ba6dcd60fb6dc4d",
+    "name": "UCF101",
+    "label": "Dataset",
+    "pagerank": 4.001698007786822e-05,
+    "degree": 22,
+    "strength": 22.0,
+    "community": null
+   },
+   {
+    "rank": 2071,
+    "id": "dataset:56ddb958ec471900",
+    "name": "DomainNet",
+    "label": "Dataset",
+    "pagerank": 3.6616529976039084e-05,
+    "degree": 18,
+    "strength": 18.0,
+    "community": null
+   },
+   {
+    "rank": 2141,
+    "id": "dataset:875b633935668df9",
+    "name": "THUMOS14",
+    "label": "Dataset",
+    "pagerank": 3.609292996950789e-05,
+    "degree": 19,
+    "strength": 19.0,
+    "community": null
+   },
+   {
+    "rank": 2613,
+    "id": "dataset:5b9907e8de540112",
+    "name": "PASCAL VOC 2012",
+    "label": "Dataset",
+    "pagerank": 3.311028464337645e-05,
+    "degree": 18,
+    "strength": 18.0,
+    "community": null
+   },
+   {
+    "rank": 2784,
+    "id": "dataset:e0500c52ba3a7d42",
+    "name": "Human3.6M",
+    "label": "Dataset",
+    "pagerank": 3.2197523364218205e-05,
+    "degree": 17,
+    "strength": 17.0,
+    "community": null
+   },
+   {
+    "rank": 3203,
+    "id": "dataset:1c613c0c6ef31088",
+    "name": "ADE20K",
+    "label": "Dataset",
+    "pagerank": 3.02309306779138e-05,
+    "degree": 17,
+    "strength": 17.0,
+    "community": null
+   }
+  ]
+ }
+}
