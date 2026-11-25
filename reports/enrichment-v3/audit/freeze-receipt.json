@@ -1,0 +1,47 @@
+{
+ "config_sha256": "07700551c2d6377904a47b23995d8c60b5074c99ccc148965946c1a767c7fd6b",
+ "frozen": true,
+ "graph_version": "enriched-cb371912e308",
+ "items_sha256": "271e43a21e76f695089feff08b913fcb15eb395b2bdb8d61f056589384d5c2e8",
+ "packets": [
+  {
+   "channel": "A",
+   "file": "A-1.json",
+   "items": 80,
+   "sha256": "88b5b8cbdbd8eeec17156643fe3fcebd8ab518c1dedd03cc7d729b203cfb8325"
+  },
+  {
+   "channel": "A",
+   "file": "A-2.json",
+   "items": 80,
+   "sha256": "4549e35e54c676d1341d8fdf910536e3937dec3447effa7b2aa74d5a218a1629"
+  },
+  {
+   "channel": "A",
+   "file": "A-3.json",
+   "items": 52,
+   "sha256": "f12504d26459a39fa82933e53aec3e8f67772c5659f1ca398b469d10cb540d82"
+  },
+  {
+   "channel": "B",
+   "file": "B-1.json",
+   "items": 80,
+   "sha256": "ef668dcc66451682bd2397cd4c439e634781eabc7c087a32f5d0410e75ed0b19"
+  },
+  {
+   "channel": "B",
+   "file": "B-2.json",
+   "items": 80,
+   "sha256": "bc2204304d4a33c1ad23eb77fc2f5695218a7f9a786dac290abd5812d552943a"
+  },
+  {
+   "channel": "B",
+   "file": "B-3.json",
+   "items": 52,
+   "sha256": "4e334b7f510a90c3fbdea2e677becf873156bb190ed1f0f7d9bb281db17e8e70"
+  }
+ ],
+ "purpose": "E4 v3 AI-assessed audit sample, written before any judgement",
+ "sample_sha256": "9c405b24fbaa61b530cda9bb3d84344cb3764612204d0626d9ef4e9ec02f93d1",
+ "seed": 2026112504
+}

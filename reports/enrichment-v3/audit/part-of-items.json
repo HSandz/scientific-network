@@ -1,0 +1,1241 @@
+{
+ "part:02ecc9b15737f228": {
+  "axis": "part_of",
+  "item_id": "part:02ecc9b15737f228",
+  "organization": "Indian Institute of Science Education and Research, Bhopal",
+  "organization_description": "autonomous research and education institute in Bhopal, Madhya Pradesh",
+  "organization_qid": "Q6020697",
+  "parent": "Ministry of Education",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Union Government ministries of India",
+   "ministry of education"
+  ],
+  "parent_qid": "Q4294642",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q6020697 P749 Q4294642",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q6020697"
+   }
+  ]
+ },
+ "part:06324a454cfebd80": {
+  "axis": "part_of",
+  "item_id": "part:06324a454cfebd80",
+  "organization": "Laboratoire d'Informatique, de Modélisation et d'Optimisation des Systèmes",
+  "organization_description": "French research facility",
+  "organization_qid": "Q3206056",
+  "parent": "Mines Saint-Étienne",
+  "parent_description": "graduate engineering school (Grande École) in Saint-Étienne, France",
+  "parent_instance_of": [
+   "grande école"
+  ],
+  "parent_qid": "Q3578252",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3206056 P749 Q3578252",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3206056"
+   }
+  ]
+ },
+ "part:090ac7365379df5c": {
+  "axis": "part_of",
+  "item_id": "part:090ac7365379df5c",
+  "organization": "RWTH Aachen University",
+  "organization_description": "university in Aachen, Germany",
+  "organization_qid": "Q273263",
+  "parent": "DH.NRW",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization"
+  ],
+  "parent_qid": "Q105770388",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q273263 P361 Q105770388",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q273263"
+   }
+  ]
+ },
+ "part:0979f42738710f3d": {
+  "axis": "part_of",
+  "item_id": "part:0979f42738710f3d",
+  "organization": "Soongsil University",
+  "organization_description": "private Christian university in Seoul, South Korea",
+  "organization_qid": "Q489331",
+  "parent": "Soongsil University Educational Foundation",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution"
+  ],
+  "parent_qid": "Q16096201",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q489331 P749 Q16096201",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q489331"
+   }
+  ]
+ },
+ "part:121d3b19657a1567": {
+  "axis": "part_of",
+  "item_id": "part:121d3b19657a1567",
+  "organization": "Département d'Informatique",
+  "organization_description": "research group",
+  "organization_qid": "Q51781152",
+  "parent": "Centre National de la Recherche Scientifique",
+  "parent_description": "French research organisation",
+  "parent_instance_of": [
+   "French public establishment of a scientific and technological character",
+   "open-access publisher",
+   "organization",
+   "research institute"
+  ],
+  "parent_qid": "Q280413",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q51781152 P749 Q280413",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q51781152"
+   }
+  ]
+ },
+ "part:25c4672402cecf15": {
+  "axis": "part_of",
+  "item_id": "part:25c4672402cecf15",
+  "organization": "Computer Vision Center",
+  "organization_description": "research institute in Catalonia",
+  "organization_qid": "Q47076707",
+  "parent": "Universitat Autònoma de Barcelona",
+  "parent_description": "public university in Barcelona, Catalonia, Spain",
+  "parent_instance_of": [
+   "open-access publisher",
+   "organization",
+   "public university"
+  ],
+  "parent_qid": "Q43452",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q47076707 P361 Q43452",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q47076707"
+   },
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q47076707 P749 Q43452",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q47076707"
+   }
+  ]
+ },
+ "part:289c754f5b72a1cd": {
+  "axis": "part_of",
+  "item_id": "part:289c754f5b72a1cd",
+  "organization": "KTH Royal Institute of Technology",
+  "organization_description": "university in Stockholm, Sweden",
+  "organization_qid": "Q854280",
+  "parent": "Ministry of Education and Research",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ministry of Sweden",
+   "ministry of education"
+  ],
+  "parent_qid": "Q4294535",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q854280 P749 Q4294535",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q854280"
+   }
+  ]
+ },
+ "part:2b9cfd4793678ad7": {
+  "axis": "part_of",
+  "item_id": "part:2b9cfd4793678ad7",
+  "organization": "Umeå University",
+  "organization_description": "public university in Umeå, Sweden",
+  "organization_qid": "Q1144565",
+  "parent": "Ministry of Education and Research",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ministry of Sweden",
+   "ministry of education"
+  ],
+  "parent_qid": "Q4294535",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q1144565 P749 Q4294535",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1144565"
+   }
+  ]
+ },
+ "part:2ce84c657fe0e096": {
+  "axis": "part_of",
+  "item_id": "part:2ce84c657fe0e096",
+  "organization": "China Electronics Standardization Institute",
+  "organization_description": "facility in Beijing, China",
+  "organization_qid": "Q30262595",
+  "parent": "Ministry of Industry and Information Technology",
+  "parent_description": "People's Republic of China government ministry overseeing information technology, mail, telecommunications and the software industry",
+  "parent_instance_of": [
+   "Constituent Department of the State Council",
+   "information ministry",
+   "ministry of industry"
+  ],
+  "parent_qid": "Q1002010",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30262595 P749 Q1002010",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30262595"
+   }
+  ]
+ },
+ "part:33a8fb54d1b70daf": {
+  "axis": "part_of",
+  "item_id": "part:33a8fb54d1b70daf",
+  "organization": "Queen Mary University of London",
+  "organization_description": "public research university in London, United Kingdom; constituent college of the federal University of London",
+  "organization_qid": "Q195668",
+  "parent": "University of London",
+  "parent_description": "federal research university in London, England",
+  "parent_instance_of": [
+   "educational organization",
+   "higher education institution",
+   "open-access publisher",
+   "university"
+  ],
+  "parent_qid": "Q170027",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q195668 P749 Q170027",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q195668"
+   }
+  ]
+ },
+ "part:35fa43aa35084b8e": {
+  "axis": "part_of",
+  "item_id": "part:35fa43aa35084b8e",
+  "organization": "Aix-Marseille Sciences Economiques",
+  "organization_description": "facility in Marseille, France",
+  "organization_qid": "Q30261606",
+  "parent": "School for Advanced Studies in the Social Sciences",
+  "parent_description": null,
+  "parent_instance_of": [
+   "public university",
+   "research institute"
+  ],
+  "parent_qid": "Q273518",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30261606 P749 Q273518",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30261606"
+   }
+  ]
+ },
+ "part:3ab1800c35cd75f1": {
+  "axis": "part_of",
+  "item_id": "part:3ab1800c35cd75f1",
+  "organization": "University of North Carolina at Greensboro",
+  "organization_description": "university",
+  "organization_qid": "Q1321380",
+  "parent": "University of North Carolina",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "state agency of North Carolina",
+   "state university system"
+  ],
+  "parent_qid": "Q1191202",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q1321380 P749 Q1191202",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1321380"
+   }
+  ]
+ },
+ "part:3e14afdf5e06b9cf": {
+  "axis": "part_of",
+  "item_id": "part:3e14afdf5e06b9cf",
+  "organization": "Laboratoire d'Informatique en Images et Systèmes d'Information",
+  "organization_description": "French research institute",
+  "organization_qid": "Q3214426",
+  "parent": "Institut National des Sciences Appliquées de Lyon",
+  "parent_description": "French engineering College",
+  "parent_instance_of": [
+   "grande école"
+  ],
+  "parent_qid": "Q1633859",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3214426 P749 Q1633859",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3214426"
+   }
+  ]
+ },
+ "part:3e7387869393a126": {
+  "axis": "part_of",
+  "item_id": "part:3e7387869393a126",
+  "organization": "Ajou University",
+  "organization_description": "university in Suwon, South Korea",
+  "organization_qid": "Q491082",
+  "parent": "Q139586311",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution"
+  ],
+  "parent_qid": "Q139586311",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q491082 P749 Q139586311",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q491082"
+   }
+  ]
+ },
+ "part:3eddb95ef0b99a6e": {
+  "axis": "part_of",
+  "item_id": "part:3eddb95ef0b99a6e",
+  "organization": "RMIT Europe",
+  "organization_description": "European hub of RMIT University",
+  "organization_qid": "Q50040286",
+  "parent": "RMIT University",
+  "parent_description": "public Australian university based in Melbourne",
+  "parent_instance_of": [
+   "production company",
+   "public university"
+  ],
+  "parent_qid": "Q1057890",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q50040286 P749 Q1057890",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q50040286"
+   }
+  ]
+ },
+ "part:40c411c0d4ef2316": {
+  "axis": "part_of",
+  "item_id": "part:40c411c0d4ef2316",
+  "organization": "Laboratoire Interdisciplinaire des Sciences du Numérique",
+  "organization_description": null,
+  "organization_qid": "Q109620676",
+  "parent": "Centre National de la Recherche Scientifique",
+  "parent_description": "French research organisation",
+  "parent_instance_of": [
+   "French public establishment of a scientific and technological character",
+   "open-access publisher",
+   "organization",
+   "research institute"
+  ],
+  "parent_qid": "Q280413",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q109620676 P749 Q280413",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q109620676"
+   }
+  ]
+ },
+ "part:428b99e45244066d": {
+  "axis": "part_of",
+  "item_id": "part:428b99e45244066d",
+  "organization": "Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier",
+  "organization_description": "French UMR 5506 laboratory Montpellier",
+  "organization_qid": "Q3214420",
+  "parent": "Institut national de recherche en sciences et technologies du numérique",
+  "parent_description": "French research institution in computer science",
+  "parent_instance_of": [
+   "French public establishment of a scientific and technological character",
+   "educational institution",
+   "organization"
+  ],
+  "parent_qid": "Q1146208",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3214420 P749 Q1146208",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3214420"
+   }
+  ]
+ },
+ "part:4733b410d59f24f2": {
+  "axis": "part_of",
+  "item_id": "part:4733b410d59f24f2",
+  "organization": "Halmstad University",
+  "organization_description": "higher education institution",
+  "organization_qid": "Q502842",
+  "parent": "Ministry of Education and Research",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ministry of Sweden",
+   "ministry of education"
+  ],
+  "parent_qid": "Q4294535",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q502842 P749 Q4294535",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q502842"
+   }
+  ]
+ },
+ "part:482ab4684153d31c": {
+  "axis": "part_of",
+  "item_id": "part:482ab4684153d31c",
+  "organization": "Paris School of Economics",
+  "organization_description": "French network of economics researchers",
+  "organization_qid": "Q273536",
+  "parent": "National Institute for Agricultural Research",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization"
+  ],
+  "parent_qid": "Q1665106",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q273536 P749 Q1665106",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q273536"
+   }
+  ]
+ },
+ "part:4abc3c8cdeaa5cfe": {
+  "axis": "part_of",
+  "item_id": "part:4abc3c8cdeaa5cfe",
+  "organization": "University of California, Los Angeles",
+  "organization_description": "public university in Los Angeles, California, USA",
+  "organization_qid": "Q174710",
+  "parent": "University of California",
+  "parent_description": null,
+  "parent_instance_of": [
+   "land-grant university",
+   "state university system"
+  ],
+  "parent_qid": "Q184478",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q174710 P749 Q184478",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q174710"
+   },
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q174710 P361 Q184478",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q174710"
+   }
+  ]
+ },
+ "part:518b826bd0501afc": {
+  "axis": "part_of",
+  "item_id": "part:518b826bd0501afc",
+  "organization": "City, University of London",
+  "organization_description": "former university in London",
+  "organization_qid": "Q1094046",
+  "parent": "University of London",
+  "parent_description": "federal research university in London, England",
+  "parent_instance_of": [
+   "educational organization",
+   "higher education institution",
+   "open-access publisher",
+   "university"
+  ],
+  "parent_qid": "Q170027",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q1094046 P749 Q170027",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1094046"
+   }
+  ]
+ },
+ "part:520c1228f97b3584": {
+  "axis": "part_of",
+  "item_id": "part:520c1228f97b3584",
+  "organization": "Laboratoire Mécanique des Solides",
+  "organization_description": "facility in Palaiseau, France",
+  "organization_qid": "Q30262303",
+  "parent": "Mines ParisTech",
+  "parent_description": null,
+  "parent_instance_of": [
+   "engineering school",
+   "grande école"
+  ],
+  "parent_qid": "Q1189954",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30262303 P749 Q1189954",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30262303"
+   }
+  ]
+ },
+ "part:584c7dd19ab644f6": {
+  "axis": "part_of",
+  "item_id": "part:584c7dd19ab644f6",
+  "organization": "CNR-IMIOT – Consiglio Nazionale delle Ricerche - Istituto di Metodologie Integrate per l’Osservazione della Terra",
+  "organization_description": "facility in Tito, Italy",
+  "organization_qid": "Q30263758",
+  "parent": "National Research Council",
+  "parent_description": "Italian national research funding organization",
+  "parent_instance_of": [
+   "government agency",
+   "open-access publisher",
+   "organization"
+  ],
+  "parent_qid": "Q902464",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30263758 P749 Q902464",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30263758"
+   }
+  ]
+ },
+ "part:5c1bf98ba520f1e9": {
+  "axis": "part_of",
+  "item_id": "part:5c1bf98ba520f1e9",
+  "organization": "Research Lab in Computer Science",
+  "organization_description": "research laboratory of the University of Paris-Saclay, the Ecole Normale Supérieure Paris-Saclay, the University of Bordeaux and the CNRS",
+  "organization_qid": "Q109621540",
+  "parent": "Université Paris-Saclay",
+  "parent_description": "university consortium in the South of Paris",
+  "parent_instance_of": [
+   "public university",
+   "university in France"
+  ],
+  "parent_qid": "Q109409389",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q109621540 P749 Q109409389",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q109621540"
+   }
+  ]
+ },
+ "part:5c3a324d864f0ad9": {
+  "axis": "part_of",
+  "item_id": "part:5c3a324d864f0ad9",
+  "organization": "Ruhr University Bochum",
+  "organization_description": "university in Germany",
+  "organization_qid": "Q309948",
+  "parent": "DH.NRW",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization"
+  ],
+  "parent_qid": "Q105770388",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q309948 P361 Q105770388",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q309948"
+   }
+  ]
+ },
+ "part:606e732be7ded104": {
+  "axis": "part_of",
+  "item_id": "part:606e732be7ded104",
+  "organization": "Laboratoire d'Informatique, de Modélisation et d'Optimisation des Systèmes",
+  "organization_description": "French research facility",
+  "organization_qid": "Q3206056",
+  "parent": "SIGMA Clermont",
+  "parent_description": null,
+  "parent_instance_of": [
+   "engineering school",
+   "grande école"
+  ],
+  "parent_qid": "Q21968199",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3206056 P749 Q21968199",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3206056"
+   }
+  ]
+ },
+ "part:63e07e781f6f8aea": {
+  "axis": "part_of",
+  "item_id": "part:63e07e781f6f8aea",
+  "organization": "Tsinghua Shenzhen International Graduate School",
+  "organization_description": "university in Shenzhen, Guangdong, China",
+  "organization_qid": "Q15908712",
+  "parent": "Tsinghua University",
+  "parent_description": "public university in Beijing, China",
+  "parent_instance_of": [
+   "higher education institution directly under Ministry of Education of the People’s Republic of China",
+   "public university",
+   "university",
+   "vice-ministerial level university"
+  ],
+  "parent_qid": "Q16955",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q15908712 P361 Q16955",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q15908712"
+   }
+  ]
+ },
+ "part:6451e602599aaff7": {
+  "axis": "part_of",
+  "item_id": "part:6451e602599aaff7",
+  "organization": "Laboratoire d'Informatique Médicale et d'Ingénierie des Connaissances en e-Santé",
+  "organization_description": "facility in Paris, France",
+  "organization_qid": "Q51781968",
+  "parent": "Sorbonne Université",
+  "parent_description": "French university located in Paris, created in 2018 from the merger of Université Paris IV and Université Paris VI",
+  "parent_instance_of": [
+   "public university",
+   "university in France"
+  ],
+  "parent_qid": "Q41497113",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q51781968 P749 Q41497113",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q51781968"
+   }
+  ]
+ },
+ "part:6568a5607e7a0a0b": {
+  "axis": "part_of",
+  "item_id": "part:6568a5607e7a0a0b",
+  "organization": "Aix-Marseille Sciences Economiques",
+  "organization_description": "facility in Marseille, France",
+  "organization_qid": "Q30261606",
+  "parent": "Centre National de la Recherche Scientifique",
+  "parent_description": "French research organisation",
+  "parent_instance_of": [
+   "French public establishment of a scientific and technological character",
+   "open-access publisher",
+   "organization",
+   "research institute"
+  ],
+  "parent_qid": "Q280413",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30261606 P749 Q280413",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30261606"
+   }
+  ]
+ },
+ "part:6963505582ab4bff": {
+  "axis": "part_of",
+  "item_id": "part:6963505582ab4bff",
+  "organization": "Bonn Aachen International Center for Information Technology",
+  "organization_description": "University of Bonn, RWTH Aachen University, Fraunhofer Society & Hochschule Bonn-Rhein-Sieg",
+  "organization_qid": "Q892659",
+  "parent": "Bonn-Rhein-Sieg University of Applied Sciences",
+  "parent_description": null,
+  "parent_instance_of": [
+   "public university",
+   "university of applied sciences"
+  ],
+  "parent_qid": "Q1622083",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q892659 P749 Q1622083",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q892659"
+   }
+  ]
+ },
+ "part:6af6bad758c09a85": {
+  "axis": "part_of",
+  "item_id": "part:6af6bad758c09a85",
+  "organization": "Nanjing General Hospital of Nanjing Military Command",
+  "organization_description": "hospital in China",
+  "organization_qid": "Q6963655",
+  "parent": "Wuxi Joint Logistic Support Center",
+  "parent_description": null,
+  "parent_instance_of": [
+   "PLA unit"
+  ],
+  "parent_qid": "Q28413027",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q6963655 P749 Q28413027",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q6963655"
+   }
+  ]
+ },
+ "part:744f2c23b5f5f729": {
+  "axis": "part_of",
+  "item_id": "part:744f2c23b5f5f729",
+  "organization": "Physikalisch-Technische Bundesanstalt",
+  "organization_description": "national metrology institute of the German Federal Republic",
+  "organization_qid": "Q470438",
+  "parent": "Federal Ministry for Economic Affairs and Energy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Federal Ministry in Germany",
+   "economic affairs ministry",
+   "ministry of energy"
+  ],
+  "parent_qid": "Q488589",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q470438 P749 Q488589",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q470438"
+   }
+  ]
+ },
+ "part:7bd0e98797ac7956": {
+  "axis": "part_of",
+  "item_id": "part:7bd0e98797ac7956",
+  "organization": "Institute of Acoustics",
+  "organization_description": "facility in Haidian, China",
+  "organization_qid": "Q18651361",
+  "parent": "Chinese Academy of Sciences",
+  "parent_description": "national academy for natural sciences of China",
+  "parent_instance_of": [
+   "academic institution",
+   "academy of sciences",
+   "open-access publisher"
+  ],
+  "parent_qid": "Q530471",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q18651361 P749 Q530471",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q18651361"
+   }
+  ]
+ },
+ "part:7c695a0fb856b9f5": {
+  "axis": "part_of",
+  "item_id": "part:7c695a0fb856b9f5",
+  "organization": "SK Group (United States)",
+  "organization_description": null,
+  "organization_qid": "Q30343825",
+  "parent": "SK Hynix (South Korea)",
+  "parent_description": "South Korean memory semiconductor supplier",
+  "parent_instance_of": [
+   "business",
+   "enterprise",
+   "public company",
+   "supplier"
+  ],
+  "parent_qid": "Q370719",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30343825 P749 Q370719",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30343825"
+   }
+  ]
+ },
+ "part:8c283e71baf259bc": {
+  "axis": "part_of",
+  "item_id": "part:8c283e71baf259bc",
+  "organization": "Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier",
+  "organization_description": "French UMR 5506 laboratory Montpellier",
+  "organization_qid": "Q3214420",
+  "parent": "University of Perpignan",
+  "parent_description": null,
+  "parent_instance_of": [
+   "university in France"
+  ],
+  "parent_qid": "Q304872",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3214420 P749 Q304872",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3214420"
+   }
+  ]
+ },
+ "part:97591f4223666c07": {
+  "axis": "part_of",
+  "item_id": "part:97591f4223666c07",
+  "organization": "Nuance Communications (United States)",
+  "organization_description": "American company developing imaging and voice recognition software",
+  "organization_qid": "Q1137289",
+  "parent": "Microsoft (United States)",
+  "parent_description": "American multinational technology corporation",
+  "parent_instance_of": [
+   "public company",
+   "software company",
+   "technology company"
+  ],
+  "parent_qid": "Q2283",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q1137289 P749 Q2283",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1137289"
+   }
+  ]
+ },
+ "part:9e4e0dae69103f40": {
+  "axis": "part_of",
+  "item_id": "part:9e4e0dae69103f40",
+  "organization": "Institute of Automation",
+  "organization_description": "Chinese research institute",
+  "organization_qid": "Q48897543",
+  "parent": "China Academy of Space Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Chinese wholly state-owned enterprise",
+   "space agency"
+  ],
+  "parent_qid": "Q5099557",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q48897543 P749 Q5099557",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q48897543"
+   }
+  ]
+ },
+ "part:a3633b43a9da7f78": {
+  "axis": "part_of",
+  "item_id": "part:a3633b43a9da7f78",
+  "organization": "Futurewei Technologies (United States)",
+  "organization_description": null,
+  "organization_qid": "Q116248681",
+  "parent": "Huawei Technologies (China)",
+  "parent_description": "Chinese multinational technology enterprise",
+  "parent_instance_of": [
+   "business",
+   "enterprise",
+   "technology company"
+  ],
+  "parent_qid": "Q160120",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q116248681 P749 Q160120",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q116248681"
+   }
+  ]
+ },
+ "part:b268e8d525bc0c70": {
+  "axis": "part_of",
+  "item_id": "part:b268e8d525bc0c70",
+  "organization": "Chinese People's Liberation Army",
+  "organization_description": "principal military force of the People's Republic of China",
+  "organization_qid": "Q200106",
+  "parent": "Chinese Communist Party",
+  "parent_description": null,
+  "parent_instance_of": [
+   "communist party",
+   "political party",
+   "ruling party"
+  ],
+  "parent_qid": "Q17427",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q200106 P361 Q17427",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q200106"
+   }
+  ]
+ },
+ "part:b43babef38c75ce9": {
+  "axis": "part_of",
+  "item_id": "part:b43babef38c75ce9",
+  "organization": "Optum (United States)",
+  "organization_description": "company in Eden Prairie, United States",
+  "organization_qid": "Q30284383",
+  "parent": "UnitedHealth Group",
+  "parent_description": null,
+  "parent_instance_of": [
+   "business",
+   "enterprise",
+   "public company"
+  ],
+  "parent_qid": "Q2103926",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30284383 P749 Q2103926",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30284383"
+   }
+  ]
+ },
+ "part:c37642398b0efa7b": {
+  "axis": "part_of",
+  "item_id": "part:c37642398b0efa7b",
+  "organization": "Dalle Molle Institute for Artificial Intelligence Research",
+  "organization_description": "Swiss research institute for artificial intelligence in Lugano",
+  "organization_qid": "Q5211467",
+  "parent": "University of Applied Sciences and Arts of Southern Switzerland",
+  "parent_description": "one of the Universities of Applied Sciences of the Swiss Confederation",
+  "parent_instance_of": [
+   "University of applied sciences (Switzerland)",
+   "open-access publisher"
+  ],
+  "parent_qid": "Q663984",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q5211467 P749 Q663984",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q5211467"
+   }
+  ]
+ },
+ "part:c810bf7da4d7b524": {
+  "axis": "part_of",
+  "item_id": "part:c810bf7da4d7b524",
+  "organization": "Purdue University West Lafayette",
+  "organization_description": "public research university in West Lafayette, Indiana, United States",
+  "organization_qid": "Q217741",
+  "parent": "Purdue University system",
+  "parent_description": null,
+  "parent_instance_of": [
+   "state university system"
+  ],
+  "parent_qid": "Q929715",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q217741 P749 Q929715",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q217741"
+   }
+  ]
+ },
+ "part:d081dd541acb038a": {
+  "axis": "part_of",
+  "item_id": "part:d081dd541acb038a",
+  "organization": "University of Massachusetts Amherst",
+  "organization_description": "public university in Massachusetts, United States",
+  "organization_qid": "Q15142",
+  "parent": "University of Massachusetts",
+  "parent_description": null,
+  "parent_instance_of": [
+   "state university system"
+  ],
+  "parent_qid": "Q1061122",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q15142 P361 Q1061122",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q15142"
+   },
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q15142 P749 Q1061122",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q15142"
+   }
+  ]
+ },
+ "part:d6471e8fb3d6845c": {
+  "axis": "part_of",
+  "item_id": "part:d6471e8fb3d6845c",
+  "organization": "Indiana University School of Medicine",
+  "organization_description": "medical school in Indianapolis",
+  "organization_qid": "Q2123017",
+  "parent": "Indiana University – Purdue University Indianapolis",
+  "parent_description": "defunct Indianapolis campus of Indiana University which included two Purdue University schools",
+  "parent_instance_of": [
+   "open-access publisher",
+   "public educational institution of the United States",
+   "university"
+  ],
+  "parent_qid": "Q1433199",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q2123017 P361 Q1433199",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q2123017"
+   }
+  ]
+ },
+ "part:d6cb6f71a9b41575": {
+  "axis": "part_of",
+  "item_id": "part:d6cb6f71a9b41575",
+  "organization": "Aix-Marseille Sciences Economiques",
+  "organization_description": "facility in Marseille, France",
+  "organization_qid": "Q30261606",
+  "parent": "École Centrale de Marseille",
+  "parent_description": null,
+  "parent_instance_of": [
+   "engineering school in France"
+  ],
+  "parent_qid": "Q273454",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30261606 P749 Q273454",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30261606"
+   }
+  ]
+ },
+ "part:d77bb83570b45368": {
+  "axis": "part_of",
+  "item_id": "part:d77bb83570b45368",
+  "organization": "Institute of Automation",
+  "organization_description": "Chinese research institute",
+  "organization_qid": "Q48897543",
+  "parent": "Chinese Academy of Sciences",
+  "parent_description": "national academy for natural sciences of China",
+  "parent_instance_of": [
+   "academic institution",
+   "academy of sciences",
+   "open-access publisher"
+  ],
+  "parent_qid": "Q530471",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q48897543 P749 Q530471",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q48897543"
+   }
+  ]
+ },
+ "part:e0fd6c01aea27342": {
+  "axis": "part_of",
+  "item_id": "part:e0fd6c01aea27342",
+  "organization": "Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier",
+  "organization_description": "French UMR 5506 laboratory Montpellier",
+  "organization_qid": "Q3214420",
+  "parent": "Université de Montpellier",
+  "parent_description": "French university located in Montpellier (2015- )",
+  "parent_instance_of": [
+   "Experimental Public Establishment (France)",
+   "public university",
+   "university in France"
+  ],
+  "parent_qid": "Q776223",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q3214420 P749 Q776223",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3214420"
+   }
+  ]
+ },
+ "part:ea08bf22ba7efa27": {
+  "axis": "part_of",
+  "item_id": "part:ea08bf22ba7efa27",
+  "organization": "Shanghai Institute of Microsystem and Information Technology",
+  "organization_description": "facility in Changning, China",
+  "organization_qid": "Q30259636",
+  "parent": "Chinese Academy of Sciences",
+  "parent_description": "national academy for natural sciences of China",
+  "parent_instance_of": [
+   "academic institution",
+   "academy of sciences",
+   "open-access publisher"
+  ],
+  "parent_qid": "Q530471",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30259636 P749 Q530471",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30259636"
+   }
+  ]
+ },
+ "part:eca22bda24a66041": {
+  "axis": "part_of",
+  "item_id": "part:eca22bda24a66041",
+  "organization": "Thales (Canada)",
+  "organization_description": "business enterprise located in Canada",
+  "organization_qid": "Q30338122",
+  "parent": "Thales (France)",
+  "parent_description": "French multinational company",
+  "parent_instance_of": [
+   "multinational corporation"
+  ],
+  "parent_qid": "Q1161666",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q30338122 P749 Q1161666",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q30338122"
+   }
+  ]
+ },
+ "part:f60b5609c12706f4": {
+  "axis": "part_of",
+  "item_id": "part:f60b5609c12706f4",
+  "organization": "Université Clermont Auvergne",
+  "organization_description": "French university (2020-)",
+  "organization_qid": "Q1319786",
+  "parent": "University of Clermont Auvergne & associates",
+  "parent_description": null,
+  "parent_instance_of": [
+   "association"
+  ],
+  "parent_qid": "Q61716190",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d5146fb5385303d4f077fb8a10e18cc3f84a6115c83392b5816e3f644d78eb3a",
+    "retrieved_at": "2026-11-24T12:36:46+0700",
+    "statement": "Q1319786 P361 Q61716190",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1319786"
+   }
+  ]
+ }
+}

@@ -1,0 +1,618 @@
+{
+ "member:0612fb6d6436c82f": {
+  "axis": "member_of",
+  "item_id": "member:0612fb6d6436c82f",
+  "organization": "Indian Institute of Technology Bombay",
+  "organization_description": "public engineering institution located in Powai, Mumbai",
+  "organization_qid": "Q1661242",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "3f4970c2a7f9a3e1843dca54b6f6206d7fbfedc3268c74191b64a405df129c1c",
+    "retrieved_at": "2026-11-25T11:26:12+0700",
+    "statement": "Q1661242 P361 Q622358",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1661242"
+   }
+  ]
+ },
+ "member:0cdb1e8781b31e0b": {
+  "axis": "member_of",
+  "item_id": "member:0cdb1e8781b31e0b",
+  "organization": "St. Francis Xavier University",
+  "organization_description": "university in Antigonish, Nova Scotia, Canada",
+  "organization_qid": "Q2038889",
+  "parent": "Maple League",
+  "parent_description": null,
+  "parent_instance_of": [
+   "university network"
+  ],
+  "parent_qid": "Q84355899",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "a708bdb289fd2025aa2f1ef0ae9bebe842fb02aac43c4fba66c6204d8b5e4dc9",
+    "retrieved_at": "2026-11-25T11:26:14+0700",
+    "statement": "Q2038889 P361 Q84355899",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q2038889"
+   }
+  ]
+ },
+ "member:17dc3c387a4b51c7": {
+  "axis": "member_of",
+  "item_id": "member:17dc3c387a4b51c7",
+  "organization": "University of Freiburg",
+  "organization_description": "university in Freiburg im Breisgau, Germany",
+  "organization_qid": "Q153987",
+  "parent": "ELIXIR Germany",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496585",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "1c90df05c89e9164a42794af5c2f9776e2cb21d8ac33383d6cfe33a87c511740",
+    "retrieved_at": "2026-11-25T11:26:09+0700",
+    "statement": "Q153987 P361 Q109496585",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q153987"
+   }
+  ]
+ },
+ "member:1985a5f0a73a8b8d": {
+  "axis": "member_of",
+  "item_id": "member:1985a5f0a73a8b8d",
+  "organization": "Forschungszentrum Jülich",
+  "organization_description": "interdisciplinary research centre in Germany",
+  "organization_qid": "Q697111",
+  "parent": "Helmholtz Association of German Research Centres",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization",
+   "research institute",
+   "voluntary association"
+  ],
+  "parent_qid": "Q679913",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "7a9bf5651d1416471dfe322c79a827446edf4c161d798a9f036139f315df7bd6",
+    "retrieved_at": "2026-11-25T11:25:58+0700",
+    "statement": "Q697111 P749 Q679913",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q697111"
+   }
+  ]
+ },
+ "member:1ef31eb94f7025c7": {
+  "axis": "member_of",
+  "item_id": "member:1ef31eb94f7025c7",
+  "organization": "Universidade Nova de Lisboa",
+  "organization_description": "university in Portugal",
+  "organization_qid": "Q1979891",
+  "parent": "ELIXIR Portugal",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496576",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "a708bdb289fd2025aa2f1ef0ae9bebe842fb02aac43c4fba66c6204d8b5e4dc9",
+    "retrieved_at": "2026-11-25T11:26:14+0700",
+    "statement": "Q1979891 P361 Q109496576",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1979891"
+   }
+  ]
+ },
+ "member:3762361a5a6742c5": {
+  "axis": "member_of",
+  "item_id": "member:3762361a5a6742c5",
+  "organization": "Open University of Cyprus",
+  "organization_description": "university",
+  "organization_qid": "Q1473115",
+  "parent": "Open European University",
+  "parent_description": null,
+  "parent_instance_of": [
+   "European University Alliance"
+  ],
+  "parent_qid": "Q129908187",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "1c90df05c89e9164a42794af5c2f9776e2cb21d8ac33383d6cfe33a87c511740",
+    "retrieved_at": "2026-11-25T11:26:09+0700",
+    "statement": "Q1473115 P361 Q129908187",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1473115"
+   }
+  ]
+ },
+ "member:37aa01cb728def7f": {
+  "axis": "member_of",
+  "item_id": "member:37aa01cb728def7f",
+  "organization": "Indian Institute of Technology Gandhinagar",
+  "organization_description": "Indian institute for higher education",
+  "organization_qid": "Q3440920",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "399a4a675ae238919370aa1467920525eda2a43c0ee5983d171fb0a7bfdf96af",
+    "retrieved_at": "2026-11-25T11:26:21+0700",
+    "statement": "Q3440920 P361 Q622358",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3440920"
+   }
+  ]
+ },
+ "member:3ad732fef8ac676f": {
+  "axis": "member_of",
+  "item_id": "member:3ad732fef8ac676f",
+  "organization": "Université Libre de Bruxelles",
+  "organization_description": "French-speaking university in Brussels, Belgium (since 1970)",
+  "organization_qid": "Q574606",
+  "parent": "ELIXIR Belgium",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496579",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d7e70ff03ad30c452bfcb77317ade38c050303b02a9aad213072c7c4f7ff35db",
+    "retrieved_at": "2026-11-25T11:26:26+0700",
+    "statement": "Q574606 P361 Q109496579",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q574606"
+   }
+  ]
+ },
+ "member:43eb2d2202a4b581": {
+  "axis": "member_of",
+  "item_id": "member:43eb2d2202a4b581",
+  "organization": "University of Salerno",
+  "organization_description": "university in Italy",
+  "organization_qid": "Q1633215",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "96d7f550cef7f7aac07852ed987bf8023dd986bcd5f4345b151384ba7131450a",
+    "retrieved_at": "2026-11-25T11:26:11+0700",
+    "statement": "Q1633215 P361 Q109496581",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1633215"
+   }
+  ]
+ },
+ "member:4e4c876de1cc64c0": {
+  "axis": "member_of",
+  "item_id": "member:4e4c876de1cc64c0",
+  "organization": "Indian Institute of Technology Jodhpur",
+  "organization_description": "public engineering institution located in Jodhpur",
+  "organization_qid": "Q1814816",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "b9f1640b206e0883751e1c88e8ae709e3dd4ff57dc6fd8ac704fb22fe2d9c914",
+    "retrieved_at": "2026-11-25T11:26:12+0700",
+    "statement": "Q1814816 P361 Q622358",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1814816"
+   }
+  ]
+ },
+ "member:4f8551d6ad02dcb4": {
+  "axis": "member_of",
+  "item_id": "member:4f8551d6ad02dcb4",
+  "organization": "Consejo Superior de Investigaciones Científicas",
+  "organization_description": "National research council in Spain",
+  "organization_qid": "Q1024362",
+  "parent": "ELIXIR Spain",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496336",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "90b2e47463733ee4839a0518a81fd768a6ad9bb7a7544b4f909670e9bca467cc",
+    "retrieved_at": "2026-11-25T11:26:03+0700",
+    "statement": "Q1024362 P361 Q109496336",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1024362"
+   }
+  ]
+ },
+ "member:6a850722582bbe72": {
+  "axis": "member_of",
+  "item_id": "member:6a850722582bbe72",
+  "organization": "Cardiff University",
+  "organization_description": "public research university in Cardiff, United Kingdom",
+  "organization_qid": "Q1035745",
+  "parent": "ELIXIR UK",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496493",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "90b2e47463733ee4839a0518a81fd768a6ad9bb7a7544b4f909670e9bca467cc",
+    "retrieved_at": "2026-11-25T11:26:03+0700",
+    "statement": "Q1035745 P361 Q109496493",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1035745"
+   }
+  ]
+ },
+ "member:7abb6071a6fcc291": {
+  "axis": "member_of",
+  "item_id": "member:7abb6071a6fcc291",
+  "organization": "Vrije Universiteit Brussel",
+  "organization_description": "Dutch-speaking university in Brussels, Belgium (since 1970)",
+  "organization_qid": "Q612665",
+  "parent": "ELIXIR Belgium",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496579",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "3b127d26c5c7b99460ac32856ab542d7f2455f2b5fde32be088a5f4a13ef8832",
+    "retrieved_at": "2026-11-25T11:26:27+0700",
+    "statement": "Q612665 P361 Q109496579",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q612665"
+   }
+  ]
+ },
+ "member:860d545ed81889ee": {
+  "axis": "member_of",
+  "item_id": "member:860d545ed81889ee",
+  "organization": "Helmholtz-Zentrum Dresden-Rossendorf",
+  "organization_description": "research institute",
+  "organization_qid": "Q883545",
+  "parent": "Helmholtz Association of German Research Centres",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization",
+   "research institute",
+   "voluntary association"
+  ],
+  "parent_qid": "Q679913",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "b2ac253f87630df54dfb6ef25ce15a03f25513ff7bead200a5ff7cdff58cd433",
+    "retrieved_at": "2026-11-25T11:25:59+0700",
+    "statement": "Q883545 P749 Q679913",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q883545"
+   }
+  ]
+ },
+ "member:89940af86b07c8c5": {
+  "axis": "member_of",
+  "item_id": "member:89940af86b07c8c5",
+  "organization": "University of Milan",
+  "organization_description": "university in Milan, Italy",
+  "organization_qid": "Q46210",
+  "parent": "4EU+ Alliance",
+  "parent_description": null,
+  "parent_instance_of": [
+   "European University Alliance",
+   "organization"
+  ],
+  "parent_qid": "Q63171242",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "ecd98ec1e1d4d2263a51ff74c5d7aac33c8b9ffb8137c0d0425bc11122c5667c",
+    "retrieved_at": "2026-11-25T11:26:22+0700",
+    "statement": "Q46210 P361 Q63171242",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q46210"
+   }
+  ]
+ },
+ "member:8b073f94dd9d970f": {
+  "axis": "member_of",
+  "item_id": "member:8b073f94dd9d970f",
+  "organization": "Pomona College",
+  "organization_description": "private liberal arts college in Claremont, California, United States",
+  "organization_qid": "Q7227384",
+  "parent": "Claremont Colleges",
+  "parent_description": null,
+  "parent_instance_of": [
+   "consortium",
+   "private not-for-profit educational institution"
+  ],
+  "parent_qid": "Q3246557",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "a94738731e7aef5ebe4cc44b837cf533ccf012bcf224ee1a4f894324907f0666",
+    "retrieved_at": "2026-11-25T11:26:29+0700",
+    "statement": "Q7227384 P361 Q3246557",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q7227384"
+   }
+  ]
+ },
+ "member:935948336ab15e01": {
+  "axis": "member_of",
+  "item_id": "member:935948336ab15e01",
+  "organization": "University of Milano-Bicocca",
+  "organization_description": "public university in Milan",
+  "organization_qid": "Q1073674",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "49946af52f084a52531a339afbbbe071812767c94dfc1f312dc7891c347a85d2",
+    "retrieved_at": "2026-11-25T11:26:03+0700",
+    "statement": "Q1073674 P361 Q109496581",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1073674"
+   }
+  ]
+ },
+ "member:ab43632a3a8f60df": {
+  "axis": "member_of",
+  "item_id": "member:ab43632a3a8f60df",
+  "organization": "University of Naples Federico II",
+  "organization_description": "university in Naples",
+  "organization_qid": "Q691851",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "ea0b2ca427cb0c1930c73a27168f2cb40e2209ee0cf9fad30e3baf2e17d06cde",
+    "retrieved_at": "2026-11-25T11:26:28+0700",
+    "statement": "Q691851 P361 Q109496581",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q691851"
+   }
+  ]
+ },
+ "member:ba3b7b9562f1ceb1": {
+  "axis": "member_of",
+  "item_id": "member:ba3b7b9562f1ceb1",
+  "organization": "Claremont McKenna College",
+  "organization_description": "private liberal arts college in Claremont, California",
+  "organization_qid": "Q5126318",
+  "parent": "Claremont Colleges",
+  "parent_description": null,
+  "parent_instance_of": [
+   "consortium",
+   "private not-for-profit educational institution"
+  ],
+  "parent_qid": "Q3246557",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "52c9c1ef554f53e721421863b23c394e76c1e086c2d597d658ff86a1b8120ff2",
+    "retrieved_at": "2026-11-25T11:26:24+0700",
+    "statement": "Q5126318 P361 Q3246557",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q5126318"
+   }
+  ]
+ },
+ "member:bc7691c9d4790071": {
+  "axis": "member_of",
+  "item_id": "member:bc7691c9d4790071",
+  "organization": "Centre National de la Recherche Scientifique",
+  "organization_description": "French research organisation",
+  "organization_qid": "Q280413",
+  "parent": "ELIXIR France",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496578",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d8690f72802b839f58e7e9503971aa7c1c8aaeaa5344e43eff098b0312ed32b7",
+    "retrieved_at": "2026-11-25T11:26:17+0700",
+    "statement": "Q280413 P361 Q109496578",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q280413"
+   }
+  ]
+ },
+ "member:c4562bc42e4b5432": {
+  "axis": "member_of",
+  "item_id": "member:c4562bc42e4b5432",
+  "organization": "Institut National des Sciences Appliquées de Lyon",
+  "organization_description": "French engineering College",
+  "organization_qid": "Q1633859",
+  "parent": "Université de Lyon",
+  "parent_description": "French university system, in Lyon, France",
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "university in France"
+  ],
+  "parent_qid": "Q10176",
+  "wikidata_statements": [
+   {
+    "property": "P749",
+    "property_label": "parent organization",
+    "raw_response_sha256": "2219544e2e9923dd1879e216ed9d93967475c86e1bf62e5e8c7661dd0348f71c",
+    "retrieved_at": "2026-11-25T11:25:39+0700",
+    "statement": "Q1633859 P749 Q10176",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1633859"
+   }
+  ]
+ },
+ "member:c9147196d183ccca": {
+  "axis": "member_of",
+  "item_id": "member:c9147196d183ccca",
+  "organization": "Indian Institute of Technology Guwahati",
+  "organization_description": "public institution in Guwahati, Assam",
+  "organization_qid": "Q3518863",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "399a4a675ae238919370aa1467920525eda2a43c0ee5983d171fb0a7bfdf96af",
+    "retrieved_at": "2026-11-25T11:26:21+0700",
+    "statement": "Q3518863 P361 Q622358",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q3518863"
+   }
+  ]
+ },
+ "member:f38890bd94b437af": {
+  "axis": "member_of",
+  "item_id": "member:f38890bd94b437af",
+  "organization": "Helmholtz Munich",
+  "organization_description": "German medical research institute",
+  "organization_qid": "Q878592",
+  "parent": "ELIXIR Germany",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496585",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "ad0bf36f780d8afffe317f0fd199817c6cb83725938d3f51a5a56e28f539b007",
+    "retrieved_at": "2026-11-25T11:26:31+0700",
+    "statement": "Q878592 P361 Q109496585",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q878592"
+   }
+  ]
+ },
+ "member:f75415a4ce2546a2": {
+  "axis": "member_of",
+  "item_id": "member:f75415a4ce2546a2",
+  "organization": "Constructor University",
+  "organization_description": "university",
+  "organization_qid": "Q59114",
+  "parent": "ELIXIR Germany",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496585",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "d7e70ff03ad30c452bfcb77317ade38c050303b02a9aad213072c7c4f7ff35db",
+    "retrieved_at": "2026-11-25T11:26:26+0700",
+    "statement": "Q59114 P361 Q109496585",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q59114"
+   }
+  ]
+ },
+ "member:f9dec91dd8d062af": {
+  "axis": "member_of",
+  "item_id": "member:f9dec91dd8d062af",
+  "organization": "Université de Strasbourg",
+  "organization_description": "university in France (1621– )",
+  "organization_qid": "Q157575",
+  "parent": "site universitaire alsacien",
+  "parent_description": null,
+  "parent_instance_of": [
+   "consortium of universities in France"
+  ],
+  "parent_qid": "Q61716176",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "96d7f550cef7f7aac07852ed987bf8023dd986bcd5f4345b151384ba7131450a",
+    "retrieved_at": "2026-11-25T11:26:11+0700",
+    "statement": "Q157575 P361 Q61716176",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q157575"
+   }
+  ]
+ },
+ "member:fa1edd55b28f4cb2": {
+  "axis": "member_of",
+  "item_id": "member:fa1edd55b28f4cb2",
+  "organization": "Indian Institute of Technology Kharagpur",
+  "organization_description": "Public Technical University in Kharagpur, West Bengal",
+  "organization_qid": "Q1661243",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statements": [
+   {
+    "property": "P361",
+    "property_label": "part of",
+    "raw_response_sha256": "3f4970c2a7f9a3e1843dca54b6f6206d7fbfedc3268c74191b64a405df129c1c",
+    "retrieved_at": "2026-11-25T11:26:12+0700",
+    "statement": "Q1661243 P361 Q622358",
+    "statement_item_url": "https://www.wikidata.org/wiki/Q1661243"
+   }
+  ]
+ }
+}

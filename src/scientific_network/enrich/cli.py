@@ -120,6 +120,10 @@ def add_enrich_parser(commands) -> None:
     ad.add_argument("--texts", type=Path, required=True)
     ad.add_argument("--packet-dir", type=Path, required=True)
     ad.add_argument("--report-dir", type=Path, required=True)
+    a3 = stages.add_parser("audit-v3-sample", help="Enrichment v3 E4 audit: freeze the fresh samples and packets (before any judgement)")
+    for flag in ("graph", "texts", "link-dir", "v1-graph", "v1-sample", "v2-graph", "v2-sample", "link-dev-labels", "applied-dev-sample", "applied-informational", "config", "output-dir"):
+        a3.add_argument(f"--{flag}", type=Path, required=True)
+    a3.add_argument("--dev-labels", type=Path, action="append", required=True)
     a2 = stages.add_parser("audit-v2-sample", help="Enrichment v2 E4 audit: freeze the fresh samples and packets for the changed axes (before any judgement)")
     a2.add_argument("--graph", type=Path, required=True)
     a2.add_argument("--texts", type=Path, required=True)
@@ -193,6 +197,12 @@ def run_enrich(args) -> tuple[dict, int]:
     if args.enrich_command == "applied-to-dev-sample":
         from scientific_network.enrich.v3 import freeze_applied_to_dev
         return freeze_applied_to_dev(candidates_graph_path=args.candidates_graph, texts_path=args.texts, out_dir=args.packet_dir, report_dir=args.report_dir), 0
+    if args.enrich_command == "audit-v3-sample":
+        from scientific_network.enrich.audit_v3 import freeze_v3
+        return freeze_v3(graph_path=args.graph, texts_path=args.texts, link_dir=args.link_dir, v1_graph_path=args.v1_graph, v1_sample_path=args.v1_sample,
+                         v2_graph_path=args.v2_graph, v2_sample_path=args.v2_sample, dev_label_files=args.dev_labels, link_dev_labels=args.link_dev_labels,
+                         applied_dev_sample=args.applied_dev_sample, applied_informational=args.applied_informational, config_path=args.config,
+                         out_dir=args.output_dir), 0
     if args.enrich_command == "audit-v2-sample":
         from scientific_network.enrich.audit_v2 import freeze_v2
         return freeze_v2(graph_path=args.graph, texts_path=args.texts, v1_graph_path=args.v1_graph, v1_sample_path=args.v1_sample,
