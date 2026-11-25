@@ -1347,3 +1347,79 @@ scored against AI-assessed reference labels frozen before any model ran.
 - Deviations from specification §4.2/§4.3: the SLM verifies candidates per paper (title and abstract), not per sentence, and `APPLIED_TO`
   and `EVALUATED_ON` are generated from the whole abstract. The same-sentence share is stored per edge and the audit samples
   same-sentence and cross-sentence edges separately.
+
+## D042 amendment — Enrichment v2: rules and acceptance criteria declared before measurement (2026-11-25)
+
+A reviewer asked for every open issue from the v1 E4 audit to be fixed as **enrichment v2**: a PART_OF rule, a
+single-paper same-sentence rule for `APPLIED_TO` / `EVALUATED_ON`, and a linking guard, built in one rebuild (new
+config `configs/enrichment-v2.json`, new graph version, new audit samples). Every v1 artifact (`enriched-c0f7d1dd4abd`,
+`reports/enrichment-v1/`, the v1 audit) and the frozen v4 graph stay unchanged. WORK-2026-11-25-002 holds the record.
+
+**Disclosure: these rules were motivated by v1 audit findings.** The error types (14 of 50 PART_OF edges wrong, 12 of 20
+linking errors a page narrower than the entity, 32 and 4 relation edges) come from the v1 E4 audit, which used test
+material. AGENTS.md forbids tuning against audit errors and then reusing that audit as independent evidence. So:
+
+1. **Design material excludes every v1-audited item**: the 50 audited PART_OF edges and the 100 audited linked entities
+   (`reports/enrichment-v1/audit/sample.json`), the papers shown in the audited relation items, and the 200 test papers
+   for relation development. Relations are developed on the 100 development papers and their frozen reference labels
+   (`data/manifests/enrichment-dev-labels-v1`).
+2. **Measurement is on fresh samples** that exclude every v1-audited item (E4 v2 audit, below).
+3. **Acceptance is declared here, before any development or non-audited measurement.** A rule that fails its own
+   criterion is not adopted and is reported as a result. There is no second attempt on the same labels, and thresholds are
+   not changed after labels are seen. Labels for development samples come from the building session, are AI-assessed,
+   development material only, and are frozen (hashed and committed) before the rule is applied to them.
+4. Development seed `2026112501`, audit seed `2026112502`; samples use the seeded hash ranking of `enrich.quality.draw`.
+5. Targets are unchanged from v1: relation precision ≥0.80, linking accuracy ≥0.85, PART_OF ≥0.80 (v1: 0.694, supplementary
+   v2 packet 0.720, linking 0.800).
+
+**Rule A — PART_OF v2.** Fetch `P31` of every PART_OF target (and child) with the cached, rate-limited fetcher, plus
+statement qualifiers (`P582` end time) and the reverse statements `P355` and `P527`. A statement is kept only if the target
+is an organization of an allowed kind (`P31` or a superclass at limited depth reaches an allowed organization class, and no
+excluded class: index, ranking, list, stock exchange, Wikimedia list item), has no end time, and does not conflict in
+direction (reverse statement present, or an implausible type order). Where both properties exist `P749` is preferred.
+Consortia, associations and joint or former memberships are removed from PART_OF and, only if the criterion below
+passes, represented by a separate predicate `MEMBER_OF`. The exact class lists are written into `configs/enrichment-v2.json`
+**before** the development sample is drawn and labeled.
+- *Development sample*: 50 PART_OF edges drawn from the 1,129 v1 edges minus the 50 audited.
+- *Adopt PART_OF v2 iff* the kept-edge precision point estimate is at least **0.85** and at least **70%** of the
+  development edges labeled correct are kept (so the rule cannot pass by deleting nearly everything). Wilson intervals
+  and the recall loss are reported either way. If it fails, the v1 PART_OF rule stays and the failure is reported.
+- *Adopt `MEMBER_OF` iff* the rule yields at least **15** such edges on the full graph and at least **0.85** of up to 20
+  non-audited candidates (all if fewer) are correct as "the first organization is a member of the second". Otherwise
+  those edges are only dropped from PART_OF.
+
+**Rule B — single-paper same-sentence relations.** Keep the current rule for pairs with at least two supporting papers
+(marked `support_rule: "two_or_more_papers"`). Add pairs with exactly one supporting paper only when both endpoints are
+entity nodes and the extractor found both in the same sentence, marked `support_rule: "single_paper_same_sentence"`,
+`support_count: 1`. No new SLM run: `paper-relations.jsonl` already stores `same_sentence`.
+- *`APPLIED_TO` development check*: paper-level precision against the frozen dev reference labels, same-sentence against
+  cross-sentence predictions, with the K1 lenient matching rule (`enrich.scoring`). *Adopt iff* same-sentence precision is
+  at least **0.80** and at least **0.15** above cross-sentence precision.
+- *`EVALUATED_ON`*: the 100 development papers hold only one same-sentence `EVALUATED_ON` prediction, which cannot decide
+  anything. A supplementary development sample of **30** same-sentence paper-level `EVALUATED_ON` relations (both endpoints
+  entity nodes, fewer than two supporting papers, papers outside the development, test and audited sets) is labeled by the
+  building session ("the shown abstract supports the relation") and frozen first. *Adopt iff* at least **0.80** are correct.
+  The development cross-sentence figure is reported for context.
+- Each predicate is decided separately.
+
+**Rule C — linking guard.** Reject an otherwise accepted link when the page title, after removing a trailing parenthetical,
+has at least one normalized token that the entity name lacks while containing every token of the name (the page is narrower
+than the entity), unless the name is an initialism of the title. The v1 guards stay. A guard on "the lead defines a narrower
+subtype" is **not implemented**: no deterministic lexical form was designed on development material, and it stays an open
+option for later work.
+- *Development sample*: 60 linked entities drawn from the v1 linked entities minus the 100 audited, labeled "right concept /
+  narrower / broader / wrong" and frozen first. *Adopt iff* the accuracy of the kept links is at least **0.85** and at
+  least **65%** of the correct links are kept. The number of links lost, and node counts before and after (a link change
+  changes QID merges), are reported. As an informational check the guard is also run on the eight accepted dev links in
+  `reports/enrichment-v1/link-dev.json`.
+
+**Smaller items.** Entity keys that carry two types (61 in v1) are listed in `reports/enrichment-v2/type-conflicts.json`;
+typing is not changed. `ResNet` and `ResNet-50` stay separate nodes: a family and a variant are different entities.
+
+**E4 v2 audit (fresh samples only).** PART_OF kept edges 50 (excluding the 50 v1 items); `MEMBER_OF` up to 30; new
+single-paper same-sentence `APPLIED_TO` up to 100; every new `EVALUATED_ON`; linking 100 (excluding the 100 v1 items).
+Primary relation rule: the shown paper supports the relation. A and B overlap on 20% (all items when an axis has 50 or
+fewer), C adjudicates, unclear is excluded from the primary figure and counted as incorrect in the sensitivity. The sample
+and packets are frozen, hashed and committed before any judgement; the building session does not judge. Evaluator working
+directories, Codex sessions and subagent transcripts are archived immediately. Unchanged axes are carried over from v1 and
+labeled as such.
