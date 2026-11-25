@@ -1,9 +1,9 @@
 # Current project status
 
-Updated: **2026-11-25T12:10:00+07:00**. Phase: **final exam**, decision
+Updated: **2026-11-25T13:05:00+07:00**. Phase: **final exam**, decision
 [D042](decisions.md#d042--final-exam-phase-research-trend-application-on-an-enriched-graph-2026-11-23),
 due **20 December 2026, 23:59**. Specification: [docs/final-exam/](final-exam/README.md).
-Latest: [WORK-2026-11-25-002](work-log/2026-11-25-002-enrichment-v2.md) (enrichment v2 after [WORK-2026-11-25-001](work-log/2026-11-25-001-enrichment-review-fixes.md)).
+Latest: [WORK-2026-11-25-003](work-log/2026-11-25-003-enrichment-v3.md) (enrichment v3 after [WORK-2026-11-25-002](work-log/2026-11-25-002-enrichment-v2.md)).
 Documentation index: [docs/README.md](README.md).
 
 ## Final exam checklist (milestones in specification §8)
@@ -13,8 +13,8 @@ Documentation index: [docs/README.md](README.md).
   GLiNER-Relex on dev ([report](../reports/enrichment-v1/k1-model-selection.md); D042 amendment).
   The dev answer-accuracy arm of the model rule stays pending until v5 exists.
 - [x] M1 enrichment: sources, entities (1,991 nodes), relations, v5-enriched `enriched-c0f7d1dd4abd` (v1, kept) validated and loaded on 7690.
-- [x] Enrichment v2 `enriched-827be09bc987` (loaded on 7690, replaces v1 there): `MEMBER_OF` 85 and single-paper EVALUATED_ON (31 total) adopted; PART_OF v2, single-paper APPLIED_TO and link guard not adopted (declared criteria). [quality v2](../reports/enrichment-v2/quality.md): EVALUATED_ON 0.963, MEMBER_OF 29/29 (A/B disagreement high, see caveat).
-- [x] M2-E4 AI-assessed audit ([quality](../reports/enrichment-v1/quality.md)): entity precision 0.927 (met), extracted relations about 0.92-0.95 (met), linking 0.800 (target 0.85 missed), PART_OF 0.69 (0.72 with the statement shown, supplementary).
+- [x] Enrichment v2 `enriched-827be09bc987` (kept; [quality](../reports/enrichment-v2/quality.md)): `MEMBER_OF` and single-paper EVALUATED_ON adopted, the rest failed absolute criteria.
+- [x] Enrichment v3 `enriched-cb371912e308` (loaded on 7690): PART_OF rule and link guard adopted post hoc, single-paper APPLIED_TO adopted. Fresh E4 v3 ([quality](../reports/enrichment-v3/quality.md)): PART_OF 0.951 (0.78 with unclear as incorrect), linking 0.895, APPLIED_TO single paper 0.983, `MEMBER_OF` 13/13 decided but half unclear. AI-assessed; adjudicator = same model as B.
 - [ ] M2 network analysis: small world, ranking, communities, trends (S1–S3).
 - [ ] M3 application core: GraphRAG index, multi-hop engine, new Explorer pages (K2, K3).
 - [ ] M4 QA benchmark, UI polish, deployment.
@@ -43,4 +43,4 @@ Documentation index: [docs/README.md](README.md).
 
 ## Next step
 
-Decide (user): re-declare an `APPLIED_TO` criterion on the E4 scale, or a lead-based link guard (each needs a dated amendment and new dev labels). Otherwise start S1-S3 network analysis on `enriched-827be09bc987` (method-task questions use shared-paper co-occurrence, [spec §4.3 notes](final-exam/specification.md)), then K2/K3. PART_OF (0.69), linking (0.80) and RELATED_TO (0.625) still miss their targets. Restore v1 on 7690: see the [work log](work-log/2026-11-25-002-enrichment-v2.md). Keep `sn-llm` stopped while Neo4j loads (RAM).
+Decide (user): how to treat `MEMBER_OF` (ambiguous, not wrong) and PART_OF's ministry-parent cases, and whether a lead-based link guard is worth an amendment. Otherwise start S1-S3 network analysis on `enriched-cb371912e308` (method-task questions use shared-paper co-occurrence and the 167 APPLIED_TO edges, [spec §4.3 notes](final-exam/specification.md)), then K2/K3. Entity precision 0.927, paper edges and APPLIED_TO/EVALUATED_ON meet targets; RELATED_TO 0.625 does not. Restore v1 or v2 on 7690: see the [v3 work log](work-log/2026-11-25-003-enrichment-v3.md). Keep `sn-llm` stopped while Neo4j loads (RAM).

@@ -235,3 +235,5 @@ text into the journal.
 - [WORK-2026-11-24-004 — Enrichment track A, Phases 2-5](2026-11-24-004-enrichment-e1-e4.md): completed; full-corpus SLM, E2 entities (1,991 nodes), E3 relations, v5 graph loaded on 7690, E4 AI-assessed audit: entity precision 0.927, linking 0.800 (target missed).
 
 - [WORK-2026-11-25-002 — Enrichment v2](2026-11-25-002-enrichment-v2.md): completed; `MEMBER_OF` (85) and single-paper EVALUATED_ON (31) adopted, PART_OF v2, single-paper APPLIED_TO and the link guard not adopted under declared criteria; E4 v2 on fresh samples; graph `enriched-827be09bc987` loaded on 7690.
+
+- [WORK-2026-11-25-003 — Enrichment v3](2026-11-25-003-enrichment-v3.md): completed; PART_OF rule and link guard adopted post hoc, single-paper APPLIED_TO adopted on the audit scale, graph `enriched-cb371912e308` loaded on 7690; fresh E4 v3: PART_OF 0.951 (0.78 unclear as incorrect), linking 0.895, APPLIED_TO 0.983, MEMBER_OF ambiguous.
