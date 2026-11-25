@@ -1,0 +1,276 @@
+{
+ "nodes": 13617,
+ "edges": 7308,
+ "directed": true,
+ "weighted_pagerank": false,
+ "meta": {
+  "eigenvector_skipped": true,
+  "betweenness": {
+   "method": "not computed"
+  },
+  "seconds": 1.5735626220703125e-05
+ },
+ "comparison_with_pagerank": {
+  "degree": {
+   "spearman": 0.6761912490186891,
+   "top20_overlap": 3
+  },
+  "strength": {
+   "spearman": 0.6761912490186891,
+   "top20_overlap": 3
+  },
+  "betweenness": {
+   "spearman": null,
+   "top20_overlap": null,
+   "note": "not computed"
+  },
+  "eigenvector": {
+   "spearman": null,
+   "top20_overlap": null,
+   "note": "not computed"
+  }
+ },
+ "sparsity_note": "7308 directed CITES edges across 13617 core papers (largest weak component 3899, 7302 isolated papers). Within-corpus citation PageRank is fragile on sparse directed links; read alongside in_corpus_citations.",
+ "top": [
+  {
+   "rank": 1,
+   "id": "paper:aaai:2021:16406",
+   "name": "Boundary Proposal Network for Two-stage Natural Language Video Localization",
+   "label": "Paper",
+   "pagerank": 0.0024972461474435533,
+   "degree": 10,
+   "strength": 10.0,
+   "community": null,
+   "in_corpus_citations": 9,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 2,
+   "id": "paper:aaai:2021:16188",
+   "name": "Ref-NMS: Breaking Proposal Bottlenecks in Two-Stage Referring Expression Grounding",
+   "label": "Paper",
+   "pagerank": 0.0024672227099554007,
+   "degree": 9,
+   "strength": 9.0,
+   "community": null,
+   "in_corpus_citations": 8,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 3,
+   "id": "paper:aaai:2021:16508",
+   "name": "Turbocharging Treewidth-Bounded Bayesian Network Structure Learning",
+   "label": "Paper",
+   "pagerank": 0.002256430155524137,
+   "degree": 6,
+   "strength": 6.0,
+   "community": null,
+   "in_corpus_citations": 5,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 4,
+   "id": "paper:aaai:2021:16509",
+   "name": "SAT-based Decision Tree Learning for Large Data Sets",
+   "label": "Paper",
+   "pagerank": 0.0022322842410181336,
+   "degree": 8,
+   "strength": 8.0,
+   "community": null,
+   "in_corpus_citations": 7,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 5,
+   "id": "paper:aaai:2021:17325",
+   "name": "Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting",
+   "label": "Paper",
+   "pagerank": 0.0019402397415099984,
+   "degree": 51,
+   "strength": 51.0,
+   "community": null,
+   "in_corpus_citations": 51,
+   "out_corpus_citations": 0
+  },
+  {
+   "rank": 6,
+   "id": "paper:aaai:2021:16257",
+   "name": "Context-Aware Graph Convolution Network for Target Re-identification",
+   "label": "Paper",
+   "pagerank": 0.0017496895443330654,
+   "degree": 5,
+   "strength": 5.0,
+   "community": null,
+   "in_corpus_citations": 4,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 7,
+   "id": "paper:aaai:2021:16363",
+   "name": "BSN++: Complementary Boundary Regressor with Scale-Balanced Relation Modeling for Temporal Action Proposal Generation",
+   "label": "Paper",
+   "pagerank": 0.0016440906324414707,
+   "degree": 5,
+   "strength": 5.0,
+   "community": null,
+   "in_corpus_citations": 4,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 8,
+   "id": "paper:aaai:2023:26060",
+   "name": "Incomplete Multi-View Multi-Label Learning via Label-Guided Masked View- and Category-Aware Transformers",
+   "label": "Paper",
+   "pagerank": 0.0013328178476165885,
+   "degree": 9,
+   "strength": 9.0,
+   "community": null,
+   "in_corpus_citations": 8,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 9,
+   "id": "paper:aaai:2023:26059",
+   "name": "DICNet: Deep Instance-Level Contrastive Network for Double Incomplete Multi-View Multi-Label Classification",
+   "label": "Paper",
+   "pagerank": 0.0013248661784323829,
+   "degree": 9,
+   "strength": 9.0,
+   "community": null,
+   "in_corpus_citations": 8,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 10,
+   "id": "paper:aaai:2024:28226",
+   "name": "T2I-Adapter: Learning Adapters to Dig Out More Controllable Ability for Text-to-Image Diffusion Models",
+   "label": "Paper",
+   "pagerank": 0.0012544839016113399,
+   "degree": 21,
+   "strength": 21.0,
+   "community": null,
+   "in_corpus_citations": 21,
+   "out_corpus_citations": 0
+  },
+  {
+   "rank": 11,
+   "id": "paper:aaai:2021:16189",
+   "name": "RSPNet: Relative Speed Perception for Unsupervised Video Representation Learning",
+   "label": "Paper",
+   "pagerank": 0.0010907763879116914,
+   "degree": 7,
+   "strength": 7.0,
+   "community": null,
+   "in_corpus_citations": 6,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 12,
+   "id": "paper:aaai:2022:20349",
+   "name": "Unsupervised Adversarially Robust Representation Learning on Graphs",
+   "label": "Paper",
+   "pagerank": 0.0010712847330056204,
+   "degree": 8,
+   "strength": 8.0,
+   "community": null,
+   "in_corpus_citations": 7,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 13,
+   "id": "paper:aaai:2021:16579",
+   "name": "A General Offline Reinforcement Learning Framework for Interactive Recommendation",
+   "label": "Paper",
+   "pagerank": 0.001051065013873904,
+   "degree": 6,
+   "strength": 6.0,
+   "community": null,
+   "in_corpus_citations": 5,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 14,
+   "id": "paper:aaai:2021:16647",
+   "name": "Fair and Truthful Mechanisms for Dichotomous Valuations",
+   "label": "Paper",
+   "pagerank": 0.0010421157775309135,
+   "degree": 16,
+   "strength": 16.0,
+   "community": null,
+   "in_corpus_citations": 16,
+   "out_corpus_citations": 0
+  },
+  {
+   "rank": 15,
+   "id": "paper:aaai:2022:20350",
+   "name": "Blindfolded Attackers Still Threatening: Strict Black-Box Adversarial Attacks on Graphs",
+   "label": "Paper",
+   "pagerank": 0.0010410885209122674,
+   "degree": 4,
+   "strength": 4.0,
+   "community": null,
+   "in_corpus_citations": 3,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 16,
+   "id": "paper:aaai:2021:16401",
+   "name": "MVFNet: Multi-View Fusion Network for Efficient Video Recognition",
+   "label": "Paper",
+   "pagerank": 0.0010302742508212918,
+   "degree": 4,
+   "strength": 4.0,
+   "community": null,
+   "in_corpus_citations": 3,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 17,
+   "id": "paper:aaai:2021:17705",
+   "name": "Retrospective Reader for Machine Reading Comprehension",
+   "label": "Paper",
+   "pagerank": 0.0010091409223728796,
+   "degree": 6,
+   "strength": 6.0,
+   "community": null,
+   "in_corpus_citations": 4,
+   "out_corpus_citations": 2
+  },
+  {
+   "rank": 18,
+   "id": "paper:aaai:2021:16521",
+   "name": "Deep Transfer Tensor Decomposition with Orthogonal Constraint for Recommender Systems",
+   "label": "Paper",
+   "pagerank": 0.0009906725896880152,
+   "degree": 3,
+   "strength": 3.0,
+   "community": null,
+   "in_corpus_citations": 2,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 19,
+   "id": "paper:aaai:2021:16332",
+   "name": "Learning to Count via Unbalanced Optimal Transport",
+   "label": "Paper",
+   "pagerank": 0.0009834590501321663,
+   "degree": 5,
+   "strength": 5.0,
+   "community": null,
+   "in_corpus_citations": 4,
+   "out_corpus_citations": 1
+  },
+  {
+   "rank": 20,
+   "id": "paper:aaai:2021:16245",
+   "name": "Error-Aware Density Isomorphism Reconstruction for Unsupervised Cross-Domain Crowd Counting",
+   "label": "Paper",
+   "pagerank": 0.0009713805652952365,
+   "degree": 5,
+   "strength": 5.0,
+   "community": null,
+   "in_corpus_citations": 4,
+   "out_corpus_citations": 1
+  }
+ ]
+}

@@ -1,0 +1,520 @@
+{
+ "organizations": 2047,
+ "notable_organizations": 1462,
+ "organization_anchored_communities": 124,
+ "large_organization_anchored_communities": 1,
+ "rollup": {
+  "part_of_edges": 783,
+  "skip_rule": "government_body",
+  "ministry_part_of_edges_skipped": 112,
+  "ministry_part_of_edges_by_class_label": 78,
+  "excluded_parents": [
+   {
+    "parent": "organization:wikidata:Q217810",
+    "parent_name": "United States Department of Energy",
+    "edges_skipped": 11,
+    "classes": [
+     "United States federal executive department",
+     "ministry of energy"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q4294535",
+    "parent_name": "Ministry of Education and Research",
+    "edges_skipped": 9,
+    "classes": [
+     "ministry of Sweden",
+     "ministry of education"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q53579434",
+    "parent_name": "Ministry of Science and Higher Education",
+    "edges_skipped": 9,
+    "classes": [
+     "federal ministry in Russia",
+     "ministry of science"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1629075",
+    "parent_name": "State-owned Assets Supervision and Administration Commission of the State Council",
+    "edges_skipped": 9,
+    "classes": [
+     "State-owned Assets Supervision and Administration Commission",
+     "government agency",
+     "institution directly under the State Council"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1769657",
+    "parent_name": "Ministry of Education and Research of Norway",
+    "edges_skipped": 6,
+    "classes": [
+     "Ministry of Norway",
+     "ministry of education",
+     "ministry of science"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q59261",
+    "parent_name": "State Council of the People's Republic of China",
+    "edges_skipped": 5,
+    "classes": [
+     "cabinet",
+     "executive branch",
+     "legislature",
+     "state level institution"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q30263602",
+    "parent_name": "Department of Mathematical Sciences",
+    "edges_skipped": 4,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:I115228651",
+    "parent_name": "Agency for Science, Technology and Research",
+    "edges_skipped": 4,
+    "classes": [
+     "statutory board of the Singapore Government"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q834166",
+    "parent_name": "National Nuclear Security Administration",
+    "edges_skipped": 3,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1140115",
+    "parent_name": "Government of Russia",
+    "edges_skipped": 2,
+    "classes": [
+     "executive branch"
+    ]
+   },
+   {
+    "parent": "organization:I890469752",
+    "parent_name": "Ministry of Industry and Information Technology",
+    "edges_skipped": 2,
+    "classes": [
+     "Constituent Department of the State Council",
+     "information ministry",
+     "ministry of industry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q23548",
+    "parent_name": "National Aeronautics and Space Administration",
+    "edges_skipped": 2,
+    "classes": [
+     "independent agency of the United States government",
+     "space agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q501542",
+    "parent_name": "United States Department of Agriculture",
+    "edges_skipped": 2,
+    "classes": [
+     "United States federal agency",
+     "United States federal executive department",
+     "academic publisher",
+     "ministry of agriculture"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q190338",
+    "parent_name": "Central Military Commission",
+    "edges_skipped": 2,
+    "classes": [
+     "government agency",
+     "state level institution"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q4294642",
+    "parent_name": "Ministry of Education",
+    "edges_skipped": 2,
+    "classes": [
+     "Union Government ministries of India",
+     "ministry of education"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q4294727",
+    "parent_name": "Ministry of Trade and Industry",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry of Singapore",
+     "ministry of industry",
+     "ministry of trade"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q3523073",
+    "parent_name": "Department of Atomic Energy",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q488589",
+    "parent_name": "Federal Ministry for Economic Affairs and Energy",
+    "edges_skipped": 1,
+    "classes": [
+     "Federal Ministry in Germany",
+     "economic affairs ministry",
+     "ministry of energy"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q7243280",
+    "parent_name": "Prime Minister's Office",
+    "edges_skipped": 1,
+    "classes": [
+     "cabinet department"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q832416",
+    "parent_name": "Ministry of Transport of the People's Republic of China",
+    "edges_skipped": 1,
+    "classes": [
+     "Constituent Department of the State Council",
+     "transport ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q2981744",
+    "parent_name": "Department of Defence",
+    "edges_skipped": 1,
+    "classes": [
+     "defence ministry",
+     "department of the Australian Government"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q11209",
+    "parent_name": "United States Department of Defense",
+    "edges_skipped": 1,
+    "classes": [
+     "United States federal executive department",
+     "ministry of War"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q503577",
+    "parent_name": "United States Department of Commerce",
+    "edges_skipped": 1,
+    "classes": [
+     "United States federal executive department",
+     "economic affairs ministry",
+     "ministry of trade"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q116719150",
+    "parent_name": "Department for Science, Innovation and Technology",
+    "edges_skipped": 1,
+    "classes": [
+     "department of the United Kingdom Government",
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q54834070",
+    "parent_name": "Ministry of Science, Innovation and Universities",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry of Spain",
+     "ministry of innovation",
+     "ministry of science"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q6017195",
+    "parent_name": "Ministry of Science, Technology and Productive Innovation.",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry of science and technology"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q492234",
+    "parent_name": "Federal Ministry of Research, Technology and Space",
+    "edges_skipped": 1,
+    "classes": [
+     "Federal Ministry in Germany",
+     "ministry of research",
+     "space ministry",
+     "technology ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q141807288",
+    "parent_name": "S\u00e3o Paulo State Secretariat of Science, Technology and Innovation",
+    "edges_skipped": 1,
+    "classes": [
+     "State Secretariat of Brazil",
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q2726949",
+    "parent_name": "Ministry of Higher Education and Research",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry",
+     "organization"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q50839200",
+    "parent_name": "National Health Commission of the People's Republic of China",
+    "edges_skipped": 1,
+    "classes": [
+     "Constituent Department of the State Council",
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q488542",
+    "parent_name": "Ministry of National Defense of South Korea",
+    "edges_skipped": 1,
+    "classes": [
+     "Korean Ministry",
+     "defence ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q16251481",
+    "parent_name": "National Health Service",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency",
+     "health system"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q75706",
+    "parent_name": "Ministry of the Armed Forces",
+    "edges_skipped": 1,
+    "classes": [
+     "defence ministry"
+    ]
+   },
+   {
+    "parent": "organization:I1327237609",
+    "parent_name": "Ministry of Education of the People's Republic of China",
+    "edges_skipped": 1,
+    "classes": [
+     "Constituent Department of the State Council",
+     "ministry of education"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q488949",
+    "parent_name": "Ministry of Employment and Labor",
+    "edges_skipped": 1,
+    "classes": [
+     "Korean Ministry",
+     "ministry of labour"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q30299418",
+    "parent_name": "Direction de la recherche technologique",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1445040",
+    "parent_name": "Ministry of Higher Education and Scientific Research",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency",
+     "ministry of Algeria"
+    ]
+   },
+   {
+    "parent": "organization:I1304082316",
+    "parent_name": "United States Department of the Army",
+    "edges_skipped": 1,
+    "classes": [
+     "department"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1465252",
+    "parent_name": "United States Department of the Air Force",
+    "edges_skipped": 1,
+    "classes": [
+     "United States federal agency",
+     "aviation ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q33366149",
+    "parent_name": "Ministry of Science and ICT",
+    "edges_skipped": 1,
+    "classes": [
+     "Korean Ministry",
+     "ministry of science",
+     "technology ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q30299503",
+    "parent_name": "D\u00e9l\u00e9gation Grand-Ouest",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q4294667",
+    "parent_name": "Ministry of Digital Development, Communications and Mass Media of the Russian Federation",
+    "edges_skipped": 1,
+    "classes": [
+     "federal ministry in Russia",
+     "ministry",
+     "ministry of digital policy",
+     "organ of state"
+    ]
+   },
+   {
+    "parent": "organization:I1299457549",
+    "parent_name": "Civil Aviation Administration of China",
+    "edges_skipped": 1,
+    "classes": [
+     "national bureau magaged by minister commissions of State Council",
+     "vice-ministerial level institution"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q3112580",
+    "parent_name": "Government of South Australia",
+    "edges_skipped": 1,
+    "classes": [
+     "federated state",
+     "state government"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q30299415",
+    "parent_name": "Direction des \u00e9nergies",
+    "edges_skipped": 1,
+    "classes": [
+     "government agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q491047",
+    "parent_name": "Ministry of Trade, Industry and Resource",
+    "edges_skipped": 1,
+    "classes": [
+     "Korean Ministry",
+     "ministry of energy",
+     "ministry of industry",
+     "ministry of trade"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q7603230",
+    "parent_name": "General Administration of Sport of China",
+    "edges_skipped": 1,
+    "classes": [
+     "ministerial level institution",
+     "organization directly under the State Council"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1307461",
+    "parent_name": "Ministry of Education, Universities and Research",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry of Italy",
+     "ministry of education"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q667135",
+    "parent_name": "Federal Department of Defence, Civil Protection and Sports",
+    "edges_skipped": 1,
+    "classes": [
+     "defence ministry",
+     "federal department of Switzerland",
+     "sport ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q648666",
+    "parent_name": "United States Department of the Treasury",
+    "edges_skipped": 1,
+    "classes": [
+     "United States federal executive department",
+     "finance ministry",
+     "financial regulatory agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q482761",
+    "parent_name": "Ministry of Science, ICT and Future Planning",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry of science",
+     "technology ministry"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1068951",
+    "parent_name": "Ministry of State Security of the People's Republic of China",
+    "edges_skipped": 1,
+    "classes": [
+     "Constituent Department of the State Council",
+     "foreign intelligence service",
+     "secret police",
+     "security agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q63555964",
+    "parent_name": "Ministry of Higher Education, Science, Research and Innovation",
+    "edges_skipped": 1,
+    "classes": [
+     "ministry"
+    ]
+   },
+   {
+    "parent": "organization:I1308126019",
+    "parent_name": "National Oceanic and Atmospheric Administration",
+    "edges_skipped": 1,
+    "classes": [
+     "United States federal agency"
+    ]
+   },
+   {
+    "parent": "organization:wikidata:Q1322293",
+    "parent_name": "Ministry of Internal Affairs and Communications",
+    "edges_skipped": 1,
+    "classes": [
+     "Japanese ministry",
+     "interior ministry",
+     "ministry of communications"
+    ]
+   }
+  ],
+  "member_of_used": false,
+  "parents_with_children": 348
+ }
+}

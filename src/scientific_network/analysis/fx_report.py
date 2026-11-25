@@ -66,10 +66,10 @@ def build_readme(out: Path, cfg: dict) -> str:
     L = []
     w = L.append
     w(f"# Final-exam network analysis: S1-S3 and trend metrics\n")
-    w(f"Graph `{meta['graph_version']}` (file SHA-256 `{meta['graph_sha256'][:16]}...`), config `{cfg['version']}` (declared before any real-graph result; two dated changes, see the config). "
+    w(f"Graph `{meta['graph_version']}` (file SHA-256 `{meta['graph_sha256'][:16]}...`), config `{cfg['version']}`. "
       "Every number below was measured by `research-network final-analysis` from the graph file; nothing is a planned target. Enrichment-derived labels (topics, methods, tasks, datasets, Wikidata/Wikipedia links) "
       "are AI-assessed, not human annotation, and the evaluation figures that describe them cover sampling error only. Reproduce with "
-      "`uv run research-network final-analysis all --config configs/analysis-final-exam-v1.yaml --graph data/processed/enriched-graph-v3/graph.json --output reports/final-exam/analysis` "
+      f"`uv run research-network final-analysis all --config configs/{cfg['version']}.yaml --graph data/processed/enriched-graph-v3/graph.json --output {out.as_posix()}` "
       "(the stage `report` regenerates this file).\n")
     w("Runtimes (wall clock, one process each, 12 GB machine, `neo4j-enriched` stopped): " + ", ".join(f"{k} {v['seconds']:.0f} s" for k, v in meta["stages"].items()) +
       f"; peak resident memory of any run {meta['peak_rss_mb']} MB.\n")
@@ -124,9 +124,16 @@ def build_readme(out: Path, cfg: dict) -> str:
     # S2
     w("## S2 Ranking\n")
     w("PageRank damping 0.85; N1 and N2 weighted by fractional weight, N3 directed (citing → cited, so score flows to cited papers), N4 unweighted. Full score tables: `ranking/scores-N*.csv.gz`; top-20 tables with name, score, rank, degree and community: `ranking/ranking-N*.json`.\n")
-    for n in ("N1", "N2", "N3"):
+    for n in ("N1", "N2"):
         w(f"**{n} top 10 by PageRank**\n")
         w(_table(["Rank", "Name", "PageRank", "Degree", "Community"], [[t["rank"], t["name"], f"{t['pagerank']:.5f}", t["degree"], "" if t["community"] is None else t["community"]] for t in rk[n]["top"][:10]]) + "\n")
+    w("**N3 top 10 by PageRank** (directed citation network)\n")
+    if rk["N3"].get("sparsity_note"):
+        w(f"*{rk['N3']['sparsity_note']}*\n")
+    if rk["N3"]["top"] and "in_corpus_citations" in rk["N3"]["top"][0]:
+        w(_table(["Rank", "Name", "PageRank", "In-corpus citations", "Degree"], [[t["rank"], t["name"], f"{t['pagerank']:.5f}", t["in_corpus_citations"], t["degree"]] for t in rk["N3"]["top"][:10]]) + "\n")
+    else:
+        w(_table(["Rank", "Name", "PageRank", "Degree", "Community"], [[t["rank"], t["name"], f"{t['pagerank']:.5f}", t["degree"], "" if t["community"] is None else t["community"]] for t in rk["N3"]["top"][:10]]) + "\n")
     w("**N4 top 5 by PageRank within each node label** (the whole-graph rank is in the JSON)\n")
     for lab in ("Researcher", "Organization", "Paper", "Topic", "Method", "Task", "Dataset"):
         w(f"- {lab}: " + "; ".join(f"{t['name'][:60]} ({t['pagerank']:.5f})" for t in rk["N4"]["top_by_label"][lab][:5]))
@@ -147,10 +154,14 @@ def build_readme(out: Path, cfg: dict) -> str:
     w("Only a minority of N1 edges rest on two or more shared papers, so the strict ranking is a different, much sparser view: N1's top 20 changes a lot, N2's barely.\n")
     w("**Personalized PageRank** (N4, restart uniform over the papers of the subject; the subject's own papers are left out of the Paper list): precomputed for "
       + ", ".join(f"{len(v)} {k.lower()}s" for k, v in ppr.items()) + " (topics: the 16 leaf topics that have papers; the 4 parent topics carry no HAS_TOPIC edges; methods, tasks, datasets: the 30 with most papers each) in `ranking/personalized-pagerank.json`; "
-      "`scientific_network.analysis.fx_cli.personalized_summary` computes it for any subject. Examples:\n")
+      "`scientific_network.analysis.fx_cli.personalized_summary` computes it for any subject. "
+      + ("Organizations and researchers are ranked primarily by **lift** (`ppr_score / global_n4_pagerank`, with declared `min_subject_papers`); raw personalized PageRank is retained as a secondary field.\n" if "top_by_raw_ppr" in next(iter(ppr["Topic"].values())) else "Examples:\n"))
     for kind, sid in (("Topic", next(iter(ppr["Topic"]))), ("Method", next(iter(ppr["Method"]))), ("Dataset", next(iter(ppr["Dataset"])))):
         s = ppr[kind][sid]
-        w(f"- {kind} **{s['name']}** ({s['papers']} papers): researchers " + "; ".join(t["name"] for t in s["top"]["Researcher"][:4]) + "; organizations " + "; ".join(t["name"] for t in s["top"]["Organization"][:3]))
+        if "lift" in s["top"]["Organization"][0]:
+            w(f"- {kind} **{s['name']}** ({s['papers']} papers): researchers (by lift) " + "; ".join(f"{t['name']} (lift {t['lift']:.1f}x, {t['subject_papers']}p)" for t in s["top"]["Researcher"][:4]) + "; organizations (by lift) " + "; ".join(f"{t['name']} (lift {t['lift']:.1f}x, {t['subject_papers']}p)" for t in s["top"]["Organization"][:3]))
+        else:
+            w(f"- {kind} **{s['name']}** ({s['papers']} papers): researchers " + "; ".join(t["name"] for t in s["top"]["Researcher"][:4]) + "; organizations " + "; ".join(t["name"] for t in s["top"]["Organization"][:3]))
     w("")
     # S3
     w("## S3 Communities, key individuals and groups\n")
@@ -180,23 +191,28 @@ def build_readme(out: Path, cfg: dict) -> str:
     w(_table(["Researcher", "2024-25 papers", "2021-23 papers", "share ratio", "N1 community"], [[r["name"], r["recent_papers"], r["base_papers"], r["share_ratio"] or "new entrant", r["community"]] for r in rr[:10]]) + "\n")
     w("**Groups, by kind.** The application must state which kind a group is:\n")
     orgs = _c(out / "communities" / "groups-organizations.csv")
-    labs = _c(out / "communities" / "groups-labs.csv")
+    org_comm_path = out / "communities" / "groups-org-anchored-communities.csv"
+    labs = _c(org_comm_path if org_comm_path.exists() else (out / "communities" / "groups-labs.csv"))
     roll = _c(out / "communities" / "groups-rollup.csv")
     w(f"- *Organizations* ({grp['organizations']}; {grp['notable_organizations']} flagged Wikipedia-notable, meaning a Wikidata match with an English Wikipedia page): largest by papers: " + "; ".join(f"{r['name']} ({r['papers']})" for r in orgs[:5]) + ".")
-    w(f"- *Labs* (organization-anchored N1 communities: at least 10 members and one organization affiliating at least 40% of them; an approximation, not a verified research group): {grp['labs']} found, e.g. " +
-      "; ".join(f"{r['organization_name']} ({r['members']} members, {float(r['share']):.0%})" for r in labs[:5]) + ".")
+    n_org_comm = grp.get("organization_anchored_communities", grp.get("labs", len(labs)))
+    n_large = grp.get("large_organization_anchored_communities", 0)
+    w(f"- *Organization-anchored communities* (N1 communities with at least 10 members and one organization affiliating at least 40% of them; those >100 members are marked `large`, duplicates disambiguated by top topic; an approximation, not a verified research lab): {n_org_comm} found ({n_large} large), e.g. " +
+      "; ".join(f"{r.get('display_name', r['organization_name'])} ({r['members']} members, {r.get('size_tier', 'n/a')}, {float(r['share']):.0%})" for r in labs[:5]) + ".")
     w(f"- *Leiden communities* of N1 and N2: tables above and `communities/communities-N*.csv` ({len([1 for _ in _c(out / 'communities' / 'communities-N1.csv')])} N1 and {len([1 for _ in _c(out / 'communities' / 'communities-N2.csv')])} N2 communities with at least 20 members).")
     ru = grp["rollup"]
-    w(f"- *Parent organizations* (roll-up along PART_OF only; MEMBER_OF is not used; parents whose name contains \"ministry\" are skipped): {ru['part_of_edges']} PART_OF edges, {ru['ministry_part_of_edges_skipped']} skipped as ministry parents "
-      f"(a rule on the Wikidata class label would have flagged {ru['ministry_part_of_edges_by_class_label']}, including Tsinghua University and US federal departments; the name rule was declared before any roll-up), {ru['parents_with_children']} parents with at least one child. Largest by papers: " +
-      "; ".join(f"{r['parent_name']} ({r['child_organizations']} units, {r['papers']} papers)" for r in roll[:5]) + ". Parents are not all universities: government bodies such as the State Council of the People's Republic of China appear as parents of research institutes; the 30 edges that only the class-label rule would flag (US federal departments, Tsinghua University and others) stay in.")
+    skip_desc = "government bodies (ministries, state councils, federal/government departments and agencies) not matching the research/education guard" if ru.get("skip_rule") == "government_body" else "parents whose name contains \"ministry\""
+    w(f"- *Parent organizations* (roll-up along PART_OF only; MEMBER_OF is not used; {skip_desc} are skipped): {ru['part_of_edges']} PART_OF edges, {ru['ministry_part_of_edges_skipped']} skipped, {ru['parents_with_children']} parents with at least one child. Largest by papers: " +
+      "; ".join(f"{r['parent_name']} ({r['child_organizations']} units, {r['papers']} papers)" for r in roll[:5]) + ".")
+    if ru.get("excluded_parents"):
+        w("  Excluded government parents (sample/count): " + f"{len(ru['excluded_parents'])} parents skipped: " + "; ".join(f"{p['parent_name']} ({p['edges_skipped']})" for p in ru["excluded_parents"][:12]) + ("; …" if len(ru["excluded_parents"]) > 12 else "") + ".")
     w("")
     w("Figure: `communities/community-sizes.svg` (rank-size plot of the headline communities; many tiny components produce the long tail).\n")
     # trends
     w("## Trend metrics (specification 5.4)\n")
     w("Per subject and year: paper count, share of that year's 13,617-paper corpus (2,240 / 1,997 / 2,217 / 3,121 / 4,042 papers in 2021-2025), compound annual growth of the share 2021→2025, least-squares slope of the share with its p-value, year-over-year change, and class. "
       "Classes (declared in the config): emerging = at most 2 papers in 2021-2022 and at least 8 in 2024-2025; rising = positive slope with p ≤ 0.10, recent share at least 1.5 times the base share and at least 3 base papers; declining = negative slope with p ≤ 0.10, "
-      "ratio ≤ 2/3 and at least 10 base papers; insufficient data below 15 papers in total; everything else stable. The classes are descriptive; no multiple-testing correction was applied.\n")
+      "ratio ≤ 2/3 and at least 10 base papers; insufficient data below 15 papers in total; everything else stable. The classes are descriptive (p ≤ 0.10 per subject, no multiple-testing correction).\n")
     rows = [[k, v["subjects"], v.get("rising", 0), v.get("emerging", 0), v.get("declining", 0), v.get("stable", 0), v.get("insufficient_data", 0)] for k, v in tr["classes"].items()]
     w(_table(["Subject kind", "Subjects", "rising", "emerging", "declining", "stable", "insufficient data (<15 papers)"], rows) + "\n")
     for kind in ("Topic", "Method", "Task", "Dataset"):

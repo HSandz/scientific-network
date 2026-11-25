@@ -1,0 +1,2483 @@
+{
+ "network": "N2",
+ "headline": {
+  "resolution": 1.0,
+  "seed": 17
+ },
+ "runs": [
+  {
+   "resolution": 0.8,
+   "seed": 17,
+   "modularity": 0.438387875421912,
+   "modularity_at_resolution": 0.49333803177789903,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 19,
+    "modularity": 0.4369736841973759,
+    "modularity_at_resolution": 0.4921097031785488
+   },
+   "communities": 120,
+   "singletons": 90,
+   "largest": [
+    621,
+    464,
+    403,
+    188,
+    106,
+    98,
+    10,
+    7,
+    6,
+    5
+   ],
+   "median": 1.0,
+   "mean": 17.058333333333334,
+   "share_in_top10": 0.93209574987787,
+   "histogram_log2": {
+    "1": 90,
+    "2": 19,
+    "4": 4,
+    "8": 1,
+    "16": 0,
+    "32": 0,
+    "64": 2,
+    "128": 1,
+    "256": 2,
+    "512": 1
+   }
+  },
+  {
+   "resolution": 0.8,
+   "seed": 42,
+   "modularity": 0.42708334223139766,
+   "modularity_at_resolution": 0.49330636722198434,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 17,
+    "modularity": 0.4255546101242853,
+    "modularity_at_resolution": 0.49200163872192404
+   },
+   "communities": 118,
+   "singletons": 90,
+   "largest": [
+    549,
+    540,
+    477,
+    104,
+    80,
+    80,
+    55,
+    10,
+    7,
+    6
+   ],
+   "median": 1.0,
+   "mean": 17.347457627118644,
+   "share_in_top10": 0.93209574987787,
+   "histogram_log2": {
+    "1": 90,
+    "2": 16,
+    "4": 4,
+    "8": 1,
+    "16": 0,
+    "32": 1,
+    "64": 3,
+    "128": 0,
+    "256": 1,
+    "512": 2
+   }
+  },
+  {
+   "resolution": 0.8,
+   "seed": 101,
+   "modularity": 0.4369964994506814,
+   "modularity_at_resolution": 0.49168127750032475,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 17,
+    "modularity": 0.4355822030199364,
+    "modularity_at_resolution": 0.4904519458053728
+   },
+   "communities": 118,
+   "singletons": 90,
+   "largest": [
+    468,
+    463,
+    455,
+    197,
+    122,
+    95,
+    80,
+    14,
+    10,
+    6
+   ],
+   "median": 1.0,
+   "mean": 17.347457627118644,
+   "share_in_top10": 0.9330727894479727,
+   "histogram_log2": {
+    "1": 90,
+    "2": 16,
+    "4": 3,
+    "8": 2,
+    "16": 0,
+    "32": 0,
+    "64": 3,
+    "128": 1,
+    "256": 3
+   }
+  },
+  {
+   "resolution": 1.0,
+   "seed": 17,
+   "modularity": 0.44115744788903116,
+   "modularity_at_resolution": 0.44115744788903116,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 16,
+    "modularity": 0.43994071219360986,
+    "modularity_at_resolution": 0.43994071219360986
+   },
+   "communities": 117,
+   "singletons": 90,
+   "largest": [
+    520,
+    397,
+    254,
+    140,
+    133,
+    114,
+    94,
+    84,
+    78,
+    59
+   ],
+   "median": 1.0,
+   "mean": 17.495726495726494,
+   "share_in_top10": 0.9149975574010747,
+   "histogram_log2": {
+    "1": 90,
+    "2": 13,
+    "4": 2,
+    "8": 1,
+    "16": 0,
+    "32": 2,
+    "64": 4,
+    "128": 3,
+    "256": 1,
+    "512": 1
+   }
+  },
+  {
+   "resolution": 1.0,
+   "seed": 42,
+   "modularity": 0.4397965926383691,
+   "modularity_at_resolution": 0.4397965926383691,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 17,
+    "modularity": 0.4385366938474809,
+    "modularity_at_resolution": 0.4385366938474809
+   },
+   "communities": 118,
+   "singletons": 90,
+   "largest": [
+    525,
+    376,
+    273,
+    165,
+    134,
+    120,
+    114,
+    104,
+    82,
+    10
+   ],
+   "median": 1.0,
+   "mean": 17.347457627118644,
+   "share_in_top10": 0.9296531509526136,
+   "histogram_log2": {
+    "1": 90,
+    "2": 14,
+    "4": 4,
+    "8": 1,
+    "16": 0,
+    "32": 0,
+    "64": 4,
+    "128": 2,
+    "256": 2,
+    "512": 1
+   }
+  },
+  {
+   "resolution": 1.0,
+   "seed": 101,
+   "modularity": 0.4405540433339348,
+   "modularity_at_resolution": 0.4405540433339348,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 21,
+    "modularity": 0.43930451890240035,
+    "modularity_at_resolution": 0.43930451890240035
+   },
+   "communities": 122,
+   "singletons": 90,
+   "largest": [
+    580,
+    380,
+    283,
+    133,
+    125,
+    105,
+    103,
+    78,
+    63,
+    23
+   ],
+   "median": 1.0,
+   "mean": 16.778688524590162,
+   "share_in_top10": 0.9149975574010747,
+   "histogram_log2": {
+    "1": 90,
+    "2": 16,
+    "4": 4,
+    "8": 2,
+    "16": 1,
+    "32": 1,
+    "64": 4,
+    "128": 1,
+    "256": 2,
+    "512": 1
+   }
+  },
+  {
+   "resolution": 1.2,
+   "seed": 17,
+   "modularity": 0.43580609621512184,
+   "modularity_at_resolution": 0.4121902810777341,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 17,
+    "modularity": 0.4346528088668252,
+    "modularity_at_resolution": 0.4109571487097919
+   },
+   "communities": 118,
+   "singletons": 90,
+   "largest": [
+    336,
+    291,
+    263,
+    183,
+    123,
+    120,
+    92,
+    84,
+    79,
+    78
+   ],
+   "median": 1.0,
+   "mean": 17.347457627118644,
+   "share_in_top10": 0.8055691255495847,
+   "histogram_log2": {
+    "1": 90,
+    "2": 12,
+    "4": 1,
+    "8": 0,
+    "16": 0,
+    "32": 5,
+    "64": 6,
+    "128": 1,
+    "256": 3
+   }
+  },
+  {
+   "resolution": 1.2,
+   "seed": 42,
+   "modularity": 0.43410324592653404,
+   "modularity_at_resolution": 0.4135358809214611,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 18,
+    "modularity": 0.4329728876035954,
+    "modularity_at_resolution": 0.412335991801901
+   },
+   "communities": 119,
+   "singletons": 90,
+   "largest": [
+    318,
+    302,
+    274,
+    127,
+    124,
+    123,
+    120,
+    83,
+    81,
+    77
+   ],
+   "median": 1.0,
+   "mean": 17.201680672268907,
+   "share_in_top10": 0.7957987298485588,
+   "histogram_log2": {
+    "1": 90,
+    "2": 11,
+    "4": 3,
+    "8": 0,
+    "16": 0,
+    "32": 4,
+    "64": 8,
+    "128": 0,
+    "256": 3
+   }
+  },
+  {
+   "resolution": 1.2,
+   "seed": 101,
+   "modularity": 0.43446165191171254,
+   "modularity_at_resolution": 0.41175878420646045,
+   "largest_component": {
+    "nodes": 1932,
+    "communities": 18,
+    "modularity": 0.4333138208254717,
+    "modularity_at_resolution": 0.41053419699591925
+   },
+   "communities": 119,
+   "singletons": 90,
+   "largest": [
+    318,
+    280,
+    248,
+    175,
+    114,
+    105,
+    93,
+    88,
+    86,
+    85
+   ],
+   "median": 1.0,
+   "mean": 17.201680672268907,
+   "share_in_top10": 0.777723497801661,
+   "histogram_log2": {
+    "1": 90,
+    "2": 12,
+    "4": 1,
+    "8": 1,
+    "16": 0,
+    "32": 2,
+    "64": 9,
+    "128": 2,
+    "256": 2
+   }
+  }
+ ],
+ "nmi_across_seeds": {
+  "0.8": {
+   "pairs": [
+    "17-42",
+    "17-101",
+    "42-101"
+   ],
+   "values": [
+    0.7568572463074543,
+    0.8371206655946815,
+    0.803790108019271
+   ],
+   "mean": 0.7992560066404689,
+   "min": 0.7568572463074543
+  },
+  "1.0": {
+   "pairs": [
+    "17-42",
+    "17-101",
+    "42-101"
+   ],
+   "values": [
+    0.7623216438175404,
+    0.774635916270504,
+    0.7391492868332835
+   ],
+   "mean": 0.7587022823071093,
+   "min": 0.7391492868332835
+  },
+  "1.2": {
+   "pairs": [
+    "17-42",
+    "17-101",
+    "42-101"
+   ],
+   "values": [
+    0.8619837312171633,
+    0.8740467986129151,
+    0.8119712361352341
+   ],
+   "mean": 0.8493339219884376,
+   "min": 0.8119712361352341
+  }
+ },
+ "louvain": {
+  "0.8": {
+   "seed": 17,
+   "communities": 113,
+   "modularity": 0.42350318062300807,
+   "nmi_with_leiden_same_seed": 0.7250629718204351
+  },
+  "1.0": {
+   "seed": 17,
+   "communities": 119,
+   "modularity": 0.4299182093921585,
+   "nmi_with_leiden_same_seed": 0.67430605321125
+  },
+  "1.2": {
+   "seed": 17,
+   "communities": 117,
+   "modularity": 0.42163511989946495,
+   "nmi_with_leiden_same_seed": 0.6739246021929479
+  }
+ },
+ "hierarchy": {
+  "level0_communities": 117,
+  "level1_communities": 105,
+  "modularity_level1": 0.045976344555751274,
+  "level1_resolution": 0.25
+ },
+ "labels": {
+  "1": {
+   "Topic": [
+    {
+     "id": "topic:reinforcement-learning",
+     "name": "Reinforcement learning",
+     "score": 0.0155,
+     "count": 766
+    },
+    {
+     "id": "topic:trustworthy-ml",
+     "name": "Trustworthy machine learning",
+     "score": 0.0141,
+     "count": 489
+    },
+    {
+     "id": "topic:probabilistic-bayesian",
+     "name": "Probabilistic and Bayesian learning",
+     "score": 0.0133,
+     "count": 102
+    },
+    {
+     "id": "topic:optimization-theory",
+     "name": "Optimization and learning theory",
+     "score": 0.0118,
+     "count": 143
+    },
+    {
+     "id": "topic:efficient-systems",
+     "name": "Efficient machine learning systems",
+     "score": 0.0114,
+     "count": 632
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:Q12811862",
+     "name": "neural networks",
+     "score": 0.0166,
+     "count": 44
+    },
+    {
+     "id": "method:b33da6d251d1772b",
+     "name": "polynomial-time algorithm",
+     "score": 0.0162,
+     "count": 27
+    },
+    {
+     "id": "method:Q830687",
+     "name": "reinforcement learning",
+     "score": 0.0146,
+     "count": 67
+    },
+    {
+     "id": "method:fc9f3ae32eeea8b0",
+     "name": "deep neural networks",
+     "score": 0.0145,
+     "count": 49
+    },
+    {
+     "id": "method:3c860a5da0abb2d4",
+     "name": "generative models",
+     "score": 0.0136,
+     "count": 26
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:Q112842184",
+     "name": "Multi-Agent Path Finding",
+     "score": 0.0297,
+     "count": 22
+    },
+    {
+     "id": "task:c1b9a2a1e999e1a5",
+     "name": "graph classification",
+     "score": 0.0239,
+     "count": 21
+    },
+    {
+     "id": "task:9264a2fcc246a414",
+     "name": "allocating indivisible goods",
+     "score": 0.0232,
+     "count": 9
+    },
+    {
+     "id": "task:919d7331b009ffc1",
+     "name": "allocation of indivisible goods",
+     "score": 0.0225,
+     "count": 9
+    },
+    {
+     "id": "task:c57e89fdcae5d91c",
+     "name": "classification",
+     "score": 0.0214,
+     "count": 25
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:Q45037095",
+     "name": "CIFAR-10",
+     "score": 0.0591,
+     "count": 77
+    },
+    {
+     "id": "dataset:6c75023fee55c40b",
+     "name": "MNIST",
+     "score": 0.0507,
+     "count": 31
+    },
+    {
+     "id": "dataset:71bdd06c2c0d5b30",
+     "name": "TinyImageNet",
+     "score": 0.0414,
+     "count": 13
+    },
+    {
+     "id": "dataset:4f1f711b796b295b",
+     "name": "CIFAR-100",
+     "score": 0.0408,
+     "count": 40
+    },
+    {
+     "id": "dataset:dd4ffb155bf2eb19",
+     "name": "ImageNet",
+     "score": 0.0402,
+     "count": 61
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I100005738",
+     "name": "Brigham Young University",
+     "score": 0.0073,
+     "count": 1
+    },
+    {
+     "id": "organization:I102322142",
+     "name": "Rutgers, The State University of New Jersey",
+     "score": 0.0073,
+     "count": 1
+    },
+    {
+     "id": "organization:I103163165",
+     "name": "Florida State University",
+     "score": 0.0073,
+     "count": 1
+    },
+    {
+     "id": "organization:I103605065",
+     "name": "Berry College",
+     "score": 0.0073,
+     "count": 1
+    },
+    {
+     "id": "organization:I103635307",
+     "name": "University of California, Riverside",
+     "score": 0.0073,
+     "count": 1
+    }
+   ]
+  },
+  "3": {
+   "Topic": [
+    {
+     "id": "topic:trustworthy-ml",
+     "name": "Trustworthy machine learning",
+     "score": 0.0112,
+     "count": 157
+    },
+    {
+     "id": "topic:graph-ml",
+     "name": "Graph machine learning",
+     "score": 0.0112,
+     "count": 233
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0111,
+     "count": 537
+    },
+    {
+     "id": "topic:computer-vision",
+     "name": "Computer vision",
+     "score": 0.0106,
+     "count": 135
+    },
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0105,
+     "count": 284
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:e293ce841f1fbeca",
+     "name": "Graph Transformer",
+     "score": 0.0193,
+     "count": 10
+    },
+    {
+     "id": "method:Q107750691",
+     "name": "graph neural networks",
+     "score": 0.0166,
+     "count": 54
+    },
+    {
+     "id": "method:3248ea32dc4d51f9",
+     "name": "spectral augmentation",
+     "score": 0.0152,
+     "count": 5
+    },
+    {
+     "id": "method:ed4a9b2a3e533f7e",
+     "name": "unsupervised contrastive learning",
+     "score": 0.0152,
+     "count": 5
+    },
+    {
+     "id": "method:3b2e71071f7aec8a",
+     "name": "self-attention mechanism",
+     "score": 0.015,
+     "count": 16
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:7677d8c51175f30d",
+     "name": "node classification",
+     "score": 0.03,
+     "count": 20
+    },
+    {
+     "id": "task:18e1aa9b02ae7cd6",
+     "name": "Continual Relation Extraction",
+     "score": 0.0295,
+     "count": 7
+    },
+    {
+     "id": "task:Q6002292",
+     "name": "image translation",
+     "score": 0.0295,
+     "count": 7
+    },
+    {
+     "id": "task:340ce26cf2dfcc98",
+     "name": "image-to-image translation",
+     "score": 0.0274,
+     "count": 7
+    },
+    {
+     "id": "task:4a9f2b83e8aac688",
+     "name": "Graph Anomaly Detection",
+     "score": 0.0256,
+     "count": 7
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:f74f4fc223108c1c",
+     "name": "PRW",
+     "score": 0.033,
+     "count": 6
+    },
+    {
+     "id": "dataset:5277fab40881d475",
+     "name": "RxR",
+     "score": 0.0297,
+     "count": 5
+    },
+    {
+     "id": "dataset:10693a09d32c10a5",
+     "name": "CUHK-SYSU",
+     "score": 0.0293,
+     "count": 6
+    },
+    {
+     "id": "dataset:6c75023fee55c40b",
+     "name": "MNIST",
+     "score": 0.0289,
+     "count": 14
+    },
+    {
+     "id": "dataset:4bedf1495f689956",
+     "name": "CIFAR-FS",
+     "score": 0.0272,
+     "count": 6
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I100066346",
+     "name": "University of Stuttgart",
+     "score": 0.0208,
+     "count": 1
+    },
+    {
+     "id": "organization:I102335020",
+     "name": "Karlsruhe Institute of Technology",
+     "score": 0.0208,
+     "count": 1
+    },
+    {
+     "id": "organization:I10660446",
+     "name": "Kunming University of Science and Technology",
+     "score": 0.0208,
+     "count": 1
+    },
+    {
+     "id": "organization:I109689652",
+     "name": "FPT University",
+     "score": 0.0208,
+     "count": 1
+    },
+    {
+     "id": "organization:I110152177",
+     "name": "University of Akron",
+     "score": 0.0208,
+     "count": 1
+    }
+   ]
+  },
+  "0": {
+   "Topic": [
+    {
+     "id": "topic:planning-reasoning",
+     "name": "Planning and reasoning",
+     "score": 0.031,
+     "count": 809
+    },
+    {
+     "id": "topic:multi-agent",
+     "name": "Multi-agent systems",
+     "score": 0.023,
+     "count": 203
+    },
+    {
+     "id": "topic:optimization-theory",
+     "name": "Optimization and learning theory",
+     "score": 0.0202,
+     "count": 176
+    },
+    {
+     "id": "topic:trustworthy-ml",
+     "name": "Trustworthy machine learning",
+     "score": 0.0148,
+     "count": 369
+    },
+    {
+     "id": "topic:reinforcement-learning",
+     "name": "Reinforcement learning",
+     "score": 0.013,
+     "count": 461
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:Q110994418",
+     "name": "Method of Equal Shares",
+     "score": 0.0295,
+     "count": 23
+    },
+    {
+     "id": "method:Q2852531",
+     "name": "Answer Set Programming",
+     "score": 0.0283,
+     "count": 23
+    },
+    {
+     "id": "method:Q21055608",
+     "name": "SAT solver",
+     "score": 0.0264,
+     "count": 22
+    },
+    {
+     "id": "method:Q380679",
+     "name": "dynamic programming",
+     "score": 0.024,
+     "count": 19
+    },
+    {
+     "id": "method:295bda2f7ec824ed",
+     "name": "Minimum Description Length principle",
+     "score": 0.0224,
+     "count": 14
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:770e545befec9e28",
+     "name": "Coalition Structure Generation",
+     "score": 0.0664,
+     "count": 19
+    },
+    {
+     "id": "task:fea69bc2d42fc865",
+     "name": "Coalition formation",
+     "score": 0.055,
+     "count": 16
+    },
+    {
+     "id": "task:8cc653d4e93549e5",
+     "name": "regression tasks",
+     "score": 0.0466,
+     "count": 12
+    },
+    {
+     "id": "task:a0b68c6358ffee98",
+     "name": "Committee Election",
+     "score": 0.0456,
+     "count": 10
+    },
+    {
+     "id": "task:Q4117718",
+     "name": "Program Synthesis",
+     "score": 0.0413,
+     "count": 10
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:3350dd42fa729d2b",
+     "name": "MicroRTS",
+     "score": 0.0935,
+     "count": 13
+    },
+    {
+     "id": "dataset:a7aaaebbdd8837a9",
+     "name": "OneMinMax",
+     "score": 0.0915,
+     "count": 14
+    },
+    {
+     "id": "dataset:40efb40e47241f60",
+     "name": "OneJumpZeroJump",
+     "score": 0.0706,
+     "count": 9
+    },
+    {
+     "id": "dataset:Q41074334",
+     "name": "Fashion-MNIST",
+     "score": 0.0619,
+     "count": 11
+    },
+    {
+     "id": "dataset:26962ea86e0beccc",
+     "name": "IU X-Ray",
+     "score": 0.0431,
+     "count": 6
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I100532134",
+     "name": "Lyon 1 Universit\u00e9",
+     "score": 0.0056,
+     "count": 1
+    },
+    {
+     "id": "organization:I10108838",
+     "name": "National University of Salta",
+     "score": 0.0056,
+     "count": 1
+    },
+    {
+     "id": "organization:I102064193",
+     "name": "University of Siena",
+     "score": 0.0056,
+     "count": 1
+    },
+    {
+     "id": "organization:I102134673",
+     "name": "Link\u00f6ping University",
+     "score": 0.0056,
+     "count": 1
+    },
+    {
+     "id": "organization:I102248843",
+     "name": "Vienna University of Economics and Business",
+     "score": 0.0056,
+     "count": 1
+    }
+   ]
+  },
+  "8": {
+   "Topic": [
+    {
+     "id": "topic:retrieval-recommendation",
+     "name": "Information retrieval and recommendation",
+     "score": 0.0178,
+     "count": 22
+    },
+    {
+     "id": "topic:computer-vision",
+     "name": "Computer vision",
+     "score": 0.014,
+     "count": 73
+    },
+    {
+     "id": "topic:generative-modeling",
+     "name": "Generative modeling",
+     "score": 0.0133,
+     "count": 88
+    },
+    {
+     "id": "topic:efficient-systems",
+     "name": "Efficient machine learning systems",
+     "score": 0.0116,
+     "count": 106
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0114,
+     "count": 224
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:3627a6f307fa90f2",
+     "name": "Mixup",
+     "score": 0.0362,
+     "count": 8
+    },
+    {
+     "id": "method:9bc52625eeab7f5a",
+     "name": "Structured pruning",
+     "score": 0.0303,
+     "count": 5
+    },
+    {
+     "id": "method:ee5ad7738a0f7def",
+     "name": "self-supervised methods",
+     "score": 0.0286,
+     "count": 5
+    },
+    {
+     "id": "method:6cf7cb0f01f7b347",
+     "name": "A* search",
+     "score": 0.0258,
+     "count": 4
+    },
+    {
+     "id": "method:917c667e8cb4dec5",
+     "name": "BERT",
+     "score": 0.0252,
+     "count": 11
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:Q744069",
+     "name": "Extrapolation",
+     "score": 0.0572,
+     "count": 5
+    },
+    {
+     "id": "task:ab092371346840a8",
+     "name": "Time Series Classification",
+     "score": 0.0534,
+     "count": 7
+    },
+    {
+     "id": "task:485b430e6c7e82d4",
+     "name": "Few-Shot Text Classification",
+     "score": 0.0457,
+     "count": 5
+    },
+    {
+     "id": "task:0ac7763f552004b6",
+     "name": "Multi-turn Response Selection",
+     "score": 0.0423,
+     "count": 4
+    },
+    {
+     "id": "task:5bf953b5c9e1737a",
+     "name": "Time Series Anomaly Detection",
+     "score": 0.0397,
+     "count": 4
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:28cff749752356ed",
+     "name": "USPTO-50K",
+     "score": 0.059,
+     "count": 5
+    },
+    {
+     "id": "dataset:b399fb9ee714b659",
+     "name": "Waymo",
+     "score": 0.059,
+     "count": 5
+    },
+    {
+     "id": "dataset:97e980d5dbe9b25b",
+     "name": "CARS196",
+     "score": 0.0583,
+     "count": 4
+    },
+    {
+     "id": "dataset:0750953b68d95f1b",
+     "name": "KITTI",
+     "score": 0.0533,
+     "count": 10
+    },
+    {
+     "id": "dataset:c21dbe1d95890c18",
+     "name": "Stanford Online Products",
+     "score": 0.0518,
+     "count": 4
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I101155339",
+     "name": "Korea Telecom (South Korea)",
+     "score": 0.0374,
+     "count": 1
+    },
+    {
+     "id": "organization:I10654025",
+     "name": "SK Group (United States)",
+     "score": 0.0374,
+     "count": 1
+    },
+    {
+     "id": "organization:I10902133",
+     "name": "Universitat Jaume I",
+     "score": 0.0374,
+     "count": 1
+    },
+    {
+     "id": "organization:I111277659",
+     "name": "Chonnam National University",
+     "score": 0.0374,
+     "count": 1
+    },
+    {
+     "id": "organization:I118373667",
+     "name": "Seoul National University of Science and Technology",
+     "score": 0.0374,
+     "count": 1
+    }
+   ]
+  },
+  "2": {
+   "Topic": [
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0127,
+     "count": 1307
+    },
+    {
+     "id": "topic:computer-vision",
+     "name": "Computer vision",
+     "score": 0.0124,
+     "count": 606
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0115,
+     "count": 2128
+    },
+    {
+     "id": "topic:nlp-language-models",
+     "name": "Natural language processing and language models",
+     "score": 0.0103,
+     "count": 475
+    },
+    {
+     "id": "topic:generative-modeling",
+     "name": "Generative modeling",
+     "score": 0.0098,
+     "count": 604
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:3b092cae8d3d0380",
+     "name": "contrastive learning",
+     "score": 0.0162,
+     "count": 133
+    },
+    {
+     "id": "method:Q114617315",
+     "name": "diffusion models",
+     "score": 0.0162,
+     "count": 115
+    },
+    {
+     "id": "method:Q85810444",
+     "name": "Transformer",
+     "score": 0.0162,
+     "count": 117
+    },
+    {
+     "id": "method:Q3621696",
+     "name": "Large Language Models (LLMs)",
+     "score": 0.0159,
+     "count": 113
+    },
+    {
+     "id": "method:f58ca558af650e28",
+     "name": "CLIP",
+     "score": 0.0149,
+     "count": 71
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:66162611936a341d",
+     "name": "object detection",
+     "score": 0.02,
+     "count": 76
+    },
+    {
+     "id": "task:5ef763e002edfb6a",
+     "name": "semantic segmentation",
+     "score": 0.0185,
+     "count": 73
+    },
+    {
+     "id": "task:1fa654aed2b0ed89",
+     "name": "image classification",
+     "score": 0.0175,
+     "count": 76
+    },
+    {
+     "id": "task:Q55080114",
+     "name": "Scene Text Recognition",
+     "score": 0.0152,
+     "count": 21
+    },
+    {
+     "id": "task:035576a3a86ff29c",
+     "name": "segmentation",
+     "score": 0.0148,
+     "count": 29
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:0633a5703a78bd81",
+     "name": "nuScenes",
+     "score": 0.0282,
+     "count": 57
+    },
+    {
+     "id": "dataset:d3583d965eed8daa",
+     "name": "MS-COCO",
+     "score": 0.0241,
+     "count": 41
+    },
+    {
+     "id": "dataset:0750953b68d95f1b",
+     "name": "KITTI",
+     "score": 0.0218,
+     "count": 30
+    },
+    {
+     "id": "dataset:900e3460fc29a82c",
+     "name": "Cityscapes",
+     "score": 0.0213,
+     "count": 30
+    },
+    {
+     "id": "dataset:925781ac56c99617",
+     "name": "PASCAL VOC",
+     "score": 0.0212,
+     "count": 29
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I101479585",
+     "name": "South China Agricultural University",
+     "score": 0.0115,
+     "count": 1
+    },
+    {
+     "id": "organization:I102607778",
+     "name": "Cleveland State University",
+     "score": 0.0115,
+     "count": 1
+    },
+    {
+     "id": "organization:I109935558",
+     "name": "Ningbo University",
+     "score": 0.0115,
+     "count": 1
+    },
+    {
+     "id": "organization:I113940042",
+     "name": "Shanghai University",
+     "score": 0.0115,
+     "count": 1
+    },
+    {
+     "id": "organization:I116953780",
+     "name": "Tongji University",
+     "score": 0.0115,
+     "count": 1
+    }
+   ]
+  },
+  "5": {
+   "Topic": [
+    {
+     "id": "topic:computer-vision",
+     "name": "Computer vision",
+     "score": 0.0133,
+     "count": 236
+    },
+    {
+     "id": "topic:graph-ml",
+     "name": "Graph machine learning",
+     "score": 0.013,
+     "count": 377
+    },
+    {
+     "id": "topic:nlp-language-models",
+     "name": "Natural language processing and language models",
+     "score": 0.0117,
+     "count": 197
+    },
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0104,
+     "count": 388
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0103,
+     "count": 694
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:67f15cf26bffda75",
+     "name": "data augmentation",
+     "score": 0.0204,
+     "count": 20
+    },
+    {
+     "id": "method:Q9067355",
+     "name": "Spiking Neural Networks",
+     "score": 0.0194,
+     "count": 18
+    },
+    {
+     "id": "method:a9ebaa219a8944d8",
+     "name": "Graph Contrastive Learning",
+     "score": 0.0192,
+     "count": 18
+    },
+    {
+     "id": "method:Q74253442",
+     "name": "knowledge distillation",
+     "score": 0.0181,
+     "count": 26
+    },
+    {
+     "id": "method:Q107750691",
+     "name": "graph neural networks",
+     "score": 0.0178,
+     "count": 74
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:66162611936a341d",
+     "name": "object detection",
+     "score": 0.032,
+     "count": 43
+    },
+    {
+     "id": "task:2f39bddddfe4e69f",
+     "name": "Knowledge Graph Completion",
+     "score": 0.0296,
+     "count": 16
+    },
+    {
+     "id": "task:5ef763e002edfb6a",
+     "name": "semantic segmentation",
+     "score": 0.0294,
+     "count": 41
+    },
+    {
+     "id": "task:1801a02eae33a1db",
+     "name": "Personality Detection",
+     "score": 0.026,
+     "count": 10
+    },
+    {
+     "id": "task:f58720df3e4446d0",
+     "name": "graph representation learning",
+     "score": 0.0256,
+     "count": 13
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:d82122c5dea355b4",
+     "name": "Google Research Football",
+     "score": 0.0369,
+     "count": 12
+    },
+    {
+     "id": "dataset:dd4ffb155bf2eb19",
+     "name": "ImageNet",
+     "score": 0.0343,
+     "count": 55
+    },
+    {
+     "id": "dataset:1e84d0426c2f5b23",
+     "name": "COCO",
+     "score": 0.0342,
+     "count": 26
+    },
+    {
+     "id": "dataset:824ac3c38384f2aa",
+     "name": "CIFAR",
+     "score": 0.0335,
+     "count": 13
+    },
+    {
+     "id": "dataset:1c613c0c6ef31088",
+     "name": "ADE20K",
+     "score": 0.0318,
+     "count": 13
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I102149020",
+     "name": "University of North Carolina at Charlotte",
+     "score": 0.0256,
+     "count": 1
+    },
+    {
+     "id": "organization:I106165777",
+     "name": "University of Central Florida",
+     "score": 0.0256,
+     "count": 1
+    },
+    {
+     "id": "organization:I111950717",
+     "name": "Macau University of Science and Technology",
+     "score": 0.0256,
+     "count": 1
+    },
+    {
+     "id": "organization:I1284762954",
+     "name": "Zhejiang A & F University",
+     "score": 0.0256,
+     "count": 1
+    },
+    {
+     "id": "organization:I1287521167",
+     "name": "Lockheed Martin (United States)",
+     "score": 0.0256,
+     "count": 1
+    }
+   ]
+  },
+  "6": {
+   "Topic": [
+    {
+     "id": "topic:retrieval-recommendation",
+     "name": "Information retrieval and recommendation",
+     "score": 0.0124,
+     "count": 27
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0115,
+     "count": 399
+    },
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0111,
+     "count": 215
+    },
+    {
+     "id": "topic:graph-ml",
+     "name": "Graph machine learning",
+     "score": 0.0104,
+     "count": 156
+    },
+    {
+     "id": "topic:generative-modeling",
+     "name": "Generative modeling",
+     "score": 0.0093,
+     "count": 108
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:ffae73552d42956e",
+     "name": "linear classifier",
+     "score": 0.0179,
+     "count": 5
+    },
+    {
+     "id": "method:67f15cf26bffda75",
+     "name": "data augmentation",
+     "score": 0.0174,
+     "count": 11
+    },
+    {
+     "id": "method:Q55636383",
+     "name": "U-Net",
+     "score": 0.0173,
+     "count": 10
+    },
+    {
+     "id": "method:64046579beca3ffc",
+     "name": "Tensor Nuclear Norm",
+     "score": 0.0166,
+     "count": 5
+    },
+    {
+     "id": "method:Q114617315",
+     "name": "diffusion models",
+     "score": 0.0163,
+     "count": 24
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:d77297048601664a",
+     "name": "multi-view clustering",
+     "score": 0.0488,
+     "count": 18
+    },
+    {
+     "id": "task:c7f4ce4b8e486ee2",
+     "name": "Multi-View Graph Clustering",
+     "score": 0.033,
+     "count": 6
+    },
+    {
+     "id": "task:49e33951ee3c7552",
+     "name": "Multivariate Time Series Classification",
+     "score": 0.0298,
+     "count": 5
+    },
+    {
+     "id": "task:bec3c9cc2317366f",
+     "name": "Model counting",
+     "score": 0.0296,
+     "count": 6
+    },
+    {
+     "id": "task:d10fb5b5f0862622",
+     "name": "Medical Image Segmentation",
+     "score": 0.0296,
+     "count": 12
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:c661f45c1ba5082b",
+     "name": "SRD",
+     "score": 0.0598,
+     "count": 5
+    },
+    {
+     "id": "dataset:5398af6de1d0c622",
+     "name": "OfficeHome",
+     "score": 0.052,
+     "count": 4
+    },
+    {
+     "id": "dataset:904407a22c5b8933",
+     "name": "PACS",
+     "score": 0.0498,
+     "count": 4
+    },
+    {
+     "id": "dataset:76ecf489d0b089cf",
+     "name": "Next Generation Simulation",
+     "score": 0.041,
+     "count": 3
+    },
+    {
+     "id": "dataset:dd4ffb155bf2eb19",
+     "name": "ImageNet",
+     "score": 0.0401,
+     "count": 23
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I102208913",
+     "name": "Shihezi University",
+     "score": 0.031,
+     "count": 1
+    },
+    {
+     "id": "organization:I107672454",
+     "name": "Dartmouth College",
+     "score": 0.031,
+     "count": 1
+    },
+    {
+     "id": "organization:I108688024",
+     "name": "Qingdao University",
+     "score": 0.031,
+     "count": 1
+    },
+    {
+     "id": "organization:I114395901",
+     "name": "University of Nebraska\u2013Lincoln",
+     "score": 0.031,
+     "count": 1
+    },
+    {
+     "id": "organization:I115228651",
+     "name": "Agency for Science, Technology and Research",
+     "score": 0.031,
+     "count": 1
+    }
+   ]
+  },
+  "7": {
+   "Topic": [
+    {
+     "id": "topic:planning-reasoning",
+     "name": "Planning and reasoning",
+     "score": 0.0314,
+     "count": 143
+    },
+    {
+     "id": "topic:robotics-embodied",
+     "name": "Robotics and embodied AI",
+     "score": 0.0179,
+     "count": 14
+    },
+    {
+     "id": "topic:probabilistic-bayesian",
+     "name": "Probabilistic and Bayesian learning",
+     "score": 0.0166,
+     "count": 16
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0093,
+     "count": 139
+    },
+    {
+     "id": "topic:reinforcement-learning",
+     "name": "Reinforcement learning",
+     "score": 0.0092,
+     "count": 57
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:80831c655c8d89b5",
+     "name": "symbolic planning",
+     "score": 0.069,
+     "count": 8
+    },
+    {
+     "id": "method:7d077e875c786f9f",
+     "name": "graph learning",
+     "score": 0.0462,
+     "count": 6
+    },
+    {
+     "id": "method:53bf28b6839a3470",
+     "name": "ReX",
+     "score": 0.044,
+     "count": 4
+    },
+    {
+     "id": "method:6d4580e4ad8cd949",
+     "name": "transformer-based architecture",
+     "score": 0.0376,
+     "count": 4
+    },
+    {
+     "id": "method:Q16965977",
+     "name": "knowledge compilation",
+     "score": 0.0329,
+     "count": 4
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:21dfe813be8fa6f3",
+     "name": "Short Text Classification",
+     "score": 0.1598,
+     "count": 9
+    },
+    {
+     "id": "task:944f003a1efb700c",
+     "name": "Goal Recognition",
+     "score": 0.1146,
+     "count": 7
+    },
+    {
+     "id": "task:Q528588",
+     "name": "constraint programming",
+     "score": 0.0947,
+     "count": 5
+    },
+    {
+     "id": "task:536aa4a8e2cbc74d",
+     "name": "Temporal Planning",
+     "score": 0.0758,
+     "count": 4
+    },
+    {
+     "id": "task:c640ab93ee78b506",
+     "name": "Sequence Classification",
+     "score": 0.071,
+     "count": 4
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:e59772b8f696fe3f",
+     "name": "NTU RGB+D",
+     "score": 0.1602,
+     "count": 5
+    },
+    {
+     "id": "dataset:64f89a6260ba11d7",
+     "name": "KITTI dataset",
+     "score": 0.141,
+     "count": 4
+    },
+    {
+     "id": "dataset:2315797f6e55f906",
+     "name": "ActivityNet-1.3",
+     "score": 0.1104,
+     "count": 3
+    },
+    {
+     "id": "dataset:e10b3c9a9bdecf2e",
+     "name": "NTU RGB+D 120",
+     "score": 0.1057,
+     "count": 3
+    },
+    {
+     "id": "dataset:5b9907e8de540112",
+     "name": "PASCAL VOC 2012",
+     "score": 0.0994,
+     "count": 4
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I103737770",
+     "name": "Bank of Italy",
+     "score": 0.0347,
+     "count": 1
+    },
+    {
+     "id": "organization:I106645853",
+     "name": "Changchun University of Science and Technology",
+     "score": 0.0347,
+     "count": 1
+    },
+    {
+     "id": "organization:I11039511",
+     "name": "University of Bergamo",
+     "score": 0.0347,
+     "count": 1
+    },
+    {
+     "id": "organization:I111599522",
+     "name": "Jiangnan University",
+     "score": 0.0347,
+     "count": 1
+    },
+    {
+     "id": "organization:I116067653",
+     "name": "University of Rome Tor Vergata",
+     "score": 0.0347,
+     "count": 1
+    }
+   ]
+  },
+  "4": {
+   "Topic": [
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0127,
+     "count": 493
+    },
+    {
+     "id": "topic:graph-ml",
+     "name": "Graph machine learning",
+     "score": 0.0118,
+     "count": 355
+    },
+    {
+     "id": "topic:computer-vision",
+     "name": "Computer vision",
+     "score": 0.0117,
+     "count": 215
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0113,
+     "count": 782
+    },
+    {
+     "id": "topic:generative-modeling",
+     "name": "Generative modeling",
+     "score": 0.0102,
+     "count": 238
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:e0f90127447b8ada",
+     "name": "ChatGPT",
+     "score": 0.0159,
+     "count": 13
+    },
+    {
+     "id": "method:3b092cae8d3d0380",
+     "name": "contrastive learning",
+     "score": 0.0151,
+     "count": 44
+    },
+    {
+     "id": "method:1a6032952f76fdd1",
+     "name": "semi-supervised learning",
+     "score": 0.0151,
+     "count": 15
+    },
+    {
+     "id": "method:Q114617315",
+     "name": "diffusion models",
+     "score": 0.0151,
+     "count": 38
+    },
+    {
+     "id": "method:Q107750691",
+     "name": "graph neural networks",
+     "score": 0.0148,
+     "count": 68
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:d77297048601664a",
+     "name": "multi-view clustering",
+     "score": 0.0267,
+     "count": 20
+    },
+    {
+     "id": "task:d1929e6a2fb23d88",
+     "name": "Human Pose Estimation",
+     "score": 0.0257,
+     "count": 14
+    },
+    {
+     "id": "task:d10fb5b5f0862622",
+     "name": "Medical Image Segmentation",
+     "score": 0.0255,
+     "count": 21
+    },
+    {
+     "id": "task:7677d8c51175f30d",
+     "name": "node classification",
+     "score": 0.0254,
+     "count": 25
+    },
+    {
+     "id": "task:Q98925312",
+     "name": "link prediction",
+     "score": 0.024,
+     "count": 19
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:4f1f711b796b295b",
+     "name": "CIFAR-100",
+     "score": 0.0316,
+     "count": 26
+    },
+    {
+     "id": "dataset:0633a5703a78bd81",
+     "name": "nuScenes",
+     "score": 0.0307,
+     "count": 21
+    },
+    {
+     "id": "dataset:d4675a6cbbb188de",
+     "name": "MSCOCO",
+     "score": 0.0261,
+     "count": 7
+    },
+    {
+     "id": "dataset:d3583d965eed8daa",
+     "name": "MS-COCO",
+     "score": 0.0261,
+     "count": 15
+    },
+    {
+     "id": "dataset:1d783c7549cdd4b4",
+     "name": "SemanticKITTI",
+     "score": 0.026,
+     "count": 10
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I105126617",
+     "name": "Zhejiang International Studies University",
+     "score": 0.0219,
+     "count": 1
+    },
+    {
+     "id": "organization:I112862951",
+     "name": "University of Messina",
+     "score": 0.0219,
+     "count": 1
+    },
+    {
+     "id": "organization:I115592961",
+     "name": "Jiangsu University",
+     "score": 0.0219,
+     "count": 1
+    },
+    {
+     "id": "organization:I125904092",
+     "name": "Shenyang Aerospace University",
+     "score": 0.0219,
+     "count": 1
+    },
+    {
+     "id": "organization:I1283155146",
+     "name": "Panasonic (Japan)",
+     "score": 0.0219,
+     "count": 1
+    }
+   ]
+  },
+  "10": {
+   "Topic": [
+    {
+     "id": "topic:graph-ml",
+     "name": "Graph machine learning",
+     "score": 0.0188,
+     "count": 57
+    },
+    {
+     "id": "topic:multimodal",
+     "name": "Multimodal learning",
+     "score": 0.0138,
+     "count": 54
+    },
+    {
+     "id": "topic:representation-learning",
+     "name": "Representation learning",
+     "score": 0.0108,
+     "count": 76
+    },
+    {
+     "id": "topic:causal-inference",
+     "name": "Causal inference",
+     "score": 0.0097,
+     "count": 5
+    },
+    {
+     "id": "topic:nlp-language-models",
+     "name": "Natural language processing and language models",
+     "score": 0.0085,
+     "count": 15
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:ef3995b4c66d13f8",
+     "name": "granular-ball computing",
+     "score": 0.0752,
+     "count": 3
+    },
+    {
+     "id": "method:d1e7efad30ae7ff2",
+     "name": "Markov chain Monte Carlo",
+     "score": 0.0589,
+     "count": 3
+    },
+    {
+     "id": "method:6293a7c87ec031e8",
+     "name": "deep Q-learning",
+     "score": 0.0553,
+     "count": 3
+    },
+    {
+     "id": "method:28aef7192ddd3d33",
+     "name": "pseudo-labeling strategies",
+     "score": 0.0425,
+     "count": 2
+    },
+    {
+     "id": "method:aeed77e11cdd1904",
+     "name": "transformer encoder-decoder architecture",
+     "score": 0.0425,
+     "count": 2
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:3b263faa0b3a27a3",
+     "name": "action selection",
+     "score": 0.1426,
+     "count": 4
+    },
+    {
+     "id": "task:42961c1e72d9550c",
+     "name": "Multi-Agent Communication",
+     "score": 0.1368,
+     "count": 4
+    },
+    {
+     "id": "task:2fbd98554073f285",
+     "name": "Cooperative Multi-Agent Reinforcement Learning",
+     "score": 0.1236,
+     "count": 4
+    },
+    {
+     "id": "task:e118cef55931c9d1",
+     "name": "Point Cloud Registration",
+     "score": 0.0767,
+     "count": 3
+    },
+    {
+     "id": "task:a3102df329228e57",
+     "name": "action prediction",
+     "score": 0.0747,
+     "count": 2
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:6421d7e0f6841bde",
+     "name": "ModelNet40",
+     "score": 0.2103,
+     "count": 3
+    },
+    {
+     "id": "dataset:c4d6ad5efbb3602b",
+     "name": "MSR-VTT",
+     "score": 0.1315,
+     "count": 2
+    },
+    {
+     "id": "dataset:64c9c1842a2ece16",
+     "name": "DOTA-v1.5",
+     "score": 0.1247,
+     "count": 1
+    },
+    {
+     "id": "dataset:ea5ba16f90a5b240",
+     "name": "IEMOCAP",
+     "score": 0.1177,
+     "count": 1
+    },
+    {
+     "id": "dataset:0d128f9ee9577739",
+     "name": "DOTA-v1.0",
+     "score": 0.1119,
+     "count": 1
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I10535382",
+     "name": "Chongqing University of Posts and Telecommunications",
+     "score": 0.0912,
+     "count": 1
+    },
+    {
+     "id": "organization:I107639228",
+     "name": "University of Notre Dame",
+     "score": 0.0912,
+     "count": 1
+    },
+    {
+     "id": "organization:I110378019",
+     "name": "Southern Illinois University Carbondale",
+     "score": 0.0912,
+     "count": 1
+    },
+    {
+     "id": "organization:I121797337",
+     "name": "Leiden University",
+     "score": 0.0912,
+     "count": 1
+    },
+    {
+     "id": "organization:I1327237609",
+     "name": "Ministry of Education of the People's Republic of China",
+     "score": 0.0912,
+     "count": 1
+    }
+   ]
+  },
+  "9": {
+   "Topic": [
+    {
+     "id": "topic:probabilistic-bayesian",
+     "name": "Probabilistic and Bayesian learning",
+     "score": 0.0293,
+     "count": 18
+    },
+    {
+     "id": "topic:optimization-theory",
+     "name": "Optimization and learning theory",
+     "score": 0.0217,
+     "count": 21
+    },
+    {
+     "id": "topic:causal-inference",
+     "name": "Causal inference",
+     "score": 0.02,
+     "count": 14
+    },
+    {
+     "id": "topic:reinforcement-learning",
+     "name": "Reinforcement learning",
+     "score": 0.0134,
+     "count": 53
+    },
+    {
+     "id": "topic:robotics-embodied",
+     "name": "Robotics and embodied AI",
+     "score": 0.012,
+     "count": 6
+    }
+   ],
+   "Method": [
+    {
+     "id": "method:bfa77723c24375dc",
+     "name": "proposed algorithm",
+     "score": 0.0694,
+     "count": 6
+    },
+    {
+     "id": "method:Q30103009",
+     "name": "Tensor Decomposition",
+     "score": 0.0675,
+     "count": 5
+    },
+    {
+     "id": "method:00924513cda861a4",
+     "name": "posterior sampling",
+     "score": 0.059,
+     "count": 4
+    },
+    {
+     "id": "method:432a955cf5459e05",
+     "name": "reinforcement learning (RL) algorithms",
+     "score": 0.0563,
+     "count": 4
+    },
+    {
+     "id": "method:Q7795822",
+     "name": "Thompson Sampling",
+     "score": 0.0548,
+     "count": 6
+    }
+   ],
+   "Task": [
+    {
+     "id": "task:fda6459a067bed44",
+     "name": "Maximum Weighted Cut",
+     "score": 0.1534,
+     "count": 5
+    },
+    {
+     "id": "task:1231353271a8ea87",
+     "name": "envy-free allocation",
+     "score": 0.1429,
+     "count": 5
+    },
+    {
+     "id": "task:60e0f1586486a004",
+     "name": "Temporal Action Detection",
+     "score": 0.1279,
+     "count": 4
+    },
+    {
+     "id": "task:547eea8e25c63185",
+     "name": "Non-Monotone Submodular Maximization",
+     "score": 0.1277,
+     "count": 5
+    },
+    {
+     "id": "task:Q1511081",
+     "name": "fair division",
+     "score": 0.1247,
+     "count": 5
+    }
+   ],
+   "Dataset": [
+    {
+     "id": "dataset:2315797f6e55f906",
+     "name": "ActivityNet-1.3",
+     "score": 0.254,
+     "count": 4
+    },
+    {
+     "id": "dataset:875b633935668df9",
+     "name": "THUMOS14",
+     "score": 0.1896,
+     "count": 4
+    },
+    {
+     "id": "dataset:8581257f0383f917",
+     "name": "METR-LA",
+     "score": 0.1735,
+     "count": 2
+    },
+    {
+     "id": "dataset:8ef2bd71eac4a943",
+     "name": "PEMS-BAY",
+     "score": 0.1735,
+     "count": 2
+    },
+    {
+     "id": "dataset:4f37a4c954c8c0e8",
+     "name": "CUB-200-2011",
+     "score": 0.1528,
+     "count": 3
+    }
+   ],
+   "Organization": [
+    {
+     "id": "organization:I111428342",
+     "name": "Hitotsubashi University",
+     "score": 0.0494,
+     "count": 1
+    },
+    {
+     "id": "organization:I112524849",
+     "name": "Yamagata University",
+     "score": 0.0494,
+     "count": 1
+    },
+    {
+     "id": "organization:I113306721",
+     "name": "Hiroshima University",
+     "score": 0.0494,
+     "count": 1
+    },
+    {
+     "id": "organization:I114531698",
+     "name": "Tokyo Institute of Technology",
+     "score": 0.0494,
+     "count": 1
+    },
+    {
+     "id": "organization:I118347220",
+     "name": "NEC (Japan)",
+     "score": 0.0494,
+     "count": 1
+    }
+   ]
+  }
+ },
+ "key_individuals": {
+  "1": {
+   "hubs": [
+    "organization:I74973139",
+    "organization:I1290206253",
+    "organization:I1291425158",
+    "organization:I63966007",
+    "organization:I136199984"
+   ],
+   "brokers_participation": [
+    "organization:I4210113480",
+    "organization:I32971472",
+    "organization:I67415387",
+    "organization:I82497590",
+    "organization:I150468666"
+   ],
+   "brokers_betweenness": [
+    "organization:I1291425158",
+    "organization:I63966007",
+    "organization:I1290206253",
+    "organization:I74973139",
+    "organization:I136199984"
+   ]
+  },
+  "3": {
+   "hubs": [
+    "organization:I149594827",
+    "organization:I37461747",
+    "organization:I47720641",
+    "organization:I76569877",
+    "organization:I129604602"
+   ],
+   "brokers_participation": [
+    "organization:I79891267",
+    "organization:I56590836",
+    "organization:I4210103986",
+    "organization:I76569877",
+    "organization:I37461747"
+   ],
+   "brokers_betweenness": [
+    "organization:I149594827",
+    "organization:I37461747",
+    "organization:I118347636",
+    "organization:I76569877",
+    "organization:I47720641"
+   ]
+  },
+  "0": {
+   "hubs": [
+    "organization:I1294671590",
+    "organization:I40120149",
+    "organization:I145847075",
+    "organization:I1326498283",
+    "organization:I4577782"
+   ],
+   "brokers_participation": [
+    "organization:I71920554",
+    "organization:I79619799",
+    "organization:I47508984",
+    "organization:I32062511",
+    "organization:I40120149"
+   ],
+   "brokers_betweenness": [
+    "organization:I1294671590",
+    "organization:I1326498283",
+    "organization:I40120149",
+    "organization:I145847075",
+    "organization:I62916508"
+   ]
+  },
+  "8": {
+   "hubs": [
+    "organization:I157485424",
+    "organization:I139264467",
+    "organization:I193775966",
+    "organization:I197347611",
+    "organization:I848706"
+   ],
+   "brokers_participation": [
+    "organization:I146563203",
+    "organization:I4210152052",
+    "organization:I4210156936",
+    "organization:I2250650973",
+    "organization:I4405258446"
+   ],
+   "brokers_betweenness": [
+    "organization:I157485424",
+    "organization:I139264467",
+    "organization:I197347611",
+    "organization:I193775966",
+    "organization:I4405258446"
+   ]
+  },
+  "2": {
+   "hubs": [
+    "organization:I99065089",
+    "organization:I20231570",
+    "organization:I2250653659",
+    "organization:I183067930",
+    "organization:I126520041"
+   ],
+   "brokers_participation": [
+    "organization:I98301712",
+    "organization:I4210129579",
+    "organization:I76214153",
+    "organization:I4405256866",
+    "organization:I4396570619"
+   ],
+   "brokers_betweenness": [
+    "organization:I2250653659",
+    "organization:I99065089",
+    "organization:I20231570",
+    "organization:I4210136793",
+    "organization:I183067930"
+   ]
+  },
+  "5": {
+   "hubs": [
+    "organization:I19820366",
+    "organization:I4210165038",
+    "organization:I82880672",
+    "organization:I139759216",
+    "organization:I4210112150"
+   ],
+   "brokers_participation": [
+    "organization:I98251732",
+    "organization:I21193070",
+    "organization:I139759216",
+    "organization:I39422238",
+    "organization:I1343180700"
+   ],
+   "brokers_betweenness": [
+    "organization:I19820366",
+    "organization:I82880672",
+    "organization:I139759216",
+    "organization:I21193070",
+    "organization:I39422238"
+   ]
+  },
+  "6": {
+   "hubs": [
+    "organization:I165932596",
+    "organization:I172675005",
+    "organization:I150229711",
+    "organization:I115228651",
+    "organization:I24185976"
+   ],
+   "brokers_participation": [
+    "organization:I31746571",
+    "organization:I165932596",
+    "organization:I4800084",
+    "organization:I152815399",
+    "organization:I172675005"
+   ],
+   "brokers_betweenness": [
+    "organization:I165932596",
+    "organization:I172675005",
+    "organization:I150229711",
+    "organization:I24185976",
+    "organization:I9224756"
+   ]
+  },
+  "7": {
+   "hubs": [
+    "organization:I194450716",
+    "organization:I861853513",
+    "organization:I99464096",
+    "organization:I193223587",
+    "organization:I28290843"
+   ],
+   "brokers_participation": [
+    "organization:I28290843",
+    "organization:I184983240",
+    "organization:I4405257466",
+    "organization:I94722563",
+    "organization:I194450716"
+   ],
+   "brokers_betweenness": [
+    "organization:I861853513",
+    "organization:I99464096",
+    "organization:I194450716",
+    "organization:I9927081",
+    "organization:I193223587"
+   ]
+  },
+  "4": {
+   "hubs": [
+    "organization:I76130692",
+    "organization:I45928872",
+    "organization:I881766915",
+    "organization:I162868743",
+    "organization:I36399199"
+   ],
+   "brokers_participation": [
+    "organization:I41198531",
+    "organization:I50760025",
+    "organization:I36399199",
+    "organization:I184843921",
+    "organization:I27357992"
+   ],
+   "brokers_betweenness": [
+    "organization:I76130692",
+    "organization:I45928872",
+    "organization:I881766915",
+    "organization:I4405270328",
+    "organization:I162868743"
+   ]
+  },
+  "10": {
+   "hubs": [
+    "organization:I154099455",
+    "organization:I107639228",
+    "organization:I59649739",
+    "organization:I10535382",
+    "organization:I25757504"
+   ],
+   "brokers_participation": [
+    "organization:I154099455",
+    "organization:I121797337",
+    "organization:I10535382",
+    "organization:I25757504",
+    "organization:I1327237609"
+   ],
+   "brokers_betweenness": [
+    "organization:I154099455",
+    "organization:I107639228",
+    "organization:I59649739",
+    "organization:I33434090",
+    "organization:I10535382"
+   ]
+  },
+  "9": {
+   "hubs": [
+    "organization:I74801974",
+    "organization:I4210110652",
+    "organization:I4210126580",
+    "organization:I184597095",
+    "organization:I73613424"
+   ],
+   "brokers_participation": [
+    "organization:I18014758",
+    "organization:I184597095",
+    "organization:I74801974",
+    "organization:I4210126580",
+    "organization:I150744194"
+   ],
+   "brokers_betweenness": [
+    "organization:I74801974",
+    "organization:I184597095",
+    "organization:I98285908",
+    "organization:I4210110652",
+    "organization:I65837984"
+   ]
+  }
+ }
+}

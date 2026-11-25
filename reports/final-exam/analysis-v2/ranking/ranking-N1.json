@@ -1,0 +1,272 @@
+{
+ "nodes": 32189,
+ "edges": 80482,
+ "directed": false,
+ "weighted_pagerank": true,
+ "meta": {
+  "betweenness": {
+   "method": "exact (igraph, Brandes)",
+   "sample_size": null,
+   "estimated_seconds": 92.73754640221595,
+   "seconds": 84.72750306129456
+  },
+  "seconds": 84.93385243415833
+ },
+ "comparison_with_pagerank": {
+  "degree": {
+   "spearman": 0.41265327140157654,
+   "top20_overlap": 16
+  },
+  "strength": {
+   "spearman": 0.6476312349052327,
+   "top20_overlap": 10
+  },
+  "betweenness": {
+   "spearman": 0.6685592030602956,
+   "top20_overlap": 9
+  },
+  "eigenvector": {
+   "spearman": -0.1808447476922228,
+   "top20_overlap": 0
+  }
+ },
+ "robustness_strict_support_ge_2": {
+  "strict_edges": 6260,
+  "full_edges": 80482,
+  "edges_kept_share": 0.07778136726224498,
+  "spearman_pagerank": 0.5420111442645457,
+  "top20_overlap": 7,
+  "dropped_from_top": [
+   "researcher:openalex:A5003217535",
+   "researcher:openalex:A5008056593",
+   "researcher:openalex:A5029021362",
+   "researcher:openalex:A5036357902",
+   "researcher:openalex:A5047509839",
+   "researcher:openalex:A5048237545",
+   "researcher:openalex:A5068837264",
+   "researcher:openalex:A5078141810",
+   "researcher:openalex:A5079083101",
+   "researcher:openalex:A5084218062",
+   "researcher:openalex:A5087158377",
+   "researcher:openalex:A5087818121",
+   "researcher:openalex:A5100705849"
+  ],
+  "entered_top": [
+   "researcher:openalex:A5002795838",
+   "researcher:openalex:A5012455357",
+   "researcher:openalex:A5013290512",
+   "researcher:openalex:A5019708391",
+   "researcher:openalex:A5023571961",
+   "researcher:openalex:A5037340898",
+   "researcher:openalex:A5040010053",
+   "researcher:openalex:A5043914348",
+   "researcher:openalex:A5069681054",
+   "researcher:openalex:A5073535763",
+   "researcher:openalex:A5082525642",
+   "researcher:openalex:A5090455375",
+   "researcher:openalex:A5103285429"
+  ]
+ },
+ "top": [
+  {
+   "rank": 1,
+   "id": "researcher:openalex:A5008056593",
+   "name": "Shirui Pan",
+   "label": "Researcher",
+   "pagerank": 0.0003894120670044313,
+   "degree": 88,
+   "strength": 19.215476190476178,
+   "community": 14
+  },
+  {
+   "rank": 2,
+   "id": "researcher:openalex:A5009013876",
+   "name": "Dongxiao He",
+   "label": "Researcher",
+   "pagerank": 0.0003185749679933075,
+   "degree": 58,
+   "strength": 20.482142857142843,
+   "community": 14
+  },
+  {
+   "rank": 3,
+   "id": "researcher:openalex:A5003217535",
+   "name": "Zheng-Jun Zha",
+   "label": "Researcher",
+   "pagerank": 0.0003160019837633047,
+   "degree": 65,
+   "strength": 18.582142857142852,
+   "community": 10
+  },
+  {
+   "rank": 4,
+   "id": "researcher:openalex:A5034104790",
+   "name": "Shu\u2010Tao Xia",
+   "label": "Researcher",
+   "pagerank": 0.00031088386988841474,
+   "degree": 64,
+   "strength": 18.361904761904754,
+   "community": 2
+  },
+  {
+   "rank": 5,
+   "id": "researcher:openalex:A5101727888",
+   "name": "Xinwang Liu",
+   "label": "Researcher",
+   "pagerank": 0.0003087206651550893,
+   "degree": 65,
+   "strength": 19.129761904761896,
+   "community": 56
+  },
+  {
+   "rank": 6,
+   "id": "researcher:openalex:A5023834700",
+   "name": "Chengjie Wang",
+   "label": "Researcher",
+   "pagerank": 0.00030844338102498266,
+   "degree": 90,
+   "strength": 18.420238095238084,
+   "community": 0
+  },
+  {
+   "rank": 7,
+   "id": "researcher:openalex:A5017743551",
+   "name": "Bo An",
+   "label": "Researcher",
+   "pagerank": 0.000305395787749523,
+   "degree": 48,
+   "strength": 18.38333333333333,
+   "community": 18
+  },
+  {
+   "rank": 8,
+   "id": "researcher:openalex:A5079083101",
+   "name": "Min-Ling Zhang",
+   "label": "Researcher",
+   "pagerank": 0.0003040931928540447,
+   "degree": 38,
+   "strength": 18.1547619047619,
+   "community": 18
+  },
+  {
+   "rank": 9,
+   "id": "researcher:openalex:A5084218062",
+   "name": "Lizhuang Ma",
+   "label": "Researcher",
+   "pagerank": 0.00029807706281457597,
+   "degree": 80,
+   "strength": 16.787698412698397,
+   "community": 0
+  },
+  {
+   "rank": 10,
+   "id": "researcher:openalex:A5047509839",
+   "name": "Jianye Hao",
+   "label": "Researcher",
+   "pagerank": 0.00028360153239031074,
+   "degree": 71,
+   "strength": 14.961075036075027,
+   "community": 27
+  },
+  {
+   "rank": 11,
+   "id": "researcher:openalex:A5048237545",
+   "name": "Enhong Chen",
+   "label": "Researcher",
+   "pagerank": 0.0002817772430808717,
+   "degree": 62,
+   "strength": 14.130952380952369,
+   "community": 22
+  },
+  {
+   "rank": 12,
+   "id": "researcher:openalex:A5068837264",
+   "name": "Xiaochun Cao",
+   "label": "Researcher",
+   "pagerank": 0.00027946187563915613,
+   "degree": 60,
+   "strength": 15.06309523809523,
+   "community": 39
+  },
+  {
+   "rank": 13,
+   "id": "researcher:openalex:A5079007635",
+   "name": "Xueyang Fu",
+   "label": "Researcher",
+   "pagerank": 0.0002780041643365799,
+   "degree": 57,
+   "strength": 16.274999999999995,
+   "community": 10
+  },
+  {
+   "rank": 14,
+   "id": "researcher:openalex:A5087818121",
+   "name": "Wanli Ouyang",
+   "label": "Researcher",
+   "pagerank": 0.00027741162053011344,
+   "degree": 70,
+   "strength": 12.799603174603172,
+   "community": 20
+  },
+  {
+   "rank": 15,
+   "id": "researcher:openalex:A5029021362",
+   "name": "Ying Yu Tai",
+   "label": "Researcher",
+   "pagerank": 0.0002728422690203216,
+   "degree": 82,
+   "strength": 16.122222222222206,
+   "community": 0
+  },
+  {
+   "rank": 16,
+   "id": "researcher:openalex:A5036357902",
+   "name": "Philip S. Yu",
+   "label": "Researcher",
+   "pagerank": 0.0002719896384970678,
+   "degree": 60,
+   "strength": 15.777380952380948,
+   "community": 15
+  },
+  {
+   "rank": 17,
+   "id": "researcher:openalex:A5087158377",
+   "name": "Junchi Yan",
+   "label": "Researcher",
+   "pagerank": 0.0002696356029889793,
+   "degree": 54,
+   "strength": 14.65555555555555,
+   "community": 28
+  },
+  {
+   "rank": 18,
+   "id": "researcher:openalex:A5100705849",
+   "name": "Chuan Shi",
+   "label": "Researcher",
+   "pagerank": 0.00026566787754458455,
+   "degree": 42,
+   "strength": 11.557142857142855,
+   "community": 45
+  },
+  {
+   "rank": 19,
+   "id": "researcher:openalex:A5078141810",
+   "name": "Houqiang Li",
+   "label": "Researcher",
+   "pagerank": 0.00026350153252227646,
+   "degree": 49,
+   "strength": 15.215476190476185,
+   "community": 78
+  },
+  {
+   "rank": 20,
+   "id": "researcher:openalex:A5086397952",
+   "name": "Shouhong Ding",
+   "label": "Researcher",
+   "pagerank": 0.0002633684293647685,
+   "degree": 62,
+   "strength": 15.672619047619033,
+   "community": 0
+  }
+ ]
+}

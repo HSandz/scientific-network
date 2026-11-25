@@ -198,9 +198,10 @@ def rising_researchers(inputs: Inputs, cfg: dict) -> list[dict]:
 
 # --- groups -----------------------------------------------------------------------------------------------------------
 
-def labs(inputs: Inputs, ids: list[str], membership: list[int], cfg: dict) -> list[dict]:
+def organization_anchored_communities(inputs: Inputs, ids: list[str], membership: list[int], cfg: dict, labels: dict[int, dict[str, list[dict]]] | None = None) -> list[dict]:
     """Organization-anchored N1 communities: at least ``minimum_members`` researchers and one organization affiliating >= ``minimum_top_organization_share`` of them."""
-    c = cfg["groups"]["lab"]
+    c = cfg["groups"].get("organization_anchored_community") or cfg["groups"]["lab"]
+    large_threshold = int(c.get("large_threshold_members", 100))
     members: dict[int, list[str]] = defaultdict(list)
     for i, comm in zip(ids, membership):
         members[comm].append(i)
@@ -213,20 +214,91 @@ def labs(inputs: Inputs, ids: list[str], membership: list[int], cfg: dict) -> li
             continue
         org, n = orgs.most_common(1)[0]
         if n / len(ms) >= c["minimum_top_organization_share"]:
-            rows.append({"community": comm, "members": len(ms), "organization": org, "organization_name": inputs.nodes[org]["name"], "share": round(n / len(ms), 3),
-                         "notable_organization": org in inputs.notable_orgs})
+            org_name = inputs.nodes[org]["name"]
+            top_topic = ""
+            if labels and comm in labels and labels[comm].get("Topic"):
+                top_topic = labels[comm]["Topic"][0]["name"]
+            rows.append({
+                "community": comm,
+                "members": len(ms),
+                "size_tier": "large" if len(ms) > large_threshold else "standard",
+                "organization": org,
+                "organization_name": org_name,
+                "top_topic": top_topic,
+                "display_name": org_name,
+                "share": round(n / len(ms), 3),
+                "notable_organization": org in inputs.notable_orgs,
+            })
+    name_counts = Counter(r["organization_name"] for r in rows)
+    for r in rows:
+        if name_counts[r["organization_name"]] > 1:
+            suffix = r["top_topic"] or f"community {r['community']}"
+            r["display_name"] = f"{r['organization_name']} — {suffix}"
+    # If two communities for the same org also share the same top topic, append community ID for uniqueness
+    disp_counts = Counter(r["display_name"] for r in rows)
+    for r in rows:
+        if disp_counts[r["display_name"]] > 1:
+            r["display_name"] = f"{r['display_name']} (#{r['community']})"
     return sorted(rows, key=lambda r: -r["members"])
 
 
-def rollup(inputs: Inputs) -> dict:
-    """Roll organizations up along PART_OF only; ministry parents (name contains 'ministry') are skipped. Returns parent -> descendant organizations and papers."""
+labs = organization_anchored_communities
+
+
+DEFAULT_RESEARCH_GUARD = (
+    "university", "higher education", "research institute", "research center",
+    "research organisation", "research organization", "research council",
+    "scientific organization", "academy of sciences", "academic institution",
+    "laboratory", "hospital", "school", "college", "polytechnic", "observatory",
+)
+DEFAULT_GOV_TERMS = (
+    "government", "ministry", "state council", "federal department",
+    "federal executive department", "federal agency", "agency of government",
+    "cabinet", "executive branch", "legislature", "organ of state",
+    "state level institution", "ministerial level institution",
+)
+_US_FED_NAME_MARKERS = (
+    "department of energy", "department of defense", "department of commerce",
+    "department of agriculture", "department of the army", "department of the air force",
+    "department of the treasury", "department of defence",
+)
+
+
+def _is_government_parent(name: str, classes: list[str], research_guard: tuple[str, ...], gov_terms: tuple[str, ...]) -> bool:
+    nm_l = name.lower()
+    cls_l = [c.lower() for c in classes]
+    name_research = any(g in nm_l for g in ("university", "academy of sciences", "institute of", "research centre", "research center", "research council", "research organisation", "research organization", "laboratory"))
+    class_research = any(g in c for c in cls_l for g in research_guard)
+    if name_research or class_research:
+        return False
+    class_gov = any(k in c for c in cls_l for k in gov_terms)
+    name_gov = any(k in nm_l for k in ("ministry", "state council", "government of ", "federal department", *_US_FED_NAME_MARKERS))
+    return class_gov or name_gov
+
+
+def rollup(inputs: Inputs, cfg: dict | None = None) -> dict:
+    """Roll organizations up along PART_OF only; skip parents per configured rule. Returns parent -> descendant organizations and papers."""
+    rcfg = (cfg or {}).get("groups", {}).get("rollup", {})
+    skip_rule = rcfg.get("skip_rule", "ministry_name")
+    research_guard = tuple(rcfg.get("research_guard_terms", DEFAULT_RESEARCH_GUARD))
+    gov_terms = tuple(rcfg.get("government_terms", DEFAULT_GOV_TERMS))
+
     parents: dict[str, set[str]] = defaultdict(set)
     skipped = 0
+    excluded_counts: Counter = Counter()
+    excluded_classes: dict[str, set[str]] = defaultdict(set)
     for e in inputs.part_of:
-        if e["ministry"]:
+        pid = e["parent"]
+        if skip_rule == "government_body":
+            skip = _is_government_parent(inputs.nodes[pid]["name"], e.get("parent_classes", []), research_guard, gov_terms)
+        else:
+            skip = bool(e["ministry"])
+        if skip:
             skipped += 1
+            excluded_counts[pid] += 1
+            excluded_classes[pid].update(e.get("parent_classes", []))
             continue
-        parents[e["child"]].add(e["parent"])
+        parents[e["child"]].add(pid)
     ancestors: dict[str, set[str]] = {}
 
     def climb(org: str, seen: frozenset) -> set[str]:
@@ -251,5 +323,11 @@ def rollup(inputs: Inputs) -> dict:
             papers |= inputs.org_papers.get(k, set())
         rows.append({"parent": parent, "parent_name": inputs.nodes[parent]["name"], "child_organizations": len(kids), "papers": len(papers),
                      "parent_is_v4_organization": inputs.nodes[parent]["properties"].get("source") != "wikidata_parent", "notable": parent in inputs.notable_orgs})
-    return {"part_of_edges": len(inputs.part_of), "ministry_part_of_edges_skipped": skipped, "ministry_part_of_edges_by_class_label": sum(e["ministry_by_class_label"] for e in inputs.part_of),
+    excluded_parents = [
+        {"parent": pid, "parent_name": inputs.nodes[pid]["name"], "edges_skipped": cnt, "classes": sorted(excluded_classes[pid])}
+        for pid, cnt in excluded_counts.most_common()
+    ]
+    return {"part_of_edges": len(inputs.part_of), "skip_rule": skip_rule, "ministry_part_of_edges_skipped": skipped,
+            "ministry_part_of_edges_by_class_label": sum(e["ministry_by_class_label"] for e in inputs.part_of),
+            "excluded_parents": excluded_parents,
             "member_of_used": False, "parents": sorted(rows, key=lambda r: (-r["papers"], r["parent"]))}

@@ -35,6 +35,7 @@ class Inputs:
     notable_orgs: set[str]
     part_of: list[dict]                                      # {child, parent, parent_classes, ministry}
     counts: dict = field(default_factory=dict)
+    researcher_papers: dict[str, set[str]] = field(default_factory=dict)
 
     def name(self, node_id: str) -> str:
         return self.nodes[node_id]["name"]
@@ -91,8 +92,10 @@ def load_inputs(graph_path: Path, *, expected_sha256: str | None = None, expecte
     for e in by_rel["PUBLISHED_IN"]:
         paper_year.setdefault(e["source_id"], int(e["properties"]["year"]))
     paper_authors: dict[str, list[str]] = defaultdict(list)
+    researcher_papers: dict[str, set[str]] = defaultdict(set)
     for e in by_rel["AUTHORED"]:
         paper_authors[e["target_id"]].append(e["source_id"])
+        researcher_papers[e["source_id"]].add(e["target_id"])
     paper_topics: dict[str, list[str]] = defaultdict(list)
     for e in by_rel["HAS_TOPIC"]:
         paper_topics[e["source_id"]].append(e["target_id"])
@@ -124,7 +127,7 @@ def load_inputs(graph_path: Path, *, expected_sha256: str | None = None, expecte
               "papers_with_year": len(paper_year), "papers_by_year": {str(y): sum(1 for v in paper_year.values() if v == y) for y in YEARS}}
     return Inputs(graph["graph_version"], digest, nodes, {"N1": n1, "N2": n2, "N3": n3, "N4": n4}, paper_year, dict(paper_authors), dict(paper_topics),
                   {p: dict(v) for p, v in paper_entities.items()}, {k: dict(v) for k, v in subject_papers.items()}, triples, dict(researcher_orgs), dict(org_papers),
-                  notable, part_of, counts)
+                  notable, part_of, counts, dict(researcher_papers))
 
 
 # --- cumulative networks for the evolution of L and C ---------------------------------------------------------------------

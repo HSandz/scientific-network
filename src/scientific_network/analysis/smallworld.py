@@ -125,7 +125,7 @@ def evolution(pairs_by_year: dict[int, set[tuple[str, str]]]) -> list[dict]:
         lcc = largest_component(g)
         paths = exact_paths(lcc)
         rows.append({"year": year, "nodes_with_edges": g.vcount(), "edges": g.ecount(), "lcc_nodes": lcc.vcount(), "L": paths["L"], "diameter": paths["diameter"],
-                     "C": clustering(g)["average_local"], "C_lcc": clustering(lcc)["average_local"]})
+                     "C": clustering(lcc)["average_local"], "C_lcc": clustering(lcc)["average_local"], "C_all_non_isolates": clustering(g)["average_local"]})
     return rows
 
 

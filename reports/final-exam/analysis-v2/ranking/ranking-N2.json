@@ -1,0 +1,248 @@
+{
+ "nodes": 2047,
+ "edges": 13031,
+ "directed": false,
+ "weighted_pagerank": true,
+ "meta": {
+  "betweenness": {
+   "method": "exact (igraph, Brandes)",
+   "sample_size": null,
+   "estimated_seconds": 0.989726459980011,
+   "seconds": 0.6295380592346191
+  },
+  "seconds": 0.655226469039917
+ },
+ "comparison_with_pagerank": {
+  "degree": {
+   "spearman": 0.78128195876924,
+   "top20_overlap": 18
+  },
+  "strength": {
+   "spearman": 0.9007390469708532,
+   "top20_overlap": 17
+  },
+  "betweenness": {
+   "spearman": 0.7829586439372497,
+   "top20_overlap": 15
+  },
+  "eigenvector": {
+   "spearman": 0.48312479125082725,
+   "top20_overlap": 17
+  }
+ },
+ "robustness_strict_support_ge_2": {
+  "strict_edges": 3397,
+  "full_edges": 13031,
+  "edges_kept_share": 0.2606860563272197,
+  "spearman_pagerank": 0.7971235919011868,
+  "top20_overlap": 19,
+  "dropped_from_top": [
+   "organization:I74973139"
+  ],
+  "entered_top": [
+   "organization:I157485424"
+  ]
+ },
+ "top": [
+  {
+   "rank": 1,
+   "id": "organization:I76130692",
+   "name": "Zhejiang University",
+   "label": "Organization",
+   "pagerank": 0.014511989754385059,
+   "degree": 220,
+   "strength": 342.2592796092797,
+   "community": 4
+  },
+  {
+   "rank": 2,
+   "id": "organization:I99065089",
+   "name": "Tsinghua University",
+   "label": "Organization",
+   "pagerank": 0.011707051441998831,
+   "degree": 222,
+   "strength": 283.5407814407811,
+   "community": 2
+  },
+  {
+   "rank": 3,
+   "id": "organization:I19820366",
+   "name": "Chinese Academy of Sciences",
+   "label": "Organization",
+   "pagerank": 0.010728374987175536,
+   "degree": 257,
+   "strength": 269.53023713759023,
+   "community": 5
+  },
+  {
+   "rank": 4,
+   "id": "organization:I20231570",
+   "name": "Peking University",
+   "label": "Organization",
+   "pagerank": 0.010144433307136632,
+   "degree": 187,
+   "strength": 244.18253968253964,
+   "community": 2
+  },
+  {
+   "rank": 5,
+   "id": "organization:I2250653659",
+   "name": "Tencent (China)",
+   "label": "Organization",
+   "pagerank": 0.009642839659622024,
+   "degree": 156,
+   "strength": 237.35714285714283,
+   "community": 2
+  },
+  {
+   "rank": 6,
+   "id": "organization:I183067930",
+   "name": "Shanghai Jiao Tong University",
+   "label": "Organization",
+   "pagerank": 0.009026107216912046,
+   "degree": 175,
+   "strength": 206.1,
+   "community": 2
+  },
+  {
+   "rank": 7,
+   "id": "organization:I4210165038",
+   "name": "University of Chinese Academy of Sciences",
+   "label": "Organization",
+   "pagerank": 0.008524913393295691,
+   "degree": 206,
+   "strength": 217.15645095645107,
+   "community": 5
+  },
+  {
+   "rank": 8,
+   "id": "organization:I165932596",
+   "name": "National University of Singapore",
+   "label": "Organization",
+   "pagerank": 0.008176856436524212,
+   "degree": 196,
+   "strength": 166.88309990662927,
+   "community": 6
+  },
+  {
+   "rank": 9,
+   "id": "organization:I126520041",
+   "name": "University of Science and Technology of China",
+   "label": "Organization",
+   "pagerank": 0.008168286413520739,
+   "degree": 159,
+   "strength": 183.96190476190478,
+   "community": 2
+  },
+  {
+   "rank": 10,
+   "id": "organization:I1294671590",
+   "name": "Centre National de la Recherche Scientifique",
+   "label": "Organization",
+   "pagerank": 0.00786260817355872,
+   "degree": 246,
+   "strength": 67.87644206049228,
+   "community": 0
+  },
+  {
+   "rank": 11,
+   "id": "organization:I204983213",
+   "name": "Harbin Institute of Technology",
+   "label": "Organization",
+   "pagerank": 0.006868517330992585,
+   "degree": 160,
+   "strength": 163.79206349206356,
+   "community": 2
+  },
+  {
+   "rank": 12,
+   "id": "organization:I172675005",
+   "name": "Nanyang Technological University",
+   "label": "Organization",
+   "pagerank": 0.006851873824225506,
+   "degree": 163,
+   "strength": 151.26176046176045,
+   "community": 6
+  },
+  {
+   "rank": 13,
+   "id": "organization:I4210136793",
+   "name": "Peng Cheng Laboratory",
+   "label": "Organization",
+   "pagerank": 0.006450305020324356,
+   "degree": 115,
+   "strength": 166.88333333333333,
+   "community": 2
+  },
+  {
+   "rank": 14,
+   "id": "organization:I82880672",
+   "name": "Beihang University",
+   "label": "Organization",
+   "pagerank": 0.006421771682462192,
+   "degree": 149,
+   "strength": 147.24563492063487,
+   "community": 5
+  },
+  {
+   "rank": 15,
+   "id": "organization:I45928872",
+   "name": "Alibaba Group (China)",
+   "label": "Organization",
+   "pagerank": 0.006336114830759574,
+   "degree": 134,
+   "strength": 160.25769230769228,
+   "community": 4
+  },
+  {
+   "rank": 16,
+   "id": "organization:I2250955327",
+   "name": "Huawei Technologies (China)",
+   "label": "Organization",
+   "pagerank": 0.006326661632665026,
+   "degree": 128,
+   "strength": 146.9920634920635,
+   "community": 2
+  },
+  {
+   "rank": 17,
+   "id": "organization:I157773358",
+   "name": "Sun Yat-sen University",
+   "label": "Organization",
+   "pagerank": 0.00617659909600667,
+   "degree": 144,
+   "strength": 143.4126984126984,
+   "community": 2
+  },
+  {
+   "rank": 18,
+   "id": "organization:I40120149",
+   "name": "University of Oxford",
+   "label": "Organization",
+   "pagerank": 0.005584077186149586,
+   "degree": 153,
+   "strength": 91.92871572871572,
+   "community": 0
+  },
+  {
+   "rank": 19,
+   "id": "organization:I24943067",
+   "name": "Fudan University",
+   "label": "Organization",
+   "pagerank": 0.005150976646616192,
+   "degree": 121,
+   "strength": 117.08253968253968,
+   "community": 2
+  },
+  {
+   "rank": 20,
+   "id": "organization:I74973139",
+   "name": "Carnegie Mellon University",
+   "label": "Organization",
+   "pagerank": 0.00496096357033231,
+   "degree": 152,
+   "strength": 91.73617886178859,
+   "community": 1
+  }
+ ]
+}

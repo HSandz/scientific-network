@@ -1,0 +1,690 @@
+{
+ "note": "Display-only alias map for search and presentation; graph entities are never merged.",
+ "by_kind": {
+  "Topic": [],
+  "Method": [
+   {
+    "canonical_key": "attention based",
+    "primary_id": "method:6c95cb9029f9a643",
+    "primary_name": "attention-based methods",
+    "members": [
+     {
+      "id": "method:6c95cb9029f9a643",
+      "name": "attention-based methods",
+      "papers": 3
+     },
+     {
+      "id": "method:a25d9cd762ca106e",
+      "name": "attention-based models",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "attention-based methods",
+     "attention-based models"
+    ]
+   },
+   {
+    "canonical_key": "bert",
+    "primary_id": "method:917c667e8cb4dec5",
+    "primary_name": "BERT",
+    "members": [
+     {
+      "id": "method:917c667e8cb4dec5",
+      "name": "BERT",
+      "papers": 58
+     },
+     {
+      "id": "method:4aa35c71b922dcbc",
+      "name": "BERT model",
+      "papers": 8
+     }
+    ],
+    "aliases": [
+     "BERT",
+     "BERT model"
+    ]
+   },
+   {
+    "canonical_key": "clip",
+    "primary_id": "method:f58ca558af650e28",
+    "primary_name": "CLIP",
+    "members": [
+     {
+      "id": "method:f58ca558af650e28",
+      "name": "CLIP",
+      "papers": 75
+     },
+     {
+      "id": "method:1628e3fca60ed340",
+      "name": "CLIP model",
+      "papers": 10
+     }
+    ],
+    "aliases": [
+     "CLIP",
+     "CLIP model"
+    ]
+   },
+   {
+    "canonical_key": "conditional diffusion",
+    "primary_id": "method:724060b4b8b5c47d",
+    "primary_name": "conditional diffusion models",
+    "members": [
+     {
+      "id": "method:724060b4b8b5c47d",
+      "name": "conditional diffusion models",
+      "papers": 16
+     },
+     {
+      "id": "method:22baaefdfef7e518",
+      "name": "Conditional Diffusion",
+      "papers": 4
+     }
+    ],
+    "aliases": [
+     "conditional diffusion models",
+     "Conditional Diffusion"
+    ]
+   },
+   {
+    "canonical_key": "contrastive learning",
+    "primary_id": "method:3b092cae8d3d0380",
+    "primary_name": "contrastive learning",
+    "members": [
+     {
+      "id": "method:3b092cae8d3d0380",
+      "name": "contrastive learning",
+      "papers": 185
+     },
+     {
+      "id": "method:9f6b14dad15d88e7",
+      "name": "contrastive learning methods",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "contrastive learning",
+     "contrastive learning methods"
+    ]
+   },
+   {
+    "canonical_key": "deep learning",
+    "primary_id": "method:5c77164685b771f4",
+    "primary_name": "deep learning",
+    "members": [
+     {
+      "id": "method:5c77164685b771f4",
+      "name": "deep learning",
+      "papers": 47
+     },
+     {
+      "id": "method:e631821441cff98e",
+      "name": "deep learning models",
+      "papers": 28
+     },
+     {
+      "id": "method:16a6ef45c3598a2c",
+      "name": "deep learning methods",
+      "papers": 12
+     }
+    ],
+    "aliases": [
+     "deep learning",
+     "deep learning models",
+     "deep learning methods"
+    ]
+   },
+   {
+    "canonical_key": "denoising diffusion",
+    "primary_id": "method:d6ec8a69ddbdc495",
+    "primary_name": "denoising diffusion models",
+    "members": [
+     {
+      "id": "method:d6ec8a69ddbdc495",
+      "name": "denoising diffusion models",
+      "papers": 4
+     },
+     {
+      "id": "method:1660845ed93ffd88",
+      "name": "Denoising Diffusion",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "denoising diffusion models",
+     "Denoising Diffusion"
+    ]
+   },
+   {
+    "canonical_key": "diffusion",
+    "primary_id": "method:Q114617315",
+    "primary_name": "diffusion models",
+    "members": [
+     {
+      "id": "method:Q114617315",
+      "name": "diffusion models",
+      "papers": 149
+     },
+     {
+      "id": "method:5f6603fd5841ab77",
+      "name": "diffusion",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "diffusion models",
+     "diffusion"
+    ]
+   },
+   {
+    "canonical_key": "diffusion based",
+    "primary_id": "method:457cf85b87a52885",
+    "primary_name": "Diffusion-based methods",
+    "members": [
+     {
+      "id": "method:457cf85b87a52885",
+      "name": "Diffusion-based methods",
+      "papers": 3
+     },
+     {
+      "id": "method:96770b5134ccd5a2",
+      "name": "diffusion-based models",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "Diffusion-based methods",
+     "diffusion-based models"
+    ]
+   },
+   {
+    "canonical_key": "gradient descent",
+    "primary_id": "method:150469dbfb4594b8",
+    "primary_name": "gradient descent",
+    "members": [
+     {
+      "id": "method:150469dbfb4594b8",
+      "name": "gradient descent",
+      "papers": 32
+     },
+     {
+      "id": "method:98ddd869a756df68",
+      "name": "gradient descent methods",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "gradient descent",
+     "gradient descent methods"
+    ]
+   },
+   {
+    "canonical_key": "knowledge distillation",
+    "primary_id": "method:Q74253442",
+    "primary_name": "knowledge distillation",
+    "members": [
+     {
+      "id": "method:Q74253442",
+      "name": "knowledge distillation",
+      "papers": 75
+     },
+     {
+      "id": "method:0721b1440279de29",
+      "name": "knowledge distillation methods",
+      "papers": 5
+     }
+    ],
+    "aliases": [
+     "knowledge distillation",
+     "knowledge distillation methods"
+    ]
+   },
+   {
+    "canonical_key": "knowledge graph embedding",
+    "primary_id": "method:Q33003557",
+    "primary_name": "knowledge graph embedding",
+    "members": [
+     {
+      "id": "method:Q33003557",
+      "name": "knowledge graph embedding",
+      "papers": 6
+     },
+     {
+      "id": "method:b33fa653d11d5cce",
+      "name": "knowledge graph embedding methods",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "knowledge graph embedding",
+     "knowledge graph embedding methods"
+    ]
+   },
+   {
+    "canonical_key": "latent diffusion",
+    "primary_id": "method:Q130641540",
+    "primary_name": "Latent Diffusion Model",
+    "members": [
+     {
+      "id": "method:Q130641540",
+      "name": "Latent Diffusion Model",
+      "papers": 15
+     },
+     {
+      "id": "method:989640d4ac5af6b4",
+      "name": "Latent Diffusion",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "Latent Diffusion Model",
+     "Latent Diffusion"
+    ]
+   },
+   {
+    "canonical_key": "machine learning",
+    "primary_id": "method:79528654a290a082",
+    "primary_name": "machine learning",
+    "members": [
+     {
+      "id": "method:79528654a290a082",
+      "name": "machine learning",
+      "papers": 5
+     },
+     {
+      "id": "method:6e7cf489db2c9bc4",
+      "name": "machine learning models",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "machine learning",
+     "machine learning models"
+    ]
+   },
+   {
+    "canonical_key": "monte carlo",
+    "primary_id": "method:f4550a55778e602a",
+    "primary_name": "Monte Carlo method",
+    "members": [
+     {
+      "id": "method:f4550a55778e602a",
+      "name": "Monte Carlo method",
+      "papers": 7
+     },
+     {
+      "id": "method:2fa667e8e793bcc2",
+      "name": "Monte Carlo",
+      "papers": 4
+     }
+    ],
+    "aliases": [
+     "Monte Carlo method",
+     "Monte Carlo"
+    ]
+   },
+   {
+    "canonical_key": "policy gradient",
+    "primary_id": "method:Q113840014",
+    "primary_name": "policy gradient method",
+    "members": [
+     {
+      "id": "method:Q113840014",
+      "name": "policy gradient method",
+      "papers": 10
+     },
+     {
+      "id": "method:22a0e5f97efbc129",
+      "name": "policy gradient",
+      "papers": 9
+     }
+    ],
+    "aliases": [
+     "policy gradient method",
+     "policy gradient"
+    ]
+   },
+   {
+    "canonical_key": "reinforcement learning",
+    "primary_id": "method:Q830687",
+    "primary_name": "reinforcement learning",
+    "members": [
+     {
+      "id": "method:Q830687",
+      "name": "reinforcement learning",
+      "papers": 135
+     },
+     {
+      "id": "method:f6a42624f544fb69",
+      "name": "reinforcement learning methods",
+      "papers": 8
+     }
+    ],
+    "aliases": [
+     "reinforcement learning",
+     "reinforcement learning methods"
+    ]
+   },
+   {
+    "canonical_key": "self attention",
+    "primary_id": "method:Q103709457",
+    "primary_name": "self-attention",
+    "members": [
+     {
+      "id": "method:Q103709457",
+      "name": "self-attention",
+      "papers": 37
+     },
+     {
+      "id": "method:7cd5f788ecd6483d",
+      "name": "self-attention models",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "self-attention",
+     "self-attention models"
+    ]
+   },
+   {
+    "canonical_key": "self supervised",
+    "primary_id": "method:ee5ad7738a0f7def",
+    "primary_name": "self-supervised methods",
+    "members": [
+     {
+      "id": "method:ee5ad7738a0f7def",
+      "name": "self-supervised methods",
+      "papers": 6
+     },
+     {
+      "id": "method:76c64d8e9990a4eb",
+      "name": "self-supervised",
+      "papers": 4
+     }
+    ],
+    "aliases": [
+     "self-supervised methods",
+     "self-supervised"
+    ]
+   },
+   {
+    "canonical_key": "seq2seq",
+    "primary_id": "method:4006fcc608d1ee57",
+    "primary_name": "Seq2Seq",
+    "members": [
+     {
+      "id": "method:4006fcc608d1ee57",
+      "name": "Seq2Seq",
+      "papers": 7
+     },
+     {
+      "id": "method:db4a19a288a1e827",
+      "name": "Seq2Seq models",
+      "papers": 6
+     }
+    ],
+    "aliases": [
+     "Seq2Seq",
+     "Seq2Seq models"
+    ]
+   },
+   {
+    "canonical_key": "transformer",
+    "primary_id": "method:Q85810444",
+    "primary_name": "Transformer",
+    "members": [
+     {
+      "id": "method:Q85810444",
+      "name": "Transformer",
+      "papers": 151
+     },
+     {
+      "id": "method:0981c289bc86ec46",
+      "name": "Transformer model",
+      "papers": 12
+     }
+    ],
+    "aliases": [
+     "Transformer",
+     "Transformer model"
+    ]
+   },
+   {
+    "canonical_key": "transformer based",
+    "primary_id": "method:ce84286f40ffd55c",
+    "primary_name": "transformer-based models",
+    "members": [
+     {
+      "id": "method:ce84286f40ffd55c",
+      "name": "transformer-based models",
+      "papers": 24
+     },
+     {
+      "id": "method:b6056c5d8e76fa82",
+      "name": "Transformer-based methods",
+      "papers": 7
+     }
+    ],
+    "aliases": [
+     "transformer-based models",
+     "Transformer-based methods"
+    ]
+   }
+  ],
+  "Task": [
+   {
+    "canonical_key": "binary classification",
+    "primary_id": "task:9b4f202acb0a3158",
+    "primary_name": "binary classification",
+    "members": [
+     {
+      "id": "task:9b4f202acb0a3158",
+      "name": "binary classification",
+      "papers": 6
+     },
+     {
+      "id": "task:bb3881e5ec90d567",
+      "name": "binary classification task",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "binary classification",
+     "binary classification task"
+    ]
+   },
+   {
+    "canonical_key": "classification",
+    "primary_id": "task:c57e89fdcae5d91c",
+    "primary_name": "classification",
+    "members": [
+     {
+      "id": "task:c57e89fdcae5d91c",
+      "name": "classification",
+      "papers": 50
+     },
+     {
+      "id": "task:8706a154be9a7f95",
+      "name": "classification tasks",
+      "papers": 12
+     }
+    ],
+    "aliases": [
+     "classification",
+     "classification tasks"
+    ]
+   },
+   {
+    "canonical_key": "continuous control",
+    "primary_id": "task:2e6b5c3288756af7",
+    "primary_name": "continuous control tasks",
+    "members": [
+     {
+      "id": "task:2e6b5c3288756af7",
+      "name": "continuous control tasks",
+      "papers": 10
+     },
+     {
+      "id": "task:9e837160e153276e",
+      "name": "Continuous Control",
+      "papers": 5
+     }
+    ],
+    "aliases": [
+     "continuous control tasks",
+     "Continuous Control"
+    ]
+   },
+   {
+    "canonical_key": "graph classification",
+    "primary_id": "task:c1b9a2a1e999e1a5",
+    "primary_name": "graph classification",
+    "members": [
+     {
+      "id": "task:c1b9a2a1e999e1a5",
+      "name": "graph classification",
+      "papers": 28
+     },
+     {
+      "id": "task:7419dffdb918ebc5",
+      "name": "graph classification tasks",
+      "papers": 7
+     }
+    ],
+    "aliases": [
+     "graph classification",
+     "graph classification tasks"
+    ]
+   },
+   {
+    "canonical_key": "image classification",
+    "primary_id": "task:1fa654aed2b0ed89",
+    "primary_name": "image classification",
+    "members": [
+     {
+      "id": "task:1fa654aed2b0ed89",
+      "name": "image classification",
+      "papers": 110
+     },
+     {
+      "id": "task:c945a398e518ab80",
+      "name": "image classification tasks",
+      "papers": 10
+     }
+    ],
+    "aliases": [
+     "image classification",
+     "image classification tasks"
+    ]
+   },
+   {
+    "canonical_key": "link prediction",
+    "primary_id": "task:Q98925312",
+    "primary_name": "link prediction",
+    "members": [
+     {
+      "id": "task:Q98925312",
+      "name": "link prediction",
+      "papers": 49
+     },
+     {
+      "id": "task:4d0e24e75368e3ba",
+      "name": "link prediction tasks",
+      "papers": 5
+     }
+    ],
+    "aliases": [
+     "link prediction",
+     "link prediction tasks"
+    ]
+   },
+   {
+    "canonical_key": "node classification",
+    "primary_id": "task:7677d8c51175f30d",
+    "primary_name": "node classification",
+    "members": [
+     {
+      "id": "task:7677d8c51175f30d",
+      "name": "node classification",
+      "papers": 58
+     },
+     {
+      "id": "task:473189fe00c2d2b1",
+      "name": "node classification tasks",
+      "papers": 16
+     }
+    ],
+    "aliases": [
+     "node classification",
+     "node classification tasks"
+    ]
+   },
+   {
+    "canonical_key": "regression",
+    "primary_id": "task:87250b0decb2909d",
+    "primary_name": "regression",
+    "members": [
+     {
+      "id": "task:87250b0decb2909d",
+      "name": "regression",
+      "papers": 16
+     },
+     {
+      "id": "task:8cc653d4e93549e5",
+      "name": "regression tasks",
+      "papers": 6
+     }
+    ],
+    "aliases": [
+     "regression",
+     "regression tasks"
+    ]
+   },
+   {
+    "canonical_key": "text classification",
+    "primary_id": "task:f1456901921cb85b",
+    "primary_name": "text classification",
+    "members": [
+     {
+      "id": "task:f1456901921cb85b",
+      "name": "text classification",
+      "papers": 34
+     },
+     {
+      "id": "task:e6067c9738f724c8",
+      "name": "text classification tasks",
+      "papers": 5
+     }
+    ],
+    "aliases": [
+     "text classification",
+     "text classification tasks"
+    ]
+   },
+   {
+    "canonical_key": "visual recognition",
+    "primary_id": "task:10e920e903597ff7",
+    "primary_name": "visual recognition",
+    "members": [
+     {
+      "id": "task:10e920e903597ff7",
+      "name": "visual recognition",
+      "papers": 4
+     },
+     {
+      "id": "task:2ca9cecda34703ca",
+      "name": "visual recognition tasks",
+      "papers": 3
+     }
+    ],
+    "aliases": [
+     "visual recognition",
+     "visual recognition tasks"
+    ]
+   }
+  ],
+  "Dataset": []
+ },
+ "group_count": 32
+}

@@ -32,6 +32,7 @@ def add_fx_parser(commands) -> None:
     p.add_argument("--config", type=Path, required=True)
     p.add_argument("--graph", type=Path, required=True, help="enriched graph file (graph.json)")
     p.add_argument("--v4-analysis", type=Path, help="frozen v4 analysis.json for the sanity check (default: the path in the config)")
+    p.add_argument("--reuse-baselines", type=Path, help="optional previous smallworld.json on the exact same graph+seed to reuse expensive baseline replicates while recomputing evolution and tails")
     p.add_argument("--output", type=Path, required=True)
 
 
@@ -53,6 +54,7 @@ def _csv(path: Path, rows: list[dict], fields: list[str] | None = None) -> None:
 
 class Context:
     def __init__(self, args):
+        self.args = args
         self.cfg = yaml.safe_load(args.config.read_text())
         self.out: Path = args.output
         self.seed = self.cfg["random_seed"]
@@ -108,8 +110,18 @@ def stage_smallworld(ctx: Context) -> dict:
     import matplotlib.pyplot as plt
     cfg, inputs = ctx.cfg, ctx.inputs
     results, tails = {}, {}
+    reuse_path = getattr(ctx.args, "reuse_baselines", None) if hasattr(ctx, "args") else None
+    reused_networks = None
+    if reuse_path is not None:
+        prev = json.loads(Path(reuse_path).read_text(encoding="utf-8"))
+        if prev.get("graph_version") != inputs.graph_version or prev.get("seed") != ctx.seed:
+            raise ValueError(f"--reuse-baselines mismatch: expected {inputs.graph_version} seed={ctx.seed}, got {prev.get('graph_version')} seed={prev.get('seed')}")
+        reused_networks = prev["networks"]
     for index, name in enumerate(cfg["small_world"]["networks"]):
-        results[name] = smallworld.small_world(name, inputs.networks[name], cfg, ctx.seed + 100000 * index, log=ctx.log)
+        if reused_networks and name in reused_networks:
+            results[name] = reused_networks[name]
+        else:
+            results[name] = smallworld.small_world(name, inputs.networks[name], cfg, ctx.seed + 100000 * index, log=ctx.log)
         degrees = [d for d in inputs.networks[name].degree() if d >= 1]
         tails[name] = smallworld.degree_tail(degrees, cfg["small_world"]["degree_tail"]["alpha_for_preference"])
         ctx.log(f"  {name} tail: xmin={tails[name]['xmin']} alpha={tails[name]['alpha']:.2f} claim={tails[name]['power_law_claim_allowed']} {tails[name]['comparisons']}")
@@ -174,11 +186,19 @@ def stage_smallworld(ctx: Context) -> dict:
 NETWORK_SETUP = {"N1": ("auto", True, True), "N2": ("exact", True, True), "N3": ("none", False, False), "N4": ("none", False, True)}  # (betweenness mode, weighted, eigenvector)
 
 
-def _table(inputs: Inputs, df: pd.DataFrame, k: int, label: str | None = None) -> list[dict]:
+def _table(inputs: Inputs, df: pd.DataFrame, k: int, label: str | None = None, include_citations: bool = False) -> list[dict]:
     d = df if label is None else df[df["label"] == label]
     top = d.nlargest(k, "pagerank")
-    return [{"rank": int(r["pagerank_rank"]), "id": r["id"], "name": r["name"], "label": r["label"], "pagerank": float(r["pagerank"]), "degree": int(r["degree"]), "strength": float(r["strength"]),
-             "community": (None if pd.isna(r.get("community")) else int(r["community"]))} for _i, r in top.iterrows()]
+    rows = []
+    for _i, r in top.iterrows():
+        row = {"rank": int(r["pagerank_rank"]), "id": r["id"], "name": r["name"], "label": r["label"], "pagerank": float(r["pagerank"]),
+               "degree": int(r["degree"]), "strength": float(r["strength"]),
+               "community": (None if pd.isna(r.get("community")) else int(r["community"]))}
+        if include_citations and "in_corpus_citations" in r:
+            row["in_corpus_citations"] = int(r["in_corpus_citations"])
+            row["out_corpus_citations"] = int(r["out_corpus_citations"])
+        rows.append(row)
+    return rows
 
 
 def stage_ranking(ctx: Context) -> dict:
@@ -194,12 +214,24 @@ def stage_ranking(ctx: Context) -> dict:
         df["label"] = [inputs.nodes[i]["label"] for i in df["id"]]
         df["community"] = ctx.headline(name) if name in ("N1", "N2") else np.nan
         df["pagerank_rank"] = df["pagerank"].rank(ascending=False, method="min").astype(int)
+        if name == "N3":
+            df["in_corpus_citations"] = g.degree(mode="in")
+            df["out_corpus_citations"] = g.degree(mode="out")
         ctx._scores[name] = df
         _csv(out / f"scores-{name}.csv.gz", df.to_dict("records"))
         entry = {"nodes": g.vcount(), "edges": g.ecount(), "directed": g.is_directed(), "weighted_pagerank": weighted, "meta": meta, "comparison_with_pagerank": ranking.compare(df, k)}
         if name in ("N1", "N2"):
             entry["robustness_strict_support_ge_2"] = ranking.robustness(g, k)
-        if name == "N4":
+        if name == "N3":
+            n_iso = sum(1 for d in g.degree(mode="all") if d == 0)
+            lcc_sz = max(g.connected_components(mode="weak").sizes())
+            entry["sparsity_note"] = (
+                f"{g.ecount()} directed CITES edges across {g.vcount()} core papers "
+                f"(largest weak component {lcc_sz}, {n_iso} isolated papers). "
+                "Within-corpus citation PageRank is fragile on sparse directed links; read alongside in_corpus_citations."
+            )
+            entry["top"] = _table(inputs, df, k, include_citations=True)
+        elif name == "N4":
             entry["top_by_label"] = {lab: _table(inputs, df, k, lab) for lab in ("Researcher", "Organization", "Paper", "Topic", "Method", "Task", "Dataset")}
         else:
             entry["top"] = _table(inputs, df, k)
@@ -208,33 +240,101 @@ def stage_ranking(ctx: Context) -> dict:
     # personalized PageRank on N4
     g4 = inputs.networks["N4"]
     index = {v: i for i, v in enumerate(g4.vs["id"])}
+    n4_df = ctx.scores("N4")
+    global_n4_pr = dict(zip(n4_df["id"], n4_df["pagerank"]))
     sp = inputs.subject_papers
     chosen = {"Topic": sorted(sp["Topic"], key=lambda s: (-len(sp["Topic"][s]), s))}
     for kind in ("Method", "Task", "Dataset"):
         chosen[kind] = sorted(sp[kind], key=lambda s: (-len(sp[kind][s]), s))[:30]
     ppr = {}
-    sizes = cfg["ranking"]["personalized"]["top_k_per_kind"]
+    pcfg = cfg["ranking"]["personalized"]
+    sizes = pcfg["top_k_per_kind"]
+    min_sp = pcfg.get("min_subject_papers")
+    fallback_n = int(pcfg.get("min_subject_papers_fallback_if_fewer_than", 5))
     for kind, subjects in chosen.items():
         for s in subjects:
-            ppr.setdefault(kind, {})[s] = personalized_summary(inputs, g4, index, kind, s, sizes)
-    _json(out / "personalized-pagerank.json", {"damping": 0.85, "network": "N4", "restart": "uniform over the subject's papers; seed papers are excluded from the Paper list", "subjects": ppr})
+            ppr.setdefault(kind, {})[s] = personalized_summary(
+                inputs, g4, index, kind, s, sizes,
+                global_pagerank=global_n4_pr, min_subject_papers=min_sp,
+                fallback_if_fewer_than=fallback_n,
+            )
+    _json(out / "personalized-pagerank.json", {
+        "damping": 0.85, "network": "N4",
+        "primary_rank_by": pcfg.get("primary_rank_by", "raw_ppr"),
+        "min_subject_papers": min_sp,
+        "restart": "uniform over the subject's papers; seed papers are excluded from the Paper list",
+        "subjects": ppr,
+    })
     summary["personalized_subjects"] = {k_: len(v) for k_, v in ppr.items()}
     return {n: (v["comparison_with_pagerank"] if isinstance(v, dict) and "comparison_with_pagerank" in v else v) for n, v in summary.items()}
 
 
-def personalized_summary(inputs: Inputs, g4, index: dict, kind: str, subject: str, sizes: dict, damping: float = 0.85) -> dict:
-    """Personalized PageRank on N4 restarting uniformly over the papers of one topic/method/task/dataset; top entities per label."""
+def personalized_summary(
+    inputs: Inputs, g4, index: dict, kind: str, subject: str, sizes: dict, damping: float = 0.85,
+    *, global_pagerank: dict[str, float] | None = None, min_subject_papers: dict[str, int] | None = None,
+    fallback_if_fewer_than: int = 5,
+) -> dict:
+    """Personalized PageRank on N4 restarting uniformly over the papers of one topic/method/task/dataset; ranks Organizations/Researchers by lift when global_pagerank is supplied."""
     papers = sorted(inputs.subject_papers[kind][subject])
     scores = ranking.personalized_pagerank(g4, [index[p] for p in papers], damping=damping)
     seeds = set(papers)
+    total_corpus = max(len(inputs.paper_year), 1)
+    subject_share = len(seeds) / total_corpus
+
     by_label: dict[str, list[tuple[float, str]]] = defaultdict(list)
     for i, s in enumerate(scores):
         node = g4.vs[i]["id"]
         label = inputs.nodes[node]["label"]
         if label in sizes and node not in seeds and node != subject:
-            by_label[label].append((s, node))
-    top = {label: [{"id": n, "name": inputs.nodes[n]["name"], "score": float(s)} for s, n in sorted(v, key=lambda x: (-x[0], x[1]))[:sizes[label]]] for label, v in by_label.items()}
-    return {"name": inputs.nodes[subject]["name"], "papers": len(papers), "top": top}
+            by_label[label].append((float(s), node))
+
+    top: dict[str, list[dict]] = {}
+    top_by_raw_ppr: dict[str, list[dict]] = {}
+    filter_notes: dict[str, str] = {}
+    for label, v in by_label.items():
+        raw_sorted = sorted(v, key=lambda x: (-x[0], x[1]))[:sizes[label]]
+        raw_rows = [{"id": n, "name": inputs.nodes[n]["name"], "score": float(s)} for s, n in raw_sorted]
+        if global_pagerank and label in ("Organization", "Researcher"):
+            entity_papers_map = inputs.org_papers if label == "Organization" else inputs.researcher_papers
+            min_req = int((min_subject_papers or {}).get(label, 1))
+            enriched_rows = []
+            for s, n in v:
+                gpr = global_pagerank.get(n, 0.0)
+                ep = entity_papers_map.get(n, set())
+                sp_cnt = len(ep & seeds)
+                tot_cnt = len(ep)
+                lift = (s / gpr) if gpr > 0 else 0.0
+                rca = ((sp_cnt / tot_cnt) / subject_share) if (tot_cnt > 0 and subject_share > 0) else 0.0
+                enriched_rows.append({
+                    "id": n,
+                    "name": inputs.nodes[n]["name"],
+                    "score": float(s),
+                    "ppr_score": float(s),
+                    "global_pagerank": float(gpr),
+                    "lift": round(lift, 4),
+                    "rca": round(rca, 4),
+                    "subject_papers": sp_cnt,
+                    "total_papers": tot_cnt,
+                })
+            qualified = [r for r in enriched_rows if r["subject_papers"] >= min_req]
+            if len(qualified) < fallback_if_fewer_than and min_req > 1:
+                qualified = [r for r in enriched_rows if r["subject_papers"] >= 1]
+                filter_notes[label] = f"fallback to >=1 subject paper ({len(qualified)} qualified; fewer than {fallback_if_fewer_than} met min_subject_papers={min_req})"
+            else:
+                filter_notes[label] = f"min_subject_papers>={min_req} ({len(qualified)} qualified)"
+            qualified.sort(key=lambda r: (-r["lift"], -r["subject_papers"], -r["ppr_score"], r["id"]))
+            top[label] = qualified[:sizes[label]]
+            # Also annotate raw PPR rows with lift/rca/subject_papers
+            by_id = {r["id"]: r for r in enriched_rows}
+            top_by_raw_ppr[label] = [by_id[r["id"]] for r in raw_rows if r["id"] in by_id]
+        else:
+            top[label] = raw_rows
+
+    out = {"name": inputs.nodes[subject]["name"], "papers": len(papers), "top": top}
+    if top_by_raw_ppr:
+        out["top_by_raw_ppr"] = top_by_raw_ppr
+        out["filter_notes"] = filter_notes
+    return out
 
 
 # --- S3 ------------------------------------------------------------------------------------------------------------------
@@ -243,6 +343,7 @@ def stage_communities(ctx: Context) -> dict:
     cfg, inputs = ctx.cfg, ctx.inputs
     out = ctx.out / "communities"
     summary = {}
+    all_labels: dict[str, dict[int, dict[str, list[dict]]]] = {}
     for name in cfg["communities"]["networks"]:
         g = inputs.networks[name]
         ctx.log(f"communities {name}")
@@ -255,6 +356,7 @@ def stage_communities(ctx: Context) -> dict:
         df = ctx.scores(name)
         ids = g.vs["id"]
         labels = comm.community_labels(inputs, ids, level0, name, cfg["communities"]["labels"]["top_n"])
+        all_labels[name] = labels
         key = comm.key_individuals(g, level0, df["pagerank"].tolist(), df["betweenness"].tolist(), cfg)
         sizes = Counter(level0)
         first_member: dict[int, int] = {}
@@ -283,16 +385,30 @@ def stage_communities(ctx: Context) -> dict:
     summary["rising_researchers"] = {"count": len(rising), "new_entrants": sum(r["new_entrant"] for r in rising)}
     # groups
     n1 = ctx.inputs.networks["N1"]
-    lab_rows = comm.labs(inputs, n1.vs["id"], ctx.headline("N1"), cfg)
+    n1_labels = all_labels.get("N1", {})
+    lab_rows = comm.organization_anchored_communities(inputs, n1.vs["id"], ctx.headline("N1"), cfg, labels=n1_labels)
     org_rows = sorted(({"id": o, "name": inputs.nodes[o]["name"], "papers": len(p), "researchers": sum(1 for r in inputs.researcher_orgs.values() if o in r),
                         "sector": inputs.nodes[o]["properties"].get("sector"), "notable": o in inputs.notable_orgs} for o, p in inputs.org_papers.items()), key=lambda r: (-r["papers"], r["id"]))
-    roll = comm.rollup(inputs)
-    _csv(out / "groups-labs.csv", lab_rows)
+    roll = comm.rollup(inputs, cfg)
+    is_v2_groups = "organization_anchored_community" in cfg["groups"]
+    if is_v2_groups:
+        _csv(out / "groups-org-anchored-communities.csv", lab_rows)
+    else:
+        _csv(out / "groups-labs.csv", lab_rows)
     _csv(out / "groups-organizations.csv", org_rows)
     _csv(out / "groups-rollup.csv", roll["parents"])
-    _json(out / "groups-summary.json", {"organizations": len(org_rows), "notable_organizations": sum(r["notable"] for r in org_rows), "labs": len(lab_rows),
-                                         "rollup": {k_: v for k_, v in roll.items() if k_ != "parents"} | {"parents_with_children": len(roll["parents"])}})
-    summary["groups"] = {"organizations": len(org_rows), "notable": sum(r["notable"] for r in org_rows), "labs": len(lab_rows), "rollup_parents": len(roll["parents"]),
+    grp_summary = {
+        "organizations": len(org_rows),
+        "notable_organizations": sum(r["notable"] for r in org_rows),
+        "organization_anchored_communities": len(lab_rows),
+        "large_organization_anchored_communities": sum(1 for r in lab_rows if r.get("size_tier") == "large"),
+        "rollup": {k_: v for k_, v in roll.items() if k_ != "parents"} | {"parents_with_children": len(roll["parents"])},
+    }
+    if not is_v2_groups:
+        grp_summary["labs"] = len(lab_rows)
+    _json(out / "groups-summary.json", grp_summary)
+    summary["groups"] = {"organizations": len(org_rows), "notable": sum(r["notable"] for r in org_rows),
+                         "organization_anchored_communities": len(lab_rows), "rollup_parents": len(roll["parents"]),
                          "ministry_part_of_skipped": roll["ministry_part_of_edges_skipped"], "ministry_by_class_label": roll["ministry_part_of_edges_by_class_label"]}
     return summary
 
@@ -312,7 +428,7 @@ def _flat(row: dict) -> dict:
 def stage_trends(ctx: Context) -> dict:
     cfg, inputs = ctx.cfg, ctx.inputs
     out = ctx.out / "trends"
-    summary = {"caveats": trends.CAVEATS, "classes": {}}
+    summary = {"classification_note": cfg["trends"].get("classes_description", trends.DESCRIPTIVE_CLASS_NOTE), "caveats": trends.CAVEATS, "classes": {}}
     for kind in ("Topic", "Method", "Task", "Dataset"):
         rows = trends.subject_trends(inputs, kind, cfg)
         _csv(out / f"trends-{kind.lower()}.csv", [_flat(r) for r in rows])
@@ -343,6 +459,10 @@ def stage_trends(ctx: Context) -> dict:
     _csv(out / "group-interest.csv", all_rows)
     summary["group_interest"] = {"groups": len(groups), "rows": len(all_rows), "organizations": sum(g.startswith("organization:") for g in groups), "n1_communities": sum(g.startswith("n1_") for g in groups),
                                  "kinds": ["Topic", "Method", "Task"], "note": "datasets are skipped for group interest (12% coverage leaves most cells at 0 or 1 paper)"}
+    if cfg["trends"].get("display_aliases"):
+        aliases = trends.build_display_aliases(inputs)
+        _json(out / "display-aliases.json", aliases)
+        summary["display_alias_groups"] = aliases["group_count"]
     _json(out / "trends-summary.json", summary)
     return summary
 

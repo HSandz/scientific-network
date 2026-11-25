@@ -1,0 +1,32 @@
+{
+ "stages": {
+  "sanity": {
+   "seconds": 0.6,
+   "peak_rss_mb_so_far": 1503
+  },
+  "smallworld": {
+   "seconds": 26.2,
+   "peak_rss_mb_so_far": 1503
+  },
+  "ranking": {
+   "seconds": 118.6,
+   "peak_rss_mb_so_far": 1503
+  },
+  "communities": {
+   "seconds": 149.0,
+   "peak_rss_mb_so_far": 1502
+  },
+  "trends": {
+   "seconds": 11.1,
+   "peak_rss_mb_so_far": 1502
+  },
+  "report": {
+   "seconds": 0.6,
+   "peak_rss_mb_so_far": 1503
+  }
+ },
+ "config": "analysis-final-exam-v2",
+ "graph_version": "enriched-cb371912e308",
+ "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+ "peak_rss_mb": 1503
+}

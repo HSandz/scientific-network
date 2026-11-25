@@ -194,3 +194,118 @@ def test_eigenvector_computed_on_undirected_and_not_fatal_on_dag():
     dag.vs["id"] = ["a", "b", "c"]
     df, _meta = ranking.centralities(dag, CFG, 1, weighted=False, betweenness_mode="none")  # must not raise
     assert len(df) == 3
+
+
+def test_phase0_evolution_clustering_equals_headline():
+    # Two-year synthetic cumulative network where LCC < full graph in year 2024 and equals full graph in 2025
+    pairs = {
+        2024: {("a", "b"), ("b", "c"), ("a", "c"), ("x", "y")},
+        2025: {("a", "b"), ("b", "c"), ("a", "c"), ("c", "d"), ("d", "e"), ("c", "e")},
+    }
+    evo = smallworld.evolution(pairs)
+    g2025 = ig.Graph(n=5, edges=[(0, 1), (1, 2), (0, 2), (2, 3), (3, 4), (2, 4)])
+    lcc = smallworld.largest_component(g2025)
+    headline_c = smallworld.clustering(lcc)["average_local"]
+    assert evo[-1]["year"] == 2025
+    assert evo[-1]["C"] == pytest.approx(headline_c)
+    assert evo[-1]["C"] == evo[-1]["C_lcc"]
+
+
+def test_phase0_ppr_lift_ranking_and_min_papers():
+    from scientific_network.analysis.fx_cli import personalized_summary
+    # Star-like graph: org_big is connected to many papers, org_spec only to subject papers
+    nodes = {
+        "t1": {"id": "t1", "label": "Topic", "name": "Topic 1"},
+        "org_big": {"id": "org_big", "label": "Organization", "name": "Big Org"},
+        "org_spec": {"id": "org_spec", "label": "Organization", "name": "Spec Org"},
+        "r1": {"id": "r1", "label": "Researcher", "name": "R1"},
+        "r2": {"id": "r2", "label": "Researcher", "name": "R2"},
+    }
+    for i in range(6):
+        nodes[f"p{i}"] = {"id": f"p{i}", "label": "Paper", "name": f"Paper {i}"}
+    ids = list(nodes)
+    idx = {n: i for i, n in enumerate(ids)}
+    edges = [
+        (idx["p0"], idx["org_spec"]), (idx["p1"], idx["org_spec"]), (idx["p2"], idx["org_spec"]),
+        (idx["p0"], idx["org_big"]), (idx["p3"], idx["org_big"]), (idx["p4"], idx["org_big"]), (idx["p5"], idx["org_big"]),
+        (idx["p0"], idx["r1"]), (idx["p1"], idx["r1"]), (idx["p2"], idx["r2"]),
+    ]
+    g4 = ig.Graph(n=len(ids), edges=edges, directed=False)
+    g4.vs["id"] = ids
+    global_pr = dict(zip(ids, ranking.pagerank(g4, weighted=False)))
+    inputs = SimpleNamespace(
+        nodes=nodes,
+        subject_papers={"Topic": {"t1": {"p0", "p1", "p2"}}},
+        paper_year={f"p{i}": 2024 for i in range(6)},
+        org_papers={"org_spec": {"p0", "p1", "p2"}, "org_big": {"p0", "p3", "p4", "p5"}},
+        researcher_papers={"r1": {"p0", "p1"}, "r2": {"p2"}},
+    )
+    res = personalized_summary(
+        inputs, g4, idx, "Topic", "t1", {"Organization": 5, "Researcher": 5},
+        global_pagerank=global_pr, min_subject_papers={"Organization": 3, "Researcher": 2},
+        fallback_if_fewer_than=1,
+    )
+    assert [o["id"] for o in res["top"]["Organization"]] == ["org_spec"]  # org_big has only 1 subject paper (<3)
+    assert res["top"]["Organization"][0]["lift"] > 1.0
+    assert res["top"]["Organization"][0]["rca"] == pytest.approx(2.0)
+    assert [r["id"] for r in res["top"]["Researcher"]] == ["r1"]
+    assert "top_by_raw_ppr" in res
+
+
+def test_phase0_government_body_rollup_rule():
+    cfg_v2 = yaml.safe_load((Path(__file__).parents[1] / "configs" / "analysis-final-exam-v2.yaml").read_text())
+    nodes = {
+        "c1": {"name": "Inst A", "label": "Organization", "properties": {}},
+        "c2": {"name": "Lab B", "label": "Organization", "properties": {}},
+        "c3": {"name": "Dept C", "label": "Organization", "properties": {}},
+        "sc": {"name": "State Council of the People's Republic of China", "label": "Organization", "properties": {"source": "wikidata_parent"}},
+        "cas": {"name": "Chinese Academy of Sciences", "label": "Organization", "properties": {}},
+        "tsinghua": {"name": "Tsinghua University", "label": "Organization", "properties": {}},
+    }
+    part_of = [
+        {"child": "c1", "parent": "sc", "parent_classes": ["cabinet", "executive branch", "state level institution"], "ministry": False, "ministry_by_class_label": False},
+        {"child": "c2", "parent": "cas", "parent_classes": ["academy of sciences", "academic institution"], "ministry": False, "ministry_by_class_label": False},
+        {"child": "c3", "parent": "tsinghua", "parent_classes": ["higher education institution directly under Ministry of Education of the People's Republic of China", "public university"], "ministry": False, "ministry_by_class_label": True},
+    ]
+    inputs = SimpleNamespace(part_of=part_of, nodes=nodes, org_papers={"c1": {"p1"}, "c2": {"p2"}, "c3": {"p3"}}, notable_orgs=set())
+    r = communities.rollup(inputs, cfg_v2)
+    parents = {row["parent"]: row for row in r["parents"]}
+    assert "sc" not in parents
+    assert "cas" in parents and "tsinghua" in parents
+    assert [e["parent"] for e in r["excluded_parents"]] == ["sc"]
+
+
+def test_phase0_org_anchored_communities_and_display_aliases():
+    cfg_v2 = yaml.safe_load((Path(__file__).parents[1] / "configs" / "analysis-final-exam-v2.yaml").read_text())
+    # Two communities anchored to the same org (one >100 members -> large), with different top topics
+    ids = [f"r{i}" for i in range(115)]
+    membership = [0] * 105 + [1] * 10
+    nodes = {"org1": {"name": "Korea University"}}
+    researcher_orgs = {f"r{i}": {"org1": 1} for i in range(115)}
+    labels = {
+        0: {"Topic": [{"name": "Computer vision"}]},
+        1: {"Topic": [{"name": "Natural language processing"}]},
+    }
+    inputs = SimpleNamespace(nodes=nodes, researcher_orgs=researcher_orgs, notable_orgs={"org1"})
+    rows = communities.organization_anchored_communities(inputs, ids, membership, cfg_v2, labels=labels)
+    assert len(rows) == 2
+    assert rows[0]["size_tier"] == "large" and rows[1]["size_tier"] == "standard"
+    assert rows[0]["display_name"] == "Korea University — Computer vision"
+    assert rows[1]["display_name"] == "Korea University — Natural language processing"
+
+    alias_inputs = SimpleNamespace(
+        nodes={
+            "task:1": {"name": "node classification"},
+            "task:2": {"name": "node classification tasks"},
+            "method:1": {"name": "Large Language Models (LLMs)"},
+            "method:2": {"name": "large language model"},
+        },
+        subject_papers={
+            "Task": {"task:1": {"p1", "p2"}, "task:2": {"p3"}},
+            "Method": {"method:1": {"p4", "p5"}, "method:2": {"p6"}},
+        },
+    )
+    aliases = trends.build_display_aliases(alias_inputs)
+    assert aliases["group_count"] == 2
+    task_aliases = aliases["by_kind"]["Task"][0]["aliases"]
+    assert set(task_aliases) == {"node classification", "node classification tasks"}

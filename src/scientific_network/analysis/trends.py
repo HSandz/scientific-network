@@ -6,10 +6,13 @@ Classes and thresholds come from ``configs/analysis-final-exam-v1.yaml`` (trends
 from __future__ import annotations
 
 from collections import defaultdict
+import re
 
 from scipy import stats
 
 from .fx_data import YEARS, Inputs
+
+DESCRIPTIVE_CLASS_NOTE = "descriptive (p <= 0.10 per subject, no multiple-testing correction)"
 
 CAVEATS = [
     "Only two venues (AAAI and IJCAI) are covered, so a trend is a trend in these proceedings, not in the field.",
@@ -116,3 +119,57 @@ def group_interest(inputs: Inputs, kind: str, groups: dict[str, set[str]], cfg: 
                          "share_2021_2022_mean": sum(early) / len(early) if early else None, "share_2024_2025_mean": sum(late) / len(late) if late else None,
                          "growth_late_minus_early": (sum(late) / len(late) - sum(early) / len(early)) if early and late else None})
     return rows
+
+
+_TRAILING_PAREN_RE = re.compile(r"\s*\([^)]*\)\s*$")
+_GENERIC_SUFFIXES = (" tasks", " task", " methods", " method", " models", " model")
+
+
+def _alias_canonical_key(name: str) -> str:
+    text = _TRAILING_PAREN_RE.sub("", name.strip().lower())
+    text = re.sub(r"[-_/]+", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    for suffix in _GENERIC_SUFFIXES:
+        if text.endswith(suffix) and len(text) > len(suffix) + 3:
+            text = text[: -len(suffix)].strip()
+            break
+    tokens = text.split()
+    if tokens:
+        last = tokens[-1]
+        if len(last) > 4 and last.endswith("ies"):
+            tokens[-1] = last[:-3] + "y"
+        elif len(last) > 4 and last.endswith("s") and not last.endswith(("ss", "us", "is")):
+            tokens[-1] = last[:-1]
+    return " ".join(tokens)
+
+
+def build_display_aliases(inputs: Inputs) -> dict:
+    """Build a display-only alias map grouping near-duplicate subject names within each kind without merging graph entities."""
+    groups_by_kind: dict[str, list[dict]] = {}
+    name_to_ids: dict[str, list[str]] = {}
+    for kind, subjects in inputs.subject_papers.items():
+        buckets: dict[str, list[dict]] = defaultdict(list)
+        for sid, papers in subjects.items():
+            name = inputs.nodes[sid]["name"]
+            key = _alias_canonical_key(name)
+            if not key:
+                continue
+            buckets[key].append({"id": sid, "name": name, "papers": len(papers)})
+            name_to_ids.setdefault(name.lower(), []).append(sid)
+        groups = []
+        for key, members in sorted(buckets.items()):
+            if len(members) > 1:
+                members.sort(key=lambda m: (-m["papers"], m["id"]))
+                groups.append({
+                    "canonical_key": key,
+                    "primary_id": members[0]["id"],
+                    "primary_name": members[0]["name"],
+                    "members": members,
+                    "aliases": [m["name"] for m in members],
+                })
+        groups_by_kind[kind] = groups
+    return {
+        "note": "Display-only alias map for search and presentation; graph entities are never merged.",
+        "by_kind": groups_by_kind,
+        "group_count": sum(len(v) for v in groups_by_kind.values()),
+    }
