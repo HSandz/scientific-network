@@ -1,0 +1,54 @@
+{
+ "APPLIED_TO": {
+  "cross_sentence": {
+   "matched": 39,
+   "precision": {
+    "estimate": 0.2583,
+    "high": 0.3335,
+    "k": 39,
+    "low": 0.1951,
+    "n": 151
+   },
+   "predicted": 151,
+   "reference": 84
+  },
+  "same_sentence": {
+   "matched": 14,
+   "precision": {
+    "estimate": 0.4516,
+    "high": 0.6223,
+    "k": 14,
+    "low": 0.2916,
+    "n": 31
+   },
+   "predicted": 31,
+   "reference": 84
+  }
+ },
+ "EVALUATED_ON": {
+  "cross_sentence": {
+   "matched": 14,
+   "precision": {
+    "estimate": 0.4118,
+    "high": 0.5778,
+    "k": 14,
+    "low": 0.2637,
+    "n": 34
+   },
+   "predicted": 34,
+   "reference": 28
+  },
+  "same_sentence": {
+   "matched": 1,
+   "precision": {
+    "estimate": 1.0,
+    "high": 1.0,
+    "k": 1,
+    "low": 0.2065,
+    "n": 1
+   },
+   "predicted": 1,
+   "reference": 28
+  }
+ }
+}

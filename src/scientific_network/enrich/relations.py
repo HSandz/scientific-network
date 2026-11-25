@@ -54,9 +54,19 @@ def paper_entity_edges(mentions: list[dict], lookup: dict, texts: dict[str, str]
     return edges, evidence
 
 
+SUPPORT_RULE_MULTI = "two_or_more_papers"
+SUPPORT_RULE_SINGLE = "single_paper_same_sentence"
+
+
 def entity_relation_edges(paper_relations: list[dict], lookup: dict, mentions: list[dict], texts: dict[str, str], *,
-                          min_papers: dict[str, int], method_version: str, graph_version: str) -> tuple[list[dict], list[dict], dict]:
-    """APPLIED_TO and EVALUATED_ON, kept when at least ``min_papers[relation]`` distinct papers support the pair."""
+                          min_papers: dict[str, int], method_version: str, graph_version: str,
+                          single_paper_same_sentence: frozenset[str] | None = None) -> tuple[list[dict], list[dict], dict]:
+    """APPLIED_TO and EVALUATED_ON, kept when at least ``min_papers[relation]`` distinct papers support the pair.
+
+    Enrichment v2 (``single_paper_same_sentence`` = the relations it is adopted for, or an empty set): a pair with exactly one
+    supporting paper is also kept when both endpoints are entity nodes and the extractor found them in one sentence. Every edge
+    then records the rule that admitted it in ``properties.support_rule``. ``None`` reproduces the v1 behaviour exactly.
+    """
     spans = {(m["paper_id"], m["type"], m["key"]): m for m in mentions if m["status"] == "kept"}
     support: dict[tuple[str, str, str], dict[str, dict]] = defaultdict(dict)
     for rel in paper_relations:
@@ -67,10 +77,20 @@ def entity_relation_edges(paper_relations: list[dict], lookup: dict, mentions: l
         support[(rel["relation"], head, tail)].setdefault(rel["paper_id"], rel)
     edges, evidence = [], []
     dropped_below = 0
+    admitted_by_rule: dict[str, int] = defaultdict(int)
     for (relation, head, tail), by_paper in sorted(support.items()):
+        rule = None
+        if single_paper_same_sentence is not None:
+            rule = SUPPORT_RULE_MULTI
         if len(by_paper) < min_papers[relation]:
-            dropped_below += 1
-            continue
+            if (single_paper_same_sentence and relation in single_paper_same_sentence and len(by_paper) == 1
+                    and next(iter(by_paper.values()))["same_sentence"]):
+                rule = SUPPORT_RULE_SINGLE
+            else:
+                dropped_below += 1
+                continue
+        if rule:
+            admitted_by_rule[f"{relation}:{rule}"] += 1
         ev_ids = []
         for paper_id, rel in sorted(by_paper.items()):
             h = spans[(paper_id, rel["head_type"], rel["head_key"])]
@@ -87,8 +107,10 @@ def entity_relation_edges(paper_relations: list[dict], lookup: dict, mentions: l
                       "target_id": tail, "evidence_kind": "extracted", "evidence_ids": ev_ids, "method_version": method_version,
                       "graph_version": graph_version, "validation_status": "accepted",
                       "properties": {"support_count": len(papers), "support_paper_ids": papers,
-                                     "same_sentence_papers": sum(1 for r in by_paper.values() if r["same_sentence"])}})
-    return edges, evidence, {"pairs_seen": len(support), "pairs_below_threshold": dropped_below}
+                                     "same_sentence_papers": sum(1 for r in by_paper.values() if r["same_sentence"]),
+                                     **({"support_rule": rule} if rule else {})}})
+    return edges, evidence, {"pairs_seen": len(support), "pairs_below_threshold": dropped_below,
+                             **({"admitted_by_rule": dict(sorted(admitted_by_rule.items()))} if single_paper_same_sentence is not None else {})}
 
 
 def part_of_edges(matches: dict, org_ids: set[str], parent_nodes: dict[str, dict], fetch_rows: dict[str, dict], *,

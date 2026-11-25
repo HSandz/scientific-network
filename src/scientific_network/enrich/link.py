@@ -16,7 +16,7 @@ import numpy as np
 
 from scientific_network.enrich.k1 import write_jsonl
 from scientific_network.enrich.sources import WIKIPEDIA_API, Fetcher, fetch_wikipedia
-from scientific_network.enrich.textutil import normalize
+from scientific_network.enrich.textutil import normalize, token_set
 
 _PAREN = re.compile(r"\s*\([^)]*\)")
 
@@ -62,6 +62,17 @@ def title_match(name: str, title: str) -> bool:
     """The squashed entity name is inside the squashed page title, or the title (without parenthetical) inside the name."""
     page = squash(_PAREN.sub("", title))
     return any(v and (v in squash(title) or (page and page in v)) for v in name_variants(name))
+
+
+def narrower_page(name: str, title: str) -> bool:
+    """Enrichment v2 guard (D042 amendment 2026-11-25): the page title is narrower than the entity.
+
+    True when the title, without a trailing parenthetical, contains every normalized token of the entity name (also without its
+    parenthetical) and at least one more, e.g. "reinforcement learning" against "Reinforcement learning from human feedback".
+    The match is lexical: a lead that defines a narrower subtype under an identical title is not detected.
+    """
+    left, right = token_set(_PAREN.sub("", name)), token_set(_PAREN.sub("", title))
+    return bool(left) and left < right
 
 
 def search_titles(fetcher: Fetcher, name: str, *, limit: int = 5) -> list[str]:
@@ -135,7 +146,8 @@ def fetch_wikipedia_leads(fetcher: Fetcher, titles: list[str], *, batch: int = 2
     return pages
 
 
-def apply_threshold(links: list[dict], *, threshold: float, require_title_match: bool = True) -> list[dict]:
+def apply_threshold(links: list[dict], *, threshold: float, require_title_match: bool = True,
+                    reject_narrower_page: bool = False) -> list[dict]:
     """Accept the best eligible candidate when it clears the score threshold and matches by title; else leave unlinked.
 
     Eligible: has a Wikidata item, is not a disambiguation or list page, and the entity name occurs in the page
@@ -145,7 +157,10 @@ def apply_threshold(links: list[dict], *, threshold: float, require_title_match:
     for link in links:
         best = next((c for c in link["candidates"] if c["wikibase_item"] and not c["excluded"] and c["name_in_page"]), None)
         accepted = best is not None and best["score"] >= threshold and (best["title_match"] or not require_title_match)
-        out.append({"id": link["id"], "linked": accepted, "wikibase_item": best["wikibase_item"] if accepted else None,
+        rejected_narrower = bool(accepted and reject_narrower_page and narrower_page(link["name"], best["title"]))
+        if rejected_narrower:  # v2: an otherwise accepted link to a narrower page becomes unlinked (no fallback to another page)
+            accepted = False
+        out.append({"id": link["id"], "linked": accepted, **({"rejected_narrower_page": best["title"]} if rejected_narrower else {}), "wikibase_item": best["wikibase_item"] if accepted else None,
                     "wikipedia_title": best["title"] if accepted else None, "wikipedia_url": best["url"] if accepted else None,
                     "revision_id": best["revision_id"] if accepted else None, "link_score": best["score"] if best else None})
     return out
