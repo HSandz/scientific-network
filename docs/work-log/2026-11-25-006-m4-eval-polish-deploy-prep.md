@@ -112,6 +112,16 @@ Committed BEFORE running any `split == "test"` question (run-once policy):
 - **Local dashboard load timing (`navigator.spec.ts` Test 10 -> `load-timings.json`)**: Precomputed routes rendered in `< 2000ms` (`trends: 129ms`, `groups: 1541ms`, `communities: 66ms`, `network: 65ms`).
 - **Demo script draft (`docs/final-exam/demo-script-draft.md`)**: 5–7 minute walkthrough using strictly the 7 cached scripted demos (`demo-01`..`demo-07`, disjoint from test) plus live-demo cached fallback plan.
 
+### Phase 4 — Deployment Preparation (Prepared Only; NOT Deployed / Paid / Published)
+
+- **Hosted OpenAI-compatible SLM config & graceful cached-demo fallback (`backend/config.py`, `navigator_service.py`, `tests/test_navigator_api.py`)**:
+  - Added optional env vars `EXPLORER_LLM_BASE_URL`, `EXPLORER_LLM_MODEL`, `EXPLORER_LLM_PROVIDER`, and `EXPLORER_LLM_API_KEY_ENV` (key resolved only from host environment variable, never stored or echoed in `/api/about-data`).
+  - Added graceful `LLMError` fallback in `ask()` and `stream_ask_events()`: matches scripted demos from `demo-cache.json` (`fallback_reason="llm_unavailable_served_cached_demo"`) and returns structured HTTP 200 `status="llm_unavailable"` for custom uncached questions instead of HTTP 500.
+- **Artifact export (`ops/azure/scripts/prepare-navigator-artifacts.py`, `tests/test_navigator_artifacts.py`)**:
+  - Verified clean preview bundle into ignored `reports/runs/WORK-2026-11-25-006/navigator-artifacts-preview/`: `47` files, `52,363,711` bytes (`49.94 MiB`, including `vectors.sqlite` with `16,544` rows and all `analysis-v2/` subdirs), explicitly excluding `chunks.json`.
+- **Deployment docs (`ops/azure/navigator-deployment.md`, `ops/azure/README.md`, `ops/azure/.env.example`)**:
+  - Documented single-Neo4j (`enriched-cb371912e308`) VM architecture, artifact bundle mount, deployment steps, and hosted SLM cost/provider estimates (`$0` cached-demo-only vs ~`$0.10–$2.00` serverless API vs dedicated endpoint). Awaiting explicit user choice and approval before deploying.
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |

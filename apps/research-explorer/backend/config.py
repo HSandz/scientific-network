@@ -70,6 +70,10 @@ class Settings:
     enrichment_quality_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "quality.json"
     cooccurrence_path: Path = REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"
     qa_eval_results_path: Path = REPO_ROOT / "reports" / "final-exam" / "qa-eval-v1" / "results.json"
+    llm_base_url: str | None = None
+    llm_model: str | None = None
+    llm_provider: str | None = None
+    llm_api_key_env: str | None = None
 
 
 def load_settings() -> Settings:
@@ -224,4 +228,8 @@ def load_settings() -> Settings:
                 str(REPO_ROOT / "reports" / "final-exam" / "qa-eval-v1" / "results.json"),
             )
         ),
+        llm_base_url=os.environ.get("EXPLORER_LLM_BASE_URL") or None,
+        llm_model=os.environ.get("EXPLORER_LLM_MODEL") or None,
+        llm_provider=os.environ.get("EXPLORER_LLM_PROVIDER") or None,
+        llm_api_key_env=os.environ.get("EXPLORER_LLM_API_KEY_ENV") or None,
     )

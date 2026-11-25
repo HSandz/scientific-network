@@ -363,18 +363,38 @@ class NavigatorService:
             )
         return self._rag_toolset
 
+    def _llm_runtime_spec(self) -> dict[str, Any]:
+        llm_cfg = self._rag_cfg.get("llm", {})
+        base_url = self.settings.llm_base_url or str(llm_cfg.get("base_url", "http://127.0.0.1:8080/v1"))
+        model = self.settings.llm_model or str(llm_cfg.get("model", "qwen3.5-4b-q4_k_m"))
+        provider = self.settings.llm_provider or str(llm_cfg.get("provider", "local-llama.cpp"))
+        api_key_env = self.settings.llm_api_key_env or llm_cfg.get("api_key_env")
+        return {
+            "base_url": base_url,
+            "model": model,
+            "provider": provider,
+            "api_key_env": str(api_key_env) if api_key_env else None,
+            "temperature": float(llm_cfg.get("temperature", 0.0)),
+            "seed": int(llm_cfg.get("seed", 0)),
+            "max_tokens": int(llm_cfg.get("ask_max_tokens", 900)),
+            "enable_thinking": bool(llm_cfg.get("enable_thinking", False)),
+            "timeout": float(llm_cfg.get("timeout", 60.0)),
+        }
+
     def _get_llm(self) -> LLMClient:
         if self._injected_llm is not None:
             return self._injected_llm
-        llm_cfg = self._rag_cfg.get("llm", {})
+        spec = self._llm_runtime_spec()
         cfg = LLMConfig(
-            base_url=str(llm_cfg.get("base_url", "http://127.0.0.1:8080/v1")),
-            model=str(llm_cfg.get("model", "qwen3.5-4b-q4_k_m")),
-            temperature=float(llm_cfg.get("temperature", 0.0)),
-            seed=int(llm_cfg.get("seed", 0)),
-            max_tokens=int(llm_cfg.get("ask_max_tokens", 900)),
-            enable_thinking=bool(llm_cfg.get("enable_thinking", False)),
-            timeout=float(llm_cfg.get("timeout", 60.0)),
+            base_url=spec["base_url"],
+            model=spec["model"],
+            provider=spec["provider"],
+            api_key_env=spec["api_key_env"],
+            temperature=spec["temperature"],
+            seed=spec["seed"],
+            max_tokens=spec["max_tokens"],
+            enable_thinking=spec["enable_thinking"],
+            timeout=spec["timeout"],
         )
         return LLMClient(cfg)
 
@@ -1246,9 +1266,10 @@ class NavigatorService:
             "rag_reports": rag_stats,
             "qa_eval_v1": qa_eval,
             "runtime_model": {
-                "model_id": "Qwen/Qwen3.5-4B (Q4_K_M, llama.cpp)",
-                "temperature": 0.0,
-                "enable_thinking": False,
+                "model_id": self._llm_runtime_spec()["model"],
+                "provider": self._llm_runtime_spec()["provider"],
+                "temperature": self._llm_runtime_spec()["temperature"],
+                "enable_thinking": self._llm_runtime_spec()["enable_thinking"],
                 "embeddings": "sentence-transformers/all-MiniLM-L6-v2",
             },
             "ai_assessment_disclosure": (
@@ -1384,6 +1405,34 @@ class NavigatorService:
                 return res
         return None
 
+    def _llm_fallback_response(self, question: str, error_msg: str) -> dict[str, Any]:
+        cached = self._lookup_cached_demo(question)
+        if cached is not None:
+            cached["fallback_reason"] = "llm_unavailable_served_cached_demo"
+            return cached
+        return self._normalize_ask_result({
+            "status": "llm_unavailable",
+            "question": question,
+            "mode": "fallback",
+            "answer": (
+                "The live language-model backend is currently unavailable; select one of the pre-cached "
+                "scripted demos or configure EXPLORER_LLM_BASE_URL for interactive queries."
+            ),
+            "faithfulness_passed": True,
+            "faithfulness_errors": [],
+            "steps": [],
+            "subgraph_nodes": [],
+            "subgraph_edges": [],
+            "paper_ids": [],
+            "from_cache": False,
+            "fallback_reason": error_msg,
+            "fallback_available_demos": [
+                {"demo_id": d["demo_id"], "title": d["title"], "question": d["question"]}
+                for d in SCRIPTED_DEMO_QUESTIONS
+            ],
+            "ai_generated_label": "AI-generated from graph data",
+        })
+
     def ask(
         self,
         *,
@@ -1396,19 +1445,25 @@ class NavigatorService:
             cached = self._lookup_cached_demo(question)
             if cached is not None:
                 return cached
-        res = run_ask(
-            question,
-            toolset=self._get_toolset(),
-            llm=self._get_llm(),
-            mode=mode,
-            resolved_overrides=resolved_overrides,
-            vector_store=self._get_vector_store(),
-            embed_fn=self._get_embed_fn(),
-            reports_path=self.rag_dir / "community-reports.json",
-        )
-        res = self._normalize_ask_result(res)
-        res["from_cache"] = False
-        return res
+        try:
+            llm_client = self._get_llm()
+            res = run_ask(
+                question,
+                toolset=self._get_toolset(),
+                llm=llm_client,
+                mode=mode,
+                resolved_overrides=resolved_overrides,
+                vector_store=self._get_vector_store(),
+                embed_fn=self._get_embed_fn(),
+                reports_path=self.rag_dir / "community-reports.json",
+            )
+            res = self._normalize_ask_result(res)
+            res["from_cache"] = False
+            return res
+        except Exception as exc:
+            if exc.__class__.__name__ == "LLMError" or "environment variable" in str(exc) or "request failed" in str(exc):
+                return self._llm_fallback_response(question, str(exc))
+            raise
 
     def stream_ask_events(
         self,
@@ -1434,25 +1489,42 @@ class NavigatorService:
                 yield {"event": "final", "data": cached}
                 return
 
-        for ev in stream_ask(
-            question,
-            toolset=self._get_toolset(),
-            llm=self._get_llm(),
-            mode=mode,
-            resolved_overrides=resolved_overrides,
-            vector_store=self._get_vector_store(),
-            embed_fn=self._get_embed_fn(),
-            reports_path=self.rag_dir / "community-reports.json",
-        ):
-            etype = ev.get("event")
-            data = ev.get("data")
-            if etype == "stage":
-                yield {"event": "status", "data": data}
-            elif etype == "disambiguate":
-                yield {"event": "ambiguous", "data": self._normalize_ask_result(data)}
-            elif etype == "done":
-                norm = self._normalize_ask_result(data)
-                norm["from_cache"] = False
-                yield {"event": "final", "data": norm}
-            elif etype in ("parsed", "plan", "step", "subgraph", "token", "citations"):
-                yield {"event": etype, "data": data}
+        try:
+            llm_client = self._get_llm()
+            for ev in stream_ask(
+                question,
+                toolset=self._get_toolset(),
+                llm=llm_client,
+                mode=mode,
+                resolved_overrides=resolved_overrides,
+                vector_store=self._get_vector_store(),
+                embed_fn=self._get_embed_fn(),
+                reports_path=self.rag_dir / "community-reports.json",
+            ):
+                etype = ev.get("event")
+                data = ev.get("data")
+                if etype == "stage":
+                    yield {"event": "status", "data": data}
+                elif etype == "disambiguate":
+                    yield {"event": "ambiguous", "data": self._normalize_ask_result(data)}
+                elif etype == "done":
+                    norm = self._normalize_ask_result(data)
+                    norm["from_cache"] = False
+                    yield {"event": "final", "data": norm}
+                elif etype in ("parsed", "plan", "step", "subgraph", "token", "citations"):
+                    yield {"event": etype, "data": data}
+        except Exception as exc:
+            if exc.__class__.__name__ != "LLMError" and "environment variable" not in str(exc) and "request failed" not in str(exc):
+                raise
+            fb = self._llm_fallback_response(question, str(exc))
+            yield {"event": "status", "data": {"stage": "fallback", "mode": fb.get("mode", mode)}}
+            if fb.get("from_cache"):
+                yield {"event": "parsed", "data": {"parsed": fb.get("parsed", {}), "linked": fb.get("linked", [])}}
+                yield {"event": "plan", "data": {"plan": fb.get("plan", []), "linked": fb.get("linked", [])}}
+                for st in fb.get("steps", []):
+                    yield {"event": "step", "data": st}
+                yield {"event": "subgraph", "data": fb.get("subgraph", {"nodes": [], "edges": []})}
+            if fb.get("answer"):
+                yield {"event": "token", "data": {"text": fb["answer"]}}
+            yield {"event": "citations", "data": {"paper_ids": fb.get("citations", [])}}
+            yield {"event": "final", "data": fb}

@@ -1,5 +1,7 @@
 # Azure production operations
 
+> **Final-exam Navigator (M4 prep):** For the Research Trend Navigator deployment plan, artifact export (`scripts/prepare-navigator-artifacts.py`), hosted OpenAI-compatible SLM config, and provider cost estimates (prepared locally, not deployed), see [navigator-deployment.md](navigator-deployment.md).
+
 Cloudflare Pages serves the existing React frontend. Caddy on the existing Azure
 VM terminates public HTTPS and forwards `/api/*` to one FastAPI worker. FastAPI
 queries Neo4j Community 5.26.12 over an internal Docker network and reads immutable

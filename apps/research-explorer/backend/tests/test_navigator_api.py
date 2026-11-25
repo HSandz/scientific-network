@@ -219,3 +219,51 @@ def test_node360_explorer_enriched_and_ask_cache_and_sse(nav_client: TestClient)
     # Guardrails: /api/paths still enforces 4096 byte limit, /api/ask allows up to 8192
     assert nav_client.post("/api/paths", content=b"x" * 4097).status_code == 413
     assert nav_client.post("/api/ask", content=b"x" * 8193).status_code == 413
+
+
+def test_hosted_llm_env_config_and_graceful_fallback(tmp_path: Path, monkeypatch, nav_client: TestClient):
+    monkeypatch.setenv("EXPLORER_LLM_BASE_URL", "https://openrouter.example.invalid/v1")
+    monkeypatch.setenv("EXPLORER_LLM_MODEL", "qwen/qwen3.5-4b")
+    monkeypatch.setenv("EXPLORER_LLM_PROVIDER", "openrouter")
+    monkeypatch.setenv("EXPLORER_LLM_API_KEY_ENV", "TEST_HOSTED_LLM_SECRET")
+    monkeypatch.delenv("TEST_HOSTED_LLM_SECRET", raising=False)
+
+    svc = nav_client.app.state.navigator_service if hasattr(nav_client.app.state, "navigator_service") else None
+    rag_dir = svc.rag_dir if svc is not None else Path("reports/final-exam/rag-v1")
+    cfg = replace(
+        load_settings(),
+        rag_reports_dir=rag_dir,
+        rag_vectors_sqlite=tmp_path / "absent.sqlite",
+    )
+    store = ArtifactStore(
+        summary_path=cfg.summary_artifact_path,
+        analysis_path=cfg.analysis_artifact_path,
+        network_views_path=cfg.network_views_path,
+        audit_results_path=cfg.audit_results_path,
+        graph_artifact_path=Path("/nonexistent/graph.json"),
+    )
+    hosted_client = TestClient(create_app(cfg, repo=FakeNeo4jRepository(), store=store, background_warmup=False))
+
+    about = hosted_client.get("/api/about-data").json()
+    assert about["runtime_model"]["model_id"] == "qwen/qwen3.5-4b"
+    assert about["runtime_model"]["provider"] == "openrouter"
+    assert "TEST_HOSTED_LLM_SECRET" not in json.dumps(about)
+
+    # 1. Scripted demo prompt falls back cleanly to cached trace when API key is missing
+    demo_q = "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?"
+    r_demo = hosted_client.post("/api/ask", json={"question": demo_q, "mode": "auto", "stream": False, "use_cache": False})
+    assert r_demo.status_code == 200
+    d_body = r_demo.json()
+    assert d_body["from_cache"] is True
+    assert d_body["fallback_reason"] == "llm_unavailable_served_cached_demo"
+
+    # 2. Custom uncached prompt returns structured non-500 llm_unavailable payload (JSON & SSE)
+    r_custom = hosted_client.post("/api/ask", json={"question": "Custom offline test query?", "mode": "auto", "stream": False, "use_cache": False})
+    assert r_custom.status_code == 200
+    c_body = r_custom.json()
+    assert c_body["status"] == "llm_unavailable"
+    assert len(c_body["fallback_available_demos"]) == 7
+
+    r_sse = hosted_client.post("/api/ask", json={"question": "Custom offline test query?", "mode": "auto", "stream": True, "use_cache": False})
+    assert r_sse.status_code == 200
+    assert "llm_unavailable" in r_sse.text
