@@ -32,6 +32,14 @@ def modularity(g: ig.Graph, membership: list[int], resolution: float) -> float:
     return g.modularity(membership, weights="weight" if "weight" in g.es.attributes() else None, resolution=resolution)
 
 
+def lcc_summary(g: ig.Graph, membership: list[int], resolution: float) -> dict:
+    """Communities and modularity restricted to the largest connected component (the whole-graph figures are inflated by many tiny components)."""
+    keep = max(g.connected_components(), key=len)
+    sub = g.induced_subgraph(keep)
+    m = [membership[v] for v in keep]
+    return {"nodes": len(keep), "communities": len(set(m)), "modularity": modularity(sub, m, 1.0), "modularity_at_resolution": modularity(sub, m, resolution)}
+
+
 def size_summary(membership: list[int]) -> dict:
     sizes = sorted(Counter(membership).values(), reverse=True)
     a = np.asarray(sizes)
@@ -48,7 +56,7 @@ def run_partitions(name: str, g: ig.Graph, cfg: dict, log=print) -> dict:
             cl = leiden(g, res, seed)
             members[(res, seed)] = cl.membership
             out["runs"].append({"resolution": res, "seed": seed, "modularity": modularity(g, cl.membership, 1.0), "modularity_at_resolution": modularity(g, cl.membership, res),
-                                **size_summary(cl.membership)})
+                                "largest_component": lcc_summary(g, cl.membership, res), **size_summary(cl.membership)})
             log(f"  {name} leiden res={res} seed={seed}: {len(set(cl.membership))} communities, Q(1.0)={out['runs'][-1]['modularity']:.4f}")
         pairs = [(a, b) for i, a in enumerate(c["seeds"]) for b in c["seeds"][i + 1:]]
         nmis = [ig.compare_communities(members[(res, a)], members[(res, b)], method="nmi") for a, b in pairs]
@@ -61,7 +69,10 @@ def run_partitions(name: str, g: ig.Graph, cfg: dict, log=print) -> dict:
 
 
 def hierarchy(g: ig.Graph, level0: list[int], resolution: float, seed: int) -> dict:
-    """Level 1: Leiden on the graph contracted by the level-0 communities, so level 1 nests level 0."""
+    """Level 1: Leiden at ``resolution`` on the graph contracted by the level-0 communities, so level 1 nests level 0.
+
+    Resolution 1.0 merges nothing (a converged optimum is stable under aggregation); the config declares a coarser level-1 resolution (change of 2026-11-25).
+    """
     agg = g.copy()
     agg.contract_vertices(level0)
     agg.simplify(combine_edges={"weight": "sum"} if "weight" in g.es.attributes() else "sum", loops=False)
@@ -70,7 +81,7 @@ def hierarchy(g: ig.Graph, level0: list[int], resolution: float, seed: int) -> d
     top = leiden(agg, resolution, seed)
     level1 = [top.membership[c] for c in level0]
     return {"level0_communities": len(set(level0)), "level1_communities": len(set(level1)), "level1_membership": level1,
-            "modularity_level1": modularity(g, level1, 1.0)}
+            "modularity_level1": modularity(g, level1, 1.0), "level1_resolution": resolution}
 
 
 # --- labels -----------------------------------------------------------------------------------------------------------

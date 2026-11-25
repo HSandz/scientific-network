@@ -250,7 +250,7 @@ def stage_communities(ctx: Context) -> dict:
         members = runs.pop("_members")
         h = cfg["communities"]["headline"]
         level0 = members[(h["resolution"], h["seed"])]
-        hier = comm.hierarchy(g, level0, h["resolution"], h["seed"])
+        hier = comm.hierarchy(g, level0, cfg["communities"]["hierarchy_level1_resolution"], h["seed"])
         level1 = hier.pop("level1_membership")
         df = ctx.scores(name)
         ids = g.vs["id"]

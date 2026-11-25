@@ -56,7 +56,8 @@ communities:
   resolutions: [0.8, 1.0, 1.2]
   seeds: [17, 42, 101]
   headline: {resolution: 1.0, seed: 17}
-  hierarchy: "level 0 = headline partition; level 1 = Leiden (resolution 1.0, seed 17) on the aggregated community graph, so level 1 nests level 0"
+  hierarchy: "level 0 = headline partition; level 1 = Leiden at resolution hierarchy_level1_resolution on the aggregated community graph, so level 1 nests level 0 (see changes, 2026-11-25)"
+  hierarchy_level1_resolution: 0.25
   louvain_cross_check: igraph multilevel at the same resolutions, seed 17
   stability: NMI between seeds at each resolution
   labels: {method: c-TF-IDF over the member papers, kinds: [Topic, Method, Task, Organization], top_n: 5, generated_titles: none (M3, specification 6.2)}
@@ -117,3 +118,12 @@ changes:
       the reviewer's count. The 30 extra edges, including United States Department of Energy, Defense, Commerce and Agriculture, therefore stay in the roll-up;
       this is disclosed in the report. Nothing else in this file changed.
     status: made before computing results
+  - date: 2026-11-25
+    what: hierarchy level 1 now uses resolution 0.25 on the aggregated community graph (originally 1.0, the headline resolution)
+    why: |
+      Found after the first S3 run: Leiden at resolution 1.0 on the graph contracted by the level-0 communities merges nothing, so level 1 equalled level 0
+      (N1 3,029 -> 3,029; N2 117 -> 117). A converged modularity optimum is stable under aggregation, so the declared rule could not produce a hierarchy for GraphRAG.
+      0.25 is a round value chosen to coarsen, not tuned against any quality measure; it is run once and not adjusted afterwards. The level-0 partitions, modularity,
+      NMI and every other S3 number are unchanged by this. Also added (reporting only): community counts and modularity restricted to the largest connected component,
+      because N1's whole-graph modularity is inflated by 2,936 components.
+    status: made after the first S3 run, before the level-1 result was read

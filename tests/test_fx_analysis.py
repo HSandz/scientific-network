@@ -102,7 +102,7 @@ def test_leiden_determinism_and_structure():
     assert a == b
     assert len(set(a)) == 2 and a[0] == a[5] and a[6] == a[11] and a[0] != a[6]
     assert ig.compare_communities(a, communities.louvain(g, 1.0, 17).membership, method="nmi") == pytest.approx(1.0)
-    h = communities.hierarchy(g, a, 1.0, 17)
+    h = communities.hierarchy(g, a, 0.25, 17)
     assert h["level0_communities"] == 2 and h["level1_communities"] <= 2
     pc = communities.participation_coefficient(g, a)
     assert pc[5] > pc[0] == 0  # the bridge node has a neighbour in the other community; an interior node has none
