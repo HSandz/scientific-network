@@ -491,8 +491,7 @@ and retrieval quality; confirm their IDs and licences at M0.
 
 GraphRAG-style indexing over v5-enriched:
 
-1. **Community hierarchy:** Leiden levels from §5.3 on the research graph (papers,
-   researchers, organizations, methods, tasks, datasets).
+1. **Community hierarchy:** Leiden levels on a weighted co-occurrence **research graph** of `Method`, `Task`, `Dataset`, and `Topic` nodes (2,020 nodes, 16,072 edges; Level 1 at `res = 1.5` → 18 super-communities; recursive Level 0 at `res = 1.2` → 148 nested leaves, 114 with ≥5 members), plus the S3 N1 and N2 headline communities as people and organization communities (see D042 amendment 2026-11-25 in `decisions.md`).
 2. **Community reports:** for each community at each level, the SLM writes a report
    from structured input only: top entities with metrics, top papers, trend
    figures and member organizations. A report has a title, a summary, key findings

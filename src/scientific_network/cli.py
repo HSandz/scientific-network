@@ -188,6 +188,13 @@ def parser() -> argparse.ArgumentParser:
     qa_refs.add_argument("--receipt", type=Path, default=Path("data/manifests/qa-benchmark-v1/references-v1-receipt.json"))
     qa_refs.add_argument("--neo4j-uri", type=str, default=None)
     qa_refs.add_argument("--min-kept-test", type=int, default=60)
+    rag_build = commands.add_parser("rag-index", help="build Phase 3 GraphRAG community hierarchy, reports, descriptions, and vector stores")
+    rag_build.add_argument("--config", type=Path, default=Path("configs/rag-v1.yaml"))
+    rag_build.add_argument("--skip-llm", action="store_true")
+    rag_build.add_argument("--skip-neo4j", action="store_true")
+    rag_build.add_argument("--load-neo4j-only", action="store_true")
+    rag_build.add_argument("--max-reports", type=int, default=None)
+    rag_build.add_argument("--max-llm-entities", type=int, default=None)
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -469,6 +476,20 @@ def main(argv: list[str] | None = None) -> int:
                 neo4j_uri=args.neo4j_uri,
                 min_kept_test=args.min_kept_test,
             )
+            exit_code = 0
+        elif args.command == "rag-index":
+            if args.load_neo4j_only:
+                from scientific_network.rag.index import load_neo4j_vectors_from_sqlite
+                result = load_neo4j_vectors_from_sqlite(args.config)
+            else:
+                from scientific_network.rag.index import build_full_rag_index
+                result = build_full_rag_index(
+                    args.config,
+                    skip_llm=args.skip_llm,
+                    skip_neo4j=args.skip_neo4j,
+                    max_reports=args.max_reports,
+                    max_llm_entities=args.max_llm_entities,
+                )
             exit_code = 0
         elif args.command == "enrich":
             from scientific_network.enrich.cli import run_enrich

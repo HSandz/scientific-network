@@ -41,6 +41,12 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
   - Same-name researchers return `ambiguous: true` with an OpenAlex-ID choice list; Method/Task/Dataset neighbors supplement sparse extracted edges with shared-paper co-occurrence tagged `source_kind: "paper_cooccurrence"`; `trend` and `find` resolve Phase 0 display aliases.
   - Added `tests/test_rag_tools.py` (2 passed: synthetic offline fixture + live Neo4j 7690 integration test).
 
+- **Phase 3 (D042 amendment & GraphRAG index `rag-v1`):**
+  - Recorded dated D042 amendment (`docs/decisions.md`, `docs/final-exam/specification.md`): weighted co-occurrence research graph (`2,020` nodes, `16,072` edges, LCC `2,016`) partitioned with Leiden (`res=1.5` → `18` Level-1 super-communities; recursive `res=1.2` for L1 ≥ 25 → `148` Level-0 leaves, `114` with ≥ 5 members), alongside S3 N1 (89 ≥ 50 members) and N2 (15 ≥ 10 members).
+  - Added `configs/rag-v1.yaml`, `ops/llm/qwen3.5-4b-q4km-live.env` (`LLM_CTX=16384`, `LLM_PARALLEL=2`), `src/scientific_network/rag/{sqlite_vectors,index,retrieval}.py`, `tests/test_rag_index_retrieval.py` (4 passed), and `research-network rag-index`.
+  - Built 228/233 community reports with `qwen3.5-4b-q4_k_m` (`temperature=0`, `enable_thinking=false`; 209 first-try, 19 retry, 5 dropped for ungrounded numbers; `382,343` prompt / `106,048` completion tokens), 4,316 entity descriptions (231 Wikipedia, 251 LLM from mentions, 3,834 template, 0 failures), 12,000 annotated abstract chunks, SQLite vector store (`data/processed/rag-v1/vectors.sqlite`), and Neo4j vector indexes (`rag_report_vec`, `rag_entity_vec`, `rag_chunk_vec` on `:RagReport`, `:RagEntityDesc`, `:RagChunk`) on Bolt 7690 with core/enrichment counts unchanged (`50,144` non-RAG nodes, `242,048` edges).
+  - Dual-service resource check (`neo4j-enriched` + `sn-llm` live env): host `10 GiB / 11 GiB` used (`1.3 GiB` avail), `sn-llm` `7.238 GiB` RAM & `5,067 / 8,151 MiB` GPU VRAM, `neo4j-enriched` `862.7 MiB` RAM.
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -50,10 +56,12 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 | `uv run pytest -q tests/test_qa_references.py` | exit 0; 2 passed | `tests/test_qa_references.py` |
 | `uv run research-network qa-references` (against Neo4j 7690) | exit 0; 69/80 test kept, 19/20 dev kept | `data/manifests/qa-benchmark-v1/references-v1.jsonl`, `references-v1-receipt.json` |
 | `uv run pytest -v tests/test_rag_tools.py` | exit 0; 2 passed (synthetic + live 7690) | `tests/test_rag_tools.py` |
+| `uv run research-network rag-index --config configs/rag-v1.yaml --skip-neo4j` + `--load-neo4j-only` | exit 0; 228/233 reports, 4,316 descriptions, 12,000 chunks; SQLite + Neo4j 3 vector indexes (`rag_report_vec`, `rag_entity_vec`, `rag_chunk_vec`); non-RAG `50,144` / `242,048` intact | `reports/final-exam/rag-v1/`, `data/processed/rag-v1/vectors.sqlite`, `reports/runs/WORK-2026-11-25-005/rag-index.log` |
+| `uv run pytest -q tests/test_rag_index_retrieval.py` | exit 0; 4 passed | `tests/test_rag_index_retrieval.py` |
 
 ## Decisions
 
-- Pending D042 amendment for GraphRAG community source (Phase 3).
+- **2026-11-25 D042 amendment:** Research-graph Leiden hierarchy (`L1=18` at `res=1.5`, `L0=148` at `res=1.2`, `114` leaves `>=5`) + S3 N1/N2 communities for GraphRAG indexing; `all-MiniLM-L6-v2` retained (`docs/decisions.md`, `docs/final-exam/specification.md`).
 
 ## Open issues and limitations
 

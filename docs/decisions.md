@@ -1530,3 +1530,15 @@ E4 scale after its first result. v3 accuracy therefore rests only on the fresh a
   `MEMBER_OF` result (29/29 with the Claude adjudicator) is 19/30 with unclear counted as incorrect under the non-Claude one; no channel judged any
   `MEMBER_OF` item incorrect, so the evidence is of ambiguity about what "member of a national node" means, not of wrong edges.
 - **Not changed:** no threshold, class list or guard after the amendment; v1, v2 graphs, audits and v4 untouched.
+
+## D042 amendment — GraphRAG community hierarchy, review fixes and index rules (2026-11-25)
+
+In M2 (`WORK-2026-11-25-004`), S3's level-1 contracted Leiden partition at resolution 0.25 barely coarsened N1 (3,029 → 2,973) and collapsed N2's core into one community of 1,837 of 2,047 organizations, so the S3 level-1 hierarchy is not usable as-is for GraphRAG. Recorded before generating GraphRAG reports:
+
+- **Research-graph community hierarchy (for GraphRAG):** Build an undirected weighted co-occurrence graph of all 2,020 `Method`, `Task`, `Dataset`, and `Topic` nodes (edges weighted by shared distinct papers: 16,072 edges, LCC 2,016 nodes).
+  - **Level 1 (coarse super-communities):** Leiden modularity (`RBConfigurationVertexPartition`, `resolution = 1.5`, `seed = 17`) on the LCC → **18** level-1 communities.
+  - **Level 0 (fine leaf communities):** Recursive Leiden (`resolution = 1.2`, `seed = 17`) on the induced subgraph of each level-1 community with ≥25 nodes → **148** strictly nested leaf communities (**114** with ≥5 members, **73** with ≥10 members).
+- **People and organization communities (kept from S3):** Retain N1 headline Leiden (`res = 1.0, seed = 17`, generating reports for communities with `size >= 50`, 89 communities) and N2 headline Leiden (`res = 1.0, seed = 17`, generating reports for communities with `size >= 10`, 15 communities; exposing `res = 0.8` and `1.2` as alternative partitions instead of the collapsed 0.25 level 1).
+- **Minimum report threshold & grounding:** Generate community reports via `Qwen/Qwen3.5-4B` (`qwen3.5-4b-q4_k_m`, `enable_thinking: false`, `temperature: 0`, `seed: 0`, strict JSON schema) from structured graph inputs only for communities meeting size thresholds (research L1 ≥ 5, research L0 ≥ 5, N1 ≥ 50, N2 ≥ 10). Every cited paper ID and numeric figure in a report is checked against its input; failures retry once and are otherwise dropped and logged.
+- **Embeddings:** Keep `sentence-transformers/all-MiniLM-L6-v2` (384-d, 22M, Apache-2.0, already used in v4/enrichment).
+- **Analysis v2 review fixes (`configs/analysis-final-exam-v2.yaml`):** Application dashboards and RAG tools read `reports/final-exam/analysis-v2/` (v1 outputs preserved untouched): lift-ranked subject PPR with declared minimum paper counts, government-body exclusion with research guard in `PART_OF` roll-up, `"organization-anchored communities"` naming with `large` (>100) and topic disambiguation, single LCC `mode="zero"` clustering definition, N3 `in_corpus_citations` + sparsity note, and descriptive trend wording + display-only alias map.

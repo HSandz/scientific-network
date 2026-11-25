@@ -1,0 +1,64 @@
+# GraphRAG index, retrieval, and multi-hop configuration (specification §6.2–6.3; D042 amendment 2026-11-25)
+version: rag-v1
+graph:
+  path: data/processed/enriched-graph-v3/graph.json
+  graph_version: enriched-cb371912e308
+  graph_sha256: 37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3
+analysis_dir: reports/final-exam/analysis-v2
+output_dir: reports/final-exam/rag-v1
+vectors_sqlite_path: data/processed/rag-v1/vectors.sqlite
+
+llm:
+  base_url: http://127.0.0.1:8080/v1
+  model: qwen3.5-4b-q4_k_m
+  revision: e87f176479d0855a907a41277aca2f8ee7a09523
+  provider: local-llama.cpp
+  temperature: 0.0
+  seed: 0
+  enable_thinking: false
+  max_tokens: 1200
+  timeout: 180.0
+  cache_dir: data/interim/rag-v1/llm-cache
+  log_path: reports/runs/WORK-2026-11-25-005/llm-calls.jsonl
+
+communities:
+  research_graph:
+    labels: [Method, Task, Dataset, Topic]
+    edge_weight: distinct_shared_papers
+    min_edge_weight: 1
+    seed: 17
+    level1_resolution: 1.5
+    level0_resolution: 1.2
+    level0_split_min_size: 25
+    min_members_for_report: 5
+  n1:
+    min_members_for_report: 50
+  n2:
+    min_members_for_report: 10
+    alternative_resolutions: [0.8, 1.2]
+
+reports:
+  prompt_version: rag-community-report-v2
+  max_entities_in_input: 10
+  max_papers_in_input: 8
+  ai_generated_label: "AI-generated from graph data"
+
+entity_descriptions:
+  prompt_version: rag-entity-desc-v1
+  llm_min_paper_count: 10
+  ai_generated_label: "AI-generated from mentions"
+
+embeddings:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  dimension: 384
+  batch_size: 128
+  max_chunk_sentences: 12000
+
+retrieval:
+  local_context_char_budget: 14000
+  local_top_reports: 4
+  local_top_entities: 8
+  local_top_chunks: 12
+  global_top_reports: 14
+  global_map_batch_size: 5

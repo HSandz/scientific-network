@@ -1,0 +1,40 @@
+{
+  "attempted": 233,
+  "succeeded_first_try": 209,
+  "succeeded_retry": 19,
+  "dropped": 5,
+  "prompt_tokens": 382343,
+  "completion_tokens": 106048,
+  "by_network": {
+    "research": 127,
+    "N1": 89,
+    "N2": 12
+  },
+  "dropped_details": [
+    {
+      "community_id": "research:L1:2",
+      "network": "research",
+      "reason": "ungrounded number 647 not present in structured input; ungrounded number 195 not present in structured input; ungrounded number 647 not present in structured input; ungrounded number 195 not present in structured input; ungrounded number 195 not present in structured input"
+    },
+    {
+      "community_id": "research:L1:17",
+      "network": "research",
+      "reason": "ungrounded number 26 not present in structured input"
+    },
+    {
+      "community_id": "research:L0:1",
+      "network": "research",
+      "reason": "ungrounded number 416 not present in structured input; ungrounded number 416 not present in structured input"
+    },
+    {
+      "community_id": "research:L0:48",
+      "network": "research",
+      "reason": "ungrounded number 52 not present in structured input"
+    },
+    {
+      "community_id": "research:L0:30",
+      "network": "research",
+      "reason": "ungrounded number -2011 not present in structured input; ungrounded number -2011 not present in structured input"
+    }
+  ]
+}
