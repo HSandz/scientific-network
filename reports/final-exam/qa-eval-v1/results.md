@@ -124,3 +124,26 @@ All S2 items were cited on their line.
 Both systems are wrong or unsupported on many hop-2 items. **AI-assessed:** these are not human
 annotations; Wilson intervals cover sampling only, not evaluator error; C is not independent of B;
 the design is post hoc.
+
+### 2026-11-26 — Factual scorer depends on the Python hash seed (WORK-2026-11-26-001)
+
+The unified entity resolver accepts exact alias matches while iterating a Python `set`, so the order
+of resolved IDs depends on the process's `PYTHONHASHSEED`. That order matters because ranked-list
+answers are scored on a top-k slice. The §1 figures came from a single scoring process with a random
+hash seed, which cannot be reproduced exactly.
+
+The frozen `raw-outputs.jsonl` was re-scored under `PYTHONHASHSEED` 0–19 in an ignored scratch
+directory. No system was re-run, and the committed `factual-scores.json` is unchanged (SHA-256
+`ca8735fc…`).
+
+| System | §1 factual overall | Min over 20 seeds | Mean | Max |
+| --- | --- | --- | --- | --- |
+| S1_slm_only | 0.1242 | 0.1168 | 0.1211 | 0.1242 |
+| S2_vector_rag | 0.0547 | 0.0361 | 0.0426 | 0.0547 |
+| S3_graphrag | 0.1630 | 0.1519 | 0.1639 | 0.1815 |
+| S4_multihop | 0.4273 | 0.4051 | 0.4191 | 0.4292 |
+
+The ranking S4 > S3 > S1 > S2 holds at every seed. S4's spread is 0.405–0.429. The §1 figures sit
+within each range: at its upper end for S1, S2 and S4, and near the mean for S3. Per-seed values are
+in [`scorer-hashseed-sensitivity.json`](scorer-hashseed-sensitivity.json). The frozen harness was not
+changed. Later evaluations should fix the seed or sort the spans.

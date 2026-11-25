@@ -683,5 +683,60 @@
     },
     "position": "Added 2026-11-26 after the evaluation, next to and not replacing the frozen graph-agreement factual scores; existing keys of this file are unchanged.",
     "items_file": "reports/final-exam/qa-eval-v1/supplementary-precision.json"
+  },
+  "scorer_hashseed_sensitivity": {
+    "added": "2026-11-26",
+    "reason": "UnifiedEntityResolver.resolve iterates a set of normalized spans; resolved-ID order (and the ranked_list top-k slice) depends on PYTHONHASHSEED. Existing raw outputs re-scored only; no system was run.",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "file": "reports/final-exam/qa-eval-v1/scorer-hashseed-sensitivity.json",
+    "factual_overall": {
+      "S1_slm_only": {
+        "min": 0.1168,
+        "mean": 0.1211,
+        "max": 0.1242,
+        "n_seeds": 20
+      },
+      "S2_vector_rag": {
+        "min": 0.0361,
+        "mean": 0.0426,
+        "max": 0.0547,
+        "n_seeds": 20
+      },
+      "S3_graphrag": {
+        "min": 0.1519,
+        "mean": 0.1639,
+        "max": 0.1815,
+        "n_seeds": 20
+      },
+      "S4_multihop": {
+        "min": 0.4051,
+        "mean": 0.4191,
+        "max": 0.4292,
+        "n_seeds": 20
+      }
+    },
+    "ranking_stable_across_seeds": true,
+    "frozen_factual_scores_unchanged": true
   }
 }
