@@ -1,0 +1,112 @@
+{
+ "config_version": "enrichment-v2",
+ "status": "rules_declared_adoption_pending",
+ "declared_at": "2026-11-25",
+ "decision": "docs/decisions.md D042 amendment 'Enrichment v2: rules and acceptance criteria declared before measurement' (2026-11-25)",
+ "disclosure": "Rules were motivated by v1 E4 audit findings; they were designed and measured on material outside the v1 audited items (see the amendment).",
+ "base_config": "configs/enrichment-v1.json",
+ "inherits_unchanged": [
+  "text",
+  "encoder",
+  "slm",
+  "node_threshold_papers",
+  "merge_threshold",
+  "linking.threshold",
+  "linking.candidates",
+  "linking.score"
+ ],
+ "relation_thresholds": {
+  "evaluated_on_min_papers": 2,
+  "applied_to_min_papers": 2,
+  "related_to_min_cooccurring_papers": 3
+ },
+ "rules": {
+  "part_of": {
+   "id": "part_of_v2",
+   "adopted": "pending",
+   "superclass_depth": 3,
+   "wikidata_properties": [
+    "P749",
+    "P361"
+   ],
+   "property_preference": "P749 over P361 for the shown evidence; the statement qualifiers (end time P582, deprecated rank) decide",
+   "allowed_classes": {
+    "Q43229": "organization",
+    "Q327333": "government agency",
+    "Q192350": "ministry"
+   },
+   "excluded_classes": {
+    "Q223371": "stock market index",
+    "Q1020008": "market index",
+    "Q25472932": "index",
+    "Q1738991": "index number",
+    "Q12139612": "list",
+    "Q13406463": "Wikimedia list article",
+    "Q67197389": "Enumeration of 500",
+    "Q5760634": "hectad",
+    "Q135236673": "Pentacontad"
+   },
+   "consortium_classes": {
+    "Q194166": "consortium",
+    "Q11902868": "university consortium",
+    "Q3412198": "consortium of universities in France",
+    "Q15974764": "Group of universities and institutions (France)",
+    "Q878249": "alliance",
+    "Q131421938": "university alliance",
+    "Q56525733": "European University Alliance",
+    "Q3457065": "university network",
+    "Q131905784": "education network",
+    "Q1900326": "network",
+    "Q48204": "voluntary association",
+    "Q16887380": "group",
+    "Q109490328": "ELIXIR Node"
+   },
+   "whole_organization_classes_via_closure": {
+    "Q3918": "university"
+   },
+   "subordinate_classes_direct_instance_of_only": {
+    "Q180958": "faculty",
+    "Q2366457": "department",
+    "Q643589": "department",
+    "Q2467461": "academic department",
+    "Q9261468": "organizational subdivision",
+    "Q23005223": "division of an educational institution",
+    "Q334453": "division",
+    "Q31855": "research institute",
+    "Q1664720": "institute",
+    "Q7315155": "research center"
+   },
+   "order_of_checks": [
+    "end_dated",
+    "excluded_class",
+    "not_organization",
+    "reversed_direction",
+    "consortium_or_association",
+    "implausible_type_order"
+   ],
+   "member_of": {
+    "adopted": "pending",
+    "predicate": "MEMBER_OF",
+    "source": "Organization",
+    "target": "Organization",
+    "evidence_kind": "wikidata"
+   }
+  },
+  "single_paper_same_sentence": {
+   "id": "single_paper_same_sentence_v2",
+   "relations": {
+    "APPLIED_TO": "pending",
+    "EVALUATED_ON": "pending"
+   },
+   "support_rule_values": [
+    "two_or_more_papers",
+    "single_paper_same_sentence"
+   ]
+  },
+  "link_guard": {
+   "id": "narrower_page_v2",
+   "adopted": "pending",
+   "guard": "title has every token of the entity name plus at least one more (link.narrower_page)"
+  }
+ }
+}
