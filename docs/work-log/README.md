@@ -233,3 +233,5 @@ text into the journal.
 - [WORK-2026-11-25-001 — Enrichment review fixes](2026-11-25-001-enrichment-review-fixes.md): completed; shared-paper co-occurrence for method-task-dataset (Method-Task 2,864 pairs at one paper, 207 at two), PART_OF v2 0.72 vs v1 0.69, evaluator models and evidence recorded.
 
 - [WORK-2026-11-24-004 — Enrichment track A, Phases 2-5](2026-11-24-004-enrichment-e1-e4.md): completed; full-corpus SLM, E2 entities (1,991 nodes), E3 relations, v5 graph loaded on 7690, E4 AI-assessed audit: entity precision 0.927, linking 0.800 (target missed).
+
+- [WORK-2026-11-25-002 — Enrichment v2](2026-11-25-002-enrichment-v2.md): completed; `MEMBER_OF` (85) and single-paper EVALUATED_ON (31) adopted, PART_OF v2, single-paper APPLIED_TO and the link guard not adopted under declared criteria; E4 v2 on fresh samples; graph `enriched-827be09bc987` loaded on 7690.

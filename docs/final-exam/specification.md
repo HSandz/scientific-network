@@ -307,6 +307,14 @@ Rules:
   precision ≥0.85, relation precision ≥0.80, linking accuracy ≥0.85. A miss is
   reported, not hidden.
 
+> **Note, 2026-11-25 (E4 v2, graph `enriched-827be09bc987`).** Only the axes that v2 changed were re-audited, on fresh samples that
+> exclude every v1-audited item, with the same A/B/C workflow (all items double-judged because each axis has 50 or fewer items): `EVALUATED_ON`
+> single paper, all 27 new edges, 26 correct (0.963, Wilson [0.817, 0.993]); `MEMBER_OF`, 30 of 85, 29 of 29 decided with one unclear (0.967
+> with unclear as incorrect). `MEMBER_OF` has no declared target, and its A/B agreement was low (kappa 0.144; most disputes were whether a
+> partner of a consortium node counts as a member), so its figure carries that caveat. Axes whose rule was not adopted (`PART_OF` 0.69,
+> linking 0.80, both below target) keep their v1 figures, labelled as carried over in `reports/enrichment-v2/quality.md`. These are
+> AI-assessed figures; the Wilson intervals exclude evaluator error.
+
 ## 5. Social network analysis (S1–S3)
 
 All analysis runs on fixed graph versions with seeds and writes versioned JSON
