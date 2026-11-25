@@ -1,0 +1,9 @@
+{
+ "evaluation_kind": "ai_assessed_development_material",
+ "labeler": "building session (Claude Sonnet 5.5)",
+ "labels": "reports/enrichment-v2/dev/link-dev-labels.jsonl",
+ "note": "development material only; not an independent audit; frozen before the rule was applied",
+ "purpose": "enrichment v2 linking development sample (60 linked entities outside the 100 audited; seed 2026112501, purpose dev-link)",
+ "rows": 60,
+ "sha256": "c953536255e68f01e76e56bd0ebb3c8250e55dc2ad8c6dffc657ec1daa0b5d1d"
+}

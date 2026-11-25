@@ -1,0 +1,60 @@
+{"borderline": false, "entity": "Unlearning", "label": "right", "node_id": "task:Q118970497", "note": "", "type": "Task", "wikipedia_title": "Machine unlearning"}
+{"borderline": false, "entity": "Distributed Learning", "label": "wrong", "node_id": "task:Q21013010", "note": "page is the education sense", "type": "Task", "wikipedia_title": "Distributed learning"}
+{"borderline": false, "entity": "Anomaly Detection", "label": "right", "node_id": "task:Q3560506", "note": "", "type": "Task", "wikipedia_title": "Anomaly detection"}
+{"borderline": false, "entity": "Batch Normalization", "label": "right", "node_id": "method:Q55080248", "note": "", "type": "Method", "wikipedia_title": "Batch normalization"}
+{"borderline": false, "entity": "Kalman Filter", "label": "right", "node_id": "method:Q846780", "note": "", "type": "Method", "wikipedia_title": "Kalman filter"}
+{"borderline": false, "entity": "Large Language Models (LLMs)", "label": "broader", "node_id": "method:Q3621696", "note": "Language model is broader than large language models", "type": "Method", "wikipedia_title": "Language model"}
+{"borderline": false, "entity": "energy-based model", "label": "right", "node_id": "method:Q85759291", "note": "", "type": "Method", "wikipedia_title": "Energy-based model"}
+{"borderline": false, "entity": "Thompson Sampling", "label": "right", "node_id": "method:Q7795822", "note": "", "type": "Method", "wikipedia_title": "Thompson sampling"}
+{"borderline": false, "entity": "Conditional Random Field", "label": "right", "node_id": "method:Q1124538", "note": "", "type": "Method", "wikipedia_title": "Conditional random field"}
+{"borderline": false, "entity": "hyperparameter optimization", "label": "right", "node_id": "task:Q48996162", "note": "", "type": "Task", "wikipedia_title": "Hyperparameter optimization"}
+{"borderline": false, "entity": "label propagation", "label": "right", "node_id": "method:Q25111428", "note": "", "type": "Method", "wikipedia_title": "Label propagation algorithm"}
+{"borderline": false, "entity": "multi-layer perceptron", "label": "right", "node_id": "method:Q2991667", "note": "", "type": "Method", "wikipedia_title": "Multilayer perceptron"}
+{"borderline": true, "entity": "algorithmic stability", "label": "right", "node_id": "method:Q7595718", "note": "", "type": "Method", "wikipedia_title": "Stability (learning theory)"}
+{"borderline": false, "entity": "Crossover", "label": "wrong", "node_id": "method:Q225458", "note": "disambiguation page", "type": "Method", "wikipedia_title": "Crossover"}
+{"borderline": false, "entity": "Fashion-MNIST", "label": "right", "node_id": "dataset:Q41074334", "note": "", "type": "Dataset", "wikipedia_title": "Fashion-MNIST"}
+{"borderline": false, "entity": "SVD", "label": "wrong", "node_id": "method:Q17098361", "note": "K-SVD is a different algorithm", "type": "Method", "wikipedia_title": "K-SVD"}
+{"borderline": false, "entity": "Keyword Spotting", "label": "right", "node_id": "task:Q6398558", "note": "", "type": "Task", "wikipedia_title": "Keyword spotting"}
+{"borderline": false, "entity": "pre-training", "label": "narrower", "node_id": "method:Q124169113", "note": "CLIP is one pre-training method", "type": "Method", "wikipedia_title": "Contrastive language–image pre-training"}
+{"borderline": false, "entity": "online learning", "label": "wrong", "node_id": "task:Q15946010", "note": "disambiguation-like page about e-learning", "type": "Task", "wikipedia_title": "Online learning"}
+{"borderline": false, "entity": "Automatic Speech Recognition", "label": "right", "node_id": "task:Q189436", "note": "", "type": "Task", "wikipedia_title": "Speech recognition"}
+{"borderline": false, "entity": "Lyapunov function", "label": "right", "node_id": "method:Q2337858", "note": "", "type": "Method", "wikipedia_title": "Lyapunov function"}
+{"borderline": false, "entity": "U-Net", "label": "right", "node_id": "method:Q55636383", "note": "", "type": "Method", "wikipedia_title": "U-Net"}
+{"borderline": false, "entity": "evolutionary algorithm", "label": "right", "node_id": "method:Q14489129", "note": "", "type": "Method", "wikipedia_title": "Evolutionary algorithm"}
+{"borderline": false, "entity": "question answering", "label": "right", "node_id": "task:Q1074173", "note": "", "type": "Task", "wikipedia_title": "Question answering"}
+{"borderline": true, "entity": "code generation", "label": "broader", "node_id": "task:Q1105666", "note": "compiler code generation, not neural code generation", "type": "Task", "wikipedia_title": "Code generation"}
+{"borderline": false, "entity": "ensemble learning", "label": "right", "node_id": "method:Q245652", "note": "", "type": "Method", "wikipedia_title": "Ensemble learning"}
+{"borderline": false, "entity": "3D pose estimation", "label": "right", "node_id": "task:Q4636322", "note": "", "type": "Task", "wikipedia_title": "3D pose estimation"}
+{"borderline": false, "entity": "reinforcement learning", "label": "right", "node_id": "method:Q830687", "note": "", "type": "Method", "wikipedia_title": "Reinforcement learning"}
+{"borderline": false, "entity": "Nash equilibrium", "label": "right", "node_id": "method:Q23389", "note": "", "type": "Method", "wikipedia_title": "Nash equilibrium"}
+{"borderline": false, "entity": "Graph kernels", "label": "right", "node_id": "method:Q11731931", "note": "", "type": "Method", "wikipedia_title": "Graph kernel"}
+{"borderline": false, "entity": "Gaussian Processes", "label": "right", "node_id": "method:Q1496376", "note": "", "type": "Method", "wikipedia_title": "Gaussian process"}
+{"borderline": false, "entity": "Uncertainty Quantification", "label": "right", "node_id": "task:Q7882499", "note": "", "type": "Task", "wikipedia_title": "Uncertainty quantification"}
+{"borderline": false, "entity": "stochastic gradient descent", "label": "right", "node_id": "method:Q7617819", "note": "", "type": "Method", "wikipedia_title": "Stochastic gradient descent"}
+{"borderline": false, "entity": "Monte Carlo Tree Search", "label": "right", "node_id": "method:Q11785332", "note": "", "type": "Method", "wikipedia_title": "Monte Carlo tree search"}
+{"borderline": false, "entity": "uncertainty quantification", "label": "right", "node_id": "method:Q7882499", "note": "", "type": "Method", "wikipedia_title": "Uncertainty quantification"}
+{"borderline": false, "entity": "random forests", "label": "right", "node_id": "method:Q245748", "note": "", "type": "Method", "wikipedia_title": "Random forest"}
+{"borderline": false, "entity": "Mixture of Experts", "label": "right", "node_id": "method:Q30688561", "note": "", "type": "Method", "wikipedia_title": "Mixture of experts"}
+{"borderline": false, "entity": "conformal prediction", "label": "right", "node_id": "method:Q108882887", "note": "", "type": "Method", "wikipedia_title": "Conformal prediction"}
+{"borderline": false, "entity": "Principal Component Analysis", "label": "wrong", "node_id": "method:Q5156694", "note": "page is a disambiguation of component analysis", "type": "Method", "wikipedia_title": "Component analysis"}
+{"borderline": false, "entity": "EfficientNet", "label": "right", "node_id": "method:Q116493015", "note": "", "type": "Method", "wikipedia_title": "EfficientNet"}
+{"borderline": false, "entity": "situation calculus", "label": "right", "node_id": "method:Q1559077", "note": "", "type": "Method", "wikipedia_title": "Situation calculus"}
+{"borderline": false, "entity": "Multi-Label Classification", "label": "right", "node_id": "task:Q3553958", "note": "", "type": "Task", "wikipedia_title": "Multi-label classification"}
+{"borderline": true, "entity": "3D Gaussian Splatting", "label": "right", "node_id": "method:Q123134457", "note": "", "type": "Method", "wikipedia_title": "Gaussian splatting"}
+{"borderline": false, "entity": "Augmented Lagrangian Method", "label": "right", "node_id": "method:Q4820432", "note": "", "type": "Method", "wikipedia_title": "Augmented Lagrangian method"}
+{"borderline": false, "entity": "attention", "label": "right", "node_id": "method:Q103701642", "note": "", "type": "Method", "wikipedia_title": "Attention (machine learning)"}
+{"borderline": false, "entity": "data augmentation", "label": "wrong", "node_id": "task:Q85014143", "note": "statistical data augmentation, a different concept", "type": "Task", "wikipedia_title": "Data augmentation"}
+{"borderline": false, "entity": "Discrete Cosine Transform", "label": "right", "node_id": "method:Q2877", "note": "", "type": "Method", "wikipedia_title": "Discrete cosine transform"}
+{"borderline": false, "entity": "Multi-Task Learning", "label": "right", "node_id": "task:Q6934509", "note": "", "type": "Task", "wikipedia_title": "Multi-task learning"}
+{"borderline": false, "entity": "Proximal Policy Optimization", "label": "right", "node_id": "method:Q112150238", "note": "", "type": "Method", "wikipedia_title": "Proximal policy optimization"}
+{"borderline": false, "entity": "captioning", "label": "wrong", "node_id": "task:Q2367247", "note": "closed captioning, not image captioning", "type": "Task", "wikipedia_title": "Closed captioning"}
+{"borderline": false, "entity": "neural tangent kernel", "label": "right", "node_id": "method:Q85788335", "note": "", "type": "Method", "wikipedia_title": "Neural tangent kernel"}
+{"borderline": false, "entity": "back-propagation", "label": "right", "node_id": "method:Q798503", "note": "", "type": "Method", "wikipedia_title": "Backpropagation"}
+{"borderline": false, "entity": "Job-shop Scheduling Problem (JSP)", "label": "right", "node_id": "task:Q6206757", "note": "", "type": "Task", "wikipedia_title": "Job-shop scheduling"}
+{"borderline": false, "entity": "Emotion Recognition", "label": "narrower", "node_id": "task:Q96377243", "note": "conversation-specific page", "type": "Task", "wikipedia_title": "Emotion recognition in conversation"}
+{"borderline": false, "entity": "Knapsack Problem", "label": "right", "node_id": "task:Q864457", "note": "", "type": "Task", "wikipedia_title": "Knapsack problem"}
+{"borderline": false, "entity": "game theory", "label": "narrower", "node_id": "method:Q1320931", "note": "combinatorial game theory is a subfield", "type": "Method", "wikipedia_title": "Combinatorial game theory"}
+{"borderline": false, "entity": "Bayesian optimization", "label": "right", "node_id": "method:Q17002908", "note": "", "type": "Method", "wikipedia_title": "Bayesian optimization"}
+{"borderline": false, "entity": "diffusion models", "label": "right", "node_id": "method:Q114617315", "note": "", "type": "Method", "wikipedia_title": "Diffusion model"}
+{"borderline": false, "entity": "Point-of-Interest (POI) recommendation", "label": "wrong", "node_id": "task:Q960648", "note": "POI concept page, not POI recommendation", "type": "Task", "wikipedia_title": "Point of interest"}
+{"borderline": false, "entity": "Stable Diffusion", "label": "right", "node_id": "method:Q113660857", "note": "", "type": "Method", "wikipedia_title": "Stable Diffusion"}
