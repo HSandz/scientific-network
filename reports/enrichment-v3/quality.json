@@ -1,0 +1,578 @@
+{
+ "applied_to_development_decision": {
+  "adopted": true,
+  "correct": 38,
+  "criterion": "adopt iff correct/total >= 0.80, unclear counted as incorrect (D042 v3 amendment)",
+  "incorrect": 2,
+  "informational_decided_only": {
+   "estimate": 0.95,
+   "high": 0.9862,
+   "k": 38,
+   "low": 0.835,
+   "n": 40
+  },
+  "n": 40,
+  "share_unclear_as_incorrect": 0.95,
+  "unclear": 0,
+  "wilson": {
+   "estimate": 0.95,
+   "high": 0.9862,
+   "k": 38,
+   "low": 0.835,
+   "n": 40
+  }
+ },
+ "carried_over": {
+  "applied_to_v1_two_or_more_papers": {
+   "at_least_half_support": 1.0,
+   "every_shown_paper_supports": 0.9375,
+   "sensitivity_unclear_as_incorrect": 0.9375
+  },
+  "entity_precision": {
+   "estimate": 0.9271,
+   "high": 0.9518,
+   "judged": 292,
+   "k": 267,
+   "low": 0.8911,
+   "n": 288,
+   "sampled": 292,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.9144,
+    "high": 0.9413,
+    "k": 267,
+    "low": 0.8767,
+    "n": 292
+   },
+   "unclear": 4
+  },
+  "evaluated_on_v1": {
+   "at_least_half_support": 1.0,
+   "every_shown_paper_supports": 1.0,
+   "sensitivity_unclear_as_incorrect": 1.0
+  },
+  "paper_edges": {
+   "ADDRESSES_TASK": {
+    "estimate": 0.9455,
+    "high": 0.9813,
+    "judged": 58,
+    "k": 52,
+    "low": 0.8515,
+    "n": 55,
+    "sampled": 58,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8966,
+     "high": 0.9517,
+     "k": 52,
+     "low": 0.7921,
+     "n": 58
+    },
+    "unclear": 3
+   },
+   "USES_DATASET": {
+    "estimate": 0.9231,
+    "high": 0.9786,
+    "judged": 27,
+    "k": 24,
+    "low": 0.7586,
+    "n": 26,
+    "sampled": 27,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8889,
+     "high": 0.9615,
+     "k": 24,
+     "low": 0.7194,
+     "n": 27
+    },
+    "unclear": 1
+   },
+   "USES_METHOD": {
+    "estimate": 0.939,
+    "high": 0.9737,
+    "judged": 94,
+    "k": 77,
+    "low": 0.8651,
+    "n": 82,
+    "sampled": 94,
+    "sensitivity_unclear_as_incorrect": {
+     "estimate": 0.8191,
+     "high": 0.8839,
+     "k": 77,
+     "low": 0.7293,
+     "n": 94
+    },
+    "unclear": 12
+   }
+  },
+  "related_to": {
+   "estimate": 0.625,
+   "high": 0.8152,
+   "judged": 16,
+   "k": 10,
+   "low": 0.3864,
+   "n": 16,
+   "sampled": 16,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.625,
+    "high": 0.8152,
+    "k": 10,
+    "low": 0.3864,
+    "n": 16
+   },
+   "unclear": 0
+  },
+  "v1_linking": {
+   "estimate": 0.8,
+   "high": 0.8666,
+   "judged": 100,
+   "k": 80,
+   "low": 0.7112,
+   "n": 100,
+   "sampled": 100,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.8,
+    "high": 0.8666,
+    "k": 80,
+    "low": 0.7112,
+    "n": 100
+   },
+   "unclear": 0
+  },
+  "v1_part_of_names_only": {
+   "estimate": 0.6944,
+   "high": 0.82,
+   "judged": 50,
+   "k": 25,
+   "low": 0.5314,
+   "n": 36,
+   "sampled": 50,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.5,
+    "high": 0.6336,
+    "k": 25,
+    "low": 0.3664,
+    "n": 50
+   },
+   "unclear": 14
+  },
+  "v1_part_of_with_statement": {
+   "estimate": 0.72,
+   "high": 0.8253,
+   "judged": 50,
+   "k": 36,
+   "low": 0.5833,
+   "n": 50,
+   "sampled": 50,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.72,
+    "high": 0.8253,
+    "k": 36,
+    "low": 0.5833,
+    "n": 50
+   },
+   "unclear": 0
+  },
+  "v1_recall": {
+   "estimate": 0.5898,
+   "high": 0.6413,
+   "k": 197,
+   "low": 0.5363,
+   "n": 334
+  },
+  "v2_evaluated_on_single_paper": {
+   "estimate": 0.963,
+   "high": 0.9934,
+   "k": 26,
+   "low": 0.8172,
+   "n": 27
+  },
+  "v2_member_of": {
+   "estimate": 1.0,
+   "high": 1.0,
+   "k": 29,
+   "low": 0.883,
+   "n": 29
+  }
+ },
+ "counts_v1_v2_v3": {
+  "edges_ADDRESSES_TASK": {
+   "v1": 4591,
+   "v2": 4591,
+   "v3": 4591
+  },
+  "edges_APPLIED_TO": {
+   "v1": 32,
+   "v2": 32,
+   "v3": 167
+  },
+  "edges_EVALUATED_ON": {
+   "v1": 4,
+   "v2": 31,
+   "v3": 31
+  },
+  "edges_MEMBER_OF": {
+   "v1": 0,
+   "v2": 85,
+   "v3": 85
+  },
+  "edges_PART_OF": {
+   "v1": 1129,
+   "v2": 1129,
+   "v3": 783
+  },
+  "edges_RELATED_TO": {
+   "v1": 16,
+   "v2": 16,
+   "v3": 16
+  },
+  "edges_USES_DATASET": {
+   "v1": 2732,
+   "v2": 2732,
+   "v3": 2733
+  },
+  "edges_USES_METHOD": {
+   "v1": 7907,
+   "v2": 7907,
+   "v3": 7911
+  },
+  "enrichment_nodes": {
+   "v1": 2336,
+   "v2": 2336,
+   "v3": 2269
+  },
+  "graph_sha256": {
+   "v1": "011d5fe274ddbbaaa9b13138fe393308f14c4f469b9f9d2dde56ca57ea3d5b8c",
+   "v2": "02e5a288daf5dffeba0c4b13d66a875f6e27b886a267deffed929a9e53d2ef8f",
+   "v3": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3"
+  },
+  "graph_version": {
+   "v1": "enriched-c0f7d1dd4abd",
+   "v2": "enriched-827be09bc987",
+   "v3": "enriched-cb371912e308"
+  },
+  "linked_entities": {
+   "v1": 261,
+   "v2": 261,
+   "v3": 231
+  },
+  "nodes_Dataset": {
+   "v1": 370,
+   "v2": 370,
+   "v3": 371
+  },
+  "nodes_Method": {
+   "v1": 948,
+   "v2": 948,
+   "v3": 954
+  },
+  "nodes_Organization": {
+   "v1": 345,
+   "v2": 345,
+   "v3": 265
+  },
+  "nodes_Task": {
+   "v1": 673,
+   "v2": 673,
+   "v3": 679
+  },
+  "total_edges": {
+   "v1": 242142,
+   "v2": 242254,
+   "v3": 242048
+  },
+  "total_nodes": {
+   "v1": 50211,
+   "v2": 50211,
+   "v3": 50144
+  }
+ },
+ "e4_v3": {
+  "applied_to_single_paper": {
+   "agreement": {
+    "cohens_kappa": 0.0,
+    "disputes_sent_to_c": 1,
+    "items_judged_by_both": 60,
+    "kappa_note": null,
+    "observed_agreement": 0.9833
+   },
+   "pool_after_exclusion": 60,
+   "population": 136,
+   "requested": 100,
+   "sampled": 60,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.9833,
+    "high": 0.9971,
+    "k": 59,
+    "low": 0.9114,
+    "n": 60
+   },
+   "shown_paper_supports_the_relation": {
+    "estimate": 0.9833,
+    "high": 0.9971,
+    "k": 59,
+    "low": 0.9114,
+    "n": 60
+   },
+   "unclear": 0,
+   "verdicts_by_channel": {
+    "A": {
+     "correct": 60
+    },
+    "B": {
+     "correct": 59,
+     "incorrect": 1
+    },
+    "C": {
+     "incorrect": 1
+    }
+   }
+  },
+  "items_answered": 212,
+  "items_frozen": 212,
+  "link": {
+   "agreement": {
+    "cohens_kappa": 0.8606,
+    "disputes_sent_to_c": 2,
+    "items_judged_by_both": 76,
+    "kappa_note": null,
+    "observed_agreement": 0.9737
+   },
+   "estimate": 0.8947,
+   "high": 0.9457,
+   "judged": 76,
+   "k": 68,
+   "low": 0.8058,
+   "n": 76,
+   "pool_after_exclusion": 76,
+   "population": 231,
+   "requested": 100,
+   "sampled": 76,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.8947,
+    "high": 0.9457,
+    "k": 68,
+    "low": 0.8058,
+    "n": 76
+   },
+   "unclear": 0,
+   "verdicts_by_channel": {
+    "A": {
+     "correct": 69,
+     "incorrect": 7
+    },
+    "B": {
+     "correct": 67,
+     "incorrect": 9
+    },
+    "C": {
+     "correct": 1,
+     "incorrect": 1
+    }
+   }
+  },
+  "member_of": {
+   "agreement": {
+    "cohens_kappa": 0.1538,
+    "disputes_sent_to_c": 11,
+    "items_judged_by_both": 26,
+    "kappa_note": null,
+    "observed_agreement": 0.5769
+   },
+   "estimate": 1.0,
+   "high": 1.0,
+   "judged": 26,
+   "k": 13,
+   "low": 0.7719,
+   "n": 13,
+   "pool_after_exclusion": 26,
+   "population": 85,
+   "requested": 30,
+   "sampled": 26,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.5,
+    "high": 0.6794,
+    "k": 13,
+    "low": 0.3206,
+    "n": 26
+   },
+   "unclear": 13,
+   "verdicts_by_channel": {
+    "A": {
+     "correct": 24,
+     "unclear": 2
+    },
+    "B": {
+     "correct": 13,
+     "unclear": 13
+    },
+    "C": {
+     "unclear": 11
+    }
+   }
+  },
+  "part_of": {
+   "agreement": {
+    "cohens_kappa": 0.2004,
+    "disputes_sent_to_c": 15,
+    "items_judged_by_both": 50,
+    "kappa_note": null,
+    "observed_agreement": 0.7
+   },
+   "estimate": 0.9512,
+   "high": 0.9865,
+   "judged": 50,
+   "k": 39,
+   "low": 0.8386,
+   "n": 41,
+   "pool_after_exclusion": 710,
+   "population": 783,
+   "requested": 50,
+   "sampled": 50,
+   "sensitivity_unclear_as_incorrect": {
+    "estimate": 0.78,
+    "high": 0.8725,
+    "k": 39,
+    "low": 0.6476,
+    "n": 50
+   },
+   "unclear": 9,
+   "verdicts_by_channel": {
+    "A": {
+     "correct": 38,
+     "incorrect": 9,
+     "unclear": 3
+    },
+    "B": {
+     "correct": 40,
+     "incorrect": 2,
+     "unclear": 8
+    },
+    "C": {
+     "correct": 4,
+     "incorrect": 2,
+     "unclear": 9
+    }
+   }
+  },
+  "pooled_agreement": {
+   "cohens_kappa": 0.4121,
+   "disputes_sent_to_c": 29,
+   "items_judged_by_both": 212,
+   "kappa_note": null,
+   "observed_agreement": 0.8632
+  }
+ },
+ "evaluation_kind": "ai_assessed",
+ "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+ "graph_version": "enriched-cb371912e308",
+ "interpretation": "AI-assessed by agent evaluators; not human annotation and not independently validated gold labels. Wilson 95% intervals exclude evaluator error.",
+ "links": {
+  "final_linked_entities": {
+   "v1": 261,
+   "v2": 261,
+   "v3": 231
+  },
+  "raw_linked_after_guard": 244,
+  "raw_linked_before_guard": 287,
+  "raw_links_lost": 43
+ },
+ "member_of_v2_readings": {
+  "A_alone": {
+   "primary": {
+    "estimate": 1.0,
+    "high": 1.0,
+    "k": 27,
+    "low": 0.8754,
+    "n": 27
+   },
+   "unclear": 3,
+   "unclear_as_incorrect": {
+    "estimate": 0.9,
+    "high": 0.9654,
+    "k": 27,
+    "low": 0.7438,
+    "n": 30
+   }
+  },
+  "A_plus_C_claude (original v2 figure)": {
+   "primary": {
+    "estimate": 1.0,
+    "high": 1.0,
+    "k": 29,
+    "low": 0.883,
+    "n": 29
+   },
+   "unclear": 1,
+   "unclear_as_incorrect": {
+    "estimate": 0.9667,
+    "high": 0.9941,
+    "k": 29,
+    "low": 0.8333,
+    "n": 30
+   }
+  },
+  "A_plus_C_non_claude": {
+   "primary": {
+    "estimate": 1.0,
+    "high": 1.0,
+    "k": 19,
+    "low": 0.8318,
+    "n": 19
+   },
+   "unclear": 11,
+   "unclear_as_incorrect": {
+    "estimate": 0.6333,
+    "high": 0.7813,
+    "k": 19,
+    "low": 0.4551,
+    "n": 30
+   }
+  },
+  "B_alone": {
+   "primary": {
+    "estimate": 1.0,
+    "high": 1.0,
+    "k": 18,
+    "low": 0.8241,
+    "n": 18
+   },
+   "unclear": 12,
+   "unclear_as_incorrect": {
+    "estimate": 0.6,
+    "high": 0.7541,
+    "k": 18,
+    "low": 0.4232,
+    "n": 30
+   }
+  },
+  "disputed_member_of_items": 13,
+  "disputed_resolved_by_non_claude_c": {
+   "correct": 3,
+   "incorrect": 0,
+   "unclear": 10
+  },
+  "items": 30
+ },
+ "part_of_dropped_by_reason": {
+  "end_dated": 26,
+  "excluded_class": 157,
+  "implausible_type_order": 6,
+  "not_organization": 61,
+  "reversed_direction": 11
+ },
+ "post_hoc_adoption": "A reviewer judged the v2 absolute criteria badly chosen. The PART_OF and link rules are adopted on a relative criterion decided after the v2 development results were seen, and the APPLIED_TO criterion was re-declared on the E4 scale after its first result. The development checks are not evidence for v3; accuracy rests only on the fresh E4 v3 audit below.",
+ "run_info": {
+  "c_family_caveat": "**Adjudicator caveat.** C is a different family from A, as declared, but it is the same model as B (`gpt-6.2-sol` via `9router`, separate session), so C and B are not independent of each other. On MEMBER_OF and PART_OF, C followed B's more cautious reading and marked many items unclear; the single-channel table shows the figures A alone and B alone would give. No other non-Claude model was tried.",
+  "c_note": "The building session did not judge. A and B judged every one of the 212 items; C judged the 29 disagreements.",
+  "evaluators": "A: claude-opus-5-5 (three fresh subagents, one per shard); B: codex exec, model gpt-6.2-sol via provider 9router as logged (three fresh sessions); C: codex exec, model gpt-6.2-sol via provider 9router as logged (one fresh session separate from B's); the APPLIED_TO development labeler was a fresh claude-opus-5-5 subagent",
+  "evidence": "reports/enrichment-v3/audit/evaluator-evidence-v3.json",
+  "isolation": "by directory and instruction: each evaluator worked in its own directory holding only guideline.md and its packet; no separate containers.",
+  "work_id": "WORK-2026-11-25-003"
+ },
+ "seed": 2026112504,
+ "targets": {
+  "entity_precision": 0.85,
+  "linking_accuracy": 0.85,
+  "part_of": 0.8,
+  "relation_precision": 0.8
+ }
+}

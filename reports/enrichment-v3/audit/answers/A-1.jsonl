@@ -1,0 +1,80 @@
+{"item_id": "link:088071688f9475da", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:08f271ea5100ca6a", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:0aa05a5f28815f66", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:0fabd324c2e67f91", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:1bdd0df583b5c098", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:1d47ed8c29bff08a", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:1f05d2bbc8d446c2", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:23495d4e0406f02c", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:23d125f312b1ec0c", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:25bb68d02a4aa262", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:25ebf2c206b60dbe", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:2acce970000efaed", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:38e0fda0405726c1", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:3c42d62ee0c5b5a1", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:417dd3551d482ee8", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:43b77d13b45ca862", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:45e6292df69bb433", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:4f269fb107935e3d", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:4f601ea20df043dc", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:4fcc294aa8d4a646", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:5463e8f32addf248", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:57f26276958c86de", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:5d18a6242a74d9a2", "verdict": "correct", "note": "Segment Anything page covers SAM model series."}
+{"item_id": "link:5de62d2a2448b4db", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:5ecdeffa46c2833a", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:636d19c841bf34a8", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:653f94447fede5bc", "verdict": "correct", "note": "Lead states causal model is also called structural causal model."}
+{"item_id": "link:6956166235a81e80", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:6e89aed9621fa057", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:6fea1469be5ba9fc", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:70a2c2d59c6f3470", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:71888e6bddec83b2", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:76d32561741f0e0d", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:7adcaff3bd2f095b", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:84bac36eaa8c58fd", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:86461cab533a22b6", "verdict": "incorrect", "note": "ImageNet page is the parent dataset; ImageNet-C is a distinct corruption benchmark."}
+{"item_id": "link:86c687e549826bed", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:8f3c81db80388bfd", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:90032522df7cdf04", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:908d435fb0a2d3c0", "verdict": "correct", "note": "Combinatorial optimization page covers these problems."}
+{"item_id": "link:90d27ef4675e7288", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:9321be6d91d94589", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:934289863f93ec3b", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:93aaa27620890c0f", "verdict": "incorrect", "note": "Convolution operation linked to CNN architecture page; different concept."}
+{"item_id": "link:9abb7da064aa6a43", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:9c113f7fb5d7771e", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:9e5c7fb0f60b178c", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:9fb8aa7ce91b8b16", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:a30c66474c492e10", "verdict": "incorrect", "note": "Disambiguation page listing several problems, not a specific concept."}
+{"item_id": "link:a3710e66c8f9766f", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:a3ac21c3c71dffa7", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:abc4708c4104d2b5", "verdict": "correct", "note": "Scene text page covers its recognition; closest specific concept."}
+{"item_id": "link:ac71f491617f2611", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:ad27d8c2990e960f", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:af91fa4648542085", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:b83b7b804942badd", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:b8ccf8521b40a479", "verdict": "incorrect", "note": "Generic disambiguation page; not the ML normalization technique."}
+{"item_id": "link:bc01f0ef122f614e", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:befa6f170885d0ff", "verdict": "incorrect", "note": "Disambiguation page; should be chain-of-thought prompting."}
+{"item_id": "link:c540a3df22a16807", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:c994457209e17c2d", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:cfbf3aa5a7ede2f3", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:dac33c342dcbbf90", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:dbe02ff3f13565ab", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:dfb8edd4df321c8a", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:e21165c43143296c", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:eb4e0d3ea0966c22", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:eb79502de3f3542f", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:ed0ecbc766dc3121", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:f21dd6fd8dfed0f5", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:f276d570bbef596a", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:f48cba3bf4e481a7", "verdict": "incorrect", "note": "Disambiguation page; should be attention (machine learning)."}
+{"item_id": "link:f4e5020738602964", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:f54866be45d91968", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:fe1a33c4f9f98a63", "verdict": "correct", "note": "Wikipedia page matches the entity concept."}
+{"item_id": "link:feb9dd5f4b698c38", "verdict": "incorrect", "note": "Page is crystal surface physics, not 3D geometric surface reconstruction."}
+{"item_id": "member:0612fb6d6436c82f", "verdict": "correct", "note": "IIT Bombay is one of the Indian Institutes of Technology."}
+{"item_id": "member:0cdb1e8781b31e0b", "verdict": "correct", "note": "StFX is a current Maple League member."}
+{"item_id": "member:17dc3c387a4b51c7", "verdict": "correct", "note": "Freiburg is a de.NBI/ELIXIR Germany partner institution."}
+{"item_id": "member:1985a5f0a73a8b8d", "verdict": "correct", "note": "J\u00fclich is a current Helmholtz Association member centre."}

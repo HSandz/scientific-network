@@ -1,0 +1,52 @@
+{"item_id": "rel:3fc3f7a9afb5b030", "verdict": "correct", "supported_in": 1, "note": "The abstract identifies Transformers as the basis of leading 3D human pose estimation methods."}
+{"item_id": "rel:4037873506b5acbf", "verdict": "correct", "supported_in": 1, "note": "The proposed approach adapts a pretrained language model to emotion recognition in conversation."}
+{"item_id": "rel:409c9b23b9155728", "verdict": "correct", "supported_in": 1, "note": "Reinforcement learning is used to synthesize search heuristics for temporal planning."}
+{"item_id": "rel:4286aa5ff08b6745", "verdict": "correct", "supported_in": 1, "note": "The authors compile a propositional encoding of a planning task to count its plans."}
+{"item_id": "rel:5133ee23729e6aff", "verdict": "correct", "supported_in": 1, "note": "The proposed approach uses reinforcement learning to search for variable orderings in causal discovery."}
+{"item_id": "rel:525a56ccae9dad5a", "verdict": "correct", "supported_in": 1, "note": "DGL is proposed as a dynamic global-local prompt tuning method for text-video retrieval."}
+{"item_id": "rel:52e025fbc7be177e", "verdict": "correct", "supported_in": 1, "note": "MUSE uses Mamba to learn multiscale representations for text-video retrieval."}
+{"item_id": "rel:53272d3c7f79b6bc", "verdict": "correct", "supported_in": 1, "note": "The title explicitly presents episodic memory for vision-and-language navigation."}
+{"item_id": "rel:5b43bbf58828b802", "verdict": "correct", "supported_in": 1, "note": "The abstract states that multilayer perceptrons are widely used in two-view correspondence learning."}
+{"item_id": "rel:5d10e147213853bb", "verdict": "correct", "supported_in": 1, "note": "VSR-LKH combines reinforcement learning with Lin-Kernighan-Helsgaun to solve traveling salesman instances."}
+{"item_id": "rel:6477b99021467436", "verdict": "correct", "supported_in": 1, "note": "BM-Count uses bipartite matching for point-supervised crowd counting."}
+{"item_id": "rel:6482ab900e9c6876", "verdict": "correct", "supported_in": 1, "note": "Label smoothing is used in contrastive training to improve outlier detection in open-set recognition."}
+{"item_id": "rel:65d5542ad103fa47", "verdict": "correct", "supported_in": 1, "note": "The paper proposes a motif-aware graph neural network for networked time series imputation."}
+{"item_id": "rel:6887e0aef7f3665c", "verdict": "correct", "supported_in": 1, "note": "The paper uses reinforcement learning to learn dispatching policies for job-shop scheduling."}
+{"item_id": "rel:70c1f84e66cf110f", "verdict": "correct", "supported_in": 1, "note": "The paper explicitly discusses adapting Transformers for time series forecasting."}
+{"item_id": "rel:771875cd4226063a", "verdict": "correct", "supported_in": 1, "note": "The researchers use reinforcement learning agents to model moral choices in iterated social dilemmas."}
+{"item_id": "rel:79234d1508e41aad", "verdict": "correct", "supported_in": 1, "note": "DeTarNet uses a Siamese network to align points during point cloud registration."}
+{"item_id": "rel:7940d6405b5c1248", "verdict": "correct", "supported_in": 1, "note": "The Context-Aware Transformer learns shot representations and detects boundaries for video scene segmentation."}
+{"item_id": "rel:797474b8123b75cf", "verdict": "correct", "supported_in": 1, "note": "The paper proposes Nukplex as a local search algorithm for the maximum k-plex problem."}
+{"item_id": "rel:7f2ff1db50df68a6", "verdict": "correct", "supported_in": 1, "note": "The paper tunes the Segment Anything Model to improve its anomaly segmentation capabilities."}
+{"item_id": "rel:8685a90dd1f02e61", "verdict": "correct", "supported_in": 1, "note": "The paper applies adversarial training to penultimate activations for unsupervised domain adaptation."}
+{"item_id": "rel:8724135e285082fb", "verdict": "correct", "supported_in": 1, "note": "PNeRFLoc applies point-based neural radiance fields to visual localization."}
+{"item_id": "rel:8dfdd9c1a64d161e", "verdict": "correct", "supported_in": 1, "note": "The authors build a spiking neural network baseline for weakly supervised video anomaly detection."}
+{"item_id": "rel:90bfcd6146b99ff6", "verdict": "correct", "supported_in": 1, "note": "The graph autoencoder is pretrained with a link prediction decoder to reconstruct graphs."}
+{"item_id": "rel:99611811444a4de0", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly describes diffusion models as tools for image editing, including semantic image painting."}
+{"item_id": "rel:9b605e3b9e495aca", "verdict": "correct", "supported_in": 1, "note": "Graph neural networks learn search heuristics from graph representations of planning tasks."}
+{"item_id": "rel:9b8acbad66c34dad", "verdict": "correct", "supported_in": 1, "note": "Class activation maps drive the proposed data augmentation for long-tailed recognition."}
+{"item_id": "rel:9d8bd3f55c265580", "verdict": "correct", "supported_in": 1, "note": "The federated multi-view clustering method integrates K-means and matrix factorization."}
+{"item_id": "rel:a05bf5162670e2d4", "verdict": "correct", "supported_in": 1, "note": "The authors adapt a vision transformer to perform object detection on encrypted images."}
+{"item_id": "rel:a8eb983e3a6a7b5d", "verdict": "correct", "supported_in": 1, "note": "The paper uses self-supervised pretraining and adaptation for single image dehazing."}
+{"item_id": "rel:aaeee404dcd3fa86", "verdict": "correct", "supported_in": 1, "note": "The proposed continual learning approach adds new named entities while retaining knowledge of old ones."}
+{"item_id": "rel:bbec0cc7e5286a88", "verdict": "correct", "supported_in": 1, "note": "The abstract describes a hybrid reinforcement learning method for placing limit orders during order execution."}
+{"item_id": "rel:be38653c45593f4c", "verdict": "correct", "supported_in": 1, "note": "TIDOT uses optimal transport to measure distribution shifts in unsupervised domain adaptation."}
+{"item_id": "rel:bfcfd702ede59e91", "verdict": "correct", "supported_in": 1, "note": "The paper proposes heterogeneous-branch collaborative learning for dialogue generation."}
+{"item_id": "rel:c483ed5b31f267c1", "verdict": "correct", "supported_in": 1, "note": "ResDiff combines a CNN and a diffusion model for single image super-resolution."}
+{"item_id": "rel:c80ecc213a87b9af", "verdict": "correct", "supported_in": 1, "note": "The paper proposes an auto-encoder architecture for inference over temporal knowledge graphs."}
+{"item_id": "rel:c817a7e23d79e786", "verdict": "correct", "supported_in": 1, "note": "AVAF-Net uses contrastive learning to align audio and video cues for question answering."}
+{"item_id": "rel:dc566d46719ecbbf", "verdict": "correct", "supported_in": 1, "note": "The title explicitly applies continual learning with lightweight snapshots to text classification."}
+{"item_id": "rel:dde6b4255f202df7", "verdict": "correct", "supported_in": 1, "note": "ReX reduces memory costs in adaptive image classification models."}
+{"item_id": "rel:dedb50d6b7d67aef", "verdict": "correct", "supported_in": 1, "note": "The study tests adversarial training methods in class-incremental learning."}
+{"item_id": "rel:dfb3d32862581eff", "verdict": "correct", "supported_in": 1, "note": "The abstract reports using term embeddings to improve RoBERTa-based models on text classification."}
+{"item_id": "rel:e217d28a56a476da", "verdict": "correct", "supported_in": 1, "note": "PaSeR uses reinforcement learning for cost-aware image segmentation."}
+{"item_id": "rel:e506a058b57feca9", "verdict": "correct", "supported_in": 1, "note": "EWMoE uses a mixture-of-experts layer for global weather forecasting."}
+{"item_id": "rel:e82af250883d9af8", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly identifies U-Net as an image segmentation architecture."}
+{"item_id": "rel:eac8c2f42a4ae906", "verdict": "correct", "supported_in": 1, "note": "The paper proposes generative adversarial imitation learning for text generation."}
+{"item_id": "rel:ec51bec8ee18076f", "verdict": "correct", "supported_in": 1, "note": "Mixup is used in contrastive training to improve outlier detection in open-set recognition."}
+{"item_id": "rel:ef2255b453e9fcca", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly links knowledge graph embeddings to missing-link prediction, which it defines as knowledge graph completion."}
+{"item_id": "rel:f32c390a711fb41f", "verdict": "correct", "supported_in": 1, "note": "GCAD detects time series anomalies by modeling changes in Granger causal relationships."}
+{"item_id": "rel:f5f217efcd362a69", "verdict": "correct", "supported_in": 1, "note": "The proposed outlier detection algorithm combines combinatorial search with chunk recursive elimination."}
+{"item_id": "rel:f848feba06d98628", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly describes diffusion models being applied to customized text-to-image generation."}
+{"item_id": "rel:fda26f3463970d0d", "verdict": "correct", "supported_in": 1, "note": "The paper studies automatic speech recognition using large language models and speech foundation encoders."}
+{"item_id": "rel:ffcefcfb55cb9308", "verdict": "correct", "supported_in": 1, "note": "The paper introduces visual contrastive learning to improve continuous sign language recognition."}

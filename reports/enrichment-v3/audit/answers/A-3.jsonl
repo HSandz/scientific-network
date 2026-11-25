@@ -1,0 +1,52 @@
+{"item_id": "rel:3fc3f7a9afb5b030", "verdict": "correct", "supported_in": 1, "note": "Abstract states 3D HPE methods are primarily Transformer-based."}
+{"item_id": "rel:4037873506b5acbf", "verdict": "correct", "supported_in": 1, "note": "Fine-tuning PLMs is used for ERC, explicitly stated."}
+{"item_id": "rel:409c9b23b9155728", "verdict": "correct", "supported_in": 1, "note": "Title: RL used to synthesize heuristics for temporal planning."}
+{"item_id": "rel:4286aa5ff08b6745", "verdict": "correct", "supported_in": 1, "note": "Planning task compiled to formula; knowledge compilation counts plans."}
+{"item_id": "rel:5133ee23729e6aff", "verdict": "correct", "supported_in": 1, "note": "Title and abstract: RL applied to causal discovery."}
+{"item_id": "rel:525a56ccae9dad5a", "verdict": "correct", "supported_in": 1, "note": "DGL proposed for text-video retrieval."}
+{"item_id": "rel:52e025fbc7be177e", "verdict": "correct", "supported_in": 1, "note": "MUSE uses Mamba for text-video retrieval."}
+{"item_id": "rel:53272d3c7f79b6bc", "verdict": "correct", "supported_in": 1, "note": "Title: episodic memory used for vision-and-language navigation."}
+{"item_id": "rel:5b43bbf58828b802", "verdict": "correct", "supported_in": 1, "note": "MLP widely used in two-view correspondence learning."}
+{"item_id": "rel:5d10e147213853bb", "verdict": "correct", "supported_in": 1, "note": "RL combined with LKH for TSP."}
+{"item_id": "rel:6477b99021467436", "verdict": "correct", "supported_in": 1, "note": "Bipartite matching based method for crowd counting."}
+{"item_id": "rel:6482ab900e9c6876", "verdict": "correct", "supported_in": 1, "note": "Label smoothing used to improve outlier detection robustness in OSR."}
+{"item_id": "rel:65d5542ad103fa47", "verdict": "correct", "supported_in": 1, "note": "GNNs used for networked time series imputation."}
+{"item_id": "rel:6887e0aef7f3665c", "verdict": "correct", "supported_in": 1, "note": "RL learns dispatching policies on the JSP."}
+{"item_id": "rel:70c1f84e66cf110f", "verdict": "correct", "supported_in": 1, "note": "Transformers used for time series forecasting."}
+{"item_id": "rel:771875cd4226063a", "verdict": "correct", "supported_in": 1, "note": "RL agents studied in social dilemma games."}
+{"item_id": "rel:79234d1508e41aad", "verdict": "correct", "supported_in": 1, "note": "Siamese network used for point cloud registration."}
+{"item_id": "rel:7940d6405b5c1248", "verdict": "correct", "supported_in": 1, "note": "CAT proposed for video scene segmentation."}
+{"item_id": "rel:797474b8123b75cf", "verdict": "correct", "supported_in": 1, "note": "Local search algorithm proposed for maximum k-plex problem."}
+{"item_id": "rel:7f2ff1db50df68a6", "verdict": "correct", "supported_in": 1, "note": "SAM applied to anomaly segmentation."}
+{"item_id": "rel:8685a90dd1f02e61", "verdict": "correct", "supported_in": 1, "note": "Adversarial training on penultimate activations for domain adaptation."}
+{"item_id": "rel:8724135e285082fb", "verdict": "correct", "supported_in": 1, "note": "NeRF exploited for visual localization."}
+{"item_id": "rel:8dfdd9c1a64d161e", "verdict": "correct", "supported_in": 1, "note": "SNN-based network for video anomaly detection."}
+{"item_id": "rel:90bfcd6146b99ff6", "verdict": "correct", "supported_in": 1, "note": "GAE has decoders for link prediction within graph reconstruction."}
+{"item_id": "rel:99611811444a4de0", "verdict": "correct", "supported_in": 1, "note": "Diffusion models used for image editing tasks."}
+{"item_id": "rel:9b605e3b9e495aca", "verdict": "correct", "supported_in": 1, "note": "GNNs learn heuristics for planning tasks."}
+{"item_id": "rel:9b8acbad66c34dad", "verdict": "correct", "supported_in": 1, "note": "CAM-based augmentation proposed for long-tailed recognition."}
+{"item_id": "rel:9d8bd3f55c265580", "verdict": "correct", "supported_in": 1, "note": "Multi-view K-means integrated into federated multi-view clustering."}
+{"item_id": "rel:a05bf5162670e2d4", "verdict": "correct", "supported_in": 1, "note": "Vision transformer adapted for object detection on encrypted images."}
+{"item_id": "rel:a8eb983e3a6a7b5d", "verdict": "correct", "supported_in": 1, "note": "Self-supervised learning for single image dehazing."}
+{"item_id": "rel:aaeee404dcd3fa86", "verdict": "correct", "supported_in": 1, "note": "Continual learning approach for NER."}
+{"item_id": "rel:bbec0cc7e5286a88", "verdict": "correct", "supported_in": 1, "note": "RL methods applied to order execution; hybrid RL compared."}
+{"item_id": "rel:be38653c45593f4c", "verdict": "correct", "supported_in": 1, "note": "Optimal transport used for unsupervised domain adaptation."}
+{"item_id": "rel:bfcfd702ede59e91", "verdict": "correct", "supported_in": 1, "note": "Collaborative learning for dialogue generation."}
+{"item_id": "rel:c483ed5b31f267c1", "verdict": "correct", "supported_in": 1, "note": "Diffusion model used for image super-resolution."}
+{"item_id": "rel:c80ecc213a87b9af", "verdict": "correct", "supported_in": 1, "note": "Auto-encoder architecture for TKG reasoning."}
+{"item_id": "rel:c817a7e23d79e786", "verdict": "correct", "supported_in": 1, "note": "Contrastive learning used for audio-visual question answering."}
+{"item_id": "rel:dc566d46719ecbbf", "verdict": "correct", "supported_in": 1, "note": "Continual learning for text classification."}
+{"item_id": "rel:dde6b4255f202df7", "verdict": "correct", "supported_in": 1, "note": "ReX proposed to reduce memory in image classification."}
+{"item_id": "rel:dedb50d6b7d67aef", "verdict": "correct", "supported_in": 1, "note": "Adversarial training applied in incremental learning."}
+{"item_id": "rel:dfb3d32862581eff", "verdict": "correct", "supported_in": 1, "note": "BERT/RoBERTa models enhanced on text classification."}
+{"item_id": "rel:e217d28a56a476da", "verdict": "correct", "supported_in": 1, "note": "RL used for image segmentation (PaSeR)."}
+{"item_id": "rel:e506a058b57feca9", "verdict": "correct", "supported_in": 1, "note": "MoE applied to weather forecasting."}
+{"item_id": "rel:e82af250883d9af8", "verdict": "correct", "supported_in": 1, "note": "U-Net used for image segmentation."}
+{"item_id": "rel:eac8c2f42a4ae906", "verdict": "correct", "supported_in": 1, "note": "GAIL framework proposed for text generation."}
+{"item_id": "rel:ec51bec8ee18076f", "verdict": "correct", "supported_in": 1, "note": "Mixup used to improve outlier detection in OSR."}
+{"item_id": "rel:ef2255b453e9fcca", "verdict": "correct", "supported_in": 1, "note": "KGE methods used for knowledge graph completion."}
+{"item_id": "rel:f32c390a711fb41f", "verdict": "correct", "supported_in": 1, "note": "Granger causality used to detect anomalies in time series."}
+{"item_id": "rel:f5f217efcd362a69", "verdict": "correct", "supported_in": 1, "note": "Combinatorial search used for outlier detection."}
+{"item_id": "rel:f848feba06d98628", "verdict": "correct", "supported_in": 1, "note": "Diffusion models used for text-to-image generation."}
+{"item_id": "rel:fda26f3463970d0d", "verdict": "correct", "supported_in": 1, "note": "LLMs used for automatic speech recognition."}
+{"item_id": "rel:ffcefcfb55cb9308", "verdict": "correct", "supported_in": 1, "note": "Contrastive learning for sign language recognition."}

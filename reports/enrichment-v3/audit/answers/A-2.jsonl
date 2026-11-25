@@ -1,0 +1,80 @@
+{"item_id": "member:1ef31eb94f7025c7", "verdict": "correct", "note": "NOVA (via ITQB NOVA) is a member institution of ELIXIR Portugal/BioData.pt."}
+{"item_id": "member:3762361a5a6742c5", "verdict": "correct", "note": "Open University of Cyprus is a member of the OpenEU European University alliance."}
+{"item_id": "member:37aa01cb728def7f", "verdict": "correct", "note": "IIT Gandhinagar is one of the Indian Institutes of Technology."}
+{"item_id": "member:3ad732fef8ac676f", "verdict": "correct", "note": "ULB participates in ELIXIR Belgium node."}
+{"item_id": "member:43eb2d2202a4b581", "verdict": "correct", "note": "University of Salerno is a partner of ELIXIR Italy (ELIXIR-IIB)."}
+{"item_id": "member:4e4c876de1cc64c0", "verdict": "correct", "note": "IIT Jodhpur is one of the Indian Institutes of Technology."}
+{"item_id": "member:4f8551d6ad02dcb4", "verdict": "correct", "note": "CSIC (e.g. CNB) is a member of ELIXIR Spain/INB."}
+{"item_id": "member:6a850722582bbe72", "verdict": "correct", "note": "Cardiff University is listed among ELIXIR UK node member institutions."}
+{"item_id": "member:7abb6071a6fcc291", "verdict": "correct", "note": "VUB participates in ELIXIR Belgium node."}
+{"item_id": "member:860d545ed81889ee", "verdict": "correct", "note": "HZDR is a member centre of the Helmholtz Association."}
+{"item_id": "member:89940af86b07c8c5", "verdict": "correct", "note": "University of Milan is a member of the 4EU+ Alliance."}
+{"item_id": "member:8b073f94dd9d970f", "verdict": "correct", "note": "Pomona College is a member of the Claremont Colleges consortium."}
+{"item_id": "member:935948336ab15e01", "verdict": "correct", "note": "Milano-Bicocca is a partner of ELIXIR Italy."}
+{"item_id": "member:ab43632a3a8f60df", "verdict": "correct", "note": "Federico II is a partner of ELIXIR Italy."}
+{"item_id": "member:ba3b7b9562f1ceb1", "verdict": "correct", "note": "Claremont McKenna is a member of the Claremont Colleges consortium."}
+{"item_id": "member:bc7691c9d4790071", "verdict": "correct", "note": "CNRS is a founding member of IFB, the ELIXIR France node."}
+{"item_id": "member:c4562bc42e4b5432", "verdict": "correct", "note": "INSA Lyon is a member establishment of the Université de Lyon grouping."}
+{"item_id": "member:c9147196d183ccca", "verdict": "correct", "note": "IIT Guwahati is one of the Indian Institutes of Technology."}
+{"item_id": "member:f38890bd94b437af", "verdict": "unclear", "note": "Cannot confirm Helmholtz Munich is a current de.NBI/ELIXIR Germany member."}
+{"item_id": "member:f75415a4ce2546a2", "verdict": "unclear", "note": "Jacobs/Constructor was in de.NBI historically; current membership uncertain."}
+{"item_id": "member:f9dec91dd8d062af", "verdict": "correct", "note": "Université de Strasbourg is the lead member of the Alsace university site grouping."}
+{"item_id": "member:fa1edd55b28f4cb2", "verdict": "correct", "note": "IIT Kharagpur is one of the Indian Institutes of Technology."}
+{"item_id": "part:02ecc9b15737f228", "verdict": "incorrect", "note": "IISER Bhopal is an autonomous institute funded by the ministry, not a ministry unit."}
+{"item_id": "part:06324a454cfebd80", "verdict": "correct", "note": "LIMOS is a joint unit with Mines Saint-Étienne among its parent institutions."}
+{"item_id": "part:090ac7365379df5c", "verdict": "correct", "note": "RWTH Aachen is a member of Digitale Hochschule NRW."}
+{"item_id": "part:0979f42738710f3d", "verdict": "correct", "note": "Soongsil University is operated by its educational foundation."}
+{"item_id": "part:121d3b19657a1567", "verdict": "unclear", "note": "Generic name; which department and whether CNRS is a parent cannot be determined."}
+{"item_id": "part:25c4672402cecf15", "verdict": "correct", "note": "Computer Vision Center is a consortium institute attached to UAB."}
+{"item_id": "part:289c754f5b72a1cd", "verdict": "incorrect", "note": "KTH is a state agency overseen by the ministry, not a ministry unit."}
+{"item_id": "part:2b9cfd4793678ad7", "verdict": "incorrect", "note": "Umeå University is overseen by the ministry, not a part of it."}
+{"item_id": "part:2ce84c657fe0e096", "verdict": "correct", "note": "CESI is a public institution directly subordinate to MIIT."}
+{"item_id": "part:33a8fb54d1b70daf", "verdict": "correct", "note": "QMUL is a member institution of the federal University of London."}
+{"item_id": "part:35fa43aa35084b8e", "verdict": "correct", "note": "AMSE is a joint research unit including EHESS as a parent."}
+{"item_id": "part:3ab1800c35cd75f1", "verdict": "correct", "note": "UNC Greensboro is a constituent of the UNC system."}
+{"item_id": "part:3e14afdf5e06b9cf", "verdict": "correct", "note": "LIRIS is a joint research unit of INSA Lyon."}
+{"item_id": "part:3e7387869393a126", "verdict": "unclear", "note": "Parent is an unlabeled QID; its identity cannot be verified."}
+{"item_id": "part:3eddb95ef0b99a6e", "verdict": "correct", "note": "RMIT Europe is RMIT University's European hub."}
+{"item_id": "part:40c411c0d4ef2316", "verdict": "correct", "note": "LISN is a joint unit with CNRS among its parent bodies."}
+{"item_id": "part:428b99e45244066d", "verdict": "incorrect", "note": "LIRMM's parents are CNRS and Université de Montpellier, not Inria."}
+{"item_id": "part:4733b410d59f24f2", "verdict": "incorrect", "note": "Halmstad University is overseen by the ministry, not a part of it."}
+{"item_id": "part:482ab4684153d31c", "verdict": "incorrect", "note": "INRA is a founding member of PSE; PSE is not part of INRA."}
+{"item_id": "part:4abc3c8cdeaa5cfe", "verdict": "correct", "note": "UCLA is a campus of the University of California system."}
+{"item_id": "part:518b826bd0501afc", "verdict": "correct", "note": "City was a University of London member, now merged into City St George's."}
+{"item_id": "part:520c1228f97b3584", "verdict": "correct", "note": "LMS is a joint unit with Mines ParisTech among its parents."}
+{"item_id": "part:584c7dd19ab644f6", "verdict": "correct", "note": "CNR institutes are units of the Italian National Research Council."}
+{"item_id": "part:5c1bf98ba520f1e9", "verdict": "correct", "note": "The lab is a research unit of Université Paris-Saclay per its description."}
+{"item_id": "part:5c3a324d864f0ad9", "verdict": "correct", "note": "Ruhr University Bochum is a member of Digitale Hochschule NRW."}
+{"item_id": "part:606e732be7ded104", "verdict": "correct", "note": "SIGMA Clermont was a parent institution of LIMOS."}
+{"item_id": "part:63e07e781f6f8aea", "verdict": "correct", "note": "Tsinghua SIGS is a graduate school of Tsinghua University."}
+{"item_id": "part:6451e602599aaff7", "verdict": "correct", "note": "LIMICS is a joint unit with Sorbonne Université as a parent."}
+{"item_id": "part:6568a5607e7a0a0b", "verdict": "correct", "note": "AMSE is a joint research unit including CNRS."}
+{"item_id": "part:6963505582ab4bff", "verdict": "correct", "note": "B-IT is a joint institute that includes Hochschule Bonn-Rhein-Sieg."}
+{"item_id": "part:6af6bad758c09a85", "verdict": "unclear", "note": "Post-2016 PLA hospital subordination to Wuxi center cannot be confirmed."}
+{"item_id": "part:744f2c23b5f5f729", "verdict": "correct", "note": "PTB is a federal agency within the economics ministry's portfolio."}
+{"item_id": "part:7bd0e98797ac7956", "verdict": "correct", "note": "Institute of Acoustics is a CAS institute."}
+{"item_id": "part:7c695a0fb856b9f5", "verdict": "incorrect", "note": "SK Group is the conglomerate; SK Hynix belongs to it, not the reverse."}
+{"item_id": "part:8c283e71baf259bc", "verdict": "incorrect", "note": "LIRMM is a UMR of CNRS and Université de Montpellier, not Perpignan."}
+{"item_id": "part:97591f4223666c07", "verdict": "correct", "note": "Microsoft acquired Nuance in 2022; it is a subsidiary."}
+{"item_id": "part:9e4e0dae69103f40", "verdict": "incorrect", "note": "Institute of Automation belongs to CAS, not China Academy of Space Technology."}
+{"item_id": "part:a3633b43a9da7f78", "verdict": "correct", "note": "Futurewei is Huawei's US research subsidiary."}
+{"item_id": "part:b268e8d525bc0c70", "verdict": "correct", "note": "PLA is the armed wing of the Chinese Communist Party."}
+{"item_id": "part:b43babef38c75ce9", "verdict": "correct", "note": "Optum is a subsidiary of UnitedHealth Group."}
+{"item_id": "part:c37642398b0efa7b", "verdict": "correct", "note": "IDSIA is affiliated with and part of SUPSI (and USI)."}
+{"item_id": "part:c810bf7da4d7b524", "verdict": "correct", "note": "West Lafayette is the flagship campus of the Purdue system."}
+{"item_id": "part:d081dd541acb038a", "verdict": "correct", "note": "UMass Amherst is a campus of the UMass system."}
+{"item_id": "part:d6471e8fb3d6845c", "verdict": "correct", "note": "IU School of Medicine was based within IUPUI before its 2024 split."}
+{"item_id": "part:d6cb6f71a9b41575", "verdict": "correct", "note": "Centrale Marseille is one of AMSE's parent institutions."}
+{"item_id": "part:d77bb83570b45368", "verdict": "correct", "note": "Institute of Automation is a CAS institute."}
+{"item_id": "part:e0fd6c01aea27342", "verdict": "correct", "note": "LIRMM is a joint unit of Université de Montpellier and CNRS."}
+{"item_id": "part:ea08bf22ba7efa27", "verdict": "correct", "note": "SIMIT is a CAS institute."}
+{"item_id": "part:eca22bda24a66041", "verdict": "correct", "note": "Thales Canada is a subsidiary of Thales Group."}
+{"item_id": "part:f60b5609c12706f4", "verdict": "correct", "note": "UCA is the lead member of the UCA & associates grouping."}
+{"item_id": "rel:0319d8d758ad2e86", "verdict": "correct", "supported_in": 1, "note": "Title: solving continuous control with episodic memory."}
+{"item_id": "rel:0bbaaf5fcbe2bccb", "verdict": "correct", "supported_in": 1, "note": "HSIC used to differentiate action classes in skeleton-based action recognition."}
+{"item_id": "rel:0ddaf493514cc66d", "verdict": "correct", "supported_in": 1, "note": "Multi-scale contrastive learning proposed for video temporal grounding."}
+{"item_id": "rel:0f52297a87b97fdf", "verdict": "correct", "supported_in": 1, "note": "Text states BO has long had success in hyperparameter optimization."}
+{"item_id": "rel:253573991620139d", "verdict": "correct", "supported_in": 1, "note": "DNNs stated as leading approach for low-light image enhancement."}
+{"item_id": "rel:25aec8ddc4835ef6", "verdict": "correct", "supported_in": 1, "note": "3DGS stated to perform well in real-time rendering."}
+{"item_id": "rel:30bc693408a25f71", "verdict": "correct", "supported_in": 1, "note": "GNNs used for node classification, stated explicitly."}
+{"item_id": "rel:33edb522194de915", "verdict": "correct", "supported_in": 1, "note": "MoRe proposed for weakly supervised semantic segmentation."}

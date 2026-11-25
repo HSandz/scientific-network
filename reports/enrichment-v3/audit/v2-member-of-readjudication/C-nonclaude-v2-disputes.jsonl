@@ -1,0 +1,14 @@
+{"item_id": "member:21b7b554cb2c3a9c", "verdict": "unclear", "note": "The part-of statement links Wageningen to ELIXIR-NL and leaves its membership status unspecified."}
+{"item_id": "member:6dd2fbd471b95b26", "verdict": "unclear", "note": "The part-of statement leaves Jülich’s institutional role in ELIXIR Germany unspecified."}
+{"item_id": "member:73527d221c1b9aca", "verdict": "unclear", "note": "The part-of statement links Turin to ELIXIR Italy and leaves membership unspecified."}
+{"item_id": "member:7c15524c047e9c21", "verdict": "unclear", "note": "The part-of statement leaves KU Leuven’s membership status in the Belgian node unspecified."}
+{"item_id": "member:88b3805ea105db48", "verdict": "correct", "note": "The engineering school’s stated parent is the identified group of universities and institutions."}
+{"item_id": "member:90cac066240e571a", "verdict": "unclear", "note": "The part-of statement leaves the institute’s membership status within ELIXIR France unspecified."}
+{"item_id": "member:a9387529b367b7b1", "verdict": "unclear", "note": "The part-of statement links Padua to the Italian node and leaves membership unspecified."}
+{"item_id": "member:a9ec5c6b7edc02dd", "verdict": "correct", "note": "The research center’s stated parent is an association of research centers."}
+{"item_id": "member:b2e8b78fb503eb50", "verdict": "unclear", "note": "The part-of statement leaves Milan’s membership status within the Italian node unspecified."}
+{"item_id": "member:b39e433c0f42abb5", "verdict": "correct", "note": "The university’s stated parent is the identified group of universities and institutions."}
+{"item_id": "member:c38cd2126c4d6e44", "verdict": "unclear", "note": "The part-of statement leaves Bielefeld’s institutional role in ELIXIR Germany unspecified."}
+{"item_id": "member:e12ae1e4592fefda", "verdict": "unclear", "note": "The part-of statement leaves INRAE’s membership status within the French node unspecified."}
+{"item_id": "member:f20ac22b474b58e6", "verdict": "unclear", "note": "The part-of statement links the school to the Portuguese node and leaves its membership status unspecified."}
+{"item_id": "rel:7e01645109f66a96", "verdict": "incorrect", "supported_in": 0, "note": "GSEMO is a theoretical runtime comparator, and OneMinMax is described as a benchmark function."}

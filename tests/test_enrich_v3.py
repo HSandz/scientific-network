@@ -113,3 +113,26 @@ def test_applied_to_candidates_are_only_single_paper_same_sentence_edges():
                        {"edge_id": "e3", "relation": "EVALUATED_ON", "source_id": "m", "target_id": "t", "evidence_ids": ["ev1"],
                         "properties": {"support_rule": "single_paper_same_sentence"}}]}
     assert [c["edge_id"] for c in applied_to_candidates(graph)] == ["e1"]
+
+
+def test_member_of_v2_readings_report_the_original_figure_and_the_other_adjudicator(tmp_path):
+    from scientific_network.enrich.audit_v3 import member_of_v2_readings
+    from scientific_network.enrich.quality import item_id
+    v2 = tmp_path / "v2"
+    (v2 / "answers").mkdir(parents=True)
+    ids = [item_id("member", f"e{n}") for n in range(4)]
+    (v2 / "sample.json").write_text(json.dumps({"axes": {"member_of": {"MEMBER_OF": [f"e{n}" for n in range(4)]}}}))
+    row = lambda i, v: json.dumps({"item_id": i, "verdict": v, "note": ""})
+    a = ["correct", "correct", "correct", "correct"]
+    b = ["correct", "unclear", "unclear", "correct"]
+    (v2 / "answers" / "A-1.jsonl").write_text("\n".join(row(i, v) for i, v in zip(ids, a)))
+    (v2 / "answers" / "B-1.jsonl").write_text("\n".join(row(i, v) for i, v in zip(ids, b)))
+    (v2 / "answers" / "C-1.jsonl").write_text("\n".join(row(i, "correct") for i in ids[1:3]))   # the original adjudicator sided with A
+    new_c = tmp_path / "c.jsonl"
+    new_c.write_text("\n".join(row(i, "unclear") for i in ids[1:3]))                              # the non-Claude adjudicator sided with B
+    r = member_of_v2_readings(v2, new_c)
+    original, other, b_alone = r["A_plus_C_claude (original v2 figure)"], r["A_plus_C_non_claude"], r["B_alone"]
+    assert (original["primary"]["k"], original["primary"]["n"], original["unclear"]) == (4, 4, 0)
+    assert (other["primary"]["k"], other["primary"]["n"], other["unclear"]) == (2, 2, 2)
+    assert other["unclear_as_incorrect"]["estimate"] == 0.5 and b_alone["unclear"] == 2
+    assert r["disputed_member_of_items"] == 2 and r["disputed_resolved_by_non_claude_c"]["unclear"] == 2

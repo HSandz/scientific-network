@@ -1,0 +1,80 @@
+{"item_id": "member:1ef31eb94f7025c7", "verdict": "unclear", "note": "P361 places the university within ELIXIR Portugal. The node classification leaves formal membership unclear."}
+{"item_id": "member:3762361a5a6742c5", "verdict": "correct", "note": "P361 identifies the university as part of the European University Alliance, with no former status indicated."}
+{"item_id": "member:37aa01cb728def7f", "verdict": "correct", "note": "P361 places IIT Gandhinagar within the Indian Institutes of Technology group."}
+{"item_id": "member:3ad732fef8ac676f", "verdict": "unclear", "note": "P361 links the university to ELIXIR Belgium. The node classification leaves formal membership unclear."}
+{"item_id": "member:43eb2d2202a4b581", "verdict": "unclear", "note": "P361 links the university to ELIXIR Italy. The node classification leaves formal membership unclear."}
+{"item_id": "member:4e4c876de1cc64c0", "verdict": "correct", "note": "P361 identifies IIT Jodhpur as a constituent of the Indian Institutes of Technology group."}
+{"item_id": "member:4f8551d6ad02dcb4", "verdict": "unclear", "note": "P361 links the council to ELIXIR Spain. The node classification leaves formal membership unclear."}
+{"item_id": "member:6a850722582bbe72", "verdict": "unclear", "note": "P361 places Cardiff within ELIXIR UK. The node classification leaves formal membership unclear."}
+{"item_id": "member:7abb6071a6fcc291", "verdict": "unclear", "note": "P361 links the university to ELIXIR Belgium. The node classification leaves formal membership unclear."}
+{"item_id": "member:860d545ed81889ee", "verdict": "correct", "note": "P749 names the voluntary association as the institute's parent, supporting membership in the association."}
+{"item_id": "member:89940af86b07c8c5", "verdict": "correct", "note": "P361 places the University of Milan within the 4EU+ Alliance."}
+{"item_id": "member:8b073f94dd9d970f", "verdict": "correct", "note": "P361 places Pomona College within the Claremont Colleges consortium."}
+{"item_id": "member:935948336ab15e01", "verdict": "unclear", "note": "P361 links the university to ELIXIR Italy. The node classification leaves formal membership unclear."}
+{"item_id": "member:ab43632a3a8f60df", "verdict": "unclear", "note": "P361 links the university to ELIXIR Italy. The node classification leaves formal membership unclear."}
+{"item_id": "member:ba3b7b9562f1ceb1", "verdict": "correct", "note": "P361 places Claremont McKenna College within the Claremont Colleges consortium."}
+{"item_id": "member:bc7691c9d4790071", "verdict": "unclear", "note": "P361 links the research organization to ELIXIR France. The node classification leaves formal membership unclear."}
+{"item_id": "member:c4562bc42e4b5432", "verdict": "correct", "note": "P749 links the engineering college to a university group, supporting constituent membership."}
+{"item_id": "member:c9147196d183ccca", "verdict": "correct", "note": "P361 places IIT Guwahati within the Indian Institutes of Technology group."}
+{"item_id": "member:f38890bd94b437af", "verdict": "unclear", "note": "P361 links the institute to ELIXIR Germany. The node classification leaves formal membership unclear."}
+{"item_id": "member:f75415a4ce2546a2", "verdict": "unclear", "note": "P361 links the university to ELIXIR Germany. The node classification leaves formal membership unclear."}
+{"item_id": "member:f9dec91dd8d062af", "verdict": "correct", "note": "P361 places the university within the Alsatian university consortium."}
+{"item_id": "member:fa1edd55b28f4cb2", "verdict": "correct", "note": "P361 places IIT Kharagpur within the Indian Institutes of Technology group."}
+{"item_id": "part:02ecc9b15737f228", "verdict": "unclear", "note": "The institute is described as autonomous. P749 leaves the nature of its relationship with the ministry unclear."}
+{"item_id": "part:06324a454cfebd80", "verdict": "correct", "note": "P749 identifies Mines Saint-Étienne as a parent organization of the laboratory."}
+{"item_id": "part:090ac7365379df5c", "verdict": "correct", "note": "P361 directly lists RWTH Aachen University as part of DH.NRW."}
+{"item_id": "part:0979f42738710f3d", "verdict": "correct", "note": "P749 identifies the Soongsil University Educational Foundation as the university's parent."}
+{"item_id": "part:121d3b19657a1567", "verdict": "correct", "note": "P749 identifies CNRS as the research group's parent organization."}
+{"item_id": "part:25c4672402cecf15", "verdict": "correct", "note": "P361 and P749 both place the Computer Vision Center within the university's organizational structure."}
+{"item_id": "part:289c754f5b72a1cd", "verdict": "unclear", "note": "P749 identifies a ministry relationship. The text leaves institutional inclusion versus oversight unresolved."}
+{"item_id": "part:2b9cfd4793678ad7", "verdict": "unclear", "note": "P749 identifies a ministry relationship. The text leaves institutional inclusion versus oversight unresolved."}
+{"item_id": "part:2ce84c657fe0e096", "verdict": "correct", "note": "P749 names the Ministry of Industry and Information Technology as the institute's parent organization."}
+{"item_id": "part:33a8fb54d1b70daf", "verdict": "correct", "note": "The description explicitly calls Queen Mary a constituent college of the federal university."}
+{"item_id": "part:35fa43aa35084b8e", "verdict": "correct", "note": "P749 identifies the School for Advanced Studies in the Social Sciences as a parent of the research facility."}
+{"item_id": "part:3ab1800c35cd75f1", "verdict": "correct", "note": "P749 places UNC Greensboro within the University of North Carolina state university system."}
+{"item_id": "part:3e14afdf5e06b9cf", "verdict": "correct", "note": "P749 identifies the engineering college as a parent organization of the research institute."}
+{"item_id": "part:3e7387869393a126", "verdict": "correct", "note": "P749 identifies the educational entity Q139586311 as Ajou University's parent organization."}
+{"item_id": "part:3eddb95ef0b99a6e", "verdict": "correct", "note": "The description explicitly identifies RMIT Europe as RMIT University's European hub."}
+{"item_id": "part:40c411c0d4ef2316", "verdict": "correct", "note": "P749 identifies CNRS as a parent organization of the laboratory."}
+{"item_id": "part:428b99e45244066d", "verdict": "correct", "note": "P749 identifies the national digital research institute as a parent organization of the laboratory."}
+{"item_id": "part:4733b410d59f24f2", "verdict": "unclear", "note": "P749 identifies a ministry relationship. The text leaves institutional inclusion versus oversight unresolved."}
+{"item_id": "part:482ab4684153d31c", "verdict": "unclear", "note": "The parent statement leaves unclear how the economics network is organizationally situated within the agricultural institute."}
+{"item_id": "part:4abc3c8cdeaa5cfe", "verdict": "correct", "note": "P361 and P749 both place UCLA within the University of California system."}
+{"item_id": "part:518b826bd0501afc", "verdict": "incorrect", "note": "The description identifies City, University of London as a former university, making the parent link historical."}
+{"item_id": "part:520c1228f97b3584", "verdict": "correct", "note": "P749 identifies Mines ParisTech as a parent organization of the laboratory."}
+{"item_id": "part:584c7dd19ab644f6", "verdict": "correct", "note": "The institute's name includes Consiglio Nazionale delle Ricerche, and P749 identifies that council as its parent."}
+{"item_id": "part:5c1bf98ba520f1e9", "verdict": "correct", "note": "The description identifies the lab as a joint laboratory of Université Paris-Saclay and other institutions."}
+{"item_id": "part:5c3a324d864f0ad9", "verdict": "correct", "note": "P361 directly lists Ruhr University Bochum as part of DH.NRW."}
+{"item_id": "part:606e732be7ded104", "verdict": "correct", "note": "P749 identifies SIGMA Clermont as a parent organization of the laboratory."}
+{"item_id": "part:63e07e781f6f8aea", "verdict": "correct", "note": "P361 places the Shenzhen graduate school within Tsinghua University."}
+{"item_id": "part:6451e602599aaff7", "verdict": "correct", "note": "P749 identifies Sorbonne Université as a parent organization of the laboratory."}
+{"item_id": "part:6568a5607e7a0a0b", "verdict": "correct", "note": "P749 identifies CNRS as a parent organization of Aix-Marseille Sciences Economiques."}
+{"item_id": "part:6963505582ab4bff", "verdict": "correct", "note": "P749 names Bonn-Rhein-Sieg University as a parent, and the center's description lists it among the participating institutions."}
+{"item_id": "part:6af6bad758c09a85", "verdict": "correct", "note": "P749 lists the Wuxi Joint Logistic Support Center as the hospital's parent organization."}
+{"item_id": "part:744f2c23b5f5f729", "verdict": "unclear", "note": "The national institute's description and P749 leave direct incorporation into the ministry versus oversight unclear."}
+{"item_id": "part:7bd0e98797ac7956", "verdict": "correct", "note": "P749 identifies the Chinese Academy of Sciences as the Institute of Acoustics' parent."}
+{"item_id": "part:7c695a0fb856b9f5", "verdict": "unclear", "note": "P749 asserts the link, but the generic SK Group label leaves the precise U.S. entity unclear."}
+{"item_id": "part:8c283e71baf259bc", "verdict": "correct", "note": "P749 identifies the University of Perpignan as a parent organization of the laboratory."}
+{"item_id": "part:97591f4223666c07", "verdict": "correct", "note": "P749 identifies Microsoft as the parent organization of Nuance Communications."}
+{"item_id": "part:9e4e0dae69103f40", "verdict": "unclear", "note": "The generic institute name and two distinct academy parent statements leave its link to the space academy unresolved."}
+{"item_id": "part:a3633b43a9da7f78", "verdict": "correct", "note": "P749 identifies Huawei Technologies as Futurewei Technologies' parent organization."}
+{"item_id": "part:b268e8d525bc0c70", "verdict": "correct", "note": "P361 directly states that the People's Liberation Army is part of the Chinese Communist Party."}
+{"item_id": "part:b43babef38c75ce9", "verdict": "correct", "note": "P749 identifies UnitedHealth Group as the parent organization of Optum."}
+{"item_id": "part:c37642398b0efa7b", "verdict": "correct", "note": "P749 identifies the University of Applied Sciences and Arts of Southern Switzerland as the institute's parent."}
+{"item_id": "part:c810bf7da4d7b524", "verdict": "correct", "note": "P749 identifies the West Lafayette university as part of the Purdue University system."}
+{"item_id": "part:d081dd541acb038a", "verdict": "correct", "note": "P361 and P749 both place Amherst within the University of Massachusetts system."}
+{"item_id": "part:d6471e8fb3d6845c", "verdict": "incorrect", "note": "The parent campus is described as defunct, making the stated part-of relationship historical."}
+{"item_id": "part:d6cb6f71a9b41575", "verdict": "correct", "note": "P749 identifies École Centrale de Marseille as a parent organization of the research facility."}
+{"item_id": "part:d77bb83570b45368", "verdict": "correct", "note": "P749 identifies the Chinese Academy of Sciences as the institute's parent, consistent with its research institute description."}
+{"item_id": "part:e0fd6c01aea27342", "verdict": "correct", "note": "P749 identifies Université de Montpellier as a parent organization of the laboratory."}
+{"item_id": "part:ea08bf22ba7efa27", "verdict": "correct", "note": "P749 identifies the Chinese Academy of Sciences as the Shanghai institute's parent organization."}
+{"item_id": "part:eca22bda24a66041", "verdict": "correct", "note": "P749 identifies the French Thales multinational as the Canadian company's parent."}
+{"item_id": "part:f60b5609c12706f4", "verdict": "correct", "note": "P361 places the university within the University of Clermont Auvergne & associates association."}
+{"item_id": "rel:0319d8d758ad2e86", "verdict": "correct", "supported_in": 1, "note": "The study combines episodic memory with an actor-critic architecture to improve performance in continuous control."}
+{"item_id": "rel:0bbaaf5fcbe2bccb", "verdict": "correct", "supported_in": 1, "note": "The proposed framework uses the Hilbert-Schmidt Independence Criterion to distinguish action classes in skeleton-based recognition."}
+{"item_id": "rel:0ddaf493514cc66d", "verdict": "correct", "supported_in": 1, "note": "The paper proposes multi-scale contrastive learning for temporal grounding and evaluates it on short and long videos."}
+{"item_id": "rel:0f52297a87b97fdf", "verdict": "incorrect", "supported_in": 0, "note": "Hyperparameter optimization is cited as prior context. The proposed method and experiments address neural architecture search."}
+{"item_id": "rel:253573991620139d", "verdict": "correct", "supported_in": 1, "note": "The abstract identifies deep neural networks as a leading low-light enhancement approach and trains existing enhancement models on synthetic data."}
+{"item_id": "rel:25aec8ddc4835ef6", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly describes 3D Gaussian splatting for real-time rendering and evaluates rendering speed in its hybrid approach."}
+{"item_id": "rel:30bc693408a25f71", "verdict": "correct", "supported_in": 1, "note": "The abstract explicitly describes using graph neural networks for node classification, the setting of its proposed defense."}
+{"item_id": "rel:33edb522194de915", "verdict": "correct", "supported_in": 1, "note": "The paper proposes MoRe to regularize class-patch attention in weakly supervised semantic segmentation."}

@@ -1,0 +1,168 @@
+{
+ "archive_dir": "reports/runs/WORK-2026-11-25-003/eval",
+ "claude_subagents": [
+  {
+   "agent_id": "a4442f2acbcf42394",
+   "description": "E4 v3 channel A shard 2",
+   "file": "agent-a4442f2acbcf42394.jsonl",
+   "first_timestamp": "2026-11-25T05:24:00.897Z",
+   "last_timestamp": "2026-11-25T05:25:33.292Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "a85783d46c2d26eb3",
+   "description": "E4 v3 channel A shard 3",
+   "file": "agent-a85783d46c2d26eb3.jsonl",
+   "first_timestamp": "2026-11-25T05:24:00.912Z",
+   "last_timestamp": "2026-11-25T05:24:35.428Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "ab4c2faabc0772cbf",
+   "description": "v3 APPLIED_TO dev labeling",
+   "file": "agent-ab4c2faabc0772cbf.jsonl",
+   "first_timestamp": "2026-11-25T05:17:46.494Z",
+   "last_timestamp": "2026-11-25T05:18:16.636Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "acceff0f00484705a",
+   "description": "E4 v3 channel A shard 1",
+   "file": "agent-acceff0f00484705a.jsonl",
+   "first_timestamp": "2026-11-25T05:24:00.860Z",
+   "last_timestamp": "2026-11-25T05:24:26.377Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  }
+ ],
+ "codex_sessions": [
+  {
+   "file": "rollout-2026-11-25T12-24-00-01a21129-2ac5-7d52-a70c-ba16fca1bb2f.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-v3-1",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a21129-2ac5-7d52-a70c-ba16fca1bb2f",
+   "started": "2026-11-25T05:24:00.356Z"
+  },
+  {
+   "file": "rollout-2026-11-25T12-24-05-01a21129-3fdc-7422-9359-3436ed6da279.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "C-v2disputes",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a21129-3fdc-7422-9359-3436ed6da279",
+   "started": "2026-11-25T05:24:05.734Z"
+  },
+  {
+   "file": "rollout-2026-11-25T12-25-32-01a2112a-9283-7450-a57a-73944175b805.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-v3-2",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a2112a-9283-7450-a57a-73944175b805",
+   "started": "2026-11-25T05:25:32.426Z"
+  },
+  {
+   "file": "rollout-2026-11-25T12-27-09-01a2112c-0d50-7be3-9c2f-657a1401fd25.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-v3-3",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a2112c-0d50-7be3-9c2f-657a1401fd25",
+   "started": "2026-11-25T05:27:09.400Z"
+  },
+  {
+   "file": "rollout-2026-11-25T12-28-18-01a2112d-1c8f-7851-b03d-0fab67af8d63.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "C-v3",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a2112d-1c8f-7851-b03d-0fab67af8d63",
+   "started": "2026-11-25T05:28:18.838Z"
+  }
+ ],
+ "file_count": 53,
+ "files_sha256": {
+  "A-v3-1/answers/A-1.jsonl": "1618321cd32018670e43bb17dc90836a5e251e28116e41d92ff70a4396703a61",
+  "A-v3-1/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "A-v3-1/packet.json": "88b5b8cbdbd8eeec17156643fe3fcebd8ab518c1dedd03cc7d729b203cfb8325",
+  "A-v3-2/answers/A-2.jsonl": "a98c3fe5f103952901134933e41d35a6c5b162abe8c92f98b3329a4be049bc18",
+  "A-v3-2/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "A-v3-2/packet.json": "4549e35e54c676d1341d8fdf910536e3937dec3447effa7b2aa74d5a218a1629",
+  "A-v3-3/answers/A-3.jsonl": "c8d146f71ea67c68169e69ed11b5cd8c41ffb9b836d52f97a17cfc55d32f0a4f",
+  "A-v3-3/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "A-v3-3/packet.json": "f12504d26459a39fa82933e53aec3e8f67772c5659f1ca398b469d10cb540d82",
+  "B-all.done": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+  "B-v3-1/answers/B-1.jsonl": "d801549dbaf04b7d087b175fd27ad94e1360ff6511cfec028105045908b70a89",
+  "B-v3-1/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "B-v3-1/last-message.txt": "c32cecbfded6fa9578c82f73399a25620a0758dac791af86a834ce1f6e9e993b",
+  "B-v3-1/packet.json": "ef668dcc66451682bd2397cd4c439e634781eabc7c087a32f5d0410e75ed0b19",
+  "B-v3-1/run.log": "b5f5f58b787adb2fb8e2440d00495e638a91c8fcbaed04ea0f9bf20e1b876c46",
+  "B-v3-2/answers/B-2.jsonl": "c5e2c412122abd969103c704c3a98c16a62f55bc9ec51260e6648cf63b9d6d2c",
+  "B-v3-2/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "B-v3-2/last-message.txt": "c32cecbfded6fa9578c82f73399a25620a0758dac791af86a834ce1f6e9e993b",
+  "B-v3-2/packet.json": "bc2204304d4a33c1ad23eb77fc2f5695218a7f9a786dac290abd5812d552943a",
+  "B-v3-2/run.log": "32545172a16f8c5edbbd2ea6df3aadb7e5fc339b9ebfcfd22cab97b8822e9d2d",
+  "B-v3-3/answers/B-3.jsonl": "b7115b60263b39dc3c9e3f677b94b76af0d7a5242a4e426430a8c73d4542211b",
+  "B-v3-3/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "B-v3-3/last-message.txt": "0834b5a36510e710616ae15556cb210e75b9d8f988306972ce51a8a27f759874",
+  "B-v3-3/packet.json": "4e334b7f510a90c3fbdea2e677becf873156bb190ed1f0f7d9bb281db17e8e70",
+  "B-v3-3/run.log": "72eced7666c4c1c75354cd2715ee8eabcd912eac2cd358638889144dfc9ec723",
+  "C-v2disputes/answers/C-1.jsonl": "c5644fb6af69dbd37f102621c553df07c597030f14d427ea496056bc61cd20c5",
+  "C-v2disputes/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "C-v2disputes/last-message.txt": "1257c98e5593b1fedc9ab129593cef35f3fc2e570c3dab4884d7c747150e7db2",
+  "C-v2disputes/packet.json": "78a8d29bd82f1d9453938ab32d77702c082c06dab526a95f91ff91c54940f296",
+  "C-v2disputes/run.log": "1d221907bc472b3d20e87bbeb2888104609c034aadd978912354a2abc0733c0f",
+  "C-v3/answers/C-1.jsonl": "a29ae7b5247fb4b309d08852debd21f92ed5c7d3fe9def98d75c3f7649ff3fcd",
+  "C-v3/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "C-v3/last-message.txt": "96ca8059014578150a88a0d9c48cb2a281737fec5a31f7d621ac4c9e66f9e74d",
+  "C-v3/packet.json": "2f59d423951c917d9699306aea04d3a139ad42d49a48be0214228aef0043a267",
+  "C-v3/run.log": "24790de1b657b10f4ae377001c3d07c058ff09f1f045f5458e956f3514fbfa13",
+  "D-dev/answers/D-applied-to-dev.jsonl": "5ada6df8c3af834714e3212d4f3454e98e9c70f9e763557f790771b89b6017e2",
+  "D-dev/guideline.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "D-dev/packet.json": "a00bcd317188aaaf5a37fbcfc5120640d51e72256959d63dfff8660cab0feb71",
+  "claude-subagents/agent-a4442f2acbcf42394.jsonl": "9b0f63bb29503ce2c73fa094713b0090ea82e78e5de19c31b360cba20555cb8e",
+  "claude-subagents/agent-a4442f2acbcf42394.meta.json": "ca1bb8958a41575c70d6b7dfdbae591888c237343d08c0f11e56e7818cd80686",
+  "claude-subagents/agent-a85783d46c2d26eb3.jsonl": "d81ccdd0a5f0a10550089714310dcb1d7a1ec24f930e3329533108251c04544c",
+  "claude-subagents/agent-a85783d46c2d26eb3.meta.json": "1472e4454776b4fe524c09923a0dae0966a776386fe120a475890516e6901d87",
+  "claude-subagents/agent-ab4c2faabc0772cbf.jsonl": "fe3499ca44f09c45e650154f20f618b242f5fcd007a035c39c04c5df9d9ea659",
+  "claude-subagents/agent-ab4c2faabc0772cbf.meta.json": "b18053b5c7a1f6728a3ffc56095218c47539b9fd4183aa9f2537613a9009a579",
+  "claude-subagents/agent-acceff0f00484705a.jsonl": "8263dbe18ac0f602c3e45b8b8df69f0ef994c94430c972005941ce35d39ebb14",
+  "claude-subagents/agent-acceff0f00484705a.meta.json": "a9c6c4cf4be91d91521ac9c644378d6d35c8026070697205720d32553e23a742",
+  "codex-sessions/rollout-2026-11-25T12-24-00-01a21129-2ac5-7d52-a70c-ba16fca1bb2f.jsonl": "42d61459f5e9a48e4ca3a33ed79496bfa9596aa130d1fa740ca0fde491a9f848",
+  "codex-sessions/rollout-2026-11-25T12-24-05-01a21129-3fdc-7422-9359-3436ed6da279.jsonl": "8127ffb92c4844394923567e9524b85cfd0c1183ac74253bebebf595b4292c89",
+  "codex-sessions/rollout-2026-11-25T12-25-32-01a2112a-9283-7450-a57a-73944175b805.jsonl": "b33908893278ac13742d76c8734f85965d85c3959adfdb7b1f17d718701da687",
+  "codex-sessions/rollout-2026-11-25T12-27-09-01a2112c-0d50-7be3-9c2f-657a1401fd25.jsonl": "35c8b204264692f6bd172a850a2a43d0d98894e0b19e06206decfa2a8cf768a8",
+  "codex-sessions/rollout-2026-11-25T12-28-18-01a2112d-1c8f-7851-b03d-0fab67af8d63.jsonl": "763f2cb123f5f6c3493836b6bfbd15ef2d82a7da3a61c18e05f813dc7643b61c",
+  "run_b_all.sh": "3ac7e80889e5ada1789920c678f0dd51c9acc7af5835f9bd83e2ea8f1774a92f",
+  "run_codex.sh": "f4a28ee57d4c359875fb27cd88d977c927cb5355d1093b8dd064cb5c40092b0f"
+ },
+ "label": "enrichment v3 evaluators (WORK-2026-11-25-003): APPLIED_TO dev labeler, E4 v3 A/B/C, v2 MEMBER_OF re-adjudication"
+}

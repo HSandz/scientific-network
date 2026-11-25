@@ -1,0 +1,29 @@
+{"item_id": "link:5d18a6242a74d9a2", "verdict": "correct", "note": "The lead explicitly identifies the original Segment Anything Model and describes its segmentation method."}
+{"item_id": "link:abc4708c4104d2b5", "verdict": "incorrect", "note": "The page defines scene text, while the entity denotes the task of recognizing it."}
+{"item_id": "member:17dc3c387a4b51c7", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Germany and leaves the university's membership status unspecified."}
+{"item_id": "member:1985a5f0a73a8b8d", "verdict": "unclear", "note": "P749 identifies the association as the centre's parent and leaves the specific membership relationship unspecified."}
+{"item_id": "member:1ef31eb94f7025c7", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Portugal and leaves membership at the university level unspecified."}
+{"item_id": "member:3ad732fef8ac676f", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Belgium and leaves the university's membership status unspecified."}
+{"item_id": "member:43eb2d2202a4b581", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Italy and leaves the university's membership status unspecified."}
+{"item_id": "member:4f8551d6ad02dcb4", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Spain and leaves the council's membership status unspecified."}
+{"item_id": "member:6a850722582bbe72", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR UK and leaves Cardiff's membership status unspecified."}
+{"item_id": "member:7abb6071a6fcc291", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Belgium and leaves the university's membership status unspecified."}
+{"item_id": "member:935948336ab15e01", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Italy and leaves the university's membership status unspecified."}
+{"item_id": "member:ab43632a3a8f60df", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR Italy and leaves the university's membership status unspecified."}
+{"item_id": "member:bc7691c9d4790071", "verdict": "unclear", "note": "P361 records inclusion in ELIXIR France and leaves CNRS's membership status unspecified."}
+{"item_id": "part:02ecc9b15737f228", "verdict": "unclear", "note": "The institute is described as autonomous, and P749 leaves the nature of the ministry relationship unspecified."}
+{"item_id": "part:121d3b19657a1567", "verdict": "correct", "note": "P749 directly identifies CNRS as the parent of this specific research group by QID."}
+{"item_id": "part:289c754f5b72a1cd", "verdict": "unclear", "note": "The ministry parent statement leaves KTH's administrative status within the ministry unresolved."}
+{"item_id": "part:2b9cfd4793678ad7", "verdict": "unclear", "note": "The ministry parent statement leaves the university's administrative status within the ministry unresolved."}
+{"item_id": "part:3e7387869393a126", "verdict": "unclear", "note": "The parent QID has only a broad educational institution classification, leaving its identity unclear."}
+{"item_id": "part:428b99e45244066d", "verdict": "correct", "note": "P749 directly names the digital research institute as a parent of the identified joint research laboratory."}
+{"item_id": "part:4733b410d59f24f2", "verdict": "unclear", "note": "The ministry parent statement leaves the university's administrative status within the ministry unresolved."}
+{"item_id": "part:482ab4684153d31c", "verdict": "unclear", "note": "P749 leaves the nature of the agricultural institute's role in the economics network unspecified."}
+{"item_id": "part:518b826bd0501afc", "verdict": "incorrect", "note": "City is described as a former university, so the parent relationship shown is historical."}
+{"item_id": "part:6af6bad758c09a85", "verdict": "correct", "note": "P749 directly identifies the named PLA logistics unit as the military hospital's organizational parent."}
+{"item_id": "part:744f2c23b5f5f729", "verdict": "unclear", "note": "P749 leaves unresolved whether the national metrology institute is structurally within the ministry or under its oversight."}
+{"item_id": "part:7c695a0fb856b9f5", "verdict": "unclear", "note": "The U.S. organization lacks a description that clarifies its identity and the direction of the corporate relationship."}
+{"item_id": "part:8c283e71baf259bc", "verdict": "correct", "note": "P749 directly names the University of Perpignan as a parent of the identified joint research laboratory."}
+{"item_id": "part:9e4e0dae69103f40", "verdict": "unclear", "note": "The institute's generic name and description leave its precise identity and relationship to the space academy uncertain."}
+{"item_id": "part:d6471e8fb3d6845c", "verdict": "incorrect", "note": "The parent campus is explicitly described as defunct, so the part-of statement reflects a historical relationship."}
+{"item_id": "rel:0f52297a87b97fdf", "verdict": "incorrect", "supported_in": 0, "note": "The abstract cites hyperparameter optimization as prior work. This paper applies Bayesian optimization to neural architecture search."}

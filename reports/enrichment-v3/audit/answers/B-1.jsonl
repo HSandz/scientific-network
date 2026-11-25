@@ -1,0 +1,80 @@
+{"item_id": "link:088071688f9475da", "verdict": "correct", "note": "The lead explicitly identifies MDL as the minimum description length model selection principle."}
+{"item_id": "link:08f271ea5100ca6a", "verdict": "correct", "note": "The lead defines DTW as an algorithm for comparing temporal sequences that can vary in speed."}
+{"item_id": "link:0aa05a5f28815f66", "verdict": "correct", "note": "The lead defines the NeRF scene representation used for three-dimensional reconstruction and novel view synthesis."}
+{"item_id": "link:0fabd324c2e67f91", "verdict": "correct", "note": "The lead identifies T5 as the Text-to-Text Transfer Transformer model family."}
+{"item_id": "link:1bdd0df583b5c098", "verdict": "correct", "note": "The lead describes automatically summarizing information drawn from multiple documents."}
+{"item_id": "link:1d47ed8c29bff08a", "verdict": "correct", "note": "The lead expands LoRA as Low-Rank Adaptation and describes its parameter-efficient fine-tuning role."}
+{"item_id": "link:1f05d2bbc8d446c2", "verdict": "correct", "note": "The lead describes the approval-ballot voting rule named in the examples."}
+{"item_id": "link:23495d4e0406f02c", "verdict": "correct", "note": "The lead identifies PAV as the proportional multiwinner approval rule."}
+{"item_id": "link:23d125f312b1ec0c", "verdict": "correct", "note": "The lead defines factorization into nonnegative matrices, the method named in the first title."}
+{"item_id": "link:25bb68d02a4aa262", "verdict": "correct", "note": "The lead defines the discrete transform by the use of discretely sampled wavelets."}
+{"item_id": "link:25ebf2c206b60dbe", "verdict": "correct", "note": "The lead identifies StyleGAN as Nvidia's named extension of the GAN architecture."}
+{"item_id": "link:2acce970000efaed", "verdict": "correct", "note": "The lead describes encoding token positions for sequence models, consistent with the attention and Transformer examples."}
+{"item_id": "link:38e0fda0405726c1", "verdict": "correct", "note": "The lead defines generation augmented by retrieving external information, matching the first paper title."}
+{"item_id": "link:3c42d62ee0c5b5a1", "verdict": "correct", "note": "The lead describes Granger causality through the predictive relationship between time series."}
+{"item_id": "link:417dd3551d482ee8", "verdict": "correct", "note": "The lead defines PINNs as networks that incorporate governing physical laws."}
+{"item_id": "link:43b77d13b45ca862", "verdict": "correct", "note": "The lead defines MaxSAT as maximizing the number of satisfied clauses."}
+{"item_id": "link:45e6292df69bb433", "verdict": "correct", "note": "The lead defines the encoder-decoder architecture that reconstructs inputs from learned representations."}
+{"item_id": "link:4f269fb107935e3d", "verdict": "correct", "note": "The lead defines the undirected graphical model named in the first paper title."}
+{"item_id": "link:4f601ea20df043dc", "verdict": "correct", "note": "The lead describes reinforcement learning combined with deep learning, matching the named approach."}
+{"item_id": "link:4fcc294aa8d4a646", "verdict": "correct", "note": "The lead defines CSPs as problems specified by constraints over variables."}
+{"item_id": "link:5463e8f32addf248", "verdict": "correct", "note": "The lead identifies reinforcement learning with multiple learning agents sharing an environment."}
+{"item_id": "link:57f26276958c86de", "verdict": "correct", "note": "The lead defines the resource allocation problem studied by the example papers."}
+{"item_id": "link:5d18a6242a74d9a2", "verdict": "incorrect", "note": "The page covers the Segment Anything series. The entity names the original promptable model introduced in 2023."}
+{"item_id": "link:5de62d2a2448b4db", "verdict": "correct", "note": "The lead describes the learning principle of optimizing performance measured on an observed dataset."}
+{"item_id": "link:5ecdeffa46c2833a", "verdict": "correct", "note": "The lead identifies the optimization formulation in which some or all variables are restricted to integers."}
+{"item_id": "link:636d19c841bf34a8", "verdict": "correct", "note": "The lead defines the optimization method that iteratively adds linear inequalities called cuts."}
+{"item_id": "link:653f94447fede5bc", "verdict": "correct", "note": "The lead explicitly gives structural causal model as an alternative name for the concept."}
+{"item_id": "link:6956166235a81e80", "verdict": "correct", "note": "The lead defines fusion of panchromatic and multispectral imagery, matching the named task."}
+{"item_id": "link:6e89aed9621fa057", "verdict": "correct", "note": "The lead defines the AI meaning of NLU, consistent with the example on understanding English text."}
+{"item_id": "link:6fea1469be5ba9fc", "verdict": "correct", "note": "The lead identifies the triplet loss used to learn embeddings that separate dissimilar examples."}
+{"item_id": "link:70a2c2d59c6f3470", "verdict": "correct", "note": "The machine learning page describes acquiring labels by choosing queries, consistent with the annotation and labeling examples."}
+{"item_id": "link:71888e6bddec83b2", "verdict": "correct", "note": "The lead defines fictitious play as a strategic learning rule based on opponents' empirical action frequencies."}
+{"item_id": "link:76d32561741f0e0d", "verdict": "correct", "note": "The lead defines recognizing activities from observations, consistent with the action recognition and activity detection examples."}
+{"item_id": "link:7adcaff3bd2f095b", "verdict": "correct", "note": "The lead expands DETR as Detection Transformer and defines its object detection architecture."}
+{"item_id": "link:84bac36eaa8c58fd", "verdict": "correct", "note": "The lead describes searching for mathematical expressions that fit data, matching the equation discovery task."}
+{"item_id": "link:86461cab533a22b6", "verdict": "incorrect", "note": "The lead describes the ImageNet project. The entity specifies the ImageNet-C benchmark."}
+{"item_id": "link:86c687e549826bed", "verdict": "correct", "note": "The lead identifies ELMo as Embeddings from Language Model and describes the word embedding method."}
+{"item_id": "link:8f3c81db80388bfd", "verdict": "correct", "note": "The lead defines ASP as declarative programming based on stable models or answer sets."}
+{"item_id": "link:90032522df7cdf04", "verdict": "correct", "note": "The lead defines learning representations of knowledge graph entities and relations."}
+{"item_id": "link:908d435fb0a2d3c0", "verdict": "correct", "note": "The page defines the class of optimization problems with discrete feasible solutions."}
+{"item_id": "link:90d27ef4675e7288", "verdict": "correct", "note": "The lead defines self-supervised training through supervisory signals derived from the data itself."}
+{"item_id": "link:9321be6d91d94589", "verdict": "correct", "note": "The lead describes identifying affective states and opinions, the same task named in the example."}
+{"item_id": "link:934289863f93ec3b", "verdict": "correct", "note": "The lead defines artificial speech production, matching the task studied in the FastDiff title."}
+{"item_id": "link:93aaa27620890c0f", "verdict": "incorrect", "note": "The entity denotes an operation. The page describes a neural network architecture that uses it."}
+{"item_id": "link:9abb7da064aa6a43", "verdict": "correct", "note": "The lead names CDCL and describes learning clauses from conflicts during satisfiability search."}
+{"item_id": "link:9c113f7fb5d7771e", "verdict": "correct", "note": "The lead defines the determinant-based stochastic point process named in the retrieval example."}
+{"item_id": "link:9e5c7fb0f60b178c", "verdict": "correct", "note": "The lead describes expressing a tensor in terms of simpler tensors, matching the named method."}
+{"item_id": "link:9fb8aa7ce91b8b16", "verdict": "correct", "note": "The lead identifies GPT-3 as Generative Pre-trained Transformer 3, the model named in the VQA title."}
+{"item_id": "link:a30c66474c492e10", "verdict": "incorrect", "note": "The page lists several distinct facility location problems without identifying a specific task."}
+{"item_id": "link:a3710e66c8f9766f", "verdict": "correct", "note": "The lead describes predicting biological or biochemical roles of proteins, matching the named task."}
+{"item_id": "link:a3ac21c3c71dffa7", "verdict": "correct", "note": "The lead defines predicting whether a link exists between entities in a network."}
+{"item_id": "link:abc4708c4104d2b5", "verdict": "incorrect", "note": "The page defines scene text itself and mentions its recognition as a separate computer vision task."}
+{"item_id": "link:ac71f491617f2611", "verdict": "correct", "note": "The lead explicitly defines the multi-armed bandit problem of repeatedly choosing among alternatives."}
+{"item_id": "link:ad27d8c2990e960f", "verdict": "correct", "note": "The artificial intelligence sense describes inherently rewarding agent behavior, consistent with the reinforcement learning papers."}
+{"item_id": "link:af91fa4648542085", "verdict": "correct", "note": "The lead describes classifying each instance into one of three or more classes."}
+{"item_id": "link:b83b7b804942badd", "verdict": "correct", "note": "The lead describes converting natural language to a logical form, matching the parsing examples."}
+{"item_id": "link:b8ccf8521b40a479", "verdict": "incorrect", "note": "The lead gives a generic meaning of normalization. The examples concern a technique used in neural networks."}
+{"item_id": "link:bc01f0ef122f614e", "verdict": "correct", "note": "The lead defines making linked decisions over time to optimize an objective, matching the research task."}
+{"item_id": "link:befa6f170885d0ff", "verdict": "incorrect", "note": "The page lists several senses. The paper titles indicate the language model reasoning technique."}
+{"item_id": "link:c540a3df22a16807", "verdict": "correct", "note": "The lead describes the Bellman equation's recursive relationship between immediate payoff and remaining value."}
+{"item_id": "link:c994457209e17c2d", "verdict": "correct", "note": "The lead defines reinforcement learning by multiple agents in a shared environment, matching the named task."}
+{"item_id": "link:cfbf3aa5a7ede2f3", "verdict": "correct", "note": "The lead describes synthesizing interactive state machines from specifications, matching the declarative synthesis example."}
+{"item_id": "link:dac33c342dcbbf90", "verdict": "correct", "note": "The lead defines fitting data by searching over mathematical expressions, matching the symbolic regression examples."}
+{"item_id": "link:dbe02ff3f13565ab", "verdict": "correct", "note": "The computer science lead identifies meta-learning as learning to learn, consistent with the machine learning examples."}
+{"item_id": "link:dfb8edd4df321c8a", "verdict": "correct", "note": "The lead describes the named model-free reinforcement learning algorithm that learns action values."}
+{"item_id": "link:e21165c43143296c", "verdict": "correct", "note": "The lead describes retrieving information across modalities, matching the task named in the hashing paper."}
+{"item_id": "link:eb4e0d3ea0966c22", "verdict": "correct", "note": "The lead identifies MES and describes its use in participatory budgeting and public decisions."}
+{"item_id": "link:eb79502de3f3542f", "verdict": "correct", "note": "The machine learning page describes selecting queries for labels, consistent with the examples on targeted annotation."}
+{"item_id": "link:ed0ecbc766dc3121", "verdict": "correct", "note": "The lead defines AMR as a graph-based language for representing sentence meaning."}
+{"item_id": "link:f21dd6fd8dfed0f5", "verdict": "correct", "note": "The lead describes evolving populations of programs, the genetic programming method named in two examples."}
+{"item_id": "link:f276d570bbef596a", "verdict": "correct", "note": "The lead identifies RLHF and describes using human preferences to train an agent."}
+{"item_id": "link:f48cba3bf4e481a7", "verdict": "incorrect", "note": "The page lists machine learning attention and natural cognition without defining the self-attention mechanism used by Transformers."}
+{"item_id": "link:f4e5020738602964", "verdict": "correct", "note": "The lead defines the family of evolution-inspired optimization algorithms used in the examples."}
+{"item_id": "link:f54866be45d91968", "verdict": "correct", "note": "The lead describes Langevin-equation dynamics and its Monte Carlo use, consistent with the sampling context."}
+{"item_id": "link:fe1a33c4f9f98a63", "verdict": "correct", "note": "The lead defines the recursive optimization paradigm used to solve problems through subproblems."}
+{"item_id": "link:feb9dd5f4b698c38", "verdict": "incorrect", "note": "The page concerns atomic rearrangement on crystal surfaces. The papers concern geometric reconstruction of three-dimensional surfaces."}
+{"item_id": "member:0612fb6d6436c82f", "verdict": "correct", "note": "The statement places IIT Bombay within the Indian Institutes of Technology group as a constituent institute."}
+{"item_id": "member:0cdb1e8781b31e0b", "verdict": "correct", "note": "The statement places the university within the Maple League, which the packet identifies as a university network."}
+{"item_id": "member:17dc3c387a4b51c7", "verdict": "unclear", "note": "The statement reports a part-of relationship to an ELIXIR node. It leaves formal membership unspecified."}
+{"item_id": "member:1985a5f0a73a8b8d", "verdict": "unclear", "note": "The statement identifies a parent organization. It leaves current association membership unspecified."}
