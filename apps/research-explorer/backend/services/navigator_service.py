@@ -345,12 +345,14 @@ class NavigatorService:
         if self._rag_toolset is None:
             if self._has_live_neo4j():
                 backend = Neo4jToolBackend(
-                    self.repo.get_driver(),
+                    uri=self.settings.neo4j_uri,
+                    username=self.settings.neo4j_username,
+                    password=self.settings.neo4j_password,
                     database=self.settings.neo4j_database,
-                    timeout=self.settings.query_timeout_seconds,
+                    timeout=max(float(self.settings.query_timeout_seconds), 15.0),
                 )
             else:
-                backend = InMemoryGraphBackend([], [])
+                backend = InMemoryGraphBackend({"nodes": [], "edges": []})
             self._rag_toolset = RAGToolset(
                 backend,
                 analysis_dir=self.analysis_dir,
@@ -369,7 +371,7 @@ class NavigatorService:
             seed=int(llm_cfg.get("seed", 0)),
             max_tokens=int(llm_cfg.get("ask_max_tokens", 900)),
             enable_thinking=bool(llm_cfg.get("enable_thinking", False)),
-            timeout_seconds=float(llm_cfg.get("timeout_seconds", 60.0)),
+            timeout=float(llm_cfg.get("timeout", 60.0)),
         )
         return LLMClient(cfg)
 

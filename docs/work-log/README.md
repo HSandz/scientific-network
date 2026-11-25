@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-25-005 — M3: application core](2026-11-25-005-m3-application-core.md): `analysis-final-exam-v2` reviewer fixes; froze `references-v1.jsonl` (69/80 test, 19/20 dev kept); closed 9-tool read-only layer; D042 GraphRAG `rag-v1` (228/233 community reports, 4,316 descriptions, 12,000 chunks, SQLite + Neo4j 3 vector indexes on 7690); multi-hop engine (19/19 dev faithful, 7 cached demos); FastAPI Navigator routes + React/ECharts/SVG pages (`761 passed`, `26` backend passed, `navigator.spec.ts` passed).
+
 - [WORK-2026-11-24-002 — Runtime checkpoint](2026-11-24-002-runtime-checkpoint.md): verified the local runtime changes for the requested Git checkpoint.
 
 - [WORK-2026-11-24-001 — Local LLM server and extraction encoders](2026-11-24-001-local-llm-server.md): llama.cpp CUDA server in Docker (`ops/llm/`), Qwen3.5-4B Q4_K_M pinned and hash-checked, smoke and load tests pass (peak 5.7 of 8.1 GB), thinking mode slow so default off; GLiNER2.5-base and GLiNER-Relex-large in an isolated CUDA env (`ops/extract/`), both run on GPU and CPU (~30 min per corpus on CPU).

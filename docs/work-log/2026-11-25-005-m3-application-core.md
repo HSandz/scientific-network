@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress |
-| Recorded | 2026-11-25 15:05 +07:00 (Asia/Bangkok) |
+| Status | done |
+| Recorded | 2026-11-25 16:40 +07:00 (Asia/Bangkok) |
 | Work performed | 2026-11-25 |
 | Contributor | Claude/Gemini execution session with the user |
 | Related task | [WORK-2026-11-25-004](2026-11-25-004-analysis-s1-s3.md) |
@@ -77,6 +77,8 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 | `PYTHONPATH=apps/research-explorer:src uv run pytest apps/research-explorer/backend/tests -q` | exit 0; 26 passed, 9 skipped (`neo4j-five-year` 7689 stopped) | `apps/research-explorer/backend/tests/test_navigator_api.py` |
 | `npm --prefix apps/research-explorer/frontend run build` | exit 0; clean TypeScript & Vite production build (`4.03s`) | `apps/research-explorer/frontend/dist/` |
 | `PLAYWRIGHT_API_PORT=8001 PLAYWRIGHT_UI_PORT=5174 EXPLORER_NEO4J_URI=bolt://127.0.0.1:7690 npm --prefix apps/research-explorer/frontend run test:e2e -- tests/navigator.spec.ts` | exit 0; `1 passed (15.6s)`, zero JS errors | `tests/navigator.spec.ts`, `reports/runs/WORK-2026-11-25-005/screenshots/*.png` |
+| Live uncached SSE `POST /api/ask` (`use_cache=False`, 7690 + `sn-llm`) & resource check | exit 0; `demo-01` first-event `8.727s` / first-token `26.253s` / total `26.262s` (`faithful: True`); `demo-03` `23.089s` / `23.09s` (`faithful: False`); `demo-06` `40.528s` / `40.531s` (`faithful: True`); `sn-llm` `5.919 GiB` + `neo4j-enriched` `939.2 MiB` + GPU `5,070 / 8,151 MiB` | `apps/research-explorer/backend/services/navigator_service.py` (live `Neo4jToolBackend` & `LLMConfig.timeout` fix) |
+| `uv run pytest -q` (full repo test suite after final edit) | exit 0; `761 passed, 1 skipped` (`test_cli.py` empty param) in `22.31s` | Full Python suite |
 
 ## Decisions
 
@@ -84,11 +86,13 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 
 ## Open issues and limitations
 
-- In progress.
+- Uncached SSE streams `token` chunks after `run_ask()` passes `verify_answer_faithfulness`, so local 4B time-to-first-token (`23s`–`40s` uncached) approximates total completion time; scripted demos also support instant cached playback (`demo-cache.json`).
+- `demo-03` hit the 2-attempt synthesis faithfulness check limit when uncached (`faithfulness_passed: False`) while still returning valid co-occurrence steps; `demo-05` stops gracefully on empty PPR lookup for the linked `Task` ID (`task:e8299f0a4fe25a12`).
+- Existing v4 Playwright specs (`dashboard.spec.ts`, `explorer.spec.ts`, etc.) target frozen v4 on port 7689 and were not re-run alongside Bolt 7690; all 69 kept benchmark **test** questions remain untouched for M4.
 
 ## Next step
 
-Complete Phase 0 (`analysis-final-exam-v2`), then freeze Phase 1 QA benchmark references.
+Execute **M4**: score the 69 kept **test** questions in `data/manifests/qa-benchmark-v1/references-v1.jsonl` against all three baselines (SLM alone, vector RAG over abstracts, GraphRAG local/global vs full multi-hop engine), complete UI polish/deployment verification, and update `docs/work-log/`.
 
 ## Corrections
 
