@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-analysis = ["pandas>=2.2,<3", "pyarrow>=18,<24", "matplotlib>=3.9,<4"]
+analysis = ["pandas>=2.2,<3", "pyarrow>=18,<24", "matplotlib>=3.9,<4", "python-igraph>=0.11,<2", "leidenalg>=0.10,<1", "powerlaw>=1.5,<3"]
 app = ["streamlit>=1.41,<2", "plotly>=6,<7"]
 nlp = ["sentence-transformers==5.1.1", "torch==2.8.0"]
 report = [
