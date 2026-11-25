@@ -1448,3 +1448,72 @@ both predicates in the v2 graph; `docs/graph-schema.md` says so. (4) The linking
 different sense (Distributed learning, Crossover, Data augmentation), which a title-token guard cannot catch; a lead-based guard is an open
 option. (5) The v2 graph is `enriched-827be09bc987`, built from the cached v1 inputs (no SLM run); rebuilding v1 with the same code reproduces
 `enriched-c0f7d1dd4abd` exactly.
+
+## D042 amendment — Enrichment v3: post-hoc adoption, APPLIED_TO re-declared on the audit scale, MEMBER_OF re-adjudication (2026-11-25)
+
+Status: declared 2026-11-25, **before any v3 measurement** (no new label, sample or audit item exists when this is committed). The
+user approved it after a separate reviewer session checked [WORK-2026-11-25-002](work-log/2026-11-25-002-enrichment-v2.md).
+
+**What happened, stated plainly.**
+
+1. **The v2 absolute criteria failed, and the reviewer judged them badly chosen.** PART_OF v2 and the link guard each improved on the
+   v1 behaviour yet were rejected only for missing an absolute bar, and the single-paper `APPLIED_TO` bar was unreachable on the scale
+   it was measured on.
+2. **PART_OF v2.** On the same 50 development edges the v1 rule scored 0.592 (29/49 decided) and the v2 rule 0.778 (28/36 decided),
+   keeping 28 of 29 correct edges (0.966). It missed the absolute 0.85. The v1 bug stays live in `neo4j-enriched`: 36 organizations
+   are PART_OF "S&P 500", 14 "Dow Jones Industrial Average" and 2 "Forbes Global 2000".
+3. **Link guard.** On the same 60 development entities the v1 rule scored 0.783 (47/60) and the guard 0.821 (46/56 kept), keeping 46
+   of 47 correct links (0.979). It missed the absolute 0.85. The gain rests on four lost links (one right, three not), so it is small.
+4. **`APPLIED_TO`** was measured against conservative development reference labels (recall-style: many correct relations count as
+   misses), while `EVALUATED_ON` was measured on the E4 scale ("the shown abstract supports the stated relation"). 0.80 was
+   unreachable on the first scale (informational E4-style sample after the decision: 29/30).
+5. **`MEMBER_OF`.** Raw A/B kappa was 0.144. Adjudicator C was the same family as A and sided with A on all 14 disputes (12 were
+   ELIXIR national-node items); B alone gives about 18/30. Because PART_OF v2 was not adopted, the 85 consortium pairs carry both
+   PART_OF and `MEMBER_OF`.
+
+**Decisions.**
+
+- **PART_OF v2 rule: adopted on a relative criterion that is post hoc.** The criterion is "beats the v1 rule on the same development
+  edges and keeps at least 95% of correct edges". It was chosen **after** the v2 development results were seen; those results
+  (`reports/enrichment-v2/part-of-dev-check.json`: 0.778 against 0.592, 0.966 retained) satisfy it, and nothing is re-measured. The
+  rule and class lists are the unchanged v2 ones (`configs/enrichment-v2.json`, order of checks unchanged). Consortium and
+  association parents move from PART_OF to `MEMBER_OF`, so each pair carries exactly one of the two edges; non-organization, index,
+  list and ranking targets and end-dated statements are dropped; `P749` is preferred; direction conflicts are resolved.
+- **Link guard: adopted on the same post-hoc relative criterion** (0.821 against 0.783, 0.979 of correct links retained; unchanged
+  guard `narrower_page`, `reject_narrower_page=True`, no fallback to another page).
+- **`APPLIED_TO` single-paper same-sentence: re-declared on the E4 scale after the first result was seen.** Before any labeling: a
+  fresh development sample of up to 40 candidate edges (single supporting paper, both endpoints entity nodes in the same sentence)
+  drawn with seed 2026112503 from candidates whose paper is outside the 100 enrichment development papers, the 200 test papers and
+  every paper in a v1 or v2 audit or development sample, excluding the 30 informational items. They are labeled **not by the building
+  session** but by one fresh `claude-opus-5-5` subagent in an isolated directory with only the packet and the labeling guideline, on
+  the E4 relation rubric. Adopt iff at least 0.80 are correct, unclear counted as incorrect for this decision. If fewer than 20
+  candidates are available the rule is not adopted (too few to decide). The sample and packet are frozen, hashed and committed before
+  labeling, and the labels are committed before the decision is computed. If adopted, the new edges carry
+  `support_rule: "single_paper_same_sentence"` and `support_count: 1`; if not, v2 `APPLIED_TO` stays.
+- **No threshold, class list or guard changes after this amendment is committed.** If one is needed, stop and report.
+
+**What is and is not evidence.** Because the PART_OF and link criteria were chosen after the development results and the `APPLIED_TO`
+criterion was re-declared after its first result, **the development checks are not evidence for v3.** The only accuracy claims for v3
+come from a fresh E4 v3 audit on items nobody has seen: not v1-audited, not v2-audited, not in any v1, v2 or v3 development sample, and
+not among the 30 informational `APPLIED_TO` items. The resulting figures are reported pass or fail against the original targets
+(relation precision ≥0.80 with PART_OF 0.80, linking ≥0.85) whether or not they favour the rules.
+
+**E4 v3 audit design (declared now).**
+
+- Axes: PART_OF v3 kept edges, 50; `MEMBER_OF`, up to 30 excluding the 30 v2-audited pairs; linking v3, up to 100; `APPLIED_TO`
+  single-paper new edges, up to 100 if adopted. Where fewer fresh items exist than asked, all are taken and the shortfall is reported.
+  Seed 2026112504. Samples and packet hashes are committed before any judgment.
+- Every item is judged by both A (fresh `claude-opus-5-5` context) and B (fresh `codex exec`, model recorded as logged), which
+  allows Cohen's kappa **per axis**. **C, the adjudicator of disagreements, is a different family from A** (a fresh `codex exec`
+  session separate from B's). C and B share a model family, which can favour B's reading; this is reported. The building session
+  does not judge.
+- Unclear is excluded from the primary figure and counted as incorrect in the sensitivity, as in v2. The single-paper rule: the
+  shown paper supports the relation.
+- **`MEMBER_OF` v2 re-adjudication:** the 14 v2 disputes go to the non-Claude adjudicator with the same packet. The v2 `MEMBER_OF`
+  figure is then reported under three readings, A+C(Claude), A+C(non-Claude) and B alone; the original v2 figure stays in place.
+- Axes whose rule v3 does not change (entities, paper edges, `RELATED_TO`, `EVALUATED_ON` single-paper 27) are carried over from v1
+  and v2 and labelled so.
+
+**Post-hoc adoption paragraph for the report.** A reviewer judged the v2 absolute criteria badly chosen. The PART_OF and link rules are
+adopted on a relative criterion decided after the v2 development results were seen, and the `APPLIED_TO` criterion was re-declared on the
+E4 scale after its first result. v3 accuracy therefore rests only on the fresh audit.
