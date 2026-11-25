@@ -1542,3 +1542,26 @@ In M2 (`WORK-2026-11-25-004`), S3's level-1 contracted Leiden partition at resol
 - **Minimum report threshold & grounding:** Generate community reports via `Qwen/Qwen3.5-4B` (`qwen3.5-4b-q4_k_m`, `enable_thinking: false`, `temperature: 0`, `seed: 0`, strict JSON schema) from structured graph inputs only for communities meeting size thresholds (research L1 ≥ 5, research L0 ≥ 5, N1 ≥ 50, N2 ≥ 10). Every cited paper ID and numeric figure in a report is checked against its input; failures retry once and are otherwise dropped and logged.
 - **Embeddings:** Keep `sentence-transformers/all-MiniLM-L6-v2` (384-d, 22M, Apache-2.0, already used in v4/enrichment).
 - **Analysis v2 review fixes (`configs/analysis-final-exam-v2.yaml`):** Application dashboards and RAG tools read `reports/final-exam/analysis-v2/` (v1 outputs preserved untouched): lift-ranked subject PPR with declared minimum paper counts, government-body exclusion with research guard in `PART_OF` roll-up, `"organization-anchored communities"` naming with `large` (>100) and topic disambiguation, single LCC `mode="zero"` clustering definition, N3 `in_corpus_citations` + sparsity note, and descriptive trend wording + display-only alias map.
+
+## D042 amendment — K1 answer arm, citation labelling, post-hoc literature check, release redaction (2026-11-26)
+
+Recorded in `WORK-2026-11-26-001`.
+
+- **K1 answer-quality arm.** Protocol `configs/k1-answer-v1.yaml`, committed before any run: the qa-eval-v1 S4 pipeline and scorer on
+  the 19 kept development questions; only the model changes. Result (development figures): Qwen3.5-4B 0.502, Gemma-4-E4B-it 0.469,
+  Qwen3.5-9B (reference) 0.634. The 9B meets the §6.1 10-point margin at every hash seed (+0.112 to +0.152). **No model change:** §6.1
+  also requires the team to accept the "9B" argument (9.65B total). That is a user decision, not yet taken.
+- **Scorer determinism.** The qa-eval-v1 resolver iterates a Python `set`, so its scores depend on `PYTHONHASHSEED`. The frozen harness
+  is not modified. K1 figures are written under `PYTHONHASHSEED=0`, and the spread is reported for K1 and as a dated note for qa-eval-v1.
+- **Citation labelling (product, after qa-eval-v1).** `rag-answer-v4` and `rag-local-answer-v3`: aggregate claims point to `[step N]`.
+  `evidence-labels-v1`: only a paper returned as its own row (`papers` tool) or as an abstract excerpt (local search) is a citation;
+  other papers are "papers in this result". qa-eval-v1 is unchanged and carries a dated note. The faithfulness verifier now drops an
+  unclosed parenthetical from list heads.
+- **Supplementary literature-supported precision.** A post-hoc, AI-assessed check on existing qa-eval-v1 raw outputs only (S2 vs S4,
+  hop-1/2 list items, 60 per system), reported next to the graph-agreement scores, never in their place.
+- **Data release redaction.** The release bundle (`ops/release/build-data-release.py`) replaces the 14,222 `inferred_topic` evidence
+  excerpts in graph v3 (abstract sentences) and 6 generated entity descriptions that quote abstracts with SHA-256 hashes. The build
+  fails if any verbatim 10-word abstract window remains. Publication and a licence for project-authored data await the user.
+- **v4 Explorer.** The focus label is now guaranteed in dense hub layouts (a second placement pass may overlap node discs), and the v4
+  baseline specs refuse a backend that does not read the verified v4 graph. The baseline images are unchanged: they were captured
+  against the production API on 11 November (110/166 nodes/edges), and refreshing them is a user decision.
