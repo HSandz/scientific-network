@@ -1,0 +1,104 @@
+{
+ "borderline_labels": [
+  "algorithmic stability",
+  "code generation",
+  "3D Gaussian Splatting"
+ ],
+ "borderline_sensitivity": [
+  {
+   "flip": "algorithmic stability",
+   "kept_accuracy": 0.8036
+  },
+  {
+   "flip": "code generation",
+   "kept_accuracy": 0.8393
+  },
+  {
+   "flip": "3D Gaussian Splatting",
+   "kept_accuracy": 0.8036
+  }
+ ],
+ "correct_links_retained_share": 0.9787,
+ "criterion": {
+  "correct_retained_at_least": 0.65,
+  "kept_accuracy_at_least": 0.85
+ },
+ "kept": 56,
+ "kept_accuracy": {
+  "estimate": 0.8214,
+  "high": 0.9,
+  "k": 46,
+  "low": 0.7016,
+  "n": 56
+ },
+ "kept_right": 46,
+ "link_dev_accepted_pages_informational": [
+  {
+   "page": "BERT (language model)",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Fuzzy clustering",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Reinforcement learning from human feedback",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Iteratively reweighted least squares",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Reproducing kernel Hilbert space",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Fashion-MNIST",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Spiking neural network",
+   "rejected_by_guard": null
+  },
+  {
+   "page": "Combinatorial search",
+   "rejected_by_guard": null
+  }
+ ],
+ "lost_items": [
+  {
+   "entity": "label propagation",
+   "label": "right",
+   "page": "Label propagation algorithm"
+  },
+  {
+   "entity": "SVD",
+   "label": "wrong",
+   "page": "K-SVD"
+  },
+  {
+   "entity": "captioning",
+   "label": "wrong",
+   "page": "Closed captioning"
+  },
+  {
+   "entity": "game theory",
+   "label": "narrower",
+   "page": "Combinatorial game theory"
+  }
+ ],
+ "lost_not_right": 3,
+ "lost_right": 1,
+ "lost_total": 4,
+ "passes": false,
+ "right": 47,
+ "sample": 60,
+ "v1_accuracy": {
+  "estimate": 0.7833,
+  "high": 0.8688,
+  "k": 47,
+  "low": 0.6638,
+  "n": 60
+ }
+}
