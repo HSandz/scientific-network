@@ -1,0 +1,110 @@
+# Final-exam network analysis S1-S3 and trend metrics (specification section 5; D042).
+# Declared 2026-11-25 BEFORE any real-graph result was computed (commit precedes every analysis output).
+# Enrichment is closed: nothing here changes its rules. If a rule later looks wrong, do not edit it silently:
+# add a dated, disclosed change under `changes:` below and say so in the report.
+version: analysis-final-exam-v1
+status: declared_before_computing
+declared_at: 2026-11-25
+input:
+  graph: data/processed/enriched-graph-v3/graph.json
+  graph_version: enriched-cb371912e308
+  graph_sha256: 37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3
+  v4_analysis_for_sanity_check: reports/release-v4/analysis.json
+networks:
+  N1: {name: researcher co-authorship, label: Researcher, relation: COAUTHORED_WITH, weight: fractional_weight, directed: false}
+  N2: {name: organization collaboration, label: Organization, relation: COLLABORATED_WITH, weight: fractional_weight, directed: false}
+  N3: {name: paper citation, label: Paper, relation: CITES, directed: true, core_only: true}
+  N4: {name: full enriched graph, labels: all, relations: all, directed: false, weight: none, note: all 50k nodes and every edge as one undirected simple graph}
+random_seed: 20261125
+# --- S1 small world (specification 5.1) ---
+small_world:
+  on: largest connected component
+  networks: [N1, N2, N4]
+  clustering: average local clustering (Watts-Strogatz, nodes of degree < 2 count as 0); transitivity reported separately
+  baselines: {erdos_renyi_gnm: 20, degree_preserving_rewiring: 20, rewiring_swaps_per_edge: 10}
+  sigma: "(C / C_rand) / (L / L_rand); per replicate and from the baseline means"
+  # decision rule, applied per network: small world HOLDS iff all of
+  #  (a) sigma > 1 for every one of the 20 replicates of EACH baseline kind (40 replicates), and
+  #  (b) L / L_rand <= 2.0 against the mean of EACH baseline kind (L stays of the order of the random baseline).
+  # Otherwise it does NOT hold. Both parts and the numbers are reported.
+  decision_rule: {sigma_greater_than: 1.0, replicates_required: all, max_l_over_l_rand: 2.0}
+  exact_l_for_real_graph: true
+  baseline_l: {exact_when_nodes_at_most: 30000, otherwise: seeded pivot sample, pivots: 2000, error_estimate: standard error over pivots and replicates}
+  omega: {analytic ring lattice, C_latt: "3(k-2)/(4(k-1))", L_latt: "n/(2k)", k: mean degree of the component, status: approximate; reported only as a secondary figure}
+  evolution: {networks: [N1, N2], years: [2021, 2022, 2023, 2024, 2025], network: cumulative up to and including the year, metrics: [nodes, edges, lcc_nodes, L, C], N4: skipped (no yearly structure beyond papers)}
+  degree_tail: {fit: powerlaw package (Clauset, Shalizi, Newman), discrete: true, compare: [lognormal, exponential, truncated_power_law], alpha_for_preference: 0.05,
+    claim_rule: "a power-law tail is claimed only if it is favoured over exponential (R>0, p<0.05) and not rejected against lognormal (not R<0 with p<0.05); otherwise report heavy-tailed or not, never power law",
+    goodness_of_fit_bootstrap: not run}
+# --- S2 ranking (5.2) ---
+ranking:
+  pagerank: {damping: 0.85, weights: {N1: fractional_weight, N2: fractional_weight, N3: none, N4: none}, n3_directed: true}
+  personalized:
+    network: N4
+    restart: uniform over the papers of the subject (HAS_TOPIC for topics; USES_METHOD, ADDRESSES_TASK or USES_DATASET for entities)
+    subjects: {topics: all 20, methods: top 30 by papers, tasks: top 30 by papers, datasets: top 30 by papers}
+    top_k_per_kind: {Researcher: 20, Organization: 20, Paper: 20, Method: 10, Task: 10, Dataset: 10}
+  compared_with: [degree, strength, betweenness, eigenvector]
+  betweenness: {N2: exact, N1: "exact (igraph) if it finishes within 30 minutes, else networkx source sampling with 1000 sources; the method used is reported", weighted_distance: inverse_strength}
+  correlations: spearman
+  top_k_overlap: 20
+  robustness: {strict_evidence_filter: support_count >= 2, networks: [N1, N2], compare_top_k: 20}
+  top_k_tables: 20
+# --- S3 communities and key individuals (5.3) ---
+communities:
+  networks: [N1, N2]
+  algorithm: leiden, modularity (RBConfiguration vertex partition), weights = strength
+  resolutions: [0.8, 1.0, 1.2]
+  seeds: [17, 42, 101]
+  headline: {resolution: 1.0, seed: 17}
+  hierarchy: "level 0 = headline partition; level 1 = Leiden (resolution 1.0, seed 17) on the aggregated community graph, so level 1 nests level 0"
+  louvain_cross_check: igraph multilevel at the same resolutions, seed 17
+  stability: NMI between seeds at each resolution
+  labels: {method: c-TF-IDF over the member papers, kinds: [Topic, Method, Task, Organization], top_n: 5, generated_titles: none (M3, specification 6.2)}
+  key_individuals: {hubs: top PageRank within the community (global scores), brokers: top participation coefficient and top betweenness among members, top_n: 5, minimum_community_size: 20}
+# --- rising researchers (5.3) ---
+rising_researchers:
+  recent_years: [2024, 2025]
+  base_years: [2021, 2022, 2023]
+  rule: "share_ratio >= 2.0 and recent papers >= 3 and total papers >= 4, where share_ratio = (recent papers / papers of recent years) / (base papers / papers of base years); zero base papers counts as a new entrant and is flagged"
+  min_recent_papers: 3
+  min_total_papers: 4
+  min_share_ratio: 2.0
+# --- groups (5.3) ---
+groups:
+  kinds: [organization, lab (organization-anchored N1 community), N1 leiden community, N2 leiden community, parent organization roll-up]
+  notable_organization: has a Wikipedia URL in node_enrichments (Wikidata match with an English Wikipedia page)
+  lab: {community: N1 headline partition, minimum_members: 10, minimum_top_organization_share: 0.40, share: members with an AFFILIATED_WITH edge to the organization}
+  rollup:
+    relation: PART_OF only
+    never_use: MEMBER_OF (its audit is ambiguous)
+    skip_parents: government ministries
+    ministry_rule: the PART_OF evidence parent_instance_of contains a label with "ministry" (case-insensitive)
+    expected_ministry_part_of_edges: 48
+    expectation_note: the reviewer counted 48; a different count is reported, not forced
+# --- trends (5.4) ---
+trends:
+  years: [2021, 2022, 2023, 2024, 2025]
+  subjects: [topic (HAS_TOPIC), method, task, dataset]
+  default_measure: share of that year's core papers (counts also written)
+  measures: [papers, share, cagr_of_share_2021_2025, ols_slope_of_share, slope_p_value, year_over_year_change]
+  base_window: [2021, 2022]
+  recent_window: [2024, 2025]
+  minimum_total_papers: 15
+  slope_alpha: 0.10
+  classes:
+    emerging: "base-window papers <= 2 and recent-window papers >= 8 (checked first)"
+    rising: "slope > 0 with p <= 0.10 and recent_share / base_share >= 1.5 and base-window papers >= 3"
+    declining: "slope < 0 with p <= 0.10 and recent_share / base_share <= 0.6667 and base-window papers >= 10"
+    stable: "every other subject with at least the minimum total papers"
+    insufficient_data: fewer than the minimum total papers
+  multiple_testing: none applied; classes are descriptive, not confirmatory
+  group_interest: {groups: [organizations with >= 30 papers, N1 headline communities with >= 50 members], measures: [share of the group's papers in the subject, revealed comparative advantage, first active year, growth of the group's share 2021-2025], subjects_minimum_total_papers: 20}
+  caveats:
+    - only two venues (AAAI and IJCAI)
+    - venue size changes from 2,240 papers in 2021 to 4,042 in 2025
+    - topic labels come from an embedding classifier with known limits (human review pending)
+    - method, task and dataset coverage is partial (about 40%, 28% and 12% of papers)
+    - all enrichment quality figures are AI-assessed
+sanity_checks:
+  v4_overlap: [N1 node count 32189, N1 largest component 20776, N1 edges 80482, N2 nodes 2047, N2 edges 13031, N3 edges 7308]
+changes: []
