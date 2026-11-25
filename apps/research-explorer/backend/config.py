@@ -62,6 +62,13 @@ class Settings:
     historical_topic_reuse_path: Path = REPO_ROOT / "reports" / "release-v4" / "historical-topic-reuse-v2.json"
     ledger_sqlite_path: Path | None = None
     production: bool = False
+    analysis_v2_dir: Path = REPO_ROOT / "reports" / "final-exam" / "analysis-v2"
+    rag_reports_dir: Path = REPO_ROOT / "reports" / "final-exam" / "rag-v1"
+    rag_vectors_sqlite: Path = REPO_ROOT / "data" / "processed" / "rag-v1" / "vectors.sqlite"
+    rag_config_path: Path = REPO_ROOT / "configs" / "rag-v1.yaml"
+    enrichment_summary_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "graph-summary.json"
+    enrichment_quality_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "quality.json"
+    cooccurrence_path: Path = REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"
 
 
 def load_settings() -> Settings:
@@ -166,6 +173,48 @@ def load_settings() -> Settings:
             os.environ.get(
                 "EXPLORER_TOPIC_REUSE_PATH",
                 str(REPO_ROOT / "reports" / "release-v4" / "historical-topic-reuse-v2.json"),
+            )
+        ),
+        analysis_v2_dir=Path(
+            os.environ.get(
+                "EXPLORER_ANALYSIS_V2_DIR",
+                str(REPO_ROOT / "reports" / "final-exam" / "analysis-v2"),
+            )
+        ),
+        rag_reports_dir=Path(
+            os.environ.get(
+                "EXPLORER_RAG_REPORTS_DIR",
+                str(REPO_ROOT / "reports" / "final-exam" / "rag-v1"),
+            )
+        ),
+        rag_vectors_sqlite=Path(
+            os.environ.get(
+                "EXPLORER_RAG_VECTORS_SQLITE",
+                str(REPO_ROOT / "data" / "processed" / "rag-v1" / "vectors.sqlite"),
+            )
+        ),
+        rag_config_path=Path(
+            os.environ.get(
+                "EXPLORER_RAG_CONFIG_PATH",
+                str(REPO_ROOT / "configs" / "rag-v1.yaml"),
+            )
+        ),
+        enrichment_summary_path=Path(
+            os.environ.get(
+                "EXPLORER_ENRICHMENT_SUMMARY_PATH",
+                str(REPO_ROOT / "reports" / "enrichment-v3" / "graph-summary.json"),
+            )
+        ),
+        enrichment_quality_path=Path(
+            os.environ.get(
+                "EXPLORER_ENRICHMENT_QUALITY_PATH",
+                str(REPO_ROOT / "reports" / "enrichment-v3" / "quality.json"),
+            )
+        ),
+        cooccurrence_path=Path(
+            os.environ.get(
+                "EXPLORER_COOCCURRENCE_PATH",
+                str(REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"),
             )
         ),
     )

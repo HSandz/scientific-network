@@ -18,11 +18,13 @@ APP_DIR = Path(__file__).resolve().parents[1]
 if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
 
+from backend.api.navigator_routes import navigator_router  # noqa: E402
 from backend.api.routes import router as api_router  # noqa: E402
 from backend.config import Settings, load_settings  # noqa: E402
 from backend.repositories.artifact_store import ArtifactStore  # noqa: E402
 from backend.repositories.neo4j_repo import Neo4jRepository  # noqa: E402
 from backend.services.explorer_service import ExplorerService  # noqa: E402
+from backend.services.navigator_service import NavigatorService  # noqa: E402
 
 
 ALLOWED_HTTP_METHODS: frozenset[str] = frozenset({"GET", "POST", "OPTIONS", "HEAD"})
@@ -64,6 +66,7 @@ def create_app(
             app.state.neo4j_repo = active_repo
             app.state.artifact_store = active_store
             app.state.explorer_service = ExplorerService(active_repo, active_store)
+            app.state.navigator_service = NavigatorService(cfg, repo=active_repo, store=active_store)
         yield
         active_repo_ref = getattr(app.state, "neo4j_repo", None)
         if active_repo_ref is not None and repo is None:
@@ -84,6 +87,7 @@ def create_app(
         app.state.neo4j_repo = repo
         app.state.artifact_store = store
         app.state.explorer_service = ExplorerService(repo, store)
+        app.state.navigator_service = NavigatorService(cfg, repo=repo, store=store)
 
     # Strict CORS allowlist (never wildcard '*')
     app.add_middleware(
@@ -99,7 +103,9 @@ def create_app(
     @app.middleware("http")
     async def security_and_rate_limit_middleware(request: Request, call_next):
         # 1. Enforce HTTP method allow-list (disable TRACE, PUT, DELETE, PATCH)
-        if request.method not in ALLOWED_HTTP_METHODS or (request.method == "POST" and request.url.path != "/api/paths"):
+        if request.method not in ALLOWED_HTTP_METHODS or (
+            request.method == "POST" and request.url.path not in {"/api/paths", "/api/ask"}
+        ):
             return JSONResponse(
                 status_code=405,
                 content={"detail": f"HTTP method {request.method} is not permitted on this read-only API."},
@@ -127,10 +133,11 @@ def create_app(
             return JSONResponse(status_code=414, content={"detail": "Query string too long."})
         if request.method == "POST":
             # Stream a bounded body before letting Pydantic parse it.
+            max_body = 8192 if request.url.path == "/api/ask" else 4096
             body = bytearray()
             async for chunk in request.stream():
                 body.extend(chunk)
-                if len(body) > 4096:
+                if len(body) > max_body:
                     return JSONResponse(status_code=413, content={"detail": "Request body too large."})
             request._body = bytes(body)
 
@@ -199,6 +206,7 @@ def create_app(
         return JSONResponse(status_code=200 if ready else 503, content={"status": "ok" if ready else "unavailable"})
 
     app.include_router(api_router)
+    app.include_router(navigator_router)
     return app
 
 
