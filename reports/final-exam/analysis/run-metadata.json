@@ -19,6 +19,10 @@
   "trends": {
    "seconds": 11.9,
    "peak_rss_mb_so_far": 1502
+  },
+  "report": {
+   "seconds": 0.6,
+   "peak_rss_mb_so_far": 1502
   }
  },
  "config": "analysis-final-exam-v1",

@@ -23,7 +23,7 @@ from . import communities as comm
 from . import ranking, smallworld, trends
 from .fx_data import YEARS, Inputs, cumulative_pairs, load_inputs, sanity_check
 
-STAGES = ("sanity", "smallworld", "ranking", "communities", "trends", "all")
+STAGES = ("sanity", "smallworld", "ranking", "communities", "trends", "report", "all")
 
 
 def add_fx_parser(commands) -> None:
@@ -347,11 +347,19 @@ def stage_trends(ctx: Context) -> dict:
     return summary
 
 
+def stage_report(ctx: Context) -> dict:
+    from . import fx_report
+    fx_report.figures(ctx.out)
+    text = fx_report.build_readme(ctx.out, ctx.cfg)
+    (ctx.out / "README.md").write_text(text + "\n", encoding="utf-8")
+    return {"readme_lines": text.count("\n") + 1}
+
+
 def run_final_analysis(args) -> tuple[dict, int]:
     ctx = Context(args)
     ctx.out.mkdir(parents=True, exist_ok=True)
-    stages = ("sanity", "smallworld", "ranking", "communities", "trends") if args.stage == "all" else (args.stage,)
-    fns = {"sanity": stage_sanity, "smallworld": stage_smallworld, "ranking": stage_ranking, "communities": stage_communities, "trends": stage_trends}
+    stages = ("sanity", "smallworld", "ranking", "communities", "trends", "report") if args.stage == "all" else (args.stage,)
+    fns = {"sanity": stage_sanity, "smallworld": stage_smallworld, "ranking": stage_ranking, "communities": stage_communities, "trends": stage_trends, "report": stage_report}
     result = {}
     for s in stages:
         result[s] = _timed(ctx, s, fns[s])
