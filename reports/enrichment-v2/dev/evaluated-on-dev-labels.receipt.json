@@ -1,0 +1,9 @@
+{
+ "evaluation_kind": "ai_assessed_development_material",
+ "labeler": "building session (Claude Sonnet 5.5)",
+ "labels": "reports/enrichment-v2/dev/evaluated-on-dev-labels.jsonl",
+ "note": "development material only; not an independent audit; frozen before the rule was applied",
+ "purpose": "enrichment v2 supplementary EVALUATED_ON development sample: all 24 single-paper same-sentence candidates outside dev/test/audited papers (pool had fewer than 30); rubric: the shown abstract supports the relation",
+ "rows": 24,
+ "sha256": "30263fe1bb155c259a80ee0c18f99708a8d7e7aa365176f61285fcbc0c20d0e2"
+}
