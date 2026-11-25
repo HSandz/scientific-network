@@ -73,6 +73,19 @@ Uncached scripted demo streaming latencies (`--no-llm-cache`, `sn-llm` + `neo4j-
 - `demo-07` (`local` search): first_event `1.082s`, first_step `2.273s`, total `6.358s`, faithful `True`
 Peak container memory under demo services (`sn-llm` + `neo4j-enriched`, `docker stats --no-stream`): `sn-llm` `7.444 GiB`, `neo4j-enriched` `657.4 MiB` (~`8.10 GiB` combined of `11.68 GiB`).
 
+### Phase 1 — Frozen Evaluation Protocol (`configs/qa-eval-v1.yaml`, `src/scientific_network/evaluation/qa_eval.py`, `tests/test_qa_eval.py`)
+
+Committed BEFORE running any `split == "test"` question (run-once policy):
+- **Anchors**: Phase 0 commit `433903ddde134e6acd9a37b534646b601f9cac5e`; graph `enriched-cb371912e308` (`37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3`); frozen `references-v1.jsonl` (`d2fcf2c0cba2fae7e5cfa7f6dd030971a9083604081ea4bebdb93ddf424b2c19`, 69 kept test items: hop 1 = 14, hop 2 = 22, hop 3 = 18, global = 15).
+- **Model & decoding (identical across S1–S4)**: `qwen3.5-4b-q4_k_m` (`Qwen/Qwen3.5-4B` rev `e87f176479d0855a907a41277aca2f8ee7a09523`), `http://127.0.0.1:8080/v1`, `temperature=0.0`, `seed=0`, `enable_thinking=false`, dedicated fresh cache dir `data/interim/qa-eval-v1/llm-cache` so Phase 2 records uncached latency.
+- **Systems**: `S1_slm_only` (`eval-s1-v1`, no retrieval), `S2_vector_rag` (`eval-s2-v1`, top-10 `abstract_chunk` cosine matches), `S3_graphrag` (`local_search` for hops 1–3 with `rag-local-answer-v2`; `global_search` for global with `rag-global-v2`), `S4_multihop` (`stream_ask(..., mode="auto")` with `rag-parse-v1`, `rag-plan-v4`, `rag-answer-v3`, `rag-global-v2`).
+- **Factual scoring & faithfulness**: Unified text-to-graph-ID entity resolver applied identically to S1–S4 answer texts (`graph ID -> exact/alias normalized name -> all-MiniLM-L6-v2 cosine >= 0.80`), restricted to expected reference entity types; set-F1 (`set`, `ranked_list`) and integer exact match (`number`, `year`, `abs_tol=0`), reported with seeded percentile bootstrap 95% CIs (`seed=20261125`, `n=2000`) and 95% Wilson CIs. `verify_answer_faithfulness` applied to S2/S3/S4 (S1 `not_applicable`).
+- **AI-assessed citation validity & global pairwise**: Deterministic citation pair sampling (`seed=20261125`, stratified max 25/system; full title+abstract written ONLY to ignored `reports/runs/WORK-2026-11-25-006/eval/citation-packet.jsonl`; tracked manifest without abstracts in `reports/final-exam/qa-eval-v1/citation-sample-manifest.json`); 15 global questions × 6 pairs × AB+BA = 180 blind pairwise items (`seed=20261125`).
+- **Evaluator CLI smoke tests & approved adjudicator fallback**:
+  - `A`: `/home/san/.local/bin/claude` (`2.1.332`, `claude-opus-5-5`, `-p --output-format json`) — passed (`"OK"`).
+  - `B`: `/home/san/.local/bin/codex` (`0.172.0`, `gpt-6.2-sol` via `9router`, `exec --skip-git-repo-check`) — passed (`"OK"`).
+  - `gemini` CLI (`/home/linuxbrew/.linuxbrew/bin/gemini` `0.26.0`, `-p -o json`) failed with exit 41 (unauthenticated). Per M2 precedent (`WORK-2026-11-25-003`), `C` uses a **fresh isolated `codex exec` session (`gpt-6.2-sol` via `9router`)** on A≠B disagreements — different family from A (spec §6.6), explicitly disclosed as sharing B's model family (not independent of B).
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -85,19 +98,23 @@ Peak container memory under demo services (`sn-llm` + `neo4j-enriched`, `docker 
 | v4 Explorer Playwright on Bolt 7689 (`dashboard`, `explorer`, `analytics-layout`, `focus-labels`, `reproducibility`, `visual`) | `44/46` functional/layout checks passed; 2 pre-existing Nov-11 PNG baseline snapshot diffs (`focus-labels:141` `hover-neighborhood.png` degree `26` vs Nov-11 `22` at exact `1168x662`; `visual:30` `graph-overview.png` 3% diff from M3/M4 `Navigator`/`+ Enriched v5` buttons) — v4 snapshots untouched | `/tmp/playwright-test-results/` |
 | Navigator Playwright on Bolt 7690 (`tests/navigator.spec.ts`) | exit 0; `9 passed` (`37.1s`), all charts pixel-verified | `reports/runs/WORK-2026-11-25-006/screenshots-phase0/` |
 | `uv run python -m scientific_network.rag.dev_eval --config configs/rag-v1.yaml` (+ uncached `--no-llm-cache`) | exit 0; `19/19` kept dev faithful, `7/7` demos cached/timed | `reports/final-exam/rag-v1/{dev-eval,demo-cache}.json`, ignored `reports/runs/WORK-2026-11-25-006/uncached-dev-latency.json` |
+| Phase 1 evaluator CLI smoke tests (`claude -p`, `codex exec`, `gemini -p`) | `claude` & `codex` exit 0 (`"OK"`); `gemini` exit 41 (unauthenticated) | frozen fallback in `configs/qa-eval-v1.yaml` |
+| `uv run pytest -q tests/test_qa_eval.py` & `uv run pytest -q` (Phase 1 harness) | exit 0; `4 passed` (`0.51s`); `768 passed, 1 skipped` (`26.94s`) | `tests/test_qa_eval.py`, `qa_eval.py` |
 
 ## Decisions
 
 - Resolved M3 review findings on dev/demo scope without modifying frozen v4 (`release-d3c788c3114a`) or frozen v4 PNG golden baselines.
+- Approved fresh isolated `codex exec` (`gpt-6.2-sol` via `9router`) as adjudicator C after `gemini` CLI failed with exit 41, with explicit non-independence disclosure in `configs/qa-eval-v1.yaml`, work log, and `results.md`.
 
 ## Open issues and limitations
 
-- All 69 kept benchmark test questions remain untouched pending completion of Phase 1.
+- All 69 kept benchmark test questions remain untouched (Phase 2 ready upon plan review).
 - Uncached `global` mode (`demo-06`) exceeds the ~30s total latency guideline (`37.6s`) due to 14-report map-reduce passes; uncached first-event latency (`0.57s–2.03s`) meets the ~5s target.
+- Adjudicator C shares B's model family (`gpt-6.2-sol`), disclosed as non-independent of B.
 
 ## Next step
 
-Freeze Phase 1 (`configs/qa-eval-v1.yaml`, `src/scientific_network/evaluation/qa_eval.py`, `tests/test_qa_eval.py`) and commit before Phase 2.
+Hand back for plan review, then execute Phase 2 (run S1–S4 once on the 69 kept test questions, score, freeze citation/pairwise manifests, run A/B/C AI judging, and write `reports/final-exam/qa-eval-v1/results.{json,md}`).
 
 ## Corrections
 

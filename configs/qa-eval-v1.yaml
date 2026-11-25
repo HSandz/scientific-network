@@ -1,0 +1,156 @@
+# Frozen Test Benchmark Evaluation Protocol (specification §6.6, Milestone M4 Phase 1)
+# Committed BEFORE any split == "test" question is run.
+# Run-once policy: do NOT tune systems or re-run test questions after inspecting test outputs.
+
+protocol_version: qa-eval-v1
+frozen_before_test_run: true
+run_once_policy: true
+code_commit: 433903ddde134e6acd9a37b534646b601f9cac5e
+rag_config_path: configs/rag-v1.yaml
+
+graph:
+  path: data/processed/enriched-graph-v3/graph.json
+  graph_version: enriched-cb371912e308
+  graph_sha256: 37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3
+
+analysis_dir: reports/final-exam/analysis-v2
+rag_dir: reports/final-exam/rag-v1
+vectors_sqlite_path: data/processed/rag-v1/vectors.sqlite
+works_jsonl_path: data/interim/release-v1/works.jsonl
+
+benchmark:
+  questions_path: data/manifests/qa-benchmark-v1/questions.jsonl
+  references_path: data/manifests/qa-benchmark-v1/references-v1.jsonl
+  references_sha256: d2fcf2c0cba2fae7e5cfa7f6dd030971a9083604081ea4bebdb93ddf424b2c19
+  split: test
+  status_filter: kept
+  expected_counts:
+    total: 69
+    hop_1: 14
+    hop_2: 22
+    hop_3: 18
+    global: 15
+
+llm:
+  base_url: http://127.0.0.1:8080/v1
+  model: qwen3.5-4b-q4_k_m
+  hf_repo: Qwen/Qwen3.5-4B
+  revision: e87f176479d0855a907a41277aca2f8ee7a09523
+  provider: local-llama.cpp
+  temperature: 0.0
+  seed: 0
+  enable_thinking: false
+  max_tokens: 1200
+  timeout: 180.0
+  # Dedicated fresh cache directory so Phase 2 test runs record uncached cold latency
+  cache_dir: data/interim/qa-eval-v1/llm-cache
+  log_path: reports/runs/WORK-2026-11-25-006/eval/llm-calls.jsonl
+
+embeddings:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  dimension: 384
+
+systems:
+  S1_slm_only:
+    label: "S1 · SLM alone (no retrieval)"
+    prompt_version: eval-s1-v1
+    max_tokens: 700
+  S2_vector_rag:
+    label: "S2 · Vector RAG (top-10 abstract chunks)"
+    prompt_version: eval-s2-v1
+    top_k_chunks: 10
+    max_tokens: 700
+  S3_graphrag:
+    label: "S3 · GraphRAG (local & global search)"
+    local_prompt_version: rag-local-answer-v2
+    global_prompt_version: rag-global-v2
+    char_budget: 14000
+    top_reports: 4
+    top_entities: 6
+    top_chunks: 10
+    global_top_reports: 14
+    global_batch_size: 5
+  S4_multihop:
+    label: "S4 · Full multi-hop system (auto)"
+    mode: auto
+    prompt_versions:
+      parse: rag-parse-v1
+      plan: rag-plan-v4
+      answer: rag-answer-v3
+      local_answer: rag-local-answer-v2
+      global: rag-global-v2
+
+factual_scoring:
+  unified_entity_resolver:
+    applied_identically_to: [S1_slm_only, S2_vector_rag, S3_graphrag, S4_multihop]
+    steps:
+      - "1. Exact verified graph ID regex match against data/processed/enriched-graph-v3/graph.json node IDs."
+      - "2. Exact case-insensitive / punctuation-normalized name and alias match (length >= 4 or uppercase acronym)."
+      - "3. Embedding cosine similarity fallback (sentence-transformers/all-MiniLM-L6-v2, threshold >= 0.80) over extracted answer candidate spans."
+    embedding_threshold: 0.80
+    restrict_to_reference_entity_types: true
+    ignore_paper_ids_in_non_paper_sets: true
+  numeric_exact_match:
+    abs_tol: 0
+    integer_match: true
+  intervals:
+    wilson_confidence: 0.95
+    bootstrap_confidence: 0.95
+    bootstrap_seed: 20261125
+    bootstrap_resamples: 2000
+
+faithfulness:
+  verifier: verify_answer_faithfulness
+  evaluated_systems: [S2_vector_rag, S3_graphrag, S4_multihop]
+  s1_status: not_applicable
+
+citation_validity:
+  ai_assessed: true
+  sample_seed: 20261125
+  max_pairs_per_system: 25
+  stratified_across_questions: true
+  evidence_source: "paper title + abstract reconstructed locally from data/interim/release-v1/works.jsonl"
+  publish_packet_abstracts: false
+  packet_run_path: reports/runs/WORK-2026-11-25-006/eval/citation-packet.jsonl
+  manifest_path: reports/final-exam/qa-eval-v1/citation-sample-manifest.json
+  judging_criterion: "The cited paper's title and abstract support the claim."
+  evaluators:
+    A:
+      cli: /home/san/.local/bin/claude
+      version: "2.1.332 (Claude Code)"
+      model: claude-opus-5-5
+      mode: "claude -p --output-format json (fresh isolated context)"
+    B:
+      cli: /home/san/.local/bin/codex
+      version: "codex-cli 0.172.0"
+      model: gpt-6.2-sol
+      provider: 9router
+      mode: "codex exec --skip-git-repo-check (fresh isolated context)"
+    C:
+      cli: /home/san/.local/bin/codex
+      version: "codex-cli 0.172.0"
+      model: gpt-6.2-sol
+      provider: 9router
+      mode: "codex exec --skip-git-repo-check (fresh isolated session in separate dir, disagreements only)"
+      fallback_note: >-
+        C uses a different model family from A (satisfying spec §6.6). The local Gemini CLI
+        (/home/linuxbrew/.linuxbrew/bin/gemini 0.26.0) failed its smoke test with exit code 41
+        (unauthenticated: no GEMINI_API_KEY / Vertex / GCA configured), so C uses fresh isolated
+        codex exec (gpt-6.2-sol via 9router), sharing B's model family cleanly disclosed as non-independent
+        from B (consistent with M2 enrichment-v3 precedent in WORK-2026-11-25-003).
+
+global_pairwise:
+  ai_assessed: true
+  questions_count: 15
+  system_pairs_per_question: 6
+  both_orders: true
+  total_blind_items: 180
+  seed: 20261125
+  criteria: [specificity, groundedness, coverage, clarity]
+  packet_run_path: reports/runs/WORK-2026-11-25-006/eval/pairwise-packet.jsonl
+  manifest_path: reports/final-exam/qa-eval-v1/pairwise-manifest.json
+  evaluators:
+    A: "same fresh isolated claude-opus-5-5 spec as citation_validity"
+    B: "same fresh isolated codex exec (gpt-6.2-sol via 9router) spec as citation_validity"
+    C: "same fresh isolated codex exec (gpt-6.2-sol via 9router, separate session) adjudicator on A!=B disagreements"
