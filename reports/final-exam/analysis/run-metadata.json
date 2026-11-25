@@ -1,0 +1,16 @@
+{
+ "stages": {
+  "sanity": {
+   "seconds": 0.2,
+   "peak_rss_mb_so_far": 1502
+  },
+  "smallworld": {
+   "seconds": 1083.5,
+   "peak_rss_mb_so_far": 1502
+  }
+ },
+ "config": "analysis-final-exam-v1",
+ "graph_version": "enriched-cb371912e308",
+ "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+ "peak_rss_mb": 1502
+}

@@ -1,0 +1,143 @@
+{
+ "all_match": true,
+ "rows": [
+  {
+   "metric": "N1 nodes",
+   "ours": 32189,
+   "v4": 32189,
+   "match": true
+  },
+  {
+   "metric": "N1 edges",
+   "ours": 80482,
+   "v4": 80482,
+   "match": true
+  },
+  {
+   "metric": "N1 isolates",
+   "ours": 414,
+   "v4": 414,
+   "match": true
+  },
+  {
+   "metric": "N1 max degree",
+   "ours": 90,
+   "v4": 90,
+   "match": true
+  },
+  {
+   "metric": "N1 largest component",
+   "ours": 20776,
+   "v4": 20776,
+   "match": true
+  },
+  {
+   "metric": "N1 component count",
+   "ours": 2936,
+   "v4": 2936,
+   "match": true
+  },
+  {
+   "metric": "N1 strength sum (weighted degree total / 2)",
+   "ours": 19935.144047,
+   "v4": 19935.144047,
+   "match": true
+  },
+  {
+   "metric": "N2 nodes",
+   "ours": 2047,
+   "v4": 2047,
+   "match": true
+  },
+  {
+   "metric": "N2 edges",
+   "ours": 13031,
+   "v4": 13031,
+   "match": true
+  },
+  {
+   "metric": "N2 isolates",
+   "ours": 90,
+   "v4": 90,
+   "match": true
+  },
+  {
+   "metric": "N2 max degree",
+   "ours": 257,
+   "v4": 257,
+   "match": true
+  },
+  {
+   "metric": "N2 largest component",
+   "ours": 1932,
+   "v4": 1932,
+   "match": true
+  },
+  {
+   "metric": "N2 component count",
+   "ours": 102,
+   "v4": 102,
+   "match": true
+  },
+  {
+   "metric": "N2 strength sum (weighted degree total / 2)",
+   "ours": 7704.0,
+   "v4": 7704.0,
+   "match": true
+  },
+  {
+   "metric": "N3 nodes",
+   "ours": 13617,
+   "v4": 13617,
+   "match": true
+  },
+  {
+   "metric": "N3 edges",
+   "ours": 7308,
+   "v4": 7308,
+   "match": true
+  },
+  {
+   "metric": "N3 isolates",
+   "ours": 7302,
+   "v4": 7302,
+   "match": true
+  },
+  {
+   "metric": "N3 max degree",
+   "ours": 51,
+   "v4": 51,
+   "match": true
+  },
+  {
+   "metric": "N3 largest component",
+   "ours": 3899,
+   "v4": 3899,
+   "match": true
+  },
+  {
+   "metric": "N3 component count",
+   "ours": 8093,
+   "v4": 8093,
+   "match": true
+  }
+ ],
+ "graph_version": "enriched-cb371912e308",
+ "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+ "v4_analysis": "reports/release-v4/analysis.json",
+ "graph_counts": {
+  "nodes": 50144,
+  "edges": 242048,
+  "n4_simple_edges": 241767,
+  "n4_edges_before_simplify": 242048,
+  "papers_with_year": 13617,
+  "papers_by_year": {
+   "2021": 2240,
+   "2022": 1997,
+   "2023": 2217,
+   "2024": 3121,
+   "2025": 4042
+  }
+ },
+ "note": "N1-N3 are rebuilt from the v4 layer inside the enriched graph file and compared with the frozen v4 networkx analysis"
+}
