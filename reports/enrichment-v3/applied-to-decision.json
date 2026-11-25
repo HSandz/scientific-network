@@ -1,0 +1,23 @@
+{
+ "adopted": true,
+ "correct": 38,
+ "criterion": "adopt iff correct/total >= 0.80, unclear counted as incorrect (D042 v3 amendment)",
+ "incorrect": 2,
+ "informational_decided_only": {
+  "estimate": 0.95,
+  "high": 0.9862,
+  "k": 38,
+  "low": 0.835,
+  "n": 40
+ },
+ "n": 40,
+ "share_unclear_as_incorrect": 0.95,
+ "unclear": 0,
+ "wilson": {
+  "estimate": 0.95,
+  "high": 0.9862,
+  "k": 38,
+  "low": 0.835,
+  "n": 40
+ }
+}

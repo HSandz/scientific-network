@@ -1,6 +1,6 @@
 {
  "config_version": "enrichment-v3",
- "status": "part_of_and_link_guard_adopted_post_hoc; applied_to_pending_fresh_dev_sample",
+ "status": "part_of_link_guard_and_applied_to_adopted_post_hoc",
  "declared_at": "2026-11-25",
  "decision": "docs/decisions.md D042 amendment 'Enrichment v3: post-hoc adoption, APPLIED_TO re-declared on the audit scale, MEMBER_OF re-adjudication' (2026-11-25)",
  "disclosure": "The PART_OF and link-guard rules are the unchanged v2 rules, adopted on a relative criterion chosen after the v2 development results were seen; the APPLIED_TO criterion was re-declared after its first result. Development checks are not evidence for v3; accuracy claims come only from the fresh E4 v3 audit.",
@@ -100,14 +100,14 @@
   "single_paper_same_sentence": {
    "id": "single_paper_same_sentence_v3",
    "relations": {
-    "APPLIED_TO": false,
+    "APPLIED_TO": true,
     "EVALUATED_ON": true
    },
    "support_rule_values": [
     "two_or_more_papers",
     "single_paper_same_sentence"
    ],
-   "decision_note": "EVALUATED_ON adopted in v2 (unchanged). APPLIED_TO: pending, decided by the fresh E4-scale development sample of the D042 v3 amendment (adopt iff >=0.80 correct, unclear counted incorrect)"
+   "decision_note": "EVALUATED_ON adopted in v2 (unchanged). APPLIED_TO adopted on the re-declared criterion: 38 of 40 correct (0.95, unclear counted as incorrect) on the fresh development sample labeled on the E4 scale by a fresh evaluator context (reports/enrichment-v3/applied-to-decision.json). Development evidence only; the fresh E4 v3 audit is the accuracy claim."
   },
   "link_guard": {
    "id": "narrower_page_v2",
