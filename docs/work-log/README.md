@@ -7,6 +7,8 @@ agent sessions. It complements [the roadmap](../roadmap.md) and
 
 ## Work history
 
+- [WORK-2026-11-25-006 — M4: M3 fixes, frozen QA evaluation, UI polish & deploy prep](2026-11-25-006-m4-eval-polish-deploy-prep.md): fixed all 9 M3 review findings on dev/demos (`19/19` dev faithful, `7/7` demos verified); froze `qa-eval-v1` and ran S1–S4 ONCE on 69 kept test questions (`S4` `0.4273` factual overall vs `S1` `0.1242`, `S2` `0.0547`, `S3` `0.1630`; AI-assessed citation validity & 180-item blind global pairwise judging); polished UI tooltips, About benchmark results, load timings `< 1s`, `demo-script-draft.md`, hosted SLM fallback, and Azure deploy prep (`769 passed`, `36/36` backend, `10/10` Navigator & `37/37` v4 Playwright).
+
 - [WORK-2026-11-25-005 — M3: application core](2026-11-25-005-m3-application-core.md): `analysis-final-exam-v2` reviewer fixes; froze `references-v1.jsonl` (69/80 test, 19/20 dev kept); closed 9-tool read-only layer; D042 GraphRAG `rag-v1` (228/233 community reports, 4,316 descriptions, 12,000 chunks, SQLite + Neo4j 3 vector indexes on 7690); multi-hop engine (19/19 dev faithful, 7 cached demos); FastAPI Navigator routes + React/ECharts/SVG pages (`761 passed`, `26` backend passed, `navigator.spec.ts` passed).
 
 - [WORK-2026-11-24-002 — Runtime checkpoint](2026-11-24-002-runtime-checkpoint.md): verified the local runtime changes for the requested Git checkpoint.

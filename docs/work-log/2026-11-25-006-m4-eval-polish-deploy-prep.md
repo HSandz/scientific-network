@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress |
-| Recorded | 2026-11-25 17:25 +07:00 (Asia/Bangkok) |
+| Status | completed |
+| Recorded | 2026-11-25 19:35 +07:00 (Asia/Bangkok) |
 | Work performed | 2026-11-25 |
 | Contributor | Agent execution session with the user |
 | Related task | [WORK-2026-11-25-005](2026-11-25-005-m3-application-core.md) |
@@ -139,22 +139,31 @@ Committed BEFORE running any `split == "test"` question (run-once policy):
 | `qa_eval.py run-systems` (Phase 2 run-once on 69 kept test questions × 4 systems) | exit 0; `276` rows written | `reports/final-exam/qa-eval-v1/raw-outputs.jsonl`, `reports/runs/WORK-2026-11-25-006/eval/llm-calls.jsonl` |
 | `qa_eval.py score-factual` + `prepare-judging` | exit 0; `276` scored, `75` citation pairs, `180` blind pairwise items (0 abstracts in manifest) | `reports/final-exam/qa-eval-v1/{factual-scores,citation-sample-manifest,pairwise-manifest}.json` (`89c120f`) |
 | Isolated AI judging (`run_judges.py`: A `claude-opus-5-5`, B `codex exec`, C `codex exec`) + `qa_eval.py aggregate-results` | exit 0; `75` citation (`15` disputes), `180` pairwise (`26` disputes) | `reports/final-exam/qa-eval-v1/{results.json,results.md,evaluator-evidence.json}` |
+| `tests/test_navigator_artifacts.py` + `prepare-navigator-artifacts.py` preview | exit 0; `1 passed`; `47` files (`49.94 MiB`, excludes `chunks.json`) | `ops/azure/scripts/prepare-navigator-artifacts.py`, ignored `navigator-artifacts-preview/` |
+| Final `uv run pytest -q` (after Phase 4 `e362c62`) | exit 0; `769 passed, 1 skipped` (`22.39s`) | full Python test suite |
+| Final `npm --prefix apps/research-explorer/frontend run build` | exit 0; built in `5.26s` | `apps/research-explorer/frontend/dist/` |
+| Final Navigator Playwright on Bolt 7690 (`tests/navigator.spec.ts`) | exit 0; `10 passed` (`32.6s`), warm routes `trends 38ms`, `groups 758ms`, `communities 73ms`, `network 123ms` | `reports/runs/WORK-2026-11-25-006/screenshots/`, `load-timings.json` |
+| Final Contracts Playwright (`playwright.contracts.config.ts`) | exit 0; `8 passed` (`671ms`) | — |
+| Final backend pytest on Bolt 7689 (`apps/research-explorer/backend/tests`) | exit 0; `36 passed, 0 skipped` | live Bolt 7689 + hosted LLM/fallback unit tests |
+| Final v4 Explorer Playwright on Bolt 7689 (`dashboard`, `explorer`, `analytics-layout`, `reproducibility`) | exit 0; `37 passed` (`2.4m`) | Bolt 7689 (`neo4j-five-year` stopped after run) |
 
 ## Decisions
 
 - Resolved M3 review findings on dev/demo scope without modifying frozen v4 (`release-d3c788c3114a`) or frozen v4 PNG golden baselines.
 - Approved fresh isolated `codex exec` (`gpt-6.2-sol` via `9router`) as adjudicator C after `gemini` CLI failed with exit 41, with explicit non-independence disclosure in `configs/qa-eval-v1.yaml`, work log, and `results.md`.
-- Kept Phase 2 strictly run-once (`831712a` -> `89c120f` -> Phase 2b) with zero tuning after test execution.
+- Kept Phase 2 strictly run-once (`831712a` -> `89c120f` -> `36f0a65`) with zero tuning after test execution.
+- Prepared Azure + hosted OpenAI-compatible SLM deployment config, artifact exporter, and cost options locally without deploying, signing up, paying, or publishing.
 
 ## Open issues and limitations
 
 - Uncached `global` mode (`demo-06` `37.6s`, S3 test global `48.3s`) exceeds the ~30s total latency guideline; uncached first-event latency (`0.57s–2.03s` demos, `1.65s` S4 factual test) meets the ~5s target.
 - Adjudicator C shares B's model family (`gpt-6.2-sol`), disclosed as non-independent of B.
 - Citation validity and global pairwise ratings are AI-assessed; Wilson/bootstrap intervals exclude evaluator error. S4 exhibits lower AI-assessed single-abstract citation validity (`36.0%`) than S2 (`92.0%`) despite far higher multi-hop factual accuracy (`0.4273` vs `0.0547`) because graph tool rows attach paper IDs without abstract text.
+- Pre-existing Nov-11 v4 golden baseline PNGs (`focus-labels:141` degree `26` vs Nov-11 `22` at exact `1168x662`; `visual:30` `graph-overview.png` 3% diff from M3/M4 `Navigator`/`+ Enriched v5` buttons) remain intentionally untouched.
 
 ## Next step
 
-Hand back for plan review of Phase 2 results, then execute Phase 3 (UI polish §6.4–6.5, About page updates, Playwright screenshots, demo script draft) and Phase 4 (deployment preparation).
+User reviews Phase 0–4 deliverables, chooses a hosted SLM provider/budget (or `$0` cached-demo mode), and approves deployment before executing `ops/azure/navigator-deployment.md`; then proceed to M5 (arXiv report due 15 December).
 
 ## Corrections
 
