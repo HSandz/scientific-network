@@ -57,6 +57,10 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
   - Created `apps/research-explorer/backend/services/navigator_service.py` and `api/navigator_routes.py`: `/api/trends`, `/api/subjects`, `/api/subjects/{id}`, `/api/groups`, `/api/groups/{id}`, `/api/communities`, `/api/communities/{id}`, `/api/communities/{id}/members`, `/api/network-science`, `/api/node360/{id}`, `/api/about-data`, `/api/explorer-enriched/{schema,search,neighbors/...}`, `/api/ask/demos`, and `POST /api/ask` (JSON + SSE `StreamingResponse`).
   - Added `apps/research-explorer/backend/tests/test_navigator_api.py`; all 26 non-integration tests (`23` v4 unit/production + `3` Navigator API tests) pass.
 
+- **Phase 6 (Research Trend Navigator frontend pages & Playwright verification):**
+  - Extended `apps/research-explorer/frontend/src/types/explorer.ts`, `lib/viewSpec.ts`, `stores/useExplorerStore.ts`, `components/layout/TopHeader.tsx`, and `App.tsx`, adding typed client `lib/navigatorApi.ts`, types `types/navigator.ts`, accessible `MetricTooltip.tsx` (hover/focus definitions, denominators, network, and `enriched-cb371912e308`), `EnrichedExplorerBar.tsx` (in-Explorer `Method`, `Task`, `Dataset` & 18-predicate inspection), and all 8 Navigator pages (`TrendsPage`, `SubjectPage`, `GroupsPage`, `CommunitiesPage`, `NetworkSciencePage`, `AskPage`, `Node360Page`, `AboutDataPage`) matching the `achromatic-ledger` design system.
+  - Verified `npm --prefix apps/research-explorer/frontend run build` (`tsc -b && vite build`, exit 0, `4.03s`) and Playwright `tests/navigator.spec.ts` against live FastAPI on 8001 + `neo4j-enriched` on Bolt 7690 (`1 passed (15.6s)`, zero JS page errors, keyboard focus/Tab + contrast checks, super-node expansion, Ask demo trace + subgraph, and 8 screenshots under `reports/runs/WORK-2026-11-25-005/screenshots/`).
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -71,6 +75,8 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 | `uv run pytest -q tests/test_rag_tools.py tests/test_rag_index_retrieval.py tests/test_rag_engine.py` | exit 0; 10 passed | `tests/test_rag_*.py` |
 | Phase 4 `dev_eval.py` (19 kept dev questions only + 7 demos, live 7690 + `sn-llm`) | exit 0; dev factual `0.85` / `0.6723` / `0.6667`, global `1.0`, faithful `19/19`; 7 demos cached | `reports/final-exam/rag-v1/dev-eval.json`, `demo-cache.json`, `reports/runs/WORK-2026-11-25-005/dev-eval-v3.log` |
 | `PYTHONPATH=apps/research-explorer:src uv run pytest apps/research-explorer/backend/tests -q` | exit 0; 26 passed, 9 skipped (`neo4j-five-year` 7689 stopped) | `apps/research-explorer/backend/tests/test_navigator_api.py` |
+| `npm --prefix apps/research-explorer/frontend run build` | exit 0; clean TypeScript & Vite production build (`4.03s`) | `apps/research-explorer/frontend/dist/` |
+| `PLAYWRIGHT_API_PORT=8001 PLAYWRIGHT_UI_PORT=5174 EXPLORER_NEO4J_URI=bolt://127.0.0.1:7690 npm --prefix apps/research-explorer/frontend run test:e2e -- tests/navigator.spec.ts` | exit 0; `1 passed (15.6s)`, zero JS errors | `tests/navigator.spec.ts`, `reports/runs/WORK-2026-11-25-005/screenshots/*.png` |
 
 ## Decisions
 

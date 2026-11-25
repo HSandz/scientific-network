@@ -21,6 +21,15 @@ const CompareModal = React.lazy(() => import("./components/modals/CompareModal")
 const PathFinderModal = React.lazy(() => import("./components/modals/PathFinderModal").then(m => ({ default: m.PathFinderModal })));
 const SearchCommandModal = React.lazy(() => import("./components/search/SearchCommandModal").then(m => ({ default: m.SearchCommandModal })));
 const TableView = React.lazy(() => import("./components/table/TableView").then(m => ({ default: m.TableView })));
+const TrendsPage = React.lazy(() => import("./components/navigator/TrendsPage").then(m => ({ default: m.TrendsPage })));
+const SubjectPage = React.lazy(() => import("./components/navigator/SubjectPage").then(m => ({ default: m.SubjectPage })));
+const GroupsPage = React.lazy(() => import("./components/navigator/GroupsPage").then(m => ({ default: m.GroupsPage })));
+const CommunitiesPage = React.lazy(() => import("./components/navigator/CommunitiesPage").then(m => ({ default: m.CommunitiesPage })));
+const NetworkSciencePage = React.lazy(() => import("./components/navigator/NetworkSciencePage").then(m => ({ default: m.NetworkSciencePage })));
+const AskPage = React.lazy(() => import("./components/navigator/AskPage").then(m => ({ default: m.AskPage })));
+const Node360Page = React.lazy(() => import("./components/navigator/Node360Page").then(m => ({ default: m.Node360Page })));
+const AboutDataPage = React.lazy(() => import("./components/navigator/AboutDataPage").then(m => ({ default: m.AboutDataPage })));
+import { EnrichedExplorerBar } from "./components/navigator/EnrichedExplorerBar";
 import { explorerApi } from "./lib/api";
 import { useExplorerStore } from "./stores/useExplorerStore";
 import { GraphEdge, GraphNode } from "./types/explorer";
@@ -30,6 +39,14 @@ export const App: React.FC = () => {
     darkMode,
     workspaceTab,
     setWorkspaceTab,
+    selectedSubjectId,
+    selectedGroupId,
+    selectedCommunityId,
+    node360Id,
+    openSubject,
+    openGroup,
+    openCommunity,
+    openNode360,
     viewMode,
     filters,
     extraNodes,
@@ -527,6 +544,7 @@ export const App: React.FC = () => {
                     {label} →
                   </button>
                 ))}
+                <EnrichedExplorerBar onOpenNode360={openNode360} />
               </div>
             )}
             {workspaceTab === "graph" && (
@@ -563,6 +581,68 @@ export const App: React.FC = () => {
                     void handleExpandNode(id, true);
                   }}
                 />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "trends" && (
+              <React.Suspense fallback={<p className="p-5">Loading trends…</p>}>
+                <TrendsPage onOpenSubject={openSubject} />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "subjects" && (
+              <React.Suspense fallback={<p className="p-5">Loading subject…</p>}>
+                <SubjectPage
+                  subjectId={selectedSubjectId}
+                  onSelectSubject={openSubject}
+                  onOpenGroup={openGroup}
+                  onOpenCommunity={openCommunity}
+                  onOpenNode360={openNode360}
+                />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "groups" && (
+              <React.Suspense fallback={<p className="p-5">Loading groups…</p>}>
+                <GroupsPage
+                  selectedGroupId={selectedGroupId}
+                  onSelectGroup={openGroup}
+                  onOpenNode360={openNode360}
+                />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "communities" && (
+              <React.Suspense fallback={<p className="p-5">Loading communities…</p>}>
+                <CommunitiesPage
+                  selectedCommunityId={selectedCommunityId}
+                  onSelectCommunity={openCommunity}
+                  onOpenNode360={openNode360}
+                />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "network" && (
+              <React.Suspense fallback={<p className="p-5">Loading network science…</p>}>
+                <NetworkSciencePage onOpenNode360={openNode360} />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "ask" && (
+              <React.Suspense fallback={<p className="p-5">Loading Ask workspace…</p>}>
+                <AskPage onOpenNode360={openNode360} />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "node360" && (
+              <React.Suspense fallback={<p className="p-5">Loading Node 360…</p>}>
+                <Node360Page nodeId={node360Id} onSelectNode={openNode360} />
+              </React.Suspense>
+            )}
+
+            {workspaceTab === "about" && (
+              <React.Suspense fallback={<p className="p-5">Loading provenance…</p>}>
+                <AboutDataPage />
               </React.Suspense>
             )}
           </main>

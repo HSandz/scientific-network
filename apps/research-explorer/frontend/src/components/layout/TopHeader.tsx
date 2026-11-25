@@ -161,6 +161,17 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
     { id: "analytics", label: "Analytics" },
   ];
 
+  const navTabs: Array<{ id: WorkspaceTab; label: string }> = [
+    { id: "trends", label: "Trends" },
+    { id: "subjects", label: "Topic / Method" },
+    { id: "groups", label: "Groups" },
+    { id: "communities", label: "Communities" },
+    { id: "network", label: "Network Science" },
+    { id: "ask", label: "Ask" },
+    { id: "node360", label: "Node 360" },
+    { id: "about", label: "About" },
+  ];
+
   const hasActiveSelection = Boolean(selectedNodeId || selectedEdgeId);
   const edgePrecisionPct =
     typeof summary?.quality?.edge_precision === "number"
@@ -498,6 +509,36 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           )}
         </div>
       </div>
+
+      {/* Research Trend Navigator secondary navigation strip */}
+      <nav
+        aria-label="Research Trend Navigator pages"
+        className="mt-1.5 pt-1.5 border-t border-rule flex items-center gap-1 overflow-x-auto text-xs"
+      >
+        <span className="text-[11px] font-medium text-faint uppercase tracking-wider pr-1.5 shrink-0">
+          Navigator
+        </span>
+        {navTabs.map((t) => {
+          const active = workspaceTab === t.id;
+          return (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setWorkspaceTab(t.id)}
+              data-testid={`tab-${t.id}`}
+              aria-pressed={active}
+              data-active={active}
+              className={`px-2.5 py-1 rounded-[6px] whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
+                active
+                  ? "bg-raised text-ink font-semibold border border-control"
+                  : "text-muted hover:text-ink hover:bg-raised border border-transparent"
+              }`}
+            >
+              {t.label}
+            </button>
+          );
+        })}
+      </nav>
     </header>
   );
 };

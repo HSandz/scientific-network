@@ -172,7 +172,19 @@ export function validateSpec(
     analyticsSection: choice(v.analyticsSection, ["overview", "quality", "robustness", "topics", "communities", "sectors", "trajectories"] as const, "overview"),
     workspaceTab: choice(
       v.workspaceTab,
-      ["graph", "table", "analytics"] as const,
+      [
+        "graph",
+        "table",
+        "analytics",
+        "trends",
+        "subjects",
+        "groups",
+        "communities",
+        "network",
+        "ask",
+        "node360",
+        "about",
+      ] as const,
       "graph",
     ),
     layoutMode: choice(

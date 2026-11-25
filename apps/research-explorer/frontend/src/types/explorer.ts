@@ -16,7 +16,18 @@ export type EvidenceKind = "observed" | "inferred_topic" | "curated_taxonomy" | 
 
 export type ViewMode = "researchers" | "organizations" | "citations" | "heterogeneous";
 
-export type WorkspaceTab = "graph" | "table" | "analytics";
+export type WorkspaceTab =
+  | "graph"
+  | "table"
+  | "analytics"
+  | "trends"
+  | "subjects"
+  | "groups"
+  | "communities"
+  | "network"
+  | "ask"
+  | "node360"
+  | "about";
 
 export type LayoutMode = "seeded" | "circular" | "concentric";
 

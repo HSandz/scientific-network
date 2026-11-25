@@ -147,6 +147,10 @@ interface ExplorerState {
   tableWorkspace: TableWorkspaceState;
   darkMode: boolean;
   workspaceTab: WorkspaceTab;
+  selectedSubjectId: string | null;
+  selectedGroupId: string | null;
+  selectedCommunityId: string | null;
+  node360Id: string | null;
   leftSidebarOpen: boolean;
   rightSidebarOpen: boolean;
   canvasExpanded: boolean;
@@ -188,6 +192,10 @@ interface ExplorerState {
   // Actions
   toggleDarkMode: () => void;
   setWorkspaceTab: (tab: WorkspaceTab) => void;
+  openSubject: (id: string) => void;
+  openGroup: (id: string) => void;
+  openCommunity: (id: string) => void;
+  openNode360: (id: string) => void;
   setLeftSidebarOpen: (open: boolean) => void;
   setRightSidebarOpen: (open: boolean) => void;
   setCanvasExpanded: (expanded: boolean) => void;
@@ -248,6 +256,10 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
   tableWorkspace: { ...DEFAULT_TABLE_WORKSPACE },
   darkMode: getInitialDarkMode(),
   workspaceTab: "graph",
+  selectedSubjectId: null,
+  selectedGroupId: null,
+  selectedCommunityId: null,
+  node360Id: null,
   leftSidebarOpen: getInitialLeftSidebarOpen(),
   rightSidebarOpen: false,
   canvasExpanded: false,
@@ -355,6 +367,14 @@ export const useExplorerStore = create<ExplorerState>((set, get) => ({
         (!Boolean(state.selectedNodeId || state.selectedEdgeId) ||
           canKeepBothDesktopRails()),
     })),
+  openSubject: (id) =>
+    set({ selectedSubjectId: id, workspaceTab: "subjects", rightSidebarOpen: false }),
+  openGroup: (id) =>
+    set({ selectedGroupId: id, workspaceTab: "groups", rightSidebarOpen: false }),
+  openCommunity: (id) =>
+    set({ selectedCommunityId: id, workspaceTab: "communities", rightSidebarOpen: false }),
+  openNode360: (id) =>
+    set({ node360Id: id, workspaceTab: "node360", rightSidebarOpen: false }),
   setLeftSidebarOpen: (leftSidebarOpen) =>
     set((state) => ({
       leftSidebarOpen,
