@@ -230,4 +230,6 @@ text into the journal.
 
 - [WORK-2026-11-24-003 — Enrichment track A, Phase 0](2026-11-24-003-enrichment-m0.md): completed; splits, benchmark text and LLM client frozen, K1 chose Qwen3.5-4B and GLiNER-Relex on dev, organization sources fetched.
 
+- [WORK-2026-11-25-001 — Enrichment review fixes](2026-11-25-001-enrichment-review-fixes.md): completed; shared-paper co-occurrence for method-task-dataset (Method-Task 2,864 pairs at one paper, 207 at two), PART_OF v2 0.72 vs v1 0.69, evaluator models and evidence recorded.
+
 - [WORK-2026-11-24-004 — Enrichment track A, Phases 2-5](2026-11-24-004-enrichment-e1-e4.md): completed; full-corpus SLM, E2 entities (1,991 nodes), E3 relations, v5 graph loaded on 7690, E4 AI-assessed audit: entity precision 0.927, linking 0.800 (target missed).

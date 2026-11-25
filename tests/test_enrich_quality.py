@@ -75,3 +75,23 @@ def test_sample_graph_ids_map_to_hashed_item_ids_used_by_answers():
     assert out["paper_edge_sample"]["USES_METHOD"] == [item_id("pedge", "edge:1")]
     assert out["link_sample"]["link"] == [item_id("link", "method:Q1")]
     assert out["relation_sample"]["APPLIED_TO"]["ids"]["same_sentence"] == [item_id("rel", "edge:4")]
+
+
+def test_part_of_v2_scores_next_to_v1_and_reads_separate_answers(tmp_path):
+    import json
+
+    from scientific_network.enrich.part_of_v2 import score
+    from scientific_network.enrich.quality import item_id
+    ids = [item_id("part", f"edge:{i}") for i in range(4)]
+    (tmp_path / "sample.json").write_text(json.dumps({"part_of_sample": {"PART_OF": [f"edge:{i}" for i in range(4)]}}))
+    answers = tmp_path / "answers-partof-v2"
+    answers.mkdir()
+    rows = {"A": ["correct", "correct", "unclear", "incorrect"], "B": ["correct", "incorrect", "unclear", "incorrect"]}
+    for channel, verdicts in rows.items():
+        (answers / f"{channel}-partof-v2.jsonl").write_text("\n".join(json.dumps({"item_id": i, "verdict": v}) for i, v in zip(ids, verdicts)))
+    (answers / "C-partof-v2.jsonl").write_text(json.dumps({"item_id": ids[1], "verdict": "correct"}))
+    out = score(tmp_path, {"estimate": 0.5})
+    assert out["v1"] == {"estimate": 0.5} and out["channel_c_items"] == 1
+    assert out["v2"]["k"] == 2 and out["v2"]["n"] == 3 and out["v2"]["unclear"] == 1 and out["v2"]["sensitivity_unclear_as_incorrect"]["n"] == 4
+    assert out["agreement_raw_ab"]["observed_agreement"] == 0.75
+    assert score(tmp_path / "missing", {}) is None

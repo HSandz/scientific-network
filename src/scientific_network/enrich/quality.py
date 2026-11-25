@@ -485,6 +485,10 @@ def score_audit(*, audit_dir: Path, graph_path: Path, mentions_path: Path, texts
         "targets": {"entity_precision": 0.85, "relation_precision": 0.80, "linking_accuracy": 0.85},
         "interpretation": "AI-assessed by an agent evaluator from a different model family than the extractors; not human annotation and not independently validated gold labels. Wilson 95% intervals exclude evaluator error.",
     }
+    from scientific_network.enrich.part_of_v2 import score as part_of_v2_score
+    supplementary = part_of_v2_score(audit_dir, report["predicate_precision"]["part_of"]["PART_OF"])
+    if supplementary:
+        report["supplementary_part_of_v2"] = supplementary
     report["run_info"] = run_info or {}
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
@@ -536,6 +540,22 @@ def render_quality_md(report: dict, run_info: dict) -> str:
               f"{a['observed_agreement']}, Cohen's kappa {a['cohens_kappa']}. Disagreements went to adjudicator C.", "",
               "## Coverage and structure (whole graph)", "", "```json", json.dumps(report["structure_and_coverage"], indent=1), "```", "",
               "Wilson 95% intervals describe sampling error only; they exclude evaluator error."]
+    if "supplementary_part_of_v2" in report:
+        sup = report["supplementary_part_of_v2"]
+        lines += ["", "## Supplementary PART_OF evaluation v2 (Wikidata statement shown)", "",
+                  sup["note"], "", "| Packet | Precision |", "|---|---|",
+                  f"| v1 (names and descriptions only; kept) | {_row(sup['v1'])} |", f"| v2 (statement, QIDs, property, raw-store hash shown) | {_row(sup['v2'])} |", "",
+                  f"Raw A/B agreement on all 50 v2 items: {sup['agreement_raw_ab']['observed_agreement']}, Cohen's kappa {sup['agreement_raw_ab']['cohens_kappa']}; "
+                  f"{sup['channel_c_items']} disagreements went to adjudicator C. The v2 figure is supplementary: the target comparison above keeps the v1 result."]
+    for fix in run_info.get("corrections", []):
+        lines += ["", f"## Correction, {fix['dated']}", "", fix["what"], "",
+                  f"- Channel B: model `{fix['channel_B']['model']}` via provider `{fix['channel_B']['model_provider']}` ({fix['channel_B']['tool']}); "
+                  f"sessions: " + ", ".join(f"{s['packet']} `{s['session_id']}`" for s in fix["channel_B"]["sessions"]) + ".",
+                  f"- Channels A and C: model `{fix['channel_A_and_C']['model']}` (requested alias `{fix['channel_A_and_C']['requested_alias']}`); "
+                  f"{len(fix['channel_A_and_C']['agents'])} subagent runs, IDs in `reports/enrichment-v1/audit/run-info.json`.",
+                  f"- Evidence: {fix['evidence']}.", f"- Not preserved: {fix['lost']}"]
+        for later in fix.get("v2_runs", []):
+            lines.append(f"- {later}")
     return "\n".join(lines) + "\n"
 
 

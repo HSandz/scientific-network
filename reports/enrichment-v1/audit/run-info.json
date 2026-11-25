@@ -83,7 +83,10 @@
     ]
    },
    "evidence": "reports/enrichment-v1/audit/evaluator-evidence.json (hashes); archive under ignored reports/runs/WORK-2026-11-24-004/eval/",
-   "lost": "The per-evaluator working directories in the session scratchpad (packet copies, guideline copies, answer copies, run.log, last-message.txt) were wiped before archiving. Surviving: the Codex session logs, the Claude subagent transcripts, the frozen packets (data/processed, hashed in freeze-receipt.json), and the committed answers. Packet-time guideline bytes were not archived; the repo file at the freeze commit is the reference."
+   "lost": "The per-evaluator working directories in the session scratchpad (packet copies, guideline copies, answer copies, run.log, last-message.txt) were wiped before archiving. Surviving: the Codex session logs, the Claude subagent transcripts, the frozen packets (data/processed, hashed in freeze-receipt.json), and the committed answers. Packet-time guideline bytes were not archived; the repo file at the freeze commit is the reference.",
+   "v2_runs": [
+    "PART_OF v2 (2026-11-25 10:38 +07:00): channel A claude-opus-5-5, agent a0862565cc31988aa; channel B `gpt-6.2-sol` via `9router`, Codex session 01a210c8-741f-7df1-974b-4cf51eb188ce; channel C claude-opus-5-5, agent a15225cf1196e4434 (3 disagreements). Evidence: reports/enrichment-v1/audit/evaluator-evidence-partof-v2.json."
+   ]
   }
  ]
 }

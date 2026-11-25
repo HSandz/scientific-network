@@ -86,3 +86,24 @@ Raw A/B on the overlap: 222 items judged by both channels, observed agreement 0.
 ```
 
 Wilson 95% intervals describe sampling error only; they exclude evaluator error.
+
+## Supplementary PART_OF evaluation v2 (Wikidata statement shown)
+
+PART_OF re-evaluated with the Wikidata statement shown; v1 is kept and shown beside it. Created after the v1 results were seen; only the evidence shown changed.
+
+| Packet | Precision |
+|---|---|
+| v1 (names and descriptions only; kept) | 0.694 [0.531, 0.820] (k=25, n=36); unclear 14; unclear as incorrect 0.500 [0.366, 0.634] (k=25, n=50) |
+| v2 (statement, QIDs, property, raw-store hash shown) | 0.720 [0.583, 0.825] (k=36, n=50); unclear 0; unclear as incorrect 0.720 [0.583, 0.825] (k=36, n=50) |
+
+Raw A/B agreement on all 50 v2 items: 0.94, Cohen's kappa 0.8485; 3 disagreements went to adjudicator C. The v2 figure is supplementary: the target comparison above keeps the v1 result.
+
+## Correction, 2026-11-25T10:50:00+07:00
+
+Channel B exact model and Claude evaluator model IDs, read from the logs; the original evaluators text above is unchanged.
+
+- Channel B: model `gpt-6.2-sol` via provider `9router` (OpenAI Codex CLI 0.171.0); sessions: B-1 `01a20edc-a922-72c0-ae41-535eb08d2dd0`, B-2 `01a20edc-a922-7251-b13e-51c25af47145`, B-3 `01a20edc-a922-7c43-b943-8fc216492858`, B-4 `01a20ede-eb3a-72f0-a945-b5eb29522a7d`, B-5 `01a20ede-eb39-7531-b33a-2d3d7c34b1da`, B-6 `01a20ede-eb38-76a2-8ea4-0b77b9deddd7`, B-recall `01a20ede-eb39-7103-9295-fbeb1a30901d`.
+- Channels A and C: model `claude-opus-5-5` (requested alias `opus`); 8 subagent runs, IDs in `reports/enrichment-v1/audit/run-info.json`.
+- Evidence: reports/enrichment-v1/audit/evaluator-evidence.json (hashes); archive under ignored reports/runs/WORK-2026-11-24-004/eval/.
+- Not preserved: The per-evaluator working directories in the session scratchpad (packet copies, guideline copies, answer copies, run.log, last-message.txt) were wiped before archiving. Surviving: the Codex session logs, the Claude subagent transcripts, the frozen packets (data/processed, hashed in freeze-receipt.json), and the committed answers. Packet-time guideline bytes were not archived; the repo file at the freeze commit is the reference.
+- PART_OF v2 (2026-11-25 10:38 +07:00): channel A claude-opus-5-5, agent a0862565cc31988aa; channel B `gpt-6.2-sol` via `9router`, Codex session 01a210c8-741f-7df1-974b-4cf51eb188ce; channel C claude-opus-5-5, agent a15225cf1196e4434 (3 disagreements). Evidence: reports/enrichment-v1/audit/evaluator-evidence-partof-v2.json.

@@ -1,0 +1,50 @@
+{"item_id": "part:33b6280d0973e3c6", "verdict": "correct", "note": "Newcastle University is a member institution of the ELIXIR UK node."}
+{"item_id": "part:f49f9abd22692b81", "verdict": "correct", "note": "L2S is a joint research unit with CNRS as a supervising body."}
+{"item_id": "part:d2c1c207d80bcee3", "verdict": "correct", "note": "Sony CSL is a Sony research subsidiary."}
+{"item_id": "part:e85c411190a2a684", "verdict": "correct", "note": "IIT Delhi is one of the Indian Institutes of Technology."}
+{"item_id": "part:07ed45d944c62c0e", "verdict": "incorrect", "note": "A Wikipedia-style list is not an organization; not a part/member relation."}
+{"item_id": "part:8ee167d8b7038777", "verdict": "incorrect", "note": "Hubert Curien lab is under Université Jean Monnet, CNRS, IOGS; not CPE Lyon."}
+{"item_id": "part:e67bc24cc4383dba", "verdict": "correct", "note": "Georgia Tech is an institution of the University System of Georgia."}
+{"item_id": "part:083322a45f280475", "verdict": "correct", "note": "China Mobile is a central SOE owned and supervised by SASAC."}
+{"item_id": "part:9b19a332809e0245", "verdict": "correct", "note": "IRISA is a CNRS joint unit attached to CNRS INS2I."}
+{"item_id": "part:453a6c4d1d79f1c6", "verdict": "correct", "note": "Lifeware is an Inria project-team."}
+{"item_id": "part:430f639e5ef8cfc7", "verdict": "correct", "note": "ENSTA ParisTech was a member school of ParisTech."}
+{"item_id": "part:8e2d500a348a1eaa", "verdict": "correct", "note": "GREQAM/AMSE is a research unit of Aix-Marseille Université."}
+{"item_id": "part:752368a7181e2c58", "verdict": "incorrect", "note": "Forbes Global 2000 is a ranking list, not a parent organization."}
+{"item_id": "part:0dcbe526a8909e88", "verdict": "correct", "note": "LLNL is a DOE-owned national laboratory."}
+{"item_id": "part:490bbaa9c66e24a2", "verdict": "correct", "note": "IHPC is an A*STAR research institute."}
+{"item_id": "part:269d54784b64b627", "verdict": "incorrect", "note": "S&P 500 index constituency is not organizational part/membership."}
+{"item_id": "part:fe55ae781590a947", "verdict": "correct", "note": "NEC Germany is a subsidiary of NEC Corporation."}
+{"item_id": "part:c89b678addd50b55", "verdict": "correct", "note": "LAAS is a CNRS unit attached to CNRS institutes including INS2I."}
+{"item_id": "part:a2360c0c9ac5009b", "verdict": "correct", "note": "iQIYI is majority-controlled by Baidu."}
+{"item_id": "part:b2e3acf37887089e", "verdict": "correct", "note": "LMS is a joint unit of CNRS and École polytechnique."}
+{"item_id": "part:6daa5dd194918549", "verdict": "correct", "note": "SPbU is directly subordinate to the Government of Russia."}
+{"item_id": "part:0e0505ed19fcddd8", "verdict": "incorrect", "note": "Sōkei is the Waseda-Keio sports rivalry, not an organization containing Keio."}
+{"item_id": "part:04fcb654ebc9a0ae", "verdict": "correct", "note": "Queens College is a senior college of CUNY."}
+{"item_id": "part:86a0a5b4c29dacdc", "verdict": "correct", "note": "Hefei Institutes of Physical Science belong to the Chinese Academy of Sciences."}
+{"item_id": "part:f2710b5fb9c8ff1f", "verdict": "correct", "note": "Epigenetics and Cell Fate is a CNRS unit under the Institute of Biological Sciences."}
+{"item_id": "part:ce81bf4e7f5247b7", "verdict": "correct", "note": "HUST is a member of the Association of Sino-Russian Technical Universities."}
+{"item_id": "part:f37ed3b40a464dc6", "verdict": "incorrect", "note": "S&P 500 index constituency is not organizational part/membership."}
+{"item_id": "part:94fdac33fad05386", "verdict": "correct", "note": "Grenoble INP was a member of the ComUE Université Grenoble Alpes."}
+{"item_id": "part:26b86b7bb60144d3", "verdict": "correct", "note": "NII is an inter-university institute of ROIS."}
+{"item_id": "part:b0a506a339c0e9ed", "verdict": "correct", "note": "CVC is a CERCA research centre."}
+{"item_id": "part:864b152573d8df87", "verdict": "correct", "note": "Porsche SE holds the majority of Volkswagen AG voting rights."}
+{"item_id": "part:4df26fe16504aa31", "verdict": "incorrect", "note": "Stock index inclusion is not organizational part/membership; Verizon also left DJIA."}
+{"item_id": "part:98fe4fa77a7507a1", "verdict": "correct", "note": "UNIST is a government-funded institute under the science ministry."}
+{"item_id": "part:113b6489a3f6af32", "verdict": "incorrect", "note": "LIX is a joint unit of École polytechnique and CNRS, not an Inria unit."}
+{"item_id": "part:c337db91e71a7bd2", "verdict": "correct", "note": "Ghent University is a member of ELIXIR Belgium."}
+{"item_id": "part:e45ccf4ce52ad865", "verdict": "correct", "note": "UC San Diego is a campus of the University of California."}
+{"item_id": "part:88b6ec86b73e4e69", "verdict": "correct", "note": "IISc is funded and overseen by India's Ministry of Education."}
+{"item_id": "part:2a3d0c1af21fafab", "verdict": "correct", "note": "IBISC is a laboratory of Université d'Évry."}
+{"item_id": "part:8e66d2131ceb7537", "verdict": "correct", "note": "UiO is a state university under Norway's education ministry."}
+{"item_id": "part:31c0dec491bee1b9", "verdict": "incorrect", "note": "Direction reversed; UBC is not part of VCHRI."}
+{"item_id": "part:38262533e0b80cca", "verdict": "correct", "note": "Brigham and Women's Hospital is a founding member of Mass General Brigham."}
+{"item_id": "part:bbc5d772d60cdf69", "verdict": "correct", "note": "ISRO operates under India's Department of Space."}
+{"item_id": "part:8613e60f789ea693", "verdict": "correct", "note": "IRI is a joint CSIC-UPC research institute."}
+{"item_id": "part:71433a264512d488", "verdict": "incorrect", "note": "Direction reversed; the faculty is part of the university."}
+{"item_id": "part:e0c039adef45a59b", "verdict": "incorrect", "note": "Stock index inclusion is not organizational part/membership."}
+{"item_id": "part:5462212b67e6692c", "verdict": "incorrect", "note": "IBEX 35 is a stock index, not a parent organization."}
+{"item_id": "part:3498dbe32a1a00b1", "verdict": "correct", "note": "MIIT is a constituent ministry of the State Council."}
+{"item_id": "part:c14e7234339b6d2b", "verdict": "correct", "note": "Kakao Enterprise is a Kakao subsidiary."}
+{"item_id": "part:ab4b8d367466f6ba", "verdict": "correct", "note": "NIDA is an institute of the NIH."}
+{"item_id": "part:ad3ada8939696568", "verdict": "correct", "note": "LLNL is an NNSA laboratory."}
