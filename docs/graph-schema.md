@@ -124,6 +124,7 @@ Existing v4 organizations gain properties only through `node_enrichments`
 | `APPLIED_TO` | Method → Task | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
 | `EVALUATED_ON` | Method or Task → Dataset | `extracted` | stated in the abstract; at least 2 distinct supporting papers |
 | `PART_OF` | Organization → Organization | `wikidata` | Wikidata P749 or P361 |
+| `MEMBER_OF` | Organization → Organization | `wikidata` | enrichment v2 only: Wikidata P749 or P361 whose parent's direct instance-of class is a consortium, association, alliance, network or group (class list in `configs/enrichment-v2.json`); a member of the second organization, not a unit of it |
 | `RELATED_TO` | Method or Task → Method or Task | `aggregated` | Wikipedia link between the two linked pages in either direction and at least 3 shared papers; source ID sorts before target ID |
 
 Every enrichment edge has `edge_id` (SHA-256 of relation, source, target and method
@@ -133,6 +134,14 @@ Extracted evidence stores the paper ID, a hash of the title-and-abstract text, c
 offsets and sentence indices, the extractor and confidence, and **not** the abstract text
 (`docs/source-policy.md`). Aggregated edges carry `support_count` and `support_paper_ids`;
 `APPLIED_TO` and `EVALUATED_ON` also count the papers whose two endpoints sit in one sentence.
+
+**Enrichment v2 (`schema_version: 0.3.0-enrichment`, D042 amendment 2026-11-25).** Adds the `MEMBER_OF`
+predicate above and the optional edge property `support_rule` on `APPLIED_TO` and `EVALUATED_ON`:
+`two_or_more_papers` (the v1 rule) or `single_paper_same_sentence` (one supporting paper whose two endpoints the extractor found in one
+sentence; `support_count` 1; adopted only for `EVALUATED_ON`). `MEMBER_OF` is **additional**: the v1 `PART_OF` edges are unchanged
+because the PART_OF v2 rule failed its declared criterion, so a pair that is a consortium membership can carry both a `PART_OF` edge
+(known to be weak, see `reports/enrichment-v2/quality.md`) and a `MEMBER_OF` edge. Consumers that roll organizations up to parents should
+prefer `MEMBER_OF` for such pairs and should not treat `PART_OF` targets that are indices or lists as organizations.
 
 Organization-level interest ("organization X works on method Y") is not an edge; it is
 computed from `AUTHORED`, `AFFILIATED_WITH` and `USES_METHOD` so every answer traces to papers.
