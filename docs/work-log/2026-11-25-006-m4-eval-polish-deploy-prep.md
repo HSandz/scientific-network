@@ -86,6 +86,25 @@ Committed BEFORE running any `split == "test"` question (run-once policy):
   - `B`: `/home/san/.local/bin/codex` (`0.172.0`, `gpt-6.2-sol` via `9router`, `exec --skip-git-repo-check`) — passed (`"OK"`).
   - `gemini` CLI (`/home/linuxbrew/.linuxbrew/bin/gemini` `0.26.0`, `-p -o json`) failed with exit 41 (unauthenticated). Per M2 precedent (`WORK-2026-11-25-003`), `C` uses a **fresh isolated `codex exec` session (`gpt-6.2-sol` via `9router`)** on A≠B disagreements — different family from A (spec §6.6), explicitly disclosed as sharing B's model family (not independent of B).
 
+### Phase 2 — Frozen Test Benchmark Evaluation (Run ONCE on 69 kept test questions; zero tuning)
+
+- **Pre-judging freeze (`89c120f`)**: Committed `raw-outputs.jsonl` (276 rows = 69 × 4), `factual-scores.json`, `citation-sample-manifest.json` (`75` sampled items, SHA-256 `46e563e1...`, **0 raw abstracts**), and `pairwise-manifest.json` (`180` blind AB+BA items, SHA-256 `e0921359...`) before invoking A/B/C.
+- **Factual accuracy (54 factual test questions, unified entity resolver, 95% bootstrap CI)**:
+  - `S1_slm_only`: `0.1242` `[0.0787, 0.1759]` (Hop 1 `0.0262`, Hop 2 `0.1929`, Hop 3 `0.1165`), mean latency `4.676s`
+  - `S2_vector_rag`: `0.0547` `[0.0200, 0.0993]` (Hop 1 `0.0000`, Hop 2 `0.1250`, Hop 3 `0.0112`), mean first-event `2.065s`, mean total `7.030s`
+  - `S3_graphrag`: `0.1630` `[0.0919, 0.2369]` (Hop 1 `0.2571`, Hop 2 `0.1474`, Hop 3 `0.1088`), mean first-event `3.648s`, mean total `10.595s`
+  - `S4_multihop`: **`0.4273`** `[0.3132, 0.5403]` (Hop 1 `0.4190`, Hop 2 `0.2532`, Hop 3 **`0.6466`**), mean first-event **`1.652s`**, mean total `9.780s`
+- **Automatic faithfulness (all 69 questions, 95% Wilson CI)**:
+  - `S1_slm_only`: N/A (`0` citations emitted); `S2`: `49/69` (`0.7101` `[0.5943, 0.8038]`); `S3`: `59/69` (`0.8551` `[0.7534, 0.9193]`); `S4`: **`60/69`** (`0.8696` `[0.7703, 0.9298]`).
+- **AI-assessed citation validity (25 seeded pairs/system for S2–S4; A–B Cohen's kappa `0.6199`, `15` adjudicated by C)**:
+  - `S2_vector_rag`: **`23/25`** (`0.9200` `[0.7503, 0.9778]`); `S3_graphrag`: `16/25` (`0.6400` `[0.4452, 0.7975]`); `S4_multihop`: `9/25` (`0.3600` `[0.2025, 0.5548]`). *Interpretation*: S2 quotes directly from abstract chunks, whereas S4 attaches graph-level `paper_ids` returned alongside structured aggregation/neighbor counts without reading those papers' abstracts, so single-paper abstracts frequently do not mention corpus-wide aggregates.
+- **AI-assessed global pairwise comparison (15 global questions × 6 pairs × AB+BA = 180 blind items; A–B kappa `0.7988`, `26` adjudicated by C, `4/90` position-inconsistent pairs)**:
+  - `S2_vector_rag`: **`72/0/18`** (`0.8000`, position-consistent `35/45 = 0.7778`)
+  - `S4_multihop`: `47/14/29` (`0.5222`, consistent `22/45 = 0.4889`)
+  - `S3_graphrag`: `44/14/32` (`0.4889`, consistent `21/45 = 0.4667`)
+  - `S1_slm_only`: `3/0/87` (`0.0333`, consistent `1/45 = 0.0222`)
+- **Latency cache disclosure**: Across `483` logged test LLM calls (`llm-calls.jsonl`), `16` calls hit the `qa-eval-v1` cache because on the 15 global questions `S4_multihop` routed `7` questions to `global` (reusing S3's global map-reduce cache from the same question) and `8` questions to `multi_hop`, explaining S4's lower mean global latency (`20.778s`, first-event `2.912s`) vs S3's uncached global map-reduce (`48.275s`).
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -100,21 +119,25 @@ Committed BEFORE running any `split == "test"` question (run-once policy):
 | `uv run python -m scientific_network.rag.dev_eval --config configs/rag-v1.yaml` (+ uncached `--no-llm-cache`) | exit 0; `19/19` kept dev faithful, `7/7` demos cached/timed | `reports/final-exam/rag-v1/{dev-eval,demo-cache}.json`, ignored `reports/runs/WORK-2026-11-25-006/uncached-dev-latency.json` |
 | Phase 1 evaluator CLI smoke tests (`claude -p`, `codex exec`, `gemini -p`) | `claude` & `codex` exit 0 (`"OK"`); `gemini` exit 41 (unauthenticated) | frozen fallback in `configs/qa-eval-v1.yaml` |
 | `uv run pytest -q tests/test_qa_eval.py` & `uv run pytest -q` (Phase 1 harness) | exit 0; `4 passed` (`0.51s`); `768 passed, 1 skipped` (`26.94s`) | `tests/test_qa_eval.py`, `qa_eval.py` |
+| `qa_eval.py run-systems` (Phase 2 run-once on 69 kept test questions × 4 systems) | exit 0; `276` rows written | `reports/final-exam/qa-eval-v1/raw-outputs.jsonl`, `reports/runs/WORK-2026-11-25-006/eval/llm-calls.jsonl` |
+| `qa_eval.py score-factual` + `prepare-judging` | exit 0; `276` scored, `75` citation pairs, `180` blind pairwise items (0 abstracts in manifest) | `reports/final-exam/qa-eval-v1/{factual-scores,citation-sample-manifest,pairwise-manifest}.json` (`89c120f`) |
+| Isolated AI judging (`run_judges.py`: A `claude-opus-5-5`, B `codex exec`, C `codex exec`) + `qa_eval.py aggregate-results` | exit 0; `75` citation (`15` disputes), `180` pairwise (`26` disputes) | `reports/final-exam/qa-eval-v1/{results.json,results.md,evaluator-evidence.json}` |
 
 ## Decisions
 
 - Resolved M3 review findings on dev/demo scope without modifying frozen v4 (`release-d3c788c3114a`) or frozen v4 PNG golden baselines.
 - Approved fresh isolated `codex exec` (`gpt-6.2-sol` via `9router`) as adjudicator C after `gemini` CLI failed with exit 41, with explicit non-independence disclosure in `configs/qa-eval-v1.yaml`, work log, and `results.md`.
+- Kept Phase 2 strictly run-once (`831712a` -> `89c120f` -> Phase 2b) with zero tuning after test execution.
 
 ## Open issues and limitations
 
-- All 69 kept benchmark test questions remain untouched (Phase 2 ready upon plan review).
-- Uncached `global` mode (`demo-06`) exceeds the ~30s total latency guideline (`37.6s`) due to 14-report map-reduce passes; uncached first-event latency (`0.57s–2.03s`) meets the ~5s target.
+- Uncached `global` mode (`demo-06` `37.6s`, S3 test global `48.3s`) exceeds the ~30s total latency guideline; uncached first-event latency (`0.57s–2.03s` demos, `1.65s` S4 factual test) meets the ~5s target.
 - Adjudicator C shares B's model family (`gpt-6.2-sol`), disclosed as non-independent of B.
+- Citation validity and global pairwise ratings are AI-assessed; Wilson/bootstrap intervals exclude evaluator error. S4 exhibits lower AI-assessed single-abstract citation validity (`36.0%`) than S2 (`92.0%`) despite far higher multi-hop factual accuracy (`0.4273` vs `0.0547`) because graph tool rows attach paper IDs without abstract text.
 
 ## Next step
 
-Hand back for plan review, then execute Phase 2 (run S1–S4 once on the 69 kept test questions, score, freeze citation/pairwise manifests, run A/B/C AI judging, and write `reports/final-exam/qa-eval-v1/results.{json,md}`).
+Hand back for plan review of Phase 2 results, then execute Phase 3 (UI polish §6.4–6.5, About page updates, Playwright screenshots, demo script draft) and Phase 4 (deployment preparation).
 
 ## Corrections
 

@@ -1,0 +1,288 @@
+{
+  "ai_assessed": true,
+  "isolation": "Separate working directories (judge-a, judge-b, judge-c) and fresh non-interactive CLI invocations; blinded packets with system names omitted.",
+  "channels": {
+    "A": {
+      "cli": "/home/san/.local/bin/claude",
+      "version": "2.1.332 (Claude Code)",
+      "model": "claude-opus-5-5"
+    },
+    "B": {
+      "cli": "/home/san/.local/bin/codex",
+      "version": "codex-cli 0.172.0",
+      "model": "gpt-6.2-sol",
+      "provider": "9router"
+    },
+    "C": {
+      "cli": "/home/san/.local/bin/codex",
+      "version": "codex-cli 0.172.0",
+      "model": "gpt-6.2-sol",
+      "provider": "9router",
+      "disagreements_only": true,
+      "fallback_disclosure": "gemini CLI 0.26.0 returned exit 41 unauthenticated; C uses fresh isolated codex exec session, non-independent of B."
+    }
+  },
+  "citation_validity": {
+    "total_evaluated": 75,
+    "disagreements_adjudicated_by_c": 15,
+    "sessions_a": [
+      {
+        "batch": 1,
+        "count": 20,
+        "session_id": "65744cf7-bd3a-4898-82d2-8f7080fd7384",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 2,
+        "count": 20,
+        "session_id": "9349f638-0247-45da-86db-9dda73851d56",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 3,
+        "count": 20,
+        "session_id": "b3e81c5a-22c3-4185-bc95-562c75c1a979",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 4,
+        "count": 15,
+        "session_id": "48717f2f-5056-4dbd-a8b2-b584970ef7b3",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      }
+    ],
+    "sessions_b": [
+      {
+        "batch": 1,
+        "count": 20,
+        "session_id": "01a2129e-30f4-7792-9586-a0affd1234bd",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 2,
+        "count": 20,
+        "session_id": "01a2129e-cc3a-7a53-a465-7003e5335b57",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 3,
+        "count": 20,
+        "session_id": "01a2129f-958a-7902-913b-45d22ecb6731",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 4,
+        "count": 15,
+        "session_id": "01a212a0-5979-7963-9cdc-ce30f80e3da7",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      }
+    ],
+    "sessions_c": [
+      {
+        "batch": 1,
+        "count": 15,
+        "session_id": "01a212a1-0715-7cf0-9c66-8d2baf464347",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      }
+    ]
+  },
+  "global_pairwise": {
+    "total_evaluated": 180,
+    "disagreements_adjudicated_by_c": 26,
+    "sessions_a": [
+      {
+        "batch": 1,
+        "count": 20,
+        "session_id": "2ea67b60-7368-41ba-86fe-18c6c1a72ec4",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 2,
+        "count": 20,
+        "session_id": "1b947b93-948d-4856-af50-81d9fa389bd7",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 3,
+        "count": 20,
+        "session_id": "ccc6addd-945e-4914-b10a-29326717a076",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 4,
+        "count": 20,
+        "session_id": "c0301051-e68d-4d22-a0f4-0458a0d24c88",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 5,
+        "count": 20,
+        "session_id": "649c05ea-3cd4-4e68-ac3b-95dfc3b0bd6d",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 6,
+        "count": 20,
+        "session_id": "7c4a07ea-c13d-405d-b2cb-6e67fd378ea8",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 7,
+        "count": 20,
+        "session_id": "58e8711f-ac60-4a8f-97f5-fc1d99844a83",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 8,
+        "count": 20,
+        "session_id": "e1ca26eb-3571-482f-9f70-9bd1801691c1",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      },
+      {
+        "batch": 9,
+        "count": 20,
+        "session_id": "1c242d62-09f5-44fd-97f3-265307ca10ca",
+        "models": [
+          "claude-opus-5-5"
+        ]
+      }
+    ],
+    "sessions_b": [
+      {
+        "batch": 1,
+        "count": 20,
+        "session_id": "01a212a1-c07c-7a31-89b7-535f4670899b",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 2,
+        "count": 20,
+        "session_id": "01a212a2-29d3-7aa0-b70b-e87cb4fba785",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 3,
+        "count": 20,
+        "session_id": "01a212a2-a2db-7360-801e-47f7caeb35c9",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 4,
+        "count": 20,
+        "session_id": "01a212a2-febf-7ce3-861b-526ba995d522",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 5,
+        "count": 20,
+        "session_id": "01a212a3-7866-73b3-a81e-abd8ab2079c2",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 6,
+        "count": 20,
+        "session_id": "01a212a3-e491-7cc1-8e45-2a48d75f9132",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 7,
+        "count": 20,
+        "session_id": "01a212a4-4466-7693-a98f-c8d12bb3225b",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 8,
+        "count": 20,
+        "session_id": "01a212a4-a5f8-7a71-868f-8077425c8954",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 9,
+        "count": 20,
+        "session_id": "01a212a5-328e-76d2-9a92-a079966a58cf",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      }
+    ],
+    "sessions_c": [
+      {
+        "batch": 1,
+        "count": 20,
+        "session_id": "01a212a5-a46a-7e90-b51c-ca34c22f8274",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      },
+      {
+        "batch": 2,
+        "count": 6,
+        "session_id": "01a212a6-0dd7-7f61-9ec2-424b107334b1",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ]
+      }
+    ]
+  },
+  "archived_output_sha256": {
+    "citation-packet.jsonl": "46e563e15ed5ebc42b25c2f73313f768a318ced26e323edcdf7b63927b8230ca",
+    "citation-judgments-a.jsonl": "f4e25e5ac721bc0e7e35439f160ae82a03db4a881f0bfbd88db95bcd9cf738ca",
+    "citation-judgments-b.jsonl": "f597ff756c95c6f2c61fdf8a97577903e3ed278e1b477719562a25a0fab124a6",
+    "citation-judgments-c.jsonl": "8035e710a8971b43878003e09dacb862aa02c5b78cf4cacbb22789f230bdb355",
+    "pairwise-packet.jsonl": "e0921359dd7060e031781fbb3d52cb0ab41b98d70c8beaea74ced4897e5268af",
+    "pairwise-key.jsonl": "45c8f52b94d6b85047afc81df6ede429d90310c07fae28978fbff61ebfc6168a",
+    "pairwise-judgments-a.jsonl": "cf6da46a38a4a28532e0ab6b4828e1600e8bb3ab0451af751bae3d5669652dbc",
+    "pairwise-judgments-b.jsonl": "f2559d7dd04da428268220d0a5d52e95d5bb6f53d52851fbae63cb5470135ea5",
+    "pairwise-judgments-c.jsonl": "16d514cafc1a747d4632d4753dce95f2c79404034eb4dc3352473752986acec2"
+  }
+}

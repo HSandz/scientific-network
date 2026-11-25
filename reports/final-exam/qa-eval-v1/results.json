@@ -1,0 +1,524 @@
+{
+  "protocol_version": "qa-eval-v1",
+  "code_commit": "433903ddde134e6acd9a37b534646b601f9cac5e",
+  "graph_version": "enriched-cb371912e308",
+  "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+  "llm": "qwen3.5-4b-q4_k_m",
+  "llm_hf_revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+  "ai_assessed_disclosure": "Citation validity and global pairwise comparisons are AI-assessed by isolated LLM evaluators (not independent human annotations or verified course accuracy). Wilson and bootstrap 95% intervals reflect sampling uncertainty only and exclude evaluator error.",
+  "evaluator_independence_disclosure": "Evaluator A: fresh isolated claude-opus-5-5. Evaluator B: fresh isolated codex exec (gpt-6.2-sol via 9router). Adjudicator C: separate fresh isolated codex exec session (gpt-6.2-sol via 9router, used because local gemini CLI 0.26.0 returned exit 41 unauthenticated). C differs in model family from A but shares B's model family and is therefore not independent of B.",
+  "coverage_and_extraction_caveats": "Results are measured on the 69 kept benchmark test questions (11 dropped for empty/ambiguous references) over AAAI and IJCAI 2021-2025 main-track papers; affiliation coverage (73.71%) and historical topic precision (68.63%) bound completeness, and unified text entity resolution uses normalized aliases plus all-MiniLM-L6-v2 cosine >= 0.80.",
+  "factual": {
+    "S1_slm_only": {
+      "by_hop": {
+        "1": {
+          "count": 14,
+          "mean_score": 0.0262,
+          "bootstrap_95_ci": [
+            0.0,
+            0.0595
+          ],
+          "faithfulness_passed": null,
+          "faithfulness_total": null,
+          "faithfulness_rate": null,
+          "faithfulness_wilson_95": null,
+          "mean_first_event_s": 3.814,
+          "mean_latency_s": 3.814
+        },
+        "2": {
+          "count": 22,
+          "mean_score": 0.1929,
+          "bootstrap_95_ci": [
+            0.1111,
+            0.2985
+          ],
+          "faithfulness_passed": null,
+          "faithfulness_total": null,
+          "faithfulness_rate": null,
+          "faithfulness_wilson_95": null,
+          "mean_first_event_s": 4.258,
+          "mean_latency_s": 4.258
+        },
+        "3": {
+          "count": 18,
+          "mean_score": 0.1165,
+          "bootstrap_95_ci": [
+            0.0556,
+            0.1864
+          ],
+          "faithfulness_passed": null,
+          "faithfulness_total": null,
+          "faithfulness_rate": null,
+          "faithfulness_wilson_95": null,
+          "mean_first_event_s": 5.857,
+          "mean_latency_s": 5.857
+        },
+        "factual_overall": {
+          "count": 54,
+          "mean_score": 0.1242,
+          "bootstrap_95_ci": [
+            0.0787,
+            0.1759
+          ],
+          "faithfulness_passed": null,
+          "faithfulness_total": null,
+          "faithfulness_rate": null,
+          "faithfulness_wilson_95": null,
+          "mean_first_event_s": 4.676,
+          "mean_latency_s": 4.676
+        },
+        "global": {
+          "count": 15,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness_passed": null,
+          "faithfulness_total": null,
+          "faithfulness_rate": null,
+          "faithfulness_wilson_95": null,
+          "mean_first_event_s": 5.893,
+          "mean_latency_s": 5.893
+        }
+      },
+      "overall_faithfulness": {
+        "passed": null,
+        "total": null,
+        "rate": null,
+        "wilson_95_ci": null,
+        "status": "not_applicable"
+      }
+    },
+    "S2_vector_rag": {
+      "by_hop": {
+        "1": {
+          "count": 14,
+          "mean_score": 0.0,
+          "bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "faithfulness_passed": 9,
+          "faithfulness_total": 14,
+          "faithfulness_rate": 0.6429,
+          "faithfulness_wilson_95": [
+            0.3876,
+            0.8366
+          ],
+          "mean_first_event_s": 3.478,
+          "mean_latency_s": 8.639
+        },
+        "2": {
+          "count": 22,
+          "mean_score": 0.125,
+          "bootstrap_95_ci": [
+            0.0456,
+            0.2346
+          ],
+          "faithfulness_passed": 15,
+          "faithfulness_total": 22,
+          "faithfulness_rate": 0.6818,
+          "faithfulness_wilson_95": [
+            0.4732,
+            0.8364
+          ],
+          "mean_first_event_s": 2.485,
+          "mean_latency_s": 7.507
+        },
+        "3": {
+          "count": 18,
+          "mean_score": 0.0112,
+          "bootstrap_95_ci": [
+            0.0,
+            0.0274
+          ],
+          "faithfulness_passed": 16,
+          "faithfulness_total": 18,
+          "faithfulness_rate": 0.8889,
+          "faithfulness_wilson_95": [
+            0.672,
+            0.969
+          ],
+          "mean_first_event_s": 0.454,
+          "mean_latency_s": 5.194
+        },
+        "factual_overall": {
+          "count": 54,
+          "mean_score": 0.0547,
+          "bootstrap_95_ci": [
+            0.02,
+            0.0993
+          ],
+          "faithfulness_passed": 49,
+          "faithfulness_total": 69,
+          "faithfulness_rate": 0.7101,
+          "faithfulness_wilson_95": [
+            0.5943,
+            0.8038
+          ],
+          "mean_first_event_s": 2.065,
+          "mean_latency_s": 7.03
+        },
+        "global": {
+          "count": 15,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness_passed": 9,
+          "faithfulness_total": 15,
+          "faithfulness_rate": 0.6,
+          "faithfulness_wilson_95": [
+            0.3575,
+            0.8018
+          ],
+          "mean_first_event_s": 4.755,
+          "mean_latency_s": 11.218
+        }
+      },
+      "overall_faithfulness": {
+        "passed": 49,
+        "total": 69,
+        "rate": 0.7101,
+        "wilson_95_ci": [
+          0.5943,
+          0.8038
+        ],
+        "status": "evaluated"
+      }
+    },
+    "S3_graphrag": {
+      "by_hop": {
+        "1": {
+          "count": 14,
+          "mean_score": 0.2571,
+          "bootstrap_95_ci": [
+            0.0571,
+            0.5
+          ],
+          "faithfulness_passed": 9,
+          "faithfulness_total": 14,
+          "faithfulness_rate": 0.6429,
+          "faithfulness_wilson_95": [
+            0.3876,
+            0.8366
+          ],
+          "mean_first_event_s": 2.289,
+          "mean_latency_s": 10.711
+        },
+        "2": {
+          "count": 22,
+          "mean_score": 0.1474,
+          "bootstrap_95_ci": [
+            0.063,
+            0.249
+          ],
+          "faithfulness_passed": 20,
+          "faithfulness_total": 22,
+          "faithfulness_rate": 0.9091,
+          "faithfulness_wilson_95": [
+            0.7219,
+            0.9747
+          ],
+          "mean_first_event_s": 2.724,
+          "mean_latency_s": 9.927
+        },
+        "3": {
+          "count": 18,
+          "mean_score": 0.1088,
+          "bootstrap_95_ci": [
+            0.0403,
+            0.1868
+          ],
+          "faithfulness_passed": 15,
+          "faithfulness_total": 18,
+          "faithfulness_rate": 0.8333,
+          "faithfulness_wilson_95": [
+            0.6078,
+            0.9416
+          ],
+          "mean_first_event_s": 5.834,
+          "mean_latency_s": 11.321
+        },
+        "factual_overall": {
+          "count": 54,
+          "mean_score": 0.163,
+          "bootstrap_95_ci": [
+            0.0919,
+            0.2369
+          ],
+          "faithfulness_passed": 59,
+          "faithfulness_total": 69,
+          "faithfulness_rate": 0.8551,
+          "faithfulness_wilson_95": [
+            0.7534,
+            0.9193
+          ],
+          "mean_first_event_s": 3.648,
+          "mean_latency_s": 10.595
+        },
+        "global": {
+          "count": 15,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness_passed": 15,
+          "faithfulness_total": 15,
+          "faithfulness_rate": 1.0,
+          "faithfulness_wilson_95": [
+            0.7961,
+            1.0
+          ],
+          "mean_first_event_s": 48.275,
+          "mean_latency_s": 48.275
+        }
+      },
+      "overall_faithfulness": {
+        "passed": 59,
+        "total": 69,
+        "rate": 0.8551,
+        "wilson_95_ci": [
+          0.7534,
+          0.9193
+        ],
+        "status": "evaluated"
+      }
+    },
+    "S4_multihop": {
+      "by_hop": {
+        "1": {
+          "count": 14,
+          "mean_score": 0.419,
+          "bootstrap_95_ci": [
+            0.1966,
+            0.6395
+          ],
+          "faithfulness_passed": 12,
+          "faithfulness_total": 14,
+          "faithfulness_rate": 0.8571,
+          "faithfulness_wilson_95": [
+            0.6006,
+            0.9599
+          ],
+          "mean_first_event_s": 1.135,
+          "mean_latency_s": 7.057
+        },
+        "2": {
+          "count": 22,
+          "mean_score": 0.2532,
+          "bootstrap_95_ci": [
+            0.1168,
+            0.4173
+          ],
+          "faithfulness_passed": 17,
+          "faithfulness_total": 22,
+          "faithfulness_rate": 0.7727,
+          "faithfulness_wilson_95": [
+            0.5656,
+            0.8988
+          ],
+          "mean_first_event_s": 1.705,
+          "mean_latency_s": 9.774
+        },
+        "3": {
+          "count": 18,
+          "mean_score": 0.6466,
+          "bootstrap_95_ci": [
+            0.4548,
+            0.8177
+          ],
+          "faithfulness_passed": 17,
+          "faithfulness_total": 18,
+          "faithfulness_rate": 0.9444,
+          "faithfulness_wilson_95": [
+            0.7424,
+            0.9901
+          ],
+          "mean_first_event_s": 1.99,
+          "mean_latency_s": 11.906
+        },
+        "factual_overall": {
+          "count": 54,
+          "mean_score": 0.4273,
+          "bootstrap_95_ci": [
+            0.3132,
+            0.5403
+          ],
+          "faithfulness_passed": 60,
+          "faithfulness_total": 69,
+          "faithfulness_rate": 0.8696,
+          "faithfulness_wilson_95": [
+            0.7703,
+            0.9298
+          ],
+          "mean_first_event_s": 1.652,
+          "mean_latency_s": 9.78
+        },
+        "global": {
+          "count": 15,
+          "mean_score": null,
+          "bootstrap_95_ci": null,
+          "faithfulness_passed": 14,
+          "faithfulness_total": 15,
+          "faithfulness_rate": 0.9333,
+          "faithfulness_wilson_95": [
+            0.7018,
+            0.9881
+          ],
+          "mean_first_event_s": 2.912,
+          "mean_latency_s": 20.778
+        }
+      },
+      "overall_faithfulness": {
+        "passed": 60,
+        "total": 69,
+        "rate": 0.8696,
+        "wilson_95_ci": [
+          0.7703,
+          0.9298
+        ],
+        "status": "evaluated"
+      }
+    }
+  },
+  "citation_validity_ai_assessed": {
+    "ai_assessed": true,
+    "by_system": {
+      "S1_slm_only": {
+        "supported": 0,
+        "total": 0,
+        "rate": null,
+        "wilson_95_ci": null,
+        "status": "zero_citations_emitted"
+      },
+      "S2_vector_rag": {
+        "supported": 23,
+        "total": 25,
+        "rate": 0.92,
+        "wilson_95_ci": [
+          0.7503,
+          0.9778
+        ],
+        "status": "evaluated"
+      },
+      "S3_graphrag": {
+        "supported": 16,
+        "total": 25,
+        "rate": 0.64,
+        "wilson_95_ci": [
+          0.4452,
+          0.7975
+        ],
+        "status": "evaluated"
+      },
+      "S4_multihop": {
+        "supported": 9,
+        "total": 25,
+        "rate": 0.36,
+        "wilson_95_ci": [
+          0.2025,
+          0.5548
+        ],
+        "status": "evaluated"
+      }
+    },
+    "disagreements": 15,
+    "cohens_kappa_ab": 0.6199
+  },
+  "global_pairwise_ai_assessed": {
+    "ai_assessed": true,
+    "total_blind_items": 180,
+    "total_unordered_pairs": 90,
+    "consistent_ties": 7,
+    "position_inconsistent_pairs": 4,
+    "disagreements_ab": 26,
+    "cohens_kappa_ab": 0.7988,
+    "by_system": {
+      "S1_slm_only": {
+        "wins": 3,
+        "ties": 0,
+        "losses": 87,
+        "total_appearances": 90,
+        "win_rate": 0.0333,
+        "non_loss_rate": 0.0333,
+        "position_consistent_wins": 1,
+        "position_consistent_win_rate": 0.0222
+      },
+      "S2_vector_rag": {
+        "wins": 72,
+        "ties": 0,
+        "losses": 18,
+        "total_appearances": 90,
+        "win_rate": 0.8,
+        "non_loss_rate": 0.8,
+        "position_consistent_wins": 35,
+        "position_consistent_win_rate": 0.7778
+      },
+      "S3_graphrag": {
+        "wins": 44,
+        "ties": 14,
+        "losses": 32,
+        "total_appearances": 90,
+        "win_rate": 0.4889,
+        "non_loss_rate": 0.6444,
+        "position_consistent_wins": 21,
+        "position_consistent_win_rate": 0.4667
+      },
+      "S4_multihop": {
+        "wins": 47,
+        "ties": 14,
+        "losses": 29,
+        "total_appearances": 90,
+        "win_rate": 0.5222,
+        "non_loss_rate": 0.6778,
+        "position_consistent_wins": 22,
+        "position_consistent_win_rate": 0.4889
+      }
+    },
+    "head_to_head": {
+      "S1_slm_only__vs__S2_vector_rag": {
+        "S1_slm_only_wins": 0,
+        "S2_vector_rag_wins": 30,
+        "ties": 0,
+        "S1_slm_only_consistent_pairs": 0,
+        "S2_vector_rag_consistent_pairs": 15,
+        "position_inconsistent_pairs": 0
+      },
+      "S1_slm_only__vs__S3_graphrag": {
+        "S1_slm_only_wins": 2,
+        "S3_graphrag_wins": 28,
+        "ties": 0,
+        "S1_slm_only_consistent_pairs": 1,
+        "S3_graphrag_consistent_pairs": 14,
+        "position_inconsistent_pairs": 0
+      },
+      "S1_slm_only__vs__S4_multihop": {
+        "S1_slm_only_wins": 1,
+        "S4_multihop_wins": 29,
+        "ties": 0,
+        "S1_slm_only_consistent_pairs": 0,
+        "S4_multihop_consistent_pairs": 14,
+        "position_inconsistent_pairs": 1
+      },
+      "S2_vector_rag__vs__S3_graphrag": {
+        "S2_vector_rag_wins": 21,
+        "S3_graphrag_wins": 9,
+        "ties": 0,
+        "S2_vector_rag_consistent_pairs": 10,
+        "S3_graphrag_consistent_pairs": 4,
+        "position_inconsistent_pairs": 1
+      },
+      "S2_vector_rag__vs__S4_multihop": {
+        "S2_vector_rag_wins": 21,
+        "S4_multihop_wins": 9,
+        "ties": 0,
+        "S2_vector_rag_consistent_pairs": 10,
+        "S4_multihop_consistent_pairs": 4,
+        "position_inconsistent_pairs": 1
+      },
+      "S3_graphrag__vs__S4_multihop": {
+        "S3_graphrag_wins": 7,
+        "S4_multihop_wins": 9,
+        "ties": 14,
+        "S3_graphrag_consistent_pairs": 3,
+        "S4_multihop_consistent_pairs": 4,
+        "position_inconsistent_pairs": 1
+      }
+    }
+  }
+}
