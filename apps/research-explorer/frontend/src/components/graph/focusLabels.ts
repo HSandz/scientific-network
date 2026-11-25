@@ -154,6 +154,13 @@ export function createCustomSigmaRenderers(
           ];
         },
       );
+      // Focus precedence: the hovered/selected node is always labelled. If every slot touches a
+      // neighbour's disc (a dense star around a hub), a second pass lets the focus label overlap node
+      // discs while still respecting the canvas bounds, reserved overlays and placed labels.
+      const passes = node.kind === "focus" ? [true, false] : [true];
+      let placed = false;
+      for (const avoidNodeDiscs of passes) {
+      if (placed) break;
       for (const [x, y] of positions) {
         const rect = { x1: x - 3, y1: y - 2, x2: x + w + 3, y2: y + h + 2 };
         if (
@@ -169,6 +176,7 @@ export function createCustomSigmaRenderers(
         )
           continue;
         if (
+          avoidNodeDiscs &&
           obstacles.some(
             (b) =>
               b.id !== node.id &&
@@ -192,7 +200,9 @@ export function createCustomSigmaRenderers(
         });
         if (node.kind === "neighbor") neighborCount++;
         if (node.kind === "routine") routineCount++;
+        placed = true;
         break;
+      }
       }
     }
     const container = sigma.getContainer();

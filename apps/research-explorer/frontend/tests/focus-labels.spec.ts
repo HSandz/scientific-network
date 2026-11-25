@@ -1,6 +1,16 @@
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import path from "node:path";
 test.use({ viewport: { width: 1440, height: 900 } });
+
+// Guard (2026-11-26): these baselines are for the frozen v4 release graph. A backend reused on the API
+// port that reads another database (e.g. the enriched graph on 7690, as in a Navigator run) silently
+// changes the data (hub degree 26 instead of 22). Fail fast instead.
+test.beforeAll(async ({ request }) => {
+  const health = await (await request.get("/api/health")).json();
+  expect(health.database_verified, `backend reads ${health.neo4j_endpoint}, not the verified v4 release graph`).toBe(true);
+  expect(health.observed_graph_versions).toEqual(["release-d3c788c3114a"]);
+});
+
 const out = process.env.EXPLORER_SCREENSHOT_DIR || "/tmp/explorer-focus";
 async function identity(canvas: Locator, exclude?: string) {
   await expect
