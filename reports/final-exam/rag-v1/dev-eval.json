@@ -1,0 +1,367 @@
+{
+  "development_only_not_test_results": true,
+  "note": "Measured strictly on the 19 kept development questions; test questions were NOT touched in M3.",
+  "model": "qwen3.5-4b-q4_k_m",
+  "kept_dev_count": 19,
+  "by_hop_class": {
+    "1": {
+      "count": 4,
+      "mean_score": 0.85,
+      "faithfulness_rate": 1.0,
+      "mean_latency_s": 5.518
+    },
+    "2": {
+      "count": 6,
+      "mean_score": 0.6723,
+      "faithfulness_rate": 1.0,
+      "mean_latency_s": 7.131
+    },
+    "3": {
+      "count": 5,
+      "mean_score": 0.6667,
+      "faithfulness_rate": 1.0,
+      "mean_latency_s": 7.372
+    },
+    "global": {
+      "count": 4,
+      "mean_score": 1.0,
+      "faithfulness_rate": 1.0,
+      "mean_latency_s": 19.465
+    }
+  },
+  "overall_faithfulness_rate": 1.0,
+  "items": [
+    {
+      "question_id": "qa-v1-d001",
+      "hops": "1",
+      "template_id": "T1a",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 1,
+      "predicted_count": 1,
+      "faithfulness_passed": true,
+      "latency_s": 4.623,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d003",
+      "hops": "1",
+      "template_id": "T1c",
+      "judged": "exact",
+      "score": 1.0,
+      "expected": 8,
+      "faithfulness_passed": true,
+      "latency_s": 5.566,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d004",
+      "hops": "1",
+      "template_id": "T1d",
+      "judged": "exact",
+      "score": 1.0,
+      "expected": 34,
+      "faithfulness_passed": true,
+      "latency_s": 5.26,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d005",
+      "hops": "1",
+      "template_id": "T1e",
+      "judged": "set_f1",
+      "score": 0.4,
+      "precision": 0.4,
+      "recall": 0.4,
+      "expected_count": 5,
+      "predicted_count": 5,
+      "faithfulness_passed": true,
+      "latency_s": 6.624,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d006",
+      "hops": "2",
+      "template_id": "T2a",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 8,
+      "predicted_count": 8,
+      "faithfulness_passed": true,
+      "latency_s": 7.093,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d007",
+      "hops": "2",
+      "template_id": "T2b",
+      "judged": "set_f1",
+      "score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "expected_count": 5,
+      "predicted_count": 0,
+      "faithfulness_passed": true,
+      "latency_s": 2.467,
+      "mode": "multi_hop",
+      "stopped_reason": "empty_step",
+      "plan_tools": [
+        "find",
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d008",
+      "hops": "2",
+      "template_id": "T2c",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 4,
+      "predicted_count": 4,
+      "faithfulness_passed": true,
+      "latency_s": 8.691,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "find",
+        "neighbors",
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d009",
+      "hops": "2",
+      "template_id": "T2d",
+      "judged": "set_f1",
+      "score": 0.034,
+      "precision": 0.38,
+      "recall": 0.0178,
+      "expected_count": 1067,
+      "predicted_count": 50,
+      "faithfulness_passed": true,
+      "latency_s": 9.022,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors",
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d010",
+      "hops": "2",
+      "template_id": "T2e",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 10,
+      "predicted_count": 10,
+      "faithfulness_passed": true,
+      "latency_s": 9.431,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "papers",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d011",
+      "hops": "2",
+      "template_id": "T2f",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 1,
+      "predicted_count": 1,
+      "faithfulness_passed": true,
+      "latency_s": 6.081,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "papers",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d012",
+      "hops": "3",
+      "template_id": "T3a",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 5,
+      "predicted_count": 5,
+      "faithfulness_passed": true,
+      "latency_s": 11.672,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "papers",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d013",
+      "hops": "3",
+      "template_id": "T3b",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 5,
+      "predicted_count": 5,
+      "faithfulness_passed": true,
+      "latency_s": 6.252,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "papers",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d014",
+      "hops": "3",
+      "template_id": "T3c",
+      "judged": "set_f1",
+      "score": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "expected_count": 1,
+      "predicted_count": 1,
+      "faithfulness_passed": true,
+      "latency_s": 7.046,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d015",
+      "hops": "3",
+      "template_id": "T3d",
+      "judged": "set_f1",
+      "score": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "expected_count": 2,
+      "predicted_count": 2,
+      "faithfulness_passed": true,
+      "latency_s": 6.72,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "papers",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d016",
+      "hops": "3",
+      "template_id": "T3e",
+      "judged": "set_f1",
+      "score": 0.3333,
+      "precision": 1.0,
+      "recall": 0.2,
+      "expected_count": 5,
+      "predicted_count": 1,
+      "faithfulness_passed": true,
+      "latency_s": 5.171,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "neighbors",
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d017",
+      "hops": "global",
+      "template_id": "G13",
+      "judged": "global_completeness",
+      "score": 1.0,
+      "faithfulness_passed": true,
+      "latency_s": 51.402,
+      "mode": "global",
+      "stopped_reason": null,
+      "plan_tools": []
+    },
+    {
+      "question_id": "qa-v1-d018",
+      "hops": "global",
+      "template_id": "G14",
+      "judged": "global_completeness",
+      "score": 1.0,
+      "faithfulness_passed": true,
+      "latency_s": 5.143,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "aggregate"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d019",
+      "hops": "global",
+      "template_id": "G15",
+      "judged": "global_completeness",
+      "score": 1.0,
+      "faithfulness_passed": true,
+      "latency_s": 12.927,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "aggregate",
+        "neighbors"
+      ]
+    },
+    {
+      "question_id": "qa-v1-d020",
+      "hops": "global",
+      "template_id": "G16",
+      "judged": "global_completeness",
+      "score": 1.0,
+      "faithfulness_passed": true,
+      "latency_s": 8.386,
+      "mode": "multi_hop",
+      "stopped_reason": null,
+      "plan_tools": [
+        "aggregate",
+        "trend"
+      ]
+    }
+  ]
+}

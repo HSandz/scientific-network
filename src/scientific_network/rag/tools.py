@@ -17,6 +17,7 @@ import gzip
 import json
 import os
 from pathlib import Path
+import re
 from typing import Any, Callable, Protocol
 
 from dotenv import load_dotenv
@@ -127,12 +128,14 @@ def _parse_surfaces(raw: Any) -> list[str]:
 
 
 def _stem_variants(text: str) -> set[str]:
-    t = " ".join(text.strip().lower().split())
-    out = {t}
-    if t.endswith("s") and not t.endswith(("ss", "us", "is")):
-        out.add(t[:-1])
-    else:
-        out.add(t + "s")
+    norm = re.sub(r"[-_]+", " ", text.strip().lower())
+    t = " ".join(norm.split())
+    out = {t, " ".join(text.strip().lower().split())}
+    for cand in list(out):
+        if cand.endswith("s") and not cand.endswith(("ss", "us", "is")):
+            out.add(cand[:-1])
+        else:
+            out.add(cand + "s")
     for suffix in (" tasks", " task", " methods", " method", " models", " model"):
         if t.endswith(suffix) and len(t) > len(suffix) + 2:
             stem = t[: -len(suffix)].strip()
@@ -206,8 +209,8 @@ class Neo4jToolBackend:
     def find_nodes(self, entity_type: str | None, text: str, limit: int = 10) -> list[dict[str, Any]]:
         label = _validate_label(entity_type)
         lim = max(1, min(int(limit), 50))
-        q_low = text.strip().lower()
-        variants = sorted(_stem_variants(q_low))
+        q_low = " ".join(re.sub(r"[-_]+", " ", text.strip().lower()).split())
+        variants = sorted(_stem_variants(text))
         lab_expr = f":{label}" if label else ""
         # Exact/key/surface/substring search via parameterized Cypher
         cypher = (
@@ -470,14 +473,17 @@ class Neo4jToolBackend:
             where_parts.append("toInteger(p.year) <= $year_max")
             params["year_max"] = int(flt["year_max"])
 
-        # Anchor papers through entity_ids (Organization, Researcher, Topic, Method, Task, Dataset)
+        # Anchor papers through entity_ids (Paper, Organization, Researcher, Topic, Method, Task, Dataset)
         if entity_ids:
-            anchor = (
-                "MATCH (e) WHERE e.id IN $entity_ids "
-                "MATCH (e)<-[:AFFILIATED_WITH]-(:Researcher)-[:AUTHORED]->(p:Paper) "
-                if all(i.startswith("organization:") for i in entity_ids)
-                else "MATCH (e) WHERE e.id IN $entity_ids MATCH (e)-[:AUTHORED|HAS_TOPIC|USES_METHOD|ADDRESSES_TASK|USES_DATASET]-(p:Paper) "
-            )
+            if all(i.startswith("paper:") for i in entity_ids):
+                anchor = "MATCH (p:Paper) WHERE p.id IN $entity_ids "
+            elif all(i.startswith("organization:") for i in entity_ids):
+                anchor = (
+                    "MATCH (e:Organization) WHERE e.id IN $entity_ids "
+                    "MATCH (e)<-[:AFFILIATED_WITH]-(:Researcher)-[:AUTHORED]->(p:Paper) "
+                )
+            else:
+                anchor = "MATCH (e) WHERE e.id IN $entity_ids MATCH (e)-[:AUTHORED|HAS_TOPIC|USES_METHOD|ADDRESSES_TASK|USES_DATASET]-(p:Paper) "
         else:
             anchor = "MATCH (p:Paper) "
 
@@ -492,6 +498,7 @@ class Neo4jToolBackend:
                 "ORDER BY key ASC LIMIT $limit"
             )
         elif by == "organization_year":
+            params["limit"] = max(lim, len(entity_ids) * 6, 300)
             # Also returns org total papers per year so caller can compute org-specific share & growth
             if all(i.startswith("organization:") for i in entity_ids):
                 group_cypher = (
@@ -510,7 +517,7 @@ class Neo4jToolBackend:
                     "RETURN o.id AS entity_id, o.name AS entity_name, yr AS year, size(pids) AS paper_count, pids[0..10] AS paper_ids "
                     "ORDER BY paper_count DESC, o.id ASC LIMIT $limit"
                 )
-        elif by in ("topic", "method", "task", "dataset", "organization", "venue"):
+        elif by in ("topic", "method", "task", "dataset", "organization", "researcher", "venue"):
             rel_target = {
                 "topic": "(p)-[:HAS_TOPIC]->(g:Topic)",
                 "method": "(p)-[:USES_METHOD]->(g:Method)",
@@ -518,6 +525,7 @@ class Neo4jToolBackend:
                 "dataset": "(p)-[:USES_DATASET]->(g:Dataset)",
                 "venue": "(p)-[:PUBLISHED_IN]->(g:Venue)",
                 "organization": "(p)<-[:AUTHORED]-(:Researcher)-[:AFFILIATED_WITH]->(g:Organization)",
+                "researcher": "(p)<-[:AUTHORED]-(g:Researcher)",
             }[by]
             group_cypher = (
                 f"{anchor}{extra_clause}{where_clause}"
@@ -560,8 +568,8 @@ class InMemoryGraphBackend:
 
     def find_nodes(self, entity_type: str | None, text: str, limit: int = 10) -> list[dict[str, Any]]:
         label = _validate_label(entity_type)
-        q_low = text.strip().lower()
-        variants = _stem_variants(q_low)
+        q_low = " ".join(re.sub(r"[-_]+", " ", text.strip().lower()).split())
+        variants = _stem_variants(text)
         scored: list[tuple[int, int, str, dict[str, Any]]] = []
         for nid, n in self.nodes.items():
             if label and n["label"] != label:
@@ -850,6 +858,8 @@ class InMemoryGraphBackend:
         base_papers = set(self._matching_papers(flt))
 
         def _papers_for_entity(eid: str) -> set[str]:
+            if eid.startswith("paper:"):
+                return {eid} & base_papers
             if eid.startswith("organization:"):
                 rids = {e["source_id"] for e in self.in_edges.get(eid, []) if e["relation"] == "AFFILIATED_WITH"}
                 return {e["target_id"] for r in rids for e in self.out_edges.get(r, []) if e["relation"] == "AUTHORED"} & base_papers
@@ -908,6 +918,11 @@ class InMemoryGraphBackend:
                         if e["relation"] == "AFFILIATED_WITH" and e["target_id"] in self.nodes:
                             groups[e["target_id"]].add(pid)
                             labels[e["target_id"]] = self.nodes[e["target_id"]]["name"]
+            elif by == "researcher":
+                for e in self.in_edges.get(pid, []):
+                    if e["relation"] == "AUTHORED" and e["source_id"] in self.nodes:
+                        groups[e["source_id"]].add(pid)
+                        labels[e["source_id"]] = self.nodes[e["source_id"]]["name"]
             else:
                 raise ValueError(f"Unsupported aggregate grouping {by!r}")
         out = [{"group_key": k, "label": labels[k], "paper_count": len(pids), "paper_ids": sorted(pids)[:15]}
@@ -1020,13 +1035,54 @@ class RAGToolset:
     # 2. neighbors(id, predicates, filters)
     def neighbors(
         self,
-        node_id: str,
+        node_id: str | list[str],
         predicates: list[str] | None = None,
         filters: dict[str, Any] | None = None,
         limit: int = 50,
     ) -> ToolResult:
         flt = filters or {}
         lim = max(1, min(int(limit), 250))
+
+        # Support batched expansion when an earlier step yields '$stepK.ids'
+        if isinstance(node_id, (list, tuple)):
+            seed_ids = [str(x) for x in node_id if x][:25]
+            if not seed_ids:
+                return ToolResult(tool="neighbors", args={"node_id": [], "predicates": predicates, "filters": flt},
+                                  empty=True, note="No input node IDs provided.")
+            merged_rows: list[dict[str, Any]] = []
+            seen_nb: set[tuple[str, str]] = set()
+            ev_ids: list[str] = []
+            paper_ids: list[str] = []
+            sub_nodes: dict[str, dict[str, Any]] = {}
+            sub_edges: list[dict[str, Any]] = []
+            for sid in seed_ids:
+                sub = self.neighbors(sid, predicates=predicates, filters=flt, limit=min(lim, 20))
+                for n in sub.subgraph_nodes:
+                    sub_nodes.setdefault(n["id"], n)
+                sub_edges.extend(sub.subgraph_edges)
+                ev_ids.extend(sub.evidence_ids)
+                paper_ids.extend(sub.paper_ids)
+                for r in sub.rows:
+                    key = (r.get("neighbor_id", ""), r.get("relation", ""))
+                    if key not in seen_nb:
+                        seen_nb.add(key)
+                        merged_rows.append(r)
+            merged_rows.sort(key=lambda r: (-int(r.get("support_count", 1)), str(r.get("neighbor_id", ""))))
+            merged_rows = merged_rows[:lim]
+            return ToolResult(
+                tool="neighbors",
+                args={"node_id": seed_ids, "predicates": predicates, "filters": flt, "limit": lim},
+                rows=merged_rows,
+                ids=[r["neighbor_id"] for r in merged_rows],
+                evidence_ids=list(dict.fromkeys(ev_ids))[:100],
+                paper_ids=list(dict.fromkeys(paper_ids))[:100],
+                subgraph_nodes=list(sub_nodes.values())[:100],
+                subgraph_edges=sub_edges[:150],
+                source_kind="graph" if merged_rows else "empty",
+                empty=len(merged_rows) == 0,
+                note=f"Batched expansion across {len(seed_ids)} node(s): {len(merged_rows)} unique neighbor(s).",
+            )
+
         res = self.backend.neighbors(
             node_id,
             predicates=predicates,
@@ -1064,12 +1120,17 @@ class RAGToolset:
                 "support_count": r["support_count"],
             })
 
-        # Paper co-occurrence supplement for Method/Task/Dataset queries
+        # Paper co-occurrence supplement for Method/Task/Dataset queries:
+        # Use co-occurrence when predicates omitted, include_cooccurrence is set, or explicit APPLIED_TO/EVALUATED_ON returned 0 edges.
         c_lab = center["label"]
         t_labs = list(flt.get("target_labels") or [])
         preds_set = set(predicates or [])
+        direct_n = len(rows)
+        want_cooccur = (not preds_set) or bool(flt.get("include_cooccurrence")) or (
+            bool(preds_set & {"APPLIED_TO", "EVALUATED_ON"}) and direct_n == 0
+        )
         cooccur_targets: list[str] = []
-        if c_lab in ("Method", "Task", "Dataset"):
+        if c_lab in ("Method", "Task", "Dataset") and want_cooccur:
             if t_labs:
                 cooccur_targets = [tl for tl in t_labs if (c_lab, tl) in COOCCURRENCE_PAIRS]
             elif "APPLIED_TO" in preds_set:
@@ -1109,7 +1170,6 @@ class RAGToolset:
                 })
 
         notes = []
-        direct_n = sum(1 for r in rows if r["source_kind"] != "paper_cooccurrence")
         if direct_n:
             notes.append(f"{direct_n} direct graph edges")
         if cooccur_count:
@@ -1244,6 +1304,14 @@ class RAGToolset:
                 tot = totals.get(int(r["group_key"]), 0)
                 r["year_total_papers"] = tot
                 r["share"] = round(r["paper_count"] / tot, 6) if tot else None
+        if by == "year":
+            total_papers = sum(int(r.get("paper_count", 0)) for r in rows)
+            for r in rows:
+                r["total_papers"] = total_papers
+            note_str = f"Aggregated {len(rows)} year(s); total_papers={total_papers}."
+        else:
+            note_str = f"Aggregated {len(rows)} group(s) by {by}."
+
         pids = [p for r in rows for p in (r.get("paper_ids") or [])]
         return ToolResult(
             tool="aggregate",
@@ -1253,7 +1321,7 @@ class RAGToolset:
             paper_ids=list(dict.fromkeys(pids))[:100],
             source_kind="graph",
             empty=len(rows) == 0,
-            note=f"Aggregated {len(rows)} group(s) by {by}.",
+            note=note_str,
         )
 
     # 6. rank(network, scope, measure)
@@ -1465,8 +1533,17 @@ class RAGToolset:
             note=f"Matched {len(matches)} subject trend(s) ({class_note}).",
         )
 
-    def _format_trend_row(self, r: dict[str, str], period: tuple[int, int] | list[int] | None) -> dict[str, Any]:
-        y_lo, y_hi = (int(period[0]), int(period[1])) if period and len(period) == 2 else (2021, 2025)
+    def _format_trend_row(self, r: dict[str, str], period: Any) -> dict[str, Any]:
+        if isinstance(period, dict):
+            y_lo = int(period.get("year_min") or 2021)
+            y_hi = int(period.get("year_max") or 2025)
+        elif isinstance(period, str) and "-" in period:
+            parts = [p.strip() for p in period.split("-", 1)]
+            y_lo, y_hi = (int(parts[0]), int(parts[1])) if all(p.isdigit() for p in parts) else (2021, 2025)
+        elif isinstance(period, (list, tuple)) and len(period) == 2:
+            y_lo, y_hi = int(period[0]), int(period[1])
+        else:
+            y_lo, y_hi = 2021, 2025
         years = [y for y in range(2021, 2026) if y_lo <= y <= y_hi]
         return {
             "kind": r["kind"],

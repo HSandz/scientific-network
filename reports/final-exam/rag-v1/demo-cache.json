@@ -1,0 +1,4739 @@
+{
+ "model": "qwen3.5-4b-q4_k_m",
+ "demos": [
+  {
+   "demo_id": "demo-01-worked-example",
+   "title": "Tsinghua collaborators increasing LLM share after 2022 (§6.3 worked example)",
+   "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
+   "requested_mode": "auto",
+   "total_latency_s": 14.029,
+   "result": {
+    "status": "ok",
+    "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
+    "mode": "multi_hop",
+    "parsed": {
+     "entities": [
+      {
+       "text": "Tsinghua University",
+       "entity_type": "Organization"
+      },
+      {
+       "text": "large-language-model",
+       "entity_type": "Topic"
+      }
+     ],
+     "year_min": 2022,
+     "year_max": null,
+     "after_year": 2022,
+     "venue": null,
+     "intent": "lookup"
+    },
+    "linked": [
+     {
+      "text": "Tsinghua University",
+      "entity_type": "Organization",
+      "id": "organization:I99065089",
+      "name": "Tsinghua University",
+      "alternatives": [
+       {
+        "id": "organization:I4405261323",
+        "label": "Organization",
+        "name": "Research Institute of Tsinghua University in Shenzhen",
+        "key": null,
+        "surfaces": [],
+        "year": null,
+        "sector": "academia",
+        "country_code": "CN",
+        "openalex_id": "I4405261323",
+        "paper_count": 0,
+        "wikipedia_url": null
+       }
+      ]
+     },
+     {
+      "text": "large-language-model",
+      "entity_type": "Method",
+      "id": "method:Q3621696",
+      "name": "Large Language Models (LLMs)",
+      "alternatives": [
+       {
+        "id": "method:a5bde710dad8d8bd",
+        "label": "Method",
+        "name": "Multimodal Large Language Models",
+        "key": "multimodal large language model",
+        "surfaces": [
+         "Multimodal Large Language Model",
+         "Multimodal Large Language Models",
+         "Multimodal Large Language Models (MLLMs)",
+         "Multimodal large language models",
+         "multimodal large language model"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 8,
+        "wikipedia_url": null
+       },
+       {
+        "id": "method:99a1f1ba87a2bbf8",
+        "label": "Method",
+        "name": "pre-trained large language model",
+        "key": "pre trained and large language model",
+        "surfaces": [
+         "Pre-trained Large Language Model (PtLLM)",
+         "pre-trained and large language models",
+         "pre-trained large language model",
+         "pre-trained large language models (LLM)"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 5,
+        "wikipedia_url": null
+       }
+      ]
+     }
+    ],
+    "plan": [
+     {
+      "tool": "neighbors",
+      "args": {
+       "node_id": "organization:I99065089",
+       "predicates": [
+        "COLLABORATED_WITH"
+       ],
+       "filters": {
+        "target_labels": [
+         "Organization"
+        ]
+       },
+       "limit": 100
+      },
+      "purpose": ""
+     },
+     {
+      "tool": "aggregate",
+      "args": {
+       "entity_ids": "$step1.ids",
+       "by": "organization_year",
+       "metric": "share_growth",
+       "filters": {
+        "method_id": "method:Q3621696",
+        "after_year": 2022,
+        "only_increased": true
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     }
+    ],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "neighbors",
+      "purpose": "",
+      "args": {
+       "node_id": "organization:I99065089",
+       "predicates": [
+        "COLLABORATED_WITH"
+       ],
+       "filters": {
+        "target_labels": [
+         "Organization"
+        ]
+       },
+       "limit": 100
+      },
+      "empty": false,
+      "row_count": 100,
+      "rows": [
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4405263052",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:2491e3cdceea95410d54e65691c77e04d5f457e140b06f4120634130d9241ad8",
+        "support_count": 49,
+        "fractional_weight": 14.95793650793651,
+        "evidence_ids": [
+         "evidence:derived:2491e3cdceea95410d54e65691c77e04d5f457e140b06f4120634130d9241ad8"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4405263052",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Tsinghua Shenzhen International Graduate School",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I2250653659",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8",
+        "support_count": 43,
+        "fractional_weight": 18.143650793650792,
+        "evidence_ids": [
+         "evidence:derived:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I2250653659",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Tencent (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I19820366",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:f6257e7c6c9064fc29f6a58979b1c279c07348e7303fbf530d97b87056fc95bc",
+        "support_count": 41,
+        "fractional_weight": 6.790048840048838,
+        "evidence_ids": [
+         "evidence:derived:f6257e7c6c9064fc29f6a58979b1c279c07348e7303fbf530d97b87056fc95bc"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I19820366",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Chinese Academy of Sciences",
+        "neighbor_year": null,
+        "neighbor_sector": "government",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210136793",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:6159c77b6714b9131664121ae65214d8b405bcdcd1a8fb1d0cc4b9b5f5c0ffb6",
+        "support_count": 38,
+        "fractional_weight": 10.036507936507936,
+        "evidence_ids": [
+         "evidence:derived:6159c77b6714b9131664121ae65214d8b405bcdcd1a8fb1d0cc4b9b5f5c0ffb6"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210136793",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Peng Cheng Laboratory",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210165038",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:1edabf22a8c9786d81369f5f99f3031f9769bde4e572ff1e1828432989332924",
+        "support_count": 33,
+        "fractional_weight": 5.254334554334553,
+        "evidence_ids": [
+         "evidence:derived:1edabf22a8c9786d81369f5f99f3031f9769bde4e572ff1e1828432989332924"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210165038",
+        "neighbor_label": "Organization",
+        "neighbor_name": "University of Chinese Academy of Sciences",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I20231570",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:c900cd11197cca58f577eea937ecaeb9d057e023a2dfcecbe035e4d50e3d152a",
+        "support_count": 22,
+        "fractional_weight": 8.435714285714283,
+        "evidence_ids": [
+         "evidence:derived:c900cd11197cca58f577eea937ecaeb9d057e023a2dfcecbe035e4d50e3d152a"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I20231570",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Peking University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4405271667",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:d4070103a447e71df70856b46167001d71e18f447d9f327a3f66c6a22d2ff45d",
+        "support_count": 21,
+        "fractional_weight": 14.147619047619049,
+        "evidence_ids": [
+         "evidence:derived:d4070103a447e71df70856b46167001d71e18f447d9f327a3f66c6a22d2ff45d"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4405271667",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beijing National Research Center for Information Science and Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I2250955327",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:482f9e823e8cb695fd5e45136be03e78f7589be08d0425ac64e477ab39da6f9f",
+        "support_count": 20,
+        "fractional_weight": 6.41111111111111,
+        "evidence_ids": [
+         "evidence:derived:482f9e823e8cb695fd5e45136be03e78f7589be08d0425ac64e477ab39da6f9f"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I2250955327",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Huawei Technologies (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I204983213",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:af54c0925826657199bb65766b5cf38a11449b1f583483e0830b3827a2547dff",
+        "support_count": 18,
+        "fractional_weight": 5.777777777777778,
+        "evidence_ids": [
+         "evidence:derived:af54c0925826657199bb65766b5cf38a11449b1f583483e0830b3827a2547dff"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I204983213",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Harbin Institute of Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I45928872",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:9b76e44dd1991b305b497acd721b3e2c938397f63dd262677090533e0439fe1e",
+        "support_count": 16,
+        "fractional_weight": 5.385714285714285,
+        "evidence_ids": [
+         "evidence:derived:9b76e44dd1991b305b497acd721b3e2c938397f63dd262677090533e0439fe1e"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I45928872",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Alibaba Group (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I180726961",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:bc0d7f3dd1bd26fe8581a74cbf91731497cd16bdcc316552a05b16444e893a56",
+        "support_count": 15,
+        "fractional_weight": 5.844444444444445,
+        "evidence_ids": [
+         "evidence:derived:bc0d7f3dd1bd26fe8581a74cbf91731497cd16bdcc316552a05b16444e893a56"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I180726961",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Shenzhen University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210112150",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:289767b2a507dc599c6f40ab288c2ade60c45bd790158bc60bd3657d4eb5639f",
+        "support_count": 14,
+        "fractional_weight": 3.0551282051282054,
+        "evidence_ids": [
+         "evidence:derived:289767b2a507dc599c6f40ab288c2ade60c45bd790158bc60bd3657d4eb5639f"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210112150",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Institute of Automation",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I183067930",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:82dfe23dd38c07b277c040330d87069863742a0d9c68cf972c27d55150dcb36a",
+        "support_count": 13,
+        "fractional_weight": 4.511111111111111,
+        "evidence_ids": [
+         "evidence:derived:82dfe23dd38c07b277c040330d87069863742a0d9c68cf972c27d55150dcb36a"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I183067930",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Shanghai Jiao Tong University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I177725633",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:e2a95bdff8e1b998d13357ca18481c4660681262d51363b811b286b6ae8435d2",
+        "support_count": 12,
+        "fractional_weight": 3.7142246642246644,
+        "evidence_ids": [
+         "evidence:derived:e2a95bdff8e1b998d13357ca18481c4660681262d51363b811b286b6ae8435d2"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I177725633",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Chinese University of Hong Kong",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "HK",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I200769079",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:ec316687ca384cf808ab268f98060184785c9d9ad6bc62a82f79e13c95f0f37b",
+        "support_count": 12,
+        "fractional_weight": 2.9000000000000004,
+        "evidence_ids": [
+         "evidence:derived:ec316687ca384cf808ab268f98060184785c9d9ad6bc62a82f79e13c95f0f37b"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I200769079",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Hong Kong University of Science and Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "HK",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I125839683",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:cc835012cedf8a831071ab76a8358d8c3dfbfc185a71c42f8f1b689f8dc772eb",
+        "support_count": 11,
+        "fractional_weight": 5.433333333333333,
+        "evidence_ids": [
+         "evidence:derived:cc835012cedf8a831071ab76a8358d8c3dfbfc185a71c42f8f1b689f8dc772eb"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I125839683",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beijing Institute of Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210128818",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:e4ef0ffc27da08cb760b241180e2463afe701d7db78dbc6100b17028a846c3eb",
+        "support_count": 11,
+        "fractional_weight": 1.8357142857142856,
+        "evidence_ids": [
+         "evidence:derived:e4ef0ffc27da08cb760b241180e2463afe701d7db78dbc6100b17028a846c3eb"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210128818",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Institute of Software",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4391012619",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:ab22d2dd7234965365e42143df12e990e41d1a9a05252bff0459959c02a9f645",
+        "support_count": 10,
+        "fractional_weight": 2.966666666666667,
+        "evidence_ids": [
+         "evidence:derived:ab22d2dd7234965365e42143df12e990e41d1a9a05252bff0459959c02a9f645"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4391012619",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Shanghai Artificial Intelligence Laboratory",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I157773358",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:e8803765258473956f5ed72a3e4a3602ea4f7a231044f31dea411b8a3dfe6068",
+        "support_count": 9,
+        "fractional_weight": 2.1666666666666665,
+        "evidence_ids": [
+         "evidence:derived:e8803765258473956f5ed72a3e4a3602ea4f7a231044f31dea411b8a3dfe6068"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I157773358",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Sun Yat-sen University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I165932596",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:bd1c0983b7fbfda4ba68ddd6761ec377e358d74d4914fd751c8a88e24566ab67",
+        "support_count": 9,
+        "fractional_weight": 2.2333333333333334,
+        "evidence_ids": [
+         "evidence:derived:bd1c0983b7fbfda4ba68ddd6761ec377e358d74d4914fd751c8a88e24566ab67"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I165932596",
+        "neighbor_label": "Organization",
+        "neighbor_name": "National University of Singapore",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "SG",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210113369",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:3e9acecbeb36dc32f0fa3df9afc6fd05ada9b577ee7ef84a8d42eb1271519691",
+        "support_count": 9,
+        "fractional_weight": 9.0,
+        "evidence_ids": [
+         "evidence:derived:3e9acecbeb36dc32f0fa3df9afc6fd05ada9b577ee7ef84a8d42eb1271519691"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210113369",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Microsoft Research Asia (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I74973139",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:3da19389b08dd7b9b23f14523698c35b55cd6b773aa0c1c4c8d1b8d538762b4b",
+        "support_count": 9,
+        "fractional_weight": 3.7,
+        "evidence_ids": [
+         "evidence:derived:3da19389b08dd7b9b23f14523698c35b55cd6b773aa0c1c4c8d1b8d538762b4b"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I74973139",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Carnegie Mellon University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "US",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I76130692",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:6778ced6594c40536a49b90107512cf998ad425ce31589548b0804ef1da56d8f",
+        "support_count": 9,
+        "fractional_weight": 3.210256410256411,
+        "evidence_ids": [
+         "evidence:derived:6778ced6594c40536a49b90107512cf998ad425ce31589548b0804ef1da56d8f"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I76130692",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Zhejiang University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I21193070",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:850cf0d64f62a132503b050b48fe8395d658fa4c0d02162243af3e87e2ca8f28",
+        "support_count": 8,
+        "fractional_weight": 2.566666666666667,
+        "evidence_ids": [
+         "evidence:derived:850cf0d64f62a132503b050b48fe8395d658fa4c0d02162243af3e87e2ca8f28"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I21193070",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beijing Jiaotong University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210116924",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:def249bd56cdd69b66cde408e150dda7f286560194c1e4addb186d1bd6779fe8",
+        "support_count": 8,
+        "fractional_weight": 0.8586691086691085,
+        "evidence_ids": [
+         "evidence:derived:def249bd56cdd69b66cde408e150dda7f286560194c1e4addb186d1bd6779fe8"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210116924",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Chinese University of Hong Kong, Shenzhen",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4405256866",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:d8f0e38bfc2bcc0f03a5f251c140dfee01167ecafdd4cbf9b73b0a4ba4c89a9f",
+        "support_count": 8,
+        "fractional_weight": 3.25,
+        "evidence_ids": [
+         "evidence:derived:d8f0e38bfc2bcc0f03a5f251c140dfee01167ecafdd4cbf9b73b0a4ba4c89a9f"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4405256866",
+        "neighbor_label": "Organization",
+        "neighbor_name": "ByteDance (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I78988378",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:4a32e0864017f2201a42943f22f92f507205e1dd843b9690b5c0c061839597ff",
+        "support_count": 8,
+        "fractional_weight": 4.0,
+        "evidence_ids": [
+         "evidence:derived:4a32e0864017f2201a42943f22f92f507205e1dd843b9690b5c0c061839597ff"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I78988378",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Renmin University of China",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I1290206253",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:9440083a66e28fea36830ff925a88df1ebdcb9f1ed5033b11e42dd955d600c5b",
+        "support_count": 7,
+        "fractional_weight": 3.1142857142857143,
+        "evidence_ids": [
+         "evidence:derived:9440083a66e28fea36830ff925a88df1ebdcb9f1ed5033b11e42dd955d600c5b"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I1290206253",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Microsoft (United States)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "US",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I139759216",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:c28fa338b0a926b2d7f49fdaba95cc2151fb530affe34d40d61d7673b5e7b2fe",
+        "support_count": 7,
+        "fractional_weight": 3.1,
+        "evidence_ids": [
+         "evidence:derived:c28fa338b0a926b2d7f49fdaba95cc2151fb530affe34d40d61d7673b5e7b2fe"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I139759216",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beijing University of Posts and Telecommunications",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I82880672",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:0da010ab7cc460d987ba3e88f0c66cc171f17554904b62ae7a3004478fbe3435",
+        "support_count": 7,
+        "fractional_weight": 3.1444444444444444,
+        "evidence_ids": [
+         "evidence:derived:0da010ab7cc460d987ba3e88f0c66cc171f17554904b62ae7a3004478fbe3435"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I82880672",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beihang University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I87445476",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:9f2a3975daef0d671e85d03db832b684e64d48229ac3674ef3fafaa5ebc95ed8",
+        "support_count": 7,
+        "fractional_weight": 3.8666666666666667,
+        "evidence_ids": [
+         "evidence:derived:9f2a3975daef0d671e85d03db832b684e64d48229ac3674ef3fafaa5ebc95ed8"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I87445476",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Xi'an Jiaotong University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I204512498",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:78816280e3e4403ffd87fcdb44e4789846b93dd0f34768c9d681fcec787e67db",
+        "support_count": 6,
+        "fractional_weight": 0.807142857142857,
+        "evidence_ids": [
+         "evidence:derived:78816280e3e4403ffd87fcdb44e4789846b93dd0f34768c9d681fcec787e67db"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I204512498",
+        "neighbor_label": "Organization",
+        "neighbor_name": "University of Macau",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "MO",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210156404",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:0248caedb7a8af8fb6a231b71a28330b99a33689ff6bf2117c262f84e35be489",
+        "support_count": 6,
+        "fractional_weight": 0.6333333333333333,
+        "evidence_ids": [
+         "evidence:derived:0248caedb7a8af8fb6a231b71a28330b99a33689ff6bf2117c262f84e35be489"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210156404",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Institute of Information Engineering",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4405259049",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:50d8d3bf2f9da4cf12c52e375f4c2a4f944ac9949a700860e1b726bcb474c049",
+        "support_count": 6,
+        "fractional_weight": 2.8666666666666667,
+        "evidence_ids": [
+         "evidence:derived:50d8d3bf2f9da4cf12c52e375f4c2a4f944ac9949a700860e1b726bcb474c049"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4405259049",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Shanghai Qi Zhi Institute",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4405270328",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:eb2e41225fbb5252cee0e00ca37587246499143ad13490d0c95850084b434934",
+        "support_count": 6,
+        "fractional_weight": 1.4,
+        "evidence_ids": [
+         "evidence:derived:eb2e41225fbb5252cee0e00ca37587246499143ad13490d0c95850084b434934"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4405270328",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Ant Group (China)",
+        "neighbor_year": null,
+        "neighbor_sector": "industry",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I47720641",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:bb6e3c011b40ddfbd3fd961ad42ac6589d2fe40864e70f3aec6465d46b5627f2",
+        "support_count": 6,
+        "fractional_weight": 1.9333333333333333,
+        "evidence_ids": [
+         "evidence:derived:bb6e3c011b40ddfbd3fd961ad42ac6589d2fe40864e70f3aec6465d46b5627f2"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I47720641",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Huazhong University of Science and Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I881766915",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:9fe3aeeb00d68392147270adffc59eee22e06b27de2c87ab16fc610883a88b17",
+        "support_count": 6,
+        "fractional_weight": 1.4444444444444444,
+        "evidence_ids": [
+         "evidence:derived:9fe3aeeb00d68392147270adffc59eee22e06b27de2c87ab16fc610883a88b17"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I881766915",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Nanjing University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I172675005",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:7e8e3d6c67a960934cfcfdfe8e20ac31b327b29d756d7a01483a7f886e75c552",
+        "support_count": 5,
+        "fractional_weight": 1.6714285714285713,
+        "evidence_ids": [
+         "evidence:derived:7e8e3d6c67a960934cfcfdfe8e20ac31b327b29d756d7a01483a7f886e75c552"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I172675005",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Nanyang Technological University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "SG",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I191208505",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:4adc0f8a93e707d131f7a9b8612fb8c9c74a1671f199c67d4475aed1235e5ec4",
+        "support_count": 5,
+        "fractional_weight": 2.0,
+        "evidence_ids": [
+         "evidence:derived:4adc0f8a93e707d131f7a9b8612fb8c9c74a1671f199c67d4475aed1235e5ec4"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I191208505",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Xiamen University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I205237279",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:5a2751d43bcaa78f4cbd436aca7947e21adadd4e3201bed5a88bfa49654a0048",
+        "support_count": 5,
+        "fractional_weight": 1.1333333333333333,
+        "evidence_ids": [
+         "evidence:derived:5a2751d43bcaa78f4cbd436aca7947e21adadd4e3201bed5a88bfa49654a0048"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I205237279",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Nankai University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I25254941",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:166eaed55e7fd80687f77df18b99162213400af41bbbbbed1f2e5c88e8c8a888",
+        "support_count": 5,
+        "fractional_weight": 1.0999999999999999,
+        "evidence_ids": [
+         "evidence:derived:166eaed55e7fd80687f77df18b99162213400af41bbbbbed1f2e5c88e8c8a888"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I25254941",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Beijing Normal University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4210090176",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:42ac8dec184a9d63570994bcc2fa55887548d2f4acfeac1303dae5e6adf68e1e",
+        "support_count": 5,
+        "fractional_weight": 0.9222222222222222,
+        "evidence_ids": [
+         "evidence:derived:42ac8dec184a9d63570994bcc2fa55887548d2f4acfeac1303dae5e6adf68e1e"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4210090176",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Institute of Computing Technology",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I4391768185",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:ed9f807b9260935114280d4d9200da8fc8c07d1700afe703b74aba6b25f61fd5",
+        "support_count": 5,
+        "fractional_weight": 0.8142857142857143,
+        "evidence_ids": [
+         "evidence:derived:ed9f807b9260935114280d4d9200da8fc8c07d1700afe703b74aba6b25f61fd5"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I4391768185",
+        "neighbor_label": "Organization",
+        "neighbor_name": "State Key Laboratory of Intelligent Technology and Systems",
+        "neighbor_year": null,
+        "neighbor_sector": "unknown",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I66867065",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:b2ec2d83e6428dcb1f44e017a866b64924eaa30f8f543f7a9dc25347af05ea2c",
+        "support_count": 5,
+        "fractional_weight": 1.742857142857143,
+        "evidence_ids": [
+         "evidence:derived:b2ec2d83e6428dcb1f44e017a866b64924eaa30f8f543f7a9dc25347af05ea2c"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I66867065",
+        "neighbor_label": "Organization",
+        "neighbor_name": "East China Normal University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I889458895",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:05ffa091ab6cd27d53065cd5956e06f38d264506af8051d7d1c28baac1b055ec",
+        "support_count": 5,
+        "fractional_weight": 2.533333333333333,
+        "evidence_ids": [
+         "evidence:derived:05ffa091ab6cd27d53065cd5956e06f38d264506af8051d7d1c28baac1b055ec"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I889458895",
+        "neighbor_label": "Organization",
+        "neighbor_name": "University of Hong Kong",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "HK",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I126520041",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:9db044e23ebe526a71083a0cfa800e8f264dee341fb718b0eeebd89ea9e1cd0d",
+        "support_count": 4,
+        "fractional_weight": 0.7476190476190475,
+        "evidence_ids": [
+         "evidence:derived:9db044e23ebe526a71083a0cfa800e8f264dee341fb718b0eeebd89ea9e1cd0d"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I126520041",
+        "neighbor_label": "Organization",
+        "neighbor_name": "University of Science and Technology of China",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I143868143",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:a8fac7f6c9730721d4b7d0f134bd07c8cfec35ea1c0f6b30b556bd2d84ab7707",
+        "support_count": 4,
+        "fractional_weight": 1.6,
+        "evidence_ids": [
+         "evidence:derived:a8fac7f6c9730721d4b7d0f134bd07c8cfec35ea1c0f6b30b556bd2d84ab7707"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I143868143",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Anhui University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I17145004",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:176be59911ddff7378808033ebac211d1616198a8fc4553970adc0b29e26b816",
+        "support_count": 4,
+        "fractional_weight": 1.5666666666666667,
+        "evidence_ids": [
+         "evidence:derived:176be59911ddff7378808033ebac211d1616198a8fc4553970adc0b29e26b816"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I17145004",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Northwestern Polytechnical University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I24943067",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:bbb5ae1e14272e761e82170d936dbd43b9e21edbac7b0727c48ca399aff594da",
+        "support_count": 4,
+        "fractional_weight": 0.65,
+        "evidence_ids": [
+         "evidence:derived:bbb5ae1e14272e761e82170d936dbd43b9e21edbac7b0727c48ca399aff594da"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I24943067",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Fudan University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       },
+       {
+        "center_id": "organization:I99065089",
+        "relation": "COLLABORATED_WITH",
+        "source_id": "organization:I3133055985",
+        "target_id": "organization:I99065089",
+        "edge_id": "edge:45a69e62fa32c32015e3a84c4a653f4aee6c45a81e80339af065a8e7b4e4a0f1",
+        "support_count": 4,
+        "fractional_weight": 1.7666666666666666,
+        "evidence_ids": [
+         "evidence:derived:45a69e62fa32c32015e3a84c4a653f4aee6c45a81e80339af065a8e7b4e4a0f1"
+        ],
+        "support_paper_ids": null,
+        "evidence_kind": "derived",
+        "neighbor_id": "organization:I3133055985",
+        "neighbor_label": "Organization",
+        "neighbor_name": "Westlake University",
+        "neighbor_year": null,
+        "neighbor_sector": "academia",
+        "neighbor_country_code": "CN",
+        "source_kind": "graph_edge"
+       }
+      ],
+      "source_kind": "graph",
+      "note": "100 direct graph edges",
+      "paper_ids": [],
+      "evidence_ids": [
+       "evidence:derived:2491e3cdceea95410d54e65691c77e04d5f457e140b06f4120634130d9241ad8",
+       "evidence:derived:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8",
+       "evidence:derived:f6257e7c6c9064fc29f6a58979b1c279c07348e7303fbf530d97b87056fc95bc",
+       "evidence:derived:6159c77b6714b9131664121ae65214d8b405bcdcd1a8fb1d0cc4b9b5f5c0ffb6",
+       "evidence:derived:1edabf22a8c9786d81369f5f99f3031f9769bde4e572ff1e1828432989332924",
+       "evidence:derived:c900cd11197cca58f577eea937ecaeb9d057e023a2dfcecbe035e4d50e3d152a",
+       "evidence:derived:d4070103a447e71df70856b46167001d71e18f447d9f327a3f66c6a22d2ff45d",
+       "evidence:derived:482f9e823e8cb695fd5e45136be03e78f7589be08d0425ac64e477ab39da6f9f",
+       "evidence:derived:af54c0925826657199bb65766b5cf38a11449b1f583483e0830b3827a2547dff",
+       "evidence:derived:9b76e44dd1991b305b497acd721b3e2c938397f63dd262677090533e0439fe1e",
+       "evidence:derived:bc0d7f3dd1bd26fe8581a74cbf91731497cd16bdcc316552a05b16444e893a56",
+       "evidence:derived:289767b2a507dc599c6f40ab288c2ade60c45bd790158bc60bd3657d4eb5639f",
+       "evidence:derived:82dfe23dd38c07b277c040330d87069863742a0d9c68cf972c27d55150dcb36a",
+       "evidence:derived:e2a95bdff8e1b998d13357ca18481c4660681262d51363b811b286b6ae8435d2",
+       "evidence:derived:ec316687ca384cf808ab268f98060184785c9d9ad6bc62a82f79e13c95f0f37b",
+       "evidence:derived:cc835012cedf8a831071ab76a8358d8c3dfbfc185a71c42f8f1b689f8dc772eb",
+       "evidence:derived:e4ef0ffc27da08cb760b241180e2463afe701d7db78dbc6100b17028a846c3eb",
+       "evidence:derived:ab22d2dd7234965365e42143df12e990e41d1a9a05252bff0459959c02a9f645",
+       "evidence:derived:e8803765258473956f5ed72a3e4a3602ea4f7a231044f31dea411b8a3dfe6068",
+       "evidence:derived:bd1c0983b7fbfda4ba68ddd6761ec377e358d74d4914fd751c8a88e24566ab67",
+       "evidence:derived:3e9acecbeb36dc32f0fa3df9afc6fd05ada9b577ee7ef84a8d42eb1271519691",
+       "evidence:derived:3da19389b08dd7b9b23f14523698c35b55cd6b773aa0c1c4c8d1b8d538762b4b",
+       "evidence:derived:6778ced6594c40536a49b90107512cf998ad425ce31589548b0804ef1da56d8f",
+       "evidence:derived:850cf0d64f62a132503b050b48fe8395d658fa4c0d02162243af3e87e2ca8f28",
+       "evidence:derived:def249bd56cdd69b66cde408e150dda7f286560194c1e4addb186d1bd6779fe8",
+       "evidence:derived:d8f0e38bfc2bcc0f03a5f251c140dfee01167ecafdd4cbf9b73b0a4ba4c89a9f",
+       "evidence:derived:4a32e0864017f2201a42943f22f92f507205e1dd843b9690b5c0c061839597ff",
+       "evidence:derived:9440083a66e28fea36830ff925a88df1ebdcb9f1ed5033b11e42dd955d600c5b",
+       "evidence:derived:c28fa338b0a926b2d7f49fdaba95cc2151fb530affe34d40d61d7673b5e7b2fe",
+       "evidence:derived:0da010ab7cc460d987ba3e88f0c66cc171f17554904b62ae7a3004478fbe3435"
+      ]
+     },
+     {
+      "step": 2,
+      "tool": "aggregate",
+      "purpose": "",
+      "args": {
+       "entity_ids": [
+        "organization:I4405263052",
+        "organization:I2250653659",
+        "organization:I19820366",
+        "organization:I4210136793",
+        "organization:I4210165038",
+        "organization:I20231570",
+        "organization:I4405271667",
+        "organization:I2250955327",
+        "organization:I204983213",
+        "organization:I45928872",
+        "organization:I180726961",
+        "organization:I4210112150",
+        "organization:I183067930",
+        "organization:I177725633",
+        "organization:I200769079",
+        "organization:I125839683",
+        "organization:I4210128818",
+        "organization:I4391012619",
+        "organization:I157773358",
+        "organization:I165932596",
+        "organization:I4210113369",
+        "organization:I74973139",
+        "organization:I76130692",
+        "organization:I21193070",
+        "organization:I4210116924",
+        "organization:I4405256866",
+        "organization:I78988378",
+        "organization:I1290206253",
+        "organization:I139759216",
+        "organization:I82880672",
+        "organization:I87445476",
+        "organization:I204512498",
+        "organization:I4210156404",
+        "organization:I4405259049",
+        "organization:I4405270328",
+        "organization:I47720641",
+        "organization:I881766915",
+        "organization:I172675005",
+        "organization:I191208505",
+        "organization:I205237279",
+        "organization:I25254941",
+        "organization:I4210090176",
+        "organization:I4391768185",
+        "organization:I66867065",
+        "organization:I889458895",
+        "organization:I126520041",
+        "organization:I143868143",
+        "organization:I17145004",
+        "organization:I24943067",
+        "organization:I3133055985",
+        "organization:I4210091137",
+        "organization:I4401726859",
+        "organization:I4401727009",
+        "organization:I4405260597",
+        "organization:I76569877",
+        "organization:I78577930",
+        "organization:I859038795",
+        "organization:I114017466",
+        "organization:I149594827",
+        "organization:I170215575",
+        "organization:I185443292",
+        "organization:I241749",
+        "organization:I27357992",
+        "organization:I30809798",
+        "organization:I36399199",
+        "organization:I37796252",
+        "organization:I4210086143",
+        "organization:I4210103986",
+        "organization:I4210123021",
+        "organization:I4210145761",
+        "organization:I4401726805",
+        "organization:I4401726822",
+        "organization:I4405259410",
+        "organization:I4405261251",
+        "organization:I4405281272",
+        "organization:I79510175",
+        "organization:I86519309",
+        "organization:I92403157",
+        "organization:I95457486",
+        "organization:I97018004",
+        "organization:I124055696",
+        "organization:I124644866",
+        "organization:I129604602",
+        "organization:I136765683",
+        "organization:I139660479",
+        "organization:I141568987",
+        "organization:I154099455",
+        "organization:I157725225",
+        "organization:I158842170",
+        "organization:I161318765",
+        "organization:I168719708",
+        "organization:I25355098",
+        "organization:I35440088",
+        "organization:I40120149",
+        "organization:I4210099586",
+        "organization:I4210100255",
+        "organization:I4210114444",
+        "organization:I4392738276",
+        "organization:I4392738278",
+        "organization:I4401726870"
+       ],
+       "by": "organization_year",
+       "metric": "share_growth",
+       "filters": {
+        "method_id": "method:Q3621696",
+        "after_year": 2022,
+        "only_increased": true
+       },
+       "limit": 15
+      },
+      "empty": false,
+      "row_count": 15,
+      "rows": [
+       {
+        "entity_id": "organization:I4401726822",
+        "entity_name": "Ping An (China)",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 7,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 15,
+        "post_gt_2022_share": 0.0667,
+        "share_delta": 0.0667
+       },
+       {
+        "entity_id": "organization:I859038795",
+        "entity_name": "Virginia Tech",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 18,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 18,
+        "post_gt_2022_share": 0.0556,
+        "share_delta": 0.0556
+       },
+       {
+        "entity_id": "organization:I4210091137",
+        "entity_name": "NetEase (China)",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 18,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 20,
+        "post_gt_2022_share": 0.05,
+        "share_delta": 0.05
+       },
+       {
+        "entity_id": "organization:I4405271667",
+        "entity_name": "Beijing National Research Center for Information Science and Technology",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 19,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 2,
+        "post_gt_2022_total_papers": 41,
+        "post_gt_2022_share": 0.0488,
+        "share_delta": 0.0488
+       },
+       {
+        "entity_id": "organization:I4210145761",
+        "entity_name": "Shenzhen Institutes of Advanced Technology",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 28,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 3,
+        "post_gt_2022_total_papers": 62,
+        "post_gt_2022_share": 0.0484,
+        "share_delta": 0.0484
+       },
+       {
+        "entity_id": "organization:I177725633",
+        "entity_name": "Chinese University of Hong Kong",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 73,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 7,
+        "post_gt_2022_total_papers": 169,
+        "post_gt_2022_share": 0.0414,
+        "share_delta": 0.0414
+       },
+       {
+        "entity_id": "organization:I168719708",
+        "entity_name": "City University of Hong Kong",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 27,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 5,
+        "post_gt_2022_total_papers": 124,
+        "post_gt_2022_share": 0.0403,
+        "share_delta": 0.0403
+       },
+       {
+        "entity_id": "organization:I889458895",
+        "entity_name": "University of Hong Kong",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 38,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 3,
+        "post_gt_2022_total_papers": 81,
+        "post_gt_2022_share": 0.037,
+        "share_delta": 0.037
+       },
+       {
+        "entity_id": "organization:I4405261251",
+        "entity_name": "The Hong Kong University of Science and Technology (Guangzhou)",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 9,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 3,
+        "post_gt_2022_total_papers": 82,
+        "post_gt_2022_share": 0.0366,
+        "share_delta": 0.0366
+       },
+       {
+        "entity_id": "organization:I180726961",
+        "entity_name": "Shenzhen University",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 29,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 5,
+        "post_gt_2022_total_papers": 140,
+        "post_gt_2022_share": 0.0357,
+        "share_delta": 0.0357
+       },
+       {
+        "entity_id": "organization:I37796252",
+        "entity_name": "Beijing University of Technology",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 3,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 28,
+        "post_gt_2022_share": 0.0357,
+        "share_delta": 0.0357
+       },
+       {
+        "entity_id": "organization:I30809798",
+        "entity_name": "ShanghaiTech University",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 15,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 2,
+        "post_gt_2022_total_papers": 57,
+        "post_gt_2022_share": 0.0351,
+        "share_delta": 0.0351
+       },
+       {
+        "entity_id": "organization:I161318765",
+        "entity_name": "University of California, Los Angeles",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 52,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 31,
+        "post_gt_2022_share": 0.0323,
+        "share_delta": 0.0323
+       },
+       {
+        "entity_id": "organization:I126520041",
+        "entity_name": "University of Science and Technology of China",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 120,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 10,
+        "post_gt_2022_total_papers": 348,
+        "post_gt_2022_share": 0.0287,
+        "share_delta": 0.0287
+       },
+       {
+        "entity_id": "organization:I4210086143",
+        "entity_name": "Alibaba Group (Cayman Islands)",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 31,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 1,
+        "post_gt_2022_total_papers": 35,
+        "post_gt_2022_share": 0.0286,
+        "share_delta": 0.0286
+       }
+      ],
+      "source_kind": "graph",
+      "note": "Computed share growth across cutoff year > 2022 for 64 organization(s).",
+      "paper_ids": [
+       "paper:ijcai:2024:15",
+       "paper:aaai:2024:29823",
+       "paper:ijcai:2025:537",
+       "paper:aaai:2025:32135",
+       "paper:ijcai:2024:460",
+       "paper:ijcai:2024:579",
+       "paper:aaai:2024:28769",
+       "paper:aaai:2024:28567",
+       "paper:aaai:2025:34447",
+       "paper:ijcai:2025:509",
+       "paper:ijcai:2025:546",
+       "paper:aaai:2025:33137",
+       "paper:aaai:2025:32020",
+       "paper:aaai:2025:33338",
+       "paper:aaai:2025:34548",
+       "paper:aaai:2022:19971",
+       "paper:aaai:2023:25386",
+       "paper:ijcai:2025:918",
+       "paper:ijcai:2025:745",
+       "paper:aaai:2025:33351",
+       "paper:aaai:2025:33421",
+       "paper:ijcai:2025:304",
+       "paper:ijcai:2024:670",
+       "paper:aaai:2025:32782",
+       "paper:aaai:2025:32224",
+       "paper:aaai:2024:27888",
+       "paper:aaai:2024:28524",
+       "paper:aaai:2025:34518",
+       "paper:aaai:2025:34691",
+       "paper:aaai:2025:33863"
+      ],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": null,
+    "stopped_at_step": null,
+    "answer": "Based on the retrieved graph trace, the organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022 include:\n\n*   **Ping An (China)**: Share increased from 0.0 to 0.0667 (delta: 0.0667) [paper:...]\n*   **Virginia Tech**: Share increased from 0.0 to 0.0556 (delta: 0.0556) [paper:...]\n*   **NetEase (China)**: Share increased from 0.0 to 0.05 (delta: 0.05) [paper:...]\n*   **Beijing National Research Center for Information Science and Technology**: Share increased from 0.0 to 0.0488 (delta: 0.0488) [paper:...]\n*   **Shenzhen Institutes of Advanced Technology**: Share increased from 0.0 to 0.0484 (delta: 0.0484) [paper:...]\n*   **Chinese University of Hong Kong**: Share increased from 0.0 to 0.0414 (delta: 0.0414) [paper:...]\n*   **City University of Hong Kong**: Share increased from 0.0 to 0.0403 (delta: 0.0403) [paper:...]\n*   **University of Hong Kong**: Share increased from 0.0 to 0.037 (delta: 0.037) [paper:...]\n*   **The Hong Kong University of Science and Technology (Guangzhou)**: Share increased from 0.0 to 0.0366 (delta: 0.0366) [paper:...]\n*   **Shenzhen University**: Share increased from 0.0 to 0.0357 (delta: 0.0357) [paper:...]\n*   **Beijing University of Technology**: Share increased from 0.0 to 0.0357 (delta: 0.0357) [paper:...]\n\nNote: The trace was truncated, so the full list of 64 organizations is not available in the provided data.",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
+    "subgraph_nodes": [
+     {
+      "id": "organization:I99065089",
+      "label": "Organization",
+      "name": "Tsinghua University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405263052",
+      "label": "Organization",
+      "name": "Tsinghua Shenzhen International Graduate School",
+      "hop": 1
+     },
+     {
+      "id": "organization:I2250653659",
+      "label": "Organization",
+      "name": "Tencent (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I19820366",
+      "label": "Organization",
+      "name": "Chinese Academy of Sciences",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210136793",
+      "label": "Organization",
+      "name": "Peng Cheng Laboratory",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210165038",
+      "label": "Organization",
+      "name": "University of Chinese Academy of Sciences",
+      "hop": 1
+     },
+     {
+      "id": "organization:I20231570",
+      "label": "Organization",
+      "name": "Peking University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405271667",
+      "label": "Organization",
+      "name": "Beijing National Research Center for Information Science and Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I2250955327",
+      "label": "Organization",
+      "name": "Huawei Technologies (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I204983213",
+      "label": "Organization",
+      "name": "Harbin Institute of Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I45928872",
+      "label": "Organization",
+      "name": "Alibaba Group (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I180726961",
+      "label": "Organization",
+      "name": "Shenzhen University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210112150",
+      "label": "Organization",
+      "name": "Institute of Automation",
+      "hop": 1
+     },
+     {
+      "id": "organization:I183067930",
+      "label": "Organization",
+      "name": "Shanghai Jiao Tong University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I177725633",
+      "label": "Organization",
+      "name": "Chinese University of Hong Kong",
+      "hop": 1
+     },
+     {
+      "id": "organization:I200769079",
+      "label": "Organization",
+      "name": "Hong Kong University of Science and Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I125839683",
+      "label": "Organization",
+      "name": "Beijing Institute of Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210128818",
+      "label": "Organization",
+      "name": "Institute of Software",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4391012619",
+      "label": "Organization",
+      "name": "Shanghai Artificial Intelligence Laboratory",
+      "hop": 1
+     },
+     {
+      "id": "organization:I157773358",
+      "label": "Organization",
+      "name": "Sun Yat-sen University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I165932596",
+      "label": "Organization",
+      "name": "National University of Singapore",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210113369",
+      "label": "Organization",
+      "name": "Microsoft Research Asia (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I74973139",
+      "label": "Organization",
+      "name": "Carnegie Mellon University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I76130692",
+      "label": "Organization",
+      "name": "Zhejiang University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I21193070",
+      "label": "Organization",
+      "name": "Beijing Jiaotong University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210116924",
+      "label": "Organization",
+      "name": "Chinese University of Hong Kong, Shenzhen",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405256866",
+      "label": "Organization",
+      "name": "ByteDance (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I78988378",
+      "label": "Organization",
+      "name": "Renmin University of China",
+      "hop": 1
+     },
+     {
+      "id": "organization:I1290206253",
+      "label": "Organization",
+      "name": "Microsoft (United States)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I139759216",
+      "label": "Organization",
+      "name": "Beijing University of Posts and Telecommunications",
+      "hop": 1
+     },
+     {
+      "id": "organization:I82880672",
+      "label": "Organization",
+      "name": "Beihang University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I87445476",
+      "label": "Organization",
+      "name": "Xi'an Jiaotong University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I204512498",
+      "label": "Organization",
+      "name": "University of Macau",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210156404",
+      "label": "Organization",
+      "name": "Institute of Information Engineering",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405259049",
+      "label": "Organization",
+      "name": "Shanghai Qi Zhi Institute",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405270328",
+      "label": "Organization",
+      "name": "Ant Group (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I47720641",
+      "label": "Organization",
+      "name": "Huazhong University of Science and Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I881766915",
+      "label": "Organization",
+      "name": "Nanjing University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I172675005",
+      "label": "Organization",
+      "name": "Nanyang Technological University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I191208505",
+      "label": "Organization",
+      "name": "Xiamen University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I205237279",
+      "label": "Organization",
+      "name": "Nankai University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I25254941",
+      "label": "Organization",
+      "name": "Beijing Normal University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210090176",
+      "label": "Organization",
+      "name": "Institute of Computing Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4391768185",
+      "label": "Organization",
+      "name": "State Key Laboratory of Intelligent Technology and Systems",
+      "hop": 1
+     },
+     {
+      "id": "organization:I66867065",
+      "label": "Organization",
+      "name": "East China Normal University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I889458895",
+      "label": "Organization",
+      "name": "University of Hong Kong",
+      "hop": 1
+     },
+     {
+      "id": "organization:I126520041",
+      "label": "Organization",
+      "name": "University of Science and Technology of China",
+      "hop": 1
+     },
+     {
+      "id": "organization:I143868143",
+      "label": "Organization",
+      "name": "Anhui University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I17145004",
+      "label": "Organization",
+      "name": "Northwestern Polytechnical University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I24943067",
+      "label": "Organization",
+      "name": "Fudan University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I3133055985",
+      "label": "Organization",
+      "name": "Westlake University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210091137",
+      "label": "Organization",
+      "name": "NetEase (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4401726859",
+      "label": "Organization",
+      "name": "Kuaishou (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4401727009",
+      "label": "Organization",
+      "name": "Sensetime (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405260597",
+      "label": "Organization",
+      "name": "Guangdong Laboratory of Artificial Intelligence and Digital Economy (Shenzhen)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I76569877",
+      "label": "Organization",
+      "name": "Southeast University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I78577930",
+      "label": "Organization",
+      "name": "Columbia University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I859038795",
+      "label": "Organization",
+      "name": "Virginia Tech",
+      "hop": 1
+     },
+     {
+      "id": "organization:I114017466",
+      "label": "Organization",
+      "name": "University of Technology Sydney",
+      "hop": 1
+     },
+     {
+      "id": "organization:I149594827",
+      "label": "Organization",
+      "name": "Xidian University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I170215575",
+      "label": "Organization",
+      "name": "National University of Defense Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I185443292",
+      "label": "Organization",
+      "name": "Wayne State University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I241749",
+      "label": "Organization",
+      "name": "University of Cambridge",
+      "hop": 1
+     },
+     {
+      "id": "organization:I27357992",
+      "label": "Organization",
+      "name": "Dalian University of Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I30809798",
+      "label": "Organization",
+      "name": "ShanghaiTech University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I36399199",
+      "label": "Organization",
+      "name": "Nanjing University of Science and Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I37796252",
+      "label": "Organization",
+      "name": "Beijing University of Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210086143",
+      "label": "Organization",
+      "name": "Alibaba Group (Cayman Islands)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210103986",
+      "label": "Organization",
+      "name": "Jingdong (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210123021",
+      "label": "Organization",
+      "name": "Chongqing Institute of Green and Intelligent Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210145761",
+      "label": "Organization",
+      "name": "Shenzhen Institutes of Advanced Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4401726805",
+      "label": "Organization",
+      "name": "Megvii (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4401726822",
+      "label": "Organization",
+      "name": "Ping An (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405259410",
+      "label": "Organization",
+      "name": "Meituan (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405261251",
+      "label": "Organization",
+      "name": "The Hong Kong University of Science and Technology (Guangzhou)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4405281272",
+      "label": "Organization",
+      "name": "Alibaba DAMO Academy (China)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I79510175",
+      "label": "Organization",
+      "name": "Cardiff University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I86519309",
+      "label": "Organization",
+      "name": "The University of Texas at Austin",
+      "hop": 1
+     },
+     {
+      "id": "organization:I92403157",
+      "label": "Organization",
+      "name": "University of Science and Technology Beijing",
+      "hop": 1
+     },
+     {
+      "id": "organization:I95457486",
+      "label": "Organization",
+      "name": "University of California, Berkeley",
+      "hop": 1
+     },
+     {
+      "id": "organization:I97018004",
+      "label": "Organization",
+      "name": "Stanford University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I124055696",
+      "label": "Organization",
+      "name": "University of Copenhagen",
+      "hop": 1
+     },
+     {
+      "id": "organization:I124644866",
+      "label": "Organization",
+      "name": "Northwest Minzu University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I129604602",
+      "label": "Organization",
+      "name": "The University of Sydney",
+      "hop": 1
+     },
+     {
+      "id": "organization:I136765683",
+      "label": "Organization",
+      "name": "Tianjin University of Technology",
+      "hop": 1
+     },
+     {
+      "id": "organization:I139660479",
+      "label": "Organization",
+      "name": "Central South University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I141568987",
+      "label": "Organization",
+      "name": "Hong Kong Baptist University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I154099455",
+      "label": "Organization",
+      "name": "Shandong University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I157725225",
+      "label": "Organization",
+      "name": "University of Illinois Urbana-Champaign",
+      "hop": 1
+     },
+     {
+      "id": "organization:I158842170",
+      "label": "Organization",
+      "name": "Chongqing University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I161318765",
+      "label": "Organization",
+      "name": "University of California, Los Angeles",
+      "hop": 1
+     },
+     {
+      "id": "organization:I168719708",
+      "label": "Organization",
+      "name": "City University of Hong Kong",
+      "hop": 1
+     },
+     {
+      "id": "organization:I25355098",
+      "label": "Organization",
+      "name": "Chang'an University",
+      "hop": 1
+     },
+     {
+      "id": "organization:I35440088",
+      "label": "Organization",
+      "name": "ETH Zurich",
+      "hop": 1
+     },
+     {
+      "id": "organization:I40120149",
+      "label": "Organization",
+      "name": "University of Oxford",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210099586",
+      "label": "Organization",
+      "name": "Shenzhen Research Institute of Big Data",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210100255",
+      "label": "Organization",
+      "name": "Beijing Academy of Artificial Intelligence",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4210114444",
+      "label": "Organization",
+      "name": "Meta (United States)",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4392738276",
+      "label": "Organization",
+      "name": "State Key Laboratory of Virtual Reality Technology and Systems",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4392738278",
+      "label": "Organization",
+      "name": "Beijing Institute for General Artificial Intelligence",
+      "hop": 1
+     },
+     {
+      "id": "organization:I4401726870",
+      "label": "Organization",
+      "name": "Didi Chuxing (China)",
+      "hop": 1
+     }
+    ],
+    "subgraph_edges": [
+     {
+      "edge_id": "edge:2491e3cdceea95410d54e65691c77e04d5f457e140b06f4120634130d9241ad8",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405263052",
+      "target": "organization:I99065089",
+      "support_count": 49,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:33693cc644f2b74b4ce9e16161cc3db52996db502ccce55b2ac5d15ed45901c8",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I2250653659",
+      "target": "organization:I99065089",
+      "support_count": 43,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:f6257e7c6c9064fc29f6a58979b1c279c07348e7303fbf530d97b87056fc95bc",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I19820366",
+      "target": "organization:I99065089",
+      "support_count": 41,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:6159c77b6714b9131664121ae65214d8b405bcdcd1a8fb1d0cc4b9b5f5c0ffb6",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210136793",
+      "target": "organization:I99065089",
+      "support_count": 38,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:1edabf22a8c9786d81369f5f99f3031f9769bde4e572ff1e1828432989332924",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210165038",
+      "target": "organization:I99065089",
+      "support_count": 33,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:c900cd11197cca58f577eea937ecaeb9d057e023a2dfcecbe035e4d50e3d152a",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I20231570",
+      "target": "organization:I99065089",
+      "support_count": 22,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d4070103a447e71df70856b46167001d71e18f447d9f327a3f66c6a22d2ff45d",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405271667",
+      "target": "organization:I99065089",
+      "support_count": 21,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:482f9e823e8cb695fd5e45136be03e78f7589be08d0425ac64e477ab39da6f9f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I2250955327",
+      "target": "organization:I99065089",
+      "support_count": 20,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:af54c0925826657199bb65766b5cf38a11449b1f583483e0830b3827a2547dff",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I204983213",
+      "target": "organization:I99065089",
+      "support_count": 18,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:9b76e44dd1991b305b497acd721b3e2c938397f63dd262677090533e0439fe1e",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I45928872",
+      "target": "organization:I99065089",
+      "support_count": 16,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bc0d7f3dd1bd26fe8581a74cbf91731497cd16bdcc316552a05b16444e893a56",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I180726961",
+      "target": "organization:I99065089",
+      "support_count": 15,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:289767b2a507dc599c6f40ab288c2ade60c45bd790158bc60bd3657d4eb5639f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210112150",
+      "target": "organization:I99065089",
+      "support_count": 14,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:82dfe23dd38c07b277c040330d87069863742a0d9c68cf972c27d55150dcb36a",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I183067930",
+      "target": "organization:I99065089",
+      "support_count": 13,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:e2a95bdff8e1b998d13357ca18481c4660681262d51363b811b286b6ae8435d2",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I177725633",
+      "target": "organization:I99065089",
+      "support_count": 12,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ec316687ca384cf808ab268f98060184785c9d9ad6bc62a82f79e13c95f0f37b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I200769079",
+      "target": "organization:I99065089",
+      "support_count": 12,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:cc835012cedf8a831071ab76a8358d8c3dfbfc185a71c42f8f1b689f8dc772eb",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I125839683",
+      "target": "organization:I99065089",
+      "support_count": 11,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:e4ef0ffc27da08cb760b241180e2463afe701d7db78dbc6100b17028a846c3eb",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210128818",
+      "target": "organization:I99065089",
+      "support_count": 11,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ab22d2dd7234965365e42143df12e990e41d1a9a05252bff0459959c02a9f645",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4391012619",
+      "target": "organization:I99065089",
+      "support_count": 10,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:e8803765258473956f5ed72a3e4a3602ea4f7a231044f31dea411b8a3dfe6068",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I157773358",
+      "target": "organization:I99065089",
+      "support_count": 9,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bd1c0983b7fbfda4ba68ddd6761ec377e358d74d4914fd751c8a88e24566ab67",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I165932596",
+      "target": "organization:I99065089",
+      "support_count": 9,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:3e9acecbeb36dc32f0fa3df9afc6fd05ada9b577ee7ef84a8d42eb1271519691",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210113369",
+      "target": "organization:I99065089",
+      "support_count": 9,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:3da19389b08dd7b9b23f14523698c35b55cd6b773aa0c1c4c8d1b8d538762b4b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I74973139",
+      "target": "organization:I99065089",
+      "support_count": 9,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:6778ced6594c40536a49b90107512cf998ad425ce31589548b0804ef1da56d8f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I76130692",
+      "target": "organization:I99065089",
+      "support_count": 9,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:850cf0d64f62a132503b050b48fe8395d658fa4c0d02162243af3e87e2ca8f28",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I21193070",
+      "target": "organization:I99065089",
+      "support_count": 8,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:def249bd56cdd69b66cde408e150dda7f286560194c1e4addb186d1bd6779fe8",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210116924",
+      "target": "organization:I99065089",
+      "support_count": 8,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d8f0e38bfc2bcc0f03a5f251c140dfee01167ecafdd4cbf9b73b0a4ba4c89a9f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405256866",
+      "target": "organization:I99065089",
+      "support_count": 8,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:4a32e0864017f2201a42943f22f92f507205e1dd843b9690b5c0c061839597ff",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I78988378",
+      "target": "organization:I99065089",
+      "support_count": 8,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:9440083a66e28fea36830ff925a88df1ebdcb9f1ed5033b11e42dd955d600c5b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I1290206253",
+      "target": "organization:I99065089",
+      "support_count": 7,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:c28fa338b0a926b2d7f49fdaba95cc2151fb530affe34d40d61d7673b5e7b2fe",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I139759216",
+      "target": "organization:I99065089",
+      "support_count": 7,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:0da010ab7cc460d987ba3e88f0c66cc171f17554904b62ae7a3004478fbe3435",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I82880672",
+      "target": "organization:I99065089",
+      "support_count": 7,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:9f2a3975daef0d671e85d03db832b684e64d48229ac3674ef3fafaa5ebc95ed8",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I87445476",
+      "target": "organization:I99065089",
+      "support_count": 7,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:78816280e3e4403ffd87fcdb44e4789846b93dd0f34768c9d681fcec787e67db",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I204512498",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:0248caedb7a8af8fb6a231b71a28330b99a33689ff6bf2117c262f84e35be489",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210156404",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:50d8d3bf2f9da4cf12c52e375f4c2a4f944ac9949a700860e1b726bcb474c049",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405259049",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:eb2e41225fbb5252cee0e00ca37587246499143ad13490d0c95850084b434934",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405270328",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bb6e3c011b40ddfbd3fd961ad42ac6589d2fe40864e70f3aec6465d46b5627f2",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I47720641",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:9fe3aeeb00d68392147270adffc59eee22e06b27de2c87ab16fc610883a88b17",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I881766915",
+      "target": "organization:I99065089",
+      "support_count": 6,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:7e8e3d6c67a960934cfcfdfe8e20ac31b327b29d756d7a01483a7f886e75c552",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I172675005",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:4adc0f8a93e707d131f7a9b8612fb8c9c74a1671f199c67d4475aed1235e5ec4",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I191208505",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:5a2751d43bcaa78f4cbd436aca7947e21adadd4e3201bed5a88bfa49654a0048",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I205237279",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:166eaed55e7fd80687f77df18b99162213400af41bbbbbed1f2e5c88e8c8a888",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I25254941",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:42ac8dec184a9d63570994bcc2fa55887548d2f4acfeac1303dae5e6adf68e1e",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210090176",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ed9f807b9260935114280d4d9200da8fc8c07d1700afe703b74aba6b25f61fd5",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4391768185",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:b2ec2d83e6428dcb1f44e017a866b64924eaa30f8f543f7a9dc25347af05ea2c",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I66867065",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:05ffa091ab6cd27d53065cd5956e06f38d264506af8051d7d1c28baac1b055ec",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I889458895",
+      "target": "organization:I99065089",
+      "support_count": 5,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:9db044e23ebe526a71083a0cfa800e8f264dee341fb718b0eeebd89ea9e1cd0d",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I126520041",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:a8fac7f6c9730721d4b7d0f134bd07c8cfec35ea1c0f6b30b556bd2d84ab7707",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I143868143",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:176be59911ddff7378808033ebac211d1616198a8fc4553970adc0b29e26b816",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I17145004",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bbb5ae1e14272e761e82170d936dbd43b9e21edbac7b0727c48ca399aff594da",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I24943067",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:45a69e62fa32c32015e3a84c4a653f4aee6c45a81e80339af065a8e7b4e4a0f1",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I3133055985",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:a219491c90d8d30771f4f32fca759f4ee4b73a7c9eef72900a99ebab634659cc",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210091137",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d841f8154d361ee5cc706e363a5d5524d4f9891ffea3d78939ab7814b7c299e8",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4401726859",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:875f7e431e27a13d40c316858e3f5d4380161da7c6738ddcc90e71282e18d115",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4401727009",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:7e449dfbf1d319b9431d45f6b63a4b4dbe4d23483e633162bd88d931c8bbd3cc",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405260597",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:f58ad8e6c8cadeb9e87c019ed3406f4264d7327487bb5738098ddf5d79994182",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I76569877",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:01b5eb0f3ca4eb3cae0e70039071d355b5fade8ad2ea03924e4bdc453ea5a37c",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I78577930",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:7bfb9fc39f020d13882ccddcca9168c63c2ec698044c12f4d42965d7343a7ef2",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I859038795",
+      "target": "organization:I99065089",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:14acb1b29dc7f9f673b16e0c6cad8433ea80a523fdbd6addb6a512cc091b69df",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I114017466",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:8ae5829dc962dad251e8d4db0320f8a18304b11d824068825aa20fe132a0a978",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I149594827",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:678cc30cd06cd7e6c3ee7c0a88ed8f34622b30345209e9b5374d26dd760b0df5",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I170215575",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:b391fbccfde7c1ee7363b1a19b84c1255ccfb4f9bd8c405044b5ccd17a9ca76d",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I185443292",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:1e396f4a77f45182329ae69f7e138bc9630100bbb74a06875851134a6791a017",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I241749",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:0e08f628b7f4e24202d42c95e294436c62c7610f48d2e9eb1ee68d8a27f1e880",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I27357992",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:5a66a3d58b2c488b18e9c872b8e9e96abd54b5e74ba80ba89ed16b37b16c4a12",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I30809798",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:3676fe85675477ff38d1f705cf7fc22f6dabf064e1c7054fbadf023cb1562b56",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I36399199",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:97ce81f89b5857d2bbb51718d78fb5dcbd6ce3fb479a95057af526e38c3300b7",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I37796252",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d5ac0e0e84eb5aff112be33a4e32c91773dd37f5e5fd66a5f7e2af3b8f974f41",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210086143",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:898300af3f3df263a3833333338502e749d5bcf9e1395e816a2601e7501bbd7e",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210103986",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bab4d0b59c47ce5be82aa1c59637ffe6826d37836180888a1eb5a19e84b5e3bc",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210123021",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:be5072494b7be91c734aeecdec9e0da6edaac9308d8fa3cc110fa83be753c27a",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210145761",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:73c434c962c97c97c45c2a715e7c9907ad0c8a8c2bd414b28be11398adf1be23",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4401726805",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d013007974bd9c03e315396c82b4e33cc3eb4caaee2ee7035f094e4a4684c26c",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4401726822",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:380bb4495a4ebaa4cb674977b8435969e663904412b202c09ffb0e0518192d55",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405259410",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:fbdb76ea2e8ac3146eda94415727d73319e4c6e7daaeeff09b241bbaf7abbcfc",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405261251",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:19ac32d20325f2b601225b4617e295fb2da488ed1f08d63db212b766e37cd826",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4405281272",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:e0dd052ae068837e0f38f903132931d542147b1cb5f304a022f806c6f4e63460",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I79510175",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ad03b3bf1ffa9c5a8eab676715cbc2b3acb75669a240f628c60643fbed0e7556",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I86519309",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:aace829846ab84398dc701521ac2959f3c4b200a6ccfb4442dceff332fe7fbf7",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I92403157",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:4e18327a6cab116b79e6e3dae4394421c547c7df658e9181b9a87874533b5e73",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I95457486",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:4154217329af12e28b2d80e385a94b091d983835db7bb1bf4694ecccbd4cfc46",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I97018004",
+      "target": "organization:I99065089",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:465ba7e856b64dbe15e525ed1871bb1f5a74703f424ff4452ae63f09513932f1",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I124055696",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:a43ed19e30303d399efe58f15df57cf2b0ad344c1496bb581b7c5b0de9dcecf1",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I124644866",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:e99676bbd1c8445f3ef402e6c65541b0dce6b6025f809bf51997e412f69c8c93",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I129604602",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:8742e072a15677264cd80170f99b9bfb5c0c327da4ce649744043132acdc389b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I136765683",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:c4498cab4230d9b9fe34d02b795327149bcee50b6f4c7997dbfa5d00a4bb3b48",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I139660479",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:2da8c66c26e05bf7c2568869e03872de141d65bec6883836a333712410d24f75",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I141568987",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:402348a7b07e2ffea6360b46484eff55a1b499a9c508d027be37773cc240feb9",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I154099455",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:8d088a8698aa2e4beb4ecdabae1ab3cc15d25546e1370db39e1c89a93d79a0c9",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I157725225",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:3af493f3d212a0dd814bda75155b54f2ac2eb63b52b89a146968a39e12a86852",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I158842170",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ed9364608264dd71ead0a5a90b9e368801a0f944d247b8bb3a77d52ec0c468eb",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I161318765",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:6dda64666200ad74a01bdac83cac0b40f6e9de5f572aa6938684ec28980b184f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I168719708",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:ca75fafcf8da9ec6db64aab93e6e2a8e4f3dbf9971f790035a8de9e53f8ac8f4",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I25355098",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:4112d033631e676cf13531c98bcde13a7f8808e5179223b7666b3dff0cc6f89f",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I35440088",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:b7d7c7d17c2b90e3b9cb9ea4b390091d09ec7696932527d47f156b3d84732488",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I40120149",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:78f05b0c202ef4428c87bd313435c6a798ba0c2a72a2362467db6dab622a88a4",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210099586",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d9d406b0220029bdcea52c49ce2870d3cbd828866574b3493f9368cd5c27400b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210100255",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:0fdf37bd3d7814ac964d9f8197a9b250b6d9fab20d332792929a8f7f0b4a4c2d",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4210114444",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:bc59de92062d1c78ae9056ddd4e9d669cf92115565c27e211d64915ce53ef283",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4392738276",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:cd0586e6933b9ebccf9de5e49fdf88ed4c13ad11433a8d7db404d4b903c3c77e",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4392738278",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:2d23a96f64f7627333bf7230560f8ce4a2ac727e8222abfc15e36474e853279b",
+      "relation": "COLLABORATED_WITH",
+      "source": "organization:I4401726870",
+      "target": "organization:I99065089",
+      "support_count": 2,
+      "hop": 1
+     }
+    ],
+    "paper_ids": [
+     "paper:ijcai:2024:15",
+     "paper:aaai:2024:29823",
+     "paper:ijcai:2025:537",
+     "paper:aaai:2025:32135",
+     "paper:ijcai:2024:460",
+     "paper:ijcai:2024:579",
+     "paper:aaai:2024:28769",
+     "paper:aaai:2024:28567",
+     "paper:aaai:2025:34447",
+     "paper:ijcai:2025:509",
+     "paper:ijcai:2025:546",
+     "paper:aaai:2025:33137",
+     "paper:aaai:2025:32020",
+     "paper:aaai:2025:33338",
+     "paper:aaai:2025:34548",
+     "paper:aaai:2022:19971",
+     "paper:aaai:2023:25386",
+     "paper:ijcai:2025:918",
+     "paper:ijcai:2025:745",
+     "paper:aaai:2025:33351",
+     "paper:aaai:2025:33421",
+     "paper:ijcai:2025:304",
+     "paper:ijcai:2024:670",
+     "paper:aaai:2025:32782",
+     "paper:aaai:2025:32224",
+     "paper:aaai:2024:27888",
+     "paper:aaai:2024:28524",
+     "paper:aaai:2025:34518",
+     "paper:aaai:2025:34691",
+     "paper:aaai:2025:33863",
+     "paper:aaai:2025:33571",
+     "paper:aaai:2025:34922",
+     "paper:ijcai:2025:1010",
+     "paper:aaai:2025:32980",
+     "paper:ijcai:2025:980",
+     "paper:aaai:2025:33594",
+     "paper:aaai:2024:29263",
+     "paper:aaai:2024:27832",
+     "paper:aaai:2024:29730",
+     "paper:aaai:2025:34067",
+     "paper:aaai:2025:32657",
+     "paper:aaai:2025:34671",
+     "paper:aaai:2025:34780",
+     "paper:ijcai:2025:470",
+     "paper:aaai:2025:34796",
+     "paper:aaai:2025:33597",
+     "paper:ijcai:2025:354",
+     "paper:aaai:2025:32655",
+     "paper:aaai:2025:34666",
+     "paper:aaai:2025:33814",
+     "paper:aaai:2025:34601",
+     "paper:aaai:2024:29726",
+     "paper:ijcai:2025:782",
+     "paper:aaai:2025:33837",
+     "paper:aaai:2025:32584",
+     "paper:aaai:2025:33130",
+     "paper:aaai:2025:32079",
+     "paper:aaai:2025:33593",
+     "paper:aaai:2024:29772",
+     "paper:aaai:2025:34656"
+    ],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-02-rising-methods-diffusion-orgs",
+   "title": "Fastest-growing methods and diffusion model specialists",
+   "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
+   "requested_mode": "auto",
+   "total_latency_s": 6.208,
+   "result": {
+    "status": "ok",
+    "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
+    "mode": "multi_hop",
+    "parsed": {
+     "entities": [],
+     "year_min": 2021,
+     "year_max": 2025,
+     "after_year": null,
+     "venue": null,
+     "intent": "ranking"
+    },
+    "linked": [],
+    "plan": [
+     {
+      "tool": "aggregate",
+      "args": {
+       "entity_ids": "$step1.ids",
+       "by": "year",
+       "metric": "share",
+       "filters": {
+        "venue": "AAAI",
+        "year_min": 2021,
+        "year_max": 2025
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     },
+     {
+      "tool": "aggregate",
+      "args": {
+       "entity_ids": "$step2.ids",
+       "by": "year",
+       "metric": "share",
+       "filters": {
+        "venue": "IJCAI",
+        "year_min": 2021,
+        "year_max": 2025
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     },
+     {
+      "tool": "aggregate",
+      "args": {
+       "entity_ids": "$step3.ids",
+       "by": "year",
+       "metric": "share",
+       "filters": {
+        "venue": "AAAI",
+        "year_min": 2021,
+        "year_max": 2025
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     },
+     {
+      "tool": "aggregate",
+      "args": {
+       "entity_ids": "$step4.ids",
+       "by": "year",
+       "metric": "share",
+       "filters": {
+        "venue": "IJCAI",
+        "year_min": 2021,
+        "year_max": 2025
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     }
+    ],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "aggregate",
+      "purpose": "",
+      "args": {
+       "entity_ids": [
+        "$step1.ids"
+       ],
+       "by": "year",
+       "metric": "share",
+       "filters": {
+        "venue": "AAAI",
+        "year_min": 2021,
+        "year_max": 2025
+       },
+       "limit": 15
+      },
+      "empty": true,
+      "row_count": 0,
+      "rows": [],
+      "source_kind": "graph",
+      "note": "Aggregated 0 year(s); total_papers=0.",
+      "paper_ids": [],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": "empty_step",
+    "stopped_at_step": 1,
+    "answer": "Stopped at step 1 (`aggregate`): no matching records were found in the graph (Aggregated 0 year(s); total_papers=0.).",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
+    "subgraph_nodes": [],
+    "subgraph_edges": [],
+    "paper_ids": [],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-03-method-task-cooccurrence",
+   "title": "Diffusion models co-occurring tasks and datasets",
+   "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
+   "requested_mode": "auto",
+   "total_latency_s": 23.845,
+   "result": {
+    "status": "ok",
+    "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
+    "mode": "multi_hop",
+    "parsed": {
+     "entities": [
+      {
+       "text": "diffusion models",
+       "entity_type": "Method"
+      }
+     ],
+     "year_min": null,
+     "year_max": null,
+     "after_year": null,
+     "venue": null,
+     "intent": "lookup"
+    },
+    "linked": [
+     {
+      "text": "diffusion models",
+      "entity_type": "Method",
+      "id": "method:Q114617315",
+      "name": "diffusion models",
+      "alternatives": [
+       {
+        "id": "method:5f6603fd5841ab77",
+        "label": "Method",
+        "name": "diffusion",
+        "key": "diffusion",
+        "surfaces": [
+         "Diffusion",
+         "diffusion"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 3,
+        "wikipedia_url": null
+       },
+       {
+        "id": "method:bc99a2e2159e4085",
+        "label": "Method",
+        "name": "diffusion probabilistic models",
+        "key": "diffusion probabilistic model",
+        "surfaces": [
+         "Diffusion Probabilistic Model",
+         "Diffusion Probabilistic Models",
+         "diffusion probabilistic model",
+         "diffusion probabilistic models",
+         "probabilistic diffusion models"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 17,
+        "wikipedia_url": null
+       }
+      ]
+     }
+    ],
+    "plan": [
+     {
+      "tool": "neighbors",
+      "args": {
+       "node_id": "method:Q114617315",
+       "predicates": [
+        "APPLIED_TO"
+       ],
+       "filters": {
+        "target_labels": [
+         "Task"
+        ]
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     },
+     {
+      "tool": "neighbors",
+      "args": {
+       "node_id": "method:Q114617315",
+       "predicates": [
+        "EVALUATED_ON"
+       ],
+       "filters": {
+        "target_labels": [
+         "Dataset"
+        ]
+       },
+       "limit": 15
+      },
+      "purpose": ""
+     }
+    ],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "neighbors",
+      "purpose": "",
+      "args": {
+       "node_id": "method:Q114617315",
+       "predicates": [
+        "APPLIED_TO"
+       ],
+       "filters": {
+        "target_labels": [
+         "Task"
+        ]
+       },
+       "limit": 15
+      },
+      "empty": false,
+      "row_count": 5,
+      "rows": [
+       {
+        "center_id": "method:Q114617315",
+        "relation": "APPLIED_TO",
+        "source_id": "method:Q114617315",
+        "target_id": "task:dbe4691e5c878c5f",
+        "edge_id": "edge:012a8b41eb606803d4681e21d4d245b0e434d506ef4e44a94268d8c2ce49c4f5",
+        "support_count": 2,
+        "fractional_weight": null,
+        "evidence_ids": [
+         "evidence:extracted:65355c85bb7a126847c60a8a",
+         "evidence:extracted:1af4d3fa5a832c80b93cc41e"
+        ],
+        "support_paper_ids": [
+         "paper:aaai:2025:33370",
+         "paper:ijcai:2025:346"
+        ],
+        "evidence_kind": "extracted",
+        "neighbor_id": "task:dbe4691e5c878c5f",
+        "neighbor_label": "Task",
+        "neighbor_name": "Sequential Recommendation",
+        "neighbor_year": null,
+        "neighbor_sector": null,
+        "neighbor_country_code": null,
+        "source_kind": "extracted_edge"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "APPLIED_TO",
+        "source_id": "method:Q114617315",
+        "target_id": "task:41820fea855290aa",
+        "edge_id": "edge:d13fa0321efbfed4790648b36ae57e0777e7f82b0964e6c2364036266a8b1381",
+        "support_count": 1,
+        "fractional_weight": null,
+        "evidence_ids": [
+         "evidence:extracted:abdfd66a63a27fae381fe355"
+        ],
+        "support_paper_ids": [
+         "paper:aaai:2025:33187"
+        ],
+        "evidence_kind": "extracted",
+        "neighbor_id": "task:41820fea855290aa",
+        "neighbor_label": "Task",
+        "neighbor_name": "text-to-image generation",
+        "neighbor_year": null,
+        "neighbor_sector": null,
+        "neighbor_country_code": null,
+        "source_kind": "extracted_edge"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "APPLIED_TO",
+        "source_id": "method:Q114617315",
+        "target_id": "task:Q545981",
+        "edge_id": "edge:8eac0aa2665159491db18c928667cea63a5a443ec83881e30a3cc418d76b46e7",
+        "support_count": 1,
+        "fractional_weight": null,
+        "evidence_ids": [
+         "evidence:extracted:1f53e63310901f27ec2b7ff2"
+        ],
+        "support_paper_ids": [
+         "paper:aaai:2025:32901"
+        ],
+        "evidence_kind": "extracted",
+        "neighbor_id": "task:Q545981",
+        "neighbor_label": "Task",
+        "neighbor_name": "image editing",
+        "neighbor_year": null,
+        "neighbor_sector": null,
+        "neighbor_country_code": null,
+        "source_kind": "extracted_edge"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "APPLIED_TO",
+        "source_id": "method:Q114617315",
+        "target_id": "task:b55616419cdbc810",
+        "edge_id": "edge:95288c4b4ff426416040bade642e5b22fba01209e3db7ddb16193bb9fd599cd9",
+        "support_count": 1,
+        "fractional_weight": null,
+        "evidence_ids": [
+         "evidence:extracted:f6ef4a4e450a55a9bf50d49a"
+        ],
+        "support_paper_ids": [
+         "paper:aaai:2024:28746"
+        ],
+        "evidence_kind": "extracted",
+        "neighbor_id": "task:b55616419cdbc810",
+        "neighbor_label": "Task",
+        "neighbor_name": "image super-resolution",
+        "neighbor_year": null,
+        "neighbor_sector": null,
+        "neighbor_country_code": null,
+        "source_kind": "extracted_edge"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "APPLIED_TO",
+        "source_id": "method:Q114617315",
+        "target_id": "task:e2b7808dae2a765d",
+        "edge_id": "edge:6debe27da67d0a3c6ba00c2c8453378fc7ed0c981ef2f4128007372df6096ba1",
+        "support_count": 1,
+        "fractional_weight": null,
+        "evidence_ids": [
+         "evidence:extracted:652e00198dfb8c6650057eb6"
+        ],
+        "support_paper_ids": [
+         "paper:aaai:2024:29840"
+        ],
+        "evidence_kind": "extracted",
+        "neighbor_id": "task:e2b7808dae2a765d",
+        "neighbor_label": "Task",
+        "neighbor_name": "Event Causality Identification",
+        "neighbor_year": null,
+        "neighbor_sector": null,
+        "neighbor_country_code": null,
+        "source_kind": "extracted_edge"
+       }
+      ],
+      "source_kind": "graph",
+      "note": "5 direct graph edges",
+      "paper_ids": [
+       "paper:aaai:2025:33370",
+       "paper:ijcai:2025:346",
+       "paper:aaai:2025:33187",
+       "paper:aaai:2025:32901",
+       "paper:aaai:2024:28746",
+       "paper:aaai:2024:29840"
+      ],
+      "evidence_ids": [
+       "evidence:extracted:65355c85bb7a126847c60a8a",
+       "evidence:extracted:1af4d3fa5a832c80b93cc41e",
+       "evidence:extracted:abdfd66a63a27fae381fe355",
+       "evidence:extracted:1f53e63310901f27ec2b7ff2",
+       "evidence:extracted:f6ef4a4e450a55a9bf50d49a",
+       "evidence:extracted:652e00198dfb8c6650057eb6"
+      ]
+     },
+     {
+      "step": 2,
+      "tool": "neighbors",
+      "purpose": "",
+      "args": {
+       "node_id": "method:Q114617315",
+       "predicates": [
+        "EVALUATED_ON"
+       ],
+       "filters": {
+        "target_labels": [
+         "Dataset"
+        ]
+       },
+       "limit": 15
+      },
+      "empty": false,
+      "row_count": 15,
+      "rows": [
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:e914e29fce31429d",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "MVTec AD",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:aaai:2024:27910",
+         "paper:aaai:2024:28690"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:0633a5703a78bd81",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "nuScenes",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:28620"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:1044c1ac256f50e6",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "DIV2K",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32360"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:2315797f6e55f906",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "ActivityNet-1.3",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32221"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:2adbfdeff23e2b72",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "Visual Genome",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:28155"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:398b78d80fccad0b",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "LaSOT",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:ijcai:2024:183"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:4a1d01406e8765fa",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "real-world datasets",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32469"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:4f1f711b796b295b",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "CIFAR-100",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32073"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:5493e6c120b3985b",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "StarCraft Multi-Agent Challenge",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:29698"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:64f89a6260ba11d7",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "KITTI dataset",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:ijcai:2025:981"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:65f53374a0ecaa90",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "SEED",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32945"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:6b2badb23067a86f",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "MVTec",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:ijcai:2024:270"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:764cafafd1bc8f05",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "HO3D",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:33128"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:7e90ee78828a15fb",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "ETH-UCY",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:ijcai:2024:125"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "dataset:9125fc2c27d0e2c5",
+        "neighbor_label": "Dataset",
+        "neighbor_name": "CelebA-HQ",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:34472"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       }
+      ],
+      "source_kind": "paper_cooccurrence",
+      "note": "15 paper co-occurrence partners (shared papers as evidence)",
+      "paper_ids": [
+       "paper:aaai:2024:27910",
+       "paper:aaai:2024:28690",
+       "paper:aaai:2024:28620",
+       "paper:aaai:2025:32360",
+       "paper:aaai:2025:32221",
+       "paper:aaai:2024:28155",
+       "paper:ijcai:2024:183",
+       "paper:aaai:2025:32469",
+       "paper:aaai:2025:32073",
+       "paper:aaai:2024:29698",
+       "paper:ijcai:2025:981",
+       "paper:aaai:2025:32945",
+       "paper:ijcai:2024:270",
+       "paper:aaai:2025:33128",
+       "paper:ijcai:2024:125",
+       "paper:aaai:2025:34472"
+      ],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": null,
+    "stopped_at_step": null,
+    "answer": "Could not compose a faithful answer from the retrieved graph trace; inspect the step tables below.",
+    "faithfulness_passed": false,
+    "faithfulness_errors": [
+     "number 3 not in trace"
+    ],
+    "subgraph_nodes": [
+     {
+      "id": "method:Q114617315",
+      "label": "Method",
+      "name": "diffusion models",
+      "hop": 1
+     },
+     {
+      "id": "task:dbe4691e5c878c5f",
+      "label": "Task",
+      "name": "Sequential Recommendation",
+      "hop": 1
+     },
+     {
+      "id": "task:41820fea855290aa",
+      "label": "Task",
+      "name": "text-to-image generation",
+      "hop": 1
+     },
+     {
+      "id": "task:Q545981",
+      "label": "Task",
+      "name": "image editing",
+      "hop": 1
+     },
+     {
+      "id": "task:b55616419cdbc810",
+      "label": "Task",
+      "name": "image super-resolution",
+      "hop": 1
+     },
+     {
+      "id": "task:e2b7808dae2a765d",
+      "label": "Task",
+      "name": "Event Causality Identification",
+      "hop": 1
+     },
+     {
+      "id": "dataset:e914e29fce31429d",
+      "label": "Dataset",
+      "name": "MVTec AD",
+      "hop": 2
+     },
+     {
+      "id": "dataset:0633a5703a78bd81",
+      "label": "Dataset",
+      "name": "nuScenes",
+      "hop": 2
+     },
+     {
+      "id": "dataset:1044c1ac256f50e6",
+      "label": "Dataset",
+      "name": "DIV2K",
+      "hop": 2
+     },
+     {
+      "id": "dataset:2315797f6e55f906",
+      "label": "Dataset",
+      "name": "ActivityNet-1.3",
+      "hop": 2
+     },
+     {
+      "id": "dataset:2adbfdeff23e2b72",
+      "label": "Dataset",
+      "name": "Visual Genome",
+      "hop": 2
+     },
+     {
+      "id": "dataset:398b78d80fccad0b",
+      "label": "Dataset",
+      "name": "LaSOT",
+      "hop": 2
+     },
+     {
+      "id": "dataset:4a1d01406e8765fa",
+      "label": "Dataset",
+      "name": "real-world datasets",
+      "hop": 2
+     },
+     {
+      "id": "dataset:4f1f711b796b295b",
+      "label": "Dataset",
+      "name": "CIFAR-100",
+      "hop": 2
+     },
+     {
+      "id": "dataset:5493e6c120b3985b",
+      "label": "Dataset",
+      "name": "StarCraft Multi-Agent Challenge",
+      "hop": 2
+     },
+     {
+      "id": "dataset:64f89a6260ba11d7",
+      "label": "Dataset",
+      "name": "KITTI dataset",
+      "hop": 2
+     },
+     {
+      "id": "dataset:65f53374a0ecaa90",
+      "label": "Dataset",
+      "name": "SEED",
+      "hop": 2
+     },
+     {
+      "id": "dataset:6b2badb23067a86f",
+      "label": "Dataset",
+      "name": "MVTec",
+      "hop": 2
+     },
+     {
+      "id": "dataset:764cafafd1bc8f05",
+      "label": "Dataset",
+      "name": "HO3D",
+      "hop": 2
+     },
+     {
+      "id": "dataset:7e90ee78828a15fb",
+      "label": "Dataset",
+      "name": "ETH-UCY",
+      "hop": 2
+     },
+     {
+      "id": "dataset:9125fc2c27d0e2c5",
+      "label": "Dataset",
+      "name": "CelebA-HQ",
+      "hop": 2
+     }
+    ],
+    "subgraph_edges": [
+     {
+      "edge_id": "edge:012a8b41eb606803d4681e21d4d245b0e434d506ef4e44a94268d8c2ce49c4f5",
+      "relation": "APPLIED_TO",
+      "source": "method:Q114617315",
+      "target": "task:dbe4691e5c878c5f",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:d13fa0321efbfed4790648b36ae57e0777e7f82b0964e6c2364036266a8b1381",
+      "relation": "APPLIED_TO",
+      "source": "method:Q114617315",
+      "target": "task:41820fea855290aa",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:8eac0aa2665159491db18c928667cea63a5a443ec83881e30a3cc418d76b46e7",
+      "relation": "APPLIED_TO",
+      "source": "method:Q114617315",
+      "target": "task:Q545981",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:95288c4b4ff426416040bade642e5b22fba01209e3db7ddb16193bb9fd599cd9",
+      "relation": "APPLIED_TO",
+      "source": "method:Q114617315",
+      "target": "task:b55616419cdbc810",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "edge:6debe27da67d0a3c6ba00c2c8453378fc7ed0c981ef2f4128007372df6096ba1",
+      "relation": "APPLIED_TO",
+      "source": "method:Q114617315",
+      "target": "task:e2b7808dae2a765d",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:e914e29fce31429d",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:e914e29fce31429d",
+      "support_count": 2,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:0633a5703a78bd81",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:0633a5703a78bd81",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:1044c1ac256f50e6",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:1044c1ac256f50e6",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:2315797f6e55f906",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:2315797f6e55f906",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:2adbfdeff23e2b72",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:2adbfdeff23e2b72",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:398b78d80fccad0b",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:398b78d80fccad0b",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:4a1d01406e8765fa",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:4a1d01406e8765fa",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:4f1f711b796b295b",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:4f1f711b796b295b",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:5493e6c120b3985b",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:5493e6c120b3985b",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:64f89a6260ba11d7",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:64f89a6260ba11d7",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:65f53374a0ecaa90",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:65f53374a0ecaa90",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:6b2badb23067a86f",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:6b2badb23067a86f",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:764cafafd1bc8f05",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:764cafafd1bc8f05",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:7e90ee78828a15fb",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:7e90ee78828a15fb",
+      "support_count": 1,
+      "hop": 2
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:dataset:9125fc2c27d0e2c5",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "dataset:9125fc2c27d0e2c5",
+      "support_count": 1,
+      "hop": 2
+     }
+    ],
+    "paper_ids": [
+     "paper:aaai:2025:33370",
+     "paper:ijcai:2025:346",
+     "paper:aaai:2025:33187",
+     "paper:aaai:2025:32901",
+     "paper:aaai:2024:28746",
+     "paper:aaai:2024:29840",
+     "paper:aaai:2024:27910",
+     "paper:aaai:2024:28690",
+     "paper:aaai:2024:28620",
+     "paper:aaai:2025:32360",
+     "paper:aaai:2025:32221",
+     "paper:aaai:2024:28155",
+     "paper:ijcai:2024:183",
+     "paper:aaai:2025:32469",
+     "paper:aaai:2025:32073",
+     "paper:aaai:2024:29698",
+     "paper:ijcai:2025:981",
+     "paper:aaai:2025:32945",
+     "paper:ijcai:2024:270",
+     "paper:aaai:2025:33128",
+     "paper:ijcai:2024:125",
+     "paper:aaai:2025:34472"
+    ],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-04-researcher-path",
+   "title": "Co-authorship path between Shirui Pan and Chengjie Wang",
+   "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
+   "requested_mode": "auto",
+   "total_latency_s": 0.938,
+   "result": {
+    "status": "needs_disambiguation",
+    "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
+    "parsed": {
+     "entities": [
+      {
+       "text": "Shirui Pan",
+       "entity_type": "Researcher"
+      },
+      {
+       "text": "Chengjie Wang",
+       "entity_type": "Researcher"
+      }
+     ],
+     "year_min": null,
+     "year_max": null,
+     "after_year": null,
+     "venue": null,
+     "intent": "lookup"
+    },
+    "disambiguation": [
+     {
+      "mention": "Chengjie Wang",
+      "entity_type": "Researcher",
+      "candidates": [
+       {
+        "id": "researcher:openalex:A5023834700",
+        "label": "Researcher",
+        "name": "Chengjie Wang",
+        "key": null,
+        "surfaces": [],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": "A5023834700",
+        "paper_count": 22,
+        "wikipedia_url": null,
+        "affiliations": [
+         "Tencent (China)",
+         "Shanghai Jiao Tong University"
+        ]
+       },
+       {
+        "id": "researcher:openalex:A5101560553",
+        "label": "Researcher",
+        "name": "Chengjie Wang",
+        "key": null,
+        "surfaces": [],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": "A5101560553",
+        "paper_count": 2,
+        "wikipedia_url": null,
+        "affiliations": [
+         "Tencent (China)"
+        ]
+       }
+      ]
+     }
+    ],
+    "answer": "Multiple researchers match that name; please select the intended researcher.",
+    "faithfulness_passed": true,
+    "steps": [],
+    "subgraph_nodes": [],
+    "subgraph_edges": [],
+    "paper_ids": [],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-05-causal-lift",
+   "title": "Organizations specialized in causal inference by lift",
+   "question": "Which organizations specialize most in Causal inference by lift?",
+   "requested_mode": "auto",
+   "total_latency_s": 2.803,
+   "result": {
+    "status": "ok",
+    "question": "Which organizations specialize most in Causal inference by lift?",
+    "mode": "multi_hop",
+    "parsed": {
+     "entities": [
+      {
+       "text": "Causal inference",
+       "entity_type": "Task"
+      },
+      {
+       "text": "lift",
+       "entity_type": "Method"
+      }
+     ],
+     "year_min": null,
+     "year_max": null,
+     "after_year": null,
+     "venue": null,
+     "intent": "ranking"
+    },
+    "linked": [
+     {
+      "text": "Causal inference",
+      "entity_type": "Task",
+      "id": "task:e8299f0a4fe25a12",
+      "name": "causal inference",
+      "alternatives": []
+     },
+     {
+      "text": "lift",
+      "entity_type": "Paper",
+      "id": "paper:aaai:2022:20581",
+      "name": "Imbalance-Aware Uplift Modeling for Observational Data",
+      "alternatives": [
+       {
+        "id": "paper:aaai:2022:21206",
+        "label": "Paper",
+        "name": "The FF Heuristic for Lifted Classical Planning",
+        "key": null,
+        "surfaces": [],
+        "year": 2022,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": "W4283793735",
+        "paper_count": 0,
+        "wikipedia_url": null
+       },
+       {
+        "id": "paper:aaai:2022:21212",
+        "label": "Paper",
+        "name": "Homomorphisms of Lifted Planning Tasks: The Case for Delete-Free Relaxation Heuristics",
+        "key": null,
+        "surfaces": [],
+        "year": 2022,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": "W4283793299",
+        "paper_count": 0,
+        "wikipedia_url": null
+       }
+      ]
+     }
+    ],
+    "plan": [
+     {
+      "tool": "rank",
+      "args": {
+       "network": "N2",
+       "scope": "task:e8299f0a4fe25a12",
+       "measure": "lift",
+       "limit": 15
+      },
+      "purpose": ""
+     }
+    ],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "rank",
+      "purpose": "",
+      "args": {
+       "network": "N2",
+       "scope": "task:e8299f0a4fe25a12",
+       "measure": "lift",
+       "limit": 15
+      },
+      "empty": true,
+      "row_count": 0,
+      "rows": [],
+      "source_kind": "graph",
+      "note": "No precomputed personalized PageRank entry for scope 'task:e8299f0a4fe25a12'.",
+      "paper_ids": [],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": "empty_step",
+    "stopped_at_step": 1,
+    "answer": "Stopped at step 1 (`rank`): no matching records were found in the graph (No precomputed personalized PageRank entry for scope 'task:e8299f0a4fe25a12'.).",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
+    "subgraph_nodes": [],
+    "subgraph_edges": [],
+    "paper_ids": [],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-06-global-communities",
+   "title": "Main research communities in AAAI/IJCAI 2021-2025 (Global Search)",
+   "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
+   "requested_mode": "global",
+   "total_latency_s": 18.899,
+   "result": {
+    "status": "ok",
+    "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
+    "mode": "global",
+    "parsed": {
+     "entities": [
+      {
+       "text": "AAAI",
+       "entity_type": "Organization"
+      },
+      {
+       "text": "IJCAI",
+       "entity_type": "Organization"
+      }
+     ],
+     "year_min": 2021,
+     "year_max": 2025,
+     "after_year": null,
+     "venue": null,
+     "intent": "lookup"
+    },
+    "linked": [
+     {
+      "text": "AAAI",
+      "entity_type": "Venue",
+      "id": "venue:aaai",
+      "name": "AAAI Conference on Artificial Intelligence",
+      "alternatives": []
+     },
+     {
+      "text": "IJCAI",
+      "entity_type": "Organization",
+      "id": null,
+      "name": null
+     }
+    ],
+    "plan": [],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "community_report",
+      "purpose": "global map-reduce",
+      "empty": false,
+      "row_count": 6,
+      "rows": [
+       {
+        "claim": "Community N1:87 focuses on NLP, planning, and causal inference with strong ties to Indian IITs and IBM Research.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2021:17138",
+         "paper:ijcai:2021:536",
+         "paper:aaai:2025:33724"
+        ]
+       },
+       {
+        "claim": "Research community L0:122 focuses on Causal Inference with growing 2024-2025 activity.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2022:20789",
+         "paper:aaai:2025:33626",
+         "paper:ijcai:2025:1013"
+        ]
+       },
+       {
+        "claim": "Research community L0:47 focuses on multimodal learning with rising CLIP and GPT-4o adoption.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32879",
+         "paper:aaai:2025:33554",
+         "paper:aaai:2025:34075"
+        ]
+       },
+       {
+        "claim": "Clustering research in defense and top-tier institutions.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2021:17198",
+         "paper:ijcai:2021:389",
+         "paper:aaai:2023:26445"
+        ]
+       },
+       {
+        "claim": "Community N1:42: Graph Neural Networks and Vision-Language Learning.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:ijcai:2021:214",
+         "paper:aaai:2021:16431",
+         "paper:aaai:2021:16542"
+        ]
+       },
+       {
+        "claim": "The enriched AAAI and IJCAI 2021-2025 knowledge graph includes research communities focused on graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing and multi-hop QA, and efficient systems and trustworthy ML.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2025:33413",
+         "paper:ijcai:2023:229",
+         "paper:aaai:2025:33320",
+         "paper:ijcai:2021:425",
+         "paper:aaai:2021:17203",
+         "paper:aaai:2025:33410",
+         "paper:ijcai:2021:441",
+         "paper:aaai:2022:20521",
+         "paper:aaai:2025:33671",
+         "paper:ijcai:2025:922",
+         "paper:ijcai:2025:916",
+         "paper:aaai:2025:32008",
+         "paper:ijcai:2025:916",
+         "paper:aaai:2021:17605",
+         "paper:aaai:2023:25894",
+         "paper:ijcai:2022:246",
+         "paper:aaai:2025:33850",
+         "paper:aaai:2023:25936",
+         "paper:ijcai:2022:345",
+         "paper:aaai:2021:17234"
+        ]
+       }
+      ],
+      "source_kind": "global_search",
+      "note": "Synthesized over 14 community reports.",
+      "paper_ids": [
+       "paper:aaai:2021:17138",
+       "paper:ijcai:2021:536",
+       "paper:aaai:2025:33724",
+       "paper:aaai:2022:20789",
+       "paper:aaai:2025:33626",
+       "paper:ijcai:2025:1013",
+       "paper:aaai:2025:32879",
+       "paper:aaai:2025:33554",
+       "paper:aaai:2025:34075",
+       "paper:aaai:2021:17198",
+       "paper:ijcai:2021:389",
+       "paper:aaai:2023:26445",
+       "paper:ijcai:2021:214",
+       "paper:aaai:2021:16431",
+       "paper:aaai:2021:16542",
+       "paper:aaai:2025:33413",
+       "paper:ijcai:2023:229",
+       "paper:aaai:2025:33320",
+       "paper:ijcai:2021:425",
+       "paper:aaai:2021:17203",
+       "paper:aaai:2025:33410",
+       "paper:ijcai:2021:441",
+       "paper:aaai:2022:20521",
+       "paper:aaai:2025:33671",
+       "paper:ijcai:2025:922",
+       "paper:ijcai:2025:916",
+       "paper:aaai:2025:32008",
+       "paper:aaai:2021:17605",
+       "paper:aaai:2023:25894",
+       "paper:ijcai:2022:246",
+       "paper:aaai:2025:33850",
+       "paper:aaai:2023:25936",
+       "paper:ijcai:2022:345",
+       "paper:aaai:2021:17234"
+      ],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": null,
+    "answer": "The main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph include:\n\n*   Graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing, multi-hop QA, efficient systems, and trustworthy ML [paper:aaai:2025:33413, paper:ijcai:2023:229, paper:aaai:2025:33320, paper:ijcai:2021:425, paper:aaai:2021:17203, paper:aaai:2025:33410, paper:ijcai:2021:441, paper:aaai:2022:20521, paper:aaai:2025:33671, paper:ijcai:2025:922, paper:ijcai:2025:916, paper:aaai:2025:32008, paper:ijcai:2025:916, paper:aaai:2021:17605, paper:aaai:2023:25894, paper:ijcai:2022:246, paper:aaai:2025:33850, paper:aaai:2023:25936, paper:ijcai:2022:345, paper:aaai:2021:17234]\n*   NLP, planning, and causal inference [paper:aaai:2021:17138, paper:ijcai:2021:536, paper:aaai:2025:33724]\n*   Causal Inference [paper:aaai:2022:20789, paper:aaai:2025:33626, paper:ijcai:2025:1013]\n*   Multimodal learning [paper:aaai:2025:32879, paper:aaai:2025:33554, paper:aaai:2025:34075]\n*   Clustering in defense and top-tier institutions [paper:aaai:2021:17198, paper:ijcai:2021:389, paper:aaai:2023:26445]\n*   Graph Neural Networks and Vision-Language Learning [paper:",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
+    "subgraph_nodes": [],
+    "subgraph_edges": [],
+    "paper_ids": [
+     "paper:aaai:2021:17138",
+     "paper:ijcai:2021:536",
+     "paper:aaai:2025:33724",
+     "paper:aaai:2022:20789",
+     "paper:aaai:2025:33626",
+     "paper:ijcai:2025:1013",
+     "paper:aaai:2025:32879",
+     "paper:aaai:2025:33554",
+     "paper:aaai:2025:34075",
+     "paper:aaai:2021:17198",
+     "paper:ijcai:2021:389",
+     "paper:aaai:2023:26445",
+     "paper:ijcai:2021:214",
+     "paper:aaai:2021:16431",
+     "paper:aaai:2021:16542",
+     "paper:aaai:2025:33413",
+     "paper:ijcai:2023:229",
+     "paper:aaai:2025:33320",
+     "paper:ijcai:2021:425",
+     "paper:aaai:2021:17203",
+     "paper:aaai:2025:33410",
+     "paper:ijcai:2021:441",
+     "paper:aaai:2022:20521",
+     "paper:aaai:2025:33671",
+     "paper:ijcai:2025:922",
+     "paper:ijcai:2025:916",
+     "paper:aaai:2025:32008",
+     "paper:aaai:2021:17605",
+     "paper:aaai:2023:25894",
+     "paper:ijcai:2022:246",
+     "paper:aaai:2025:33850",
+     "paper:aaai:2023:25936",
+     "paper:ijcai:2022:345",
+     "paper:aaai:2021:17234"
+    ],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  },
+  {
+   "demo_id": "demo-07-local-gnn",
+   "title": "Local GraphRAG overview of graph neural networks",
+   "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
+   "requested_mode": "local",
+   "total_latency_s": 9.408,
+   "result": {
+    "status": "ok",
+    "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
+    "mode": "local",
+    "parsed": {
+     "entities": [
+      {
+       "text": "graph neural networks",
+       "entity_type": "Method"
+      }
+     ],
+     "year_min": null,
+     "year_max": null,
+     "after_year": null,
+     "venue": null,
+     "intent": "lookup"
+    },
+    "linked": [
+     {
+      "text": "graph neural networks",
+      "entity_type": "Method",
+      "id": "method:Q107750691",
+      "name": "graph neural networks",
+      "alternatives": [
+       {
+        "id": "method:00e21afd91288cef",
+        "label": "Method",
+        "name": "Heterogeneous Graph Neural Networks",
+        "key": "heterogeneous graph neural network",
+        "surfaces": [
+         "Heterogeneous Graph Neural Network",
+         "Heterogeneous Graph Neural Networks",
+         "Heterogeneous Graph Neural Networks (HGNNs)",
+         "heterogeneous graph neural network",
+         "heterogeneous graph neural networks",
+         "heterogeneous graph neural networks (HGNNs)"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 12,
+        "wikipedia_url": null
+       },
+       {
+        "id": "method:0b9206925de53252",
+        "label": "Method",
+        "name": "Hypergraph Neural Networks",
+        "key": "hypergraph neural network",
+        "surfaces": [
+         "Hypergraph Neural Network",
+         "Hypergraph Neural Networks",
+         "Hypergraph neural networks (HNNs)",
+         "hypergraph neural network",
+         "hypergraph neural networks"
+        ],
+        "year": null,
+        "sector": null,
+        "country_code": null,
+        "openalex_id": null,
+        "paper_count": 6,
+        "wikipedia_url": null
+       }
+      ]
+     }
+    ],
+    "plan": [],
+    "steps": [
+     {
+      "step": 1,
+      "tool": "local_search",
+      "purpose": "entity-centric neighborhood + chunks",
+      "empty": false,
+      "row_count": 42,
+      "rows": [
+       {
+        "section": "Entity descriptions"
+       },
+       {
+        "section": "1-hop graph neighbors"
+       },
+       {
+        "section": "Related community reports"
+       },
+       {
+        "section": "Abstract sentence chunks"
+       }
+      ],
+      "source_kind": "local_search",
+      "note": "Packed 4 context sections.",
+      "paper_ids": [
+       "paper:aaai:2022:21422",
+       "paper:aaai:2023:26575",
+       "paper:aaai:2024:29189",
+       "paper:aaai:2025:34110",
+       "paper:aaai:2021:16112",
+       "paper:aaai:2021:16209",
+       "paper:aaai:2022:20608",
+       "paper:aaai:2024:29307",
+       "paper:ijcai:2022:184",
+       "paper:ijcai:2025:821",
+       "paper:ijcai:2021:425",
+       "paper:aaai:2021:17203",
+       "paper:aaai:2025:33410",
+       "paper:ijcai:2021:441",
+       "paper:aaai:2022:20521",
+       "paper:aaai:2025:33671",
+       "paper:aaai:2023:25233",
+       "paper:aaai:2022:20819",
+       "paper:aaai:2022:21344",
+       "paper:ijcai:2021:473",
+       "paper:aaai:2022:21266",
+       "paper:aaai:2022:20292",
+       "paper:aaai:2025:32690",
+       "paper:aaai:2025:33466",
+       "paper:aaai:2024:29911",
+       "paper:aaai:2022:20897",
+       "paper:aaai:2023:26219",
+       "paper:aaai:2022:20377",
+       "paper:aaai:2024:29138",
+       "paper:ijcai:2021:214",
+       "paper:aaai:2021:16431",
+       "paper:aaai:2021:16542",
+       "paper:aaai:2021:16177",
+       "paper:aaai:2022:20050",
+       "paper:aaai:2022:20030",
+       "paper:ijcai:2021:381",
+       "paper:aaai:2022:21385",
+       "paper:aaai:2021:17211",
+       "paper:aaai:2021:16093",
+       "paper:ijcai:2023:464",
+       "paper:ijcai:2022:497",
+       "paper:aaai:2022:20912"
+      ],
+      "evidence_ids": []
+     }
+    ],
+    "stopped_reason": null,
+    "answer": "Graph Neural Networks (GNNs) are a dominant method in the field, appearing in 296 papers within the Graph Machine Learning Research Community (L1) [research:L1:6] and 54 papers in Community N2:3 [N2:3]. Key methods include graph convolutional neural networks (6 papers) [method:739ff7cc355e398a] and graph networks (4 papers) [method:9e0123cf2e9b780e]. Research focuses on tasks like node classification [task:473189fe00c2d2b1] and graph representation learning [task:f58720df3e4446d0], with GNNs achieving state-of-the-art results despite challenges in generalization [task:f58720df3e4446d0].\n\nMajor benchmarks include the Open Graph Benchmark (3 papers) [dataset:74e97e01a849631e] and established datasets like Cora, Citeseer, and Pubmed [paper:aaai:2021:17203]. Research activity has grown from 324 papers in 2021 to 477 in 2025 [research:L1:6], with Graph Attention Networks being a stable method with 12 papers published in 2024-2025 [research:L0:83]. Specific applications include RNA-protein binding prediction [paper:aaai:2021:16112], image-text matching [paper:aaai:2021:16209], and text-to-speech synthesis [paper:aaai:2023:26575].",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
+    "subgraph_nodes": [
+     {
+      "id": "method:9e0123cf2e9b780e",
+      "label": "Method",
+      "name": "graph networks"
+     },
+     {
+      "id": "paper:aaai:2022:21422",
+      "label": "Paper",
+      "name": "Hierarchical Cross-Modality Semantic Correlation Learning Model for Multimodal Summarization"
+     },
+     {
+      "id": "paper:aaai:2023:26575",
+      "label": "Paper",
+      "name": "RWEN-TTS: Relation-Aware Word Encoding Network for Natural Text-to-Speech Synthesis"
+     },
+     {
+      "id": "paper:aaai:2024:29189",
+      "label": "Paper",
+      "name": "Deep Incomplete Multi-View Learning Network with Insufficient Label Information"
+     },
+     {
+      "id": "paper:aaai:2025:34110",
+      "label": "Paper",
+      "name": "Collaborative Semantic Consistency Alignment for Blended-Target Domain Adaptation"
+     },
+     {
+      "id": "method:739ff7cc355e398a",
+      "label": "Method",
+      "name": "graph convolutional neural network"
+     },
+     {
+      "id": "paper:aaai:2021:16112",
+      "label": "Paper",
+      "name": "RNA Secondary Structure Representation Network for RNA-proteins Binding Prediction"
+     },
+     {
+      "id": "paper:aaai:2021:16209",
+      "label": "Paper",
+      "name": "Similarity Reasoning and Filtration for Image-Text Matching"
+     },
+     {
+      "id": "paper:aaai:2022:20608",
+      "label": "Paper",
+      "name": "Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples"
+     },
+     {
+      "id": "paper:aaai:2024:29307",
+      "label": "Paper",
+      "name": "ASWT-SGNN: Adaptive Spectral Wavelet Transform-Based Self-Supervised Graph Neural Network"
+     },
+     {
+      "id": "paper:ijcai:2022:184",
+      "label": "Paper",
+      "name": "Emotion-Controllable Generalized Talking Face Generation"
+     },
+     {
+      "id": "paper:ijcai:2025:821",
+      "label": "Paper",
+      "name": "Advancing Community Detection with Graph Convolutional Neural Networks: Bridging Topological and Attributive Cohesion"
+     }
+    ],
+    "subgraph_edges": [
+     {
+      "edge_id": "edge:2fe8c8093dee98b420d69f15dd39ab23190d52aa00498fc7454435fe34b0c8b8",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2022:21422",
+      "target": "method:9e0123cf2e9b780e",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:171b7a3a2fbdc3feef137395cf0791254b100e276aa51d47863fd46c341651db",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2023:26575",
+      "target": "method:9e0123cf2e9b780e",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:ecaae65e1881c6fc89dc6dc2f2ff6fcab48f89d9ec60b7e5644118428152bbaf",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2024:29189",
+      "target": "method:9e0123cf2e9b780e",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:903fbaa1fc94c512b767b10a082cdbd634127b85d0ff65c68f3fff8b28b83b6c",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2025:34110",
+      "target": "method:9e0123cf2e9b780e",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:180821a4ab89cd1f8cf495af2d51be18103ed993f69596e0b89c74fee3dd58e3",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2021:16112",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:7539e44005e57e43c45439067a25911e1e8d40640a89a41c28e85b6b8fbe5669",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2021:16209",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:3e405787397ce4ad910d09df1e689f7d642e9fd2e5e6aa0e1d9762266e96229b",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2022:20608",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:22169287f0639e238b1337695c617f3799975fa275d0249e4dc95a1d49566495",
+      "relation": "USES_METHOD",
+      "source": "paper:aaai:2024:29307",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:3603a82d4f1fb3d35e75acaa09da3b5784847b0ea1b9d12b3b64817bbddd8739",
+      "relation": "USES_METHOD",
+      "source": "paper:ijcai:2022:184",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     },
+     {
+      "edge_id": "edge:763254a9e3b933bd13a7e1cd6b9a4fc45a11643462c309a23a3da96efe882158",
+      "relation": "USES_METHOD",
+      "source": "paper:ijcai:2025:821",
+      "target": "method:739ff7cc355e398a",
+      "support_count": 1
+     }
+    ],
+    "paper_ids": [
+     "paper:aaai:2022:21422",
+     "paper:aaai:2023:26575",
+     "paper:aaai:2024:29189",
+     "paper:aaai:2025:34110",
+     "paper:aaai:2021:16112",
+     "paper:aaai:2021:16209",
+     "paper:aaai:2022:20608",
+     "paper:aaai:2024:29307",
+     "paper:ijcai:2022:184",
+     "paper:ijcai:2025:821",
+     "paper:ijcai:2021:425",
+     "paper:aaai:2021:17203",
+     "paper:aaai:2025:33410",
+     "paper:ijcai:2021:441",
+     "paper:aaai:2022:20521",
+     "paper:aaai:2025:33671",
+     "paper:aaai:2023:25233",
+     "paper:aaai:2022:20819",
+     "paper:aaai:2022:21344",
+     "paper:ijcai:2021:473",
+     "paper:aaai:2022:21266",
+     "paper:aaai:2022:20292",
+     "paper:aaai:2025:32690",
+     "paper:aaai:2025:33466",
+     "paper:aaai:2024:29911",
+     "paper:aaai:2022:20897",
+     "paper:aaai:2023:26219",
+     "paper:aaai:2022:20377",
+     "paper:aaai:2024:29138",
+     "paper:ijcai:2021:214",
+     "paper:aaai:2021:16431",
+     "paper:aaai:2021:16542",
+     "paper:aaai:2021:16177",
+     "paper:aaai:2022:20050",
+     "paper:aaai:2022:20030",
+     "paper:ijcai:2021:381",
+     "paper:aaai:2022:21385",
+     "paper:aaai:2021:17211",
+     "paper:aaai:2021:16093",
+     "paper:ijcai:2023:464",
+     "paper:ijcai:2022:497",
+     "paper:aaai:2022:20912"
+    ],
+    "ai_generated_label": "AI-generated from graph data"
+   }
+  }
+ ]
+}

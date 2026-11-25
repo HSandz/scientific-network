@@ -47,6 +47,16 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
   - Built 228/233 community reports with `qwen3.5-4b-q4_k_m` (`temperature=0`, `enable_thinking=false`; 209 first-try, 19 retry, 5 dropped for ungrounded numbers; `382,343` prompt / `106,048` completion tokens), 4,316 entity descriptions (231 Wikipedia, 251 LLM from mentions, 3,834 template, 0 failures), 12,000 annotated abstract chunks, SQLite vector store (`data/processed/rag-v1/vectors.sqlite`), and Neo4j vector indexes (`rag_report_vec`, `rag_entity_vec`, `rag_chunk_vec` on `:RagReport`, `:RagEntityDesc`, `:RagChunk`) on Bolt 7690 with core/enrichment counts unchanged (`50,144` non-RAG nodes, `242,048` edges).
   - Dual-service resource check (`neo4j-enriched` + `sn-llm` live env): host `10 GiB / 11 GiB` used (`1.3 GiB` avail), `sn-llm` `7.238 GiB` RAM & `5,067 / 8,151 MiB` GPU VRAM, `neo4j-enriched` `862.7 MiB` RAM.
 
+- **Phase 4 (multi-hop engine, development-only evaluation, and scripted demos):**
+  - Added `src/scientific_network/rag/{planner,executor,answer,dev_eval}.py` and `tests/test_rag_engine.py` (4 passed).
+  - Updated `tools.py` (`_stem_variants` hyphen/underscore normalization, `paper:` & `researcher` aggregation support, batched `neighbors`, `total_papers` in yearly aggregation, flexible `trend` period parsing, exact `APPLIED_TO`/`EVALUATED_ON` precision when direct edges exist), `planner.py` (`rag-parse-v2` + `rag-plan-v3`), `executor.py` (`_resolve_unlinked_ids` + arg coercion), and `answer.py` (step compaction + ordered-list regex in `verify_answer_faithfulness`).
+  - Executed `dev_eval.py` strictly on the **19 kept development questions** (`split == "development"`; test questions untouched) + 7 scripted demos (`demo-cache.json`). Development-only results: hop-1 `mean_score = 0.85` (4 questions, `5.518s`), hop-2 `0.6723` (6 questions, `7.131s`), hop-3 `0.6667` (5 questions, `7.372s`), global `1.0` (4 questions, `19.465s`), **faithfulness 100% (19/19)**. Note: `demo-01` (`neighbors 100 -> aggregate 15` Tsinghua collaborator LLM share growth > 2022), `demo-04` (same-name `Chengjie Wang` disambiguation), `demo-06` (global GraphRAG), and `demo-07` (local GraphRAG) all succeeded; `demo-03` hit a synthesis number check retry limit (`faithfulness_passed: false`) while returning valid co-occurrence steps.
+
+- **Phase 5 (Research Trend Navigator FastAPI backend):**
+  - Extended `apps/research-explorer/backend/config.py` (enriched/analysis-v2/rag-v1 paths) and `main.py` (wired `NavigatorService` + `navigator_router`, allowed `POST /api/ask` up to 8,192 bytes while keeping `POST /api/paths` at 4,096 bytes and other endpoints read-only).
+  - Created `apps/research-explorer/backend/services/navigator_service.py` and `api/navigator_routes.py`: `/api/trends`, `/api/subjects`, `/api/subjects/{id}`, `/api/groups`, `/api/groups/{id}`, `/api/communities`, `/api/communities/{id}`, `/api/communities/{id}/members`, `/api/network-science`, `/api/node360/{id}`, `/api/about-data`, `/api/explorer-enriched/{schema,search,neighbors/...}`, `/api/ask/demos`, and `POST /api/ask` (JSON + SSE `StreamingResponse`).
+  - Added `apps/research-explorer/backend/tests/test_navigator_api.py`; all 26 non-integration tests (`23` v4 unit/production + `3` Navigator API tests) pass.
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
@@ -58,6 +68,9 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
 | `uv run pytest -v tests/test_rag_tools.py` | exit 0; 2 passed (synthetic + live 7690) | `tests/test_rag_tools.py` |
 | `uv run research-network rag-index --config configs/rag-v1.yaml --skip-neo4j` + `--load-neo4j-only` | exit 0; 228/233 reports, 4,316 descriptions, 12,000 chunks; SQLite + Neo4j 3 vector indexes (`rag_report_vec`, `rag_entity_vec`, `rag_chunk_vec`); non-RAG `50,144` / `242,048` intact | `reports/final-exam/rag-v1/`, `data/processed/rag-v1/vectors.sqlite`, `reports/runs/WORK-2026-11-25-005/rag-index.log` |
 | `uv run pytest -q tests/test_rag_index_retrieval.py` | exit 0; 4 passed | `tests/test_rag_index_retrieval.py` |
+| `uv run pytest -q tests/test_rag_tools.py tests/test_rag_index_retrieval.py tests/test_rag_engine.py` | exit 0; 10 passed | `tests/test_rag_*.py` |
+| Phase 4 `dev_eval.py` (19 kept dev questions only + 7 demos, live 7690 + `sn-llm`) | exit 0; dev factual `0.85` / `0.6723` / `0.6667`, global `1.0`, faithful `19/19`; 7 demos cached | `reports/final-exam/rag-v1/dev-eval.json`, `demo-cache.json`, `reports/runs/WORK-2026-11-25-005/dev-eval-v3.log` |
+| `PYTHONPATH=apps/research-explorer:src uv run pytest apps/research-explorer/backend/tests -q` | exit 0; 26 passed, 9 skipped (`neo4j-five-year` 7689 stopped) | `apps/research-explorer/backend/tests/test_navigator_api.py` |
 
 ## Decisions
 
