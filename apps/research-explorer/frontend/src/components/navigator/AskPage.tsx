@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { AskResult } from "../../types/navigator";
+import { AskCitation, AskCitationsEvent, AskResult, AskResultPapers } from "../../types/navigator";
 import { Panel } from "../analytics/DashboardPrimitives";
 import { MetricTooltip } from "./MetricTooltip";
 
@@ -12,20 +12,73 @@ interface AskPageProps {
 type SgNode = { id: string; label?: string; name?: string; hop?: number };
 type SgEdge = { source: string; target: string; relation?: string; support_count?: number; hop?: number };
 
-function renderBoldInline(text: string): React.ReactNode {
+type RefHandlers = { onStep: (n: number) => void; onPaper: (id: string) => void };
+
+const PAPER_ID_SRC = "paper:(?:aaai|ijcai):\\d{4}:[A-Za-z0-9_.-]*[A-Za-z0-9_-]";
+const INLINE_REF_RE = new RegExp(`(\\[steps? [0-9, ]+\\]|\\[${PAPER_ID_SRC}(?:\\s*[,;]\\s*${PAPER_ID_SRC})*\\])`, "g");
+
+/** Render inline `[step N]` references (aggregate claims) and `[paper:…]` citations as chips. */
+function renderRefs(text: string, keyBase: string, h?: RefHandlers): React.ReactNode {
+  if (!h) return text;
+  const parts = text.split(INLINE_REF_RE);
+  return parts.map((p, idx) => {
+    const stepMatch = p.match(/^\[steps? ([0-9, ]+)\]$/);
+    if (stepMatch) {
+      const nums = stepMatch[1].split(/[ ,]+/).filter(Boolean).map(Number);
+      return (
+        <React.Fragment key={`${keyBase}-${idx}`}>
+          {nums.map((n) => (
+            <button
+              key={n}
+              type="button"
+              data-testid="answer-step-ref"
+              onClick={() => h.onStep(n)}
+              title={`Aggregate claim computed by trace step ${n}; its example papers are listed under "Papers in this result".`}
+              className="mx-0.5 px-1 rounded border border-border font-mono text-[11px] text-muted hover:bg-raised"
+            >
+              step {n}
+            </button>
+          ))}
+        </React.Fragment>
+      );
+    }
+    if (p.startsWith("[paper:") && p.endsWith("]")) {
+      const ids = p.slice(1, -1).split(/\s*[,;]\s*/).filter(Boolean);
+      return (
+        <React.Fragment key={`${keyBase}-${idx}`}>
+          {ids.map((pid) => (
+            <button
+              key={pid}
+              type="button"
+              data-testid="answer-citation-ref"
+              onClick={() => h.onPaper(pid)}
+              title="Citation: this paper is returned as its own row or abstract excerpt and the sentence is about it."
+              className="mx-0.5 px-1 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
+            >
+              {pid}
+            </button>
+          ))}
+        </React.Fragment>
+      );
+    }
+    return <React.Fragment key={`${keyBase}-${idx}`}>{p}</React.Fragment>;
+  });
+}
+
+function renderBoldInline(text: string, h?: RefHandlers): React.ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((p, idx) =>
     p.startsWith("**") && p.endsWith("**") && p.length > 4 ? (
       <strong key={idx} className="font-semibold text-ink">
-        {p.slice(2, -2)}
+        {renderRefs(p.slice(2, -2), `b${idx}`, h)}
       </strong>
     ) : (
-      <React.Fragment key={idx}>{p}</React.Fragment>
+      <React.Fragment key={idx}>{renderRefs(p, `t${idx}`, h)}</React.Fragment>
     ),
   );
 }
 
-const FormattedAnswer: React.FC<{ text: string }> = ({ text }) => {
+const FormattedAnswer: React.FC<{ text: string; refs?: RefHandlers }> = ({ text, refs }) => {
   const lines = text.split("\n");
   return (
     <div data-testid="ask-answer-text" className="text-sm text-ink space-y-1.5 leading-relaxed">
@@ -37,11 +90,11 @@ const FormattedAnswer: React.FC<{ text: string }> = ({ text }) => {
           return (
             <div key={idx} className="flex items-start gap-2 pl-2">
               <span className="text-muted select-none">•</span>
-              <span className="min-w-0 flex-1">{renderBoldInline(bulletMatch[1])}</span>
+              <span className="min-w-0 flex-1">{renderBoldInline(bulletMatch[1], refs)}</span>
             </div>
           );
         }
-        return <p key={idx}>{renderBoldInline(line)}</p>;
+        return <p key={idx}>{renderBoldInline(line, refs)}</p>;
       })}
     </div>
   );
@@ -58,7 +111,7 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
   const [livePlan, setLivePlan] = useState<Array<{ tool: string; args: Record<string, unknown>; purpose?: string }>>([]);
   const [liveSteps, setLiveSteps] = useState<Array<Record<string, unknown>>>([]);
   const [liveSubgraph, setLiveSubgraph] = useState<{ nodes: SgNode[]; edges: SgEdge[] }>({ nodes: [], edges: [] });
-  const [liveCitations, setLiveCitations] = useState<string[]>([]);
+  const [liveEvidence, setLiveEvidence] = useState<AskCitationsEvent>({});
   const [result, setResult] = useState<AskResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [activeHop, setActiveHop] = useState<number | "all">("all");
@@ -89,7 +142,7 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
     setLivePlan([]);
     setLiveSteps([]);
     setLiveSubgraph({ nodes: [], edges: [] });
-    setLiveCitations([]);
+    setLiveEvidence({});
     setResult(null);
     setActiveHop("all");
     setHoveredNodeId(null);
@@ -109,7 +162,7 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
             edges: sg.edges || [],
           }),
         onToken: (d) => setStreamedText((prev) => prev + (d.text || "")),
-        onCitations: (c) => setLiveCitations(c.paper_ids || []),
+        onCitations: (c) => setLiveEvidence(c || {}),
         onAmbiguous: (res) => {
           setResult(res as unknown as AskResult);
           setStatusMsg("Disambiguation required");
@@ -247,7 +300,19 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
 
   const plan = result?.plan?.length ? result.plan : livePlan;
   const steps = result?.steps?.length ? result.steps : liveSteps;
-  const citations = result?.citations?.length ? result.citations : liveCitations;
+  const citations: AskCitation[] = (result?.evidence_labelling ? result.citations : liveEvidence.citations) || [];
+  const resultPapers: AskResultPapers[] =
+    (result?.evidence_labelling ? result.result_papers : liveEvidence.result_papers) || [];
+  const refHandlers: RefHandlers = {
+    onStep: (n) => {
+      const el = document.getElementById(`ask-step-${n}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        el.focus({ preventScroll: true });
+      }
+    },
+    onPaper: onOpenNode360,
+  };
   const linkedList = Array.isArray(result?.linked) ? result.linked : liveLinked;
 
   return (
@@ -374,25 +439,80 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
                 )}
               </div>
               {streamedText ? (
-                <FormattedAnswer text={streamedText} />
+                <FormattedAnswer text={streamedText} refs={refHandlers} />
               ) : (
                 <p data-testid="ask-answer-text" className="text-sm text-muted">
                   Executing graph steps before grounded synthesis…
                 </p>
               )}
-              {citations.length > 0 && (
-                <div data-testid="ask-citations" className="mt-3 pt-2 border-t border-rule text-xs">
-                  <span className="font-semibold mr-2">Cited Papers:</span>
-                  {citations.map((pid) => (
-                    <button
-                      key={pid}
-                      type="button"
-                      onClick={() => onOpenNode360(pid)}
-                      className="inline-block mr-1.5 mb-1 px-1.5 py-0.5 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
-                    >
-                      {pid}
-                    </button>
-                  ))}
+              {(citations.length > 0 || resultPapers.length > 0) && (
+                <div className="mt-3 pt-2 border-t border-rule text-xs space-y-2">
+                  <div data-testid="ask-citations">
+                    <div className="flex items-center gap-1 mb-1">
+                      <span className="font-semibold">Citations</span>
+                      <span className="text-muted">({citations.length})</span>
+                      <MetricTooltip
+                        label="Citation"
+                        definition="A specific paper supporting a specific sentence: the trace returns that paper as its own row (papers tool) or as an abstract excerpt (local search). Aggregate claims (counts, shares, rankings) point to their trace step instead."
+                      />
+                    </div>
+                    {citations.length === 0 ? (
+                      <p data-testid="ask-citations-empty" className="text-muted">
+                        No sentence cites a single paper: the claims are aggregates over the graph, and each points to the trace step that computed it.
+                      </p>
+                    ) : (
+                      <ul className="space-y-1">
+                        {citations.map((c, i) => (
+                          <li key={`${c.paper_id}-${i}`} data-testid="ask-citation-item" className="flex items-start gap-2">
+                            <button
+                              type="button"
+                              onClick={() => onOpenNode360(c.paper_id)}
+                              className="shrink-0 px-1.5 py-0.5 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
+                            >
+                              {c.paper_id}
+                            </button>
+                            <span className="text-muted min-w-0">supports: &ldquo;{c.sentence}&rdquo;</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  {resultPapers.length > 0 && (
+                    <div data-testid="ask-result-papers">
+                      <div className="flex items-center gap-1 mb-1">
+                        <span className="font-semibold">Papers in this result</span>
+                        <MetricTooltip
+                          label="Papers in this result"
+                          definition="Example papers behind a step's count or list, returned with the graph rows. They illustrate the result; a single paper's abstract usually does not state the aggregate claim, so they are not shown as citations."
+                        />
+                      </div>
+                      {resultPapers.map((rp) => (
+                        <div key={rp.step} data-testid="ask-result-papers-step" className="mb-1">
+                          <button
+                            type="button"
+                            onClick={() => refHandlers.onStep(rp.step)}
+                            className="mr-1.5 text-muted underline decoration-dotted"
+                          >
+                            Step {rp.step}
+                            {rp.tool ? ` · ${rp.tool}` : ""} · {rp.paper_ids.length} example paper{rp.paper_ids.length === 1 ? "" : "s"}
+                          </button>
+                          {rp.paper_ids.slice(0, 8).map((pid) => (
+                            <button
+                              key={pid}
+                              type="button"
+                              onClick={() => onOpenNode360(pid)}
+                              className="inline-block mr-1.5 mb-1 px-1.5 py-0.5 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
+                            >
+                              {pid}
+                            </button>
+                          ))}
+                          {rp.paper_ids.length > 8 && (
+                            <span className="text-faint">+{rp.paper_ids.length - 8} more</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </Panel>
@@ -410,7 +530,13 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
               )}
               <div data-testid="ask-trace" className="space-y-2.5 text-xs max-h-96 overflow-y-auto">
                 {steps.map((st: Record<string, unknown>, i) => (
-                  <div key={i} className="p-2.5 rounded border border-border bg-ground space-y-1">
+                  <div
+                    key={i}
+                    id={`ask-step-${Number(st.step ?? i + 1)}`}
+                    tabIndex={-1}
+                    data-testid="ask-trace-step"
+                    className="p-2.5 rounded border border-border bg-ground space-y-1 focus:outline focus:outline-1 focus:outline-[var(--accent)]"
+                  >
                     <div className="flex justify-between font-mono text-[11px]">
                       <span className="font-semibold">Step {i + 1}: {String(st.tool)}</span>
                       <span className="text-muted">{Array.isArray(st.rows) ? `${st.rows.length} rows` : ""}</span>

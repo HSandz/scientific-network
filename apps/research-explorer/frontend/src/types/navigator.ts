@@ -261,6 +261,26 @@ export interface CommunitiesResponse {
   }>;
 }
 
+export interface AskCitation {
+  paper_id: string;
+  step?: number | null;
+  sentence: string;
+}
+
+export interface AskResultPapers {
+  step: number;
+  tool?: string;
+  role?: string;
+  paper_ids: string[];
+}
+
+export interface AskCitationsEvent {
+  paper_ids?: string[];
+  citations?: AskCitation[];
+  result_papers?: AskResultPapers[];
+  evidence_labelling?: string | null;
+}
+
 export interface AskResult {
   mode: string;
   answer: string;
@@ -276,7 +296,12 @@ export interface AskResult {
     nodes: Array<{ id: string; label?: string; name?: string; hop?: number }>;
     edges: Array<{ source: string; target: string; relation?: string; support_count?: number; hop?: number }>;
   };
-  citations: string[];
+  /** Papers that directly back a specific sentence (paper row or abstract excerpt). */
+  citations: AskCitation[];
+  /** Example papers behind each step's count or list; not evidence for a sentence. */
+  result_papers?: AskResultPapers[];
+  paper_ids?: string[];
+  evidence_labelling?: string;
   faithfulness: { passed: boolean; errors: string[] };
   linked: Record<string, unknown>;
   ambiguous: Array<{ slot: string; query: string; candidates: Array<{ id: string; name: string; label: string }> }>;

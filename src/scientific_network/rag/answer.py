@@ -150,6 +150,9 @@ def _extract_candidate_entities(answer: str) -> list[str]:
     def _add(raw: str) -> None:
         cleaned = raw.replace("**", "").strip(" \t\r\n.,;:!?\"'()[]")
         cleaned = re.sub(r"\s*\([^()]*\d[^()]*\)\s*$", "", cleaned).strip()
+        # A list head cut at a colon inside a parenthetical ("X (lift: 3.2)" -> "X (lift") names X;
+        # drop the unclosed parenthetical fragment (2026-11-26).
+        cleaned = re.sub(r"\s*\([^()]*$", "", cleaned).strip()
         if len(cleaned) < 2 or not re.search(r"[A-Za-z]", cleaned):
             return
         key = _norm_text(cleaned)
@@ -294,6 +297,180 @@ _ANSWER_SYS = (
 )
 
 
+# rag-answer-v4 / rag-local-answer-v3 (2026-11-26, WORK-2026-11-26-001): separate citations from
+# "papers in this result". Aggregate claims point to the trace step; a paper ID is cited only for a
+# sentence about that specific paper. The qa-eval-v1 benchmark ran rag-answer-v3 / rag-local-answer-v2.
+_ANSWER_SYS_V4 = (
+    "Answer the user question concisely using ONLY the retrieved graph trace below.\n"
+    "Rules:\n"
+    "- Every number you state MUST appear verbatim in the trace.\n"
+    "- Mention ONLY organizations, researchers, methods, tasks, datasets, and topics present in the trace or question; NEVER invent entities.\n"
+    "- Aggregate claims (counts, shares, growth, rankings, co-occurrence, or any list computed over many papers) point to the trace step that computed them, written as [step N] with N the step number in the trace. "
+    "Put [step N] at the end of each such sentence and after the introduction of each ranked or listed group, e.g. 'The organizations ranked by lift are [step 1]:'. Write each listed item as '- Name: the row's counts and metric values in words', keeping every count the rules below ask for. "
+    "NEVER attach paper IDs to aggregate claims: the papers listed with a step are example papers behind the count, not evidence for the sentence, and the interface lists them separately.\n"
+    "- Cite a paper ID in brackets, copied verbatim (e.g. [paper:aaai:2024:29823]), ONLY when the sentence states something about that specific paper "
+    "and the trace gives that paper as its own row or abstract excerpt. NEVER write placeholder or truncated citations such as [paper:...], [...], or ellipses inside brackets.\n"
+    "- For share-growth questions, report BOTH paper counts (k of n papers) and shares, plus the minimum-paper threshold stated in the step note.\n"
+    "- When a step shows top K of N deterministically ranked rows, state 'showing top K of N' cleanly; NEVER say the trace was truncated.\n"
+    "- If the trace stopped on an empty step, clearly state that no matching records were found rather than guessing."
+)
+
+_ANSWER_SYSTEMS: dict[str, str] = {
+    "rag-answer-v3": _ANSWER_SYS,
+    "rag-local-answer-v2": _ANSWER_SYS,
+    "rag-answer-v4": _ANSWER_SYS_V4,
+    "rag-local-answer-v3": _ANSWER_SYS_V4,
+}
+CURRENT_ANSWER_PROMPT = "rag-answer-v4"
+CURRENT_LOCAL_ANSWER_PROMPT = "rag-local-answer-v3"
+
+_STEP_REF_RE = re.compile(r"\[\s*steps?\s+(\d+)(?:\s*(?:,|and|&|-|–)\s*(\d+))*\s*\]", re.I)
+_STEP_NUM_RE = re.compile(r"\d+")
+
+
+def _step_numbers(trace_payload: Any) -> set[int]:
+    steps = trace_payload.get("steps") if isinstance(trace_payload, dict) else None
+    out: set[int] = set()
+    for idx, st in enumerate(steps or [], start=1):
+        try:
+            out.add(int(st.get("step", idx)))
+        except (TypeError, ValueError):
+            out.add(idx)
+    return out or {1}
+
+
+def check_step_references(answer: str, trace_payload: Any) -> list[str]:
+    """Every [step N] reference must name a step that exists in the trace."""
+    valid = _step_numbers(trace_payload)
+    errors: list[str] = []
+    for m in _STEP_REF_RE.finditer(answer):
+        for num in _STEP_NUM_RE.findall(m.group(0)):
+            if int(num) not in valid:
+                errors.append(f"step reference {num} not in trace")
+    return errors
+
+
+def _direct_paper_ids_for_step(step: dict[str, Any]) -> set[str]:
+    """Paper IDs that a step returns as their own rows (the step is *about* those papers)."""
+    direct: set[str] = set()
+    for row in step.get("rows") or []:
+        if not isinstance(row, dict):
+            continue
+        for key in ("id", "paper_id"):
+            val = row.get(key)
+            if isinstance(val, str) and _PAPER_ID_RE.fullmatch(val):
+                direct.add(val)
+    return direct
+
+
+_CHUNK_LINE_RE = re.compile(r"(?m)^- \[(paper:(?:aaai|ijcai):\d{4}:[A-Za-z0-9_.-]*[A-Za-z0-9_-])\]")
+
+
+def chunk_paper_ids(context: str) -> set[str]:
+    """Paper IDs whose abstract sentence was packed into a local-search context."""
+    return set(_CHUNK_LINE_RE.findall(context or ""))
+
+
+def _sentence_spans(text: str) -> list[tuple[int, int]]:
+    spans: list[tuple[int, int]] = []
+    start = 0
+    for m in re.finditer(r"(?<=[.!?])\s+|\n+", text):
+        spans.append((start, m.start()))
+        start = m.end()
+    spans.append((start, len(text)))
+    return [(a, b) for a, b in spans if text[a:b].strip()]
+
+
+def label_answer_evidence(
+    answer: str,
+    steps: list[dict[str, Any]],
+    *,
+    extra_direct: dict[int, set[str]] | None = None,
+) -> dict[str, Any]:
+    """Separate citations from papers in the result (2026-11-26 product change).
+
+    - ``citations``: a paper ID written next to a sentence, where the trace returns that paper as its
+      own row (``papers`` tool) or as an abstract excerpt (local search). Only these are shown as
+      citations.
+    - ``result_papers``: per step, the example papers behind a count or list.
+    - Inline paper IDs attached to aggregate claims are moved out of the sentence: the bracket is
+      rewritten to the ``[step N]`` that produced the papers, and the papers stay listed under
+      ``result_papers``.
+    """
+    direct_by_step: dict[int, set[str]] = {}
+    step_of_pid: dict[str, int] = {}
+    result_papers: list[dict[str, Any]] = []
+    for idx, st in enumerate(steps or [], start=1):
+        try:
+            sno = int(st.get("step", idx))
+        except (TypeError, ValueError):
+            sno = idx
+        direct = _direct_paper_ids_for_step(st) | set((extra_direct or {}).get(sno, set()))
+        direct_by_step[sno] = direct
+        pids = list(dict.fromkeys(st.get("paper_ids") or []))
+        for row in st.get("rows") or []:
+            if isinstance(row, dict):
+                for pid in row.get("paper_ids") or []:
+                    if isinstance(pid, str) and pid not in pids:
+                        pids.append(pid)
+        for pid in pids + sorted(direct):
+            step_of_pid.setdefault(pid, sno)
+        if pids:
+            result_papers.append({
+                "step": sno,
+                "tool": st.get("tool"),
+                "role": "papers_in_result",
+                "paper_ids": pids,
+            })
+    all_direct = {pid for d in direct_by_step.values() for pid in d}
+
+    moved: list[dict[str, Any]] = []
+
+    def _rewrite(m: re.Match[str]) -> str:
+        inner = m.group(1)
+        tokens = [t.strip() for t in re.split(r"[,;]+", inner) if t.strip()]
+        if not tokens or not any(_PAPER_ID_RE.fullmatch(t) for t in tokens):
+            return m.group(0)
+        keep: list[str] = []
+        step_refs: list[int] = []
+        for tok in tokens:
+            if _PAPER_ID_RE.fullmatch(tok) and tok not in all_direct:
+                sno = step_of_pid.get(tok)
+                moved.append({"paper_id": tok, "step": sno})
+                if sno is not None and sno not in step_refs:
+                    step_refs.append(sno)
+            else:
+                keep.append(tok)
+        parts: list[str] = []
+        if keep:
+            parts.append(f"[{', '.join(keep)}]")
+        if step_refs:
+            parts.append(f"[step {', '.join(str(n) for n in sorted(step_refs))}]")
+        return " ".join(parts)
+
+    rewritten = _BRACKET_RE.sub(_rewrite, answer)
+    # Collapse repeated identical step references produced by adjacent brackets.
+    rewritten = re.sub(r"(\[step [0-9, ]+\])(?:\s*\1)+", r"\1", rewritten)
+    rewritten = re.sub(r"[ \t]+([.,;:])", r"\1", rewritten)
+    rewritten = re.sub(r"[ \t]{2,}", " ", rewritten)
+
+    citations: list[dict[str, Any]] = []
+    seen: set[tuple[str, int]] = set()
+    for a, b in _sentence_spans(rewritten):
+        sentence = rewritten[a:b].strip()
+        for pid in _PAPER_ID_RE.findall(sentence):
+            if pid in all_direct and (pid, a) not in seen:
+                seen.add((pid, a))
+                citations.append({"paper_id": pid, "step": step_of_pid.get(pid), "sentence": sentence})
+    return {
+        "answer": rewritten,
+        "citations": citations,
+        "result_papers": result_papers,
+        "moved_inline_paper_ids": moved,
+        "labelling_version": "evidence-labels-v1",
+    }
+
+
 _NOISY_ROW_KEYS = frozenset({
     "edge_id",
     "source_id",
@@ -397,12 +574,15 @@ def compose_grounded_answer(
                 "Rewrite using ONLY exact numbers, entity names, and verbatim paper IDs present in the trace (no [paper:...] placeholders)."
             )
         try:
-            res = llm.complete(prompt_version=pv, system=_ANSWER_SYS, user=user_msg, max_tokens=700)
+            system = _ANSWER_SYSTEMS.get(prompt_version, _ANSWER_SYS)
+            res = llm.complete(prompt_version=pv, system=system, user=user_msg, max_tokens=700)
             ans = res.content.strip()
         except LLMError as exc:
             last_errs = [str(exc)]
             continue
         errs = verify_answer_faithfulness(ans, trace_payload, question)
+        if _ANSWER_SYSTEMS.get(prompt_version) is _ANSWER_SYS_V4:
+            errs += check_step_references(ans, prompt_trace)
         if not errs:
             return {
                 "answer": ans,
@@ -419,6 +599,26 @@ def compose_grounded_answer(
         "faithfulness_errors": last_errs,
         "attempts": 2,
         "ai_generated_label": "AI-generated from graph data",
+    }
+
+
+def _label_fields(labels: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "citations": labels["citations"],
+        "result_papers": labels["result_papers"],
+        "moved_inline_paper_ids": labels["moved_inline_paper_ids"],
+        "evidence_labelling": labels["labelling_version"],
+    }
+
+
+def _citations_event(paper_ids: list[str], labels: dict[str, Any]) -> dict[str, Any]:
+    """SSE payload: ``paper_ids`` (all papers touched, kept for older clients), direct citations and
+    the per-step papers in the result."""
+    return {
+        "paper_ids": list(paper_ids or []),
+        "citations": labels["citations"],
+        "result_papers": labels["result_papers"],
+        "evidence_labelling": labels["labelling_version"],
     }
 
 
@@ -467,6 +667,8 @@ def stream_ask(
     vector_store: SQLiteVectorStore | None = None,
     embed_fn: Callable[[str], np.ndarray] | None = None,
     reports_path: Path = Path("reports/final-exam/rag-v1/community-reports.json"),
+    answer_prompt_version: str = CURRENT_ANSWER_PROMPT,
+    local_answer_prompt_version: str = CURRENT_LOCAL_ANSWER_PROMPT,
 ) -> Iterator[dict[str, Any]]:
     """Stream SSE-friendly stage events progressively as work happens.
 
@@ -508,7 +710,6 @@ def stream_ask(
     if chosen_mode == "global":
         yield {"event": "stage", "data": {"stage": "global_map_reduce", "mode": "global"}}
         g_res = global_search(question, llm=llm, reports_path=reports_path, vector_store=vector_store, embed_fn=embed_fn)
-        errs = verify_answer_faithfulness(g_res["answer"], g_res["points"], question)
         step = {
             "step": 1,
             "tool": "community_report",
@@ -521,10 +722,12 @@ def stream_ask(
             "paper_ids": g_res["paper_ids"],
             "evidence_ids": [],
         }
+        labels = label_answer_evidence(g_res["answer"], [step])
+        errs = verify_answer_faithfulness(labels["answer"], g_res["points"], question)
         yield {"event": "step", "data": step}
         yield {"event": "subgraph", "data": {"nodes": [], "edges": []}}
-        yield from _emit_answer_tokens(g_res["answer"])
-        yield {"event": "citations", "data": {"paper_ids": g_res["paper_ids"]}}
+        yield from _emit_answer_tokens(labels["answer"])
+        yield {"event": "citations", "data": _citations_event(g_res["paper_ids"], labels)}
         yield {
             "event": "done",
             "data": {
@@ -536,12 +739,13 @@ def stream_ask(
                 "plan": [],
                 "steps": [step],
                 "stopped_reason": None,
-                "answer": g_res["answer"],
+                "answer": labels["answer"],
                 "faithfulness_passed": len(errs) == 0,
                 "faithfulness_errors": errs,
                 "subgraph_nodes": [],
                 "subgraph_edges": [],
                 "paper_ids": g_res["paper_ids"],
+                **_label_fields(labels),
                 "ai_generated_label": "AI-generated from graph data",
             },
         }
@@ -565,9 +769,12 @@ def stream_ask(
         yield {"event": "step", "data": step}
         yield {"event": "subgraph", "data": {"nodes": l_res["subgraph_nodes"], "edges": l_res["subgraph_edges"]}}
         yield {"event": "stage", "data": {"stage": "synthesizing", "mode": "local"}}
-        composed = compose_grounded_answer(question, l_res, llm, prompt_version="rag-local-answer-v2")
-        yield from _emit_answer_tokens(composed["answer"])
-        yield {"event": "citations", "data": {"paper_ids": l_res["paper_ids"]}}
+        composed = compose_grounded_answer(question, l_res, llm, prompt_version=local_answer_prompt_version)
+        labels = label_answer_evidence(
+            composed["answer"], [step], extra_direct={1: chunk_paper_ids(l_res.get("context", ""))}
+        )
+        yield from _emit_answer_tokens(labels["answer"])
+        yield {"event": "citations", "data": _citations_event(l_res["paper_ids"], labels)}
         yield {
             "event": "done",
             "data": {
@@ -579,12 +786,13 @@ def stream_ask(
                 "plan": [],
                 "steps": [step],
                 "stopped_reason": None,
-                "answer": composed["answer"],
+                "answer": labels["answer"],
                 "faithfulness_passed": composed["faithfulness_passed"],
                 "faithfulness_errors": composed["faithfulness_errors"],
                 "subgraph_nodes": l_res["subgraph_nodes"],
                 "subgraph_edges": l_res["subgraph_edges"],
                 "paper_ids": l_res["paper_ids"],
+                **_label_fields(labels),
                 "ai_generated_label": "AI-generated from graph data",
             },
         }
@@ -627,10 +835,12 @@ def stream_ask(
             question,
             {"steps": [{k: s[k] for k in ("step", "tool", "row_count", "rows", "note", "paper_ids")} for s in exec_res["steps"]]},
             llm,
+            prompt_version=answer_prompt_version,
         )
 
-    yield from _emit_answer_tokens(composed["answer"])
-    yield {"event": "citations", "data": {"paper_ids": exec_res["paper_ids"]}}
+    labels = label_answer_evidence(composed["answer"], exec_res["steps"])
+    yield from _emit_answer_tokens(labels["answer"])
+    yield {"event": "citations", "data": _citations_event(exec_res["paper_ids"], labels)}
     yield {
         "event": "done",
         "data": {
@@ -643,12 +853,13 @@ def stream_ask(
             "steps": exec_res["steps"],
             "stopped_reason": exec_res["stopped_reason"],
             "stopped_at_step": exec_res["stopped_at_step"],
-            "answer": composed["answer"],
+            "answer": labels["answer"],
             "faithfulness_passed": composed["faithfulness_passed"],
             "faithfulness_errors": composed["faithfulness_errors"],
             "subgraph_nodes": exec_res["subgraph_nodes"],
             "subgraph_edges": exec_res["subgraph_edges"],
             "paper_ids": exec_res["paper_ids"],
+            **_label_fields(labels),
             "ai_generated_label": composed["ai_generated_label"],
         },
     }

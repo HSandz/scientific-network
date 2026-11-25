@@ -181,6 +181,9 @@ def run_dev_eval_and_demos(
     *,
     use_llm_cache: bool = True,
     uncached_out: Path | None = None,
+    demos_only: bool = False,
+    llm_base_url: str | None = None,
+    llm_log_path: Path | None = None,
 ) -> dict[str, Any]:
     """Run Phase 4 evaluation on kept development questions ONLY, then cache scripted demo traces."""
     assert_demos_disjoint_from_test()
@@ -196,6 +199,10 @@ def run_dev_eval_and_demos(
     sg_cfg = cfg.get("share_growth") or {}
     backend = Neo4jToolBackend()
     llm_cfg = dict(cfg["llm"])
+    if llm_base_url:
+        llm_cfg["base_url"] = llm_base_url
+    if llm_log_path is not None:
+        llm_cfg["log_path"] = str(llm_log_path)
     if not use_llm_cache:
         llm_cfg["cache_dir"] = None
     llm = LLMClient(LLMConfig.from_mapping(llm_cfg))
@@ -247,7 +254,7 @@ def run_dev_eval_and_demos(
 
     try:
         dev_items: list[dict[str, Any]] = []
-        for r in dev_refs:
+        for r in ([] if demos_only else dev_refs):
             res, timing = _run_stream_timed(r["text"], "auto")
             scored = _score_dev_item(r, res)
             scored["mode"] = res.get("mode")
@@ -331,7 +338,8 @@ def run_dev_eval_and_demos(
             (out_dir / "dev-eval.json").write_text(json.dumps(existing_dev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             return {"dev_eval": by_hop, "demos_timing": demo_summary, "uncached_out": str(uncached_out)}
 
-        (out_dir / "dev-eval.json").write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        if not demos_only:
+            (out_dir / "dev-eval.json").write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         demo_payload = {
             "model": cfg["llm"]["model"],
@@ -339,7 +347,7 @@ def run_dev_eval_and_demos(
             "demos": demos_out,
         }
         (out_dir / "demo-cache.json").write_text(json.dumps(demo_payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-        return {"dev_eval": by_hop, "demos_cached": len(demos_out)}
+        return {"dev_eval": by_hop, "demos_cached": len(demos_out), "demos_only": demos_only}
     finally:
         backend.close()
         llm.close()
@@ -353,6 +361,9 @@ if __name__ == "__main__":
     parser.add_argument("--references", type=Path, default=Path("data/manifests/qa-benchmark-v1/references-v1.jsonl"))
     parser.add_argument("--no-llm-cache", action="store_true", help="Disable LLM response cache for uncached latency timing.")
     parser.add_argument("--uncached-out", type=Path, default=None, help="Write uncached timing summary without overwriting demo-cache.json.")
+    parser.add_argument("--demos-only", action="store_true", help="Re-cache the scripted demos only; leave dev-eval.json unchanged.")
+    parser.add_argument("--llm-base-url", default=None, help="Override the configured OpenAI-compatible base URL.")
+    parser.add_argument("--llm-log-path", type=Path, default=None, help="Override the configured LLM call log path.")
     args = parser.parse_args()
     print(
         json.dumps(
@@ -361,6 +372,9 @@ if __name__ == "__main__":
                 references_path=args.references,
                 use_llm_cache=not args.no_llm_cache,
                 uncached_out=args.uncached_out,
+                demos_only=args.demos_only,
+                llm_base_url=args.llm_base_url,
+                llm_log_path=args.llm_log_path,
             ),
             indent=2,
         )

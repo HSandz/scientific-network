@@ -210,11 +210,18 @@ def test_node360_explorer_enriched_and_ask_cache_and_sse(nav_client: TestClient)
     body = ask_json.json()
     assert body["from_cache"] is True
     assert body["faithfulness"]["passed"] is True
+    # 2026-11-26 evidence labelling: a legacy cached paper-ID list is relabelled from the trace. The
+    # share claim is an aggregate and its paper is not a row of any step, so it is not a citation.
+    assert body["evidence_labelling"] == "evidence-labels-v1"
+    assert body["citations"] == []
+    assert "paper:aaai:2024:1" not in body["answer"]
+    assert isinstance(body["result_papers"], list)
 
     ask_sse = nav_client.post("/api/ask", json={"question": q, "mode": "auto", "stream": True, "use_cache": True})
     assert ask_sse.status_code == 200
     assert "text/event-stream" in ask_sse.headers["content-type"]
     assert "event: final" in ask_sse.text
+    assert '"result_papers"' in ask_sse.text and '"evidence_labelling"' in ask_sse.text
 
     # Guardrails: /api/paths still enforces 4096 byte limit, /api/ask allows up to 8192
     assert nav_client.post("/api/paths", content=b"x" * 4097).status_code == 413

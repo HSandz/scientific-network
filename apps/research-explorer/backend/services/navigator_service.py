@@ -18,7 +18,7 @@ SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from scientific_network.rag.answer import run_ask, stream_ask  # noqa: E402
+from scientific_network.rag.answer import label_answer_evidence, run_ask, stream_ask  # noqa: E402
 from scientific_network.rag.dev_eval import SCRIPTED_DEMO_QUESTIONS  # noqa: E402
 from scientific_network.rag.llm import LLMClient, LLMConfig  # noqa: E402
 from scientific_network.rag.sqlite_vectors import SQLiteVectorStore  # noqa: E402
@@ -1357,8 +1357,18 @@ class NavigatorService:
                 "nodes": list(out.get("subgraph_nodes") or []),
                 "edges": list(out.get("subgraph_edges") or []),
             }
-        if "citations" not in out:
-            out["citations"] = list(out.get("paper_ids") or [])
+        # 2026-11-26 evidence labelling: ``citations`` are only papers that directly back a sentence;
+        # ``result_papers`` are the example papers behind a step's count or list. Results cached before
+        # the change (plain paper-ID lists) are relabelled deterministically from their trace.
+        if not out.get("evidence_labelling"):
+            labels = label_answer_evidence(str(out.get("answer") or ""), list(out.get("steps") or []))
+            out["answer"] = labels["answer"]
+            out["citations"] = labels["citations"]
+            out["result_papers"] = labels["result_papers"]
+            out["moved_inline_paper_ids"] = labels["moved_inline_paper_ids"]
+            out["evidence_labelling"] = labels["labelling_version"]
+        out.setdefault("result_papers", [])
+        out.setdefault("citations", [])
         if "faithfulness" not in out:
             out["faithfulness"] = {
                 "passed": bool(out.get("faithfulness_passed", True)),
@@ -1376,6 +1386,15 @@ class NavigatorService:
             ]
         out.setdefault("ai_generated_label", "AI-generated from graph data")
         return out
+
+    @staticmethod
+    def _citations_payload(res: dict[str, Any]) -> dict[str, Any]:
+        return {
+            "paper_ids": list(res.get("paper_ids") or []),
+            "citations": list(res.get("citations") or []),
+            "result_papers": list(res.get("result_papers") or []),
+            "evidence_labelling": res.get("evidence_labelling"),
+        }
 
     def list_ask_demos(self) -> dict[str, Any]:
         cache_payload = self._load_demo_cache()
@@ -1485,7 +1504,7 @@ class NavigatorService:
                 ans = cached.get("answer", "")
                 if ans:
                     yield {"event": "token", "data": {"text": ans}}
-                yield {"event": "citations", "data": {"paper_ids": cached.get("citations", [])}}
+                yield {"event": "citations", "data": self._citations_payload(cached)}
                 yield {"event": "final", "data": cached}
                 return
 
@@ -1526,5 +1545,5 @@ class NavigatorService:
                 yield {"event": "subgraph", "data": fb.get("subgraph", {"nodes": [], "edges": []})}
             if fb.get("answer"):
                 yield {"event": "token", "data": {"text": fb["answer"]}}
-            yield {"event": "citations", "data": {"paper_ids": fb.get("citations", [])}}
+            yield {"event": "citations", "data": self._citations_payload(fb)}
             yield {"event": "final", "data": fb}

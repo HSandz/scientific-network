@@ -39,3 +39,32 @@ Citation A–B Cohen's kappa (AI-assessed): `0.6199` (disagreements adjudicated 
 | S4_multihop | 47 / 14 / 29 | 0.5222 | 22 (0.4889) |
 
 Global pairwise A–B Cohen's kappa (AI-assessed): `0.7988`; disagreements resolved by C: `26`; position-inconsistent pairs: `4` / `90`.
+
+## Dated notes added after the evaluation
+
+These notes were added later. They do not change any figure above; no system was re-run on a test
+question.
+
+### 2026-11-26 — product citation labelling changed after this evaluation (WORK-2026-11-26-001)
+
+The figures above describe the product as evaluated (code commit `433903d`, results committed up to
+`e572055`). In that version the multi-hop answer prompt `rag-answer-v3` attached paper IDs returned
+with graph rows to sentences, including aggregate claims such as counts and shares. Single abstracts
+rarely state such claims, which explains S4's AI-assessed citation validity of 9/25.
+
+After the evaluation, the product changed:
+
+- **Answer prompts.** `rag-answer-v4` and `rag-local-answer-v3`: aggregate claims point to the trace
+  step that computed them, written as `[step N]`. A paper ID is written only when the sentence is
+  about that specific paper.
+- **Evidence labelling.** `evidence-labels-v1`, in `label_answer_evidence` in
+  `src/scientific_network/rag/answer.py`. Only a paper that the trace returns as its own row (the
+  `papers` tool) or as an abstract excerpt (local search) is shown as a **citation**, together with
+  the sentence it supports. Every other paper is listed as **papers in this result**: the example
+  papers behind a step's count or list. Inline IDs on aggregate claims are rewritten to `[step N]`.
+- **Faithfulness verifier.** It now drops an unclosed parenthetical fragment from list heads, so
+  `X (lift: 3.2)` checks the entity `X`.
+
+The S4 citation-validity figure of 0.36 therefore describes the earlier labelling. It was not
+re-measured under the new labelling. The automatic faithfulness figures were computed with the
+earlier verifier. To reproduce this evaluation, check out commit `e572055`.

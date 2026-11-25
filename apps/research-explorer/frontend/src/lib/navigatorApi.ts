@@ -1,4 +1,5 @@
 import {
+  AskCitationsEvent,
   AskDemoItem,
   AskResult,
   CommunitiesResponse,
@@ -45,7 +46,7 @@ export interface AskStreamHandlers {
   onSubgraph?: (data: { nodes?: Array<{ id: string; label?: string; name?: string; hop?: number }>; edges?: Array<{ source: string; target: string; relation?: string; support_count?: number; hop?: number }> }) => void;
   onAmbiguous?: (data: Record<string, unknown>) => void;
   onToken?: (data: { text: string }) => void;
-  onCitations?: (data: { paper_ids?: string[] }) => void;
+  onCitations?: (data: AskCitationsEvent) => void;
   onFinal?: (data: AskResult) => void;
   onError?: (err: string) => void;
 }

@@ -7,7 +7,9 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SCREENSHOT_DIR =
   process.env.NAVIGATOR_SCREENSHOT_DIR ||
   path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/screenshots");
-const TIMINGS_PATH = path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/load-timings.json");
+const TIMINGS_PATH =
+  process.env.NAVIGATOR_TIMINGS_PATH ||
+  path.resolve(HERE, "../../../../reports/runs/WORK-2026-11-25-006/load-timings.json");
 
 async function expectChartRendered(page: Page, label: string) {
   const container = page.locator(`[data-chart-label="${label}"]`);
@@ -128,7 +130,26 @@ test.describe("Research Trend Navigator pages (M4)", () => {
     await expect(page.getByTestId("faithfulness-badge")).toContainText("Verified");
     await expect(page.getByTestId("ask-trace")).toBeVisible();
     await expect(page.getByTestId("ask-subgraph")).toBeVisible();
+
+    // 2026-11-26 evidence labelling: the share-growth answer is an aggregate claim, so it points to its
+    // trace step and lists example papers separately; nothing is labelled a citation.
+    const stepRefs = page.getByTestId("answer-step-ref");
+    await expect(stepRefs.first()).toBeVisible();
+    await expect(page.getByTestId("answer-citation-ref")).toHaveCount(0);
+    await expect(page.getByTestId("ask-citations")).toContainText("Citations");
+    await expect(page.getByTestId("ask-citations-empty")).toBeVisible();
+    await expect(page.getByTestId("ask-result-papers")).toContainText("Papers in this result");
+    await expect(page.getByTestId("ask-result-papers-step").first()).toContainText("Step 2");
+    await expect(page.getByTestId("page-ask")).not.toContainText("Cited Papers");
+    await stepRefs.first().click();
+    await expect(page.locator("#ask-step-2")).toBeFocused();
     await page.screenshot({ path: path.join(SCREENSHOT_DIR, "06-ask-demo-trace.png") });
+
+    // Co-occurrence demo: 0 inline paper IDs remain in the answer; both steps list their example papers.
+    await page.getByTestId("demo-btn-demo-03-method-task-cooccurrence").click();
+    await expect(page.getByTestId("faithfulness-badge")).toContainText("Verified", { timeout: 30_000 });
+    await expect(page.getByTestId("ask-answer-text")).not.toContainText("paper:");
+    await expect(page.getByTestId("ask-result-papers-step")).toHaveCount(2);
 
     await page.getByTestId("tab-ask").focus();
     await page.keyboard.press("Tab");
