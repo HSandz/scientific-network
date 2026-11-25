@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from dataclasses import fields as dataclass_fields
 import hashlib
 from itertools import combinations
 import json
@@ -391,7 +392,9 @@ def run_benchmark_systems(
     embed_fn = lambda text: st_model.encode([text], normalize_embeddings=True, show_progress_bar=False)[0]
 
     backend = Neo4jToolBackend()
-    llm = LLMClient(LLMConfig.from_mapping(cfg["llm"]))
+    valid_llm_keys = {f.name for f in dataclass_fields(LLMConfig)}
+    llm_cfg_dict = {k: v for k, v in cfg["llm"].items() if k in valid_llm_keys}
+    llm = LLMClient(LLMConfig.from_mapping(llm_cfg_dict))
     vstore = SQLiteVectorStore(Path(cfg["vectors_sqlite_path"]))
     toolset = RAGToolset(
         backend,
