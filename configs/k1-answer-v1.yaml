@@ -1,0 +1,135 @@
+# K1 answer-quality arm of the language-model comparison (specification §6.1).
+# Committed BEFORE any model is run under this protocol (WORK-2026-11-26-001).
+#
+# Scope: the 19 kept DEVELOPMENT questions of qa-benchmark-v1 only. No test question
+# is loaded or run; the runner refuses any non-development split.
+# Same pipeline as qa-eval-v1 S4 (full multi-hop system, automatic mode), same
+# unified entity resolver and numeric exact-match scorer, identical decoding.
+# Only the served model changes. All figures are DEVELOPMENT figures.
+
+protocol_version: k1-answer-v1
+frozen_before_run: true
+# The RAG code (src/scientific_network/rag/) is byte-identical to the qa-eval-v1 code
+# commit 433903d; the K1 runner pins the HEAD commit at run time in its outputs.
+pipeline_reference_commit: 433903ddde134e6acd9a37b534646b601f9cac5e
+pipeline: S4_multihop
+scorer: qa-eval-v1 unified entity resolver + numeric exact match (src/scientific_network/evaluation/qa_eval.py)
+
+# Reuse qa-eval-v1 graph, analysis, RAG artifacts, embeddings and scoring settings.
+base_protocol_config: configs/qa-eval-v1.yaml
+rag_config_path: configs/rag-v1.yaml
+
+benchmark:
+  questions_path: data/manifests/qa-benchmark-v1/questions.jsonl
+  references_path: data/manifests/qa-benchmark-v1/references-v1.jsonl
+  references_sha256: d2fcf2c0cba2fae7e5cfa7f6dd030971a9083604081ea4bebdb93ddf424b2c19
+  split: development
+  status_filter: kept
+  expected_counts:
+    total: 19
+    hop_1: 4
+    hop_2: 6
+    hop_3: 5
+    global: 4
+
+# Identical decoding for every model. The server runs one model at a time with the
+# same llama.cpp image, context (16384), parallel slots (2), KV type (q8_0) and
+# full GPU offload. Port 8081 is used because 8080 is occupied by an unrelated
+# local service on this machine; the port does not affect results.
+decoding:
+  temperature: 0.0
+  seed: 0
+  enable_thinking: false
+  max_tokens: 1200
+  timeout: 180.0
+  # Fresh, per-model cache directory: every call is uncached, so latency is cold.
+  fresh_cache_per_model: true
+
+server:
+  compose_file: ops/llm/compose.yaml
+  base_url: http://127.0.0.1:8081/v1
+  llm_port: 8081
+  ctx: 16384
+  parallel: 2
+  kv_type: q8_0
+  gpu_layers: 99
+
+models:
+  - key: qwen3.5-4b
+    alias: qwen3.5-4b-q4_k_m
+    env_file: ops/llm/qwen3.5-4b-q4km-live.env
+    hf_repo: Qwen/Qwen3.5-4B
+    gguf_repo: unsloth/Qwen3.5-4B-GGUF
+    gguf_revision: e87f176479d0855a907a41277aca2f8ee7a09523
+    gguf_sha256: 00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4
+    quantization: Q4_K_M
+    total_params_b: 4.66
+    eligible: true
+    role: chosen at M0
+  - key: gemma-4-e4b
+    alias: gemma-4-e4b-it-q4_k_m
+    env_file: ops/llm/gemma-4-e4b-q4km.env
+    hf_repo: google/gemma-4-E4B-it
+    gguf_repo: unsloth/gemma-4-E4B-it-GGUF
+    gguf_revision: bfc15c382204943c3a8fff0c750b94ae2364d7a3
+    gguf_sha256: 85a896a047553e842f25297ee5b031d64ff30147d9c4af17b1e4b394cd1fab87
+    quantization: Q4_K_M
+    total_params_b: 8.00
+    eligible: true
+    role: eligible alternative
+  - key: qwen3.5-9b
+    alias: qwen3.5-9b-q4_k_m
+    env_file: ops/llm/qwen3.5-9b-q4km.env
+    hf_repo: Qwen/Qwen3.5-9B
+    gguf_repo: unsloth/Qwen3.5-9B-GGUF
+    gguf_revision: 3885219b6810b007914f3a7950a8d1b469d598a5
+    gguf_sha256: 03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8
+    quantization: Q4_K_M
+    total_params_b: 9.65
+    eligible: false
+    role: reference only (above the 9.0B total-parameter rule)
+
+metrics:
+  answer_accuracy: >-
+    Mean factual score over the 15 kept development factual questions (hops 1-3):
+    set-F1 for set/ranked_list answers via the unified entity resolver, integer exact
+    match for number/year answers. Reported by hop class with seeded bootstrap 95% CIs
+    (seed 20261125, 2000 resamples). Global questions (4) have no single reference and
+    are reported only for status and faithfulness.
+  faithfulness: verify_answer_faithfulness pass rate over all 19 questions, Wilson 95% CI.
+  planner_json_validity: >-
+    Per question that reaches planning: the first rag-plan-v4 call returned schema-valid
+    JSON with no correction retry (first-pass valid); plus the rate valid after the
+    client's one correction retry or the planner's rag-plan-v4-retry; plus deterministic
+    fallback count. Also reported for the rag-parse-v2 question parser.
+  latency: first event (parsed/plan/step/disambiguate) and total wall time per question, uncached.
+  gpu_memory: >-
+    nvidia-smi memory.used sampled every 0.5 s during the run; reported as peak and as
+    the increase over the idle baseline measured before the model server starts (the
+    host display holds part of the GPU).
+  tokens_per_second: >-
+    Decode throughput from llama.cpp /metrics counters (tokens_predicted_total /
+    tokens_predicted_seconds_total deltas over the run) and end-to-end rate
+    (completion tokens / summed call latency) from the call log.
+
+decision_rule:
+  source: specification §6.1
+  reference_model_replacement: >-
+    Qwen3.5-9B (reference only) replaces the chosen model only with a gain of at least
+    10 points (0.10) in development answer accuracy over the best eligible model AND a
+    recorded team decision (D042 amendment). The agent reports the outcome and does not
+    switch models.
+  eligible_alternative: >-
+    Gemma-4-E4B-it is flagged for a user decision only if it beats Qwen3.5-4B by at
+    least 10 points in development answer accuracy within the runtime budget (first
+    event about 5 s, typical total about 30 s). Otherwise the M0 choice stands.
+  model_change_requires_user: true
+
+caveats:
+  - Development figures only; 15 factual questions, so differences of 10 points are within sampling noise.
+  - The parser, planner and answer prompts were developed with Qwen3.5-4B in the loop; the other models run the same prompts unchanged, which favours the 4B.
+  - The factual score measures agreement with the graph's edges, not truth.
+
+outputs:
+  results_dir: reports/final-exam/k1-answer
+  run_dir: reports/runs/WORK-2026-11-26-001/k1
