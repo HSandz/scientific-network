@@ -181,6 +181,13 @@ def parser() -> argparse.ArgumentParser:
     add_enrich_parser(commands)
     from scientific_network.analysis.fx_cli import add_fx_parser
     add_fx_parser(commands)
+    qa_refs = commands.add_parser("qa-references", help="compute deterministic Cypher reference answers for qa-benchmark-v1")
+    qa_refs.add_argument("--questions", type=Path, default=Path("data/manifests/qa-benchmark-v1/questions.jsonl"))
+    qa_refs.add_argument("--analysis-dir", type=Path, default=Path("reports/final-exam/analysis-v2"))
+    qa_refs.add_argument("--output", type=Path, default=Path("data/manifests/qa-benchmark-v1/references-v1.jsonl"))
+    qa_refs.add_argument("--receipt", type=Path, default=Path("data/manifests/qa-benchmark-v1/references-v1-receipt.json"))
+    qa_refs.add_argument("--neo4j-uri", type=str, default=None)
+    qa_refs.add_argument("--min-kept-test", type=int, default=60)
     split = commands.add_parser("split", help="freeze venue-balanced test/development/pilot membership")
     split.add_argument("--input", type=Path, required=True, help="corpus_manifest.jsonl")
     split.add_argument("--config", type=Path, default=Path("configs/quality.yaml"))
@@ -452,6 +459,17 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "final-analysis":
             from scientific_network.analysis.fx_cli import run_final_analysis
             result, exit_code = run_final_analysis(args)
+        elif args.command == "qa-references":
+            from scientific_network.evaluation.qa_references import compute_references
+            result = compute_references(
+                questions_path=args.questions,
+                analysis_dir=args.analysis_dir,
+                output_path=args.output,
+                receipt_path=args.receipt,
+                neo4j_uri=args.neo4j_uri,
+                min_kept_test=args.min_kept_test,
+            )
+            exit_code = 0
         elif args.command == "enrich":
             from scientific_network.enrich.cli import run_enrich
             result, exit_code = run_enrich(args)

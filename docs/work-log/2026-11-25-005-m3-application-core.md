@@ -30,12 +30,20 @@ Deliver M3 of the final-exam Research Trend Navigator (specification §6.2–6.5
   - **Fix 5 (N3 citation sparsity):** Added `in_corpus_citations`, `out_corpus_citations`, and `sparsity_note` to `ranking-N3.json` / `scores-N3.csv.gz`.
   - **Fix 6 (trend wording & display aliases):** Labelled trend classes `descriptive (p <= 0.10 per subject, no multiple-testing correction)` and built `trends/display-aliases.json` (32 display-only alias groups, no entity merging).
 
+- **Phase 1 (QA benchmark references frozen before any RAG/planner code):**
+  - Added `src/scientific_network/evaluation/qa_references.py`, CLI `research-network qa-references`, and `tests/test_qa_references.py` (2 passed).
+  - Executed deterministic parameterized Cypher against `neo4j-enriched` (`bolt://127.0.0.1:7690`, `enriched-cb371912e308`), freezing `data/manifests/qa-benchmark-v1/references-v1.jsonl` (SHA-256 `d2fcf2c0cba2fae7e5cfa7f6dd030971a9083604081ea4bebdb93ddf424b2c19`) and `references-v1-receipt.json`.
+  - Test kept: **69 / 80** (`>= 60` gate passed): hop-1 `14/20`, hop-2 `22/25`, hop-3 `18/20`, global `15/15` (11 dropped for `empty_reference_result`: 6 hop-1, 3 hop-2, 2 hop-3).
+  - Development kept: **19 / 20**: hop-1 `4/5`, hop-2 `6/6`, hop-3 `5/5`, global `4/4` (1 dropped: `qa-v1-d002`, `empty_reference_result`).
+
 ## Verification
 
 | Command/check | Outcome and exit code | Evidence/artifact |
 | --- | --- | --- |
 | `uv run pytest -q tests/test_fx_analysis.py` | exit 0; 16 passed | `tests/test_fx_analysis.py` |
 | `research-network final-analysis` (sanity, smallworld `--reuse-baselines`, ranking, communities, trends, report) with `configs/analysis-final-exam-v2.yaml` | exit 0; 20/20 v4 sanity match; N1/N2 2025 `C` equals headline | `reports/final-exam/analysis-v2/`, `reports/runs/WORK-2026-11-25-005/analysis-v2.log` |
+| `uv run pytest -q tests/test_qa_references.py` | exit 0; 2 passed | `tests/test_qa_references.py` |
+| `uv run research-network qa-references` (against Neo4j 7690) | exit 0; 69/80 test kept, 19/20 dev kept | `data/manifests/qa-benchmark-v1/references-v1.jsonl`, `references-v1-receipt.json` |
 
 ## Decisions
 
