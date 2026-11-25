@@ -108,6 +108,14 @@ def add_enrich_parser(commands) -> None:
     cooc.add_argument("--entity", help="entity id, e.g. method:Q...; prints its partners of --partner-type")
     cooc.add_argument("--partner-type", choices=["Method", "Task", "Dataset"])
     cooc.add_argument("--min-papers", type=int, default=1)
+    pv2 = stages.add_parser("audit-partof-v2", help="Build PART_OF packet v2 (same 50 frozen items, Wikidata statement shown) and its receipt")
+    pv2.add_argument("--audit-dir", type=Path, required=True)
+    pv2.add_argument("--graph", type=Path, required=True)
+    pv2.add_argument("--org-wikidata", type=Path, required=True)
+    pv2.add_argument("--fetch-manifest", type=Path, required=True)
+    pv2.add_argument("--raw-dir", type=Path, required=True)
+    pv2.add_argument("--receipt", type=Path, required=True)
+    pv2.add_argument("--packets-copy", type=Path, help="also copy the packets here (tracked location)")
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -163,6 +171,33 @@ def run_enrich(args) -> tuple[dict, int]:
         return score_audit(audit_dir=args.audit_dir, graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts,
                            test_path=args.test, slm_only_path=args.slm_only, output=args.output,
                            run_info=_json_load(args.run_info)), 0
+    if args.enrich_command == "audit-partof-v2":
+        import json as _json
+        import shutil
+        from hashlib import sha256 as _sha
+
+        from scientific_network.enrich.part_of_v2 import build_packets, statement_index
+        graph = _json.loads(args.graph.read_text(encoding="utf-8"))
+        result = build_packets(args.audit_dir, graph, _json.loads(args.org_wikidata.read_text()), statement_index(args.fetch_manifest, args.raw_dir))
+        if args.packets_copy:
+            args.packets_copy.mkdir(parents=True, exist_ok=True)
+            for info in result["packets"].values():
+                shutil.copy(info["path"], args.packets_copy)
+        v1 = _json.loads((args.audit_dir / "freeze-receipt.json").read_text())
+        receipt = {"purpose": "PART_OF packet v2, written before any v2 judgement", "supersedes": "PART_OF packet v1 for the part_of axis only",
+                   "v1_freeze_receipt": {"sample_sha256": v1["sample_sha256"], "items_sha256": v1["items_sha256"]},
+                   "why": "v1 showed only organization names and descriptions; 14 of 50 items were judged unclear because the names alone do not show an "
+                          "affiliation. That is a packet defect, not evidence about the data.",
+                   "created_after_v1_results_were_seen": True,
+                   "what_changed": "only the evidence shown (Wikidata property P749/P361, both QIDs and labels, the statement item URL, the raw-store response SHA-256 "
+                                   "and retrieval time); the same 50 items, no sample change, no other axis changed; the question wording is unchanged except that it "
+                                   "names the cited statement and lets general knowledge decide",
+                   "note_on_graph_evidence_hash": "the PART_OF evidence records in the graph carry one aggregate hash of all SPARQL responses; the packets show the "
+                                                  "per-statement raw response hash instead, found by re-reading the raw store",
+                   **result}
+        args.receipt.parent.mkdir(parents=True, exist_ok=True)
+        args.receipt.write_text(_json.dumps(receipt, indent=1, ensure_ascii=False) + "\n")
+        return receipt, 0
     if args.enrich_command == "cooccurrence":
         import json as _json
 

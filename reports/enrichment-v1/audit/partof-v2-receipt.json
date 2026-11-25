@@ -1,0 +1,27 @@
+{
+ "purpose": "PART_OF packet v2, written before any v2 judgement",
+ "supersedes": "PART_OF packet v1 for the part_of axis only",
+ "v1_freeze_receipt": {
+  "sample_sha256": "e3b318dd0b6795de2d9201e7a0e308146f09c8891738f11877fe1dd2e990dd15",
+  "items_sha256": "8a28c4f2b3df85f6988c6cdc5f5c854c31ffb5cf5b1f7f0b3e4176fe6721a3e8"
+ },
+ "why": "v1 showed only organization names and descriptions; 14 of 50 items were judged unclear because the names alone do not show an affiliation. That is a packet defect, not evidence about the data.",
+ "created_after_v1_results_were_seen": true,
+ "what_changed": "only the evidence shown (Wikidata property P749/P361, both QIDs and labels, the statement item URL, the raw-store response SHA-256 and retrieval time); the same 50 items, no sample change, no other axis changed; the question wording is unchanged except that it names the cited statement and lets general knowledge decide",
+ "note_on_graph_evidence_hash": "the PART_OF evidence records in the graph carry one aggregate hash of all SPARQL responses; the packets show the per-statement raw response hash instead, found by re-reading the raw store",
+ "packets": {
+  "A": {
+   "path": "data/processed/enrichment-audit-v1/packets-partof-v2/A-partof-v2.json",
+   "items": 50,
+   "sha256": "d7d1498885904184e017653cbc8b2dbdc0faf82420daefe4e6b6fe67b1bd259a"
+  },
+  "B": {
+   "path": "data/processed/enrichment-audit-v1/packets-partof-v2/B-partof-v2.json",
+   "items": 50,
+   "sha256": "c0fa024542263c1b21b4db67be0b7a24db0a947669a98efaa249d4cb9795537b"
+  }
+ },
+ "items": 50,
+ "items_without_raw_statement_hash": [],
+ "item_ids_sha256": "53e9f6eccfefd6227064341838ba1cc32167434adafbd4231bff5f87a48ee20b"
+}
