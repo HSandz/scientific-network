@@ -403,6 +403,14 @@ measured values and the baselines.
 
   The UI states which kind of group each one is.
 
+> **Note, 2026-11-25 (presentation rules for groups, analysis config `analysis-final-exam-v1`).** Organizations are rolled up to parents along
+> `PART_OF` only. `MEMBER_OF` is never used for a roll-up: its audit was ambiguous (reviewer A and B disagreed on whether membership of a
+> consortium node is membership, see `reports/enrichment-v2/quality.md`). Parents whose name contains "ministry" are skipped, so a ministry never
+> appears as the parent of a university. The reviewer counted 48 such `PART_OF` edges; the name rule reproduces that count, while a rule on the Wikidata
+> class label would flag 78 (it also flags Tsinghua University and US federal departments), so the declared rule is the name rule (a disclosed change
+> made before any roll-up was computed, recorded in the config). Community labels are c-TF-IDF terms only; generated titles stay in M3 (§6.2). The
+> "lab" group kind is an organization-anchored N1 community under the thresholds in the config, an approximation and not a verified research group.
+
 ### 5.4 Trend metrics (feed the application)
 
 For each topic, method, task and dataset, and each year:
