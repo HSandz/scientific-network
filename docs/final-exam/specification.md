@@ -238,6 +238,16 @@ Every edge carries `evidence_kind` (`extracted`, `wikidata`, `aggregated`),
 sentence locators. For aggregated edges it also carries the raw and fractional
 weights, following the v4 edge rules.
 
+> **Note, 2026-11-25 (measured on graph `enriched-c0f7d1dd4abd`).** The extracted `APPLIED_TO` (32 edges) and
+> `EVALUATED_ON` (4 edges) are sparse under the frozen rule: only 1,046 of 30,251 paper-level relations have both endpoints among
+> the 1,991 entity nodes (most heads are a paper's own named method), and 909 of the remaining 943 node pairs have a single
+> supporting paper. The application therefore answers method–task, method–dataset and task–dataset questions from **paper
+> co-occurrence**: papers that carry both entities through `USES_METHOD`, `ADDRESSES_TASK` and `USES_DATASET`, with the shared
+> papers as evidence (`enrich/cooccurrence.py`, `queries/enriched-method-task.cypher` and siblings; distribution in
+> `reports/enrichment-v1/cooccurrence.json`). This adds no predicate and no threshold. A v2 relation rule (for example one paper when
+> both endpoints share a sentence) is a separate, optional future decision: it would need tuning on development papers only, a dated
+> D042 amendment and a new E4 sample.
+
 ### 4.4 Enriched graph schema and build
 
 - v5-enriched = all v4 nodes and edges unchanged, plus the enrichment layer.

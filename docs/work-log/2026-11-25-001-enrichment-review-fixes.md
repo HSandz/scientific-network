@@ -16,7 +16,22 @@ the Wikidata statement shown, (3) record the real evaluator model, (4) preserve 
 
 ## Changes and findings
 
-(in progress)
+- **Item 4/3 first (the scratchpad can be wiped)**: it already had been. The evaluator working directories under the session scratchpad
+  (packet and guideline copies, answer copies, `run.log`, `last-message.txt`) no longer existed. Preserved instead: the 7 Codex rollout logs
+  (copied from `~/.codex/sessions/2026/11/25/`), the 8 Claude subagent transcripts (from `~/.claude/projects/.../subagents/`), the frozen packets,
+  the committed answers and a guideline copy, archived under ignored `reports/runs/WORK-2026-11-24-004/eval/`; hashes and IDs in
+  [`evaluator-evidence.json`](../../reports/enrichment-v1/audit/evaluator-evidence.json) (`enrich/evidence.py`). The lost files are listed in the
+  run-info correction. Models read from the logs: channel B `gpt-6.2-sol` via provider `9router` (Codex CLI 0.171.0), channels A and C
+  `claude-opus-5-5`. Recorded as a dated correction in `reports/enrichment-v1/audit/run-info.json` (original text unchanged).
+- **Item 1, shared-paper connections** (no new predicate or threshold): `enrich/cooccurrence.py` (`CooccurrenceIndex.partners`,
+  `distribution`), CLI `enrich cooccurrence`, `queries/enriched-{method-task,method-dataset,task-dataset}.cypher`, tests on a synthetic
+  fixture. Measured on `enriched-c0f7d1dd4abd` ([`cooccurrence.json`](../../reports/enrichment-v1/cooccurrence.json)): pairs with at least
+  1 / 2 / 3 / 5 shared papers: Method-Task 2,864 / 207 / 56 / 14; Method-Dataset 1,466 / 114 / 25 / 4; Task-Dataset 923 / 289 / 136 / 28.
+  Methods with a Task partner: 719 of 948 at one paper, 83 at two; Tasks with a Method partner 602 of 673 at one, 112 at two. So the connection
+  is usable at one shared paper (with the paper shown as evidence) but thin at two or more. Top pairs: graph neural networks / node
+  classification 14; 3D Object Detection / nuScenes 14; semantic segmentation / Cityscapes 14. Duplicate-looking nodes remain (for example
+  ResNet and ResNet-50) because `entity_key` keeps "resnet" and "resnet 50" apart; not changed here. The Cypher files were **not run**: Docker is not
+  available in this WSL distribution now, so only the Python function and its tests ran. Specification §4.3 has a dated note.
 
 ## Verification
 

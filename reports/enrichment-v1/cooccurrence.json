@@ -1,0 +1,503 @@
+{
+ "definition": "pairs of entities that appear together in the paper-level edges of the same paper; counts are distinct papers",
+ "thresholds": [
+  1,
+  2,
+  3,
+  5
+ ],
+ "by_type_pair": {
+  "Method-Task": {
+   "pairs_at_least": {
+    "1": 2864,
+    "2": 207,
+    "3": 56,
+    "5": 14
+   },
+   "top_pairs": [
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "node classification",
+     "b_id": "task:7677d8c51175f30d",
+     "shared_papers": 14
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "graph classification",
+     "b_id": "task:c1b9a2a1e999e1a5",
+     "shared_papers": 7
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "link prediction",
+     "b_id": "task:Q98925312",
+     "shared_papers": 6
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "graph representation learning",
+     "b_id": "task:f58720df3e4446d0",
+     "shared_papers": 6
+    },
+    {
+     "a": "U-Net",
+     "a_id": "method:Q55636383",
+     "b": "Medical Image Segmentation",
+     "b_id": "task:d10fb5b5f0862622",
+     "shared_papers": 6
+    },
+    {
+     "a": "contrastive learning",
+     "a_id": "method:3b092cae8d3d0380",
+     "b": "node classification",
+     "b_id": "task:7677d8c51175f30d",
+     "shared_papers": 5
+    },
+    {
+     "a": "contrastive learning",
+     "a_id": "method:3b092cae8d3d0380",
+     "b": "transfer learning",
+     "b_id": "task:Q6027324",
+     "shared_papers": 5
+    },
+    {
+     "a": "ResNet",
+     "a_id": "method:4ac64c7e8dd0984d",
+     "b": "image classification",
+     "b_id": "task:1fa654aed2b0ed89",
+     "shared_papers": 5
+    },
+    {
+     "a": "BERT",
+     "a_id": "method:917c667e8cb4dec5",
+     "b": "text classification",
+     "b_id": "task:f1456901921cb85b",
+     "shared_papers": 5
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "node classification tasks",
+     "b_id": "task:473189fe00c2d2b1",
+     "shared_papers": 5
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "Anomaly Detection",
+     "b_id": "task:Q3560506",
+     "shared_papers": 5
+    },
+    {
+     "a": "knowledge distillation",
+     "a_id": "method:Q74253442",
+     "b": "image classification",
+     "b_id": "task:1fa654aed2b0ed89",
+     "shared_papers": 5
+    },
+    {
+     "a": "knowledge distillation",
+     "a_id": "method:Q74253442",
+     "b": "semantic segmentation",
+     "b_id": "task:5ef763e002edfb6a",
+     "shared_papers": 5
+    },
+    {
+     "a": "Transformer",
+     "a_id": "method:Q85810444",
+     "b": "Medical Image Segmentation",
+     "b_id": "task:d10fb5b5f0862622",
+     "shared_papers": 5
+    },
+    {
+     "a": "self-attention mechanism",
+     "a_id": "method:3b2e71071f7aec8a",
+     "b": "image classification",
+     "b_id": "task:1fa654aed2b0ed89",
+     "shared_papers": 4
+    },
+    {
+     "a": "Large Neighborhood Search",
+     "a_id": "method:5e56756be288dcc7",
+     "b": "Multi-Agent Path Finding",
+     "b_id": "task:Q112842184",
+     "shared_papers": 4
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "graph classification tasks",
+     "b_id": "task:7419dffdb918ebc5",
+     "shared_papers": 4
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "molecular property prediction",
+     "b_id": "task:7b88fd5b42745a2f",
+     "shared_papers": 4
+    },
+    {
+     "a": "diffusion models",
+     "a_id": "method:Q114617315",
+     "b": "image editing",
+     "b_id": "task:Q545981",
+     "shared_papers": 4
+    },
+    {
+     "a": "diffusion models",
+     "a_id": "method:Q114617315",
+     "b": "Sequential Recommendation",
+     "b_id": "task:dbe4691e5c878c5f",
+     "shared_papers": 4
+    }
+   ]
+  },
+  "Method-Dataset": {
+   "pairs_at_least": {
+    "1": 1466,
+    "2": 114,
+    "3": 25,
+    "5": 4
+   },
+   "top_pairs": [
+    {
+     "a": "ResNet",
+     "a_id": "method:4ac64c7e8dd0984d",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 7
+    },
+    {
+     "a": "ResNet-50",
+     "a_id": "method:772eb0adb4270a0c",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 7
+    },
+    {
+     "a": "adversarial training",
+     "a_id": "method:2ebf0983ede08b6f",
+     "b": "CIFAR-10",
+     "b_id": "dataset:Q45037095",
+     "shared_papers": 5
+    },
+    {
+     "a": "Vision Transformer",
+     "a_id": "method:Q107675654",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 5
+    },
+    {
+     "a": "contrastive learning",
+     "a_id": "method:3b092cae8d3d0380",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 4
+    },
+    {
+     "a": "Tucker decomposition",
+     "a_id": "method:22717666df2150e3",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 3
+    },
+    {
+     "a": "NSGA-II",
+     "a_id": "method:2be2630b24591db6",
+     "b": "OneJumpZeroJump",
+     "b_id": "dataset:40efb40e47241f60",
+     "shared_papers": 3
+    },
+    {
+     "a": "contrastive learning",
+     "a_id": "method:3b092cae8d3d0380",
+     "b": "PKU-MMD",
+     "b_id": "dataset:02eba61a5c9cf3d5",
+     "shared_papers": 3
+    },
+    {
+     "a": "contrastive learning",
+     "a_id": "method:3b092cae8d3d0380",
+     "b": "CIFAR-10",
+     "b_id": "dataset:Q45037095",
+     "shared_papers": 3
+    },
+    {
+     "a": "self-attention mechanism",
+     "a_id": "method:3b2e71071f7aec8a",
+     "b": "ImageNet-1K",
+     "b_id": "dataset:9c1d6ff6a7d819db",
+     "shared_papers": 3
+    },
+    {
+     "a": "randomized smoothing",
+     "a_id": "method:62ec846df9545157",
+     "b": "CIFAR-10",
+     "b_id": "dataset:Q45037095",
+     "shared_papers": 3
+    },
+    {
+     "a": "randomized smoothing",
+     "a_id": "method:62ec846df9545157",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 3
+    },
+    {
+     "a": "ResNet-50",
+     "a_id": "method:772eb0adb4270a0c",
+     "b": "COCO",
+     "b_id": "dataset:1e84d0426c2f5b23",
+     "shared_papers": 3
+    },
+    {
+     "a": "ViT-B",
+     "a_id": "method:92f341d4744dfb6d",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 3
+    },
+    {
+     "a": "masked image modeling",
+     "a_id": "method:99edb20e0ad1ed7a",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 3
+    },
+    {
+     "a": "Vision Transformer",
+     "a_id": "method:Q107675654",
+     "b": "ADE20K",
+     "b_id": "dataset:1c613c0c6ef31088",
+     "shared_papers": 3
+    },
+    {
+     "a": "Vision Transformer",
+     "a_id": "method:Q107675654",
+     "b": "COCO",
+     "b_id": "dataset:1e84d0426c2f5b23",
+     "shared_papers": 3
+    },
+    {
+     "a": "Vision Transformer",
+     "a_id": "method:Q107675654",
+     "b": "Cityscapes",
+     "b_id": "dataset:900e3460fc29a82c",
+     "shared_papers": 3
+    },
+    {
+     "a": "graph neural networks",
+     "a_id": "method:Q107750691",
+     "b": "Pubmed",
+     "b_id": "dataset:62a1b9e131070b3a",
+     "shared_papers": 3
+    },
+    {
+     "a": "knowledge graph embedding",
+     "a_id": "method:Q33003557",
+     "b": "WN18RR",
+     "b_id": "dataset:78baf160ff1669e9",
+     "shared_papers": 3
+    }
+   ]
+  },
+  "Task-Dataset": {
+   "pairs_at_least": {
+    "1": 923,
+    "2": 289,
+    "3": 136,
+    "5": 28
+   },
+   "top_pairs": [
+    {
+     "a": "3D Object Detection",
+     "a_id": "task:061857179e1a8023",
+     "b": "nuScenes",
+     "b_id": "dataset:0633a5703a78bd81",
+     "shared_papers": 14
+    },
+    {
+     "a": "semantic segmentation",
+     "a_id": "task:5ef763e002edfb6a",
+     "b": "Cityscapes",
+     "b_id": "dataset:900e3460fc29a82c",
+     "shared_papers": 14
+    },
+    {
+     "a": "object detection",
+     "a_id": "task:66162611936a341d",
+     "b": "COCO",
+     "b_id": "dataset:1e84d0426c2f5b23",
+     "shared_papers": 12
+    },
+    {
+     "a": "image classification",
+     "a_id": "task:1fa654aed2b0ed89",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 10
+    },
+    {
+     "a": "semantic segmentation",
+     "a_id": "task:5ef763e002edfb6a",
+     "b": "ADE20K",
+     "b_id": "dataset:1c613c0c6ef31088",
+     "shared_papers": 10
+    },
+    {
+     "a": "object detection",
+     "a_id": "task:66162611936a341d",
+     "b": "ImageNet",
+     "b_id": "dataset:dd4ffb155bf2eb19",
+     "shared_papers": 10
+    },
+    {
+     "a": "image classification",
+     "a_id": "task:1fa654aed2b0ed89",
+     "b": "CIFAR-10",
+     "b_id": "dataset:Q45037095",
+     "shared_papers": 9
+    },
+    {
+     "a": "video captioning",
+     "a_id": "task:5681d693ab00b973",
+     "b": "MSR-VTT",
+     "b_id": "dataset:c4d6ad5efbb3602b",
+     "shared_papers": 9
+    },
+    {
+     "a": "object detection",
+     "a_id": "task:66162611936a341d",
+     "b": "MS-COCO",
+     "b_id": "dataset:d3583d965eed8daa",
+     "shared_papers": 9
+    },
+    {
+     "a": "Weakly Supervised Temporal Action Localization",
+     "a_id": "task:0e1a498c1d51598c",
+     "b": "THUMOS14",
+     "b_id": "dataset:875b633935668df9",
+     "shared_papers": 8
+    },
+    {
+     "a": "3D Object Detection",
+     "a_id": "task:061857179e1a8023",
+     "b": "Waymo Open Dataset",
+     "b_id": "dataset:9330a5e884a86692",
+     "shared_papers": 7
+    },
+    {
+     "a": "image captioning",
+     "a_id": "task:4dc772e0ef979847",
+     "b": "MS-COCO",
+     "b_id": "dataset:d3583d965eed8daa",
+     "shared_papers": 7
+    },
+    {
+     "a": "object detection",
+     "a_id": "task:66162611936a341d",
+     "b": "PASCAL VOC",
+     "b_id": "dataset:925781ac56c99617",
+     "shared_papers": 7
+    },
+    {
+     "a": "object detection",
+     "a_id": "task:66162611936a341d",
+     "b": "ImageNet-1K",
+     "b_id": "dataset:9c1d6ff6a7d819db",
+     "shared_papers": 7
+    },
+    {
+     "a": "image classification",
+     "a_id": "task:1fa654aed2b0ed89",
+     "b": "CIFAR-100",
+     "b_id": "dataset:4f1f711b796b295b",
+     "shared_papers": 6
+    },
+    {
+     "a": "video captioning",
+     "a_id": "task:5681d693ab00b973",
+     "b": "MSVD",
+     "b_id": "dataset:b1588b7ba5c33f51",
+     "shared_papers": 6
+    },
+    {
+     "a": "3D Human Pose Estimation",
+     "a_id": "task:86fc094227c0d374",
+     "b": "Human3.6M",
+     "b_id": "dataset:e0500c52ba3a7d42",
+     "shared_papers": 6
+    },
+    {
+     "a": "Visual Object Tracking",
+     "a_id": "task:16d74d099e8f8d55",
+     "b": "GOT-10k",
+     "b_id": "dataset:db5e4f3b095ea836",
+     "shared_papers": 5
+    },
+    {
+     "a": "image classification",
+     "a_id": "task:1fa654aed2b0ed89",
+     "b": "ImageNet-1K",
+     "b_id": "dataset:9c1d6ff6a7d819db",
+     "shared_papers": 5
+    },
+    {
+     "a": "image classification",
+     "a_id": "task:1fa654aed2b0ed89",
+     "b": "MS-COCO",
+     "b_id": "dataset:d3583d965eed8daa",
+     "shared_papers": 5
+    }
+   ]
+  }
+ },
+ "entities_with_a_partner_at_2_papers": {
+  "Method_with_a_Task": {
+   "count": 83,
+   "of": 948
+  },
+  "Task_with_a_Method": {
+   "count": 112,
+   "of": 673
+  },
+  "Method_with_a_Dataset": {
+   "count": 60,
+   "of": 948
+  },
+  "Task_with_a_Dataset": {
+   "count": 132,
+   "of": 673
+  }
+ },
+ "entities_with_a_partner_at_1_paper": {
+  "Method_with_a_Task": {
+   "count": 719,
+   "of": 948
+  },
+  "Task_with_a_Method": {
+   "count": 602,
+   "of": 673
+  },
+  "Method_with_a_Dataset": {
+   "count": 417,
+   "of": 948
+  },
+  "Task_with_a_Dataset": {
+   "count": 299,
+   "of": 673
+  }
+ },
+ "papers_with_both": {
+  "Method-Task": 1713,
+  "Method-Dataset": 645,
+  "Task-Dataset": 666
+ },
+ "graph_version": "enriched-c0f7d1dd4abd"
+}

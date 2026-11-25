@@ -102,6 +102,12 @@ def add_enrich_parser(commands) -> None:
     scorea.add_argument("--run-info", type=Path, help="JSON with the actual evaluator models, run IDs and isolation notes")
     adj = stages.add_parser("audit-adjudicate", help="Phase 5 (E4): write packets for channel C from the A/B disagreements")
     adj.add_argument("--audit-dir", type=Path, required=True)
+    cooc = stages.add_parser("cooccurrence", help="Read-only shared-paper connections: distribution report, or partners of one entity")
+    cooc.add_argument("--graph", type=Path, required=True)
+    cooc.add_argument("--output", type=Path, help="write the distribution report here (when no --entity is given)")
+    cooc.add_argument("--entity", help="entity id, e.g. method:Q...; prints its partners of --partner-type")
+    cooc.add_argument("--partner-type", choices=["Method", "Task", "Dataset"])
+    cooc.add_argument("--min-papers", type=int, default=1)
     for name, text in PLANNED.items():
         stages.add_parser(name, help=f"planned, not implemented: {text}")
 
@@ -157,6 +163,21 @@ def run_enrich(args) -> tuple[dict, int]:
         return score_audit(audit_dir=args.audit_dir, graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts,
                            test_path=args.test, slm_only_path=args.slm_only, output=args.output,
                            run_info=_json_load(args.run_info)), 0
+    if args.enrich_command == "cooccurrence":
+        import json as _json
+
+        from scientific_network.enrich.cooccurrence import CooccurrenceIndex, distribution
+        graph = _json.loads(args.graph.read_text(encoding="utf-8"))
+        index = CooccurrenceIndex.from_graph(graph)
+        if args.entity:
+            if not args.partner_type:
+                raise SystemExit("--partner-type is required with --entity")
+            return {"entity": args.entity, "partners": index.partners(args.entity, args.partner_type, args.min_papers)}, 0
+        report = {**distribution(index), "graph_version": graph["graph_version"]}
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(_json.dumps(report, indent=1, ensure_ascii=False) + "\n")
+        return report, 0
     if args.enrich_command == "audit-adjudicate":
         from scientific_network.enrich.quality import write_adjudication_packet
         return write_adjudication_packet(args.audit_dir), 0
