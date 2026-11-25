@@ -1,6 +1,7 @@
 {
  "config_version": "enrichment-v2",
  "status": "rules_declared_adoption_pending",
+ "refinements_before_any_label": "2026-11-25: type order and consortium checks use the parent direct instance-of classes (closure over-reached); no label existed yet",
  "declared_at": "2026-11-25",
  "decision": "docs/decisions.md D042 amendment 'Enrichment v2: rules and acceptance criteria declared before measurement' (2026-11-25)",
  "disclosure": "Rules were motivated by v1 E4 audit findings; they were designed and measured on material outside the v1 audited items (see the amendment).",
@@ -46,7 +47,7 @@
     "Q5760634": "hectad",
     "Q135236673": "Pentacontad"
    },
-   "consortium_classes": {
+   "consortium_classes_direct_instance_of_only": {
     "Q194166": "consortium",
     "Q11902868": "university consortium",
     "Q3412198": "consortium of universities in France",

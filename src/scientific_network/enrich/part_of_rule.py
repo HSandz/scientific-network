@@ -54,7 +54,8 @@ def judge_edge(child: str, parent: str, facts: dict, rule: dict) -> dict:
         return {"decision": "drop", "reason": "not_organization", "property": preferred}
     if reverse_statement(child, parent, facts):
         return {"decision": "drop", "reason": "reversed_direction", "property": preferred}
-    if parent_classes & set(rule["consortium_classes"]):
+    # consortium: the parent's *direct* class; closure made Fraunhofer a "voluntary association" and a campus a "group"
+    if set(facts["types"].get(parent, {})) & set(rule["consortium_classes_direct_instance_of_only"]):
         return {"decision": "member_of", "reason": "consortium_or_association", "property": preferred}
     # type order: the parent's *direct* class is subordinate (faculty, department, institute); closure would make a ministry a "department"
     if child_classes & set(rule["whole_organization_classes_via_closure"]) and set(facts["types"].get(parent, {})) & set(rule["subordinate_classes_direct_instance_of_only"]):
