@@ -1,6 +1,6 @@
 {
  "config_version": "enrichment-v2",
- "status": "rules_declared_adoption_pending",
+ "status": "rules_decided_after_development_checks",
  "refinements_before_any_label": "2026-11-25: type order and consortium checks use the parent direct instance-of classes (closure over-reached); no label existed yet",
  "declared_at": "2026-11-25",
  "decision": "docs/decisions.md D042 amendment 'Enrichment v2: rules and acceptance criteria declared before measurement' (2026-11-25)",
@@ -24,7 +24,7 @@
  "rules": {
   "part_of": {
    "id": "part_of_v2",
-   "adopted": "pending",
+   "adopted": false,
    "superclass_depth": 3,
    "wikidata_properties": [
     "P749",
@@ -86,28 +86,32 @@
     "implausible_type_order"
    ],
    "member_of": {
-    "adopted": "pending",
+    "adopted": true,
     "predicate": "MEMBER_OF",
     "source": "Organization",
     "target": "Organization",
-    "evidence_kind": "wikidata"
-   }
+    "evidence_kind": "wikidata",
+    "decision_note": "passed its declared criterion: 85 candidate edges on the full graph, 18/18 correct on the decided dev candidates (2 unclear); added as an additional predicate, PART_OF edges are not removed (see work log)"
+   },
+   "decision_note": "failed its declared criterion: kept precision 0.778 < 0.85 on 36 decided dev edges (reports/enrichment-v2/part-of-dev-check.json); v1 PART_OF stays unchanged; rule outputs are kept as candidate decisions only"
   },
   "single_paper_same_sentence": {
    "id": "single_paper_same_sentence_v2",
    "relations": {
-    "APPLIED_TO": "pending",
-    "EVALUATED_ON": "pending"
+    "APPLIED_TO": false,
+    "EVALUATED_ON": true
    },
    "support_rule_values": [
     "two_or_more_papers",
     "single_paper_same_sentence"
-   ]
+   ],
+   "decision_note": "APPLIED_TO failed (0.452 < 0.80 on dev labels); EVALUATED_ON passed (23/24 on the supplementary sample); reports/enrichment-v2/relation-rule-decision.json"
   },
   "link_guard": {
    "id": "narrower_page_v2",
-   "adopted": "pending",
-   "guard": "title has every token of the entity name plus at least one more (link.narrower_page)"
+   "adopted": false,
+   "guard": "title has every token of the entity name plus at least one more (link.narrower_page)",
+   "decision_note": "failed its declared criterion: kept-link accuracy 0.821 < 0.85 on 56 kept dev links (reports/enrichment-v2/link-dev-check.json); v1 links stay unchanged"
   }
  }
 }

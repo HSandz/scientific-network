@@ -1,0 +1,132 @@
+{
+ "by_decision": {
+  "drop": 7,
+  "keep": 37,
+  "member_of": 6
+ },
+ "by_reason": {
+  "consortium_or_association": 6,
+  "excluded_class": 5,
+  "kept": 37,
+  "not_organization": 2
+ },
+ "correct_but_not_kept": [
+  [
+   "Ruijin Hospital",
+   "Shanghai Jiao Tong University School of Medicine",
+   "drop",
+   "not_organization"
+  ]
+ ],
+ "correct_edges_in_sample": 29,
+ "correct_kept": 28,
+ "correct_retained_share": 0.9655,
+ "criterion": {
+  "correct_retained_at_least": 0.7,
+  "kept_precision_at_least": 0.85
+ },
+ "kept": 37,
+ "kept_but_incorrect": [
+  [
+   "Dalian University of Technology",
+   "Big Four Institutes of Technology",
+   "member_only"
+  ],
+  [
+   "CEA Paris-Saclay - Etablissement de Saclay",
+   "École Polytechnique",
+   "incorrect"
+  ],
+  [
+   "Stockholm University",
+   "Ministry of Education and Research",
+   "incorrect"
+  ],
+  [
+   "Institut de Chirurgie Guidée par l'Image",
+   "University of Strasbourg",
+   "incorrect"
+  ],
+  [
+   "Argonne National Laboratory",
+   "University of Chicago",
+   "incorrect"
+  ],
+  [
+   "Aix-Marseille Université",
+   "Site Aix-Marseille-Provence-Mediterranée",
+   "member_only"
+  ],
+  [
+   "University of Kent",
+   "London and South East University Group",
+   "member_only"
+  ],
+  [
+   "CEA Paris-Saclay - Etablissement de Saclay",
+   "HEC Paris",
+   "incorrect"
+  ]
+ ],
+ "kept_precision": {
+  "estimate": 0.7778,
+  "high": 0.8828,
+  "k": 28,
+  "low": 0.6192,
+  "n": 36
+ },
+ "kept_precision_unclear_as_incorrect": {
+  "estimate": 0.7568,
+  "high": 0.8664,
+  "k": 28,
+  "low": 0.5988,
+  "n": 37
+ },
+ "kept_unclear": 1,
+ "labels": {
+  "correct": 29,
+  "incorrect": 10,
+  "member_only": 10,
+  "unclear": 1
+ },
+ "member_of": {
+  "candidates_sampled": 20,
+  "correct": 18,
+  "criterion": {
+   "edges_at_least": 15,
+   "precision_at_least": 0.85
+  },
+  "decided": 18,
+  "full_graph_member_of_edges": 85,
+  "passes": true,
+  "precision": {
+   "estimate": 1.0,
+   "high": 1.0,
+   "k": 18,
+   "low": 0.8241,
+   "n": 18
+  },
+  "rule_gives_member_of": 20,
+  "unclear_as_incorrect": {
+   "estimate": 0.9,
+   "high": 0.9721,
+   "k": 18,
+   "low": 0.699,
+   "n": 20
+  }
+ },
+ "member_only_in_part_of_sample": {
+  "drop": 1,
+  "keep": 3,
+  "member_of": 6
+ },
+ "passes": false,
+ "sample": 50,
+ "v1_rule_precision_all_50": {
+  "estimate": 0.5918,
+  "high": 0.7178,
+  "k": 29,
+  "low": 0.4525,
+  "n": 49
+ }
+}
