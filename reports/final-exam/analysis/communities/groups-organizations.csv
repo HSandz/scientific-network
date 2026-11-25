@@ -1,0 +1,2048 @@
+id,name,papers,researchers,sector,notable
+organization:I19820366,Chinese Academy of Sciences,576,1014,government,True
+organization:I76130692,Zhejiang University,570,988,academia,True
+organization:I99065089,Tsinghua University,485,774,academia,True
+organization:I20231570,Peking University,442,678,academia,True
+organization:I4210165038,University of Chinese Academy of Sciences,436,757,academia,True
+organization:I126520041,University of Science and Technology of China,376,628,academia,True
+organization:I183067930,Shanghai Jiao Tong University,364,572,academia,True
+organization:I2250653659,Tencent (China),328,461,industry,True
+organization:I204983213,Harbin Institute of Technology,282,426,academia,True
+organization:I165932596,National University of Singapore,280,275,academia,True
+organization:I82880672,Beihang University,260,396,academia,True
+organization:I172675005,Nanyang Technological University,250,289,academia,True
+organization:I881766915,Nanjing University,248,418,academia,True
+organization:I4210136793,Peng Cheng Laboratory,244,219,unknown,False
+organization:I157773358,Sun Yat-sen University,241,367,academia,True
+organization:I45928872,Alibaba Group (China),238,438,industry,False
+organization:I24943067,Fudan University,233,412,academia,True
+organization:I150229711,University of Electronic Science and Technology of China,214,324,academia,True
+organization:I2250955327,Huawei Technologies (China),206,310,industry,True
+organization:I87445476,Xi'an Jiaotong University,190,328,academia,False
+organization:I74973139,Carnegie Mellon University,189,208,academia,True
+organization:I1294671590,Centre National de la Recherche Scientifique,187,208,government,True
+organization:I4210112150,Institute of Automation,187,350,unknown,True
+organization:I149594827,Xidian University,180,321,academia,True
+organization:I37461747,Wuhan University,180,288,academia,True
+organization:I177725633,Chinese University of Hong Kong,175,214,academia,True
+organization:I47720641,Huazhong University of Science and Technology,173,305,academia,True
+organization:I139759216,Beijing University of Posts and Telecommunications,170,313,academia,True
+organization:I162868743,Tianjin University,169,223,academia,True
+organization:I76569877,Southeast University,167,265,academia,True
+organization:I191208505,Xiamen University,159,268,academia,True
+organization:I40120149,University of Oxford,158,156,academia,True
+organization:I125839683,Beijing Institute of Technology,154,220,academia,True
+organization:I66867065,East China Normal University,148,255,academia,True
+organization:I157485424,Korea Advanced Institute of Science and Technology,139,252,academia,True
+organization:I1290206253,Microsoft (United States),134,242,industry,True
+organization:I180726961,Shenzhen University,134,190,academia,True
+organization:I36399199,Nanjing University of Science and Technology,129,186,academia,True
+organization:I14243506,Hong Kong Polytechnic University,128,160,academia,True
+organization:I200769079,Hong Kong University of Science and Technology,128,167,academia,True
+organization:I4210090176,Institute of Computing Technology,125,192,unknown,True
+organization:I170215575,National University of Defense Technology,124,255,academia,True
+organization:I17145004,Northwestern Polytechnical University,123,206,academia,True
+organization:I90610280,South China University of Technology,122,218,academia,True
+organization:I168719708,City University of Hong Kong,115,134,academia,True
+organization:I21193070,Beijing Jiaotong University,113,176,academia,True
+organization:I78988378,Renmin University of China,113,142,academia,True
+organization:I1291425158,Google (United States),112,175,industry,True
+organization:I98301712,Baidu (China),112,159,industry,True
+organization:I145847075,TU Wien,110,85,academia,True
+organization:I194450716,Jilin University,110,185,academia,True
+organization:I63966007,Massachusetts Institute of Technology,110,138,academia,True
+organization:I129604602,The University of Sydney,108,103,academia,True
+organization:I1341412227,IBM (United States),101,179,industry,True
+organization:I27357992,Dalian University of Technology,101,184,academia,True
+organization:I4391012619,Shanghai Artificial Intelligence Laboratory,100,153,unknown,False
+organization:I889458895,University of Hong Kong,100,105,academia,True
+organization:I157725225,University of Illinois Urbana-Champaign,99,131,academia,True
+organization:I154099455,Shandong University,94,179,academia,True
+organization:I4210156404,Institute of Information Engineering,94,166,unknown,False
+organization:I4210116924,"Chinese University of Hong Kong, Shenzhen",93,116,academia,True
+organization:I204512498,University of Macau,91,90,academia,True
+organization:I4405270328,Ant Group (China),91,198,industry,True
+organization:I56590836,Monash University,89,96,academia,True
+organization:I136199984,Harvard University,85,93,academia,True
+organization:I139264467,Seoul National University,84,171,academia,True
+organization:I4405256866,ByteDance (China),83,149,industry,True
+organization:I79891267,Singapore Management University,82,65,academia,True
+organization:I114017466,University of Technology Sydney,80,78,academia,True
+organization:I24185976,Sichuan University,80,134,academia,True
+organization:I116953780,Tongji University,79,131,academia,True
+organization:I4210113369,Microsoft Research Asia (China),78,101,industry,False
+organization:I9842412,Nanjing University of Aeronautics and Astronautics,77,93,academia,True
+organization:I185261750,University of Toronto,76,79,academia,True
+organization:I51556381,University of Virginia,76,105,academia,True
+organization:I1311688040,Amazon (United States),75,152,industry,True
+organization:I4210128818,Institute of Software,75,119,unknown,True
+organization:I115228651,"Agency for Science, Technology and Research",74,97,government,True
+organization:I130769515,Pennsylvania State University,73,72,academia,True
+organization:I1174212,University of Southern California,72,92,academia,True
+organization:I12912129,Northeastern University,71,129,academia,True
+organization:I3045169105,Southern University of Science and Technology,70,78,academia,True
+organization:I143868143,Anhui University,68,111,academia,True
+organization:I161318765,"University of California, Los Angeles",67,94,academia,True
+organization:I35440088,ETH Zurich,67,91,academia,True
+organization:I97018004,Stanford University,67,99,academia,True
+organization:I78577930,Columbia University,66,80,academia,True
+organization:I95457486,"University of California, Berkeley",65,86,academia,True
+organization:I4210123185,Zhejiang Lab,64,58,unknown,False
+organization:I4405263052,Tsinghua Shenzhen International Graduate School,63,116,academia,True
+organization:I66946132,"University of Maryland, College Park",63,81,academia,True
+organization:I193775966,Yonsei University,62,117,academia,True
+organization:I130701444,Georgia Institute of Technology,61,81,academia,True
+organization:I16365422,Hefei University of Technology,61,87,academia,True
+organization:I47508984,Imperial College London,61,85,academia,True
+organization:I27837315,University of Michigan,60,87,academia,True
+organization:I30809798,ShanghaiTech University,60,112,academia,True
+organization:I4405259410,Meituan (China),60,102,industry,True
+organization:I4405261251,The Hong Kong University of Science and Technology (Guangzhou),60,68,academia,True
+organization:I86519309,The University of Texas at Austin,60,85,academia,True
+organization:I141568987,Hong Kong Baptist University,59,59,academia,True
+organization:I154425047,University of Alberta,59,65,academia,True
+organization:I124227911,Ben-Gurion University of the Negev,58,65,academia,True
+organization:I74801974,The University of Tokyo,58,72,academia,True
+organization:I50760025,Hangzhou Dianzi University,57,99,academia,True
+organization:I62916508,Technical University of Munich,57,75,academia,True
+organization:I1326498283,Institut national de recherche en sciences et technologies du numérique,56,82,government,True
+organization:I219193219,Purdue University West Lafayette,56,76,academia,True
+organization:I4210113480,Mohamed bin Zayed University of Artificial Intelligence,56,62,academia,True
+organization:I174306211,Technion – Israel Institute of Technology,55,74,academia,False
+organization:I118347636,Australian National University,54,58,academia,True
+organization:I4210145761,Shenzhen Institutes of Advanced Technology,54,67,unknown,False
+organization:I139660479,Central South University,53,78,academia,True
+organization:I197347611,Korea University,53,109,academia,True
+organization:I3923682,Soochow University,52,78,academia,True
+organization:I201448701,University of Washington,51,69,academia,True
+organization:I4577782,Technische Universität Berlin,51,41,academia,False
+organization:I139024713,Guangdong University of Technology,50,67,academia,True
+organization:I1306409833,Adobe Systems (United States),49,68,industry,True
+organization:I181877577,Shanxi University,49,58,academia,True
+organization:I205237279,Nankai University,49,96,academia,True
+organization:I241749,University of Cambridge,49,61,academia,True
+organization:I55732556,Arizona State University,49,63,academia,True
+organization:I4401727009,Sensetime (China),48,84,industry,True
+organization:I861853513,Sapienza University of Rome,48,47,academia,True
+organization:I39422238,University of Illinois Chicago,47,35,academia,True
+organization:I887064364,University of Amsterdam,47,43,academia,True
+organization:I3133055985,Westlake University,46,71,academia,True
+organization:I31746571,UNSW Sydney,45,47,academia,True
+organization:I98677209,University of Edinburgh,45,58,academia,True
+organization:I102322142,"Rutgers, The State University of New Jersey",44,51,academia,True
+organization:I16609230,Hunan University,44,75,academia,True
+organization:I4210103986,Jingdong (China),44,63,industry,True
+organization:I44504214,Czech Technical University in Prague,44,50,academia,True
+organization:I158842170,Chongqing University,43,73,academia,True
+organization:I4210090411,Google DeepMind (United Kingdom),43,91,industry,True
+organization:I91712215,Saarland University,43,28,academia,True
+organization:I99043593,Macquarie University,43,26,academia,True
+organization:I113940042,Shanghai University,42,68,academia,True
+organization:I36258959,University of California San Diego,42,67,academia,True
+organization:I99464096,KU Leuven,42,54,academia,True
+organization:I170897317,Duke University,41,61,academia,True
+organization:I205783295,Cornell University,41,50,academia,True
+organization:I165779595,The University of Melbourne,40,60,academia,True
+organization:I848706,Sungkyunkwan University,40,66,academia,True
+organization:I151746483,University of Waterloo,39,50,academia,True
+organization:I98358874,Delft University of Technology,39,55,academia,True
+organization:I11701301,Griffith University,38,16,academia,True
+organization:I4405277525,Centre de Recherche en Informatique de Lens,38,27,unknown,False
+organization:I4405281272,Alibaba DAMO Academy (China),38,74,industry,False
+organization:I16391192,Tel Aviv University,37,51,academia,True
+organization:I165799507,Rensselaer Polytechnic Institute,37,37,academia,True
+organization:I204823248,Huazhong Agricultural University,37,60,academia,True
+organization:I4210110652,RIKEN,37,42,unknown,True
+organization:I45129253,University College London,37,37,academia,True
+organization:I5124864,École Polytechnique Fédérale de Lausanne,37,59,academia,False
+organization:I55712492,Zhejiang University of Technology,37,53,academia,True
+organization:I107639228,University of Notre Dame,36,35,academia,True
+organization:I25254941,Beijing Normal University,36,44,academia,True
+organization:I59270414,Indian Institute of Science Bangalore,36,53,academia,True
+organization:I80947539,Fuzhou University,36,58,academia,True
+organization:I162577319,The University of Texas at Dallas,35,52,academia,True
+organization:I4210114444,Meta (United States),35,57,industry,True
+organization:I4210119061,Institut de Recherche en Informatique de Toulouse,35,23,unknown,False
+organization:I4401726859,Kuaishou (China),35,69,industry,True
+organization:I4405259713,"Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University",35,55,unknown,False
+organization:I146655781,University of Liverpool,34,48,academia,True
+organization:I16733864,National Taiwan University,34,58,academia,True
+organization:I3005327000,Institute for Infocomm Research,34,49,unknown,False
+organization:I4401726805,Megvii (China),34,65,industry,True
+organization:I57206974,New York University,34,44,academia,True
+organization:I92403157,University of Science and Technology Beijing,34,70,academia,True
+organization:I135310074,University of Wisconsin–Madison,33,50,academia,False
+organization:I4210126580,RIKEN Center for Advanced Intelligence Project,33,35,unknown,False
+organization:I45204951,University of Calabria,33,35,academia,True
+organization:I5681781,The University of Adelaide,33,47,academia,True
+organization:I141945490,University of British Columbia,32,40,academia,True
+organization:I145311948,Johns Hopkins University,32,52,academia,True
+organization:I162827531,Indian Institute of Technology Bombay,32,37,academia,True
+organization:I170201317,University of Pittsburgh,32,35,academia,True
+organization:I24603500,University of Massachusetts Amherst,32,49,academia,True
+organization:I29739308,Guangxi Normal University,32,39,academia,True
+organization:I5023651,McGill University,32,54,academia,True
+organization:I44563897,Université d'Artois,31,25,academia,True
+organization:I4654613,University of Warsaw,31,36,academia,True
+organization:I79576946,University of Pennsylvania,31,55,academia,True
+organization:I13955877,Bar-Ilan University,30,23,academia,True
+organization:I155173764,Rochester Institute of Technology,30,35,academia,True
+organization:I4210164802,Mila - Quebec Artificial Intelligence Institute,30,45,unknown,True
+organization:I4391767820,State Key Laboratory of Computer Science,30,29,unknown,False
+organization:I56435720,Université Paris Dauphine-PSL,30,20,academia,True
+organization:I70931966,Université de Montréal,30,36,academia,False
+organization:I106165777,University of Central Florida,29,35,academia,True
+organization:I154570441,"University of California, Santa Barbara",29,41,academia,True
+organization:I204250578,"University of California, Irvine",29,45,academia,True
+organization:I37796252,Beijing University of Technology,29,40,academia,True
+organization:I4210091137,NetEase (China),29,36,industry,True
+organization:I8204097,Ludwig-Maximilians-Universität München,29,48,academia,True
+organization:I143288331,Hasso Plattner Institute,28,26,unknown,True
+organization:I152815399,Singapore University of Technology and Design,28,32,academia,True
+organization:I183935753,King's College London,28,37,academia,False
+organization:I193223587,University of Trento,28,27,academia,True
+organization:I4210099586,Shenzhen Research Institute of Big Data,28,41,academia,False
+organization:I686019,AGH University of Krakow,28,16,academia,False
+organization:I71920554,King Abdullah University of Science and Technology,28,33,academia,True
+organization:I162714631,George Mason University,27,21,academia,True
+organization:I186143895,Lehigh University,27,9,academia,True
+organization:I204831749,Southwestern University of Finance and Economics,27,37,academia,True
+organization:I2251713219,NTT (Japan),27,50,industry,True
+organization:I59553526,Stony Brook University,27,30,academia,True
+organization:I93860229,Politecnico di Milano,27,31,academia,True
+organization:I123900574,Pohang University of Science and Technology,26,47,academia,True
+organization:I137902535,North Carolina State University,26,23,academia,True
+organization:I148366613,National Yang Ming Chiao Tung University,26,38,academia,True
+organization:I159948400,Jinan University,26,41,academia,True
+organization:I165143802,The University of Queensland,26,30,academia,True
+organization:I200845125,Nanjing University of Information Science and Technology,26,32,academia,True
+organization:I28290843,University of Surrey,26,40,academia,True
+organization:I39555362,University of Warwick,26,25,academia,True
+organization:I78650965,Technische Universität Dresden,26,31,academia,True
+organization:I79619799,University of Birmingham,26,26,academia,True
+organization:I891191580,Aalborg University,26,28,academia,True
+organization:I102134673,Linköping University,25,15,academia,False
+organization:I111979921,Northwestern University,25,33,academia,True
+organization:I149704539,Deakin University,25,35,academia,True
+organization:I176453806,University of Potsdam,25,23,academia,True
+organization:I18014758,Simon Fraser University,25,28,academia,True
+organization:I184983240,Northeast Normal University,25,33,academia,True
+organization:I32971472,Yale University,25,42,academia,True
+organization:I37987034,Guangzhou University,25,26,academia,True
+organization:I4210100255,Beijing Academy of Artificial Intelligence,25,29,unknown,True
+organization:I4210127509,Vector Institute,25,32,unknown,True
+organization:I4210145102,Institut Polytechnique de Paris,25,29,academia,True
+organization:I4405271667,Beijing National Research Center for Information Science and Technology,25,42,unknown,False
+organization:I887968799,RWTH Aachen University,25,31,academia,True
+organization:I9224756,Northeastern University,25,46,academia,True
+organization:I184558857,Royal Holloway University of London,24,14,academia,True
+organization:I184597095,National Institute of Informatics,24,18,unknown,True
+organization:I2250650973,Samsung (South Korea),24,42,industry,True
+organization:I33213144,University of Florida,24,29,academia,True
+organization:I4405258862,Université de Toulouse,24,26,academia,True
+organization:I4405260365,Alberta Machine Intelligence Institute,24,19,unknown,False
+organization:I48566637,Ulsan National Institute of Science and Technology,24,36,academia,True
+organization:I59028903,Ocean University of China,24,39,academia,True
+organization:I63190737,"University at Buffalo, State University of New York",24,23,academia,True
+organization:I83019370,Eindhoven University of Technology,24,25,academia,True
+organization:I130828816,University of Leeds,23,15,academia,True
+organization:I142476485,École Polytechnique,23,29,academia,False
+organization:I154130895,University of Auckland,23,32,academia,True
+organization:I196699116,Wuhan University of Technology,23,20,academia,True
+organization:I4210086143,Alibaba Group (Cayman Islands),23,50,industry,True
+organization:I43439940,University of Southampton,23,14,academia,True
+organization:I87216513,Michigan State University,23,30,academia,True
+organization:I124055696,University of Copenhagen,22,26,academia,True
+organization:I1292875679,Commonwealth Scientific and Industrial Research Organisation,22,26,government,True
+organization:I184843921,Hebei University of Technology,22,25,academia,True
+organization:I204465549,Washington University in St. Louis,22,17,academia,True
+organization:I277688954,Université Paris-Saclay,22,36,academia,True
+organization:I4210128584,The Alan Turing Institute,22,20,unknown,True
+organization:I4210128801,Helmholtz Center for Information Security,22,27,unknown,False
+organization:I4210137929,Lamsade,22,15,unknown,False
+organization:I4405258446,LG AI Research (South Korea),22,31,industry,False
+organization:I69356397,Xi’an Jiaotong-Liverpool University,22,38,academia,False
+organization:I74775410,Rice University,22,23,academia,True
+organization:I25757504,China University of Mining and Technology,21,33,academia,True
+organization:I3004594783,Institute of High Performance Computing,21,29,unknown,False
+organization:I38877650,Zhengzhou University,21,46,academia,True
+organization:I39804081,Sorbonne Université,21,25,academia,True
+organization:I4210121786,Max Planck Institute for Software Systems,21,20,unknown,True
+organization:I4800084,Southwest Jiaotong University,21,38,academia,True
+organization:I60922564,Naver (South Korea),21,27,industry,True
+organization:I859038795,Virginia Tech,21,36,academia,True
+organization:I114531698,Tokyo Institute of Technology,20,20,academia,True
+organization:I166337079,Queen Mary University of London,20,19,academia,True
+organization:I189210763,Yunnan University,20,33,academia,True
+organization:I204337017,Aarhus University,20,20,academia,True
+organization:I4210162190,"China University of Petroleum, East China",20,33,academia,True
+organization:I42894916,Data61,20,21,unknown,False
+organization:I4575257,Hanyang University,20,45,academia,True
+organization:I82951845,RMIT University,20,24,academia,True
+organization:I111088046,Boston University,19,22,academia,True
+organization:I130238516,University of Minnesota,19,21,academia,True
+organization:I135237710,Zhejiang Normal University,19,33,academia,True
+organization:I171543936,Free University of Bozen-Bolzano,19,14,academia,True
+organization:I20089843,Princeton University,19,24,academia,True
+organization:I20942203,Hainan University,19,20,academia,True
+organization:I4392738276,State Key Laboratory of Virtual Reality Technology and Systems,19,28,unknown,False
+organization:I4401726822,Ping An (China),19,34,industry,True
+organization:I4401727007,Hikvision (China),19,34,industry,True
+organization:I4405258931,MIT Computer Science and Artificial Intelligence Laboratory,19,37,unknown,True
+organization:I4432739,University of Bergen,19,19,academia,True
+organization:I52357470,The Ohio State University,19,29,academia,True
+organization:I68891433,Indian Institute of Technology Delhi,19,22,academia,True
+organization:I10535382,Chongqing University of Posts and Telecommunications,18,29,academia,True
+organization:I114027177,University of North Carolina at Chapel Hill,18,27,academia,True
+organization:I150468666,Emory University,18,20,academia,True
+organization:I157556583,Institute of Science and Technology Austria,18,18,academia,True
+organization:I181679659,Shanghai University of Finance and Economics,18,31,academia,True
+organization:I192455969,York University,18,12,academia,True
+organization:I200332995,TU Dortmund University,18,11,academia,True
+organization:I206945453,Paderborn University,18,18,academia,True
+organization:I2277624104,Fondazione Bruno Kessler,18,18,unknown,True
+organization:I28407311,University of Manchester,18,21,academia,True
+organization:I41198531,Nanjing University of Posts and Telecommunications,18,27,academia,True
+organization:I4401726934,IFlyTek (China),18,22,industry,True
+organization:I4405260597,Guangdong Laboratory of Artificial Intelligence and Digital Economy (Shenzhen),18,30,unknown,False
+organization:I4405260609,NAVER Cloud (South Korea),18,36,industry,False
+organization:I52099693,University of York,18,6,academia,True
+organization:I5388228,University of Rochester,18,26,academia,True
+organization:I75059550,Zhejiang Gongshang University,18,24,academia,True
+organization:I84392919,Temple University,18,18,academia,True
+organization:I91045830,Texas A&M University,18,30,academia,False
+organization:I123946342,Binghamton University,17,10,academia,True
+organization:I135598925,Kyushu University,17,15,academia,True
+organization:I201841394,Université Côte d'Azur,17,28,academia,False
+organization:I392282,"University at Albany, State University of New York",17,21,academia,True
+organization:I4388482657,Shenzhen MSU-BIT University,17,22,academia,False
+organization:I73613424,National Institute of Advanced Industrial Science and Technology,17,30,government,True
+organization:I79510175,Cardiff University,17,16,academia,True
+organization:I114395901,University of Nebraska–Lincoln,16,4,academia,False
+organization:I152269853,Qilu University of Technology,16,31,academia,True
+organization:I154549908,Indian Institute of Technology Jodhpur,16,21,academia,True
+organization:I173911158,Iowa State University,16,20,academia,True
+organization:I193662353,Utrecht University,16,18,academia,True
+organization:I197251160,Hebrew University of Jerusalem,16,26,academia,True
+organization:I22299242,Kyoto University,16,21,academia,True
+organization:I24676775,Indian Institute of Technology Madras,16,26,academia,True
+organization:I27804330,Brown University,16,21,academia,True
+organization:I4210109712,Max Planck Institute for Informatics,16,14,unknown,True
+organization:I4210156221,Allen Institute for Artificial Intelligence,16,28,nonprofit,True
+organization:I4403386549,Munich Center for Machine Learning,16,21,academia,True
+organization:I58716616,Korea Institute of Science and Technology,16,25,unknown,True
+organization:I84653119,Academia Sinica,16,25,unknown,True
+organization:I926574661,Leipzig University,16,12,academia,True
+organization:I108468826,Stevens Institute of Technology,15,18,academia,True
+organization:I114112103,Leibniz University Hannover,15,14,academia,True
+organization:I135140700,University of Bonn,15,20,academia,True
+organization:I161046081,University of Freiburg,15,18,academia,True
+organization:I185103710,"University of California, Santa Cruz",15,23,academia,True
+organization:I191879574,Inha University,15,18,academia,True
+organization:I40347166,University of Chicago,15,14,academia,True
+organization:I4210097554,Center for Excellence in Brain Science and Intelligence Technology,15,11,academia,False
+organization:I4210108629,Computer Network Information Center,15,23,unknown,False
+organization:I4210114115,IBM Research - Thomas J. Watson Research Center,15,17,unknown,True
+organization:I4210127875,Nvidia (United States),15,18,industry,True
+organization:I4210139461,Laboratoire d'Informatique de l'École Polytechnique,15,13,unknown,False
+organization:I4210159731,LIP6,15,16,unknown,False
+organization:I43922553,Wuhan University of Science and Technology,15,23,academia,True
+organization:I76198965,Friedrich Schiller University Jena,15,20,academia,True
+organization:I7876267,Open University of the Netherlands,15,3,academia,True
+organization:I86987016,KTH Royal Institute of Technology,15,18,academia,True
+organization:I904495901,Ruhr University Bochum,15,6,academia,True
+organization:I94234084,Indian Institute of Technology Kanpur,15,21,academia,True
+organization:I98285908,The University of Osaka,15,20,academia,True
+organization:I9927081,Aalto University,15,24,academia,True
+organization:I110002522,University of Essex,14,9,academia,True
+organization:I114832834,Tulane University,14,5,academia,True
+organization:I119939252,Indraprastha Institute of Information Technology Delhi,14,26,academia,True
+organization:I1343180700,Intel (United States),14,25,industry,True
+organization:I151727225,Harbin Engineering University,14,25,academia,True
+organization:I177877127,The University of Western Australia,14,14,academia,True
+organization:I4210090971,Southeast University,14,26,academia,True
+organization:I4210155268,Salesforce (United States),14,18,industry,True
+organization:I4400573310,Hangzhou City University,14,13,academia,True
+organization:I45683168,Polytechnique Montréal,14,21,academia,False
+organization:I64189192,"International Institute of Information Technology, Hyderabad",14,28,academia,True
+organization:I103635307,"University of California, Riverside",13,22,academia,True
+organization:I111950717,Macau University of Science and Technology,13,15,academia,True
+organization:I1297991670,Southwest University of Science and Technology,13,14,academia,True
+organization:I1304085615,Nvidia (United Kingdom),13,16,industry,False
+organization:I170239107,University of South Australia,13,8,academia,True
+organization:I185443292,Wayne State University,13,16,academia,True
+organization:I185839726,Institut Universitaire de France,13,3,academia,True
+organization:I202697423,University of Zurich,13,16,academia,True
+organization:I25846049,National Tsing Hua University,13,18,academia,True
+organization:I4210115038,Huawei Technologies (Canada),13,30,industry,False
+organization:I4387153335,China Telecom,13,15,industry,True
+organization:I4392021246,AIRI - Artificial Intelligence Research Institute,13,18,nonprofit,False
+organization:I4396570619,Great Bay University,13,12,academia,False
+organization:I52170813,Ariel University,13,6,academia,True
+organization:I58956616,Case Western Reserve University,13,14,academia,True
+organization:I76214153,Lanzhou University,13,18,academia,True
+organization:I9360294,University of Bologna,13,15,academia,True
+organization:I96673099,Technical University of Denmark,13,17,academia,True
+organization:I100066346,University of Stuttgart,12,23,academia,True
+organization:I102335020,Karlsruhe Institute of Technology,12,30,academia,True
+organization:I108403487,Warsaw University of Technology,12,16,academia,True
+organization:I111599522,Jiangnan University,12,27,academia,True
+organization:I126345244,Portland State University,12,8,academia,True
+organization:I1305429384,JPMorgan Chase & Co (United States),12,25,industry,True
+organization:I1327237609,Ministry of Education of the People's Republic of China,12,22,government,True
+organization:I13469542,Vrije Universiteit Brussel,12,10,academia,True
+organization:I134820265,Consejo Superior de Investigaciones Científicas,12,14,government,True
+organization:I145894827,Indian Institute of Technology Kharagpur,12,20,academia,True
+organization:I184942183,University of Oslo,12,10,academia,True
+organization:I187400657,South China Normal University,12,21,academia,True
+organization:I193531525,George Washington University,12,10,academia,True
+organization:I195460627,University of Aberdeen,12,7,academia,True
+organization:I26437253,Örebro University,12,5,academia,False
+organization:I2746051580,Université Paris Sciences et Lettres,12,18,academia,True
+organization:I4092182,Graz University of Technology,12,10,academia,True
+organization:I4210131846,Artificial Intelligence Research Institute,12,16,unknown,False
+organization:I4210140519,Korean Association Of Science and Technology Studies,12,11,unknown,False
+organization:I43313876,Dalian Maritime University,12,17,academia,True
+organization:I4391767781,State Key Laboratory of Software Development Environment,12,16,unknown,False
+organization:I4392738278,Beijing Institute for General Artificial Intelligence,12,17,government,True
+organization:I67415387,Lancaster University,12,11,academia,True
+organization:I70983195,Syracuse University,12,11,academia,True
+organization:I7882870,University of Glasgow,12,14,academia,True
+organization:I79272384,"University of Maryland, Baltimore County",12,22,academia,True
+organization:I79940851,University of Brescia,12,8,academia,True
+organization:I120691247,FernUniversität in Hagen,11,9,academia,True
+organization:I126231945,Queen's University Belfast,11,15,academia,False
+organization:I140172145,University of Connecticut,11,22,academia,True
+organization:I143593769,East China University of Science and Technology,11,21,academia,True
+organization:I155781252,University of South Carolina,11,17,academia,True
+organization:I160992636,Toyota Technological Institute at Chicago,11,13,academia,True
+organization:I177802217,University of Mannheim,11,13,academia,True
+organization:I1850255,University of Basel,11,13,academia,True
+organization:I23923803,University of Exeter,11,15,academia,True
+organization:I32574673,Shantou University,11,7,academia,True
+organization:I4210087772,National Computer Network Emergency Response Technical Team/Coordination Center of Chinar,11,14,nonprofit,False
+organization:I4210101778,Samsung (United States),11,14,industry,False
+organization:I4210111288,Meta (United Kingdom),11,17,industry,False
+organization:I4210120115,Robert Bosch (United States),11,18,industry,False
+organization:I4210155350,Purple Mountain Laboratories,11,10,unknown,False
+organization:I4405259049,Shanghai Qi Zhi Institute,11,19,unknown,False
+organization:I4647051,Université de Picardie Jules Verne,11,1,academia,True
+organization:I56067802,Université de Rennes,11,23,academia,False
+organization:I8078737,Clemson University,11,11,academia,True
+organization:I865915315,Vrije Universiteit Amsterdam,11,18,academia,True
+organization:I103163165,Florida State University,10,10,academia,True
+organization:I118347220,NEC (Japan),10,16,industry,True
+organization:I125749732,Western University,10,16,academia,True
+organization:I126596746,Jagiellonian University,10,15,academia,True
+organization:I1313323035,Russian Academy of Sciences,10,17,government,True
+organization:I138689650,University of Padua,10,11,academia,True
+organization:I142108993,Southwest University,10,13,academia,True
+organization:I142401562,Electronics and Telecommunications Research Institute,10,12,unknown,True
+organization:I145872427,Radboud University Nijmegen,10,12,academia,True
+organization:I153267046,University of Kaiserslautern,10,9,academia,True
+organization:I157614274,University of Cape Town,10,2,academia,True
+organization:I159129438,Université du Québec à Montréal,10,10,academia,False
+organization:I161057412,University of New Hampshire,10,8,academia,True
+organization:I180662265,China Mobile (China),10,20,industry,True
+organization:I181233156,University of Oregon,10,8,academia,True
+organization:I188538660,University of Colorado Boulder,10,19,academia,True
+organization:I198091727,Tiangong University,10,15,academia,True
+organization:I19894307,Université de Montpellier,10,8,academia,False
+organization:I204722609,Queen's University,10,8,academia,False
+organization:I2802519937,Institut de Recherche en Informatique et Systèmes Aléatoires,10,17,unknown,True
+organization:I3124059619,China University of Geosciences,10,13,academia,True
+organization:I33256026,German Research Centre for Artificial Intelligence,10,12,unknown,True
+organization:I39343248,Humboldt-Universität zu Berlin,10,7,academia,True
+organization:I4210088792,United States Army,10,12,government,True
+organization:I4210107353,NEC (United States),10,16,industry,True
+organization:I4210119109,Indiana University Bloomington,10,13,academia,True
+organization:I4210120485,Academy of Mathematics and Systems Science,10,18,unknown,False
+organization:I4210150763,Gran Sasso Science Institute,10,10,academia,True
+organization:I4210151956,Robert Bosch (India),10,12,industry,False
+organization:I43406934,Université Laval,10,15,academia,False
+organization:I4394709157,"Eastern Institute of Technology, Ningbo",10,14,academia,True
+organization:I4405277658,Joint NTU-UBC Research Centre of Excellence in Active Living for the Elderly,10,9,unknown,False
+organization:I65181880,Indian Institute of Technology Hyderabad,10,18,academia,True
+organization:I72951846,Washington State University,10,10,academia,True
+organization:I75689368,Communication University of China,10,16,academia,True
+organization:I78675632,Beijing Information Science & Technology University,10,14,academia,True
+organization:I890469752,Ministry of Industry and Information Technology,10,14,government,True
+organization:I91136226,University of Sheffield,10,13,academia,True
+organization:I107077323,Worcester Polytechnic Institute,9,12,academia,True
+organization:I109736498,Canadian Institute for Advanced Research,9,7,unknown,True
+organization:I11947397,Tata Institute of Fundamental Research,9,7,academia,True
+organization:I129774422,University of Vienna,9,12,academia,True
+organization:I131249849,Oregon State University,9,13,academia,True
+organization:I1325886976,Siemens (Germany),9,9,industry,True
+organization:I133731052,University of Helsinki,9,14,academia,True
+organization:I146399215,University of Tsukuba,9,11,academia,True
+organization:I15057530,Université de Bordeaux,9,11,academia,True
+organization:I152031979,Nanjing Normal University,9,12,academia,True
+organization:I153473198,North China Electric Power University,9,13,academia,True
+organization:I16285277,William & Mary,9,10,academia,False
+organization:I163151501,Hangzhou Normal University,9,9,academia,True
+organization:I180949307,Illinois Institute of Technology,9,10,academia,True
+organization:I186272606,Guangdong University of Foreign Studies,9,7,academia,True
+organization:I189196454,The University of Texas at Arlington,9,12,academia,True
+organization:I200719446,Vanderbilt University,9,11,academia,True
+organization:I219388962,University of Wrocław,9,11,academia,False
+organization:I2252096349,Fujitsu (Japan),9,17,industry,True
+organization:I2279609970,Université de Lille,9,9,academia,True
+organization:I36234482,University of Bristol,9,14,academia,True
+organization:I41156924,Victoria University of Wellington,9,12,academia,True
+organization:I4210101743,"Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier",9,7,unknown,False
+organization:I4210116052,Inception Institute of Artificial Intelligence,9,7,unknown,False
+organization:I4210129579,National Engineering Laboratory of Deep Learning Technology and Application,9,8,unknown,False
+organization:I4210137199,Aerospace Information Research Institute,9,30,academia,False
+organization:I4401726856,Xiaohongshu (Little Red Book) (China),9,13,industry,True
+organization:I4401726870,Didi Chuxing (China),9,14,industry,True
+organization:I4405253225,Mitsubishi Electric Research Laboratories (United States),9,14,industry,True
+organization:I4405259277,Samsung Electronics (South Korea),9,10,industry,True
+organization:I4405277486,Trường Đại học Khoa học và Công nghệ Hà Nội,9,9,academia,True
+organization:I59649739,Jiangxi University of Finance and Economics,9,16,academia,True
+organization:I60134161,Nagoya University,9,9,academia,True
+organization:I6498739,Indian Statistical Institute,9,9,academia,True
+organization:I71267560,University of Naples Federico II,9,5,academia,True
+organization:I72816309,Drexel University,9,6,academia,True
+organization:I73142707,Athens University of Economics and Business,9,7,academia,True
+organization:I82497590,Auburn University,9,12,academia,True
+organization:I84218800,"University of California, Davis",9,11,academia,True
+organization:I862669128,Xiaomi (China),9,18,industry,True
+organization:I89652312,Northwest A&F University,9,12,academia,False
+organization:I94518387,Hanoi University of Science and Technology,9,11,academia,True
+organization:I99418890,San Francisco Bay University,9,12,academia,True
+organization:I100930933,University College Dublin,8,10,academia,True
+organization:I107672454,Dartmouth College,8,13,academia,True
+organization:I118118575,New Jersey Institute of Technology,8,11,academia,True
+organization:I118501908,National Research University Higher School of Economics,8,11,academia,True
+organization:I122411786,California Institute of Technology,8,13,academia,True
+organization:I12356871,Télécom Paris,8,12,academia,False
+organization:I125989756,Skolkovo Institute of Science and Technology,8,20,academia,True
+organization:I148751991,Sogang University,8,12,academia,True
+organization:I15089104,China Aerospace Science and Industry Corporation (China),8,18,industry,True
+organization:I165733156,University of Georgia,8,12,academia,True
+organization:I166416128,DEVCOM Army Research Laboratory,8,10,government,True
+organization:I170486558,Universitat Pompeu Fabra,8,8,academia,True
+organization:I179026463,Beijing Technology and Business University,8,11,academia,True
+organization:I180203408,Yokohama National University,8,9,academia,True
+organization:I187531555,Lund University,8,10,academia,True
+organization:I21250087,Charles University,8,9,academia,True
+organization:I21449261,Masaryk University,8,11,academia,True
+organization:I21491767,Aix-Marseille Université,8,12,academia,True
+organization:I25041050,Augusta University,8,3,academia,True
+organization:I2614128279,Dalle Molle Institute for Artificial Intelligence Research,8,12,unknown,True
+organization:I2802624667,Hefei Institutes of Physical Science,8,15,unknown,True
+organization:I31512782,Technische Universität Darmstadt,8,16,academia,False
+organization:I35928602,Kyung Hee University,8,25,academia,True
+organization:I4210093653,Midea Group (China),8,7,industry,True
+organization:I4210107720,CentraleSupélec,8,8,unknown,False
+organization:I4210110280,J.P. Morgan,8,18,unknown,True
+organization:I4210125878,Suzhou Research Institute,8,8,unknown,False
+organization:I4210135521,Max Planck Institute for Intelligent Systems,8,13,unknown,True
+organization:I4210142254,Laboratoire Bordelais de Recherche en Informatique,8,10,unknown,False
+organization:I4210152380,Shenzhen Technology University,8,11,academia,True
+organization:I4210155230,Samsung (China),8,15,industry,False
+organization:I4210158522,PLA Academy of Military Science,8,11,unknown,False
+organization:I4401726824,Horizon Robotics (China),8,18,industry,True
+organization:I4401726909,Center for Scalable Data Analytics and Artificial Intelligence,8,10,academia,False
+organization:I4405262974,"Contemporary Amperex Technology Co., Limited.",8,6,industry,True
+organization:I45438204,The University of Texas at San Antonio,8,16,academia,True
+organization:I55215948,Tata Consultancy Services (India),8,16,industry,True
+organization:I592451,Indiana University,8,15,academia,True
+organization:I67900169,Chung-Ang University,8,13,academia,True
+organization:I6902469,Brandeis University,8,3,academia,True
+organization:I109935558,Ningbo University,7,13,academia,True
+organization:I114090438,Goethe University Frankfurt,7,6,academia,True
+organization:I11932220,Institució Catalana de Recerca i Estudis Avançats,7,3,nonprofit,True
+organization:I121797337,Leiden University,7,10,academia,True
+organization:I121883995,Johannes Kepler University of Linz,7,13,academia,True
+organization:I13591777,University of Nottingham Ningbo China,7,15,academia,True
+organization:I137867983,Central University of Finance and Economics,7,4,academia,True
+organization:I141596103,University of Lisbon,7,8,academia,True
+organization:I142078773,Shenyang Institute of Automation,7,16,unknown,True
+organization:I146165071,Universidade Federal de Viçosa,7,6,academia,False
+organization:I150744194,Waseda University,7,16,academia,True
+organization:I150807315,Guangxi University,7,13,academia,True
+organization:I153718931,University of Ottawa,7,8,academia,True
+organization:I153845743,Moscow Institute of Physics and Technology,7,7,academia,True
+organization:I155765044,University of Hildesheim,7,9,academia,True
+organization:I169381384,University of Groningen,7,8,academia,True
+organization:I17442442,State Grid Corporation of China (China),7,4,industry,True
+organization:I181326427,Donghua University,7,8,academia,True
+organization:I186903577,University of Luxembourg,7,18,academia,True
+organization:I190082696,Durham University,7,5,academia,True
+organization:I190249584,Universität Innsbruck,7,10,academia,True
+organization:I19700959,Florida International University,7,10,academia,True
+organization:I203951103,Keio University,7,5,academia,True
+organization:I204730241,Université Paris Cité,7,10,academia,False
+organization:I205349734,Hokkaido University,7,14,academia,True
+organization:I223532165,University of Utah,7,13,academia,True
+organization:I24201400,Chengdu University of Information Technology,7,9,academia,True
+organization:I2738703131,Commissariat à l'Énergie Atomique et aux Énergies Alternatives,7,7,government,True
+organization:I28927889,IQVIA (United Kingdom),7,5,industry,False
+organization:I29607241,École Normale Supérieure - PSL,7,13,unknown,False
+organization:I33434090,University of Massachusetts Boston,7,7,academia,True
+organization:I40963666,Central China Normal University,7,15,academia,True
+organization:I4210089607,CyberAgent (Japan),7,5,industry,True
+organization:I4210091279,Université Sorbonne Paris Nord,7,6,academia,True
+organization:I4210105229,"City University of Hong Kong, Shenzhen Research Institute",7,4,academia,False
+organization:I4210142748,Shandong Academy of Sciences,7,21,academia,False
+organization:I4391768012,State Key Laboratory of Information Security,7,7,unknown,False
+organization:I43980791,Clausthal University of Technology,7,4,academia,True
+organization:I4405259434,Guangdong Institute of Intelligence Science and Technology,7,3,academia,False
+organization:I4405272287,Guangdong Province Key Laboratory of Information Security Technology,7,7,unknown,False
+organization:I4405279436,Shanghai Innovation Institute,7,10,academia,False
+organization:I4405280064,Guangzhou Institute of Technology,7,10,academia,False
+organization:I45084792,University of Florence,7,7,academia,True
+organization:I5343935,Guilin University of Electronic Technology,7,12,academia,True
+organization:I60053951,Universitat Politècnica de València,7,10,academia,True
+organization:I80143920,Shandong University of Science and Technology,7,11,academia,True
+organization:I8087733,University of Tübingen,7,13,academia,False
+organization:I83816512,University of Genoa,7,8,academia,True
+organization:I889804353,Robert Bosch (Germany),7,9,industry,True
+organization:I94624287,University of Twente,7,9,academia,True
+organization:I96852419,Capital Normal University,7,8,academia,True
+organization:I100005738,Brigham Young University,6,13,academia,True
+organization:I101479585,South China Agricultural University,6,11,academia,True
+organization:I102064193,University of Siena,6,11,academia,True
+organization:I10660446,Kunming University of Science and Technology,6,12,academia,True
+organization:I108290504,University of Pisa,6,8,academia,True
+organization:I113428412,École Normale Supérieure de Lyon,6,5,academia,False
+organization:I115592961,Jiangsu University,6,10,academia,True
+organization:I118373667,Seoul National University of Science and Technology,6,11,academia,True
+organization:I122266389,University of Nebraska at Omaha,6,4,academia,True
+organization:I12315562,Texas Tech University,6,3,academia,True
+organization:I123534392,University of North Texas,6,6,academia,True
+organization:I124633538,University of Seoul,6,8,academia,True
+organization:I1282311441,Lawrence Livermore National Laboratory,6,12,unknown,True
+organization:I1298353152,SRI International,6,9,nonprofit,True
+organization:I1341640284,Centrum Wiskunde & Informatica,6,4,unknown,False
+organization:I136765683,Tianjin University of Technology,6,10,academia,True
+organization:I137056471,Nanjing University of Finance and Economics,6,5,academia,True
+organization:I138925566,Ewha Womans University,6,8,academia,True
+organization:I142263535,University of Nottingham,6,8,academia,True
+organization:I142606810,Pacific Northwest National Laboratory,6,10,unknown,True
+organization:I143804889,Loughborough University,6,5,academia,True
+organization:I149899117,Max Planck Society,6,8,nonprofit,True
+organization:I153648349,University of Leicester,6,5,academia,True
+organization:I156087764,"University of California, Merced",6,7,academia,True
+organization:I161593684,Stockholm University,6,2,academia,True
+organization:I163340411,Hohai University,6,9,academia,True
+organization:I165488957,Lingnan University,6,4,academia,True
+organization:I173089394,ITMO University,6,11,academia,True
+organization:I173759888,Hunan Normal University,6,4,academia,True
+organization:I174458059,National Technical University of Athens,6,6,academia,True
+organization:I186354981,University of Passau,6,4,academia,True
+organization:I190497903,Laboratoire d'Analyse et d'Architecture des Systèmes,6,9,unknown,True
+organization:I19149307,Chennai Mathematical Institute,6,3,academia,True
+organization:I194028371,University of Regina,6,6,academia,True
+organization:I196829312,La Trobe University,6,4,academia,True
+organization:I200475212,"The Graduate University for Advanced Studies, SOKENDAI",6,6,academia,True
+organization:I20121455,Bielefeld University,6,7,academia,True
+organization:I201537933,Tohoku University,6,5,academia,True
+organization:I20529979,University of Electro-Communications,6,6,academia,True
+organization:I26415053,University of L'Aquila,6,3,academia,False
+organization:I2722730,Inner Mongolia University,6,10,academia,True
+organization:I32062511,Heriot-Watt University,6,7,academia,True
+organization:I32394136,Northumbria University,6,6,academia,True
+organization:I37802460,Northwest University,6,10,academia,True
+organization:I4210139618,Shanghai Key Laboratory of Trustworthy Computing,6,14,unknown,False
+organization:I4210156054,Athena Research and Innovation Center In Information Communication & Knowledge Technologies,6,10,unknown,False
+organization:I4210159266,Mitsubishi Electric (United States),6,10,industry,True
+organization:I4210164150,Shanghai Center for Brain Science and Brain-Inspired Technology,6,6,unknown,False
+organization:I4210166576,First Affiliated Hospital Zhejiang University,6,6,unknown,True
+organization:I4387153010,Télécom SudParis,6,1,academia,False
+organization:I4387153239,"Centre de Recherche en Informatique, Signal et Automatique de Lille",6,6,unknown,False
+organization:I4391767838,State Key Laboratory of Industrial Control Technology,6,8,unknown,False
+organization:I4391768185,State Key Laboratory of Intelligent Technology and Systems,6,13,unknown,False
+organization:I4392021250,State Key Laboratory of Networking and Switching Technology,6,16,unknown,False
+organization:I4405255891,CNRS@CREATE Ltd (Singapore),6,6,industry,False
+organization:I4405261073,Cornell Tech,6,7,academia,True
+organization:I4405265933,United Imaging Intelligence (China),6,17,industry,False
+organization:I4405274904,China Mobile Research Institute,6,9,industry,True
+organization:I4405278236,Institute of Data Science,6,6,unknown,False
+organization:I4405284363,Quan Cheng Laboratory,6,10,unknown,False
+organization:I44260953,Heinrich Heine University Düsseldorf,6,16,academia,False
+organization:I44461941,University of Houston,6,11,academia,True
+organization:I46305995,Taiyuan University of Science and Technology,6,4,academia,True
+organization:I51601045,University of Bath,6,5,academia,True
+organization:I60158472,Concordia University,6,11,academia,True
+organization:I63772739,Florida Atlantic University,6,4,academia,True
+organization:I6469544,City University of Macau,6,6,academia,True
+organization:I66862912,Chalmers University of Technology,6,9,academia,True
+organization:I67031392,Carleton University,6,7,academia,True
+organization:I78037679,UiT The Arctic University of Norway,6,5,academia,True
+organization:I78715868,University of Arkansas at Fayetteville,6,8,academia,True
+organization:I84884186,Newcastle University,6,6,academia,True
+organization:I86501945,University of Delaware,6,9,academia,True
+organization:I909854389,London School of Economics and Political Science,6,6,academia,True
+organization:I9341345,University of Lübeck,6,8,academia,False
+organization:I98251732,McMaster University,6,6,academia,True
+organization:I102149020,University of North Carolina at Charlotte,5,12,academia,True
+organization:I111753288,Fujian Normal University,5,7,academia,True
+organization:I121345201,Instituto de Engenharia de Sistemas e Computadores Investigação e Desenvolvimento,5,5,nonprofit,True
+organization:I121820613,Louisiana State University,5,8,academia,True
+organization:I1280414376,United States Air Force Research Laboratory,5,5,unknown,True
+organization:I1289243028,Oak Ridge National Laboratory,5,7,unknown,True
+organization:I132153292,Indian Institute of Technology Patna,5,13,academia,True
+organization:I138006243,University of Arizona,5,5,academia,True
+organization:I141649914,Nanchang University,5,13,academia,True
+organization:I142910587,University of Salento,5,2,academia,True
+organization:I148128674,University of Shanghai for Science and Technology,5,5,academia,True
+organization:I15062923,Tianjin Normal University,5,9,academia,True
+organization:I154851008,Indian Institute of Technology Roorkee,5,7,academia,True
+organization:I15766328,Universitat de Lleida,5,2,academia,True
+organization:I158934434,Zhongnan University of Economics and Law,5,9,academia,True
+organization:I162148367,Pontificia Universidad Católica de Chile,5,6,academia,True
+organization:I174025329,University of the Sunshine Coast,5,3,academia,True
+organization:I180437899,University of Bremen,5,13,academia,True
+organization:I180923762,University of Cologne,5,4,academia,True
+organization:I193352282,Daegu Gyeongbuk Institute of Science and Technology,5,9,academia,True
+organization:I196349391,Universität Ulm,5,8,academia,True
+organization:I200650556,University of Agder,5,13,academia,True
+organization:I204553293,"China University of Petroleum, Beijing",5,3,academia,True
+organization:I21370196,Aristotle University of Thessaloniki,5,6,academia,True
+organization:I223822909,Heidelberg University,5,10,academia,True
+organization:I25355098,Chang'an University,5,10,academia,False
+organization:I2799850029,Dongguan University of Technology,5,4,academia,True
+organization:I2800906181,St. Petersburg Department of Steklov Institute of Mathematics,5,10,unknown,True
+organization:I2801160905,Steklov Mathematical Institute,5,10,unknown,True
+organization:I2898391981,Deutsches Zentrum für Luft- und Raumfahrt e. V. (DLR),5,5,unknown,True
+organization:I32597200,Ghent University,5,10,academia,True
+organization:I34949971,University of Jinan,5,11,academia,True
+organization:I39534123,Gwangju Institute of Science and Technology,5,8,academia,True
+organization:I4210098366,"Institute of Information Science, Academia Sinica",5,8,unknown,False
+organization:I4210101868,Institute for System Programming,5,6,unknown,True
+organization:I4210108991,IQVIA (United States),5,3,industry,True
+organization:I4210123021,Chongqing Institute of Green and Intelligent Technology,5,9,unknown,False
+organization:I4210126328,IBM Research - Zurich,5,10,unknown,False
+organization:I4210135449,NCSOFT (South Korea),5,7,industry,True
+organization:I4210136150,L3S Research Center,5,7,unknown,False
+organization:I4210136246,China Telecom (China),5,5,industry,True
+organization:I4210142044,VinUniversity,5,4,academia,True
+organization:I4210143797,Sony (Japan),5,4,industry,True
+organization:I4210144143,Inspur (China),5,11,industry,True
+organization:I4210147322,Shanghai Institute of Microsystem and Information Technology,5,7,unknown,False
+organization:I4210155092,"Czech Academy of Sciences, Institute of Computer Science",5,3,unknown,False
+organization:I4210159102,Huawei Technologies (Sweden),5,11,industry,False
+organization:I4210159968,Duke Kunshan University,5,5,academia,True
+organization:I4210165912,Laboratoire Traitement et Communication de l’Information,5,8,unknown,False
+organization:I4210166741,University of Klagenfurt,5,6,academia,True
+organization:I4399598381,Samsung Advanced Institute of Technology (South Korea),5,11,industry,False
+organization:I4400009020,Institute of Science Tokyo,5,11,academia,True
+organization:I4405253479,National Supercomputing Center in Jinan,5,7,unknown,False
+organization:I4405258151,Federal Research Center “Computer Science and Control” of the Russian Academy of Sciences,5,6,government,False
+organization:I4405277710,China Academy of Electronics and Information Technology,5,7,unknown,False
+organization:I44445938,Shandong Jianzhu University,5,3,academia,True
+organization:I4610292,Xiangtan University,5,7,academia,True
+organization:I48430043,Institut National des Sciences Appliquées de Lyon,5,8,academia,False
+organization:I530967,Toronto Metropolitan University,5,5,academia,True
+organization:I56934997,Changsha University of Science and Technology,5,11,academia,True
+organization:I58200834,Southern Medical University,5,5,academia,True
+organization:I74525822,Hubei University of Technology,5,4,academia,True
+organization:I75027704,University of Tennessee at Knoxville,5,8,academia,True
+organization:I75900474,Hubei University,5,11,academia,True
+organization:I81365321,Old Dominion University,5,6,academia,True
+organization:I88761825,Korea University of Science and Technology,5,6,academia,True
+organization:I91125648,Wuhan Institute of Technology,5,3,academia,True
+organization:I91807558,National Cheng Kung University,5,9,academia,True
+organization:I98381234,University of Oulu,5,5,academia,True
+organization:I100532134,Lyon 1 Université,4,6,academia,True
+organization:I107139065,College of the Holy Cross,4,2,academia,True
+organization:I108688024,Qingdao University,4,7,academia,True
+organization:I11039511,University of Bergamo,4,2,academia,True
+organization:I111277659,Chonnam National University,4,7,academia,True
+organization:I118564535,University of Bern,4,6,academia,True
+organization:I119439378,University of Verona,4,9,academia,True
+organization:I121934306,Tufts University,4,7,academia,True
+organization:I126307644,University of Iowa,4,5,academia,True
+organization:I12832649,Gachon University,4,6,academia,True
+organization:I129043915,University of Udine,4,4,academia,True
+organization:I1322124587,Booz Allen Hamilton (United States),4,3,industry,True
+organization:I133529467,Sharif University of Technology,4,5,academia,True
+organization:I133837150,University of Huddersfield,4,3,academia,True
+organization:I134687103,Nanjing Tech University,4,5,academia,True
+organization:I135768898,Ritsumeikan University,4,2,academia,True
+organization:I143302722,University of Kentucky,4,3,academia,True
+organization:I145897649,Minzu University of China,4,4,academia,True
+organization:I146620803,Wenzhou University,4,6,academia,True
+organization:I149910238,Kent State University,4,5,academia,True
+organization:I157394403,Baylor University,4,5,academia,True
+organization:I159176309,Universität Hamburg,4,9,academia,True
+organization:I168639165,Singapore Institute of Technology,4,1,academia,True
+organization:I168879160,Zhejiang University of Science and Technology,4,7,academia,True
+organization:I173899330,Henan University,4,7,academia,True
+organization:I179225836,University of Augsburg,4,7,academia,True
+organization:I17974374,Universidade de São Paulo,4,6,academia,False
+organization:I181369854,Friedrich-Alexander-Universität Erlangen-Nürnberg,4,8,academia,False
+organization:I182534213,Universidade do Porto,4,8,academia,True
+organization:I185523456,University of Southern Queensland,4,3,academia,True
+organization:I204136569,The Open University,4,3,academia,True
+organization:I204778367,Norwegian University of Science and Technology,4,7,academia,True
+organization:I205490536,Dongguk University,4,10,academia,True
+organization:I20616075,Qinghai Normal University,4,2,academia,True
+organization:I22716506,Lanzhou University of Technology,4,3,academia,True
+organization:I28006308,Shandong Normal University,4,8,academia,True
+organization:I2801360556,CEA Paris-Saclay - Etablissement de Saclay,4,4,unknown,True
+organization:I2802705668,United States Army Combat Capabilities Development Command,4,6,unknown,True
+organization:I4210087915,Massachusetts General Hospital,4,7,unknown,True
+organization:I4210089761,West China Hospital of Sichuan University,4,4,unknown,True
+organization:I4210095624,Alibaba Group (United States),4,3,industry,False
+organization:I4210096394,Queens University,4,3,academia,True
+organization:I4210099069,Institute of Acoustics,4,4,unknown,True
+organization:I4210100789,Wuhan College,4,1,nonprofit,False
+organization:I4210104430,Laboratoire d'Informatique de Grenoble,4,6,unknown,False
+organization:I4210106479,"Laboratoire d'Informatique, Signaux et Systèmes de Sophia Antipolis",4,9,unknown,False
+organization:I4210117005,Laboratoire des Sciences du Numérique de Nantes,4,10,unknown,False
+organization:I4210124949,Microsoft Research (India),4,7,industry,False
+organization:I4210127572,IMT Atlantique,4,9,academia,True
+organization:I4210132011,Hangzhou Seventh Peoples Hospital,4,3,unknown,False
+organization:I4210134673,The Institute of Statistical Mathematics,4,5,unknown,True
+organization:I4210138083,Beijing Open University,4,1,academia,False
+organization:I4210144576,Fraunhofer Institute for Intelligent Analysis and Information Systems,4,5,unknown,False
+organization:I4210153776,Apple (United States),4,9,industry,True
+organization:I4210153930,Guangdong Provincial People's Hospital,4,5,unknown,False
+organization:I4210154111,Université Gustave Eiffel,4,6,academia,True
+organization:I4210155236,National Research Council,4,3,nonprofit,True
+organization:I4210155607,Laboratoire d'Informatique en Images et Systèmes d'Information,4,6,unknown,False
+organization:I4210156165,Lenovo (China),4,5,industry,True
+organization:I4210156583,Laboratoire d'Informatique de Paris-Nord,4,4,unknown,False
+organization:I4210158318,Second Affiliated Hospital of Zhejiang University,4,8,unknown,True
+organization:I4210159029,Guangzhou HKUST Fok Ying Tung Research Institute,4,2,unknown,False
+organization:I4210160189,Institut Polytechnique de Bordeaux,4,3,academia,False
+organization:I4210161052,Korea University,4,8,academia,True
+organization:I4210161954,Département d'Informatique,4,4,unknown,False
+organization:I4210165339,Ningbo Institute of Industrial Technology,4,4,unknown,False
+organization:I4387152856,Laboratoire Interdisciplinaire des Sciences du Numérique,4,7,unknown,False
+organization:I4391768063,VMware (United States),4,5,industry,True
+organization:I4391768176,State Key Laboratory of Media Convergence and Communication,4,4,unknown,False
+organization:I4392021234,Hessian Center for Artificial Intelligence,4,4,unknown,False
+organization:I4401726770,Cambricon (China),4,10,industry,False
+organization:I4405255904,Shenzhen University of Advanced Technology,4,4,academia,True
+organization:I4405258768,UpStage (South Korea),4,5,industry,True
+organization:I4405258795,Kakao Brain (South Korea),4,5,industry,False
+organization:I4405259414,Université Toulouse Capitole,4,4,academia,True
+organization:I4405261500,"Services répartis, Architectures, MOdélisation, Validation, Administration des Réseaux",4,1,unknown,False
+organization:I4405267400,Centre for Tactile Internet with Human-in-the-Loop,4,4,unknown,False
+organization:I4405273316,Frontiers Center for Brain Science of the Ministry of Education,4,7,unknown,False
+organization:I4405277059,VNU University of Engineering and Technology,4,5,academia,True
+organization:I50357001,Universidad Carlos III de Madrid,4,4,academia,True
+organization:I52158045,China Agricultural University,4,6,academia,True
+organization:I53592917,Jiangxi Normal University,4,8,academia,True
+organization:I53964585,Weizmann Institute of Science,4,4,academia,True
+organization:I57093077,Swinburne University of Technology,4,5,academia,True
+organization:I57201433,Università della Svizzera italiana,4,8,academia,False
+organization:I59611059,Institute of Mathematical Sciences,4,4,unknown,True
+organization:I7454413,Centrale Lille Institut,4,4,academia,False
+organization:I74656192,University of Göttingen,4,5,academia,False
+organization:I75951250,Freie Universität Berlin,4,7,academia,True
+organization:I78757542,University of Newcastle Australia,4,3,academia,True
+organization:I79516672,University of Louisiana at Lafayette,4,5,academia,True
+organization:I83558840,Universidade Nova de Lisboa,4,4,academia,True
+organization:I87354575,National Chengchi University,4,4,academia,True
+organization:I88060688,Universidad Politécnica de Madrid,4,2,academia,True
+organization:I899635006,Université Grenoble Alpes,4,10,academia,True
+organization:I90023481,National Institute of Information and Communications Technology,4,3,unknown,True
+organization:I96908189,Xinjiang University,4,4,academia,True
+organization:I98702875,Université de Caen Normandie,4,3,academia,True
+organization:I99542240,Polish Academy of Sciences,4,4,government,True
+organization:I101155339,Korea Telecom (South Korea),3,6,industry,True
+organization:I106785703,Institut polytechnique de Grenoble,3,6,academia,True
+organization:I107707843,Roskilde University,3,1,academia,True
+organization:I112936343,École Centrale de Lyon,3,2,academia,False
+organization:I121296143,Hunan University of Science and Technology,3,2,academia,True
+organization:I123044942,Universitat Autònoma de Barcelona,3,10,academia,True
+organization:I12615008,Beijing Normal-Hong Kong Baptist University,3,4,academia,False
+organization:I1280536761,Ames Research Center,3,6,unknown,True
+organization:I1282105669,Argonne National Laboratory,3,5,unknown,True
+organization:I1303474014,Defence Science and Technology Group,3,4,government,True
+organization:I131729948,University of Salerno,3,2,academia,True
+organization:I1328775524,Zhejiang Sci-Tech University,3,5,academia,True
+organization:I1334627681,Jet Propulsion Laboratory,3,5,unknown,True
+organization:I1335578998,Florida Institute for Human and Machine Cognition,3,2,nonprofit,True
+organization:I134560555,Université Toulouse III - Paul Sabatier,3,5,academia,True
+organization:I1456306,North China University of Technology,3,4,academia,True
+organization:I145808223,Hanbat National University,3,4,academia,True
+organization:I146563203,University of International Business and Economics,3,5,academia,True
+organization:I151201029,Consejo Nacional de Investigaciones Científicas y Técnicas,3,6,government,True
+organization:I15196421,University of Applied Sciences and Arts of Southern Switzerland,3,6,academia,True
+organization:I159385669,Chiba University,3,5,academia,True
+organization:I160354086,Guangxi Medical University,3,1,academia,True
+organization:I162608824,University of Sussex,3,3,academia,True
+organization:I16269868,Santa Clara University,3,4,academia,True
+organization:I166825849,Tampere University,3,6,academia,True
+organization:I172901346,St Petersburg University,3,4,academia,True
+organization:I174101054,Changwon National University,3,3,academia,True
+organization:I177477856,Politecnico di Torino,3,4,academia,True
+organization:I177969490,University of Southern Denmark,3,3,academia,True
+organization:I178232147,Guizhou University,3,4,academia,True
+organization:I180825142,"City, University of London",3,3,academia,True
+organization:I181565077,Georgia State University,3,4,academia,True
+organization:I182083151,Universidad Rey Juan Carlos,3,4,academia,True
+organization:I182707071,Ludong University,3,2,academia,True
+organization:I182722699,Shenzhen Polytechnic University,3,3,academia,True
+organization:I189158943,University of Milan,3,2,academia,True
+organization:I194210350,École Nationale Supérieure d'Ingénieurs de Caen,3,2,academia,False
+organization:I197323543,Johannes Gutenberg University Mainz,3,4,academia,True
+organization:I19880235,Lomonosov Moscow State University,3,8,academia,True
+organization:I200870766,Brookhaven National Laboratory,3,3,unknown,True
+organization:I202334528,Beijing Electronic Science and Technology Institute,3,3,academia,True
+organization:I202391551,Czech Academy of Sciences,3,3,government,True
+organization:I203474044,"National Centre of Scientific Research ""Demokritos""",3,6,unknown,False
+organization:I204824540,University of Wollongong,3,6,academia,True
+organization:I207014233,Kyushu Institute of Technology,3,5,academia,True
+organization:I22046295,Inner Mongolia Normal University,3,1,academia,True
+organization:I258800397,New York University Shanghai,3,3,academia,True
+organization:I25974101,University of Würzburg,3,3,academia,False
+organization:I2699952,Pontifícia Universidade Católica do Rio de Janeiro,3,3,academia,True
+organization:I2800372957,China Electronics Technology Group Corporation,3,3,industry,True
+organization:I2802939634,Chinese PLA General Hospital,3,5,unknown,False
+organization:I3089745140,Yale-NUS College,3,2,academia,False
+organization:I34352273,Maastricht University,3,2,academia,True
+organization:I34771391,University of Cyprus,3,3,academia,True
+organization:I39333907,Yanshan University,3,5,academia,True
+organization:I39387349,University of Chieti-Pescara,3,1,academia,False
+organization:I4210086892,Education University of Hong Kong,3,2,academia,True
+organization:I4210086894,"Research Center for Information Technology Innovation, Academia Sinica",3,6,unknown,False
+organization:I4210087596,Qualcomm (United States),3,7,industry,True
+organization:I4210097418,Laboratoire des signaux et systèmes,3,3,unknown,False
+organization:I4210104735,Sandia National Laboratories,3,7,unknown,True
+organization:I4210107865,Wuzhou University,3,2,academia,False
+organization:I4210114274,Laboratoire d’Informatique et Systèmes,3,8,unknown,False
+organization:I4210118728,State Key Laboratory of Information Engineering in Surveying Mapping and Remote Sensing,3,3,unknown,False
+organization:I4210119392,Institute of Microelectronics,3,9,unknown,False
+organization:I4210121405,Centre for Artificial Intelligence and Robotics,3,4,unknown,True
+organization:I4210122543,Guangdong Polytechnic Normal University,3,4,academia,True
+organization:I4210128565,CEA Paris-Saclay,3,3,government,False
+organization:I4210131560,Université Mohammed VI Polytechnique,3,4,academia,True
+organization:I4210131870,"Institute of Psychology, Chinese Academy of Sciences",3,2,unknown,False
+organization:I4210131919,Xi'an University of Technology,3,8,academia,False
+organization:I4210138186,Wuhan National Laboratory for Optoelectronics,3,8,unknown,False
+organization:I4210139483,GREYC,3,2,unknown,False
+organization:I4210141777,Academic College of Tel Aviv-Yafo,3,2,academia,True
+organization:I4210145865,IBM Research - Tokyo,3,5,unknown,False
+organization:I4210146419,Institute for Research in Fundamental Sciences,3,2,unknown,True
+organization:I4210148881,ING Bank,3,4,unknown,True
+organization:I4210151987,Ministry of Agriculture and Rural Affairs,3,2,government,True
+organization:I4210152518,Laboratoire d'Informatique Gaspard-Monge,3,4,unknown,False
+organization:I4210153393,Geely (China),3,7,industry,True
+organization:I4210159890,TCG Crest,3,2,unknown,False
+organization:I4210161401,Criteo (France),3,9,industry,True
+organization:I4210162154,IMDEA Software Institute,3,3,unknown,False
+organization:I4210163363,PLA Army Engineering University,3,7,academia,False
+organization:I4210164122,NEC (Germany),3,7,industry,False
+organization:I4210164495,KDDI Research (Japan),3,7,industry,False
+organization:I4387152517,Instituto Superior Técnico,3,3,academia,False
+organization:I4387152675,Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau,3,4,academia,True
+organization:I4387153096,Computer Vision Center,3,10,unknown,False
+organization:I4387155180,Samsung SDS (South Korea),3,3,industry,True
+organization:I4391768177,State Key Laboratory of Subtropical Building Science,3,1,unknown,False
+organization:I4391768281,State Key Laboratory of Robotics,3,9,unknown,False
+organization:I4400600977,Posts and Telecommunications Institute of Technology,3,3,academia,False
+organization:I4401200273,Insilico Medicine (United States),3,7,industry,True
+organization:I4401726823,Nio (China),3,4,industry,True
+organization:I4401726955,Coupang (South Korea),3,2,industry,True
+organization:I4403928267,International Laboratory on Learning Systems,3,3,unknown,False
+organization:I4405258201,NEO: Ingénierie et Opérations des Réseaux,3,4,unknown,False
+organization:I4405259708,Kakao Corporation (South Korea),3,4,industry,True
+organization:I4405260913,MAASAI: Modèles et algorithmes pour l'intelligence artificielle,3,3,unknown,False
+organization:I4405260964,"WIMMICS: Web-Instrumented huMan-Machine Interactions, Communities and Semantics",3,7,unknown,False
+organization:I4405270501,Centre for Perceptual and Interactive Intelligence,3,4,unknown,False
+organization:I4405270573,Stiftung Universitätsmedizin Essen,3,2,nonprofit,False
+organization:I4405272344,"Centre interuniversitaire de recherche sur les réseaux d'entreprise, la logistique et le transport",3,5,unknown,False
+organization:I4405275474,NTT Communications Corporation (Japan),3,2,industry,True
+organization:I4405283751,Deep Space Exploration Laboratory,3,4,government,False
+organization:I45643870,Pontifícia Universidade Católica do Rio Grande do Sul,3,2,academia,True
+organization:I46247651,University of Manitoba,3,3,academia,True
+organization:I47251452,Wake Forest University,3,6,academia,True
+organization:I47689461,Northeast Forestry University,3,2,academia,True
+organization:I49835588,Macao Polytechnic University,3,3,academia,True
+organization:I55143463,University of Turin,3,4,academia,True
+organization:I56404289,Indian Institute of Technology BHU,3,4,academia,True
+organization:I57664883,Ajou University,3,5,academia,True
+organization:I58918642,"Sofia University ""St. Kliment Ohridski""",3,5,academia,True
+organization:I59483232,Shandong University of Finance and Economics,3,5,academia,True
+organization:I60587646,Brno University of Technology,3,4,academia,True
+organization:I60668342,University of Regensburg,3,7,academia,True
+organization:I6507939,China United Network Communications Group (China),3,3,industry,True
+organization:I65837984,Kobe University,3,4,academia,True
+organization:I66752286,University of Milano-Bicocca,3,3,academia,True
+organization:I67636235,University of International Relations,3,1,academia,True
+organization:I71209653,Bocconi University,3,2,academia,True
+organization:I74413500,University of Windsor,3,1,academia,True
+organization:I74796645,"Birla Institute of Technology and Science, Pilani",3,6,academia,True
+organization:I7495430,Idiap Research Institute,3,3,unknown,True
+organization:I78978612,Yangzhou University,3,5,academia,True
+organization:I80281795,University of Otago,3,3,academia,True
+organization:I80611190,Jeonbuk National University,3,7,academia,True
+organization:I8692664,University of Oklahoma,3,3,academia,True
+organization:I8696757,Singapore University of Social Sciences,3,3,academia,True
+organization:I88773910,Intuit (United States),3,4,industry,True
+organization:I88830068,Shaanxi Normal University,3,7,academia,True
+organization:I90183372,Université de Lorraine,3,5,academia,True
+organization:I90267481,Umeå University,3,3,academia,False
+organization:I91203450,University of Haifa,3,4,academia,True
+organization:I92446798,Colorado State University,3,3,academia,True
+organization:I9356336,Minnan Normal University,3,1,academia,True
+organization:I94616838,Jönköping University,3,2,academia,False
+organization:I95674353,UCLouvain,3,6,academia,True
+organization:I9617848,Universitat Politècnica de Catalunya,3,7,academia,True
+organization:I97188460,Nantes Université,3,9,academia,True
+organization:I98259816,"Birkbeck, University of London",3,3,academia,True
+organization:I99908691,Yuan Ze University,3,2,academia,True
+organization:I102208913,Shihezi University,2,2,academia,True
+organization:I102516824,Université de Technologie de Compiègne,2,2,academia,False
+organization:I102607778,Cleveland State University,2,3,academia,True
+organization:I103737770,Bank of Italy,2,1,unknown,True
+organization:I105126617,Zhejiang International Studies University,2,1,academia,True
+organization:I106118109,Eötvös Loránd University,2,1,academia,False
+organization:I108192572,HEC Montréal,2,2,academia,False
+organization:I109689652,FPT University,2,2,academia,True
+organization:I110152177,University of Akron,2,2,academia,True
+organization:I110378019,Southern Illinois University Carbondale,2,1,academia,True
+organization:I111236770,University of Vermont,2,2,academia,True
+organization:I113306721,Hiroshima University,2,4,academia,True
+organization:I114457229,University of Geneva,2,3,academia,True
+organization:I11559806,École Normale Supérieure Paris-Saclay,2,3,academia,False
+organization:I116067653,University of Rome Tor Vergata,2,2,academia,True
+organization:I117965899,University of Hawaiʻi at Mānoa,2,2,academia,False
+organization:I119045251,Huaqiao University,2,2,academia,True
+organization:I11923345,Wrocław University of Science and Technology,2,3,academia,False
+organization:I119273862,Central South University of Forestry and Technology,2,3,academia,True
+organization:I119449181,Technische Universität Ilmenau,2,4,academia,False
+organization:I119916105,Augsburg University,2,3,academia,True
+organization:I120825670,Yunnan Normal University,2,2,academia,True
+organization:I12097938,West Virginia University,2,2,academia,True
+organization:I122346577,University of Modena and Reggio Emilia,2,5,academia,True
+organization:I12393601,Huaihua University,2,1,academia,True
+organization:I124357947,University of London,2,4,academia,True
+organization:I124644866,Northwest Minzu University,2,2,academia,True
+organization:I125904092,Shenyang Aerospace University,2,4,academia,True
+organization:I1286353243,Autodesk (United States),2,4,industry,True
+organization:I1287521167,Lockheed Martin (United States),2,1,industry,True
+organization:I129801699,University of Tasmania,2,1,academia,True
+organization:I129902397,Dalhousie University,2,3,academia,True
+organization:I1299457549,Civil Aviation Administration of China,2,3,government,True
+organization:I1301041018,Rakuten (Japan),2,3,industry,True
+organization:I130194489,University of Alicante,2,3,academia,True
+organization:I130442723,Universidade Federal do Rio Grande do Sul,2,3,academia,True
+organization:I1310439424,Accenture (Switzerland),2,5,industry,False
+organization:I1316064682,LinkedIn (United States),2,6,industry,True
+organization:I1316535847,Beth Israel Deaconess Medical Center,2,3,unknown,True
+organization:I132053463,Université Libre de Bruxelles,2,2,academia,False
+organization:I1330693074,Walmart (United States),2,2,industry,True
+organization:I1332474105,Mercedes-Benz (Germany),2,6,industry,False
+organization:I133738476,University of Massachusetts Lowell,2,2,academia,True
+organization:I133868755,Shanghai Medical College of Fudan University,2,3,academia,True
+organization:I134113660,"University of Nevada, Reno",2,4,academia,True
+organization:I135364568,New York Institute of Technology,2,2,academia,False
+organization:I137407579,Université Oran 1 Ahmed Ben Bella,2,3,academia,True
+organization:I139322472,Universiti Sains Malaysia,2,2,academia,True
+organization:I141103825,Jiangxi University of Water Resources and Electric Power,2,2,academia,True
+organization:I141371507,Soongsil University,2,4,academia,True
+organization:I142444530,University of Trieste,2,4,academia,True
+organization:I146416000,University of Kansas,2,1,academia,True
+organization:I148099405,Xi'an University of Architecture and Technology,2,3,academia,False
+organization:I149461666,Ca' Foscari University of Venice,2,2,academia,False
+organization:I154526488,Inserm,2,3,government,True
+organization:I154757721,University of Piraeus,2,1,academia,True
+organization:I155093810,University of Idaho,2,2,academia,True
+organization:I157210198,Scuola Normale Superiore,2,2,academia,True
+organization:I157943965,Holon Institute of Technology,2,2,academia,True
+organization:I159650629,University of Sassari,2,1,academia,True
+organization:I160993911,Queensland University of Technology,2,4,academia,True
+organization:I161103922,Philipps University of Marburg,2,3,academia,True
+organization:I161321875,University of Beira Interior,2,1,academia,True
+organization:I161346416,Jimei University,2,3,academia,True
+organization:I162290304,Scuola Superiore Sant'Anna,2,3,academia,False
+organization:I16351329,China West Normal University,2,2,academia,True
+organization:I164389053,Fordham University,2,2,academia,True
+organization:I164861460,Manipal Academy of Higher Education,2,2,academia,True
+organization:I164950643,Open University of Israel,2,3,academia,True
+organization:I165507594,Kangwon National University,2,2,academia,True
+organization:I165677929,Sungshin Women's University,2,4,academia,False
+organization:I167576493,Colorado School of Mines,2,3,academia,True
+organization:I168635309,University of Calgary,2,3,academia,True
+organization:I169615421,Middle Tennessee State University,2,2,academia,True
+organization:I16970960,Scripps College,2,2,academia,True
+organization:I170751988,Shanxi University of Finance and Economics,2,2,academia,True
+organization:I171892758,Forschungszentrum Jülich,2,2,unknown,False
+organization:I172446870,University of Cagliari,2,2,academia,True
+organization:I173498003,Palo Alto Research Center,2,1,unknown,True
+organization:I174385955,Hefei Normal University,2,2,academia,True
+organization:I176808543,Liaoning Technical University,2,1,academia,True
+organization:I177605424,Amherst College,2,2,academia,True
+organization:I182712176,Montanuniversität Leoben,2,4,academia,True
+organization:I183519381,Capital Medical University,2,2,academia,True
+organization:I18452120,Yantai University,2,2,academia,True
+organization:I184681353,Anhui University of Science and Technology,2,2,academia,True
+organization:I184759092,Lafayette College,2,2,academia,True
+organization:I187560010,University of Béjaïa,2,1,academia,False
+organization:I189109744,Indian Institute of Technology Dhanbad,2,2,academia,True
+organization:I189731429,Wellesley College,2,2,academia,True
+organization:I192454743,Sandia National Laboratories California,2,1,unknown,False
+organization:I193619901,Constructor University,2,2,academia,True
+organization:I19370010,Orange (France),2,2,industry,True
+organization:I196454796,Institut National des Sciences Appliquées de Toulouse,2,3,academia,False
+organization:I197191942,St. Francis Xavier University,2,1,academia,True
+organization:I197274945,Nagoya Institute of Technology,2,5,academia,True
+organization:I199305430,Nantong University,2,4,academia,True
+organization:I200296433,Chinese Academy of Medical Sciences & Peking Union Medical College,2,4,academia,False
+organization:I20382870,Missouri University of Science and Technology,2,4,academia,True
+organization:I205274468,Trinity College Dublin,2,2,academia,True
+organization:I205747304,Institut National Polytechnique de Toulouse,2,2,academia,True
+organization:I20581793,University of Kent,2,3,academia,True
+organization:I206651237,East Texas A&M University,2,1,academia,False
+organization:I206777745,Nanjing Audit University,2,1,academia,True
+organization:I22465464,University of Münster,2,2,academia,False
+organization:I23582244,Ho Chi Minh City University of Science,2,4,academia,True
+organization:I24354313,Universidad de Buenos Aires,2,3,academia,True
+organization:I25399270,Southwest Forestry University,2,1,academia,True
+organization:I26092322,Stellenbosch University,2,2,academia,True
+organization:I2613432,University of South Florida,2,3,academia,True
+organization:I26538001,San Diego State University,2,1,academia,True
+organization:I27483092,University of Perugia,2,4,academia,True
+organization:I27674431,Indian Institute of Technology Gandhinagar,2,2,academia,True
+organization:I2799829267,Simula Research Laboratory,2,3,unknown,True
+organization:I2800102766,Idaho National Laboratory,2,3,unknown,True
+organization:I2800710378,Naval University of Engineering,2,2,academia,True
+organization:I2801036362,Agency for Defense Development,2,5,government,True
+organization:I2802076133,University of Koblenz and Landau,2,3,academia,True
+organization:I2802499160,IMDEA Networks,2,2,unknown,True
+organization:I2802505932,China Aerodynamics Research and Development Center,2,7,unknown,True
+organization:I28221208,Institut National des Sciences Appliquées de Rennes,2,1,academia,False
+organization:I288749910,"Indian Institute of Science Education and Research, Bhopal",2,3,academia,True
+organization:I3005160176,Institute for High Performance Computing and Networking,2,1,unknown,False
+organization:I3017770710,China North Industries Group Corporation (China),2,1,industry,True
+organization:I3018263800,Huzhou Normal University,2,2,academia,False
+organization:I3019271933,Nicolaus Copernicus University,2,2,academia,False
+organization:I308837,Suzhou University of Science and Technology,2,2,academia,True
+organization:I3124150290,Universidad San Sebastián,2,1,academia,False
+organization:I3131550300,Université Toulouse-I-Capitole,2,3,academia,False
+organization:I3133134087,Lanzhou Jiaotong University,2,2,academia,True
+organization:I31419693,Kyungpook National University,2,3,academia,True
+organization:I31590910,Jianghan University,2,1,academia,True
+organization:I31683504,Beijing Forestry University,2,3,academia,True
+organization:I33849332,University of Malaya,2,2,academia,True
+organization:I354108,Minjiang University,2,3,academia,True
+organization:I36672615,Courant Institute of Mathematical Sciences,2,3,academia,True
+organization:I37574244,Sichuan Agricultural University,2,2,academia,True
+organization:I4210085887,Laboratoire Hubert Curien,2,4,unknown,True
+organization:I4210085935,IBM Research - Almaden,2,4,unknown,False
+organization:I4210087059,Technology Innovation Institute,2,2,unknown,True
+organization:I4210087266,Institute of Computer Science,2,2,unknown,False
+organization:I4210088387,Heuristics and Diagnostics for Complex Systems,2,2,unknown,False
+organization:I4210088668,"Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement",2,6,government,False
+organization:I4210088951,Synopsys (United States),2,2,industry,True
+organization:I4210091207,Singapore Institute of Manufacturing Technology,2,1,unknown,False
+organization:I4210091327,Max Planck Institute for Mathematics in the Sciences,2,6,unknown,True
+organization:I4210092944,Dalian University,2,1,academia,True
+organization:I4210096862,Sobolev Institute of Mathematics,2,2,unknown,True
+organization:I4210096899,Jiangsu University of Science and Technology,2,2,academia,False
+organization:I4210097156,"Biologie Computationnelle, Quantitative et Synthétique",2,1,unknown,False
+organization:I4210099672,Accenture (United States),2,5,industry,False
+organization:I4210100430,Google (Switzerland),2,1,industry,False
+organization:I4210100924,China Computer Federation,2,1,unknown,True
+organization:I4210104252,Air Force Engineering University,2,2,academia,True
+organization:I4210104314,New York Institute of Technology,2,2,academia,True
+organization:I4210104539,Shenzhen Maternity and Child Healthcare Hospital,2,1,unknown,False
+organization:I4210105918,Normandie Université,2,2,academia,True
+organization:I4210107808,NORCE Research AS,2,2,unknown,True
+organization:I4210110718,Nanyang Normal University,2,6,academia,True
+organization:I4210111959,Shanghai Advanced Research Institute,2,2,unknown,False
+organization:I4210114105,Tsinghua–Berkeley Shenzhen Institute,2,2,unknown,False
+organization:I4210115644,Chinese Institute for Brain Research,2,2,government,False
+organization:I4210117673,Institut de Recherche en Informatique Fondamentale,2,2,unknown,False
+organization:I4210117754,Chinese Academy of Civil Aviation Science and Technology,2,3,nonprofit,False
+organization:I4210118397,Sichuan Academy of Medical Sciences & Sichuan Provincial People's Hospital,2,1,unknown,False
+organization:I4210119942,Wuhan Textile University,2,2,academia,True
+organization:I4210120471,Instituto de Telecomunicações,2,1,nonprofit,False
+organization:I4210120547,Toyota Motor Corporation (Belgium),2,3,industry,True
+organization:I4210123447,London Institute for Mathematical Sciences,2,1,academia,True
+organization:I4210124242,Optum (United States),2,3,industry,True
+organization:I4210124264,Sany (China),2,1,industry,True
+organization:I4210124651,Phenikaa University,2,2,academia,False
+organization:I4210126360,Centre Inria de Saclay,2,3,unknown,False
+organization:I4210126907,Institut Universitaire de Gériatrie de Montréal,2,1,unknown,False
+organization:I4210129108,Aix-Marseille Sciences Economiques,2,1,unknown,False
+organization:I4210131650,Korea Electronics Technology Institute,2,2,unknown,False
+organization:I4210132032,Institute for Enterprise Systems,2,3,unknown,False
+organization:I4210133907,Institut Pierre Louis d‘Épidémiologie et de Santé Publique,2,2,unknown,False
+organization:I4210135459,United Imaging Healthcare (China),2,2,industry,True
+organization:I4210138412,Centre Inria de l'Université de Lille,2,2,unknown,False
+organization:I4210138808,École Pour l'Informatique et les Techniques Avancées,2,2,academia,False
+organization:I4210142583,Snap (United States),2,5,industry,True
+organization:I4210144566,Laboratoire de l'Informatique du Parallélisme,2,3,unknown,False
+organization:I4210144839,Hamad bin Khalifa University,2,1,academia,True
+organization:I4210146044,École Normale Supérieure de Rennes,2,2,academia,False
+organization:I4210148548,Fujian Provincial Cancer Hospital,2,2,unknown,False
+organization:I4210149211,Institute of Semiconductors,2,6,unknown,False
+organization:I4210151615,Wuyi University,2,2,academia,True
+organization:I4210157875,Institute of Advanced Research in Artificial Intelligence,2,1,unknown,False
+organization:I4210159778,National Research Council Canada,2,2,government,True
+organization:I4210162141,Microsoft (India),2,3,industry,True
+organization:I4210164937,Microsoft Research (United Kingdom),2,4,industry,False
+organization:I4210165303,Safran (France),2,1,industry,True
+organization:I4210165351,Toyota Central Research and Development Laboratories (Japan),2,3,industry,False
+organization:I4210166566,Preferred Networks (Japan),2,3,industry,True
+organization:I4210166615,INESC TEC,2,3,nonprofit,True
+organization:I4210167297,IBM Research - Haifa,2,6,unknown,True
+organization:I4387153466,Weill Cornell Medicine,2,3,academia,True
+organization:I4387153937,Universität Koblenz,2,3,academia,True
+organization:I4387154616,Lamarr Institute for Machine Learning and Artificial Intelligence,2,3,unknown,False
+organization:I4400573175,Input Output (Singapore),2,1,industry,False
+organization:I4401726785,Microsoft Research New York City (United States),2,2,industry,False
+organization:I4401726789,Xiaopeng Motors (China),2,3,industry,True
+organization:I4401726920,Aibee (China),2,6,industry,False
+organization:I4401726921,Cloudwalk (China),2,2,industry,False
+organization:I4401726932,Pinterest (United States),2,1,industry,False
+organization:I4401726997,Tusimple (United States),2,5,industry,True
+organization:I4403386660,Liaoning Academy of Materials,2,1,unknown,False
+organization:I4403386768,Centre Borelli,2,8,unknown,False
+organization:I4405253476,Bundesamt für Rüstung armasuisse,2,3,government,True
+organization:I4405257439,Laboratório de Sistemas Informáticos de Grande Escala,2,3,unknown,False
+organization:I4405257466,Computer Vision Laboratory,2,7,unknown,False
+organization:I4405257689,National Supercomputing Center In Zhengzhou,2,4,unknown,False
+organization:I4405259731,"COATI: Combinatoire, Optimisation et Algorithmes pour les Télécommunications",2,5,unknown,False
+organization:I4405259976,Université Jean Monnet,2,4,academia,True
+organization:I4405260795,Kakao Enterprise (South Korea),2,4,industry,False
+organization:I4405261136,"Hangzhou Institute of Medicine, Chinese Academy of Sciences",2,4,government,False
+organization:I4405261323,Research Institute of Tsinghua University in Shenzhen,2,2,academia,False
+organization:I4405263863,"Tokio Marine Holdings, Inc. (Japan)",2,1,industry,True
+organization:I4405266553,Tianmushan Laboratory,2,7,academia,False
+organization:I4405268240,Artificial Intelligence Research Center,2,2,unknown,False
+organization:I4405269194,Insight SFI Research Centre for Data Analytics,2,1,unknown,False
+organization:I4405271240,"Honda Research Institute, USA",2,4,unknown,False
+organization:I4405271865,Futurewei Technologies (United States),2,1,industry,False
+organization:I4405272214,Guangdong Province Key Laboratory of Computational Science,2,2,unknown,False
+organization:I4405272656,Shanghai Key Laboratory of Digital Media Processing and Transmission,2,4,unknown,False
+organization:I4405276368,China Railway Rolling Stock Corporation Zhuzhou Institute (China),2,2,industry,False
+organization:I4405280530,Nanchang Institute of Technology,2,2,academia,False
+organization:I4405280756,"Beijing Normal University, Zhuhai",2,2,academia,False
+organization:I4405286242,IDEAS Research Institute,2,2,government,False
+organization:I4405286430,Research Institute for an Inclusive Society through Engineering,2,2,unknown,False
+organization:I4405286623,"Center for Computational Sciences, University of Tsukuba",2,1,unknown,False
+organization:I4405286939,"Center for Spatial Information Science, The University of Tokyo",2,7,unknown,False
+organization:I44675526,Shanghai Ocean University,2,2,academia,True
+organization:I47265099,Ho Chi Minh City University of Technology,2,3,academia,True
+organization:I4921948,Pusan National University,2,5,academia,True
+organization:I50632499,Chongqing University of Technology,2,3,academia,True
+organization:I51101395,Université Paris 1 Panthéon-Sorbonne,2,1,academia,False
+organization:I51158804,Massey University,2,3,academia,True
+organization:I51504820,San Jose State University,2,2,academia,True
+organization:I55060895,University of Greenwich,2,4,academia,True
+organization:I55741626,Technical University of Crete,2,6,academia,True
+organization:I55769427,Indiana University – Purdue University Indianapolis,2,3,academia,False
+organization:I59105498,Swisscom (Switzerland),2,1,industry,True
+organization:I59433898,Brunel University of London,2,2,academia,True
+organization:I61057504,Fujian Agriculture and Forestry University,2,5,academia,True
+organization:I67348948,Bayer (Germany),2,3,industry,True
+organization:I67357951,KIIT University,2,1,academia,True
+organization:I71999127,Universitat de Barcelona,2,2,academia,True
+organization:I72903472,Occidental College,2,1,academia,True
+organization:I73417466,Coventry University,2,2,academia,True
+organization:I74837319,Jiangxi Agricultural University,2,1,academia,True
+organization:I75381157,Wilfrid Laurier University,2,2,academia,True
+organization:I75390827,Beijing University of Chemical Technology,2,5,academia,True
+organization:I76835614,University of Missouri,2,2,academia,True
+organization:I83467386,IT University of Copenhagen,2,3,academia,True
+organization:I83683471,University of West Florida,2,1,academia,True
+organization:I86467917,James Cook University,2,2,academia,True
+organization:I86695891,Australian Catholic University,2,2,academia,True
+organization:I86767153,Université Jean Monnet,2,4,academia,True
+organization:I87111246,Catholic University of Korea,2,2,academia,True
+organization:I8901234,Foundation for Research and Technology Hellas,2,5,unknown,False
+organization:I89864525,Universität Trier,2,2,academia,True
+organization:I9086337,Taiyuan University of Technology,2,2,academia,True
+organization:I92614990,Tokyo University of Agriculture and Technology,2,6,academia,True
+organization:I94722563,University of Jyväskylä,2,3,academia,False
+organization:I9736820,École de Technologie Supérieure,2,4,academia,False
+organization:I98389781,Dhirubhai Ambani University,2,5,academia,True
+organization:I98834328,Wuyi University,2,2,academia,True
+organization:I10052268,New Mexico State University,1,1,academia,True
+organization:I10108838,National University of Salta,1,1,academia,True
+organization:I102248843,Vienna University of Economics and Business,1,1,academia,True
+organization:I102345215,Xihua University,1,1,academia,True
+organization:I103605065,Berry College,1,1,academia,True
+organization:I106107269,Claremont McKenna College,1,1,academia,True
+organization:I106157433,University of Kassel,1,1,academia,True
+organization:I10654025,SK Group (United States),1,1,industry,False
+organization:I106645853,Changchun University of Science and Technology,1,1,academia,True
+organization:I106663880,University of Bahrain,1,1,academia,True
+organization:I106959904,Florida Institute of Technology,1,3,academia,True
+organization:I106969075,Idaho State University,1,1,academia,True
+organization:I107606265,Broad Institute,1,8,nonprofit,True
+organization:I10902133,Universitat Jaume I,1,1,academia,True
+organization:I110166357,University of Delhi,1,1,academia,True
+organization:I110200422,Universidade Federal de Minas Gerais,1,3,academia,True
+organization:I111149068,National Defense University,1,1,academia,True
+organization:I111428342,Hitotsubashi University,1,1,academia,True
+organization:I111455621,"Queens College, CUNY",1,1,academia,True
+organization:I112524849,Yamagata University,1,2,academia,True
+organization:I112862951,University of Messina,1,1,academia,True
+organization:I114073160,Sutter Health,1,1,unknown,True
+organization:I114660634,Benedictine University,1,1,academia,True
+organization:I115455960,Centre for Quantum Technologies,1,2,unknown,True
+organization:I116121188,Dolby (Netherlands),1,1,industry,False
+organization:I116397343,Hochschule Mittweida,1,1,academia,True
+organization:I11662577,Monash University Malaysia,1,2,academia,True
+organization:I118019719,F. Hoffmann-La Roche AG,1,1,industry,True
+organization:I118036225,Istanbul Bilgi University,1,1,academia,True
+organization:I118136607,General Motors (United States),1,1,industry,True
+organization:I118353179,DePaul University,1,1,academia,True
+organization:I119003972,Roma Tre University,1,1,academia,True
+organization:I119241673,Indian Institute of Technology Ropar,1,1,academia,True
+organization:I11983389,Manchester Metropolitan University,1,1,academia,True
+organization:I120250893,New York University Abu Dhabi,1,1,academia,True
+organization:I121691239,Beihua University,1,1,academia,True
+organization:I121748325,Universidad Complutense de Madrid,1,1,academia,True
+organization:I122754148,SAS Institute (United States),1,1,industry,True
+organization:I122991210,"Istituto di Scienza e Tecnologie dell'Informazione ""Alessandro Faedo""",1,1,unknown,False
+organization:I123185442,Reykjavík University,1,2,academia,False
+organization:I123387679,Uppsala University,1,1,academia,True
+organization:I123565023,Vietnam National University Ho Chi Minh City,1,3,academia,True
+organization:I125467818,Dakota State University,1,1,academia,True
+organization:I125608817,Korea Institute for Advanced Study,1,1,unknown,True
+organization:I126527374,Peoples' Friendship University of Russia,1,1,academia,False
+organization:I126820664,Vassar College,1,1,academia,True
+organization:I1281400175,Oslo University Hospital,1,1,unknown,True
+organization:I1283155146,Panasonic (Japan),1,2,industry,True
+organization:I1283220839,Stuttgart Media University,1,2,academia,True
+organization:I1283280774,Brigham and Women's Hospital,1,2,unknown,False
+organization:I1284762954,Zhejiang A & F University,1,1,academia,False
+organization:I1285929390,Hubei University of Medicine,1,2,academia,True
+organization:I1285933455,Physikalisch-Technische Bundesanstalt,1,1,government,True
+organization:I1288882113,Boston Children's Hospital,1,3,unknown,False
+organization:I1289461252,Indian Space Research Organisation,1,1,government,True
+organization:I1292020679,Institute on Governance,1,3,nonprofit,True
+organization:I1292669757,Toshiba (Japan),1,1,industry,True
+organization:I1292974536,Ford Motor Company (United States),1,1,industry,True
+organization:I129627893,University of Molise,1,1,academia,True
+organization:I129708740,Fujian Medical University,1,1,academia,True
+organization:I1297971548,International Computer Science Institute,1,1,nonprofit,True
+organization:I129877168,Carl von Ossietzky Universität Oldenburg,1,1,academia,True
+organization:I1299907687,Bloomberg (United States),1,2,industry,True
+organization:I1302485747,Verizon (United States),1,1,industry,True
+organization:I1304082316,United States Department of the Army,1,1,government,True
+organization:I1304256225,University of Wisconsin System,1,2,academia,True
+organization:I130438778,Memorial University of Newfoundland,1,2,academia,True
+organization:I130480701,Dongbei University of Finance and Economics,1,1,academia,True
+organization:I1305444813,Capital One (United States),1,1,industry,True
+organization:I1306339040,Ericsson (Sweden),1,1,industry,True
+organization:I1306686416,RTX (United States),1,1,industry,True
+organization:I130750295,Xinyang Normal University,1,1,academia,True
+organization:I1308126019,National Oceanic and Atmospheric Administration,1,1,government,True
+organization:I130823665,Ural Federal University,1,2,academia,True
+organization:I1308548392,Santa Fe Institute,1,1,unknown,True
+organization:I1309849503,RAND Corporation,1,1,nonprofit,True
+organization:I1311060795,U.S. National Science Foundation,1,1,government,True
+organization:I131221577,Bucknell University,1,1,academia,True
+organization:I1312222531,Agricultural Research Service,1,1,government,True
+organization:I1313079697,Southwest University of Political Science & Law,1,1,academia,True
+organization:I1315279114,Zhejiang Wanli University,1,1,academia,True
+organization:I131651094,University of Denver,1,1,academia,True
+organization:I1317621060,Indian Institute of Technology Guwahati,1,1,academia,True
+organization:I1318611468,Fidelity Investments (United States),1,1,industry,True
+organization:I1319473763,Volkswagen Group (Germany),1,4,industry,True
+organization:I1323252656,Information Technology University,1,1,academia,True
+organization:I1327069482,National Institute on Drug Abuse,1,4,unknown,True
+organization:I1327163397,State University of New York,1,1,academia,True
+organization:I1330063522,Johnson & Johnson (United States),1,1,industry,False
+organization:I1331070479,Université de Yaoundé I,1,1,academia,False
+organization:I133229071,Ardahan University,1,1,academia,True
+organization:I1334819555,Memorial Sloan Kettering Cancer Center,1,4,unknown,True
+organization:I133557312,Rikkyo University,1,2,academia,True
+organization:I1337719021,Australian Research Council,1,1,government,True
+organization:I134161618,National Taiwan Normal University,1,1,academia,True
+organization:I134235054,Sabancı Üniversitesi,1,1,academia,False
+organization:I1342911587,Oracle (United States),1,1,industry,True
+organization:I1343871089,Los Alamos National Laboratory,1,4,unknown,True
+organization:I1344073410,Howard Hughes Medical Institute,1,1,unknown,True
+organization:I134421475,National Physical Laboratory,1,1,unknown,True
+organization:I134695357,Universidad de Talca,1,1,academia,True
+organization:I1351752,Koç University,1,3,academia,False
+organization:I135428043,Cisco Systems (United States),1,1,industry,True
+organization:I135564639,Ahsanullah University of Science and Technology,1,2,academia,True
+organization:I135714990,North University of China,1,1,academia,True
+organization:I135905480,Shanghai Polytechnic University,1,1,academia,True
+organization:I136804859,South African National Space Agency,1,1,government,True
+organization:I137506752,North China University of Science and Technology,1,1,academia,True
+organization:I137533716,German Sport University Cologne,1,1,academia,True
+organization:I138211613,Austrian Academy of Sciences,1,1,government,True
+organization:I13985625,East China Jiaotong University,1,2,academia,True
+organization:I140221134,Anhui Agricultural University,1,1,academia,True
+organization:I141591182,University of Aizu,1,1,academia,True
+organization:I141649380,Western Michigan University,1,1,academia,True
+organization:I141720752,Davidson College,1,3,academia,True
+organization:I141883831,Instituto Nacional de Matemática Pura e Aplicada,1,3,unknown,False
+organization:I142262071,Johnson Controls (United States),1,1,industry,True
+organization:I142637625,Okinawa Institute of Science and Technology Graduate University,1,1,academia,True
+organization:I143379178,FZI Research Center for Information Technology,1,2,nonprofit,True
+organization:I143413998,Qingdao University of Science and Technology,1,2,academia,True
+organization:I144648426,Norwegian Computing Center,1,2,nonprofit,True
+organization:I145325580,Deloitte (United States),1,3,industry,False
+organization:I145673806,Fujita Health University,1,1,academia,True
+organization:I147869694,Continental (Germany),1,2,industry,True
+organization:I148283060,Lawrence Berkeley National Laboratory,1,1,unknown,True
+organization:I148561064,African Institute for Mathematical Sciences,1,1,academia,True
+organization:I14894300,Foshan University,1,2,academia,True
+organization:I149213910,University of Antwerp,1,1,academia,True
+organization:I153230381,Charles Sturt University,1,1,academia,True
+organization:I154338468,University of Fribourg,1,4,academia,True
+organization:I155256416,École Spéciale Militaire de Saint-Cyr,1,2,academia,False
+organization:I155997454,University of Evansville,1,1,academia,True
+organization:I156914199,RAND School of Public Policy,1,1,academia,True
+organization:I157386601,North South University,1,2,academia,True
+organization:I157650460,Universidad de La Sabana,1,1,academia,True
+organization:I15823474,Linyi University,1,1,academia,True
+organization:I161222507,Open University of China,1,1,academia,True
+organization:I161350542,China Three Gorges University,1,1,academia,True
+organization:I162096671,Universidad de Los Andes,1,4,academia,True
+organization:I162884033,American International Group (United States),1,2,industry,True
+organization:I163151358,Cyprus University of Technology,1,3,academia,True
+organization:I163770644,Okayama University,1,1,academia,True
+organization:I164936912,The University of Texas at El Paso,1,1,academia,True
+organization:I164956901,Visa (United Kingdom),1,6,industry,True
+organization:I165339363,Universidad de Oviedo,1,3,academia,True
+organization:I165368041,University of Iceland,1,1,academia,True
+organization:I165525304,Edge Hill University,1,4,academia,True
+organization:I165745306,Southwest Petroleum University,1,1,academia,True
+organization:I166401450,Universidad Nacional de Córdoba,1,1,academia,False
+organization:I16656306,Meiji University,1,2,academia,True
+organization:I16764540,University of Suwon,1,1,academia,True
+organization:I16835326,University of St Andrews,1,2,academia,True
+organization:I168864056,Bilkent University,1,1,academia,True
+organization:I169019527,Quanzhou Normal University,1,1,academia,True
+organization:I169108374,University of the Basque Country,1,1,academia,True
+organization:I169199633,Aston University,1,1,academia,True
+organization:I169251466,Xavier University of Louisiana,1,1,academia,True
+organization:I169335092,University of North Carolina at Greensboro,1,1,academia,True
+organization:I169521973,University of New Mexico,1,1,academia,True
+organization:I169541294,Flinders University,1,1,academia,True
+organization:I169689159,PLA Information Engineering University,1,1,academia,True
+organization:I170658231,Osnabrück University,1,2,academia,False
+organization:I171494771,Shiga University,1,1,academia,True
+organization:I173304897,Universidad de Granada,1,3,academia,True
+organization:I173439891,HES-SO University of Applied Sciences and Arts Western Switzerland,1,1,academia,True
+organization:I173632517,MediaTek (China),1,6,industry,False
+organization:I173915773,Yamaguchi University,1,1,academia,True
+organization:I173963315,St. Cloud State University,1,1,academia,True
+organization:I174167972,British Columbia Institute of Technology,1,1,academia,True
+organization:I174216632,City University of New York,1,1,academia,True
+organization:I174878644,University of Patras,1,1,academia,True
+organization:I176432857,Beijing Wuzi University,1,2,academia,True
+organization:I176601375,Khalifa University of Science and Technology,1,1,academia,True
+organization:I177233841,"Vietnam National University, Hanoi",1,1,academia,True
+organization:I177388780,Xuzhou Medical College,1,1,academia,True
+organization:I177738480,Japan Advanced Institute of Science and Technology,1,2,academia,True
+organization:I177881444,Pomona College,1,1,academia,True
+organization:I178450904,Universidad Nacional de Educación a Distancia,1,3,academia,True
+organization:I179060312,Northeast Electric Power University,1,1,academia,True
+organization:I179324530,Jilin University of Finance and Economics,1,1,academia,True
+organization:I17937529,German Cancer Research Center,1,1,unknown,True
+organization:I180670191,"University of California, San Francisco",1,1,academia,True
+organization:I180910786,Universidad de la República de Uruguay,1,2,academia,True
+organization:I181343428,University of Zagreb,1,1,academia,True
+organization:I181401687,American University,1,1,academia,True
+organization:I181514455,International Institute of Information Technology Bangalore,1,1,academia,True
+organization:I181547552,Baylor College of Medicine,1,1,academia,True
+organization:I182212641,University of Salzburg,1,1,academia,True
+organization:I182937616,Hyundai Mobis (South Korea),1,1,industry,True
+organization:I182980787,University of Dallas,1,1,academia,True
+organization:I184531372,OsloMet – Oslo Metropolitan University,1,1,academia,True
+organization:I184565670,Georgetown University,1,4,academia,True
+organization:I184692499,Austin Peay State University,1,1,academia,True
+organization:I184840846,Virginia Commonwealth University,1,1,academia,True
+organization:I185492890,University of Canterbury,1,2,academia,True
+organization:I188068037,Pohang Iron and Steel (South Korea),1,1,industry,True
+organization:I188703460,DNV (Norway),1,1,industry,True
+organization:I188760350,Ollscoil na Gaillimhe – University of Galway,1,3,academia,True
+organization:I188973947,Novosibirsk State University,1,1,academia,True
+organization:I189590672,Kansas State University,1,3,academia,True
+organization:I189712700,University of Konstanz,1,1,academia,True
+organization:I190242452,Guangdong Pharmaceutical University,1,1,academia,True
+organization:I1902872,EURECOM,1,3,academia,True
+organization:I190752583,ParisTech,1,1,academia,True
+organization:I192578771,Rose–Hulman Institute of Technology,1,2,academia,False
+organization:I192619145,University of the Witwatersrand,1,2,academia,True
+organization:I193033237,Institut Supérieur de l'Aéronautique et de l'Espace (ISAE-SUPAERO),1,2,academia,False
+organization:I193700539,Tilburg University,1,1,academia,True
+organization:I195893171,Zuse Institute Berlin,1,1,unknown,True
+organization:I19648265,Wright State University,1,1,academia,True
+organization:I197312522,Hyundai Motor Group (South Korea),1,1,industry,True
+organization:I198244214,Université Clermont Auvergne,1,1,academia,True
+organization:I198415970,Université d'Avignon et des Pays de Vaucluse,1,1,academia,True
+organization:I200207707,Homi Bhabha National Institute,1,1,academia,True
+organization:I200777214,National and Kapodistrian University of Athens,1,1,academia,True
+organization:I200946902,Yichun University,1,1,academia,True
+organization:I201181511,École Nationale Supérieure de Techniques Avancées,1,2,academia,True
+organization:I201324441,University of Ferrara,1,2,academia,True
+organization:I201799495,Middle East Technical University,1,4,academia,True
+organization:I202126657,Qufu Normal University,1,1,academia,True
+organization:I202963720,University of St.Gallen,1,1,academia,True
+organization:I203303854,Universidad de Los Andes,1,4,academia,True
+organization:I203339264,Université de Lyon,1,2,academia,True
+organization:I204291657,Hosei University,1,1,academia,True
+organization:I204593131,College of Charleston,1,1,academia,True
+organization:I205401836,National Institute for Materials Science,1,1,unknown,True
+organization:I205746353,University of Dhaka,1,3,academia,True
+organization:I20577493,Denison University,1,1,academia,True
+organization:I205892228,Berlin School of Economics and Law,1,1,academia,True
+organization:I210368670,Société Nationale des Chemins de Fer Français (France),1,1,industry,True
+organization:I21067949,Adolfo Ibáñez University,1,1,academia,False
+organization:I211433327,Ministry of Natural Resources,1,1,government,True
+organization:I21203515,Kazan Federal University,1,2,academia,True
+organization:I212119943,University of Victoria,1,2,academia,True
+organization:I21642278,Ningxia University,1,1,academia,True
+organization:I21945476,Shanghai Normal University,1,5,academia,True
+organization:I22248866,AgroParisTech,1,1,academia,True
+organization:I223464139,Linnaeus University,1,3,academia,True
+organization:I2250865144,TCL (China),1,1,industry,True
+organization:I227486990,University of Szeged,1,1,academia,True
+organization:I233745408,Pontificia Universidad Javeriana,1,1,academia,True
+organization:I23632641,Shanghai University of Electric Power,1,2,academia,True
+organization:I23732399,Montana State University,1,1,academia,True
+organization:I23946033,University of Tehran,1,2,academia,True
+organization:I24027795,University of Johannesburg,1,1,academia,True
+organization:I24062138,Konkuk University,1,1,academia,True
+organization:I251424209,Universitat de Girona,1,1,academia,True
+organization:I25623903,College of Management Academic Studies,1,1,academia,True
+organization:I257545875,"Hunan University of Humanities, Science and Technology",1,1,academia,True
+organization:I265519392,Erzurum Technical University,1,1,academia,True
+organization:I27577105,University College Cork,1,1,academia,True
+organization:I27765905,North-West University,1,3,academia,True
+organization:I2799513111,Swiss Ornithological Institute,1,1,nonprofit,True
+organization:I2799692708,World Anti-Doping Agency,1,3,nonprofit,True
+organization:I2799714274,Shanghai Astronomical Observatory,1,1,unknown,True
+organization:I2799773085,Nanjing General Hospital of Nanjing Military Command,1,3,unknown,False
+organization:I2800274787,"Fraunhofer Institute for Telecommunications, Heinrich Hertz Institute",1,1,unknown,True
+organization:I2800278093,Sony Corporation (United States),1,1,industry,True
+organization:I2800387288,European Commission,1,1,government,True
+organization:I2800493309,"Grain Inspection, Packers and Stockyards Administration",1,2,government,True
+organization:I2800887215,Tunisia Polytechnic School,1,1,academia,True
+organization:I2801138448,The Royal Free Hospital,1,1,unknown,True
+organization:I2801228662,Peking Union Medical College Hospital,1,1,unknown,True
+organization:I2801556517,Ruijin Hospital,1,1,unknown,True
+organization:I2801577699,Beijing Institute of Genomics,1,1,unknown,True
+organization:I2801618472,PLA Rocket Force University of Engineering,1,1,academia,True
+organization:I2801635229,American Institute of Indian Studies,1,1,nonprofit,True
+organization:I2801658355,Office National d'Études et de Recherches Aérospatiales,1,1,unknown,True
+organization:I2801798921,Helmholtz-Zentrum Dresden-Rossendorf,1,2,unknown,True
+organization:I2801919071,University of Illinois System,1,1,academia,True
+organization:I2802204017,Université de Bretagne Sud,1,1,academia,True
+organization:I2802249531,Shenyang Conservatory of Music,1,1,academia,True
+organization:I2802608112,Shanghai Chest Hospital,1,1,unknown,True
+organization:I2802957242,Beijing Jishuitan Hospital,1,1,unknown,True
+organization:I2802999273,Wisconsin Institutes for Discovery,1,2,nonprofit,True
+organization:I28777354,Sejong University,1,4,academia,True
+organization:I28813325,Civil Aviation University of China,1,4,academia,True
+organization:I2946016260,Uber AI (United States),1,1,industry,False
+organization:I29801172,Thomas Jefferson National Accelerator Facility,1,3,unknown,True
+organization:I3018134672,Helmholtz Munich,1,2,unknown,False
+organization:I3018473509,Fraunhofer Institute for Manufacturing Engineering and Automation,1,3,unknown,False
+organization:I3019441195,Laboratoire de Mathématiques d'Orsay,1,3,unknown,False
+organization:I3019848993,Mines Saint-Étienne,1,1,academia,False
+organization:I3020100970,Chang Gung Memorial Hospital,1,2,unknown,True
+organization:I3020783763,Asus (Taiwan),1,2,industry,True
+organization:I30771326,Italian Institute of Technology,1,3,unknown,True
+organization:I3125743391,China University of Geosciences (Beijing),1,1,academia,True
+organization:I3130751423,Shaoguan University,1,1,academia,True
+organization:I31595395,Chengdu University of Technology,1,2,academia,True
+organization:I3174185376,China South Industries Group (China),1,1,industry,True
+organization:I32021983,Christian-Albrechts-Universität zu Kiel,1,2,academia,True
+organization:I32389192,University of Alabama at Birmingham,1,1,academia,True
+organization:I32625721,University of Saskatchewan,1,2,academia,True
+organization:I32943570,Helsinki Institute for Information Technology,1,2,unknown,True
+organization:I34155123,Hebei University of Science and Technology,1,1,academia,True
+organization:I34250744,University of Łódź,1,1,academia,False
+organization:I350617331,Shanghai Conservatory of Music,1,1,academia,True
+organization:I35722693,University of Hawaii at Hilo,1,5,academia,False
+organization:I35777872,North Carolina Agricultural and Technical State University,1,4,academia,False
+organization:I35886859,Korea University of Technology and Education,1,5,academia,True
+organization:I368840534,University of Mississippi,1,1,academia,True
+organization:I39063666,University of Catania,1,1,academia,True
+organization:I39586589,Swansea University,1,3,academia,True
+organization:I41317344,Jiangxi Science and Technology Normal University,1,1,academia,True
+organization:I41725924,Muroran Institute of Technology,1,3,academia,True
+organization:I4210085861,Laboratoire d'Intégration des Systèmes et des Technologies,1,1,government,True
+organization:I4210085930,Heriot-Watt University Malaysia,1,1,academia,False
+organization:I4210086178,Research Center in Industrial Technologies,1,1,unknown,False
+organization:I4210087512,Corporación Universitaria de Colombia Ideas,1,1,academia,False
+organization:I4210087691,Beijing Tian Tan Hospital,1,1,unknown,True
+organization:I4210087731,Guizhou Education University,1,1,academia,False
+organization:I4210088164,"Changchun Institute of Optics, Fine Mechanics and Physics",1,1,unknown,True
+organization:I4210088449,HES-SO Genève,1,1,academia,False
+organization:I4210088544,Centre de Recherche en Économie et Management,1,1,unknown,False
+organization:I4210088826,Centre d'Économie de la Sorbonne,1,1,unknown,False
+organization:I4210088980,Michelin (France),1,1,industry,True
+organization:I4210089285,Ji Hua Laboratory,1,1,unknown,False
+organization:I4210089612,United States Air Force,1,1,government,True
+organization:I4210089985,Amazon (Germany),1,3,industry,False
+organization:I4210091706,Henan Academy of Sciences,1,1,unknown,False
+organization:I4210091876,IMT Mines Albi,1,1,academia,False
+organization:I4210092118,Qatar Mobility Innovations Center,1,1,unknown,False
+organization:I4210092223,Suzhou Vocational University,1,1,academia,False
+organization:I4210092299,Qihoo 360 (China),1,4,industry,True
+organization:I4210092517,Shanghai Eye Disease Prevention & Treatment Center,1,1,unknown,False
+organization:I4210092773,UK Centre for Ecology & Hydrology,1,1,unknown,False
+organization:I4210093205,Foxconn (China),1,1,industry,False
+organization:I4210093282,Institut de Robòtica i Informàtica Industrial,1,4,unknown,False
+organization:I4210093996,Dolby (United States),1,1,industry,True
+organization:I4210094118,Universitätsklinikum Tübingen,1,1,unknown,False
+organization:I4210094759,Fujitsu (United States),1,2,industry,False
+organization:I4210094894,China Automotive Technology and Research Center,1,1,unknown,False
+organization:I4210095018,National Center for Mathematics and Interdisciplinary Sciences,1,2,unknown,False
+organization:I4210095101,Hue University,1,1,academia,False
+organization:I4210095320,Thales (Canada),1,2,industry,False
+organization:I4210095952,Institute for Cross-Disciplinary Physics and Complex Systems,1,1,unknown,True
+organization:I4210096607,Line Corporation (Japan),1,1,industry,True
+organization:I4210097372,École Nationale Supérieure d’Informatique pour l’Industrie et l’Entreprise,1,1,academia,False
+organization:I4210097525,Youjiang Medical College for Nationalities,1,1,unknown,False
+organization:I4210098460,Shanghai University of Traditional Chinese Medicine,1,1,academia,True
+organization:I4210098702,Laboratoire Mécanique des Solides,1,1,unknown,False
+organization:I4210099079,Institute of Intelligent Machines,1,1,unknown,False
+organization:I4210099416,"Laboratoire d'Informatique, de Modélisation et d'Optimisation des Systèmes",1,1,unknown,False
+organization:I4210100281,Jangan University,1,2,academia,False
+organization:I4210100400,Northwestern University,1,3,academia,True
+organization:I4210100579,AXA (France),1,1,industry,True
+organization:I4210100977,IBM (Ireland),1,6,industry,False
+organization:I4210101534,Honeywell (India),1,1,industry,False
+organization:I4210102518,ConsenSys (United States),1,1,industry,True
+organization:I4210102541,Shenzhen Bay Laboratory,1,1,unknown,False
+organization:I4210103279,IBM Research - India,1,1,unknown,False
+organization:I4210103346,Nanfang Hospital,1,1,unknown,True
+organization:I4210103558,Tencent Healthcare (China),1,4,industry,False
+organization:I4210103820,Autodesk (Canada),1,1,industry,False
+organization:I4210104233,China Electronics Corporation (China),1,1,industry,True
+organization:I4210104335,Institute for Basic Science,1,1,unknown,True
+organization:I4210104607,Centre Hospitalier Universitaire de Nîmes,1,1,unknown,False
+organization:I4210104622,Intel (Israel),1,1,industry,False
+organization:I4210105651,Laboratoire Traitement du Signal et de l'Image,1,3,unknown,False
+organization:I4210106108,Xinjiang Technical Institute of Physics & Chemistry,1,3,unknown,False
+organization:I4210106192,Technische Hochschule Ingolstadt,1,1,academia,True
+organization:I4210106545,Centre Inria d'Université Côte d'Azur,1,3,unknown,False
+organization:I4210106675,Invenio Imaging (United States),1,1,industry,False
+organization:I4210106857,Caisse des Dépôts et Consignations,1,1,unknown,False
+organization:I4210106933,Kingmed Diagnostics,1,1,unknown,False
+organization:I4210107641,Centre de Mathématiques Appliquées de l'École polytechnique,1,1,unknown,False
+organization:I4210107733,"Informatique, BioInformatique, Systèmes Complexes",1,2,unknown,False
+organization:I4210107832,Ernst Abbe University of Applied Sciences Jena,1,1,academia,True
+organization:I4210108177,Zhejiang Police College,1,1,academia,False
+organization:I4210108304,Brain Network Dynamics Unit,1,2,unknown,False
+organization:I4210109616,Bay Area Environmental Research Institute,1,2,nonprofit,False
+organization:I4210109871,Khatam University,1,1,academia,False
+organization:I4210110507,Fraunhofer Institute for Applied Information Technology,1,1,unknown,False
+organization:I4210110621,Sony (China),1,1,industry,False
+organization:I4210110888,"Toulouse Biotechnology Institute, Bio & Chemical Engineering",1,2,unknown,False
+organization:I4210110898,Moscow Technical University of Communication and Informatics,1,1,academia,True
+organization:I4210111500,"Fraunhofer Institute of Optronics, System Technologies and Image Exploitation",1,1,unknown,False
+organization:I4210111795,Hisense (China),1,1,industry,True
+organization:I4210112052,Indian Institute of Technology Goa,1,1,academia,True
+organization:I4210112059,African Institute for Mathematical Sciences,1,1,academia,False
+organization:I4210112065,Eye & ENT Hospital of Fudan University,1,1,unknown,True
+organization:I4210112448,Beijing Anding Hospital,1,1,unknown,False
+organization:I4210112595,Research Institute of Petroleum Exploration and Development,1,2,unknown,False
+organization:I4210112894,Ernst & Young (United States),1,1,industry,False
+organization:I4210112925,Max Planck Institute for Biological Cybernetics,1,1,unknown,True
+organization:I4210112936,Verisk Analytics (United States),1,2,industry,True
+organization:I4210112962,York University,1,1,academia,True
+organization:I4210113215,IRCCS Ospedale Galeazzi - Sant'Ambrogio,1,1,unknown,False
+organization:I4210113248,Indian Institute of Technology Palakkad,1,1,unknown,True
+organization:I4210113759,Leibniz Institute for Prevention Research and Epidemiology - BIPS,1,6,unknown,False
+organization:I4210114698,Institute of Plasma Physics,1,1,unknown,False
+organization:I4210115040,iQIYI (China),1,1,industry,True
+organization:I4210115145,"University of Minnesota, Duluth",1,1,academia,True
+organization:I4210115556,CNR-IMIOT – Consiglio Nazionale delle Ricerche - Istituto di Metodologie Integrate per l’Osservazione della Terra,1,1,unknown,False
+organization:I4210115928,Changhai Hospital,1,1,unknown,True
+organization:I4210116208,Linkou Chang Gung Memorial Hospital,1,2,unknown,True
+organization:I4210116271,Ho Chi Minh City University of Industry and Trade,1,1,academia,False
+organization:I4210116917,Singapore Eye Research Institute,1,1,unknown,False
+organization:I4210117195,HUN-REN Institute for Computer Science and Control,1,1,unknown,False
+organization:I4210117382,Anyang Normal University,1,1,academia,True
+organization:I4210117523,Samsung (United Kingdom),1,2,industry,False
+organization:I4210117750,Weizenbaum Institute,1,1,unknown,True
+organization:I4210117815,Mitsubishi Heavy Industries (Japan),1,1,industry,True
+organization:I4210118005,Interuniversity Graduate School of Psychometrics and Sociometrics,1,2,unknown,False
+organization:I4210119410,Institute of Fundamental Technological Research,1,1,unknown,False
+organization:I4210119561,Digital Research Centre of Sfax,1,1,unknown,False
+organization:I4210119759,Essen University Hospital,1,2,unknown,False
+organization:I4210119991,Laboratoire Informatique d'Avignon,1,1,unknown,False
+organization:I4210120278,SA Health,1,1,government,True
+organization:I4210120926,Mosaic,1,1,nonprofit,False
+organization:I4210121459,Pôle Léonard de Vinci,1,1,academia,True
+organization:I4210121611,UMR Botanique et Modélisation de l’Architecture des Plantes et des végétations,1,4,unknown,False
+organization:I4210121771,First Affiliated Hospital of Xi'an Jiaotong University,1,1,unknown,False
+organization:I4210121800,Chan Zuckerberg Initiative (United States),1,1,industry,True
+organization:I4210121830,Meteorological Bureau of Shenzhen Municipality,1,1,government,False
+organization:I4210121838,Laboratoire Lorrain de Recherche en Informatique et ses Applications,1,2,unknown,False
+organization:I4210122261,Swiss Data Science Center,1,1,academia,False
+organization:I4210122463,Neapolis University Pafos,1,3,academia,True
+organization:I4210122671,Laboratoire de Physique des Interfaces et des Couches Minces,1,1,unknown,False
+organization:I4210122684,Sony Computer Science Laboratories,1,1,unknown,False
+organization:I4210122954,MIT Lincoln Laboratory,1,1,unknown,True
+organization:I4210123126,Silicon Austria Labs (Austria),1,2,industry,False
+organization:I4210123571,Huawei Technologies (France),1,5,industry,False
+organization:I4210123934,Amazon (United Kingdom),1,1,industry,False
+organization:I4210124077,Duke Institute for Health Innovation,1,1,unknown,False
+organization:I4210124239,Shanghai Xiandai Architectural Design,1,1,unknown,False
+organization:I4210124809,Peking University People's Hospital,1,2,unknown,False
+organization:I4210124956,GIPSA-Lab,1,2,unknown,False
+organization:I4210125787,Nuance Communications (United States),1,1,industry,True
+organization:I4210126060,First Affiliated Hospital of GuangXi Medical University,1,1,unknown,False
+organization:I4210126338,Software Competence Center Hagenberg (Austria),1,2,industry,True
+organization:I4210126839,Mastercard (United States),1,4,industry,True
+organization:I4210127074,Zhongshan Hospital,1,1,unknown,True
+organization:I4210127218,Center for Integrated Nanotechnologies,1,4,unknown,False
+organization:I4210127738,IMT Mines Alès,1,1,academia,False
+organization:I4210128140,Guangdong University of Petrochemical Technology,1,1,academia,False
+organization:I4210128284,"Institute of Optics and Electronics, Chinese Academy of Sciences",1,3,unknown,True
+organization:I4210128738,Samsung (Poland),1,1,industry,False
+organization:I4210129730,RIKEN Center for Computational Science,1,1,unknown,False
+organization:I4210129961,IBM (India),1,1,industry,True
+organization:I4210130445,Max Planck Institute for Human Cognitive and Brain Sciences,1,1,unknown,True
+organization:I4210130660,Xi'an High Tech University,1,1,academia,False
+organization:I4210130704,University of Michigan–Dearborn,1,2,academia,False
+organization:I4210131751,African Institute for Mathematical Sciences,1,1,nonprofit,False
+organization:I4210131858,Epigénétique et Destin Cellulaire,1,1,unknown,False
+organization:I4210132072,China Institute of Sport Science,1,1,nonprofit,False
+organization:I4210132246,Workday (United States),1,2,industry,True
+organization:I4210133362,Institut National de Physique Nucléaire et de Physique des Particules,1,1,unknown,False
+organization:I4210133756,Center for Advanced Systems Understanding,1,2,unknown,False
+organization:I4210133778,Centre Inria de l'Université de Rennes,1,3,unknown,False
+organization:I4210134091,Yahoo (United States),1,1,industry,False
+organization:I4210134419,Neusoft (China),1,2,industry,True
+organization:I4210134512,GE Global Research (United States),1,2,industry,True
+organization:I4210134591,Telefonica Research and Development,1,1,industry,False
+organization:I4210134832,Laboratoire de Physique des 2 Infinis Irène Joliot-Curie,1,1,unknown,False
+organization:I4210134900,Jena University Hospital,1,1,unknown,False
+organization:I4210135439,RMIT Europe,1,1,academia,False
+organization:I4210136004,University of Bisha,1,1,academia,False
+organization:I4210136276,NASK National Research Institute,1,1,unknown,True
+organization:I4210136613,Laboratoire des systèmes et applications des technologies de l'information et de l'énergie,1,2,unknown,False
+organization:I4210136859,Xi’an University of Posts and Telecommunications,1,1,academia,False
+organization:I4210136922,Fraunhofer Institute for Applied and Integrated Security,1,1,unknown,False
+organization:I4210137306,Stanford Medicine,1,2,unknown,True
+organization:I4210137370,Institute of Mathematics,1,2,unknown,True
+organization:I4210137853,Toyota Motor Corporation (Japan),1,2,industry,True
+organization:I4210137977,Advanced Micro Devices (United States),1,8,industry,True
+organization:I4210138370,Liupanshui Normal University,1,2,academia,False
+organization:I4210138524,Dexcom (United States),1,1,industry,True
+organization:I4210139030,Samsung (India),1,5,industry,False
+organization:I4210139321,Graphcore (United Kingdom),1,3,industry,True
+organization:I4210140341,Allen Institute,1,3,nonprofit,True
+organization:I4210140930,Thales (France),1,1,industry,True
+organization:I4210141458,Cancer Hospital of Chinese Academy of Medical Sciences,1,2,unknown,True
+organization:I4210141683,China Academy of Chinese Medical Sciences,1,2,academia,True
+organization:I4210141942,Peking University Third Hospital,1,1,unknown,True
+organization:I4210143016,Changchun Institute of Technology,1,5,academia,True
+organization:I4210143841,Saudi Aramco (Saudi Arabia),1,1,industry,True
+organization:I4210144228,Eunice Kennedy Shriver National Institute of Child Health and Human Development,1,1,unknown,True
+organization:I4210144793,Centre de Calcul de l’Institut National de Physique Nucléaire et de Physique des Particules,1,1,unknown,False
+organization:I4210144946,Applied Research Associates (United States),1,1,industry,True
+organization:I4210145184,Honda (United States),1,2,industry,False
+organization:I4210145693,Guangdong Academy of Medical Sciences,1,1,unknown,False
+organization:I4210145773,Tianjin Medical University Eye Hospital,1,1,unknown,False
+organization:I4210145784,IBM Research - Ireland,1,7,unknown,False
+organization:I4210146051,Anyang Institute of Technology,1,1,academia,False
+organization:I4210146077,China National Institute of Standardization,1,1,unknown,False
+organization:I4210146817,Synesis,1,1,unknown,False
+organization:I4210146959,Beijing Academy of Agriculture and Forestry Sciences,1,1,unknown,False
+organization:I4210147267,Ronin Institute,1,1,nonprofit,False
+organization:I4210148195,Concordia University,1,1,academia,True
+organization:I4210148469,Visa (United States),1,6,industry,True
+organization:I4210148704,Deargen (South Korea),1,1,industry,False
+organization:I4210148827,"Birla Institute of Technology and Science, Pilani - Goa Campus",1,3,academia,False
+organization:I4210148850,National Science Library,1,1,unknown,False
+organization:I4210148872,Magic Leap (United States),1,4,industry,True
+organization:I4210148979,MediaTek (Taiwan),1,6,industry,True
+organization:I4210149092,Laboratoire Jean Kuntzmann,1,1,unknown,False
+organization:I4210149132,Shuguang Hospital,1,1,unknown,True
+organization:I4210149358,Nokia (France),1,1,industry,False
+organization:I4210149379,NEC (China),1,2,industry,False
+organization:I4210150358,Institut Systèmes Intelligents et de Robotique,1,1,unknown,True
+organization:I4210150595,Guangzhou Electronic Technology (China),1,1,industry,False
+organization:I4210150651,Rapid Flow (United States),1,3,industry,False
+organization:I4210150719,eBay (United States),1,1,industry,True
+organization:I4210151260,Guangdong Open University,1,1,academia,False
+organization:I4210151530,Shanghai Pudong New Area Gongli Hospital,1,2,unknown,False
+organization:I4210151833,Amsterdam University Medical Centers,1,3,unknown,True
+organization:I4210151975,Northwest Institute of Nuclear Technology,1,1,unknown,False
+organization:I4210152052,Indo Korea Science and Technology,1,1,unknown,False
+organization:I4210152119,Jiangsu Province Hospital,1,1,unknown,False
+organization:I4210152167,MTA-SZTE Research Group on Artificial Intelligence,1,1,unknown,False
+organization:I4210152737,Jinhua University of Vocational Technology,1,1,academia,False
+organization:I4210152932,Amadeus (Spain),1,1,industry,True
+organization:I4210153482,Changzhou University,1,2,academia,False
+organization:I4210153640,DCS Computing (Austria),1,2,industry,False
+organization:I4210153851,Unité de Modélisation Mathématique et Informatique des Systèmes Complexes,1,1,unknown,False
+organization:I4210153856,Second Xiangya Hospital of Central South University,1,1,unknown,True
+organization:I4210153869,Huai'an University,1,1,academia,False
+organization:I4210154121,Shandong Institute of Commerce & Technology,1,1,academia,False
+organization:I4210154851,Hubei University of Education,1,1,academia,False
+organization:I4210154995,Ripple (United States),1,1,industry,False
+organization:I4210155320,ELTE Centre for Economic and Regional Studies,1,1,unknown,False
+organization:I4210155582,Centre Universitaire de Mila,1,3,academia,True
+organization:I4210156804,First Affiliated Hospital of Zhengzhou University,1,1,unknown,True
+organization:I4210156936,IBM Research - Austin,1,1,unknown,False
+organization:I4210157425,Fraunhofer Portugal Research,1,1,nonprofit,False
+organization:I4210157781,Shanghai Clinical Research Center,1,2,unknown,False
+organization:I4210158631,RIKEN BNL Research Center,1,1,unknown,False
+organization:I4210158984,National Supercomputing Center in Wuxi,1,1,unknown,False
+organization:I4210159329,Children's Hospital of Fudan University,1,1,unknown,False
+organization:I4210159676,Zaozhuang University,1,1,academia,True
+organization:I4210159750,Beijing Automotive Group (China),1,1,industry,True
+organization:I4210159865,Xiangya Hospital Central South University,1,1,unknown,True
+organization:I4210159940,National Astronomical Observatory of Japan,1,1,unknown,True
+organization:I4210160082,Accenture (United Kingdom),1,3,industry,False
+organization:I4210160315,The NSF AI Institute for Artificial Intelligence and Fundamental Interactions,1,2,unknown,False
+organization:I4210160344,Tongji Hospital,1,1,unknown,True
+organization:I4210160531,Chinese People's Liberation Army,1,2,government,False
+organization:I4210160571,Invitae (United States),1,1,industry,False
+organization:I4210160577,Unité de Mathématiques Pures et Appliquées,1,2,unknown,False
+organization:I4210160625,Institut de Chirurgie Guidée par l'Image,1,1,unknown,False
+organization:I4210160793,Institute of Geographic Sciences and Natural Resources Research,1,1,unknown,False
+organization:I4210160841,Hubei Cancer Hospital,1,1,unknown,False
+organization:I4210161447,Intuitive Surgical (United States),1,1,industry,True
+organization:I4210161528,Qilu Hospital of Shandong University,1,1,unknown,True
+organization:I4210161683,Shanghai Changning Mental Health Center,1,1,unknown,False
+organization:I4210162213,China Electronics Standardization Institute,1,1,unknown,False
+organization:I4210162562,Borealis (Austria),1,2,industry,True
+organization:I4210162937,IBM Research - Africa,1,4,unknown,False
+organization:I4210163711,Alexandra Institute (Denmark),1,1,industry,False
+organization:I4210164149,Bonn Aachen International Center for Information Technology,1,1,unknown,False
+organization:I4210164464,Xiang Yang No.1 People's Hospital,1,2,unknown,False
+organization:I4210165736,Hanshan Normal University,1,1,academia,True
+organization:I4210166174,Joint Research Center,1,1,government,False
+organization:I4210166444,Institut de Recherche pour le Développement,1,1,government,True
+organization:I4210167039,ServiceNow (United States),1,3,industry,True
+organization:I4210167254,Singapore-MIT Alliance for Research and Technology,1,1,academia,False
+organization:I42766147,University of Toyama,1,1,academia,True
+organization:I42934936,Dublin City University,1,1,academia,True
+organization:I43337087,Hebei University,1,1,academia,True
+organization:I4387152169,Institute of Informatics & Telecommunications,1,2,unknown,False
+organization:I4387152226,Hungarian Research Network,1,1,unknown,False
+organization:I4387152457,"Laboratoire de Conception, Optimisation et Modélisation des Systèmes",1,1,unknown,False
+organization:I4387152683,Mathématiques et Informatique pour la Complexité et les Systèmes,1,1,unknown,False
+organization:I4387153087,Mathématiques et Informatique Appliquées,1,1,unknown,False
+organization:I4387153107,Pacific States Marine Fisheries Commission,1,1,unknown,False
+organization:I4387153628,Volvo Cars (Sweden),1,2,industry,True
+organization:I4387153886,University of Tampere,1,1,academia,False
+organization:I4387153999,Flatiron Institute,1,1,nonprofit,True
+organization:I4387154249,Clermont Auvergne INP,1,1,academia,True
+organization:I4387154366,Université Paris Diderot,1,1,academia,True
+organization:I4387154752,ESIEE Paris,1,1,academia,True
+organization:I4387154962,1QBit,1,1,industry,True
+organization:I4387155265,International Institute of Information Technology,1,1,unknown,True
+organization:I4387156146,Pôle d’Expertise de la Régulation Numérique,1,2,government,False
+organization:I4388482671,Rome Laboratory,1,1,unknown,True
+organization:I4388482679,USC Institute for Creative Technologies,1,2,unknown,True
+organization:I4389425324,Laboratoire d'Informatique Médicale et d'Ingénierie des Connaissances en e-Santé,1,1,unknown,False
+organization:I4391767639,State Key Laboratory of Robotics and Systems,1,3,unknown,False
+organization:I4391767653,Institute of Basic Medical Sciences of the Chinese Academy of Medical Sciences,1,2,unknown,False
+organization:I4391767971,State Key Laboratory of Resources and Environmental Information System,1,1,unknown,False
+organization:I4392021209,State Key Laboratory of Advanced Optical Communication Systems and Networks,1,1,unknown,False
+organization:I4392738141,State Key Laboratory of Aerodynamics,1,5,unknown,False
+organization:I4392738231,State Key Laboratory of Automotive Simulation and Control,1,1,unknown,False
+organization:I4394709116,UNSW Canberra,1,3,academia,False
+organization:I4394709130,Indiana University School of Medicine,1,1,academia,True
+organization:I4400600931,Snowflake Inc. (United States),1,1,industry,True
+organization:I4401200309,Laoshan Laboratory,1,1,unknown,False
+organization:I4401200318,"Modélisation, information et systèmes",1,1,unknown,False
+organization:I4401200340,Kempelen Institute of Intelligent Technologies,1,2,nonprofit,False
+organization:I4401726784,GE Vernova (United States),1,1,industry,True
+organization:I4401726830,EQT (United States),1,1,industry,True
+organization:I4401726832,Tübingen AI Center,1,2,academia,False
+organization:I4401726847,Cohere (Canada),1,1,industry,True
+organization:I4401726855,Spotify (Sweden),1,1,industry,False
+organization:I4401726866,Dataminr (United States),1,1,industry,True
+organization:I4401726915,Zhipu AI (China),1,1,industry,True
+organization:I4401726916,Verizon Media (United States),1,1,industry,False
+organization:I4401726936,Deepglint (China),1,4,industry,False
+organization:I4401726965,Boston Consulting Group (United States),1,1,industry,True
+organization:I4401726980,Mininglamp (China),1,1,industry,False
+organization:I4402554207,EuroMov Digital Health in Motion,1,1,unknown,False
+organization:I4403386725,Suzhou City University,1,1,academia,False
+organization:I4403386754,Qingdao City University,1,1,academia,False
+organization:I4403386760,Laboratoire Informatique Paris Descartes,1,2,unknown,False
+organization:I4405253998,Géométrie algébrique et applications à la théorie de l'information,1,1,unknown,False
+organization:I4405254473,"Chugai Pharmaceutical Co., Ltd. (Japan)",1,1,industry,True
+organization:I4405254534,NingboTech University,1,2,academia,True
+organization:I4405254681,EURECAT Centre Tecnològic de Catalunya,1,1,industry,False
+organization:I4405256566,Institute of Neuroinformatics,1,5,unknown,False
+organization:I4405257309,Research Lab in Computer Science,1,1,unknown,False
+organization:I4405258284,MIND: modèles et inférence pour les données de Neuroimagerie,1,1,unknown,False
+organization:I4405258451,Hakuhodo DY Holdings (Japan),1,2,industry,True
+organization:I4405258577,VALDA: Valeur à partir des données,1,1,unknown,False
+organization:I4405258625,École Nationale Supérieure de Techniques Avancées Paris,1,2,academia,True
+organization:I4405258971,Chongqing Institute for Brain and Intelligence,1,2,nonprofit,False
+organization:I4405259013,MAGNET: Machine Learning in Information Networks,1,1,unknown,False
+organization:I4405259202,Taiwan AI Labs,1,3,unknown,False
+organization:I4405259240,AVIZ: Analyse et visualisation,1,1,unknown,False
+organization:I4405259341,01.AI (China),1,1,industry,True
+organization:I4405259389,SCOOL: Prise de décision séquentielle dans l'incertain,1,1,unknown,False
+organization:I4405259418,Sakana AI (Japan),1,2,industry,True
+organization:I4405259636,Aier Eye Hospital Group (China),1,2,industry,True
+organization:I4405259644,BIOVISION: Vision biologique : modèles intégratifs et systèmes d'aide à la vision pour les déficients visuels,1,2,unknown,False
+organization:I4405259781,"Interdisciplinary Centre for Security, Reliability and Trust",1,1,academia,False
+organization:I4405259834,BOREAL: Représentation de Connaissances et Langages à Base de Règles pour Raisonner sur les Données,1,1,unknown,False
+organization:I4405260052,STARS: Reconnaissance d'Activités Spatio-Temporelles pour les interactions Sociales,1,4,unknown,False
+organization:I4405260123,LIFEWARE: Computational systems biology and optimization,1,1,unknown,False
+organization:I4405260143,Escuela Naval Militar,1,1,academia,True
+organization:I4405260227,Moonshot AI (China),1,1,industry,True
+organization:I4405260636,Instacart (United States),1,1,industry,True
+organization:I4405260934,Korea University Anam Hospital,1,1,unknown,False
+organization:I4405261315,"ARTISHAU: Intelligence artificielle : sécurité, traçabilité et audit",1,2,unknown,False
+organization:I4405261415,DATASHAPE: Comprendre la forme des données,1,4,unknown,False
+organization:I4405261417,Centro Universitario de la Defensa en la Escuela Naval Militar,1,1,academia,False
+organization:I4405261568,Shanghai Key Laboratory of Computer Software Testing and Evaluating,1,1,unknown,False
+organization:I4405261706,WIDE: le monde est distribué - Vers une exploration des tensions entre grande échelle et coordination,1,1,unknown,False
+organization:I4405262724,Shanghai Development Center of Computer Software Technology,1,1,nonprofit,False
+organization:I4405262991,IMAR - Institutul de Matematică „Simion Stoilow” al Academiei Române,1,5,academia,True
+organization:I4405263023,Siemens Energy,1,1,industry,True
+organization:I4405263048,Beijing Institute of Control Engineering,1,1,government,False
+organization:I4405263634,Campus-Institut Data Science (CIDAS),1,2,academia,False
+organization:I4405263698,Mathématiques et Informatique Appliquées Toulouse,1,2,unknown,False
+organization:I4405267139,DSM-Firmenich AG (Switzerland),1,1,industry,True
+organization:I4405268810,MIT Media Lab,1,1,unknown,True
+organization:I4405268824,Gatsby Computational Neuroscience Unit,1,1,unknown,False
+organization:I4405269092,Finnish Center for Artificial Intelligence,1,1,unknown,False
+organization:I4405269459,Singapore Telecommunications Limited (Singapore),1,1,industry,True
+organization:I4405270570,Internal Revenue Service,1,2,government,True
+organization:I4405270881,Nuclear Power Institute of China,1,1,unknown,False
+organization:I4405270965,State Grid Fujian Electric Power Company (China),1,1,industry,False
+organization:I4405271246,"AIGENDRUG Co., Ltd. (South Korea)",1,1,industry,False
+organization:I4405271797,XtalPi (China),1,1,industry,True
+organization:I4405272076,State Key Laboratory of Reliability and Intelligence of Electrical Equipment,1,1,unknown,False
+organization:I4405272746,"Hyperfine, Inc. (United States)",1,1,industry,False
+organization:I4405272767,Leverhulme Research Centre for Functional Materials Design,1,3,unknown,False
+organization:I4405272782,Center for Health Optimization and Implementation Research,1,1,unknown,False
+organization:I4405272917,SK Hynix (South Korea),1,1,industry,True
+organization:I4405274974,"Azbil Kimmon Co., Ltd. (Japan)",1,1,industry,False
+organization:I4405276268,Pasteur Labs (United States),1,1,industry,False
+organization:I4405276317,Omron Sinic X Corporation (Japan),1,3,industry,False
+organization:I4405277063,Global Energy Interconnection Research Institute (China),1,1,industry,False
+organization:I4405277661,Institute of Operations Research and Analytics,1,1,unknown,False
+organization:I4405277760,Risk Management Institute,1,2,unknown,False
+organization:I4405277790,"Trường Đại học Kinh tế, Đại học Huế",1,1,academia,False
+organization:I4405278396,Beijing National Day School,1,1,academia,True
+organization:I4405278443,Fuzhou Institute of Technology,1,1,academia,False
+organization:I4405278451,"Chengdu Institute of Plateau Meteorology, China Meteorological Administration",1,1,unknown,False
+organization:I4405278512,Shandong Institute of Petroleum and Chemical Technology,1,1,academia,False
+organization:I4405278865,Chongqing College of Finance and Economics,1,1,academia,False
+organization:I4405278991,Ningxia Institute of Science and Technology,1,1,academia,False
+organization:I4405279822,Dalian University of Finance and Economics,1,1,academia,False
+organization:I4405281254,Communauté d'universités et d'établissements Université Côte d'Azur,1,1,academia,False
+organization:I4405281264,Zhuhai College of Science and Technology,1,1,academia,False
+organization:I4405281311,Pôle de recherche et d'enseignement supérieur Université de Grenoble,1,1,academia,False
+organization:I4405281475,"Century College, Beijing University of Posts and Telecommunications",1,1,academia,False
+organization:I4405281628,Changchun Humanities and Sciences College,1,2,academia,False
+organization:I4405281920,The 28th Research Institute of China Electronics Technology Group Corporation,1,1,unknown,False
+organization:I4405282086,Fuyao University of Science and Technology,1,1,academia,False
+organization:I4405282328,Zhejiang College of Shanghai University of Finance and Economics,1,1,academia,False
+organization:I4405282995,Shenzhen Audencia Financial Technology Institute,1,1,academia,False
+organization:I4405286035,"Research Center for Integrated Quantum Electronics, Hokkaido University",1,2,unknown,False
+organization:I4405286842,"Institute of Integrated Research, Institute of Science Tokyo",1,3,unknown,False
+organization:I4405287234,"D3 Center, The University of Osaka",1,1,unknown,False
+organization:I4405287471,"Universal Biology Institute, The University of Tokyo",1,1,unknown,False
+organization:I44896327,Mitre (United States),1,1,industry,True
+organization:I45935490,National Institute of Water and Atmospheric Research,1,1,unknown,True
+organization:I46482218,Anqing Normal University,1,1,academia,True
+organization:I46597724,Poznań University of Technology,1,1,academia,False
+organization:I4665924,University of Rostock,1,1,academia,True
+organization:I47367911,United Kingdom Atomic Energy Authority,1,2,government,True
+organization:I47996466,University of Warmia and Mazury in Olsztyn,1,1,academia,True
+organization:I4840577,Toyota Technological Institute,1,1,academia,True
+organization:I49185572,Yunnan University of Finance And Economics,1,2,academia,True
+organization:I49451733,Université d'Angers,1,3,academia,True
+organization:I49934816,Hunan University of Technology,1,1,academia,True
+organization:I50702494,Milwaukee School of Engineering,1,1,academia,True
+organization:I51441396,Bauhaus-Universität Weimar,1,1,academia,True
+organization:I51532219,University of Lincoln,1,2,academia,True
+organization:I51622183,Shaanxi University of Science and Technology,1,3,academia,True
+organization:I52179390,University of Waikato,1,1,academia,True
+organization:I5237613,Frankfurt University of Applied Sciences,1,1,academia,True
+organization:I52669646,Western Washington University,1,1,academia,True
+organization:I53218197,Arabian Gulf University,1,1,academia,True
+organization:I55022517,Heilongjiang University,1,3,academia,True
+organization:I56085075,University of Tartu,1,6,academia,True
+organization:I56624758,Kansai University,1,1,academia,True
+organization:I56858762,Universidad Nacional del Sur,1,2,academia,True
+organization:I57825437,University of Neuchâtel,1,1,academia,False
+organization:I57995698,Paris School of Economics,1,1,academia,True
+organization:I58028834,Universidade da Madeira,1,1,academia,True
+organization:I58957048,Yandex (Russia),1,1,industry,True
+organization:I58995867,Civil Aviation Flight University of China,1,1,academia,True
+organization:I59411706,Adam Mickiewicz University in Poznań,1,1,academia,False
+organization:I59746437,Open University of Cyprus,1,1,academia,True
+organization:I59897056,"California State University, Long Beach",1,1,academia,True
+organization:I60106874,William Jewell College,1,1,academia,True
+organization:I6030618,Seikei University,1,1,academia,True
+organization:I60342839,Qatar University,1,1,academia,True
+organization:I60858718,University of Aveiro,1,3,academia,True
+organization:I61641377,Universitatea Națională de Știință și Tehnologie Politehnica București,1,5,academia,True
+organization:I62853816,Beijing University of Civil Engineering and Architecture,1,1,academia,True
+organization:I62856769,Saudi Aramco (United States),1,1,industry,False
+organization:I63354593,Sichuan Normal University,1,4,academia,True
+organization:I63371133,Chongqing Jiaotong University,1,1,academia,True
+organization:I63548447,Lappeenranta-Lahti University of Technology,1,2,academia,True
+organization:I63634437,Universidad Autónoma de Madrid,1,5,academia,True
+organization:I64281891,The College of New Jersey,1,1,academia,True
+organization:I65143321,Hitachi (Japan),1,1,industry,True
+organization:I66068411,Genome Institute of Singapore,1,1,unknown,True
+organization:I66083562,Systems Research Institute,1,1,unknown,False
+organization:I66906201,University of Yamanashi,1,1,academia,True
+organization:I67061984,NILU,1,2,nonprofit,True
+organization:I6750721,University of Montana,1,1,academia,True
+organization:I68947357,Université de Strasbourg,1,2,academia,True
+organization:I69552723,University of Pretoria,1,1,academia,True
+organization:I69737025,University of Chile,1,3,academia,True
+organization:I70571728,Oberlin College,1,2,academia,True
+organization:I70764802,National Polytechnic School,1,1,academia,True
+organization:I70908550,Anhui Polytechnic University,1,1,academia,True
+organization:I72541430,Lakehead University,1,1,academia,True
+organization:I746986,Halmstad University,1,1,academia,True
+organization:I75028090,Fair Isaac Corporation (United States),1,2,industry,True
+organization:I75421653,University of Missouri–Kansas City,1,1,academia,False
+organization:I75867142,Xiamen University of Technology,1,3,academia,True
+organization:I75917431,Nara Institute of Science and Technology,1,2,academia,True
+organization:I76903346,University of Coimbra,1,4,academia,True
+organization:I76920116,Srinakharinwirot University,1,1,academia,True
+organization:I77216272,NOAA Air Resources Laboratory,1,1,government,True
+organization:I7877124,Charité – Universitätsmedizin Berlin,1,1,unknown,False
+organization:I79238269,Universidad de Sevilla,1,2,academia,True
+organization:I79274474,University of Valparaíso,1,1,academia,False
+organization:I79817857,University of Guelph,1,2,academia,True
+organization:I82767444,Universidad de Málaga,1,1,academia,False
+organization:I83436808,Hankuk University of Foreign Studies,1,1,academia,True
+organization:I83519826,Nanjing Medical University,1,1,academia,True
+organization:I83791580,Fujian University of Technology,1,1,academia,True
+organization:I83860666,HEC Paris,1,1,academia,True
+organization:I8488066,Chiba Institute of Technology,1,1,academia,True
+organization:I8679417,Hong Kong Metropolitan University,1,1,academia,True
+organization:I869089601,Netflix (United States),1,1,industry,True
+organization:I86908984,University of French Polynesia,1,1,academia,True
+organization:I87710204,Beijing Sport University,1,1,academia,True
+organization:I877107187,University of Roehampton,1,1,academia,True
+organization:I882761360,Indian Institute of Space Science and Technology,1,1,academia,True
+organization:I88372448,Dalian Polytechnic University,1,1,academia,True
+organization:I884043246,Hamburg University of Technology,1,2,academia,True
+organization:I888729015,University of Colorado Colorado Springs,1,2,academia,True
+organization:I898250095,Industrial and Commercial Bank of China,1,2,unknown,True
+organization:I8991828,Pukyong National University,1,1,academia,True
+organization:I905225518,Shanghai University of International Business and Economics,1,2,academia,True
+organization:I90678064,University of Colombo,1,1,academia,True
+organization:I91041137,Assiut University,1,1,academia,True
+organization:I91090688,University of Science and Technology Chittagong,1,1,academia,True
+organization:I913481162,Wageningen University & Research,1,1,academia,False
+organization:I915211651,University of Limassol,1,1,academia,True
+organization:I923003605,Jashore University of Science and Technology,1,1,academia,True
+organization:I9300472,Bournemouth University,1,1,academia,True
+organization:I93477617,Huizhou University,1,1,academia,True
+organization:I94611258,Hebei Normal University,1,1,academia,True
+organization:I94658018,University of Memphis,1,1,academia,True
+organization:I95793202,Otto-von-Guericke-Universität Magdeburg,1,1,academia,True
+organization:I96679780,Chuo University,1,1,academia,True
+organization:I96733725,Shanghai Maritime University,1,3,academia,True
+organization:I98461037,Tecnológico de Monterrey,1,1,academia,True
+organization:I98947143,California State Polytechnic University,1,1,academia,True
+organization:I99041443,Mississippi State University,1,1,academia,True

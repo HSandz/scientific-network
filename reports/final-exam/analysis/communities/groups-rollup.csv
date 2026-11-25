@@ -1,0 +1,379 @@
+parent,parent_name,child_organizations,papers,parent_is_v4_organization,notable
+organization:wikidata:Q59261,State Council of the People's Republic of China,33,650,False,False
+organization:I19820366,Chinese Academy of Sciences,28,626,True,True
+organization:I76130692,Zhejiang University,1,570,True,True
+organization:I99065089,Tsinghua University,3,490,True,True
+organization:I20231570,Peking University,2,442,True,True
+organization:wikidata:Q4905732,Big Four Institutes of Technology,3,389,False,False
+organization:wikidata:Q65061603,Association of Sino-Russian Technical Universities,2,283,False,False
+organization:I165932596,National University of Singapore,1,280,True,True
+organization:wikidata:Q184478,University of California,12,270,False,False
+organization:I881766915,Nanjing University,1,248,True,True
+organization:I24943067,Fudan University,4,234,True,True
+organization:I2250955327,Huawei Technologies (China),3,218,True,True
+organization:I1294671590,Centre National de la Recherche Scientifique,37,214,True,True
+organization:I1290206253,Microsoft (United States),4,201,True,True
+organization:wikidata:Q115281293,Q115281293,1,187,False,False
+organization:wikidata:Q5099557,China Academy of Space Technology,1,187,False,False
+organization:I139759216,Beijing University of Posts and Telecommunications,1,170,True,True
+organization:I200769079,Hong Kong University of Science and Technology,2,167,True,True
+organization:I66867065,East China Normal University,1,149,True,True
+organization:I2801919071,University of Illinois System,2,146,True,True
+organization:wikidata:Q20800404,Alphabet Inc.,3,146,False,False
+organization:wikidata:Q190338,Central Military Commission,3,131,False,False
+organization:I124357947,University of London,7,120,True,True
+organization:I1291425158,Google (United States),1,113,True,True
+organization:I98301712,Baidu (China),1,113,True,True
+organization:wikidata:Q105770388,DH.NRW,11,113,False,False
+organization:I63966007,Massachusetts Institute of Technology,3,112,True,True
+organization:wikidata:Q2140391,University of Texas System,5,112,False,False
+organization:I1341412227,IBM (United States),3,103,True,True
+organization:wikidata:Q664875,ETH Domain,2,102,False,False
+organization:I1326498283,Institut national de recherche en sciences et technologies du numérique,20,97,True,True
+organization:I1327163397,State University of New York,4,84,True,True
+organization:wikidata:Q1144725,Microsoft Research,3,84,False,False
+organization:I24185976,Sichuan University,1,82,True,True
+organization:wikidata:Q2495809,University System of Georgia,4,80,False,False
+organization:I115228651,"Agency for Science, Technology and Research",4,78,True,True
+organization:wikidata:Q3382998,State University System of Florida,7,77,False,False
+organization:wikidata:Q1480532,University System of Maryland,2,75,False,False
+organization:I95457486,"University of California, Berkeley",2,67,True,True
+organization:wikidata:Q55436452,Saarland Informatics Campus,4,67,False,False
+organization:I27837315,University of Michigan,1,61,True,True
+organization:I219193219,Purdue University West Lafayette,2,59,True,True
+organization:wikidata:Q929715,Purdue University system,3,59,False,False
+organization:I74801974,The University of Tokyo,1,58,True,True
+organization:wikidata:Q24935922,Institute of Information Sciences and their Interactions,11,54,False,False
+organization:wikidata:Q17986980,Korea Choongang Education Foundation,1,53,False,False
+organization:wikidata:Q4791254,Arizona Board of Regents,2,53,False,False
+organization:wikidata:Q1191202,University of North Carolina,5,51,False,False
+organization:I149899117,Max Planck Society,6,49,True,True
+organization:wikidata:Q1721738,Kaiserslautern-Saarbrücken Computer Science Cluster,3,47,False,False
+organization:I205783295,Cornell University,2,46,True,True
+organization:I4210110652,RIKEN,2,46,True,True
+organization:wikidata:Q1629075,State-owned Assets Supervision and Administration Commission of the State Council,10,46,False,False
+organization:I31746571,UNSW Sydney,1,45,True,True
+organization:I4210145102,Institut Polytechnique de Paris,10,45,True,True
+organization:I4405258862,Université de Toulouse,1,45,True,True
+organization:wikidata:Q1933558,University Toulouse - Jean Jaurès,2,41,False,False
+organization:I44563897,Université d'Artois,1,40,True,True
+organization:wikidata:Q1061122,University of Massachusetts,3,40,False,False
+organization:wikidata:Q137824025,Universities of Paris I–XIII,9,39,False,False
+organization:I193223587,University of Trento,1,37,True,True
+organization:I2746051580,Université Paris Sciences et Lettres,4,37,True,True
+organization:I57206974,New York University,3,37,True,True
+organization:I4405259414,Université Toulouse Capitole,1,35,True,True
+organization:I1304256225,University of Wisconsin System,1,34,True,True
+organization:I176453806,University of Potsdam,1,32,True,True
+organization:I2250650973,Samsung (South Korea),2,30,True,True
+organization:I142476485,École Polytechnique,5,29,True,False
+organization:I277688954,Université Paris-Saclay,14,29,True,True
+organization:wikidata:Q11492802,Research Organization of Information and Systems,2,28,False,False
+organization:wikidata:Q217810,United States Department of Energy,11,28,False,False
+organization:wikidata:Q2331177,University System of Ohio,5,28,False,False
+organization:wikidata:Q31837129,Dresden-concept,3,27,False,False
+organization:I78650965,Technische Universität Dresden,1,26,True,True
+organization:I887968799,RWTH Aachen University,1,26,True,True
+organization:I1292875679,Commonwealth Scientific and Industrial Research Organisation,1,23,True,True
+organization:wikidata:Q3146518,IBM Research,4,23,False,False
+organization:wikidata:Q7885718,Institut Mines-Télécom,6,23,False,False
+organization:I39804081,Sorbonne Université,6,22,True,True
+organization:wikidata:Q1202716,University of Nebraska system,2,22,False,False
+organization:I118347220,NEC (Japan),2,21,True,True
+organization:I4432739,University of Bergen,1,21,True,True
+organization:wikidata:Q11234623,NEC Group,3,21,False,False
+organization:wikidata:Q717318,Sumitomo Group,3,21,False,False
+organization:I82951845,RMIT University,1,20,True,True
+organization:wikidata:Q14552696,University of Minnesota System,2,20,False,False
+organization:wikidata:Q16092445,Hanyang Foundation,1,20,False,False
+organization:wikidata:Q1781044,Texas A&M University System,2,20,False,False
+organization:I889804353,Robert Bosch (Germany),2,19,True,True
+organization:wikidata:Q7848211,Trustees of Princeton University,1,19,False,False
+organization:I201841394,Université Côte d'Azur,1,18,True,False
+organization:I592451,Indiana University,3,18,True,True
+organization:wikidata:Q2822318,Académie de Nice,2,18,False,False
+organization:I40347166,University of Chicago,1,17,True,True
+organization:I84653119,Academia Sinica,1,17,True,True
+organization:I154526488,Inserm,6,16,True,True
+organization:I58716616,Korea Institute of Science and Technology,1,16,True,True
+organization:I9927081,Aalto University,1,16,True,True
+organization:I1343180700,Intel (United States),1,15,True,True
+organization:I134820265,Consejo Superior de Investigaciones Científicas,3,15,True,True
+organization:I135140700,University of Bonn,1,15,True,True
+organization:I4210127875,Nvidia (United States),1,15,True,True
+organization:I76198965,Friedrich Schiller University Jena,1,15,True,True
+organization:wikidata:Q16176128,Jeongseok–Inha Foundation,1,15,False,False
+organization:wikidata:Q86518690,General Secretariat for Research,4,15,False,False
+organization:I4210127572,IMT Atlantique,1,14,True,True
+organization:I4210136246,China Telecom (China),1,13,True,True
+organization:I4210146044,École Normale Supérieure de Rennes,2,13,True,False
+organization:I4210107720,CentraleSupélec,3,12,True,False
+organization:wikidata:Q161057,Fraunhofer Society,9,12,False,False
+organization:wikidata:Q30263602,Department of Mathematical Sciences,4,12,False,False
+organization:wikidata:Q326282,Université du Québec,2,12,False,False
+organization:wikidata:Q726595,University of Rennes 1,3,12,False,False
+organization:I1313323035,Russian Academy of Sciences,2,11,True,True
+organization:I2738703131,Commissariat à l'Énergie Atomique et aux Énergies Alternatives,3,11,True,True
+organization:I39343248,Humboldt-Universität zu Berlin,1,11,True,True
+organization:I4647051,Université de Picardie Jules Verne,1,11,True,True
+organization:I57201433,Università della Svizzera italiana,1,11,True,False
+organization:wikidata:Q11211,United States Armed Forces,2,11,False,False
+organization:wikidata:Q1206658,University of Colorado,2,11,False,False
+organization:wikidata:Q1537299,University of South Carolina System,1,11,False,False
+organization:wikidata:Q24935893,Institute of Engineering and Systems Science,6,11,False,False
+organization:I122411786,California Institute of Technology,1,10,True,True
+organization:I1304082316,United States Department of the Army,1,10,True,True
+organization:I15057530,Université de Bordeaux,2,10,True,True
+organization:I19894307,Université de Montpellier,1,10,True,False
+organization:I2252096349,Fujitsu (Japan),1,10,True,True
+organization:I2802204017,Université de Bretagne Sud,1,10,True,True
+organization:I28221208,Institut National des Sciences Appliquées de Rennes,1,10,True,False
+organization:wikidata:Q1074097,China University of Geosciences,2,10,False,False
+organization:wikidata:Q11209,United States Department of Defense,2,10,False,False
+organization:wikidata:Q1140115,Government of Russia,2,10,False,False
+organization:wikidata:Q114119453,Washington State University System,1,10,False,False
+organization:wikidata:Q1860208,National University of Ireland,3,10,False,False
+organization:wikidata:Q3152599,Institut Agro Rennes-Angers,1,10,False,False
+organization:wikidata:Q7894951,University System of New Hampshire,1,10,False,False
+organization:wikidata:Q834166,National Nuclear Security Administration,4,10,False,False
+organization:wikidata:Q850798,Oregon University System,1,10,False,False
+organization:wikidata:Q903888,University of Montpellier 1,2,10,False,False
+organization:I133731052,University of Helsinki,1,9,True,True
+organization:I134560555,Université Toulouse III - Paul Sabatier,1,9,True,True
+organization:I142263535,University of Nottingham,1,9,True,True
+organization:I204730241,Université Paris Cité,2,9,True,False
+organization:I2279609970,Université de Lille,1,9,True,True
+organization:I4210160531,Chinese People's Liberation Army,1,9,True,False
+organization:wikidata:Q17427,Chinese Communist Party,2,9,False,False
+organization:wikidata:Q2912244,"Paul-Valéry University (Montpellier, 1970-2024)",1,9,False,False
+organization:wikidata:Q30253890,Auburn University System,1,9,False,False
+organization:wikidata:Q304872,University of Perpignan,1,9,False,False
+organization:wikidata:Q3523073,Department of Atomic Energy,1,9,False,False
+organization:wikidata:Q61716142,Site Aix-Marseille-Provence-Mediterranée,5,9,False,False
+organization:wikidata:Q7928484,Vietnam Academy of Science and Technology,1,9,False,False
+organization:I1298353152,SRI International,1,8,True,True
+organization:I15196421,University of Applied Sciences and Arts of Southern Switzerland,1,8,True,True
+organization:I21491767,Aix-Marseille Université,2,8,True,True
+organization:I2802624667,Hefei Institutes of Physical Science,1,8,True,True
+organization:I29607241,École Normale Supérieure - PSL,2,8,True,False
+organization:I4210143797,Sony (Japan),3,8,True,True
+organization:I4210160189,Institut Polytechnique de Bordeaux,1,8,True,False
+organization:I8087733,University of Tübingen,1,8,True,False
+organization:wikidata:Q12583945,Kyung Hee University System,1,8,False,False
+organization:wikidata:Q140870469,Center for Interdisciplinary Digital Sciences,1,8,False,False
+organization:wikidata:Q2822270,académie d'Aix-Marseille,3,8,False,False
+organization:wikidata:Q31174400,Chung-Ang University Foundation,1,8,False,False
+organization:wikidata:Q331715,Q331715,1,8,False,False
+organization:wikidata:Q7198162,Pisa University System,3,8,False,False
+organization:I106785703,Institut polytechnique de Grenoble,3,7,True,True
+organization:I141596103,University of Lisbon,2,7,True,True
+organization:I196454796,Institut National des Sciences Appliquées de Toulouse,2,7,True,False
+organization:I32062511,Heriot-Watt University,1,7,True,True
+organization:I4210091279,Université Sorbonne Paris Nord,2,7,True,True
+organization:I4210108991,IQVIA (United States),1,7,True,True
+organization:wikidata:Q109410923,"Shenyang Branch, Chinese Academy of Sciences",1,7,False,False
+organization:wikidata:Q11448531,Gakko Hojin Waseda University,1,7,False,False
+organization:wikidata:Q3146749,Institute for Systems and Computer Engineering,2,7,False,False
+organization:wikidata:Q6420636,Keio Gijuku,1,7,False,False
+organization:I100532134,Lyon 1 Université,2,6,True,True
+organization:I113428412,École Normale Supérieure de Lyon,2,6,True,False
+organization:I202391551,Czech Academy of Sciences,1,6,True,True
+organization:I4210144576,Fraunhofer Institute for Intelligent Analysis and Information Systems,1,6,True,False
+organization:I7454413,Centrale Lille Institut,1,6,True,False
+organization:I899635006,Université Grenoble Alpes,3,6,True,True
+organization:wikidata:Q129724,Dutch Research Council,1,6,False,False
+organization:wikidata:Q23548,National Aeronautics and Space Administration,2,6,False,False
+organization:wikidata:Q23994885,School corporation Ewha Hakdang,1,6,False,False
+organization:wikidata:Q2407664,Texas Tech University System,1,6,False,False
+organization:wikidata:Q2495814,University of Arkansas System,1,6,False,False
+organization:wikidata:Q569446,University of Houston System,1,6,False,False
+organization:wikidata:Q578023,University of Toulouse (1896-1968),1,6,False,False
+organization:wikidata:Q815352,California State University,4,6,False,False
+organization:I11559806,École Normale Supérieure Paris-Saclay,3,5,True,False
+organization:I133868755,Shanghai Medical College of Fudan University,3,5,True,True
+organization:I4210154111,Université Gustave Eiffel,2,5,True,True
+organization:I48430043,Institut National des Sciences Appliquées de Lyon,1,5,True,False
+organization:I75951250,Freie Universität Berlin,1,5,True,True
+organization:I83860666,HEC Paris,1,5,True,True
+organization:I98702875,Université de Caen Normandie,2,5,True,True
+organization:I99542240,Polish Academy of Sciences,4,5,True,True
+organization:wikidata:Q1872233,Louisiana State University System,1,5,False,False
+organization:wikidata:Q2000147,Pierre Mendès-France University,3,5,False,False
+organization:wikidata:Q20987257,CCI Paris Île-de-France,2,5,False,False
+organization:wikidata:Q2370801,Academy of Sciences of the USSR,1,5,False,False
+organization:wikidata:Q2495917,University of Tennessee System,1,5,False,False
+organization:wikidata:Q2713662,University of Missouri System,3,5,False,False
+organization:wikidata:Q7140719,Mass General Brigham,2,5,False,False
+organization:wikidata:Q7906562,VA Boston Healthcare System,2,5,False,False
+organization:wikidata:Q979755,Groupe INSA,2,5,False,False
+organization:I112936343,École Centrale de Lyon,1,4,True,False
+organization:I123044942,Universitat Autònoma de Barcelona,1,4,True,True
+organization:I160354086,Guangxi Medical University,1,4,True,True
+organization:I4210153393,Geely (China),1,4,True,True
+organization:I4210155236,National Research Council,3,4,True,True
+organization:I74656192,University of Göttingen,1,4,True,False
+organization:I97188460,Nantes Université,1,4,True,True
+organization:wikidata:Q1156553,Institut des Hautes Études Scientifiques,1,4,False,False
+organization:wikidata:Q1198571,University of Nice Sophia Antipolis,1,4,False,False
+organization:wikidata:Q132873280,Dongguk University foundation,1,4,False,False
+organization:wikidata:Q13531686,ComUE Paris-Saclay University,1,4,False,False
+organization:wikidata:Q136377608,London and South East University Group,2,4,False,False
+organization:wikidata:Q141807288,"São Paulo State Secretariat of Science, Technology and Innovation",1,4,False,False
+organization:wikidata:Q1665106,National Institute for Agricultural Research,4,4,False,False
+organization:wikidata:Q24935932,Institute of Human and Social Sciences,3,4,False,False
+organization:wikidata:Q2495858,University of Louisiana System,1,4,False,False
+organization:wikidata:Q31178273,Gachon Hakwon,1,4,False,False
+organization:wikidata:Q4027,Jean Moulin University - Lyon 3,1,4,False,False
+organization:wikidata:Q4041,Lumière University Lyon 2,1,4,False,False
+organization:wikidata:Q4966205,Bridge Alliance,2,4,False,False
+organization:wikidata:Q6041359,Instituto Madrileño de Estudios Avanzados,2,4,False,False
+organization:wikidata:Q790060,Broadcom,1,4,False,False
+organization:wikidata:Q955647,Joseph Fourier University,2,4,False,False
+organization:I106118109,Eötvös Loránd University,1,3,True,False
+organization:I1286353243,Autodesk (United States),1,3,True,True
+organization:I194210350,École Nationale Supérieure d'Ingénieurs de Caen,1,3,True,False
+organization:I203474044,"National Centre of Scientific Research ""Demokritos""",1,3,True,False
+organization:I3019848993,Mines Saint-Étienne,2,3,True,False
+organization:I4210104735,Sandia National Laboratories,1,3,True,True
+organization:I4210137853,Toyota Motor Corporation (Japan),1,3,True,True
+organization:I4405259708,Kakao Corporation (South Korea),1,3,True,True
+organization:I51101395,Université Paris 1 Panthéon-Sorbonne,2,3,True,False
+organization:I55769427,Indiana University – Purdue University Indianapolis,1,3,True,False
+organization:I90183372,Université de Lorraine,2,3,True,True
+organization:I9617848,Universitat Politècnica de Catalunya,1,3,True,True
+organization:wikidata:Q139586311,Q139586311,1,3,False,False
+organization:wikidata:Q1816857,University of Toulon,1,3,False,False
+organization:wikidata:Q217439,University of Hawaiʻi System,2,3,False,False
+organization:wikidata:Q24935942,National Institute of Mathematical Sciences and their Interactions,3,3,False,False
+organization:wikidata:Q2570220,Arts et Métiers ParisTech,1,3,False,False
+organization:wikidata:Q273518,School for Advanced Studies in the Social Sciences,2,3,False,False
+organization:wikidata:Q273523,École Nationale des Ponts et Chaussées,1,3,False,False
+organization:wikidata:Q2981744,Department of Defence,1,3,False,False
+organization:wikidata:Q30100395,CERCA Institute,1,3,False,False
+organization:wikidata:Q30279569,Colorado State University System,1,3,False,False
+organization:wikidata:Q30299415,Direction des énergies,1,3,False,False
+organization:wikidata:Q3365251,Paris Centre Universités,3,3,False,False
+organization:wikidata:Q853958,NTT DoCoMo,1,3,False,False
+organization:wikidata:Q88071145,Catalan Association of Research Centres,1,3,False,False
+organization:I102516824,Université de Technologie de Compiègne,1,2,True,False
+organization:I1299457549,Civil Aviation Administration of China,1,2,True,True
+organization:I173439891,HES-SO University of Applied Sciences and Arts Western Switzerland,1,2,True,True
+organization:I183519381,Capital Medical University,1,2,True,True
+organization:I190752583,ParisTech,2,2,True,True
+organization:I197312522,Hyundai Motor Group (South Korea),1,2,True,True
+organization:I198244214,Université Clermont Auvergne,2,2,True,True
+organization:I200296433,Chinese Academy of Medical Sciences & Peking Union Medical College,1,2,True,False
+organization:I4210088668,"Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement",1,2,True,False
+organization:I4210104314,New York Institute of Technology,1,2,True,True
+organization:I4210133362,Institut National de Physique Nucléaire et de Physique des Particules,2,2,True,False
+organization:I4210140930,Thales (France),1,2,True,True
+organization:I4210166444,Institut de Recherche pour le Développement,2,2,True,True
+organization:I4387152226,Hungarian Research Network,1,2,True,False
+organization:I86767153,Université Jean Monnet,1,2,True,True
+organization:wikidata:Q10178,École supérieure de chimie physique électronique de Lyon,1,2,False,False
+organization:wikidata:Q11232933,Defense Acquisition Program Administration,1,2,False,False
+organization:wikidata:Q116057932,Aix-Marseille School of Economics,1,2,False,False
+organization:wikidata:Q123694421,Beth Israel Lahey Health,1,2,False,False
+organization:wikidata:Q133458761,The Catholic Education Foundation,1,2,False,False
+organization:wikidata:Q1472474,Southern Illinois University,1,2,False,False
+organization:wikidata:Q1480391,Schloss Birlinghoven,1,2,False,False
+organization:wikidata:Q16096201,Soongsil University Educational Foundation,1,2,False,False
+organization:wikidata:Q19840026,CRRC,1,2,False,False
+organization:wikidata:Q2103926,UnitedHealth Group,1,2,False,False
+organization:wikidata:Q221598,European System of Central Banks,1,2,False,False
+organization:wikidata:Q273454,École Centrale de Marseille,1,2,False,False
+organization:wikidata:Q27530,Mercedes-Benz Group,1,2,False,False
+organization:wikidata:Q2826627,Agence des participations de l'État,2,2,False,False
+organization:wikidata:Q3032414,Siberian Branch of the Russian Academy of Sciences,1,2,False,False
+organization:wikidata:Q3274087,United Front Work Department,1,2,False,False
+organization:wikidata:Q338825,Accenture,3,2,False,False
+organization:wikidata:Q390551,United States National Institutes of Health,2,2,False,False
+organization:wikidata:Q4158548,Department of Space,2,2,False,False
+organization:wikidata:Q501542,United States Department of Agriculture,2,2,False,False
+organization:wikidata:Q50839200,National Health Commission of the People's Republic of China,2,2,False,False
+organization:wikidata:Q61716190,University of Clermont Auvergne & associates,3,2,False,False
+organization:wikidata:Q619121,Apollo Global Management,2,2,False,False
+organization:wikidata:Q667135,"Federal Department of Defence, Civil Protection and Sports",1,2,False,False
+organization:wikidata:Q7003622,Nevada System of Higher Education,1,2,False,False
+organization:wikidata:Q898448,"École Supérieure d'Optique, Paris-Saclay University",1,2,False,False
+organization:wikidata:Q97339996,Sungshin Educational Foundation,1,2,False,False
+organization:I1308126019,National Oceanic and Atmospheric Administration,1,1,True,True
+organization:I1309849503,RAND Corporation,1,1,True,True
+organization:I174216632,City University of New York,1,1,True,True
+organization:I198415970,Université d'Avignon et des Pays de Vaucluse,1,1,True,True
+organization:I22248866,AgroParisTech,1,1,True,True
+organization:I4210093996,Dolby (United States),1,1,True,True
+organization:I4210143841,Saudi Aramco (Saudi Arabia),1,1,True,True
+organization:I4210148469,Visa (United States),1,1,True,True
+organization:I4210148979,MediaTek (Taiwan),1,1,True,True
+organization:I4387154366,Université Paris Diderot,1,1,True,True
+organization:I4405272917,SK Hynix (South Korea),1,1,True,True
+organization:I86908984,University of French Polynesia,1,1,True,True
+organization:wikidata:Q100943843,North-West University Mafikeng Faculty of Commerce and Administration,1,1,False,False
+organization:wikidata:Q11448542,Meiji University Educational Foundation,1,1,False,False
+organization:wikidata:Q116719150,"Department for Science, Innovation and Technology",1,1,False,False
+organization:wikidata:Q117481099,LUT Universities,1,1,False,False
+organization:wikidata:Q118797139,Daeyang Foundation,1,1,False,False
+organization:wikidata:Q1189954,Mines ParisTech,1,1,False,False
+organization:wikidata:Q1284408,Pontifical Catholic University of Valparaíso,1,1,False,False
+organization:wikidata:Q134293010,Dongwon Yookyoung Association,1,1,False,False
+organization:wikidata:Q1435583,Montana State University System,1,1,False,False
+organization:wikidata:Q1465252,United States Department of the Air Force,1,1,False,False
+organization:wikidata:Q1480643,University of Paris-Sud,1,1,False,False
+organization:wikidata:Q1500915,Joint Research Centre,1,1,False,False
+organization:wikidata:Q1531014,University of Évry Val d'Essonne,1,1,False,False
+organization:wikidata:Q1593069,University of Alabama System,1,1,False,False
+organization:wikidata:Q160229,Telefónica,1,1,False,False
+organization:wikidata:Q160918,Prelature of the Holy Cross and Opus Dei,1,1,False,False
+organization:wikidata:Q1622083,Bonn-Rhein-Sieg University of Applied Sciences,1,1,False,False
+organization:wikidata:Q16251481,National Health Service,1,1,False,False
+organization:wikidata:Q1811146,University of the Balearic Islands,1,1,False,False
+organization:wikidata:Q183275,Mitsubishi,1,1,False,False
+organization:wikidata:Q1937364,Minnesota State Colleges and Universities System,1,1,False,False
+organization:wikidata:Q20808141,University of Strasbourg,1,1,False,False
+organization:wikidata:Q20828322,Association pour la recherche et le développement des méthodes et processus industriels (France),1,1,False,False
+organization:wikidata:Q2104551,Porsche Automobil Holding SE,1,1,False,False
+organization:wikidata:Q21968199,SIGMA Clermont,1,1,False,False
+organization:wikidata:Q24935881,Institute of Biological Sciences,1,1,False,False
+organization:wikidata:Q2495887,Montana University System,1,1,False,False
+organization:wikidata:Q2496006,Cergy-Pontoise University,1,1,False,False
+organization:wikidata:Q265058,Hungarian Academy of Sciences,1,1,False,False
+organization:wikidata:Q28148561,Simons Foundation,1,1,False,False
+organization:wikidata:Q28413027,Wuxi Joint Logistic Support Center,1,1,False,False
+organization:wikidata:Q2945274,French Agricultural Research Centre for International Development,1,1,False,False
+organization:wikidata:Q30299418,Direction de la recherche technologique,1,1,False,False
+organization:wikidata:Q30299503,Délégation Grand-Ouest,1,1,False,False
+organization:wikidata:Q3112580,Government of South Australia,1,1,False,False
+organization:wikidata:Q3145372,Strasbourg University Hospital,1,1,False,False
+organization:wikidata:Q3152080,Research Institute against Digestive Cancer,1,1,False,False
+organization:wikidata:Q3152297,IFSTTAR,1,1,False,False
+organization:wikidata:Q3372325,Peking Union Medical College,1,1,False,False
+organization:wikidata:Q4272261,Natural Environment Research Council,1,1,False,False
+organization:wikidata:Q458,European Union,1,1,False,False
+organization:wikidata:Q463094,Q463094,1,1,False,False
+organization:wikidata:Q47120065,Yandex IJSC,1,1,False,False
+organization:wikidata:Q491748,Deloitte,1,1,False,False
+organization:wikidata:Q494158,SK Group,2,1,False,False
+organization:wikidata:Q501738,Harris Health System,1,1,False,False
+organization:wikidata:Q503577,United States Department of Commerce,2,1,False,False
+organization:wikidata:Q5159008,Concordia University System,1,1,False,False
+organization:wikidata:Q524289,Conservatoire national des Arts et Métiers,1,1,False,False
+organization:wikidata:Q54173,General Electric,1,1,False,False
+organization:wikidata:Q588786,China National Petroleum Corporation,1,1,False,False
+organization:wikidata:Q6364589,Kansas Board of Regents,1,1,False,False
+organization:wikidata:Q6431743,Korea University Medical Center,1,1,False,False
+organization:wikidata:Q648666,United States Department of the Treasury,1,1,False,False
+organization:wikidata:Q666916,Vigo University,1,1,False,False
+organization:wikidata:Q6716318,MIT School of Architecture and Planning,1,1,False,False
+organization:wikidata:Q676404,Spanish Navy,1,1,False,False
+organization:wikidata:Q696757,University of Duisburg-Essen,1,1,False,False
+organization:wikidata:Q6973767,"National Institutes of Natural Sciences, Japan",1,1,False,False
+organization:wikidata:Q7243280,Prime Minister's Office,1,1,False,False
+organization:wikidata:Q74452784,CY Cergy Paris University,1,1,False,False
+organization:wikidata:Q7570642,Southern and Eastern Norway Regional Health Authority,1,1,False,False
+organization:wikidata:Q7603230,General Administration of Sport of China,1,1,False,False
+organization:wikidata:Q780442,Uber,1,1,False,False
+organization:wikidata:Q86734122,LY Corporation,1,1,False,False
+organization:wikidata:Q898208,Honeywell,1,1,False,False
+organization:wikidata:Q901677,Romanian Academy,1,1,False,False
+organization:wikidata:Q99290792,North-West University Faculty of Engineering,1,1,False,False

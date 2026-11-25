@@ -1,0 +1,125 @@
+community,members,organization,organization_name,share,notable_organization
+10,329,organization:I126520041,University of Science and Technology of China,0.505,True
+86,54,organization:I4210090176,Institute of Computing Technology,0.648,True
+89,44,organization:I197347611,Korea University,0.477,True
+90,44,organization:I93860229,Politecnico di Milano,0.568,True
+91,43,organization:I197347611,Korea University,0.535,True
+92,38,organization:I4210156221,Allen Institute for Artificial Intelligence,0.447,True
+93,36,organization:I27357992,Dalian University of Technology,0.694,True
+95,27,organization:I4210112150,Institute of Automation,0.556,True
+99,26,organization:I140172145,University of Connecticut,0.615,True
+98,26,organization:I157485424,Korea Advanced Institute of Science and Technology,0.5,True
+101,25,organization:I200650556,University of Agder,0.52,True
+102,24,organization:I2252096349,Fujitsu (Japan),0.458,True
+105,23,organization:I125989756,Skolkovo Institute of Science and Technology,0.522,True
+108,22,organization:I45204951,University of Calabria,0.636,True
+106,22,organization:I99065089,Tsinghua University,0.545,True
+107,22,organization:I157485424,Korea Advanced Institute of Science and Technology,0.773,True
+111,21,organization:I47720641,Huazhong University of Science and Technology,0.857,True
+110,21,organization:I126520041,University of Science and Technology of China,0.905,True
+112,20,organization:I78577930,Columbia University,0.55,True
+115,20,organization:I148366613,National Yang Ming Chiao Tung University,0.7,True
+116,20,organization:I126231945,Queen's University Belfast,0.45,False
+117,19,organization:I75900474,Hubei University,0.526,True
+120,19,organization:I139264467,Seoul National University,0.632,True
+118,19,organization:I154570441,"University of California, Santa Barbara",0.421,True
+127,18,organization:I2251713219,NTT (Japan),0.944,True
+125,18,organization:I139264467,Seoul National University,0.5,True
+121,18,organization:I1174212,University of Southern California,0.667,True
+126,18,organization:I139264467,Seoul National University,0.611,True
+128,17,organization:I145894827,Indian Institute of Technology Kharagpur,0.471,True
+129,17,organization:I1290206253,Microsoft (United States),0.647,True
+131,17,organization:I58716616,Korea Institute of Science and Technology,0.529,True
+132,16,organization:I107077323,Worcester Polytechnic Institute,0.5,True
+135,16,organization:I145311948,Johns Hopkins University,0.688,True
+136,16,organization:I63966007,Massachusetts Institute of Technology,0.625,True
+138,16,organization:I20231570,Peking University,1.0,True
+137,16,organization:I3133055985,Westlake University,0.625,True
+142,15,organization:I97018004,Stanford University,0.733,True
+143,15,organization:I76198965,Friedrich Schiller University Jena,0.867,True
+139,15,organization:I241749,University of Cambridge,0.533,True
+141,15,organization:I139264467,Seoul National University,0.533,True
+145,15,organization:I168719708,City University of Hong Kong,0.533,True
+144,15,organization:I4575257,Hanyang University,0.733,True
+140,15,organization:I137902535,North Carolina State University,0.733,True
+151,14,organization:I194450716,Jilin University,0.714,True
+147,14,organization:I881766915,Nanjing University,0.429,True
+152,14,organization:I108403487,Warsaw University of Technology,0.643,True
+156,14,organization:I76130692,Zhejiang University,0.643,True
+149,14,organization:I2250650973,Samsung (South Korea),0.643,True
+146,14,organization:I157485424,Korea Advanced Institute of Science and Technology,0.857,True
+150,14,organization:I45204951,University of Calabria,0.429,True
+155,14,organization:I4405258446,LG AI Research (South Korea),0.857,False
+153,14,organization:I1311688040,Amazon (United States),0.5,True
+160,13,organization:I180726961,Shenzhen University,0.615,True
+164,13,organization:I74973139,Carnegie Mellon University,0.538,True
+170,13,organization:I4210103986,Jingdong (China),1.0,True
+171,13,organization:I135310074,University of Wisconsin–Madison,0.692,False
+168,13,organization:I194450716,Jilin University,0.692,True
+165,13,organization:I861853513,Sapienza University of Rome,0.923,True
+167,13,organization:I82880672,Beihang University,0.462,True
+166,13,organization:I132153292,Indian Institute of Technology Patna,1.0,True
+162,13,organization:I1311688040,Amazon (United States),1.0,True
+158,13,organization:I881766915,Nanjing University,0.769,True
+177,12,organization:I9341345,University of Lübeck,0.667,False
+173,12,organization:I197251160,Hebrew University of Jerusalem,0.583,True
+183,12,organization:I4210116924,"Chinese University of Hong Kong, Shenzhen",0.833,True
+178,12,organization:I149594827,Xidian University,0.833,True
+172,12,organization:I99065089,Tsinghua University,0.5,True
+180,12,organization:I157485424,Korea Advanced Institute of Science and Technology,1.0,True
+182,12,organization:I20231570,Peking University,0.417,True
+181,12,organization:I201841394,Université Côte d'Azur,0.5,False
+175,12,organization:I24676775,Indian Institute of Technology Madras,0.75,True
+196,11,organization:I39804081,Sorbonne Université,0.455,True
+189,11,organization:I27357992,Dalian University of Technology,1.0,True
+205,11,organization:I82880672,Beihang University,0.455,True
+193,11,organization:I15089104,China Aerospace Science and Industry Corporation (China),1.0,True
+208,11,organization:I170215575,National University of Defense Technology,0.818,True
+202,11,organization:I55732556,Arizona State University,0.636,True
+194,11,organization:I205349734,Hokkaido University,0.455,True
+209,11,organization:I162577319,The University of Texas at Dallas,0.545,True
+198,11,organization:I124055696,University of Copenhagen,0.545,True
+203,11,organization:I181679659,Shanghai University of Finance and Economics,0.909,True
+207,11,organization:I4210090411,Google DeepMind (United Kingdom),0.636,True
+210,11,organization:I154549908,Indian Institute of Technology Jodhpur,0.636,True
+188,11,organization:I2251713219,NTT (Japan),0.909,True
+187,11,organization:I4210127572,IMT Atlantique,0.636,True
+186,11,organization:I151727225,Harbin Engineering University,0.455,True
+206,11,organization:I73613424,National Institute of Advanced Industrial Science and Technology,0.455,True
+204,11,organization:I193775966,Yonsei University,0.455,True
+185,11,organization:I20231570,Peking University,0.727,True
+184,11,organization:I197347611,Korea University,0.818,True
+197,11,organization:I157485424,Korea Advanced Institute of Science and Technology,0.818,True
+199,11,organization:I99065089,Tsinghua University,0.727,True
+192,11,organization:I219193219,Purdue University West Lafayette,0.727,True
+211,11,organization:I5681781,The University of Adelaide,0.455,True
+223,10,organization:I1174212,University of Southern California,0.6,True
+226,10,organization:I2250955327,Huawei Technologies (China),0.6,True
+216,10,organization:I76569877,Southeast University,0.6,True
+236,10,organization:I1326498283,Institut national de recherche en sciences et technologies du numérique,0.4,True
+214,10,organization:I4210114444,Meta (United States),0.5,True
+231,10,organization:I592451,Indiana University,0.4,True
+241,10,organization:I196699116,Wuhan University of Technology,0.8,True
+238,10,organization:I47720641,Huazhong University of Science and Technology,0.7,True
+243,10,organization:I99065089,Tsinghua University,0.7,True
+217,10,organization:I20231570,Peking University,0.7,True
+237,10,organization:I35440088,ETH Zurich,0.5,True
+215,10,organization:I12912129,Northeastern University,0.7,True
+228,10,organization:I125839683,Beijing Institute of Technology,0.9,True
+224,10,organization:I118347220,NEC (Japan),0.6,True
+234,10,organization:I15057530,Université de Bordeaux,0.7,True
+219,10,organization:I123044942,Universitat Autònoma de Barcelona,0.8,True
+218,10,organization:I2251713219,NTT (Japan),0.7,True
+240,10,organization:I139264467,Seoul National University,0.8,True
+232,10,organization:I4210139461,Laboratoire d'Informatique de l'École Polytechnique,0.6,False
+242,10,organization:I1341412227,IBM (United States),0.4,True
+225,10,organization:I76130692,Zhejiang University,0.8,True
+235,10,organization:I63354593,Sichuan Normal University,0.4,True
+230,10,organization:I38877650,Zhengzhou University,1.0,True
+229,10,organization:I125839683,Beijing Institute of Technology,1.0,True
+212,10,organization:I21449261,Masaryk University,1.0,True
+220,10,organization:I2250653659,Tencent (China),0.7,True
+227,10,organization:I63966007,Massachusetts Institute of Technology,0.4,True
+221,10,organization:I4391012619,Shanghai Artificial Intelligence Laboratory,0.5,False
+233,10,organization:I198091727,Tiangong University,0.5,True
+222,10,organization:I116953780,Tongji University,0.4,True

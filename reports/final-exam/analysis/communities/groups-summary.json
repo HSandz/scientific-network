@@ -1,0 +1,12 @@
+{
+ "organizations": 2047,
+ "notable_organizations": 1462,
+ "labs": 124,
+ "rollup": {
+  "part_of_edges": 783,
+  "ministry_part_of_edges_skipped": 48,
+  "ministry_part_of_edges_by_class_label": 78,
+  "member_of_used": false,
+  "parents_with_children": 378
+ }
+}
