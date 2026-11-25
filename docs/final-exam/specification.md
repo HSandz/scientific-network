@@ -644,18 +644,21 @@ Each milestone is a work-log entry and a local commit. Push when the user asks.
 
 ## 9. Acceptance checklist
 
-- [ ] E1 source manifest with counts, licences and selection rules
-- [ ] E2 entity pipeline run; per-type counts; ablation
-- [ ] E3 relation pipeline run; per-predicate counts
-- [ ] E4 frozen AI-assessed audit with Wilson intervals, recall estimate, linking accuracy, structure and coverage
-- [ ] S1 L, C and σ against both baselines for N1, N2 and N4; path-length histogram; evolution by year
-- [ ] S2 PageRank and personalized PageRank tables; correlation with other centralities
-- [ ] S3 Leiden partitions with quality and stability; key individuals per community
-- [ ] K1 model comparison table and model card
-- [ ] K2 community reports, local and global retrieval, communities visible on the graph
-- [ ] K3 multi-hop Ask with a visible trace; QA benchmark against three baselines
-- [ ] Product: all §6.4 pages, tooltips on every metric, deployed URL working
-- [ ] P1–P4 slides, demo script and fallback, arXiv listing, public repository, Q&A sheet
+Ticked 2026-11-26 ([WORK-2026-11-26-001](../work-log/2026-11-26-001-non-report-closeout.md)) only
+where the evidence exists in the repository. All quality figures are AI-assessed.
+
+- [x] E1 source manifest with counts, licences and selection rules: [`reports/enrichment-v1/sources.json`](../../reports/enrichment-v1/sources.json), [source policy](../source-policy.md#enrichment-sources-d042-final-exam)
+- [x] E2 entity pipeline run; per-type counts; ablation: per-type counts in [`reports/enrichment-v3/graph-summary.json`](../../reports/enrichment-v3/graph-summary.json); ablation (default, encoder-only, SLM-only) in [E4 v1](../../reports/enrichment-v1/quality.md)
+- [x] E3 relation pipeline run; per-predicate counts: [`reports/enrichment-v3/graph-summary.json`](../../reports/enrichment-v3/graph-summary.json) (`relation_stats`); predicate precision in [E4 v1](../../reports/enrichment-v1/quality.md) and [E4 v3](../../reports/enrichment-v3/quality.md)
+- [x] E4 frozen AI-assessed audit with Wilson intervals, recall estimate, linking accuracy, structure and coverage: [E4 v1](../../reports/enrichment-v1/quality.md) (recall, coverage and structure), [E4 v3](../../reports/enrichment-v3/quality.md) (fresh audit; PART_OF fails 0.80 when unclear items count as incorrect)
+- [x] S1 L, C and σ against both baselines for N1, N2 and N4; path-length histogram; evolution by year: [analysis v2](../../reports/final-exam/analysis-v2/README.md), [`smallworld/`](../../reports/final-exam/analysis-v2/smallworld/)
+- [x] S2 PageRank and personalized PageRank tables; correlation with other centralities: [analysis v2 §S2](../../reports/final-exam/analysis-v2/README.md), [`ranking/`](../../reports/final-exam/analysis-v2/ranking/)
+- [x] S3 Leiden partitions with quality and stability; key individuals per community: [analysis v2 §S3](../../reports/final-exam/analysis-v2/README.md), [`communities/`](../../reports/final-exam/analysis-v2/communities/)
+- [x] K1 model comparison table and model card: [K1 report](../../reports/enrichment-v1/k1-model-selection.md) (extraction arm and the 2026-11-26 answer-quality arm, [results](../../reports/final-exam/k1-answer/results.md)); exact IDs, revisions, quantization and hashes in [`ops/llm/`](../../ops/llm/). Note: the 9.65B reference model meets the §6.1 answer-accuracy margin, and a team decision on it is pending.
+- [x] K2 community reports, local and global retrieval, communities visible on the graph: [`reports/final-exam/rag-v1/`](../../reports/final-exam/rag-v1/), Communities page with super-nodes (Navigator Playwright test 5)
+- [x] K3 multi-hop Ask with a visible trace; QA benchmark against three baselines: [qa-eval-v1 results](../../reports/final-exam/qa-eval-v1/results.md), Ask page (Navigator Playwright test 7)
+- [ ] Product: all §6.4 pages, tooltips on every metric, deployed URL working. *Partial:* all §6.4 pages and metric tooltips exist and pass the Navigator Playwright suite, but nothing is deployed (deployment awaits approval), and the bilingual UI was not built (optional).
+- [ ] P1–P4 slides, demo script and fallback, arXiv listing, public repository, Q&A sheet. *Partial:* the repository is public and a demo script draft exists ([draft](demo-script-draft.md)). Slides, fallback video, arXiv listing, Q&A sheet and the published data release are not done.
 
 ## 10. Risks and open questions
 

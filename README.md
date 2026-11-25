@@ -15,10 +15,107 @@ deadline was 11 November 2026. See [current status](docs/status.md) for what
 remains open.
 
 **Current phase:** the final exam (due 20 December 2026) builds a research-trend
-application on an enriched version of this graph. See the
-[final exam specification](docs/final-exam/README.md).
+application, the Research Trend Navigator, on an enriched version of this graph. See the
+section below and the [final exam specification](docs/final-exam/README.md).
 
-## Results
+## Research Trend Navigator (final exam, D042)
+
+The Navigator is a web application for research-trend analysis of the same 13,617 AAAI and IJCAI
+papers, 2021–2025. It answers which topics, methods, tasks and datasets are rising, and which
+organizations and groups work on them. It runs on an **enriched graph** (`enriched-cb371912e308`,
+graph v3): the frozen v4 graph plus a text-derived layer of Method, Task and Dataset entities
+extracted from abstracts and linked to Wikidata and Wikipedia. That gives 50,144 nodes and 242,048
+edges. Its pages are Trends, Topic/Method, Groups, Communities, Network Science, Ask, Node 360,
+Explorer and About the data. **Ask** answers questions in natural language. It uses GraphRAG
+community reports (local and global search) and a multi-hop planner over nine read-only graph
+tools, run by a ≤9B local language model (Qwen3.5-4B, Q4_K_M). Every answer shows its reasoning
+trace and highlighted subgraph.
+
+| Link | Status |
+| --- | --- |
+| System URL (deployed Navigator) | **pending**: deployment prepared ([plan](ops/azure/navigator-deployment.md)), awaiting approval |
+| arXiv report | **pending** (milestone M5) |
+| Data release (enrichment layer, analysis outputs, benchmark) | **pending**: bundle built locally by [`ops/release/build-data-release.py`](ops/release/build-data-release.py), publication awaiting approval |
+| Frozen v4 Explorer (earlier deliverable) | <https://scientific-network-explorer.pages.dev/> |
+
+### Key results and their caveats
+
+- **Enrichment quality (E4).** All figures are AI-assessed, with Wilson 95% intervals
+  ([v1](reports/enrichment-v1/quality.md), [v3](reports/enrichment-v3/quality.md)).
+  - Entity precision 0.927 [0.891, 0.952] and recall estimate 0.590 [0.536, 0.641].
+  - APPLIED_TO (single paper) 0.983 [0.911, 0.997]; linking 0.895 [0.806, 0.946].
+  - PART_OF 0.951 [0.839, 0.987] on decided items, but 0.780 when its 9 unclear items count as
+    incorrect, which is below the 0.80 target. MEMBER_OF is ambiguous: 13 of 26 items are unclear.
+- **Small world (S1).** The declared rule (σ > 1 against Erdős–Rényi and degree-preserving baselines,
+  and L ≤ 2 L_rand) holds for co-authorship N1, organization collaboration N2 and the full graph N4
+  ([analysis v2](reports/final-exam/analysis-v2/README.md)). N1 has L = 8.81 against L_rand =
+  5.15–5.77 and C = 0.81, so it is a clustered, long-path graph (ω = −0.73), not a textbook small
+  world.
+- **QA benchmark (K3).** 69 kept test questions, run once
+  ([results](reports/final-exam/qa-eval-v1/results.md)). The full multi-hop system (S4) scores
+  0.427 [0.313, 0.540] on factual questions, against 0.124 for the SLM alone, 0.055 for vector RAG
+  and 0.163 for GraphRAG. Its automatic faithfulness is 60/69.
+  - **Disclosure:** the factual score measures agreement with the graph's edges, not truth.
+  - A post-hoc, AI-assessed check of literature-supported precision puts vector RAG (0.433) and S4
+    (0.350) close together.
+  - S4's AI-assessed citation validity of 0.36 describes the earlier citation labelling, which the
+    product changed on 2026-11-26.
+- **Model choice (K1).** Qwen3.5-4B (4.66B total parameters) was chosen on development extraction
+  F1 ([K1 report](reports/enrichment-v1/k1-model-selection.md)).
+  - On the development answer-accuracy arm, the reference Qwen3.5-9B (9.65B, above the 9.0B rule)
+    scores +0.13 over the 4B. That meets the §6.1 margin, but switching needs a team decision, and
+    none has been made.
+  - Gemma-4-E4B-it (8.0B) scores slightly below the 4B.
+
+**AI-assessed statement.** All quality figures for the enrichment and the application (precision,
+linking, citation validity, pairwise and supplementary precision) are judged by isolated LLM
+evaluators. They are not human annotations, independently validated gold labels or verified course
+accuracy. Wilson and bootstrap intervals cover sampling error only, not evaluator error.
+Generated text in the app is labelled "AI-generated from graph data".
+
+### Quick start (local)
+
+Requires Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js, Docker, and an ignored `.env` with
+`NEO4J_PASSWORD`. A fresh clone has no graph files (they are ignored). Restore them from the data
+release when it is published, or rebuild from the original sources.
+
+```bash
+uv sync --locked --group dev --extra analysis --extra report
+npm --prefix apps/research-explorer/frontend ci
+
+# Enriched graph database (Bolt 7690) and load graph v3 into it
+docker compose up -d neo4j-enriched
+NEO4J_URI=bolt://localhost:7690 uv run research-network enrich load-graph \
+  --graph data/processed/enriched-graph-v3/graph.json --report reports/runs/manual-load-v3.json
+
+# Network analysis S1–S3 and trend metrics (writes to a new path)
+uv run research-network final-analysis all --config configs/analysis-final-exam-v2.yaml \
+  --graph data/processed/enriched-graph-v3/graph.json --output reports/runs/manual-analysis-v2
+
+# Local language model (one at a time; 8 GB GPU), OpenAI-compatible on 127.0.0.1:8080
+docker compose -f ops/llm/compose.yaml --env-file ops/llm/qwen3.5-4b-q4km-live.env up -d
+
+# GraphRAG index: the committed reports in reports/final-exam/rag-v1 are used as they are.
+# Rebuilding overwrites them; local search also needs the ignored data/processed/rag-v1/vectors.sqlite.
+uv run research-network rag-index --config configs/rag-v1.yaml --skip-llm   # optional rebuild
+# Re-cache the seven scripted demos (development questions only; never the test benchmark)
+uv run python -m scientific_network.rag.dev_eval --demos-only
+
+# Navigator app: API on :8000, UI on :5173 (both graphs served from the enriched database)
+EXPLORER_NEO4J_URI=bolt://127.0.0.1:7690 EXPLORER_LLM_BASE_URL=http://127.0.0.1:8080/v1 \
+  PYTHONPATH=apps/research-explorer:src uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000
+npm --prefix apps/research-explorer/frontend run dev -- --host 127.0.0.1 --port 5173
+```
+
+Port and memory notes:
+
+- On about 12 GB of RAM, run the language model and the frozen v4 database (`neo4j-five-year`,
+  Bolt 7689) separately.
+- If port 8080 is taken, start the model with `LLM_PORT=8081` and point `EXPLORER_LLM_BASE_URL` at
+  it.
+- Without a model, Ask serves the seven cached scripted demos.
+
+## Frozen release graph v4: results
 
 | Requirement or artifact | Frozen v4 evidence |
 | --- | --- |
@@ -91,6 +188,11 @@ The graph has five labels: `Researcher`, `Paper`, `Organization`, `Topic` and
 - Curated taxonomy: `SUBTOPIC_OF`
 - Derived from accepted core-paper evidence: `COAUTHORED_WITH`, `COLLABORATED_WITH`, `RESEARCHES_TOPIC`, `CONTRIBUTES_TO_TOPIC`
 
+The enriched graph v3 keeps these unchanged and adds a text-derived layer (D042):
+`Method`, `Task` and `Dataset` entities and eight enrichment predicates (`USES_METHOD`,
+`USES_DATASET`, `ADDRESSES_TASK`, `APPLIED_TO`, `EVALUATED_ON`, `PART_OF`, `MEMBER_OF`,
+`RELATED_TO`).
+
 Read the [graph schema](docs/graph-schema.md) for evidence, identity and weight
 rules. Researchers are never merged on similar names alone. Affiliation triples
 stay paper-specific before aggregation, and ambiguous claims stay in the review
@@ -104,7 +206,9 @@ queue.
 | `tests/` | Test suite (`uv run pytest`) |
 | `configs/` | Versioned corpus, quality, analysis and evaluation configs; earlier versions kept for reproducibility |
 | `queries/` | Neo4j constraints, inventory, integrity and analysis Cypher |
-| `apps/research-explorer/` | Research Explorer frontend and API; `ops/azure/` holds its deployment |
+| `apps/research-explorer/` | Research Explorer and Research Trend Navigator frontend and API; `ops/azure/` holds its deployment |
+| `ops/llm/`, `ops/release/` | Local language-model server (llama.cpp) settings; data-release bundle builder |
+| `reports/final-exam/`, `reports/enrichment-v*/` | Final-exam analysis, GraphRAG, QA and K1 evaluation results; enrichment quality |
 | `reports/` | Measured results, receipts and figures, one folder per release |
 | `report/latex/` | Course report sources |
 | `docs/` | Requirements, design, workflows, decisions and the work log; start at [docs/README.md](docs/README.md) |

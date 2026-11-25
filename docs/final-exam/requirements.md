@@ -96,7 +96,10 @@ that proves it at grading time.
 | S1 | [§5.1 Small world](specification.md#51-small-world-s1) | L, C and σ against random baselines; path-length histogram; app Network Science page |
 | S2 | [§5.2 Ranking](specification.md#52-node-ranking-s2) | PageRank tables per network and per topic; rank correlation with other centralities |
 | S3 | [§5.3 Communities and key individuals](specification.md#53-communities-and-key-individuals-s3) | Partition quality and stability; community cards with hubs, brokers and rising researchers |
-| K1 | [§6.1 Language model selection](specification.md#61-language-model-selection-k1) | Model comparison on the development set; chosen model card with exact ID and quantization |
+| K1 | [§6.1 Language model selection](specification.md#61-language-model-selection-k1) | Model comparison on the development set (extraction arm and answer-quality arm, 4.66B / 8.0B / 9.65B); chosen model card with exact ID and quantization |
 | K2 | [§6.2 GraphRAG](specification.md#62-graphrag-index-and-retrieval-k2) and [§6.4 product](specification.md#64-product-features) | Community reports, retrieval modes, graph visualization in the app |
-| K3 | [§6.3 Multi-hop reasoning](specification.md#63-multi-hop-reasoning-k3), [§6.4](specification.md#64-product-features) and [§6.6 QA evaluation](specification.md#66-question-answering-evaluation) | Live demo with a visible reasoning trace; benchmark accuracy by hop count against baselines |
+| K3 | [§6.3 Multi-hop reasoning](specification.md#63-multi-hop-reasoning-k3), [§6.4](specification.md#64-product-features) and [§6.6 QA evaluation](specification.md#66-question-answering-evaluation) | Live demo with a visible reasoning trace; benchmark accuracy by hop count against baselines, with the graph-agreement disclosure and the supplementary literature-supported precision |
 | P1–P4 | [§7 Deliverables](specification.md#7-deliverables-p1p4) | Slides, demo script, arXiv report and listing, public GitHub repository |
+
+The concrete evidence path for each item, and what is still open, are listed in the
+[acceptance checklist](specification.md#9-acceptance-checklist) (updated 2026-11-26).
