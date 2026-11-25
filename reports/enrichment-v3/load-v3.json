@@ -1,0 +1,111 @@
+{
+  "stage": "load-enriched",
+  "graph_version": "enriched-cb371912e308",
+  "base_graph_version": "release-d3c788c3114a",
+  "input_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+  "neo4j_endpoint": "bolt://localhost:7690",
+  "counts": {
+    "v4_layer": {
+      "nodes": 47875,
+      "edges": 225731,
+      "nodes_by_label": {
+        "Organization": 2047,
+        "Paper": 13617,
+        "Researcher": 32189,
+        "Topic": 20,
+        "Venue": 2
+      },
+      "edges_by_relation": {
+        "AUTHORED": 50437,
+        "COAUTHORED_WITH": 80482,
+        "PUBLISHED_IN": 13617,
+        "COLLABORATED_WITH": 13031,
+        "RESEARCHES_TOPIC": 5622,
+        "AFFILIATED_WITH": 38664,
+        "HAS_TOPIC": 14222,
+        "CONTRIBUTES_TO_TOPIC": 2332,
+        "CITES": 7308,
+        "SUBTOPIC_OF": 16
+      }
+    },
+    "enrichment_layer": {
+      "nodes": 2269,
+      "edges": 16317,
+      "nodes_by_label": {
+        "Dataset": 371,
+        "Method": 954,
+        "Task": 679,
+        "Organization": 265
+      },
+      "edges_by_relation": {
+        "USES_METHOD": 7911,
+        "USES_DATASET": 2733,
+        "ADDRESSES_TASK": 4591,
+        "APPLIED_TO": 167,
+        "EVALUATED_ON": 31,
+        "PART_OF": 783,
+        "MEMBER_OF": 85,
+        "RELATED_TO": 16
+      },
+      "edges_by_evidence_kind": {
+        "extracted": 15433,
+        "wikidata": 868,
+        "aggregated": 16
+      },
+      "linked_entities": 231,
+      "organizations_enriched": 2044
+    },
+    "total": {
+      "nodes": 50144,
+      "edges": 242048,
+      "evidence": 159355
+    }
+  },
+  "v4_layer_database": {
+    "nodes_before": 47875,
+    "nodes_after": 47875,
+    "nodes_by_label": {
+      "Researcher": 32189,
+      "Organization": 2047,
+      "Paper": 13617,
+      "Topic": 20,
+      "Venue": 2
+    },
+    "edges_after": 225731,
+    "edges_by_relation": {
+      "AUTHORED": 50437,
+      "AFFILIATED_WITH": 38664,
+      "PUBLISHED_IN": 13617,
+      "CITES": 7308,
+      "HAS_TOPIC": 14222,
+      "SUBTOPIC_OF": 16,
+      "COAUTHORED_WITH": 80482,
+      "COLLABORATED_WITH": 13031,
+      "RESEARCHES_TOPIC": 5622,
+      "CONTRIBUTES_TO_TOPIC": 2332
+    },
+    "batch_size": 5000,
+    "transactions": 64
+  },
+  "enrichment_layer_database": {
+    "enrichment_nodes_by_label": {
+      "Method": 954,
+      "Task": 679,
+      "Dataset": 371,
+      "Organization": 265
+    },
+    "enrichment_edges_by_relation": {
+      "USES_METHOD": 7911,
+      "ADDRESSES_TASK": 4591,
+      "USES_DATASET": 2733,
+      "APPLIED_TO": 167,
+      "EVALUATED_ON": 31,
+      "PART_OF": 783,
+      "MEMBER_OF": 85,
+      "RELATED_TO": 16
+    },
+    "transactions": 16
+  },
+  "vector_index": "not created here; created with the embedding index (specification §6.2)",
+  "semantic_accuracy": "not_measured_by_this_stage"
+}

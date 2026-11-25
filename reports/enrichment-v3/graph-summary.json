@@ -1,0 +1,108 @@
+{
+ "base_graph_file_sha256": "6f665a946cec7473889a09e883a3ef88469de867cb1054d6a3b145239ea59c90",
+ "base_graph_version": "release-d3c788c3114a",
+ "counts": {
+  "enrichment_layer": {
+   "edges": 16317,
+   "edges_by_evidence_kind": {
+    "aggregated": 16,
+    "extracted": 15433,
+    "wikidata": 868
+   },
+   "edges_by_relation": {
+    "ADDRESSES_TASK": 4591,
+    "APPLIED_TO": 167,
+    "EVALUATED_ON": 31,
+    "MEMBER_OF": 85,
+    "PART_OF": 783,
+    "RELATED_TO": 16,
+    "USES_DATASET": 2733,
+    "USES_METHOD": 7911
+   },
+   "linked_entities": 231,
+   "nodes": 2269,
+   "nodes_by_label": {
+    "Dataset": 371,
+    "Method": 954,
+    "Organization": 265,
+    "Task": 679
+   },
+   "organizations_enriched": 2044
+  },
+  "total": {
+   "edges": 242048,
+   "evidence": 159355,
+   "nodes": 50144
+  },
+  "v4_layer": {
+   "edges": 225731,
+   "edges_by_relation": {
+    "AFFILIATED_WITH": 38664,
+    "AUTHORED": 50437,
+    "CITES": 7308,
+    "COAUTHORED_WITH": 80482,
+    "COLLABORATED_WITH": 13031,
+    "CONTRIBUTES_TO_TOPIC": 2332,
+    "HAS_TOPIC": 14222,
+    "PUBLISHED_IN": 13617,
+    "RESEARCHES_TOPIC": 5622,
+    "SUBTOPIC_OF": 16
+   },
+   "nodes": 47875,
+   "nodes_by_label": {
+    "Organization": 2047,
+    "Paper": 13617,
+    "Researcher": 32189,
+    "Topic": 20,
+    "Venue": 2
+   }
+  }
+ },
+ "enrichment_version": "enrichment-v3",
+ "graph_sha256": "37ee8c59d8245d452e42575b7afbb13808b5f835d51c9ee838bd5581434633e3",
+ "graph_version": "enriched-cb371912e308",
+ "member_of_decisions": {
+  "drop:end_dated": 26,
+  "drop:excluded_class": 157,
+  "drop:implausible_type_order": 6,
+  "drop:not_organization": 61,
+  "drop:reversed_direction": 11,
+  "keep:kept": 783,
+  "member_of:consortium_or_association": 85
+ },
+ "nodes_below_threshold_after_merge": 45750,
+ "part_of_dropped_by_reason": {
+  "end_dated": 26,
+  "excluded_class": 157,
+  "implausible_type_order": 6,
+  "not_organization": 61,
+  "reversed_direction": 11
+ },
+ "relation_stats": {
+  "admitted_by_rule": {
+   "APPLIED_TO:single_paper_same_sentence": 136,
+   "APPLIED_TO:two_or_more_papers": 31,
+   "EVALUATED_ON:single_paper_same_sentence": 27,
+   "EVALUATED_ON:two_or_more_papers": 4
+  },
+  "linked_pairs_with_wikipedia_link": 1964,
+  "pairs_below_threshold": 778,
+  "pairs_seen": 976,
+  "pairs_with_enough_papers": 16
+ },
+ "rules": {
+  "link_guard": true,
+  "part_of": true,
+  "single_paper_same_sentence": {
+   "APPLIED_TO": true,
+   "EVALUATED_ON": true
+  }
+ },
+ "semantic_accuracy": "not_measured_by_validation",
+ "validation": {
+  "error_count": 0,
+  "errors": [],
+  "scope": "structural_only",
+  "status": "passed"
+ }
+}

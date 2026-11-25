@@ -1,0 +1,1523 @@
+{
+ "graph_version": "enriched-cb371912e308",
+ "keys_with_type_conflict": 63,
+ "by_type_combination": {
+  "Dataset+Method": 7,
+  "Method+Task": 56
+ },
+ "note": "reported only; typing is unchanged",
+ "conflicts": [
+  {
+   "key": "reinforcement learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q830687",
+     "name": "reinforcement learning",
+     "paper_count": 135,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q830687",
+     "name": "reinforcement learning",
+     "paper_count": 10,
+     "linked": true
+    }
+   ],
+   "papers_total": 145
+  },
+  {
+   "key": "object detection",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:66162611936a341d",
+     "name": "object detection",
+     "paper_count": 90,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:6fe9f8747b4aa375",
+     "name": "object detection",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 94
+  },
+  {
+   "key": "knowledge distillation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q74253442",
+     "name": "knowledge distillation",
+     "paper_count": 75,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q74253442",
+     "name": "knowledge distillation",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 79
+  },
+  {
+   "key": "self supervised learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:946026262bf03eaf",
+     "name": "self-supervised learning",
+     "paper_count": 67,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q77562367",
+     "name": "self-supervised learning",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 71
+  },
+  {
+   "key": "bert",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:917c667e8cb4dec5",
+     "name": "BERT",
+     "paper_count": 58,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:Q61726893",
+     "name": "BERT",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 62
+  },
+  {
+   "key": "data augmentation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:67f15cf26bffda75",
+     "name": "data augmentation",
+     "paper_count": 43,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q85014143",
+     "name": "data augmentation",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 46
+  },
+  {
+   "key": "meta learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:62721b948365f1cb",
+     "name": "meta-learning",
+     "paper_count": 39,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q6822311",
+     "name": "meta-learning",
+     "paper_count": 7,
+     "linked": true
+    }
+   ],
+   "papers_total": 46
+  },
+  {
+   "key": "transfer learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:acbd5cf64692d01a",
+     "name": "transfer learning",
+     "paper_count": 26,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q6027324",
+     "name": "transfer learning",
+     "paper_count": 14,
+     "linked": true
+    }
+   ],
+   "papers_total": 40
+  },
+  {
+   "key": "few shot learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q110797734",
+     "name": "few-shot learning",
+     "paper_count": 30,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:Q110797734",
+     "name": "few-shot learning",
+     "paper_count": 9,
+     "linked": true
+    }
+   ],
+   "papers_total": 39
+  },
+  {
+   "key": "semi supervised learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:1a6032952f76fdd1",
+     "name": "semi-supervised learning",
+     "paper_count": 28,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:4c2d6d7c7f0ce894",
+     "name": "semi-supervised learning",
+     "paper_count": 10,
+     "linked": false
+    }
+   ],
+   "papers_total": 38
+  },
+  {
+   "key": "clustering",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:2e3d4b251bec90f9",
+     "name": "clustering",
+     "paper_count": 26,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:d43d0ce131b73732",
+     "name": "clustering",
+     "paper_count": 11,
+     "linked": false
+    }
+   ],
+   "papers_total": 37
+  },
+  {
+   "key": "graph contrastive learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:a9ebaa219a8944d8",
+     "name": "Graph Contrastive Learning",
+     "paper_count": 31,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:55e314ed180052d7",
+     "name": "graph contrastive learning",
+     "paper_count": 5,
+     "linked": false
+    }
+   ],
+   "papers_total": 36
+  },
+  {
+   "key": "visual question answering",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:44de33167d1b5101",
+     "name": "Visual Question Answering",
+     "paper_count": 30,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:df5c28e1be6d30fe",
+     "name": "Visual Question Answering",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 33
+  },
+  {
+   "key": "instance segmentation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:02dbbba279318de5",
+     "name": "instance segmentation",
+     "paper_count": 28,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:920038c9142b945f",
+     "name": "instance segmentation",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 31
+  },
+  {
+   "key": "multi agent reinforcement learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q85786957",
+     "name": "Multi-Agent Reinforcement Learning",
+     "paper_count": 24,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q85786957",
+     "name": "Multi-Agent Reinforcement Learning",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 27
+  },
+  {
+   "key": "unsupervised domain adaptation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:830401b7fec9cdca",
+     "name": "Unsupervised Domain Adaptation",
+     "paper_count": 19,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:2bdd31b2e504db67",
+     "name": "unsupervised domain adaptation",
+     "paper_count": 7,
+     "linked": false
+    }
+   ],
+   "papers_total": 26
+  },
+  {
+   "key": "domain adaptation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q19246213",
+     "name": "Domain Adaptation",
+     "paper_count": 16,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:Q19246213",
+     "name": "domain adaptation",
+     "paper_count": 9,
+     "linked": true
+    }
+   ],
+   "papers_total": 25
+  },
+  {
+   "key": "neural architecture search",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q55080142",
+     "name": "neural architecture search",
+     "paper_count": 15,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:1de7a835c14290bd",
+     "name": "neural architecture search",
+     "paper_count": 10,
+     "linked": false
+    }
+   ],
+   "papers_total": 25
+  },
+  {
+   "key": "prompt learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:f0d675c4a5df3b13",
+     "name": "prompt learning",
+     "paper_count": 21,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:f2758d933d701c62",
+     "name": "Prompt learning",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 24
+  },
+  {
+   "key": "multi task learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:185f3148d8b03a7c",
+     "name": "multi-task learning",
+     "paper_count": 19,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q6934509",
+     "name": "Multi-Task Learning",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 23
+  },
+  {
+   "key": "resnet 50",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:772eb0adb4270a0c",
+     "name": "ResNet-50",
+     "paper_count": 17,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:c054d29dcdcdab81",
+     "name": "ResNet-50",
+     "paper_count": 6,
+     "linked": false
+    }
+   ],
+   "papers_total": 23
+  },
+  {
+   "key": "representation learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:996e998608907ff5",
+     "name": "representation learning",
+     "paper_count": 12,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:a87170eacbc70a3b",
+     "name": "representation learning",
+     "paper_count": 9,
+     "linked": false
+    }
+   ],
+   "papers_total": 21
+  },
+  {
+   "key": "supervised learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:62c98bff75dc4af0",
+     "name": "supervised learning",
+     "paper_count": 18,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:ee966f0b8e336e4e",
+     "name": "supervised learning",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 21
+  },
+  {
+   "key": "graph representation learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:f58720df3e4446d0",
+     "name": "graph representation learning",
+     "paper_count": 12,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:04272d428adf22d2",
+     "name": "graph representation learning",
+     "paper_count": 6,
+     "linked": false
+    }
+   ],
+   "papers_total": 18
+  },
+  {
+   "key": "imitation learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q124742024",
+     "name": "imitation learning",
+     "paper_count": 14,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q124742024",
+     "name": "Imitation Learning",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 18
+  },
+  {
+   "key": "resnet 18",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Dataset",
+     "node_id": "dataset:a6046bc2518ec9f0",
+     "name": "ResNet-18",
+     "paper_count": 11,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:af001cfd8fa36696",
+     "name": "ResNet-18",
+     "paper_count": 6,
+     "linked": false
+    }
+   ],
+   "papers_total": 17
+  },
+  {
+   "key": "constraint programming",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q528588",
+     "name": "Constraint Programming",
+     "paper_count": 12,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q528588",
+     "name": "constraint programming",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 15
+  },
+  {
+   "key": "continual learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:35052fc5ec02212f",
+     "name": "Continual Learning",
+     "paper_count": 9,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:4d2f4f199042ef6c",
+     "name": "Continual Learning",
+     "paper_count": 6,
+     "linked": false
+    }
+   ],
+   "papers_total": 15
+  },
+  {
+   "key": "metric learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:8d929070c0e72e7f",
+     "name": "metric learning",
+     "paper_count": 12,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:b4e89a481486f47b",
+     "name": "metric learning",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 15
+  },
+  {
+   "key": "super resolution",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:0139c13eca32e028",
+     "name": "super-resolution",
+     "paper_count": 12,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:cbc5bf3a551dd585",
+     "name": "super-resolution",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 15
+  },
+  {
+   "key": "zero shot learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:448d0722f3287179",
+     "name": "zero-shot learning",
+     "paper_count": 8,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:c871305352fb85e9",
+     "name": "zero-shot learning",
+     "paper_count": 7,
+     "linked": false
+    }
+   ],
+   "papers_total": 15
+  },
+  {
+   "key": "active learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q4677561",
+     "name": "active learning",
+     "paper_count": 9,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q4677561",
+     "name": "Active Learning",
+     "paper_count": 5,
+     "linked": true
+    }
+   ],
+   "papers_total": 14
+  },
+  {
+   "key": "causal inference",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:e8299f0a4fe25a12",
+     "name": "causal inference",
+     "paper_count": 7,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:9907c4f31b488686",
+     "name": "causal inference",
+     "paper_count": 6,
+     "linked": false
+    }
+   ],
+   "papers_total": 13
+  },
+  {
+   "key": "neural machine translation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q25053937",
+     "name": "neural machine translation",
+     "paper_count": 9,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:Q25053937",
+     "name": "neural machine translation",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 13
+  },
+  {
+   "key": "symbolic regression",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q18171762",
+     "name": "symbolic regression",
+     "paper_count": 9,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:Q18171762",
+     "name": "Symbolic Regression",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 13
+  },
+  {
+   "key": "adversarial attack",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:c94a503ac6e9b3ef",
+     "name": "adversarial attacks",
+     "paper_count": 8,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:25ef74fcec9723cc",
+     "name": "adversarial attack",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 12
+  },
+  {
+   "key": "model checking",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q1569697",
+     "name": "model checking",
+     "paper_count": 7,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q1569697",
+     "name": "model checking",
+     "paper_count": 5,
+     "linked": true
+    }
+   ],
+   "papers_total": 12
+  },
+  {
+   "key": "counterfactual explanation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:0b69131da118a7bf",
+     "name": "Counterfactual Explanations",
+     "paper_count": 7,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:216062b8edaddaf9",
+     "name": "counterfactual explanations",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 11
+  },
+  {
+   "key": "masked language modeling",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:f8f237ead76b9649",
+     "name": "masked language modeling",
+     "paper_count": 7,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:a0b9025b13e904e6",
+     "name": "Masked Language Modeling",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 11
+  },
+  {
+   "key": "online learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q15946010",
+     "name": "online learning",
+     "paper_count": 6,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:7f9f4390ef19008c",
+     "name": "online learning",
+     "paper_count": 5,
+     "linked": false
+    }
+   ],
+   "papers_total": 11
+  },
+  {
+   "key": "spectral clustering",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q2976589",
+     "name": "spectral clustering",
+     "paper_count": 8,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q2976589",
+     "name": "spectral clustering",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 11
+  },
+  {
+   "key": "vit",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:f1aa5cfaa0df1560",
+     "name": "ViT",
+     "paper_count": 8,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:eead06c9bf9eac86",
+     "name": "ViT",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 11
+  },
+  {
+   "key": "classical planning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:97c3043e2a55bd72",
+     "name": "classical planning",
+     "paper_count": 6,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:b84381e0fbd3bff4",
+     "name": "classical planning",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 10
+  },
+  {
+   "key": "image to image translation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:340ce26cf2dfcc98",
+     "name": "image-to-image translation",
+     "paper_count": 7,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:373825760c4a4388",
+     "name": "image-to-image translation",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 10
+  },
+  {
+   "key": "machine unlearning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q118970497",
+     "name": "Machine Unlearning",
+     "paper_count": 5,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q118970497",
+     "name": "Machine Unlearning",
+     "paper_count": 5,
+     "linked": true
+    }
+   ],
+   "papers_total": 10
+  },
+  {
+   "key": "policy optimization",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:a4d5adcd3a4f5753",
+     "name": "policy optimization",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:55833d4f9e17e428",
+     "name": "policy optimization",
+     "paper_count": 5,
+     "linked": false
+    }
+   ],
+   "papers_total": 10
+  },
+  {
+   "key": "roberta",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:1fc252d13407d7d2",
+     "name": "RoBERTa",
+     "paper_count": 6,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:811ab44f23781485",
+     "name": "RoBERTa",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 10
+  },
+  {
+   "key": "graph learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:7d077e875c786f9f",
+     "name": "graph learning",
+     "paper_count": 6,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:dfe39223127411fa",
+     "name": "graph learning",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 9
+  },
+  {
+   "key": "offline reinforcement learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:ca65ab86db3b1158",
+     "name": "Offline Reinforcement Learning",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:4bf6ec88bb0c724b",
+     "name": "offline reinforcement learning",
+     "paper_count": 4,
+     "linked": false
+    }
+   ],
+   "papers_total": 9
+  },
+  {
+   "key": "automatic speech recognition",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:0f80de5fa78e5a6c",
+     "name": "Automatic Speech Recognition",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q189436",
+     "name": "Automatic Speech Recognition",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "denoising",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:2ae1335ad0a8fd34",
+     "name": "Denoising",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:b778fcb12cfad621",
+     "name": "denoising",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "llama",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:be7ea5bc68774b74",
+     "name": "LLaMA",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:ff77efec3331f7d4",
+     "name": "LLaMA",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "llama 3",
+   "types": [
+    "Dataset",
+    "Method"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:e7f2dc55155541f3",
+     "name": "LLaMA-3",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Dataset",
+     "node_id": "dataset:272e4cd6f8711407",
+     "name": "LLaMA-3",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "model compression",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:Q131164003",
+     "name": "Model Compression",
+     "paper_count": 4,
+     "linked": true
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q131164003",
+     "name": "model compression",
+     "paper_count": 4,
+     "linked": true
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "sat",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:3f3dd68935438a32",
+     "name": "SAT",
+     "paper_count": 5,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:026725c7b8eb7a95",
+     "name": "SAT",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "uncertainty quantification",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:Q7882499",
+     "name": "Uncertainty Quantification",
+     "paper_count": 5,
+     "linked": true
+    },
+    {
+     "type": "Method",
+     "node_id": "method:Q7882499",
+     "name": "uncertainty quantification",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 8
+  },
+  {
+   "key": "incremental learning",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:36fd5ea9cad675bd",
+     "name": "incremental learning",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:Q28324931",
+     "name": "incremental learning",
+     "paper_count": 3,
+     "linked": true
+    }
+   ],
+   "papers_total": 7
+  },
+  {
+   "key": "linear probing",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:42cf3f2e8ca4a93a",
+     "name": "linear probing",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:fe4b31ac48f5a90d",
+     "name": "linear probing",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 7
+  },
+  {
+   "key": "regret minimization",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:dd744e620108a0a8",
+     "name": "Regret Minimization",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:60757796070cc215",
+     "name": "regret minimization",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 7
+  },
+  {
+   "key": "test time adaptation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:9ecc7d962299220f",
+     "name": "Test-Time Adaptation",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:e2727511b6a974bc",
+     "name": "Test-Time Adaptation",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 7
+  },
+  {
+   "key": "uncertainty estimation",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Task",
+     "node_id": "task:829b05165b5c58a5",
+     "name": "Uncertainty estimation",
+     "paper_count": 4,
+     "linked": false
+    },
+    {
+     "type": "Method",
+     "node_id": "method:294c0854fc8d2dc8",
+     "name": "uncertainty estimation",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 7
+  },
+  {
+   "key": "knowledge editing",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:4d4cd7aa704635ae",
+     "name": "Knowledge Editing",
+     "paper_count": 3,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:131aa91e3cefacc4",
+     "name": "knowledge editing",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 6
+  },
+  {
+   "key": "model editing",
+   "types": [
+    "Method",
+    "Task"
+   ],
+   "nodes": [
+    {
+     "type": "Method",
+     "node_id": "method:60794154b8a2101d",
+     "name": "Model Editing",
+     "paper_count": 3,
+     "linked": false
+    },
+    {
+     "type": "Task",
+     "node_id": "task:3527d778c74c2c30",
+     "name": "Model Editing",
+     "paper_count": 3,
+     "linked": false
+    }
+   ],
+   "papers_total": 6
+  }
+ ]
+}
