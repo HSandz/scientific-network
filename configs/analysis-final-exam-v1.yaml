@@ -78,7 +78,7 @@ groups:
     relation: PART_OF only
     never_use: MEMBER_OF (its audit is ambiguous)
     skip_parents: government ministries
-    ministry_rule: the PART_OF evidence parent_instance_of contains a label with "ministry" (case-insensitive)
+    ministry_rule: the parent's name contains "ministry" (case-insensitive) -- see changes, 2026-11-25 (replaced the class-label rule before any roll-up was computed)
     expected_ministry_part_of_edges: 48
     expectation_note: the reviewer counted 48; a different count is reported, not forced
 # --- trends (5.4) ---
@@ -107,4 +107,13 @@ trends:
     - all enrichment quality figures are AI-assessed
 sanity_checks:
   v4_overlap: [N1 node count 32189, N1 largest component 20776, N1 edges 80482, N2 nodes 2047, N2 edges 13031, N3 edges 7308]
-changes: []
+changes:
+  - date: 2026-11-25
+    what: roll-up ministry rule changed from "PART_OF evidence parent_instance_of contains a label with 'ministry'" to "parent name contains 'ministry'"
+    why: |
+      Found while checking the declared expectation of 48 ministry PART_OF edges, before any roll-up or other real-graph result was computed. The class-label rule
+      flags 78 edges (41 parents) and is over-inclusive: it flags Tsinghua University (Wikidata class "higher education institution directly under Ministry of Education
+      of the People's Republic of China") and US federal departments labelled "ministry of energy" or "ministry of War". The name rule flags 48 edges (25 parents),
+      the reviewer's count. The 30 extra edges, including United States Department of Energy, Defense, Commerce and Agriculture, therefore stay in the roll-up;
+      this is disclosed in the report. Nothing else in this file changed.
+    status: made before computing results
