@@ -248,6 +248,16 @@ weights, following the v4 edge rules.
 > both endpoints share a sentence) is a separate, optional future decision: it would need tuning on development papers only, a dated
 > D042 amendment and a new E4 sample.
 
+> **Note, 2026-11-25 (enrichment v2, graph `enriched-827be09bc987`; D042 amendment "Enrichment v2: rules and acceptance criteria
+> declared before measurement").** The optional v2 relation rule was tried and decided on development material, with criteria declared
+> first. Single supporting paper, both endpoints in one sentence: **adopted for `EVALUATED_ON`** (23 of 24 correct on a supplementary
+> development sample; 27 new edges, `support_rule: single_paper_same_sentence`) and **not adopted for `APPLIED_TO`** (same-sentence
+> precision 0.452 against the frozen dev reference labels, declared 0.80), so `APPLIED_TO` stays at 32 edges and method–task questions
+> keep using paper co-occurrence. The PART_OF rule (organization class filter, end dates, direction check) **failed its criterion**
+> (kept precision 0.778, declared 0.85) and v1 `PART_OF` is unchanged; its consortium and association branch passed its own criterion
+> and is added as the separate predicate `MEMBER_OF` (85 edges), so a pair can carry both. The reasons and figures are in
+> `reports/enrichment-v2/`.
+
 ### 4.4 Enriched graph schema and build
 
 - v5-enriched = all v4 nodes and edges unchanged, plus the enrichment layer.
