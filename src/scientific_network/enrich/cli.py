@@ -110,6 +110,16 @@ def add_enrich_parser(commands) -> None:
     cooc.add_argument("--entity", help="entity id, e.g. method:Q...; prints its partners of --partner-type")
     cooc.add_argument("--partner-type", choices=["Method", "Task", "Dataset"])
     cooc.add_argument("--min-papers", type=int, default=1)
+    gl = stages.add_parser("guard-links", help="Enrichment v3: re-apply the link threshold and the narrower-page guard to cached candidate scores (offline)")
+    gl.add_argument("--link-dir", type=Path, required=True)
+    gl.add_argument("--config", type=Path, required=True)
+    gl.add_argument("--output-dir", type=Path, required=True)
+    gl.add_argument("--report", type=Path, required=True)
+    ad = stages.add_parser("applied-to-dev-sample", help="Enrichment v3: draw and freeze the fresh APPLIED_TO development sample and packet")
+    ad.add_argument("--candidates-graph", type=Path, required=True)
+    ad.add_argument("--texts", type=Path, required=True)
+    ad.add_argument("--packet-dir", type=Path, required=True)
+    ad.add_argument("--report-dir", type=Path, required=True)
     a2 = stages.add_parser("audit-v2-sample", help="Enrichment v2 E4 audit: freeze the fresh samples and packets for the changed axes (before any judgement)")
     a2.add_argument("--graph", type=Path, required=True)
     a2.add_argument("--texts", type=Path, required=True)
@@ -171,6 +181,18 @@ def run_enrich(args) -> tuple[dict, int]:
                                        args.manifest, args.output_dir, _json.loads(args.config.read_text()),
                                        quality_config=args.quality_config, org_facts_path=args.org_facts, v2_manifest=args.v2_manifest)
         return summary, 0 if summary["validation"]["status"] == "passed" else 1
+    if args.enrich_command == "guard-links":
+        import json as _json
+        from scientific_network.enrich.e3 import run_guard_links
+        cfg = _json.loads(args.config.read_text())
+        link_cfg = cfg["linking"]
+        report = run_guard_links(args.link_dir, args.output_dir, threshold=link_cfg["threshold"], reject_narrower_page=link_cfg["reject_narrower_page"])
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(_json.dumps(report, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
+        return report, 0
+    if args.enrich_command == "applied-to-dev-sample":
+        from scientific_network.enrich.v3 import freeze_applied_to_dev
+        return freeze_applied_to_dev(candidates_graph_path=args.candidates_graph, texts_path=args.texts, out_dir=args.packet_dir, report_dir=args.report_dir), 0
     if args.enrich_command == "audit-v2-sample":
         from scientific_network.enrich.audit_v2 import freeze_v2
         return freeze_v2(graph_path=args.graph, texts_path=args.texts, v1_graph_path=args.v1_graph, v1_sample_path=args.v1_sample,

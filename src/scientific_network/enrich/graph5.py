@@ -28,6 +28,7 @@ RELATION_SPEC = {  # relation -> (source labels, target labels, evidence kind)
 MIN_SUPPORT = {"APPLIED_TO": 2, "EVALUATED_ON": 2, "RELATED_TO": 3}
 SCHEMA_VERSION = "0.2.0-enrichment"
 SCHEMA_VERSION_V2 = "0.3.0-enrichment"  # adds MEMBER_OF and the optional support_rule property
+SCHEMA_VERSION_V3 = "0.4.0-enrichment"  # PART_OF is filtered by part_of_v2 and a pair carries at most one of PART_OF and MEMBER_OF
 SUPPORT_RULES = ("two_or_more_papers", "single_paper_same_sentence")
 V4_EVIDENCE_KINDS = ("observed", "inferred_topic", "curated_taxonomy", "derived")
 V4_LAYER_KEYS = ("nodes", "edges", "evidence", "affiliation_observations")
@@ -93,7 +94,7 @@ def node_id_for(node: dict) -> str:
 def validate_enriched(graph: dict, *, base_validator=None) -> list[str]:
     """Structural checks for the enrichment layer and for the integrity of the v4 layer. Not a semantic accuracy claim."""
     errors: list[str] = []
-    if graph.get("schema_version") not in (SCHEMA_VERSION, SCHEMA_VERSION_V2):
+    if graph.get("schema_version") not in (SCHEMA_VERSION, SCHEMA_VERSION_V2, SCHEMA_VERSION_V3):
         errors.append(f"unexpected schema_version {graph.get('schema_version')!r}")
     base, enrich = split_layers(graph)
     if v4_layer_sha256(base) != graph.get("base_layer_sha256"):
@@ -168,6 +169,14 @@ def validate_enriched(graph: dict, *, base_validator=None) -> list[str]:
             errors.append(f"node_enrichments target {node_id} is not an Organization")
     if len(method_versions) > 1:
         errors.append(f"several method versions in one build: {sorted(method_versions)}")
+    if graph.get("schema_version") == SCHEMA_VERSION_V3:  # enrichment v3: exactly one of PART_OF and MEMBER_OF per organization pair
+        by_pair: dict[tuple[str, str], set[str]] = defaultdict(set)
+        for edge in enrich["edges"]:
+            if edge["relation"] in ("PART_OF", "MEMBER_OF"):
+                by_pair[(edge["source_id"], edge["target_id"])].add(edge["relation"])
+        errors.extend(f"{a} -> {b}: carries both PART_OF and MEMBER_OF" for (a, b), rels in sorted(by_pair.items()) if len(rels) > 1)
+        errors.extend(f"{e['edge_id']}: PART_OF without the part_of_v2 rule marker on its evidence" for e in enrich["edges"]
+                      if e["relation"] == "PART_OF" and any(not (evidence.get(r) or {}).get("rule") for r in e["evidence_ids"]))
     return errors
 
 

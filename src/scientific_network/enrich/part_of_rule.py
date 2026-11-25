@@ -104,3 +104,46 @@ def member_of_edges(part_edges: list[dict], evidence: dict[str, dict], decisions
                       "method_version": method_version, "graph_version": graph_version, "validation_status": "accepted",
                       "properties": {"wikidata_property": prop, "rule": rule_id, "parent_in_v4": edge["properties"]["parent_in_v4"]}})
     return edges, out
+
+
+def kept_part_of(part_edges: list[dict], evidence: dict[str, dict], decisions: dict, facts: dict, rule_id: str) -> tuple[list[dict], list[dict], Counter]:
+    """PART_OF edges the rule keeps (decision ``keep``), with the rule id and the parent's instance-of labels added to their evidence.
+
+    Every other edge is either routed to ``MEMBER_OF`` (see ``member_of_edges``) or dropped; the second return value is the evidence
+    of the kept edges and the third counts the dropped edges by reason.
+    """
+    edges, out, dropped = [], [], Counter()
+    for edge in part_edges:
+        decision = decisions[edge["edge_id"]]
+        if decision["decision"] == "drop":
+            dropped[decision["reason"]] += 1
+        if decision["decision"] != "keep":
+            continue
+        for ref in edge["evidence_ids"]:
+            old = evidence[ref]
+            out.append({**old, "rule": rule_id, "parent_instance_of": sorted(facts["types"].get(old["parent_item"], {}).values())})
+        edges.append(edge)
+    return edges, out, dropped
+
+
+def check_integrity(graph: dict, facts: dict, rule: dict) -> list[str]:
+    """Enrichment v3 integrity: re-judge every PART_OF and MEMBER_OF edge with the rule and report any that it would not give.
+
+    PART_OF targets must have no excluded class (index, list, enumeration), and the rule must still return ``keep`` for PART_OF and
+    ``member_of`` for MEMBER_OF. This is a structural check against the cached Wikidata facts, not a semantic accuracy claim.
+    """
+    evidence = {e["id"]: e for e in graph["evidence"]}
+    errors = []
+    excluded = set(rule["excluded_classes"])
+    for edge in graph["edges"]:
+        if edge["relation"] not in ("PART_OF", "MEMBER_OF"):
+            continue
+        ev = evidence[edge["evidence_ids"][0]]
+        child, parent = ev["wikidata_item"], ev["parent_item"]
+        if edge["relation"] == "PART_OF" and excluded & class_closure(parent, facts, rule["superclass_depth"]):
+            errors.append(f"{edge['edge_id']}: PART_OF target {parent} has an excluded class")
+        want = "keep" if edge["relation"] == "PART_OF" else "member_of"
+        got = judge_edge(child, parent, facts, rule)["decision"]
+        if got != want:
+            errors.append(f"{edge['edge_id']}: {edge['relation']} {child}->{parent} but the rule gives {got}")
+    return errors

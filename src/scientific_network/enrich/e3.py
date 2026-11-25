@@ -6,7 +6,7 @@ from hashlib import sha256
 from pathlib import Path
 
 from scientific_network.enrich.finalize import finalize_entities
-from scientific_network.enrich.graph5 import (SCHEMA_VERSION, SCHEMA_VERSION_V2, build_enriched_graph, enriched_counts, validate_enriched)
+from scientific_network.enrich.graph5 import (SCHEMA_VERSION, SCHEMA_VERSION_V2, SCHEMA_VERSION_V3, build_enriched_graph, enriched_counts, validate_enriched)
 from scientific_network.enrich.k1 import read_jsonl, write_jsonl
 from scientific_network.enrich.link import apply_threshold, fetch_page_links, link_entities
 from scientific_network.enrich.relations import (entity_relation_edges, paper_entity_edges, part_of_edges, related_to_edges)
@@ -38,6 +38,33 @@ def run_link_entities(e2_dir: Path, texts_path: Path, raw_dir: Path, manifest: P
     report = {"nodes_before_link_merge": len(nodes), "linked": sum(a["linked"] for a in accepted), "link_threshold": threshold,
               "linked_by_type": dict(linked_by_type), "nodes_by_type": dict(by_type), "pages_with_links_fetched": len(linked_titles)}
     return report
+
+
+def run_guard_links(link_dir: Path, output_dir: Path, *, threshold: float, reject_narrower_page: bool) -> dict:
+    """Enrichment v3: re-apply the link threshold (and the narrower-page guard) to the cached candidate scores of ``link_dir``.
+
+    No network and no model: ``links-all.jsonl`` already holds every candidate. ``page-links.json`` is the v1 cache restricted to the
+    pages that are still linked (the guard can only remove links, so every page is present).
+    """
+    all_links = read_jsonl(link_dir / "links-all.jsonl")
+    accepted = apply_threshold(all_links, threshold=threshold, reject_narrower_page=reject_narrower_page)
+    cached = json.loads((link_dir / "page-links.json").read_text())
+    titles = sorted({a["wikipedia_title"] for a in accepted if a["linked"]})
+    missing = [t for t in titles if t not in cached]
+    if missing:
+        raise ValueError(f"{len(missing)} linked pages are not in the cached page-links.json, e.g. {missing[:3]}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    write_jsonl(output_dir / "links-all.jsonl", all_links)
+    write_jsonl(output_dir / "links.jsonl", accepted)
+    (output_dir / "page-links.json").write_text(json.dumps({t: cached[t] for t in titles}, ensure_ascii=False))
+    before = {l["id"]: l for l in read_jsonl(link_dir / "links.jsonl")}
+    lost = [{"id": a["id"], "name": next(x["name"] for x in all_links if x["id"] == a["id"]), "page": before[a["id"]]["wikipedia_title"],
+             "narrower_page_rejected": a.get("rejected_narrower_page")}
+            for a in accepted if not a["linked"] and before[a["id"]]["linked"]]
+    gained = [a["id"] for a in accepted if a["linked"] and not before[a["id"]]["linked"]]
+    return {"threshold": threshold, "reject_narrower_page": reject_narrower_page, "linked_before": sum(l["linked"] for l in before.values()),
+            "linked_after": sum(a["linked"] for a in accepted), "lost": lost, "gained_unexpectedly": gained,
+            "identical_to_input_links": all(before[a["id"]]["wikibase_item"] == a["wikibase_item"] and before[a["id"]]["linked"] == a["linked"] for a in accepted)}
 
 
 def organization_enrichment(matches: dict, wikipedia: dict, org_ids: set[str]) -> tuple[dict, dict]:
@@ -116,20 +143,23 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
     fetch_rows = {"retrieved_at": max((r["retrieved_at"] for r in sparql), default=None),
                   "sha256": sha256("".join(sorted(r["sha256"] for r in sparql)).encode()).hexdigest()}
     part_edges, part_ev = part_of_edges(wikidata["matches"], org_ids, parent_nodes, fetch_rows, method_version=version, graph_version=graph_version)
-    member_edges, member_ev, member_decisions = [], [], None
+    member_edges, member_ev, member_decisions, part_dropped = [], [], None, {}
     part_rule = rules.get("part_of") or {}
-    if v2 and part_rule.get("member_of", {}).get("adopted"):
+    part_filtered = bool(v2 and part_rule.get("adopted"))
+    facts = None
+    if v2 and (part_filtered or part_rule.get("member_of", {}).get("adopted")):
         from scientific_network.enrich.org_facts import statement_response_index
-        from scientific_network.enrich.part_of_rule import apply_rule, member_of_edges
+        from scientific_network.enrich.part_of_rule import apply_rule, kept_part_of, member_of_edges
         facts = json.loads(org_facts_path.read_text(encoding="utf-8"))
         member_decisions = apply_rule(part_edges, {e["id"]: e for e in part_ev}, facts, part_rule)
         statements = statement_response_index(v2_manifest, v2_manifest.parent)
         member_edges, member_ev = member_of_edges(part_edges, {e["id"]: e for e in part_ev}, member_decisions["decisions"], facts, statements,
                                                   part_rule["id"] + ":consortium_or_association", method_version=version, graph_version=graph_version)
-        # PART_OF stays as in v1 when its rule is not adopted (declared criterion failed); only an adopted rule would filter it
-        if part_rule.get("adopted"):
-            raise NotImplementedError("PART_OF v2 filtering was not adopted and is not built")
-    used_parents = {e["target_id"] for e in part_edges}
+        # PART_OF stays as in v1 unless the filtering rule is adopted (enrichment v3, post hoc; see the D042 v3 amendment)
+        if part_filtered:
+            part_edges, part_ev, dropped = kept_part_of(part_edges, {e["id"]: e for e in part_ev}, member_decisions["decisions"], facts, part_rule["id"])
+            part_dropped = dict(sorted(dropped.items()))
+    used_parents = {e["target_id"] for e in part_edges + member_edges}
     parent_list = sorted((p for p in parent_nodes.values() if p["id"] in used_parents), key=lambda n: n["id"])
     page_links = {t: set(v) for t, v in json.loads((link_dir / "page-links.json").read_text()).items()}
     linked = {n["id"]: n["properties"]["wikipedia_title"] for n in entity_nodes if n["properties"]["linked"] and n["label"] in ("Method", "Task")}
@@ -141,15 +171,19 @@ def run_build_enrichment(e2_dir: Path, link_dir: Path, texts_path: Path, org_wik
     enrichment = {"nodes": entity_nodes + parent_list, "edges": paper_edges + rel_edges + part_edges + member_edges + related_edges,
                   "evidence": paper_ev + rel_ev + part_ev + member_ev + related_ev, "node_enrichments": additions}
     graph = build_enriched_graph(base, enrichment, base_file_sha256=sha256(base_graph_path.read_bytes()).hexdigest(), enrichment_version=version,
-                                 schema_version=SCHEMA_VERSION_V2 if v2 else SCHEMA_VERSION)
+                                 schema_version=(SCHEMA_VERSION_V3 if part_filtered else SCHEMA_VERSION_V2) if v2 else SCHEMA_VERSION)
     output_dir.mkdir(parents=True, exist_ok=True)
     graph_path = output_dir / "graph.json"
     graph_path.write_text(json.dumps(graph, ensure_ascii=False, sort_keys=True), encoding="utf-8")
     errors = validate_enriched(graph, base_validator=frozen_v4_validator(quality_config) if quality_config else None)
+    if part_filtered:
+        from scientific_network.enrich.part_of_rule import check_integrity
+        errors += check_integrity(graph, facts, part_rule)
     summary = {"graph_version": graph["graph_version"], "base_graph_version": graph["base_graph_version"], "enrichment_version": version,
                "graph_sha256": sha256(graph_path.read_bytes()).hexdigest(), "base_graph_file_sha256": graph["base_graph_file_sha256"],
                "counts": enriched_counts(graph), "relation_stats": {**rel_stats, **related_stats},
-               **({"member_of_decisions": member_decisions["counts"], "rules": {k: (v.get("adopted") if k != "single_paper_same_sentence" else v["relations"]) for k, v in rules.items()}} if member_decisions else {}),
+               **({"member_of_decisions": member_decisions["counts"], "part_of_dropped_by_reason": part_dropped,
+                  "rules": {k: (v.get("adopted") if k != "single_paper_same_sentence" else v["relations"]) for k, v in rules.items()}} if member_decisions else {}),
                "nodes_below_threshold_after_merge": final["below_threshold"], "validation": {"scope": "structural_only", "errors": errors[:50], "error_count": len(errors),
                "status": "failed" if errors else "passed"}, "semantic_accuracy": "not_measured_by_validation"}
     (output_dir / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False, sort_keys=True) + "\n")

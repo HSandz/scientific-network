@@ -1,0 +1,268 @@
+{
+ "gained_unexpectedly": [],
+ "identical_to_input_links": false,
+ "linked_after": 244,
+ "linked_before": 287,
+ "lost": [
+  {
+   "id": "dataset:824ac3c38384f2aa",
+   "name": "CIFAR",
+   "narrower_page_rejected": "CIFAR-10",
+   "page": "CIFAR-10"
+  },
+  {
+   "id": "dataset:ff77efec3331f7d4",
+   "name": "LLaMA",
+   "narrower_page_rejected": "Llama.cpp",
+   "page": "Llama.cpp"
+  },
+  {
+   "id": "method:212da5599a4d576f",
+   "name": "actor-critic",
+   "narrower_page_rejected": "Actor-critic algorithm",
+   "page": "Actor-critic algorithm"
+  },
+  {
+   "id": "method:b398556a1f0ba720",
+   "name": "context-free grammar",
+   "narrower_page_rejected": "Probabilistic context-free grammar",
+   "page": "Probabilistic context-free grammar"
+  },
+  {
+   "id": "method:31bc24f885e95edd",
+   "name": "differential privacy",
+   "narrower_page_rejected": "Differential privacy composition theorems",
+   "page": "Differential privacy composition theorems"
+  },
+  {
+   "id": "method:70500f1fd86546c3",
+   "name": "dimensionality reduction",
+   "narrower_page_rejected": "Nonlinear dimensionality reduction",
+   "page": "Nonlinear dimensionality reduction"
+  },
+  {
+   "id": "method:2d27fcfe12c941ad",
+   "name": "game theory",
+   "narrower_page_rejected": "Combinatorial game theory",
+   "page": "Combinatorial game theory"
+  },
+  {
+   "id": "method:91be8bff9c196cbb",
+   "name": "Gurobi",
+   "narrower_page_rejected": "Gurobi Optimizer",
+   "page": "Gurobi Optimizer"
+  },
+  {
+   "id": "method:df13d1bcdecd4993",
+   "name": "heuristic search",
+   "narrower_page_rejected": "Incremental heuristic search",
+   "page": "Incremental heuristic search"
+  },
+  {
+   "id": "method:463e15b8739a464f",
+   "name": "Information Bottleneck",
+   "narrower_page_rejected": "Information bottleneck method",
+   "page": "Information bottleneck method"
+  },
+  {
+   "id": "method:4c851c866ca9b44c",
+   "name": "label propagation",
+   "narrower_page_rejected": "Label propagation algorithm",
+   "page": "Label propagation algorithm"
+  },
+  {
+   "id": "method:989640d4ac5af6b4",
+   "name": "Latent Diffusion",
+   "narrower_page_rejected": "Latent diffusion model",
+   "page": "Latent diffusion model"
+  },
+  {
+   "id": "method:2fa667e8e793bcc2",
+   "name": "Monte Carlo",
+   "narrower_page_rejected": "Monte Carlo method",
+   "page": "Monte Carlo method"
+  },
+  {
+   "id": "method:1a5f0734db7457cd",
+   "name": "multi-objective optimization",
+   "narrower_page_rejected": "Evolutionary multi-objective optimization",
+   "page": "Evolutionary multi-objective optimization"
+  },
+  {
+   "id": "method:22a0e5f97efbc129",
+   "name": "policy gradient",
+   "narrower_page_rejected": "Policy gradient method",
+   "page": "Policy gradient method"
+  },
+  {
+   "id": "method:e51d78ee4ce792b5",
+   "name": "pre-training",
+   "narrower_page_rejected": "Contrastive language–image pre-training",
+   "page": "Contrastive language–image pre-training"
+  },
+  {
+   "id": "method:669c0e09834be166",
+   "name": "quantization",
+   "narrower_page_rejected": "Vector quantization",
+   "page": "Vector quantization"
+  },
+  {
+   "id": "method:3f3dd68935438a32",
+   "name": "SAT",
+   "narrower_page_rejected": "SAT solver",
+   "page": "SAT solver"
+  },
+  {
+   "id": "method:19420127ef3b7668",
+   "name": "Soft Actor Critic",
+   "narrower_page_rejected": "Distributional Soft Actor Critic",
+   "page": "Distributional Soft Actor Critic"
+  },
+  {
+   "id": "method:b4f8269e8b1a9a6a",
+   "name": "sparsity regularization",
+   "narrower_page_rejected": "Structured sparsity regularization",
+   "page": "Structured sparsity regularization"
+  },
+  {
+   "id": "method:5ac04eca67a29722",
+   "name": "SVD",
+   "narrower_page_rejected": "K-SVD",
+   "page": "K-SVD"
+  },
+  {
+   "id": "method:f94fdcbb2ab194a5",
+   "name": "Upper Confidence Bound (UCB)",
+   "narrower_page_rejected": "Kullback–Leibler Upper Confidence Bound",
+   "page": "Kullback–Leibler Upper Confidence Bound"
+  },
+  {
+   "id": "task:66ad9962316b39ec",
+   "name": "3D reconstruction",
+   "narrower_page_rejected": "3D reconstruction from multiple images",
+   "page": "3D reconstruction from multiple images"
+  },
+  {
+   "id": "task:ac0b10a8b6fbf8ce",
+   "name": "cake-cutting",
+   "narrower_page_rejected": "Fair cake-cutting",
+   "page": "Fair cake-cutting"
+  },
+  {
+   "id": "task:afbddabffda05be7",
+   "name": "captioning",
+   "narrower_page_rejected": "Closed captioning",
+   "page": "Closed captioning"
+  },
+  {
+   "id": "task:2ae1335ad0a8fd34",
+   "name": "Denoising",
+   "narrower_page_rejected": "Video denoising",
+   "page": "Video denoising"
+  },
+  {
+   "id": "task:664800183cd37f9c",
+   "name": "Emotion Recognition",
+   "narrower_page_rejected": "Emotion recognition in conversation",
+   "page": "Emotion recognition in conversation"
+  },
+  {
+   "id": "task:52cfdcd3ff59945b",
+   "name": "Fraud Detection",
+   "narrower_page_rejected": "Artificial intelligence in fraud detection",
+   "page": "Artificial intelligence in fraud detection"
+  },
+  {
+   "id": "task:5161d438ae8c9999",
+   "name": "image restoration",
+   "narrower_page_rejected": "Image restoration by artificial intelligence",
+   "page": "Image restoration by artificial intelligence"
+  },
+  {
+   "id": "task:b89bda57afffa5b3",
+   "name": "image synthesis",
+   "narrower_page_rejected": "Human image synthesis",
+   "page": "Human image synthesis"
+  },
+  {
+   "id": "task:258499894a0c6c13",
+   "name": "machine translation",
+   "narrower_page_rejected": "Neural machine translation",
+   "page": "Neural machine translation"
+  },
+  {
+   "id": "task:2f11208d2e3d6b4d",
+   "name": "membership inference",
+   "narrower_page_rejected": "Membership inference attack",
+   "page": "Membership inference attack"
+  },
+  {
+   "id": "task:026725c7b8eb7a95",
+   "name": "SAT",
+   "narrower_page_rejected": "SAT solver",
+   "page": "SAT solver"
+  },
+  {
+   "id": "task:375a7ef445d02a95",
+   "name": "satisfiability",
+   "narrower_page_rejected": "Satisfiability modulo theories",
+   "page": "Satisfiability modulo theories"
+  },
+  {
+   "id": "task:71018aabb8787670",
+   "name": "style transfer",
+   "narrower_page_rejected": "Neural style transfer",
+   "page": "Neural style transfer"
+  },
+  {
+   "id": "task:78c38b05c14cbdac",
+   "name": "summarization",
+   "narrower_page_rejected": "Multi-document summarization",
+   "page": "Multi-document summarization"
+  },
+  {
+   "id": "task:0139c13eca32e028",
+   "name": "super-resolution",
+   "narrower_page_rejected": "Video super-resolution",
+   "page": "Video super-resolution"
+  },
+  {
+   "id": "task:cff335feac0306fb",
+   "name": "task allocation",
+   "narrower_page_rejected": "Task allocation and partitioning in social insects",
+   "page": "Task allocation and partitioning in social insects"
+  },
+  {
+   "id": "task:f3f302a48c45c07f",
+   "name": "temporal reasoning",
+   "narrower_page_rejected": "Spatial–temporal reasoning",
+   "page": "Spatial–temporal reasoning"
+  },
+  {
+   "id": "task:30f2949af228c4cb",
+   "name": "Tracking",
+   "narrower_page_rejected": "3D tracking",
+   "page": "3D tracking"
+  },
+  {
+   "id": "task:27359939c377ea50",
+   "name": "translation",
+   "narrower_page_rejected": "Machine translation",
+   "page": "Machine translation"
+  },
+  {
+   "id": "task:a5765610d6349acb",
+   "name": "Traveling Salesman Problem",
+   "narrower_page_rejected": "Bottleneck traveling salesman problem",
+   "page": "Bottleneck traveling salesman problem"
+  },
+  {
+   "id": "task:b3d3855a59357c3a",
+   "name": "Unlearning",
+   "narrower_page_rejected": "Machine unlearning",
+   "page": "Machine unlearning"
+  }
+ ],
+ "reject_narrower_page": true,
+ "threshold": 0.4
+}

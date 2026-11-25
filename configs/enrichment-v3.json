@@ -1,0 +1,124 @@
+{
+ "config_version": "enrichment-v3",
+ "status": "part_of_and_link_guard_adopted_post_hoc; applied_to_pending_fresh_dev_sample",
+ "declared_at": "2026-11-25",
+ "decision": "docs/decisions.md D042 amendment 'Enrichment v3: post-hoc adoption, APPLIED_TO re-declared on the audit scale, MEMBER_OF re-adjudication' (2026-11-25)",
+ "disclosure": "The PART_OF and link-guard rules are the unchanged v2 rules, adopted on a relative criterion chosen after the v2 development results were seen; the APPLIED_TO criterion was re-declared after its first result. Development checks are not evidence for v3; accuracy claims come only from the fresh E4 v3 audit.",
+ "base_config": "configs/enrichment-v2.json",
+ "node_threshold_papers": 3,
+ "merge_threshold": 0.97,
+ "inherits_unchanged": [
+  "text",
+  "encoder",
+  "slm",
+  "node_threshold_papers",
+  "merge_threshold",
+  "linking.candidates",
+  "linking.score",
+  "rules.part_of (classes, depth, order of checks)",
+  "rules.single_paper_same_sentence.EVALUATED_ON"
+ ],
+ "relation_thresholds": {
+  "evaluated_on_min_papers": 2,
+  "applied_to_min_papers": 2,
+  "related_to_min_cooccurring_papers": 3
+ },
+ "rules": {
+  "part_of": {
+   "id": "part_of_v2",
+   "adopted": true,
+   "superclass_depth": 3,
+   "wikidata_properties": [
+    "P749",
+    "P361"
+   ],
+   "property_preference": "P749 over P361 for the shown evidence; the statement qualifiers (end time P582, deprecated rank) decide",
+   "allowed_classes": {
+    "Q43229": "organization",
+    "Q327333": "government agency",
+    "Q192350": "ministry"
+   },
+   "excluded_classes": {
+    "Q223371": "stock market index",
+    "Q1020008": "market index",
+    "Q25472932": "index",
+    "Q1738991": "index number",
+    "Q12139612": "list",
+    "Q13406463": "Wikimedia list article",
+    "Q67197389": "Enumeration of 500",
+    "Q5760634": "hectad",
+    "Q135236673": "Pentacontad"
+   },
+   "consortium_classes_direct_instance_of_only": {
+    "Q194166": "consortium",
+    "Q11902868": "university consortium",
+    "Q3412198": "consortium of universities in France",
+    "Q15974764": "Group of universities and institutions (France)",
+    "Q878249": "alliance",
+    "Q131421938": "university alliance",
+    "Q56525733": "European University Alliance",
+    "Q3457065": "university network",
+    "Q131905784": "education network",
+    "Q1900326": "network",
+    "Q48204": "voluntary association",
+    "Q16887380": "group",
+    "Q109490328": "ELIXIR Node"
+   },
+   "whole_organization_classes_via_closure": {
+    "Q3918": "university"
+   },
+   "subordinate_classes_direct_instance_of_only": {
+    "Q180958": "faculty",
+    "Q2366457": "department",
+    "Q643589": "department",
+    "Q2467461": "academic department",
+    "Q9261468": "organizational subdivision",
+    "Q23005223": "division of an educational institution",
+    "Q334453": "division",
+    "Q31855": "research institute",
+    "Q1664720": "institute",
+    "Q7315155": "research center"
+   },
+   "order_of_checks": [
+    "end_dated",
+    "excluded_class",
+    "not_organization",
+    "reversed_direction",
+    "consortium_or_association",
+    "implausible_type_order"
+   ],
+   "member_of": {
+    "adopted": true,
+    "predicate": "MEMBER_OF",
+    "source": "Organization",
+    "target": "Organization",
+    "evidence_kind": "wikidata",
+    "decision_note": "adopted in v2 (85 candidate edges); in v3 these pairs no longer also carry PART_OF"
+   },
+   "decision_note": "adopted post hoc on the relative criterion in the D042 v3 amendment: dev kept precision 0.778 against 0.592 for the v1 rule on the same 50 edges, 28 of 29 correct edges kept (reports/enrichment-v2/part-of-dev-check.json); consortium parents go to MEMBER_OF so each pair carries one edge"
+  },
+  "single_paper_same_sentence": {
+   "id": "single_paper_same_sentence_v3",
+   "relations": {
+    "APPLIED_TO": false,
+    "EVALUATED_ON": true
+   },
+   "support_rule_values": [
+    "two_or_more_papers",
+    "single_paper_same_sentence"
+   ],
+   "decision_note": "EVALUATED_ON adopted in v2 (unchanged). APPLIED_TO: pending, decided by the fresh E4-scale development sample of the D042 v3 amendment (adopt iff >=0.80 correct, unclear counted incorrect)"
+  },
+  "link_guard": {
+   "id": "narrower_page_v2",
+   "adopted": true,
+   "guard": "title has every token of the entity name plus at least one more (link.narrower_page)",
+   "decision_note": "adopted post hoc on the relative criterion in the D042 v3 amendment: dev accuracy 0.821 (kept) against 0.783 for the v1 links on the same 60 entities, 46 of 47 correct links kept (reports/enrichment-v2/link-dev-check.json)"
+  }
+ },
+ "linking": {
+  "threshold": 0.4,
+  "reject_narrower_page": true,
+  "note": "threshold 0.4 is the v1 link threshold (configs/enrichment-v1.json); the guard is link.narrower_page, unchanged from v2"
+ }
+}
