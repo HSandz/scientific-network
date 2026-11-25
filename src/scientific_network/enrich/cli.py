@@ -83,6 +83,8 @@ def add_enrich_parser(commands) -> None:
     load = stages.add_parser("load-graph", help="Phase 4: import v5-enriched into neo4j-enriched (bolt port 7690 only)")
     load.add_argument("--graph", type=Path, required=True)
     load.add_argument("--report", type=Path, required=True)
+    load.add_argument("--replace-enrichment", action="store_true",
+                      help="delete a stale enrichment layer (another graph version) before loading; v4 nodes and edges are never touched")
     audit = stages.add_parser("audit-sample", help="Phase 5 (E4): freeze the audit sample and write evaluator packets (before any judgement)")
     audit.add_argument("--graph", type=Path, required=True)
     audit.add_argument("--mentions", type=Path, required=True)
@@ -216,7 +218,7 @@ def run_enrich(args) -> tuple[dict, int]:
         return {k: v for k, v in report.items() if k != "conflicts"}, 0
     if args.enrich_command == "load-graph":
         from scientific_network.enrich.load5 import build as load_enriched
-        return load_enriched(args.graph, args.report), 0
+        return load_enriched(args.graph, args.report, replace_enrichment=args.replace_enrichment), 0
     if args.enrich_command == "audit-sample":
         from scientific_network.enrich.quality import freeze_audit
         return freeze_audit(graph_path=args.graph, mentions_path=args.mentions, texts_path=args.texts, test_path=args.test,

@@ -237,3 +237,5 @@ text into the journal.
 - [WORK-2026-11-25-002 — Enrichment v2](2026-11-25-002-enrichment-v2.md): completed; `MEMBER_OF` (85) and single-paper EVALUATED_ON (31) adopted, PART_OF v2, single-paper APPLIED_TO and the link guard not adopted under declared criteria; E4 v2 on fresh samples; graph `enriched-827be09bc987` loaded on 7690.
 
 - [WORK-2026-11-25-003 — Enrichment v3](2026-11-25-003-enrichment-v3.md): completed; PART_OF rule and link guard adopted post hoc, single-paper APPLIED_TO adopted on the audit scale, graph `enriched-cb371912e308` loaded on 7690; fresh E4 v3: PART_OF 0.951 (0.78 unclear as incorrect), linking 0.895, APPLIED_TO 0.983, MEMBER_OF ambiguous.
+
+- [WORK-2026-11-25-004 — Loader fix and analysis S1–S3](2026-11-25-004-analysis-s1-s3.md): in progress; loader refuses a stale enrichment layer unless `--replace-enrichment`, verified on 7690.

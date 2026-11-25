@@ -33,6 +33,51 @@ def check_enriched_target(uri: str) -> None:
                          f"(bolt port {ENRICHED_BOLT_PORT}); set NEO4J_URI=bolt://localhost:{ENRICHED_BOLT_PORT}")
 
 
+ENRICHMENT_RELATIONS = tuple(RELATION_SPEC)  # none of these is a v4 predicate
+ENRICHMENT_NODE_LABELS = (*ENRICH_LABELS, "Organization")
+DELETE_BATCH = 5000
+
+
+def _stale_node_condition(label: str) -> str:
+    """Enrichment nodes of one label with another graph version. v4 Organizations are never matched: only parent-only nodes are enrichment."""
+    base = "coalesce(n.graph_version, '') <> $version"
+    return f"{base} AND n.source = 'wikidata_parent'" if label == "Organization" else base
+
+
+def _delete_batch(tx, statement: str, params: dict) -> int:
+    return tx.run(statement, **params).single()["n"]
+
+
+def find_stale_enrichment(session, version: str) -> dict:
+    """Counts of enrichment nodes and edges whose ``graph_version`` is not ``version`` (a previous enriched layer left in the database)."""
+    nodes = {label: session.execute_read(_count, f"MATCH (n:{label}) WHERE {_stale_node_condition(label)} RETURN count(n) AS n", {"version": version})
+             for label in ENRICHMENT_NODE_LABELS}
+    edges = {rel: session.execute_read(_count, f"MATCH ()-[r:{rel}]->() WHERE coalesce(r.graph_version, '') <> $version RETURN count(r) AS n", {"version": version})
+             for rel in ENRICHMENT_RELATIONS}
+    return {"nodes": {k: v for k, v in nodes.items() if v}, "edges": {k: v for k, v in edges.items() if v}}
+
+
+def remove_stale_enrichment(session, version: str, *, batch_size: int = DELETE_BATCH) -> dict:
+    """Delete only the stale enrichment layer, in batches: edges of the enrichment predicates first, then enrichment nodes. Never a v4 item."""
+    removed_edges, removed_nodes = {}, {}
+    for rel in ENRICHMENT_RELATIONS:
+        statement = (f"MATCH ()-[r:{rel}]->() WHERE coalesce(r.graph_version, '') <> $version "
+                     "WITH r LIMIT $limit DELETE r RETURN count(*) AS n")
+        total = 0
+        while (done := session.execute_write(_delete_batch, statement, {"version": version, "limit": batch_size})):
+            total += done
+        if total:
+            removed_edges[rel] = total
+    for label in ENRICHMENT_NODE_LABELS:
+        statement = (f"MATCH (n:{label}) WHERE {_stale_node_condition(label)} WITH n LIMIT $limit DETACH DELETE n RETURN count(*) AS n")
+        total = 0
+        while (done := session.execute_write(_delete_batch, statement, {"version": version, "limit": batch_size})):
+            total += done
+        if total:
+            removed_nodes[label] = total
+    return {"nodes": removed_nodes, "edges": removed_edges}
+
+
 def edge_groups(graph: dict) -> dict[tuple[str, str, str], list[dict]]:
     """Enrichment edges grouped by (relation, source label, target label) so each lookup uses a label index."""
     label = {n["id"]: n["label"] for n in graph["nodes"]}
@@ -82,10 +127,10 @@ def import_enrichment(session, graph: dict, *, batch_size: int = BATCH_SIZE) -> 
             "transactions": transactions}
 
 
-def build(graph_path: Path, report_path: Path, *, batch_size: int = BATCH_SIZE) -> dict:
+def build(graph_path: Path, report_path: Path, *, batch_size: int = BATCH_SIZE, replace_enrichment: bool = False) -> dict:
     import json
     if report_path.exists() or report_path.resolve() == graph_path.resolve():
-        raise ValueError("choose a new report path")
+        raise ValueError(f"choose a new report path: {report_path} already exists (or is the graph file); load reports are never overwritten")
     graph = json.loads(graph_path.read_text(encoding="utf-8"))
     errors = validate_enriched(graph)
     if errors:
@@ -102,6 +147,13 @@ def build(graph_path: Path, report_path: Path, *, batch_size: int = BATCH_SIZE) 
         with GraphDatabase.driver(uri, auth=(os.environ.get("NEO4J_USERNAME", "neo4j"), password), connection_timeout=15) as driver:
             driver.verify_connectivity()
             with driver.session(database=os.environ.get("NEO4J_DATABASE", "neo4j")) as session:
+                stale = find_stale_enrichment(session, graph["graph_version"])
+                removed = {"nodes": {}, "edges": {}}
+                if stale["nodes"] or stale["edges"]:
+                    if not replace_enrichment:
+                        raise ValueError(f"the database holds an enrichment layer from another graph version (nodes {stale['nodes']}, edges {stale['edges']}); "
+                                         "loading would mix versions. Nothing was written. Pass --replace-enrichment to delete only that layer first")
+                    removed = remove_stale_enrichment(session, graph["graph_version"])
                 for label in ("Researcher", "Organization", "Paper", "Topic", "Venue", *ENRICH_LABELS):
                     session.run(f"CREATE CONSTRAINT {label.lower()}_id IF NOT EXISTS FOR (n:{label}) REQUIRE n.id IS UNIQUE").consume()
                 v4 = import_graph(session, artifact, batch_size=batch_size)
@@ -111,7 +163,8 @@ def build(graph_path: Path, report_path: Path, *, batch_size: int = BATCH_SIZE) 
     endpoint = urlsplit(uri)
     report = {"stage": "load-enriched", "graph_version": graph["graph_version"], "base_graph_version": graph["base_graph_version"],
               "input_sha256": digest(graph_path.read_bytes()), "neo4j_endpoint": f"{endpoint.scheme}://{endpoint.hostname}:{endpoint.port}",
-              "counts": enriched_counts(graph), "v4_layer_database": v4, "enrichment_layer_database": added,
+              "counts": enriched_counts(graph), "v4_layer_database": v4, "stale_enrichment_found": stale, "stale_enrichment_removed": removed,
+              "enrichment_layer_database": added,
               "vector_index": "not created here; created with the embedding index (specification §6.2)",
               "semantic_accuracy": "not_measured_by_this_stage"}
     write_json(report_path, report)
