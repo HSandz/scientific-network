@@ -1,0 +1,237 @@
+{
+ "archive_dir": "reports/runs/WORK-2026-11-24-004/eval",
+ "claude_subagents": [
+  {
+   "agent_id": "a1fc759eaa0fbd5a8",
+   "description": "Audit channel A shard 2",
+   "file": "agent-a1fc759eaa0fbd5a8.jsonl",
+   "first_timestamp": "2026-11-24T18:42:05.709Z",
+   "last_timestamp": "2026-11-24T18:43:04.503Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "a3130adf5452efefd",
+   "description": "Audit channel A shard 4",
+   "file": "agent-a3130adf5452efefd.jsonl",
+   "first_timestamp": "2026-11-24T18:42:15.973Z",
+   "last_timestamp": "2026-11-24T18:43:22.378Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "a74eaf18ea40cdd9c",
+   "description": "Audit channel A shard 6",
+   "file": "agent-a74eaf18ea40cdd9c.jsonl",
+   "first_timestamp": "2026-11-24T18:42:15.988Z",
+   "last_timestamp": "2026-11-24T18:43:19.702Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "a9199132489564fe9",
+   "description": "Audit channel A shard 1",
+   "file": "agent-a9199132489564fe9.jsonl",
+   "first_timestamp": "2026-11-24T18:42:05.643Z",
+   "last_timestamp": "2026-11-24T18:42:49.562Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "ac89adc8850b64339",
+   "description": "Audit channel A recall list",
+   "file": "agent-ac89adc8850b64339.jsonl",
+   "first_timestamp": "2026-11-24T18:42:15.996Z",
+   "last_timestamp": "2026-11-24T18:43:11.655Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "adb4732ab28c818e3",
+   "description": "Audit channel A shard 5",
+   "file": "agent-adb4732ab28c818e3.jsonl",
+   "first_timestamp": "2026-11-24T18:42:15.981Z",
+   "last_timestamp": "2026-11-24T18:43:32.060Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "ade356861387025d3",
+   "description": "Audit channel C adjudication",
+   "file": "agent-ade356861387025d3.jsonl",
+   "first_timestamp": "2026-11-24T18:45:56.907Z",
+   "last_timestamp": "2026-11-24T18:46:35.438Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  },
+  {
+   "agent_id": "aec967af950c84ebb",
+   "description": "Audit channel A shard 3",
+   "file": "agent-aec967af950c84ebb.jsonl",
+   "first_timestamp": "2026-11-24T18:42:05.718Z",
+   "last_timestamp": "2026-11-24T18:42:53.250Z",
+   "models_logged": [
+    "claude-opus-5-5"
+   ],
+   "requested_model": "opus"
+  }
+ ],
+ "codex_sessions": [
+  {
+   "file": "rollout-2026-11-25T01-41-11-01a20edc-a922-7c43-b943-8fc216492858.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-3",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20edc-a922-7c43-b943-8fc216492858",
+   "started": "2026-11-24T18:41:11.994Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-41-12-01a20edc-a922-7251-b13e-51c25af47145.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-2",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20edc-a922-7251-b13e-51c25af47145",
+   "started": "2026-11-24T18:41:12.041Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-41-12-01a20edc-a922-72c0-ae41-535eb08d2dd0.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-1",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20edc-a922-72c0-ae41-535eb08d2dd0",
+   "started": "2026-11-24T18:41:12.041Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-43-39-01a20ede-eb38-76a2-8ea4-0b77b9deddd7.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-6",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20ede-eb38-76a2-8ea4-0b77b9deddd7",
+   "started": "2026-11-24T18:43:39.963Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-43-39-01a20ede-eb39-7103-9295-fbeb1a30901d.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-recall",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20ede-eb39-7103-9295-fbeb1a30901d",
+   "started": "2026-11-24T18:43:39.964Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-43-39-01a20ede-eb39-7531-b33a-2d3d7c34b1da.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-5",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20ede-eb39-7531-b33a-2d3d7c34b1da",
+   "started": "2026-11-24T18:43:39.964Z"
+  },
+  {
+   "file": "rollout-2026-11-25T01-43-39-01a20ede-eb3a-72f0-a945-b5eb29522a7d.jsonl",
+   "models": [
+    "gpt-6.2-sol"
+   ],
+   "packet": "B-4",
+   "providers": [
+    "9router"
+   ],
+   "session_id": "01a20ede-eb3a-72f0-a945-b5eb29522a7d",
+   "started": "2026-11-24T18:43:39.964Z"
+  }
+ ],
+ "file_count": 54,
+ "files_sha256": {
+  "answers/A-1.jsonl": "722b5d1ba93bcd6f4525718f2d57d548e246c80177a94f405a34e46e67387b02",
+  "answers/A-2.jsonl": "68663a8f3ad3b7b6d6d24d2526e974e95ff03222a15b4091330fb4799748d53f",
+  "answers/A-3.jsonl": "2727b49b56c35420c761809d97981ce0cf58960b2c7d55cc43ebcdf8cbe12939",
+  "answers/A-4.jsonl": "2217463efb361462b7f204e3f54ab988ed8ee742cef7362610c1d79dbf4ef6fc",
+  "answers/A-5.jsonl": "55bcc634f959dc9d10b4a76c18b3472662350b7560c47b192a97acb084049fad",
+  "answers/A-6.jsonl": "1caa8482e9996ca37d39c252dd79acebcb6dd574d7ddd2b41819d3b1c8b8acda",
+  "answers/A-recall.jsonl": "76194eac61fd7c01425c9cc7876d60de67afffd2b3524c3da5d2c7ac38e12d3b",
+  "answers/B-1.jsonl": "13ec20f1bbdf7758bde3585d9eb7f830f79f3a52bdd43b659fcec0bba1de9519",
+  "answers/B-2.jsonl": "63a6756562820bf35926b00c3da0db144809bf9bf019c13d3f20fbc77bb6a121",
+  "answers/B-3.jsonl": "585a16b88e6d380bb122505dc514a3e8aa3abdd68b4b5b6bcab290312a69339b",
+  "answers/B-4.jsonl": "d8c41a8ba7a726616624fe735507f3eb43767bf2f4c2a01713477e7c9374bfcf",
+  "answers/B-5.jsonl": "d6b60e957743238826bb47700774b054b9ed1cb8c79f9b80500d8e530ae63d6a",
+  "answers/B-6.jsonl": "eeef0a22c3c8b09e87a20fab2f9b95187ef59130f35c3aaecadeb4201d600583",
+  "answers/B-recall.jsonl": "92cb8d4cd2c6c79f6f845b94a31cb193c4c0597e39d5df6c5dab99b4a35d4eae",
+  "answers/C-1.jsonl": "b20f72e900adee6f3915fb8c527f22468bf04c38c5f7c29096028d9c2adff540",
+  "claude-subagents/agent-a1fc759eaa0fbd5a8.jsonl": "0e656e478ac77ea452ded8b6bed707979f7c9950080d02321a0386e56d60c9f4",
+  "claude-subagents/agent-a1fc759eaa0fbd5a8.meta.json": "e85eda864eb1929e5e0176866bbd1a68d14c20c57cae380dbf408fc8a1878630",
+  "claude-subagents/agent-a3130adf5452efefd.jsonl": "e6a04776b1f4ecec0201e9311108f5d96ebaa7103c3971c618be5d57e1cf371c",
+  "claude-subagents/agent-a3130adf5452efefd.meta.json": "5a056696664ebfd724a18defe1d575e12476599975047f01fd43889ac1e49a76",
+  "claude-subagents/agent-a74eaf18ea40cdd9c.jsonl": "20700448fc6536259870dbe27237114eb3616114a6d32c365ab0c83464f31ca2",
+  "claude-subagents/agent-a74eaf18ea40cdd9c.meta.json": "382399f8885809b9840b7a435c263b5571f278c59b2599e2237a2af1de809343",
+  "claude-subagents/agent-a9199132489564fe9.jsonl": "bc89394661683a4d14461030bad6a006a1090dfadc5c1f4b516b33ee4f6af14e",
+  "claude-subagents/agent-a9199132489564fe9.meta.json": "354f8f1cea8e6b86e153aa864160c3d43ed6181f18f9f83d224ab00e8534a379",
+  "claude-subagents/agent-ac89adc8850b64339.jsonl": "4f65ccc09df74d82efb20c2e9ed0c2dfd7b871e12622f9aee53627480e75b1fb",
+  "claude-subagents/agent-ac89adc8850b64339.meta.json": "47bb86fa6b9cfd2f9473932b63ddd6544c2507d589d3b944b4a84a3d57800642",
+  "claude-subagents/agent-adb4732ab28c818e3.jsonl": "a1ce8381b3a5e78c1bfeabcc914cd4e382c30497736a852efb3ed368b6d21914",
+  "claude-subagents/agent-adb4732ab28c818e3.meta.json": "5726d43d0d1690b7c4745150f40c113e3c291d04fe50cf1143b54ed10ae32c5a",
+  "claude-subagents/agent-ade356861387025d3.jsonl": "c23261597fa4e2269c01a119adc579a98296b4accb35b7a0d4e284ce3e20958f",
+  "claude-subagents/agent-ade356861387025d3.meta.json": "c13000fe689402c6877229bbc1405b35ab522c3b32825e50e8a3949300b712d3",
+  "claude-subagents/agent-aec967af950c84ebb.jsonl": "2c91fb23bc3d9dc67e40e99258d24bc848f6a867e24a3a86bd8c5d2496366448",
+  "claude-subagents/agent-aec967af950c84ebb.meta.json": "e022fbe911169936352d5dbd131427b112b182fa37c071837f361a6892cb41bd",
+  "codex-sessions/rollout-2026-11-25T01-41-11-01a20edc-a922-7c43-b943-8fc216492858.jsonl": "14fd215bc15207b5d47e2749dd2c0c8d91201d595c940676c872c70d6dc80e7a",
+  "codex-sessions/rollout-2026-11-25T01-41-12-01a20edc-a922-7251-b13e-51c25af47145.jsonl": "285647807efdb4c0752ad1a5eb40dfcc97412a2be9db84a836e2d80cd4d1294c",
+  "codex-sessions/rollout-2026-11-25T01-41-12-01a20edc-a922-72c0-ae41-535eb08d2dd0.jsonl": "0eab83d0c354a5efa4de165576b801d43666cb971fe8f9a089698b9088aa15e7",
+  "codex-sessions/rollout-2026-11-25T01-43-39-01a20ede-eb38-76a2-8ea4-0b77b9deddd7.jsonl": "7d15ea58e97aab2c56ccc87d2aaba76c01cf6f7ed2f71c0b5d7c5af5609ea23e",
+  "codex-sessions/rollout-2026-11-25T01-43-39-01a20ede-eb39-7103-9295-fbeb1a30901d.jsonl": "e815b28c244bc306c5ceb2e4f8df50b1b98234515ebba12360db1718700445ca",
+  "codex-sessions/rollout-2026-11-25T01-43-39-01a20ede-eb39-7531-b33a-2d3d7c34b1da.jsonl": "c30942a3b70d6a33579e449e0301faf53ab651251243f8a836721b6c19a30ef7",
+  "codex-sessions/rollout-2026-11-25T01-43-39-01a20ede-eb3a-72f0-a945-b5eb29522a7d.jsonl": "659b08e0d7b34da68ba06f1c05a00dd65859f9ca3e0296112debd2c9277441c4",
+  "guideline-copy-at-archive-time.md": "d326e1025bcfc49579a32565356240c4c4548c1cafce91189b1dd8860412e124",
+  "packets/A-1.json": "0f97a231c48dfec9c0d6e42992e252b2094b3eb4f1e654c07c14f492d6d41786",
+  "packets/A-2.json": "97e6c129909aa190e5a728d53c02d67b64cef6b53dd54d3b62ae9a15222a93cc",
+  "packets/A-3.json": "6e5c2321810819958a709fd4b83271944413cf02fe0490b0ea714785dcc463ad",
+  "packets/A-4.json": "c0d75c83e4758c2d509aa65a2209d49525fc46160a7414db3fe4f3dff9412474",
+  "packets/A-5.json": "4dab9c3e3c1af912eb0217d08c07a008d52f9798861a8147282fbdd1fc44bd5e",
+  "packets/A-6.json": "cdd6b1591abf6e1c845b8d3bfcfa540f67bc3ff17f15e9b0a940a0e15a6e691f",
+  "packets/A-recall.json": "4762c208456cff0f8c20c0929df4ee9d16d98c24870cfb64af3688022a510954",
+  "packets/B-1.json": "b27856dc46e0752836aa1e98e75bf0bdbe33e2cbe17bbe7a872736c3eb30f99e",
+  "packets/B-2.json": "358f2d16d52aefcaf50ca8c04d81f0ac10fbb12ec7416cf3bd9ce8b5b98e4278",
+  "packets/B-3.json": "7405fd44f414c72139b8cea14bbd9007aa9ae6f72b005295a25382a2487b1fa0",
+  "packets/B-4.json": "24767655edd63e1c17e9e9ec7c4bdb8a578411f673ade67cd7cb37a77c81c12a",
+  "packets/B-5.json": "c6f4faf97b234f562365a6075f2657491d32dc0eb84385abb84fc750c8079dfb",
+  "packets/B-6.json": "11d72f5e4f3f7acc7eee41e7813111450a04695822547c6c03cfd34ac743fd0e",
+  "packets/B-recall.json": "c9d5ac359abdaa1ca96e42d0148fb1cbe1a152f3cd7d01cff13644d65041a8ef",
+  "packets/C-1.json": "72ea0846c1be860ef0ccc632ca35b5b2692dc16f419f885134dfbfb4b15c3929"
+ },
+ "label": "E4 v1 audit evaluators (WORK-2026-11-24-004)"
+}
