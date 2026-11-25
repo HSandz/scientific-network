@@ -31,6 +31,7 @@ const Node360Page = React.lazy(() => import("./components/navigator/Node360Page"
 const AboutDataPage = React.lazy(() => import("./components/navigator/AboutDataPage").then(m => ({ default: m.AboutDataPage })));
 import { EnrichedExplorerBar } from "./components/navigator/EnrichedExplorerBar";
 import { explorerApi } from "./lib/api";
+import { navigatorApi } from "./lib/navigatorApi";
 import { useExplorerStore } from "./stores/useExplorerStore";
 import { GraphEdge, GraphNode } from "./types/explorer";
 
@@ -195,6 +196,12 @@ export const App: React.FC = () => {
   const summaryQuery = useQuery({
     queryKey: ["graph-summary"],
     queryFn: () => explorerApi.getSummary(),
+    staleTime: 300_000,
+  });
+
+  const enrichedSchemaQuery = useQuery({
+    queryKey: ["nav-enriched-schema-version"],
+    queryFn: ({ signal }) => navigatorApi.getEnrichedSchema(signal),
     staleTime: 300_000,
   });
 
@@ -488,6 +495,7 @@ export const App: React.FC = () => {
       >
         <TopHeader
           summary={summaryQuery.data}
+          enrichedGraphVersion={enrichedSchemaQuery.data?.graph_version}
           displayedNodes={effectiveGraph.nodes}
           displayedEdges={effectiveGraph.edges}
         />

@@ -28,6 +28,7 @@ reports/runs/**
 !reports/runs/.gitkeep
 reports/figures/**
 !reports/figures/.gitkeep
+reports/final-exam/rag-v*/chunks.json
 *.log
 *.pdf
 *.dump

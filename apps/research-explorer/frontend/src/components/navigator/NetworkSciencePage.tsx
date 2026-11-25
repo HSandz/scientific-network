@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
+import { useExplorerStore } from "../../stores/useExplorerStore";
 import { Panel, Table } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
 import { MetricTooltip } from "./MetricTooltip";
@@ -10,11 +11,15 @@ interface NetworkSciencePageProps {
 }
 
 export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNode360 }) => {
+  const darkMode = useExplorerStore((s) => s.darkMode);
   const [rankNet, setRankNet] = useState<"N1" | "N2" | "N3" | "N4">("N1");
   const { data, isLoading, error } = useQuery({
     queryKey: ["nav-network-science"],
     queryFn: ({ signal }) => navigatorApi.getNetworkScience(signal),
   });
+
+  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
+  const gridColor = darkMode ? "#323232" : "#e8e7e2";
 
   const swNetworks = (data?.smallworld as { networks?: Record<string, any> } | undefined)?.networks || {};
   const evo = (data?.evolution as Record<string, Array<{ year: number | string; L: number; C: number; lcc_nodes: number }>> | undefined) || {};
@@ -27,30 +32,58 @@ export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNo
     const keys = Object.keys(n1Hist).sort((a, b) => Number(a) - Number(b));
     return {
       tooltip: { trigger: "axis" },
-      grid: { top: 20, left: 56, right: 16, bottom: 30 },
-      xAxis: { type: "category", data: keys, name: "Path length" },
-      yAxis: { type: "value", name: "Pairs" },
-      series: [{ type: "bar", name: "N1 shortest-path pairs", data: keys.map((k) => n1Hist[k]) }],
+      grid: { top: 28, left: 20, right: 16, bottom: 38, containLabel: true },
+      xAxis: { type: "category", data: keys, name: "Path length", nameLocation: "middle", nameGap: 22, axisLabel: { color: axisColor }, nameTextStyle: { color: axisColor } },
+      yAxis: { type: "value", name: "Pairs", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor, formatter: (v: number) => (v >= 1_000_000 ? `${(v / 1_000_000).toFixed(0)}M` : v >= 1_000 ? `${(v / 1_000).toFixed(0)}k` : String(v)) }, splitLine: { lineStyle: { color: gridColor } } },
+      series: [{ type: "bar", name: "N1 shortest-path pairs", itemStyle: { color: darkMode ? "#7fa6cc" : "#1d5fbf" }, data: keys.map((k) => n1Hist[k]) }],
     };
-  }, [swNetworks]);
+  }, [swNetworks, axisColor, gridColor, darkMode]);
 
   const evoOption = useMemo(() => {
     const rows = evo.N1 || [];
     return {
       tooltip: { trigger: "axis" },
-      legend: { bottom: 0, textStyle: { fontSize: 11 } },
-      grid: { top: 20, left: 48, right: 48, bottom: 42 },
-      xAxis: { type: "category", data: rows.map((r) => String(r.year)) },
+      legend: { bottom: 0, textStyle: { fontSize: 11, color: axisColor } },
+      grid: { top: 20, left: 48, right: 52, bottom: 44 },
+      xAxis: { type: "category", data: rows.map((r) => String(r.year)), axisLabel: { color: axisColor } },
       yAxis: [
-        { type: "value", name: "L" },
-        { type: "value", name: "C (LCC)", min: 0.7, max: 0.9 },
+        { type: "value", name: "L", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
+        {
+          type: "value",
+          name: "C (LCC)",
+          nameTextStyle: { color: axisColor },
+          axisLabel: { color: axisColor },
+          splitLine: { show: false },
+          min: (v: { min: number }) => Math.max(0, Number((v.min - 0.05).toFixed(2))),
+          max: 1,
+        },
       ],
       series: [
-        { name: "N1 L", type: "line", data: rows.map((r) => Number(r.L?.toFixed(3))) },
-        { name: "N1 C", type: "line", yAxisIndex: 1, data: rows.map((r) => Number(r.C?.toFixed(4))) },
+        { name: "N1 L", type: "line", smooth: true, data: rows.map((r) => Number(r.L?.toFixed(3))) },
+        { name: "N1 C", type: "line", smooth: true, yAxisIndex: 1, data: rows.map((r) => Number(r.C?.toFixed(4))) },
       ],
     };
-  }, [evo]);
+  }, [evo, axisColor, gridColor]);
+
+  const degOption = useMemo(() => {
+    const counts = degTail.N1?.degree_counts || {};
+    const pts = Object.entries(counts)
+      .map(([kStr, c]) => [Number(kStr), Number(c)] as const)
+      .filter(([k, c]) => k > 0 && c > 0)
+      .sort((a, b) => a[0] - b[0])
+      .map(([k, c]) => [Number(Math.log10(k).toFixed(3)), Number(Math.log10(c).toFixed(3))]);
+    return {
+      tooltip: {
+        trigger: "item",
+        formatter: (p: { value: [number, number] }) =>
+          `k ≈ ${Math.round(10 ** p.value[0])}, count ≈ ${Math.round(10 ** p.value[1])}`,
+      },
+      grid: { top: 28, left: 20, right: 16, bottom: 40, containLabel: true },
+      xAxis: { type: "value", name: "log10(degree k)", nameLocation: "middle", nameGap: 22, nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
+      yAxis: { type: "value", name: "log10(nodes)", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
+      series: [{ type: "scatter", name: "N1 degree distribution", symbolSize: 5, itemStyle: { color: darkMode ? "#3fc07a" : "#247b50" }, data: pts }],
+    };
+  }, [degTail, axisColor, gridColor, darkMode]);
 
   const rankBlock = ranking[rankNet] || {};
   const topRows = Array.isArray(rankBlock.top)
@@ -117,12 +150,15 @@ export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNo
             </div>
           </Panel>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Panel title="N1 Shortest-Path Distribution (Exact LCC)">
-              <EChartBox option={histOption} label="N1 path length histogram" height={260} />
+              <EChartBox option={histOption} label="N1 path length histogram" height={250} />
             </Panel>
-            <Panel title="N1 Temporal Evolution (2021–2025 Cumulative vs 2025)">
-              <EChartBox option={evoOption} label="N1 L and C evolution chart" height={260} />
+            <Panel title="N1 Temporal Evolution (2021–2025 Cumulative)">
+              <EChartBox option={evoOption} label="N1 L and C evolution chart" height={250} />
+            </Panel>
+            <Panel title="N1 Degree Distribution (log10–log10)">
+              <EChartBox option={degOption} label="N1 degree distribution" height={250} />
               {degTail.N1?.statement && (
                 <p className="text-[11px] text-muted mt-2">Degree tail (N1): {degTail.N1.statement}</p>
               )}

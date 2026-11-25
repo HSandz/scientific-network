@@ -353,10 +353,13 @@ class NavigatorService:
                 )
             else:
                 backend = InMemoryGraphBackend({"nodes": [], "edges": []})
+            sg_cfg = self._rag_cfg.get("share_growth", {})
             self._rag_toolset = RAGToolset(
                 backend,
                 analysis_dir=self.analysis_dir,
                 rag_dir=self.rag_dir,
+                min_post_total_papers=int(sg_cfg.get("min_post_total_papers", 10)),
+                min_post_subject_papers=int(sg_cfg.get("min_post_subject_papers", 2)),
             )
         return self._rag_toolset
 
@@ -653,6 +656,11 @@ class NavigatorService:
                 "source_community_id": None,
                 "label": edesc.get("provenance_label")
                 or ("Wikipedia" if edesc.get("source_kind") == "wikipedia" else "AI-generated from mentions"),
+                "source_kind": edesc.get("source_kind"),
+                "wikipedia_url": edesc.get("wikipedia_url"),
+                "wikipedia_revision_id": edesc.get("wikipedia_revision_id"),
+                "attribution": edesc.get("attribution"),
+                "license": edesc.get("license"),
             }
         else:
             ai_summary = None
@@ -1185,11 +1193,21 @@ class NavigatorService:
                 "text": edesc.get("description", ""),
                 "label": edesc.get("provenance_label")
                 or ("Wikipedia" if edesc.get("source_kind") == "wikipedia" else "AI-generated from mentions"),
+                "source_kind": edesc.get("source_kind"),
+                "wikipedia_url": edesc.get("wikipedia_url"),
+                "wikipedia_revision_id": edesc.get("wikipedia_revision_id"),
+                "attribution": edesc.get("attribution"),
+                "license": edesc.get("license"),
             }
         elif props.get("wikipedia_url"):
             description = {
                 "text": f"Linked to Wikipedia/Wikidata ({props.get('wikidata_qid', '')}).",
-                "label": "Wikipedia",
+                "label": f"Wikipedia (rev {props.get('wikipedia_revision_id', '—')}, CC BY-SA 4.0)",
+                "source_kind": "wikipedia",
+                "wikipedia_url": props.get("wikipedia_url"),
+                "wikipedia_revision_id": props.get("wikipedia_revision_id"),
+                "attribution": "Text from English Wikipedia contributors, licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+                "license": "CC BY-SA 4.0",
             }
         else:
             description = None
@@ -1401,12 +1419,15 @@ class NavigatorService:
             cached = self._lookup_cached_demo(question)
             if cached is not None:
                 yield {"event": "status", "data": {"stage": "cached", "mode": cached.get("mode", mode)}}
-                yield {"event": "plan", "data": {"plan": cached.get("plan", []), "linked": cached.get("linked", {})}}
+                yield {"event": "parsed", "data": {"parsed": cached.get("parsed", {}), "linked": cached.get("linked", [])}}
+                yield {"event": "plan", "data": {"plan": cached.get("plan", []), "linked": cached.get("linked", [])}}
                 for st in cached.get("steps", []):
                     yield {"event": "step", "data": st}
+                yield {"event": "subgraph", "data": cached.get("subgraph", {"nodes": [], "edges": []})}
                 ans = cached.get("answer", "")
                 if ans:
                     yield {"event": "token", "data": {"text": ans}}
+                yield {"event": "citations", "data": {"paper_ids": cached.get("citations", [])}}
                 yield {"event": "final", "data": cached}
                 return
 
@@ -1430,5 +1451,5 @@ class NavigatorService:
                 norm = self._normalize_ask_result(data)
                 norm["from_cache"] = False
                 yield {"event": "final", "data": norm}
-            elif etype in ("plan", "step", "token"):
+            elif etype in ("parsed", "plan", "step", "subgraph", "token", "citations"):
                 yield {"event": etype, "data": data}

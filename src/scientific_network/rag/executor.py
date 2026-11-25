@@ -195,8 +195,8 @@ def _resolve_unlinked_ids(tool_name: str, call_args: dict[str, Any], toolset: RA
     return args
 
 
-def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -> dict[str, Any]:
-    """Execute 1-4 steps sequentially; stop immediately if any step returns empty."""
+def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset):
+    """Yield incremental trace updates after each of 1-4 steps; stop immediately if any step returns empty."""
     step_results: list[ToolResult] = []
     trace_steps: list[dict[str, Any]] = []
     union_nodes: dict[str, dict[str, Any]] = {}
@@ -217,7 +217,7 @@ def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -
         except Exception as exc:
             stopped_reason = f"tool_error: {exc}"
             stopped_at_step = step_idx
-            trace_steps.append({
+            step_entry = {
                 "step": step_idx,
                 "tool": tool_name,
                 "purpose": step.get("purpose", ""),
@@ -229,7 +229,18 @@ def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -
                 "note": stopped_reason,
                 "paper_ids": [],
                 "evidence_ids": [],
-            })
+            }
+            trace_steps.append(step_entry)
+            yield {
+                "step": step_entry,
+                "steps": list(trace_steps),
+                "stopped_reason": stopped_reason,
+                "stopped_at_step": stopped_at_step,
+                "subgraph_nodes": list(union_nodes.values()),
+                "subgraph_edges": list(union_edges.values()),
+                "paper_ids": list(dict.fromkeys(all_paper_ids))[:60],
+                "evidence_ids": list(dict.fromkeys(all_evidence_ids))[:60],
+            }
             break
 
         step_results.append(res)
@@ -244,7 +255,7 @@ def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -
         all_paper_ids.extend(res.paper_ids)
         all_evidence_ids.extend(res.evidence_ids)
 
-        trace_steps.append({
+        step_entry = {
             "step": step_idx,
             "tool": tool_name,
             "purpose": step.get("purpose", ""),
@@ -256,19 +267,39 @@ def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -
             "note": res.note,
             "paper_ids": res.paper_ids[:30],
             "evidence_ids": res.evidence_ids[:30],
-        })
+        }
+        trace_steps.append(step_entry)
 
         if res.empty:
             stopped_reason = "empty_step"
             stopped_at_step = step_idx
+
+        yield {
+            "step": step_entry,
+            "steps": list(trace_steps),
+            "stopped_reason": stopped_reason,
+            "stopped_at_step": stopped_at_step,
+            "subgraph_nodes": list(union_nodes.values()),
+            "subgraph_edges": list(union_edges.values()),
+            "paper_ids": list(dict.fromkeys(all_paper_ids))[:60],
+            "evidence_ids": list(dict.fromkeys(all_evidence_ids))[:60],
+        }
+
+        if res.empty:
             break
 
-    return {
-        "steps": trace_steps,
-        "stopped_reason": stopped_reason,
-        "stopped_at_step": stopped_at_step,
-        "subgraph_nodes": list(union_nodes.values()),
-        "subgraph_edges": list(union_edges.values()),
-        "paper_ids": list(dict.fromkeys(all_paper_ids))[:60],
-        "evidence_ids": list(dict.fromkeys(all_evidence_ids))[:60],
+
+def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -> dict[str, Any]:
+    """Execute 1-4 steps sequentially; stop immediately if any step returns empty."""
+    final_state: dict[str, Any] = {
+        "steps": [],
+        "stopped_reason": None,
+        "stopped_at_step": None,
+        "subgraph_nodes": [],
+        "subgraph_edges": [],
+        "paper_ids": [],
+        "evidence_ids": [],
     }
+    for state in iter_execute_plan(steps, toolset):
+        final_state = {k: v for k, v in state.items() if k != "step"}
+    return final_state

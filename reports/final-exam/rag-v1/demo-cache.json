@@ -1,12 +1,16 @@
 {
  "model": "qwen3.5-4b-q4_k_m",
+ "generated_at": "2026-11-25T18:00:25+0700",
  "demos": [
   {
    "demo_id": "demo-01-worked-example",
    "title": "Tsinghua collaborators increasing LLM share after 2022 (§6.3 worked example)",
    "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
    "requested_mode": "auto",
-   "total_latency_s": 14.029,
+   "first_event_s": 0.201,
+   "first_step_s": 0.234,
+   "first_token_s": 8.86,
+   "total_latency_s": 8.86,
    "result": {
     "status": "ok",
     "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
@@ -14,12 +18,12 @@
     "parsed": {
      "entities": [
       {
-       "text": "Tsinghua University",
-       "entity_type": "Organization"
+       "entity_type": "Organization",
+       "text": "Tsinghua University"
       },
       {
-       "text": "large-language-model",
-       "entity_type": "Topic"
+       "entity_type": "Topic",
+       "text": "large-language-model"
       }
      ],
      "year_min": 2022,
@@ -100,31 +104,31 @@
      {
       "tool": "neighbors",
       "args": {
-       "node_id": "organization:I99065089",
-       "predicates": [
-        "COLLABORATED_WITH"
-       ],
        "filters": {
         "target_labels": [
          "Organization"
         ]
        },
-       "limit": 100
+       "limit": 100,
+       "node_id": "organization:I99065089",
+       "predicates": [
+        "COLLABORATED_WITH"
+       ]
       },
       "purpose": ""
      },
      {
       "tool": "aggregate",
       "args": {
-       "entity_ids": "$step1.ids",
        "by": "organization_year",
-       "metric": "share_growth",
+       "entity_ids": "$step1.ids",
        "filters": {
-        "method_id": "method:Q3621696",
         "after_year": 2022,
+        "method_id": "method:Q3621696",
         "only_increased": true
        },
-       "limit": 15
+       "limit": 15,
+       "metric": "share_growth"
       },
       "purpose": ""
      }
@@ -135,16 +139,16 @@
       "tool": "neighbors",
       "purpose": "",
       "args": {
-       "node_id": "organization:I99065089",
-       "predicates": [
-        "COLLABORATED_WITH"
-       ],
        "filters": {
         "target_labels": [
          "Organization"
         ]
        },
-       "limit": 100
+       "limit": 100,
+       "node_id": "organization:I99065089",
+       "predicates": [
+        "COLLABORATED_WITH"
+       ]
       },
       "empty": false,
       "row_count": 100,
@@ -1241,6 +1245,7 @@
       "tool": "aggregate",
       "purpose": "",
       "args": {
+       "by": "organization_year",
        "entity_ids": [
         "organization:I4405263052",
         "organization:I2250653659",
@@ -1343,224 +1348,325 @@
         "organization:I4392738278",
         "organization:I4401726870"
        ],
-       "by": "organization_year",
-       "metric": "share_growth",
        "filters": {
-        "method_id": "method:Q3621696",
         "after_year": 2022,
+        "method_id": "method:Q3621696",
         "only_increased": true
        },
-       "limit": 15
+       "limit": 15,
+       "metric": "share_growth"
       },
       "empty": false,
       "row_count": 15,
       "rows": [
        {
-        "entity_id": "organization:I4401726822",
-        "entity_name": "Ping An (China)",
-        "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 7,
-        "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 15,
-        "post_gt_2022_share": 0.0667,
-        "share_delta": 0.0667
-       },
-       {
-        "entity_id": "organization:I859038795",
-        "entity_name": "Virginia Tech",
-        "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 18,
-        "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 18,
-        "post_gt_2022_share": 0.0556,
-        "share_delta": 0.0556
-       },
-       {
-        "entity_id": "organization:I4210091137",
-        "entity_name": "NetEase (China)",
-        "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 18,
-        "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 20,
-        "post_gt_2022_share": 0.05,
-        "share_delta": 0.05
-       },
-       {
         "entity_id": "organization:I4405271667",
         "entity_name": "Beijing National Research Center for Information Science and Technology",
+        "pre_papers": "0 of 19",
+        "post_papers": "2 of 41",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 19,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 2,
         "post_gt_2022_total_papers": 41,
         "post_gt_2022_share": 0.0488,
-        "share_delta": 0.0488
+        "share_delta": 0.0488,
+        "paper_ids": [
+         "paper:ijcai:2025:12",
+         "paper:aaai:2025:32681"
+        ]
        },
        {
         "entity_id": "organization:I4210145761",
         "entity_name": "Shenzhen Institutes of Advanced Technology",
+        "pre_papers": "0 of 28",
+        "post_papers": "3 of 62",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 28,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 3,
         "post_gt_2022_total_papers": 62,
         "post_gt_2022_share": 0.0484,
-        "share_delta": 0.0484
+        "share_delta": 0.0484,
+        "paper_ids": [
+         "paper:aaai:2024:29726",
+         "paper:ijcai:2025:537",
+         "paper:aaai:2025:32135"
+        ]
        },
        {
         "entity_id": "organization:I177725633",
         "entity_name": "Chinese University of Hong Kong",
+        "pre_papers": "0 of 73",
+        "post_papers": "7 of 169",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 73,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 7,
         "post_gt_2022_total_papers": 169,
         "post_gt_2022_share": 0.0414,
-        "share_delta": 0.0414
+        "share_delta": 0.0414,
+        "paper_ids": [
+         "paper:aaai:2024:28567",
+         "paper:ijcai:2025:537",
+         "paper:aaai:2025:34671"
+        ]
        },
        {
         "entity_id": "organization:I168719708",
         "entity_name": "City University of Hong Kong",
+        "pre_papers": "0 of 27",
+        "post_papers": "5 of 124",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 27,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 5,
         "post_gt_2022_total_papers": 124,
         "post_gt_2022_share": 0.0403,
-        "share_delta": 0.0403
+        "share_delta": 0.0403,
+        "paper_ids": [
+         "paper:aaai:2025:33571",
+         "paper:aaai:2025:34447",
+         "paper:aaai:2025:34922"
+        ]
        },
        {
         "entity_id": "organization:I889458895",
         "entity_name": "University of Hong Kong",
+        "pre_papers": "0 of 38",
+        "post_papers": "3 of 81",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 38,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 3,
         "post_gt_2022_total_papers": 81,
         "post_gt_2022_share": 0.037,
-        "share_delta": 0.037
+        "share_delta": 0.037,
+        "paper_ids": [
+         "paper:ijcai:2024:78",
+         "paper:ijcai:2025:537",
+         "paper:aaai:2025:34671"
+        ]
        },
        {
         "entity_id": "organization:I4405261251",
         "entity_name": "The Hong Kong University of Science and Technology (Guangzhou)",
+        "pre_papers": "0 of 9",
+        "post_papers": "3 of 82",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 9,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 3,
         "post_gt_2022_total_papers": 82,
         "post_gt_2022_share": 0.0366,
-        "share_delta": 0.0366
+        "share_delta": 0.0366,
+        "paper_ids": [
+         "paper:aaai:2024:28769",
+         "paper:aaai:2025:34447",
+         "paper:aaai:2025:34067"
+        ]
        },
        {
         "entity_id": "organization:I180726961",
         "entity_name": "Shenzhen University",
+        "pre_papers": "0 of 29",
+        "post_papers": "5 of 140",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 29,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 5,
         "post_gt_2022_total_papers": 140,
         "post_gt_2022_share": 0.0357,
-        "share_delta": 0.0357
-       },
-       {
-        "entity_id": "organization:I37796252",
-        "entity_name": "Beijing University of Technology",
-        "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 3,
-        "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 28,
-        "post_gt_2022_share": 0.0357,
-        "share_delta": 0.0357
+        "share_delta": 0.0357,
+        "paper_ids": [
+         "paper:aaai:2025:34796",
+         "paper:aaai:2025:33597",
+         "paper:ijcai:2025:354"
+        ]
        },
        {
         "entity_id": "organization:I30809798",
         "entity_name": "ShanghaiTech University",
+        "pre_papers": "0 of 15",
+        "post_papers": "2 of 57",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 15,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 2,
         "post_gt_2022_total_papers": 57,
         "post_gt_2022_share": 0.0351,
-        "share_delta": 0.0351
-       },
-       {
-        "entity_id": "organization:I161318765",
-        "entity_name": "University of California, Los Angeles",
-        "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 52,
-        "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 31,
-        "post_gt_2022_share": 0.0323,
-        "share_delta": 0.0323
+        "share_delta": 0.0351,
+        "paper_ids": [
+         "paper:aaai:2025:32594",
+         "paper:aaai:2025:32612"
+        ]
        },
        {
         "entity_id": "organization:I126520041",
         "entity_name": "University of Science and Technology of China",
+        "pre_papers": "0 of 120",
+        "post_papers": "10 of 348",
         "pre_le_2022_subject_papers": 0,
         "pre_le_2022_total_papers": 120,
         "pre_le_2022_share": 0.0,
         "post_gt_2022_subject_papers": 10,
         "post_gt_2022_total_papers": 348,
         "post_gt_2022_share": 0.0287,
-        "share_delta": 0.0287
+        "share_delta": 0.0287,
+        "paper_ids": [
+         "paper:ijcai:2024:460",
+         "paper:ijcai:2024:579",
+         "paper:aaai:2024:28769"
+        ]
        },
        {
-        "entity_id": "organization:I4210086143",
-        "entity_name": "Alibaba Group (Cayman Islands)",
+        "entity_id": "organization:I172675005",
+        "entity_name": "Nanyang Technological University",
+        "pre_papers": "0 of 94",
+        "post_papers": "6 of 214",
         "pre_le_2022_subject_papers": 0,
-        "pre_le_2022_total_papers": 31,
+        "pre_le_2022_total_papers": 94,
         "pre_le_2022_share": 0.0,
-        "post_gt_2022_subject_papers": 1,
-        "post_gt_2022_total_papers": 35,
-        "post_gt_2022_share": 0.0286,
-        "share_delta": 0.0286
+        "post_gt_2022_subject_papers": 6,
+        "post_gt_2022_total_papers": 214,
+        "post_gt_2022_share": 0.028,
+        "share_delta": 0.028,
+        "paper_ids": [
+         "paper:aaai:2024:27832",
+         "paper:aaai:2024:29730",
+         "paper:aaai:2025:34518"
+        ]
+       },
+       {
+        "entity_id": "organization:I4391012619",
+        "entity_name": "Shanghai Artificial Intelligence Laboratory",
+        "pre_papers": "0 of 46",
+        "post_papers": "4 of 146",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 46,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 4,
+        "post_gt_2022_total_papers": 146,
+        "post_gt_2022_share": 0.0274,
+        "share_delta": 0.0274,
+        "paper_ids": [
+         "paper:aaai:2023:25386",
+         "paper:aaai:2024:28567",
+         "paper:aaai:2025:33814"
+        ]
+       },
+       {
+        "entity_id": "organization:I204983213",
+        "entity_name": "Harbin Institute of Technology",
+        "pre_papers": "0 of 75",
+        "post_papers": "7 of 286",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 75,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 7,
+        "post_gt_2022_total_papers": 286,
+        "post_gt_2022_share": 0.0245,
+        "share_delta": 0.0245,
+        "paper_ids": [
+         "paper:aaai:2024:29772",
+         "paper:aaai:2024:29726",
+         "paper:aaai:2025:34656"
+        ]
+       },
+       {
+        "entity_id": "organization:I125839683",
+        "entity_name": "Beijing Institute of Technology",
+        "pre_papers": "0 of 53",
+        "post_papers": "3 of 135",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 53,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 3,
+        "post_gt_2022_total_papers": 135,
+        "post_gt_2022_share": 0.0222,
+        "share_delta": 0.0222,
+        "paper_ids": [
+         "paper:aaai:2024:29823",
+         "paper:ijcai:2025:537",
+         "paper:aaai:2025:32135"
+        ]
+       },
+       {
+        "entity_id": "organization:I139759216",
+        "entity_name": "Beijing University of Posts and Telecommunications",
+        "pre_papers": "0 of 61",
+        "post_papers": "3 of 152",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 61,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 3,
+        "post_gt_2022_total_papers": 152,
+        "post_gt_2022_share": 0.0197,
+        "share_delta": 0.0197,
+        "paper_ids": [
+         "paper:ijcai:2025:745",
+         "paper:aaai:2025:33351",
+         "paper:aaai:2025:33421"
+        ]
+       },
+       {
+        "entity_id": "organization:I4210156404",
+        "entity_name": "Institute of Information Engineering",
+        "pre_papers": "0 of 39",
+        "post_papers": "2 of 106",
+        "pre_le_2022_subject_papers": 0,
+        "pre_le_2022_total_papers": 39,
+        "pre_le_2022_share": 0.0,
+        "post_gt_2022_subject_papers": 2,
+        "post_gt_2022_total_papers": 106,
+        "post_gt_2022_share": 0.0189,
+        "share_delta": 0.0189,
+        "paper_ids": [
+         "paper:aaai:2025:32584",
+         "paper:aaai:2025:32224"
+        ]
        }
       ],
       "source_kind": "graph",
-      "note": "Computed share growth across cutoff year > 2022 for 64 organization(s).",
+      "note": "Computed share growth across cutoff year > 2022 (threshold: post_total >= 10, post_subject >= 2): 37 organization(s) qualified (27 excluded below threshold); showing top 15 ranked by share_delta.",
       "paper_ids": [
-       "paper:ijcai:2024:15",
-       "paper:aaai:2024:29823",
+       "paper:ijcai:2025:12",
+       "paper:aaai:2025:32681",
+       "paper:aaai:2024:29726",
        "paper:ijcai:2025:537",
        "paper:aaai:2025:32135",
+       "paper:aaai:2024:28567",
+       "paper:aaai:2025:34671",
+       "paper:aaai:2025:33571",
+       "paper:aaai:2025:34447",
+       "paper:aaai:2025:34922",
+       "paper:ijcai:2024:78",
+       "paper:aaai:2024:28769",
+       "paper:aaai:2025:34067",
+       "paper:aaai:2025:34796",
+       "paper:aaai:2025:33597",
+       "paper:ijcai:2025:354",
+       "paper:aaai:2025:32594",
+       "paper:aaai:2025:32612",
        "paper:ijcai:2024:460",
        "paper:ijcai:2024:579",
-       "paper:aaai:2024:28769",
-       "paper:aaai:2024:28567",
-       "paper:aaai:2025:34447",
-       "paper:ijcai:2025:509",
-       "paper:ijcai:2025:546",
-       "paper:aaai:2025:33137",
-       "paper:aaai:2025:32020",
-       "paper:aaai:2025:33338",
-       "paper:aaai:2025:34548",
-       "paper:aaai:2022:19971",
-       "paper:aaai:2023:25386",
-       "paper:ijcai:2025:918",
-       "paper:ijcai:2025:745",
-       "paper:aaai:2025:33351",
-       "paper:aaai:2025:33421",
-       "paper:ijcai:2025:304",
-       "paper:ijcai:2024:670",
-       "paper:aaai:2025:32782",
-       "paper:aaai:2025:32224",
-       "paper:aaai:2024:27888",
-       "paper:aaai:2024:28524",
+       "paper:aaai:2024:27832",
+       "paper:aaai:2024:29730",
        "paper:aaai:2025:34518",
-       "paper:aaai:2025:34691",
-       "paper:aaai:2025:33863"
+       "paper:aaai:2023:25386",
+       "paper:aaai:2025:33814",
+       "paper:aaai:2024:29772",
+       "paper:aaai:2025:34656",
+       "paper:aaai:2024:29823",
+       "paper:ijcai:2025:745",
+       "paper:aaai:2025:33351"
       ],
       "evidence_ids": []
      }
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "Based on the retrieved graph trace, the organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022 include:\n\n*   **Ping An (China)**: Share increased from 0.0 to 0.0667 (delta: 0.0667) [paper:...]\n*   **Virginia Tech**: Share increased from 0.0 to 0.0556 (delta: 0.0556) [paper:...]\n*   **NetEase (China)**: Share increased from 0.0 to 0.05 (delta: 0.05) [paper:...]\n*   **Beijing National Research Center for Information Science and Technology**: Share increased from 0.0 to 0.0488 (delta: 0.0488) [paper:...]\n*   **Shenzhen Institutes of Advanced Technology**: Share increased from 0.0 to 0.0484 (delta: 0.0484) [paper:...]\n*   **Chinese University of Hong Kong**: Share increased from 0.0 to 0.0414 (delta: 0.0414) [paper:...]\n*   **City University of Hong Kong**: Share increased from 0.0 to 0.0403 (delta: 0.0403) [paper:...]\n*   **University of Hong Kong**: Share increased from 0.0 to 0.037 (delta: 0.037) [paper:...]\n*   **The Hong Kong University of Science and Technology (Guangzhou)**: Share increased from 0.0 to 0.0366 (delta: 0.0366) [paper:...]\n*   **Shenzhen University**: Share increased from 0.0 to 0.0357 (delta: 0.0357) [paper:...]\n*   **Beijing University of Technology**: Share increased from 0.0 to 0.0357 (delta: 0.0357) [paper:...]\n\nNote: The trace was truncated, so the full list of 64 organizations is not available in the provided data.",
+    "answer": "Based on the trace, the organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022 are:\n\n1.  **Beijing National Research Center for Information Science and Technology**: 2 of 41 papers (share: 0.0488)\n2.  **Shenzhen Institutes of Advanced Technology**: 3 of 62 papers (share: 0.0484)\n3.  **Chinese University of Hong Kong**: 7 of 169 papers (share: 0.0414)\n4.  **City University of Hong Kong**: 5 of 124 papers (share: 0.0403)\n5.  **University of Hong Kong**: 3 of 81 papers (share: 0.037)\n6.  **The Hong Kong University of Science and Technology (Guangzhou)**: 3 of 82 papers (share: 0.0366)\n7.  **Shenzhen University**: 5 of 140 papers (share: 0.0357)\n8.  **ShanghaiTech University**: 2 of 57 papers (share: 0.0351)\n9.  **University of Science and Technology of China**: 10 of 348 papers (share: 0.0287)\n10. **Nanyang Technological University**: 6 of 214 papers (share: 0.028)\n11. **Shanghai Artificial Intelligence Laboratory**: 4 of 146 papers (share: 0.0274)\n12. **Harbin Institute of Technology**: 7 of 286 papers (share: 0.0245)\n13. **Beijing Institute of Technology**: 3 of 135 papers (share: 0.0222)\n14. **Beijing University of Posts and Telecommunications**: 3 of 152 papers (share: 0.0197)\n15. **Institute of Information Engineering**: 2 of 106 papers (share: 0.0189)\n\nThe step note states that 37 organizations qualified (27 excluded below threshold), and the top 15 are shown ranked by share_delta. The minimum-paper threshold stated in the step note was post_total >= 10 and post_subject >= 2.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [
@@ -2974,68 +3080,42 @@
      }
     ],
     "paper_ids": [
-     "paper:ijcai:2024:15",
-     "paper:aaai:2024:29823",
+     "paper:ijcai:2025:12",
+     "paper:aaai:2025:32681",
+     "paper:aaai:2024:29726",
      "paper:ijcai:2025:537",
      "paper:aaai:2025:32135",
-     "paper:ijcai:2024:460",
-     "paper:ijcai:2024:579",
-     "paper:aaai:2024:28769",
      "paper:aaai:2024:28567",
-     "paper:aaai:2025:34447",
-     "paper:ijcai:2025:509",
-     "paper:ijcai:2025:546",
-     "paper:aaai:2025:33137",
-     "paper:aaai:2025:32020",
-     "paper:aaai:2025:33338",
-     "paper:aaai:2025:34548",
-     "paper:aaai:2022:19971",
-     "paper:aaai:2023:25386",
-     "paper:ijcai:2025:918",
-     "paper:ijcai:2025:745",
-     "paper:aaai:2025:33351",
-     "paper:aaai:2025:33421",
-     "paper:ijcai:2025:304",
-     "paper:ijcai:2024:670",
-     "paper:aaai:2025:32782",
-     "paper:aaai:2025:32224",
-     "paper:aaai:2024:27888",
-     "paper:aaai:2024:28524",
-     "paper:aaai:2025:34518",
-     "paper:aaai:2025:34691",
-     "paper:aaai:2025:33863",
-     "paper:aaai:2025:33571",
-     "paper:aaai:2025:34922",
-     "paper:ijcai:2025:1010",
-     "paper:aaai:2025:32980",
-     "paper:ijcai:2025:980",
-     "paper:aaai:2025:33594",
-     "paper:aaai:2024:29263",
-     "paper:aaai:2024:27832",
-     "paper:aaai:2024:29730",
-     "paper:aaai:2025:34067",
-     "paper:aaai:2025:32657",
      "paper:aaai:2025:34671",
-     "paper:aaai:2025:34780",
-     "paper:ijcai:2025:470",
+     "paper:aaai:2025:33571",
+     "paper:aaai:2025:34447",
+     "paper:aaai:2025:34922",
+     "paper:ijcai:2024:78",
+     "paper:aaai:2024:28769",
+     "paper:aaai:2025:34067",
      "paper:aaai:2025:34796",
      "paper:aaai:2025:33597",
      "paper:ijcai:2025:354",
-     "paper:aaai:2025:32655",
-     "paper:aaai:2025:34666",
+     "paper:aaai:2025:32594",
+     "paper:aaai:2025:32612",
+     "paper:ijcai:2024:460",
+     "paper:ijcai:2024:579",
+     "paper:aaai:2024:27832",
+     "paper:aaai:2024:29730",
+     "paper:aaai:2025:34518",
+     "paper:aaai:2023:25386",
      "paper:aaai:2025:33814",
-     "paper:aaai:2025:34601",
-     "paper:aaai:2024:29726",
-     "paper:ijcai:2025:782",
-     "paper:aaai:2025:33837",
-     "paper:aaai:2025:32584",
-     "paper:aaai:2025:33130",
-     "paper:aaai:2025:32079",
-     "paper:aaai:2025:33593",
      "paper:aaai:2024:29772",
-     "paper:aaai:2025:34656"
+     "paper:aaai:2025:34656",
+     "paper:aaai:2024:29823",
+     "paper:ijcai:2025:745",
+     "paper:aaai:2025:33351",
+     "paper:aaai:2025:33421",
+     "paper:aaai:2025:32584",
+     "paper:aaai:2025:32224"
     ],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 8.86
    }
   },
   {
@@ -3043,7 +3123,10 @@
    "title": "Fastest-growing methods and diffusion model specialists",
    "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
    "requested_mode": "auto",
-   "total_latency_s": 6.208,
+   "first_event_s": 0.002,
+   "first_step_s": 0.015,
+   "first_token_s": 10.459,
+   "total_latency_s": 10.459,
    "result": {
     "status": "ok",
     "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
@@ -3059,62 +3142,12 @@
     "linked": [],
     "plan": [
      {
-      "tool": "aggregate",
+      "tool": "trend",
       "args": {
-       "entity_ids": "$step1.ids",
-       "by": "year",
-       "metric": "share",
-       "filters": {
-        "venue": "AAAI",
-        "year_min": 2021,
-        "year_max": 2025
-       },
-       "limit": 15
-      },
-      "purpose": ""
-     },
-     {
-      "tool": "aggregate",
-      "args": {
-       "entity_ids": "$step2.ids",
-       "by": "year",
-       "metric": "share",
-       "filters": {
-        "venue": "IJCAI",
-        "year_min": 2021,
-        "year_max": 2025
-       },
-       "limit": 15
-      },
-      "purpose": ""
-     },
-     {
-      "tool": "aggregate",
-      "args": {
-       "entity_ids": "$step3.ids",
-       "by": "year",
-       "metric": "share",
-       "filters": {
-        "venue": "AAAI",
-        "year_min": 2021,
-        "year_max": 2025
-       },
-       "limit": 15
-      },
-      "purpose": ""
-     },
-     {
-      "tool": "aggregate",
-      "args": {
-       "entity_ids": "$step4.ids",
-       "by": "year",
-       "metric": "share",
-       "filters": {
-        "venue": "IJCAI",
-        "year_min": 2021,
-        "year_max": 2025
-       },
-       "limit": 15
+       "limit": 15,
+       "period": "2021-2025",
+       "subject_or_kind": "Method",
+       "trend_class": "rising"
       },
       "purpose": ""
      }
@@ -3122,39 +3155,164 @@
     "steps": [
      {
       "step": 1,
-      "tool": "aggregate",
+      "tool": "trend",
       "purpose": "",
       "args": {
-       "entity_ids": [
-        "$step1.ids"
-       ],
-       "by": "year",
-       "metric": "share",
-       "filters": {
-        "venue": "AAAI",
-        "year_min": 2021,
-        "year_max": 2025
-       },
-       "limit": 15
+       "limit": 15,
+       "period": "2021-2025",
+       "subject_or_kind": "Method",
+       "trend_class": "rising"
       },
-      "empty": true,
-      "row_count": 0,
-      "rows": [],
-      "source_kind": "graph",
-      "note": "Aggregated 0 year(s); total_papers=0.",
+      "empty": false,
+      "row_count": 5,
+      "rows": [
+       {
+        "kind": "Method",
+        "id": "method:Q3621696",
+        "name": "Large Language Models (LLMs)",
+        "class": "rising",
+        "total_papers": 136,
+        "base_window_papers": 7,
+        "recent_window_papers": 126,
+        "cagr_of_share_2021_2025": 0.9146564672442798,
+        "slope_of_share": 0.0052214253235922225,
+        "slope_p_value": 0.07148323062416603,
+        "papers_by_year": {
+         "2021": 4,
+         "2022": 3,
+         "2023": 3,
+         "2024": 29,
+         "2025": 97
+        },
+        "share_by_year": {
+         "2021": 0.0017857142857142857,
+         "2022": 0.0015022533800701052,
+         "2023": 0.0013531799729364006,
+         "2024": 0.009291893623838513,
+         "2025": 0.023998020781791193
+        }
+       },
+       {
+        "kind": "Method",
+        "id": "method:Q55636383",
+        "name": "U-Net",
+        "class": "rising",
+        "total_papers": 29,
+        "base_window_papers": 4,
+        "recent_window_papers": 22,
+        "cagr_of_share_2021_2025": 0.2448540933091885,
+        "slope_of_share": 0.0006136827748002519,
+        "slope_p_value": 0.07089605747422989,
+        "papers_by_year": {
+         "2021": 3,
+         "2022": 1,
+         "2023": 3,
+         "2024": 9,
+         "2025": 13
+        },
+        "share_by_year": {
+         "2021": 0.0013392857142857143,
+         "2022": 0.000500751126690035,
+         "2023": 0.0013531799729364006,
+         "2024": 0.0028836911246395386,
+         "2025": 0.0032162295893122216
+        }
+       },
+       {
+        "kind": "Method",
+        "id": "method:a9ebaa219a8944d8",
+        "name": "Graph Contrastive Learning",
+        "class": "rising",
+        "total_papers": 31,
+        "base_window_papers": 6,
+        "recent_window_papers": 20,
+        "cagr_of_share_2021_2025": 0.37765751773021594,
+        "slope_of_share": 0.0004886611260869658,
+        "slope_p_value": 0.021507528846477254,
+        "papers_by_year": {
+         "2021": 2,
+         "2022": 4,
+         "2023": 5,
+         "2024": 7,
+         "2025": 13
+        },
+        "share_by_year": {
+         "2021": 0.0008928571428571428,
+         "2022": 0.00200300450676014,
+         "2023": 0.0022552999548940008,
+         "2024": 0.002242870874719641,
+         "2025": 0.0032162295893122216
+        }
+       },
+       {
+        "kind": "Method",
+        "id": "method:Q50818671",
+        "name": "Federated Learning",
+        "class": "rising",
+        "total_papers": 27,
+        "base_window_papers": 6,
+        "recent_window_papers": 18,
+        "cagr_of_share_2021_2025": 0.3213065858287554,
+        "slope_of_share": 0.00038970021564658976,
+        "slope_p_value": 0.0678582981334936,
+        "papers_by_year": {
+         "2021": 2,
+         "2022": 4,
+         "2023": 3,
+         "2024": 7,
+         "2025": 11
+        },
+        "share_by_year": {
+         "2021": 0.0008928571428571428,
+         "2022": 0.00200300450676014,
+         "2023": 0.0013531799729364006,
+         "2024": 0.002242870874719641,
+         "2025": 0.0027214250371103412
+        }
+       },
+       {
+        "kind": "Method",
+        "id": "method:Q2852531",
+        "name": "Answer Set Programming",
+        "class": "rising",
+        "total_papers": 17,
+        "base_window_papers": 3,
+        "recent_window_papers": 11,
+        "cagr_of_share_2021_2025": 0.40341927604070604,
+        "slope_of_share": 0.0002850912969015744,
+        "slope_p_value": 0.01605479457778616,
+        "papers_by_year": {
+         "2021": 1,
+         "2022": 2,
+         "2023": 3,
+         "2024": 4,
+         "2025": 7
+        },
+        "share_by_year": {
+         "2021": 0.0004464285714285714,
+         "2022": 0.00100150225338007,
+         "2023": 0.0013531799729364006,
+         "2024": 0.001281640499839795,
+         "2025": 0.0017318159327065809
+        }
+       }
+      ],
+      "source_kind": "precomputed_analysis_v2",
+      "note": "Method trends (descriptive (p <= 0.10 per subject, no multiple-testing correction)). Caveats: Only two venues (AAAI and IJCAI) are covered, so a trend is a trend in these proceedings, not in the field.; Venue size changes from 2,240 papers in 2021 to 4,042 in 2025; shares correct for it, raw counts do not.",
       "paper_ids": [],
       "evidence_ids": []
      }
     ],
-    "stopped_reason": "empty_step",
-    "stopped_at_step": 1,
-    "answer": "Stopped at step 1 (`aggregate`): no matching records were found in the graph (Aggregated 0 year(s); total_papers=0.).",
+    "stopped_reason": null,
+    "stopped_at_step": null,
+    "answer": "Based on the trace, the following methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025, ranked by their CAGR of share:\n\n1.  **Answer Set Programming**: CAGR of share 2021-2025 is 0.40341927604070604. Total papers: 17. Papers by year: 2021 (1), 2022 (2), 2023 (3), 2024 (4), 2025 (7). Share by year: 2021 (0.0004464285714285714), 2022 (0.00100150225338007), 2023 (0.0013531799729364006), 2024 (0.001281640499839795), 2025 (0.0017318159327065809).\n2.  **Graph Contrastive Learning**: CAGR of share 2021-2025 is 0.37765751773021594. Total papers: 31. Papers by year: 2021 (2), 2022 (4), 2023 (5), 2024 (7), 2025 (13). Share by year: 2021 (0.0008928571428571428), 2022 (0.00200300450676014), 2023 (0.0022552999548940008), 2024 (0.002242870874719641), 2025 (0.0032162295893122216).\n3.  **Federated Learning**: CAGR of share 2021-2025 is 0.3213065858287554. Total papers: 27. Papers by year: 2021 (2), 2022 (4), 2023 (3), 2024 (7), 2025 (11). Share by year: 2021 (0.0008928571428571428), 2022 (0.00200300450676014), 2023 (0.0013531799729364006",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
     "subgraph_edges": [],
     "paper_ids": [],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 10.459
    }
   },
   {
@@ -3162,7 +3320,10 @@
    "title": "Diffusion models co-occurring tasks and datasets",
    "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
    "requested_mode": "auto",
-   "total_latency_s": 23.845,
+   "first_event_s": 0.009,
+   "first_step_s": 0.064,
+   "first_token_s": 11.344,
+   "total_latency_s": 11.344,
    "result": {
     "status": "ok",
     "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
@@ -3170,8 +3331,8 @@
     "parsed": {
      "entities": [
       {
-       "text": "diffusion models",
-       "entity_type": "Method"
+       "entity_type": "Method",
+       "text": "diffusion models"
       }
      ],
      "year_min": null,
@@ -3229,32 +3390,30 @@
      {
       "tool": "neighbors",
       "args": {
-       "node_id": "method:Q114617315",
-       "predicates": [
-        "APPLIED_TO"
-       ],
        "filters": {
+        "include_cooccurrence": true,
         "target_labels": [
          "Task"
         ]
        },
-       "limit": 15
+       "limit": 15,
+       "node_id": "method:Q114617315",
+       "predicates": null
       },
       "purpose": ""
      },
      {
       "tool": "neighbors",
       "args": {
-       "node_id": "method:Q114617315",
-       "predicates": [
-        "EVALUATED_ON"
-       ],
        "filters": {
+        "include_cooccurrence": true,
         "target_labels": [
          "Dataset"
         ]
        },
-       "limit": 15
+       "limit": 15,
+       "node_id": "method:Q114617315",
+       "predicates": null
       },
       "purpose": ""
      }
@@ -3265,19 +3424,18 @@
       "tool": "neighbors",
       "purpose": "",
       "args": {
-       "node_id": "method:Q114617315",
-       "predicates": [
-        "APPLIED_TO"
-       ],
        "filters": {
+        "include_cooccurrence": true,
         "target_labels": [
          "Task"
         ]
        },
-       "limit": 15
+       "limit": 15,
+       "node_id": "method:Q114617315",
+       "predicates": null
       },
       "empty": false,
-      "row_count": 5,
+      "row_count": 20,
       "rows": [
        {
         "center_id": "method:Q114617315",
@@ -3395,17 +3553,286 @@
         "neighbor_sector": null,
         "neighbor_country_code": null,
         "source_kind": "extracted_edge"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:Q545981",
+        "neighbor_label": "Task",
+        "neighbor_name": "image editing",
+        "support_count": 4,
+        "paper_ids": [
+         "paper:aaai:2025:33819",
+         "paper:aaai:2024:28255",
+         "paper:aaai:2025:32725",
+         "paper:aaai:2025:32901"
+        ],
+        "years": [
+         2025,
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:dbe4691e5c878c5f",
+        "neighbor_label": "Task",
+        "neighbor_name": "Sequential Recommendation",
+        "support_count": 4,
+        "paper_ids": [
+         "paper:ijcai:2024:251",
+         "paper:ijcai:2025:346",
+         "paper:aaai:2025:33341",
+         "paper:aaai:2025:33370"
+        ],
+        "years": [
+         2024,
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:4fb6c23edf82feab",
+        "neighbor_label": "Task",
+        "neighbor_name": "low-light image enhancement",
+        "support_count": 3,
+        "paper_ids": [
+         "paper:ijcai:2023:199",
+         "paper:aaai:2024:28273",
+         "paper:aaai:2025:32565"
+        ],
+        "years": [
+         2023,
+         2024,
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:071c4cb2e1b71877",
+        "neighbor_label": "Task",
+        "neighbor_name": "motion generation",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:aaai:2024:27988",
+         "paper:aaai:2025:32561"
+        ],
+        "years": [
+         2024,
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:272049ef15fcde06",
+        "neighbor_label": "Task",
+        "neighbor_name": "Unsupervised Anomaly Detection",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:ijcai:2024:270",
+         "paper:aaai:2024:27910"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:57818a3c494e3a6f",
+        "neighbor_label": "Task",
+        "neighbor_name": "image generation",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:aaai:2024:28155",
+         "paper:aaai:2024:28074"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:Q7575395",
+        "neighbor_label": "Task",
+        "neighbor_name": "Speech Enhancement",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:ijcai:2025:713",
+         "paper:aaai:2023:26597"
+        ],
+        "years": [
+         2025,
+         2023
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:b55616419cdbc810",
+        "neighbor_label": "Task",
+        "neighbor_name": "image super-resolution",
+        "support_count": 2,
+        "paper_ids": [
+         "paper:aaai:2024:28746",
+         "paper:aaai:2025:32247"
+        ],
+        "years": [
+         2024,
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:0139c13eca32e028",
+        "neighbor_label": "Task",
+        "neighbor_name": "super-resolution",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:27833"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:0397a7f56aa5f060",
+        "neighbor_label": "Task",
+        "neighbor_name": "conditional generation",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2023:25639"
+        ],
+        "years": [
+         2023
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:061857179e1a8023",
+        "neighbor_label": "Task",
+        "neighbor_name": "3D Object Detection",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:28620"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:0d8f270442b65e07",
+        "neighbor_label": "Task",
+        "neighbor_name": "Camouflaged Object Detection",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:27890"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:1609ac0964e7a3a6",
+        "neighbor_label": "Task",
+        "neighbor_name": "Visual Information Extraction",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:32730"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:19f4ef447a84cc67",
+        "neighbor_label": "Task",
+        "neighbor_name": "Novel View Synthesis",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2025:33128"
+        ],
+        "years": [
+         2025
+        ],
+        "source_kind": "paper_cooccurrence"
+       },
+       {
+        "center_id": "method:Q114617315",
+        "relation": "COOCCURS_IN_PAPERS",
+        "neighbor_id": "task:1fa654aed2b0ed89",
+        "neighbor_label": "Task",
+        "neighbor_name": "image classification",
+        "support_count": 1,
+        "paper_ids": [
+         "paper:aaai:2024:28084"
+        ],
+        "years": [
+         2024
+        ],
+        "source_kind": "paper_cooccurrence"
        }
       ],
-      "source_kind": "graph",
-      "note": "5 direct graph edges",
+      "source_kind": "mixed",
+      "note": "5 direct graph edges; 15 paper co-occurrence partners (shared papers as evidence)",
       "paper_ids": [
        "paper:aaai:2025:33370",
        "paper:ijcai:2025:346",
        "paper:aaai:2025:33187",
        "paper:aaai:2025:32901",
        "paper:aaai:2024:28746",
-       "paper:aaai:2024:29840"
+       "paper:aaai:2024:29840",
+       "paper:aaai:2025:33819",
+       "paper:aaai:2024:28255",
+       "paper:aaai:2025:32725",
+       "paper:ijcai:2024:251",
+       "paper:aaai:2025:33341",
+       "paper:ijcai:2023:199",
+       "paper:aaai:2024:28273",
+       "paper:aaai:2025:32565",
+       "paper:aaai:2024:27988",
+       "paper:aaai:2025:32561",
+       "paper:ijcai:2024:270",
+       "paper:aaai:2024:27910",
+       "paper:aaai:2024:28155",
+       "paper:aaai:2024:28074",
+       "paper:ijcai:2025:713",
+       "paper:aaai:2023:26597",
+       "paper:aaai:2025:32247",
+       "paper:aaai:2024:27833",
+       "paper:aaai:2023:25639",
+       "paper:aaai:2024:28620",
+       "paper:aaai:2024:27890",
+       "paper:aaai:2025:32730",
+       "paper:aaai:2025:33128",
+       "paper:aaai:2024:28084"
       ],
       "evidence_ids": [
        "evidence:extracted:65355c85bb7a126847c60a8a",
@@ -3421,16 +3848,15 @@
       "tool": "neighbors",
       "purpose": "",
       "args": {
-       "node_id": "method:Q114617315",
-       "predicates": [
-        "EVALUATED_ON"
-       ],
        "filters": {
+        "include_cooccurrence": true,
         "target_labels": [
          "Dataset"
         ]
        },
-       "limit": 15
+       "limit": 15,
+       "node_id": "method:Q114617315",
+       "predicates": null
       },
       "empty": false,
       "row_count": 15,
@@ -3687,11 +4113,9 @@
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "Could not compose a faithful answer from the retrieved graph trace; inspect the step tables below.",
-    "faithfulness_passed": false,
-    "faithfulness_errors": [
-     "number 3 not in trace"
-    ],
+    "answer": "Based on the retrieved graph trace, the tasks that co-occur most with diffusion models are:\n\n*   **Sequential Recommendation**: Co-occurs in 4 papers [paper:ijcai:2024:251, paper:ijcai:2025:346, paper:aaai:2025:33341, paper:aaai:2025:33370].\n*   **Image Editing**: Co-occurs in 4 papers [paper:aaai:2025:33819, paper:aaai:2024:28255, paper:aaai:2025:32725, paper:aaai:2025:32901].\n*   **Low-light Image Enhancement**: Co-occurs in 3 papers [paper:ijcai:2023:199, paper:aaai:2024:28273, paper:aaai:2025:32565].\n*   **Image Super-resolution**: Co-occurs in 2 papers (support_count: 2) [paper:aaai:2024:28746, paper:aaai:2025:32247].\n*   **Motion Generation**: Co-occurs in 2 papers [paper:aaai:2024:27988, paper:aaai:2025:32561].\n*   **Unsupervised Anomaly Detection**: Co-occurs in 2 papers [paper:ijcai:2024:270, paper:aaai:2024:27910].\n*   **Image Generation**: Co-occurs in 2 papers [paper:aaai:2024:28155, paper:aaai:2024:28074].\n*   **Speech Enhancement**: Co-occurs in 2 papers [paper:ijcai:2025:713, paper:aaai:2023:26597].\n*   **Super-resolution**: Co-occurs in 1 paper [paper:aaai:2024:27833].\n*   **Conditional Generation**: Co-occurs in 1 paper [paper:aaai:2023:25639].\n\nThe datasets used with diffusion models are:\n\n*   **MVTec AD**: Used in 2 papers [paper:aaai:2024:27910, paper:aaai:2024:28690].\n*   **nuScenes**: Used in 1 paper [paper:aaai:2024:28620].\n*   **DIV2K**: Used in 1 paper [paper:aaai:2025:32360].\n*   **ActivityNet-1.3**: Used in 1 paper [paper:aaai:2025:32221",
+    "faithfulness_passed": true,
+    "faithfulness_errors": [],
     "subgraph_nodes": [
      {
       "id": "method:Q114617315",
@@ -3727,6 +4151,78 @@
       "id": "task:e2b7808dae2a765d",
       "label": "Task",
       "name": "Event Causality Identification",
+      "hop": 1
+     },
+     {
+      "id": "task:4fb6c23edf82feab",
+      "label": "Task",
+      "name": "low-light image enhancement",
+      "hop": 1
+     },
+     {
+      "id": "task:071c4cb2e1b71877",
+      "label": "Task",
+      "name": "motion generation",
+      "hop": 1
+     },
+     {
+      "id": "task:272049ef15fcde06",
+      "label": "Task",
+      "name": "Unsupervised Anomaly Detection",
+      "hop": 1
+     },
+     {
+      "id": "task:57818a3c494e3a6f",
+      "label": "Task",
+      "name": "image generation",
+      "hop": 1
+     },
+     {
+      "id": "task:Q7575395",
+      "label": "Task",
+      "name": "Speech Enhancement",
+      "hop": 1
+     },
+     {
+      "id": "task:0139c13eca32e028",
+      "label": "Task",
+      "name": "super-resolution",
+      "hop": 1
+     },
+     {
+      "id": "task:0397a7f56aa5f060",
+      "label": "Task",
+      "name": "conditional generation",
+      "hop": 1
+     },
+     {
+      "id": "task:061857179e1a8023",
+      "label": "Task",
+      "name": "3D Object Detection",
+      "hop": 1
+     },
+     {
+      "id": "task:0d8f270442b65e07",
+      "label": "Task",
+      "name": "Camouflaged Object Detection",
+      "hop": 1
+     },
+     {
+      "id": "task:1609ac0964e7a3a6",
+      "label": "Task",
+      "name": "Visual Information Extraction",
+      "hop": 1
+     },
+     {
+      "id": "task:19f4ef447a84cc67",
+      "label": "Task",
+      "name": "Novel View Synthesis",
+      "hop": 1
+     },
+     {
+      "id": "task:1fa654aed2b0ed89",
+      "label": "Task",
+      "name": "image classification",
       "hop": 1
      },
      {
@@ -3862,6 +4358,126 @@
       "hop": 1
      },
      {
+      "edge_id": "cooccur:method:Q114617315:task:Q545981",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:Q545981",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:dbe4691e5c878c5f",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:dbe4691e5c878c5f",
+      "support_count": 4,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:4fb6c23edf82feab",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:4fb6c23edf82feab",
+      "support_count": 3,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:071c4cb2e1b71877",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:071c4cb2e1b71877",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:272049ef15fcde06",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:272049ef15fcde06",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:57818a3c494e3a6f",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:57818a3c494e3a6f",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:Q7575395",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:Q7575395",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:b55616419cdbc810",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:b55616419cdbc810",
+      "support_count": 2,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:0139c13eca32e028",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:0139c13eca32e028",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:0397a7f56aa5f060",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:0397a7f56aa5f060",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:061857179e1a8023",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:061857179e1a8023",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:0d8f270442b65e07",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:0d8f270442b65e07",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:1609ac0964e7a3a6",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:1609ac0964e7a3a6",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:19f4ef447a84cc67",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:19f4ef447a84cc67",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
+      "edge_id": "cooccur:method:Q114617315:task:1fa654aed2b0ed89",
+      "relation": "COOCCURS_IN_PAPERS",
+      "source": "method:Q114617315",
+      "target": "task:1fa654aed2b0ed89",
+      "support_count": 1,
+      "hop": 1
+     },
+     {
       "edge_id": "cooccur:method:Q114617315:dataset:e914e29fce31429d",
       "relation": "COOCCURS_IN_PAPERS",
       "source": "method:Q114617315",
@@ -3989,24 +4605,44 @@
      "paper:aaai:2025:32901",
      "paper:aaai:2024:28746",
      "paper:aaai:2024:29840",
+     "paper:aaai:2025:33819",
+     "paper:aaai:2024:28255",
+     "paper:aaai:2025:32725",
+     "paper:ijcai:2024:251",
+     "paper:aaai:2025:33341",
+     "paper:ijcai:2023:199",
+     "paper:aaai:2024:28273",
+     "paper:aaai:2025:32565",
+     "paper:aaai:2024:27988",
+     "paper:aaai:2025:32561",
+     "paper:ijcai:2024:270",
      "paper:aaai:2024:27910",
-     "paper:aaai:2024:28690",
+     "paper:aaai:2024:28155",
+     "paper:aaai:2024:28074",
+     "paper:ijcai:2025:713",
+     "paper:aaai:2023:26597",
+     "paper:aaai:2025:32247",
+     "paper:aaai:2024:27833",
+     "paper:aaai:2023:25639",
      "paper:aaai:2024:28620",
+     "paper:aaai:2024:27890",
+     "paper:aaai:2025:32730",
+     "paper:aaai:2025:33128",
+     "paper:aaai:2024:28084",
+     "paper:aaai:2024:28690",
      "paper:aaai:2025:32360",
      "paper:aaai:2025:32221",
-     "paper:aaai:2024:28155",
      "paper:ijcai:2024:183",
      "paper:aaai:2025:32469",
      "paper:aaai:2025:32073",
      "paper:aaai:2024:29698",
      "paper:ijcai:2025:981",
      "paper:aaai:2025:32945",
-     "paper:ijcai:2024:270",
-     "paper:aaai:2025:33128",
      "paper:ijcai:2024:125",
      "paper:aaai:2025:34472"
     ],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 11.344
    }
   },
   {
@@ -4014,19 +4650,22 @@
    "title": "Co-authorship path between Shirui Pan and Chengjie Wang",
    "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
    "requested_mode": "auto",
-   "total_latency_s": 0.938,
+   "first_event_s": 0.09,
+   "first_step_s": null,
+   "first_token_s": null,
+   "total_latency_s": 0.09,
    "result": {
     "status": "needs_disambiguation",
     "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
     "parsed": {
      "entities": [
       {
-       "text": "Shirui Pan",
-       "entity_type": "Researcher"
+       "entity_type": "Researcher",
+       "text": "Shirui Pan"
       },
       {
-       "text": "Chengjie Wang",
-       "entity_type": "Researcher"
+       "entity_type": "Researcher",
+       "text": "Chengjie Wang"
       }
      ],
      "year_min": null,
@@ -4035,6 +4674,15 @@
      "venue": null,
      "intent": "lookup"
     },
+    "linked": [
+     {
+      "text": "Shirui Pan",
+      "entity_type": "Researcher",
+      "id": "researcher:openalex:A5008056593",
+      "name": "Shirui Pan",
+      "alternatives": []
+     }
+    ],
     "disambiguation": [
      {
       "mention": "Chengjie Wang",
@@ -4078,11 +4726,13 @@
     ],
     "answer": "Multiple researchers match that name; please select the intended researcher.",
     "faithfulness_passed": true,
+    "faithfulness_errors": [],
     "steps": [],
     "subgraph_nodes": [],
     "subgraph_edges": [],
     "paper_ids": [],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 0.09
    }
   },
   {
@@ -4090,7 +4740,10 @@
    "title": "Organizations specialized in causal inference by lift",
    "question": "Which organizations specialize most in Causal inference by lift?",
    "requested_mode": "auto",
-   "total_latency_s": 2.803,
+   "first_event_s": 0.097,
+   "first_step_s": 0.153,
+   "first_token_s": 8.449,
+   "total_latency_s": 8.449,
    "result": {
     "status": "ok",
     "question": "Which organizations specialize most in Causal inference by lift?",
@@ -4098,12 +4751,12 @@
     "parsed": {
      "entities": [
       {
-       "text": "Causal inference",
-       "entity_type": "Task"
+       "entity_type": "Task",
+       "text": "Causal inference"
       },
       {
-       "text": "lift",
-       "entity_type": "Method"
+       "entity_type": "Method",
+       "text": "lift"
       }
      ],
      "year_min": null,
@@ -4159,10 +4812,10 @@
      {
       "tool": "rank",
       "args": {
-       "network": "N2",
-       "scope": "task:e8299f0a4fe25a12",
+       "limit": 15,
        "measure": "lift",
-       "limit": 15
+       "network": "N2",
+       "scope": "task:e8299f0a4fe25a12"
       },
       "purpose": ""
      }
@@ -4173,29 +4826,196 @@
       "tool": "rank",
       "purpose": "",
       "args": {
-       "network": "N2",
-       "scope": "task:e8299f0a4fe25a12",
+       "limit": 15,
        "measure": "lift",
-       "limit": 15
+       "network": "N2",
+       "scope": "task:e8299f0a4fe25a12"
       },
-      "empty": true,
-      "row_count": 0,
-      "rows": [],
-      "source_kind": "graph",
-      "note": "No precomputed personalized PageRank entry for scope 'task:e8299f0a4fe25a12'.",
+      "empty": false,
+      "row_count": 15,
+      "rows": [
+       {
+        "id": "organization:I9341345",
+        "name": "University of Lübeck",
+        "score": 0.0005185175448575047,
+        "ppr_score": 0.0005185175448575047,
+        "global_pagerank": 2.345298162804017e-05,
+        "lift": 22.1088,
+        "rca": 49.8791,
+        "subject_papers": 4,
+        "total_papers": 6
+       },
+       {
+        "id": "organization:I180203408",
+        "name": "Yokohama National University",
+        "score": 0.0007221996346865197,
+        "ppr_score": 0.0007221996346865197,
+        "global_pagerank": 4.287355840619393e-05,
+        "lift": 16.8449,
+        "rca": 37.4093,
+        "subject_papers": 4,
+        "total_papers": 8
+       },
+       {
+        "id": "organization:I170239107",
+        "name": "University of South Australia",
+        "score": 0.00040317954534436156,
+        "ppr_score": 0.00040317954534436156,
+        "global_pagerank": 3.364689411128e-05,
+        "lift": 11.9827,
+        "rca": 51.7975,
+        "subject_papers": 9,
+        "total_papers": 13
+       },
+       {
+        "id": "organization:I139024713",
+        "name": "Guangdong University of Technology",
+        "score": 0.0014167214595789852,
+        "ppr_score": 0.0014167214595789852,
+        "global_pagerank": 0.00020550298483330707,
+        "lift": 6.8939,
+        "rca": 19.4529,
+        "subject_papers": 13,
+        "total_papers": 50
+       },
+       {
+        "id": "organization:I32574673",
+        "name": "Shantou University",
+        "score": 0.00025513909903125985,
+        "ppr_score": 0.00025513909903125985,
+        "global_pagerank": 3.883470566821161e-05,
+        "lift": 6.5699,
+        "rca": 27.2068,
+        "subject_papers": 4,
+        "total_papers": 11
+       },
+       {
+        "id": "organization:I8204097",
+        "name": "Ludwig-Maximilians-Universität München",
+        "score": 0.0005272623317179536,
+        "ppr_score": 0.0005272623317179536,
+        "global_pagerank": 0.00012064172467894284,
+        "lift": 4.3705,
+        "rca": 10.3198,
+        "subject_papers": 4,
+        "total_papers": 29
+       },
+       {
+        "id": "organization:I4210128801",
+        "name": "Helmholtz Center for Information Security",
+        "score": 0.00039578391711617665,
+        "ppr_score": 0.00039578391711617665,
+        "global_pagerank": 0.00011012790004845495,
+        "lift": 3.5939,
+        "rca": 10.2025,
+        "subject_papers": 3,
+        "total_papers": 22
+       },
+       {
+        "id": "organization:I91712215",
+        "name": "Saarland University",
+        "score": 0.00044306009288965365,
+        "ppr_score": 0.00044306009288965365,
+        "global_pagerank": 0.00012596506456140328,
+        "lift": 3.5173,
+        "rca": 6.9599,
+        "subject_papers": 4,
+        "total_papers": 43
+       },
+       {
+        "id": "organization:I5124864",
+        "name": "École Polytechnique Fédérale de Lausanne",
+        "score": 0.0007109482983690336,
+        "ppr_score": 0.0007109482983690336,
+        "global_pagerank": 0.00020566572331136594,
+        "lift": 3.4568,
+        "rca": 6.0664,
+        "subject_papers": 3,
+        "total_papers": 37
+       },
+       {
+        "id": "organization:I78577930",
+        "name": "Columbia University",
+        "score": 0.0009839711907842683,
+        "ppr_score": 0.0009839711907842683,
+        "global_pagerank": 0.00030107063418087905,
+        "lift": 3.2682,
+        "rca": 9.0689,
+        "subject_papers": 8,
+        "total_papers": 66
+       },
+       {
+        "id": "organization:I161318765",
+        "name": "University of California, Los Angeles",
+        "score": 0.000812301403607039,
+        "ppr_score": 0.000812301403607039,
+        "global_pagerank": 0.00031020984533823765,
+        "lift": 2.6186,
+        "rca": 5.5835,
+        "subject_papers": 5,
+        "total_papers": 67
+       },
+       {
+        "id": "organization:I4210113480",
+        "name": "Mohamed bin Zayed University of Artificial Intelligence",
+        "score": 0.0006069962068317646,
+        "ppr_score": 0.0006069962068317646,
+        "global_pagerank": 0.0002448558355576142,
+        "lift": 2.479,
+        "rca": 8.0163,
+        "subject_papers": 6,
+        "total_papers": 56
+       },
+       {
+        "id": "organization:I55732556",
+        "name": "Arizona State University",
+        "score": 0.00046089439373550665,
+        "ppr_score": 0.00046089439373550665,
+        "global_pagerank": 0.0002349793287575955,
+        "lift": 1.9614,
+        "rca": 4.5807,
+        "subject_papers": 3,
+        "total_papers": 49
+       },
+       {
+        "id": "organization:I143868143",
+        "name": "Anhui University",
+        "score": 0.0006019799068682892,
+        "ppr_score": 0.0006019799068682892,
+        "global_pagerank": 0.0003145356945805173,
+        "lift": 1.9139,
+        "rca": 4.4011,
+        "subject_papers": 4,
+        "total_papers": 68
+       },
+       {
+        "id": "organization:I16365422",
+        "name": "Hefei University of Technology",
+        "score": 0.00045446763162632265,
+        "ppr_score": 0.00045446763162632265,
+        "global_pagerank": 0.0002513175177806529,
+        "lift": 1.8083,
+        "rca": 6.1327,
+        "subject_papers": 5,
+        "total_papers": 61
+       }
+      ],
+      "source_kind": "precomputed_analysis_v2",
+      "note": "Subject-specific ranking for Topic 'Causal inference' (182 papers), ranked by lift.",
       "paper_ids": [],
       "evidence_ids": []
      }
     ],
-    "stopped_reason": "empty_step",
-    "stopped_at_step": 1,
-    "answer": "Stopped at step 1 (`rank`): no matching records were found in the graph (No precomputed personalized PageRank entry for scope 'task:e8299f0a4fe25a12'.).",
+    "stopped_reason": null,
+    "stopped_at_step": null,
+    "answer": "The organizations specializing most in Causal inference by lift, ranked by lift, are:\n1.  **University of Lübeck** with a lift of 22.1088 (4 subject papers out of 6 total).\n2.  **Yokohama National University** with a lift of 16.8449 (4 subject papers out of 8 total).\n3.  **University of South Australia** with a lift of 11.9827 (9 subject papers out of 13 total).\n4.  **Guangdong University of Technology** with a lift of 6.8939 (13 subject papers out of 50 total).\n5.  **Shantou University** with a lift of 6.5699 (4 subject papers out of 11 total).\n6.  **Ludwig-Maximilians-Universität München** with a lift of 4.3705 (4 subject papers out of 29 total).\n7.  **Helmholtz Center for Information Security** with a lift of 3.5939 (3 subject papers out of 22 total).\n8.  **Saarland University** with a lift of 3.5173 (4 subject papers out of 43 total).\n9.  **École Polytechnique Fédérale de Lausanne** with a lift of 3.4568 (3 subject papers out of 37 total).\n10. **Columbia University** with a lift of 3.2682 (8 subject papers out of 66 total).\n11. **University of California, Los Angeles** with a lift of 2.6186 (5 subject papers out of 67 total).\n12. **Mohamed bin Zayed University of Artificial Intelligence** with a lift of 2.479 (6 subject papers out of 56 total).\n13. **Arizona State University** with a lift of 1.9614 (3 subject papers out of 49 total).\n14. **Anhui University** with a lift of 1.9139 (4 subject papers out of 68 total).\n15. **Hefei University of Technology** with a lift of 1.8083 (5 subject papers out of 61 total).\n\nAll 15 rows were shown for the topic 'Causal inference' (182 papers).",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
     "subgraph_edges": [],
     "paper_ids": [],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 8.449
    }
   },
   {
@@ -4203,7 +5023,10 @@
    "title": "Main research communities in AAAI/IJCAI 2021-2025 (Global Search)",
    "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
    "requested_mode": "global",
-   "total_latency_s": 18.899,
+   "first_event_s": 0.614,
+   "first_step_s": 16.29,
+   "first_token_s": 16.29,
+   "total_latency_s": 16.29,
    "result": {
     "status": "ok",
     "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
@@ -4211,12 +5034,12 @@
     "parsed": {
      "entities": [
       {
-       "text": "AAAI",
-       "entity_type": "Organization"
+       "entity_type": "Organization",
+       "text": "AAAI"
       },
       {
-       "text": "IJCAI",
-       "entity_type": "Organization"
+       "entity_type": "Organization",
+       "text": "IJCAI"
       }
      ],
      "year_min": 2021,
@@ -4363,7 +5186,7 @@
      }
     ],
     "stopped_reason": null,
-    "answer": "The main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph include:\n\n*   Graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing, multi-hop QA, efficient systems, and trustworthy ML [paper:aaai:2025:33413, paper:ijcai:2023:229, paper:aaai:2025:33320, paper:ijcai:2021:425, paper:aaai:2021:17203, paper:aaai:2025:33410, paper:ijcai:2021:441, paper:aaai:2022:20521, paper:aaai:2025:33671, paper:ijcai:2025:922, paper:ijcai:2025:916, paper:aaai:2025:32008, paper:ijcai:2025:916, paper:aaai:2021:17605, paper:aaai:2023:25894, paper:ijcai:2022:246, paper:aaai:2025:33850, paper:aaai:2023:25936, paper:ijcai:2022:345, paper:aaai:2021:17234]\n*   NLP, planning, and causal inference [paper:aaai:2021:17138, paper:ijcai:2021:536, paper:aaai:2025:33724]\n*   Causal Inference [paper:aaai:2022:20789, paper:aaai:2025:33626, paper:ijcai:2025:1013]\n*   Multimodal learning [paper:aaai:2025:32879, paper:aaai:2025:33554, paper:aaai:2025:34075]\n*   Clustering in defense and top-tier institutions [paper:aaai:2021:17198, paper:ijcai:2021:389, paper:aaai:2023:26445]\n*   Graph Neural Networks and Vision-Language Learning [paper:",
+    "answer": "The main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph are:\n- N1:87 (NLP, planning, and causal inference)\n- L0:122 (Causal Inference)\n- L0:47 (multimodal learning)\n- Clustering research in defense and top-tier institutions\n- N1:42 (Graph Neural Networks and Vision-Language Learning)\n- Graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing and multi-hop QA, and efficient systems and trustworthy ML",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
@@ -4404,7 +5227,8 @@
      "paper:ijcai:2022:345",
      "paper:aaai:2021:17234"
     ],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 16.29
    }
   },
   {
@@ -4412,7 +5236,10 @@
    "title": "Local GraphRAG overview of graph neural networks",
    "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
    "requested_mode": "local",
-   "total_latency_s": 9.408,
+   "first_event_s": 0.007,
+   "first_step_s": 1.786,
+   "first_token_s": 5.618,
+   "total_latency_s": 5.618,
    "result": {
     "status": "ok",
     "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
@@ -4420,8 +5247,8 @@
     "parsed": {
      "entities": [
       {
-       "text": "graph neural networks",
-       "entity_type": "Method"
+       "entity_type": "Method",
+       "text": "graph neural networks"
       }
      ],
      "year_min": null,
@@ -4551,7 +5378,7 @@
      }
     ],
     "stopped_reason": null,
-    "answer": "Graph Neural Networks (GNNs) are a dominant method in the field, appearing in 296 papers within the Graph Machine Learning Research Community (L1) [research:L1:6] and 54 papers in Community N2:3 [N2:3]. Key methods include graph convolutional neural networks (6 papers) [method:739ff7cc355e398a] and graph networks (4 papers) [method:9e0123cf2e9b780e]. Research focuses on tasks like node classification [task:473189fe00c2d2b1] and graph representation learning [task:f58720df3e4446d0], with GNNs achieving state-of-the-art results despite challenges in generalization [task:f58720df3e4446d0].\n\nMajor benchmarks include the Open Graph Benchmark (3 papers) [dataset:74e97e01a849631e] and established datasets like Cora, Citeseer, and Pubmed [paper:aaai:2021:17203]. Research activity has grown from 324 papers in 2021 to 477 in 2025 [research:L1:6], with Graph Attention Networks being a stable method with 12 papers published in 2024-2025 [research:L0:83]. Specific applications include RNA-protein binding prediction [paper:aaai:2021:16112], image-text matching [paper:aaai:2021:16209], and text-to-speech synthesis [paper:aaai:2023:26575].",
+    "answer": "Graph neural networks research in this corpus centers on methods like graph networks (4 papers) and graph convolutional neural networks (6 papers), primarily applied to node classification tasks and graph representation learning. Key datasets include the Open Graph Benchmark (3 papers). Research communities show Graph Machine Learning as the dominant topic with 1279 papers, while graph neural networks account for 296 papers. Specific applications include knowledge graph completion using datasets like Pubmed and Cora, and vision-language learning involving video classification and out-of-distribution generalization.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [
@@ -4732,7 +5559,8 @@
      "paper:ijcai:2022:497",
      "paper:aaai:2022:20912"
     ],
-    "ai_generated_label": "AI-generated from graph data"
+    "ai_generated_label": "AI-generated from graph data",
+    "latency_s": 5.618
    }
   }
  ]

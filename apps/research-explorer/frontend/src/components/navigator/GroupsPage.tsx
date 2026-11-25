@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
+import { useExplorerStore } from "../../stores/useExplorerStore";
 import { Panel, Table } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
 import { MetricTooltip } from "./MetricTooltip";
@@ -12,10 +13,13 @@ interface GroupsPageProps {
 }
 
 export const GroupsPage: React.FC<GroupsPageProps> = ({ selectedGroupId, onSelectGroup, onOpenNode360 }) => {
+  const darkMode = useExplorerStore((s) => s.darkMode);
   const [sector, setSector] = useState("");
   const [country, setCountry] = useState("");
   const [notableOnly, setNotableOnly] = useState(false);
   const [search, setSearch] = useState("");
+
+  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
 
   const groupsQuery = useQuery({
     queryKey: ["nav-groups", sector, country, notableOnly, search],
@@ -53,12 +57,19 @@ export const GroupsPage: React.FC<GroupsPageProps> = ({ selectedGroupId, onSelec
           `${m.organizations[p.value[1]]} × ${m.topics[p.value[0]]}: RCA ${p.value[2]}`,
       },
       grid: { top: 10, left: 190, right: 20, bottom: 75 },
-      xAxis: { type: "category", data: m.topics.map((t) => t.slice(0, 18)), axisLabel: { rotate: 32, fontSize: 10 } },
-      yAxis: { type: "category", data: m.organizations.map((o) => o.slice(0, 26)), inverse: true, axisLabel: { fontSize: 10 } },
-      visualMap: { min: 0, max: maxRca, show: false },
+      xAxis: { type: "category", data: m.topics.map((t) => t.slice(0, 18)), axisLabel: { rotate: 32, fontSize: 10, color: axisColor } },
+      yAxis: { type: "category", data: m.organizations.map((o) => o.slice(0, 26)), inverse: true, axisLabel: { fontSize: 10, color: axisColor } },
+      visualMap: {
+        min: 0,
+        max: maxRca,
+        show: false,
+        inRange: {
+          color: darkMode ? ["#1f2937", "#b45309", "#fbbf24"] : ["#fef3c7", "#f59e0b", "#92400e"],
+        },
+      },
       series: [{ type: "heatmap", data: pts }],
     };
-  }, [groupsQuery.data]);
+  }, [groupsQuery.data, axisColor, darkMode]);
 
   const g = groupsQuery.data;
   const gd = detailQuery.data;
@@ -180,11 +191,19 @@ export const GroupsPage: React.FC<GroupsPageProps> = ({ selectedGroupId, onSelec
                     </button>
                   </div>
                   {gd.description && (
-                    <div className="p-2 rounded bg-ground border border-rule">
-                      <span className="text-[10px] uppercase tracking-wide text-faint block mb-0.5">
+                    <div className="p-2 rounded bg-ground border border-rule space-y-1">
+                      <span className="text-[10px] uppercase tracking-wide text-faint block">
                         {gd.description.provenance_label || "Graph profile"}
                       </span>
                       <p className="text-ink">{gd.description.description}</p>
+                      {gd.description.wikipedia_url && (
+                        <p className="text-[10px] text-faint">
+                          <a href={gd.description.wikipedia_url} target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline">
+                            Wikipedia source (rev {gd.description.wikipedia_revision_id ?? "—"})
+                          </a>{" "}
+                          · CC BY-SA 4.0
+                        </p>
+                      )}
                     </div>
                   )}
                   <div>

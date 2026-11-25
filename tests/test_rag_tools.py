@@ -111,9 +111,18 @@ def test_tools_all_nine_on_synthetic_fixture(tmp_path: Path):
     res_p = ts.papers({"organization_id": "organization:1", "method_id": "method:llm", "year_min": 2023})
     assert res_p.ids == ["paper:1"]
 
-    # 5. aggregate (both by year and organization_year share_growth)
-    res_agg = ts.aggregate(["organization:1"], by="organization_year", metric="share_growth", filters={"method_id": "method:llm", "after_year": 2022})
+    # 5. aggregate (both by year and organization_year share_growth; test threshold enforcement)
+    res_agg_filtered = ts.aggregate(["organization:1"], by="organization_year", metric="share_growth", filters={"method_id": "method:llm", "after_year": 2022})
+    assert res_agg_filtered.empty is True  # 1 paper < default min_post_total_papers=10
+    res_agg = ts.aggregate(
+        ["organization:1"],
+        by="organization_year",
+        metric="share_growth",
+        filters={"method_id": "method:llm", "after_year": 2022, "min_post_total_papers": 1, "min_post_subject_papers": 1},
+    )
     assert res_agg.rows[0]["post_gt_2022_share"] == 1.0
+    assert res_agg.rows[0]["post_papers"] == "1 of 1"
+    assert res_agg.rows[0]["paper_ids"] == ["paper:1"]
 
     # 6. rank (global + subject-specific lift)
     assert ts.rank("N2").rows[0]["id"] == "organization:1"

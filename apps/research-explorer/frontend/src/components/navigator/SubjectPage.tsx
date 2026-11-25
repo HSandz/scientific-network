@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
+import { useExplorerStore } from "../../stores/useExplorerStore";
 import { Panel, pct } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
 import { MetricTooltip } from "./MetricTooltip";
@@ -20,6 +21,7 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
   onOpenCommunity,
   onOpenNode360,
 }) => {
+  const darkMode = useExplorerStore((s) => s.darkMode);
   const [search, setSearch] = useState("");
   const activeId = subjectId || "method:Q3621696";
 
@@ -34,15 +36,19 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
     enabled: Boolean(activeId),
   });
 
+  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
+  const gridColor = darkMode ? "#323232" : "#e8e7e2";
+
   const trendOption = useMemo(() => {
     const pts = detailQuery.data?.trend?.yearly || [];
     return {
       tooltip: { trigger: "axis" },
       grid: { top: 20, left: 48, right: 16, bottom: 26 },
-      xAxis: { type: "category", data: pts.map((p) => String(p.year)) },
+      xAxis: { type: "category", data: pts.map((p) => String(p.year)), axisLabel: { color: axisColor } },
       yAxis: {
         type: "value",
-        axisLabel: { formatter: (v: number) => `${(v * 100).toFixed(1)}%` },
+        splitLine: { lineStyle: { color: gridColor } },
+        axisLabel: { color: axisColor, formatter: (v: number) => `${(v * 100).toFixed(1)}%` },
       },
       series: [
         {
@@ -53,7 +59,7 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
         },
       ],
     };
-  }, [detailQuery.data]);
+  }, [detailQuery.data, axisColor, gridColor]);
 
   const d = detailQuery.data;
 
@@ -119,6 +125,14 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
                     {d.summary.label}
                   </span>
                   <p className="text-ink leading-relaxed">{d.summary.text}</p>
+                  {d.summary.wikipedia_url && (
+                    <p className="text-[11px] text-faint">
+                      <a href={d.summary.wikipedia_url} target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline">
+                        Wikipedia (rev {d.summary.wikipedia_revision_id ?? "—"})
+                      </a>{" "}
+                      · CC BY-SA 4.0
+                    </p>
+                  )}
                   {d.summary.findings.length > 0 && (
                     <ul className="list-disc pl-4 space-y-1 text-muted">
                       {d.summary.findings.map((f, i) => (

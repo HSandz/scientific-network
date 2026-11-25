@@ -90,8 +90,128 @@ def test_faithfulness_verifier_rejects_retry_and_fallback():
     assert "Could not compose a faithful answer" in res["answer"]
 
 
+def test_faithfulness_verifier_placeholders_entities_and_tolerance():
+    trace = {
+        "steps": [{
+            "step": 1,
+            "tool": "aggregate",
+            "rows": [
+                {
+                    "entity_id": "organization:cuhk",
+                    "entity_name": "Chinese University of Hong Kong",
+                    "pre_papers": "0 of 73",
+                    "post_papers": "7 of 169",
+                    "post_gt_2022_share": 0.0414,
+                    "paper_ids": ["paper:aaai:2024:29823"],
+                }
+            ],
+        }]
+    }
+    q = "Which organizations collaborating with Tsinghua University increased LLM share after 2022?"
+
+    # 1. Placeholder / truncated citations rejected
+    ph_errs = verify_answer_faithfulness(
+        "* **Chinese University of Hong Kong**: 7 of 169 papers, share 0.0414 [paper:...].",
+        trace,
+        q,
+    )
+    assert any("placeholder" in e for e in ph_errs)
+    assert any("placeholder" in e for e in verify_answer_faithfulness("See [...] and [paper:aaai:...].", trace, q))
+
+    # 2. Invented organization rejected
+    org_errs = verify_answer_faithfulness(
+        "* **Mythical Quantum Institute**: share increased to 0.0414 [paper:aaai:2024:29823].",
+        trace,
+        q,
+    )
+    assert any("Mythical Quantum Institute" in e for e in org_errs)
+
+    # 3. Correct grounded answer with real entity, real paper ID, and percentage within tolerance passes
+    ok_errs = verify_answer_faithfulness(
+        "* **Chinese University of Hong Kong**: 7 of 169 papers after 2022 (4.14% share) [paper:aaai:2024:29823].",
+        trace,
+        q,
+    )
+    assert ok_errs == []
+
+    # 4. Number outside tolerance rejected
+    num_errs = verify_answer_faithfulness(
+        "* **Chinese University of Hong Kong**: 99 papers [paper:aaai:2024:29823].",
+        trace,
+        q,
+    )
+    assert any("99" in e for e in num_errs)
+
+    # 5. Trailing period after paper ID or newline after entity does not cause false failures
+    nl_errs = verify_answer_faithfulness(
+        "Chinese University of Hong Kong\n\nSummary: see paper:aaai:2024:29823.",
+        trace,
+        q,
+    )
+    assert nl_errs == []
+
+    # 6. Conjoined datasets ("X and Y") accepted only when both parts exist in trace
+    ds_trace = {"steps": [{"step": 1, "tool": "rank", "rows": [{"name": "Camelyon16"}, {"name": "TCGA-NSCLC"}]}]}
+    assert verify_answer_faithfulness("Evaluated on Camelyon16 and TCGA-NSCLC.", ds_trace, "Datasets?") == []
+    fake_ds = verify_answer_faithfulness("Evaluated on Camelyon16 and FakeDataset.", ds_trace, "Datasets?")
+    assert any("FakeDataset" in e for e in fake_ds)
+
+
+def test_compact_trace_for_prompt_preserves_final_step_within_budget():
+    from scientific_network.rag.answer import _compact_trace_for_prompt
+
+    verbose_step1_rows = [
+        {
+            "id": f"organization:{i}",
+            "name": f"University {i} " + ("X" * 80),
+            "edge_id": f"e:{i}",
+            "source_id": "organization:tsinghua",
+            "target_id": f"organization:{i}",
+            "evidence_ids": [f"ev:{i}:{j}" for j in range(15)],
+            "support_paper_ids": [f"paper:aaai:2024:{1000 + j}" for j in range(10)],
+            "fractional_weight": 0.5,
+            "evidence_kind": "observed",
+        }
+        for i in range(15)
+    ]
+    step2_rows = [
+        {"entity_id": f"organization:{i}", "entity_name": f"Collaborator {i}", "post_papers": f"{i + 2} of 20", "post_gt_2022_share": 0.1 + 0.01 * i}
+        for i in range(15)
+    ]
+    compacted = _compact_trace_for_prompt(
+        {"steps": [
+            {"step": 1, "tool": "neighbors", "row_count": 150, "rows": verbose_step1_rows, "paper_ids": [f"paper:aaai:2024:{i}" for i in range(25)]},
+            {"step": 2, "tool": "aggregate", "row_count": 37, "rows": step2_rows, "paper_ids": [f"paper:aaai:2024:{200 + i}" for i in range(15)]},
+        ]},
+        max_rows=15,
+        max_chars=5000,
+    )
+    serialized = json.dumps(compacted, ensure_ascii=False, separators=(",", ":"))
+    assert len(serialized) <= 5000
+    assert len(compacted["steps"][1]["rows"]) == 15
+    assert "edge_id" not in compacted["steps"][0].get("rows", [{}])[0] if compacted["steps"][0]["rows"] else True
+
+
 def test_worked_example_multihop_end_to_end(tmp_path: Path):
-    ts = _synth_toolset(tmp_path)
+    graph = {
+        "nodes": [
+            {"id": "researcher:1", "label": "Researcher", "name": "Bo An", "properties": {}},
+            {"id": "researcher:2", "label": "Researcher", "name": "Bo An", "properties": {}},
+            {"id": "organization:tsinghua", "label": "Organization", "name": "Tsinghua University", "properties": {}},
+            {"id": "organization:pku", "label": "Organization", "name": "Peking University", "properties": {}},
+            {"id": "paper:aaai:2024:1", "label": "Paper", "name": "LLM Study", "properties": {"year": 2024}},
+            {"id": "paper:aaai:2021:2", "label": "Paper", "name": "Old Study", "properties": {"year": 2021}},
+            {"id": "method:llm", "label": "Method", "name": "Large Language Models (LLMs)", "properties": {"key": "language model", "paper_count": 1}},
+        ],
+        "edges": [
+            {"edge_id": "e1", "relation": "COLLABORATED_WITH", "source_id": "organization:tsinghua", "target_id": "organization:pku", "evidence_ids": ["ev1"], "properties": {"support_count": 2}},
+            {"edge_id": "e2", "relation": "AFFILIATED_WITH", "source_id": "researcher:1", "target_id": "organization:pku", "evidence_ids": ["ev2"], "properties": {}},
+            {"edge_id": "e3", "relation": "AUTHORED", "source_id": "researcher:1", "target_id": "paper:aaai:2024:1", "evidence_ids": ["ev3"], "properties": {}},
+            {"edge_id": "e4", "relation": "AUTHORED", "source_id": "researcher:1", "target_id": "paper:aaai:2021:2", "evidence_ids": ["ev4"], "properties": {}},
+            {"edge_id": "e5", "relation": "USES_METHOD", "source_id": "paper:aaai:2024:1", "target_id": "method:llm", "evidence_ids": ["ev5"], "properties": {}},
+        ],
+    }
+    ts = RAGToolset(InMemoryGraphBackend(graph), analysis_dir=tmp_path, rag_dir=tmp_path, min_post_total_papers=1, min_post_subject_papers=1)
     llm = _FakeLLM([
         {"entities": [{"text": "Tsinghua University", "entity_type": "Organization"}, {"text": "large language model", "entity_type": "Method"}], "after_year": 2022, "intent": "lookup"},
         {"steps": [

@@ -144,3 +144,27 @@ def test_research_communities_strict_nesting(tmp_path: Path):
     for cid, c in res["communities"].items():
         if c["level"] == 0:
             assert c["parent_id"] in res["communities"]
+
+
+def test_entity_descriptions_attribution_and_labelling():
+    desc_path = Path("reports/final-exam/rag-v1/entity-descriptions.json")
+    assert desc_path.is_file()
+    data = json.loads(desc_path.read_text(encoding="utf-8"))
+    items = data.get("descriptions", [])
+    assert len(items) == 4316
+    for item in items:
+        sk = item.get("source_kind")
+        if sk == "wikipedia":
+            assert item.get("wikipedia_url")
+            assert item.get("wikipedia_revision_id")
+            assert "cc by-sa" in str(item.get("license", "")).lower()
+            assert "cc by-sa" in str(item.get("attribution", "")).lower()
+            assert "cc by-sa" in str(item.get("provenance_label", "")).lower()
+        elif sk == "llm_from_mentions":
+            assert item.get("generation_method") == "llm"
+            assert "llm" in str(item.get("provenance_label", "")).lower()
+        elif sk in ("template_from_mentions", "template_from_graph_metadata"):
+            assert item.get("generation_method") == "template"
+            assert "template" in str(item.get("provenance_label", "")).lower()
+        else:
+            raise AssertionError(f"Unexpected source_kind: {sk!r}")

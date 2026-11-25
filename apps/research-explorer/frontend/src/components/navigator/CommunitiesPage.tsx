@@ -25,6 +25,7 @@ export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
   const [source, setSource] = useState<"research_L1" | "research_L0" | "N1" | "N2">("research_L1");
   const [search, setSearch] = useState("");
   const [expandedCid, setExpandedCid] = useState<string | null>(null);
+  const [hoveredCid, setHoveredCid] = useState<string | null>(null);
 
   const listQuery = useQuery({
     queryKey: ["nav-communities", source, search],
@@ -46,19 +47,42 @@ export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
     enabled: Boolean(expandedCid),
   });
 
-  // Deterministic circular/level coordinates for super-node SVG canvas
+  // Concentric + collision-relaxed coordinates for super-node SVG canvas
   const layoutNodes = useMemo(() => {
     const nodes = (listQuery.data?.supernodes || []).slice(0, 36);
     const n = Math.max(nodes.length, 1);
     const maxSize = Math.max(...nodes.map((x) => x.size), 1);
-    return nodes.map((node, idx) => {
+    const placed = nodes.map((node, idx) => {
       const angle = (2 * Math.PI * idx) / n - Math.PI / 2;
-      const ring = 140 + (idx % 2) * 38;
-      const cx = 260 + ring * Math.cos(angle);
-      const cy = 200 + ring * Math.sin(angle);
-      const radius = 12 + Math.round(Math.sqrt(node.size / maxSize) * 18);
-      return { node, cx, cy, radius };
+      const ring = 125 + (idx % 3) * 34;
+      const radius = 11 + Math.round(Math.sqrt(node.size / maxSize) * 16);
+      return {
+        node,
+        cx: 260 + ring * Math.cos(angle),
+        cy: 200 + ring * Math.sin(angle),
+        radius,
+      };
     });
+    for (let iter = 0; iter < 40; iter++) {
+      for (let i = 0; i < placed.length; i++) {
+        for (let j = i + 1; j < placed.length; j++) {
+          const dx = placed[j].cx - placed[i].cx;
+          const dy = placed[j].cy - placed[i].cy;
+          const dist = Math.hypot(dx, dy) || 0.01;
+          const minSep = placed[i].radius + placed[j].radius + 8;
+          if (dist < minSep) {
+            const push = (minSep - dist) * 0.5;
+            const ux = dx / dist;
+            const uy = dy / dist;
+            placed[i].cx = Math.max(placed[i].radius + 10, Math.min(510 - placed[i].radius, placed[i].cx - ux * push));
+            placed[i].cy = Math.max(placed[i].radius + 10, Math.min(390 - placed[i].radius, placed[i].cy - uy * push));
+            placed[j].cx = Math.max(placed[j].radius + 10, Math.min(510 - placed[j].radius, placed[j].cx + ux * push));
+            placed[j].cy = Math.max(placed[j].radius + 10, Math.min(390 - placed[j].radius, placed[j].cy + uy * push));
+          }
+        }
+      }
+    }
+    return placed;
   }, [listQuery.data]);
 
   const coordById = useMemo(
@@ -135,6 +159,10 @@ export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
                       role="button"
                       tabIndex={0}
                       aria-label={`${node.community_id} ${node.title} (${node.size} members)`}
+                      onMouseEnter={() => setHoveredCid(node.community_id)}
+                      onMouseLeave={() => setHoveredCid(null)}
+                      onFocus={() => setHoveredCid(node.community_id)}
+                      onBlur={() => setHoveredCid(null)}
                       onClick={() => onSelectCommunity(node.community_id)}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
@@ -166,6 +194,20 @@ export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
                     </g>
                   );
                 })}
+                {hoveredCid && (() => {
+                  const item = layoutNodes.find((x) => x.node.community_id === hoveredCid);
+                  if (!item) return null;
+                  const lbl = `${item.node.community_id}: ${item.node.title.slice(0, 32)} (${item.node.size})`;
+                  const w = Math.min(260, lbl.length * 6 + 14);
+                  const tx = Math.max(8, Math.min(512 - w, item.cx - w / 2));
+                  const ty = item.cy - item.radius - 24 > 6 ? item.cy - item.radius - 24 : item.cy + item.radius + 6;
+                  return (
+                    <g pointerEvents="none">
+                      <rect x={tx} y={ty} width={w} height={18} rx={4} fill="var(--surface)" stroke="var(--control)" />
+                      <text x={tx + 7} y={ty + 12} fontSize="10" fill="var(--text)">{lbl}</text>
+                    </g>
+                  );
+                })()}
               </svg>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5 text-xs">

@@ -90,14 +90,14 @@ _PLAN_SYS = (
     "9. trend(subject_or_kind, period, trend_class, limit) -> subject_or_kind is 'Topic'|'Method'|'Task'|'Dataset' OR a subject name/ID\n\n"
     "Critical rules:\n"
     "- ALWAYS use resolved graph IDs from `linked_entities` when present (else exact short surface string).\n"
-    "- Chain steps via '$step1.ids', '$step1.first_id', '$step2.ids'.\n"
-    "- 'Which methods/topics grew fastest / gained most papers': trend(subject_or_kind='Method' or 'Topic', trend_class='rising', limit=15).\n"
+    "- Chain steps ONLY to earlier steps via '$step1.ids', '$step1.first_id', '$step2.ids' (NEVER use '$step1.ids' inside step 1!).\n"
+    "- 'Which methods/topics/tasks/datasets grew fastest / gained most share (across AAAI and IJCAI 2021-2025)': single step trend(subject_or_kind='Method' or 'Topic', period='2021-2025', trend_class='rising', limit=15).\n"
     "- 'Which organizations specialize most in X by lift': rank(network='N2', scope=X_id_or_name, measure='lift', limit=15).\n"
-    "- 'Which tasks co-occur most with M, and what datasets are used with M': step 1 neighbors(M_id, filters={'target_labels':['Task']}), step 2 neighbors(M_id, filters={'target_labels':['Dataset']}) (NO APPLIED_TO predicate for co-occurrence/dataset).\n"
+    "- 'Which tasks co-occur most with M, and what datasets are used with M': step 1 neighbors(node_id=M_id, predicates=null, filters={'target_labels':['Task'],'include_cooccurrence':true}, limit=15), step 2 neighbors(node_id=M_id, predicates=null, filters={'target_labels':['Dataset'],'include_cooccurrence':true}, limit=15) (NEVER use APPLIED_TO for co-occurrence).\n"
     "- 'Which tasks is Method M literally applied to' / 'evaluated on': neighbors(M_id, predicates=['APPLIED_TO']) or ['EVALUATED_ON'].\n"
     "- 'How many papers use/address X': aggregate(entity_ids=[X_id], by='year').\n"
     "- 'Which top K organizations/researchers authored/published the most papers that use/address X (in year Y)': step 1 papers(filters={method_id/task_id: X_id, year_min: Y, year_max: Y}, limit=200), step 2 aggregate(entity_ids='$step1.ids', by='organization' or 'researcher', limit=K).\n"
-    "- 'Which organizations collaborating with X increased share of Y after YEAR': step 1 neighbors(X_id, predicates=['COLLABORATED_WITH'], filters={'target_labels':['Organization']}, limit=100), step 2 aggregate(entity_ids='$step1.ids', by='organization_year', metric='share_growth', filters={'method_id'/'topic_id': Y_id, 'after_year': YEAR, 'only_increased': true})."
+    "- 'Which organizations collaborating with X increased share of Y after YEAR': step 1 neighbors(X_id, predicates=['COLLABORATED_WITH'], filters={'target_labels':['Organization']}, limit=100), step 2 aggregate(entity_ids='$step1.ids', by='organization_year', metric='share_growth', filters={'method_id'/'topic_id': Y_id, 'after_year': YEAR, 'only_increased': true}, limit=15)."
 )
 
 _YEAR_SINGLE_RE = re.compile(r"\b(202[1-5])\b")
@@ -265,7 +265,7 @@ def build_plan(
 
     last_err = ""
     for attempt in (0, 1):
-        pv = "rag-plan-v3" if attempt == 0 else "rag-plan-v3-retry"
+        pv = "rag-plan-v4" if attempt == 0 else "rag-plan-v4-retry"
         msg = user_msg if attempt == 0 else (user_msg + f"\n\nPrevious plan error: {last_err}. Return a valid 1-4 step JSON plan.")
         try:
             res = llm.complete(

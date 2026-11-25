@@ -9,7 +9,7 @@ from typing import Any, Callable, Iterator
 
 import numpy as np
 
-from scientific_network.rag.executor import execute_plan
+from scientific_network.rag.executor import iter_execute_plan
 from scientific_network.rag.llm import LLMClient, LLMError
 from scientific_network.rag.planner import build_plan, link_entities, parse_question, route_mode
 from scientific_network.rag.retrieval import global_search, local_search
@@ -17,8 +17,87 @@ from scientific_network.rag.sqlite_vectors import SQLiteVectorStore
 from scientific_network.rag.tools import RAGToolset
 
 _NUMBER_RE = re.compile(r"(?<![A-Za-z0-9_:])-?\d+(?:\.\d+)?%?")
-_PAPER_ID_RE = re.compile(r"paper:(?:aaai|ijcai):\d{4}:[A-Za-z0-9_.-]+")
+_PAPER_ID_RE = re.compile(r"paper:(?:aaai|ijcai):\d{4}:[A-Za-z0-9_.-]*[A-Za-z0-9_-]")
 _ENTITY_ID_RE = re.compile(r"\b(?:method|task|dataset|organization|researcher|topic|venue|research|N1|N2):[A-Za-z0-9_:-]+")
+_BRACKET_RE = re.compile(r"\[([^\[\]\n]+)\]")
+_ENTITY_PREFIX_RE = re.compile(
+    r"\b(?:paper|method|task|dataset|organization|researcher|topic|venue|research|N1|N2):",
+    re.I,
+)
+_PLACEHOLDER_WORDS = frozenset({"...", "…", "id", "paper", "papers", "citation", "citations", "tbd", "todo", "xxx"})
+
+_CAP_SPAN_RE = re.compile(
+    r"\b[A-Z][A-Za-z0-9'’-]*(?:[ \t]+(?:(?:of|for|and|in|on|the|at|to|from|by|with|de|di|&)[ \t]+)*[A-Z][A-Za-z0-9'’-]*)+"
+    r"(?:[ \t]*\([A-Z][A-Za-z0-9 \t.-]{1,24}\))?"
+)
+_LIST_BOLD_HEAD_RE = re.compile(r"(?m)^\s*(?:[-*]|\d+\.)\s+\*\*([^*:\n]{2,110}?)\*\*")
+_LIST_COLON_HEAD_RE = re.compile(r"(?m)^\s*(?:[-*]|\d+\.)\s+([^:\n]{2,90}?):")
+
+_ACRONYM_MAP: dict[str, tuple[str, ...]] = {
+    "llm": ("large language model", "large language models"),
+    "llms": ("large language model", "large language models"),
+    "gnn": ("graph neural network", "graph neural networks"),
+    "gnns": ("graph neural network", "graph neural networks"),
+    "cnn": ("convolutional neural network", "convolutional neural networks"),
+    "cnns": ("convolutional neural network", "convolutional neural networks"),
+    "nlp": ("natural language processing",),
+    "rl": ("reinforcement learning",),
+    "vlm": ("vision language model", "vision-language model"),
+    "vlms": ("vision language model", "vision-language model"),
+    "rag": ("retrieval augmented generation",),
+    "qa": ("question answering",),
+    "kg": ("knowledge graph", "knowledge graphs"),
+    "ai": ("artificial intelligence",),
+}
+
+# Explicit generic prose/heading/metric words that never name an external domain entity.
+_GENERIC_ENTITY_WORDS: frozenset[str] = frozenset({
+    "a", "an", "and", "as", "at", "by", "for", "from", "in", "into", "of", "on", "or",
+    "over", "per", "the", "to", "under", "vs", "with", "within", "across", "after",
+    "before", "between", "during", "since", "not", "no", "none", "only", "based",
+    "aaai", "ijcai", "ai", "summary", "key", "finding", "findings", "total", "paper",
+    "papers", "share", "shares", "delta", "growth", "rate", "minimum", "threshold",
+    "note", "notes", "step", "steps", "top", "ranked", "rank", "organization",
+    "organizations", "researcher", "researchers", "method", "methods", "task", "tasks",
+    "dataset", "datasets", "topic", "topics", "community", "communities", "graph",
+    "graphs", "network", "networks", "corpus", "analysis", "result", "results",
+    "evidence", "overview", "direction", "directions", "research", "main", "major",
+    "retrieved", "trace", "table", "below", "above", "cutoff", "year", "years",
+    "post", "pre", "increase", "increased", "decrease", "decreased", "rising",
+    "emerging", "declining", "stable", "collaborator", "collaborators",
+    "collaboration", "collaborations", "co", "occurrence", "occurring", "centrality",
+    "pagerank", "lift", "rca", "leiden", "graphrag", "local", "global", "search",
+    "report", "reports", "cited", "citations", "citation", "count", "counts",
+    "example", "examples", "qualified", "excluded", "stopped", "matching", "records",
+    "found", "could", "compose", "faithful", "answer", "inspect", "model", "models",
+    "data", "metric", "metrics", "score", "scores", "period", "level", "category",
+    "categories", "overall", "additional", "primary", "secondary", "other", "all",
+    "high", "highest", "low", "lowest", "fastest", "growing", "most", "leading",
+    "known", "unknown", "shown", "row", "rows", "item", "items", "value", "values",
+    "percentage", "percent", "pp", "cagr", "slope", "ppr", "support", "supporting",
+    "supported", "hub", "hubs", "broker", "brokers", "entity", "entities", "group",
+    "groups", "cluster", "clusters", "venue", "venues", "title", "name", "names",
+    "id", "ids", "both", "each", "more", "than", "fewer", "further", "however",
+    "therefore", "including", "especially", "notably", "while", "these", "those",
+    "this", "that", "there", "here", "one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "first", "second", "third",
+    "evaluated", "tested", "trained", "applied", "conducted", "reported", "using",
+})
+
+
+def _norm_text(s: str) -> str:
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", s.lower()).split())
+
+
+def _collect_trace_strings(obj: Any, out: list[str]) -> None:
+    if isinstance(obj, str):
+        out.append(obj)
+    elif isinstance(obj, list):
+        for item in obj:
+            _collect_trace_strings(item, out)
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            _collect_trace_strings(v, out)
 
 
 def _extract_allowed_numbers(obj: Any) -> set[float]:
@@ -50,9 +129,9 @@ def _extract_allowed_numbers(obj: Any) -> set[float]:
 def _extract_answer_numbers(text: str) -> list[float]:
     cleaned = _PAPER_ID_RE.sub(" ", text)
     cleaned = _ENTITY_ID_RE.sub(" ", cleaned)
-    # Ignore markdown ordered list prefixes ("1. ", "12. ") and hyphenated tokens (GPT-4, 3D)
+    # Ignore markdown ordered list prefixes ("1. "), hyphenated tokens (GPT-4, CIFAR-100, Qwen3.5-4B), 2D/3D, L0/L1, N1-N4
     cleaned = re.sub(r"(?m)^\s*\d+\.\s+", " ", cleaned)
-    cleaned = re.sub(r"\b[A-Za-z]+-\d+\b|\b\d+[Dd]\b", " ", cleaned)
+    cleaned = re.sub(r"\b[A-Za-z][A-Za-z0-9.]*-\d+\b|\b\d+[Dd]\b|\bL[01](?::\d+)?\b|\bN[1-4]\b", " ", cleaned)
     out = []
     for m in _NUMBER_RE.findall(cleaned):
         try:
@@ -62,9 +141,102 @@ def _extract_answer_numbers(text: str) -> list[float]:
     return out
 
 
+def _extract_candidate_entities(answer: str) -> list[str]:
+    text_no_ids = _PAPER_ID_RE.sub(" ", answer)
+    text_no_ids = _ENTITY_ID_RE.sub(" ", text_no_ids)
+    candidates: list[str] = []
+    seen: set[str] = set()
+
+    def _add(raw: str) -> None:
+        cleaned = raw.replace("**", "").strip(" \t\r\n.,;:!?\"'()[]")
+        cleaned = re.sub(r"\s*\([^()]*\d[^()]*\)\s*$", "", cleaned).strip()
+        if len(cleaned) < 2 or not re.search(r"[A-Za-z]", cleaned):
+            return
+        key = _norm_text(cleaned)
+        if key and key not in seen:
+            seen.add(key)
+            candidates.append(cleaned)
+
+    for m in _LIST_BOLD_HEAD_RE.finditer(text_no_ids):
+        _add(m.group(1))
+    for m in _LIST_COLON_HEAD_RE.finditer(text_no_ids):
+        _add(m.group(1))
+    plain = text_no_ids.replace("**", "")
+    for m in _CAP_SPAN_RE.finditer(plain):
+        _add(m.group(0))
+    return candidates
+
+
+def _entity_in_trace(cand: str, allowed_norm_blob: str, allowed_norms: list[str]) -> bool:
+    norm = _norm_text(cand)
+    if not norm:
+        return True
+    words = norm.split()
+    if all(w in _GENERIC_ENTITY_WORDS or w.isdigit() for w in words):
+        return True
+
+    variants = {norm}
+    if norm.endswith("s") and len(norm) > 3:
+        variants.add(norm[:-1])
+    else:
+        variants.add(norm + "s")
+    for v in list(variants):
+        if v.startswith("the ") and len(v) > 5:
+            variants.add(v[4:])
+
+    for v in variants:
+        if f" {v} " in allowed_norm_blob:
+            return True
+        if len(v) >= 5 and any(v in s for s in allowed_norms):
+            return True
+
+    for w in words:
+        for exp in _ACRONYM_MAP.get(w, ()):
+            if exp in allowed_norm_blob:
+                other_words = [ow for ow in words if ow != w]
+                if all(ow in _GENERIC_ENTITY_WORDS or f" {ow} " in allowed_norm_blob for ow in other_words):
+                    return True
+
+    trimmed_words = list(words)
+    while len(trimmed_words) > 1 and trimmed_words[0] in _GENERIC_ENTITY_WORDS:
+        trimmed_words.pop(0)
+        sub = " ".join(trimmed_words)
+        if f" {sub} " in allowed_norm_blob or (len(sub) >= 5 and any(sub in s for s in allowed_norms)):
+            return True
+
+    for candidate_str in (cand, " ".join(trimmed_words)):
+        if re.search(r"\s+(?:and|&)\s+", candidate_str, flags=re.I):
+            parts = [p.strip() for p in re.split(r"\s+(?:and|&)\s+", candidate_str, flags=re.I) if p.strip()]
+            if len(parts) >= 2:
+                meaningful = [p for p in parts if not all(w in _GENERIC_ENTITY_WORDS or w.isdigit() for w in _norm_text(p).split())]
+                if meaningful and all(len(p) >= 2 and _entity_in_trace(p, allowed_norm_blob, allowed_norms) for p in parts):
+                    return True
+    return False
+
+
 def verify_answer_faithfulness(answer: str, trace_payload: Any, question: str) -> list[str]:
-    """Check that every number and cited paper_id in the answer appears in the retrieved trace or question."""
+    """Verify answer faithfulness against the retrieved trace and question (spec §6.3).
+
+    Rules enforced:
+    1. **Numbers**: Every numeric value in ``answer`` (excluding numbers embedded inside valid
+       paper/entity IDs, markdown ordered-list prefixes ``1. ``, and model/network tokens such as
+       ``GPT-4``, ``CIFAR-100``, ``3D``, ``L0``/``L1``, ``N1``–``N4``) must match a number in
+       ``trace_payload`` or ``question`` within ``max(0.01, 0.005 * abs(a))`` (also accepting
+       percentage forms ``value * 100`` rounded to 1–2 decimals).
+    2. **Bracketed and paper citations**:
+       - Placeholder or truncated citations inside brackets (containing ``...``, ``…``, ``TBD``,
+         ``TODO``, bare ``paper:``, or generic words like ``[citation]``/``[paper]``) are rejected.
+       - Every bracketed or unbracketed ``paper:...`` / entity ID token must match the full ID
+         pattern and appear verbatim in ``trace_payload`` (or ``question``).
+    3. **Named entities**: Capitalized multi-word spans and list-item heads in ``answer`` are
+       normalized and matched against strings in ``trace_payload`` and ``question`` (including
+       singular/plural variants and explicit AI acronym expansions such as ``LLM`` ↔ ``large
+       language model``). An explicit documented allowlist covers generic prose/metric/heading
+       words (e.g. ``Key Findings``, ``Minimum Threshold``, ``AAAI``, ``IJCAI``) and contains no
+       institution, researcher, method, task, or dataset names. Any unmatched entity is rejected.
+    """
     errors: list[str] = []
+
     allowed_nums = _extract_allowed_numbers(trace_payload) | _extract_allowed_numbers(question)
     for val in _extract_answer_numbers(answer):
         if any(abs(val - a) <= max(0.01, 0.005 * abs(a)) for a in allowed_nums):
@@ -72,37 +244,135 @@ def verify_answer_faithfulness(answer: str, trace_payload: Any, question: str) -
         errors.append(f"number {val:g} not in trace")
 
     trace_text = json.dumps(trace_payload, ensure_ascii=False)
-    for pid in set(_PAPER_ID_RE.findall(answer)):
+    allowed_id_blob = trace_text + "\n" + question
+
+    for bm in _BRACKET_RE.finditer(answer):
+        inner = bm.group(1).strip()
+        low = inner.lower()
+        if "..." in inner or "…" in inner or low in _PLACEHOLDER_WORDS:
+            errors.append(f"placeholder or truncated citation [{inner}]")
+            continue
+        if _ENTITY_PREFIX_RE.search(inner):
+            tokens = [t.strip() for t in re.split(r"[,;]+", inner) if t.strip()]
+            for tok in tokens:
+                if _PAPER_ID_RE.fullmatch(tok):
+                    if tok not in trace_text:
+                        errors.append(f"cited paper {tok} not in trace")
+                elif _ENTITY_ID_RE.fullmatch(tok):
+                    if tok not in allowed_id_blob:
+                        errors.append(f"cited entity {tok} not in trace")
+                else:
+                    errors.append(f"malformed or truncated citation token [{tok}]")
+
+    for pid in sorted(set(_PAPER_ID_RE.findall(answer))):
         if pid not in trace_text:
-            errors.append(f"cited paper {pid} not in trace")
+            msg = f"cited paper {pid} not in trace"
+            if msg not in errors:
+                errors.append(msg)
+
+    raw_strings: list[str] = [question]
+    _collect_trace_strings(trace_payload, raw_strings)
+    allowed_norms = [_norm_text(s) for s in raw_strings if isinstance(s, str) and s.strip()]
+    allowed_norm_blob = " " + "  ".join(allowed_norms) + " "
+    for cand in _extract_candidate_entities(answer):
+        if not _entity_in_trace(cand, allowed_norm_blob, allowed_norms):
+            errors.append(f"entity {cand!r} not in trace")
+
     return errors
 
 
 _ANSWER_SYS = (
-    "Answer the user question concisely using ONLY the retrieved graph trace below. "
+    "Answer the user question concisely using ONLY the retrieved graph trace below.\n"
     "Rules:\n"
     "- Every number you state MUST appear verbatim in the trace.\n"
-    "- Cite supporting papers using their exact IDs in brackets like [paper:...] when available in the trace.\n"
+    "- Mention ONLY organizations, researchers, methods, tasks, datasets, and topics present in the trace or question; NEVER invent entities.\n"
+    "- Copy complete paper IDs verbatim from the trace's `paper_ids` field in brackets, e.g. [paper:aaai:2024:29823]. "
+    "NEVER write placeholder or truncated citations such as [paper:...], [...], or ellipses inside brackets; if an item has no paper ID in the trace, omit the bracketed citation.\n"
+    "- For share-growth questions, report BOTH paper counts (k of n papers) and shares, plus the minimum-paper threshold stated in the step note.\n"
+    "- When a step shows top K of N deterministically ranked rows, state 'showing top K of N' cleanly; NEVER say the trace was truncated.\n"
     "- If the trace stopped on an empty step, clearly state that no matching records were found rather than guessing."
 )
 
 
-def _compact_trace_for_prompt(trace_payload: Any) -> Any:
-    """Keep all step summaries intact within the LLM prompt budget without truncating later steps."""
+_NOISY_ROW_KEYS = frozenset({
+    "edge_id",
+    "source_id",
+    "target_id",
+    "center_id",
+    "evidence_ids",
+    "support_paper_ids",
+    "fractional_weight",
+    "evidence_kind",
+})
+
+
+def _strip_noisy_row_keys(row: Any) -> Any:
+    if isinstance(row, dict):
+        return {k: v for k, v in row.items() if k not in _NOISY_ROW_KEYS}
+    return row
+
+
+def _compact_trace_for_prompt(
+    trace_payload: Any,
+    *,
+    max_rows: int = 15,
+    max_chars: int = 10500,
+) -> Any:
+    """Keep deterministically ranked top rows per step intact within prompt budget.
+
+    Strips verbose internal edge metadata keys and, when multi-step JSON still exceeds
+    ``max_chars``, trims earlier intermediate steps before reducing the final step so
+    the LLM always receives valid JSON with the final step prioritized.
+    """
     if not isinstance(trace_payload, dict) or "steps" not in trace_payload:
         return trace_payload
-    compacted_steps = []
-    for st in trace_payload.get("steps") or []:
-        rows = list(st.get("rows") or [])
-        compacted_steps.append({
-            "step": st.get("step"),
-            "tool": st.get("tool"),
-            "row_count": st.get("row_count", len(rows)),
-            "note": st.get("note", ""),
-            "rows": rows[:12],
-            "paper_ids": list(st.get("paper_ids") or [])[:15],
-        })
-    return {"steps": compacted_steps}
+    raw_steps = list(trace_payload.get("steps") or [])
+    n_steps = len(raw_steps)
+
+    def _build(
+        early_rows: int,
+        early_pids: int,
+        final_rows: int,
+        final_pids: int,
+    ) -> list[dict[str, Any]]:
+        out: list[dict[str, Any]] = []
+        for idx, st in enumerate(raw_steps):
+            rows = [_strip_noisy_row_keys(r) for r in (st.get("rows") or [])]
+            total_n = int(st.get("row_count", len(rows)))
+            is_last = idx == n_steps - 1
+            row_cap = final_rows if is_last else min(max_rows, early_rows)
+            pid_cap = final_pids if is_last else early_pids
+            shown_rows = rows[:row_cap]
+            out.append({
+                "step": st.get("step"),
+                "tool": st.get("tool"),
+                "total_row_count": total_n,
+                "shown_row_count": len(shown_rows),
+                "ranking_note": (
+                    f"Showing top {len(shown_rows)} of {total_n} deterministically ranked rows."
+                    if total_n > len(shown_rows)
+                    else f"All {len(shown_rows)} rows shown."
+                ),
+                "note": st.get("note", ""),
+                "rows": shown_rows,
+                "paper_ids": list(st.get("paper_ids") or [])[:pid_cap],
+            })
+        return out
+
+    compacted = _build(max_rows, 25, max_rows, 25)
+    if len(json.dumps({"steps": compacted}, ensure_ascii=False, separators=(",", ":"))) <= max_chars:
+        return {"steps": compacted}
+
+    for early_rows, early_pids in ((5, 5), (2, 3), (0, 2)):
+        compacted = _build(early_rows, early_pids, max_rows, 25)
+        if len(json.dumps({"steps": compacted}, ensure_ascii=False, separators=(",", ":"))) <= max_chars:
+            return {"steps": compacted}
+
+    for final_rows in range(max_rows - 1, -1, -1):
+        compacted = _build(0, 2, final_rows, min(15, 25))
+        if len(json.dumps({"steps": compacted}, ensure_ascii=False, separators=(",", ":"))) <= max_chars:
+            return {"steps": compacted}
+    return {"steps": _build(0, 0, 0, 5)}
 
 
 def compose_grounded_answer(
@@ -110,13 +380,12 @@ def compose_grounded_answer(
     trace_payload: Any,
     llm: LLMClient,
     *,
-    prompt_version: str = "rag-answer-v2",
+    prompt_version: str = "rag-answer-v3",
+    max_rows_in_prompt: int = 15,
 ) -> dict[str, Any]:
     """Compose an answer from the trace with automatic faithfulness check + 1 retry."""
-    prompt_trace = _compact_trace_for_prompt(trace_payload)
-    trace_json = json.dumps(prompt_trace, ensure_ascii=False)
-    if len(trace_json) > 12000:
-        trace_json = trace_json[:12000] + "...(truncated)"
+    prompt_trace = _compact_trace_for_prompt(trace_payload, max_rows=max_rows_in_prompt)
+    trace_json = json.dumps(prompt_trace, ensure_ascii=False, separators=(",", ":"))
 
     last_errs: list[str] = []
     for attempt in (0, 1):
@@ -125,10 +394,10 @@ def compose_grounded_answer(
         if attempt == 1:
             user_msg += (
                 f"\n\nYour previous answer failed faithfulness checks ({'; '.join(last_errs)}). "
-                "Rewrite using ONLY exact numbers and paper IDs present in the trace."
+                "Rewrite using ONLY exact numbers, entity names, and verbatim paper IDs present in the trace (no [paper:...] placeholders)."
             )
         try:
-            res = llm.complete(prompt_version=pv, system=_ANSWER_SYS, user=user_msg, max_tokens=600)
+            res = llm.complete(prompt_version=pv, system=_ANSWER_SYS, user=user_msg, max_tokens=700)
             ans = res.content.strip()
         except LLMError as exc:
             last_errs = [str(exc)]
@@ -153,6 +422,13 @@ def compose_grounded_answer(
     }
 
 
+def _emit_answer_tokens(answer_text: str) -> Iterator[dict[str, Any]]:
+    words = answer_text.split(" ")
+    for i in range(0, len(words), 6):
+        chunk = (" " if i > 0 else "") + " ".join(words[i:i + 6])
+        yield {"event": "token", "data": {"text": chunk}}
+
+
 def run_ask(
     question: str,
     *,
@@ -165,76 +441,172 @@ def run_ask(
     reports_path: Path = Path("reports/final-exam/rag-v1/community-reports.json"),
 ) -> dict[str, Any]:
     """Run parse -> link -> route -> plan/retrieve -> execute -> grounded answer."""
+    final_result: dict[str, Any] = {}
+    for ev in stream_ask(
+        question,
+        toolset=toolset,
+        llm=llm,
+        mode=mode,
+        resolved_overrides=resolved_overrides,
+        vector_store=vector_store,
+        embed_fn=embed_fn,
+        reports_path=reports_path,
+    ):
+        if ev.get("event") == "done":
+            final_result = ev["data"]
+    return final_result
+
+
+def stream_ask(
+    question: str,
+    *,
+    toolset: RAGToolset,
+    llm: LLMClient,
+    mode: str = "auto",
+    resolved_overrides: dict[str, str] | None = None,
+    vector_store: SQLiteVectorStore | None = None,
+    embed_fn: Callable[[str], np.ndarray] | None = None,
+    reports_path: Path = Path("reports/final-exam/rag-v1/community-reports.json"),
+) -> Iterator[dict[str, Any]]:
+    """Stream SSE-friendly stage events progressively as work happens.
+
+    Sequence: ``stage(parsing)`` -> ``parsed`` (with linked entities) ->
+    [``disambiguate`` + ``done`` if ambiguous] ->
+    ``stage(planning)`` -> ``plan`` -> per-step ``step`` + ``subgraph`` ->
+    ``stage(synthesizing)`` -> ``token`` chunks -> ``citations`` -> ``done``.
+    """
+    yield {"event": "stage", "data": {"stage": "parsing", "mode": mode}}
     parsed = parse_question(question, llm)
     link_res = link_entities(parsed, toolset, resolved_overrides=resolved_overrides)
+    yield {
+        "event": "parsed",
+        "data": {"parsed": parsed, "linked": link_res["linked"]},
+    }
+
     if link_res["needs_disambiguation"]:
-        return {
+        res = {
             "status": "needs_disambiguation",
             "question": question,
             "parsed": parsed,
+            "linked": link_res["linked"],
             "disambiguation": link_res["disambiguation"],
             "answer": "Multiple researchers match that name; please select the intended researcher.",
             "faithfulness_passed": True,
+            "faithfulness_errors": [],
             "steps": [],
             "subgraph_nodes": [],
             "subgraph_edges": [],
             "paper_ids": [],
             "ai_generated_label": "AI-generated from graph data",
         }
+        yield {"event": "disambiguate", "data": res}
+        yield {"event": "done", "data": res}
+        return
 
     chosen_mode = route_mode(question, mode, parsed, link_res["linked"])
+
     if chosen_mode == "global":
+        yield {"event": "stage", "data": {"stage": "global_map_reduce", "mode": "global"}}
         g_res = global_search(question, llm=llm, reports_path=reports_path, vector_store=vector_store, embed_fn=embed_fn)
         errs = verify_answer_faithfulness(g_res["answer"], g_res["points"], question)
-        return {
-            "status": "ok",
-            "question": question,
-            "mode": "global",
-            "parsed": parsed,
-            "linked": link_res["linked"],
-            "plan": [],
-            "steps": [{"step": 1, "tool": "community_report", "purpose": "global map-reduce", "empty": False,
-                       "row_count": len(g_res["points"]), "rows": g_res["points"], "source_kind": "global_search",
-                       "note": f"Synthesized over {len(g_res['reports_used'])} community reports.",
-                       "paper_ids": g_res["paper_ids"], "evidence_ids": []}],
-            "stopped_reason": None,
-            "answer": g_res["answer"],
-            "faithfulness_passed": len(errs) == 0,
-            "faithfulness_errors": errs,
-            "subgraph_nodes": [],
-            "subgraph_edges": [],
+        step = {
+            "step": 1,
+            "tool": "community_report",
+            "purpose": "global map-reduce",
+            "empty": False,
+            "row_count": len(g_res["points"]),
+            "rows": g_res["points"],
+            "source_kind": "global_search",
+            "note": f"Synthesized over {len(g_res['reports_used'])} community reports.",
             "paper_ids": g_res["paper_ids"],
-            "ai_generated_label": "AI-generated from graph data",
+            "evidence_ids": [],
         }
+        yield {"event": "step", "data": step}
+        yield {"event": "subgraph", "data": {"nodes": [], "edges": []}}
+        yield from _emit_answer_tokens(g_res["answer"])
+        yield {"event": "citations", "data": {"paper_ids": g_res["paper_ids"]}}
+        yield {
+            "event": "done",
+            "data": {
+                "status": "ok",
+                "question": question,
+                "mode": "global",
+                "parsed": parsed,
+                "linked": link_res["linked"],
+                "plan": [],
+                "steps": [step],
+                "stopped_reason": None,
+                "answer": g_res["answer"],
+                "faithfulness_passed": len(errs) == 0,
+                "faithfulness_errors": errs,
+                "subgraph_nodes": [],
+                "subgraph_edges": [],
+                "paper_ids": g_res["paper_ids"],
+                "ai_generated_label": "AI-generated from graph data",
+            },
+        }
+        return
 
     if chosen_mode == "local" and vector_store is not None and embed_fn is not None:
+        yield {"event": "stage", "data": {"stage": "local_retrieve", "mode": "local"}}
         l_res = local_search(question, toolset=toolset, vector_store=vector_store, embed_fn=embed_fn)
-        composed = compose_grounded_answer(question, l_res, llm, prompt_version="rag-local-answer-v1")
-        return {
-            "status": "ok",
-            "question": question,
-            "mode": "local",
-            "parsed": parsed,
-            "linked": link_res["linked"],
-            "plan": [],
-            "steps": [{"step": 1, "tool": "local_search", "purpose": "entity-centric neighborhood + chunks",
-                       "empty": False, "row_count": len(l_res["paper_ids"]),
-                       "rows": [{"section": s} for s in l_res["sections_used"]],
-                       "source_kind": "local_search",
-                       "note": f"Packed {len(l_res['sections_used'])} context sections.",
-                       "paper_ids": l_res["paper_ids"], "evidence_ids": []}],
-            "stopped_reason": None,
-            "answer": composed["answer"],
-            "faithfulness_passed": composed["faithfulness_passed"],
-            "faithfulness_errors": composed["faithfulness_errors"],
-            "subgraph_nodes": l_res["subgraph_nodes"],
-            "subgraph_edges": l_res["subgraph_edges"],
+        step = {
+            "step": 1,
+            "tool": "local_search",
+            "purpose": "entity-centric neighborhood + chunks",
+            "empty": False,
+            "row_count": len(l_res["paper_ids"]),
+            "rows": [{"section": s} for s in l_res["sections_used"]],
+            "source_kind": "local_search",
+            "note": f"Packed {len(l_res['sections_used'])} context sections.",
             "paper_ids": l_res["paper_ids"],
-            "ai_generated_label": "AI-generated from graph data",
+            "evidence_ids": [],
         }
+        yield {"event": "step", "data": step}
+        yield {"event": "subgraph", "data": {"nodes": l_res["subgraph_nodes"], "edges": l_res["subgraph_edges"]}}
+        yield {"event": "stage", "data": {"stage": "synthesizing", "mode": "local"}}
+        composed = compose_grounded_answer(question, l_res, llm, prompt_version="rag-local-answer-v2")
+        yield from _emit_answer_tokens(composed["answer"])
+        yield {"event": "citations", "data": {"paper_ids": l_res["paper_ids"]}}
+        yield {
+            "event": "done",
+            "data": {
+                "status": "ok",
+                "question": question,
+                "mode": "local",
+                "parsed": parsed,
+                "linked": link_res["linked"],
+                "plan": [],
+                "steps": [step],
+                "stopped_reason": None,
+                "answer": composed["answer"],
+                "faithfulness_passed": composed["faithfulness_passed"],
+                "faithfulness_errors": composed["faithfulness_errors"],
+                "subgraph_nodes": l_res["subgraph_nodes"],
+                "subgraph_edges": l_res["subgraph_edges"],
+                "paper_ids": l_res["paper_ids"],
+                "ai_generated_label": "AI-generated from graph data",
+            },
+        }
+        return
 
+    yield {"event": "stage", "data": {"stage": "planning", "mode": chosen_mode}}
     plan = build_plan(question, parsed, link_res["linked"], llm)
-    exec_res = execute_plan(plan, toolset)
+    yield {"event": "plan", "data": {"mode": chosen_mode, "plan": plan, "linked": link_res["linked"]}}
+
+    exec_res: dict[str, Any] = {
+        "steps": [],
+        "stopped_reason": None,
+        "stopped_at_step": None,
+        "subgraph_nodes": [],
+        "subgraph_edges": [],
+        "paper_ids": [],
+        "evidence_ids": [],
+    }
+    for inc in iter_execute_plan(plan, toolset):
+        exec_res = {k: v for k, v in inc.items() if k != "step"}
+        yield {"event": "step", "data": inc["step"]}
+        yield {"event": "subgraph", "data": {"nodes": inc["subgraph_nodes"], "edges": inc["subgraph_edges"]}}
 
     if exec_res["stopped_reason"] == "empty_step":
         step_no = exec_res["stopped_at_step"]
@@ -250,52 +622,33 @@ def run_ask(
             "ai_generated_label": "AI-generated from graph data",
         }
     else:
+        yield {"event": "stage", "data": {"stage": "synthesizing", "mode": chosen_mode}}
         composed = compose_grounded_answer(
             question,
-            {"steps": [{k: s[k] for k in ("step", "tool", "rows", "note", "paper_ids")} for s in exec_res["steps"]]},
+            {"steps": [{k: s[k] for k in ("step", "tool", "row_count", "rows", "note", "paper_ids")} for s in exec_res["steps"]]},
             llm,
         )
 
-    return {
-        "status": "ok",
-        "question": question,
-        "mode": chosen_mode,
-        "parsed": parsed,
-        "linked": link_res["linked"],
-        "plan": plan,
-        "steps": exec_res["steps"],
-        "stopped_reason": exec_res["stopped_reason"],
-        "stopped_at_step": exec_res["stopped_at_step"],
-        "answer": composed["answer"],
-        "faithfulness_passed": composed["faithfulness_passed"],
-        "faithfulness_errors": composed["faithfulness_errors"],
-        "subgraph_nodes": exec_res["subgraph_nodes"],
-        "subgraph_edges": exec_res["subgraph_edges"],
-        "paper_ids": exec_res["paper_ids"],
-        "ai_generated_label": composed["ai_generated_label"],
+    yield from _emit_answer_tokens(composed["answer"])
+    yield {"event": "citations", "data": {"paper_ids": exec_res["paper_ids"]}}
+    yield {
+        "event": "done",
+        "data": {
+            "status": "ok",
+            "question": question,
+            "mode": chosen_mode,
+            "parsed": parsed,
+            "linked": link_res["linked"],
+            "plan": plan,
+            "steps": exec_res["steps"],
+            "stopped_reason": exec_res["stopped_reason"],
+            "stopped_at_step": exec_res["stopped_at_step"],
+            "answer": composed["answer"],
+            "faithfulness_passed": composed["faithfulness_passed"],
+            "faithfulness_errors": composed["faithfulness_errors"],
+            "subgraph_nodes": exec_res["subgraph_nodes"],
+            "subgraph_edges": exec_res["subgraph_edges"],
+            "paper_ids": exec_res["paper_ids"],
+            "ai_generated_label": composed["ai_generated_label"],
+        },
     }
-
-
-def stream_ask(
-    question: str,
-    **kwargs,
-) -> Iterator[dict[str, Any]]:
-    """Yield SSE-friendly stage events (parse -> plan -> step -> subgraph -> token -> citations -> done)."""
-    yield {"event": "stage", "data": {"stage": "parsing"}}
-    result = run_ask(question, **kwargs)
-    if result["status"] == "needs_disambiguation":
-        yield {"event": "disambiguate", "data": result}
-        yield {"event": "done", "data": result}
-        return
-    if result.get("plan"):
-        yield {"event": "plan", "data": {"mode": result["mode"], "plan": result["plan"]}}
-    for st in result.get("steps", []):
-        yield {"event": "step", "data": st}
-    yield {"event": "subgraph", "data": {"nodes": result["subgraph_nodes"], "edges": result["subgraph_edges"]}}
-    # Stream answer in small word chunks for responsive UI updates
-    words = result["answer"].split(" ")
-    for i in range(0, len(words), 6):
-        chunk = (" " if i > 0 else "") + " ".join(words[i:i + 6])
-        yield {"event": "token", "data": {"text": chunk}}
-    yield {"event": "citations", "data": {"paper_ids": result["paper_ids"]}}
-    yield {"event": "done", "data": result}

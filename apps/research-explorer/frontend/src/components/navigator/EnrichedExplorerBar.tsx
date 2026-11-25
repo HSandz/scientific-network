@@ -31,24 +31,22 @@ export const EnrichedExplorerBar: React.FC<EnrichedExplorerBarProps> = ({ onOpen
   });
 
   return (
-    <div className="w-full mt-1">
-      <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          data-testid="toggle-enriched-explorer"
-          onClick={() => setOpen((v) => !v)}
-          className="px-2 py-0.5 rounded border border-control bg-surface hover:bg-raised text-xs font-medium"
-        >
-          {open ? "Hide Enriched v5 Labels & Predicates" : "+ Enriched v5 Layer (Method · Task · Dataset)"}
-        </button>
-        {schemaQuery.data && (
-          <span className="text-[11px] text-faint font-mono">
-            {schemaQuery.data.labels.length} labels · {schemaQuery.data.predicates.length} predicates ({schemaQuery.data.graph_version})
-          </span>
-        )}
-      </div>
+    <>
+      <button
+        type="button"
+        data-testid="toggle-enriched-explorer"
+        onClick={() => setOpen((v) => !v)}
+        className="ml-auto h-4 px-1.5 py-0 rounded border border-control bg-surface hover:bg-raised text-[11px] font-medium leading-[14px] inline-flex items-center"
+      >
+        {open ? "Hide Enriched v5" : "+ Enriched v5"}
+      </button>
+      {schemaQuery.data && open && (
+        <span className="text-[11px] text-faint font-mono">
+          {schemaQuery.data.labels.length} labels · {schemaQuery.data.predicates.length} predicates ({schemaQuery.data.graph_version})
+        </span>
+      )}
       {open && (
-        <div data-testid="enriched-explorer-panel" className="mt-2 p-2.5 rounded border border-border bg-surface text-xs space-y-2">
+        <div data-testid="enriched-explorer-panel" className="w-full mt-1.5 p-2.5 rounded border border-border bg-surface text-xs space-y-2">
           <div className="flex flex-wrap items-center gap-2">
             {(["Method", "Task", "Dataset"] as const).map((lbl) => (
               <button
@@ -98,6 +96,6 @@ export const EnrichedExplorerBar: React.FC<EnrichedExplorerBarProps> = ({ onOpen
           )}
         </div>
       )}
-    </div>
+    </>
   );
 };

@@ -617,7 +617,9 @@ def build_entity_descriptions(
                     "source_kind": "wikipedia",
                     "wikipedia_url": wiki_rec.get("url") or w_url,
                     "wikipedia_revision_id": wiki_rec.get("revision_id") or w_rev,
-                    "provenance_label": f"Wikipedia (rev {wiki_rec.get('revision_id') or w_rev})",
+                    "license": "CC BY-SA 4.0",
+                    "attribution": "Text from English Wikipedia contributors, licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+                    "provenance_label": f"Wikipedia (rev {wiki_rec.get('revision_id') or w_rev}, CC BY-SA 4.0)",
                 })
                 continue
             sector = props.get("sector") or "unknown sector"
@@ -625,10 +627,11 @@ def build_entity_descriptions(
             descriptions.append({
                 "id": nid, "label": lab, "name": name,
                 "description": f"{name} is an organization ({sector}, country code {cc}) appearing in the AAAI/IJCAI 2021-2025 corpus.",
-                "source_kind": "graph_metadata",
+                "source_kind": "template_from_graph_metadata",
+                "generation_method": "template",
                 "wikipedia_url": w_url,
                 "wikipedia_revision_id": w_rev,
-                "provenance_label": "AI-generated from graph data",
+                "provenance_label": "Template-generated from graph metadata",
             })
             stats["template_from_mentions"] += 1
             continue
@@ -645,7 +648,9 @@ def build_entity_descriptions(
                 "source_kind": "wikipedia",
                 "wikipedia_url": w_url,
                 "wikipedia_revision_id": w_rev,
-                "provenance_label": f"Wikipedia (rev {w_rev})",
+                "license": "CC BY-SA 4.0",
+                "attribution": "Text from English Wikipedia contributors, licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).",
+                "provenance_label": f"Wikipedia (rev {w_rev}, CC BY-SA 4.0)",
             })
             continue
 
@@ -680,14 +685,24 @@ def build_entity_descriptions(
             stats["template_from_mentions"] += 1
             topic_str = ", ".join(top_topics) if top_topics else "AI research"
             desc_text = f"{name} is a {lab.lower()} entity appearing in {pc} AAAI/IJCAI 2021-2025 papers, primarily in {topic_str}."
-
-        descriptions.append({
-            "id": nid, "label": lab, "name": name,
-            "description": desc_text,
-            "source_kind": "mentions",
-            "sample_paper_ids": pids[:5],
-            "provenance_label": ai_label,
-        })
+            descriptions.append({
+                "id": nid, "label": lab, "name": name,
+                "description": desc_text,
+                "source_kind": "template_from_mentions",
+                "generation_method": "template",
+                "sample_paper_ids": pids[:5],
+                "provenance_label": "Template-generated from graph counts and mentions",
+            })
+        else:
+            descriptions.append({
+                "id": nid, "label": lab, "name": name,
+                "description": desc_text,
+                "source_kind": "llm_from_mentions",
+                "generation_method": "llm",
+                "model": llm.config.model if llm is not None else None,
+                "sample_paper_ids": pids[:5],
+                "provenance_label": f"AI-generated (LLM) from paper mentions ({ai_label})",
+            })
 
     return descriptions, stats
 
@@ -836,7 +851,9 @@ def build_full_rag_index(
 
     print("[phase3] extracting annotated abstract chunks...", flush=True)
     chunks = extract_annotated_chunks(graph, max_chunks=int(cfg["embeddings"]["max_chunk_sentences"]))
-    (out_dir / "chunks.json").write_text(json.dumps({"chunks": chunks}, ensure_ascii=False) + "\n", encoding="utf-8")
+    vectors_sqlite_path = Path(cfg["vectors_sqlite_path"])
+    vectors_sqlite_path.parent.mkdir(parents=True, exist_ok=True)
+    (vectors_sqlite_path.parent / "chunks.json").write_text(json.dumps({"chunks": chunks}, ensure_ascii=False) + "\n", encoding="utf-8")
 
     if llm_client is not None:
         llm_client.close()

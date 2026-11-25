@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
+import { useExplorerStore } from "../../stores/useExplorerStore";
 import { TrendRow } from "../../types/navigator";
 import { Panel, Table, pct } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
@@ -15,11 +16,15 @@ const VENUES = ["all", "AAAI", "IJCAI"] as const;
 const PERIODS = ["2021-2025", "2022-2025", "2023-2025", "2021-2023"] as const;
 
 export const TrendsPage: React.FC<TrendsPageProps> = ({ onOpenSubject }) => {
+  const darkMode = useExplorerStore((s) => s.darkMode);
   const [kind, setKind] = useState<"Topic" | "Method" | "Task" | "Dataset">("Method");
   const [venue, setVenue] = useState<(typeof VENUES)[number]>("all");
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>("2021-2025");
   const [search, setSearch] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
+  const gridColor = darkMode ? "#323232" : "#e8e7e2";
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["nav-trends", kind, venue, period, search],
@@ -43,13 +48,15 @@ export const TrendsPage: React.FC<TrendsPageProps> = ({ onOpenSubject }) => {
   const lineOption = useMemo(
     () => ({
       tooltip: { trigger: "axis" },
-      legend: { bottom: 0, textStyle: { fontSize: 11 } },
-      grid: { top: 24, left: 52, right: 20, bottom: 48 },
-      xAxis: { type: "category", data: years },
+      legend: { bottom: 0, textStyle: { fontSize: 11, color: axisColor } },
+      grid: { top: 32, left: 56, right: 20, bottom: 70 },
+      xAxis: { type: "category", data: years, axisLabel: { color: axisColor }, axisLine: { lineStyle: { color: gridColor } } },
       yAxis: {
         type: "value",
         name: "Share (%)",
-        axisLabel: { formatter: (v: number) => `${(v * 100).toFixed(1)}%` },
+        nameTextStyle: { color: axisColor },
+        splitLine: { lineStyle: { color: gridColor } },
+        axisLabel: { color: axisColor, formatter: (v: number) => `${(v * 100).toFixed(1)}%` },
       },
       series: lineItems.map((it) => ({
         name: it.name,
@@ -58,7 +65,7 @@ export const TrendsPage: React.FC<TrendsPageProps> = ({ onOpenSubject }) => {
         data: (it.period_yearly || it.yearly).map((p) => Number(p.share.toFixed(4))),
       })),
     }),
-    [lineItems, years],
+    [lineItems, years, axisColor, gridColor],
   );
 
   const heatmapOption = useMemo(() => {
@@ -80,12 +87,22 @@ export const TrendsPage: React.FC<TrendsPageProps> = ({ onOpenSubject }) => {
           `${hm[p.value[1]]?.name || ""} (${hmYears[p.value[0]]}): ${p.value[2]}%`,
       },
       grid: { top: 12, left: 190, right: 24, bottom: 28 },
-      xAxis: { type: "category", data: hmYears },
-      yAxis: { type: "category", data: hm.map((r) => r.name.slice(0, 28)), inverse: true },
-      visualMap: { min: 0, max: Number(maxVal.toFixed(2)), orient: "horizontal", left: "center", bottom: 0, show: false },
+      xAxis: { type: "category", data: hmYears, axisLabel: { color: axisColor, fontSize: 11 } },
+      yAxis: { type: "category", data: hm.map((r) => r.name.slice(0, 28)), inverse: true, axisLabel: { color: axisColor, fontSize: 10 } },
+      visualMap: {
+        min: 0,
+        max: Number(maxVal.toFixed(2)),
+        orient: "horizontal",
+        left: "center",
+        bottom: 0,
+        show: false,
+        inRange: {
+          color: darkMode ? ["#1f2937", "#1d4ed8", "#93c5fd"] : ["#f1f5f9", "#60a5fa", "#1e3a8a"],
+        },
+      },
       series: [{ type: "heatmap", data: pts }],
     };
-  }, [data]);
+  }, [data, axisColor, darkMode]);
 
   const toggleLine = (id: string) =>
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev.slice(-5), id]));

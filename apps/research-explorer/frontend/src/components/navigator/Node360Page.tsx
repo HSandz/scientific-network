@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
+import { useExplorerStore } from "../../stores/useExplorerStore";
 import { Panel, Table } from "../analytics/DashboardPrimitives";
 import { EChartBox } from "../analytics/EChartBox";
 
@@ -10,8 +11,12 @@ interface Node360PageProps {
 }
 
 export const Node360Page: React.FC<Node360PageProps> = ({ nodeId, onSelectNode }) => {
+  const darkMode = useExplorerStore((s) => s.darkMode);
   const [searchText, setSearchText] = useState("");
   const activeId = nodeId || "method:Q3621696";
+
+  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
+  const gridColor = darkMode ? "#323232" : "#e8e7e2";
 
   const searchQuery = useQuery({
     queryKey: ["nav-node360-search", searchText],
@@ -32,11 +37,11 @@ export const Node360Page: React.FC<Node360PageProps> = ({ nodeId, onSelectNode }
     return {
       tooltip: { trigger: "axis" },
       grid: { top: 14, left: 36, right: 12, bottom: 24 },
-      xAxis: { type: "category", data: sp.map((x) => String(x.year)) },
-      yAxis: { type: "value" },
-      series: [{ type: "bar", name: "Papers", data: sp.map((x) => x.papers) }],
+      xAxis: { type: "category", data: sp.map((x) => String(x.year)), axisLabel: { color: axisColor } },
+      yAxis: { type: "value", axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
+      series: [{ type: "bar", name: "Papers", itemStyle: { color: darkMode ? "#7fa6cc" : "#1d5fbf" }, data: sp.map((x) => x.papers) }],
     };
-  }, [d]);
+  }, [d, axisColor, gridColor, darkMode]);
 
   return (
     <div data-testid="page-node360" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
@@ -82,11 +87,19 @@ export const Node360Page: React.FC<Node360PageProps> = ({ nodeId, onSelectNode }
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Panel title="Properties & Enrichment">
               {d.description && (
-                <div className="mb-3 p-2.5 rounded bg-ground border border-rule text-xs">
-                  <span className="inline-block px-1.5 py-0.5 rounded bg-raised font-medium mb-1">
+                <div className="mb-3 p-2.5 rounded bg-ground border border-rule text-xs space-y-1.5">
+                  <span className="inline-block px-1.5 py-0.5 rounded bg-raised font-medium">
                     {d.description.label}
                   </span>
                   <p className="text-ink leading-relaxed">{d.description.text}</p>
+                  {d.description.wikipedia_url && (
+                    <p className="text-[11px] text-faint">
+                      <a href={d.description.wikipedia_url} target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline">
+                        Wikipedia (rev {d.description.wikipedia_revision_id ?? "—"})
+                      </a>{" "}
+                      · {d.description.attribution || "CC BY-SA 4.0"}
+                    </p>
+                  )}
                 </div>
               )}
               <dl className="grid grid-cols-2 gap-1.5 text-xs">

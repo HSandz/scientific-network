@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts/core";
-import { BarChart, LineChart, HeatmapChart } from "echarts/charts";
+import { BarChart, LineChart, HeatmapChart, ScatterChart } from "echarts/charts";
 import {
   GridComponent,
   TooltipComponent,
@@ -14,6 +14,7 @@ echarts.use([
   BarChart,
   LineChart,
   HeatmapChart,
+  ScatterChart,
   GridComponent,
   TooltipComponent,
   VisualMapContinuousComponent,
@@ -34,6 +35,19 @@ export interface EChartBoxProps {
   onClick?: (data: ChartClick) => void;
   height?: number;
 }
+
+function countChartPoints(opt: EChartsCoreOption): { seriesCount: number; pointCount: number } {
+  const raw = (opt as { series?: unknown }).series;
+  const arr = Array.isArray(raw) ? raw : raw ? [raw] : [];
+  let pointCount = 0;
+  for (const s of arr) {
+    if (s && typeof s === "object" && Array.isArray((s as { data?: unknown[] }).data)) {
+      pointCount += (s as { data: unknown[] }).data.length;
+    }
+  }
+  return { seriesCount: arr.length, pointCount };
+}
+
 export const EChartRuntime: React.FC<EChartBoxProps> = ({
   option,
   label,
@@ -48,14 +62,23 @@ export const EChartRuntime: React.FC<EChartBoxProps> = ({
   const [active, setActive] = useState(false);
   click.current = onClick;
   latest.current = option;
+
   useEffect(() => {
+    const node = el.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const vh = window.innerHeight || 900;
+    if (rect.top <= vh + 200 && rect.bottom >= -200) {
+      setActive(true);
+    }
     const observer = new IntersectionObserver(
       ([entry]) => setActive(entry.isIntersecting),
       { rootMargin: "200px" },
     );
-    if (el.current) observer.observe(el.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
     const node = el.current;
     if (!node || !active) return;
@@ -69,7 +92,17 @@ export const EChartRuntime: React.FC<EChartBoxProps> = ({
     );
     node.dataset.chartActive = "true";
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const markStats = (opt: EChartsCoreOption) => {
+      const { seriesCount, pointCount } = countChartPoints(opt);
+      node.dataset.chartSeriesCount = String(seriesCount);
+      node.dataset.chartPointCount = String(pointCount);
+      node.dataset.chartRendered = "false";
+    };
+    instance.on("finished", () => {
+      node.dataset.chartRendered = "true";
+    });
     const apply = (initial: boolean) => {
+      markStats(latest.current);
       node.dataset.animation = media.matches ? "reduced" : "enabled";
       node.dataset.entranceDuration = String(
         !media.matches && initial && !entered.current ? 600 : 0,
@@ -106,14 +139,23 @@ export const EChartRuntime: React.FC<EChartBoxProps> = ({
         delete (node as HTMLDivElement & { __chart?: echarts.ECharts }).__chart;
       chart.current = null;
       node.dataset.chartActive = "false";
+      node.dataset.chartRendered = "false";
     };
   }, [active]);
+
   useEffect(() => {
-    chart.current?.setOption(option, {
+    const node = el.current;
+    if (!chart.current || !node) return;
+    const { seriesCount, pointCount } = countChartPoints(option);
+    node.dataset.chartSeriesCount = String(seriesCount);
+    node.dataset.chartPointCount = String(pointCount);
+    node.dataset.chartRendered = "false";
+    chart.current.setOption(option, {
       replaceMerge: ["series", "xAxis", "yAxis", "visualMap"],
       lazyUpdate: true,
     });
   }, [option]);
+
   return (
     <div
       role="img"

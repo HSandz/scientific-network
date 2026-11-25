@@ -27,12 +27,25 @@ import {
 
 interface TopHeaderProps {
   summary?: GraphSummaryResponse;
+  enrichedGraphVersion?: string;
   displayedNodes: GraphNode[];
   displayedEdges: GraphEdge[];
 }
 
+const NAVIGATOR_TABS = new Set<WorkspaceTab>([
+  "trends",
+  "subjects",
+  "groups",
+  "communities",
+  "network",
+  "ask",
+  "node360",
+  "about",
+]);
+
 export const TopHeader: React.FC<TopHeaderProps> = ({
   summary,
+  enrichedGraphVersion = "enriched-cb371912e308",
   displayedNodes,
   displayedEdges,
 }) => {
@@ -173,6 +186,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   ];
 
   const hasActiveSelection = Boolean(selectedNodeId || selectedEdgeId);
+  const isNavigatorTab = NAVIGATOR_TABS.has(workspaceTab);
+  const activeVersionBadge = isNavigatorTab
+    ? enrichedGraphVersion
+    : (summary?.graph_version || "Version unavailable");
+  const activeVersionTitle = isNavigatorTab
+    ? "Enriched final-exam graph version (v5 / D042)"
+    : "Isolated release Neo4j graph version (D040)";
   const edgePrecisionPct =
     typeof summary?.quality?.edge_precision === "number"
       ? `${(summary.quality.edge_precision * 100).toFixed(1)}%`
@@ -219,9 +239,9 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             <span
               data-testid="graph-version-badge"
               className="hidden lg:inline text-xs font-mono text-faint whitespace-nowrap"
-              title="Isolated release Neo4j graph version (D040)"
+              title={activeVersionTitle}
             >
-              {summary?.graph_version || "Version unavailable"}
+              {activeVersionBadge}
             </span>
           </div>
         </div>
@@ -268,6 +288,23 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
               );
             })}
           </nav>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (!isNavigatorTab) setWorkspaceTab("trends");
+            }}
+            data-testid="tab-navigator"
+            aria-pressed={isNavigatorTab}
+            className={`hidden sm:inline-flex items-center gap-1 h-[32px] px-2.5 rounded-[6px] border text-[12px] sm:text-[13px] font-medium transition-colors shrink-0 ${
+              isNavigatorTab
+                ? "bg-raised border-control text-ink"
+                : "bg-surface border-border text-muted hover:text-ink hover:bg-raised"
+            }`}
+            title="Switch to Research Trend Navigator pages (Trends, Groups, Communities, Ask)"
+          >
+            <span>Navigator</span>
+          </button>
         </div>
 
         {/* Right: Analysis workflows, Scientific Quality status, Export & Theme */}
@@ -324,6 +361,18 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
 
             {exportMenuOpen && (
               <div className="absolute right-0 mt-1.5 w-56 max-h-[75dvh] overflow-y-auto rounded-[8px] bg-surface border border-border py-1.5 z-50">
+                {/* Research Trend Navigator quick access on compact/mobile viewports */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setExportMenuOpen(false);
+                    if (!isNavigatorTab) setWorkspaceTab("trends");
+                  }}
+                  data-testid="menu-open-navigator"
+                  className="sm:hidden w-full flex items-center gap-2.5 px-3 py-2 text-left text-[13px] text-ink hover:bg-raised transition-colors border-b border-rule mb-1"
+                >
+                  <span>Research Trend Navigator →</span>
+                </button>
                 {/* Secondary analysis tools collapsed on smaller screens (< 1280px) */}
                 <div className="xl:hidden border-b border-rule pb-1 mb-1">
                   <button
@@ -510,35 +559,37 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         </div>
       </div>
 
-      {/* Research Trend Navigator secondary navigation strip */}
-      <nav
-        aria-label="Research Trend Navigator pages"
-        className="mt-1.5 pt-1.5 border-t border-rule flex items-center gap-1 overflow-x-auto text-xs"
-      >
-        <span className="text-[11px] font-medium text-faint uppercase tracking-wider pr-1.5 shrink-0">
-          Navigator
-        </span>
-        {navTabs.map((t) => {
-          const active = workspaceTab === t.id;
-          return (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setWorkspaceTab(t.id)}
-              data-testid={`tab-${t.id}`}
-              aria-pressed={active}
-              data-active={active}
-              className={`px-2.5 py-1 rounded-[6px] whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
-                active
-                  ? "bg-raised text-ink font-semibold border border-control"
-                  : "text-muted hover:text-ink hover:bg-raised border border-transparent"
-              }`}
-            >
-              {t.label}
-            </button>
-          );
-        })}
-      </nav>
+      {/* Research Trend Navigator secondary navigation strip (shown on Navigator tabs) */}
+      {isNavigatorTab && (
+        <nav
+          aria-label="Research Trend Navigator pages"
+          className="mt-1.5 pt-1.5 border-t border-rule flex items-center gap-1 overflow-x-auto text-xs"
+        >
+          <span className="text-[11px] font-medium text-faint uppercase tracking-wider pr-1.5 shrink-0">
+            Navigator
+          </span>
+          {navTabs.map((t) => {
+            const active = workspaceTab === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setWorkspaceTab(t.id)}
+                data-testid={`tab-${t.id}`}
+                aria-pressed={active}
+                data-active={active}
+                className={`px-2.5 py-1 rounded-[6px] whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] ${
+                  active
+                    ? "bg-raised text-ink font-semibold border border-control"
+                    : "text-muted hover:text-ink hover:bg-raised border border-transparent"
+                }`}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </nav>
+      )}
     </header>
   );
 };

@@ -131,7 +131,7 @@ def global_search(
     embed_fn: Callable[[str], np.ndarray] | None = None,
     top_reports: int = 14,
     batch_size: int = 5,
-    prompt_version: str = "rag-global-v1",
+    prompt_version: str = "rag-global-v2",
 ) -> dict[str, Any]:
     """Corpus-wide map-reduce over community reports (spec §6.2)."""
     all_reports = json.loads(reports_path.read_text(encoding="utf-8")).get("reports", []) if reports_path.exists() else []
@@ -188,17 +188,38 @@ def global_search(
     map_points.sort(key=lambda p: -p["importance"])
     top_points = map_points[:12]
 
-    # Reduce pass
+    # Reduce pass (with 1 faithfulness retry so global synthesis avoids placeholders or ungrounded entities)
+    from scientific_network.rag.answer import verify_answer_faithfulness
+
     reduce_sys = (
-        "Synthesize a clear, concise answer to the question using ONLY the ranked community findings below. "
-        "Cite paper IDs in brackets like [paper:...] and only state numbers present in the findings."
+        "Synthesize a clear, concise answer to the question using ONLY the ranked community findings below.\n"
+        "- Copy complete paper IDs verbatim from the findings in brackets, e.g. [paper:aaai:2024:29823]. "
+        "NEVER write placeholder citations like [paper:...] or [...].\n"
+        "- Only state numbers and entity names present in the findings or question."
     )
     reduce_user = f"Question: {query}\n\nRanked community findings:\n" + json.dumps(top_points, ensure_ascii=False)
-    try:
-        red = llm.complete(prompt_version=f"{prompt_version}-reduce", system=reduce_sys, user=reduce_user, max_tokens=600)
-        answer_text = red.content.strip()
-    except LLMError as exc:
-        answer_text = f"Global synthesis failed: {exc}"
+    answer_text = ""
+    last_errs: list[str] = []
+    for attempt in (0, 1):
+        pv = f"{prompt_version}-reduce" if attempt == 0 else f"{prompt_version}-reduce-retry"
+        msg = reduce_user if attempt == 0 else (
+            reduce_user
+            + f"\n\nYour previous answer failed faithfulness checks ({'; '.join(last_errs)}). "
+            "Rewrite using ONLY exact numbers, entities, and verbatim paper IDs from the findings."
+        )
+        try:
+            red = llm.complete(prompt_version=pv, system=reduce_sys, user=msg, max_tokens=600)
+            cand = red.content.strip()
+        except LLMError as exc:
+            last_errs = [str(exc)]
+            continue
+        errs = verify_answer_faithfulness(cand, top_points, query)
+        answer_text = cand
+        if not errs:
+            break
+        last_errs = errs
+    if not answer_text:
+        answer_text = f"Global synthesis failed: {'; '.join(last_errs)}"
 
     cited_pids = [p for pt in top_points for p in pt.get("paper_ids", [])]
     return {

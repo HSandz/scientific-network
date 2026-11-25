@@ -62,3 +62,8 @@ retrieval:
   local_top_chunks: 12
   global_top_reports: 14
   global_map_batch_size: 5
+
+share_growth:
+  min_post_total_papers: 10
+  min_post_subject_papers: 2
+  max_rows_in_prompt: 15

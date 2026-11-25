@@ -39,10 +39,13 @@ function qs(params: Record<string, unknown>): string {
 
 export interface AskStreamHandlers {
   onStatus?: (data: Record<string, unknown>) => void;
+  onParsed?: (data: { parsed?: Record<string, unknown>; linked?: Array<Record<string, unknown>> }) => void;
   onPlan?: (data: Record<string, unknown>) => void;
   onStep?: (data: Record<string, unknown>) => void;
+  onSubgraph?: (data: { nodes?: Array<{ id: string; label?: string; name?: string; hop?: number }>; edges?: Array<{ source: string; target: string; relation?: string; support_count?: number; hop?: number }> }) => void;
   onAmbiguous?: (data: Record<string, unknown>) => void;
   onToken?: (data: { text: string }) => void;
+  onCitations?: (data: { paper_ids?: string[] }) => void;
   onFinal?: (data: AskResult) => void;
   onError?: (err: string) => void;
 }
@@ -144,10 +147,13 @@ export const navigatorApi = {
         try {
           const parsed = JSON.parse(dataLines.join("\n"));
           if (evName === "status") handlers.onStatus?.(parsed);
+          else if (evName === "parsed") handlers.onParsed?.(parsed);
           else if (evName === "plan") handlers.onPlan?.(parsed);
           else if (evName === "step") handlers.onStep?.(parsed);
+          else if (evName === "subgraph") handlers.onSubgraph?.(parsed);
           else if (evName === "ambiguous") handlers.onAmbiguous?.(parsed);
           else if (evName === "token") handlers.onToken?.(parsed);
+          else if (evName === "citations") handlers.onCitations?.(parsed);
           else if (evName === "final") handlers.onFinal?.(parsed);
           else if (evName === "error") handlers.onError?.(parsed.error || "Unknown error");
         } catch {

@@ -125,6 +125,10 @@ export interface SubjectDetailResponse {
     findings: Array<{ claim: string; paper_ids: string[] }>;
     source_community_id?: string | null;
     label: string;
+    source_kind?: string;
+    wikipedia_url?: string | null;
+    wikipedia_revision_id?: number | string | null;
+    attribution?: string | null;
   } | null;
   metric_definitions: Record<string, MetricDefinition>;
 }
@@ -184,7 +188,14 @@ export interface GroupsResponse {
 
 export interface GroupDetailResponse {
   profile: Record<string, unknown>;
-  description?: { description: string; provenance_label?: string; source_kind?: string } | null;
+  description?: {
+    description: string;
+    provenance_label?: string;
+    source_kind?: string;
+    wikipedia_url?: string | null;
+    wikipedia_revision_id?: number | string | null;
+    attribution?: string | null;
+  } | null;
   specializations: Array<{
     subject: string;
     subject_name: string;

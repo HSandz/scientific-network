@@ -952,11 +952,15 @@ class RAGToolset:
         analysis_dir: Path = Path("reports/final-exam/analysis-v2"),
         rag_dir: Path = Path("reports/final-exam/rag-v1"),
         vector_search_fn: Callable[[str, str | None, int], list[dict[str, Any]]] | None = None,
+        min_post_total_papers: int = 10,
+        min_post_subject_papers: int = 2,
     ) -> None:
         self.backend = backend
         self.analysis_dir = analysis_dir
         self.rag_dir = rag_dir
         self.vector_search_fn = vector_search_fn
+        self.min_post_total_papers = int(min_post_total_papers)
+        self.min_post_subject_papers = int(min_post_subject_papers)
         self._aliases: dict[str, list[dict[str, Any]]] | None = None
         self._ppr_cache: dict[str, Any] | None = None
         self._trends_cache: dict[str, list[dict[str, Any]]] = {}
@@ -1247,19 +1251,27 @@ class RAGToolset:
             subject_rows = self.backend.aggregate_papers(entity_ids, by="organization_year", filters=flt, limit=500)
             total_rows = self.backend.aggregate_papers(entity_ids, by="organization_year", filters={}, limit=500)
             cutoff = int(flt.get("after_year", 2022))
+            min_post_total = int(flt.get("min_post_total_papers", self.min_post_total_papers))
+            min_post_subj = int(flt.get("min_post_subject_papers", self.min_post_subject_papers))
             subj_by_org_yr: dict[str, dict[int, int]] = defaultdict(dict)
             tot_by_org_yr: dict[str, dict[int, int]] = defaultdict(dict)
+            org_post_pids: dict[str, list[str]] = defaultdict(list)
             org_names: dict[str, str] = {}
             all_pids: list[str] = []
             for r in total_rows:
                 tot_by_org_yr[r["entity_id"]][int(r["year"])] = int(r["paper_count"])
                 org_names[r["entity_id"]] = r["entity_name"]
             for r in subject_rows:
-                subj_by_org_yr[r["entity_id"]][int(r["year"])] = int(r["paper_count"])
+                yr = int(r["year"])
+                subj_by_org_yr[r["entity_id"]][yr] = int(r["paper_count"])
                 org_names[r["entity_id"]] = r["entity_name"]
-                all_pids.extend(r.get("paper_ids") or [])
+                pids_r = list(r.get("paper_ids") or [])
+                all_pids.extend(pids_r)
+                if yr > cutoff:
+                    org_post_pids[r["entity_id"]].extend(pids_r)
 
             summary_rows = []
+            excluded_below_threshold = 0
             for oid in dict.fromkeys(entity_ids):
                 if oid not in org_names:
                     continue
@@ -1274,9 +1286,15 @@ class RAGToolset:
                 delta = post_share - pre_share
                 if flt.get("only_increased") and not (post_s > 0 and delta > 0):
                     continue
+                if post_t < min_post_total or post_s < min_post_subj:
+                    excluded_below_threshold += 1
+                    continue
+                row_pids = list(dict.fromkeys(org_post_pids.get(oid, [])))[:3]
                 summary_rows.append({
                     "entity_id": oid,
                     "entity_name": org_names[oid],
+                    "pre_papers": f"{pre_s} of {pre_t}",
+                    "post_papers": f"{post_s} of {post_t}",
                     f"pre_le_{cutoff}_subject_papers": pre_s,
                     f"pre_le_{cutoff}_total_papers": pre_t,
                     f"pre_le_{cutoff}_share": round(pre_share, 4),
@@ -1284,17 +1302,32 @@ class RAGToolset:
                     f"post_gt_{cutoff}_total_papers": post_t,
                     f"post_gt_{cutoff}_share": round(post_share, 4),
                     "share_delta": round(delta, 4),
+                    "paper_ids": row_pids,
                 })
-            summary_rows.sort(key=lambda r: (-r["share_delta"], -r[f"post_gt_{cutoff}_subject_papers"], r["entity_id"]))
+            summary_rows.sort(
+                key=lambda r: (
+                    -r["share_delta"],
+                    -r[f"post_gt_{cutoff}_subject_papers"],
+                    -r[f"post_gt_{cutoff}_total_papers"],
+                    r["entity_id"],
+                )
+            )
+            shown_rows = summary_rows[:limit]
+            shown_pids = [p for r in shown_rows for p in r.get("paper_ids", [])] or all_pids
             return ToolResult(
                 tool="aggregate",
                 args={"entity_ids": entity_ids, "by": by, "metric": metric, "filters": flt},
-                rows=summary_rows[:limit],
-                ids=[r["entity_id"] for r in summary_rows[:limit]],
-                paper_ids=list(dict.fromkeys(all_pids))[:100],
+                rows=shown_rows,
+                ids=[r["entity_id"] for r in shown_rows],
+                paper_ids=list(dict.fromkeys(shown_pids))[:100],
                 source_kind="graph",
-                empty=len(summary_rows) == 0,
-                note=f"Computed share growth across cutoff year > {cutoff} for {len(summary_rows)} organization(s).",
+                empty=len(shown_rows) == 0,
+                note=(
+                    f"Computed share growth across cutoff year > {cutoff} "
+                    f"(threshold: post_total >= {min_post_total}, post_subject >= {min_post_subj}): "
+                    f"{len(summary_rows)} organization(s) qualified ({excluded_below_threshold} excluded below threshold); "
+                    f"showing top {len(shown_rows)} ranked by share_delta."
+                ),
             )
 
         rows = self.backend.aggregate_papers(entity_ids, by=by, filters=flt, limit=limit)
@@ -1331,7 +1364,16 @@ class RAGToolset:
             if self._ppr_cache is None:
                 self._ppr_cache = self._load_json(self.analysis_dir / "ranking" / "personalized-pagerank.json") or {}
             subjects = self._ppr_cache.get("subjects", {})
-            q_low = scope.strip().lower()
+            candidate_names = {scope.strip().lower()}
+            if ":" in scope:
+                nodes = self.backend.get_nodes_by_ids([scope])
+                if nodes and nodes[0].get("name"):
+                    candidate_names.add(str(nodes[0]["name"]).strip().lower())
+            for cname in list(candidate_names):
+                for m in self._display_alias_map().get(cname, []):
+                    if m.get("name"):
+                        candidate_names.add(str(m["name"]).strip().lower())
+
             matched_subj = None
             matched_kind = None
             matched_id = None
@@ -1340,7 +1382,7 @@ class RAGToolset:
                     matched_kind, matched_id, matched_subj = kind, scope, items[scope]
                     break
                 for sid, sdata in items.items():
-                    if sdata.get("name", "").lower() == q_low:
+                    if sdata.get("name", "").strip().lower() in candidate_names:
                         matched_kind, matched_id, matched_subj = kind, sid, sdata
                         break
                 if matched_subj:

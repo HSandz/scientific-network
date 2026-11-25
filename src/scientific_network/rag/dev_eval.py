@@ -14,7 +14,7 @@ from typing import Any
 
 import yaml
 
-from scientific_network.rag.answer import run_ask
+from scientific_network.rag.answer import run_ask, stream_ask
 from scientific_network.rag.llm import LLMClient, LLMConfig
 from scientific_network.rag.sqlite_vectors import SQLiteVectorStore
 from scientific_network.rag.tools import Neo4jToolBackend, RAGToolset
@@ -178,6 +178,9 @@ def _make_embed_fn(model_name: str):
 def run_dev_eval_and_demos(
     config_path: Path = Path("configs/rag-v1.yaml"),
     references_path: Path = Path("data/manifests/qa-benchmark-v1/references-v1.jsonl"),
+    *,
+    use_llm_cache: bool = True,
+    uncached_out: Path | None = None,
 ) -> dict[str, Any]:
     """Run Phase 4 evaluation on kept development questions ONLY, then cache scripted demo traces."""
     assert_demos_disjoint_from_test()
@@ -190,79 +193,149 @@ def run_dev_eval_and_demos(
     # Explicit guard: assert zero test questions are ever passed to run_ask here
     assert all(r["split"] == "development" for r in dev_refs)
 
+    sg_cfg = cfg.get("share_growth") or {}
     backend = Neo4jToolBackend()
-    llm = LLMClient(LLMConfig.from_mapping(cfg["llm"]))
+    llm_cfg = dict(cfg["llm"])
+    if not use_llm_cache:
+        llm_cfg["cache_dir"] = None
+    llm = LLMClient(LLMConfig.from_mapping(llm_cfg))
     vstore = SQLiteVectorStore(Path(cfg["vectors_sqlite_path"]))
     embed_fn = _make_embed_fn(cfg["embeddings"]["model_name"])
-    toolset = RAGToolset(backend, analysis_dir=Path(cfg["analysis_dir"]), rag_dir=out_dir)
+    toolset = RAGToolset(
+        backend,
+        analysis_dir=Path(cfg["analysis_dir"]),
+        rag_dir=out_dir,
+        min_post_total_papers=int(sg_cfg.get("min_post_total_papers", 10)),
+        min_post_subject_papers=int(sg_cfg.get("min_post_subject_papers", 2)),
+    )
+
+    def _run_stream_timed(q_text: str, q_mode: str) -> tuple[dict[str, Any], dict[str, float | None]]:
+        t0 = time.perf_counter()
+        first_event_s: float | None = None
+        first_step_s: float | None = None
+        first_token_s: float | None = None
+        res: dict[str, Any] = {}
+        for ev in stream_ask(
+            q_text,
+            toolset=toolset,
+            llm=llm,
+            mode=q_mode,
+            vector_store=vstore,
+            embed_fn=embed_fn,
+            reports_path=out_dir / "community-reports.json",
+        ):
+            now = time.perf_counter() - t0
+            etype = ev.get("event")
+            if first_event_s is None and etype in ("parsed", "plan", "step", "disambiguate"):
+                first_event_s = round(now, 3)
+            if first_step_s is None and etype == "step":
+                first_step_s = round(now, 3)
+            if first_token_s is None and etype == "token":
+                first_token_s = round(now, 3)
+            if etype == "done":
+                res = ev["data"]
+        total_s = round(time.perf_counter() - t0, 3)
+        if first_event_s is None:
+            first_event_s = total_s
+        res["latency_s"] = total_s
+        return res, {
+            "first_event_s": first_event_s,
+            "first_step_s": first_step_s,
+            "first_token_s": first_token_s,
+            "total_s": total_s,
+        }
 
     try:
         dev_items: list[dict[str, Any]] = []
         for r in dev_refs:
-            t0 = time.perf_counter()
-            res = run_ask(
-                r["text"],
-                toolset=toolset,
-                llm=llm,
-                mode="auto",
-                vector_store=vstore,
-                embed_fn=embed_fn,
-                reports_path=out_dir / "community-reports.json",
-            )
-            res["latency_s"] = round(time.perf_counter() - t0, 3)
+            res, timing = _run_stream_timed(r["text"], "auto")
             scored = _score_dev_item(r, res)
             scored["mode"] = res.get("mode")
             scored["stopped_reason"] = res.get("stopped_reason")
             scored["plan_tools"] = [s["tool"] for s in res.get("plan") or []]
+            scored["faithfulness_errors"] = res.get("faithfulness_errors") or []
+            scored.update(timing)
             dev_items.append(scored)
 
         by_hop: dict[str, dict[str, Any]] = {}
         for h in ("1", "2", "3", "global"):
             sub = [x for x in dev_items if x["hops"] == h]
             if sub:
+                fe_vals = [x["first_event_s"] for x in sub if x.get("first_event_s") is not None]
+                fs_vals = [x["first_step_s"] for x in sub if x.get("first_step_s") is not None]
                 by_hop[h] = {
                     "count": len(sub),
                     "mean_score": round(sum(x["score"] for x in sub) / len(sub), 4),
                     "faithfulness_rate": round(sum(1 for x in sub if x["faithfulness_passed"]) / len(sub), 4),
+                    "mean_first_event_s": round(sum(fe_vals) / len(fe_vals), 3) if fe_vals else None,
+                    "mean_first_step_s": round(sum(fs_vals) / len(fs_vals), 3) if fs_vals else None,
                     "mean_latency_s": round(sum(x["latency_s"] for x in sub) / len(sub), 3),
                 }
 
         dev_report = {
             "development_only_not_test_results": True,
-            "note": "Measured strictly on the 19 kept development questions; test questions were NOT touched in M3.",
+            "note": "Measured strictly on the 19 kept development questions after Phase 0 fixes; test questions were NOT touched.",
             "model": cfg["llm"]["model"],
             "kept_dev_count": len(dev_items),
             "by_hop_class": by_hop,
             "overall_faithfulness_rate": round(sum(1 for x in dev_items if x["faithfulness_passed"]) / max(len(dev_items), 1), 4),
             "items": dev_items,
         }
-        (out_dir / "dev-eval.json").write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-        # Run scripted demo questions and cache traces (uncached live timing measured via fresh call)
+        # Run scripted demo questions
         demos_out: list[dict[str, Any]] = []
         for d in SCRIPTED_DEMO_QUESTIONS:
-            t0 = time.perf_counter()
-            res = run_ask(
-                d["question"],
-                toolset=toolset,
-                llm=llm,
-                mode=d["mode"],
-                vector_store=vstore,
-                embed_fn=embed_fn,
-                reports_path=out_dir / "community-reports.json",
-            )
-            total_s = round(time.perf_counter() - t0, 3)
+            res, timing = _run_stream_timed(d["question"], d["mode"])
             demos_out.append({
                 "demo_id": d["demo_id"],
                 "title": d["title"],
                 "question": d["question"],
                 "requested_mode": d["mode"],
-                "total_latency_s": total_s,
+                "first_event_s": timing["first_event_s"],
+                "first_step_s": timing["first_step_s"],
+                "first_token_s": timing["first_token_s"],
+                "total_latency_s": timing["total_s"],
                 "result": res,
             })
 
+        if uncached_out is not None:
+            uncached_out.parent.mkdir(parents=True, exist_ok=True)
+            demo_summary = [
+                {
+                    "demo_id": x["demo_id"],
+                    "status": x["result"].get("status"),
+                    "mode": x["result"].get("mode"),
+                    "faithfulness_passed": x["result"].get("faithfulness_passed"),
+                    "first_event_s": x["first_event_s"],
+                    "first_step_s": x["first_step_s"],
+                    "first_token_s": x["first_token_s"],
+                    "total_latency_s": x["total_latency_s"],
+                }
+                for x in demos_out
+            ]
+            uncached_payload = {
+                "uncached_llm": not use_llm_cache,
+                "model": cfg["llm"]["model"],
+                "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                "by_hop_class": by_hop,
+                "overall_faithfulness_rate": dev_report["overall_faithfulness_rate"],
+                "demos": demo_summary,
+                "dev_items": dev_items,
+            }
+            uncached_out.write_text(json.dumps(uncached_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            existing_dev = json.loads((out_dir / "dev-eval.json").read_text(encoding="utf-8")) if (out_dir / "dev-eval.json").exists() else dev_report
+            existing_dev["uncached_timing"] = {
+                "by_hop_class": by_hop,
+                "overall_faithfulness_rate": dev_report["overall_faithfulness_rate"],
+                "demos": demo_summary,
+            }
+            (out_dir / "dev-eval.json").write_text(json.dumps(existing_dev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            return {"dev_eval": by_hop, "demos_timing": demo_summary, "uncached_out": str(uncached_out)}
+
+        (out_dir / "dev-eval.json").write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
         demo_payload = {
             "model": cfg["llm"]["model"],
+            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
             "demos": demos_out,
         }
         (out_dir / "demo-cache.json").write_text(json.dumps(demo_payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -270,3 +343,25 @@ def run_dev_eval_and_demos(
     finally:
         backend.close()
         llm.close()
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run development-only QA eval and scripted demo caching.")
+    parser.add_argument("--config", type=Path, default=Path("configs/rag-v1.yaml"))
+    parser.add_argument("--references", type=Path, default=Path("data/manifests/qa-benchmark-v1/references-v1.jsonl"))
+    parser.add_argument("--no-llm-cache", action="store_true", help="Disable LLM response cache for uncached latency timing.")
+    parser.add_argument("--uncached-out", type=Path, default=None, help="Write uncached timing summary without overwriting demo-cache.json.")
+    args = parser.parse_args()
+    print(
+        json.dumps(
+            run_dev_eval_and_demos(
+                config_path=args.config,
+                references_path=args.references,
+                use_llm_cache=not args.no_llm_cache,
+                uncached_out=args.uncached_out,
+            ),
+            indent=2,
+        )
+    )
