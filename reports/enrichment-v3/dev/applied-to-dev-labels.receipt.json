@@ -1,0 +1,9 @@
+{
+ "evaluation_kind": "ai_assessed_development_material_not_evidence",
+ "labeler": "fresh claude-opus-5-5 subagent (agent ab4c2faabc0772cbf) in an isolated directory with only guideline.md and the packet",
+ "labels": "reports/enrichment-v3/dev/applied-to-dev-labels.jsonl",
+ "packet_sha256": "a00bcd317188aaaf5a37fbcfc5120640d51e72256959d63dfff8660cab0feb71",
+ "purpose": "labels for the fresh APPLIED_TO development sample, written by a fresh claude-opus-5-5 subagent before the decision was computed",
+ "rows": 40,
+ "sha256": "5ada6df8c3af834714e3212d4f3454e98e9c70f9e763557f790771b89b6017e2"
+}

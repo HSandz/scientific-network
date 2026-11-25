@@ -1,0 +1,40 @@
+{"item_id": "rel:009b302be1020a11", "verdict": "correct", "supported_in": 1, "note": "DGL is proposed to solve VRPs."}
+{"item_id": "rel:1b3fe8f2595cd41c", "verdict": "correct", "supported_in": 1, "note": "Paper exploits diffusion prior for real-world image dehazing."}
+{"item_id": "rel:1c042b5cb59a4de1", "verdict": "correct", "supported_in": 1, "note": "SAM described as foundation model for image segmentation."}
+{"item_id": "rel:24b7cef4e11feae5", "verdict": "correct", "supported_in": 1, "note": "Text cites Multi-Task Learning success on cross-domain NER."}
+{"item_id": "rel:291e2a35d7937b61", "verdict": "correct", "supported_in": 1, "note": "Deep RL applied to traffic signal control."}
+{"item_id": "rel:2aba2485dd7f7e92", "verdict": "correct", "supported_in": 1, "note": "CLIP zero-shot capability used for image-text retrieval."}
+{"item_id": "rel:304184042fd58132", "verdict": "correct", "supported_in": 1, "note": "GNNs used for traffic flow prediction."}
+{"item_id": "rel:32dbf3ce1f9b85d8", "verdict": "correct", "supported_in": 1, "note": "NEAT evaluated on video classification benchmarks under noisy labels."}
+{"item_id": "rel:3abc9137433f18a1", "verdict": "correct", "supported_in": 1, "note": "Collaborative autoencoders proposed for anomaly detection."}
+{"item_id": "rel:41efb2eb779eb315", "verdict": "correct", "supported_in": 1, "note": "HAOT applies optimal transport for multi-intent SLU."}
+{"item_id": "rel:49ce84336c09456a", "verdict": "correct", "supported_in": 1, "note": "TechSinger uses flow matching for singing voice synthesis."}
+{"item_id": "rel:4b249a3d248f05e5", "verdict": "correct", "supported_in": 1, "note": "Gapformer incorporates Graph Transformer for node classification."}
+{"item_id": "rel:503304eab21364ce", "verdict": "correct", "supported_in": 1, "note": "CLIP applied in weakly supervised semantic segmentation."}
+{"item_id": "rel:51c46386a586c627", "verdict": "correct", "supported_in": 1, "note": "Deep generative models stated effective in style transfer."}
+{"item_id": "rel:51d50f59c90914d2", "verdict": "incorrect", "supported_in": 0, "note": "Head 'our approach' is a generic phrase, not a valid Method entity."}
+{"item_id": "rel:556d81eadd7eafa7", "verdict": "correct", "supported_in": 1, "note": "Vector quantization shown to give superior image reconstruction."}
+{"item_id": "rel:56ac3d82ec304a4c", "verdict": "correct", "supported_in": 1, "note": "Unsupervised domain adaptation studied for text-video retrieval."}
+{"item_id": "rel:5a669eedd3788a40", "verdict": "correct", "supported_in": 1, "note": "BERT used for news recommendation in UNBERT."}
+{"item_id": "rel:5e57f5210d40de1b", "verdict": "correct", "supported_in": 1, "note": "Conformal prediction produces prediction sets for classification tasks."}
+{"item_id": "rel:672a706bc76874e9", "verdict": "correct", "supported_in": 1, "note": "GCL applied to (graph) anomaly detection."}
+{"item_id": "rel:685918a71176bb7f", "verdict": "correct", "supported_in": 1, "note": "STIG uses contrastive learning to refine image generation."}
+{"item_id": "rel:6d3421a84a00de2e", "verdict": "incorrect", "supported_in": 0, "note": "Random forest is the model being explained, not a method applied to the task."}
+{"item_id": "rel:7269dc28ac8b2f20", "verdict": "correct", "supported_in": 1, "note": "GNNs used for communication in cooperative MARL."}
+{"item_id": "rel:78aac47e9984a2d9", "verdict": "correct", "supported_in": 1, "note": "CREST builds on multi-task learning for continual relation extraction."}
+{"item_id": "rel:7b91c13ab043f833", "verdict": "correct", "supported_in": 1, "note": "Combined with self-supervised learning, improves object classification."}
+{"item_id": "rel:80fc0f3eff349b2b", "verdict": "correct", "supported_in": 1, "note": "Self-distillation approach proposed for video-to-audio generation."}
+{"item_id": "rel:8908d17f3d2616a5", "verdict": "correct", "supported_in": 1, "note": "MaxSAT model learns optimal BDDs for classification."}
+{"item_id": "rel:90bbb4d6cfcb56d6", "verdict": "correct", "supported_in": 1, "note": "Transformers applied to visual tracking task."}
+{"item_id": "rel:9ad7e4a2bb81f43b", "verdict": "correct", "supported_in": 1, "note": "DDPM-based method proposed for video summarization."}
+{"item_id": "rel:9b8f62924fb53112", "verdict": "correct", "supported_in": 1, "note": "GNNs applied to molecular property prediction."}
+{"item_id": "rel:9e808baa05cc90e9", "verdict": "correct", "supported_in": 1, "note": "DiT-SR diffusion transformer designed for image super-resolution."}
+{"item_id": "rel:a94d065c186d355f", "verdict": "correct", "supported_in": 1, "note": "MAE-based FMAE targets forgery localization; tail boundary is truncated."}
+{"item_id": "rel:b4165c2c79d742c0", "verdict": "correct", "supported_in": 1, "note": "Test-time adaptation strategy for medical image segmentation."}
+{"item_id": "rel:b62dc865766edbd2", "verdict": "correct", "supported_in": 1, "note": "Prompt tuning proposed for composition learning image retrieval."}
+{"item_id": "rel:ba06006ea2b2e2a5", "verdict": "correct", "supported_in": 1, "note": "CLIP zero-shot capability used for image classification."}
+{"item_id": "rel:d72c7086c9a8f3a5", "verdict": "correct", "supported_in": 1, "note": "Knowledge distillation used in MAGTKD for ERC."}
+{"item_id": "rel:d9382f51d319cec8", "verdict": "correct", "supported_in": 1, "note": "LDMVFI uses latent diffusion models for video frame interpolation."}
+{"item_id": "rel:d9828d37f3d233ea", "verdict": "correct", "supported_in": 1, "note": "CSSL approaches proposed for graph classification."}
+{"item_id": "rel:dd8ed5ce0c34f895", "verdict": "correct", "supported_in": 1, "note": "MAPF-GPT relies on imitation learning for multi-agent pathfinding."}
+{"item_id": "rel:fbbbbb7451b2be3e", "verdict": "correct", "supported_in": 1, "note": "WFS-DETR proposed for weakly supervised few-shot object detection."}
