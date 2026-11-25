@@ -1,0 +1,324 @@
+{
+ "assignments": {
+  "member:0b4e24fb1be6b165": [
+   "A",
+   "B"
+  ],
+  "member:0fcc96108dd07e4f": [
+   "A",
+   "B"
+  ],
+  "member:21b7b554cb2c3a9c": [
+   "A",
+   "B"
+  ],
+  "member:319d8631ec22293e": [
+   "A",
+   "B"
+  ],
+  "member:3f69a8c71a14deae": [
+   "A",
+   "B"
+  ],
+  "member:6dd2fbd471b95b26": [
+   "A",
+   "B"
+  ],
+  "member:6f4d028d8c994b39": [
+   "A",
+   "B"
+  ],
+  "member:73527d221c1b9aca": [
+   "A",
+   "B"
+  ],
+  "member:747d05cabaf4578b": [
+   "A",
+   "B"
+  ],
+  "member:7c15524c047e9c21": [
+   "A",
+   "B"
+  ],
+  "member:88b3805ea105db48": [
+   "A",
+   "B"
+  ],
+  "member:88bffc2822f53250": [
+   "A",
+   "B"
+  ],
+  "member:90cac066240e571a": [
+   "A",
+   "B"
+  ],
+  "member:9201740431880626": [
+   "A",
+   "B"
+  ],
+  "member:a9387529b367b7b1": [
+   "A",
+   "B"
+  ],
+  "member:a9ec5c6b7edc02dd": [
+   "A",
+   "B"
+  ],
+  "member:aa1a7d12341f0048": [
+   "A",
+   "B"
+  ],
+  "member:b2e8b78fb503eb50": [
+   "A",
+   "B"
+  ],
+  "member:b39e433c0f42abb5": [
+   "A",
+   "B"
+  ],
+  "member:c38cd2126c4d6e44": [
+   "A",
+   "B"
+  ],
+  "member:c41873af83095c35": [
+   "A",
+   "B"
+  ],
+  "member:c911a6dca5b5800c": [
+   "A",
+   "B"
+  ],
+  "member:cbb841f6401ccb44": [
+   "A",
+   "B"
+  ],
+  "member:dad707b65502dd84": [
+   "A",
+   "B"
+  ],
+  "member:de4628d2c7970b6b": [
+   "A",
+   "B"
+  ],
+  "member:def98ce11ca58fb3": [
+   "A",
+   "B"
+  ],
+  "member:e12ae1e4592fefda": [
+   "A",
+   "B"
+  ],
+  "member:f20ac22b474b58e6": [
+   "A",
+   "B"
+  ],
+  "member:f882d5a57a090197": [
+   "A",
+   "B"
+  ],
+  "member:fb48fac573d6bd4c": [
+   "A",
+   "B"
+  ],
+  "rel:0a5b7c1ca67099d5": [
+   "A",
+   "B"
+  ],
+  "rel:186693f297d01b75": [
+   "A",
+   "B"
+  ],
+  "rel:1ac9689566962431": [
+   "A",
+   "B"
+  ],
+  "rel:20dc6d71f85d5368": [
+   "A",
+   "B"
+  ],
+  "rel:25c51caad32d73bf": [
+   "A",
+   "B"
+  ],
+  "rel:3f1e51e088ccffb1": [
+   "A",
+   "B"
+  ],
+  "rel:48b4786e031b063c": [
+   "A",
+   "B"
+  ],
+  "rel:56778b4d1a0a8ae5": [
+   "A",
+   "B"
+  ],
+  "rel:57313f9cc8b4b722": [
+   "A",
+   "B"
+  ],
+  "rel:585690a486062cc1": [
+   "A",
+   "B"
+  ],
+  "rel:596b8f42af68371b": [
+   "A",
+   "B"
+  ],
+  "rel:597ef9077edfb542": [
+   "A",
+   "B"
+  ],
+  "rel:5f63c4c6016fa42a": [
+   "A",
+   "B"
+  ],
+  "rel:65a1a6b3192036a2": [
+   "A",
+   "B"
+  ],
+  "rel:66f49cc0eef71657": [
+   "A",
+   "B"
+  ],
+  "rel:6b907e1442d569b2": [
+   "A",
+   "B"
+  ],
+  "rel:7179eec9bea2e6a1": [
+   "A",
+   "B"
+  ],
+  "rel:771051181338d015": [
+   "A",
+   "B"
+  ],
+  "rel:7e01645109f66a96": [
+   "A",
+   "B"
+  ],
+  "rel:8433dd56bbffb00b": [
+   "A",
+   "B"
+  ],
+  "rel:9c46bfbc12c709ba": [
+   "A",
+   "B"
+  ],
+  "rel:cf8608dcd609dd7a": [
+   "A",
+   "B"
+  ],
+  "rel:d863885d0684a665": [
+   "A",
+   "B"
+  ],
+  "rel:e2ac0704754429e2": [
+   "A",
+   "B"
+  ],
+  "rel:e2d16803f545b955": [
+   "A",
+   "B"
+  ],
+  "rel:f4832ab5b5882aed": [
+   "A",
+   "B"
+  ],
+  "rel:f5d9ae2fd01f6b7b": [
+   "A",
+   "B"
+  ]
+ },
+ "axes": {
+  "evaluated_on_single_paper": {
+   "edge_ids": [
+    "edge:074cbf4d05160f9ca395b06d8976e0ef3b6226e6f84ae4ea0b54298488591918",
+    "edge:092b62e2b6d385fbb0446c4a8023fae9c6bdaa0b624f5ed7ac773158f834a5b2",
+    "edge:11f28100df651532923e9654049050a30f0b06ef567b3c2d05790caa19130d63",
+    "edge:159809cbb3d6720aa1b446240008b76f2564d03657ccd98df606072ac6c28c35",
+    "edge:18b0d40923a204150e4b623206cc202927ef9b569108bd0e4e82355ac761d325",
+    "edge:1cab51cffb8ee9d61c5a3906eb5c62e0ff86ece58a3c12ef80e7b39a8289e6c3",
+    "edge:20f1d1c253631b6be0ba94d6f06fd628836d2f44cd7c3601af25c32e53ecbe27",
+    "edge:2a620c2abc745225808580313a1427083904586ee1a98a5e2598855a22462d51",
+    "edge:2f0d72f237ec31b68876a46c6887f95af75cdfc46ac64cb018104583308f8a14",
+    "edge:358221e3c221d2e383271aefd4f592204128a3ee0c1d1e5f63a79d94fec32eb5",
+    "edge:4b020536cacc359a5038e6f5d7be71b723f91e7dc7408bab43e2f3220415f6fe",
+    "edge:4dbc439b51948d35b70843fe56824c4f4c9576f9ba58bc946c79c98880cb5301",
+    "edge:587c4a419deb76e57598a2d8b3616ac2b0caf3d1645c48bdc0729db0e7941e8c",
+    "edge:60c1265bd29274717c58902d34c50c9dd257bb104ecf431bb6dc5057f2de3d20",
+    "edge:612896e605c374ba9b08c3e244035a18d90fca7c56b76ac8330f06e908b10834",
+    "edge:689df87afce0672201a5e4fd4c443cd8ee4b3ea44e3dded4e0b6ed20b9ef9dbc",
+    "edge:6a2652126ebdc58ef711a9ac324bb004d0617f4f5e14d29f03eb88a2f59fa23d",
+    "edge:714fefe63de537b0f2e67acaba55eea5b70c94b82e7ee91d98324533922eec05",
+    "edge:79da043fc7d461737d9e74d150e8818c1294e2f21b9e4ec2984a84ba163addb0",
+    "edge:919d6f6c2ff45ba64db9514ce60c355595f1a86c1c5945b08640da95f82a9003",
+    "edge:c440a9278a6217d21055d9c40e782d5c70c8648fcba136be4fdac242c2d04407",
+    "edge:f72ff52de17348bfc285cc183834d7fdf25729256862fd003fae60f1649a5777",
+    "edge:f84355d1ff01d1fe6c53087cd3f3f309a5840c5608ea3d921d63276ee45c1b7a",
+    "edge:f95c8ab5257a64e62a60d91ef3dc0c7841e9213acbcafd7af730e1fde7c73655",
+    "edge:fc50dc3ada0b4ca20ce5dd9c3c4b52d329cae750c768038732a1c913e5d2ed4a",
+    "edge:fe8e387d667363affba7b38084febc4f1f57c3c8949acd127aae93c06c2bbc41",
+    "edge:ff6f36d52cee252d773f8875a4b1f3fc0482a0c11928c43dbcf44584dcb312b2"
+   ],
+   "note": "all new single-paper same-sentence EVALUATED_ON edges",
+   "population": 27,
+   "sampled": 27
+  },
+  "member_of": {
+   "MEMBER_OF": [
+    "edge:7299a9d75127d0f0a9eaacefc5e0b33d1d8a94d29e5ab98bf6535c7c8f0ba918",
+    "edge:7078cdc2ccf6ed176d815b14b4d627e7931139e757cb466fe21e01e0c92637a3",
+    "edge:8aea136e537a88c28eae2753eab60200e90b7225ffac564503f4dd21524ee86a",
+    "edge:e5739a3c423331f92ceb66182fdbb416cd21e7ed02d389d524c078051ad46cbb",
+    "edge:1ed9d4736e8ba3fa082375335e8ee0f3b83e394991975213a167c26da56cbc70",
+    "edge:e19afca5af0a6b4e59cbb8fd1bb5d41f736355f771150b0c1bc7277472be3e0c",
+    "edge:b8b45b4c2079ec5f7d04f67191020b649da98ef055976ef964ccda7303ba8021",
+    "edge:0f3c44da60756c6dedc17ba945ab218b9f25ac29826bea7d89cf7cd30608bf51",
+    "edge:6a6512f80b65a374582712f7883879fb4eb28b6c118ffb25d34989c0967908cf",
+    "edge:f89db2b3119613dfe38fec063c194a9b9dee6afa377f66eb2582fea47d1e2a11",
+    "edge:c36d3097f37f7fcb796d6ba5dc019fe3ca3f3d03917c86ae82cee53b6e33f07f",
+    "edge:92966887afe9a4ccf834d3389d8be33fbc86b0d32af4f540efed60e32b26d61f",
+    "edge:3813a535e356e4b164b6caa4afdf79b1b38d90a19d13eaf1bd5e870bcaa4c8f4",
+    "edge:2fbab90336db00045edc34b768ce4e51da980188ce8f381dac9a72bc9dad5d33",
+    "edge:efece54ce2143943bf7811cedca331232023cce984dc26dda73730404438ab6a",
+    "edge:5a3bac19f9d590890aab2c348121be63cd3a39c5cdbde804706fe8fd0455c8c5",
+    "edge:9afd94040dcf8ef00c518922c4349e61ff47f62ef7367d4ee221d2d8cbb01db7",
+    "edge:32ddbc95f3bdca17d58082ea7e03a434ff9feb5588250a17c902e85678eecf39",
+    "edge:df9b949aa30997f0be57c17d2887317d43dfc6bb9a8e77b2a48656b27dbfd195",
+    "edge:3a5fbd0a94dd1e07f060d1c7cd0ebfbb6b64ef0f44d6d977c6a5588ed74fbb76",
+    "edge:85ef28dcfe8fd4b2f86878b44804bf67fff7fbe8d5d26730c021fa6275cc5c0a",
+    "edge:a35b6afbc78a818257d931af2e1e47315b4b1f60c8c692c76416acd3d6260a56",
+    "edge:a0cab7f8ac514284cca6ed7f5fbc6018ac2ddf8ffb99c9aadfb09aa27a67a969",
+    "edge:1f0ad1c157dd877f696d6e4d3f116d24f1602ebd37cb58fae6783bb7086f193f",
+    "edge:d85716243a8f5b48d2aef0d4be97aa10da444806d6e7052211b57eacb2fc787c",
+    "edge:c6f4ceab75dd3f98dfcc187eb691648bd71df8fa42c9a51200eda034d7ded2b8",
+    "edge:645bb054bbee67485eadb7d479ea4fa04a36cf85e4142618ea514ac54090b452",
+    "edge:9df2ab0297b0a1cbd3313a08a53a0bd549026013f72070b6c8660f9cf5fba88c",
+    "edge:c8d7cbfebce6cb8c09ec3d65cb76c4a7bea4ad75514e2574337f69a6a541c3fd",
+    "edge:51abd0cd1b2c2e1d55bbdad42ff90f5869901d75891590d1a7330bb15b4d673a"
+   ],
+   "excluded_development_pairs": 70,
+   "excluded_v1_audited_pairs": 50,
+   "pool_after_exclusion": 56,
+   "population": 85
+  }
+ },
+ "base_v1_graph_sha256": "011d5fe274ddbbaaa9b13138fe393308f14c4f469b9f9d2dde56ca57ea3d5b8c",
+ "config_sha256": "cf84f56d15f5ae9c3ff89151086615cdb8f644d124353825e6896830157df70f",
+ "graph_sha256": "02e5a288daf5dffeba0c4b13d66a875f6e27b886a267deffed929a9e53d2ef8f",
+ "graph_version": "enriched-827be09bc987",
+ "item_axes": {
+  "member_of": 30,
+  "relation": 27
+ },
+ "items_total": 57,
+ "seed": 2026112502,
+ "unchanged_axes_not_reaudited": [
+  "entities",
+  "paper_edges",
+  "APPLIED_TO (two or more papers)",
+  "RELATED_TO",
+  "PART_OF (rule not adopted)",
+  "linking (guard not adopted)"
+ ]
+}

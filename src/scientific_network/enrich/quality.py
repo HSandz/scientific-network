@@ -125,6 +125,7 @@ def instructions(axis: str) -> str:
         "related": "Related: would a researcher consider the two concepts closely related (e.g. one is a variant, component, application or neighbouring technique of the other)?",
         "link": "Link: is the Wikipedia page the right concept for the entity, not just a broader or related page?",
         "part_of": "Part of: is the first organization a part, unit, subsidiary or member of the second?",
+        "member_of": "Member of: the extractor claims the first organization is a current member of the second, which Wikidata classes as a consortium, association, alliance, network or group, and cites the Wikidata statement shown. Is the claim true (is the first a member of the second, not a former member)?",
     }[axis]
 
 

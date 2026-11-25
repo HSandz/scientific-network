@@ -1,0 +1,658 @@
+{
+ "member:0b4e24fb1be6b165": {
+  "axis": "member_of",
+  "item_id": "member:0b4e24fb1be6b165",
+  "organization": "Indian Institute of Technology Ropar",
+  "organization_description": "engineering and technology higher education institute in Rupnagar, Punjab",
+  "organization_qid": "Q1814795",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "b9f1640b206e0883751e1c88e8ae709e3dd4ff57dc6fd8ac704fb22fe2d9c914",
+   "retrieved_at": "2026-11-25T11:26:12+0700",
+   "statement": "Q1814795 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q1814795"
+  }
+ },
+ "member:0fcc96108dd07e4f": {
+  "axis": "member_of",
+  "item_id": "member:0fcc96108dd07e4f",
+  "organization": "Lyon 1 Université",
+  "organization_description": "public university of Lyon, France since 1970",
+  "organization_qid": "Q4032",
+  "parent": "Université de Lyon",
+  "parent_description": "French university system, in Lyon, France",
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "university in France"
+  ],
+  "parent_qid": "Q10176",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "75a3e7964094e42bc9131ce6058bed146a8332f22b31babf390f4349558f82f8",
+   "retrieved_at": "2026-11-25T11:25:50+0700",
+   "statement": "Q4032 P749 Q10176",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q4032"
+  }
+ },
+ "member:21b7b554cb2c3a9c": {
+  "axis": "member_of",
+  "item_id": "member:21b7b554cb2c3a9c",
+  "organization": "Wageningen University & Research",
+  "organization_description": "university in the Netherlands",
+  "organization_qid": "Q422208",
+  "parent": "ELIXIR-NL",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496389",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "5d3c0d668bfc4ce86d0b3b09edb58fdbe9a4cc8c1856fc28beb1a4e652869458",
+   "retrieved_at": "2026-11-25T11:26:21+0700",
+   "statement": "Q422208 P361 Q109496389",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q422208"
+  }
+ },
+ "member:319d8631ec22293e": {
+  "axis": "member_of",
+  "item_id": "member:319d8631ec22293e",
+  "organization": "Indian Institute of Technology Goa",
+  "organization_description": "autonomous premier engineering and technology university located in Goa",
+  "organization_qid": "Q24884248",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a313ab7c991463c3ed26e4a60dc9943071c9b6af46549274315d375d2e26e290",
+   "retrieved_at": "2026-11-25T11:26:15+0700",
+   "statement": "Q24884248 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q24884248"
+  }
+ },
+ "member:3f69a8c71a14deae": {
+  "axis": "member_of",
+  "item_id": "member:3f69a8c71a14deae",
+  "organization": "Indian Institute of Technology Patna",
+  "organization_description": "autonomous institute of education and research in science, engineering and technology located in Patna, Bihar",
+  "organization_qid": "Q3440945",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "399a4a675ae238919370aa1467920525eda2a43c0ee5983d171fb0a7bfdf96af",
+   "retrieved_at": "2026-11-25T11:26:21+0700",
+   "statement": "Q3440945 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q3440945"
+  }
+ },
+ "member:6dd2fbd471b95b26": {
+  "axis": "member_of",
+  "item_id": "member:6dd2fbd471b95b26",
+  "organization": "Forschungszentrum Jülich",
+  "organization_description": "interdisciplinary research centre in Germany",
+  "organization_qid": "Q697111",
+  "parent": "ELIXIR Germany",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496585",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a94738731e7aef5ebe4cc44b837cf533ccf012bcf224ee1a4f894324907f0666",
+   "retrieved_at": "2026-11-25T11:26:29+0700",
+   "statement": "Q697111 P361 Q109496585",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q697111"
+  }
+ },
+ "member:6f4d028d8c994b39": {
+  "axis": "member_of",
+  "item_id": "member:6f4d028d8c994b39",
+  "organization": "Institut National des Sciences Appliquées de Toulouse",
+  "organization_description": "French engineering school",
+  "organization_qid": "Q858979",
+  "parent": "University of Toulouse",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "educational institution"
+  ],
+  "parent_qid": "Q20669873",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "b2ac253f87630df54dfb6ef25ce15a03f25513ff7bead200a5ff7cdff58cd433",
+   "retrieved_at": "2026-11-25T11:25:59+0700",
+   "statement": "Q858979 P749 Q20669873",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q858979"
+  }
+ },
+ "member:73527d221c1b9aca": {
+  "axis": "member_of",
+  "item_id": "member:73527d221c1b9aca",
+  "organization": "University of Turin",
+  "organization_description": "university in Turin, Italy",
+  "organization_qid": "Q499911",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "6580fcd1429f359b654a7a78f865dc974820707ef41f025dcee88c10bab7eb69",
+   "retrieved_at": "2026-11-25T11:26:23+0700",
+   "statement": "Q499911 P361 Q109496581",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q499911"
+  }
+ },
+ "member:747d05cabaf4578b": {
+  "axis": "member_of",
+  "item_id": "member:747d05cabaf4578b",
+  "organization": "Indian Institute of Technology Hyderabad",
+  "organization_description": "public university located in Sangareddy district, Hyderabad, Telangana",
+  "organization_qid": "Q2808676",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "d8690f72802b839f58e7e9503971aa7c1c8aaeaa5344e43eff098b0312ed32b7",
+   "retrieved_at": "2026-11-25T11:26:17+0700",
+   "statement": "Q2808676 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q2808676"
+  }
+ },
+ "member:7c15524c047e9c21": {
+  "axis": "member_of",
+  "item_id": "member:7c15524c047e9c21",
+  "organization": "KU Leuven",
+  "organization_description": "University since 1968 with its main campus in Leuven, Belgium",
+  "organization_qid": "Q833670",
+  "parent": "ELIXIR Belgium",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496579",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "ad0bf36f780d8afffe317f0fd199817c6cb83725938d3f51a5a56e28f539b007",
+   "retrieved_at": "2026-11-25T11:26:31+0700",
+   "statement": "Q833670 P361 Q109496579",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q833670"
+  }
+ },
+ "member:88b3805ea105db48": {
+  "axis": "member_of",
+  "item_id": "member:88b3805ea105db48",
+  "organization": "IMT Mines Albi",
+  "organization_description": "French engineering school",
+  "organization_qid": "Q3577934",
+  "parent": "University of Toulouse",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "educational institution"
+  ],
+  "parent_qid": "Q20669873",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "c7b3f936130214571c03b67a3a7a3787df32fc8419186f51c97e7b77cc38d94b",
+   "retrieved_at": "2026-11-25T11:25:50+0700",
+   "statement": "Q3577934 P749 Q20669873",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q3577934"
+  }
+ },
+ "member:88bffc2822f53250": {
+  "axis": "member_of",
+  "item_id": "member:88bffc2822f53250",
+  "organization": "Indian Institute of Technology Palakkad",
+  "organization_description": "public autonomous engineering and research institute",
+  "organization_qid": "Q19512294",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a708bdb289fd2025aa2f1ef0ae9bebe842fb02aac43c4fba66c6204d8b5e4dc9",
+   "retrieved_at": "2026-11-25T11:26:14+0700",
+   "statement": "Q19512294 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q19512294"
+  }
+ },
+ "member:90cac066240e571a": {
+  "axis": "member_of",
+  "item_id": "member:90cac066240e571a",
+  "organization": "Institut de Recherche pour le Développement",
+  "organization_description": "French science and technology research institute",
+  "organization_qid": "Q2910510",
+  "parent": "ELIXIR France",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496578",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "d8690f72802b839f58e7e9503971aa7c1c8aaeaa5344e43eff098b0312ed32b7",
+   "retrieved_at": "2026-11-25T11:26:17+0700",
+   "statement": "Q2910510 P361 Q109496578",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q2910510"
+  }
+ },
+ "member:9201740431880626": {
+  "axis": "member_of",
+  "item_id": "member:9201740431880626",
+  "organization": "Sogang University",
+  "organization_description": "research and liberal arts university in Seoul, South Korea",
+  "organization_qid": "Q374457",
+  "parent": "International Association of Jesuit Universities",
+  "parent_description": null,
+  "parent_instance_of": [
+   "voluntary association"
+  ],
+  "parent_qid": "Q96382200",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "399a4a675ae238919370aa1467920525eda2a43c0ee5983d171fb0a7bfdf96af",
+   "retrieved_at": "2026-11-25T11:26:21+0700",
+   "statement": "Q374457 P361 Q96382200",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q374457"
+  }
+ },
+ "member:a9387529b367b7b1": {
+  "axis": "member_of",
+  "item_id": "member:a9387529b367b7b1",
+  "organization": "University of Padua",
+  "organization_description": "university in Italy",
+  "organization_qid": "Q193510",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a708bdb289fd2025aa2f1ef0ae9bebe842fb02aac43c4fba66c6204d8b5e4dc9",
+   "retrieved_at": "2026-11-25T11:26:14+0700",
+   "statement": "Q193510 P361 Q109496581",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q193510"
+  }
+ },
+ "member:a9ec5c6b7edc02dd": {
+  "axis": "member_of",
+  "item_id": "member:a9ec5c6b7edc02dd",
+  "organization": "Helmholtz Center for Information Security",
+  "organization_description": null,
+  "organization_qid": "Q55436361",
+  "parent": "Helmholtz Association of German Research Centres",
+  "parent_description": null,
+  "parent_instance_of": [
+   "organization",
+   "research institute",
+   "voluntary association"
+  ],
+  "parent_qid": "Q679913",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "36c59e9552d10f698de4b5084f9cca7483f413f232eef5f7ff32ccc0d62abada",
+   "retrieved_at": "2026-11-25T11:25:54+0700",
+   "statement": "Q55436361 P749 Q679913",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q55436361"
+  }
+ },
+ "member:aa1a7d12341f0048": {
+  "axis": "member_of",
+  "item_id": "member:aa1a7d12341f0048",
+  "organization": "École Centrale de Lyon",
+  "organization_description": "Research university in Lyon",
+  "organization_qid": "Q10177",
+  "parent": "Centrale Graduate School",
+  "parent_description": null,
+  "parent_instance_of": [
+   "graduate school",
+   "university network"
+  ],
+  "parent_qid": "Q273649",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "90b2e47463733ee4839a0518a81fd768a6ad9bb7a7544b4f909670e9bca467cc",
+   "retrieved_at": "2026-11-25T11:26:03+0700",
+   "statement": "Q10177 P361 Q273649",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q10177"
+  }
+ },
+ "member:b2e8b78fb503eb50": {
+  "axis": "member_of",
+  "item_id": "member:b2e8b78fb503eb50",
+  "organization": "University of Milan",
+  "organization_description": "university in Milan, Italy",
+  "organization_qid": "Q46210",
+  "parent": "ELIXIR Italy",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496581",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "ecd98ec1e1d4d2263a51ff74c5d7aac33c8b9ffb8137c0d0425bc11122c5667c",
+   "retrieved_at": "2026-11-25T11:26:22+0700",
+   "statement": "Q46210 P361 Q109496581",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q46210"
+  }
+ },
+ "member:b39e433c0f42abb5": {
+  "axis": "member_of",
+  "item_id": "member:b39e433c0f42abb5",
+  "organization": "Université Toulouse Capitole",
+  "organization_description": "French university situated in Toulouse, founded in 1969",
+  "organization_qid": "Q590201",
+  "parent": "University of Toulouse",
+  "parent_description": null,
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "educational institution"
+  ],
+  "parent_qid": "Q20669873",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "36c59e9552d10f698de4b5084f9cca7483f413f232eef5f7ff32ccc0d62abada",
+   "retrieved_at": "2026-11-25T11:25:54+0700",
+   "statement": "Q590201 P749 Q20669873",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q590201"
+  }
+ },
+ "member:c38cd2126c4d6e44": {
+  "axis": "member_of",
+  "item_id": "member:c38cd2126c4d6e44",
+  "organization": "Bielefeld University",
+  "organization_description": "university in Bielefeld, Germany",
+  "organization_qid": "Q24382",
+  "parent": "ELIXIR Germany",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496585",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a313ab7c991463c3ed26e4a60dc9943071c9b6af46549274315d375d2e26e290",
+   "retrieved_at": "2026-11-25T11:26:15+0700",
+   "statement": "Q24382 P361 Q109496585",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q24382"
+  }
+ },
+ "member:c41873af83095c35": {
+  "axis": "member_of",
+  "item_id": "member:c41873af83095c35",
+  "organization": "Indian Institute of Technology Kanpur",
+  "organization_description": "public engineering institution",
+  "organization_qid": "Q782682",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "abe7119fc2419d5d7a328cb683e396ea41c09e7f97ec05fdbe4ec798d53629e6",
+   "retrieved_at": "2026-11-25T11:26:30+0700",
+   "statement": "Q782682 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q782682"
+  }
+ },
+ "member:c911a6dca5b5800c": {
+  "axis": "member_of",
+  "item_id": "member:c911a6dca5b5800c",
+  "organization": "UK Centre for Ecology & Hydrology",
+  "organization_description": "UK government environmental science research organisation",
+  "organization_qid": "Q5062417",
+  "parent": "ELIXIR UK",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496493",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "52c9c1ef554f53e721421863b23c394e76c1e086c2d597d658ff86a1b8120ff2",
+   "retrieved_at": "2026-11-25T11:26:24+0700",
+   "statement": "Q5062417 P361 Q109496493",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q5062417"
+  }
+ },
+ "member:cbb841f6401ccb44": {
+  "axis": "member_of",
+  "item_id": "member:cbb841f6401ccb44",
+  "organization": "University of Utah",
+  "organization_description": "public coeducational space-grant research university in Salt Lake City, Utah, United States",
+  "organization_qid": "Q168515",
+  "parent": "Utah System of Higher Education",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "university consortium"
+  ],
+  "parent_qid": "Q7902486",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "487e5cf7cc198ac77d949563c58225a9d762449daa1a8baa802dfd39db4d1bc0",
+   "retrieved_at": "2026-11-25T11:25:40+0700",
+   "statement": "Q168515 P749 Q7902486",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q168515"
+  }
+ },
+ "member:dad707b65502dd84": {
+  "axis": "member_of",
+  "item_id": "member:dad707b65502dd84",
+  "organization": "Open University of the Netherlands",
+  "organization_description": "university in the Netherlands",
+  "organization_qid": "Q1407397",
+  "parent": "Open European University",
+  "parent_description": null,
+  "parent_instance_of": [
+   "European University Alliance"
+  ],
+  "parent_qid": "Q129908187",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a280d6b51b32fa4046f8c6397e5153863cb049edcad19b6059ae9d21ec944e34",
+   "retrieved_at": "2026-11-25T11:26:09+0700",
+   "statement": "Q1407397 P361 Q129908187",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q1407397"
+  }
+ },
+ "member:de4628d2c7970b6b": {
+  "axis": "member_of",
+  "item_id": "member:de4628d2c7970b6b",
+  "organization": "École Centrale de Lyon",
+  "organization_description": "Research university in Lyon",
+  "organization_qid": "Q10177",
+  "parent": "Université de Lyon",
+  "parent_description": "French university system, in Lyon, France",
+  "parent_instance_of": [
+   "Group of universities and institutions (France)",
+   "university in France"
+  ],
+  "parent_qid": "Q10176",
+  "wikidata_statement": {
+   "property": "P749",
+   "property_label": "parent organization",
+   "raw_response_sha256": "652c2a18878d88328fbf1702223bc0e568ca56c546e52c9a5ed393d6d89e0d78",
+   "retrieved_at": "2026-11-25T11:25:32+0700",
+   "statement": "Q10177 P749 Q10176",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q10177"
+  }
+ },
+ "member:def98ce11ca58fb3": {
+  "axis": "member_of",
+  "item_id": "member:def98ce11ca58fb3",
+  "organization": "Vassar College",
+  "organization_description": "private, coeducational liberal arts college in the Town of Poughkeepsie, New York, in the United States",
+  "organization_qid": "Q2093794",
+  "parent": "Seven Sisters",
+  "parent_description": null,
+  "parent_instance_of": [
+   "heptad",
+   "university consortium",
+   "voluntary association"
+  ],
+  "parent_qid": "Q1886223",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a708bdb289fd2025aa2f1ef0ae9bebe842fb02aac43c4fba66c6204d8b5e4dc9",
+   "retrieved_at": "2026-11-25T11:26:14+0700",
+   "statement": "Q2093794 P361 Q1886223",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q2093794"
+  }
+ },
+ "member:e12ae1e4592fefda": {
+  "axis": "member_of",
+  "item_id": "member:e12ae1e4592fefda",
+  "organization": "Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement",
+  "organization_description": "French public research institute",
+  "organization_qid": "Q70571774",
+  "parent": "ELIXIR France",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496578",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a94738731e7aef5ebe4cc44b837cf533ccf012bcf224ee1a4f894324907f0666",
+   "retrieved_at": "2026-11-25T11:26:29+0700",
+   "statement": "Q70571774 P361 Q109496578",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q70571774"
+  }
+ },
+ "member:f20ac22b474b58e6": {
+  "axis": "member_of",
+  "item_id": "member:f20ac22b474b58e6",
+  "organization": "Instituto Superior Técnico",
+  "organization_description": "school of engineering and technology of the University of Lisbon",
+  "organization_qid": "Q1636837",
+  "parent": "ELIXIR Portugal",
+  "parent_description": null,
+  "parent_instance_of": [
+   "ELIXIR Node"
+  ],
+  "parent_qid": "Q109496576",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "96d7f550cef7f7aac07852ed987bf8023dd986bcd5f4345b151384ba7131450a",
+   "retrieved_at": "2026-11-25T11:26:11+0700",
+   "statement": "Q1636837 P361 Q109496576",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q1636837"
+  }
+ },
+ "member:f882d5a57a090197": {
+  "axis": "member_of",
+  "item_id": "member:f882d5a57a090197",
+  "organization": "Centrale Lille Institut",
+  "organization_description": "graduate engineering school in Villeneuve d'Ascq, Lille metropolis, France",
+  "organization_qid": "Q273461",
+  "parent": "Centrale Graduate School",
+  "parent_description": null,
+  "parent_instance_of": [
+   "graduate school",
+   "university network"
+  ],
+  "parent_qid": "Q273649",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "a313ab7c991463c3ed26e4a60dc9943071c9b6af46549274315d375d2e26e290",
+   "retrieved_at": "2026-11-25T11:26:15+0700",
+   "statement": "Q273461 P361 Q273649",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q273461"
+  }
+ },
+ "member:fb48fac573d6bd4c": {
+  "axis": "member_of",
+  "item_id": "member:fb48fac573d6bd4c",
+  "organization": "Indian Institute of Technology Roorkee",
+  "organization_description": "public engineering institution located in Roorkee, Uttarakhand, India",
+  "organization_qid": "Q3366382",
+  "parent": "Indian Institutes of Technology",
+  "parent_description": null,
+  "parent_instance_of": [
+   "educational institution",
+   "group",
+   "university system"
+  ],
+  "parent_qid": "Q622358",
+  "wikidata_statement": {
+   "property": "P361",
+   "property_label": "part of",
+   "raw_response_sha256": "399a4a675ae238919370aa1467920525eda2a43c0ee5983d171fb0a7bfdf96af",
+   "retrieved_at": "2026-11-25T11:26:21+0700",
+   "statement": "Q3366382 P361 Q622358",
+   "statement_item_url": "https://www.wikidata.org/wiki/Q3366382"
+  }
+ }
+}

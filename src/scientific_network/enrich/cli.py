@@ -110,6 +110,14 @@ def add_enrich_parser(commands) -> None:
     cooc.add_argument("--entity", help="entity id, e.g. method:Q...; prints its partners of --partner-type")
     cooc.add_argument("--partner-type", choices=["Method", "Task", "Dataset"])
     cooc.add_argument("--min-papers", type=int, default=1)
+    a2 = stages.add_parser("audit-v2-sample", help="Enrichment v2 E4 audit: freeze the fresh samples and packets for the changed axes (before any judgement)")
+    a2.add_argument("--graph", type=Path, required=True)
+    a2.add_argument("--texts", type=Path, required=True)
+    a2.add_argument("--v1-graph", type=Path, required=True)
+    a2.add_argument("--v1-sample", type=Path, required=True)
+    a2.add_argument("--dev-labels", type=Path, action="append", required=True)
+    a2.add_argument("--config", type=Path, required=True)
+    a2.add_argument("--output-dir", type=Path, required=True)
     tc = stages.add_parser("type-conflicts", help="list entity keys that carry more than one type (no typing change)")
     tc.add_argument("--graph", type=Path, required=True)
     tc.add_argument("--output", type=Path, required=True)
@@ -163,6 +171,10 @@ def run_enrich(args) -> tuple[dict, int]:
                                        args.manifest, args.output_dir, _json.loads(args.config.read_text()),
                                        quality_config=args.quality_config, org_facts_path=args.org_facts, v2_manifest=args.v2_manifest)
         return summary, 0 if summary["validation"]["status"] == "passed" else 1
+    if args.enrich_command == "audit-v2-sample":
+        from scientific_network.enrich.audit_v2 import freeze_v2
+        return freeze_v2(graph_path=args.graph, texts_path=args.texts, v1_graph_path=args.v1_graph, v1_sample_path=args.v1_sample,
+                         dev_label_files=args.dev_labels, config_path=args.config, out_dir=args.output_dir), 0
     if args.enrich_command == "type-conflicts":
         import json as _json
         from scientific_network.enrich.quality import type_conflicts

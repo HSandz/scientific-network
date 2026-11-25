@@ -1,0 +1,23 @@
+{
+ "config_sha256": "cf84f56d15f5ae9c3ff89151086615cdb8f644d124353825e6896830157df70f",
+ "frozen": true,
+ "graph_version": "enriched-827be09bc987",
+ "items_sha256": "6537fcc922f3782c722992157b25f879661008f16a38e9ea3826deb298e5e53e",
+ "packets": [
+  {
+   "channel": "A",
+   "file": "A-1.json",
+   "items": 57,
+   "sha256": "df9ae287dfa9a60834830a04a8c22a56b4e46b88a39b3ba2bca4346d5342e419"
+  },
+  {
+   "channel": "B",
+   "file": "B-1.json",
+   "items": 57,
+   "sha256": "e7933db4d78c38a493874ee83e8cb9590fcf2b47af47b7631e85a1d8737b3ba0"
+  }
+ ],
+ "purpose": "E4 v2 AI-assessed audit sample, written before any judgement",
+ "sample_sha256": "97972737a7e871d27e9a0b9549ee284e5041a8e8d6af6a95d4f23a37180e91d0",
+ "seed": 2026112502
+}
