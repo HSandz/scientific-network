@@ -24,7 +24,10 @@ video and Q&A sheet out of scope):
 
 ## Changes and findings
 
-In progress.
+Checkpoint 2026-11-26 (items 1, 2, 3, 5 committed: `c790eb6`, `3814fd4`, `1737192`, `dcdfcd8`,
+`e257a8e`, `bc1f420`). Remaining: v4 Playwright (item 4), data release (6), README and checklist (7).
+Background: qa-eval-v1 scorer hash-seed sweep (re-scoring frozen raw outputs into
+`reports/runs/WORK-2026-11-26-001/qa-hashseed/`).
 
 ## Verification
 
