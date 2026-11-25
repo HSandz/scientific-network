@@ -520,5 +520,168 @@
         "position_inconsistent_pairs": 1
       }
     }
+  },
+  "supplementary_literature_precision": {
+    "protocol_version": "supplementary-precision-v1",
+    "label": "Supplementary, post-hoc, AI-assessed literature-supported precision",
+    "added": "2026-11-26",
+    "reason": "The qa-eval-v1 factual score measures agreement with the graph's edges, not truth. Vector RAG (S2) answered \"Which tasks is transformer applied to?\" with plausible tasks cited from abstracts and scored 0 because they are not the graph's APPLIED_TO edges. This post-hoc check asks whether each listed item is a correct answer supported by the AAAI/IJCAI 2021-2025 literature shown with it.",
+    "ai_assessed": true,
+    "post_hoc": true,
+    "does_not_replace": "the frozen graph-agreement factual scores in this file",
+    "manifest": "reports/final-exam/qa-eval-v1/supplementary-precision-manifest.json",
+    "manifest_sha256": "6d848b87636d8d928984e74e672b2173ac60ca81ebf8e5663fac6deecf731f77",
+    "evaluator_evidence": "reports/final-exam/qa-eval-v1/supplementary-precision-evidence.json",
+    "evaluators": {
+      "A": "fresh isolated Claude Code 2.1.332 (claude -p --output-format json), run outside the repository",
+      "B": "fresh isolated codex exec (codex-cli 0.172.0, gpt-6.2-sol via 9router), run outside the repository",
+      "C": "separate fresh codex exec session (same CLI and model as B) on A/B disagreements only. C differs in model family from A but shares B's family, so it is not independent of B. The Gemini CLI (0.26.0) was re-checked on 2026-11-26 and still fails with code 41 (unauthenticated)."
+    },
+    "question": "Is this item a correct answer to the question, supported by the AAAI/IJCAI 2021-2025 literature shown?",
+    "cohens_kappa_ab": 0.7083,
+    "disagreements_adjudicated_by_c": 23,
+    "by_system": {
+      "S2_vector_rag": {
+        "literature_supported_precision": {
+          "yes": 26,
+          "total": 60,
+          "rate": 0.4333,
+          "wilson_95_ci": [
+            0.3157,
+            0.559
+          ]
+        },
+        "excluding_unclear": {
+          "yes": 26,
+          "total": 48,
+          "rate": 0.5417,
+          "wilson_95_ci": [
+            0.4029,
+            0.6742
+          ]
+        },
+        "verdicts": {
+          "yes": 26,
+          "no": 22,
+          "unclear": 12
+        },
+        "by_hop": {
+          "1": {
+            "yes": 10,
+            "total": 11,
+            "rate": 0.9091,
+            "wilson_95_ci": [
+              0.6226,
+              0.9838
+            ]
+          },
+          "2": {
+            "yes": 16,
+            "total": 49,
+            "rate": 0.3265,
+            "wilson_95_ci": [
+              0.2121,
+              0.4662
+            ]
+          }
+        },
+        "by_evidence_rule": {
+          "cited_on_item_line": {
+            "yes": 26,
+            "total": 60,
+            "rate": 0.4333,
+            "wilson_95_ci": [
+              0.3157,
+              0.559
+            ]
+          }
+        }
+      },
+      "S4_multihop": {
+        "literature_supported_precision": {
+          "yes": 21,
+          "total": 60,
+          "rate": 0.35,
+          "wilson_95_ci": [
+            0.2417,
+            0.4764
+          ]
+        },
+        "excluding_unclear": {
+          "yes": 21,
+          "total": 36,
+          "rate": 0.5833,
+          "wilson_95_ci": [
+            0.422,
+            0.7286
+          ]
+        },
+        "verdicts": {
+          "yes": 21,
+          "no": 15,
+          "unclear": 24
+        },
+        "by_hop": {
+          "1": {
+            "yes": 13,
+            "total": 17,
+            "rate": 0.7647,
+            "wilson_95_ci": [
+              0.5274,
+              0.9044
+            ]
+          },
+          "2": {
+            "yes": 8,
+            "total": 43,
+            "rate": 0.186,
+            "wilson_95_ci": [
+              0.0974,
+              0.3262
+            ]
+          }
+        },
+        "by_evidence_rule": {
+          "cited_on_item_line": {
+            "yes": 4,
+            "total": 18,
+            "rate": 0.2222,
+            "wilson_95_ci": [
+              0.09,
+              0.4521
+            ]
+          },
+          "first_shown_papers_no_mention": {
+            "yes": 0,
+            "total": 1,
+            "rate": 0.0,
+            "wilson_95_ci": [
+              0.0,
+              0.7935
+            ]
+          },
+          "no_paper_shown": {
+            "yes": 0,
+            "total": 14,
+            "rate": 0.0,
+            "wilson_95_ci": [
+              0.0,
+              0.2153
+            ]
+          },
+          "shown_paper_mentions_item": {
+            "yes": 17,
+            "total": 27,
+            "rate": 0.6296,
+            "wilson_95_ci": [
+              0.4423,
+              0.7847
+            ]
+          }
+        }
+      }
+    },
+    "position": "Added 2026-11-26 after the evaluation, next to and not replacing the frozen graph-agreement factual scores; existing keys of this file are unchanged.",
+    "items_file": "reports/final-exam/qa-eval-v1/supplementary-precision.json"
   }
 }

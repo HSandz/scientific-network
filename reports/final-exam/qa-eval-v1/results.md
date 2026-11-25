@@ -68,3 +68,59 @@ After the evaluation, the product changed:
 The S4 citation-validity figure of 0.36 therefore describes the earlier labelling. It was not
 re-measured under the new labelling. The automatic faithfulness figures were computed with the
 earlier verifier. To reproduce this evaluation, check out commit `e572055`.
+
+### 2026-11-26 — Supplementary, post-hoc, AI-assessed literature-supported precision (S2 vs S4)
+
+**Why it was added.** The factual scores in §1 measure agreement with the graph's edges, not truth.
+For example, vector RAG (S2) answered "Which tasks is transformer applied to?" with plausible tasks
+cited from abstracts and scored 0, because those tasks are not the graph's `APPLIED_TO` edges. This
+check asks a different question of the same frozen answers. It was designed after the results were
+seen (post hoc) and is reported next to the graph-agreement scores, never in place of them.
+
+**Method** ([`configs/supplementary-precision-v1.yaml`](../../../configs/supplementary-precision-v1.yaml)).
+
+- **No system was re-run.** Items come from the frozen `raw-outputs.jsonl` (SHA-256 `d55218eb…`):
+  the listed items in S2 and S4 answers to the hop-1 and hop-2 list questions (`set`,
+  `ranked_list`). The item pools held 112 (S2) and 118 (S4) items.
+- **Sample.** 60 items per system, seeded (20261126) and stratified round-robin over questions.
+- **Freeze.** The [manifest](supplementary-precision-manifest.json) (no abstracts) was committed
+  before judging (`dcdfcd8`).
+- **What evaluators saw.** Each item and its question, plus the title and abstract of the papers
+  cited on the item's line. For an item with no citation on its line, they saw up to 3 of the
+  system's shown papers that mention it, or else the first 3 shown papers. Abstracts appear only in
+  an ignored packet. Items were blinded: interleaved, with no system names.
+- **Question:** "Is this item a correct answer to the question, supported by the AAAI/IJCAI 2021–2025
+  literature shown?" Verdicts: yes, no or unclear.
+- **Evaluators.** A is a fresh `claude -p` (claude-opus-5-5) and B a fresh `codex exec`
+  (gpt-6.2-sol via 9router), both run outside the repository. C is a separate fresh `codex exec`
+  session that adjudicated the 23 A/B disagreements. C differs in
+  family from A but shares B's family (the Gemini CLI still returns code 41, unauthenticated). The
+  building session did not judge.
+- **Agreement.** A–B Cohen's κ = 0.708.
+  [Evaluator evidence](supplementary-precision-evidence.json); [per-item results](supplementary-precision.json).
+
+| System | Literature-supported precision (yes / all, Wilson 95%) | Excluding "unclear" | Verdicts yes / no / unclear | Hop 1 | Hop 2 |
+| --- | --- | --- | --- | --- | --- |
+| S2_vector_rag | 26/60 = 0.433 [0.316, 0.559] | 26/48 = 0.542 [0.403, 0.674] | 26 / 22 / 12 | 10/11 = 0.909 [0.623, 0.984] | 16/49 = 0.327 [0.212, 0.466] |
+| S4_multihop | 21/60 = 0.350 [0.242, 0.476] | 21/36 = 0.583 [0.422, 0.729] | 21 / 15 / 24 | 13/17 = 0.765 [0.527, 0.904] | 8/43 = 0.186 [0.097, 0.326] |
+
+S4 by evidence rule:
+
+- shown paper mentions the item: 17/27 = 0.630 [0.442, 0.785];
+- paper cited on the item line: 4/18 = 0.222 [0.090, 0.452];
+- no paper shown: 0/14 = 0.000 [0.000, 0.215].
+
+All S2 items were cited on their line.
+
+**Reading.** On this literature-support question the two systems overlap: S2 0.433 and S4 0.350
+(all items), and 0.542 vs 0.583 excluding "unclear". Neither leads clearly, while on graph agreement
+(§1) S4 leads S2 by a wide margin. The check has limits:
+
+- It cannot support aggregate or ranking items from single abstracts, which carry no author lists
+  or corpus-wide counts. Most of S4's "unclear" verdicts are researcher rankings (for example,
+  "which ten researchers authored the most papers that use X").
+- 14 S4 items come from steps that return no papers, so they are "no" by construction.
+
+Both systems are wrong or unsupported on many hop-2 items. **AI-assessed:** these are not human
+annotations; Wilson intervals cover sampling only, not evaluator error; C is not independent of B;
+the design is post hoc.

@@ -1,0 +1,1563 @@
+{
+  "protocol_version": "supplementary-precision-v1",
+  "ai_assessed": true,
+  "post_hoc": true,
+  "manifest_sha256": "6d848b87636d8d928984e74e672b2173ac60ca81ebf8e5663fac6deecf731f77",
+  "judged_at": "2026-11-26T03:09:32+0700",
+  "evaluators": {
+    "A": "fresh isolated Claude Code 2.1.332 (claude -p --output-format json), run outside the repository",
+    "B": "fresh isolated codex exec (codex-cli 0.172.0, gpt-6.2-sol via 9router), run outside the repository",
+    "C": "separate fresh codex exec session (same CLI and model as B) on A/B disagreements only. C differs in model family from A but shares B's family, so it is not independent of B. The Gemini CLI (0.26.0) was re-checked on 2026-11-26 and still fails with code 41 (unauthenticated)."
+  },
+  "calls": {
+    "A": [
+      {
+        "batch": 0,
+        "items": [
+          "sp-001",
+          "sp-002",
+          "sp-003",
+          "sp-004",
+          "sp-005",
+          "sp-006",
+          "sp-007",
+          "sp-008",
+          "sp-009",
+          "sp-010",
+          "sp-011",
+          "sp-012"
+        ],
+        "session_id": "99b5c534-3578-4b97-879f-e6b55b778c48",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 1,
+        "items": [
+          "sp-013",
+          "sp-014",
+          "sp-015",
+          "sp-016",
+          "sp-017",
+          "sp-018",
+          "sp-019",
+          "sp-020",
+          "sp-021",
+          "sp-022",
+          "sp-023",
+          "sp-024"
+        ],
+        "session_id": "ce57a5fc-2cf5-4e6b-9881-4c5009a75b6c",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 2,
+        "items": [
+          "sp-025",
+          "sp-026",
+          "sp-027",
+          "sp-028",
+          "sp-029",
+          "sp-030",
+          "sp-031",
+          "sp-032",
+          "sp-033",
+          "sp-034",
+          "sp-035",
+          "sp-036"
+        ],
+        "session_id": "311754f5-fb2f-4f0a-9f5e-cd56fa7a1d0d",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 3,
+        "items": [
+          "sp-037",
+          "sp-038",
+          "sp-039",
+          "sp-040",
+          "sp-041",
+          "sp-042",
+          "sp-043",
+          "sp-044",
+          "sp-045",
+          "sp-046",
+          "sp-047",
+          "sp-048"
+        ],
+        "session_id": "b846623d-b90a-4e97-a323-d2e3c1746690",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 4,
+        "items": [
+          "sp-049",
+          "sp-050",
+          "sp-051",
+          "sp-052",
+          "sp-053",
+          "sp-054",
+          "sp-055",
+          "sp-056",
+          "sp-057",
+          "sp-058",
+          "sp-059",
+          "sp-060"
+        ],
+        "session_id": "3909f158-c38d-4289-880f-1eff9ab605be",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 5,
+        "items": [
+          "sp-061",
+          "sp-062",
+          "sp-063",
+          "sp-064",
+          "sp-065",
+          "sp-066",
+          "sp-067",
+          "sp-068",
+          "sp-069",
+          "sp-070",
+          "sp-071",
+          "sp-072"
+        ],
+        "session_id": "4e9b2083-5e66-4035-81b8-0ca9a3ffa320",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 6,
+        "items": [
+          "sp-073",
+          "sp-074",
+          "sp-075",
+          "sp-076",
+          "sp-077",
+          "sp-078",
+          "sp-079",
+          "sp-080",
+          "sp-081",
+          "sp-082",
+          "sp-083",
+          "sp-084"
+        ],
+        "session_id": "ac1931f3-87d5-4399-a9aa-41a4c672776a",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 7,
+        "items": [
+          "sp-085",
+          "sp-086",
+          "sp-087",
+          "sp-088",
+          "sp-089",
+          "sp-090",
+          "sp-091",
+          "sp-092",
+          "sp-093",
+          "sp-094",
+          "sp-095",
+          "sp-096"
+        ],
+        "session_id": "e3b61a73-c032-456d-88bc-c8c52ccc2e52",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 8,
+        "items": [
+          "sp-097",
+          "sp-098",
+          "sp-099",
+          "sp-100",
+          "sp-101",
+          "sp-102",
+          "sp-103",
+          "sp-104",
+          "sp-105",
+          "sp-106",
+          "sp-107",
+          "sp-108"
+        ],
+        "session_id": "a0e2d7fa-7d50-4cbf-bb45-1b043688c6ca",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 9,
+        "items": [
+          "sp-109",
+          "sp-110",
+          "sp-111",
+          "sp-112",
+          "sp-113",
+          "sp-114",
+          "sp-115",
+          "sp-116",
+          "sp-117",
+          "sp-118",
+          "sp-119",
+          "sp-120"
+        ],
+        "session_id": "2f985778-d922-46d9-ba87-da4560c0900f",
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "attempts": 1
+      }
+    ],
+    "B": [
+      {
+        "batch": 0,
+        "items": [
+          "sp-001",
+          "sp-002",
+          "sp-003",
+          "sp-004",
+          "sp-005",
+          "sp-006",
+          "sp-007",
+          "sp-008",
+          "sp-009",
+          "sp-010",
+          "sp-011",
+          "sp-012"
+        ],
+        "session_id": "01a21450-09db-73b0-8247-647ac5c78c01",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 1,
+        "items": [
+          "sp-013",
+          "sp-014",
+          "sp-015",
+          "sp-016",
+          "sp-017",
+          "sp-018",
+          "sp-019",
+          "sp-020",
+          "sp-021",
+          "sp-022",
+          "sp-023",
+          "sp-024"
+        ],
+        "session_id": "01a21450-7dcc-7bf3-bd5a-52b57910388a",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 2,
+        "items": [
+          "sp-025",
+          "sp-026",
+          "sp-027",
+          "sp-028",
+          "sp-029",
+          "sp-030",
+          "sp-031",
+          "sp-032",
+          "sp-033",
+          "sp-034",
+          "sp-035",
+          "sp-036"
+        ],
+        "session_id": "01a21450-d677-7862-86af-6c63716ad8c6",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 3,
+        "items": [
+          "sp-037",
+          "sp-038",
+          "sp-039",
+          "sp-040",
+          "sp-041",
+          "sp-042",
+          "sp-043",
+          "sp-044",
+          "sp-045",
+          "sp-046",
+          "sp-047",
+          "sp-048"
+        ],
+        "session_id": "01a21451-2e41-7ed0-9f68-71032f188a70",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 4,
+        "items": [
+          "sp-049",
+          "sp-050",
+          "sp-051",
+          "sp-052",
+          "sp-053",
+          "sp-054",
+          "sp-055",
+          "sp-056",
+          "sp-057",
+          "sp-058",
+          "sp-059",
+          "sp-060"
+        ],
+        "session_id": "01a21451-7a40-7ad0-9671-0cc3bab71b64",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 5,
+        "items": [
+          "sp-061",
+          "sp-062",
+          "sp-063",
+          "sp-064",
+          "sp-065",
+          "sp-066",
+          "sp-067",
+          "sp-068",
+          "sp-069",
+          "sp-070",
+          "sp-071",
+          "sp-072"
+        ],
+        "session_id": "01a21451-cd81-7391-88f6-e078cc68c52d",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 6,
+        "items": [
+          "sp-073",
+          "sp-074",
+          "sp-075",
+          "sp-076",
+          "sp-077",
+          "sp-078",
+          "sp-079",
+          "sp-080",
+          "sp-081",
+          "sp-082",
+          "sp-083",
+          "sp-084"
+        ],
+        "session_id": "01a21452-1460-70e1-93f5-5f82a2f2c9ef",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 7,
+        "items": [
+          "sp-085",
+          "sp-086",
+          "sp-087",
+          "sp-088",
+          "sp-089",
+          "sp-090",
+          "sp-091",
+          "sp-092",
+          "sp-093",
+          "sp-094",
+          "sp-095",
+          "sp-096"
+        ],
+        "session_id": "01a21452-5155-7431-a89d-afb45b1777b9",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 8,
+        "items": [
+          "sp-097",
+          "sp-098",
+          "sp-099",
+          "sp-100",
+          "sp-101",
+          "sp-102",
+          "sp-103",
+          "sp-104",
+          "sp-105",
+          "sp-106",
+          "sp-107",
+          "sp-108"
+        ],
+        "session_id": "01a21452-9577-7a63-bfb4-bdac3551e6d5",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 9,
+        "items": [
+          "sp-109",
+          "sp-110",
+          "sp-111",
+          "sp-112",
+          "sp-113",
+          "sp-114",
+          "sp-115",
+          "sp-116",
+          "sp-117",
+          "sp-118",
+          "sp-119",
+          "sp-120"
+        ],
+        "session_id": "01a21452-e0d3-7df0-807d-e6598779a77e",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      }
+    ],
+    "C": [
+      {
+        "batch": 0,
+        "items": [
+          "sp-002",
+          "sp-010",
+          "sp-021",
+          "sp-025",
+          "sp-027",
+          "sp-030",
+          "sp-051",
+          "sp-052",
+          "sp-061",
+          "sp-064",
+          "sp-065",
+          "sp-067"
+        ],
+        "session_id": "01a21453-2af3-7c22-94b1-5d4da793f13a",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      },
+      {
+        "batch": 1,
+        "items": [
+          "sp-072",
+          "sp-086",
+          "sp-093",
+          "sp-094",
+          "sp-096",
+          "sp-101",
+          "sp-108",
+          "sp-109",
+          "sp-111",
+          "sp-112",
+          "sp-116"
+        ],
+        "session_id": "01a21453-97c7-7071-ae4b-4194f9fdfb57",
+        "models": [
+          "gpt-6.2-sol (9router)"
+        ],
+        "attempts": 1
+      }
+    ]
+  },
+  "verdicts": {
+    "A": {
+      "sp-001": {
+        "verdict": "yes",
+        "rationale": "The paper is about neural machine translation and tests on WMT translation benchmarks."
+      },
+      "sp-002": {
+        "verdict": "unclear",
+        "rationale": "Molecule caption translation is only called a related task, and the paper itself is about reaction captioning, not machine translation."
+      },
+      "sp-003": {
+        "verdict": "unclear",
+        "rationale": "One RL paper uses ASP, but the abstracts cannot show whether ASP is among the five most-used RL methods."
+      },
+      "sp-004": {
+        "verdict": "yes",
+        "rationale": "Three image segmentation papers all focus on medical image segmentation."
+      },
+      "sp-005": {
+        "verdict": "no",
+        "rationale": "The paper shown is from IJCAI 2021, not IJCAI 2023."
+      },
+      "sp-006": {
+        "verdict": "yes",
+        "rationale": "AttnCut uses a transformer for ranked list truncation in information retrieval."
+      },
+      "sp-007": {
+        "verdict": "no",
+        "rationale": "No papers are shown to support the collaboration claim."
+      },
+      "sp-008": {
+        "verdict": "unclear",
+        "rationale": "One multimodal paper uses knowledge distillation, but the abstracts cannot show whether it is among the five most-used methods."
+      },
+      "sp-009": {
+        "verdict": "unclear",
+        "rationale": "One RL paper uses deep Q-learning, but the abstracts cannot show whether it is among the five most-used methods."
+      },
+      "sp-010": {
+        "verdict": "yes",
+        "rationale": "SpreadGNN tests GNNs on molecular property prediction datasets."
+      },
+      "sp-011": {
+        "verdict": "yes",
+        "rationale": "Three transformer-based papers report results on KITTI."
+      },
+      "sp-012": {
+        "verdict": "unclear",
+        "rationale": "The papers shown use contrastive learning, but authors are not listed, so neither authorship nor ranking can be checked."
+      },
+      "sp-013": {
+        "verdict": "yes",
+        "rationale": "The CALF abstract says Transformers are widely and successfully used for multivariate time series forecasting."
+      },
+      "sp-014": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Tencent as a collaborator of CMU's collaborators."
+      },
+      "sp-015": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support this organization being among Tsinghua's top five collaborators."
+      },
+      "sp-016": {
+        "verdict": "unclear",
+        "rationale": "One paper combines RL with integer programming, but that is not enough to place it among the five methods used by the most RL papers."
+      },
+      "sp-017": {
+        "verdict": "no",
+        "rationale": "The paper shown is from 2023, not 2025, so it does not support datasets used in 2025 papers."
+      },
+      "sp-018": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Peking University as a collaborator of CMU's collaborators."
+      },
+      "sp-019": {
+        "verdict": "yes",
+        "rationale": "SparseTT applies sparse Transformers to visual tracking."
+      },
+      "sp-020": {
+        "verdict": "yes",
+        "rationale": "The paper addresses recommendation and falls under learning path recommendation."
+      },
+      "sp-021": {
+        "verdict": "no",
+        "rationale": "NHITS is not a transformer model; it only compares against Transformer baselines, and the answer item is a vague description, not a named dataset."
+      },
+      "sp-022": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support this organization as a collaborator of CMU's collaborators."
+      },
+      "sp-023": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Chinese Academy of Sciences being among Tsinghua's top five collaborators."
+      },
+      "sp-024": {
+        "verdict": "yes",
+        "rationale": "Both papers apply diffusion models to sequential recommendation."
+      },
+      "sp-025": {
+        "verdict": "yes",
+        "rationale": "The audio-visual SSCL paper uses contrastive learning for multimodal representation learning, although the shown papers cannot confirm it ranks in the top five."
+      },
+      "sp-026": {
+        "verdict": "yes",
+        "rationale": "Several shown abstracts say GNNs are applied to node classification."
+      },
+      "sp-027": {
+        "verdict": "yes",
+        "rationale": "The shown multimodal papers (text-to-image generation and editing, visual-language tracking) are built on diffusion models."
+      },
+      "sp-028": {
+        "verdict": "no",
+        "rationale": "The only paper shown is from 2021, not 2023."
+      },
+      "sp-029": {
+        "verdict": "yes",
+        "rationale": "The paper introduces two regeneration datasets, one content-diverse and one style-diverse, to evaluate diffusion-based text-to-image models."
+      },
+      "sp-030": {
+        "verdict": "unclear",
+        "rationale": "The recommendation paper optimizes with policy gradient, but that is a method, and the abstract does not show whether it counts as the paper's topic."
+      },
+      "sp-031": {
+        "verdict": "unclear",
+        "rationale": "The paper evaluates on DOTA-v1.0, but it is a Gaussian-splatting detector and mentions transformers only as background."
+      },
+      "sp-032": {
+        "verdict": "yes",
+        "rationale": "DiffDVC applies a diffusion model to dense video captioning."
+      },
+      "sp-033": {
+        "verdict": "no",
+        "rationale": "The only paper shown is from 2022, not 2024."
+      },
+      "sp-034": {
+        "verdict": "no",
+        "rationale": "The paper is from 2024 and is about text classification, not a 2023 computer vision paper."
+      },
+      "sp-035": {
+        "verdict": "yes",
+        "rationale": "MGNet applies GNNs to learning correspondences."
+      },
+      "sp-036": {
+        "verdict": "unclear",
+        "rationale": "Authors are not listed, so the abstracts cannot show Yiyu Shi's authorship or paper count."
+      },
+      "sp-037": {
+        "verdict": "unclear",
+        "rationale": "The paper is about PPO, but no authors are shown, so Haiyin Piao's authorship and top-ten ranking cannot be checked."
+      },
+      "sp-038": {
+        "verdict": "yes",
+        "rationale": "An AAAI 2024 paper explicitly applies GNNs to graph classification."
+      },
+      "sp-039": {
+        "verdict": "yes",
+        "rationale": "The abstract describes GNNs as a powerful tool for modeling graph data."
+      },
+      "sp-040": {
+        "verdict": "yes",
+        "rationale": "Both transformer-based tracking papers evaluate on GOT-10k."
+      },
+      "sp-041": {
+        "verdict": "yes",
+        "rationale": "Several papers explicitly apply GNNs to node classification."
+      },
+      "sp-042": {
+        "verdict": "yes",
+        "rationale": "The tensor-compressed DETR transformer paper runs its experiments on COCO."
+      },
+      "sp-043": {
+        "verdict": "no",
+        "rationale": "EAVIT is the proposed framework, not a dataset."
+      },
+      "sp-044": {
+        "verdict": "unclear",
+        "rationale": "One RL paper uses a causal model, but whether it ranks among the top five RL methods cannot be determined."
+      },
+      "sp-045": {
+        "verdict": "no",
+        "rationale": "The paper is not about generative modeling and only mentions Bayesian neural networks as prior work."
+      },
+      "sp-046": {
+        "verdict": "yes",
+        "rationale": "DeMT applies a transformer to multi-task learning of dense prediction."
+      },
+      "sp-047": {
+        "verdict": "no",
+        "rationale": "'Various types of graph datasets' is a vague phrase, not a named dataset."
+      },
+      "sp-048": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the collaboration claim."
+      },
+      "sp-049": {
+        "verdict": "yes",
+        "rationale": "The paper is explicitly about semi-supervised medical image segmentation, which is a topic within image segmentation."
+      },
+      "sp-050": {
+        "verdict": "no",
+        "rationale": "GearFormer is the Transformer-based model; the dataset is an unnamed synthetic gear train dataset."
+      },
+      "sp-051": {
+        "verdict": "yes",
+        "rationale": "Three multimodal papers shown use knowledge distillation, which supports it being among the most used methods."
+      },
+      "sp-052": {
+        "verdict": "yes",
+        "rationale": "The paper trains graph encoders for graph classification and evaluates on various graph classification datasets."
+      },
+      "sp-053": {
+        "verdict": "yes",
+        "rationale": "The paper uses a GNN for tracking and runs experiments on nuScenes."
+      },
+      "sp-054": {
+        "verdict": "no",
+        "rationale": "The paper shown is from IJCAI 2021, not IJCAI 2023."
+      },
+      "sp-055": {
+        "verdict": "unclear",
+        "rationale": "Only one RL paper uses a Bellman operator, which is not enough to tell whether it ranks in the top five."
+      },
+      "sp-056": {
+        "verdict": "no",
+        "rationale": "The paper shown is from 2021, not 2024."
+      },
+      "sp-057": {
+        "verdict": "no",
+        "rationale": "The paper shown is from 2021, not 2024."
+      },
+      "sp-058": {
+        "verdict": "yes",
+        "rationale": "Both GNN papers report results on the Open Graph Benchmark."
+      },
+      "sp-059": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the collaboration claim."
+      },
+      "sp-060": {
+        "verdict": "yes",
+        "rationale": "DiffBEV applies a diffusion model to Bird's Eye View perception."
+      },
+      "sp-061": {
+        "verdict": "yes",
+        "rationale": "All three papers use Atari benchmarks and are about learning representations for RL."
+      },
+      "sp-062": {
+        "verdict": "yes",
+        "rationale": "SEFormer applies a Transformer to 3D object detection on LiDAR point clouds."
+      },
+      "sp-063": {
+        "verdict": "unclear",
+        "rationale": "The papers use CLIP and a GPT-2 decoder, but the abstracts do not clearly show large language models as a method they use."
+      },
+      "sp-064": {
+        "verdict": "yes",
+        "rationale": "Both generative modeling papers center on diffusion models."
+      },
+      "sp-065": {
+        "verdict": "unclear",
+        "rationale": "SeeDiff draws on classical seeded segmentation, but it is unclear whether that counts as a topic the paper belongs to rather than an inspiration."
+      },
+      "sp-066": {
+        "verdict": "no",
+        "rationale": "The paper shown is about graph connectivity testing, not multimodal learning."
+      },
+      "sp-067": {
+        "verdict": "yes",
+        "rationale": "All three papers are reinforcement learning work evaluated on Atari games."
+      },
+      "sp-068": {
+        "verdict": "yes",
+        "rationale": "Both papers use graph neural networks or graph-based models and evaluate on USPTO-50k."
+      },
+      "sp-069": {
+        "verdict": "no",
+        "rationale": "'Multi-Modal Grounded Planning' comes from a paper title and is not a dataset."
+      },
+      "sp-070": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claim."
+      },
+      "sp-071": {
+        "verdict": "no",
+        "rationale": "None of the GNN papers shown mentions CIFAR-100; they use graph benchmarks such as Cora and Pubmed."
+      },
+      "sp-072": {
+        "verdict": "yes",
+        "rationale": "All three generative modeling papers use GANs."
+      },
+      "sp-073": {
+        "verdict": "no",
+        "rationale": "The paper shown is from 2024 and is about text classification, and these four datasets are text datasets, not computer vision datasets from 2023."
+      },
+      "sp-074": {
+        "verdict": "yes",
+        "rationale": "The paper proposes Zero-Mean Diffusion, a diffusion model used for quantitative phase imaging."
+      },
+      "sp-075": {
+        "verdict": "unclear",
+        "rationale": "Both papers use contrastive learning, but no author names are shown, so they cannot show that Nanqing Dong wrote them or ranks in the top ten."
+      },
+      "sp-076": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support this collaboration claim."
+      },
+      "sp-077": {
+        "verdict": "unclear",
+        "rationale": "One RL paper uses hierarchical RL, but a single paper cannot show that it is among the five most-used methods."
+      },
+      "sp-078": {
+        "verdict": "no",
+        "rationale": "Auxiliary generative models are only mentioned as prior work in an uncertainty-explanation paper, which is not a generative modeling paper using them."
+      },
+      "sp-079": {
+        "verdict": "yes",
+        "rationale": "Both papers apply graph neural networks to anomaly detection."
+      },
+      "sp-080": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support this collaboration claim."
+      },
+      "sp-081": {
+        "verdict": "unclear",
+        "rationale": "The paper uses PPO, but no authors are shown, so Bo An's authorship and ranking cannot be checked."
+      },
+      "sp-082": {
+        "verdict": "yes",
+        "rationale": "The paper uses a multimodal Transformer-based architecture for multimodal sarcasm explanation."
+      },
+      "sp-083": {
+        "verdict": "yes",
+        "rationale": "The abstract says current state-of-the-art 3D human pose estimation methods are mainly based on Transformers."
+      },
+      "sp-084": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support this collaboration claim."
+      },
+      "sp-085": {
+        "verdict": "no",
+        "rationale": "No papers are shown, so nothing supports this collaboration link."
+      },
+      "sp-086": {
+        "verdict": "yes",
+        "rationale": "All three multimodal papers shown are built on CLIP, which supports it as a widely used method."
+      },
+      "sp-087": {
+        "verdict": "unclear",
+        "rationale": "The paper uses PPO, but no author list is shown to confirm Zhaopeng Meng wrote it."
+      },
+      "sp-088": {
+        "verdict": "no",
+        "rationale": "No papers are shown, so nothing supports this collaboration link."
+      },
+      "sp-089": {
+        "verdict": "yes",
+        "rationale": "The abstract says diffusion models are used for image editing tasks such as semantic image painting."
+      },
+      "sp-090": {
+        "verdict": "unclear",
+        "rationale": "The papers use contrastive learning, but no author lists are shown to confirm Shaohui Lin wrote them."
+      },
+      "sp-091": {
+        "verdict": "unclear",
+        "rationale": "The papers use Atari as a benchmark, but the abstracts cannot tell us whether this vague topic label is among the top three."
+      },
+      "sp-092": {
+        "verdict": "yes",
+        "rationale": "The multimodal transformer paper is validated on the PIE and JAAD datasets."
+      },
+      "sp-093": {
+        "verdict": "yes",
+        "rationale": "Several multimodal papers shown use contrastive learning for alignment."
+      },
+      "sp-094": {
+        "verdict": "no",
+        "rationale": "The only paper is about continual learning and uses SVD as a side tool, which does not show SVD is a top RL method."
+      },
+      "sp-095": {
+        "verdict": "unclear",
+        "rationale": "The paper uses PPO, but no author list is shown to confirm P. B. Sujit wrote it."
+      },
+      "sp-096": {
+        "verdict": "yes",
+        "rationale": "The paper on machine translation also targets natural language understanding tasks, which supports the topic link."
+      },
+      "sp-097": {
+        "verdict": "no",
+        "rationale": "Graph-based imitation learning is a method from a single paper that is offered as an alternative to RL, so the shown paper does not make it one of the methods most RL papers use."
+      },
+      "sp-098": {
+        "verdict": "yes",
+        "rationale": "The TGNN paper applies a graph neural network and evaluates on the Sr3D benchmark."
+      },
+      "sp-099": {
+        "verdict": "unclear",
+        "rationale": "The paper uses PPO, but no author list is shown, so Changmin Yu's authorship cannot be checked."
+      },
+      "sp-100": {
+        "verdict": "yes",
+        "rationale": "Segatron is a transformer model and reports perplexity on WikiText-103."
+      },
+      "sp-101": {
+        "verdict": "yes",
+        "rationale": "Several generative modeling papers are shown that all build on diffusion models."
+      },
+      "sp-102": {
+        "verdict": "unclear",
+        "rationale": "Both papers use contrastive learning, but no authors are shown, so Yawen Wu's authorship cannot be checked."
+      },
+      "sp-103": {
+        "verdict": "yes",
+        "rationale": "The paper runs speech translation experiments, and speech translation is a translation-related topic."
+      },
+      "sp-104": {
+        "verdict": "yes",
+        "rationale": "The paper applies a diffusion model to event causality identification."
+      },
+      "sp-105": {
+        "verdict": "yes",
+        "rationale": "The paper builds and uses a fairness evaluation dataset generated with diffusion models."
+      },
+      "sp-106": {
+        "verdict": "yes",
+        "rationale": "The abstract names node/graph classification and link prediction as GNN tasks."
+      },
+      "sp-107": {
+        "verdict": "yes",
+        "rationale": "Both papers apply transformers to time series forecasting."
+      },
+      "sp-108": {
+        "verdict": "no",
+        "rationale": "The item lists evaluation tasks rather than a topic, and the papers' topics are active learning and federated learning."
+      },
+      "sp-109": {
+        "verdict": "unclear",
+        "rationale": "The papers use GNNs to learn representations for recommendation and clustering, but none names graph representation learning as the task."
+      },
+      "sp-110": {
+        "verdict": "unclear",
+        "rationale": "One paper applies vector quantization in reinforcement learning, which cannot show that it is among the five most-used methods."
+      },
+      "sp-111": {
+        "verdict": "yes",
+        "rationale": "All three papers on generative modeling are built on GANs."
+      },
+      "sp-112": {
+        "verdict": "unclear",
+        "rationale": "The diffusion model is used only for generation, while segmentation is done by the U-KAN backbone and not by diffusion."
+      },
+      "sp-113": {
+        "verdict": "yes",
+        "rationale": "The paper is a recommendation method based on Tucker decomposition."
+      },
+      "sp-114": {
+        "verdict": "no",
+        "rationale": "The paper using PlotQA is from 2021, not 2023."
+      },
+      "sp-115": {
+        "verdict": "yes",
+        "rationale": "ResDiff applies a diffusion model to image super-resolution."
+      },
+      "sp-116": {
+        "verdict": "yes",
+        "rationale": "Several generative modeling papers use variational autoencoders."
+      },
+      "sp-117": {
+        "verdict": "yes",
+        "rationale": "Gramformer applies a transformer to crowd counting."
+      },
+      "sp-118": {
+        "verdict": "yes",
+        "rationale": "Both recommendation papers use graph contrastive learning."
+      },
+      "sp-119": {
+        "verdict": "no",
+        "rationale": "The paper introducing the ASP dataset is from 2023, not 2025."
+      },
+      "sp-120": {
+        "verdict": "no",
+        "rationale": "The paper using fifteen graph classification datasets is from 2021, not 2024."
+      }
+    },
+    "B": {
+      "sp-001": {
+        "verdict": "yes",
+        "rationale": "The paper proposes and evaluates a framework for neural machine translation."
+      },
+      "sp-002": {
+        "verdict": "no",
+        "rationale": "The abstract describes molecule caption translation as molecule–text alignment and presents a method for reaction captioning."
+      },
+      "sp-003": {
+        "verdict": "unclear",
+        "rationale": "The paper uses Answer Set Programming for policy repair, but it provides no counts to establish a top-five ranking."
+      },
+      "sp-004": {
+        "verdict": "yes",
+        "rationale": "All three papers explicitly address medical image segmentation."
+      },
+      "sp-005": {
+        "verdict": "no",
+        "rationale": "The shown Transformer paper addresses visual question answering and appeared at IJCAI 2021, outside the requested year."
+      },
+      "sp-006": {
+        "verdict": "yes",
+        "rationale": "The paper applies a Transformer to ranked-list truncation in information retrieval."
+      },
+      "sp-007": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claimed indirect collaboration with Fudan University."
+      },
+      "sp-008": {
+        "verdict": "unclear",
+        "rationale": "The paper uses knowledge distillation for multimodal summarization, but it provides no counts to establish a top-five ranking."
+      },
+      "sp-009": {
+        "verdict": "unclear",
+        "rationale": "The paper uses deep Q-learning, but it provides no counts to establish a top-five ranking."
+      },
+      "sp-010": {
+        "verdict": "no",
+        "rationale": "Molecular data describes the type of data used, and the abstract identifies no specific dataset."
+      },
+      "sp-011": {
+        "verdict": "yes",
+        "rationale": "All three papers report evaluating Transformer-based models on KITTI."
+      },
+      "sp-012": {
+        "verdict": "unclear",
+        "rationale": "The shown text provides neither author names nor publication counts to verify Richong Zhang’s top-ten placement."
+      },
+      "sp-013": {
+        "verdict": "yes",
+        "rationale": "The CALF abstract explicitly states that Transformers have been used for multivariate time series forecasting."
+      },
+      "sp-014": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Tencent’s inclusion."
+      },
+      "sp-015": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support a top-five ranking for Tsinghua Shenzhen International Graduate School."
+      },
+      "sp-016": {
+        "verdict": "unclear",
+        "rationale": "NICE combines integer programming with reinforcement learning, but its abstract gives no evidence about the method’s rank by paper count."
+      },
+      "sp-017": {
+        "verdict": "no",
+        "rationale": "The shown paper uses all four datasets and was published in 2023, outside the requested year."
+      },
+      "sp-018": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Peking University’s inclusion."
+      },
+      "sp-019": {
+        "verdict": "yes",
+        "rationale": "SparseTT applies sparse Transformers to visual tracking."
+      },
+      "sp-020": {
+        "verdict": "yes",
+        "rationale": "The shown paper develops a method for recommending personalized learning paths."
+      },
+      "sp-021": {
+        "verdict": "unclear",
+        "rationale": "NHITS reports a comparison with Transformer architectures without specifying how those architectures were evaluated on the forecasting datasets."
+      },
+      "sp-022": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support Tsinghua Shenzhen International Graduate School’s inclusion."
+      },
+      "sp-023": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support a top-five ranking for the Chinese Academy of Sciences."
+      },
+      "sp-024": {
+        "verdict": "yes",
+        "rationale": "The DAE4Rec paper explicitly applies a diffusion model to sequential recommendation."
+      },
+      "sp-025": {
+        "verdict": "unclear",
+        "rationale": "The audio-visual paper uses contrastive learning, but the abstracts give no counts to establish a top-five ranking."
+      },
+      "sp-026": {
+        "verdict": "yes",
+        "rationale": "The abstracts explicitly identify node classification as an application of graph neural networks."
+      },
+      "sp-027": {
+        "verdict": "unclear",
+        "rationale": "The papers show diffusion models used in multimodal tasks, but provide no counts to establish a top-five ranking."
+      },
+      "sp-028": {
+        "verdict": "no",
+        "rationale": "The paper that uses all three datasets was published in 2021, outside the requested year."
+      },
+      "sp-029": {
+        "verdict": "yes",
+        "rationale": "The abstract explicitly describes using two regeneration datasets covering content and style diversity to evaluate text-to-image diffusion models."
+      },
+      "sp-030": {
+        "verdict": "yes",
+        "rationale": "The learning-path recommendation paper explicitly uses policy gradient to optimize its recommendation policy."
+      },
+      "sp-031": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms that GSDet uses DOTA-v1.0 and mentions transformers in prior work, leaving GSDet's use of a transformer unspecified."
+      },
+      "sp-032": {
+        "verdict": "yes",
+        "rationale": "DiffDVC applies a diffusion model to event detection within dense video captioning."
+      },
+      "sp-033": {
+        "verdict": "no",
+        "rationale": "The paper that uses several graph classification benchmarks was published in 2022, outside the requested year."
+      },
+      "sp-034": {
+        "verdict": "no",
+        "rationale": "The paper that evaluates MNIST and OpenML-155 was published in 2024, outside the requested year."
+      },
+      "sp-035": {
+        "verdict": "yes",
+        "rationale": "The abstract explicitly describes using graph neural networks to identify correct correspondences."
+      },
+      "sp-036": {
+        "verdict": "unclear",
+        "rationale": "The abstracts describe contrastive learning and provide neither author names nor publication counts for a top-ten ranking."
+      },
+      "sp-037": {
+        "verdict": "unclear",
+        "rationale": "The excerpt discusses PPO but gives neither an author list nor publication counts needed to establish a top-ten ranking."
+      },
+      "sp-038": {
+        "verdict": "yes",
+        "rationale": "The AAAI 2024 paper explicitly addresses graph classification with graph neural networks."
+      },
+      "sp-039": {
+        "verdict": "yes",
+        "rationale": "The abstract explicitly describes GNNs as tools for modeling graph data and demonstrates their use for graph anomaly detection."
+      },
+      "sp-040": {
+        "verdict": "yes",
+        "rationale": "Both papers report evaluating transformer-based trackers on GOT-10k."
+      },
+      "sp-041": {
+        "verdict": "yes",
+        "rationale": "The abstracts explicitly describe using GNNs for node classification, including semi-supervised fraud detection."
+      },
+      "sp-042": {
+        "verdict": "yes",
+        "rationale": "The paper evaluates its compressed detection transformers on the COCO dataset."
+      },
+      "sp-043": {
+        "verdict": "no",
+        "rationale": "EAVIT is the proposed framework for identifying human values in text."
+      },
+      "sp-044": {
+        "verdict": "unclear",
+        "rationale": "The paper establishes one use of a causal model in reinforcement learning and provides no frequency ranking."
+      },
+      "sp-045": {
+        "verdict": "no",
+        "rationale": "The abstract mentions Bayesian neural networks only as prior approaches to explaining uncertainty."
+      },
+      "sp-046": {
+        "verdict": "yes",
+        "rationale": "DeMT uses a transformer decoder for multi-task learning of dense prediction."
+      },
+      "sp-047": {
+        "verdict": "no",
+        "rationale": "The phrase is too generic to identify any of the datasets used in the comparison."
+      },
+      "sp-048": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claimed collaboration relationship."
+      },
+      "sp-049": {
+        "verdict": "yes",
+        "rationale": "The paper explicitly addresses semi-supervised medical image segmentation."
+      },
+      "sp-050": {
+        "verdict": "no",
+        "rationale": "GearFormer is the Transformer model trained on the synthetic gear-train dataset."
+      },
+      "sp-051": {
+        "verdict": "unclear",
+        "rationale": "The three papers use knowledge distillation, but their abstracts provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-052": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms use of various graph classification datasets but leaves the graph encoder architecture unspecified."
+      },
+      "sp-053": {
+        "verdict": "yes",
+        "rationale": "The paper uses a graph neural network for tracking and evaluates the framework on nuScenes."
+      },
+      "sp-054": {
+        "verdict": "no",
+        "rationale": "The cited Transformer paper addresses pedestrian trajectory prediction and appeared at IJCAI 2021, outside the requested year."
+      },
+      "sp-055": {
+        "verdict": "unclear",
+        "rationale": "The paper studies a Bellman operator in reinforcement learning, but its abstract gives no evidence of a top-five ranking by usage."
+      },
+      "sp-056": {
+        "verdict": "no",
+        "rationale": "The cited paper reports experiments on six graph classification datasets and was published in 2021, outside the requested year."
+      },
+      "sp-057": {
+        "verdict": "no",
+        "rationale": "The cited paper uses all three datasets and was published in 2021, outside the requested year."
+      },
+      "sp-058": {
+        "verdict": "yes",
+        "rationale": "MAGNA explicitly evaluates a graph neural network on an Open Graph Benchmark dataset."
+      },
+      "sp-059": {
+        "verdict": "no",
+        "rationale": "No paper is shown to establish that Xiamen University meets the collaboration criteria."
+      },
+      "sp-060": {
+        "verdict": "yes",
+        "rationale": "DiffBEV applies a conditional diffusion model to bird’s-eye-view perception."
+      },
+      "sp-061": {
+        "verdict": "unclear",
+        "rationale": "All three papers study representation learning using Atari, but they do not establish a top-three ranking."
+      },
+      "sp-062": {
+        "verdict": "yes",
+        "rationale": "SEFormer applies a transformer to 3D object detection on LiDAR point clouds."
+      },
+      "sp-063": {
+        "verdict": "unclear",
+        "rationale": "The papers describe CLIP-based methods and one GPT-2 decoder, but they do not establish how frequently large language models are used across multimodal learning papers."
+      },
+      "sp-064": {
+        "verdict": "unclear",
+        "rationale": "Both papers use diffusion models for generative tasks, but they do not establish a top-five ranking."
+      },
+      "sp-065": {
+        "verdict": "yes",
+        "rationale": "SeeDiff explicitly connects its mask generation method to classical seeded segmentation and adapts its region expansion principle."
+      },
+      "sp-066": {
+        "verdict": "no",
+        "rationale": "The shown paper uses Monte Carlo tree search for graph connectivity testing and provides no evidence of its use in multimodal learning."
+      },
+      "sp-067": {
+        "verdict": "unclear",
+        "rationale": "All three papers evaluate reinforcement learning on Atari, but they do not establish a top-three ranking."
+      },
+      "sp-068": {
+        "verdict": "yes",
+        "rationale": "RetCL uses graph neural networks to score candidate reactants and evaluates on USPTO-50K."
+      },
+      "sp-069": {
+        "verdict": "no",
+        "rationale": "Multi-Modal Grounded Planning describes the paper's research task, and the abstract leaves its dataset unnamed."
+      },
+      "sp-070": {
+        "verdict": "no",
+        "rationale": "No paper is shown to establish the collaboration relationship."
+      },
+      "sp-071": {
+        "verdict": "no",
+        "rationale": "The shown graph neural network papers report other benchmarks and provide no evidence of CIFAR-100 use."
+      },
+      "sp-072": {
+        "verdict": "unclear",
+        "rationale": "The papers show several uses of generative adversarial networks, but they do not establish a top-five ranking."
+      },
+      "sp-073": {
+        "verdict": "no",
+        "rationale": "The 2024 paper uses all four datasets for text classification."
+      },
+      "sp-074": {
+        "verdict": "yes",
+        "rationale": "The paper uses a diffusion model for quantitative phase retrieval from a single exposure."
+      },
+      "sp-075": {
+        "verdict": "unclear",
+        "rationale": "The abstracts establish use of contrastive learning but provide neither author names nor publication counts for a top-ten ranking."
+      },
+      "sp-076": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claimed collaboration link."
+      },
+      "sp-077": {
+        "verdict": "unclear",
+        "rationale": "EarnHFT uses hierarchical reinforcement learning, but one paper cannot establish its top-five ranking by frequency."
+      },
+      "sp-078": {
+        "verdict": "no",
+        "rationale": "The paper mentions auxiliary generative models as prior work on uncertainty explanation and provides no evidence of their frequency in generative modeling papers."
+      },
+      "sp-079": {
+        "verdict": "yes",
+        "rationale": "Both papers use graph neural networks for anomaly detection."
+      },
+      "sp-080": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claimed top-five collaboration ranking."
+      },
+      "sp-081": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms use of proximal policy optimization but provides neither author names nor publication counts for a top-ten ranking."
+      },
+      "sp-082": {
+        "verdict": "yes",
+        "rationale": "The paper uses a multimodal Transformer to generate explanations of sarcastic posts."
+      },
+      "sp-083": {
+        "verdict": "yes",
+        "rationale": "The abstract explicitly identifies Transformers as the basis of existing methods for 3D human pose estimation."
+      },
+      "sp-084": {
+        "verdict": "no",
+        "rationale": "No paper is shown to support the claimed top-five collaboration ranking."
+      },
+      "sp-085": {
+        "verdict": "no",
+        "rationale": "No papers are shown to establish the required collaboration links."
+      },
+      "sp-086": {
+        "verdict": "unclear",
+        "rationale": "The papers show CLIP use in multimodal learning without establishing its frequency rank."
+      },
+      "sp-087": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms PPO use and supplies neither authorship information nor publication counts."
+      },
+      "sp-088": {
+        "verdict": "no",
+        "rationale": "No papers are shown to establish the required collaboration links."
+      },
+      "sp-089": {
+        "verdict": "yes",
+        "rationale": "The abstract explicitly describes semantic image painting as an image editing task that uses diffusion models."
+      },
+      "sp-090": {
+        "verdict": "unclear",
+        "rationale": "The papers use contrastive learning, and the supplied text lacks author names and publication counts."
+      },
+      "sp-091": {
+        "verdict": "unclear",
+        "rationale": "The abstracts identify Atari as a benchmark and provide no topic assignments or frequency rankings."
+      },
+      "sp-092": {
+        "verdict": "yes",
+        "rationale": "The paper explicitly evaluates its multimodal transformer on both PIE and JAAD."
+      },
+      "sp-093": {
+        "verdict": "unclear",
+        "rationale": "The papers show contrastive learning in multimodal work without establishing its frequency rank."
+      },
+      "sp-094": {
+        "verdict": "unclear",
+        "rationale": "The paper uses singular value decomposition in a method evaluated on reinforcement learning tasks, leaving its frequency rank undetermined."
+      },
+      "sp-095": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms PPO use and supplies neither authorship information nor publication counts."
+      },
+      "sp-096": {
+        "verdict": "no",
+        "rationale": "The abstract lists machine translation and natural language understanding as separate evaluation areas."
+      },
+      "sp-097": {
+        "verdict": "no",
+        "rationale": "The paper trains its model with graph-based imitation learning and uses reinforcement learning as a comparison baseline."
+      },
+      "sp-098": {
+        "verdict": "yes",
+        "rationale": "The paper evaluates its text-guided graph neural network on the Sr3D benchmark."
+      },
+      "sp-099": {
+        "verdict": "unclear",
+        "rationale": "The abstract confirms PPO use and provides neither author names nor comparative publication counts."
+      },
+      "sp-100": {
+        "verdict": "yes",
+        "rationale": "The paper reports WikiText-103 perplexity for its segment-aware Transformer."
+      },
+      "sp-101": {
+        "verdict": "unclear",
+        "rationale": "The abstracts establish diffusion model use in generative modeling, and a top-five ranking requires comparative paper counts."
+      },
+      "sp-102": {
+        "verdict": "unclear",
+        "rationale": "Both abstracts confirm contrastive learning use and provide neither author names nor comparative publication counts."
+      },
+      "sp-103": {
+        "verdict": "yes",
+        "rationale": "The paper evaluates its code-switching method on speech translation."
+      },
+      "sp-104": {
+        "verdict": "yes",
+        "rationale": "The paper uses a diffusion model to derive causal label representations for event causality identification."
+      },
+      "sp-105": {
+        "verdict": "yes",
+        "rationale": "The paper uses diffusion-generated and inpainted occupational images to evaluate fairness across perceived racial groups."
+      },
+      "sp-106": {
+        "verdict": "yes",
+        "rationale": "The abstract identifies node classification, graph classification, and link prediction as existing GNN applications."
+      },
+      "sp-107": {
+        "verdict": "yes",
+        "rationale": "The Sequence Complementor paper evaluates its Transformer approach on both short-term and long-term time series forecasting."
+      },
+      "sp-108": {
+        "verdict": "yes",
+        "rationale": "Both papers report experiments on image classification and semantic segmentation."
+      },
+      "sp-109": {
+        "verdict": "yes",
+        "rationale": "The papers use graph neural networks to learn representations from graph-structured data for clustering and recommendation."
+      },
+      "sp-110": {
+        "verdict": "unclear",
+        "rationale": "The paper uses vector quantization in reinforcement learning, but its frequency rank across papers is undetermined."
+      },
+      "sp-111": {
+        "verdict": "unclear",
+        "rationale": "The papers show GANs used for generative modeling, but provide too little evidence to establish a top-five ranking."
+      },
+      "sp-112": {
+        "verdict": "no",
+        "rationale": "The paper evaluates U-KAN for medical image segmentation and describes its diffusion-model role only for generation."
+      },
+      "sp-113": {
+        "verdict": "yes",
+        "rationale": "The paper uses Tucker decomposition to learn latent factors for multi-criteria recommendation."
+      },
+      "sp-114": {
+        "verdict": "no",
+        "rationale": "The shown computer vision paper that uses PlotQA was published in 2021."
+      },
+      "sp-115": {
+        "verdict": "yes",
+        "rationale": "ResDiff uses a diffusion model to predict the residual for single-image super-resolution."
+      },
+      "sp-116": {
+        "verdict": "unclear",
+        "rationale": "The papers show variational autoencoders used for generation, but their frequency rank across generative modeling papers is undetermined."
+      },
+      "sp-117": {
+        "verdict": "yes",
+        "rationale": "Gramformer uses a graph-modulated transformer for crowd counting."
+      },
+      "sp-118": {
+        "verdict": "yes",
+        "rationale": "The papers apply contrastive learning to sequential recommendation and recipe recommendation."
+      },
+      "sp-119": {
+        "verdict": "no",
+        "rationale": "The shown language model paper that introduces and uses ASP was published in 2023."
+      },
+      "sp-120": {
+        "verdict": "no",
+        "rationale": "The shown graph machine learning paper that reports using fifteen real-world graph classification datasets was published in 2021."
+      }
+    },
+    "C": {
+      "sp-002": {
+        "verdict": "no",
+        "rationale": "ReactGPT studies chemical reaction captioning and mentions molecule caption translation as prior work."
+      },
+      "sp-010": {
+        "verdict": "yes",
+        "rationale": "SpreadGNN evaluates graph neural networks on molecular property prediction datasets."
+      },
+      "sp-021": {
+        "verdict": "unclear",
+        "rationale": "The abstract compares NHITS with Transformers without specifying whether the authors ran those models on the forecasting datasets."
+      },
+      "sp-025": {
+        "verdict": "unclear",
+        "rationale": "The audio-visual paper uses contrastive learning, and its frequency rank across multimodal learning papers remains undetermined."
+      },
+      "sp-027": {
+        "verdict": "unclear",
+        "rationale": "The papers show diffusion models used in several multimodal tasks, leaving their top-five frequency rank unresolved."
+      },
+      "sp-030": {
+        "verdict": "yes",
+        "rationale": "The paper uses policy gradient to optimize its learning path recommendation policy."
+      },
+      "sp-051": {
+        "verdict": "unclear",
+        "rationale": "All three papers use knowledge distillation in multimodal models, and its frequency rank across the literature remains undetermined."
+      },
+      "sp-052": {
+        "verdict": "unclear",
+        "rationale": "The abstract reports experiments on graph classification datasets without identifying the graph encoders as graph neural networks."
+      },
+      "sp-061": {
+        "verdict": "unclear",
+        "rationale": "All three papers study representation learning and use Atari, leaving the topic's rank across Atari papers unresolved."
+      },
+      "sp-064": {
+        "verdict": "unclear",
+        "rationale": "Both papers use diffusion models for generative modeling, and their frequency rank across the literature remains undetermined."
+      },
+      "sp-065": {
+        "verdict": "yes",
+        "rationale": "SeeDiff explicitly draws on classical seeded segmentation by expanding initial localization seeds into segmentation masks."
+      },
+      "sp-067": {
+        "verdict": "unclear",
+        "rationale": "All three papers use Atari to evaluate reinforcement learning, leaving the topic's rank across Atari papers unresolved."
+      },
+      "sp-072": {
+        "verdict": "unclear",
+        "rationale": "The papers show GAN use in generative modeling, but provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-086": {
+        "verdict": "unclear",
+        "rationale": "The papers show CLIP use in multimodal learning, but provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-093": {
+        "verdict": "unclear",
+        "rationale": "The papers show contrastive learning in multimodal systems, but provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-094": {
+        "verdict": "unclear",
+        "rationale": "The paper uses singular value decomposition in a method evaluated on reinforcement learning tasks, but gives no evidence of its frequency across papers."
+      },
+      "sp-096": {
+        "verdict": "yes",
+        "rationale": "The MoEC paper addresses both machine translation and natural language understanding through its experiments."
+      },
+      "sp-101": {
+        "verdict": "unclear",
+        "rationale": "The papers demonstrate diffusion models in generative applications, but provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-108": {
+        "verdict": "yes",
+        "rationale": "Both papers evaluate their methods on image classification and semantic segmentation."
+      },
+      "sp-109": {
+        "verdict": "yes",
+        "rationale": "The papers describe graph neural networks learning representations from graph or hypergraph structure."
+      },
+      "sp-111": {
+        "verdict": "unclear",
+        "rationale": "The papers show GAN use in font and time-series generation, but provide no comparative counts to establish a top-five ranking."
+      },
+      "sp-112": {
+        "verdict": "no",
+        "rationale": "The abstract describes U-KAN segmentation benchmarks and a separate diffusion noise-prediction application, leaving diffusion-based segmentation unsupported."
+      },
+      "sp-116": {
+        "verdict": "unclear",
+        "rationale": "The papers show variational autoencoders used for generation, but provide no comparative counts to establish a top-five ranking."
+      }
+    }
+  }
+}
