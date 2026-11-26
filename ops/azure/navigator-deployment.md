@@ -40,4 +40,10 @@ For an interactive course demo / marking traffic (~500–2,000 Ask queries; ~2,5
 2. Build production API image (`ops/azure/scripts/build-image.sh <tag>`) including `src/scientific_network/rag/` dependencies (and `sentence-transformers` CPU weights or precomputed query embedder check) and transfer to VM via `docker save | gzip -1 | ssh azure_scientific-network 'sudo -n docker load'`.
 3. Create Neo4j 5.26.12 dump of `enriched-cb371912e308` (`neo4j-admin database dump`) and restore into an unused production volume on VM, keeping the frozen v4 `neo4j-five-year` backup intact outside VM.
 4. Set VM `/opt/scientific-network/ops/azure/.env` (`chmod 0600`) with new production Neo4j password + `EXPLORER_LLM_*` vars + `EXPLORER_NAVIGATOR_ARTIFACT_DIR`.
+> **Open packaging gap (2026-11-27):** the artifact bundle does not yet include the organization
+> index (`data/processed/navigator-affiliations-v1/index.json.gz`, built by
+> `apps/research-explorer/backend/scripts/build_affiliation_index.py`). Add it, and set
+> `affiliation_index_path` for the container, before deploying; otherwise organization pages list no
+> papers. The frontend now uses real paths, so the host must serve `index.html` for unknown paths.
+
 5. Run read-only API health + Navigator smoke checks (`/api/trends`, `/api/groups`, `/api/communities`, `/api/network-science`, `/api/about-data`, `/api/ask/demos`), then build & deploy frontend to Cloudflare Pages.

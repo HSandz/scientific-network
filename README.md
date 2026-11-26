@@ -26,7 +26,32 @@ organizations and groups work on them. It runs on an **enriched graph** (`enrich
 graph v3): the frozen v4 graph plus a text-derived layer of Method, Task and Dataset entities
 extracted from abstracts and linked to Wikidata and Wikipedia. That gives 50,144 nodes and 242,048
 edges. Its pages are Trends, Topic/Method, Groups, Communities, Network Science, Ask, Node 360,
-Explorer and About the data. **Ask** answers questions in natural language. It uses GraphRAG
+Explorer and About the data.
+
+| Page | Address | What it answers |
+| --- | --- | --- |
+| Pulse | `/` | Which methods and tasks are heating up or cooling, and who leads them |
+| Ask | `/ask` | Natural-language questions; past conversations are listed under Ask |
+| Trends | `/trends` | Yearly share of any subject, with rising, emerging and declining lists |
+| Topics | `/topics`, `/topics/<id>` | A searchable index and one page for each subject |
+| Groups | `/groups`, `/groups/<id>` | Organization profiles and the organization-by-topic matrix |
+| Map | `/map` | Research areas and clusters |
+| Network | `/network`, `/network/release` | The small-world evidence; the full v4 report |
+| Explore | `/explore` | The graph and table Explorer on the release graph, with an enriched-subject finder |
+| About | `/about` | Sources, versions, quality estimates, benchmark and licences |
+
+Any researcher, organization or paper also has a profile at `/node/<id>`. Search opens with ⌘K,
+Ctrl+K or `/`. On phones the left rail becomes a bottom tab bar. Light and dark themes are available.
+
+| Pulse | Ask |
+| --- | --- |
+| ![Pulse page](docs/images/navigator/pulse.png) | ![Ask page with an answer and its evidence graph](docs/images/navigator/ask.png) |
+| **Topic** | **Map** |
+| ![Topic page](docs/images/navigator/topic.png) | ![Map of research clusters](docs/images/navigator/map.png) |
+
+The screenshots show AI-generated and AI-assessed content; see the statement below.
+
+**Ask** answers questions in natural language. It uses GraphRAG
 community reports (local and global search) and a multi-hop planner over nine read-only graph
 tools, run by a ≤9B local language model (Qwen3.5-4B, Q4_K_M). Every answer shows its reasoning
 trace and highlighted subgraph.
@@ -101,6 +126,12 @@ NEO4J_URI=bolt://localhost:7690 uv run research-network enrich load-graph \
 uv run research-network final-analysis all --config configs/analysis-final-exam-v2.yaml \
   --graph data/processed/enriched-graph-v3/graph.json --output reports/runs/manual-analysis-v2
 
+# Organization paper lists, from the per-paper author–paper–organization triples (ignored output).
+# Without this file, group and organization pages list no papers.
+uv run python apps/research-explorer/backend/scripts/build_affiliation_index.py \
+  --graph data/processed/release-graph-v4/graph.json \
+  --output data/processed/navigator-affiliations-v1/index.json.gz
+
 # Local language model (one at a time; 8 GB GPU), OpenAI-compatible on 127.0.0.1:8080
 docker compose -f ops/llm/compose.yaml --env-file ops/llm/qwen3.5-4b-q4km-live.env up -d
 
@@ -123,6 +154,12 @@ Port and memory notes:
 - If port 8080 is taken, start the model with `LLM_PORT=8081` and point `EXPLORER_LLM_BASE_URL` at
   it.
 - Without a model, Ask serves the seven cached scripted demos.
+- Ask's graph tools and the benchmark reference queries still count an organization's papers through
+  its researchers' affiliations, which credits more papers than the per-paper triples used on the
+  Groups pages. The benchmark scores use that broader definition.
+- Browser tests, from `apps/research-explorer/frontend`: `navigator.spec.ts` needs the API on the
+  enriched database (7690); the other specs need the API on the frozen v4 database (7689). Run them
+  separately: the API limits each client to 180 requests per minute.
 
 ## Frozen release graph v4: results
 

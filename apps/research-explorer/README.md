@@ -1,5 +1,9 @@
 # AI Research Network Explorer (2021–2025)
 
+> **Research Trend Navigator (final exam):** this frontend and API now serve the Navigator. Its
+> pages, addresses and quick start are in the [root README](../../README.md). This document describes
+> the v4 Explorer, which is now at `/explore`; its analytics dashboard is at `/network/release`.
+
 A self-contained, local full-stack scientific knowledge graph exploration workspace for the **AAAI and IJCAI 2021–2025** cumulative release graph (`release-d3c788c3114a`, release v4).
 
 The explorer connects **read-only** to the isolated `neo4j-five-year` Neo4j instance (`bolt://127.0.0.1:7689`) and cross-references local release ledgers (`reports/release-v4/analysis.json` and `data/processed/release-graph-v4/graph.json`) for full-projection network metrics, Louvain community partitions, `EvidenceRecord` provenance, and `AffiliationObservation` author–paper–organization triples.
