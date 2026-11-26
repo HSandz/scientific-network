@@ -95,3 +95,7 @@ licence, URL, revision ID and attribution, as the source policy allows.
    re-cloned. This rewrites every commit SHA cited in the work log, receipts and reports.
 
 No credential rotation is needed: no secret was found.
+
+## Resolution (2026-11-26, D042 amendment)
+
+User decision recorded in `docs/decisions.md` ([WORK-2026-11-26-002](../../docs/work-log/2026-11-26-002-final-non-report-fixes-release.md)): **accept and document** (Option 1). The 50 tracked v1–v4 audit and topic-review files hold abstract text or excerpts of papers whose abstracts are publicly available on the AAAI and IJCAI proceedings sites, and their bytes are bound by frozen receipts; they are kept as audit evidence with no history rewrite. **No new** abstract text may be committed, and the data release bundle (`ops/release/build-data-release.py`) excludes all abstract text.

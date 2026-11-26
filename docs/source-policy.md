@@ -62,6 +62,8 @@ Core citation analysis is core → core. Keep unmatched/external references in s
 an optional one-hop context layer is separately labeled and cannot satisfy core size.
 Never recursively acquire external authors/affiliations/references by default.
 
+> **Note (2026-11-26, D042 amendment):** The 50 tracked v1–v4 audit and topic-review files identified in [`reports/final-exam/repo-hygiene-2026-11-26.md`](../reports/final-exam/repo-hygiene-2026-11-26.md) hold abstract text or excerpts of papers whose abstracts are publicly available on the AAAI and IJCAI proceedings sites. They are bound by frozen receipts and are kept as audit evidence without rewriting Git history. **No new** abstract text may be committed going forward, and the public data release (`ops/release/build-data-release.py`) excludes all abstract text.
+
 ## Enrichment sources (D042, final exam)
 
 Fetched 2026-11-24 into the ignored `data/raw/enrichment-v1/` store with a tracked-style

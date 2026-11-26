@@ -467,9 +467,11 @@ the best eligible model by at least 5 F1 points on extraction or 10 points on
 development answer accuracy, *and* the team accepts the "9B language model"
 argument and records it in a D042 amendment. Report the full table as K1 evidence,
 with the exact model ID, revision, quantization and provider. Check runtime
-support (Ollama, llama.cpp, vLLM, hosted providers) for each candidate at M0;
+supports (Ollama, llama.cpp, vLLM, hosted providers) for each candidate at M0;
 Qwen3.5 uses a hybrid Gated DeltaNet and attention architecture, and Gemma 4 E4B
 uses per-layer embeddings.
+
+> **Team decision (2026-11-26, D042 amendment):** Keep **Qwen3.5-4B** (4.66B total). `Qwen/Qwen3.5-9B` met the 10-point development answer-accuracy margin (0.634 vs 0.502, +0.132 across 20 hash seeds) but has 9.65B total parameters, above the strict ≤9.0B rule; it stays the **parameter-scale reference** only.
 
 **Runtime:**
 - *Development:* the local machine has an RTX 5060 Laptop GPU with 8 GB. Every

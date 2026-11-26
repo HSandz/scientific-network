@@ -68,6 +68,8 @@ model" argument (9.65B total, above the 9.0B total-parameter rule) and records a
 **No such decision has been made; Qwen3.5-4B remains the model in use.** This is a decision for the
 user and team.
 
+**Team decision (2026-11-26, D042 amendment):** Keep **Qwen3.5-4B** (4.66B total parameters). `Qwen/Qwen3.5-9B` (9.65B total, above the strict ≤9.0B rule) stays the **parameter-scale reference** only.
+
 **Caveats.** 15 factual development questions: a 10-point difference is within sampling noise. The
 parser, planner and answer prompts were developed with Qwen3.5-4B in the loop, which favours the 4B,
 so the 9B's gain is, if anything, understated. The factual score measures agreement with the graph's

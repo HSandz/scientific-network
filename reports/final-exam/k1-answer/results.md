@@ -40,6 +40,7 @@
 - Gemma-4-E4B-it gain over Qwen3.5-4B: -0.033 (flag-for-user margin 0.10 not met).
 - Hash-seed robustness: over PYTHONHASHSEED 0–19 the 9B gain ranges +0.112 to +0.152 (margin met at every seed: yes); Gemma's best gain over the 4B is -0.013.
 - **Outcome:** A margin is met; a model change needs a recorded team decision (not made by the agent).
+- **Team decision (2026-11-26, D042 amendment):** Keep **Qwen3.5-4B** (4.66B total parameters). `Qwen/Qwen3.5-9B` (9.65B total parameters, above the strict ≤9.0B rule) stays the **parameter-scale reference** only.
 
 ## Scorer hash-seed sensitivity
 

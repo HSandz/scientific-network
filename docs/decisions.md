@@ -1565,3 +1565,15 @@ Recorded in `WORK-2026-11-26-001`.
 - **v4 Explorer.** The focus label is now guaranteed in dense hub layouts (a second placement pass may overlap node discs), and the v4
   baseline specs refuse a backend that does not read the verified v4 graph. The baseline images are unchanged: they were captured
   against the production API on 11 November (110/166 nodes/edges), and refreshing them is a user decision.
+
+## D042 amendment — K1 model decision, tracked abstract evidence, licences and draft data release (2026-11-26)
+
+Recorded in [WORK-2026-11-26-002](work-log/2026-11-26-002-final-non-report-fixes-release.md). User decisions on the four open items from WORK-2026-11-26-001:
+
+- **K1: keep Qwen3.5-4B.** Although `Qwen/Qwen3.5-9B` met the §6.1 development answer-accuracy margin (0.634 against 0.502 for `Qwen/Qwen3.5-4B`, +0.132 across all 20 hash seeds), its total parameter count is 9.65B (above the strict ≤9.0B eligibility rule). **Qwen3.5-4B** (4.66B total) remains the chosen language model; **Qwen3.5-9B** stays the **parameter-scale reference** only.
+- **Abstract text in tracked files: accept and document.** Keep the 50 existing tracked v1–v4 audit and topic-review files unchanged (frozen receipts bind their bytes; no history rewrite). Those files contain abstract text or excerpts of papers whose abstracts are publicly available on the AAAI and IJCAI proceedings sites, retained strictly as audit evidence. **No new** abstract text may be committed to Git, and the public data release excludes all abstract text.
+- **Licences: MIT for code, CC BY 4.0 for project-authored data.**
+  - Repository code is licensed under the MIT License ([`LICENSE`](../LICENSE), `Copyright (c) 2026 Research Trend Navigator contributors`).
+  - Project-authored data (enrichment entities/relations, analysis outputs, QA benchmark questions/references, evaluation results, and project-authored descriptions) is licensed under CC BY 4.0 ([`LICENSE-DATA.md`](../LICENSE-DATA.md)). Third-party data retains its own terms: OpenAlex (CC0 1.0), ROR (CC0 1.0), Wikidata (CC0 1.0), English Wikipedia lead excerpts (CC BY-SA 4.0 with per-record URL, revision ID and attribution), and AI-generated text explicitly labelled `"AI-generated from graph data"`.
+- **Publish: push `main`, then create the data release as a draft.** Push `main` to `origin` after all verification checks pass, rebuild the data release bundle with the CC BY 4.0 / MIT licences, and create the GitHub release `data-v1` as a **draft** (`--draft`, not published).
+

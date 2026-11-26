@@ -38,15 +38,16 @@ BASE_GRAPH_VERSION = "release-d3c788c3114a"
 WORKS_JSONL = Path("data/interim/release-v1/works.jsonl")
 
 LICENCE_CLASSES: dict[str, str] = {
-    "graph": "mixed: see LICENSES.md (OpenAlex/ROR/Wikidata-derived facts CC0 1.0; Wikipedia titles, URLs and revision IDs; project-derived edges: licence pending)",
-    "project": "project-authored derived data: licence pending team decision (see LICENSES.md)",
-    "ai_generated": "AI-generated text (labelled 'AI-generated from graph data'); project output, licence pending team decision",
-    "wikipedia_mixed": "mixed: Wikipedia lead excerpts CC BY-SA 4.0 with per-record attribution; other descriptions AI-generated or template text (licence pending)",
-    "source_manifest": "project-authored manifest of third-party sources (URLs, revision IDs, hashes; no source text)",
+    "graph": "mixed: see LICENSES.md and LICENSE-DATA.md (OpenAlex/ROR/Wikidata-derived facts CC0 1.0; Wikipedia titles, URLs and revision IDs; project-derived edges CC BY 4.0)",
+    "project": "CC BY 4.0 (project-authored derived data; see LICENSE-DATA.md and LICENSES.md)",
+    "ai_generated": "CC BY 4.0; AI-generated text (labelled 'AI-generated from graph data')",
+    "wikipedia_mixed": "mixed: Wikipedia lead excerpts CC BY-SA 4.0 with per-record attribution; project/AI-generated descriptions CC BY 4.0",
+    "source_manifest": "CC BY 4.0 (project-authored manifest of third-party sources; URLs, revision IDs, hashes; no source text)",
 }
 
 # (source path or directory, bundle path, licence class, description)
 INCLUDES: list[tuple[str, str, str, str]] = [
+    ("LICENSE-DATA.md", "LICENSE-DATA.md", "project", "Data licence terms (CC BY 4.0 for project-authored data; third-party terms preserved)"),
     ("data/processed/enriched-graph-v3/summary.json", "graph/summary.json", "project", "Graph v3 node/edge counts by label and predicate"),
     ("reports/enrichment-v1/sources.json", "enrichment/sources-e1.json", "source_manifest", "E1 enrichment source manifest (counts, licences, selection rules)"),
     ("reports/enrichment-v1/entities.json", "enrichment/v1/entities.json", "project", "E2 entity extraction outputs (v1)"),
@@ -238,9 +239,10 @@ text (community reports, many entity descriptions) is labelled "AI-generated fro
 
 ## Licences and attribution
 
-See `LICENSES.md`. Wikipedia excerpts are CC BY-SA 4.0, and each record carries its page URL, revision
-ID and attribution. OpenAlex, ROR and Wikidata facts are CC0 1.0. The licence for project-authored data
-is **pending a team decision** and is not granted by this file.
+See `LICENSES.md` and `LICENSE-DATA.md`. Project-authored derived data is licensed under **CC BY 4.0**
+(<https://creativecommons.org/licenses/by/4.0/>). Code in the repository is licensed under the **MIT
+License**. Wikipedia excerpts are CC BY-SA 4.0, and each record carries its page URL, revision ID
+and attribution. OpenAlex, ROR and Wikidata facts are CC0 1.0.
 
 ## Loading
 
@@ -259,8 +261,8 @@ LICENSES_MD = """# Licences and attribution by source
 | Wikidata | QIDs, types, parents, countries, inception, short descriptions | CC0 1.0 |
 | English Wikipedia | page titles, URLs, revision IDs; lead excerpts in `graphrag/entity-descriptions.json` (records with `license: "CC BY-SA 4.0"`) | CC BY-SA 4.0. Each excerpt carries `wikipedia_url`, `wikipedia_revision_id` and an attribution line; reuse must keep the attribution and share alike. |
 | AAAI and IJCAI official proceedings pages | paper roster membership, official URLs and PDF URLs (links only; no PDFs) | Licence of the pages not stated; factual bibliographic metadata and links only. |
-| AI-generated text (Qwen3.5-4B, Q4_K_M, local llama.cpp) | community reports; entity descriptions marked `generation_method` LLM | Project output, labelled "AI-generated from graph data". The model is Apache-2.0; licence of this text: **pending team decision**. |
-| Project-authored derived data | enrichment entities and relations, analysis outputs, benchmark questions and references, evaluation results | **Pending team decision.** No licence is granted until the team chooses one. |
+| AI-generated text (Qwen3.5-4B, Q4_K_M, local llama.cpp) | community reports; entity descriptions marked `generation_method` LLM | **CC BY 4.0** (project output, labelled `"AI-generated from graph data"` / `"AI-generated from mentions"`). The model weights are Apache-2.0. |
+| Project-authored derived data | enrichment entities and relations, analysis outputs, benchmark questions and references, evaluation results | **CC BY 4.0** (<https://creativecommons.org/licenses/by/4.0/>; see `LICENSE-DATA.md`). Repository source code is separately **MIT** licensed (`LICENSE`). |
 """
 
 
