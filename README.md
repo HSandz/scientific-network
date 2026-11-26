@@ -44,7 +44,7 @@ trace and highlighted subgraph.
 | --- | --- |
 | System URL (deployed Navigator) | **pending**: deployment prepared ([plan](ops/azure/navigator-deployment.md)), awaiting approval |
 | arXiv report | **pending** (milestone M5) |
-| Data release (enrichment layer, analysis outputs, benchmark) | **pending**: bundle built locally by [`ops/release/build-data-release.py`](ops/release/build-data-release.py), publication awaiting approval |
+| Data release (enrichment layer, analysis outputs, benchmark) | **draft — publish pending**: [`data-v1` draft](https://github.com/HSandz/scientific-network/releases/tag/untagged-f27c9b6883ddafe2147c) (`57.5 MB` tarball + `MANIFEST.json`, abstracts redacted, CC BY 4.0 + third-party terms; once published, resolves at `releases/tag/data-v1`) |
 | Frozen v4 Explorer (earlier deliverable) | <https://scientific-network-explorer.pages.dev/> |
 
 ### Key results and their caveats

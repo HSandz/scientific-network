@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | in_progress (ready for secrets check, push, and draft `data-v1` release) |
+| Status | completed |
 | Recorded | 2026-11-26 21:00 +07:00 (Asia/Bangkok) |
 | Work performed | 2026-11-26 |
 | Contributor | Agent execution session with the user |
@@ -51,7 +51,9 @@ Record the user's four 2026-11-26 decisions, fix `"Which groups work on X"` acro
 | Navigator Playwright (`tests/navigator.spec.ts tests/contracts.spec.ts`, `7690`/`8080`, `8001`/`5175`) | `18 passed` (`36.0s`), exit 0 | `reports/runs/WORK-2026-11-26-002/playwright-navigator.log` |
 | Backend suite (`EXPLORER_NEO4J_URI=bolt://127.0.0.1:7689 uv run pytest -q apps/research-explorer/backend/tests`) | `37 passed` (`47.59s`), exit 0 | `reports/runs/WORK-2026-11-26-002/v4/backend-tests.log` |
 | Full v4 Playwright (all 6 specs on `7689`, `8001`/`5175`) | `46 passed` (`2.8m`), exit 0 | `reports/runs/WORK-2026-11-26-002/v4/playwright-v4.log` |
-| Final secrets & abstract scan / `git push` / `data-v1` draft release | Pending final commands in this session | — |
+| Final secrets & abstract scan (`origin/main..HEAD`, `d6114f5..HEAD`) | exit 0; `0` secret pattern / `.env` hits (`14,859` added lines); `0` abstract-shingle hits in `d6114f5..HEAD` (`250,055` 10-word shingles; 2 prior hits in pre-existing commits `e257a8e`/`dcdfcd8`) | `git log origin/main..HEAD -p` |
+| Push `main` & rebuild `data-v1` bundle (`72fc49e`) | exit 0 (`e572055..72fc49e`); 74 files, `57,521,321` B, `14,222` excerpts + `6` desc redacted, `0` shingle hits | `reports/runs/WORK-2026-11-26-002/data-release/` |
+| Create GitHub draft release `data-v1` & verify | exit 0 (`isDraft: true`, `tagName: "data-v1"`, `MANIFEST.json` + `.tar.gz` uploaded) | `https://github.com/HSandz/scientific-network/releases/tag/untagged-f27c9b6883ddafe2147c` |
 
 ## Decisions
 
@@ -64,7 +66,7 @@ Record the user's four 2026-11-26 decisions, fix `"Which groups work on X"` acro
 
 ## Next step
 
-Complete the `origin/main..HEAD` secrets and abstract-text scan, push `main`, rebuild and upload the draft `data-v1` release, and record the draft link in `README.md`, `docs/status.md`, and this entry.
+Complete the remaining M5–M6 deliverables (hosted deployment approval, arXiv report, slides, demo video, Q&A sheet) and publish the `data-v1` draft release after team review.
 
 ## Corrections
 
