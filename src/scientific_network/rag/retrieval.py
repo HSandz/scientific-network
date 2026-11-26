@@ -19,14 +19,14 @@ GLOBAL_MAP_SCHEMA: dict[str, Any] = {
     "properties": {
         "points": {
             "type": "array",
-            "maxItems": 6,
+            "maxItems": 4,
             "items": {
                 "type": "object",
                 "required": ["claim", "importance", "paper_ids"],
                 "properties": {
-                    "claim": {"type": "string"},
+                    "claim": {"type": "string", "maxLength": 240},
                     "importance": {"type": "integer", "minimum": 1, "maximum": 10},
-                    "paper_ids": {"type": "array", "items": {"type": "string"}},
+                    "paper_ids": {"type": "array", "maxItems": 3, "items": {"type": "string"}},
                 },
             },
         },
@@ -131,12 +131,20 @@ def global_search(
     embed_fn: Callable[[str], np.ndarray] | None = None,
     top_reports: int = 14,
     batch_size: int = 5,
-    prompt_version: str = "rag-global-v2",
+    prompt_version: str = "rag-global-v3",
+    map_max_tokens: int = 1024,
 ) -> dict[str, Any]:
     """Corpus-wide map-reduce over community reports (spec §6.2)."""
     all_reports = json.loads(reports_path.read_text(encoding="utf-8")).get("reports", []) if reports_path.exists() else []
     if not all_reports:
-        return {"mode": "global", "answer": "No community reports available.", "points": [], "paper_ids": [], "reports_used": []}
+        return {
+            "mode": "global",
+            "answer": "No community reports available.",
+            "points": [],
+            "paper_ids": [],
+            "reports_used": [],
+            "map_stats": {"batches": 0, "succeeded": 0, "failed": 0, "truncated": 0},
+        }
 
     # Select top relevant reports (preferring L1 research + top N1/N2 by vector similarity if available, else centrality)
     selected: list[dict[str, Any]]
@@ -152,29 +160,38 @@ def global_search(
     # Map pass over report batches
     map_points: list[dict[str, Any]] = []
     allowed_pids: set[str] = set()
+    map_batches = 0
+    map_succeeded = 0
+    map_failed = 0
+    map_truncated = 0
     for start in range(0, len(selected), batch_size):
         batch = selected[start:start + batch_size]
+        map_batches += 1
         for rep in batch:
-            for kf in rep.get("key_findings", []):
+            for kf in rep.get("key_findings", [])[:4]:
                 allowed_pids.update(kf.get("paper_ids", []))
         user_msg = (
             f"Question: {query}\n\n"
             "Community reports:\n"
             + json.dumps([{
                 "community_id": r["community_id"], "network": r["network"], "title": r["title"],
-                "summary": r["summary"], "key_findings": r["key_findings"], "paper_count": r["paper_count"],
+                "summary": r["summary"], "key_findings": r.get("key_findings", [])[:4], "paper_count": r["paper_count"],
             } for r in batch], ensure_ascii=False)
         )
         try:
             res = llm.complete(
                 prompt_version=f"{prompt_version}-map",
-                system="Extract key claims from these community reports relevant to the question. Only use numbers and paper_ids present in the reports.",
+                system=(
+                    "Extract at most 4 concise single-sentence claims from these community reports relevant to the question. "
+                    "Keep each claim under 220 characters with at most 3 paper_ids, using ONLY numbers and paper_ids present in the reports."
+                ),
                 user=user_msg,
                 schema=GLOBAL_MAP_SCHEMA,
                 schema_name="global_map",
-                max_tokens=512,
+                max_tokens=map_max_tokens,
             )
             if isinstance(res.parsed, dict):
+                map_succeeded += 1
                 for pt in res.parsed.get("points", []):
                     clean_pids = [p for p in pt.get("paper_ids", []) if p in allowed_pids]
                     map_points.append({
@@ -182,7 +199,12 @@ def global_search(
                         "importance": int(pt.get("importance", 5)),
                         "paper_ids": clean_pids,
                     })
-        except LLMError:
+            else:
+                map_failed += 1
+        except LLMError as exc:
+            map_failed += 1
+            if "unexpected end" in str(exc).lower() or "unterminated" in str(exc).lower() or "eof" in str(exc).lower():
+                map_truncated += 1
             continue
 
     map_points.sort(key=lambda p: -p["importance"])
@@ -228,5 +250,11 @@ def global_search(
         "points": top_points,
         "paper_ids": list(dict.fromkeys(cited_pids))[:40],
         "reports_used": [r["community_id"] for r in selected],
+        "map_stats": {
+            "batches": map_batches,
+            "succeeded": map_succeeded,
+            "failed": map_failed,
+            "truncated": map_truncated,
+        },
         "ai_generated_label": "AI-generated from graph data",
     }

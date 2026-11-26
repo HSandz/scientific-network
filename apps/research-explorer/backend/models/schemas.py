@@ -101,6 +101,7 @@ class GraphEdge(BaseModel):
 
 class HealthResponse(BaseModel):
     status: Literal["ok", "degraded", "error"]
+    graph_mode: Literal["v4", "enriched"] = "v4"
     neo4j_connected: bool
     neo4j_endpoint: str
     expected_graph_version: str
@@ -108,6 +109,8 @@ class HealthResponse(BaseModel):
     database_verified: bool
     total_nodes: int
     total_edges: int
+    rag_index_nodes: dict[str, int] = Field(default_factory=dict)
+    rag_index_total_nodes: int = 0
     warnings: list[str] = Field(default_factory=list)
     artifacts: dict[str, bool] = Field(default_factory=dict)
 

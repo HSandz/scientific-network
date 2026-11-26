@@ -82,6 +82,7 @@ _GENERIC_ENTITY_WORDS: frozenset[str] = frozenset({
     "this", "that", "there", "here", "one", "two", "three", "four", "five", "six",
     "seven", "eight", "nine", "ten", "first", "second", "third",
     "evaluated", "tested", "trained", "applied", "conducted", "reported", "using",
+    "change", "annual", "personalized", "cutoff", "through", "cagr",
 })
 
 
@@ -307,6 +308,7 @@ _ANSWER_SYS_V4 = (
     "- Mention ONLY organizations, researchers, methods, tasks, datasets, and topics present in the trace or question; NEVER invent entities.\n"
     "- Aggregate claims (counts, shares, growth, rankings, co-occurrence, or any list computed over many papers) point to the trace step that computed them, written as [step N] with N the step number in the trace. "
     "Put [step N] at the end of each such sentence and after the introduction of each ranked or listed group, e.g. 'The organizations ranked by lift are [step 1]:'. Write each listed item as '- Name: the row's counts and metric values in words', keeping every count the rules below ask for. "
+    "Write metric names in plain English (for example 'share change', 'lift', 'papers after 2022'); NEVER output raw snake_case field names like share_delta or post_gt_2022_share. "
     "NEVER attach paper IDs to aggregate claims: the papers listed with a step are example papers behind the count, not evidence for the sentence, and the interface lists them separately.\n"
     "- Cite a paper ID in brackets, copied verbatim (e.g. [paper:aaai:2024:29823]), ONLY when the sentence states something about that specific paper "
     "and the trace gives that paper as its own row or abstract excerpt. NEVER write placeholder or truncated citations such as [paper:...], [...], or ellipses inside brackets.\n"
@@ -483,10 +485,49 @@ _NOISY_ROW_KEYS = frozenset({
 })
 
 
+_HUMANIZED_KEY_LABELS: dict[str, str] = {
+    "share_delta": "share change",
+    "pre_papers": "papers before cutoff",
+    "post_papers": "papers after cutoff",
+    "ppr_score": "personalized PageRank",
+    "global_pagerank": "global PageRank",
+    "subject_papers": "subject papers",
+    "total_papers": "total papers",
+    "support_count": "shared papers",
+    "cagr_of_share_2021_2025": "annual share growth (CAGR 2021-2025)",
+    "slope_of_share": "share trend slope",
+    "slope_p_value": "trend p-value",
+    "base_window_papers": "base-period papers",
+    "recent_window_papers": "recent-period papers",
+    "in_corpus_citations": "in-corpus citations",
+    "share_of_group": "share of group papers",
+    "first_active_year": "first active year",
+    "group_key": "group",
+    "entity_name": "name",
+    "neighbor_name": "neighbor",
+    "neighbor_label": "neighbor type",
+    "neighbor_id": "neighbor ID",
+    "entity_id": "entity ID",
+}
+
+
 def _strip_noisy_row_keys(row: Any) -> Any:
-    if isinstance(row, dict):
-        return {k: v for k, v in row.items() if k not in _NOISY_ROW_KEYS}
-    return row
+    if not isinstance(row, dict):
+        return row
+    out: dict[str, Any] = {}
+    for k, v in row.items():
+        if k in _NOISY_ROW_KEYS:
+            continue
+        m_pre = re.fullmatch(r"pre_le_(\d{4})_(subject_papers|total_papers|share)", k)
+        m_post = re.fullmatch(r"post_gt_(\d{4})_(subject_papers|total_papers|share)", k)
+        if m_pre:
+            label = f"{m_pre.group(2).replace('_', ' ')} (through {m_pre.group(1)})"
+        elif m_post:
+            label = f"{m_post.group(2).replace('_', ' ')} (after {m_post.group(1)})"
+        else:
+            label = _HUMANIZED_KEY_LABELS.get(k, k)
+        out[label] = v
+    return out
 
 
 def _compact_trace_for_prompt(

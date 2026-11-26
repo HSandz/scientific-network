@@ -128,13 +128,16 @@ class ExplorerService:
         status = "ok" if inv["connected"] and inv["database_verified"] else ("degraded" if inv["connected"] else "error")
         return HealthResponse(
             status=status,
+            graph_mode=inv.get("graph_mode", "v4"),
             neo4j_connected=inv["connected"],
             neo4j_endpoint=inv["endpoint"],
-            expected_graph_version=EXPECTED_GRAPH_VERSION,
+            expected_graph_version=inv.get("expected_graph_version", EXPECTED_GRAPH_VERSION),
             observed_graph_versions=inv["observed_graph_versions"],
             database_verified=inv["database_verified"],
             total_nodes=inv["total_nodes"],
             total_edges=inv["total_edges"],
+            rag_index_nodes=inv.get("rag_index_nodes", {}),
+            rag_index_total_nodes=inv.get("rag_index_total_nodes", 0),
             warnings=inv["warnings"],
             artifacts={
                 "summary_json": bool(self.store.summary_data),

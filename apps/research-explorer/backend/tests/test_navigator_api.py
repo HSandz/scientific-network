@@ -284,3 +284,63 @@ def test_hosted_llm_env_config_and_graceful_fallback(tmp_path: Path, monkeypatch
     r_sse = hosted_client.post("/api/ask", json={"question": "Custom offline test query?", "mode": "auto", "stream": True, "use_cache": False})
     assert r_sse.status_code == 200
     assert "llm_unavailable" in r_sse.text
+
+
+def test_warmup_handles_unreachable_llm_and_mode_aware_health(tmp_path: Path, monkeypatch):
+    from backend.config import (
+        EXPECTED_ENRICHED_EDGES_BY_RELATION,
+        EXPECTED_ENRICHED_GRAPH_VERSION,
+        EXPECTED_ENRICHED_NODES_BY_LABEL,
+        EXPECTED_GRAPH_VERSION,
+    )
+    from backend.repositories.neo4j_repo import Neo4jRepository
+
+    # 1. warmup() tolerates unreachable LLM endpoint without raising
+    cfg = replace(
+        load_settings(),
+        rag_vectors_sqlite=tmp_path / "absent.sqlite",
+        llm_base_url="http://127.0.0.1:9/v1",
+    )
+    store = ArtifactStore(
+        summary_path=cfg.summary_artifact_path,
+        analysis_path=cfg.analysis_artifact_path,
+        network_views_path=cfg.network_views_path,
+        audit_results_path=cfg.audit_results_path,
+        graph_artifact_path=Path("/nonexistent/graph.json"),
+    )
+    app = create_app(cfg, repo=FakeNeo4jRepository(), store=store, background_warmup=False)
+    warm_info = app.state.navigator_service.warmup()
+    assert warm_info["artifacts"] is True
+    assert str(warm_info["llm"]).startswith("unavailable:")
+    app.state.navigator_service.close()
+
+    # 2. Enriched mode /api/health reports "ok" with RAG index nodes counted separately
+    enriched_cfg = replace(load_settings(), neo4j_uri="bolt://127.0.0.1:7690")
+    enriched_repo = Neo4jRepository(enriched_cfg)
+
+    def _fake_enriched_run_read(cypher: str, params=None):
+        if "labels(n)[0]" in cypher:
+            rows = [{"label": k, "count": v} for k, v in EXPECTED_ENRICHED_NODES_BY_LABEL.items()]
+            rows += [{"label": "RagChunk", "count": 12000}, {"label": "RagEntityDesc", "count": 4316}, {"label": "RagReport", "count": 228}]
+            return rows
+        if "type(r)" in cypher:
+            return [{"relation": k, "count": v} for k, v in EXPECTED_ENRICHED_EDGES_BY_RELATION.items()]
+        if ":Venue" in cypher:
+            return [{"versions": [EXPECTED_GRAPH_VERSION]}]
+        if ":Method" in cypher:
+            return [{"versions": [EXPECTED_ENRICHED_GRAPH_VERSION]}]
+        return []
+
+    monkeypatch.setattr(enriched_repo, "run_read", _fake_enriched_run_read)
+    enriched_app = create_app(enriched_cfg, repo=enriched_repo, store=store, background_warmup=False)
+    with TestClient(enriched_app) as client:
+        h = client.get("/api/health").json()
+        assert h["status"] == "ok"
+        assert h["graph_mode"] == "enriched"
+        assert h["database_verified"] is True
+        assert h["expected_graph_version"] == EXPECTED_ENRICHED_GRAPH_VERSION
+        assert h["observed_graph_versions"] == [EXPECTED_ENRICHED_GRAPH_VERSION]
+        assert h["total_nodes"] == 50144
+        assert h["total_edges"] == 242048
+        assert h["rag_index_total_nodes"] == 16544
+        assert h["rag_index_nodes"]["RagChunk"] == 12000

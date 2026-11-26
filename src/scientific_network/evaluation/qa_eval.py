@@ -521,11 +521,16 @@ class UnifiedEntityResolver:
         for item in catalog:
             for na in item["norm_aliases"]:
                 self._alias_map[na].append(item)
+        for na in self._alias_map:
+            self._alias_map[na].sort(key=lambda item: item["id"])
 
     def _get_label_matrix(self, target_labels: frozenset[str]) -> tuple[list[dict[str, Any]], np.ndarray]:
         key = "|".join(sorted(target_labels))
         if key not in self._label_index:
-            subset = [c for c in self.catalog if not target_labels or c["label"] in target_labels]
+            subset = sorted(
+                [c for c in self.catalog if not target_labels or c["label"] in target_labels],
+                key=lambda c: c["id"],
+            )
             if subset and self.embed_fn is not None:
                 mat = np.vstack([self.embed_fn(c["name"]) for c in subset]).astype(np.float32)
                 norms = np.linalg.norm(mat, axis=1, keepdims=True)
@@ -567,12 +572,15 @@ class UnifiedEntityResolver:
         span_norms = {_norm_text(s) for s in spans if _norm_text(s)}
 
         matched_norms: set[str] = set()
-        for sn in span_norms:
+        for sn in sorted(span_norms):
             for item in self._alias_map.get(sn, ()):
                 _accept(item)
                 matched_norms.add(sn)
 
-        subset_catalog = [c for c in self.catalog if not labels_fset or c["label"] in labels_fset]
+        subset_catalog = sorted(
+            [c for c in self.catalog if not labels_fset or c["label"] in labels_fset],
+            key=lambda c: c["id"],
+        )
         for item in subset_catalog:
             if item["id"] in seen:
                 continue

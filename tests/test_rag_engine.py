@@ -276,3 +276,36 @@ def test_multikind_subject_linking_and_empty_step_retry(tmp_path: Path):
     assert out["steps"][0]["retry"]["to_id"] == "method:clust"
     assert out["steps"][0]["retry"]["succeeded"] is True
     assert "retried once" in out["steps"][0]["note"].lower()
+
+
+def test_humanized_prompt_keys_keep_faithfulness_passing():
+    from scientific_network.rag.answer import _compact_trace_for_prompt
+
+    trace = {
+        "steps": [{
+            "step": 1,
+            "tool": "aggregate",
+            "row_count": 1,
+            "rows": [{
+                "entity_id": "organization:pku",
+                "entity_name": "Peking University",
+                "pre_papers": "1 of 20",
+                "post_papers": "5 of 50",
+                "pre_le_2022_share": 0.05,
+                "post_gt_2022_share": 0.1,
+                "share_delta": 0.0488,
+                "paper_ids": ["paper:aaai:2024:1"],
+            }],
+            "paper_ids": ["paper:aaai:2024:1"],
+            "note": "Computed share growth across cutoff year > 2022.",
+        }]
+    }
+    compacted = _compact_trace_for_prompt(trace)
+    row = compacted["steps"][0]["rows"][0]
+    assert "share change" in row and row["share change"] == 0.0488
+    assert "share_delta" not in row
+    assert "post_gt_2022_share" not in row
+    assert "share (after 2022)" in row
+
+    ans = "Peking University had a share change of 0.0488 (5 of 50 papers after 2022) [step 1]."
+    assert verify_answer_faithfulness(ans, trace, "Which organizations increased share?") == []

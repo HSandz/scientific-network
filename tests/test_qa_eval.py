@@ -202,3 +202,32 @@ def test_run_once_overwrite_guard(tmp_path: Path):
     (out_dir / "raw-outputs.jsonl").write_text("{}\n", encoding="utf-8")
     with pytest.raises(FileExistsError, match="run-once"):
         run_benchmark_systems({}, out_dir=out_dir, run_dir=tmp_path / "run", allow_overwrite=False)
+
+
+def test_unified_entity_resolver_deterministic_across_hash_seeds():
+    import os
+    import subprocess
+    import sys
+
+    script = """
+import json
+from scientific_network.evaluation.qa_eval import UnifiedEntityResolver, build_entity_catalog
+
+nodes = [
+    {"id": "organization:b", "label": "Organization", "name": "Beta Lab", "properties": {}},
+    {"id": "organization:a", "label": "Organization", "name": "Alpha Institute", "properties": {}},
+    {"id": "method:b", "label": "Method", "name": "Shared Name", "properties": {}},
+    {"id": "method:a", "label": "Method", "name": "Shared Name", "properties": {}},
+    {"id": "organization:c", "label": "Organization", "name": "Gamma Univ", "properties": {}},
+]
+resolver = UnifiedEntityResolver(build_entity_catalog(nodes))
+ans = "* Gamma Univ\\n* Alpha Institute\\n* Beta Lab\\n* Shared Name"
+print(json.dumps(resolver.resolve(ans)))
+"""
+    outputs = []
+    for seed in ("0", "1", "42", "999"):
+        env = {**os.environ, "PYTHONHASHSEED": seed}
+        res = subprocess.run([sys.executable, "-c", script], env=env, capture_output=True, text=True, check=True)
+        outputs.append(json.loads(res.stdout.strip()))
+    assert all(out == outputs[0] for out in outputs)
+    assert outputs[0] == ["organization:a", "organization:b", "organization:c", "method:a", "method:b"]

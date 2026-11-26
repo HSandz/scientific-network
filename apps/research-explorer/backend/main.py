@@ -67,7 +67,12 @@ def create_app(
             app.state.artifact_store = active_store
             app.state.explorer_service = ExplorerService(active_repo, active_store)
             app.state.navigator_service = NavigatorService(cfg, repo=active_repo, store=active_store)
+            if background_warmup and repo is None and store is None:
+                app.state.navigator_service.warmup()
         yield
+        nav_ref = getattr(app.state, "navigator_service", None)
+        if nav_ref is not None:
+            nav_ref.close()
         active_repo_ref = getattr(app.state, "neo4j_repo", None)
         if active_repo_ref is not None and repo is None:
             active_repo_ref.close()

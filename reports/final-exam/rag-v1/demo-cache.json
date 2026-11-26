@@ -1,16 +1,16 @@
 {
  "model": "qwen3.5-4b-q4_k_m",
- "generated_at": "2026-11-26T02:56:14+0700",
+ "generated_at": "2026-11-26T20:43:25+0700",
  "demos": [
   {
    "demo_id": "demo-01-worked-example",
    "title": "Tsinghua collaborators increasing LLM share after 2022 (§6.3 worked example)",
    "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
    "requested_mode": "auto",
-   "first_event_s": 0.096,
-   "first_step_s": 0.127,
-   "first_token_s": 10.647,
-   "total_latency_s": 10.647,
+   "first_event_s": 1.797,
+   "first_step_s": 4.358,
+   "first_token_s": 14.793,
+   "total_latency_s": 14.793,
    "result": {
     "status": "ok",
     "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
@@ -59,45 +59,24 @@
       "entity_type": "Method",
       "id": "method:Q3621696",
       "name": "Large Language Models (LLMs)",
+      "paper_count": 136,
+      "selection_reason": "only_match",
+      "implied_kind": null,
       "alternatives": [
        {
         "id": "method:a5bde710dad8d8bd",
         "label": "Method",
         "name": "Multimodal Large Language Models",
-        "key": "multimodal large language model",
-        "surfaces": [
-         "Multimodal Large Language Model",
-         "Multimodal Large Language Models",
-         "Multimodal Large Language Models (MLLMs)",
-         "Multimodal large language models",
-         "multimodal large language model"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 8,
-        "wikipedia_url": null
+        "paper_count": 8
        },
        {
         "id": "method:99a1f1ba87a2bbf8",
         "label": "Method",
         "name": "pre-trained large language model",
-        "key": "pre trained and large language model",
-        "surfaces": [
-         "Pre-trained Large Language Model (PtLLM)",
-         "pre-trained and large language models",
-         "pre-trained large language model",
-         "pre-trained large language models (LLM)"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 5,
-        "wikipedia_url": null
+        "paper_count": 5
        }
-      ]
+      ],
+      "kind_choices": []
      }
     ],
     "plan": [
@@ -1666,7 +1645,7 @@
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "The organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022, ranked by share_delta, are [step 2]:\n- Beijing National Research Center for Information Science and Technology: 0 of 19 pre-2022, 2 of 41 post-2022, share_delta 0.0488\n- Shenzhen Institutes of Advanced Technology: 0 of 28 pre-2022, 3 of 62 post-2022, share_delta 0.0484\n- Chinese University of Hong Kong: 0 of 73 pre-2022, 7 of 169 post-2022, share_delta 0.0414\n- City University of Hong Kong: 0 of 27 pre-2022, 5 of 124 post-2022, share_delta 0.0403\n- University of Hong Kong: 0 of 38 pre-2022, 3 of 81 post-2022, share_delta 0.037\n- The Hong Kong University of Science and Technology (Guangzhou): 0 of 9 pre-2022, 3 of 82 post-2022, share_delta 0.0366\n- Shenzhen University: 0 of 29 pre-2022, 5 of 140 post-2022, share_delta 0.0357\n- ShanghaiTech University: 0 of 15 pre-2022, 2 of 57 post-2022, share_delta 0.0351\n- University of Science and Technology of China: 0 of 120 pre-2022, 10 of 348 post-2022, share_delta 0.0287\n- Nanyang Technological University: 0 of 94 pre-2022, 6 of 214 post-2022, share_delta 0.028\n- Shanghai Artificial Intelligence Laboratory: 0 of 46 pre-2022, 4 of 146 post-2022, share_delta 0.0274\n- Harbin Institute of Technology: 0 of 75 pre-2022, 7 of 286 post-2022, share_delta 0.0245\n- Beijing Institute of Technology: 0 of 53 pre-2022, 3 of 135 post-2022, share_delta 0.0222\n- Beijing University of Posts and Telecommunications: 0 of 61 pre-2022, 3 of 152 post-2022, share_delta 0.0197\n- Institute of Information Engineering: 0 of 39 pre-2022, 2 of 106 post-2022, share_delta 0.0189\n\n37 organizations",
+    "answer": "The organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022 are ranked by share change. The top 15 ranked organizations are [step 2]:\n- Name: Beijing National Research Center for Information Science and Technology: 2 of 41 papers after cutoff, share change 0.0488\n- Name: Shenzhen Institutes of Advanced Technology: 3 of 62 papers after cutoff, share change 0.0484\n- Name: Chinese University of Hong Kong: 7 of 169 papers after cutoff, share change 0.0414\n- Name: City University of Hong Kong: 5 of 124 papers after cutoff, share change 0.0403\n- Name: University of Hong Kong: 3 of 81 papers after cutoff, share change 0.037\n- Name: The Hong Kong University of Science and Technology (Guangzhou): 3 of 82 papers after cutoff, share change 0.0366\n- Name: Shenzhen University: 5 of 140 papers after cutoff, share change 0.0357\n- Name: ShanghaiTech University: 2 of 57 papers after cutoff, share change 0.0351\n- Name: University of Science and Technology of China: 10 of 348 papers after cutoff, share change 0.0287\n- Name: Nanyang Technological University: 6 of 214 papers after cutoff, share change 0.028\n- Name: Shanghai Artificial Intelligence Laboratory: 4 of 146 papers after cutoff, share change 0.0274\n- Name: Harbin Institute of Technology: 7 of 286 papers after cutoff, share change 0.0245\n- Name: Beijing Institute of Technology: 3 of 135 papers after cutoff, share change 0.0222\n- Name: Beijing University of Posts and Telecommunications: 3 of 152 papers after cutoff, share change 0.0197\n- Name: Institute of Information Engineering: 2 of 106 papers after cutoff, share change 0.0189\n\nA total of 37 organizations qualified for the share growth calculation (threshold: post_total >= 10, post_subject >= 2), with 27 excluded below the threshold.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [
@@ -3160,7 +3139,7 @@
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 10.647
+    "latency_s": 14.793
    }
   },
   {
@@ -3168,10 +3147,10 @@
    "title": "Fastest-growing methods and diffusion model specialists",
    "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
    "requested_mode": "auto",
-   "first_event_s": 0.0,
-   "first_step_s": 0.008,
-   "first_token_s": 6.515,
-   "total_latency_s": 6.515,
+   "first_event_s": 0.003,
+   "first_step_s": 0.011,
+   "first_token_s": 5.138,
+   "total_latency_s": 5.138,
    "result": {
     "status": "ok",
     "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
@@ -3350,7 +3329,7 @@
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "The methods that grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025, ranked by their CAGR of share, are:\n- Large Language Models (LLMs): 136 total papers, CAGR of share 0.9146564672442798\n- Answer Set Programming: 17 total papers, CAGR of share 0.40341927604070604\n- Graph Contrastive Learning: 31 total papers, CAGR of share 0.37765751773021594\n- Federated Learning: 27 total papers, CAGR of share 0.3213065858287554\n- U-Net: 29 total papers, CAGR of share 0.2448540933091885\n\nThese rankings are based on the trend analysis showing top 5 of 5 methods [step 1].",
+    "answer": "The methods ranked by annual share growth (CAGR 2021-2025) are [step 1]:\n- Large Language Models (LLMs): 136 total papers, 0.9146564672442798 CAGR\n- Answer Set Programming: 17 total papers, 0.40341927604070604 CAGR\n- Graph Contrastive Learning: 31 total papers, 0.37765751773021594 CAGR\n- Federated Learning: 27 total papers, 0.3213065858287554 CAGR\n- U-Net: 29 total papers, 0.2448540933091885 CAGR\n\nThe fastest-growing method as a share of AAAI and IJCAI papers from 2021 to 2025 is Large Language Models (LLMs) with a CAGR of 0.9146564672442798, followed by Answer Set Programming with a CAGR of 0.40341927604070604.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
@@ -3361,7 +3340,7 @@
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 6.515
+    "latency_s": 5.138
    }
   },
   {
@@ -3369,10 +3348,10 @@
    "title": "Diffusion models co-occurring tasks and datasets",
    "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
    "requested_mode": "auto",
-   "first_event_s": 0.012,
-   "first_step_s": 0.115,
-   "first_token_s": 7.901,
-   "total_latency_s": 7.901,
+   "first_event_s": 0.687,
+   "first_step_s": 1.036,
+   "first_token_s": 5.591,
+   "total_latency_s": 5.591,
    "result": {
     "status": "ok",
     "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
@@ -3396,43 +3375,42 @@
       "entity_type": "Method",
       "id": "method:Q114617315",
       "name": "diffusion models",
+      "paper_count": 149,
+      "selection_reason": "most_papers",
+      "implied_kind": null,
       "alternatives": [
        {
         "id": "method:5f6603fd5841ab77",
         "label": "Method",
         "name": "diffusion",
-        "key": "diffusion",
-        "surfaces": [
-         "Diffusion",
-         "diffusion"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 3,
-        "wikipedia_url": null
+        "paper_count": 3
        },
        {
         "id": "method:bc99a2e2159e4085",
         "label": "Method",
         "name": "diffusion probabilistic models",
-        "key": "diffusion probabilistic model",
-        "surfaces": [
-         "Diffusion Probabilistic Model",
-         "Diffusion Probabilistic Models",
-         "diffusion probabilistic model",
-         "diffusion probabilistic models",
-         "probabilistic diffusion models"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 17,
-        "wikipedia_url": null
+        "paper_count": 17
+       },
+       {
+        "id": "method:724060b4b8b5c47d",
+        "label": "Method",
+        "name": "conditional diffusion models",
+        "paper_count": 16
+       },
+       {
+        "id": "method:Q130641540",
+        "label": "Method",
+        "name": "Latent Diffusion Model",
+        "paper_count": 15
+       },
+       {
+        "id": "method:11597e6fd85e6a7b",
+        "label": "Method",
+        "name": "text-to-image diffusion models",
+        "paper_count": 13
        }
-      ]
+      ],
+      "kind_choices": []
      }
     ],
     "plan": [
@@ -4162,7 +4140,7 @@
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "The tasks that co-occur most with diffusion models are:\n- Sequential Recommendation: 4 co-occurrences\n- text-to-image generation: 1 co-occurrence\n- image editing: 1 co-occurrence\n- image super-resolution: 1 co-occurrence\n- Event Causality Identification: 1 co-occurrence\n- low-light image enhancement: 3 co-occurrences\n- motion generation: 2 co-occurrences\n- Unsupervised Anomaly Detection: 2 co-occurrences\n- image generation: 2 co-occurrences\n- Speech Enhancement: 2 co-occurrences\n- super-resolution: 1 co-occurrence\n- conditional generation: 1 co-occurrence\n\nThe datasets used with diffusion models are:\n- MVTec AD: 2 co-occurrences\n- nuScenes: 1 co-occurrence\n- DIV2K: 1 co-occurrence\n- ActivityNet-1.3: 1 co-occurrence\n- Visual Genome: 1 co-occurrence\n- LaSOT: 1 co-occurrence\n- real-world datasets: 1 co-occurrence\n- CIFAR-100: 1 co-occurrence\n- StarCraft Multi-Agent Challenge: 1 co-occurrence\n- KITTI dataset: 1 co-occurrence\n- SEED: 1 co-occurrence\n- MVTec: 1 co-occurrence\n- HO3D: 1 co-occurrence\n- ETH-UCY: 1 co-occurrence\n- CelebA-HQ: 1 co-occurrence\n\n[step 1]\n[step 2]",
+    "answer": "The tasks that co-occur most with diffusion models are Sequential Recommendation (4 shared papers), image editing (4 shared papers), low-light image enhancement (3 shared papers), motion generation (2 shared papers), Unsupervised Anomaly Detection (2 shared papers), image generation (2 shared papers), Speech Enhancement (2 shared papers), and image super-resolution (2 shared papers), with additional co-occurrences for super-resolution, conditional generation, text-to-image generation, and event causality identification. The datasets used with diffusion models are MVTec AD (2 shared papers), nuScenes, DIV2K, ActivityNet-1.3, Visual Genome, LaSOT, real-world datasets, CIFAR-100, StarCraft Multi-Agent Challenge, KITTI dataset, SEED, MVTec, HO3D, ETH-UCY, and CelebA-HQ.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [
@@ -4756,7 +4734,7 @@
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 7.901
+    "latency_s": 5.591
    }
   },
   {
@@ -4764,10 +4742,10 @@
    "title": "Co-authorship path between Shirui Pan and Chengjie Wang",
    "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
    "requested_mode": "auto",
-   "first_event_s": 0.226,
+   "first_event_s": 1.303,
    "first_step_s": null,
    "first_token_s": null,
-   "total_latency_s": 0.226,
+   "total_latency_s": 1.303,
    "result": {
     "status": "needs_disambiguation",
     "question": "How is Shirui Pan connected to Chengjie Wang in the co-authorship network?",
@@ -4846,7 +4824,7 @@
     "subgraph_edges": [],
     "paper_ids": [],
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 0.226
+    "latency_s": 1.303
    }
   },
   {
@@ -4854,10 +4832,10 @@
    "title": "Organizations specialized in causal inference by lift",
    "question": "Which organizations specialize most in Causal inference by lift?",
    "requested_mode": "auto",
-   "first_event_s": 0.21,
-   "first_step_s": 0.491,
-   "first_token_s": 11.681,
-   "total_latency_s": 11.681,
+   "first_event_s": 0.234,
+   "first_step_s": 3.489,
+   "first_token_s": 11.408,
+   "total_latency_s": 11.408,
    "result": {
     "status": "ok",
     "question": "Which organizations specialize most in Causal inference by lift?",
@@ -4882,54 +4860,56 @@
     "linked": [
      {
       "text": "Causal inference",
-      "entity_type": "Task",
-      "id": "task:e8299f0a4fe25a12",
-      "name": "causal inference",
-      "alternatives": []
+      "entity_type": "Topic",
+      "id": "topic:causal-inference",
+      "name": "Causal inference",
+      "paper_count": 182,
+      "selection_reason": "most_papers",
+      "implied_kind": null,
+      "alternatives": [
+       {
+        "id": "task:e8299f0a4fe25a12",
+        "label": "Task",
+        "name": "causal inference",
+        "paper_count": 7
+       },
+       {
+        "id": "method:9907c4f31b488686",
+        "label": "Method",
+        "name": "causal inference",
+        "paper_count": 6
+       }
+      ],
+      "kind_choices": [
+       {
+        "id": "task:e8299f0a4fe25a12",
+        "label": "Task",
+        "name": "causal inference",
+        "paper_count": 7
+       },
+       {
+        "id": "method:9907c4f31b488686",
+        "label": "Method",
+        "name": "causal inference",
+        "paper_count": 6
+       }
+      ]
      },
      {
       "text": "lift",
-      "entity_type": "Paper",
-      "id": "paper:aaai:2022:20581",
-      "name": "Imbalance-Aware Uplift Modeling for Observational Data",
-      "alternatives": [
-       {
-        "id": "paper:aaai:2022:21206",
-        "label": "Paper",
-        "name": "The FF Heuristic for Lifted Classical Planning",
-        "key": null,
-        "surfaces": [],
-        "year": 2022,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": "W4283793735",
-        "paper_count": 0,
-        "wikipedia_url": null
-       },
-       {
-        "id": "paper:aaai:2022:21212",
-        "label": "Paper",
-        "name": "Homomorphisms of Lifted Planning Tasks: The Case for Delete-Free Relaxation Heuristics",
-        "key": null,
-        "surfaces": [],
-        "year": 2022,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": "W4283793299",
-        "paper_count": 0,
-        "wikipedia_url": null
-       }
-      ]
+      "entity_type": "Method",
+      "id": null,
+      "name": null
      }
     ],
     "plan": [
      {
       "tool": "rank",
       "args": {
-       "limit": 15,
-       "measure": "lift",
        "network": "N2",
-       "scope": "task:e8299f0a4fe25a12"
+       "scope": "topic:causal-inference",
+       "measure": "lift",
+       "limit": 15
       },
       "purpose": ""
      }
@@ -4940,10 +4920,10 @@
       "tool": "rank",
       "purpose": "",
       "args": {
-       "limit": 15,
-       "measure": "lift",
        "network": "N2",
-       "scope": "task:e8299f0a4fe25a12"
+       "scope": "topic:causal-inference",
+       "measure": "lift",
+       "limit": 15
       },
       "empty": false,
       "row_count": 15,
@@ -5115,14 +5095,14 @@
        }
       ],
       "source_kind": "precomputed_analysis_v2",
-      "note": "Subject-specific ranking for Topic 'Causal inference' (182 papers), ranked by lift.",
+      "note": "Precomputed personalized PageRank lift (analysis-final-exam-v2) for Topic 'Causal inference' (182 papers).",
       "paper_ids": [],
       "evidence_ids": []
      }
     ],
     "stopped_reason": null,
     "stopped_at_step": null,
-    "answer": "The organizations ranked by lift for the topic 'Causal inference' are [step 1]:\n- University of Lübeck: lift 22.1088, subject papers 4 of 6 total papers\n- Yokohama National University: lift 16.8449, subject papers 4 of 8 total papers\n- University of South Australia: lift 11.9827, subject papers 9 of 13 total papers\n- Guangdong University of Technology: lift 6.8939, subject papers 13 of 50 total papers\n- Shantou University: lift 6.5699, subject papers 4 of 11 total papers\n- Ludwig-Maximilians-Universität München: lift 4.3705, subject papers 4 of 29 total papers\n- Helmholtz Center for Information Security: lift 3.5939, subject papers 3 of 22 total papers\n- Saarland University: lift 3.5173, subject papers 4 of 43 total papers\n- École Polytechnique Fédérale de Lausanne: lift 3.4568, subject papers 3 of 37 total papers\n- Columbia University: lift 3.2682, subject papers 8 of 66 total papers\n- University of California, Los Angeles: lift 2.6186, subject papers 5 of 67 total papers\n- Mohamed bin Zayed University of Artificial Intelligence: lift 2.479, subject papers 6 of 56 total papers\n- Arizona State University: lift 1.9614, subject papers 3 of 49 total papers\n- Anhui University: lift 1.9139, subject papers 4 of 68 total papers\n- Hefei University of Technology: lift 1.8083, subject papers 5 of 61 total papers\n\nThe ranking shows top 15 of 15 organizations.",
+    "answer": "The organizations ranked by lift for the topic 'Causal inference' are [step 1]:\n- University of Lübeck: lift 22.1088, subject papers 4, total papers 6\n- Yokohama National University: lift 16.8449, subject papers 4, total papers 8\n- University of South Australia: lift 11.9827, subject papers 9, total papers 13\n- Guangdong University of Technology: lift 6.8939, subject papers 13, total papers 50\n- Shantou University: lift 6.5699, subject papers 4, total papers 11\n- Ludwig-Maximilians-Universität München: lift 4.3705, subject papers 4, total papers 29\n- Helmholtz Center for Information Security: lift 3.5939, subject papers 3, total papers 22\n- Saarland University: lift 3.5173, subject papers 4, total papers 43\n- École Polytechnique Fédérale de Lausanne: lift 3.4568, subject papers 3, total papers 37\n- Columbia University: lift 3.2682, subject papers 8, total papers 66\n- University of California, Los Angeles: lift 2.6186, subject papers 5, total papers 67\n- Mohamed bin Zayed University of Artificial Intelligence: lift 2.479, subject papers 6, total papers 56\n- Arizona State University: lift 1.9614, subject papers 3, total papers 49\n- Anhui University: lift 1.9139, subject papers 4, total papers 68\n- Hefei University of Technology: lift 1.8083, subject papers 5, total papers 61\n\nThe ranking is based on personalized PageRank lift for 182 papers on 'Causal inference', showing top 15 of 15 organizations.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
@@ -5133,7 +5113,7 @@
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 11.681
+    "latency_s": 11.408
    }
   },
   {
@@ -5141,10 +5121,10 @@
    "title": "Main research communities in AAAI/IJCAI 2021-2025 (Global Search)",
    "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
    "requested_mode": "global",
-   "first_event_s": 0.309,
-   "first_step_s": 15.025,
-   "first_token_s": 15.025,
-   "total_latency_s": 15.025,
+   "first_event_s": 0.236,
+   "first_step_s": 25.749,
+   "first_token_s": 25.749,
+   "total_latency_s": 25.749,
    "result": {
     "status": "ok",
     "question": "What are the main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph?",
@@ -5188,7 +5168,7 @@
       "tool": "community_report",
       "purpose": "global map-reduce",
       "empty": false,
-      "row_count": 6,
+      "row_count": 12,
       "rows": [
        {
         "claim": "Community N1:87 focuses on NLP, planning, and causal inference with strong ties to Indian IITs and IBM Research.",
@@ -5200,7 +5180,7 @@
         ]
        },
        {
-        "claim": "Research community L0:122 focuses on Causal Inference with growing 2024-2025 activity.",
+        "claim": "Research community L0:122 focuses on Causal Inference with growing 2024-2025 activity and 182 papers.",
         "importance": 1,
         "paper_ids": [
          "paper:aaai:2022:20789",
@@ -5218,16 +5198,7 @@
         ]
        },
        {
-        "claim": "Clustering research in defense and top-tier institutions.",
-        "importance": 1,
-        "paper_ids": [
-         "paper:aaai:2021:17198",
-         "paper:ijcai:2021:389",
-         "paper:aaai:2023:26445"
-        ]
-       },
-       {
-        "claim": "Community N1:42: Graph Neural Networks and Vision-Language Learning.",
+        "claim": "Community N1:42 focuses on Graph Neural Networks and Vision-Language Learning with strong regional collaboration.",
         "importance": 1,
         "paper_ids": [
          "paper:ijcai:2021:214",
@@ -5236,29 +5207,71 @@
         ]
        },
        {
-        "claim": "The enriched AAAI and IJCAI 2021-2025 knowledge graph includes research communities focused on graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing and multi-hop QA, and efficient systems and trustworthy ML.",
+        "claim": "The research community L0:50 focuses on Composed Image Retrieval and Multi-Intent Spoken Language Understanding with Optimal Transport and LLMs.",
         "importance": 1,
         "paper_ids": [
-         "paper:aaai:2025:33413",
-         "paper:ijcai:2023:229",
-         "paper:aaai:2025:33320",
+         "paper:aaai:2025:32301",
+         "paper:aaai:2024:28081",
+         "paper:aaai:2024:29738"
+        ]
+       },
+       {
+        "claim": "Community research:L0:27 focuses on skeleton-based action recognition using deep learning and self-supervised methods.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2024:28409",
+         "paper:aaai:2024:28590",
+         "paper:aaai:2022:19957"
+        ]
+       },
+       {
+        "claim": "Research community L0:90 focuses on NLP and LLMs with rising methodological trends.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:ijcai:2021:525",
+         "paper:aaai:2024:29917",
+         "paper:aaai:2022:21301"
+        ]
+       },
+       {
+        "claim": "Community N2:10 focuses on Graph Machine Learning and Multimodal Learning.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2021:17315",
+         "paper:aaai:2021:16330",
+         "paper:aaai:2023:26192"
+        ]
+       },
+       {
+        "claim": "Node classification is the dominant task with 58 papers, showing a stable trend with 30 papers in 2024-2025.",
+        "importance": 1,
+        "paper_ids": [
+         "paper:aaai:2025:33413"
+        ]
+       },
+       {
+        "claim": "Graph Attention Networks remain a stable method with 12 papers published in 2024-2025.",
+        "importance": 1,
+        "paper_ids": [
          "paper:ijcai:2021:425",
          "paper:aaai:2021:17203",
-         "paper:aaai:2025:33410",
-         "paper:ijcai:2021:441",
-         "paper:aaai:2022:20521",
-         "paper:aaai:2025:33671",
+         "paper:aaai:2025:33410"
+        ]
+       },
+       {
+        "claim": "Fine-tuning is the most prevalent method with 12 papers, yet it is classified as having insufficient data support.",
+        "importance": 1,
+        "paper_ids": [
          "paper:ijcai:2025:922",
-         "paper:ijcai:2025:916",
-         "paper:aaai:2025:32008",
-         "paper:ijcai:2025:916",
-         "paper:aaai:2021:17605",
+         "paper:ijcai:2025:916"
+        ]
+       },
+       {
+        "claim": "The 'Efficient machine learning systems' topic accounts for 1411 papers, representing the dominant theme in the community.",
+        "importance": 1,
+        "paper_ids": [
          "paper:aaai:2023:25894",
-         "paper:ijcai:2022:246",
-         "paper:aaai:2025:33850",
-         "paper:aaai:2023:25936",
-         "paper:ijcai:2022:345",
-         "paper:aaai:2021:17234"
+         "paper:ijcai:2022:246"
         ]
        }
       ],
@@ -5274,37 +5287,35 @@
        "paper:aaai:2025:32879",
        "paper:aaai:2025:33554",
        "paper:aaai:2025:34075",
-       "paper:aaai:2021:17198",
-       "paper:ijcai:2021:389",
-       "paper:aaai:2023:26445",
        "paper:ijcai:2021:214",
        "paper:aaai:2021:16431",
        "paper:aaai:2021:16542",
+       "paper:aaai:2025:32301",
+       "paper:aaai:2024:28081",
+       "paper:aaai:2024:29738",
+       "paper:aaai:2024:28409",
+       "paper:aaai:2024:28590",
+       "paper:aaai:2022:19957",
+       "paper:ijcai:2021:525",
+       "paper:aaai:2024:29917",
+       "paper:aaai:2022:21301",
+       "paper:aaai:2021:17315",
+       "paper:aaai:2021:16330",
+       "paper:aaai:2023:26192",
        "paper:aaai:2025:33413",
-       "paper:ijcai:2023:229",
-       "paper:aaai:2025:33320",
        "paper:ijcai:2021:425",
        "paper:aaai:2021:17203",
        "paper:aaai:2025:33410",
-       "paper:ijcai:2021:441",
-       "paper:aaai:2022:20521",
-       "paper:aaai:2025:33671",
        "paper:ijcai:2025:922",
        "paper:ijcai:2025:916",
-       "paper:aaai:2025:32008",
-       "paper:aaai:2021:17605",
        "paper:aaai:2023:25894",
-       "paper:ijcai:2022:246",
-       "paper:aaai:2025:33850",
-       "paper:aaai:2023:25936",
-       "paper:ijcai:2022:345",
-       "paper:aaai:2021:17234"
+       "paper:ijcai:2022:246"
       ],
       "evidence_ids": []
      }
     ],
     "stopped_reason": null,
-    "answer": "The main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph are:\n- N1:87 (NLP, planning, and causal inference)\n- L0:122 (Causal Inference)\n- L0:47 (multimodal learning)\n- Clustering research in defense and top-tier institutions\n- N1:42 (Graph Neural Networks and Vision-Language Learning)\n- Graph learning tasks, graph neural networks for knowledge graph completion, knowledge editing and multi-hop QA, and efficient systems and trustworthy ML",
+    "answer": "The main research communities in the enriched AAAI and IJCAI 2021-2025 knowledge graph are:\n\n* **Community N1:87**: Focuses on NLP, planning, and causal inference.\n* **Research community L0:122**: Focuses on Causal Inference.\n* **Research community L0:47**: Focuses on multimodal learning.\n* **Community N1:42**: Focuses on Graph Neural Networks and Vision-Language Learning.\n* **Research community L0:50**: Focuses on Composed Image Retrieval and Multi-Intent Spoken Language Understanding.\n* **Community research:L0:27**: Focuses on skeleton-based action recognition.\n* **Research community L0:90**: Focuses on NLP and LLMs.\n* **Community N2:10**: Focuses on Graph Machine Learning and Multimodal Learning.\n\nAdditionally, specific topics within these communities include **Node classification** (the dominant task), **Graph Attention Networks** (a stable method), **Fine-tuning** (the most prevalent method), and **Efficient machine learning systems** (the dominant theme).",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [],
@@ -5319,31 +5330,29 @@
      "paper:aaai:2025:32879",
      "paper:aaai:2025:33554",
      "paper:aaai:2025:34075",
-     "paper:aaai:2021:17198",
-     "paper:ijcai:2021:389",
-     "paper:aaai:2023:26445",
      "paper:ijcai:2021:214",
      "paper:aaai:2021:16431",
      "paper:aaai:2021:16542",
+     "paper:aaai:2025:32301",
+     "paper:aaai:2024:28081",
+     "paper:aaai:2024:29738",
+     "paper:aaai:2024:28409",
+     "paper:aaai:2024:28590",
+     "paper:aaai:2022:19957",
+     "paper:ijcai:2021:525",
+     "paper:aaai:2024:29917",
+     "paper:aaai:2022:21301",
+     "paper:aaai:2021:17315",
+     "paper:aaai:2021:16330",
+     "paper:aaai:2023:26192",
      "paper:aaai:2025:33413",
-     "paper:ijcai:2023:229",
-     "paper:aaai:2025:33320",
      "paper:ijcai:2021:425",
      "paper:aaai:2021:17203",
      "paper:aaai:2025:33410",
-     "paper:ijcai:2021:441",
-     "paper:aaai:2022:20521",
-     "paper:aaai:2025:33671",
      "paper:ijcai:2025:922",
      "paper:ijcai:2025:916",
-     "paper:aaai:2025:32008",
-     "paper:aaai:2021:17605",
      "paper:aaai:2023:25894",
-     "paper:ijcai:2022:246",
-     "paper:aaai:2025:33850",
-     "paper:aaai:2023:25936",
-     "paper:ijcai:2022:345",
-     "paper:aaai:2021:17234"
+     "paper:ijcai:2022:246"
     ],
     "citations": [],
     "result_papers": [
@@ -5361,38 +5370,36 @@
        "paper:aaai:2025:32879",
        "paper:aaai:2025:33554",
        "paper:aaai:2025:34075",
-       "paper:aaai:2021:17198",
-       "paper:ijcai:2021:389",
-       "paper:aaai:2023:26445",
        "paper:ijcai:2021:214",
        "paper:aaai:2021:16431",
        "paper:aaai:2021:16542",
+       "paper:aaai:2025:32301",
+       "paper:aaai:2024:28081",
+       "paper:aaai:2024:29738",
+       "paper:aaai:2024:28409",
+       "paper:aaai:2024:28590",
+       "paper:aaai:2022:19957",
+       "paper:ijcai:2021:525",
+       "paper:aaai:2024:29917",
+       "paper:aaai:2022:21301",
+       "paper:aaai:2021:17315",
+       "paper:aaai:2021:16330",
+       "paper:aaai:2023:26192",
        "paper:aaai:2025:33413",
-       "paper:ijcai:2023:229",
-       "paper:aaai:2025:33320",
        "paper:ijcai:2021:425",
        "paper:aaai:2021:17203",
        "paper:aaai:2025:33410",
-       "paper:ijcai:2021:441",
-       "paper:aaai:2022:20521",
-       "paper:aaai:2025:33671",
        "paper:ijcai:2025:922",
        "paper:ijcai:2025:916",
-       "paper:aaai:2025:32008",
-       "paper:aaai:2021:17605",
        "paper:aaai:2023:25894",
-       "paper:ijcai:2022:246",
-       "paper:aaai:2025:33850",
-       "paper:aaai:2023:25936",
-       "paper:ijcai:2022:345",
-       "paper:aaai:2021:17234"
+       "paper:ijcai:2022:246"
       ]
      }
     ],
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 15.025
+    "latency_s": 25.749
    }
   },
   {
@@ -5400,10 +5407,10 @@
    "title": "Local GraphRAG overview of graph neural networks",
    "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
    "requested_mode": "local",
-   "first_event_s": 0.01,
-   "first_step_s": 1.027,
-   "first_token_s": 7.054,
-   "total_latency_s": 7.054,
+   "first_event_s": 0.074,
+   "first_step_s": 0.946,
+   "first_token_s": 6.214,
+   "total_latency_s": 6.214,
    "result": {
     "status": "ok",
     "question": "Summarize graph neural networks research and related benchmarks in this corpus.",
@@ -5427,47 +5434,42 @@
       "entity_type": "Method",
       "id": "method:Q107750691",
       "name": "graph neural networks",
+      "paper_count": 296,
+      "selection_reason": "only_match",
+      "implied_kind": "Dataset",
       "alternatives": [
        {
         "id": "method:00e21afd91288cef",
         "label": "Method",
         "name": "Heterogeneous Graph Neural Networks",
-        "key": "heterogeneous graph neural network",
-        "surfaces": [
-         "Heterogeneous Graph Neural Network",
-         "Heterogeneous Graph Neural Networks",
-         "Heterogeneous Graph Neural Networks (HGNNs)",
-         "heterogeneous graph neural network",
-         "heterogeneous graph neural networks",
-         "heterogeneous graph neural networks (HGNNs)"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 12,
-        "wikipedia_url": null
+        "paper_count": 12
        },
        {
         "id": "method:0b9206925de53252",
         "label": "Method",
         "name": "Hypergraph Neural Networks",
-        "key": "hypergraph neural network",
-        "surfaces": [
-         "Hypergraph Neural Network",
-         "Hypergraph Neural Networks",
-         "Hypergraph neural networks (HNNs)",
-         "hypergraph neural network",
-         "hypergraph neural networks"
-        ],
-        "year": null,
-        "sector": null,
-        "country_code": null,
-        "openalex_id": null,
-        "paper_count": 6,
-        "wikipedia_url": null
+        "paper_count": 6
+       },
+       {
+        "id": "method:17b303281327f121",
+        "label": "Method",
+        "name": "relational graph neural network",
+        "paper_count": 4
+       },
+       {
+        "id": "method:1cf68d6abfd37eb7",
+        "label": "Method",
+        "name": "Spatial-Temporal Graph Neural Networks",
+        "paper_count": 3
+       },
+       {
+        "id": "method:d1da034512cfb1b6",
+        "label": "Method",
+        "name": "message passing graph neural network",
+        "paper_count": 3
        }
-      ]
+      ],
+      "kind_choices": []
      }
     ],
     "plan": [],
@@ -5542,7 +5544,7 @@
      }
     ],
     "stopped_reason": null,
-    "answer": "Graph neural networks research in this corpus centers on methods like graph networks (4 papers) and graph convolutional neural networks (6 papers), primarily applied to tasks such as node classification and graph representation learning. Key datasets include the Open Graph Benchmark (3 papers). Research activity has grown from 324 papers in 2021 to 477 in 2025 within the Graph Machine Learning Research Community, where graph neural networks account for 296 papers and graph machine learning for 1279 papers. Community N1:42 focuses on vision-language learning with 239 researchers, while Community N2:3 covers graph machine learning and trustworthy ML with 140 researchers and 1507 papers. Graph Attention Networks remain stable with 12 papers published in 2024-2025, and graph contrastive learning is a rising method with 31 papers.",
+    "answer": "Graph neural networks research in this corpus centers on methods like graph networks (4 papers) and graph convolutional neural networks (6 papers), primarily applied to tasks such as node classification and graph representation learning. Key benchmarks include the Open Graph Benchmark (3 papers). Research activity has grown from 324 papers in 2021 to 477 in 2025 within the Graph Machine Learning Research Community, where graph neural networks account for 296 papers and graph machine learning for 1279 papers. Community N1:42 focuses on vision-language learning with 239 researchers, while Community N2:3 covers graph machine learning and trustworthy ML with 140 researchers and 1507 papers. Graph Attention Networks remain stable with 12 papers published in 2024-2025, and graph contrastive learning is a rising method with 31 papers.",
     "faithfulness_passed": true,
     "faithfulness_errors": [],
     "subgraph_nodes": [
@@ -5778,7 +5780,7 @@
     "moved_inline_paper_ids": [],
     "evidence_labelling": "evidence-labels-v1",
     "ai_generated_label": "AI-generated from graph data",
-    "latency_s": 7.054
+    "latency_s": 6.214
    }
   }
  ]

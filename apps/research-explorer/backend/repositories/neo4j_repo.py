@@ -1,5 +1,6 @@
 """Read-only Neo4j repository with parameterized Cypher, label/relation allowlists, and timeouts."""
 
+import os
 from typing import Any
 import unicodedata
 from urllib.parse import urlsplit
@@ -10,10 +11,16 @@ from neo4j.exceptions import DriverError, Neo4jError
 
 from ..config import (
     EXPECTED_EDGES_BY_RELATION,
+    EXPECTED_ENRICHED_EDGES_BY_RELATION,
+    EXPECTED_ENRICHED_GRAPH_VERSION,
+    EXPECTED_ENRICHED_NODES_BY_LABEL,
+    EXPECTED_ENRICHED_TOTAL_EDGES,
+    EXPECTED_ENRICHED_TOTAL_NODES,
     EXPECTED_GRAPH_VERSION,
     EXPECTED_NODES_BY_LABEL,
     EXPECTED_TOTAL_EDGES,
     EXPECTED_TOTAL_NODES,
+    RAG_INDEX_LABELS,
     Settings,
 )
 
@@ -170,10 +177,12 @@ class Neo4jRepository:
             return [dict(record) for record in result]
 
     def verify_inventory(self, *, use_cache: bool = True) -> dict[str, Any]:
-        """Check Neo4j connectivity, counts by label/relation, and expected graph version."""
+        """Check Neo4j connectivity, counts by label/relation, and expected graph version (v4 or enriched)."""
         if use_cache and self._inventory_cache is not None:
             return self._inventory_cache
 
+        explicit_mode = os.environ.get("EXPLORER_GRAPH_MODE", "").strip().lower()
+        default_mode = "enriched" if (explicit_mode == "enriched" or (explicit_mode != "v4" and ":7690" in self.settings.neo4j_uri)) else "v4"
         warnings: list[str] = []
         try:
             node_rows = self.run_read(
@@ -185,50 +194,93 @@ class Neo4jRepository:
             version_rows = self.run_read(
                 "MATCH (n:Venue) RETURN collect(DISTINCT n.graph_version) AS versions"
             )
+            enrich_version_rows = self.run_read(
+                "MATCH (n:Method) RETURN collect(DISTINCT n.graph_version) AS versions"
+            )
         except (Neo4jError, DriverError, RuntimeError, OSError) as exc:
+            expected_gv = EXPECTED_ENRICHED_GRAPH_VERSION if default_mode == "enriched" else EXPECTED_GRAPH_VERSION
             return {
                 "connected": False,
+                "graph_mode": default_mode,
                 "endpoint": self.sanitized_endpoint,
-                "expected_graph_version": EXPECTED_GRAPH_VERSION,
+                "expected_graph_version": expected_gv,
                 "observed_graph_versions": [],
                 "database_verified": False,
                 "nodes_by_label": {},
                 "edges_by_relation": {},
+                "rag_index_nodes": {},
+                "rag_index_total_nodes": 0,
                 "total_nodes": 0,
                 "total_edges": 0,
                 "warnings": [f"Database connection failed: {type(exc).__name__}"],
             }
 
-        nodes_by_label = {row["label"]: int(row["count"]) for row in node_rows if row.get("label")}
+        raw_nodes_by_label = {row["label"]: int(row["count"]) for row in node_rows if row.get("label")}
+        rag_index_nodes = {lbl: cnt for lbl, cnt in raw_nodes_by_label.items() if lbl in RAG_INDEX_LABELS}
+        nodes_by_label = {lbl: cnt for lbl, cnt in raw_nodes_by_label.items() if lbl not in RAG_INDEX_LABELS}
         edges_by_relation = {row["relation"]: int(row["count"]) for row in edge_rows if row.get("relation")}
         total_nodes = sum(nodes_by_label.values())
         total_edges = sum(edges_by_relation.values())
-        versions = version_rows[0]["versions"] if version_rows and version_rows[0].get("versions") else []
+        v4_versions = version_rows[0]["versions"] if version_rows and version_rows[0].get("versions") else []
+        enrich_versions = (
+            enrich_version_rows[0]["versions"]
+            if enrich_version_rows and enrich_version_rows[0].get("versions")
+            else []
+        )
 
-        if versions != [EXPECTED_GRAPH_VERSION]:
+        if explicit_mode in ("v4", "enriched"):
+            mode = explicit_mode
+        elif any(k in nodes_by_label for k in ("Method", "Task", "Dataset")) or ":7690" in self.settings.neo4j_uri:
+            mode = "enriched"
+        else:
+            mode = "v4"
+
+        if mode == "enriched":
+            expected_gv = EXPECTED_ENRICHED_GRAPH_VERSION
+            observed_versions = enrich_versions
+            expected_total_nodes = EXPECTED_ENRICHED_TOTAL_NODES
+            expected_total_edges = EXPECTED_ENRICHED_TOTAL_EDGES
+            expected_nodes = EXPECTED_ENRICHED_NODES_BY_LABEL
+            expected_edges = EXPECTED_ENRICHED_EDGES_BY_RELATION
+            if v4_versions != [EXPECTED_GRAPH_VERSION]:
+                warnings.append(
+                    f"Expected base v4 graph_version {EXPECTED_GRAPH_VERSION!r}, observed {v4_versions!r}."
+                )
+        else:
+            expected_gv = EXPECTED_GRAPH_VERSION
+            observed_versions = v4_versions
+            expected_total_nodes = EXPECTED_TOTAL_NODES
+            expected_total_edges = EXPECTED_TOTAL_EDGES
+            expected_nodes = EXPECTED_NODES_BY_LABEL
+            expected_edges = EXPECTED_EDGES_BY_RELATION
+
+        if observed_versions != [expected_gv]:
             warnings.append(
-                f"Expected graph_version {EXPECTED_GRAPH_VERSION!r}, observed {versions!r}."
+                f"Expected graph_version {expected_gv!r}, observed {observed_versions!r}."
             )
-        if total_nodes != EXPECTED_TOTAL_NODES:
-            warnings.append(f"Expected {EXPECTED_TOTAL_NODES} total nodes, observed {total_nodes}.")
-        if total_edges != EXPECTED_TOTAL_EDGES:
-            warnings.append(f"Expected {EXPECTED_TOTAL_EDGES} total edges, observed {total_edges}.")
-        for lbl, expected_cnt in EXPECTED_NODES_BY_LABEL.items():
+        if total_nodes != expected_total_nodes:
+            warnings.append(f"Expected {expected_total_nodes} total nodes, observed {total_nodes}.")
+        if total_edges != expected_total_edges:
+            warnings.append(f"Expected {expected_total_edges} total edges, observed {total_edges}.")
+        for lbl, expected_cnt in expected_nodes.items():
             if nodes_by_label.get(lbl, 0) != expected_cnt:
                 warnings.append(f"Label {lbl}: expected {expected_cnt}, observed {nodes_by_label.get(lbl, 0)}.")
-        for rel, expected_cnt in EXPECTED_EDGES_BY_RELATION.items():
+        for rel, expected_cnt in expected_edges.items():
             if edges_by_relation.get(rel, 0) != expected_cnt:
                 warnings.append(f"Relation {rel}: expected {expected_cnt}, observed {edges_by_relation.get(rel, 0)}.")
 
         verified = len(warnings) == 0
         payload = {
             "connected": True,
+            "graph_mode": mode,
             "endpoint": self.sanitized_endpoint,
-            "expected_graph_version": EXPECTED_GRAPH_VERSION,
-            "observed_graph_versions": versions,
+            "expected_graph_version": expected_gv,
+            "observed_graph_versions": observed_versions,
             "database_verified": verified,
             "nodes_by_label": nodes_by_label,
             "edges_by_relation": edges_by_relation,
+            "rag_index_nodes": rag_index_nodes,
+            "rag_index_total_nodes": sum(rag_index_nodes.values()),
             "total_nodes": total_nodes,
             "total_edges": total_edges,
             "warnings": warnings,

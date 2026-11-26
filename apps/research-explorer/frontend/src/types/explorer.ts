@@ -123,6 +123,7 @@ export interface GraphEdge {
 
 export interface HealthResponse {
   status: "ok" | "degraded" | "error";
+  graph_mode?: "v4" | "enriched";
   neo4j_connected: boolean;
   neo4j_endpoint: string;
   expected_graph_version: string;
@@ -130,6 +131,8 @@ export interface HealthResponse {
   database_verified: boolean;
   total_nodes: number;
   total_edges: number;
+  rag_index_nodes?: Record<string, number>;
+  rag_index_total_nodes?: number;
   warnings: string[];
   artifacts: Record<string, boolean>;
 }

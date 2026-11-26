@@ -38,6 +38,33 @@ EXPECTED_EDGES_BY_RELATION: dict[str, int] = {
     "CONTRIBUTES_TO_TOPIC": 2332,
 }
 
+# Expected enriched graph v3 inventory constants (D042 final exam, bolt://127.0.0.1:7690)
+EXPECTED_ENRICHED_GRAPH_VERSION = "enriched-cb371912e308"
+EXPECTED_ENRICHED_TOTAL_NODES = 50144
+EXPECTED_ENRICHED_TOTAL_EDGES = 242048
+
+EXPECTED_ENRICHED_NODES_BY_LABEL: dict[str, int] = {
+    **EXPECTED_NODES_BY_LABEL,
+    "Organization": 2312,  # 2,047 v4 + 265 wikidata_parent
+    "Method": 954,
+    "Task": 679,
+    "Dataset": 371,
+}
+
+EXPECTED_ENRICHED_EDGES_BY_RELATION: dict[str, int] = {
+    **EXPECTED_EDGES_BY_RELATION,
+    "USES_METHOD": 7911,
+    "ADDRESSES_TASK": 4591,
+    "USES_DATASET": 2733,
+    "APPLIED_TO": 167,
+    "EVALUATED_ON": 31,
+    "PART_OF": 783,
+    "MEMBER_OF": 85,
+    "RELATED_TO": 16,
+}
+
+RAG_INDEX_LABELS: frozenset[str] = frozenset({"RagChunk", "RagEntityDesc", "RagReport"})
+
 
 @dataclass(frozen=True)
 class Settings:

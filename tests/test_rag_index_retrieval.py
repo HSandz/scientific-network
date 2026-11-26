@@ -118,6 +118,52 @@ def test_sqlite_vector_store_and_local_global_retrieval(tmp_path: Path):
     llm = _FakeLLM([{"points": [{"claim": "LLM growth", "importance": 9, "paper_ids": ["paper:aaai:2024:1"]}]}, "LLM research grew [paper:aaai:2024:1]."])
     glob = global_search("What are main directions?", llm=llm, reports_path=rep_path, vector_store=db, embed_fn=lambda _: v1)
     assert "paper:aaai:2024:1" in glob["paper_ids"] and glob["ai_generated_label"] == "AI-generated from graph data"
+    assert glob["map_stats"] == {"batches": 1, "succeeded": 1, "failed": 0, "truncated": 0}
+
+
+def test_global_map_schema_and_budget_prevents_truncation():
+    from scientific_network.rag.retrieval import GLOBAL_MAP_SCHEMA
+
+    pts = GLOBAL_MAP_SCHEMA["properties"]["points"]
+    assert pts["maxItems"] <= 4
+    assert pts["items"]["properties"]["claim"]["maxLength"] <= 240
+    assert pts["items"]["properties"]["paper_ids"]["maxItems"] <= 3
+
+    seen_max_tokens: list[int | None] = []
+
+    class _CapturingLLM(_FakeLLM):
+        def complete(self, *, prompt_version: str, system: str, user: str, schema=None, schema_name="answer", max_tokens=None):
+            if prompt_version.endswith("-map"):
+                seen_max_tokens.append(max_tokens)
+            return super().complete(
+                prompt_version=prompt_version, system=system, user=user,
+                schema=schema, schema_name=schema_name, max_tokens=max_tokens,
+            )
+
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        p = Path(td) / "reports.json"
+        p.write_text(json.dumps({
+            "reports": [
+                {
+                    "community_id": "research:L1:0",
+                    "network": "research",
+                    "level": 1,
+                    "title": "LLM",
+                    "summary": "S",
+                    "key_findings": [{"claim": f"C{i}", "paper_ids": ["paper:aaai:2024:1"]} for i in range(8)],
+                    "paper_count": 10,
+                    "centrality_rating": 8,
+                }
+            ]
+        }))
+        llm = _CapturingLLM([
+            {"points": [{"claim": "LLM growth.", "importance": 8, "paper_ids": ["paper:aaai:2024:1"]}]},
+            "LLM growth [paper:aaai:2024:1].",
+        ])
+        res = global_search("Main directions?", llm=llm, reports_path=p)
+        assert seen_max_tokens and seen_max_tokens[0] >= 1024
+        assert res["map_stats"]["failed"] == 0
 
 
 def test_research_communities_strict_nesting(tmp_path: Path):

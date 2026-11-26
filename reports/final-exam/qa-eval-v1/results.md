@@ -147,3 +147,24 @@ The ranking S4 > S3 > S1 > S2 holds at every seed. S4's spread is 0.405–0.429.
 within each range: at its upper end for S1, S2 and S4, and near the mean for S3. Per-seed values are
 in [`scorer-hashseed-sensitivity.json`](scorer-hashseed-sensitivity.json). The frozen harness was not
 changed. Later evaluations should fix the seed or sort the spans.
+
+### 2026-11-26 — Global map-stage truncation, humanized trace keys, and scorer determinism (WORK-2026-11-26-002)
+
+After `qa-eval-v1` and `k1-answer-v1` were frozen, the following product and scorer fixes were applied.
+No `qa-eval-v1` system was re-run on any test question, and all `qa-eval-v1` figures above remain unchanged.
+
+- **Global map-stage truncation (`rag-global-v3`).** `rag-global-v2-map` previously capped output at
+  512 tokens with up to 6 uncapped claims per batch, causing 41 of 66 map calls in `qa-eval-v1` and
+  6 of 12 map calls (`50.0%` failure rate, 6 truncated, mean uncached latency `44.581 s`, max
+  `53.598 s`) on the 4 kept development global questions (`qa-v1-d017`–`qa-v1-d020`) to truncate and
+  fail. Raising map `max_tokens` to 1024 and bounding `GLOBAL_MAP_SCHEMA` to at most 4 claims of
+  ≤240 characters with ≤3 `paper_ids` (and ≤4 `key_findings` per input report) reduced the
+  development global map failure rate to **0 of 12 (`0.0%`, 0 truncated)** with mean uncached latency
+  **`26.735 s`** (max `30.886 s`).
+- **Human-readable trace labels and on-demand subject specialization.** `_compact_trace_for_prompt`
+  maps internal snake_case metric keys (such as `share_delta` → `share change`) to plain English, and
+  `RAGToolset.rank` computes N4 personalized PageRank lift on demand (with RCA fallback) for subjects
+  outside the precomputed top 30 alongside multi-kind subject linking.
+- **Scorer determinism.** `UnifiedEntityResolver.resolve` in `src/scientific_network/evaluation/qa_eval.py`
+  now iterates `sorted(span_norms)` and sorts alias/catalog candidates by ID so future runs are
+  independent of `PYTHONHASHSEED`. The frozen `qa-eval-v1` scores above were left untouched.

@@ -257,6 +257,11 @@ class NavigatorService:
         self._venue_trend_cache: dict[tuple[str, str], dict[str, dict[int, float]]] = {}
         self._vector_store: SQLiteVectorStore | None = None
         self._rag_toolset: RAGToolset | None = None
+        self._rag_reports_cache: dict[str, Any] | None = None
+        self._research_comms_cache: dict[str, Any] | None = None
+        self._entity_desc_cache: dict[str, dict[str, Any]] | None = None
+        self._demo_cache_data: dict[str, Any] | None = None
+        self._llm_client: LLMClient | None = None
 
     def _build_alias_lookup(self) -> dict[str, list[str]]:
         out: dict[str, list[str]] = defaultdict(list)
@@ -324,20 +329,96 @@ class NavigatorService:
         return []
 
     def _load_rag_reports(self) -> dict[str, Any]:
-        return _read_json(self.rag_dir / "community-reports.json") or {}
+        if self._rag_reports_cache is None:
+            self._rag_reports_cache = _read_json(self.rag_dir / "community-reports.json") or {}
+        return self._rag_reports_cache
 
     def _load_research_communities(self) -> dict[str, Any]:
-        return _read_json(self.rag_dir / "research-communities.json") or {}
+        if self._research_comms_cache is None:
+            self._research_comms_cache = _read_json(self.rag_dir / "research-communities.json") or {}
+        return self._research_comms_cache
 
     def _load_entity_descriptions(self) -> dict[str, dict[str, Any]]:
-        raw = _read_json(self.rag_dir / "entity-descriptions.json")
-        if not raw:
-            return {}
-        items = raw.get("descriptions", []) if isinstance(raw, dict) else raw
-        return {str(d["id"]): d for d in items if isinstance(d, dict) and d.get("id")}
+        if self._entity_desc_cache is None:
+            raw = _read_json(self.rag_dir / "entity-descriptions.json")
+            if not raw:
+                self._entity_desc_cache = {}
+            else:
+                items = raw.get("descriptions", []) if isinstance(raw, dict) else raw
+                self._entity_desc_cache = {str(d["id"]): d for d in items if isinstance(d, dict) and d.get("id")}
+        return self._entity_desc_cache
 
     def _load_demo_cache(self) -> dict[str, Any]:
-        return _read_json(self.rag_dir / "demo-cache.json") or {}
+        if self._demo_cache_data is None:
+            self._demo_cache_data = _read_json(self.rag_dir / "demo-cache.json") or {}
+        return self._demo_cache_data
+
+    def close(self) -> None:
+        if self._llm_client is not None:
+            self._llm_client.close()
+            self._llm_client = None
+        if self._rag_toolset is not None and hasattr(self._rag_toolset.backend, "close"):
+            self._rag_toolset.backend.close()
+            self._rag_toolset = None
+
+    def warmup(self) -> dict[str, Any]:
+        """Preload RAG artifacts, SQLite vectors, embedding model, Neo4j driver, and warm the LLM."""
+        status: dict[str, Any] = {}
+        self._load_rag_reports()
+        self._load_research_communities()
+        self._load_entity_descriptions()
+        self._load_demo_cache()
+        status["artifacts"] = True
+
+        vstore = self._get_vector_store()
+        status["vector_store"] = vstore is not None
+
+        embed_fn = self._get_embed_fn()
+        if embed_fn is not None:
+            embed_fn("warmup")
+        status["embeddings"] = embed_fn is not None
+
+        toolset = self._get_toolset()
+        if self._has_live_neo4j():
+            try:
+                toolset.backend.run_read("RETURN 1 AS ok")
+                status["neo4j_toolset"] = True
+            except Exception as exc:
+                status["neo4j_toolset"] = f"error: {type(exc).__name__}"
+        else:
+            status["neo4j_toolset"] = "offline"
+
+        # Prime the LLM server/connection when configured, without failing startup if unavailable
+        if self._injected_llm is not None:
+            status["llm"] = "injected"
+        else:
+            spec = self._llm_runtime_spec()
+            if spec.get("base_url"):
+                try:
+                    probe_cfg = LLMConfig(
+                        base_url=spec["base_url"],
+                        model=spec["model"],
+                        provider=spec["provider"],
+                        api_key_env=spec["api_key_env"],
+                        temperature=spec["temperature"],
+                        seed=spec["seed"],
+                        max_tokens=8,
+                        enable_thinking=False,
+                        timeout=6.0,
+                        cache_dir=None,
+                    )
+                    with LLMClient(probe_cfg) as probe:
+                        probe.complete(
+                            prompt_version="rag-warmup-v1",
+                            system="Reply OK.",
+                            user="OK",
+                            max_tokens=4,
+                        )
+                    self._get_llm()
+                    status["llm"] = "warm"
+                except Exception as exc:
+                    status["llm"] = f"unavailable: {type(exc).__name__}"
+        return status
 
     def _get_toolset(self) -> RAGToolset:
         if self._injected_toolset is not None:
@@ -384,19 +465,21 @@ class NavigatorService:
     def _get_llm(self) -> LLMClient:
         if self._injected_llm is not None:
             return self._injected_llm
-        spec = self._llm_runtime_spec()
-        cfg = LLMConfig(
-            base_url=spec["base_url"],
-            model=spec["model"],
-            provider=spec["provider"],
-            api_key_env=spec["api_key_env"],
-            temperature=spec["temperature"],
-            seed=spec["seed"],
-            max_tokens=spec["max_tokens"],
-            enable_thinking=spec["enable_thinking"],
-            timeout=spec["timeout"],
-        )
-        return LLMClient(cfg)
+        if self._llm_client is None:
+            spec = self._llm_runtime_spec()
+            cfg = LLMConfig(
+                base_url=spec["base_url"],
+                model=spec["model"],
+                provider=spec["provider"],
+                api_key_env=spec["api_key_env"],
+                temperature=spec["temperature"],
+                seed=spec["seed"],
+                max_tokens=spec["max_tokens"],
+                enable_thinking=spec["enable_thinking"],
+                timeout=spec["timeout"],
+            )
+            self._llm_client = LLMClient(cfg)
+        return self._llm_client
 
     def _get_vector_store(self) -> SQLiteVectorStore | None:
         if self._vector_store is None and self.settings.rag_vectors_sqlite.is_file():
