@@ -1,197 +1,202 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-const AnalyticsView = React.lazy(() =>
-  import("./components/analytics/AnalyticsView").then((m) => ({
-    default: m.AnalyticsView,
-  })),
-);
-import { effectiveSlice } from "./lib/effectiveGraph";
-import { LeftSidebar } from "./components/filters/LeftSidebar";
-const SigmaGraphCanvas = React.lazy(() => import("./components/graph/SigmaGraphCanvas").then(m => ({ default: m.SigmaGraphCanvas })));
-import { RightInspector } from "./components/inspector/RightInspector";
-import { TopHeader } from "./components/layout/TopHeader";
-const CaveatsModal = React.lazy(() => import("./components/modals/CaveatsModal").then(m => ({ default: m.CaveatsModal })));
-const CompareModal = React.lazy(() => import("./components/modals/CompareModal").then(m => ({ default: m.CompareModal })));
-const PathFinderModal = React.lazy(() => import("./components/modals/PathFinderModal").then(m => ({ default: m.PathFinderModal })));
-const SearchCommandModal = React.lazy(() => import("./components/search/SearchCommandModal").then(m => ({ default: m.SearchCommandModal })));
-const TableView = React.lazy(() => import("./components/table/TableView").then(m => ({ default: m.TableView })));
-const TrendsPage = React.lazy(() => import("./components/navigator/TrendsPage").then(m => ({ default: m.TrendsPage })));
-const SubjectPage = React.lazy(() => import("./components/navigator/SubjectPage").then(m => ({ default: m.SubjectPage })));
-const GroupsPage = React.lazy(() => import("./components/navigator/GroupsPage").then(m => ({ default: m.GroupsPage })));
-const CommunitiesPage = React.lazy(() => import("./components/navigator/CommunitiesPage").then(m => ({ default: m.CommunitiesPage })));
-const NetworkSciencePage = React.lazy(() => import("./components/navigator/NetworkSciencePage").then(m => ({ default: m.NetworkSciencePage })));
-const AskPage = React.lazy(() => import("./components/navigator/AskPage").then(m => ({ default: m.AskPage })));
-const Node360Page = React.lazy(() => import("./components/navigator/Node360Page").then(m => ({ default: m.Node360Page })));
-const AboutDataPage = React.lazy(() => import("./components/navigator/AboutDataPage").then(m => ({ default: m.AboutDataPage })));
-import { EnrichedExplorerBar } from "./components/navigator/EnrichedExplorerBar";
+import { AppShell } from "./components/shell/AppShell";
 import { explorerApi } from "./lib/api";
-import { navigatorApi } from "./lib/navigatorApi";
+import { exploreFocusHandler, queueExploreFocus } from "./lib/exploreBridge";
+import {
+  currentRoute,
+  linkClick,
+  navigate,
+  normalizeLegacyUrl,
+  parsePath,
+  pathFor,
+  pathForTab,
+  tabForRoute,
+  useRoute,
+  type Route,
+} from "./lib/router";
 import { useExplorerStore } from "./stores/useExplorerStore";
-import { GraphEdge, GraphNode } from "./types/explorer";
+import type { WorkspaceTab } from "./types/explorer";
+
+const ExplorePage = React.lazy(() => import("./components/explore/ExplorePage").then((m) => ({ default: m.ExplorePage })));
+const AnalyticsView = React.lazy(() => import("./components/analytics/AnalyticsView").then((m) => ({ default: m.AnalyticsView })));
+const PulsePage = React.lazy(() => import("./components/navigator/PulsePage").then((m) => ({ default: m.PulsePage })));
+const TrendsPage = React.lazy(() => import("./components/navigator/TrendsPage").then((m) => ({ default: m.TrendsPage })));
+const SubjectPage = React.lazy(() => import("./components/navigator/SubjectPage").then((m) => ({ default: m.SubjectPage })));
+const GroupsPage = React.lazy(() => import("./components/navigator/GroupsPage").then((m) => ({ default: m.GroupsPage })));
+const CommunitiesPage = React.lazy(() => import("./components/navigator/CommunitiesPage").then((m) => ({ default: m.CommunitiesPage })));
+const NetworkSciencePage = React.lazy(() => import("./components/navigator/NetworkSciencePage").then((m) => ({ default: m.NetworkSciencePage })));
+const AskPage = React.lazy(() => import("./components/navigator/AskPage").then((m) => ({ default: m.AskPage })));
+const Node360Page = React.lazy(() => import("./components/navigator/Node360Page").then((m) => ({ default: m.Node360Page })));
+const AboutDataPage = React.lazy(() => import("./components/navigator/AboutDataPage").then((m) => ({ default: m.AboutDataPage })));
+const SearchCommandModal = React.lazy(() => import("./components/search/SearchCommandModal").then((m) => ({ default: m.SearchCommandModal })));
+const NavigatorSearchModal = React.lazy(() => import("./components/search/NavigatorSearchModal").then((m) => ({ default: m.NavigatorSearchModal })));
+const CaveatsModal = React.lazy(() => import("./components/modals/CaveatsModal").then((m) => ({ default: m.CaveatsModal })));
+
+/** Network has two views: the enriched graph's network science and the frozen v4 release analysis. */
+const NetworkViews: React.FC<{ current: "enriched" | "release" }> = ({ current }) => (
+  <nav className={`network-views ${current === "release" ? "network-views--bleed" : ""}`} aria-label="Network views">
+    <div className="seg">
+      {(
+        [
+          ["enriched", "Enriched graph", pathFor("network")],
+          ["release", "Release graph (v4) analysis", pathFor("network", "release")],
+        ] as const
+      ).map(([key, label, href]) => (
+        <a
+          key={key}
+          href={href}
+          aria-current={current === key ? "page" : undefined}
+          aria-pressed={current === key}
+          data-testid={`network-view-${key}`}
+          onClick={(e) => linkClick(e, href)}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </nav>
+);
+
+const EXPLORE_TABS = new Set<WorkspaceTab>(["graph", "table"]);
+
+/** Apply a route to the store: page tab plus the selected subject, group, community or node. */
+function applyRouteToStore(r: Route) {
+  const s = useExplorerStore.getState();
+  const tab = tabForRoute(r);
+  const patch: Partial<ReturnType<typeof useExplorerStore.getState>> = {};
+  if (r.page === "topics" && r.param !== s.selectedSubjectId && r.param) patch.selectedSubjectId = r.param;
+  if (r.page === "groups" && r.param !== s.selectedGroupId) patch.selectedGroupId = r.param;
+  if (r.page === "map" && r.param !== s.selectedCommunityId) patch.selectedCommunityId = r.param;
+  if (r.page === "node" && r.param && r.param !== s.node360Id) patch.node360Id = r.param;
+  if (Object.keys(patch).length) useExplorerStore.setState(patch);
+  if (s.workspaceTab !== tab) s.setWorkspaceTab(tab);
+}
+
+/** The path the store currently describes, or null when the route already matches it. */
+function pathFromStore(r: Route): string | null {
+  const s = useExplorerStore.getState();
+  const tab = s.workspaceTab;
+  if (tabForRoute(r) === tab) {
+    // Same page: follow id changes made inside a page (openSubject, openGroup, …).
+    if (tab === "subjects" && s.selectedSubjectId && s.selectedSubjectId !== r.param) return pathFor("topics", s.selectedSubjectId);
+    if (tab === "groups" && (s.selectedGroupId || null) !== (r.param || null)) return pathFor("groups", s.selectedGroupId);
+    if (tab === "communities" && (s.selectedCommunityId || null) !== (r.param || null)) return pathFor("map", s.selectedCommunityId);
+    if (tab === "node360" && s.node360Id && s.node360Id !== r.param) return pathFor("node", s.node360Id);
+    return null;
+  }
+  if (tab === "pulse") return "/";
+  const path = pathForTab(tab, {
+    subject: s.selectedSubjectId,
+    group: s.selectedGroupId,
+    community: s.selectedCommunityId,
+    node: s.node360Id,
+  });
+  // Moving between Explore sub-views keeps the Explorer's query string.
+  if (EXPLORE_TABS.has(tab) && r.page === "explore") return `${path}${r.search}`;
+  return path;
+}
+
+let booted = false;
+function bootOnce() {
+  if (booted) return;
+  booted = true;
+  normalizeLegacyUrl();
+  useExplorerStore.getState().hydrateFromUrl();
+  applyRouteToStore(parsePath(window.location.pathname, window.location.search));
+}
 
 export const App: React.FC = () => {
-  const {
-    darkMode,
-    workspaceTab,
-    setWorkspaceTab,
-    selectedSubjectId,
-    selectedGroupId,
-    selectedCommunityId,
-    node360Id,
-    openSubject,
-    openGroup,
-    openCommunity,
-    openNode360,
-    viewMode,
-    filters,
-    extraNodes,
-    extraEdges,
-    graphViewScope,
-    edgeFilterMode,
-    selectedNodeId,
-    leftSidebarOpen,
-    setLeftSidebarOpen,
-    rightSidebarOpen,
-    setRightSidebarOpen,
-    searchModalOpen,
-    pathFinderOpen,
-    compareModalOpen,
-    caveatsModalOpen,
-    selectNode,
-    mergeSubgraph,
-    enterEgoView,
-    setExpansionError,
-    hydrateFromUrl,
-    setSearchModalOpen,
-    setPathFinderOpen,
-    setCompareModalOpen,
-    setCaveatsModalOpen,
-  } = useExplorerStore();
-
-  const [isExpanding, setIsExpanding] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
-  const workspaceShellRef = useRef<HTMLDivElement>(null);
-  const prevViewportWidthRef = useRef<number>(
-    typeof window !== "undefined" ? window.innerWidth : 1440,
-  );
-
-  const anyModalOpen =
-    searchModalOpen || pathFinderOpen || compareModalOpen || caveatsModalOpen;
+  bootOnce();
+  const route = useRoute();
+  const searchModalOpen = useExplorerStore((s) => s.searchModalOpen);
+  const caveatsModalOpen = useExplorerStore((s) => s.caveatsModalOpen);
+  const pathFinderOpen = useExplorerStore((s) => s.pathFinderOpen);
+  const compareModalOpen = useExplorerStore((s) => s.compareModalOpen);
+  const darkMode = useExplorerStore((s) => s.darkMode);
+  const node360Id = useExplorerStore((s) => s.node360Id);
+  const selectedSubjectId = useExplorerStore((s) => s.selectedSubjectId);
+  const selectedGroupId = useExplorerStore((s) => s.selectedGroupId);
+  const selectedCommunityId = useExplorerStore((s) => s.selectedCommunityId);
+  const openSubject = useExplorerStore((s) => s.openSubject);
+  const openGroup = useExplorerStore((s) => s.openGroup);
+  const openCommunity = useExplorerStore((s) => s.openCommunity);
+  const openNode360 = useExplorerStore((s) => s.openNode360);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const [, force] = useState(0);
+  const anyModalOpen = searchModalOpen || pathFinderOpen || compareModalOpen || caveatsModalOpen;
 
   // Development-only instrumentation for correctness/performance regression checks.
   if (import.meta.env.DEV) (window as any).__explorerStore = useExplorerStore;
 
-  // Hydrate initial state from URL parameters on mount
-  useEffect(() => {
-    hydrateFromUrl();
-    setHydrated(true);
-  }, [hydrateFromUrl]);
-
-  // Synchronize dark mode class on root html element
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
+    force((n) => n + 1); // charts read colours from CSS variables
   }, [darkMode]);
 
-  // Set background workspace shell inert while any modal dialog is open
+  // Route → store on every navigation (Back and Forward included).
+  useLayoutEffect(() => {
+    applyRouteToStore(route);
+  }, [route]);
+
+  // Store → route: pages and Explorer code still call openSubject / setWorkspaceTab.
+  useEffect(
+    () =>
+      useExplorerStore.subscribe((s, prev) => {
+        if (
+          s.workspaceTab === prev.workspaceTab &&
+          s.selectedSubjectId === prev.selectedSubjectId &&
+          s.selectedGroupId === prev.selectedGroupId &&
+          s.selectedCommunityId === prev.selectedCommunityId &&
+          s.node360Id === prev.node360Id
+        )
+          return;
+        const next = pathFromStore(currentRoute());
+        if (next) navigate(next);
+      }),
+    [],
+  );
+
+  // ⌘K / Ctrl+K and "/" open search anywhere.
   useEffect(() => {
-    const shell = workspaceShellRef.current;
-    if (!shell) return;
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable);
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        useExplorerStore.getState().setSearchModalOpen(true);
+      } else if (!anyModalOpen && !typing && e.key === "/") {
+        e.preventDefault();
+        useExplorerStore.getState().setSearchModalOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [anyModalOpen]);
+
+  // Background inert while a dialog is open.
+  useEffect(() => {
+    const el = shellRef.current;
+    if (!el) return;
     if (anyModalOpen) {
-      shell.setAttribute("inert", "");
-      shell.setAttribute("aria-hidden", "true");
+      el.setAttribute("inert", "");
+      el.setAttribute("aria-hidden", "true");
     } else {
-      shell.removeAttribute("inert");
-      shell.removeAttribute("aria-hidden");
+      el.removeAttribute("inert");
+      el.removeAttribute("aria-hidden");
     }
   }, [anyModalOpen]);
 
-  // Fold static rails cleanly across responsive breakpoint transitions
+  // Move focus to the page on navigation so keyboard and screen-reader users land on content.
+  const lastPath = useRef<string | null>(null);
   useEffect(() => {
-    const handleResize = () => {
-      const w = window.innerWidth;
-      const prevW = prevViewportWidthRef.current;
-      prevViewportWidthRef.current = w;
-
-      const state = useExplorerStore.getState();
-      // Crossing from desktop (>= 1024) down to tablet/phone (< 1024):
-      // fold the desktop filter rail rather than converting it into a blocking overlay drawer
-      if (prevW >= 1024 && w < 1024 && state.leftSidebarOpen) {
-        state.setLeftSidebarOpen(false);
-      } else if (
-        w >= 1024 &&
-        w < 1264 &&
-        state.leftSidebarOpen &&
-        state.rightSidebarOpen
-      ) {
-        // At 1024–1263px, keep >= 600px graph width by folding the filter rail when inspector is open
-        state.setLeftSidebarOpen(false);
-      } else if (
-        prevW < 1264 &&
-        w >= 1264 &&
-        !state.leftSidebarOpen &&
-        !state.canvasExpanded
-      ) {
-        // Returning to wide desktop restores the left filter rail
-        state.setLeftSidebarOpen(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Global keyboard shortcuts: `/` or `Cmd/Ctrl+K` opens search; `Escape` closes drawers when no modal is open
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      const isInput =
-        target &&
-        (target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.tagName === "SELECT" ||
-          target.isContentEditable);
-
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setSearchModalOpen(true);
-        return;
-      }
-
-      if (!anyModalOpen && !isInput && e.key === "/") {
-        e.preventDefault();
-        setSearchModalOpen(true);
-        return;
-      }
-
-      if (e.key === "Escape" && !anyModalOpen && !e.defaultPrevented) {
-        if (rightSidebarOpen) {
-          e.preventDefault();
-          setRightSidebarOpen(false);
-          return;
-        }
-        if (leftSidebarOpen && window.innerWidth < 1024) {
-          e.preventDefault();
-          setLeftSidebarOpen(false);
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [
-    anyModalOpen,
-    leftSidebarOpen,
-    rightSidebarOpen,
-    setLeftSidebarOpen,
-    setRightSidebarOpen,
-    setSearchModalOpen,
-  ]);
+    const key = `${route.page}/${route.param || ""}`;
+    const prev = lastPath.current;
+    lastPath.current = key;
+    if (prev === null || prev === key) return;
+    if (route.page === "ask" || route.page === "explore") return;
+    document.getElementById("main-content")?.focus({ preventScroll: true });
+  }, [route.page, route.param]);
 
   const summaryQuery = useQuery({
     queryKey: ["graph-summary"],
@@ -199,478 +204,92 @@ export const App: React.FC = () => {
     staleTime: 300_000,
   });
 
-  const enrichedSchemaQuery = useQuery({
-    queryKey: ["nav-enriched-schema-version"],
-    queryFn: ({ signal }) => navigatorApi.getEnrichedSchema(signal),
-    staleTime: 300_000,
-  });
+  const isExplore = route.page === "explore";
+  const isRelease = route.page === "network" && route.param === "release";
+  const fullBleed = route.page === "ask" || isExplore || isRelease;
 
-  const viewQueryParams = useMemo(() => {
-    return {
-      limit: filters.limit,
-      community_id: filters.communityId || undefined,
-      sector: filters.sector || undefined,
-      cross_sector_only: filters.crossSectorOnly || undefined,
-      country_code: filters.countryCode || undefined,
-      year_min: filters.yearMin,
-      year_max: filters.yearMax,
-      venue: filters.venue || undefined,
-      topic_id: filters.topicId || undefined,
-      min_support: filters.minSupport,
-      min_weight: filters.minWeight,
-      include_isolates: filters.includeIsolates || undefined,
-      include_topics: filters.includeTopics || undefined,
-      preset: viewMode === "heterogeneous" ? filters.preset : undefined,
-      node_labels:
-        viewMode === "heterogeneous" && filters.preset === "custom"
-          ? filters.nodeLabels
-          : undefined,
-      relations:
-        viewMode === "heterogeneous" && filters.preset === "custom"
-          ? filters.relations
-          : undefined,
-    };
-  }, [viewMode, filters]);
+  const fallback = <p role="status" className="loading-line view">Loading…</p>;
 
-  const viewQuery = useQuery({
-    queryKey: ["view-subgraph", viewMode, viewQueryParams],
-    enabled: hydrated && workspaceTab === "graph",
-    queryFn: ({ signal }) =>
-      explorerApi.getViewSubgraph(viewMode, viewQueryParams, signal),
-    staleTime: 60_000,
-  });
-
-  // Derive authoritative graph slice according to active graph scope & presentation filters
-  const effectiveGraph = useMemo(() => {
-    let rawNodes: GraphNode[] = [];
-    let rawEdges: GraphEdge[] = [];
-
-    if (graphViewScope.kind === "ego" || graphViewScope.kind === "path") {
-      // In isolated Ego or dedicated Path view, display only the bounded neighborhood or path steps
-      rawNodes = extraNodes;
-      rawEdges = extraEdges;
-    } else {
-      // Overview view: base view subgraph + any appended expansion nodes
-      const baseNodes =
-        viewMode === "heterogeneous" &&
-        filters.preset === "custom" &&
-        (!filters.nodeLabels.length || !filters.relations.length)
-          ? []
-          : viewQuery.data?.nodes || [];
-      const baseEdges = baseNodes.length ? viewQuery.data?.edges || [] : [];
-
-      if (extraNodes.length === 0 && extraEdges.length === 0) {
-        rawNodes = baseNodes;
-        rawEdges = baseEdges;
-      } else {
-        const nodeMap = new Map<string, GraphNode>();
-        for (const n of baseNodes) nodeMap.set(n.id, n);
-        for (const n of extraNodes) nodeMap.set(n.id, n);
-
-        const edgeMap = new Map<string, GraphEdge>();
-        for (const e of baseEdges) edgeMap.set(e.edge_id, e);
-        for (const e of extraEdges) edgeMap.set(e.edge_id, e);
-
-        rawNodes = Array.from(nodeMap.values());
-        rawEdges = Array.from(edgeMap.values());
-      }
-    }
-
-    rawNodes = rawNodes.slice(0, 250);
-    return {
-      ...effectiveSlice(rawNodes, rawEdges, edgeFilterMode),
-      rawNodes,
-      rawEdges,
-    };
-  }, [
-    graphViewScope.kind,
-    extraNodes,
-    extraEdges,
-    viewQuery.data,
-    edgeFilterMode,
-    viewMode,
-    filters,
-  ]);
-
-  const expansionController = useRef<AbortController | null>(null);
-  const requestKey = JSON.stringify([
-    viewMode,
-    filters,
-    edgeFilterMode,
-    graphViewScope.kind,
-  ]);
-  const requestKeyRef = useRef(requestKey);
-  requestKeyRef.current = requestKey;
-  useEffect(() => {
-    expansionController.current?.abort();
-    setIsExpanding(false);
-  }, [requestKey]);
-  useEffect(() => () => expansionController.current?.abort(), []);
-
-  // Expand 1-hop neighborhood of any entity (even outside top-100 illustration)
-  const handleExpandNode = useCallback(
-    async (nodeId: string, replace = false, exploreAll = false) => {
-      expansionController.current?.abort();
-      const controller = new AbortController();
-      expansionController.current = controller;
-      const key = requestKeyRef.current;
-      const current = useExplorerStore.getState();
-      try {
-        setIsExpanding(true);
-        setExpansionError(null);
-        if (exploreAll) {
-          current.setViewMode("heterogeneous");
-          current.updateFilters({ preset: "custom" });
-          setExpansionError({
-            message:
-              "Switched to all relationship types. Retry to load this neighborhood in the new scope.",
-            nodeId,
-            replace,
-          });
-          return;
-        }
-        if (
-          current.viewMode === "heterogeneous" &&
-          current.filters.preset === "custom" &&
-          (!current.filters.nodeLabels.length ||
-            !current.filters.relations.length)
-        ) {
-          setExpansionError({
-            message:
-              "Select at least one label and predicate before expanding.",
-            nodeId,
-            replace,
-          });
-          return;
-        }
-        const params: Record<string, unknown> = {
-          limit: 60,
-          year_min: current.filters.yearMin,
-          year_max: current.filters.yearMax,
-          venue: current.filters.venue || undefined,
-          sector: current.filters.sector || undefined,
-          community_id: current.filters.communityId || undefined,
-          country_code: current.filters.countryCode || undefined,
-          topic_id: current.filters.topicId || undefined,
-          cross_sector_only: current.filters.crossSectorOnly || undefined,
-        };
-        if (
-          current.viewMode === "researchers" ||
-          current.viewMode === "organizations"
-        ) {
-          params.relations = [
-            current.viewMode === "researchers"
-              ? "COAUTHORED_WITH"
-              : "COLLABORATED_WITH",
-          ];
-          params.node_labels = [
-            current.viewMode === "researchers" ? "Researcher" : "Organization",
-          ];
-          params.min_support = current.filters.minSupport;
-          params.min_weight = current.filters.minWeight;
-        } else if (current.viewMode === "citations") {
-          params.relations = ["CITES"];
-          params.node_labels = ["Paper"];
-        } else if (current.filters.preset === "custom") {
-          params.relations = current.filters.relations;
-          params.node_labels = current.filters.nodeLabels;
-        }
-        const res = await explorerApi.getNodeNeighbors(
-          nodeId,
-          params,
-          controller.signal,
-        );
-        if (controller.signal.aborted || key !== requestKeyRef.current) return;
-        if (replace) {
-          const camera = document.querySelector<HTMLElement>(
-            '[data-testid="sigma-canvas-container"]',
-          )?.dataset.camera;
-          enterEgoView(
-            res.center_node,
-            res.nodes,
-            res.edges,
-            camera ? JSON.parse(camera) : null,
-            params,
-          );
-        } else {
-          mergeSubgraph(res.nodes, res.edges, false, nodeId);
-          selectNode(nodeId, res.center_node.name);
-        }
-      } catch (err) {
-        if (controller.signal.aborted || key !== requestKeyRef.current) return;
-        setExpansionError({
-          message:
-            err instanceof Error
-              ? err.message
-              : "Neighborhood unavailable. Retry.",
-          nodeId,
-          replace,
-        });
-      } finally {
-        if (expansionController.current === controller) setIsExpanding(false);
-      }
-    },
-    [enterEgoView, mergeSubgraph, selectNode, setExpansionError],
-  );
-
-  // A restored scope must fetch its graph, not just restore its heading.
-  useEffect(() => {
-    if (extraNodes.length) return;
-    if (graphViewScope.kind === "ego" && graphViewScope.centerId) {
-      void handleExpandNode(graphViewScope.centerId, true);
-    }
-    if (graphViewScope.kind === "path" && graphViewScope.pathData?.mode) {
-      const p = graphViewScope.pathData;
-      let active = true;
-      explorerApi
-        .findPath({
-          source_id: p.sourceId,
-          target_id: p.targetId,
-          mode: p.mode!,
-          max_hops: p.maxHops || 4,
-        })
-        .then((res) => {
-          if (!active) return;
-          if (res.found) useExplorerStore.getState().enterPathView(res);
-          else
-            setExpansionError({
-              message: "Shared path unavailable under the recorded traversal.",
-              nodeId: p.sourceId,
-              replace: false,
-            });
-        })
-        .catch((err) => {
-          if (active)
-            setExpansionError({
-              message: String(err),
-              nodeId: p.sourceId,
-              replace: false,
-            });
-        });
-      return () => {
-        active = false;
-      };
-    }
-  }, [
-    graphViewScope.kind,
-    graphViewScope.centerId,
-    graphViewScope.pathData,
-    extraNodes.length,
-    handleExpandNode,
-    setExpansionError,
-  ]);
-
-  // Focus an entity in the Graph tab (from Search, Table, or Analytics)
-  const handleFocusNodeInGraph = useCallback(
-    (nodeId: string, name?: string) => {
-      setWorkspaceTab("graph");
-      const current = useExplorerStore.getState();
-      if (
-        nodeId.startsWith("researcher:") &&
-        current.viewMode !== "researchers"
-      )
-        current.setViewMode("researchers");
-      if (
-        nodeId.startsWith("organization:") &&
-        current.viewMode !== "organizations"
-      )
-        current.setViewMode("organizations");
-      selectNode(nodeId, name);
-      const alreadyOnCanvas = effectiveGraph.nodes.some((n) => n.id === nodeId);
-      if (!alreadyOnCanvas) {
-        void handleExpandNode(nodeId, false);
-      }
-    },
-    [setWorkspaceTab, selectNode, effectiveGraph.nodes, handleExpandNode],
-  );
-
-  if (!hydrated) return <p role="status" className="p-5">Loading workspace…</p>;
-
-  return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col bg-ground text-ink">
-      <div
-        ref={workspaceShellRef}
-        data-testid="workspace-shell"
-        className="flex-1 flex flex-col min-h-0 overflow-hidden"
-      >
-        <TopHeader
-          summary={summaryQuery.data}
-          enrichedGraphVersion={enrichedSchemaQuery.data?.graph_version}
-          displayedNodes={effectiveGraph.nodes}
-          displayedEdges={effectiveGraph.edges}
-        />
-
-        {summaryQuery.isError && (
-          <p role="alert" className="p-2 text-xs">
-            Release metadata unavailable: {String(summaryQuery.error)}{" "}
-            <button
-              className="underline"
-              onClick={() => summaryQuery.refetch()}
-            >
-              Retry
-            </button>
-          </p>
-        )}
-        <div className="flex-1 flex min-h-0 overflow-hidden relative z-0">
-          {workspaceTab === "graph" && (
-            <LeftSidebar
-              summary={summaryQuery.data}
-              availableCommunities={viewQuery.data?.available_communities || []}
-            />
-          )}
-
-          <main className="flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden bg-ground">
-            {useExplorerStore.getState().shareNotice && (
-              <p role="status" className="p-2 text-xs">
-                {useExplorerStore.getState().shareNotice}
-              </p>
-            )}
-            {workspaceTab === "graph" && (
-              <div className="px-4 py-2 flex flex-wrap gap-2 text-xs border-b border-border">
-                {useExplorerStore.getState().insightReturn && (
-                  <button
-                    className="underline"
-                    onClick={() => setWorkspaceTab("analytics")}
-                  >
-                    ← Back to finding
-                  </button>
-                )}
-                <span className="text-muted">Explore findings</span>
-                {[
-                  ["robustness", "Fragile bridges"],
-                  ["sectors", "Academia–industry"],
-                  ["topics", "Inferred topic trends"],
-                ].map(([id, label]) => (
-                  <button
-                    className="underline underline-offset-2"
-                    key={id}
-                    onClick={() => {
-                      useExplorerStore.setState({ analyticsSection: id });
-                      setWorkspaceTab("analytics");
-                    }}
-                  >
-                    {label} →
-                  </button>
-                ))}
-                <EnrichedExplorerBar onOpenNode360={openNode360} />
-              </div>
-            )}
-            {workspaceTab === "graph" && (
-              <React.Suspense fallback={<p role="status" className="p-5">Loading graph renderer…</p>}><SigmaGraphCanvas
-                viewData={viewQuery.data}
-                nodes={effectiveGraph.nodes}
-                edges={effectiveGraph.edges}
-                rawEdgesCount={effectiveGraph.rawEdges.length}
-                isLoading={viewQuery.isLoading}
-                error={viewQuery.error as Error | null}
-                onRetry={() => { void viewQuery.refetch(); }}
-                onExpandNode={handleExpandNode}
-                isExpanding={isExpanding}
-              /></React.Suspense>
-            )}
-
-            {workspaceTab === "table" && (
-              <React.Suspense fallback={<p role="status" className="p-5">Loading table…</p>}><TableView onFocusNodeInGraph={handleFocusNodeInGraph} /></React.Suspense>
-            )}
-
-            {workspaceTab === "analytics" && (
-              <React.Suspense
-                fallback={<p className="p-5">Loading analytics…</p>}
-              >
-                <AnalyticsView
-                  summary={summaryQuery.data}
-                  onFocusNodeInGraph={(id, name) => {
-                    const state = useExplorerStore.getState();
-                    state.setViewMode(id.startsWith("researcher:") ? "researchers" : id.startsWith("organization:") ? "organizations" : "citations");
-                    state.resetFilters();
-                    state.setEdgeFilterMode("all");
-                    state.setWorkspaceTab("graph");
-                    state.selectNode(id, name);
-                    void handleExpandNode(id, true);
-                  }}
-                />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "trends" && (
-              <React.Suspense fallback={<p className="p-5">Loading trends…</p>}>
-                <TrendsPage onOpenSubject={openSubject} />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "subjects" && (
-              <React.Suspense fallback={<p className="p-5">Loading subject…</p>}>
-                <SubjectPage
-                  subjectId={selectedSubjectId}
-                  onSelectSubject={openSubject}
-                  onOpenGroup={openGroup}
-                  onOpenCommunity={openCommunity}
-                  onOpenNode360={openNode360}
-                />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "groups" && (
-              <React.Suspense fallback={<p className="p-5">Loading groups…</p>}>
-                <GroupsPage
-                  selectedGroupId={selectedGroupId}
-                  onSelectGroup={openGroup}
-                  onOpenNode360={openNode360}
-                />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "communities" && (
-              <React.Suspense fallback={<p className="p-5">Loading communities…</p>}>
-                <CommunitiesPage
-                  selectedCommunityId={selectedCommunityId}
-                  onSelectCommunity={openCommunity}
-                  onOpenNode360={openNode360}
-                />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "network" && (
-              <React.Suspense fallback={<p className="p-5">Loading network science…</p>}>
-                <NetworkSciencePage onOpenNode360={openNode360} />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "ask" && (
-              <React.Suspense fallback={<p className="p-5">Loading Ask workspace…</p>}>
-                <AskPage onOpenNode360={openNode360} />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "node360" && (
-              <React.Suspense fallback={<p className="p-5">Loading Node 360…</p>}>
-                <Node360Page nodeId={node360Id} onSelectNode={openNode360} />
-              </React.Suspense>
-            )}
-
-            {workspaceTab === "about" && (
-              <React.Suspense fallback={<p className="p-5">Loading provenance…</p>}>
-                <AboutDataPage />
-              </React.Suspense>
-            )}
-          </main>
-
-          <RightInspector
-            displayedNodes={effectiveGraph.nodes}
-            displayedEdges={effectiveGraph.edges}
-            onExpandNode={handleExpandNode}
-            isExpanding={isExpanding}
+  let page: React.ReactNode;
+  switch (route.page) {
+    case "pulse":
+      page = <PulsePage />;
+      break;
+    case "ask":
+      page = <AskPage onOpenNode360={openNode360} />;
+      break;
+    case "trends":
+      page = <div className="view"><TrendsPage onOpenSubject={openSubject} /></div>;
+      break;
+    case "topics":
+      page = (
+        <div className="view">
+          <SubjectPage
+            subjectId={selectedSubjectId}
+            onSelectSubject={openSubject}
+            onOpenGroup={openGroup}
+            onOpenCommunity={openCommunity}
+            onOpenNode360={openNode360}
           />
         </div>
-      </div>
+      );
+      break;
+    case "groups":
+      page = <div className="view"><GroupsPage selectedGroupId={selectedGroupId} onSelectGroup={openGroup} onOpenNode360={openNode360} /></div>;
+      break;
+    case "map":
+      page = <div className="view"><CommunitiesPage selectedCommunityId={selectedCommunityId} onSelectCommunity={openCommunity} onOpenNode360={openNode360} /></div>;
+      break;
+    case "network":
+      page = isRelease ? (
+        <div className="release-wrap">
+        <NetworkViews current="release" />
+        <AnalyticsView
+          summary={summaryQuery.data}
+          onFocusNodeInGraph={(id, name) => {
+            const state = useExplorerStore.getState();
+            state.setViewMode(id.startsWith("researcher:") ? "researchers" : id.startsWith("organization:") ? "organizations" : "citations");
+            state.resetFilters();
+            state.setEdgeFilterMode("all");
+            queueExploreFocus({ nodeId: id, name, replace: true });
+            state.setWorkspaceTab("graph");
+          }}
+        />
+        </div>
+      ) : (
+        <div className="view">
+          <NetworkViews current="enriched" />
+          <NetworkSciencePage onOpenNode360={openNode360} />
+        </div>
+      );
+      break;
+    case "explore":
+      page = <ExplorePage />;
+      break;
+    case "node":
+      page = <div className="view"><Node360Page nodeId={node360Id} onSelectNode={openNode360} /></div>;
+      break;
+    case "about":
+      page = <div className="view"><AboutDataPage /></div>;
+      break;
+  }
 
-      {/* Modals */}
-      <React.Suspense fallback={<p role="status" className="fixed bottom-4 right-4 ledger-panel p-3 z-50">Loading dialog…</p>}>
-        {searchModalOpen && <SearchCommandModal onFocusNodeInGraph={handleFocusNodeInGraph} />}
-        {pathFinderOpen && <PathFinderModal />}
-        {compareModalOpen && <CompareModal />}
+  return (
+    <>
+      <div ref={shellRef} data-testid="workspace-shell" className="contents">
+        <AppShell route={route} fullBleed={fullBleed}>
+          <React.Suspense fallback={fallback}>{page}</React.Suspense>
+        </AppShell>
+      </div>
+      <React.Suspense fallback={null}>
+        {searchModalOpen &&
+          (isExplore ? (
+            <SearchCommandModal onFocusNodeInGraph={(id, name) => exploreFocusHandler()?.(id, name)} />
+          ) : (
+            <NavigatorSearchModal />
+          ))}
         {caveatsModalOpen && <CaveatsModal summary={summaryQuery.data} />}
       </React.Suspense>
-    </div>
+    </>
   );
 };

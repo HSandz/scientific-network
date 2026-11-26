@@ -173,6 +173,7 @@ export function validateSpec(
     workspaceTab: choice(
       v.workspaceTab,
       [
+        "pulse",
         "graph",
         "table",
         "analytics",

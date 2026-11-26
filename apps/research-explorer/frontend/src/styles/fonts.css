@@ -1,0 +1,41 @@
+/* Self-hosted type: no runtime dependency on Google Fonts.
+   - Source Serif 4 (variable, optical size) for headlines, answer prose and paper titles.
+   - Atkinson Hyperlegible Next for interface text, tables and numbers.
+   - "RTN Figures": Atkinson's zero is slashed ("0.0%" reads like "Ø.Ø%") and the font has
+     no unslashed alternate, so the digits 0-9 alone are set in Source Sans 3, which has a
+     plain zero and tabular figures. It is listed first in --sans with a digits-only
+     unicode-range, so every other character still comes from Atkinson. */
+@import "@fontsource/atkinson-hyperlegible-next/400.css";
+@import "@fontsource/atkinson-hyperlegible-next/400-italic.css";
+@import "@fontsource/atkinson-hyperlegible-next/500.css";
+@import "@fontsource/atkinson-hyperlegible-next/700.css";
+@import "@fontsource-variable/source-serif-4/opsz.css";
+@import "@fontsource-variable/source-serif-4/opsz-italic.css";
+
+@font-face {
+  font-family: "RTN Figures";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 104%;
+  src: url("@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0030-0039;
+}
+@font-face {
+  font-family: "RTN Figures";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  size-adjust: 104%;
+  src: url("@fontsource/source-sans-3/files/source-sans-3-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0030-0039;
+}
+@font-face {
+  font-family: "RTN Figures";
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  size-adjust: 104%;
+  src: url("@fontsource/source-sans-3/files/source-sans-3-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0030-0039;
+}

@@ -79,16 +79,18 @@ export interface SavedViewBookmark {
 const THEME_STORAGE_KEY = "scientific-network-theme-v1";
 
 function getInitialDarkMode(): boolean {
-  if (typeof window === "undefined") return true;
-  let isDark = true;
+  // Light theme first (classroom projection). A stored choice wins; otherwise follow the
+  // operating system, and fall back to light.
+  if (typeof window === "undefined") return false;
+  let isDark = false;
   try {
     const stored =
       window.localStorage.getItem(THEME_STORAGE_KEY) ||
       window.localStorage.getItem("scientific-network-theme");
-    if (stored === "light") {
-      isDark = false;
+    if (stored === "light" || stored === "dark") {
+      isDark = stored === "dark";
     } else {
-      isDark = true;
+      isDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
     }
   } catch {
     // ignore storage access issues

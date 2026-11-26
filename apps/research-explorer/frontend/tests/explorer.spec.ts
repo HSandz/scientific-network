@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { openExploreGraph, openReleaseAnalysis } from "./helpers/nav";
 import path from "path";
 
 const ARTIFACT_DIR =
@@ -51,7 +52,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
       requests.push(new URL(route.request().url()).searchParams);
       await route.fulfill({ json: view });
     });
-    await page.goto("/");
+    await page.goto("/explore");
     await expect(page.getByTestId("filter-preset")).toHaveValue("topic_taxonomy_ecosystem");
 
     await page.getByTestId("filter-venue").selectOption("venue:ijcai");
@@ -78,11 +79,12 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
       }
     });
 
-    await page.goto("/");
+    await page.goto("/explore");
 
-    // Verify header and release v4 graph version badge
-    await expect(page.getByTestId("graph-version-badge")).toContainText(
-      "release-d3c788c3114a",
+    // Verify the release v4 graph version marker (the hash is shown on hover and on About)
+    await expect(page.getByTestId("graph-version-badge")).toHaveAttribute(
+      "title",
+      /release-d3c788c3114a/,
       { timeout: 15_000 }
     );
 
@@ -235,7 +237,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
   test("3. Navigates Table View, Analytics View, Shortest-Path Finder, and Entity Comparison", async ({
     page,
   }) => {
-    await page.goto("/");
+    await page.goto("/explore");
     await expect(page.getByTestId("graph-version-badge")).toBeVisible({
       timeout: 15_000,
     });
@@ -256,7 +258,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
     ).toBeVisible({ timeout: 10_000 });
 
     // Switch to Analytics View
-    await page.getByTestId("tab-analytics").click();
+    await openReleaseAnalysis(page);
     await expect(page.getByTestId("analytics-view")).toBeVisible();
     await expect(page.getByTestId("analytics-view")).toContainText("96.50%");
     await expect(page.getByTestId("analytics-view")).toContainText("73.71%");
@@ -343,7 +345,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
 
     // Verify phone viewport (390x844) keeps full workspace width and compact layout
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.goto("/explore");
     await expect(page.getByTestId("displayed-counts")).toBeVisible({
       timeout: 15_000,
     });
@@ -465,9 +467,9 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.getByTestId("tab-table").click();
     await expect(page.getByTestId("table-view")).toBeVisible();
-    await page.getByTestId("tab-analytics").click();
+    await openReleaseAnalysis(page);
     await expect(page.getByTestId("analytics-view")).toBeVisible();
-    await page.getByTestId("tab-graph").click();
+    await openExploreGraph(page);
     await expect(page.getByTestId("sigma-canvas-container")).toBeVisible();
 
     await page.screenshot({

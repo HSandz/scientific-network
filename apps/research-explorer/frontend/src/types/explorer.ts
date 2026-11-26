@@ -17,6 +17,7 @@ export type EvidenceKind = "observed" | "inferred_topic" | "curated_taxonomy" | 
 export type ViewMode = "researchers" | "organizations" | "citations" | "heterogeneous";
 
 export type WorkspaceTab =
+  | "pulse"
   | "graph"
   | "table"
   | "analytics"

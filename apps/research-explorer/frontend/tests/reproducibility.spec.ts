@@ -1,4 +1,5 @@
 import { test, expect, Page } from "@playwright/test";
+import { openExploreGraph, openReleaseAnalysis } from "./helpers/nav";
 import fs from "node:fs/promises";
 const storePath = "/src/stores/useExplorerStore.ts";
 async function state(page: Page) {
@@ -190,7 +191,7 @@ test("clipboard denial and missing artifacts show honest recovery, never false s
       configurable: true,
     }),
   );
-  await page.goto("/");
+  await page.goto("/explore");
   await ready(page);
   await page.getByTestId("open-export-menu").click();
   await page.getByTestId("share-view-btn").click();
@@ -394,10 +395,10 @@ test("node positions survive selection and expansion; unmount removes renderer l
     return {same:sigma===(window as any).__retainedSigma,x:graph.getNodeAttribute(id,'x'),y:graph.getNodeAttribute(id,'y')};
   },id);
   expect(after).toEqual({same:true,...before});
-  await page.getByTestId('tab-analytics').click();
+  await openReleaseAnalysis(page);
   await expect(page.getByTestId('analytics-view')).toBeVisible();
   expect(await page.evaluate(() => (window as any).__retainedSigma.eventNames().length)).toBe(0);
-  await page.getByTestId('tab-graph').click();
+  await openExploreGraph(page);
   await ready(page);
   expect(await page.getByTestId('sigma-canvas-container').locator('canvas').count()).toBe(7);
 });

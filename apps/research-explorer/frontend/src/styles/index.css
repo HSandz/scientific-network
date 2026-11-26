@@ -1,49 +1,89 @@
+@import "./fonts.css";
+@import "./shell.css";
+@import "./ui.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ==========================================================================
-   AI Research Network Explorer — Achromatic Ledger + Neutral Charcoal System
-   Dealt from tasteskill v2 (`achromatic-ledger`, seed 103171675)
+   Research Trend Navigator, "research temperature" design system.
+   One thermal scale (cooling, stable, heating) encodes momentum only; every
+   other surface is quiet graphite on chart paper. Light theme first, with a
+   dark "observatory" variant. Values follow the approved mockup
+   (apps/research-explorer/design-mockup/index.html).
+   Legacy variable names (--ground, --text, --border, ...) are kept as aliases
+   so the v4 Explorer restyles without logic changes.
    ========================================================================== */
 
 :root {
   color-scheme: light;
-  --ground: #f5f4f1;
-  --surface: #ffffff;
-  --raised: #ecebe7;
-  --active: #e2e0da;
-  --border: #dfddd7;
-  --rule: #ecebe7;
-  --control: #c7c5be;
-  --text: #111111;
-  --muted: #504f4c;
-  --faint: #64635e;
-  --accent: #1d5fbf;
-  --primary: #141414;
-  --primary-ink: #ffffff;
+  /* Core */
+  --paper: #F4F6F8;          /* chart paper */
+  --surface: #FFFFFF;        /* clickable surfaces */
+  --sunken: #E9EDF1;         /* rail, wells */
+  --ink: #1C2733;            /* graphite */
+  --muted: #526070;          /* secondary text, 5.9:1 on paper */
+  --faint: #5F6D80;          /* tertiary text, 4.9:1 on paper */
+  --decor: #7A8794;          /* non-text strokes and placeholders only */
+  --rule: #D5DCE3;
+  --focus: #1C2733;
+  /* Momentum (the only bold colour) */
+  --cool: #2F6DB5;
+  --neutral: #A4ADB7;
+  --heat: #E3870E;
+  --cool-ink: #2A62A3;       /* momentum colour for text on light surfaces */
+  --heat-ink: #96550A;
+  --cool-tint: rgb(47 109 181 / 0.13);
+  --neutral-tint: rgb(120 132 146 / 0.14);
+  --heat-tint: rgb(227 135 14 / 0.15);
+  /* Entity hues: dots and chips only */
+  --method: #5B4FCF;
+  --task: #178F7E;
+  --dataset: #A23E8C;
+  --org: #55606E;
+  --researcher: #557626;
+  --topic: #B04A5A;
+  --paper-node: #8A96A3;
+  /* States */
+  --positive: #2E7D4F;
+  --negative: #B3363B;
+  --warning: #96550A;
+  --warning-tint: rgb(227 135 14 / 0.14);
+  --negative-tint: rgb(179 54 59 / 0.10);
+  --shadow-pop: 0 16px 40px -16px rgb(20 30 40 / 0.35);
+  /* Type */
+  --serif: "Source Serif 4 Variable", "Source Serif 4", Georgia, serif;
+  --sans: "RTN Figures", "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --s-1: 0.8rem; --s0: 1rem; --s1: 1.25rem; --s2: 1.5625rem; --s3: 1.953rem; --s4: 2.441rem;
+  --r-sm: 6px; --r-md: 10px; --r-lg: 14px;
+  --rail-width: 232px;
 
-  --positive: #247b50;
-  --negative: #c4242a;
-  --warning: #92400e;
+  /* Legacy aliases used by the v4 Explorer components */
+  --ground: var(--paper);
+  --raised: #EEF1F4;
+  --active: #E2E7EC;
+  --border: var(--rule);
+  --control: #B9C3CD;
+  --text: var(--ink);
+  --accent: var(--cool-ink);
+  --primary: var(--ink);
+  --primary-ink: #FFFFFF;
+  --pill-positive-bg: rgb(46 125 79 / 0.12);
+  --pill-positive-ink: #1F5C39;
+  --pill-negative-bg: var(--negative-tint);
+  --pill-negative-ink: #8E2A2E;
+  --pill-warning-bg: var(--warning-tint);
+  --pill-warning-ink: var(--heat-ink);
+  --pill-neutral-bg: var(--sunken);
+  --pill-neutral-ink: var(--ink);
+  --chart-1: var(--ink);
+  --chart-2: #7A8794;
+  --chart-3: var(--cool);
+  --chart-4: var(--task);
+  --chart-grid: #E3E8ED;
+  --chart-axis: var(--muted);
 
-  --pill-positive-bg: #dcfae5;
-  --pill-positive-ink: #04250e;
-  --pill-negative-bg: #ffedea;
-  --pill-negative-ink: #831c1e;
-  --pill-warning-bg: #fffbeb;
-  --pill-warning-ink: #78350f;
-  --pill-neutral-bg: #ecebe7;
-  --pill-neutral-ink: #33322f;
-
-  --chart-1: #141414;
-  --chart-2: #767570;
-  --chart-3: #1d5fbf;
-  --chart-4: #247b50;
-  --chart-grid: #e8e7e2;
-  --chart-axis: #504f4c;
-
-  --radius-card: 8px;
+  --radius-card: 10px;
   --radius-control: 6px;
   --row-height: 44px;
   --sidebar-width: 272px;
@@ -60,45 +100,57 @@
 
 :root.dark {
   color-scheme: dark;
-  --ground: #1e1e1e;
-  --surface: #252525;
-  --raised: #2d2d2d;
-  --active: #363636;
-  --border: #373737;
-  --rule: #323232;
-  --control: #5b5b5b;
-  --text: #cecece;
-  --muted: #b0b0b0;
-  --faint: #9f9f9f;
-  --accent: #7fa6cc;
-  --primary: #363636;
-  --primary-ink: #cecece;
+  /* an observatory at night: deep slate blue, not black */
+  --paper: #16202B;
+  --surface: #1F2B38;
+  --sunken: #111A23;
+  --ink: #E5EAF0;
+  --muted: #A9B5C2;
+  --faint: #8C99A7;
+  --decor: #6A7786;
+  --rule: #2F3E4E;
+  --focus: #E5EAF0;
+  --cool: #5E9BE6;
+  --neutral: #6E7B89;
+  --heat: #F0A23B;
+  --cool-ink: #8AB8F0;
+  --heat-ink: #F3B35C;
+  --cool-tint: rgb(94 155 230 / 0.18);
+  --neutral-tint: rgb(150 163 178 / 0.16);
+  --heat-tint: rgb(240 162 59 / 0.18);
+  --method: #A39BF2;
+  --task: #4FC4B1;
+  --dataset: #DB86C8;
+  --org: #A6B0BC;
+  --researcher: #A6C46A;
+  --topic: #E58A98;
+  --paper-node: #8593A1;
+  --positive: #5CC98A;
+  --negative: #F08A8E;
+  --warning: #F3B35C;
+  --warning-tint: rgb(240 162 59 / 0.16);
+  --negative-tint: rgb(240 138 142 / 0.14);
+  --shadow-pop: 0 18px 44px -16px rgb(0 0 0 / 0.6);
 
-  --positive: #3fc07a;
-  --negative: #e5566f;
-  --warning: #e5a93b;
-
-  --pill-positive-bg: #1b3324;
-  --pill-positive-ink: #7ce8a9;
-  --pill-negative-bg: #361d22;
-  --pill-negative-ink: #fda4af;
-  --pill-warning-bg: #332715;
-  --pill-warning-ink: #fcd34d;
-  --pill-neutral-bg: #2d2d2d;
-  --pill-neutral-ink: #cecece;
-
-  --chart-1: #cecece;
-  --chart-2: #9f9f9f;
-  --chart-3: #7fa6cc;
-  --chart-4: #3fc07a;
-  --chart-grid: #323232;
-  --chart-axis: #b0b0b0;
+  --raised: #253342;
+  --active: #2C3B4B;
+  --control: #4A5B6D;
+  --primary-ink: #16202B;
+  --pill-positive-bg: rgb(92 201 138 / 0.16);
+  --pill-positive-ink: #8FE0B0;
+  --pill-negative-ink: #F7B0B3;
+  --chart-2: #8C99A7;
+  --chart-grid: #2A3847;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 html,
@@ -110,13 +162,16 @@ body,
 }
 
 body {
-  background-color: var(--ground);
-  color: var(--text);
-  font-family: "Geist", system-ui, -apple-system, sans-serif;
-  font-size: var(--fs-body);
-  line-height: 1.45;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--s0);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums lining-nums;
   -webkit-font-smoothing: antialiased;
 }
+
+button, input, textarea, select { font: inherit; color: inherit; }
 
 /* Ensure all numeric elements render with aligned tabular numerals */
 .num,
@@ -128,9 +183,9 @@ th,
   font-variant-numeric: tabular-nums;
 }
 
-/* Focus ring */
+/* Visible focus everywhere */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
   border-radius: 4px;
 }

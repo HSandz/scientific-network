@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { openExploreGraph } from "./helpers/nav";
 import path from "node:path";
 const output =
   process.env.EXPLORER_SCREENSHOT_DIR || "/tmp/scientific-network-redesign";
@@ -127,6 +128,7 @@ test("viewport chart lifecycle bounds instances and entrance animations do not r
   await plot.scrollIntoViewIfNeeded();
   await expect(plot).toHaveAttribute("data-chart-active", "true");
   await expect(plot).toHaveAttribute("data-entrance-duration", "0");
+  await openExploreGraph(page);
   await page.getByTestId("tab-table").click();
   await expect(page.locator('[data-chart-active="true"]')).toHaveCount(0);
 });
