@@ -68,6 +68,8 @@ export interface SubjectListItem {
   cagr: number;
   has_ppr: boolean;
   display_aliases: string[];
+  /** Yearly share of papers, 2021 to 2025, as fractions. */
+  shares: number[];
 }
 
 export interface SubjectDetailResponse {
@@ -77,6 +79,21 @@ export interface SubjectDetailResponse {
   trend?: TrendRow | null;
   classification_note: string;
   display_aliases: string[];
+  /** Organizations with at least min_org_papers on the subject, ranked by specialisation. */
+  leading_groups: Array<{ id: string; name: string; specialisation: number; subject_papers: number; total_papers: number }>;
+  min_org_papers: number;
+  /** Subjects sharing two or more papers, per kind; null without a live graph. */
+  co_mentions: Record<"Method" | "Task" | "Dataset", Array<{ id: string; name: string; co_papers: number }>> | null;
+  researcher_evidence: { min_papers: number; max_papers: number; ranked: Array<{ id: string; name: string; subject_papers: number }> } | null;
+  description: {
+    text: string;
+    source_kind?: string | null;
+    label: string;
+    wikipedia_url?: string | null;
+    wikipedia_revision_id?: number | string | null;
+    attribution?: string | null;
+    license?: string | null;
+  } | null;
   ppr_primary_rank_by: string;
   ppr_source?: "precomputed" | "on_demand" | "rca_fallback" | null;
   ppr_method_note?: string | null;
@@ -321,4 +338,43 @@ export interface AskDemoItem {
   cached: boolean;
   latency_seconds?: number | null;
   result?: AskResult | null;
+}
+
+export interface PulseStripRow {
+  id: string;
+  name: string;
+  kind: "Method" | "Task" | "Dataset" | "Topic";
+  class: string;
+  t: number;
+  total_papers: number;
+  papers: number[];
+  share: number[];
+  slope_p_value: number;
+  display_aliases: string[];
+}
+
+export interface PulseResponse {
+  graph_version: string;
+  years: number[];
+  year_totals: Record<string, number | null>;
+  strip: PulseStripRow[];
+  leaders: Array<{
+    id: string;
+    name: string;
+    kind: string;
+    class: string;
+    organizations: Array<{ id: string; name: string; specialisation: number; subject_papers: number; total_papers: number }>;
+  }>;
+  smallworld: {
+    holds: boolean;
+    L: number | null;
+    C: number | null;
+    sigma_rewired: number | null;
+    sigma_random: number | null;
+    lcc_share_of_nodes: number | null;
+  };
+  thresholds: { min_subject_papers: number; min_org_papers: number };
+  classification_note: string;
+  caveats: string[];
+  selection_rule: string;
 }

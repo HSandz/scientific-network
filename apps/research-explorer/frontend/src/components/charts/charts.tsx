@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { cellColor, cssVar, fmtPct, readPalette, thermal, withAlpha } from "../../lib/thermal";
 import { EntityDot } from "../ui/primitives";
 
@@ -70,6 +70,22 @@ function spread<T extends { y: number }>(items: T[], gap: number, top: number, b
   return s;
 }
 
+/** Rendered width of an element, so SVG charts can draw at 1:1 and keep their text size. */
+function useWidth(fallback: number): [React.RefObject<HTMLElement>, number] {
+  const ref = useRef<HTMLElement>(null);
+  const [width, setWidth] = useState(fallback);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const read = () => el.clientWidth && setWidth(Math.max(300, el.clientWidth));
+    read();
+    const ro = new ResizeObserver(read);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return [ref, width];
+}
+
 export const LineChart: React.FC<{
   label: string;
   years: string[];
@@ -83,10 +99,13 @@ export const LineChart: React.FC<{
   const [hover, setHover] = useState<number | null>(null);
   const p = readPalette();
   const ink = cssVar("--ink"), muted = cssVar("--muted"), rule = cssVar("--rule"), paper = cssVar("--paper");
-  const W = hero ? 1000 : 680;
-  const H = height || (hero ? 330 : 400);
-  const labelW = endLabels && !hero && series.length > 1 ? 250 : hero ? 70 : 40;
-  const m = { t: hero ? 34 : 18, r: labelW, b: 36, l: hero ? 52 : 52 };
+  const [ref, W] = useWidth(hero ? 1000 : 680);
+  const narrow = W < 560;
+  const H = narrow ? Math.min(height || 280, 280) : height || (hero ? 330 : 400);
+  const multi = endLabels && !hero && series.length > 1;
+  const nameChars = narrow ? 13 : 30;
+  const labelW = multi ? (narrow ? 132 : 250) : hero ? (narrow ? 30 : 70) : 40;
+  const m = { t: hero ? 34 : 18, r: labelW, b: 36, l: narrow ? 40 : 52 };
   const { max, ticks } = axis(Math.max(0.0001, ...series.flatMap((s) => s.values)) * 1.04, 4);
   const x = (i: number) => m.l + (years.length > 1 ? (i * (W - m.l - m.r)) / (years.length - 1) : (W - m.l - m.r) / 2);
   const y = (v: number) => H - m.b - (v / max) * (H - m.t - m.b);
@@ -101,6 +120,7 @@ export const LineChart: React.FC<{
   const points = series.reduce((a, s) => a + s.values.length, 0);
   return (
     <figure
+      ref={ref}
       className="chart"
       data-chart-label={label}
       data-chart-rendered="true"
@@ -108,7 +128,7 @@ export const LineChart: React.FC<{
       data-chart-series-count={series.length}
       data-chart-point-count={points}
     >
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${label}: ${series.map((s) => `${s.name} ${years.map((yr, i) => `${yr} ${fmt(s.values[i], 2)}`).join(", ")}`).join("; ")}`} className="chart-svg" style={{ minWidth: hero ? 520 : 560 }}>
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${label}: ${series.map((s) => `${s.name} ${years.map((yr, i) => `${yr} ${fmt(s.values[i], 2)}`).join(", ")}`).join("; ")}`} className="chart-svg">
         {ticks.map((t) => (
           <g key={t}>
             <line x1={m.l} x2={W - m.r} y1={y(t)} y2={y(t)} stroke={rule} strokeDasharray={t === 0 ? undefined : "2 4"} />
@@ -142,7 +162,7 @@ export const LineChart: React.FC<{
             s.values.map((v, i) => (
               <g key={`${k}-${i}`}>
                 <circle cx={x(i)} cy={y(v)} r={5} fill={paper} stroke={colorOf(s)} strokeWidth={2.5} />
-                <text x={x(i)} y={y(v) - 14} textAnchor="middle" fontSize={hero ? 15 : 14} fontWeight={i === s.values.length - 1 ? 700 : 400} fill={i === s.values.length - 1 ? ink : muted}>
+                <text x={i === 0 ? x(i) - 4 : x(i)} y={y(v) - 14} textAnchor={i === 0 ? "start" : "middle"} fontSize={hero ? 15 : 14} fontWeight={i === s.values.length - 1 ? 700 : 400} fill={i === s.values.length - 1 ? ink : muted}>
                   {fmt(v)}
                 </text>
               </g>
@@ -156,14 +176,14 @@ export const LineChart: React.FC<{
               key={i}
               x={W - m.r + 10}
               y={ly}
-              fontSize={14}
+              fontSize={narrow ? 12 : 14}
               fill={ink}
               fontWeight={s.emphasis || i === 0 ? 700 : 400}
               onMouseEnter={() => setHover(i)}
               onMouseLeave={() => setHover(null)}
               style={{ cursor: "default" }}
             >
-              {s.name.length > 30 ? `${s.name.slice(0, 29)}…` : s.name} {fmt(s.values[s.values.length - 1], 1)}
+              {s.name.length > nameChars ? `${s.name.slice(0, nameChars - 1)}…` : s.name} {fmt(s.values[s.values.length - 1], 1)}
             </text>
           ))}
       </svg>

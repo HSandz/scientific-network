@@ -618,6 +618,99 @@ class NavigatorService:
             },
         }
 
+    # ── 1b. Pulse (home): heat strip, leaders and small-world headline ─────────
+
+    PULSE_MIN_SUBJECT_PAPERS = 20
+    PULSE_MIN_ORG_PAPERS = 3
+    MIN_RESEARCHER_PAPERS = 5
+
+    def get_pulse(self) -> dict[str, Any]:
+        """Precomputed home page: the 12-subject thermal strip (heating, stable, cooling), the
+        organizations most specialised in the top heating subjects, yearly paper totals and the
+        N1 small-world verdict. Read from the loaded analysis artifacts only (fast, no Neo4j)."""
+        if getattr(self, "_pulse_cache", None) is not None:
+            return self._pulse_cache  # type: ignore[return-value]
+        years = [2021, 2022, 2023, 2024, 2025]
+        rows = [r for k in ("Method", "Task") for r in self.trends_by_kind.get(k, []) if r["total_papers"] >= self.PULSE_MIN_SUBJECT_PAPERS]
+
+        def pick(cls: tuple[str, ...], kind: str, n: int, key) -> list[dict[str, Any]]:
+            return sorted([r for r in rows if r["class"] in cls and r["kind"] == kind], key=key)[:n]
+
+        heating = pick(("rising", "emerging"), "Method", 5, lambda r: -r["slope_of_share"]) + pick(
+            ("rising", "emerging"), "Task", 2, lambda r: -r["slope_of_share"]
+        )
+        heating.sort(key=lambda r: -r["slope_of_share"])
+        stable = sorted([r for r in rows if r["class"] == "stable"], key=lambda r: -abs(r["slope_of_share"]))[:2]
+        cooling = pick(("declining",), "Method", 2, lambda r: r["slope_of_share"]) + pick(("declining",), "Task", 1, lambda r: r["slope_of_share"])
+        cooling.sort(key=lambda r: r["slope_of_share"])
+        chosen = heating + stable + cooling
+        max_slope = max((abs(r["slope_of_share"]) for r in chosen), default=1.0) or 1.0
+
+        def strip_row(r: dict[str, Any]) -> dict[str, Any]:
+            t = (abs(r["slope_of_share"]) / max_slope) ** 0.5 * (1 if r["slope_of_share"] >= 0 else -1)
+            if r["class"] == "stable":
+                t = max(-0.18, min(0.18, t))
+            elif r["class"] == "declining":
+                t = min(t, -0.25)
+            else:
+                t = max(t, 0.25)
+            return {
+                "id": r["id"],
+                "name": r["name"],
+                "kind": r["kind"],
+                "class": r["class"],
+                "t": round(t, 3),
+                "total_papers": r["total_papers"],
+                "papers": [pt["papers"] for pt in r["yearly"]],
+                "share": [pt["share"] for pt in r["yearly"]],
+                "slope_p_value": r["slope_p_value"],
+                "display_aliases": r.get("display_aliases", []),
+            }
+
+        strip = [strip_row(r) for r in chosen]
+
+        # Yearly totals: papers / share for any subject with a share in that year.
+        totals: dict[int, int] = {}
+        for r in self.trends_by_kind.get("Topic", []) + self.trends_by_kind.get("Method", []):
+            for pt in r["yearly"]:
+                if pt["year"] not in totals and pt["share"] > 0 and pt["papers"] >= 50:
+                    totals[pt["year"]] = int(round(pt["papers"] / pt["share"]))
+            if len(totals) == len(years):
+                break
+
+        leaders = [
+            {"id": r["id"], "name": r["name"], "kind": r["kind"], "class": r["class"], "organizations": self._subject_leaders(r["id"], 3)}
+            for r in heating[:5]
+        ]
+
+        sw = (self.smallworld.get("networks") or {}).get("N1") or {}
+        base = sw.get("baselines") or {}
+        smallworld = {
+            "holds": bool((sw.get("decision") or {}).get("small_world_holds")),
+            "L": (sw.get("real") or {}).get("L"),
+            "C": ((sw.get("real") or {}).get("clustering") or {}).get("average_local"),
+            "sigma_rewired": (base.get("degree_preserving_rewiring") or {}).get("sigma_from_means"),
+            "sigma_random": (base.get("erdos_renyi_gnm") or {}).get("sigma_from_means"),
+            "lcc_share_of_nodes": sw.get("lcc_share_of_nodes"),
+        }
+        self._pulse_cache = {
+            "graph_version": self.smallworld.get("graph_version", "enriched-cb371912e308"),
+            "years": years,
+            "year_totals": {str(y): totals.get(y) for y in years},
+            "strip": strip,
+            "leaders": leaders,
+            "smallworld": smallworld,
+            "thresholds": {"min_subject_papers": self.PULSE_MIN_SUBJECT_PAPERS, "min_org_papers": self.PULSE_MIN_ORG_PAPERS},
+            "classification_note": self.trends_summary.get("classification_note", ""),
+            "caveats": self.trends_summary.get("caveats", []),
+            "selection_rule": (
+                "Methods and tasks with at least 20 papers: the five fastest-heating methods and two "
+                "fastest-heating tasks by share slope, the two stable subjects that moved most, and the "
+                "two fastest-cooling methods and fastest-cooling task."
+            ),
+        }
+        return self._pulse_cache
+
     # ── 2. Subjects (Topic / Method / Task / Dataset) ─────────────────────────
 
     def list_subjects(self, *, kind: str | None = None, q: str = "", limit: int = 40) -> dict[str, Any]:
@@ -650,6 +743,7 @@ class NavigatorService:
                         "cagr": r["cagr_of_share_2021_2025"],
                         "has_ppr": sid in ppr_kind,
                         "display_aliases": r.get("display_aliases", []),
+                        "shares": [pt["share"] for pt in r.get("yearly", [])],
                     }
                 )
         items.sort(key=lambda x: (-int(x["has_ppr"]), -int(x["total_papers"]), x["name"]))
@@ -658,6 +752,57 @@ class NavigatorService:
             "items": items[:limit],
             "classification_note": self.trends_summary.get("classification_note", ""),
         }
+
+    def _subject_leaders(self, subject_id: str, limit: int) -> list[dict[str, Any]]:
+        """Organizations ranked by specialisation (RCA) among those with enough papers on the subject."""
+        out = []
+        for g in self.group_interest_rows:
+            if g.get("subject") != subject_id or not str(g.get("group", "")).startswith("organization:"):
+                continue
+            if g["group_papers_in_subject"] < self.PULSE_MIN_ORG_PAPERS:
+                continue
+            grp = str(g["group"])
+            org_id = grp.rsplit("(", 1)[-1].rstrip(")") if "(organization:" in grp else grp
+            org_name = grp[len("organization:"):].rsplit(" (", 1)[0].strip() if "(organization:" in grp else grp
+            out.append(
+                {
+                    "id": org_id,
+                    "name": org_name,
+                    "specialisation": round(g["rca"], 2),
+                    "subject_papers": g["group_papers_in_subject"],
+                    "total_papers": g["group_papers"],
+                }
+            )
+        out.sort(key=lambda x: (-x["specialisation"], -x["subject_papers"]))
+        return out[:limit]
+
+    def _subject_evidence(self, subject_id: str, subject_kind: str | None) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+        """Exact counts from the live graph: subjects sharing two or more papers, and researchers
+        with their number of papers on the subject. (None, None) without a live graph."""
+        rels = {"Topic": "HAS_TOPIC", "Method": "USES_METHOD", "Task": "ADDRESSES_TASK", "Dataset": "USES_DATASET"}
+        if subject_kind not in rels or not self._has_live_neo4j():
+            return None, None
+        rel_in = rels[subject_kind]
+        co: dict[str, Any] = {}
+        for kind in ("Method", "Task", "Dataset"):
+            co[kind] = self._run_read(
+                f"MATCH (s:{subject_kind} {{id: $sid}})<-[:{rel_in}]-(p:Paper)-[:{rels[kind]}]->(x:{kind}) "
+                "WHERE x.id <> $sid WITH x, count(DISTINCT p) AS co_papers WHERE co_papers >= 2 "
+                "RETURN x.id AS id, x.name AS name, co_papers ORDER BY co_papers DESC, name LIMIT 8",
+                {"sid": subject_id},
+            )
+        rows = self._run_read(
+            f"MATCH (s:{subject_kind} {{id: $sid}})<-[:{rel_in}]-(p:Paper)<-[:AUTHORED]-(r:Researcher) "
+            "WITH r, count(DISTINCT p) AS subject_papers "
+            "RETURN r.id AS id, r.name AS name, subject_papers ORDER BY subject_papers DESC, name LIMIT 8",
+            {"sid": subject_id},
+        )
+        researchers = {
+            "min_papers": self.MIN_RESEARCHER_PAPERS,
+            "max_papers": max((_as_int(r.get("subject_papers")) for r in rows), default=0),
+            "ranked": [r for r in rows if _as_int(r.get("subject_papers")) >= self.MIN_RESEARCHER_PAPERS],
+        }
+        return co, researchers
 
     def get_subject_detail(self, subject_id: str) -> dict[str, Any] | None:
         trend = self.subject_trend_index.get(subject_id)
@@ -798,10 +943,30 @@ class NavigatorService:
         else:
             ai_summary = None
 
+        co_mentions, researcher_evidence = self._subject_evidence(subject_id, subject_kind)
+
         return {
             "id": subject_id,
             "name": subject_name,
             "kind": subject_kind,
+            "leading_groups": self._subject_leaders(subject_id, 8),
+            "min_org_papers": self.PULSE_MIN_ORG_PAPERS,
+            "description": (
+                {
+                    "text": edesc.get("description", ""),
+                    "source_kind": edesc.get("source_kind"),
+                    "label": edesc.get("provenance_label")
+                    or ("Wikipedia" if edesc.get("source_kind") == "wikipedia" else "AI-generated from mentions"),
+                    "wikipedia_url": edesc.get("wikipedia_url"),
+                    "wikipedia_revision_id": edesc.get("wikipedia_revision_id"),
+                    "attribution": edesc.get("attribution"),
+                    "license": edesc.get("license"),
+                }
+                if edesc and edesc.get("description")
+                else None
+            ),
+            "co_mentions": co_mentions,
+            "researcher_evidence": researcher_evidence,
             "trend": trend,
             "classification_note": self.trends_summary.get("classification_note", ""),
             "display_aliases": self.alias_lookup.get(subject_id, []),

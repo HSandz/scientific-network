@@ -6,6 +6,7 @@ import {
   CommunityNodeItem,
   GroupDetailResponse,
   GroupsResponse,
+  PulseResponse,
   SubjectDetailResponse,
   SubjectListItem,
   TrendsResponse,
@@ -63,6 +64,8 @@ export interface AskStreamHandlers {
 }
 
 export const navigatorApi = {
+  getPulse: (signal?: AbortSignal) => getJson<PulseResponse>("/pulse", signal),
+
   getTrends: (
     params: { kind?: string; venue?: string; period?: string; trend_class?: string; q?: string; limit?: number },
     signal?: AbortSignal,

@@ -39,6 +39,13 @@ def get_trends(
     return service.get_trends(kind=kind, venue=venue, period=period, trend_class=trend_class, q=q, limit=limit)
 
 
+@navigator_router.get("/pulse")
+def get_pulse(
+    service: Annotated[NavigatorService, Depends(get_navigator_service)],
+) -> dict[str, Any]:
+    return service.get_pulse()
+
+
 @navigator_router.get("/subjects")
 def list_subjects(
     service: Annotated[NavigatorService, Depends(get_navigator_service)],

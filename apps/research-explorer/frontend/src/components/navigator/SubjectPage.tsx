@@ -1,12 +1,20 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { useExplorerStore } from "../../stores/useExplorerStore";
-import { Panel, pct } from "../analytics/DashboardPrimitives";
-import { EChartBox } from "../analytics/EChartBox";
-import { MetricTooltip } from "./MetricTooltip";
+import { navigate, pathFor } from "../../lib/router";
+import { communityTitle, orgName, subjectName } from "../../lib/names";
+import { fmtPct, momentumT } from "../../lib/thermal";
+import { cleanCommunityRefs } from "../../lib/askModel";
+import { paperMeta, usePapers } from "../../lib/usePapers";
+import { displayMomentum, MIN_RESEARCHER_PAPERS, momentumSentence, MOMENTUM_WORD } from "../../config/display";
+import type { SubjectDetailResponse } from "../../types/navigator";
+import { LineChart } from "../charts/charts";
+import { AppLink, BarTrack, EntityDot, ErrorLine, InfoPopover, LoadingLine, MethodDrawer, MomentumChip, Section } from "../ui/primitives";
+import { TopicMethodNote } from "./methodNotes";
+import { TopicsIndex } from "./TopicsIndex";
 
 interface SubjectPageProps {
+  /** null shows the index of all topics, methods, tasks and datasets. */
   subjectId: string | null;
   onSelectSubject: (id: string) => void;
   onOpenGroup: (orgId: string) => void;
@@ -14,297 +22,354 @@ interface SubjectPageProps {
   onOpenNode360: (nodeId: string) => void;
 }
 
-export const SubjectPage: React.FC<SubjectPageProps> = ({
-  subjectId,
+const KIND_PLURAL: Record<string, string> = { Method: "Methods", Task: "Tasks", Dataset: "Datasets" };
+
+const lower = (s: string) => s.replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase());
+const isPlural = (name: string) => /(?:[^siu])s$/.test(name);
+
+/** One sentence that answers "what is happening to this subject?" from its yearly shares. */
+function heroSentence(name: string, kind: string, cls: string, shares: number[], fastest: boolean): string {
+  const a = fmtPct(shares[0] * 100);
+  const b = fmtPct(shares[shares.length - 1] * 100);
+  const many = isPlural(name);
+  const is = many ? "are" : "is";
+  const has = many ? "have" : "has";
+  const range = `${a} → ${b} of papers`;
+  switch (displayMomentum(cls, shares)) {
+    case "rising":
+      return fastest ? `${name} ${is} the fastest-rising ${kind.toLowerCase()}: ${range}` : `${name} ${is} rising: ${range}`;
+    case "emerging":
+      return fastest ? `${name} ${is} the fastest-emerging ${kind.toLowerCase()}: ${range}` : `${name} ${has} emerged: ${range}`;
+    case "declining":
+      return `${name} ${is} cooling: ${range}`;
+    case "grew-unsteady":
+      return `${name} grew from ${a} to ${b} of papers, but not consistently`;
+    case "fell-unsteady":
+      return `${name} fell from ${a} to ${b} of papers, but not consistently`;
+    default:
+      return `${name} ${has} no clear trend: ${range}`;
+  }
+}
+
+function aliasesOf(d: SubjectDetailResponse): string[] {
+  const own = new Set([d.name.toLowerCase(), subjectName(d.name, d.kind).toLowerCase()]);
+  return d.display_aliases.filter((a) => !own.has(a.toLowerCase()));
+}
+
+/** Related subjects with shared-paper counts when the live graph supplies them. */
+function relatedSets(d: SubjectDetailResponse) {
+  // The name's own acronym (for example "LLMs") is not shown as a related subject.
+  const acronym = d.name.match(/\(([^)]+)\)\s*$/)?.[1]?.toLowerCase();
+  const own = new Set([d.name.toLowerCase(), ...d.display_aliases.map((a) => a.toLowerCase()), ...(acronym ? [acronym] : [])]);
+  return (["Method", "Task", "Dataset"] as const)
+    .map((kind) => {
+      const fallback = { Method: d.related_methods, Task: d.related_tasks, Dataset: d.related_datasets }[kind];
+      const rows: Array<{ id: string; name: string; co_papers?: number }> = d.co_mentions ? d.co_mentions[kind] : fallback;
+      return { kind, rows: rows.filter((r) => r.id !== d.id && !own.has(r.name.toLowerCase())).slice(0, 8) };
+    })
+    .filter((s) => s.rows.length);
+}
+
+const Detail: React.FC<{ d: SubjectDetailResponse; onSelectSubject: (id: string) => void; onOpenGroup: (id: string) => void; onOpenCommunity: (id: string) => void; onOpenNode360: (id: string) => void }> = ({
+  d,
   onSelectSubject,
   onOpenGroup,
   onOpenCommunity,
   onOpenNode360,
 }) => {
-  const darkMode = useExplorerStore((s) => s.darkMode);
-  const [search, setSearch] = useState("");
-  const activeId = subjectId || "method:Q3621696";
+  const kind = d.kind;
+  const name = subjectName(d.name, kind);
+  const trend = d.trend;
+  const yearly = trend?.yearly || [];
+  const shares = yearly.map((y) => y.share);
 
-  const listQuery = useQuery({
-    queryKey: ["nav-subjects", search],
-    queryFn: ({ signal }) => navigatorApi.listSubjects({ q: search, limit: 30 }, signal),
+  // The slope scale and the "fastest" claim come from the same leaderboards the Trends page shows.
+  const board = useQuery({
+    queryKey: ["nav-trends", kind, "all", "2021-2025", ""],
+    queryFn: ({ signal }) => navigatorApi.getTrends({ kind: kind as "Method", venue: "all", period: "2021-2025", q: "", limit: 200 }, signal),
+    staleTime: 600_000,
+    enabled: Boolean(trend),
   });
+  const maxSlope = Math.max(Math.abs(trend?.slope_of_share || 0), ...(board.data?.items || []).map((r) => Math.abs(r.slope_of_share)), 0.000001);
+  const t = trend ? momentumT(trend.slope_of_share, maxSlope, trend.class) : 0;
+  const heating = board.data ? [...board.data.leaderboards.rising, ...board.data.leaderboards.emerging].sort((a, b) => b.slope_of_share - a.slope_of_share) : [];
+  const fastest = heating[0]?.id === d.id;
 
-  const detailQuery = useQuery({
-    queryKey: ["nav-subject-detail", activeId],
-    queryFn: ({ signal }) => navigatorApi.getSubjectDetail(activeId, signal),
-    enabled: Boolean(activeId),
-  });
+  const papers = d.most_cited_papers.slice(0, 5);
+  // Each paper cited by the community report is listed, and numbered, once.
+  const reportPaperIds = [...new Set((d.summary?.source_community_id ? d.summary.findings : []).flatMap((f) => f.paper_ids.slice(0, 2)))];
+  const meta = usePapers([...papers.map((x) => x.paper_id), ...reportPaperIds]);
+  const related = relatedSets(d);
+  const groups = d.leading_groups;
+  const maxSpec = Math.max(...groups.map((g) => g.specialisation), 0.0001);
+  const researchers = d.researcher_evidence;
+  const aliases = aliasesOf(d);
+  const lastYear = yearly[yearly.length - 1];
 
-  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
-  const gridColor = darkMode ? "#323232" : "#e8e7e2";
-
-  const trendOption = useMemo(() => {
-    const pts = detailQuery.data?.trend?.yearly || [];
-    return {
-      tooltip: { trigger: "axis" },
-      grid: { top: 20, left: 48, right: 16, bottom: 26 },
-      xAxis: { type: "category", data: pts.map((p) => String(p.year)), axisLabel: { color: axisColor } },
-      yAxis: {
-        type: "value",
-        splitLine: { lineStyle: { color: gridColor } },
-        axisLabel: { color: axisColor, formatter: (v: number) => `${(v * 100).toFixed(1)}%` },
-      },
-      series: [
-        {
-          name: "Share",
-          type: "line",
-          smooth: true,
-          data: pts.map((p) => Number(p.share.toFixed(4))),
-        },
-      ],
-    };
-  }, [detailQuery.data, axisColor, gridColor]);
-
-  const d = detailQuery.data;
+  /* "In brief": sentences written from the counts on this page, each footnoted to its source. */
+  const topMethod = related.find((s) => s.kind === "Method")?.rows[0];
+  const topTask = related.find((s) => s.kind === "Task")?.rows[0];
+  const cite = papers[0];
+  const together = [topMethod && `the method ${lower(subjectName(topMethod.name, "Method"))}`, topTask && `the task ${lower(subjectName(topTask.name, "Task"))}`].filter(Boolean);
 
   return (
-    <div data-testid="page-subjects" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
-      <div className="ledger-panel p-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-lg font-semibold text-ink">{d?.name || "Topic / Method / Task / Dataset"}</h1>
-          <p className="text-xs text-muted mt-0.5">
-            {d?.kind || "Subject"} · Classification: {d?.classification_note || "descriptive (p <= 0.10 per subject, no multiple-testing correction)"}
-            {d?.display_aliases?.length ? ` · Display aliases: ${d.display_aliases.join(", ")}` : ""}
+    <article>
+      <AppLink to="/topics" className="textlink back-link">
+        ‹ All topics
+      </AppLink>
+      <header className="topic-hero">
+        <div className="topic-kind">
+          <EntityDot kind={kind} />
+          <span>{kind}</span>
+          {trend && <MomentumChip cls={trend.class} t={t} label={MOMENTUM_WORD[displayMomentum(trend.class, shares)]} title={momentumSentence(trend.class, shares)} />}
+        </div>
+        <h1 data-testid="topic-headline">{trend && shares.length ? heroSentence(name, kind, trend.class, shares, fastest) : name}</h1>
+        <p className="sub">
+          {trend ? (
+            <>
+              {trend.total_papers.toLocaleString("en")} papers in AAAI and IJCAI, 2021–2025.{lastYear ? ` ${lastYear.papers.toLocaleString("en")} of them appeared in ${lastYear.year}.` : ""}
+            </>
+          ) : (
+            "Too few papers for a yearly trend."
+          )}
+          {aliases.length ? ` Also written as ${aliases.slice(0, 3).join(", ")}.` : ""}
+        </p>
+      </header>
+
+      {trend && (
+        <div className="topic-chart">
+          <LineChart label="Subject annual share chart" years={yearly.map((y) => String(y.year))} unit="pct" hero series={[{ name, values: shares.map((x) => x * 100), t }]} />
+          <div className="chart-foot chart-foot-start">
+            <span>Share of all papers each year</span>
+            <MethodDrawer testId="topic-how">
+              <TopicMethodNote source={d.ppr_source} />
+            </MethodDrawer>
+          </div>
+        </div>
+      )}
+
+      <div className="topic-columns">
+        <Section id="groups" title="Leading groups">
+          <p className="hint">
+            Organizations most concentrated on this subject.
+            <InfoPopover label="How are groups ranked?" testId="groups-info">
+              <p>
+                <b>Specialisation</b> compares the share of an organization's papers on this subject with the share across all papers. 3× means three times the average.
+              </p>
+              <p>
+                Organizations need at least {d.min_org_papers} papers on the subject to be ranked. Researchers need at least {researchers?.min_papers || MIN_RESEARCHER_PAPERS}.
+              </p>
+            </InfoPopover>
           </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Find subject or alias…"
-            aria-label="Find topic, method, task or dataset"
-            className="ledger-input h-8 px-2.5 text-xs w-52"
-          />
-          <select
-            aria-label="Choose subject"
-            value={activeId}
-            onChange={(e) => onSelectSubject(e.target.value)}
-            className="ledger-input h-8 px-2 text-xs max-w-xs"
-          >
-            {(listQuery.data?.items || []).map((it) => (
-              <option key={it.id} value={it.id}>
-                [{it.kind}] {it.name} ({it.total_papers})
-              </option>
+          {groups.length ? (
+            <ol className="leadlist" data-chart-label="Leading groups specialisation" data-chart-rendered="true" data-chart-point-count={groups.length}>
+              {groups.map((g) => (
+                <li key={g.id}>
+                  <div>
+                    <button type="button" className="rowlink" onClick={() => onOpenGroup(g.id)}>
+                      {orgName(g.name)}
+                    </button>
+                    <small>
+                      {g.subject_papers} of {g.total_papers.toLocaleString("en")} papers
+                    </small>
+                  </div>
+                  <BarTrack value={g.specialisation} max={maxSpec} />
+                  <b className="spec">{g.specialisation.toFixed(1)}×</b>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="note">No organization has {d.min_org_papers} or more papers on this subject, so none are ranked.</p>
+          )}
+          {researchers &&
+            (researchers.ranked.length ? (
+              <div className="researchers" data-testid="topic-researchers">
+                <h3>Researchers with {researchers.min_papers} or more papers on it</h3>
+                <div className="chips">
+                  {researchers.ranked.map((r) => (
+                    <button key={r.id} type="button" className="echip" onClick={() => onOpenNode360(r.id)}>
+                      <EntityDot kind="Researcher" />
+                      {r.name} <span className="c">{r.subject_papers}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p className="note" data-testid="topic-researchers">
+                No researcher has {researchers.min_papers} or more papers on this subject yet (the most is {researchers.max_papers}), so individuals are not ranked.
+              </p>
             ))}
-          </select>
-        </div>
+        </Section>
+
+        <Section id="together" title="Often found together" hint={`Subjects that share papers with ${lower(name)}.`}>
+          {related.length ? (
+            related.map((set) => (
+              <div key={set.kind} className="chipset">
+                <h3>
+                  <EntityDot kind={set.kind} />
+                  {KIND_PLURAL[set.kind]}
+                </h3>
+                <div className="chips">
+                  {set.rows.map((r) => (
+                    <button key={r.id} type="button" className="echip" onClick={() => onSelectSubject(r.id)} title={r.co_papers ? `${r.co_papers} shared papers` : undefined}>
+                      <EntityDot kind={set.kind} />
+                      {subjectName(r.name, set.kind)}
+                      {r.co_papers ? <span className="c">{r.co_papers}</span> : null}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="note">No other subject shares two or more papers with it.</p>
+          )}
+        </Section>
       </div>
 
-      {detailQuery.isLoading && <p role="status" className="text-sm text-muted">Loading subject profile…</p>}
-      {detailQuery.error && <p role="alert" className="text-sm text-[var(--negative)]">{String(detailQuery.error)}</p>}
+      {trend && (
+        <Section id="brief" title="In brief">
+          <p className="prose" data-testid="topic-brief">
+            {name} {isPlural(name) ? "appear" : "appears"} in {trend.total_papers.toLocaleString("en")} papers across the five years
+            {lastYear ? `, and ${lastYear.papers.toLocaleString("en")} of them are from ${lastYear.year}` : ""}.
+            <sup>
+              <a href="#cite-1">1</a>
+            </sup>
+            {together.length ? ` The subjects that most often share a paper with ${isPlural(name) ? "them" : "it"} are ${together.join(" and ")}.` : ""}
+            {groups[0] ? ` The most specialised group is ${orgName(groups[0].name)}, with ${groups[0].subject_papers} of its ${groups[0].total_papers.toLocaleString("en")} papers on the subject.` : ""}
+            {cite && cite.in_corpus_citations > 0 ? (
+              <>
+                {" "}
+                The most-cited paper on it inside these proceedings is “{cite.title}”.
+                <sup>
+                  <a href="#cite-2">2</a>
+                </sup>
+              </>
+            ) : null}
+          </p>
+          <ol className="sources">
+            <li id="cite-1">
+              <b>Yearly paper counts</b>
+              <span className="meta">{yearly.map((y) => `${y.year}: ${y.papers}`).join(", ")}</span>
+            </li>
+            {cite && cite.in_corpus_citations > 0 && (
+              <li id="cite-2" className="paper-ref">
+                <button type="button" className="t paperlink" onClick={() => onOpenNode360(cite.paper_id)}>
+                  {cite.title}
+                </button>
+                <span className="meta">{paperMeta(meta.data?.[cite.paper_id]) || `${cite.venue || ""} ${cite.year}`}</span>
+              </li>
+            )}
+          </ol>
+          <p className="note">Written from the counts on this page, not by a language model.</p>
+        </Section>
+      )}
 
-      {d && (
-        <>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <Panel title="Annual Share & Descriptive Trend">
-              {d.trend ? (
-                <>
-                  <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-3">
-                    <span>Class: <strong className="text-ink">{d.trend.class}</strong></span>
-                    <span>Total papers: <strong className="text-ink">{d.trend.total_papers.toLocaleString()}</strong></span>
-                    <span>Recent share: <strong className="text-ink">{pct(d.trend.recent_share, 2)}</strong></span>
-                    <MetricTooltip
-                      label="Share & Growth"
-                      definition="Annual share of main-track papers linked to this subject; Period delta & slope are descriptive 2021–2025 measures."
-                    />
-                  </div>
-                  <EChartBox option={trendOption} label="Subject annual share chart" height={210} />
-                </>
-              ) : (
-                <p className="text-xs text-muted">No trend series recorded.</p>
-              )}
-            </Panel>
+      {d.description && (
+        <Section id="what" title="What it is">
+          <p className="prose">{d.description.text}</p>
+          <p className="note">
+            {d.description.source_kind === "wikipedia" ? (
+              <>
+                From{" "}
+                <a className="textlink" href={d.description.wikipedia_url || undefined} target="_blank" rel="noreferrer">
+                  Wikipedia
+                </a>
+                {d.description.wikipedia_revision_id ? ` (revision ${d.description.wikipedia_revision_id})` : ""}, licensed {d.description.license || "CC BY-SA 4.0"}.
+              </>
+            ) : (
+              `${d.description.label}. AI-generated text can be wrong.`
+            )}
+          </p>
+        </Section>
+      )}
 
-            <Panel title="Summary">
-              {d.summary ? (
-                <div className="space-y-2 text-xs">
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="inline-block px-2 py-0.5 rounded bg-raised text-ink font-medium">
-                      {d.summary.label}
-                    </span>
-                    {d.summary.source_kind !== "wikipedia" && (
-                      <span className="inline-block px-2 py-0.5 rounded border border-border text-[11px] text-muted">
-                        AI-generated from graph data
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-ink leading-relaxed">{d.summary.text}</p>
-                  {d.summary.wikipedia_url && (
-                    <p className="text-[11px] text-faint">
-                      <a href={d.summary.wikipedia_url} target="_blank" rel="noreferrer" className="text-[var(--accent)] hover:underline">
-                        Wikipedia (rev {d.summary.wikipedia_revision_id ?? "—"})
-                      </a>{" "}
-                      · CC BY-SA 4.0
-                    </p>
-                  )}
-                  {d.summary.findings.length > 0 && (
-                    <ul className="list-disc pl-4 space-y-1 text-muted">
-                      {d.summary.findings.map((f, i) => (
-                        <li key={i}>
-                          {f.claim}{" "}
-                          {f.paper_ids.slice(0, 3).map((pid) => (
-                            <button
-                              key={pid}
-                              type="button"
-                              onClick={() => onOpenNode360(pid)}
-                              className="font-mono text-[11px] text-[var(--accent)] hover:underline mr-1"
-                            >
-                              [{pid}]
-                            </button>
-                          ))}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ) : (
-                <p className="text-xs text-muted">No summary generated for this subject yet.</p>
-              )}
-            </Panel>
-
-            <Panel title="Related Entities & Communities">
-              <div className="space-y-2 text-xs">
-                {[["Methods", d.related_methods], ["Tasks", d.related_tasks], ["Datasets", d.related_datasets]].map(([lbl, items]) => (
-                  <div key={String(lbl)}>
-                    <span className="font-medium text-muted">{String(lbl)}: </span>
-                    {(items as Array<{ id: string; name: string }>).length === 0 ? (
-                      <span className="text-faint">None precomputed</span>
-                    ) : (
-                      (items as Array<{ id: string; name: string }>).slice(0, 6).map((x) => (
-                        <button
-                          key={x.id}
-                          type="button"
-                          onClick={() => onOpenNode360(x.id)}
-                          className="inline-block mr-1.5 mb-1 px-1.5 py-0.5 rounded border border-border hover:bg-raised"
-                        >
-                          {x.name}
-                        </button>
-                      ))
-                    )}
-                  </div>
+      {d.summary?.source_community_id && (
+        <Section id="community" title="The research community around it" hint="A report written by a language model about the group of papers and people that includes this subject. It covers more than the subject itself.">
+          <p className="prose">{cleanCommunityRefs(d.summary.text)}</p>
+          {d.summary.findings.length > 0 && (
+            <ul className="findings">
+              {d.summary.findings.map((f, i) => (
+                <li key={i}>
+                  {cleanCommunityRefs(f.claim)}
+                  {f.paper_ids.slice(0, 2).map((pid) => (
+                    <button
+                      key={pid}
+                      type="button"
+                      className="fnref"
+                      onClick={() => onOpenNode360(pid)}
+                      title={meta.data?.[pid]?.title || "Open the paper"}
+                      aria-label={`Source ${reportPaperIds.indexOf(pid) + 1}: ${meta.data?.[pid]?.title || "paper"}`}
+                    >
+                      {reportPaperIds.indexOf(pid) + 1}
+                    </button>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          )}
+          {reportPaperIds.length > 0 && (
+            <ol className="sources">
+              {reportPaperIds.map((pid) => (
+                <li key={pid} className="paper-ref">
+                  <button type="button" className="t paperlink" onClick={() => onOpenNode360(pid)}>
+                    {meta.data?.[pid]?.title || "Loading title…"}
+                  </button>
+                  <span className="meta">{paperMeta(meta.data?.[pid])}</span>
+                </li>
+              ))}
+            </ol>
+          )}
+          <p className="note">{d.summary.label}.</p>
+          {d.communities.some((c) => communityTitle(c.title)) && (
+            <div className="chips">
+              {d.communities
+                .filter((c) => communityTitle(c.title))
+                .slice(0, 4)
+                .map((c) => (
+                  <button key={c.community_id} type="button" className="chip-btn" onClick={() => onOpenCommunity(c.community_id)}>
+                    {communityTitle(c.title)}
+                  </button>
                 ))}
-                {d.communities.length > 0 && (
-                  <div className="pt-1 border-t border-rule">
-                    <span className="font-medium text-muted block mb-1">GraphRAG Communities:</span>
-                    {d.communities.slice(0, 4).map((c) => (
-                      <button
-                        key={c.community_id}
-                        type="button"
-                        onClick={() => onOpenCommunity(c.community_id)}
-                        className="block text-left text-[var(--accent)] hover:underline truncate max-w-full"
-                      >
-                        {c.community_id}: {c.title}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </Panel>
-          </div>
+            </div>
+          )}
+        </Section>
+      )}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <Panel title="Specialized Organizations (Ranked by PPR Lift)">
-              <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-1.5">
-                <MetricTooltip
-                  label="PPR Lift & RCA"
-                  definition={d.metric_definitions?.ppr_lift?.definition || "Topic PPR / global PPR"}
-                  denominator={d.metric_definitions?.ppr_lift?.denominator}
-                  network={d.metric_definitions?.ppr_lift?.network}
-                  graphVersion={d.metric_definitions?.ppr_lift?.graph_version}
-                />
-                {d.ppr_source && (
-                  <span className="px-1.5 py-0.5 rounded bg-raised text-[10px] font-medium text-ink">
-                    {d.ppr_source === "on_demand"
-                      ? "On-demand (same N4 lift definition)"
-                      : d.ppr_source === "rca_fallback"
-                        ? "RCA fallback"
-                        : "Precomputed"}
-                  </span>
-                )}
-                {d.ppr_method_note && <span>· {d.ppr_method_note}</span>}
-                {d.filter_notes?.Organization ? ` · ${d.filter_notes.Organization}` : ""}
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-xs text-left">
-                  <thead>
-                    <tr className="border-b border-border text-muted">
-                      <th className="p-1.5">Organization</th>
-                      <th className="p-1.5">Lift</th>
-                      <th className="p-1.5">RCA</th>
-                      <th className="p-1.5">Raw PPR</th>
-                      <th className="p-1.5">Papers</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {d.top_organizations.slice(0, 12).map((o) => (
-                      <tr key={o.id} className="border-t border-rule">
-                        <td className="p-1.5">
-                          <button type="button" onClick={() => onOpenGroup(o.id)} className="text-[var(--accent)] hover:underline text-left">
-                            {o.name}
-                          </button>
-                        </td>
-                        <td className="p-1.5 tabular-nums font-medium">{o.lift?.toFixed(2) ?? "—"}</td>
-                        <td className="p-1.5 tabular-nums">{o.rca?.toFixed(2) ?? "—"}</td>
-                        <td className="p-1.5 tabular-nums text-muted">{(o.ppr_score ?? o.score ?? 0).toExponential(2)}</td>
-                        <td className="p-1.5 tabular-nums">{o.subject_papers ?? "—"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </Panel>
+      {papers.length > 0 && (
+        <Section id="papers" title="Top papers" hint="Ordered by citations from other papers in these proceedings.">
+          <ol className="toppapers">
+            {papers.map((x) => (
+              <li key={x.paper_id} className="paper-ref">
+                <button type="button" className="t paperlink" onClick={() => onOpenNode360(x.paper_id)}>
+                  {x.title}
+                </button>
+                <span className="meta">
+                  {paperMeta(meta.data?.[x.paper_id]) || `${x.venue || ""} ${x.year}`}. Cited {x.in_corpus_citations} {x.in_corpus_citations === 1 ? "time" : "times"} in these proceedings.
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Section>
+      )}
+    </article>
+  );
+};
 
-            <Panel title="Key Researchers (by PPR Lift) & Most-Cited Corpus Papers">
-              <div className="overflow-x-auto mb-3">
-                <table className="w-full text-xs text-left">
-                  <thead>
-                    <tr className="border-b border-border text-muted">
-                      <th className="p-1.5">Researcher</th>
-                      <th className="p-1.5">Lift</th>
-                      <th className="p-1.5">Raw PPR</th>
-                      <th className="p-1.5">Papers</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {d.top_researchers.slice(0, 8).map((r) => (
-                      <tr key={r.id} className="border-t border-rule">
-                        <td className="p-1.5">
-                          <button type="button" onClick={() => onOpenNode360(r.id)} className="text-[var(--accent)] hover:underline text-left">
-                            {r.name}
-                          </button>
-                        </td>
-                        <td className="p-1.5 tabular-nums font-medium">{r.lift?.toFixed(2) ?? "—"}</td>
-                        <td className="p-1.5 tabular-nums text-muted">{(r.ppr_score ?? 0).toExponential(2)}</td>
-                        <td className="p-1.5 tabular-nums">{r.subject_papers ?? "—"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {d.most_cited_papers.length > 0 && (
-                <div className="border-t border-border pt-2">
-                  <h4 className="text-xs font-semibold mb-1.5">Most-Cited Papers (Within-Corpus CITES)</h4>
-                  <ul className="space-y-1 text-xs">
-                    {d.most_cited_papers.slice(0, 6).map((p) => (
-                      <li key={p.paper_id} className="flex items-start justify-between gap-2">
-                        <button type="button" onClick={() => onOpenNode360(p.paper_id)} className="text-left hover:underline text-ink">
-                          {p.title} ({p.year}, {p.venue})
-                        </button>
-                        <span className="shrink-0 tabular-nums text-muted">{p.in_corpus_citations} cites</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </Panel>
-          </div>
+export const SubjectPage: React.FC<SubjectPageProps> = ({ subjectId, ...nav }) => {
+  const q = useQuery({
+    queryKey: ["nav-subject-detail", subjectId],
+    queryFn: ({ signal }) => navigatorApi.getSubjectDetail(subjectId!, signal),
+    enabled: Boolean(subjectId),
+  });
+  return (
+    <div data-testid="page-subjects">
+      {!subjectId ? (
+        <TopicsIndex onSelect={(id) => navigate(pathFor("topics", id))} />
+      ) : (
+        <>
+          {q.isLoading && <LoadingLine />}
+          {q.isError && <ErrorLine error={q.error} onRetry={() => q.refetch()} />}
+          {q.data && <Detail key={q.data.id} d={q.data} {...nav} />}
         </>
       )}
     </div>

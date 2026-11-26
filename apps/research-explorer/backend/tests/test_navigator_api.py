@@ -358,3 +358,43 @@ def test_papers_lookup_returns_titles_not_ids(nav_client: TestClient):
     assert nav_client.get("/api/papers").json() == {"papers": {}}
     too_many = [("id", f"paper:aaai:2024:{i}") for i in range(61)]
     assert nav_client.get("/api/papers", params=too_many).status_code == 422
+
+
+def test_pulse_strip_leaders_and_small_world(nav_client: TestClient):
+    """Pulse home payload (WORK-2026-11-26-003): momentum bands, minimum evidence, no ids needed."""
+    res = nav_client.get("/api/pulse")
+    assert res.status_code == 200
+    body = res.json()
+    strip = body["strip"]
+    assert 1 <= len(strip) <= 12
+    classes = [s["class"] for s in strip]
+    # Heating rows first, then stable, then cooling.
+    order = {"emerging": 0, "rising": 0, "stable": 1, "declining": 2}
+    assert [order[c] for c in classes] == sorted(order[c] for c in classes)
+    for s in strip:
+        assert len(s["share"]) == 5 and len(s["papers"]) == 5
+        assert s["total_papers"] >= body["thresholds"]["min_subject_papers"]
+        assert -1.0 <= s["t"] <= 1.0
+    for lead in body["leaders"]:
+        for org in lead["organizations"]:
+            assert org["subject_papers"] >= body["thresholds"]["min_org_papers"]
+            assert org["name"] and not org["name"].startswith("organization:")
+    assert set(body["year_totals"]) == {"2021", "2022", "2023", "2024", "2025"}
+    assert "holds" in body["smallworld"]
+
+
+def test_subject_detail_ranks_groups_with_minimum_evidence(nav_client: TestClient):
+    """Leading groups use the same rule as Pulse; researchers below the minimum are not ranked."""
+    pulse = nav_client.get("/api/pulse").json()
+    lead = next(l for l in pulse["leaders"] if l["organizations"])
+    body = nav_client.get(f"/api/subjects/{lead['id']}").json()
+    assert body["leading_groups"][: len(lead["organizations"])] == lead["organizations"]
+    assert all(g["subject_papers"] >= body["min_org_papers"] for g in body["leading_groups"])
+    listed = nav_client.get("/api/subjects", params={"limit": 5}).json()["items"]
+    assert all(isinstance(x["shares"], list) for x in listed)
+    ev = body["researcher_evidence"]
+    if ev is not None:  # exact counts need the live graph
+        assert all(r["subject_papers"] >= ev["min_papers"] for r in ev["ranked"])
+        assert all(r["subject_papers"] <= ev["max_papers"] for r in ev["ranked"])
+        for rows in body["co_mentions"].values():
+            assert all(x["co_papers"] >= 2 and x["id"] != lead["id"] for x in rows)

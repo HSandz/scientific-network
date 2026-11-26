@@ -82,3 +82,20 @@ export function plural(n: number, one: string, many = `${one}s`): string {
 export function truncate(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s;
 }
+
+/**
+ * Readable title for a generated community report: drops internal ids such as "Community
+ * research:L1:4:" or "Research community L0:90 focuses on". Returns "" when nothing readable
+ * is left, so the caller can fall back to the community's top terms.
+ */
+export function communityTitle(title: string | null | undefined): string {
+  let t = (title || "").replace(/\*\*/g, "").trim();
+  const id = String.raw`(?:research:)?(?:L0|L1|N1|N2):\d+(?::\d+)?`;
+  t = t.replace(new RegExp(String.raw`^(?:the\s+)?(?:research\s+)?community\s+${id}\s*(?::|-|–)?\s*`, "i"), "");
+  t = t.replace(/^(?:(?:primarily|mainly)\s+)?(?:focus(?:es|ed|ing)?\s+on|centers?\s+on|dominates?|is\s+about)\s+/i, "");
+  t = t.replace(new RegExp(String.raw`\s*\b(?:in|of|for)\s+(?:(?:research\s+)?community\s+)?${id}`, "gi"), "");
+  t = t.replace(new RegExp(String.raw`\(?\b(?:(?:research\s+)?community\s+)?${id}\b\)?`, "gi"), "");
+  t = t.replace(/\s{2,}/g, " ").replace(/^[\s:–-]+|[\s:–.-]+$/g, "");
+  if (t.length < 4 || /^(?:research\s+)?community$/i.test(t)) return "";
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}

@@ -225,7 +225,7 @@ export const App: React.FC = () => {
       page = (
         <div className="view">
           <SubjectPage
-            subjectId={selectedSubjectId}
+            subjectId={route.param}
             onSelectSubject={openSubject}
             onOpenGroup={openGroup}
             onOpenCommunity={openCommunity}
