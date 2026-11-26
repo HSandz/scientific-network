@@ -206,6 +206,9 @@ export interface GroupsResponse {
 }
 
 export interface GroupDetailResponse {
+  /** Position among all organizations by paper count (ties share a position). */
+  paper_rank: number | null;
+  ranked_organizations: number;
   profile: Record<string, unknown>;
   description?: {
     description: string;
@@ -251,6 +254,10 @@ export interface CommunityNodeItem {
   centrality_rationale?: string | null;
   dominant_topics: Array<unknown>;
   papers_by_year?: Record<string, number>;
+  /** Research communities only. */
+  paper_count?: number;
+  /** Research community detail only; null without a live graph. */
+  top_people?: Array<{ id: string; name: string; papers: number }> | null;
   top_papers?: Array<{ id: string; title: string; year?: number; in_corpus_citations?: number }>;
   top_orgs?: Array<{ id: string; name: string; papers?: number }>;
   label_method?: string;

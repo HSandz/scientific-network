@@ -398,3 +398,10 @@ def test_subject_detail_ranks_groups_with_minimum_evidence(nav_client: TestClien
         assert all(r["subject_papers"] <= ev["max_papers"] for r in ev["ranked"])
         for rows in body["co_mentions"].values():
             assert all(x["co_papers"] >= 2 and x["id"] != lead["id"] for x in rows)
+
+
+def test_research_community_detail_adds_paper_count_and_people(nav_client: TestClient):
+    """Map side panel: paper count for sizing, people only at the minimum evidence."""
+    body = nav_client.get("/api/communities/research:L1:1").json()
+    assert body["paper_count"] == 40
+    assert body["top_people"] is None or all(x["papers"] >= 5 for x in body["top_people"])

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useExplorerStore } from "../../stores/useExplorerStore";
 const sections = [
   ["overview", "Overview"],
@@ -9,12 +9,20 @@ const sections = [
   ["sectors", "Sectors"],
   ["trajectories", "Citations"],
 ];
+/**
+ * When set, the v4 dashboard is embedded in another page and shows only these sections, without
+ * its own heading, section navigation or provenance footer. Unset, it renders in full.
+ */
+export const DashboardOnly = React.createContext<string[] | null>(null);
 export const DashboardSection: React.FC<{
   id: string;
   title: string;
   description: string;
   children: React.ReactNode;
-}> = ({ id, title, description, children }) => (
+}> = ({ id, title, description, children }) => {
+  const only = useContext(DashboardOnly);
+  if (only && !only.includes(id)) return null;
+  return (
   <section
     id={`analytics-${id}`}
     data-analytics-section={id}
@@ -33,7 +41,8 @@ export const DashboardSection: React.FC<{
     </header>
     {children}
   </section>
-);
+  );
+};
 export const DashboardNav: React.FC<{ section: string }> = ({ section }) => {
   const nav = useRef<HTMLElement>(null);
   const observedSection = useRef(section);

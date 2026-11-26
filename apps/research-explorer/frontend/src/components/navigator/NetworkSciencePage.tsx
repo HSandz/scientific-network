@@ -1,221 +1,312 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { useExplorerStore } from "../../stores/useExplorerStore";
-import { Panel, Table } from "../analytics/DashboardPrimitives";
-import { EChartBox } from "../analytics/EChartBox";
-import { MetricTooltip } from "./MetricTooltip";
+import { AppLink, EntityDot, ErrorLine, InfoPopover, LoadingLine, MethodDrawer, PageHead, Section } from "../ui/primitives";
+import { LineChart } from "../charts/charts";
+import { orgName } from "../../lib/names";
+import { linkClick, pathFor } from "../../lib/router";
+import { DegreePlot, PathHistogram } from "./networkFigures";
 
 interface NetworkSciencePageProps {
   onOpenNode360: (id: string) => void;
+  /** The frozen release (v4) sections that have no counterpart in the enriched graph. */
+  releaseSections?: React.ReactNode;
 }
 
-export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNode360 }) => {
-  const darkMode = useExplorerStore((s) => s.darkMode);
-  const [rankNet, setRankNet] = useState<"N1" | "N2" | "N3" | "N4">("N1");
-  const { data, isLoading, error } = useQuery({
+type Net = "N1" | "N2" | "N3" | "N4";
+const NETS: Record<Net, { name: string; noun: string; one: string; what: string }> = {
+  N1: { name: "Co-authorship", noun: "researchers", one: "researcher", what: "researchers, linked when they wrote a paper together" },
+  N2: { name: "Organization collaboration", noun: "organizations", one: "organization", what: "organizations, linked when their researchers wrote a paper together" },
+  N3: { name: "Citations between papers", noun: "papers", one: "paper", what: "papers, linked when one cites another" },
+  N4: { name: "Full knowledge graph", noun: "nodes", one: "node", what: "papers, researchers, organizations and subjects with all their links" },
+};
+const SW_NETS: Net[] = ["N1", "N2", "N4"];
+const MEASURES: Record<string, string> = {
+  degree: "Number of links",
+  strength: "Weighted links",
+  betweenness: "Bridging (betweenness)",
+  eigenvector: "Links to well-linked nodes (eigenvector)",
+};
+
+const num = (v: unknown, d = 0) => (typeof v === "number" ? v.toLocaleString("en", { minimumFractionDigits: d, maximumFractionDigits: d }) : "–");
+const small = (v: unknown) => (typeof v === "number" ? (v < 0.001 ? v.toFixed(4) : v < 0.1 ? v.toFixed(3) : v.toFixed(2)) : "–");
+
+const NetworkMethodNote: React.FC<{ clustering?: string; config?: string; graph?: string }> = ({ clustering, config, graph }) => (
+  <>
+    <p>
+      A network is a <b>small world</b> when its nodes form much tighter groups than chance would give, while the average number of steps between two nodes stays close to a random
+      network's. Each network is compared with two kinds of random network: one that keeps every node's number of links and shuffles who links to whom, and one with the same number of
+      nodes and links placed at random.
+    </p>
+    <p>
+      The rule was fixed before measuring: the score must be above 1 for every random replicate, and the average path must be no more than twice the random network's. Path lengths and
+      clustering are measured on the main connected part of each network.
+    </p>
+    {clustering && <p>Clustering: {clustering}</p>}
+    <h3>Central nodes</h3>
+    <p>
+      Rankings use PageRank (damping 0.85). The score shown is how many times the average node's value a node receives. Citation rankings use only citations between papers in this
+      collection and are fragile because few such links exist.
+    </p>
+    <p className="muted">
+      Analysis {config} on graph {graph}. Entity extraction was checked by an AI reviewer (AI-assessed), not by human annotators.
+    </p>
+  </>
+);
+
+export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNode360, releaseSections }) => {
+  const [net, setNet] = useState<Net>("N1");
+  const [rankNet, setRankNet] = useState<Net>("N1");
+  const [kind, setKind] = useState("Researcher");
+  const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["nav-network-science"],
     queryFn: ({ signal }) => navigatorApi.getNetworkScience(signal),
   });
 
-  const axisColor = darkMode ? "#b0b0b0" : "#504f4c";
-  const gridColor = darkMode ? "#323232" : "#e8e7e2";
-
-  const swNetworks = (data?.smallworld as { networks?: Record<string, any> } | undefined)?.networks || {};
-  const evo = (data?.evolution as Record<string, Array<{ year: number | string; L: number; C: number; lcc_nodes: number }>> | undefined) || {};
-  const degTail = (data?.degree_tail as Record<string, { alpha?: number; degree_counts?: Record<string, number>; statement?: string }> | undefined) || {};
-  const ranking = (data?.ranking as Record<string, any> | undefined) || {};
-  const defs = (data?.metric_definitions as Record<string, any> | undefined) || {};
-
-  const histOption = useMemo(() => {
-    const n1Hist = swNetworks.N1?.real?.histogram || {};
-    const keys = Object.keys(n1Hist).sort((a, b) => Number(a) - Number(b));
-    return {
-      tooltip: { trigger: "axis" },
-      grid: { top: 28, left: 20, right: 16, bottom: 38, containLabel: true },
-      xAxis: { type: "category", data: keys, name: "Path length", nameLocation: "middle", nameGap: 22, axisLabel: { color: axisColor }, nameTextStyle: { color: axisColor } },
-      yAxis: { type: "value", name: "Pairs", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor, formatter: (v: number) => (v >= 1_000_000 ? `${(v / 1_000_000).toFixed(0)}M` : v >= 1_000 ? `${(v / 1_000).toFixed(0)}k` : String(v)) }, splitLine: { lineStyle: { color: gridColor } } },
-      series: [{ type: "bar", name: "N1 shortest-path pairs", itemStyle: { color: darkMode ? "#7fa6cc" : "#1d5fbf" }, data: keys.map((k) => n1Hist[k]) }],
-    };
-  }, [swNetworks, axisColor, gridColor, darkMode]);
-
-  const evoOption = useMemo(() => {
-    const rows = evo.N1 || [];
-    return {
-      tooltip: { trigger: "axis" },
-      legend: { bottom: 0, textStyle: { fontSize: 11, color: axisColor } },
-      grid: { top: 20, left: 48, right: 52, bottom: 44 },
-      xAxis: { type: "category", data: rows.map((r) => String(r.year)), axisLabel: { color: axisColor } },
-      yAxis: [
-        { type: "value", name: "L", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
-        {
-          type: "value",
-          name: "C (LCC)",
-          nameTextStyle: { color: axisColor },
-          axisLabel: { color: axisColor },
-          splitLine: { show: false },
-          min: (v: { min: number }) => Math.max(0, Number((v.min - 0.05).toFixed(2))),
-          max: 1,
-        },
-      ],
-      series: [
-        { name: "N1 L", type: "line", smooth: true, data: rows.map((r) => Number(r.L?.toFixed(3))) },
-        { name: "N1 C", type: "line", smooth: true, yAxisIndex: 1, data: rows.map((r) => Number(r.C?.toFixed(4))) },
-      ],
-    };
-  }, [evo, axisColor, gridColor]);
-
-  const degOption = useMemo(() => {
-    const counts = degTail.N1?.degree_counts || {};
-    const pts = Object.entries(counts)
-      .map(([kStr, c]) => [Number(kStr), Number(c)] as const)
-      .filter(([k, c]) => k > 0 && c > 0)
-      .sort((a, b) => a[0] - b[0])
-      .map(([k, c]) => [Number(Math.log10(k).toFixed(3)), Number(Math.log10(c).toFixed(3))]);
-    return {
-      tooltip: {
-        trigger: "item",
-        formatter: (p: { value: [number, number] }) =>
-          `k ≈ ${Math.round(10 ** p.value[0])}, count ≈ ${Math.round(10 ** p.value[1])}`,
-      },
-      grid: { top: 28, left: 20, right: 16, bottom: 40, containLabel: true },
-      xAxis: { type: "value", name: "log10(degree k)", nameLocation: "middle", nameGap: 22, nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
-      yAxis: { type: "value", name: "log10(nodes)", nameTextStyle: { color: axisColor }, axisLabel: { color: axisColor }, splitLine: { lineStyle: { color: gridColor } } },
-      series: [{ type: "scatter", name: "N1 degree distribution", symbolSize: 5, itemStyle: { color: darkMode ? "#3fc07a" : "#247b50" }, data: pts }],
-    };
-  }, [degTail, axisColor, gridColor, darkMode]);
+  const sw = ((data?.smallworld as any)?.networks || {}) as Record<string, any>;
+  const evo = (data?.evolution || {}) as Record<string, Array<{ year: number; L: number; C: number }>>;
+  const tails = (data?.degree_tail || {}) as Record<string, { degree_counts?: Record<string, number>; power_law_claim_allowed?: boolean }>;
+  const ranking = (data?.ranking || {}) as Record<string, any>;
+  const cur = sw[net];
+  const er = cur?.baselines?.erdos_renyi_gnm;
+  const rw = cur?.baselines?.degree_preserving_rewiring;
+  const holds = Boolean(cur?.decision?.small_world_holds);
+  const n1 = sw.N1;
+  // The artifact ends each series with a summary entry that has no year.
+  const rows = (evo[net] || []).filter((r) => typeof r.year === "number" && typeof r.L === "number" && typeof r.C === "number");
 
   const rankBlock = ranking[rankNet] || {};
-  const topRows = Array.isArray(rankBlock.top)
-    ? rankBlock.top
-    : Object.entries(rankBlock.top || {}).flatMap(([lbl, arr]) =>
-        (Array.isArray(arr) ? arr.slice(0, 3) : []).map((x: any) => ({ ...x, label: lbl })),
-      );
+  const byKind = rankBlock.top && !Array.isArray(rankBlock.top) ? (rankBlock.top as Record<string, any[]>) : null;
+  const topRows: any[] = (byKind ? byKind[kind] || [] : rankBlock.top || []).slice(0, 15);
 
   return (
-    <div data-testid="page-network-science" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
-      <div className="ledger-panel p-4">
-        <h1 className="text-lg font-semibold text-ink">Network Science (S1 Small-World · S2 Centrality · S3 Communities)</h1>
-        <p className="text-xs text-muted mt-0.5">
-          Config: <span className="font-mono">{String(data?.config_version || "analysis-final-exam-v2")}</span> · Clustering:{" "}
-          {String(data?.clustering_definition || "igraph average local clustering, mode='zero', on the LCC")}
-        </p>
-      </div>
+    <div data-testid="page-network-science">
+      <PageHead
+        title="Is it a small world?"
+        sub="How researchers, organizations and papers are connected"
+        lede={
+          n1 ? (
+            <span data-testid="network-verdict">
+              {n1.decision?.small_world_holds ? "Yes. " : "Not quite. "}
+              Researchers form tight circles of co-authors, yet two researchers in the main network are on average only {num(n1.real?.L, 1)} steps apart.
+            </span>
+          ) : undefined
+        }
+      />
+      {isLoading && <LoadingLine />}
+      {error ? <ErrorLine error={error} onRetry={() => refetch()} /> : null}
 
-      {isLoading && <p role="status" className="text-sm text-muted">Loading S1–S3 metrics…</p>}
-      {error && <p role="alert" className="text-sm text-[var(--negative)]">{String(error)}</p>}
-
-      {data && (
+      {data && cur && (
         <>
-          <Panel title="S1: Small-World Analysis Against Both Null Baselines">
-            <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-3">
-              <MetricTooltip
-                label="Small-world σ = (C/C_rand)/(L/L_rand)"
-                definition={defs.small_world_sigma?.definition || "(C / C_rand) / (L / L_rand)"}
-                denominator={defs.small_world_sigma?.denominator}
-                network={defs.small_world_sigma?.network}
-              />
-              <MetricTooltip
-                label="Clustering C & Path Length L"
-                definition="C is igraph average local clustering (mode='zero') on the largest connected component; L is unweighted mean shortest path length."
-                denominator="Largest connected component (LCC)"
-              />
-              <MetricTooltip
-                label="PageRank & Degree"
-                definition="Weighted/unweighted PageRank damping=0.85 on canonical graph networks N1–N4 alongside observed vertex degree."
-              />
+          <div className="controls">
+            <div className="seg seg-wrap" role="group" aria-label="Network">
+              {SW_NETS.map((k) => (
+                <button key={k} type="button" aria-pressed={net === k} onClick={() => setNet(k)} data-testid={`network-${k}`}>
+                  {NETS[k].name}
+                </button>
+              ))}
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
+            <MethodDrawer testId="network-how">
+              <NetworkMethodNote clustering={data.clustering_definition as string} config={data.config_version as string} graph={data.graph_version as string} />
+            </MethodDrawer>
+          </div>
+
+          <Section id="evidence" title={`${NETS[net].name}: ${holds ? "a small world" : "not a small world"}`} hint={`A network of ${NETS[net].what}.`}>
+            <div className="table-scroll">
+              <table className="data evidence-table">
                 <thead>
-                  <tr className="border-b border-border text-muted">
-                    <th className="p-2">Network</th>
-                    <th className="p-2">LCC Nodes / Edges</th>
-                    <th className="p-2">L</th>
-                    <th className="p-2">C (LCC)</th>
-                    <th className="p-2">σ (ER)</th>
-                    <th className="p-2">σ (Rewired)</th>
-                    <th className="p-2">Decision</th>
+                  <tr>
+                    <th>Measure</th>
+                    <th className="num">This network</th>
+                    <th className="num">Shuffled, same links per node</th>
+                    <th className="num">Random, same size</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {["N1", "N2", "N4"].map((nk) => {
-                    const nw = swNetworks[nk];
-                    if (!nw) return null;
-                    return (
-                      <tr key={nk} className="border-t border-rule tabular-nums">
-                        <td className="p-2 font-medium">{nk}</td>
-                        <td className="p-2">{nw.lcc_nodes?.toLocaleString()} / {nw.lcc_edges?.toLocaleString()}</td>
-                        <td className="p-2">{nw.real?.L?.toFixed(3)}</td>
-                        <td className="p-2">{nw.real?.clustering?.average_local?.toFixed(4)}</td>
-                        <td className="p-2">{nw.baselines?.erdos_renyi_gnm?.sigma_from_means?.toFixed(2)}</td>
-                        <td className="p-2">{nw.baselines?.degree_preserving_rewiring?.sigma_from_means?.toFixed(2)}</td>
-                        <td className="p-2">{nw.decision?.statement}</td>
-                      </tr>
-                    );
-                  })}
+                  <tr>
+                    <th scope="row">
+                      How often two neighbours are also linked
+                      <InfoPopover label="Clustering C">
+                        <p>
+                          <b>Clustering coefficient C</b>: for each node, the share of pairs of its neighbours that are linked to each other, averaged over nodes. Between 0 and 1.
+                        </p>
+                      </InfoPopover>
+                    </th>
+                    <td className="num big">{small(cur.real?.clustering?.average_local)}</td>
+                    <td className="num">{small(rw?.C_rand_mean)}</td>
+                    <td className="num">{small(er?.C_rand_mean)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Average steps between two nodes
+                      <InfoPopover label="Path length L">
+                        <p>
+                          <b>Average shortest path length L</b>: the fewest links needed to get from one node to another, averaged over all connected pairs.
+                        </p>
+                      </InfoPopover>
+                    </th>
+                    <td className="num big">{num(cur.real?.L, 2)}</td>
+                    <td className="num">{num(rw?.L_rand_mean, 2)}</td>
+                    <td className="num">{num(er?.L_rand_mean, 2)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Small-world score against each baseline
+                      <InfoPopover label="Small-world score σ">
+                        <p>
+                          <b>σ = (C ÷ C of the random network) ÷ (L ÷ L of the random network)</b>. Above 1 means more clustered than random for its path length.
+                        </p>
+                      </InfoPopover>
+                    </th>
+                    <td className="num">–</td>
+                    <td className="num big">{num(rw?.sigma_from_means)}</td>
+                    <td className="num big">{num(er?.sigma_from_means)}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
-          </Panel>
+            <p className="note">
+              The main connected part holds {num(cur.lcc_nodes)} of {num(cur.full_nodes)} {NETS[net].noun} ({num((cur.lcc_share_of_nodes || 0) * 100)}%). Paths are{" "}
+              {num(rw?.L_over_L_rand, 1)} times as long as in the shuffled network, within the limit of 2. The longest shortest path is {num(cur.real?.diameter)} steps.
+            </p>
+          </Section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <Panel title="N1 Shortest-Path Distribution (Exact LCC)">
-              <EChartBox option={histOption} label="N1 path length histogram" height={250} />
-            </Panel>
-            <Panel title="N1 Temporal Evolution (2021–2025 Cumulative)">
-              <EChartBox option={evoOption} label="N1 L and C evolution chart" height={250} />
-            </Panel>
-            <Panel title="N1 Degree Distribution (log10–log10)">
-              <EChartBox option={degOption} label="N1 degree distribution" height={250} />
-              {degTail.N1?.statement && (
-                <p className="text-[11px] text-muted mt-2">Degree tail (N1): {degTail.N1.statement}</p>
+          <div className="two-lists">
+            <Section id="paths" title="Steps between pairs">
+              <PathHistogram histogram={cur.real?.histogram || {}} mean={cur.real?.L} />
+            </Section>
+            <Section id="degree" title="Links per node">
+              {tails[net]?.degree_counts ? (
+                <>
+                  <DegreePlot counts={tails[net].degree_counts!} noun={NETS[net].noun} />
+                  <p className="note">
+                    {tails[net].power_law_claim_allowed
+                      ? "A power law fits the tail under the declared test."
+                      : "A few nodes have far more links than most. The declared test does not support calling this a power law."}
+                  </p>
+                </>
+              ) : (
+                <p className="note">The degree distribution was not computed for this network.</p>
               )}
-            </Panel>
+            </Section>
           </div>
 
-          <Panel title="S2: PageRank & Centrality Comparison">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3 text-xs">
-              <div className="ledger-segmented" role="group" aria-label="Ranking network">
-                {(["N1", "N2", "N3", "N4"] as const).map((nk) => (
-                  <button key={nk} type="button" data-active={rankNet === nk} onClick={() => setRankNet(nk)}>
-                    {nk}
+          {rows.length > 0 && (
+            <Section id="evolution" title="How it changed" hint="Each year includes all papers up to and including that year.">
+              <div className="two-lists">
+                <div>
+                  <h3>Average steps between two nodes</h3>
+                  <LineChart label="Path length by year" unit="plain" years={rows.map((r) => String(r.year))} series={[{ name: "Average steps", values: rows.map((r) => r.L) }]} height={230} />
+                </div>
+                <div>
+                  <h3>How often two neighbours are linked</h3>
+                  <LineChart label="Clustering by year" unit="plain" years={rows.map((r) => String(r.year))} series={[{ name: "Clustering", values: rows.map((r) => r.C) }]} height={230} />
+                </div>
+              </div>
+              {net === "N1" && <p className="note">In 2021 the main connected part was still small, so its path length is not comparable with later years.</p>}
+            </Section>
+          )}
+
+          <Section id="central" title="Who is central" hint="Ranked by PageRank. The score is the node's value as a multiple of the average node's.">
+            <div className="controls">
+              <div className="seg seg-wrap" role="group" aria-label="Ranking network">
+                {(Object.keys(NETS) as Net[]).map((k) => (
+                  <button key={k} type="button" aria-pressed={rankNet === k} onClick={() => setRankNet(k)} data-testid={`rank-${k}`}>
+                    {NETS[k].name}
                   </button>
                 ))}
               </div>
-              {rankBlock.sparsity_note && (
-                <span className="text-[var(--warning)]">{rankBlock.sparsity_note}</span>
+              {byKind && (
+                <label className="control">
+                  <span className="sr-only">Kind of node</span>
+                  <select className="field-input" value={kind} onChange={(e) => setKind(e.target.value)}>
+                    {Object.keys(byKind).map((k) => (
+                      <option key={k} value={k}>
+                        {k}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               )}
             </div>
-
+            {rankNet === "N3" && <p className="note">Few papers here cite one another, so this ranking is fragile. Read it next to the citation counts.</p>}
+            <div className="table-scroll">
+              <table className="data" data-chart-label="Centrality ranking" data-chart-rendered="true" data-chart-point-count={topRows.length}>
+                <thead>
+                  <tr>
+                    <th className="num">Rank</th>
+                    <th>Name</th>
+                    <th className="num">Score</th>
+                    <th className="num">Links</th>
+                    {rankNet === "N3" && <th className="num">Citations here</th>}
+                  </tr>
+                </thead>
+                <tbody>
+                  {topRows.map((r, i) => (
+                    <tr key={r.id || i}>
+                      <td className="num">{i + 1}</td>
+                      <td>
+                        <button type="button" className="rowlink" onClick={() => r.id && onOpenNode360(r.id)}>
+                          <EntityDot kind={r.label || kind} /> {r.label === "Organization" ? orgName(r.name) : r.name}
+                        </button>
+                      </td>
+                      <td className="num">{typeof r.pagerank === "number" && rankBlock.nodes ? `${num(r.pagerank * rankBlock.nodes, 1)}×` : "–"}</td>
+                      <td className="num">{num(r.degree)}</td>
+                      {rankNet === "N3" && <td className="num">{num(r.in_corpus_citations ?? 0)}</td>}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             {rankBlock.comparison_with_pagerank && (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">
-                {Object.entries(rankBlock.comparison_with_pagerank).map(([metric, stats]: [string, any]) => (
-                  <div key={metric} className="p-2 rounded bg-ground border border-rule tabular-nums">
-                    <span className="font-medium block">{metric} vs PageRank</span>
-                    <span className="text-muted">Spearman ρ: {typeof stats?.spearman === "number" ? stats.spearman.toFixed(3) : "—"}</span>
-                    <span className="block text-faint">Top-20 overlap: {stats?.top20_overlap ?? "—"}</span>
-                  </div>
-                ))}
-              </div>
+              <details className="map-all">
+                <summary>Do other measures of importance agree?</summary>
+                <div className="table-scroll">
+                  <table className="data">
+                    <thead>
+                      <tr>
+                        <th>Measure compared with PageRank</th>
+                        <th className="num">Rank agreement (Spearman, 1 is identical)</th>
+                        <th className="num">Shared among the top 20</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(rankBlock.comparison_with_pagerank as Record<string, any>).map(([m, v]) => (
+                        <tr key={m}>
+                          <th scope="row">{MEASURES[m] || m}</th>
+                          <td className="num">{typeof v?.spearman === "number" ? v.spearman.toFixed(2) : "Not computed"}</td>
+                          <td className="num">{v?.top20_overlap ?? "Not computed"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
             )}
+          </Section>
 
-            <Table
-              label={`${rankNet} top ranked nodes`}
-              headers={["Rank", "Name", "Label", "PageRank", "Degree", rankNet === "N3" ? "In-Corpus Cites" : "Community"]}
-              rows={topRows.map((r: any, idx: number) => [
-                r.rank ?? idx + 1,
-                <button key={r.id || idx} type="button" onClick={() => r.id && onOpenNode360(r.id)} className="text-[var(--accent)] hover:underline text-left">
-                  {r.name || r.id}
-                </button>,
-                r.label || "—",
-                typeof r.pagerank === "number" ? r.pagerank.toExponential(2) : "—",
-                r.degree ?? "—",
-                rankNet === "N3" ? (r.in_corpus_citations ?? 0) : (r.community ?? "—"),
-              ])}
-            />
-          </Panel>
+          <p className="note">
+            The communities inside these networks are on the{" "}
+            <a className="textlink" href={pathFor("map")} onClick={(e) => linkClick(e, pathFor("map"))}>
+              Map
+            </a>
+            .
+          </p>
         </>
+      )}
+
+      {releaseSections && (
+        <Section
+          id="release-checks"
+          title="Checks on the frozen release graph (v4)"
+          hint="Analyses that exist only for the earlier release graph, which has no extracted methods, tasks or datasets: how far collaboration results survive stricter evidence, how academia and industry work together, and citation patterns."
+          testId="network-release-checks"
+        >
+          <AppLink to={pathFor("network", "release")} className="textlink" >
+            Open the full v4 release report
+          </AppLink>
+          <div className="release-embed">{releaseSections}</div>
+        </Section>
       )}
     </div>
   );

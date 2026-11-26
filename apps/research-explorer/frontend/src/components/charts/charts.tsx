@@ -30,7 +30,7 @@ function axis(maxVal: number, n = 4): { max: number; ticks: number[] } {
   for (let v = 0; v <= max + step / 2; v += step) ticks.push(+v.toFixed(6));
   return { max, ticks };
 }
-function tickLabel(v: number, unit: "pct" | "count"): string {
+function tickLabel(v: number, unit: "pct" | "count" | "plain"): string {
   const s = Number.isInteger(v) ? String(v) : v.toFixed(v < 1 ? (v * 10 === Math.round(v * 10) ? 1 : 2) : 1);
   return unit === "pct" ? `${s}%` : Number(s).toLocaleString("en");
 }
@@ -71,7 +71,7 @@ function spread<T extends { y: number }>(items: T[], gap: number, top: number, b
 }
 
 /** Rendered width of an element, so SVG charts can draw at 1:1 and keep their text size. */
-function useWidth(fallback: number): [React.RefObject<HTMLElement>, number] {
+export function useWidth(fallback: number): [React.RefObject<HTMLElement>, number] {
   const ref = useRef<HTMLElement>(null);
   const [width, setWidth] = useState(fallback);
   useLayoutEffect(() => {
@@ -90,7 +90,8 @@ export const LineChart: React.FC<{
   label: string;
   years: string[];
   series: LineSeries[];
-  unit: "pct" | "count";
+  /** "plain" prints two decimals, for ratios and averages. */
+  unit: "pct" | "count" | "plain";
   /** Single-series hero chart: area fill and value labels on every point. */
   hero?: boolean;
   height?: number;
@@ -109,7 +110,7 @@ export const LineChart: React.FC<{
   const { max, ticks } = axis(Math.max(0.0001, ...series.flatMap((s) => s.values)) * 1.04, 4);
   const x = (i: number) => m.l + (years.length > 1 ? (i * (W - m.l - m.r)) / (years.length - 1) : (W - m.l - m.r) / 2);
   const y = (v: number) => H - m.b - (v / max) * (H - m.t - m.b);
-  const fmt = (v: number, d = 1) => (unit === "pct" ? fmtPct(v, d) : Math.round(v).toLocaleString("en"));
+  const fmt = (v: number, d = 1) => (unit === "pct" ? fmtPct(v, d) : unit === "plain" ? v.toFixed(2) : Math.round(v).toLocaleString("en"));
   const colorOf = (s: LineSeries) => (s.t == null ? ink : thermal(s.t, p));
   const ends = spread(
     series.map((s, i) => ({ i, y: y(s.values[s.values.length - 1] || 0) + 4, s })),

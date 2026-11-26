@@ -1150,7 +1150,16 @@ class NavigatorService:
         anchored = [c for c in self.org_anchored_communities if c["organization_id"] == group_id]
         edesc = self._load_entity_descriptions().get(group_id)
 
+        papers_here = _as_int(base.get("papers")) if base else None
+        paper_rank = (
+            1 + sum(1 for o in self.groups_orgs if _as_int(o.get("papers")) > papers_here)
+            if papers_here is not None
+            else None
+        )
+
         return {
+            "paper_rank": paper_rank,
+            "ranked_organizations": len(self.groups_orgs),
             "profile": profile,
             "description": edesc,
             "specializations": specializations,
@@ -1197,6 +1206,7 @@ class NavigatorService:
                 "centrality_rating": rep.get("centrality_rating"),
                 "centrality_rationale": rep.get("centrality_rationale"),
                 "dominant_topics": comm.get("top_entities", [])[:6],
+                "paper_count": _as_int(comm.get("paper_count")),
                 "papers_by_year": comm.get("papers_by_year", {}),
                 "top_papers": comm.get("top_papers", [])[:8],
                 "top_orgs": comm.get("top_organizations", [])[:6],
@@ -1329,7 +1339,26 @@ class NavigatorService:
 
     def get_community_detail(self, community_id: str) -> dict[str, Any] | None:
         _, by_id = self._build_community_catalog()
-        return by_id.get(community_id)
+        item = by_id.get(community_id)
+        if item is None or not community_id.startswith("research:"):
+            return item
+        return {**item, "top_people": self._community_people(community_id, item.get("member_ids", []))}
+
+    def _community_people(self, community_id: str, member_ids: list[str]) -> list[dict[str, Any]] | None:
+        """Researchers with the most papers linked to a research community's subjects, at or above
+        the minimum evidence. None without a live graph. Cached per community."""
+        if not self._has_live_neo4j():
+            return None
+        cache = self.__dict__.setdefault("_community_people_cache", {})
+        if community_id not in cache:
+            cache[community_id] = self._run_read(
+                "MATCH (p:Paper)-[:USES_METHOD|ADDRESSES_TASK|USES_DATASET|HAS_TOPIC]->(m) WHERE m.id IN $ids "
+                "WITH DISTINCT p MATCH (r:Researcher)-[:AUTHORED]->(p) "
+                "WITH r, count(DISTINCT p) AS papers WHERE papers >= $min "
+                "RETURN r.id AS id, r.name AS name, papers ORDER BY papers DESC, name LIMIT 8",
+                {"ids": member_ids, "min": self.MIN_RESEARCHER_PAPERS},
+            )
+        return cache[community_id]
 
     def get_community_members(self, community_id: str, *, limit: int = 40, offset: int = 0) -> dict[str, Any] | None:
         _, by_id = self._build_community_catalog()

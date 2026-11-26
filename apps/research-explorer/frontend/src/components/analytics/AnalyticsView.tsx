@@ -26,12 +26,13 @@ import { EChartBox } from "./EChartBox";
 
 import { fmt, pct, Table, Panel } from "./DashboardPrimitives";
 import { QualityFigures } from "./QualityFigures";
-import { DashboardSection, DashboardNav } from "./DashboardNavigation";
+import { DashboardSection, DashboardNav, DashboardOnly } from "./DashboardNavigation";
 export const AnalyticsView: React.FC<{
   summary?: GraphSummaryResponse;
   onFocusNodeInGraph: (id: string, name?: string) => void;
 }> = ({ summary, onFocusNodeInGraph }) => {
   const [selectedPair, setSelectedPair] = useState("");
+  const only = React.useContext(DashboardOnly);
   const {
     darkMode,
     analyticsSection: section,
@@ -172,9 +173,14 @@ export const AnalyticsView: React.FC<{
   const change = topicChanges(cells, yearMin, yearMax);
   return (
     <div
-      data-testid="analytics-view"
-      className="analytics-dashboard flex-1 overflow-y-auto text-ink"
+      data-testid={only ? "analytics-embedded" : "analytics-view"}
+      className={
+        only
+          ? "analytics-dashboard analytics-embedded text-ink"
+          : "analytics-dashboard flex-1 overflow-y-auto text-ink"
+      }
     >
+      {!only && (
       <header className="analytics-heading">
         <div>
           <p className="text-xs text-muted mb-1">
@@ -202,7 +208,8 @@ export const AnalyticsView: React.FC<{
           </p>
         </details>
       </header>
-      <DashboardNav section={section} />
+      )}
+      {!only && <DashboardNav section={section} />}
       <DashboardSection
         id="overview"
         title="Research Network Overview"
@@ -1182,6 +1189,7 @@ export const AnalyticsView: React.FC<{
           </Panel>
         </div>
       </DashboardSection>
+      {!only && (
       <details className="text-xs text-muted">
         <summary className="cursor-pointer py-2">
           Artifact provenance and limitations
@@ -1207,6 +1215,7 @@ export const AnalyticsView: React.FC<{
           <p key={s}>{s}</p>
         ))}
       </details>
+      )}
     </div>
   );
 };

@@ -1,348 +1,427 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { CommunityNodeItem } from "../../types/navigator";
-import { Panel, Table } from "../analytics/DashboardPrimitives";
-import { MetricTooltip } from "./MetricTooltip";
+import { navigate, pathFor } from "../../lib/router";
+import { orgName, plural } from "../../lib/names";
+import { readPalette, thermal } from "../../lib/thermal";
+import { cleanCommunityRefs } from "../../lib/askModel";
+import { clusterLabel, clusterMomentum, clusterTitle, topTerms } from "../../lib/communityModel";
+import { paperMeta, usePapers } from "../../lib/usePapers";
+import { MIN_RESEARCHER_PAPERS } from "../../config/display";
+import type { CommunityNodeItem } from "../../types/navigator";
+import { EntityDot, ErrorLine, LoadingLine, MethodDrawer, PageHead, Section } from "../ui/primitives";
+import { Icon } from "../shell/icons";
+import { ClusterMap } from "./ClusterMap";
 
 interface CommunitiesPageProps {
+  /** From the path; opens the side panel. */
   selectedCommunityId: string | null;
   onSelectCommunity: (cid: string) => void;
   onOpenNode360: (id: string) => void;
 }
 
-const SOURCES: Array<{ id: "research_L1" | "research_L0" | "N1" | "N2"; label: string }> = [
-  { id: "research_L1", label: "Research L1 (Macro)" },
-  { id: "research_L0", label: "Research L0 (Leaves)" },
-  { id: "N1", label: "N1 Researchers (S3)" },
-  { id: "N2", label: "N2 Organizations (S3)" },
+type Source = "research_L1" | "research_L0" | "N1" | "N2";
+const SOURCES: Array<{ id: Source; label: string; unit: string }> = [
+  { id: "research_L1", label: "Research areas", unit: "papers" },
+  { id: "research_L0", label: "Narrower areas", unit: "papers" },
+  { id: "N1", label: "Co-author clusters", unit: "researchers" },
+  { id: "N2", label: "Organization clusters", unit: "organizations" },
 ];
+const MAP_LIMIT = 24;
 
-export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({
-  selectedCommunityId,
-  onSelectCommunity,
-  onOpenNode360,
-}) => {
-  const [source, setSource] = useState<"research_L1" | "research_L0" | "N1" | "N2">("research_L1");
-  const [search, setSearch] = useState("");
-  const [expandedCid, setExpandedCid] = useState<string | null>(null);
-  const [hoveredCid, setHoveredCid] = useState<string | null>(null);
+const sourceOf = (cid: string | null): Source | null => {
+  if (!cid) return null;
+  if (cid.startsWith("research:L1")) return "research_L1";
+  if (cid.startsWith("research:")) return "research_L0";
+  return cid.startsWith("N2") ? "N2" : "N1";
+};
 
-  const listQuery = useQuery({
-    queryKey: ["nav-communities", source, search],
-    queryFn: ({ signal }) => navigatorApi.listCommunities({ source, q: search, limit: 80 }, signal),
-  });
+const MapMethodNote: React.FC<{ n2Note?: string }> = ({ n2Note }) => (
+  <>
+    <p>
+      Clusters were found with the Leiden community-detection method. <b>Research areas</b> and <b>narrower areas</b> group topics, methods, tasks and datasets that appear in the same
+      papers. <b>Co-author clusters</b> group researchers in the co-authorship network and <b>organization clusters</b> group organizations in the collaboration network.
+    </p>
+    <p>
+      <b>Circle size</b> is the number of papers for research areas, and the number of members for the other two.
+    </p>
+    <p>
+      <b>Colour and left-to-right position</b> (research areas only) compare the cluster's share of all papers in 2024–2025 with its share in 2021–2022. This is a display measure for
+      this map; the analysis does not assign trend classes to clusters. The other two kinds have no yearly counts, so they are grey. Vertical position has no meaning.
+    </p>
+    <p>Cluster names and reports written by a language model are marked AI-generated. Where a cluster has no readable name, its most characteristic terms are shown.</p>
+    {n2Note && <p>{n2Note}</p>}
+    <p className="muted">Subject labels were extracted from paper text and checked by an AI reviewer (AI-assessed), not by human annotators.</p>
+  </>
+);
 
-  const activeCid =
-    selectedCommunityId || listQuery.data?.supernodes[0]?.community_id || "research:L1:1";
+const Panel: React.FC<{ cid: string; onClose: () => void; onOpenNode360: (id: string) => void }> = ({ cid, onClose, onOpenNode360 }) => {
+  const [showMembers, setShowMembers] = useState(false);
+  const q = useQuery({ queryKey: ["nav-community-detail", cid], queryFn: ({ signal }) => navigatorApi.getCommunityDetail(cid, signal) });
+  const members = useQuery({ queryKey: ["nav-community-members", cid], queryFn: () => navigatorApi.getCommunityMembers(cid, { limit: 60 }), enabled: showMembers });
+  const d: CommunityNodeItem | undefined = q.data;
+  const findings = d?.key_findings || [];
+  const sourceIds = [...new Set(findings.flatMap((f) => (f.paper_ids || []).slice(0, 2)))];
+  const topPapers = (d?.top_papers || []).slice(0, 5);
+  const meta = usePapers([...sourceIds, ...topPapers.map((x) => x.id)]);
+  const heading = useRef<HTMLHeadingElement>(null);
 
-  const detailQuery = useQuery({
-    queryKey: ["nav-community-detail", activeCid],
-    queryFn: ({ signal }) => navigatorApi.getCommunityDetail(activeCid, signal),
-    enabled: Boolean(activeCid),
-  });
+  useEffect(() => {
+    setShowMembers(false);
+  }, [cid]);
+  useEffect(() => {
+    if (d) heading.current?.focus({ preventScroll: true });
+  }, [d?.community_id]);
 
-  const membersQuery = useQuery({
-    queryKey: ["nav-community-members", expandedCid],
-    queryFn: () => navigatorApi.getCommunityMembers(expandedCid!, { limit: 40 }),
-    enabled: Boolean(expandedCid),
-  });
-
-  // Concentric + collision-relaxed coordinates for super-node SVG canvas
-  const layoutNodes = useMemo(() => {
-    const nodes = (listQuery.data?.supernodes || []).slice(0, 36);
-    const n = Math.max(nodes.length, 1);
-    const maxSize = Math.max(...nodes.map((x) => x.size), 1);
-    const placed = nodes.map((node, idx) => {
-      const angle = (2 * Math.PI * idx) / n - Math.PI / 2;
-      const ring = 125 + (idx % 3) * 34;
-      const radius = 11 + Math.round(Math.sqrt(node.size / maxSize) * 16);
-      return {
-        node,
-        cx: 260 + ring * Math.cos(angle),
-        cy: 200 + ring * Math.sin(angle),
-        radius,
-      };
-    });
-    for (let iter = 0; iter < 40; iter++) {
-      for (let i = 0; i < placed.length; i++) {
-        for (let j = i + 1; j < placed.length; j++) {
-          const dx = placed[j].cx - placed[i].cx;
-          const dy = placed[j].cy - placed[i].cy;
-          const dist = Math.hypot(dx, dy) || 0.01;
-          const minSep = placed[i].radius + placed[j].radius + 8;
-          if (dist < minSep) {
-            const push = (minSep - dist) * 0.5;
-            const ux = dx / dist;
-            const uy = dy / dist;
-            placed[i].cx = Math.max(placed[i].radius + 10, Math.min(510 - placed[i].radius, placed[i].cx - ux * push));
-            placed[i].cy = Math.max(placed[i].radius + 10, Math.min(390 - placed[i].radius, placed[i].cy - uy * push));
-            placed[j].cx = Math.max(placed[j].radius + 10, Math.min(510 - placed[j].radius, placed[j].cx + ux * push));
-            placed[j].cy = Math.max(placed[j].radius + 10, Math.min(390 - placed[j].radius, placed[j].cy + uy * push));
-          }
-        }
-      }
-    }
-    return placed;
-  }, [listQuery.data]);
-
-  const coordById = useMemo(
-    () => new Map(layoutNodes.map((item) => [item.node.community_id, { cx: item.cx, cy: item.cy }])),
-    [layoutNodes],
-  );
-
-  const detail: CommunityNodeItem | undefined = detailQuery.data;
+  const terms = (d?.dominant_topics || []) as Array<any>;
+  const rising = terms.filter((t) => typeof t === "object" && t.label === "Method" && (t.trend_class === "rising" || t.trend_class === "emerging"));
 
   return (
-    <div data-testid="page-communities" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
-      <div className="ledger-panel p-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-lg font-semibold text-ink">Communities & GraphRAG Super-Nodes</h1>
-          <p className="text-xs text-muted mt-0.5">
-            {listQuery.data?.n2_resolution_note || "Hierarchical Leiden super-nodes sized by membership and colored by level."}
+    <aside className="map-panel" aria-label="Cluster details" data-testid="community-panel" onKeyDown={(e) => e.key === "Escape" && onClose()}>
+      <button type="button" className="icon-btn panel-close" aria-label="Close cluster details" onClick={onClose}>
+        <Icon name="close" size={19} />
+      </button>
+      {q.isLoading && <LoadingLine />}
+      {q.isError && <ErrorLine error={q.error} onRetry={() => q.refetch()} />}
+      {d && (
+        <>
+          <h2 ref={heading} tabIndex={-1}>
+            {clusterTitle(d)}
+          </h2>
+          <p className="muted">
+            {d.paper_count ? `${plural(d.paper_count, "paper")}, ` : ""}
+            {plural(d.size, d.source === "N1" ? "researcher" : d.source === "N2" ? "organization" : "linked subject")}
           </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <div role="group" aria-label="Community source" className="ledger-segmented">
-            {SOURCES.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                data-active={source === s.id}
-                onClick={() => {
-                  setSource(s.id);
-                  setExpandedCid(null);
-                }}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Filter title or topic…"
-            aria-label="Filter communities"
-            className="ledger-input h-8 px-2.5 w-44"
-          />
-        </div>
-      </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
-        <div className="xl:col-span-2 space-y-4">
-          <Panel title="Community Super-Node Map (Click Node to Open Report · Expand to Inspect Members)">
-            <div className="border border-rule rounded bg-ground p-2">
-              <svg viewBox="0 0 520 400" className="w-full max-h-[380px]" role="img" aria-label="Community super-node map">
-                {(listQuery.data?.edges || []).map((e, i) => {
-                  const s = coordById.get(e.source);
-                  const t = coordById.get(e.target);
-                  if (!s || !t) return null;
-                  return (
-                    <line
-                      key={i}
-                      x1={s.cx}
-                      y1={s.cy}
-                      x2={t.cx}
-                      y2={t.cy}
-                      stroke="var(--border)"
-                      strokeWidth={Math.min(3, 0.8 + e.weight * 0.5)}
-                      strokeOpacity={0.7}
-                    />
-                  );
-                })}
-                {layoutNodes.map(({ node, cx, cy, radius }) => {
-                  const selected = node.community_id === activeCid;
-                  const fill = node.level === 1 ? "#1d5fbf" : "#2a8c6a";
-                  return (
-                    <g
-                      key={node.community_id}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`${node.community_id} ${node.title} (${node.size} members)`}
-                      onMouseEnter={() => setHoveredCid(node.community_id)}
-                      onMouseLeave={() => setHoveredCid(null)}
-                      onFocus={() => setHoveredCid(node.community_id)}
-                      onBlur={() => setHoveredCid(null)}
-                      onClick={() => onSelectCommunity(node.community_id)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          onSelectCommunity(node.community_id);
-                        }
-                      }}
-                      className="cursor-pointer focus:outline-none"
-                    >
-                      <circle
-                        cx={cx}
-                        cy={cy}
-                        r={radius}
-                        fill={fill}
-                        fillOpacity={selected ? 0.95 : 0.72}
-                        stroke={selected ? "var(--text)" : "var(--surface)"}
-                        strokeWidth={selected ? 2.5 : 1.2}
-                      />
-                      <text
-                        x={cx}
-                        y={cy + 3}
-                        textAnchor="middle"
-                        fontSize="8"
-                        fill="#ffffff"
-                        pointerEvents="none"
-                      >
-                        {node.size}
-                      </text>
-                    </g>
-                  );
-                })}
-                {hoveredCid && (() => {
-                  const item = layoutNodes.find((x) => x.node.community_id === hoveredCid);
-                  if (!item) return null;
-                  const lbl = `${item.node.community_id}: ${item.node.title.slice(0, 32)} (${item.node.size})`;
-                  const w = Math.min(260, lbl.length * 6 + 14);
-                  const tx = Math.max(8, Math.min(512 - w, item.cx - w / 2));
-                  const ty = item.cy - item.radius - 24 > 6 ? item.cy - item.radius - 24 : item.cy + item.radius + 6;
-                  return (
-                    <g pointerEvents="none">
-                      <rect x={tx} y={ty} width={w} height={18} rx={4} fill="var(--surface)" stroke="var(--control)" />
-                      <text x={tx + 7} y={ty + 12} fontSize="10" fill="var(--text)">{lbl}</text>
-                    </g>
-                  );
-                })()}
-              </svg>
-            </div>
-            <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
-              {(listQuery.data?.supernodes || []).slice(0, 18).map((n) => (
-                <button
-                  key={n.community_id}
-                  type="button"
-                  data-testid={`supernode-${n.community_id}`}
-                  onClick={() => onSelectCommunity(n.community_id)}
-                  className={`px-2 py-1 rounded border text-left ${
-                    n.community_id === activeCid ? "border-[var(--accent)] bg-raised font-medium" : "border-border hover:bg-raised"
-                  }`}
-                >
-                  <span className="font-mono text-[11px]">{n.community_id}</span> · {n.title.slice(0, 30)} ({n.size})
-                </button>
-              ))}
-            </div>
-          </Panel>
-
-          <Panel title="Rising Researchers (2024–2025 vs 2021–2022)">
-            <Table
-              label="Rising researchers"
-              headers={["Researcher", "Community", "Recent Papers", "Base Papers", "Share Ratio", "New Entrant"]}
-              rows={(listQuery.data?.rising_researchers || []).map((r) => [
-                <button key={r.id} type="button" onClick={() => onOpenNode360(r.id)} className="text-[var(--accent)] hover:underline text-left">
-                  {r.name}
-                </button>,
-                `N1:${r.community}`,
-                r.recent_papers,
-                r.base_papers,
-                r.share_ratio.toFixed(2),
-                r.new_entrant ? "Yes" : "No",
-              ])}
-            />
-          </Panel>
-        </div>
-
-        <div className="space-y-4">
-          <Panel title={detail?.title || activeCid}>
-            {detail ? (
-              <div className="space-y-3 text-xs">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono px-1.5 py-0.5 rounded bg-raised">{detail.community_id}</span>
-                  <span>Level {detail.level}</span>
-                  <span>· {detail.size.toLocaleString()} members</span>
-                  {detail.centrality_rating !== null && detail.centrality_rating !== undefined && (
-                    <span>· Centrality {detail.centrality_rating}/10</span>
-                  )}
-                  <MetricTooltip
-                    label="Leiden & Centrality"
-                    definition="Multi-resolution Leiden communities on paper co-occurrence and coauthorship networks; centrality rating (1–10) reflects GraphRAG summary importance."
-                  />
-                </div>
-
-                {(detail.ai_generated_label || detail.summary) && (
-                  <span className="inline-block px-2 py-0.5 rounded bg-raised font-medium">
-                    {detail.ai_generated_label || "AI-generated from graph data"}
-                  </span>
-                )}
-
-                {detail.summary ? (
-                  <p className="text-ink leading-relaxed">{detail.summary}</p>
-                ) : (
-                  <p className="text-muted">No LLM report stored for this community size/partition.</p>
-                )}
-
-                {detail.key_findings && detail.key_findings.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold mb-1">Key Findings & Citations</h4>
-                    <ul className="list-disc pl-4 space-y-1 text-muted">
-                      {detail.key_findings.map((kf, i) => (
-                        <li key={i}>
-                          {kf.claim}{" "}
-                          {(kf.paper_ids || []).slice(0, 3).map((pid) => (
-                            <button
-                              key={pid}
-                              type="button"
-                              onClick={() => onOpenNode360(pid)}
-                              className="font-mono text-[11px] text-[var(--accent)] hover:underline mr-1"
-                            >
-                              [{pid}]
-                            </button>
-                          ))}
-                        </li>
+          <h3>What it is about</h3>
+          {d.summary ? (
+            <>
+              <p className="prose prose-sm">{cleanCommunityRefs(d.summary)}</p>
+              {findings.length > 0 && (
+                <ul className="findings">
+                  {findings.map((f, i) => (
+                    <li key={i}>
+                      {cleanCommunityRefs(f.claim)}
+                      {(f.paper_ids || []).slice(0, 2).map((pid) => (
+                        <button
+                          key={pid}
+                          type="button"
+                          className="fnref"
+                          onClick={() => onOpenNode360(pid)}
+                          title={meta.data?.[pid]?.title || "Open the paper"}
+                          aria-label={`Source ${sourceIds.indexOf(pid) + 1}: ${meta.data?.[pid]?.title || "paper"}`}
+                        >
+                          {sourceIds.indexOf(pid) + 1}
+                        </button>
                       ))}
-                    </ul>
-                  </div>
-                )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {sourceIds.length > 0 && (
+                <ol className="sources">
+                  {sourceIds.map((pid) => (
+                    <li key={pid} className="paper-ref">
+                      <button type="button" className="t paperlink" onClick={() => onOpenNode360(pid)}>
+                        {meta.data?.[pid]?.title || "Loading title…"}
+                      </button>
+                      <span className="meta">{paperMeta(meta.data?.[pid])}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+              <p className="note">{d.ai_generated_label || "AI-generated from graph data"}.</p>
+            </>
+          ) : (
+            <p className="note">No written report for this cluster. Its most characteristic terms are {topTerms(d, 5) || "not recorded"}.</p>
+          )}
 
-                {detail.hubs && detail.hubs.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold mb-1">Hubs & Brokers</h4>
-                    <p className="text-muted"><strong>Hubs:</strong> {detail.hubs.slice(0, 5).join(", ")}</p>
-                    {detail.brokers && detail.brokers.length > 0 && (
-                      <p className="text-muted"><strong>Brokers (participation):</strong> {detail.brokers.slice(0, 5).join(", ")}</p>
-                    )}
-                  </div>
-                )}
-
-                <div className="pt-2 border-t border-rule">
-                  <button
-                    type="button"
-                    data-testid="expand-community-members"
-                    onClick={() => setExpandedCid(detail.community_id)}
-                    className="ledger-btn h-8 px-3 text-xs"
-                  >
-                    Expand members ({detail.size})
+          {terms.length > 0 && (
+            <div className="chips">
+              {terms.slice(0, 6).map((t, i) =>
+                typeof t === "object" ? (
+                  <button key={t.id} type="button" className="echip" onClick={() => navigate(pathFor("topics", t.id))}>
+                    <EntityDot kind={t.label} />
+                    {t.name} <span className="c">{t.papers}</span>
                   </button>
-                </div>
+                ) : (
+                  <span key={i} className="echip echip-static">
+                    {String(t)}
+                  </span>
+                ),
+              )}
+            </div>
+          )}
 
-                {expandedCid === detail.community_id && membersQuery.data && (
-                  <div data-testid="community-members-panel" className="pt-2 border-t border-rule">
-                    <h4 className="font-semibold mb-1">
-                      Expanded Members ({membersQuery.data.members.length} of {membersQuery.data.total})
-                    </h4>
-                    <ul className="max-h-52 overflow-y-auto space-y-1">
-                      {membersQuery.data.members.map((m) => (
-                        <li key={m.id} className="flex justify-between gap-2 border-b border-rule pb-0.5">
-                          <button type="button" onClick={() => onOpenNode360(m.id)} className="text-[var(--accent)] hover:underline truncate text-left">
-                            {m.name}
-                          </button>
-                          <span className="text-faint shrink-0">{m.label}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+          {(d.top_orgs?.length || 0) > 0 && (
+            <>
+              <h3>Leading groups</h3>
+              <ul className="plain-list">
+                {d.top_orgs!.map((o) => (
+                  <li key={o.id}>
+                    <button type="button" className="rowlink" onClick={() => navigate(pathFor("groups", o.id))}>
+                      {orgName(o.name)}
+                    </button>
+                    {o.papers != null && <span className="muted">{plural(o.papers, "paper")}</span>}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {d.label_organization && (
+            <>
+              <h3>Characteristic organizations</h3>
+              <p>{d.label_organization.split(";").map((x) => orgName(x.trim())).slice(0, 5).join(", ")}</p>
+            </>
+          )}
+
+          {d.top_people && (
+            <>
+              <h3>Leading people</h3>
+              {d.top_people.length ? (
+                <ul className="plain-list">
+                  {d.top_people.map((r) => (
+                    <li key={r.id}>
+                      <button type="button" className="rowlink" onClick={() => onOpenNode360(r.id)}>
+                        {r.name}
+                      </button>
+                      <span className="muted">{plural(r.papers, "paper")}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="note">No researcher has {MIN_RESEARCHER_PAPERS} or more papers in this cluster.</p>
+              )}
+            </>
+          )}
+          {(d.hubs?.length || 0) > 0 && (
+            <>
+              <h3>Most central people</h3>
+              <p>{d.hubs!.slice(0, 5).join(", ")}</p>
+              {(d.brokers?.length || 0) > 0 && (
+                <>
+                  <h3>People who connect it to other clusters</h3>
+                  <p>{d.brokers!.slice(0, 5).join(", ")}</p>
+                </>
+              )}
+            </>
+          )}
+
+          {rising.length > 0 && (
+            <>
+              <h3>Rising methods in it</h3>
+              <div className="chips">
+                {rising.map((t) => (
+                  <button key={t.id} type="button" className="echip" onClick={() => navigate(pathFor("topics", t.id))}>
+                    <EntityDot kind="Method" />
+                    {t.name}
+                  </button>
+                ))}
               </div>
-            ) : (
-              <p className="text-xs text-muted">Select a community super-node.</p>
-            )}
-          </Panel>
+            </>
+          )}
+
+          {topPapers.length > 0 && (
+            <>
+              <h3>Papers</h3>
+              <ul className="plain-list plain-list-stack">
+                {topPapers.map((x) => (
+                  <li key={x.id} className="paper-ref">
+                    <button type="button" className="t paperlink" onClick={() => onOpenNode360(x.id)}>
+                      {x.title}
+                    </button>
+                    <span className="meta">{paperMeta(meta.data?.[x.id]) || x.year}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <h3>Members</h3>
+          {!showMembers ? (
+            <button type="button" className="chip-btn" data-testid="expand-community-members" onClick={() => setShowMembers(true)}>
+              Show members ({d.size.toLocaleString("en")})
+            </button>
+          ) : (
+            <div data-testid="community-members-panel">
+              {members.isLoading && <LoadingLine />}
+              {members.data && (
+                <>
+                  <p className="muted">
+                    Showing {members.data.members.length} of {members.data.total.toLocaleString("en")}.
+                  </p>
+                  <div className="chips">
+                    {members.data.members.map((m) => (
+                      <button key={m.id} type="button" className="echip" onClick={() => onOpenNode360(m.id)}>
+                        <EntityDot kind={m.label} />
+                        {m.label === "Organization" ? orgName(m.name) : m.name}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </aside>
+  );
+};
+
+export const CommunitiesPage: React.FC<CommunitiesPageProps> = ({ selectedCommunityId, onSelectCommunity, onOpenNode360 }) => {
+  const [source, setSource] = useState<Source>(sourceOf(selectedCommunityId) || "research_L1");
+  const [search, setSearch] = useState("");
+
+  // A link to a cluster of another kind switches the map to that kind.
+  useEffect(() => {
+    const s = sourceOf(selectedCommunityId);
+    if (s) setSource(s);
+  }, [selectedCommunityId]);
+
+  const list = useQuery({
+    queryKey: ["nav-communities", source, search],
+    queryFn: ({ signal }) => navigatorApi.listCommunities({ source, q: search, limit: 80 }, signal),
+    placeholderData: (prev) => prev,
+  });
+  const pulse = useQuery({ queryKey: ["nav-pulse"], queryFn: ({ signal }) => navigatorApi.getPulse(signal), staleTime: 600_000 });
+
+  const info = SOURCES.find((s) => s.id === source)!;
+  const research = source.startsWith("research");
+  const p = readPalette();
+  const items = useMemo(() => {
+    const totals = pulse.data?.year_totals || {};
+    return (list.data?.supernodes || [])
+      .filter((n) => n.source === source)
+      .map((n) => {
+        const mom = research ? clusterMomentum(n.papers_by_year, totals) : null;
+        return {
+          id: n.community_id,
+          label: clusterLabel(n),
+          title: clusterTitle(n),
+          size: research ? n.paper_count || 0 : n.size,
+          t: mom?.t ?? 0,
+          change: mom?.words || "",
+        };
+      })
+      .sort((a, b) => b.size - a.size);
+  }, [list.data, pulse.data, source, research]);
+  const shown = items.slice(0, MAP_LIMIT);
+  const rising = (list.data?.rising_researchers || []).filter((r) => r.recent_papers >= MIN_RESEARCHER_PAPERS).slice(0, 15);
+
+  return (
+    <div data-testid="page-communities">
+      <PageHead title="Map of research clusters" sub="Groups of subjects, people and organizations that belong together. Select one to read about it." />
+      <div className="controls">
+        <div className="seg seg-wrap" role="group" aria-label="Kind of cluster">
+          {SOURCES.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              aria-pressed={source === s.id}
+              onClick={() => {
+                setSource(s.id);
+                if (selectedCommunityId) navigate(pathFor("map"));
+              }}
+            >
+              {s.label}
+            </button>
+          ))}
         </div>
+        <label className="control control-grow">
+          <span className="sr-only">Filter clusters</span>
+          <input className="field-input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Filter by name or term…" />
+        </label>
+        <MethodDrawer testId="map-how">
+          <MapMethodNote n2Note={source === "N2" ? list.data?.n2_resolution_note : undefined} />
+        </MethodDrawer>
       </div>
+      {list.isLoading && <LoadingLine />}
+      {list.isError && <ErrorLine error={list.error} onRetry={() => list.refetch()} />}
+
+      <div className={`map-layout ${selectedCommunityId ? "has-panel" : ""}`}>
+        <div className="map-main">
+          {list.data && (
+            <>
+              <div className="map-legend">
+                {research ? (
+                  <>
+                    <span>Cooling</span>
+                    <span className="scale" aria-hidden="true" />
+                    <span>Heating</span>
+                  </>
+                ) : null}
+                <span>
+                  Circle size shows {info.unit}. {items.length > shown.length ? `The ${shown.length} largest of ${items.length} are on the map; all are listed below.` : ""}
+                </span>
+              </div>
+              {shown.length ? (
+                <ClusterMap
+                  items={shown}
+                  positioned={research}
+                  selected={selectedCommunityId}
+                  unit={info.unit}
+                  colorOf={(t) => (research ? thermal(t, p) : p.neutral)}
+                  onSelect={onSelectCommunity}
+                />
+              ) : (
+                <p className="note">No cluster matches that filter.</p>
+              )}
+              <details className="map-all">
+                <summary>All {items.length} clusters as a list</summary>
+                <ul className="plain-list">
+                  {items.map((it) => (
+                    <li key={it.id}>
+                      <button type="button" className="rowlink" onClick={() => onSelectCommunity(it.id)}>
+                        {it.title}
+                      </button>
+                      <span className="muted">
+                        {it.size.toLocaleString("en")} {info.unit}
+                        {it.change ? `, ${it.change}` : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </>
+          )}
+        </div>
+        {selectedCommunityId && <Panel cid={selectedCommunityId} onClose={() => navigate(pathFor("map"))} onOpenNode360={onOpenNode360} />}
+      </div>
+
+      {source === "N1" && rising.length > 0 && (
+        <Section id="rising-people" title="Rising researchers" hint={`At least ${MIN_RESEARCHER_PAPERS} papers in 2024–2025, compared with 2021–2022.`}>
+          <div className="table-scroll">
+            <table className="data">
+              <thead>
+                <tr>
+                  <th>Researcher</th>
+                  <th className="num">Papers 2024–2025</th>
+                  <th className="num">Papers 2021–2022</th>
+                  <th>Cluster</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rising.map((r) => (
+                  <tr key={r.id}>
+                    <td>
+                      <button type="button" className="rowlink" onClick={() => onOpenNode360(r.id)}>
+                        {r.name}
+                      </button>
+                    </td>
+                    <td className="num">{r.recent_papers}</td>
+                    <td className="num">{r.new_entrant ? "none (new)" : r.base_papers}</td>
+                    <td>
+                      <button type="button" className="textlink" onClick={() => onSelectCommunity(`N1:${r.community}`)}>
+                        Open cluster
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Section>
+      )}
     </div>
   );
 };

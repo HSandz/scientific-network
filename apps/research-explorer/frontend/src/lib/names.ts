@@ -95,6 +95,8 @@ export function communityTitle(title: string | null | undefined): string {
   t = t.replace(/^(?:(?:primarily|mainly)\s+)?(?:focus(?:es|ed|ing)?\s+on|centers?\s+on|dominates?|is\s+about)\s+/i, "");
   t = t.replace(new RegExp(String.raw`\s*\b(?:in|of|for)\s+(?:(?:research\s+)?community\s+)?${id}`, "gi"), "");
   t = t.replace(new RegExp(String.raw`\(?\b(?:(?:research\s+)?community\s+)?${id}\b\)?`, "gi"), "");
+  t = t.replace(/^N[12]\s+community\s+\d+\s*:?\s*/i, "");
+  t = t.replace(/\s*\((?:L0|L1)\)\s*$/i, "").replace(/\s+research\s+community$/i, "");
   t = t.replace(/\s{2,}/g, " ").replace(/^[\s:–-]+|[\s:–.-]+$/g, "");
   if (t.length < 4 || /^(?:research\s+)?community$/i.test(t)) return "";
   return t.charAt(0).toUpperCase() + t.slice(1);

@@ -17,6 +17,7 @@ import {
 } from "./lib/router";
 import { useExplorerStore } from "./stores/useExplorerStore";
 import type { WorkspaceTab } from "./types/explorer";
+import { DashboardOnly } from "./components/analytics/DashboardNavigation";
 
 const ExplorePage = React.lazy(() => import("./components/explore/ExplorePage").then((m) => ({ default: m.ExplorePage })));
 const AnalyticsView = React.lazy(() => import("./components/analytics/AnalyticsView").then((m) => ({ default: m.AnalyticsView })));
@@ -57,6 +58,9 @@ const NetworkViews: React.FC<{ current: "enriched" | "release" }> = ({ current }
     </div>
   </nav>
 );
+
+/** v4 dashboard sections with no counterpart on the enriched Network page. */
+const RELEASE_ONLY_SECTIONS = ["robustness", "sectors", "trajectories"];
 
 const EXPLORE_TABS = new Set<WorkspaceTab>(["graph", "table"]);
 
@@ -208,6 +212,16 @@ export const App: React.FC = () => {
   const isRelease = route.page === "network" && route.param === "release";
   const fullBleed = route.page === "ask" || isExplore || isRelease;
 
+  /** v4 dashboard drill-down: show a bounded neighbourhood in Explore. */
+  const focusInGraph = (id: string, name?: string) => {
+    const state = useExplorerStore.getState();
+    state.setViewMode(id.startsWith("researcher:") ? "researchers" : id.startsWith("organization:") ? "organizations" : "citations");
+    state.resetFilters();
+    state.setEdgeFilterMode("all");
+    queueExploreFocus({ nodeId: id, name, replace: true });
+    state.setWorkspaceTab("graph");
+  };
+
   const fallback = <p role="status" className="loading-line view">Loading…</p>;
 
   let page: React.ReactNode;
@@ -235,10 +249,10 @@ export const App: React.FC = () => {
       );
       break;
     case "groups":
-      page = <div className="view"><GroupsPage selectedGroupId={selectedGroupId} onSelectGroup={openGroup} onOpenNode360={openNode360} /></div>;
+      page = <div className="view"><GroupsPage selectedGroupId={route.param} onSelectGroup={openGroup} onOpenNode360={openNode360} /></div>;
       break;
     case "map":
-      page = <div className="view"><CommunitiesPage selectedCommunityId={selectedCommunityId} onSelectCommunity={openCommunity} onOpenNode360={openNode360} /></div>;
+      page = <div className="view"><CommunitiesPage selectedCommunityId={route.param} onSelectCommunity={openCommunity} onOpenNode360={openNode360} /></div>;
       break;
     case "network":
       page = isRelease ? (
@@ -246,20 +260,21 @@ export const App: React.FC = () => {
         <NetworkViews current="release" />
         <AnalyticsView
           summary={summaryQuery.data}
-          onFocusNodeInGraph={(id, name) => {
-            const state = useExplorerStore.getState();
-            state.setViewMode(id.startsWith("researcher:") ? "researchers" : id.startsWith("organization:") ? "organizations" : "citations");
-            state.resetFilters();
-            state.setEdgeFilterMode("all");
-            queueExploreFocus({ nodeId: id, name, replace: true });
-            state.setWorkspaceTab("graph");
-          }}
+          onFocusNodeInGraph={focusInGraph}
         />
         </div>
       ) : (
         <div className="view">
-          <NetworkViews current="enriched" />
-          <NetworkSciencePage onOpenNode360={openNode360} />
+          <NetworkSciencePage
+            onOpenNode360={openNode360}
+            releaseSections={
+              <React.Suspense fallback={fallback}>
+                <DashboardOnly.Provider value={RELEASE_ONLY_SECTIONS}>
+                  <AnalyticsView summary={summaryQuery.data} onFocusNodeInGraph={focusInGraph} />
+                </DashboardOnly.Provider>
+              </React.Suspense>
+            }
+          />
         </div>
       );
       break;
