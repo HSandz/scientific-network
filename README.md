@@ -31,6 +31,15 @@ community reports (local and global search) and a multi-hop planner over nine re
 tools, run by a ≤9B local language model (Qwen3.5-4B, Q4_K_M). Every answer shows its reasoning
 trace and highlighted subgraph.
 
+- **Subject specialization everywhere:** `rank` computes N4 Personalized PageRank and lift on
+  demand (and caches it) for subjects outside the precomputed top 30, falling back to
+  revealed comparative advantage (`trends/group-interest.csv`), while entity linking prefers
+  the question's implied kind (`Method`/`Task`/`Topic`/`Dataset`), offers alternatives, and
+  retries once on empty steps.
+- **Fast warm-up:** backend startup preloads embeddings, vector store, analysis artifacts, Neo4j
+  verification and a 4-token LLM ping when configured, cutting cold-start time before the first
+  event from ~20.7 s to ~1.5 s.
+
 | Link | Status |
 | --- | --- |
 | System URL (deployed Navigator) | **pending**: deployment prepared ([plan](ops/azure/navigator-deployment.md)), awaiting approval |
@@ -60,12 +69,12 @@ trace and highlighted subgraph.
     (0.350) close together.
   - S4's AI-assessed citation validity of 0.36 describes the earlier citation labelling, which the
     product changed on 2026-11-26.
-- **Model choice (K1).** Qwen3.5-4B (4.66B total parameters) was chosen on development extraction
-  F1 ([K1 report](reports/enrichment-v1/k1-model-selection.md)).
-  - On the development answer-accuracy arm, the reference Qwen3.5-9B (9.65B, above the 9.0B rule)
-    scores +0.13 over the 4B. That meets the §6.1 margin, but switching needs a team decision, and
-    none has been made.
-  - Gemma-4-E4B-it (8.0B) scores slightly below the 4B.
+- **Model choice (K1).** **Team decision (2026-11-26): keep Qwen3.5-4B (4.66B total parameters).**
+  Qwen3.5-4B was chosen on development extraction F1 ([K1 report](reports/enrichment-v1/k1-model-selection.md)).
+  - On the development answer-accuracy arm ([K1 answer results](reports/final-exam/k1-answer/results.md)),
+    Qwen3.5-9B (9.65B total parameters, above the ≤9.0B ceiling) scored 0.634 against 0.502 for
+    Qwen3.5-4B; it remains the **parameter-scale reference** only.
+  - Gemma-4-E4B-it (8.0B) scored 0.469, slightly below Qwen3.5-4B.
 
 **AI-assessed statement.** All quality figures for the enrichment and the application (precision,
 linking, citation validity, pairwise and supplementary precision) are judged by isolated LLM
@@ -212,6 +221,16 @@ queue.
 | `reports/` | Measured results, receipts and figures, one folder per release |
 | `report/latex/` | Course report sources |
 | `docs/` | Requirements, design, workflows, decisions and the work log; start at [docs/README.md](docs/README.md) |
+
+## Licences
+
+- **Code:** [MIT License](LICENSE) (`Copyright (c) 2026 Research Trend Navigator contributors`).
+- **Project-authored data** (enrichment triples not verbatim from external sources, resolved graph
+  edges, analysis outputs, community reports and QA benchmark): **CC BY 4.0** — see
+  [LICENSE-DATA.md](LICENSE-DATA.md).
+- **Third-party sources** keep their own terms: OpenAlex metadata, ROR identifiers and Wikidata
+  statements/IDs under **CC0 1.0**; Wikipedia lead summaries under **CC BY-SA 4.0** with
+  attribution; AI-generated text is labelled and excludes third-party verbatim abstracts.
 
 Raw downloads, graphs, models, credentials and database volumes are not tracked.
 The repository is [github.com/HSandz/scientific-network](https://github.com/HSandz/scientific-network).

@@ -467,7 +467,7 @@ the best eligible model by at least 5 F1 points on extraction or 10 points on
 development answer accuracy, *and* the team accepts the "9B language model"
 argument and records it in a D042 amendment. Report the full table as K1 evidence,
 with the exact model ID, revision, quantization and provider. Check runtime
-supports (Ollama, llama.cpp, vLLM, hosted providers) for each candidate at M0;
+support (Ollama, llama.cpp, vLLM, hosted providers) for each candidate at M0;
 Qwen3.5 uses a hybrid Gated DeltaNet and attention architecture, and Gemma 4 E4B
 uses per-layer embeddings.
 
@@ -656,11 +656,11 @@ where the evidence exists in the repository. All quality figures are AI-assessed
 - [x] S1 L, C and σ against both baselines for N1, N2 and N4; path-length histogram; evolution by year: [analysis v2](../../reports/final-exam/analysis-v2/README.md), [`smallworld/`](../../reports/final-exam/analysis-v2/smallworld/)
 - [x] S2 PageRank and personalized PageRank tables; correlation with other centralities: [analysis v2 §S2](../../reports/final-exam/analysis-v2/README.md), [`ranking/`](../../reports/final-exam/analysis-v2/ranking/)
 - [x] S3 Leiden partitions with quality and stability; key individuals per community: [analysis v2 §S3](../../reports/final-exam/analysis-v2/README.md), [`communities/`](../../reports/final-exam/analysis-v2/communities/)
-- [x] K1 model comparison table and model card: [K1 report](../../reports/enrichment-v1/k1-model-selection.md) (extraction arm and the 2026-11-26 answer-quality arm, [results](../../reports/final-exam/k1-answer/results.md)); exact IDs, revisions, quantization and hashes in [`ops/llm/`](../../ops/llm/). Note: the 9.65B reference model meets the §6.1 answer-accuracy margin, and a team decision on it is pending.
+- [x] K1 model comparison table and model card: [K1 report](../../reports/enrichment-v1/k1-model-selection.md) (extraction arm and the 2026-11-26 answer-quality arm, [results](../../reports/final-exam/k1-answer/results.md)); exact IDs, revisions, quantization and hashes in [`ops/llm/`](../../ops/llm/). Team decision (2026-11-26, D042 amendment): keep Qwen3.5-4B (4.66B); Qwen3.5-9B (9.65B, above the 9.0B ceiling) remains the parameter-scale reference only.
 - [x] K2 community reports, local and global retrieval, communities visible on the graph: [`reports/final-exam/rag-v1/`](../../reports/final-exam/rag-v1/), Communities page with super-nodes (Navigator Playwright test 5)
-- [x] K3 multi-hop Ask with a visible trace; QA benchmark against three baselines: [qa-eval-v1 results](../../reports/final-exam/qa-eval-v1/results.md), Ask page (Navigator Playwright test 7)
-- [ ] Product: all §6.4 pages, tooltips on every metric, deployed URL working. *Partial:* all §6.4 pages and metric tooltips exist and pass the Navigator Playwright suite, but nothing is deployed (deployment awaits approval), and the bilingual UI was not built (optional).
-- [ ] P1–P4 slides, demo script and fallback, arXiv listing, public repository, Q&A sheet. *Partial:* the repository is public and a demo script draft exists ([draft](demo-script-draft.md)). Slides, fallback video, arXiv listing, Q&A sheet and the published data release are not done.
+- [x] K3 multi-hop Ask with a visible trace; QA benchmark against three baselines: [qa-eval-v1 results](../../reports/final-exam/qa-eval-v1/results.md), Ask page (Navigator Playwright test 7); specialization works across all subjects via on-demand PPR + RCA fallback and multi-kind linking
+- [ ] Product: all §6.4 pages, tooltips on every metric, deployed URL working. *Partial:* all §6.4 pages and metric tooltips exist, startup warm-up and mode-aware `/api/health` are active, and all Navigator (18/18) and v4 (46/46) Playwright specs pass locally; nothing is deployed yet (awaits approval), and the bilingual UI was not built (optional).
+- [ ] P1–P4 slides, demo script and fallback, arXiv listing, public repository, Q&A sheet. *Partial:* the repository is public with MIT (`LICENSE`) and CC BY 4.0 (`LICENSE-DATA.md`) licences and a demo script draft exists ([draft](demo-script-draft.md)). Slides, fallback video, arXiv listing and Q&A sheet are not done; data release v1 is prepared as a draft.
 
 ## 10. Risks and open questions
 
