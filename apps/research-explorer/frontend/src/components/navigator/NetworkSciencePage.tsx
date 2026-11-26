@@ -302,7 +302,7 @@ export const NetworkSciencePage: React.FC<NetworkSciencePageProps> = ({ onOpenNo
           hint="Analyses that exist only for the earlier release graph, which has no extracted methods, tasks or datasets: how far collaboration results survive stricter evidence, how academia and industry work together, and citation patterns."
           testId="network-release-checks"
         >
-          <AppLink to={pathFor("network", "release")} className="textlink" >
+          <AppLink to={pathFor("network", "release")} className="textlink" data-testid="network-view-release">
             Open the full v4 release report
           </AppLink>
           <div className="release-embed">{releaseSections}</div>

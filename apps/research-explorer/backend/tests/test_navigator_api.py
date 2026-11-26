@@ -1,6 +1,7 @@
 """Offline & mocked tests for Phase 5 Research Trend Navigator API endpoints."""
 
 from dataclasses import replace
+import gzip
 import json
 from pathlib import Path
 import sys
@@ -405,3 +406,37 @@ def test_research_community_detail_adds_paper_count_and_people(nav_client: TestC
     body = nav_client.get("/api/communities/research:L1:1").json()
     assert body["paper_count"] == 40
     assert body["top_people"] is None or all(x["papers"] >= 5 for x in body["top_people"])
+
+
+def test_organization_papers_come_only_from_affiliation_triples(tmp_path: Path):
+    """An author's other papers must not be credited to an organization; without the index the
+    API returns nothing instead of falling back to the researcher-level edge."""
+    from backend.scripts.build_affiliation_index import build
+    from backend.services.navigator_service import NavigatorService
+
+    graph = tmp_path / "graph.json"
+    graph.write_text(
+        json.dumps(
+            {
+                "graph_version": "synthetic",
+                "affiliation_observations": [
+                    {"researcher_id": "r:1", "paper_id": "paper:a", "organization_id": "org:x"},
+                    {"researcher_id": "r:2", "paper_id": "paper:a", "organization_id": "org:x"},
+                    {"researcher_id": "r:1", "paper_id": "paper:b", "organization_id": "org:y"},
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert build(graph)["organizations"] == {"org:x": ["paper:a"], "org:y": ["paper:b"]}
+
+    out = tmp_path / "index.json.gz"
+    with gzip.open(out, "wt", encoding="utf-8") as handle:
+        json.dump(build(graph), handle)
+    service = NavigatorService.__new__(NavigatorService)
+    service.settings = replace(load_settings(), affiliation_index_path=out)
+    assert service._organization_papers("org:x") == ["paper:a"]
+    assert service._organization_papers("org:unknown") == []
+    missing = NavigatorService.__new__(NavigatorService)
+    missing.settings = replace(load_settings(), affiliation_index_path=tmp_path / "absent.gz")
+    assert missing._organization_papers("org:x") is None

@@ -93,6 +93,8 @@ class Settings:
     rag_reports_dir: Path = REPO_ROOT / "reports" / "final-exam" / "rag-v1"
     rag_vectors_sqlite: Path = REPO_ROOT / "data" / "processed" / "rag-v1" / "vectors.sqlite"
     rag_config_path: Path = REPO_ROOT / "configs" / "rag-v1.yaml"
+    # Organization -> papers from the per-paper affiliation triples (backend/scripts/build_affiliation_index.py).
+    affiliation_index_path: Path = REPO_ROOT / "data" / "processed" / "navigator-affiliations-v1" / "index.json.gz"
     enrichment_summary_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "graph-summary.json"
     enrichment_quality_path: Path = REPO_ROOT / "reports" / "enrichment-v3" / "quality.json"
     cooccurrence_path: Path = REPO_ROOT / "reports" / "enrichment-v1" / "cooccurrence.json"

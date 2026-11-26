@@ -1,223 +1,270 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { Panel, Table, pct } from "../analytics/DashboardPrimitives";
-import { MetricTooltip } from "./MetricTooltip";
+import { ORG_ATTRIBUTION_NOTE } from "./methodNotes";
+import { CopyIdButton, ErrorLine, LoadingLine, PageHead, Section } from "../ui/primitives";
 
-const SYS_LABELS: Record<string, string> = {
-  S1_slm_only: "S1 · SLM alone (no retrieval)",
-  S2_vector_rag: "S2 · Vector RAG (top-10 abstract chunks)",
-  S3_graphrag: "S3 · GraphRAG (local & global)",
-  S4_multihop: "S4 · Full multi-hop (auto)",
-};
+const SYSTEMS: Array<[string, string]> = [
+  ["S1_slm_only", "Language model alone"],
+  ["S2_vector_rag", "Search over abstracts"],
+  ["S3_graphrag", "GraphRAG"],
+  ["S4_multihop", "Multi-hop graph search (used by Ask)"],
+];
 
-function fmtScoreCi(entry: any): string {
-  if (!entry || typeof entry.mean_score !== "number") return "—";
-  const ci = entry.bootstrap_95_ci;
-  return ci && ci.length === 2
-    ? `${entry.mean_score.toFixed(4)} [${Number(ci[0]).toFixed(4)}, ${Number(ci[1]).toFixed(4)}]`
-    : entry.mean_score.toFixed(4);
-}
+const pct = (v: unknown, digits = 1) => (typeof v === "number" ? `${(v * 100).toFixed(digits)}%` : "–");
+const range = (low: unknown, high: unknown, digits = 1) => (typeof low === "number" && typeof high === "number" ? `${(low * 100).toFixed(digits)} to ${pct(high, digits)}` : "–");
+const score = (v: unknown) => (typeof v === "number" ? v.toFixed(2) : "–");
+const count = (v: unknown) => (typeof v === "number" ? v.toLocaleString("en") : "–");
 
-export const AboutDataPage: React.FC = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["nav-about-data"],
-    queryFn: ({ signal }) => navigatorApi.getAboutData(signal),
-  });
+/** A table that scrolls sideways on narrow screens. The first column names the row. */
+const Figures: React.FC<{ caption: string; head: string[]; rows: React.ReactNode[][] }> = ({ caption, head, rows }) => (
+  <div className="table-scroll" tabIndex={0} role="region" aria-label={caption}>
+    <table className="data figures">
+      <caption>{caption}</caption>
+      <thead>
+        <tr>
+          {head.map((h, i) => (
+            <th key={h} className={i ? "num" : ""}>
+              {h}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r, i) => (
+          <tr key={i}>
+            {r.map((c, j) => (j ? <td key={j} className="num">{c}</td> : <th key={j} scope="row">{c}</th>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 
-  const d: any = data || {};
-  const versions = d.versions || {};
-  const counts = d.counts || {};
-  const e4 = d.e4_v3_quality || {};
-  const runtime = d.runtime_model || {};
+const Sub: React.FC<{ main: React.ReactNode; sub: React.ReactNode }> = ({ main, sub }) => (
+  <>
+    {main}
+    <span className="cell-sub">{sub}</span>
+  </>
+);
 
-  const e4Axes: Array<[string, any]> = [
-    ["PART_OF kept edges", e4.part_of?.kept_edges],
-    ["MEMBER_OF", e4.member_of?.decided_only],
-    ["Linking v3", e4.link?.decided_or_all || e4.link],
-    ["APPLIED_TO single paper", e4.applied_to_single_paper?.shown_paper_supports_the_relation],
-  ];
-  const e4Rows = e4Axes
-    .filter(([, metric]) => metric && typeof metric === "object")
-    .map(([name, metric]) => [
-      String(name),
-      metric.estimate !== undefined ? pct(metric.estimate, 1) : "—",
-      metric.low !== undefined && metric.high !== undefined
-        ? `[${pct(metric.low, 1)}, ${pct(metric.high, 1)}]`
-        : "—",
-      metric.k !== undefined && metric.n !== undefined ? `${metric.k}/${metric.n}` : "—",
-    ]);
+export const AboutDataPage: React.FC<{ releaseQuality?: React.ReactNode }> = ({ releaseQuality }) => {
+  const q = useQuery({ queryKey: ["nav-about-data"], queryFn: ({ signal }) => navigatorApi.getAboutData(signal) });
+  const d: any = q.data;
 
   return (
-    <div data-testid="page-about-data" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
-      <div className="ledger-panel p-4">
-        <h1 className="text-lg font-semibold text-ink">About the Data, Quality Audit & Provenance</h1>
-        <p className="text-xs text-muted mt-1">{d.ai_assessment_disclosure}</p>
-      </div>
+    <div data-testid="page-about-data" className="about">
+      <PageHead title="About the data" sub="Where it comes from, how good it is, and what you may reuse" />
+      {q.isLoading && <LoadingLine />}
+      {q.isError && <ErrorLine error={q.error} onRetry={() => q.refetch()} />}
+      {d && <Body d={d} releaseQuality={releaseQuality} />}
+    </div>
+  );
+};
 
-      {isLoading && <p role="status" className="text-sm text-muted">Loading provenance…</p>}
-      {error && <p role="alert" className="text-sm text-[var(--negative)]">{String(error)}</p>}
+const Body: React.FC<{ d: any; releaseQuality?: React.ReactNode }> = ({ d, releaseQuality }) => {
+  const v = d.versions || {};
+  const c = d.counts || {};
+  const e4 = d.e4_v3_quality || {};
+  const qa = d.qa_eval_v1;
+  const run = d.runtime_model || {};
+  const reports = d.rag_reports || {};
 
-      {data && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <Panel title="Graph & Pipeline Versions">
-            <dl className="grid grid-cols-2 gap-2 text-xs">
-              <dt className="text-muted">Frozen Base Graph (v4)</dt>
-              <dd className="font-mono">{versions.v4_base}</dd>
-              <dt className="text-muted">Enriched Graph (v5 / v3 enrichment)</dt>
-              <dd className="font-mono">{versions.v5_enriched}</dd>
-              <dt className="text-muted">Enriched SHA-256</dt>
-              <dd className="font-mono truncate">{versions.v5_sha256}</dd>
-              <dt className="text-muted">SNA Config</dt>
-              <dd className="font-mono">{versions.analysis}</dd>
-              <dt className="text-muted">GraphRAG Index</dt>
-              <dd className="font-mono">{versions.rag}</dd>
-              <dt className="text-muted">SLM Runtime</dt>
-              <dd>{runtime.model_id}</dd>
-              <dt className="text-muted">Embeddings</dt>
-              <dd className="font-mono">{runtime.embeddings}</dd>
-            </dl>
-          </Panel>
+  const e4Rows: Array<[string, any]> = [
+    ["Entities linked to Wikipedia or Wikidata", e4.link],
+    ["“Part of” links that were kept", e4.part_of],
+    ["Organization “member of” links", e4.member_of],
+    ["“Applied to” links shown by one paper", e4.applied_to_single_paper?.shown_paper_supports_the_relation],
+  ];
+  const e4Sensitivity: any[] = [e4.link, e4.part_of, e4.member_of, e4.applied_to_single_paper].map((x) => x?.sensitivity_unclear_as_incorrect);
 
-          <Panel title="Enriched Graph v5 Inventory">
-            <dl className="grid grid-cols-2 gap-2 text-xs tabular-nums">
-              <dt className="text-muted">Total Nodes</dt>
-              <dd className="font-semibold">{counts.total?.nodes?.toLocaleString()}</dd>
-              <dt className="text-muted">Total Edges</dt>
-              <dd className="font-semibold">{counts.total?.edges?.toLocaleString()}</dd>
-              <dt className="text-muted">Base v4 Nodes / Edges</dt>
-              <dd>{counts.v4_layer?.nodes?.toLocaleString()} / {counts.v4_layer?.edges?.toLocaleString()}</dd>
-              <dt className="text-muted">Enrichment Nodes / Edges</dt>
-              <dd>{counts.enrichment_layer?.nodes?.toLocaleString()} / {counts.enrichment_layer?.edges?.toLocaleString()}</dd>
-              <dt className="text-muted">Evidence Records</dt>
-              <dd>{counts.total?.evidence?.toLocaleString()}</dd>
-            </dl>
-          </Panel>
+  const supp = qa?.supplementary_literature_precision;
+  const cites = qa?.citation_validity_ai_assessed;
+  const pairs = qa?.global_pairwise_ai_assessed;
 
-          <Panel title="E4 Quality Evaluation (AI-Assessed, Wilson 95% CI)">
-            <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-2">
-              <MetricTooltip
-                label="Wilson 95% CI"
-                definition="Two-sided 95% Wilson binomial score interval capturing sampling uncertainty only; excludes AI-evaluator error."
-                network="enriched-cb371912e308"
+  return (
+    <>
+      <p className="prose lede-note" data-testid="about-ai-statement">
+        {d.ai_assessment_disclosure}
+      </p>
+
+      <Section id="sources" title="Sources">
+        <p className="prose">
+          The collection is 13,617 main-track papers from AAAI and IJCAI, 2021 to 2025. Paper lists come from the official proceedings pages. Authors, affiliations and citations come from OpenAlex; organization records from ROR and Wikidata; some
+          descriptions from English Wikipedia. Methods, tasks and datasets were extracted from paper text by a language model. Other conferences and other years are not covered.
+        </p>
+        <p className="prose">Coverage is incomplete: not every authorship has an affiliation, and topic labels are often wrong. The measured figures are under the quality of the frozen release, below.</p>
+      </Section>
+
+      <Section id="versions" title="Versions" hint="Quote these to reproduce a figure." testId="about-versions">
+        <dl className="kv">
+          <dt>Graph used here</dt>
+          <dd className="hash">{v.v5_enriched}</dd>
+          <dt>Graph file SHA-256</dt>
+          <dd className="hash">
+            {v.v5_sha256 || "–"} {v.v5_sha256 && <CopyIdButton id={v.v5_sha256} label="Copy" />}
+          </dd>
+          <dt>Frozen release it builds on</dt>
+          <dd className="hash">{v.v4_base}</dd>
+          <dt>Network analysis</dt>
+          <dd className="hash">{v.analysis}</dd>
+          <dt>Search index for Ask</dt>
+          <dd className="hash">{v.rag}</dd>
+          <dt>Language model</dt>
+          <dd>
+            {run.model_id}, run locally at temperature {run.temperature}
+          </dd>
+          <dt>Embedding model</dt>
+          <dd>{run.embeddings}</dd>
+        </dl>
+        <Figures
+          caption="Size of the graph"
+          head={["Layer", "Entities", "Connections"]}
+          rows={[
+            ["Publication records (frozen release)", count(c.v4_layer?.nodes), count(c.v4_layer?.edges)],
+            ["Added from paper text and external records", count(c.enrichment_layer?.nodes), count(c.enrichment_layer?.edges)],
+            ["Total", count(c.total?.nodes), count(c.total?.edges)],
+          ]}
+        />
+      </Section>
+
+      <Section id="quality" title="How accurate the added facts are" hint="Samples judged by AI evaluators, not by people. Intervals are 95% Wilson intervals: they cover sampling error, not evaluator error." testId="about-quality">
+        <Figures
+          caption="Added facts judged correct"
+          head={["What was checked", "Correct, of those decided", "95% interval", "If unclear counts as wrong"]}
+          rows={e4Rows.map(([label, m], i) => {
+            const s = e4Sensitivity[i];
+            return [label, m ? <Sub main={pct(m.estimate)} sub={`${m.k} of ${m.n}`} /> : "–", m ? range(m.low, m.high) : "–", s ? <Sub main={pct(s.estimate)} sub={`${s.k} of ${s.n}`} /> : "–"];
+          })}
+        />
+        {e4.pooled_agreement && (
+          <p className="note">
+            Two evaluators agreed on {pct(e4.pooled_agreement.observed_agreement)} of {e4.pooled_agreement.items_judged_by_both} items (Cohen’s κ {score(e4.pooled_agreement.cohens_kappa)}); a third decided the {e4.pooled_agreement.disputes_sent_to_c} disputes.
+          </p>
+        )}
+        {releaseQuality && (
+          <details className="map-all" data-testid="about-release-quality">
+            <summary>Quality of the frozen release the graph builds on</summary>
+            {releaseQuality}
+          </details>
+        )}
+      </Section>
+
+      {qa && (
+        <Section id="benchmark" title="How well Ask answers" testId="about-benchmark">
+          <p className="prose">
+            <b>The main score measures agreement with the graph, not truth.</b> Reference answers were computed from the graph itself, so a system that reads the graph has an advantage, and a correct answer taken from abstracts can score zero. The test has
+            69 questions; 54 have factual answers.
+          </p>
+          <p className="prose">{ORG_ATTRIBUTION_NOTE}</p>
+          <Figures
+            caption="Agreement with the graph on factual questions (0 to 1)"
+            head={["System", "1 step (14)", "2 steps (22)", "3 steps (18)", "All 54", "Mean time"]}
+            rows={SYSTEMS.map(([id, label]) => {
+              const by = qa.factual?.[id]?.by_hop || {};
+              const cell = (m: any) => (m ? <Sub main={score(m.mean_score)} sub={m.bootstrap_95_ci ? `${score(m.bootstrap_95_ci[0])} to ${score(m.bootstrap_95_ci[1])}` : ""} /> : "–");
+              return [label, cell(by["1"]), cell(by["2"]), cell(by["3"]), cell(by.factual_overall), typeof by.factual_overall?.mean_latency_s === "number" ? `${by.factual_overall.mean_latency_s.toFixed(1)} s` : "–"];
+            })}
+          />
+          <p className="note">The small figures are 95% bootstrap intervals.</p>
+          <Figures
+            caption="Checks on the answers themselves"
+            head={["System", "Passed automatic grounding check", "Citations that support the sentence", "Won in side-by-side judging"]}
+            rows={SYSTEMS.map(([id, label]) => {
+              const f = qa.factual?.[id]?.overall_faithfulness || {};
+              const cv = cites?.by_system?.[id] || {};
+              const p = pairs?.by_system?.[id] || {};
+              return [
+                label,
+                f.status === "not_applicable" ? "Does not apply" : f.total ? <Sub main={pct(f.rate)} sub={`${f.passed} of ${f.total}`} /> : "–",
+                cv.total ? <Sub main={pct(cv.rate)} sub={`${cv.supported} of ${cv.total}, interval ${range(cv.wilson_95_ci?.[0], cv.wilson_95_ci?.[1])}`} /> : "No citations given",
+                p.total_appearances ? <Sub main={pct(p.win_rate)} sub={`${p.wins} won, ${p.ties} tied, ${p.losses} lost`} /> : "–",
+              ];
+            })}
+          />
+          <p className="note">
+            The grounding check tests that numbers, citations and names appear in what was retrieved. Citation support and side-by-side wins are AI-assessed (agreement between evaluators: κ {score(cites?.cohens_kappa_ab)} and {score(pairs?.cohens_kappa_ab)}).
+            Multi-hop search cites papers found through the graph without reading their abstracts, so fewer of its citations support the sentence on their own.
+          </p>
+
+          {supp && (
+            <>
+              <h3>Supplementary check against the literature</h3>
+              <p className="prose">
+                Added after the test was run, and it does not replace the scores above. AI evaluators asked whether each listed item is a correct answer supported by the papers shown with it.
+              </p>
+              <Figures
+                caption="Listed items supported by the literature shown"
+                head={["System", "Supported", "95% interval", "Leaving out unclear"]}
+                rows={SYSTEMS.filter(([id]) => supp.by_system?.[id]).map(([id, label]) => {
+                  const a = supp.by_system[id].literature_supported_precision;
+                  const b = supp.by_system[id].excluding_unclear;
+                  return [label, <Sub main={pct(a.rate)} sub={`${a.yes} of ${a.total}`} />, range(a.wilson_95_ci?.[0], a.wilson_95_ci?.[1]), <Sub main={pct(b.rate)} sub={`${b.yes} of ${b.total}`} />];
+                })}
               />
-              <span>· AI-assessed (no human gold validation)</span>
-            </div>
-            <Table
-              label="E4 evaluation intervals"
-              headers={["Axis", "Primary Estimate", "Wilson 95% CI", "k / n"]}
-              rows={e4Rows}
-            />
-          </Panel>
+            </>
+          )}
 
-          <Panel title="GraphRAG & Corpus Scope">
-            <p className="text-xs text-muted leading-relaxed">
-              Corpus: 13,617 AAAI and IJCAI main-track papers (2021–2025) from frozen roster v10. Precomputed S1–S3 and trend tables
-              serve sub-second views; GraphRAG community reports, entity descriptions, and annotated abstract chunks power Ask.
-            </p>
-            {d.rag_reports && Object.keys(d.rag_reports).length > 0 && (
-              <p className="text-xs font-mono text-ink mt-2">
-                Reports stats: {JSON.stringify({ ok: (d.rag_reports.succeeded_first_try || 0) + (d.rag_reports.succeeded_retry || 0), dropped: d.rag_reports.dropped })}
+          <details className="map-all">
+            <summary>Who judged, and other limits</summary>
+            <p className="prose">{qa.coverage_and_extraction_caveats}</p>
+            <p className="prose">{qa.ai_assessed_disclosure}</p>
+            <p className="prose">{qa.evaluator_independence_disclosure}</p>
+            {supp?.evaluators && (
+              <p className="prose">
+                Supplementary check: evaluator A was a {supp.evaluators.A}; B a {supp.evaluators.B}. {supp.evaluators.C}
               </p>
             )}
-          </Panel>
-
-          {d.qa_eval_v1 && (
-            <div className="lg:col-span-2 space-y-4">
-              <Panel title={`QA Benchmark Comparison (${d.qa_eval_v1.protocol_version}, 69 Kept Test Questions)`}>
-                <div className="space-y-3">
-                  <div className="p-2.5 rounded bg-ground border border-rule text-xs space-y-1">
-                    <p className="font-semibold text-ink">AI-Assessed & Statistical Caveats</p>
-                    <p className="text-muted">{d.qa_eval_v1.ai_assessed_disclosure}</p>
-                    <p className="text-muted">{d.qa_eval_v1.evaluator_independence_disclosure}</p>
-                    <p className="text-muted">{d.qa_eval_v1.coverage_and_extraction_caveats}</p>
-                  </div>
-
-                  <div className="text-xs text-muted flex flex-wrap items-center gap-3">
-                    <MetricTooltip
-                      label="Unified Factual Scoring & Bootstrap 95% CI"
-                      definition="Identical text-to-graph-ID resolver (exact ID -> alias -> MiniLM cosine >= 0.80) computing set-F1 / exact match across S1–S4 with 2,000-resample seeded bootstrap 95% CIs."
-                    />
-                    <MetricTooltip
-                      label="Automatic Faithfulness"
-                      definition="Fraction of responses whose numbers, bracketed citations, and named entities are verified present in the retrieved trace/excerpts."
-                    />
-                  </div>
-
-                  <Table
-                    label="QA factual accuracy comparison"
-                    headers={["System", "Hop 1 (14)", "Hop 2 (22)", "Hop 3 (18)", "Overall Factual (54)", "Mean Latency"]}
-                    rows={["S1_slm_only", "S2_vector_rag", "S3_graphrag", "S4_multihop"].map((s) => {
-                      const bh = d.qa_eval_v1.factual?.[s]?.by_hop || {};
-                      return [
-                        SYS_LABELS[s] || s,
-                        fmtScoreCi(bh["1"]),
-                        fmtScoreCi(bh["2"]),
-                        fmtScoreCi(bh["3"]),
-                        fmtScoreCi(bh["factual_overall"]),
-                        bh["factual_overall"]?.mean_latency_s !== undefined ? `${bh["factual_overall"].mean_latency_s}s` : "—",
-                      ];
-                    })}
-                  />
-
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-2">
-                    <div>
-                      <h4 className="text-xs font-semibold mb-1.5">Faithfulness & AI-Assessed Citation Validity (95% Wilson CI)</h4>
-                      <Table
-                        label="Faithfulness and citation validity"
-                        headers={["System", "Automatic Faithfulness", "Citation Validity (AI-assessed)"]}
-                        rows={["S1_slm_only", "S2_vector_rag", "S3_graphrag", "S4_multihop"].map((s) => {
-                          const f = d.qa_eval_v1.factual?.[s]?.overall_faithfulness || {};
-                          const c = d.qa_eval_v1.citation_validity_ai_assessed?.by_system?.[s] || {};
-                          const fStr =
-                            f.status === "not_applicable"
-                              ? "N/A (no retrieval trace)"
-                              : f.total
-                                ? `${f.passed}/${f.total} (${pct(f.rate, 1)})`
-                                : "—";
-                          const cStr =
-                            c.total > 0
-                              ? `${c.supported}/${c.total} (${pct(c.rate, 1)} [${pct(c.wilson_95_ci?.[0] || 0, 1)}, ${pct(c.wilson_95_ci?.[1] || 0, 1)}])`
-                              : "0 citations emitted";
-                          return [SYS_LABELS[s] || s, fStr, cStr];
-                        })}
-                      />
-                      <p className="text-[11px] text-muted mt-1">
-                        Citation A–B Cohen&apos;s κ (AI-assessed):{" "}
-                        <span className="font-mono">{d.qa_eval_v1.citation_validity_ai_assessed?.cohens_kappa_ab ?? "—"}</span> · S4 attaches graph-level paper IDs without abstract text, explaining lower single-abstract support vs S2.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xs font-semibold mb-1.5">AI-Assessed Global Pairwise (15 Questions, AB+BA = 180 Items)</h4>
-                      <Table
-                        label="Global pairwise comparison"
-                        headers={["System", "Wins / Ties / Losses", "Win Rate", "Position-Consistent"]}
-                        rows={["S1_slm_only", "S2_vector_rag", "S3_graphrag", "S4_multihop"].map((s) => {
-                          const p = d.qa_eval_v1.global_pairwise_ai_assessed?.by_system?.[s] || {};
-                          return [
-                            SYS_LABELS[s] || s,
-                            p.total_appearances ? `${p.wins} / ${p.ties} / ${p.losses}` : "—",
-                            typeof p.win_rate === "number" ? pct(p.win_rate, 1) : "—",
-                            typeof p.position_consistent_win_rate === "number"
-                              ? `${p.position_consistent_wins} (${pct(p.position_consistent_win_rate, 1)})`
-                              : "—",
-                          ];
-                        })}
-                      />
-                      <p className="text-[11px] text-muted mt-1">
-                        Pairwise A–B Cohen&apos;s κ (AI-assessed):{" "}
-                        <span className="font-mono">{d.qa_eval_v1.global_pairwise_ai_assessed?.cohens_kappa_ab ?? "—"}</span> · Position-inconsistent pairs:{" "}
-                        {d.qa_eval_v1.global_pairwise_ai_assessed?.position_inconsistent_pairs ?? "—"} / {d.qa_eval_v1.global_pairwise_ai_assessed?.total_unordered_pairs ?? "—"}.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Panel>
-            </div>
-          )}
-        </div>
+            {qa.scorer_hashseed_sensitivity && (
+              <p className="prose">
+                The scorer’s name matching depends on a random seed. Re-scoring the saved answers with {qa.scorer_hashseed_sensitivity.seeds?.length} seeds moves the multi-hop score between{" "}
+                {score(qa.scorer_hashseed_sensitivity.factual_overall?.S4_multihop?.min)} and {score(qa.scorer_hashseed_sensitivity.factual_overall?.S4_multihop?.max)}
+                {qa.scorer_hashseed_sensitivity.ranking_stable_across_seeds ? "; the ranking of the four systems does not change" : ""}. No system was run again.
+              </p>
+            )}
+            <p className="note">
+              Protocol {qa.protocol_version}, code commit <span className="hash">{String(qa.code_commit || "").slice(0, 12)}</span>, model revision <span className="hash">{String(qa.llm_hf_revision || "").slice(0, 12)}</span>.
+            </p>
+          </details>
+        </Section>
       )}
-    </div>
+
+      {reports.attempted && (
+        <Section id="summaries" title="AI-written community summaries">
+          <p className="prose">
+            The language model wrote summaries for {count((reports.succeeded_first_try || 0) + (reports.succeeded_retry || 0))} of {count(reports.attempted)} communities. {count(reports.dropped)} were dropped because they contained numbers that were not in the
+            input. The summaries are AI-generated from graph data and can still be wrong.
+          </p>
+        </Section>
+      )}
+
+      <Section id="licences" title="Licences">
+        <ul className="plain-list licences">
+          <li>
+            <span>Code</span>
+            <span>MIT</span>
+          </li>
+          <li>
+            <span>Data produced by this project, including AI-generated text</span>
+            <span>CC BY 4.0</span>
+          </li>
+          <li>
+            <span>OpenAlex, ROR and Wikidata records</span>
+            <span>CC0 1.0</span>
+          </li>
+          <li>
+            <span>Wikipedia excerpts, with attribution and share-alike</span>
+            <span>CC BY-SA 4.0</span>
+          </li>
+        </ul>
+        <p className="note">
+          Conference proceedings supply bibliographic facts and links; no PDFs are redistributed. Full terms are in{" "}
+          <a className="textlink" href="https://github.com/HSandz/scientific-network/blob/main/LICENSE-DATA.md" target="_blank" rel="noreferrer">
+            the data licence file
+          </a>
+          .
+        </p>
+      </Section>
+    </>
   );
 };

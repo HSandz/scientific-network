@@ -1098,6 +1098,21 @@ class NavigatorService:
             "metric_definitions": {"rca": METRIC_DEFINITIONS["rca"]},
         }
 
+    def _organization_papers(self, organization_id: str) -> list[str] | None:
+        """Paper ids on which an author listed this organization (per-paper affiliation triples).
+        None when the derived index has not been built: callers then show nothing rather than
+        falling back to the researcher-level edge, which over-attributes papers."""
+        if not hasattr(self, "_affiliation_index"):
+            path = self.settings.affiliation_index_path
+            index = None
+            if path.is_file():
+                with gzip.open(path, "rt", encoding="utf-8") as handle:
+                    index = json.load(handle)["organizations"]
+            self._affiliation_index: dict[str, list[str]] | None = index
+        if self._affiliation_index is None:
+            return None
+        return self._affiliation_index.get(organization_id, [])
+
     def get_group_detail(self, group_id: str) -> dict[str, Any] | None:
         base = next((o for o in self.groups_orgs if o["id"] == group_id), None)
         if base is None and not self._has_live_neo4j():
@@ -1131,13 +1146,15 @@ class NavigatorService:
                 "RETURN c.id AS id, c.name AS name, c.sector AS sector LIMIT 25",
                 {"gid": group_id},
             )
-            top_papers = self._run_read(
-                "MATCH (o:Organization {id: $gid})<-[:AFFILIATED_WITH]-(:Researcher)-[:AUTHORED]->(p:Paper) "
-                "OPTIONAL MATCH (p)-[:PUBLISHED_IN]->(v:Venue) "
-                "RETURN DISTINCT p.id AS paper_id, p.name AS title, p.year AS year, v.name AS venue "
-                "ORDER BY p.year DESC LIMIT 15",
-                {"gid": group_id},
-            )
+            org_papers = self._organization_papers(group_id)
+            if org_papers:
+                top_papers = self._run_read(
+                    "MATCH (p:Paper) WHERE p.id IN $ids "
+                    "OPTIONAL MATCH (p)-[:PUBLISHED_IN]->(v:Venue) "
+                    "RETURN p.id AS paper_id, p.name AS title, p.year AS year, v.name AS venue "
+                    "ORDER BY p.year DESC, p.id LIMIT 15",
+                    {"ids": org_papers},
+                )
 
         specializations = sorted(
             [
@@ -1158,6 +1175,7 @@ class NavigatorService:
         )
 
         return {
+            "top_papers_basis": "paper_affiliation" if self._organization_papers(group_id) is not None else "unavailable",
             "paper_rank": paper_rank,
             "ranked_organizations": len(self.groups_orgs),
             "profile": profile,
@@ -1510,6 +1528,7 @@ class NavigatorService:
         neighbors: list[dict[str, Any]] = []
         papers: list[dict[str, Any]] = []
         sparkline: list[dict[str, Any]] = []
+        activity_basis: str | None = None
 
         if self._has_live_neo4j():
             rows = self._run_read(
@@ -1531,16 +1550,21 @@ class NavigatorService:
                 {"nid": node_id},
             )
             label0 = props["_label"]
+            org_papers = self._organization_papers(node_id) if label0 == "Organization" else None
             if label0 == "Paper":
                 sparkline = [{"year": props.get("year"), "papers": 1}] if props.get("year") else []
+            elif label0 == "Organization" and org_papers is None:
+                activity_basis = "unavailable"
             else:
+                match = "MATCH (p:Paper) WHERE p.id IN $ids " if label0 == "Organization" else "MATCH (n {id: $nid})-[]-(p:Paper) "
                 year_rows = self._run_read(
-                    "MATCH (n {id: $nid})-[]-(p:Paper) "
-                    "OPTIONAL MATCH (p)-[:PUBLISHED_IN]->(v:Venue) "
+                    match
+                    + "OPTIONAL MATCH (p)-[:PUBLISHED_IN]->(v:Venue) "
                     "WITH p.year AS year, collect(DISTINCT {paper_id: p.id, title: p.name, year: p.year, venue: v.name}) AS plist "
                     "RETURN year, size(plist) AS papers, plist[..5] AS sample ORDER BY year",
-                    {"nid": node_id},
+                    {"nid": node_id, "ids": org_papers or []},
                 )
+                activity_basis = "paper_affiliation" if label0 == "Organization" else "direct_link"
                 ycounts = {int(r["year"]): int(r["papers"]) for r in year_rows if r.get("year")}
                 sparkline = [{"year": y, "papers": ycounts.get(y, 0)} for y in range(2021, 2026)]
                 for r in year_rows:
@@ -1599,6 +1623,7 @@ class NavigatorService:
             "metrics": metrics,
             "trend": self.subject_trend_index.get(node_id),
             "sparkline": sparkline,
+            "activity_basis": activity_basis,
             "neighbors": neighbors,
             "papers": papers,
         }

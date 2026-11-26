@@ -1,4 +1,5 @@
 import {
+  NodeProfileResponse,
   AskCitationsEvent,
   AskDemoItem,
   AskResult,
@@ -99,7 +100,7 @@ export const navigatorApi = {
   getNetworkScience: (signal?: AbortSignal) => getJson<Record<string, unknown>>("/network-science", signal),
 
   getNode360: (nodeId: string, signal?: AbortSignal) =>
-    getJson<Record<string, unknown>>(`/node360/${encodeURIComponent(nodeId)}`, signal),
+    getJson<NodeProfileResponse>(`/node360/${encodeURIComponent(nodeId)}`, signal),
 
   getAboutData: (signal?: AbortSignal) => getJson<Record<string, unknown>>("/about-data", signal),
 

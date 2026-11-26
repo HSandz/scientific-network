@@ -207,6 +207,8 @@ export interface GroupsResponse {
 
 export interface GroupDetailResponse {
   /** Position among all organizations by paper count (ties share a position). */
+  /** "unavailable" when the affiliation index has not been built (no paper list is shown). */
+  top_papers_basis?: "paper_affiliation" | "unavailable";
   paper_rank: number | null;
   ranked_organizations: number;
   profile: Record<string, unknown>;
@@ -384,4 +386,28 @@ export interface PulseResponse {
   classification_note: string;
   caveats: string[];
   selection_rule: string;
+}
+
+export interface NodeProfileResponse {
+  id: string;
+  label: string;
+  name: string;
+  properties: Record<string, unknown>;
+  description: {
+    text: string;
+    label: string;
+    source_kind?: string | null;
+    wikipedia_url?: string | null;
+    wikipedia_revision_id?: number | string | null;
+    attribution?: string | null;
+    license?: string | null;
+  } | null;
+  /** Precomputed ranks per analysed network (N1 to N4), only for top-ranked nodes. */
+  metrics: Record<string, { rank?: number; degree?: number; in_corpus_citations?: number }>;
+  trend: TrendRow | null;
+  sparkline: Array<{ year: number; papers: number }>;
+  /** How the activity counts were obtained; "unavailable" shows no counts. */
+  activity_basis: "paper_affiliation" | "direct_link" | "unavailable" | null;
+  neighbors: Array<{ relation: string; outgoing: boolean; id: string; name: string | null; label: string; support_count: number | null; evidence_kind: string | null }>;
+  papers: Array<{ paper_id: string; title: string; year?: number; venue?: string }>;
 }

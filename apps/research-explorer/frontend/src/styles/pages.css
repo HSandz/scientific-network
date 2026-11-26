@@ -269,3 +269,41 @@ table.matrix { border-collapse: separate; border-spacing: 2px; width: 100%; min-
 .analytics-embedded .analytics-section-heading h2 { font-size: var(--s1); }
 .evidence-table td, .evidence-table th[scope="row"] { vertical-align: baseline; }
 .evidence-table th[scope="row"] { min-width: 180px; }
+
+/* ---------- Node profile ---------- */
+.profile-head h1 { font-family: var(--serif); font-size: var(--s4); line-height: 1.15; font-weight: 600; margin: 0; max-width: 34ch; text-wrap: balance; }
+.profile-head h1.paper-title { font-size: var(--s3); max-width: 44ch; }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.profile-actions a { text-decoration: none; }
+.yearbars { margin: 16px 0 0; max-width: 480px; }
+.yearbars ol { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 14px; }
+.yearbars li { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 0.875rem; }
+.yearbars .col { height: 120px; width: 100%; display: flex; align-items: flex-end; border-bottom: 1px solid var(--rule); }
+.yearbars i { display: block; width: 100%; background: var(--ink); opacity: 0.62; border-radius: 4px 4px 0 0; }
+.yearbars .yr { color: var(--muted); }
+.echip-long { text-align: left; max-width: 100%; }
+@media (max-width: 768px) {
+  .profile-head h1, .profile-head h1.paper-title { font-size: var(--s3); }
+}
+
+/* ---------- About ---------- */
+.about .prose { max-width: 70ch; }
+.about .lede-note { font-size: 1.0625rem; }
+.about h3 { font-size: var(--s1); margin: 32px 0 8px; }
+.about .kv { margin-bottom: 8px; }
+.hash { overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+table.data.figures { margin-top: 16px; }
+table.data.figures caption { text-align: left; font-weight: 700; padding-bottom: 8px; }
+table.data.figures th[scope="row"] { position: static; white-space: normal; font-weight: 400; text-align: left; min-width: 180px; color: var(--ink); background: transparent; }
+table.data.figures td { background: transparent; }
+@media (max-width: 768px) {
+  table.data.figures th[scope="row"] { min-width: 120px; }
+}
+.cell-sub { display: block; font-size: 0.8125rem; color: var(--muted); }
+.licences li span:last-child { white-space: nowrap; }
+
+/* ---------- Explore: subject finder ---------- */
+.enriched-panel { width: 100%; display: grid; gap: 10px; padding: 10px 0 4px; max-height: 40vh; overflow-y: auto; }
+.enriched-panel .field-input { max-width: 260px; }
+.enriched-panel .note { margin: 0; }
+.echip[aria-pressed="true"] { border-color: var(--ink); font-weight: 700; }

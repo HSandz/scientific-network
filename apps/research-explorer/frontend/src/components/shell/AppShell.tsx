@@ -28,11 +28,6 @@ const MORE: Array<[PageKey, string]> = [
   ["about", "About"],
 ];
 
-/** Which rail item a page belongs to (Node profiles live under Explore's family). */
-function railKey(page: PageKey): PageKey {
-  return page === "node" ? "explore" : page;
-}
-
 interface AppShellProps {
   route: Route;
   /** Ask and Explore fill the viewport and manage their own scrolling. */
@@ -47,7 +42,8 @@ export const AppShell: React.FC<AppShellProps> = ({ route, fullBleed, children }
   const conversations = useConversations((s) => s.conversations);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
-  const active = railKey(route.page);
+  // A node profile belongs to no rail item, so none is marked as current there.
+  const active: PageKey = route.page;
 
   useEffect(() => setMoreOpen(false), [route.path]);
   useEffect(() => {

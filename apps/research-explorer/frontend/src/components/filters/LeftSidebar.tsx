@@ -21,6 +21,7 @@ import {
 } from "../../types/explorer";
 import { LABEL_COLORS, PREDICATE_R_CODE } from "../../lib/colors";
 import type { ExplorerFilters } from "../../stores/useExplorerStore";
+import { InfoPopover } from "../ui/primitives";
 
 interface LeftSidebarProps {
   availableCommunities: CommunityOption[];
@@ -283,6 +284,9 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         <div className="px-5 pt-4 pb-4 border-b border-border">
           <div className="text-[13px] font-medium text-muted mb-2">
             Network projection
+            <InfoPopover label="What this projection contains" testId="projection-info">
+              <p>{activeMode.predicateSummary}</p>
+            </InfoPopover>
           </div>
           <div
             className="space-y-1"
@@ -326,9 +330,6 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
               );
             })}
           </div>
-          <p className="mt-2.5 text-xs text-faint leading-relaxed">
-            {activeMode.predicateSummary}
-          </p>
         </div>
 
         {/* 2. Primary Scope Filters */}
@@ -336,6 +337,11 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
           <div className="flex items-center justify-between">
             <span className="text-[13px] font-medium text-muted">
               Scope & filters
+              {(viewMode === "researchers" || viewMode === "organizations") && (
+                <InfoPopover label="How these filters work" testId="scope-info">
+                  <p>Paper-window filters require accepted support in that window. Weights and minimum shared-paper thresholds retain their full-period meaning. Results are bounded illustrative slices.</p>
+                </InfoPopover>
+              )}
             </span>
             {activeFilterTags.length > 0 && (
               <button
@@ -533,18 +539,17 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
             </div>
           )}
 
-          {(viewMode === "researchers" || viewMode === "organizations") && (
-            <p className="text-xs text-muted leading-relaxed">Paper-window filters require accepted support in that window. Weights and minimum shared-paper thresholds retain their full-period meaning. Results are bounded illustrative slices.</p>
-          )}
           {/* Mode D: Curated Schema Presets */}
           {viewMode === "heterogeneous" && (
             <div>
-              <label
-                htmlFor="filter-preset"
-                className="block text-[13px] font-medium text-ink mb-1.5"
-              >
-                Knowledge graph slice
-              </label>
+              <div className="flex items-center gap-1 mb-1.5">
+                <label htmlFor="filter-preset" className="text-[13px] font-medium text-ink">
+                  Knowledge graph slice
+                </label>
+                <InfoPopover label="How slices and paper filters interact" testId="preset-info">
+                  <p>Venue, topic, and narrowed-year filters use the Researcher → Paper → Topic slice. Applying one switches to that slice; switching away resets those paper filters.</p>
+                </InfoPopover>
+              </div>
               <select
                 id="filter-preset"
                 value={filters.preset}
@@ -569,9 +574,6 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                 </option>
                 <option value="custom">Custom label & predicate slice</option>
               </select>
-              <p className="mt-2 text-xs text-muted leading-relaxed">
-                Venue, topic, and narrowed-year filters use the Researcher → Paper → Topic slice. Applying one switches to that slice; switching away resets those paper filters.
-              </p>
             </div>
           )}
 

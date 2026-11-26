@@ -76,3 +76,16 @@ export const TopicMethodNote: React.FC<{ source?: string | null; caveats?: strin
     <p className="muted">Extraction quality was checked by an AI reviewer (AI-assessed), not by human annotators.</p>
   </>
 );
+
+/** Shared wording: Ask and the benchmark references count an organization's papers more broadly than the other pages. */
+export const ORG_ATTRIBUTION_NOTE =
+  "For questions about an organization, Ask counts every paper by any researcher who was ever affiliated with it, which overstates that organization's papers. The benchmark's reference answers count the same way. The Groups pages count only papers on which an author listed the organization.";
+
+export const AskMethodNote: React.FC = () => (
+  <>
+    <p>A small language model reads the question, plans steps over the knowledge graph and writes the answer from what the steps return.</p>
+    <p>The automatic check tests that numbers, citations and names in the answer appear in the retrieved data. It does not test that the reasoning or the underlying data is correct.</p>
+    <p>{ORG_ATTRIBUTION_NOTE}</p>
+    <p className="muted">Methods, tasks and datasets were extracted from paper text and checked by an AI reviewer (AI-assessed), not by human annotators. Benchmark figures on About are partly AI-assessed too.</p>
+  </>
+);

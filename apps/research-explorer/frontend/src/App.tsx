@@ -61,6 +61,7 @@ const NetworkViews: React.FC<{ current: "enriched" | "release" }> = ({ current }
 
 /** v4 dashboard sections with no counterpart on the enriched Network page. */
 const RELEASE_ONLY_SECTIONS = ["robustness", "sectors", "trajectories"];
+const ABOUT_RELEASE_SECTIONS = ["quality"];
 
 const EXPLORE_TABS = new Set<WorkspaceTab>(["graph", "table"]);
 
@@ -118,7 +119,6 @@ export const App: React.FC = () => {
   const pathFinderOpen = useExplorerStore((s) => s.pathFinderOpen);
   const compareModalOpen = useExplorerStore((s) => s.compareModalOpen);
   const darkMode = useExplorerStore((s) => s.darkMode);
-  const node360Id = useExplorerStore((s) => s.node360Id);
   const selectedSubjectId = useExplorerStore((s) => s.selectedSubjectId);
   const selectedGroupId = useExplorerStore((s) => s.selectedGroupId);
   const selectedCommunityId = useExplorerStore((s) => s.selectedCommunityId);
@@ -282,10 +282,22 @@ export const App: React.FC = () => {
       page = <ExplorePage />;
       break;
     case "node":
-      page = <div className="view"><Node360Page nodeId={node360Id} onSelectNode={openNode360} /></div>;
+      page = <div className="view"><Node360Page nodeId={route.param} onSelectNode={openNode360} onShowInExplore={focusInGraph} /></div>;
       break;
     case "about":
-      page = <div className="view"><AboutDataPage /></div>;
+      page = (
+        <div className="view">
+          <AboutDataPage
+            releaseQuality={
+              <React.Suspense fallback={fallback}>
+                <DashboardOnly.Provider value={ABOUT_RELEASE_SECTIONS}>
+                  <AnalyticsView summary={summaryQuery.data} onFocusNodeInGraph={focusInGraph} />
+                </DashboardOnly.Provider>
+              </React.Suspense>
+            }
+          />
+        </div>
+      );
       break;
   }
 

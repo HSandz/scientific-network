@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { AskMethodNote } from "./methodNotes";
+import { MethodDrawer } from "../ui/primitives";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
 import { navigate, pathFor, useRoute } from "../../lib/router";
@@ -301,6 +303,9 @@ const Turn: React.FC<{
               </span>
             </div>
           )}
+          <MethodDrawer testId="ask-how">
+            <AskMethodNote />
+          </MethodDrawer>
           {kindChoices.map((l) => (
             <p className="kind-note" key={l.text}>
               Read “{l.text}” as {l.entity_type ? `a ${l.entity_type.toLowerCase()}` : "a subject"}

@@ -156,7 +156,7 @@ const Profile: React.FC<{ d: GroupDetailResponse; id: string; onSelectGroup: (id
       )}
 
       {papers.length > 0 && (
-        <Section id="org-papers" title="Recent papers">
+        <Section id="org-papers" title="Recent papers" hint="Papers on which an author listed this organization.">
           <ol className="toppapers">
             {papers.map((x) => (
               <li key={x.paper_id} className="paper-ref">
@@ -169,6 +169,8 @@ const Profile: React.FC<{ d: GroupDetailResponse; id: string; onSelectGroup: (id
           </ol>
         </Section>
       )}
+
+      {d.top_papers_basis === "unavailable" && <p className="note">Paper lists need the affiliation index, which has not been built on this server.</p>}
 
       {(d.child_units.length > 0 || anchored.length > 0) && (
         <Section id="units" title="Units and research clusters">
