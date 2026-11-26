@@ -317,14 +317,60 @@ _ANSWER_SYS_V4 = (
     "- If the trace stopped on an empty step, clearly state that no matching records were found rather than guessing."
 )
 
+# rag-answer-v5 / rag-local-answer-v4 (2026-11-26, WORK-2026-11-26-003): summary-first answers for the
+# redesigned Ask screen. Same evidence rules as v4; the answer leads with one plain sentence and the
+# top 3-5 items, and leaves the full ranking to the interface's Table and Chart tabs. Shares are
+# written as percentages (the faithfulness check accepts value x 100 rounded to 1-2 decimals).
+# qa-eval-v1 stays frozen on rag-answer-v3 / rag-local-answer-v2.
+_ANSWER_SYS_V5 = (
+    "Answer the user question using ONLY the retrieved graph trace below. Write for a busy reader.\n"
+    "Format:\n"
+    "- Start with ONE plain sentence that answers the question directly, naming the top result, and end it with [step N] for the step that computed it.\n"
+    "- If the answer is a ranking or a list, then give ONLY the top 3 to 5 items as bullets '- Name: the row's counts and metric values in words'. "
+    "If the step has more rows than you listed, finish with one sentence: 'The full ranking of K is in the table.' where K is the step's shown_row_count.\n"
+    "- Otherwise answer in two to four short sentences. No headings, no bold, no closing summary.\n"
+    "Rules:\n"
+    "- Every number you state MUST come from the trace. Write shares and share changes as percentages with one decimal "
+    "(a share of 0.0488 is 4.9%; a share change of 0.0488 is +4.9 points); write a growth rate such as cagr 0.9146 as 91.5% a year; write lift or specialisation as 3.5 times.\n"
+    "- Mention ONLY organizations, researchers, methods, tasks, datasets, and topics present in the trace or question; NEVER invent entities. "
+    "Use the names as written in the trace; NEVER write internal identifiers such as organization:I123, method:Q42, N1:87, L0:122 or research:L1:4.\n"
+    "- Aggregate claims (counts, shares, growth, rankings, co-occurrence, or any list computed over many papers) point to the trace step that computed them, written as [step N] at the end of the sentence or after the sentence introducing a list. "
+    "Write metric names in plain English (for example 'share change', 'specialisation', 'papers after 2022'); NEVER output raw snake_case field names. "
+    "NEVER attach paper IDs to aggregate claims.\n"
+    "- Cite a paper ID in brackets, copied verbatim (e.g. [paper:aaai:2024:29823]), ONLY when the sentence states something about that specific paper "
+    "and the trace gives that paper as its own row or abstract excerpt. NEVER write placeholder or truncated citations.\n"
+    "- For share-growth questions, give BOTH paper counts (k of n papers) and shares for each listed item, and state the minimum-paper threshold from the step note once.\n"
+    "- If the trace stopped on an empty step, say plainly that no matching records were found rather than guessing."
+)
+
+# rag-local-answer-v4: local search packs context sections, not numbered steps, so the summary-first
+# local prompt asks for no [step N] references.
+_LOCAL_ANSWER_SYS_V5 = (
+    "Answer the user question using ONLY the retrieved graph context below. Write for a busy reader.\n"
+    "Format:\n"
+    "- Start with ONE plain sentence that answers the question directly.\n"
+    "- Then add two to four short sentences with the most useful supporting facts (counts, related methods, tasks, datasets, groups). No headings, no bold, no bullet lists, no closing summary.\n"
+    "Rules:\n"
+    "- Every number you state MUST come from the context. Write shares as percentages with one decimal.\n"
+    "- Mention ONLY organizations, researchers, methods, tasks, datasets, topics and communities present in the context or question; NEVER invent entities. "
+    "Use names as written; NEVER write internal identifiers such as N1:42, N2:3, L0:122 or research:L1:4. Refer to a community by what it focuses on.\n"
+    "- Do NOT write [step N] references: this context has no numbered steps.\n"
+    "- Cite a paper ID in brackets, copied verbatim (e.g. [paper:aaai:2024:29823]), ONLY when the sentence states something about that specific paper "
+    "and the context gives that paper as its own row or abstract excerpt. NEVER write placeholder or truncated citations.\n"
+    "- If the context has nothing relevant, say plainly that no matching records were found rather than guessing."
+)
+
 _ANSWER_SYSTEMS: dict[str, str] = {
     "rag-answer-v3": _ANSWER_SYS,
     "rag-local-answer-v2": _ANSWER_SYS,
     "rag-answer-v4": _ANSWER_SYS_V4,
     "rag-local-answer-v3": _ANSWER_SYS_V4,
+    "rag-answer-v5": _ANSWER_SYS_V5,
+    "rag-local-answer-v4": _LOCAL_ANSWER_SYS_V5,
 }
-CURRENT_ANSWER_PROMPT = "rag-answer-v4"
-CURRENT_LOCAL_ANSWER_PROMPT = "rag-local-answer-v3"
+CURRENT_ANSWER_PROMPT = "rag-answer-v5"
+CURRENT_LOCAL_ANSWER_PROMPT = "rag-local-answer-v4"
+_STEP_REF_PROMPTS = frozenset({"rag-answer-v4", "rag-local-answer-v3", "rag-answer-v5", "rag-local-answer-v4"})
 
 _STEP_REF_RE = re.compile(r"\[\s*steps?\s+(\d+)(?:\s*(?:,|and|&|-|–)\s*(\d+))*\s*\]", re.I)
 _STEP_NUM_RE = re.compile(r"\d+")
@@ -622,7 +668,7 @@ def compose_grounded_answer(
             last_errs = [str(exc)]
             continue
         errs = verify_answer_faithfulness(ans, trace_payload, question)
-        if _ANSWER_SYSTEMS.get(prompt_version) is _ANSWER_SYS_V4:
+        if prompt_version in _STEP_REF_PROMPTS:
             errs += check_step_references(ans, prompt_trace)
         if not errs:
             return {

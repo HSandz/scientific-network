@@ -143,6 +143,17 @@ def get_node360(
     return detail
 
 
+@navigator_router.get("/papers")
+def get_papers(
+    service: Annotated[NavigatorService, Depends(get_navigator_service)],
+    paper_id: Annotated[list[str] | None, Query(alias="id", max_length=120)] = None,
+) -> dict[str, Any]:
+    ids = paper_id or []
+    if len(ids) > 60:
+        raise HTTPException(status_code=422, detail="At most 60 paper ids per request.")
+    return service.get_papers(ids)
+
+
 @navigator_router.get("/about-data")
 def get_about_data(
     service: Annotated[NavigatorService, Depends(get_navigator_service)],

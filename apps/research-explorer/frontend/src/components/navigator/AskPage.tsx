@@ -1,681 +1,623 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { navigatorApi } from "../../lib/navigatorApi";
-import { AskCitation, AskCitationsEvent, AskResult, AskResultPapers } from "../../types/navigator";
-import { Panel } from "../analytics/DashboardPrimitives";
-import { MetricTooltip } from "./MetricTooltip";
+import { navigate, pathFor, useRoute } from "../../lib/router";
+import { newId, titleFor, useConversations, type StoredTurn } from "../../lib/conversations";
+import {
+  buildGraph,
+  buildNameIndex,
+  buildTables,
+  chooseChart,
+  describeResult,
+  describeStep,
+  followUps,
+  footnoteAnswer,
+  recognisedText,
+  type Block,
+  type PlainStep,
+} from "../../lib/askModel";
+import { displayName, orgName } from "../../lib/names";
+import type { AskDemoItem } from "../../types/navigator";
+import { Icon } from "../shell/icons";
+import { EvidencePanel, type EvidenceData, type EvidenceTab } from "../ask/EvidencePanel";
+import { turnFromResult, useAskTurn, type AskMode, type TurnView } from "../ask/useAskTurn";
 
-interface AskPageProps {
-  onOpenNode360: (id: string) => void;
+/* ---------- Starter questions grouped by intent (from the scripted demos) ---------- */
+const INTENTS: Array<{ name: string; icon: string; items: Array<[string, string]> }> = [
+  { name: "Trends", icon: "trends", items: [["demo-02-rising-methods-diffusion-orgs", "Ranks methods by growth"]] },
+  {
+    name: "Groups",
+    icon: "groups",
+    items: [
+      ["demo-01-worked-example", "Follows collaborations, then compares shares"],
+      ["demo-05-causal-lift", "Ranks organizations by specialisation"],
+    ],
+  },
+  {
+    name: "Connections",
+    icon: "network",
+    items: [
+      ["demo-03-method-task-cooccurrence", "Walks from a method to tasks and datasets"],
+      ["demo-04-researcher-path", "Finds how two researchers are connected"],
+    ],
+  },
+  {
+    name: "Overview",
+    icon: "pulse",
+    items: [
+      ["pulse", "Opens the overview"],
+      ["demo-06-global-communities", "Reads the summaries of every research community"],
+      ["demo-07-local-gnn", "Gathers what the graph says about one subject"],
+    ],
+  },
+];
+
+const MODEL_LINE = "Written by a 4-billion-parameter language model from the graph";
+
+function toStored(t: TurnView): StoredTurn {
+  return {
+    id: t.id,
+    question: t.question,
+    mode: t.mode,
+    askedAt: new Date().toISOString(),
+    elapsedSeconds: t.elapsedSeconds,
+    result: t.result,
+    error: t.error,
+  };
 }
 
-type SgNode = { id: string; label?: string; name?: string; hop?: number };
-type SgEdge = { source: string; target: string; relation?: string; support_count?: number; hop?: number };
+/* ---------- Derived view of one turn ---------- */
+interface TurnModel {
+  plainSteps: PlainStep[];
+  executedCount: number;
+  blocks: Block[];
+  evidence: EvidenceData;
+  follow: string[];
+}
 
-type RefHandlers = { onStep: (n: number) => void; onPaper: (id: string) => void };
+function modelFor(t: TurnView): TurnModel {
+  const idx = buildNameIndex(t.linked, t.steps, t.subgraph);
+  const planned = t.plan?.length ? t.plan.map((p, i) => ({ tool: p.tool, args: p.args || {}, step: i + 1 })) : t.steps.map((s) => ({ tool: s.tool, args: s.args || {}, step: s.step }));
+  const plainSteps: PlainStep[] = [];
+  const understood = t.planArrived || t.steps.length > 0 || t.status !== "running";
+  plainSteps.push({ key: "read", title: "Read the question and find the names it mentions", result: understood ? recognisedText(t.linked, t.parsed) : undefined, state: understood ? "done" : "active" });
+  let prevDone = understood;
+  for (const p of planned) {
+    const ex = t.steps.find((s) => s.step === p.step);
+    const state: PlainStep["state"] = ex ? (ex.error ? "error" : "done") : prevDone && t.status === "running" ? "active" : "pending";
+    plainSteps.push({ key: `s${p.step}`, title: describeStep(p.tool, p.args, idx, t.mode), result: ex ? describeResult(ex, idx) : undefined, state, stepNumber: p.step });
+    prevDone = !!ex;
+  }
+  if (!planned.length && t.status === "running" && (t.stage === "global_map_reduce" || t.stage === "local_retrieve")) {
+    plainSteps.push({ key: "retrieve", title: t.stage === "global_map_reduce" ? "Read the summaries of the research communities" : "Gather what the graph says about the subject", state: "active" });
+    prevDone = false;
+  }
+  const passed = t.result?.faithfulness?.passed;
+  if (t.status !== "ambiguous") {
+    plainSteps.push({
+      key: "write",
+      title: "Write the answer and check every number against the results",
+      result: t.result ? (passed ? "All numbers matched" : "Some statements did not match the data") : undefined,
+      state: t.result ? (passed ? "done" : "error") : prevDone && t.status === "running" && (planned.length > 0 || t.steps.length > 0) ? "active" : t.status === "error" ? "error" : "pending",
+    });
+  }
+  const tables = buildTables(t.steps, idx);
+  const resultPapers = (t.evidence.result_papers || []).map((r) => ({ step: r.step, paper_ids: r.paper_ids }));
+  const { blocks, footnotes } = footnoteAnswer(t.answer, plainSteps, tables, resultPapers);
+  // Direct citations from the evidence labeller that the text did not reference inline.
+  const citedIds = footnotes.flatMap((f) => f.papers);
+  const resultIds = [...new Set([...(t.evidence.result_papers || []).flatMap((r) => r.paper_ids), ...(t.evidence.citations || []).map((c) => c.paper_id)])];
+  const graph = buildGraph(t.steps, t.linked, t.subgraph, idx);
+  const chart = chooseChart(t.steps, tables, idx);
+  const graphEmptyReason =
+    t.mode === "global" || t.steps.some((s) => s.tool === "community_report")
+      ? "This answer was written from summaries of research communities, so there is no walk through the graph to draw. The Papers tab lists the sources."
+      : t.steps.length
+        ? "This answer came from one ranked table, so there is no path through the graph to draw. The chart and table show the result."
+        : t.status === "running"
+          ? "The graph walk appears here as each step finishes."
+          : "No graph for this answer.";
+  return {
+    plainSteps,
+    executedCount: t.steps.length,
+    blocks,
+    follow: t.status === "done" ? followUps(t.question, t.linked, t.steps) : [],
+    evidence: {
+      graph,
+      graphEmptyReason,
+      revealed: t.planArrived || t.steps.length ? t.steps.length : -1,
+      done: t.status !== "running",
+      chart,
+      tables,
+      footnotes,
+      resultPaperIds: resultIds,
+      citedPaperIds: citedIds,
+    },
+  };
+}
 
-const PAPER_ID_SRC = "paper:(?:aaai|ijcai):\\d{4}:[A-Za-z0-9_.-]*[A-Za-z0-9_-]";
-const INLINE_REF_RE = new RegExp(`(\\[steps? [0-9, ]+\\]|\\[${PAPER_ID_SRC}(?:\\s*[,;]\\s*${PAPER_ID_SRC})*\\])`, "g");
-
-/** Render inline `[step N]` references (aggregate claims) and `[paper:…]` citations as chips. */
-function renderRefs(text: string, keyBase: string, h?: RefHandlers): React.ReactNode {
-  if (!h) return text;
-  const parts = text.split(INLINE_REF_RE);
-  return parts.map((p, idx) => {
-    const stepMatch = p.match(/^\[steps? ([0-9, ]+)\]$/);
-    if (stepMatch) {
-      const nums = stepMatch[1].split(/[ ,]+/).filter(Boolean).map(Number);
-      return (
-        <React.Fragment key={`${keyBase}-${idx}`}>
-          {nums.map((n) => (
-            <button
-              key={n}
-              type="button"
-              data-testid="answer-step-ref"
-              onClick={() => h.onStep(n)}
-              title={`Aggregate claim computed by trace step ${n}; its example papers are listed under "Papers in this result".`}
-              className="mx-0.5 px-1 rounded border border-border font-mono text-[11px] text-muted hover:bg-raised"
-            >
-              step {n}
-            </button>
-          ))}
-        </React.Fragment>
-      );
+/* ---------- Answer rendering ---------- */
+const AnswerBlocks: React.FC<{ blocks: Block[]; streaming: boolean; onFootnote: (n: number) => void }> = ({ blocks, streaming, onFootnote }) => {
+  const out: React.ReactNode[] = [];
+  let list: React.ReactNode[] = [];
+  const flush = (k: number) => {
+    if (list.length) {
+      out.push(<ul key={`ul${k}`}>{list}</ul>);
+      list = [];
     }
-    if (p.startsWith("[paper:") && p.endsWith("]")) {
-      const ids = p.slice(1, -1).split(/\s*[,;]\s*/).filter(Boolean);
-      return (
-        <React.Fragment key={`${keyBase}-${idx}`}>
-          {ids.map((pid) => (
-            <button
-              key={pid}
-              type="button"
-              data-testid="answer-citation-ref"
-              onClick={() => h.onPaper(pid)}
-              title="Citation: this paper is returned as its own row or abstract excerpt and the sentence is about it."
-              className="mx-0.5 px-1 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
-            >
-              {pid}
-            </button>
-          ))}
-        </React.Fragment>
-      );
+  };
+  const renderSegs = (b: Block) =>
+    b.segs.map((s, i) =>
+      typeof s === "string" ? (
+        <React.Fragment key={i}>{s}</React.Fragment>
+      ) : "fn" in s ? (
+        <button key={i} type="button" className="fn" aria-label={`Source ${s.fn}`} onClick={() => onFootnote(s.fn)} data-testid="answer-footnote">
+          {s.fn}
+        </button>
+      ) : (
+        <strong key={i}>{s.strong}</strong>
+      ),
+    );
+  blocks.forEach((b, i) => {
+    if (b.type === "li") list.push(<li key={i}>{renderSegs(b)}</li>);
+    else {
+      flush(i);
+      out.push(<p key={i}>{renderSegs(b)}</p>);
     }
-    return <React.Fragment key={`${keyBase}-${idx}`}>{p}</React.Fragment>;
   });
-}
-
-function renderBoldInline(text: string, h?: RefHandlers): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((p, idx) =>
-    p.startsWith("**") && p.endsWith("**") && p.length > 4 ? (
-      <strong key={idx} className="font-semibold text-ink">
-        {renderRefs(p.slice(2, -2), `b${idx}`, h)}
-      </strong>
-    ) : (
-      <React.Fragment key={idx}>{renderRefs(p, `t${idx}`, h)}</React.Fragment>
-    ),
-  );
-}
-
-const FormattedAnswer: React.FC<{ text: string; refs?: RefHandlers }> = ({ text, refs }) => {
-  const lines = text.split("\n");
+  flush(blocks.length);
   return (
-    <div data-testid="ask-answer-text" className="text-sm text-ink space-y-1.5 leading-relaxed">
-      {lines.map((raw, idx) => {
-        const line = raw.trim();
-        if (!line) return <div key={idx} className="h-1" />;
-        const bulletMatch = line.match(/^(?:[-*]|\d+\.)\s+(.*)$/);
-        if (bulletMatch) {
-          return (
-            <div key={idx} className="flex items-start gap-2 pl-2">
-              <span className="text-muted select-none">•</span>
-              <span className="min-w-0 flex-1">{renderBoldInline(bulletMatch[1], refs)}</span>
-            </div>
-          );
-        }
-        return <p key={idx}>{renderBoldInline(line, refs)}</p>;
-      })}
+    <div className="answer" data-testid="ask-answer-text">
+      {out}
+      {streaming && <span className="caret" aria-hidden="true" />}
     </div>
   );
 };
 
-export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
-  const [question, setQuestion] = useState("");
-  const [mode, setMode] = useState<"auto" | "local" | "global">("auto");
-  const [useCache, setUseCache] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [statusMsg, setStatusMsg] = useState("");
-  const [streamedText, setStreamedText] = useState("");
-  const [liveLinked, setLiveLinked] = useState<Array<Record<string, unknown>>>([]);
-  const [livePlan, setLivePlan] = useState<Array<{ tool: string; args: Record<string, unknown>; purpose?: string }>>([]);
-  const [liveSteps, setLiveSteps] = useState<Array<Record<string, unknown>>>([]);
-  const [liveSubgraph, setLiveSubgraph] = useState<{ nodes: SgNode[]; edges: SgEdge[] }>({ nodes: [], edges: [] });
-  const [liveEvidence, setLiveEvidence] = useState<AskCitationsEvent>({});
-  const [result, setResult] = useState<AskResult | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [activeHop, setActiveHop] = useState<number | "all">("all");
-  const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
-  const abortRef = useRef<AbortController | null>(null);
-
-  const demosQuery = useQuery({
-    queryKey: ["nav-ask-demos"],
-    queryFn: ({ signal }) => navigatorApi.getAskDemos(signal),
-  });
-
-  const runQuestion = async (
-    qText: string,
-    qMode: "auto" | "local" | "global" = mode,
-    qCache: boolean = useCache,
-    overrides?: Record<string, string>,
-  ) => {
-    const trimmed = qText.trim();
-    if (!trimmed) return;
-    abortRef.current?.abort();
-    const ctrl = new AbortController();
-    abortRef.current = ctrl;
-    setLoading(true);
-    setErrorMsg(null);
-    setStatusMsg("Parsing question…");
-    setStreamedText("");
-    setLiveLinked([]);
-    setLivePlan([]);
-    setLiveSteps([]);
-    setLiveSubgraph({ nodes: [], edges: [] });
-    setLiveEvidence({});
-    setResult(null);
-    setActiveHop("all");
-    setHoveredNodeId(null);
-
-    await navigatorApi.askStream(
-      { question: trimmed, mode: qMode, use_cache: qCache, resolved_overrides: overrides },
-      {
-        onStatus: (d) => setStatusMsg(`${String(d.stage || "running")} (${String(d.mode || qMode)})`),
-        onParsed: (d) => {
-          if (Array.isArray(d.linked)) setLiveLinked(d.linked);
-        },
-        onPlan: (d) => setLivePlan((d.plan as Array<{ tool: string; args: Record<string, unknown>; purpose?: string }>) || []),
-        onStep: (d) => setLiveSteps((prev) => [...prev, d]),
-        onSubgraph: (sg) =>
-          setLiveSubgraph({
-            nodes: sg.nodes || [],
-            edges: sg.edges || [],
-          }),
-        onToken: (d) => setStreamedText((prev) => prev + (d.text || "")),
-        onCitations: (c) => setLiveEvidence(c || {}),
-        onAmbiguous: (res) => {
-          setResult(res as unknown as AskResult);
-          setStatusMsg("Disambiguation required");
-          setLoading(false);
-        },
-        onFinal: (res) => {
-          setResult(res);
-          setStreamedText(res.answer || "");
-          setStatusMsg(res.from_cache ? "Served from scripted demo cache" : "Completed");
-          setLoading(false);
-        },
-        onError: (err) => {
-          setErrorMsg(err);
-          setLoading(false);
-        },
-      },
-      ctrl.signal,
-    );
-    setLoading(false);
-  };
-
-  const activeSubgraph = result?.subgraph || liveSubgraph;
-
-  const shownSubgraph = useMemo(() => {
-    const sg = activeSubgraph || { nodes: [], edges: [] };
-    const edges =
-      activeHop === "all" ? sg.edges : sg.edges.filter((e) => (e.hop ?? 1) <= activeHop);
-    const keepIds = new Set<string>();
-    edges.forEach((e) => {
-      keepIds.add(e.source);
-      keepIds.add(e.target);
-    });
-    const nodes =
-      activeHop === "all"
-        ? sg.nodes.slice(0, 26)
-        : sg.nodes.filter((n) => (n.hop ?? 0) <= activeHop || keepIds.has(n.id)).slice(0, 26);
-    return { nodes, edges: edges.slice(0, 40) };
-  }, [activeSubgraph, activeHop]);
-
-  // Concentric-by-hop + deterministic force-repulsion layout on 600x400 SVG canvas
-  const sgLayout = useMemo(() => {
-    const nodes = shownSubgraph.nodes;
-    if (!nodes.length) return [];
-    const W = 600;
-    const H = 400;
-    const cx = W / 2;
-    const cy = H / 2;
-
-    const byHop = new Map<number, SgNode[]>();
-    nodes.forEach((nd, idx) => {
-      const h = idx === 0 ? 0 : Math.max(1, Math.min(3, Number(nd.hop ?? 1)));
-      const arr = byHop.get(h) || [];
-      arr.push(nd);
-      byHop.set(h, arr);
-    });
-
-    const pos = new Map<string, { x: number; y: number }>();
-    const sortedHops = Array.from(byHop.keys()).sort((a, b) => a - b);
-    sortedHops.forEach((h, ringIdx) => {
-      const arr = byHop.get(h) || [];
-      const radius = arr.length === 1 && ringIdx === 0 ? 0 : 75 + ringIdx * 72;
-      arr.forEach((nd, i) => {
-        const ang = (2 * Math.PI * i) / Math.max(arr.length, 1) - Math.PI / 2 + ringIdx * 0.35;
-        pos.set(nd.id, {
-          x: cx + radius * Math.cos(ang),
-          y: cy + radius * Math.sin(ang) * 0.85,
-        });
-      });
-    });
-
-    // Repulsion + edge attraction + bounds clamp
-    const ids = nodes.map((n) => n.id);
-    for (let iter = 0; iter < 60; iter++) {
-      for (let i = 0; i < ids.length; i++) {
-        for (let j = i + 1; j < ids.length; j++) {
-          const p1 = pos.get(ids[i])!;
-          const p2 = pos.get(ids[j])!;
-          const dx = p2.x - p1.x;
-          const dy = p2.y - p1.y;
-          const dist = Math.hypot(dx, dy) || 0.1;
-          const minDist = 52;
-          if (dist < minDist) {
-            const push = ((minDist - dist) / dist) * 0.45;
-            p1.x -= dx * push;
-            p1.y -= dy * push;
-            p2.x += dx * push;
-            p2.y += dy * push;
-          }
-        }
-      }
-      for (const e of shownSubgraph.edges) {
-        const ps = pos.get(e.source);
-        const pt = pos.get(e.target);
-        if (!ps || !pt) continue;
-        const dx = pt.x - ps.x;
-        const dy = pt.y - ps.y;
-        const dist = Math.hypot(dx, dy) || 1;
-        if (dist > 130) {
-          const pull = ((dist - 130) / dist) * 0.05;
-          ps.x += dx * pull;
-          ps.y += dy * pull;
-          pt.x -= dx * pull;
-          pt.y -= dy * pull;
-        }
-      }
-      for (const id of ids) {
-        const p = pos.get(id)!;
-        p.x = Math.max(42, Math.min(W - 42, p.x));
-        p.y = Math.max(32, Math.min(H - 32, p.y));
-      }
+/* ---------- One turn in the conversation ---------- */
+const Turn: React.FC<{
+  turn: TurnView;
+  model: TurnModel;
+  selected: boolean;
+  latency: number | null;
+  onFootnote: (n: number) => void;
+  onAsk: (q: string, overrides?: Record<string, string>) => void;
+  onSelect: () => void;
+  onShowEvidence: () => void;
+}> = ({ turn, model, selected, latency, onFootnote, onAsk, onSelect, onShowEvidence }) => {
+  const running = turn.status === "running";
+  const [open, setOpen] = useState(true);
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    if (!running) {
+      setOpen(false);
+      return;
     }
-
-    return nodes.map((node) => {
-      const p = pos.get(node.id)!;
-      return { node, x: p.x, y: p.y };
-    });
-  }, [shownSubgraph]);
-
-  const sgCoord = useMemo(
-    () => new Map(sgLayout.map((item) => [item.node.id, { x: item.x, y: item.y }])),
-    [sgLayout],
-  );
-
-  // Label all nodes when <= 10; when crowded (> 10), label ONLY the primary anchor + hovered/focused node
-  const visibleLabelIds = useMemo(() => {
-    const ids = new Set<string>();
-    if (sgLayout.length <= 10) {
-      sgLayout.forEach((it) => ids.add(it.node.id));
-    } else if (sgLayout[0]) {
-      ids.add(sgLayout[0].node.id);
-    }
-    if (hoveredNodeId) ids.add(hoveredNodeId);
-    return ids;
-  }, [sgLayout, hoveredNodeId]);
-
-  const plan = result?.plan?.length ? result.plan : livePlan;
-  const steps = result?.steps?.length ? result.steps : liveSteps;
-  const citations: AskCitation[] = (result?.evidence_labelling ? result.citations : liveEvidence.citations) || [];
-  const resultPapers: AskResultPapers[] =
-    (result?.evidence_labelling ? result.result_papers : liveEvidence.result_papers) || [];
-  const refHandlers: RefHandlers = {
-    onStep: (n) => {
-      const el = document.getElementById(`ask-step-${n}`);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        el.focus({ preventScroll: true });
-      }
-    },
-    onPaper: onOpenNode360,
-  };
-  const linkedList = Array.isArray(result?.linked) ? result.linked : liveLinked;
+    setOpen(true);
+    const id = window.setInterval(() => setTick((n) => n + 1), 100);
+    return () => window.clearInterval(id);
+  }, [running]);
+  void tick;
+  const elapsed = running ? (performance.now() - turn.startedAt) / 1000 : turn.elapsedSeconds;
+  const visibleSteps = model.plainSteps.filter((s) => s.state !== "pending");
+  const passed = turn.result?.faithfulness?.passed;
+  const errors = turn.result?.faithfulness?.errors || [];
+  const kindChoices = turn.linked.filter((l) => Array.isArray(l.kind_choices) && l.kind_choices.length);
+  const ambiguous = turn.result?.ambiguous || [];
+  const shownLatency = latency ?? elapsed;
 
   return (
-    <div data-testid="page-ask" className="p-4 sm:p-6 space-y-4 overflow-y-auto h-full">
-      <div className="ledger-panel p-4 space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <h1 className="text-lg font-semibold text-ink">Ask the Research Graph (GraphRAG + Multi-Hop)</h1>
-            <p className="text-xs text-muted">
-              The SLM plans over a closed 9-tool read-only set; every number, entity, and paper ID in the answer is verified against retrieved tool outputs.
+    <article className={`turn ${selected ? "is-selected" : ""}`} aria-label={`Question: ${turn.question}`} onFocus={onSelect} onClick={onSelect} data-testid="ask-turn">
+      <div className="msg-user">{turn.question}</div>
+
+      {turn.status !== "error" || visibleSteps.length > 1 ? (
+        <div className={`plan ${open ? "" : "collapsed"}`} data-testid="ask-trace">
+          <button type="button" className="plan-title" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+            <span>Plan</span>
+            <span className="elapsed">
+              {running ? `${(elapsed || 0).toFixed(1)} s` : turn.status === "ambiguous" ? "needs a choice" : `${model.plainSteps.length} steps, ${model.plainSteps.every((s) => s.state === "done") ? "all done" : "finished with a warning"}`}
+            </span>
+            <Icon name="chevronDown" size={16} strokeWidth={2} className="chev" />
+          </button>
+          {open && (
+            <ol>
+              {visibleSteps.map((s) => (
+                <li key={s.key} id={s.stepNumber ? `ask-step-${turn.id}-${s.stepNumber}` : undefined} data-state={s.state} tabIndex={-1}>
+                  {s.state === "active" ? (
+                    <span className="st spin" role="img" aria-label="Working" />
+                  ) : s.state === "error" ? (
+                    <Icon name="warning" size={18} className="st st-warn" title="Needs attention" />
+                  ) : (
+                    <Icon name="check" size={18} strokeWidth={2.2} className="st" title="Done" />
+                  )}
+                  <div>
+                    <div className="t">{s.title}</div>
+                    {s.result && <div className="res">{s.result}</div>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      ) : null}
+
+      {turn.status === "ambiguous" && ambiguous.length > 0 && (
+        <div className="choice" role="group" aria-label="Which one did you mean?">
+          {ambiguous.map((a) => (
+            <div key={a.slot}>
+              <p>
+                More than one researcher is called <b>{a.query}</b>. Which one do you mean?
+              </p>
+              <div className="chips">
+                {a.candidates.map((c: any) => (
+                  <button key={c.id} type="button" className="chip-btn" onClick={() => onAsk(turn.question, { [a.slot]: c.id })} title={c.id}>
+                    {c.name}
+                    {Array.isArray(c.affiliations) && c.affiliations.length ? `, ${c.affiliations.slice(0, 2).map((x: string) => orgName(x)).join(" and ")}` : ""}
+                    {typeof c.paper_count === "number" ? `, ${c.paper_count} ${c.paper_count === 1 ? "paper" : "papers"}` : ""}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {turn.answer && turn.status !== "ambiguous" && <AnswerBlocks blocks={model.blocks} streaming={!turn.answerDone} onFootnote={onFootnote} />}
+
+      {turn.status === "error" && (
+        <div className="checkline is-warn" role="alert">
+          <Icon name="warning" size={18} />
+          <span>
+            The answer could not be finished: {turn.error || "the request failed"}. Try again, or turn on recorded answers in the settings next to the box below.
+          </span>
+        </div>
+      )}
+
+      {turn.result && turn.status === "done" && (
+        <>
+          {passed ? (
+            <div className="checkline" data-testid="faithfulness-badge" data-passed="true">
+              <Icon name="shield" size={18} strokeWidth={2} />
+              <span>
+                Every number is checked against the retrieved data. {MODEL_LINE}
+                {shownLatency != null ? `, ${shownLatency.toFixed(1)} s` : ""}.{turn.fromCache ? " This is a recorded answer." : ""}
+              </span>
+            </div>
+          ) : (
+            <div className="checkline is-warn" data-testid="faithfulness-badge" data-passed="false" role="alert">
+              <Icon name="warning" size={18} />
+              <span>
+                Some statements could not be matched to the retrieved data, so read this answer against the Table tab.
+                {errors.length > 0 && (
+                  <details>
+                    <summary>What did not match</summary>
+                    <ul>
+                      {errors.slice(0, 6).map((e, i) => (
+                        <li key={i}>{e.replace(/^entity /, "Name ").replace(/ not in trace$/, " is not in the retrieved data")}</li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
+              </span>
+            </div>
+          )}
+          {kindChoices.map((l) => (
+            <p className="kind-note" key={l.text}>
+              Read “{l.text}” as {l.entity_type ? `a ${l.entity_type.toLowerCase()}` : "a subject"}
+              {typeof l.paper_count === "number" ? ` (${l.paper_count} papers)` : ""}.{" "}
+              {l.kind_choices!.map((c) => (
+                <button key={c.id} type="button" className="textlink" data-testid="ask-kind-choice" onClick={() => onAsk(turn.question, { [String(l.text)]: c.id })}>
+                  Use the {c.label.toLowerCase()} instead{typeof c.paper_count === "number" ? ` (${c.paper_count})` : ""}
+                </button>
+              ))}
             </p>
-          </div>
-          <div className="flex items-center gap-2 text-xs">
-            <div role="group" aria-label="Retrieval mode" className="ledger-segmented">
-              {(["auto", "local", "global"] as const).map((m) => (
-                <button key={m} type="button" data-active={mode === m} onClick={() => setMode(m)}>
-                  {m.charAt(0).toUpperCase() + m.slice(1)}
+          ))}
+          {model.follow.length > 0 && (
+            <div className="chips" aria-label="Follow-up questions" role="group">
+              {model.follow.map((f) => (
+                <button key={f} type="button" className="chip-btn" onClick={() => onAsk(f)} data-testid="ask-followup">
+                  {f}
                 </button>
               ))}
             </div>
-            <label className="inline-flex items-center gap-1 cursor-pointer">
-              <input type="checkbox" checked={useCache} onChange={(e) => setUseCache(e.target.checked)} />
-              <span>Use demo cache</span>
-            </label>
-          </div>
-        </div>
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            void runQuestion(question);
-          }}
-          className="flex gap-2"
-        >
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask a multi-hop, trend, or corpus question…"
-            aria-label="Ask research question"
-            data-testid="ask-input"
-            className="ledger-input flex-1 h-9 px-3 text-sm"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            data-testid="ask-submit"
-            className="ledger-btn h-9 px-4 text-xs font-medium bg-[var(--primary)] text-[var(--primary-ink)]"
-          >
-            {loading ? "Running…" : "Ask"}
+          )}
+          <button type="button" className="chip-btn mobile-ev-toggle" onClick={onShowEvidence}>
+            See the evidence
           </button>
-        </form>
-
-        <div className="flex flex-wrap gap-1.5 text-xs">
-          {(demosQuery.data?.demos || []).map((d) => (
-            <button
-              key={d.demo_id}
-              type="button"
-              data-testid={`demo-btn-${d.demo_id}`}
-              onClick={() => {
-                setQuestion(d.question);
-                setMode(d.mode as "auto" | "local" | "global");
-                void runQuestion(d.question, d.mode as "auto" | "local" | "global", useCache);
-              }}
-              className="px-2 py-1 rounded border border-border hover:bg-raised text-left"
-              title={d.question}
-            >
-              {d.title}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {errorMsg && <p role="alert" className="text-sm text-[var(--negative)] px-1">{errorMsg}</p>}
-      {statusMsg && <p role="status" className="text-xs text-muted px-1">{statusMsg}</p>}
-
-      {result?.ambiguous && result.ambiguous.length > 0 && (
-        <Panel title="Same-Name Entity Disambiguation Required">
-          {result.ambiguous.map((amb) => (
-            <div key={amb.slot} className="space-y-1 text-xs mb-2">
-              <p className="text-muted">Multiple researchers match &ldquo;{amb.query}&rdquo;. Pick one to re-run without merging identities:</p>
-              <div className="flex flex-wrap gap-1.5">
-                {amb.candidates.map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => void runQuestion(question, mode, false, { [amb.slot]: c.id })}
-                    className="px-2 py-1 rounded border border-control hover:bg-raised"
-                  >
-                    {c.name} <span className="font-mono text-[10px] text-faint">({c.id})</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </Panel>
+        </>
       )}
+    </article>
+  );
+};
 
-      {(streamedText || result || steps.length > 0 || plan.length > 0 || linkedList.length > 0) && (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="space-y-4">
-            <Panel title="Grounded Answer">
-              <div className="flex flex-wrap items-center gap-2 text-[11px] mb-2">
-                <span className="px-2 py-0.5 rounded bg-raised font-medium">
-                  {result?.ai_generated_label || "AI-generated from graph data"}
-                </span>
-                {result?.faithfulness && (
-                  <>
-                    <span
-                      data-testid="faithfulness-badge"
-                      className={`px-2 py-0.5 rounded font-medium ${
-                        result.faithfulness.passed
-                          ? "bg-[var(--pill-positive-bg)] text-[var(--pill-positive-ink)]"
-                          : "bg-[var(--pill-warning-bg)] text-[var(--pill-warning-ink)]"
-                      }`}
-                    >
-                      Faithfulness: {result.faithfulness.passed ? "Verified" : `Warnings (${result.faithfulness.errors.length})`}
-                    </span>
-                    <MetricTooltip
-                      label="Faithfulness check"
-                      definition="Verifies every number, bracketed paper/entity ID, and named entity in the answer appears verbatim in the retrieved graph trace."
-                    />
-                  </>
-                )}
-              </div>
-              {streamedText ? (
-                <FormattedAnswer text={streamedText} refs={refHandlers} />
-              ) : (
-                <p data-testid="ask-answer-text" className="text-sm text-muted">
-                  Executing graph steps before grounded synthesis…
-                </p>
-              )}
-              {(citations.length > 0 || resultPapers.length > 0) && (
-                <div className="mt-3 pt-2 border-t border-rule text-xs space-y-2">
-                  <div data-testid="ask-citations">
-                    <div className="flex items-center gap-1 mb-1">
-                      <span className="font-semibold">Citations</span>
-                      <span className="text-muted">({citations.length})</span>
-                      <MetricTooltip
-                        label="Citation"
-                        definition="A specific paper supporting a specific sentence: the trace returns that paper as its own row (papers tool) or as an abstract excerpt (local search). Aggregate claims (counts, shares, rankings) point to their trace step instead."
-                      />
-                    </div>
-                    {citations.length === 0 ? (
-                      <p data-testid="ask-citations-empty" className="text-muted">
-                        No sentence cites a single paper: the claims are aggregates over the graph, and each points to the trace step that computed it.
-                      </p>
-                    ) : (
-                      <ul className="space-y-1">
-                        {citations.map((c, i) => (
-                          <li key={`${c.paper_id}-${i}`} data-testid="ask-citation-item" className="flex items-start gap-2">
-                            <button
-                              type="button"
-                              onClick={() => onOpenNode360(c.paper_id)}
-                              className="shrink-0 px-1.5 py-0.5 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
-                            >
-                              {c.paper_id}
-                            </button>
-                            <span className="text-muted min-w-0">supports: &ldquo;{c.sentence}&rdquo;</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  {resultPapers.length > 0 && (
-                    <div data-testid="ask-result-papers">
-                      <div className="flex items-center gap-1 mb-1">
-                        <span className="font-semibold">Papers in this result</span>
-                        <MetricTooltip
-                          label="Papers in this result"
-                          definition="Example papers behind a step's count or list, returned with the graph rows. They illustrate the result; a single paper's abstract usually does not state the aggregate claim, so they are not shown as citations."
-                        />
-                      </div>
-                      {resultPapers.map((rp) => (
-                        <div key={rp.step} data-testid="ask-result-papers-step" className="mb-1">
-                          <button
-                            type="button"
-                            onClick={() => refHandlers.onStep(rp.step)}
-                            className="mr-1.5 text-muted underline decoration-dotted"
-                          >
-                            Step {rp.step}
-                            {rp.tool ? ` · ${rp.tool}` : ""} · {rp.paper_ids.length} example paper{rp.paper_ids.length === 1 ? "" : "s"}
-                          </button>
-                          {rp.paper_ids.slice(0, 8).map((pid) => (
-                            <button
-                              key={pid}
-                              type="button"
-                              onClick={() => onOpenNode360(pid)}
-                              className="inline-block mr-1.5 mb-1 px-1.5 py-0.5 rounded border border-border font-mono text-[11px] text-[var(--accent)] hover:bg-raised"
-                            >
-                              {pid}
-                            </button>
-                          ))}
-                          {rp.paper_ids.length > 8 && (
-                            <span className="text-faint">+{rp.paper_ids.length - 8} more</span>
-                          )}
-                        </div>
+/* ---------- Welcome ---------- */
+const Welcome: React.FC<{ demos: AskDemoItem[]; onDemo: (d: AskDemoItem) => void }> = ({ demos, onDemo }) => (
+  <div className="welcome">
+    <h1>What would you like to know?</h1>
+    <p>
+      Ask about AAAI and IJCAI papers from 2021 to 2025. A small language model plans the steps, reads the knowledge graph, and writes an answer whose numbers are checked against the data.
+    </p>
+    <div className="intent-groups">
+      {INTENTS.map((g) => (
+        <div className="intent" key={g.name}>
+          <h2>
+            <Icon name={g.icon} size={18} strokeWidth={1.7} />
+            {g.name}
+          </h2>
+          {g.items.map(([id, hint]) => {
+            if (id === "pulse")
+              return (
+                <button key={id} type="button" className="card-btn" onClick={() => navigate("/")}>
+                  What's heating up across all subjects?
+                  <small>{hint}</small>
+                </button>
+              );
+            const d = demos.find((x) => x.demo_id === id);
+            if (!d) return null;
+            return (
+              <button key={id} type="button" className="card-btn" onClick={() => onDemo(d)} data-testid={`demo-btn-${id}`}>
+                {d.question}
+                <small>{hint}</small>
+              </button>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+/* ---------- Page ---------- */
+export const AskPage: React.FC<{ onOpenNode360?: (id: string) => void }> = () => {
+  const route = useRoute();
+  const convId = route.page === "ask" ? route.param : null;
+  const conversations = useConversations((s) => s.conversations);
+  const upsertTurn = useConversations((s) => s.upsertTurn);
+  const demosQuery = useQuery({ queryKey: ["nav-ask-demos"], queryFn: ({ signal }) => navigatorApi.getAskDemos(signal), staleTime: 300_000 });
+  const demos = demosQuery.data?.demos || [];
+
+  const [mode, setMode] = useState<AskMode>("auto");
+  const [useCache, setUseCache] = useState(true);
+  const [input, setInput] = useState("");
+  const [advOpen, setAdvOpen] = useState(false);
+  const [tab, setTab] = useState<EvidenceTab>("Graph");
+  const [tabTouched, setTabTouched] = useState(false);
+  const [selectedTurnId, setSelectedTurnId] = useState<string | null>(null);
+  const [flashFn, setFlashFn] = useState<number | null>(null);
+  const [announce, setAnnounce] = useState("");
+  const liveConv = useRef<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const evRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const advRef = useRef<HTMLDivElement>(null);
+
+  const onFinished = useCallback(
+    (t: TurnView) => {
+      if (liveConv.current) upsertTurn(liveConv.current, toStored(t));
+      setAnnounce(t.status === "error" ? "The answer could not be finished." : t.status === "ambiguous" ? "The question needs a choice." : "The answer is ready.");
+    },
+    [upsertTurn],
+  );
+  const { turn: live, run, stop } = useAskTurn(onFinished);
+
+  const conversation = conversations.find((c) => c.id === convId) || null;
+  const turns: TurnView[] = useMemo(() => {
+    const stored = conversation?.turns || [];
+    const list = stored.map((st) => (live && live.id === st.id ? live : turnFromResult(st.id, st.question, st.mode, st.result, st.elapsedSeconds, st.error || (st.result ? null : "the question was interrupted"))));
+    if (live && liveConv.current === convId && !stored.some((s) => s.id === live.id)) list.push(live);
+    return list;
+  }, [conversation, live, convId]);
+  const models = useMemo(() => turns.map(modelFor), [turns]);
+
+  // Leaving a conversation stops a run that belongs to another one.
+  useEffect(() => {
+    if (live && liveConv.current && liveConv.current !== convId && live.status === "running") stop();
+    setSelectedTurnId(null);
+    setTabTouched(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [convId]);
+
+  const selectedIndex = Math.max(0, selectedTurnId ? turns.findIndex((t) => t.id === selectedTurnId) : turns.length - 1);
+  const selected = turns[selectedIndex] || null;
+  const selModel = selected ? models[selectedIndex] : null;
+
+  // Default tab: the graph when there is one, otherwise the chart, otherwise the table.
+  useEffect(() => {
+    if (!selModel || tabTouched) return;
+    const ev = selModel.evidence;
+    setTab(ev.graph ? "Graph" : ev.chart.kind !== "none" ? "Chart" : ev.tables.length ? "Table" : "Papers");
+  }, [selModel?.evidence.graph, selModel?.evidence.chart.kind, selModel?.evidence.tables.length, tabTouched, selModel]);
+
+  // Keep the newest content in view while streaming.
+  useEffect(() => {
+    if (!live || live.status !== "running") return;
+    const el = scrollRef.current;
+    if (el && el.scrollHeight - el.scrollTop - el.clientHeight < 240) el.scrollTop = el.scrollHeight;
+  }, [live?.answer, live?.steps.length, live]);
+
+  useEffect(() => {
+    if (!live) return;
+    if (live.status === "running") setAnnounce(live.steps.length ? `Step ${live.steps.length} done` : live.planArrived ? "Plan ready" : "Reading the question");
+  }, [live?.steps.length, live?.planArrived, live?.status, live]);
+
+  const latencyFor = (t: TurnView): number | null => {
+    if (!t.fromCache) return t.elapsedSeconds;
+    const d = demos.find((x) => x.question.trim().toLowerCase() === t.question.trim().toLowerCase());
+    return d?.latency_seconds ?? (t.result as any)?.latency_s ?? null;
+  };
+
+  const ask = useCallback(
+    (question: string, opts: { mode?: AskMode; overrides?: Record<string, string> } = {}) => {
+      const q = question.trim();
+      if (!q) return;
+      let cid = convId;
+      if (!cid || !conversation) {
+        cid = newId("c");
+      }
+      const tid = newId("t");
+      const m = opts.mode || mode;
+      liveConv.current = cid;
+      upsertTurn(cid, { id: tid, question: q, mode: m, askedAt: new Date().toISOString(), result: null, elapsedSeconds: null }, titleFor(q));
+      if (cid !== convId) navigate(pathFor("ask", cid));
+      setSelectedTurnId(tid);
+      setTabTouched(false);
+      setInput("");
+      void run(tid, q, m, opts.overrides ? false : useCache, opts.overrides);
+      requestAnimationFrame(() => {
+        const el = scrollRef.current;
+        if (el) el.scrollTop = el.scrollHeight;
+      });
+    },
+    [convId, conversation, mode, run, upsertTurn, useCache],
+  );
+
+  // /ask?q=… (from search) asks once.
+  const askedFromQuery = useRef(false);
+  useEffect(() => {
+    if (askedFromQuery.current) return;
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q && !convId) {
+      askedFromQuery.current = true;
+      window.history.replaceState(null, "", "/ask");
+      ask(q);
+    }
+  }, [ask, convId]);
+
+  // Close the settings menu on outside click or Escape.
+  useEffect(() => {
+    if (!advOpen) return;
+    const down = (e: MouseEvent) => {
+      if (advRef.current && !advRef.current.contains(e.target as Node)) setAdvOpen(false);
+    };
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setAdvOpen(false);
+    };
+    document.addEventListener("mousedown", down);
+    document.addEventListener("keydown", key);
+    return () => {
+      document.removeEventListener("mousedown", down);
+      document.removeEventListener("keydown", key);
+    };
+  }, [advOpen]);
+
+  const openFootnote = (turnId: string, n: number) => {
+    setSelectedTurnId(turnId);
+    setTab("Papers");
+    setTabTouched(true);
+    setFlashFn(null);
+    requestAnimationFrame(() => setFlashFn(n));
+    if (window.matchMedia("(max-width: 1000px)").matches) evRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const running = live?.status === "running" && liveConv.current === convId;
+  const hasTurns = turns.length > 0;
+
+  return (
+    <div className="ask" data-testid="page-ask">
+      <section className="convo" aria-label="Conversation">
+        <div className="convo-scroll" ref={scrollRef}>
+          <p className="sr-only" aria-live="polite">
+            {announce}
+          </p>
+          {!hasTurns ? (
+            demosQuery.isLoading ? (
+              <p className="loading-line">
+                <span className="spin" aria-hidden="true" />
+                Loading…
+              </p>
+            ) : (
+              <Welcome demos={demos} onDemo={(d) => ask(d.question, { mode: d.mode as AskMode })} />
+            )
+          ) : (
+            turns.map((t, i) => (
+              <Turn
+                key={t.id}
+                turn={t}
+                model={models[i]}
+                selected={i === selectedIndex && turns.length > 1}
+                latency={latencyFor(t)}
+                onFootnote={(n) => openFootnote(t.id, n)}
+                onAsk={(q, overrides) => ask(q, { overrides })}
+                onSelect={() => setSelectedTurnId(t.id)}
+                onShowEvidence={() => {
+                  setSelectedTurnId(t.id);
+                  evRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              />
+            ))
+          )}
+        </div>
+        <div className="composer">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              ask(input);
+            }}
+          >
+            <label className="sr-only" htmlFor="ask-input">
+              Your question
+            </label>
+            <textarea
+              id="ask-input"
+              ref={textRef}
+              rows={1}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  ask(input);
+                }
+              }}
+              placeholder={hasTurns ? "Ask a follow-up…" : "Ask about topics, groups or connections…"}
+              data-testid="ask-input"
+            />
+            <button type="submit" className="send" aria-label="Send" disabled={!input.trim() || running} data-testid="ask-submit">
+              <Icon name="send" size={18} strokeWidth={2} />
+            </button>
+            <div ref={advRef} className="adv-wrap">
+              <button type="button" className="icon-btn" aria-label="Answer settings" aria-expanded={advOpen} aria-controls="adv-menu" onClick={() => setAdvOpen((v) => !v)} data-testid="ask-settings">
+                <Icon name="sliders" size={19} strokeWidth={1.7} />
+              </button>
+              {advOpen && (
+                <div className="adv-menu" id="adv-menu" role="dialog" aria-label="Answer settings">
+                  <fieldset>
+                    <legend>How to search</legend>
+                    <div className="seg" role="radiogroup" aria-label="How to search">
+                      {(["auto", "local", "global"] as AskMode[]).map((m) => (
+                        <label key={m}>
+                          <input type="radio" name="ask-mode" value={m} checked={mode === m} onChange={() => setMode(m)} />
+                          <span>{m === "auto" ? "Auto" : m === "local" ? "Local" : "Global"}</span>
+                        </label>
                       ))}
                     </div>
-                  )}
-                </div>
-              )}
-            </Panel>
-
-            <Panel title={`Reasoning Trace (${plan.length} planned · ${steps.length} executed)`}>
-              {linkedList.length > 0 && (
-                <div className="mb-2 flex flex-wrap gap-1.5 text-[11px]">
-                  <span className="text-muted">Linked:</span>
-                  {linkedList.map((lk: Record<string, unknown>, idx) => {
-                    const choices = Array.isArray(lk.kind_choices)
-                      ? (lk.kind_choices as Array<{ id: string; label: string; name: string; paper_count?: number }>)
-                      : [];
-                    return (
-                      <span key={idx} className="inline-flex flex-wrap items-center gap-1">
-                        <span className="px-1.5 py-0.5 rounded bg-ground border border-rule font-mono">
-                          {lk.entity_type ? `${String(lk.entity_type)}: ` : ""}
-                          {String(lk.name || lk.text)} ({String(lk.id || "unlinked")})
-                        </span>
-                        {choices.map((alt) => (
-                          <button
-                            key={alt.id}
-                            type="button"
-                            data-testid="ask-kind-choice"
-                            onClick={() => void runQuestion(result?.question || question, mode, false, { [String(lk.text)]: alt.id })}
-                            className="px-1.5 py-0.5 rounded border border-control text-[10px] hover:bg-raised"
-                            title={`Re-run using ${alt.label} ${alt.name} (${alt.paper_count ?? 0} papers)`}
-                          >
-                            Use {alt.label}: {alt.name} ({alt.paper_count ?? 0})
-                          </button>
-                        ))}
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
-              <div data-testid="ask-trace" className="space-y-2.5 text-xs max-h-96 overflow-y-auto">
-                {steps.map((st: Record<string, unknown>, i) => (
-                  <div
-                    key={i}
-                    id={`ask-step-${Number(st.step ?? i + 1)}`}
-                    tabIndex={-1}
-                    data-testid="ask-trace-step"
-                    className="p-2.5 rounded border border-border bg-ground space-y-1 focus:outline focus:outline-1 focus:outline-[var(--accent)]"
-                  >
-                    <div className="flex justify-between font-mono text-[11px]">
-                      <span className="font-semibold">Step {i + 1}: {String(st.tool)}</span>
-                      <span className="text-muted">{Array.isArray(st.rows) ? `${st.rows.length} rows` : ""}</span>
-                    </div>
-                    <div className="text-[11px] text-faint font-mono truncate">{JSON.stringify(st.args || {})}</div>
-                    {Boolean(st.note) && <div className="text-[11px] text-muted">{String(st.note)}</div>}
-                    {Array.isArray(st.rows) && st.rows.length > 0 && (
-                      <pre className="text-[11px] overflow-x-auto bg-surface p-1.5 rounded border border-rule max-h-32">
-                        {JSON.stringify(st.rows.slice(0, 5), null, 1)}
-                      </pre>
-                    )}
+                    <p className="small-note">Auto picks for you. Local follows links from the names in the question. Global reads summaries of whole research communities.</p>
+                  </fieldset>
+                  <div className="toggle-row">
+                    <label htmlFor="ask-cache">Use cached demo answers</label>
+                    <input id="ask-cache" type="checkbox" checked={useCache} onChange={(e) => setUseCache(e.target.checked)} data-testid="ask-use-cache" />
                   </div>
-                ))}
-              </div>
-            </Panel>
-          </div>
-
-          <Panel title="Highlighted Retrieval Subgraph (Hop-by-Hop)">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-2 text-xs">
-              <div className="flex flex-wrap items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setActiveHop("all")}
-                  className={`px-2 py-0.5 rounded border ${activeHop === "all" ? "bg-raised border-control" : "border-border"}`}
-                >
-                  All Hops
-                </button>
-                {[1, 2, 3].map((h) => (
-                  <button
-                    key={h}
-                    type="button"
-                    onClick={() => setActiveHop(h)}
-                    className={`px-2 py-0.5 rounded border ${activeHop === h ? "bg-raised border-control" : "border-border"}`}
-                  >
-                    Up to Hop {h}
-                  </button>
-                ))}
-              </div>
-              {sgLayout.length > 10 && (
-                <span className="text-[11px] text-faint">Hover or focus any node to read its label</span>
+                  <p className="small-note">Plays recorded runs of the starter questions, so they work without the language model.</p>
+                </div>
               )}
             </div>
-            <div data-testid="ask-subgraph" className="border border-rule rounded bg-ground p-2">
-              {sgLayout.length === 0 ? (
-                <p className="text-xs text-muted p-4">No subgraph edges returned for this trace.</p>
-              ) : (
-                <svg viewBox="0 0 600 400" className="w-full max-h-[380px]" role="img" aria-label="Ask union subgraph">
-                  {shownSubgraph.edges.map((e, idx) => {
-                    const s = sgCoord.get(e.source);
-                    const t = sgCoord.get(e.target);
-                    if (!s || !t) return null;
-                    return (
-                      <line
-                        key={idx}
-                        x1={s.x}
-                        y1={s.y}
-                        x2={t.x}
-                        y2={t.y}
-                        stroke="var(--accent)"
-                        strokeWidth={1.4}
-                        strokeOpacity={0.55}
-                      />
-                    );
-                  })}
-                  {sgLayout.map(({ node, x, y }) => {
-                    const isHovered = hoveredNodeId === node.id;
-                    const isAnchor = (node.hop ?? 1) === 1 && sgLayout.length > 10 && node.id === sgLayout[0]?.node.id;
-                    return (
-                      <g
-                        key={node.id}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${node.name || node.id} (hop ${node.hop ?? 1})`}
-                        onMouseEnter={() => setHoveredNodeId(node.id)}
-                        onMouseLeave={() => setHoveredNodeId(null)}
-                        onFocus={() => setHoveredNodeId(node.id)}
-                        onBlur={() => setHoveredNodeId(null)}
-                        onClick={() => onOpenNode360(node.id)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            onOpenNode360(node.id);
-                          }
-                        }}
-                        className="cursor-pointer focus:outline-none"
-                      >
-                        <circle
-                          cx={x}
-                          cy={y}
-                          r={isAnchor || isHovered ? 11 : 8}
-                          fill={isHovered ? "var(--positive)" : "#1d5fbf"}
-                          stroke="var(--surface)"
-                          strokeWidth={1.6}
-                        />
-                      </g>
-                    );
-                  })}
-                  {sgLayout
-                    .filter(({ node }) => visibleLabelIds.has(node.id))
-                    .map(({ node, x, y }) => {
-                      const label = (node.name || node.id).slice(0, 26);
-                      const w = Math.min(180, label.length * 6 + 12);
-                      const lx = Math.max(6, Math.min(600 - w - 6, x - w / 2));
-                      const ly = y + 14 > 376 ? y - 28 : y + 12;
-                      return (
-                        <g key={`lbl-${node.id}`} pointerEvents="none">
-                          <rect x={lx} y={ly} width={w} height={17} rx={4} fill="var(--surface)" fillOpacity={0.92} stroke="var(--border)" />
-                          <text x={lx + w / 2} y={ly + 12} textAnchor="middle" fontSize="9.5" fill="var(--text)">
-                            {label}
-                          </text>
-                        </g>
-                      );
-                    })}
-                </svg>
-              )}
-            </div>
-          </Panel>
+          </form>
         </div>
-      )}
+      </section>
+      <div ref={evRef} className="evidence-wrap">
+        <EvidencePanel
+          data={selModel && selected?.status !== "ambiguous" ? selModel.evidence : null}
+          tab={tab}
+          onTab={(t) => {
+            setTab(t);
+            setTabTouched(true);
+          }}
+          flashFootnote={flashFn}
+        />
+      </div>
     </div>
   );
 };
+
+// Names used by tests and other pages.
+export { displayName };

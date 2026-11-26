@@ -1,6 +1,7 @@
 @import "./fonts.css";
 @import "./shell.css";
 @import "./ui.css";
+@import "./ask.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

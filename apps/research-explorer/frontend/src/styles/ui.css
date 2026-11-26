@@ -101,3 +101,37 @@ table.data .num { text-align: right; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Chart kit ---------- */
+.chart { margin: 0; }
+.chart-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.barlist { margin: 12px 0 0; }
+.barlist + .barlist { margin-top: 24px; }
+.barlist-title { font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.barlist ol, .dumbbell ol { list-style: none; margin: 0; padding: 0; }
+.barlist-row, .dumbbell li {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(80px, 1fr) auto; gap: 12px; align-items: center; padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent); width: 100%; text-align: left; background: none; border-left: 0; border-right: 0; border-top: 0; color: var(--ink); font: inherit;
+}
+.barlist-row.is-link { cursor: pointer; }
+.barlist-row.is-link:hover .barlist-name > span { text-decoration: underline; text-underline-offset: 3px; }
+.barlist-name { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; line-height: 1.3; }
+.barlist-name small { color: var(--muted); font-size: 0.8125rem; width: 100%; }
+.barlist-track { height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--ink) 7%, transparent); position: relative; }
+.barlist-bar { display: block; height: 100%; border-radius: 4px; background: var(--ink); opacity: .78; }
+.barlist-value { font-weight: 700; white-space: nowrap; text-align: right; min-width: 4ch; }
+.dumbbell { margin: 12px 0 0; }
+.dumbbell-legend { display: flex; gap: 18px; color: var(--muted); font-size: 0.875rem; margin-bottom: 6px; }
+.dumbbell-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.dumbbell-track { position: relative; height: 14px; }
+.dumbbell-track::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.dumbbell-span { position: absolute; top: 5px; height: 4px; border-radius: 2px; }
+.dumbbell-dot { position: absolute; top: 2px; width: 10px; height: 10px; border-radius: 50%; margin-left: -5px; }
+.dumbbell .barlist-value { font-weight: 400; color: var(--muted); }
+.dumbbell .barlist-value b { color: var(--ink); }
+.cell { display: block; border-radius: 3px; }
+.cell-lg { height: 34px; }
+.cell-sm { height: 22px; }
+@media (max-width: 768px) {
+  .barlist-row, .dumbbell li { grid-template-columns: minmax(0, 1.2fr) minmax(56px, 0.8fr) auto; gap: 8px; }
+}

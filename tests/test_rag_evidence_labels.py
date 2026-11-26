@@ -98,10 +98,57 @@ def test_answer_without_brackets_is_unchanged():
     assert res["citations"] == [] and res["result_papers"] == []
 
 
-def test_current_prompt_tells_model_to_point_aggregates_to_steps():
-    assert CURRENT_ANSWER_PROMPT == "rag-answer-v4"
+def test_v4_prompt_tells_model_to_point_aggregates_to_steps():
     assert "[step N]" in _ANSWER_SYS_V4
     assert "NEVER attach paper IDs to aggregate claims" in _ANSWER_SYS_V4
+
+
+def test_current_prompt_is_summary_first_and_keeps_v4_evidence_rules():
+    from scientific_network.rag.answer import (
+        CURRENT_LOCAL_ANSWER_PROMPT,
+        _ANSWER_SYS_V5,
+        _ANSWER_SYSTEMS,
+        _STEP_REF_PROMPTS,
+    )
+
+    assert CURRENT_ANSWER_PROMPT == "rag-answer-v5"
+    assert CURRENT_LOCAL_ANSWER_PROMPT == "rag-local-answer-v4"
+    assert _ANSWER_SYSTEMS["rag-answer-v5"] is _ANSWER_SYS_V5
+    # Older versions stay registered so frozen benchmark runs remain reproducible.
+    assert _ANSWER_SYSTEMS["rag-answer-v3"] is not _ANSWER_SYS_V5
+    assert _ANSWER_SYSTEMS["rag-answer-v4"] is _ANSWER_SYS_V4
+    assert "ONE plain sentence" in _ANSWER_SYS_V5
+    assert "top 3 to 5 items" in _ANSWER_SYS_V5
+    assert "The full ranking of K is in the table." in _ANSWER_SYS_V5
+    assert "[step N]" in _ANSWER_SYS_V5
+    assert "NEVER attach paper IDs to aggregate claims" in _ANSWER_SYS_V5
+    assert {"rag-answer-v5", "rag-local-answer-v4"} <= _STEP_REF_PROMPTS
+
+
+def test_local_v5_prompt_asks_for_no_step_references():
+    from scientific_network.rag.answer import _ANSWER_SYSTEMS, _LOCAL_ANSWER_SYS_V5
+
+    assert _ANSWER_SYSTEMS["rag-local-answer-v4"] is _LOCAL_ANSWER_SYS_V5
+    assert "Do NOT write [step N] references" in _LOCAL_ANSWER_SYS_V5
+    assert "ONE plain sentence" in _LOCAL_ANSWER_SYS_V5
+
+
+def test_v5_percentage_wording_passes_faithfulness():
+    trace = {
+        "steps": [
+            {
+                "step": 2,
+                "tool": "aggregate",
+                "rows": [{"entity_name": "Shenzhen University", "post_papers": "5 of 140", "share_delta": 0.0357, "post_gt_2022_share": 0.0357}],
+                "note": "threshold: post_total >= 10, post_subject >= 2",
+            }
+        ]
+    }
+    answer = (
+        "Shenzhen University grew its share the most [step 2].\n"
+        "- Shenzhen University: 5 of 140 papers after 2022, share 3.6%, share change +3.6 points"
+    )
+    assert verify_answer_faithfulness(answer, trace, "Which organizations increased their share after 2022?") == []
 
 
 def test_list_head_with_colon_inside_parenthetical_names_the_entity():

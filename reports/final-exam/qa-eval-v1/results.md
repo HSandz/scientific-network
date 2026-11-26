@@ -168,3 +168,31 @@ No `qa-eval-v1` system was re-run on any test question, and all `qa-eval-v1` fig
 - **Scorer determinism.** `UnifiedEntityResolver.resolve` in `src/scientific_network/evaluation/qa_eval.py`
   now iterates `sorted(span_norms)` and sorts alias/catalog candidates by ID so future runs are
   independent of `PYTHONHASHSEED`. The frozen `qa-eval-v1` scores above were left untouched.
+
+### 2026-11-26 — Summary-first answer format for the redesigned Ask screen (WORK-2026-11-26-003)
+
+After `qa-eval-v1` was frozen, the product's answer prompts changed for the redesigned Ask screen.
+No `qa-eval-v1` system was re-run on any test question, and every figure above is unchanged; the
+benchmark used `rag-answer-v3` / `rag-local-answer-v2`, which stay registered for reproducibility.
+
+- **New prompts.** `rag-answer-v5` (multi-hop) leads with one plain sentence naming the top result,
+  lists only the top 3–5 items, and closes with "The full ranking of K is in the table." The full
+  ranking moves to the interface's Table and Chart tabs. Shares are written as percentages (the
+  faithfulness check already accepts a value × 100 rounded to one or two decimals) and internal
+  identifiers are forbidden. `rag-local-answer-v4` (local search) is summary-first prose with no
+  `[step N]` references, because local context has no numbered steps. The evidence rules of
+  `rag-answer-v4` are kept. `rag-global-v3` is unchanged.
+- **Development check only** (19 kept development questions, auto mode, Qwen3.5-4B, graph
+  `enriched-cb371912e308`; `reports/runs/WORK-2026-11-26-003/dev-eval-answer-v{4,5}.json`, local and
+  ignored): faithfulness pass rate **0.9474 → 0.9474** (the one failure, `qa-v1-d017`, is the same
+  global answer in both runs and comes from the unchanged global prompt); development scores are
+  identical by hop class (1-hop 1.00, 2-hop 0.5057, 3-hop 0.80, global 0.75; these scores read the
+  step rows, not the prose). Answer shape: mean bullets per answer **5.16 → 3.00** (maximum 20 → 8),
+  mean words **62.8 → 54.6**, mean first-sentence length **293.6 → 154.9** characters. Latencies in
+  these two runs mix LLM-cache hits and are not compared.
+- **Demos re-cached.** The 7 scripted demos were re-recorded without the LLM cache on
+  `enriched-cb371912e308` with `rag-answer-v5` / `rag-local-answer-v4`; all 7 pass the faithfulness
+  check (demo-04 still asks which researcher is meant). `demo-cache.json` now records
+  `graph_version`, `answer_prompt_version` and `local_answer_prompt_version`. A first v5 draft that
+  shared the multi-hop prompt with local search failed demo-07 (`step reference 4 not in trace`),
+  which is why local search has its own prompt.

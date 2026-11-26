@@ -14,7 +14,12 @@ from typing import Any
 
 import yaml
 
-from scientific_network.rag.answer import run_ask, stream_ask
+from scientific_network.rag.answer import (
+    CURRENT_ANSWER_PROMPT,
+    CURRENT_LOCAL_ANSWER_PROMPT,
+    run_ask,
+    stream_ask,
+)
 from scientific_network.rag.llm import LLMClient, LLMConfig
 from scientific_network.rag.sqlite_vectors import SQLiteVectorStore
 from scientific_network.rag.tools import Neo4jToolBackend, RAGToolset
@@ -169,6 +174,26 @@ def _score_dev_item(ref_row: dict[str, Any], res: dict[str, Any]) -> dict[str, A
     }
 
 
+def _answer_shape(text: str) -> dict[str, Any]:
+    """Length and list shape of an answer, used to compare answer formats."""
+    lines = [ln for ln in text.splitlines() if ln.strip()]
+    bullets = [ln for ln in lines if re.match(r"^\s*(?:[-*]|\d+\.)\s+", ln)]
+    first = re.split(r"(?<=[.!?])\s", text.strip(), maxsplit=1)[0] if text.strip() else ""
+    return {"answer_chars": len(text), "answer_words": len(text.split()), "answer_bullets": len(bullets), "first_sentence_chars": len(first)}
+
+
+def _shape_summary(items: list[dict[str, Any]]) -> dict[str, Any]:
+    if not items:
+        return {}
+    n = len(items)
+    return {
+        "mean_answer_words": round(sum(x.get("answer_words", 0) for x in items) / n, 1),
+        "mean_answer_bullets": round(sum(x.get("answer_bullets", 0) for x in items) / n, 2),
+        "max_answer_bullets": max(x.get("answer_bullets", 0) for x in items),
+        "mean_first_sentence_chars": round(sum(x.get("first_sentence_chars", 0) for x in items) / n, 1),
+    }
+
+
 def _make_embed_fn(model_name: str):
     from sentence_transformers import SentenceTransformer
     model = SentenceTransformer(model_name, device="cpu")
@@ -184,8 +209,16 @@ def run_dev_eval_and_demos(
     demos_only: bool = False,
     llm_base_url: str | None = None,
     llm_log_path: Path | None = None,
+    answer_prompt_version: str = CURRENT_ANSWER_PROMPT,
+    local_answer_prompt_version: str = CURRENT_LOCAL_ANSWER_PROMPT,
+    dev_out: Path | None = None,
+    dev_only: bool = False,
 ) -> dict[str, Any]:
-    """Run Phase 4 evaluation on kept development questions ONLY, then cache scripted demo traces."""
+    """Run Phase 4 evaluation on kept development questions ONLY, then cache scripted demo traces.
+
+    ``dev_out`` writes the development report to that path instead of ``rag-v1/dev-eval.json``;
+    with ``dev_only`` the scripted demos are not run and ``demo-cache.json`` is left unchanged.
+    """
     assert_demos_disjoint_from_test()
     cfg = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     out_dir = Path(cfg["output_dir"])
@@ -230,6 +263,8 @@ def run_dev_eval_and_demos(
             vector_store=vstore,
             embed_fn=embed_fn,
             reports_path=out_dir / "community-reports.json",
+            answer_prompt_version=answer_prompt_version,
+            local_answer_prompt_version=local_answer_prompt_version,
         ):
             now = time.perf_counter() - t0
             etype = ev.get("event")
@@ -261,6 +296,7 @@ def run_dev_eval_and_demos(
             scored["stopped_reason"] = res.get("stopped_reason")
             scored["plan_tools"] = [s["tool"] for s in res.get("plan") or []]
             scored["faithfulness_errors"] = res.get("faithfulness_errors") or []
+            scored.update(_answer_shape(res.get("answer") or ""))
             scored.update(timing)
             dev_items.append(scored)
 
@@ -286,8 +322,17 @@ def run_dev_eval_and_demos(
             "kept_dev_count": len(dev_items),
             "by_hop_class": by_hop,
             "overall_faithfulness_rate": round(sum(1 for x in dev_items if x["faithfulness_passed"]) / max(len(dev_items), 1), 4),
+            "answer_prompt_version": answer_prompt_version,
+            "local_answer_prompt_version": local_answer_prompt_version,
+            "graph_version": (cfg.get("graph") or {}).get("graph_version"),
+            "answer_shape": _shape_summary(dev_items),
             "items": dev_items,
         }
+        if dev_out is not None:
+            dev_out.parent.mkdir(parents=True, exist_ok=True)
+            dev_out.write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        if dev_only:
+            return {"dev_eval": by_hop, "answer_shape": dev_report["answer_shape"], "dev_out": str(dev_out) if dev_out else None}
         # Run scripted demo questions
         demos_out: list[dict[str, Any]] = []
         for d in SCRIPTED_DEMO_QUESTIONS:
@@ -338,12 +383,15 @@ def run_dev_eval_and_demos(
             (out_dir / "dev-eval.json").write_text(json.dumps(existing_dev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             return {"dev_eval": by_hop, "demos_timing": demo_summary, "uncached_out": str(uncached_out)}
 
-        if not demos_only:
+        if not demos_only and dev_out is None:
             (out_dir / "dev-eval.json").write_text(json.dumps(dev_report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         demo_payload = {
             "model": cfg["llm"]["model"],
             "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "graph_version": (cfg.get("graph") or {}).get("graph_version"),
+            "answer_prompt_version": answer_prompt_version,
+            "local_answer_prompt_version": local_answer_prompt_version,
             "demos": demos_out,
         }
         (out_dir / "demo-cache.json").write_text(json.dumps(demo_payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -364,6 +412,10 @@ if __name__ == "__main__":
     parser.add_argument("--demos-only", action="store_true", help="Re-cache the scripted demos only; leave dev-eval.json unchanged.")
     parser.add_argument("--llm-base-url", default=None, help="Override the configured OpenAI-compatible base URL.")
     parser.add_argument("--llm-log-path", type=Path, default=None, help="Override the configured LLM call log path.")
+    parser.add_argument("--answer-prompt", default=CURRENT_ANSWER_PROMPT, help="Answer prompt version for multi-hop answers.")
+    parser.add_argument("--local-answer-prompt", default=CURRENT_LOCAL_ANSWER_PROMPT, help="Answer prompt version for local search answers.")
+    parser.add_argument("--dev-out", type=Path, default=None, help="Write the development report here instead of rag-v1/dev-eval.json.")
+    parser.add_argument("--dev-only", action="store_true", help="Run the development questions only; leave demo-cache.json unchanged.")
     args = parser.parse_args()
     print(
         json.dumps(
@@ -375,6 +427,10 @@ if __name__ == "__main__":
                 demos_only=args.demos_only,
                 llm_base_url=args.llm_base_url,
                 llm_log_path=args.llm_log_path,
+                answer_prompt_version=args.answer_prompt,
+                local_answer_prompt_version=args.local_answer_prompt,
+                dev_out=args.dev_out,
+                dev_only=args.dev_only,
             ),
             indent=2,
         )

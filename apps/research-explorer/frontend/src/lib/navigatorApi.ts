@@ -11,6 +11,17 @@ import {
   TrendsResponse,
 } from "../types/navigator";
 
+export interface PaperMeta {
+  id: string;
+  title: string | null;
+  year: number | null;
+  venue: string | null;
+  url: string | null;
+  authors: string[];
+  n_authors: number;
+  in_corpus_citations: number | null;
+}
+
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "/api";
 
 async function getJson<T>(path: string, signal?: AbortSignal): Promise<T> {
@@ -104,6 +115,12 @@ export const navigatorApi = {
     getJson<{ center_id: string; nodes: Array<{ id: string; name: string; label: string }>; edges: Array<{ id: string; relation: string; source: string; target: string; support_count: number; evidence_kind: string }> }>(
       `/explorer-enriched/neighbors/${encodeURIComponent(nodeId)}${qs({ limit })}`,
     ),
+
+  getPapers: (ids: string[], signal?: AbortSignal) => {
+    const sp = new URLSearchParams();
+    ids.slice(0, 60).forEach((id) => sp.append("id", id));
+    return getJson<{ papers: Record<string, PaperMeta> }>(`/papers?${sp.toString()}`, signal);
+  },
 
   getAskDemos: (signal?: AbortSignal) =>
     getJson<{ demos: AskDemoItem[]; generated_at?: string | null }>("/ask/demos", signal),

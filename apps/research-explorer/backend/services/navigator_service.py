@@ -1262,6 +1262,55 @@ class NavigatorService:
 
     # ── 6. Node 360 ───────────────────────────────────────────────────────────
 
+    def get_papers(self, paper_ids: list[str]) -> dict[str, Any]:
+        """Display metadata for a batch of papers (title, venue, year, first authors, link, and
+        in-corpus citations), so the interface can show papers by title instead of by ID."""
+        ids = [p for p in dict.fromkeys(paper_ids or []) if isinstance(p, str) and p.startswith("paper:")][:60]
+        papers: dict[str, dict[str, Any]] = {}
+        if not ids:
+            return {"papers": papers}
+        if self._has_live_neo4j():
+            rows = self._run_read(
+                "UNWIND $ids AS pid MATCH (p:Paper {id: pid}) "
+                "OPTIONAL MATCH (r:Researcher)-[a:AUTHORED]->(p) "
+                "WITH p, r, a ORDER BY coalesce(a.byline_position, 999) "
+                "WITH p, collect(r.name) AS authors "
+                "OPTIONAL MATCH (c:Paper)-[:CITES]->(p) "
+                "RETURN p.id AS id, p.name AS title, p.year AS year, p.official_url AS url, "
+                "p.official_author_count AS official_author_count, authors[..3] AS authors, "
+                "size(authors) AS n_authors, count(DISTINCT c) AS cited",
+                {"ids": ids},
+            )
+            for r in rows:
+                pid = str(r.get("id"))
+                papers[pid] = {
+                    "id": pid,
+                    "title": r.get("title"),
+                    "year": r.get("year"),
+                    "venue": pid.split(":")[1].upper() if pid.count(":") >= 2 else None,
+                    "url": r.get("url"),
+                    "authors": [a for a in (r.get("authors") or []) if a],
+                    "n_authors": int(r.get("official_author_count") or r.get("n_authors") or 0),
+                    "in_corpus_citations": int(r.get("cited") or 0),
+                }
+        elif self.repo is not None and hasattr(self.repo, "get_node_by_id"):
+            for pid in ids:
+                node = self.repo.get_node_by_id(pid)
+                if not node:
+                    continue
+                props = dict(node)
+                papers[pid] = {
+                    "id": pid,
+                    "title": props.get("name") or props.get("title"),
+                    "year": props.get("year"),
+                    "venue": pid.split(":")[1].upper() if pid.count(":") >= 2 else None,
+                    "url": props.get("official_url"),
+                    "authors": [],
+                    "n_authors": int(props.get("official_author_count") or 0),
+                    "in_corpus_citations": None,
+                }
+        return {"papers": papers}
+
     def get_node360(self, node_id: str) -> dict[str, Any] | None:
         props: dict[str, Any] | None = None
         neighbors: list[dict[str, Any]] = []

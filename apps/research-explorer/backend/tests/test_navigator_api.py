@@ -344,3 +344,17 @@ def test_warmup_handles_unreachable_llm_and_mode_aware_health(tmp_path: Path, mo
         assert h["total_edges"] == 242048
         assert h["rag_index_total_nodes"] == 16544
         assert h["rag_index_nodes"]["RagChunk"] == 12000
+
+
+def test_papers_lookup_returns_titles_not_ids(nav_client: TestClient):
+    """Batch paper metadata for the Ask Papers tab and footnotes (WORK-2026-11-26-003)."""
+    res = nav_client.get("/api/papers", params=[("id", "paper:aaai:2021:17325"), ("id", "paper:aaai:2099:0"), ("id", "not-a-paper")])
+    assert res.status_code == 200
+    papers = res.json()["papers"]
+    assert set(papers) == {"paper:aaai:2021:17325"}
+    p = papers["paper:aaai:2021:17325"]
+    assert p["title"] and p["venue"] == "AAAI"
+    assert isinstance(p["authors"], list)
+    assert nav_client.get("/api/papers").json() == {"papers": {}}
+    too_many = [("id", f"paper:aaai:2024:{i}") for i in range(61)]
+    assert nav_client.get("/api/papers", params=too_many).status_code == 422
