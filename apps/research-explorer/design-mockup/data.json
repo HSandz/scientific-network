@@ -1,0 +1,6499 @@
+{
+ "years": [
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ],
+ "year_totals": {
+  "2021": 2240,
+  "2022": 1997,
+  "2023": 2217,
+  "2024": 3121,
+  "2025": 4042
+ },
+ "strip": [
+  {
+   "id": "method:Q114617315",
+   "name": "Diffusion models",
+   "raw_name": "diffusion models",
+   "kind": "Method",
+   "class": "emerging",
+   "label": "Emerging",
+   "t": 1.0,
+   "total": 149,
+   "papers": [
+    0,
+    0,
+    9,
+    48,
+    92
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.406,
+    1.538,
+    2.276
+   ],
+   "p": 0.015
+  },
+  {
+   "id": "method:Q3621696",
+   "name": "Large language models",
+   "raw_name": "Large Language Models (LLMs)",
+   "kind": "Method",
+   "class": "rising",
+   "label": "Rising",
+   "t": 0.926,
+   "total": 136,
+   "papers": [
+    4,
+    3,
+    3,
+    29,
+    97
+   ],
+   "share": [
+    0.179,
+    0.15,
+    0.135,
+    0.929,
+    2.4
+   ],
+   "p": 0.071
+  },
+  {
+   "id": "method:f58ca558af650e28",
+   "name": "CLIP",
+   "raw_name": "CLIP",
+   "kind": "Method",
+   "class": "emerging",
+   "label": "Emerging",
+   "t": 0.667,
+   "total": 75,
+   "papers": [
+    0,
+    2,
+    7,
+    26,
+    40
+   ],
+   "share": [
+    0.0,
+    0.1,
+    0.316,
+    0.833,
+    0.99
+   ],
+   "p": 0.006
+  },
+  {
+   "id": "method:Q124362453",
+   "name": "Mamba",
+   "raw_name": "Mamba",
+   "kind": "Method",
+   "class": "emerging",
+   "label": "Emerging",
+   "t": 0.452,
+   "total": 28,
+   "papers": [
+    1,
+    0,
+    0,
+    0,
+    27
+   ],
+   "share": [
+    0.045,
+    0.0,
+    0.0,
+    0.0,
+    0.668
+   ],
+   "p": 0.216
+  },
+  {
+   "id": "method:Q123134457",
+   "name": "3D Gaussian splatting",
+   "raw_name": "3D Gaussian Splatting",
+   "kind": "Method",
+   "class": "emerging",
+   "label": "Emerging",
+   "t": 0.438,
+   "total": 24,
+   "papers": [
+    0,
+    0,
+    0,
+    1,
+    23
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.032,
+    0.569
+   ],
+   "p": 0.156
+  },
+  {
+   "id": "task:d10fb5b5f0862622",
+   "name": "Medical image segmentation",
+   "raw_name": "Medical Image Segmentation",
+   "kind": "Task",
+   "class": "rising",
+   "label": "Rising",
+   "t": 0.337,
+   "total": 36,
+   "papers": [
+    1,
+    6,
+    4,
+    9,
+    16
+   ],
+   "share": [
+    0.045,
+    0.3,
+    0.18,
+    0.288,
+    0.396
+   ],
+   "p": 0.094
+  },
+  {
+   "id": "task:44de33167d1b5101",
+   "name": "Visual question answering",
+   "raw_name": "Visual Question Answering",
+   "kind": "Task",
+   "class": "rising",
+   "label": "Rising",
+   "t": 0.316,
+   "total": 30,
+   "papers": [
+    1,
+    4,
+    3,
+    11,
+    11
+   ],
+   "share": [
+    0.045,
+    0.2,
+    0.135,
+    0.352,
+    0.272
+   ],
+   "p": 0.1
+  },
+  {
+   "id": "method:3b092cae8d3d0380",
+   "name": "Contrastive learning",
+   "raw_name": "contrastive learning",
+   "kind": "Method",
+   "class": "stable",
+   "label": "Stable",
+   "t": 0.18,
+   "total": 185,
+   "papers": [
+    11,
+    27,
+    38,
+    52,
+    57
+   ],
+   "share": [
+    0.491,
+    1.352,
+    1.714,
+    1.666,
+    1.41
+   ],
+   "p": 0.197
+  },
+  {
+   "id": "method:Q107750691",
+   "name": "Graph neural networks",
+   "raw_name": "graph neural networks",
+   "kind": "Method",
+   "class": "stable",
+   "label": "Stable",
+   "t": -0.18,
+   "total": 296,
+   "papers": [
+    61,
+    46,
+    44,
+    69,
+    76
+   ],
+   "share": [
+    2.723,
+    2.303,
+    1.985,
+    2.211,
+    1.88
+   ],
+   "p": 0.064
+  },
+  {
+   "id": "task:4dc772e0ef979847",
+   "name": "Image captioning",
+   "raw_name": "image captioning",
+   "kind": "Task",
+   "class": "declining",
+   "label": "Declining",
+   "t": -0.37,
+   "total": 26,
+   "papers": [
+    10,
+    3,
+    7,
+    5,
+    1
+   ],
+   "share": [
+    0.446,
+    0.15,
+    0.316,
+    0.16,
+    0.025
+   ],
+   "p": 0.1
+  },
+  {
+   "id": "method:650b62aa39cbdc7b",
+   "name": "Graph convolutional networks",
+   "raw_name": "graph convolutional network",
+   "kind": "Method",
+   "class": "declining",
+   "label": "Declining",
+   "t": -0.431,
+   "total": 66,
+   "papers": [
+    17,
+    14,
+    7,
+    17,
+    11
+   ],
+   "share": [
+    0.759,
+    0.701,
+    0.316,
+    0.545,
+    0.272
+   ],
+   "p": 0.095
+  },
+  {
+   "id": "task:f1456901921cb85b",
+   "name": "Text classification",
+   "raw_name": "text classification",
+   "kind": "Task",
+   "class": "declining",
+   "label": "Declining",
+   "t": -0.482,
+   "total": 34,
+   "papers": [
+    13,
+    10,
+    5,
+    3,
+    3
+   ],
+   "share": [
+    0.58,
+    0.501,
+    0.226,
+    0.096,
+    0.074
+   ],
+   "p": 0.009
+  }
+ ],
+ "topics": {
+  "method:Q114617315": {
+   "orgs": [
+    {
+     "name": "Megvii",
+     "id": "organization:I4401726805",
+     "papers": 4,
+     "group_papers": 34,
+     "spec": 10.75,
+     "growth": 22.22
+    },
+    {
+     "name": "University College London",
+     "id": "organization:I45129253",
+     "papers": 3,
+     "group_papers": 37,
+     "spec": 7.41,
+     "growth": 22.22
+    },
+    {
+     "name": "Zhejiang University of Technology",
+     "id": "organization:I55712492",
+     "papers": 3,
+     "group_papers": 37,
+     "spec": 7.41,
+     "growth": 6.0
+    },
+    {
+     "name": "Shandong University",
+     "id": "organization:I154099455",
+     "papers": 6,
+     "group_papers": 94,
+     "spec": 5.83,
+     "growth": 11.04
+    },
+    {
+     "name": "Tsinghua Shenzhen International Graduate School",
+     "id": "organization:I4405263052",
+     "papers": 4,
+     "group_papers": 63,
+     "spec": 5.8,
+     "growth": 9.32
+    },
+    {
+     "name": "Korea University",
+     "id": "organization:I197347611",
+     "papers": 3,
+     "group_papers": 53,
+     "spec": 5.17,
+     "growth": 6.8
+    },
+    {
+     "name": "Hefei University of Technology",
+     "id": "organization:I16365422",
+     "papers": 3,
+     "group_papers": 61,
+     "spec": 4.49,
+     "growth": 4.55
+    },
+    {
+     "name": "Tsinghua University",
+     "id": "organization:I99065089",
+     "papers": 17,
+     "group_papers": 485,
+     "spec": 3.2,
+     "growth": 6.14
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 4,
+   "related": {
+    "Method": [
+     {
+      "name": "Generative adversarial networks",
+      "papers": 9
+     },
+     {
+      "name": "Large Language Models (LLMs)",
+      "papers": 4
+     },
+     {
+      "name": "Contrastive learning",
+      "papers": 4
+     },
+     {
+      "name": "Conditional diffusion models",
+      "papers": 4
+     },
+     {
+      "name": "Graph neural networks",
+      "papers": 3
+     },
+     {
+      "name": "Diffusion probabilistic models",
+      "papers": 3
+     }
+    ],
+    "Task": [
+     {
+      "name": "Image editing",
+      "papers": 4
+     },
+     {
+      "name": "Sequential Recommendation",
+      "papers": 4
+     },
+     {
+      "name": "Low-light image enhancement",
+      "papers": 3
+     },
+     {
+      "name": "Speech Enhancement",
+      "papers": 2
+     },
+     {
+      "name": "Motion generation",
+      "papers": 2
+     },
+     {
+      "name": "Image generation",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "MVTec AD",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2023:26094",
+     "title": "VIDM: Video Implicit Diffusion Models",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Vishal M. Patel",
+      "Kangfu Mei"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26094"
+    },
+    {
+     "id": "paper:ijcai:2023:199",
+     "title": "Pyramid Diffusion Models for Low-light Image Enhancement",
+     "year": 2023,
+     "venue": "IJCAI",
+     "authors": [
+      "Zongxin Yang",
+      "Dewei Zhou"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://www.ijcai.org/proceedings/2023/199"
+    },
+    {
+     "id": "paper:aaai:2025:32565",
+     "title": "DPLUT: Unsupervised Low-light Image Enhancement with Lookup Tables and Diffusion Priors",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Yunlong Lin",
+      "Yue Huang",
+      "Xinghao Ding"
+     ],
+     "n_authors": 7,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32565"
+    },
+    {
+     "id": "paper:aaai:2025:32739",
+     "title": "ResMaster: Mastering High-Resolution Image Generation via Structural and Fine-Grained Guidance",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Yuechen Zhang",
+      "Shuwei Shi",
+      "Wenbo Li"
+     ],
+     "n_authors": 6,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32739"
+    },
+    {
+     "id": "paper:aaai:2025:32260",
+     "title": "Digging into Intrinsic Contextual Information for High-fidelity 3D Point Cloud Completion",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Kanglin Ning",
+      "Jisheng Chu",
+      "Xiaopeng Fan B"
+     ],
+     "n_authors": 6,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32260"
+    }
+   ],
+   "graph_papers": 149
+  },
+  "method:Q3621696": {
+   "orgs": [
+    {
+     "name": "Agency for Science, Technology and Research",
+     "id": "organization:I115228651",
+     "papers": 4,
+     "group_papers": 74,
+     "spec": 5.41,
+     "growth": 7.67
+    },
+    {
+     "name": "City University of Hong Kong",
+     "id": "organization:I168719708",
+     "papers": 5,
+     "group_papers": 115,
+     "spec": 4.35,
+     "growth": 4.63
+    },
+    {
+     "name": "Shenzhen University",
+     "id": "organization:I180726961",
+     "papers": 5,
+     "group_papers": 134,
+     "spec": 3.74,
+     "growth": 3.85
+    },
+    {
+     "name": "Hong Kong Polytechnic University",
+     "id": "organization:I14243506",
+     "papers": 4,
+     "group_papers": 128,
+     "spec": 3.13,
+     "growth": 3.59
+    },
+    {
+     "name": "Shanghai Artificial Intelligence Laboratory",
+     "id": "organization:I4391012619",
+     "papers": 3,
+     "group_papers": 100,
+     "spec": 3.0,
+     "growth": 2.8
+    },
+    {
+     "name": "University of Hong Kong",
+     "id": "organization:I889458895",
+     "papers": 3,
+     "group_papers": 100,
+     "spec": 3.0,
+     "growth": 5.2
+    },
+    {
+     "name": "Huazhong University of Science and Technology",
+     "id": "organization:I47720641",
+     "papers": 5,
+     "group_papers": 173,
+     "spec": 2.89,
+     "growth": 0.76
+    },
+    {
+     "name": "The University of Sydney",
+     "id": "organization:I129604602",
+     "papers": 3,
+     "group_papers": 108,
+     "spec": 2.78,
+     "growth": 0.94
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 3,
+   "related": {
+    "Method": [
+     {
+      "name": "Graph neural networks",
+      "papers": 7
+     },
+     {
+      "name": "Diffusion models",
+      "papers": 4
+     },
+     {
+      "name": "In-context learning",
+      "papers": 4
+     },
+     {
+      "name": "ChatGPT",
+      "papers": 3
+     },
+     {
+      "name": "Prompt learning",
+      "papers": 3
+     },
+     {
+      "name": "Vision-language model",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Time Series Forecasting",
+      "papers": 4
+     },
+     {
+      "name": "Task planning",
+      "papers": 2
+     }
+    ],
+    "Dataset": []
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2022:19971",
+     "title": "Visual Semantics Allow for Textual Reasoning Better in Scene Text Recognition",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Juhua Liu",
+      "Yue He",
+      "Fengxiang He"
+     ],
+     "n_authors": 4,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/19971"
+    },
+    {
+     "id": "paper:aaai:2025:32588",
+     "title": "LLM4GEN: Leveraging Semantic Representation of LLMs for Text-to-Image Generation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Jun Dan",
+      "Changjie Fan",
+      "Mushui Liu"
+     ],
+     "n_authors": 8,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32588"
+    },
+    {
+     "id": "paper:aaai:2025:34004",
+     "title": "Frame Order Matters: A Temporal Sequence-Aware Model for Few-Shot Action Recognition",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Mushui Liu",
+      "Bozheng Li",
+      "Yunlong Yu"
+     ],
+     "n_authors": 3,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34004"
+    },
+    {
+     "id": "paper:aaai:2025:34067",
+     "title": "TimeCMA: Towards LLM-Empowered Multivariate Time Series Forecasting via Cross-Modality Alignment",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Qianxiong Xu",
+      "Cheng Long",
+      "Lingzheng Zhang"
+     ],
+     "n_authors": 5,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34067"
+    },
+    {
+     "id": "paper:ijcai:2025:782",
+     "title": "Dynamic and Adaptive Feature Generation with LLM",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Banafsheh Rekabdar",
+      "Jinghan Zhang",
+      "Yuanchun Zhou"
+     ],
+     "n_authors": 5,
+     "cited": 2,
+     "url": "https://www.ijcai.org/proceedings/2025/782"
+    }
+   ],
+   "graph_papers": 136
+  },
+  "method:f58ca558af650e28": {
+   "orgs": [
+    {
+     "name": "Dalian University of Technology",
+     "id": "organization:I27357992",
+     "papers": 3,
+     "group_papers": 101,
+     "spec": 5.39,
+     "growth": 3.33
+    },
+    {
+     "name": "Shenzhen University",
+     "id": "organization:I180726961",
+     "papers": 3,
+     "group_papers": 134,
+     "spec": 4.06,
+     "growth": 1.54
+    },
+    {
+     "name": "Peng Cheng Laboratory",
+     "id": "organization:I4210136793",
+     "papers": 5,
+     "group_papers": 244,
+     "spec": 3.72,
+     "growth": 3.08
+    },
+    {
+     "name": "Peking University",
+     "id": "organization:I20231570",
+     "papers": 9,
+     "group_papers": 442,
+     "spec": 3.7,
+     "growth": 3.96
+    },
+    {
+     "name": "Beijing Institute of Technology",
+     "id": "organization:I125839683",
+     "papers": 3,
+     "group_papers": 154,
+     "spec": 3.54,
+     "growth": 3.39
+    },
+    {
+     "name": "Beihang University",
+     "id": "organization:I82880672",
+     "papers": 4,
+     "group_papers": 260,
+     "spec": 2.79,
+     "growth": 3.23
+    },
+    {
+     "name": "Tencent",
+     "id": "organization:I2250653659",
+     "papers": 5,
+     "group_papers": 328,
+     "spec": 2.77,
+     "growth": 1.8
+    },
+    {
+     "name": "Fudan University",
+     "id": "organization:I24943067",
+     "papers": 3,
+     "group_papers": 233,
+     "spec": 2.34,
+     "growth": 2.16
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 3,
+   "related": {
+    "Method": [
+     {
+      "name": "GPT-3",
+      "papers": 3
+     },
+     {
+      "name": "DINO",
+      "papers": 3
+     },
+     {
+      "name": "Contrastive learning",
+      "papers": 2
+     },
+     {
+      "name": "Mamba",
+      "papers": 2
+     },
+     {
+      "name": "Vision-language model",
+      "papers": 2
+     },
+     {
+      "name": "SAM",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Zero-shot classification",
+      "papers": 3
+     },
+     {
+      "name": "Text-Video Retrieval",
+      "papers": 2
+     },
+     {
+      "name": "Image captioning",
+      "papers": 2
+     },
+     {
+      "name": "Image classification",
+      "papers": 2
+     },
+     {
+      "name": "Deepfake Detection",
+      "papers": 2
+     },
+     {
+      "name": "Zero-shot action recognition",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "VidOR",
+      "papers": 2
+     },
+     {
+      "name": "ScanObjectNN",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2024:29434",
+     "title": "Federated Adaptive Prompt Tuning for Multi-Domain Collaborative Learning",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xiangyang Xue",
+      "Shangchao Su",
+      "Mingzhao Yang"
+     ],
+     "n_authors": 3,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29434"
+    },
+    {
+     "id": "paper:aaai:2023:25225",
+     "title": "CLIP-ReID: Exploiting Vision-Language Model for Image Re-identification without Concrete Text Labels",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Qingli Li",
+      "Sun Li"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25225"
+    },
+    {
+     "id": "paper:aaai:2022:20610",
+     "title": "Zero-Shot Out-of-Distribution Detection Based on the Pre-trained Model CLIP",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Sepideh Esmaeilpour",
+      "Eric Robertson",
+      "Bing Liu"
+     ],
+     "n_authors": 3,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20610"
+    },
+    {
+     "id": "paper:aaai:2025:32772",
+     "title": "C2P-CLIP: Injecting Category Common Prompt in CLIP to Enhance Generalization in Deepfake Detection",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Renshuai Tao",
+      "Baoyuan Wu",
+      "Chuangchuang Tan"
+     ],
+     "n_authors": 6,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32772"
+    },
+    {
+     "id": "paper:aaai:2025:32338",
+     "title": "OpenVIS: Open-vocabulary Video Instance Segmentation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Tianjun Xiao",
+      "Pinxue Guo",
+      "Wenqiang Zhang"
+     ],
+     "n_authors": 4,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32338"
+    }
+   ],
+   "graph_papers": 75
+  },
+  "method:Q124362453": {
+   "orgs": [
+    {
+     "name": "Westlake University",
+     "id": "organization:I3133055985",
+     "papers": 2,
+     "group_papers": 46,
+     "spec": 21.14,
+     "growth": 6.25
+    },
+    {
+     "name": "Tsinghua Shenzhen International Graduate School",
+     "id": "organization:I4405263052",
+     "papers": 2,
+     "group_papers": 63,
+     "spec": 15.44,
+     "growth": 5.0
+    },
+    {
+     "name": "Dalian University of Technology",
+     "id": "organization:I27357992",
+     "papers": 2,
+     "group_papers": 101,
+     "spec": 9.63,
+     "growth": 2.22
+    },
+    {
+     "name": "Northwestern Polytechnical University",
+     "id": "organization:I17145004",
+     "papers": 2,
+     "group_papers": 123,
+     "spec": 7.91,
+     "growth": 1.92
+    },
+    {
+     "name": "Sun Yat-sen University",
+     "id": "organization:I157773358",
+     "papers": 2,
+     "group_papers": 241,
+     "spec": 4.04,
+     "growth": 1.12
+    },
+    {
+     "name": "University of Science and Technology of China",
+     "id": "organization:I126520041",
+     "papers": 3,
+     "group_papers": 376,
+     "spec": 3.88,
+     "growth": 1.12
+    },
+    {
+     "name": "Tsinghua University",
+     "id": "organization:I99065089",
+     "papers": 3,
+     "group_papers": 485,
+     "spec": 3.01,
+     "growth": 1.03
+    },
+    {
+     "name": "Peking University",
+     "id": "organization:I20231570",
+     "papers": 2,
+     "group_papers": 442,
+     "spec": 2.2,
+     "growth": 0.8
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 2,
+   "related": {
+    "Method": [
+     {
+      "name": "State Space Model",
+      "papers": 7
+     },
+     {
+      "name": "Transformer",
+      "papers": 5
+     },
+     {
+      "name": "Transformer-based methods",
+      "papers": 2
+     },
+     {
+      "name": "CLIP",
+      "papers": 2
+     },
+     {
+      "name": "Transformer-based models",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "3D Human Pose Estimation",
+      "papers": 2
+     }
+    ],
+    "Dataset": []
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:16365",
+     "title": "MAMBA: Multi-level Aggregation via Memory Bank for Video Object Detection",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Hua Yang",
+      "Guanxiong Sun",
+      "Neil M. Robertson"
+     ],
+     "n_authors": 3,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16365"
+    },
+    {
+     "id": "paper:aaai:2025:32540",
+     "title": "Pamba: Enhancing Global Interaction in Point Clouds via State Space Model",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Zhuoyuan Li",
+      "Chuxin Wang",
+      "Shifeng Zhang"
+     ],
+     "n_authors": 9,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32540"
+    },
+    {
+     "id": "paper:aaai:2025:33131",
+     "title": "Cobra: Extending Mamba to Multi-Modal Large Language Model for Efficient Inference",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Siteng Huang",
+      "Pengxiang Ding",
+      "Donglin Wang"
+     ],
+     "n_authors": 4,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33131"
+    },
+    {
+     "id": "paper:aaai:2025:32707",
+     "title": "Detail Matters: Mamba-Inspired Joint Unfolding Network for Snapshot Spectral Compressive Imaging",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Xin Yuan",
+      "Yulun Zhang",
+      "Yuchao Feng"
+     ],
+     "n_authors": 4,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32707"
+    },
+    {
+     "id": "paper:aaai:2025:33112",
+     "title": "Pose Magic: Efficient and Temporally Consistent Human Pose Estimation with a Hybrid Mamba-GCN Network",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Qingmin Liao",
+      "Qiqi Bao",
+      "Wenming Yang"
+     ],
+     "n_authors": 5,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33112"
+    }
+   ],
+   "graph_papers": 28
+  },
+  "method:Q123134457": {
+   "orgs": [
+    {
+     "name": "University of Hong Kong",
+     "id": "organization:I889458895",
+     "papers": 2,
+     "group_papers": 100,
+     "spec": 11.35,
+     "growth": 3.03
+    },
+    {
+     "name": "South China University of Technology",
+     "id": "organization:I90610280",
+     "papers": 2,
+     "group_papers": 122,
+     "spec": 9.3,
+     "growth": 1.89
+    },
+    {
+     "name": "Peng Cheng Laboratory",
+     "id": "organization:I4210136793",
+     "papers": 2,
+     "group_papers": 244,
+     "spec": 4.65,
+     "growth": 1.54
+    },
+    {
+     "name": "Peking University",
+     "id": "organization:I20231570",
+     "papers": 3,
+     "group_papers": 442,
+     "spec": 3.85,
+     "growth": 1.2
+    },
+    {
+     "name": "Zhejiang University",
+     "id": "organization:I76130692",
+     "papers": 3,
+     "group_papers": 570,
+     "spec": 2.99,
+     "growth": 0.71
+    },
+    {
+     "name": "University of Chinese Academy of Sciences",
+     "id": "organization:I4210165038",
+     "papers": 2,
+     "group_papers": 436,
+     "spec": 2.6,
+     "growth": 0.68
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 2,
+   "related": {
+    "Method": [
+     {
+      "name": "Neural Radiance Fields (NeRF)",
+      "papers": 3
+     }
+    ],
+    "Task": [
+     {
+      "name": "Novel View Synthesis",
+      "papers": 2
+     }
+    ],
+    "Dataset": []
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2025:32193",
+     "title": "Segment Any 3D Gaussians",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Jiemin Fang",
+      "Jiazhong Cen",
+      "Lingxi Xie"
+     ],
+     "n_authors": 5,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32193"
+    },
+    {
+     "id": "paper:aaai:2025:32195",
+     "title": "KeyGS: A Keyframe-Centric Gaussian Splatting Method for Monocular Image Sequences",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Keng-Wei Chang",
+      "Shang‐Hong Lai"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32195"
+    },
+    {
+     "id": "paper:aaai:2025:32206",
+     "title": "GigaGS: 3D Gaussian Based Planar Representation for Large-Scene Surface Reconstruction",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Weicai Ye",
+      "Danpeng Chen",
+      "Wanli Ouyang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32206"
+    },
+    {
+     "id": "paper:aaai:2025:32237",
+     "title": "EvHDR-GS: Event-guided HDR Video Reconstruction with 3D Gaussian Splatting",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Zhan Lu",
+      "De Ma"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32237"
+    },
+    {
+     "id": "paper:aaai:2025:32340",
+     "title": "SpikeGS: Reconstruct 3D Scene Captured by a Fast-Moving Bio-Inspired Camera",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Liwen Hu",
+      "Yijia Guo",
+      "Jiawei Yao"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32340"
+    }
+   ],
+   "graph_papers": 24
+  },
+  "task:d10fb5b5f0862622": {
+   "orgs": [
+    {
+     "name": "Agency for Science, Technology and Research",
+     "id": "organization:I115228651",
+     "papers": 4,
+     "group_papers": 74,
+     "spec": 20.45,
+     "growth": -0.3
+    },
+    {
+     "name": "Zhejiang Lab",
+     "id": "organization:I4210123185",
+     "papers": 3,
+     "group_papers": 64,
+     "spec": 17.73,
+     "growth": -6.48
+    },
+    {
+     "name": "Sun Yat-sen University",
+     "id": "organization:I157773358",
+     "papers": 3,
+     "group_papers": 241,
+     "spec": 4.71,
+     "growth": 2.38
+    },
+    {
+     "name": "Zhejiang University",
+     "id": "organization:I76130692",
+     "papers": 3,
+     "group_papers": 570,
+     "spec": 1.99,
+     "growth": -0.32
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 3,
+   "related": {
+    "Method": [
+     {
+      "name": "U-Net",
+      "papers": 6
+     },
+     {
+      "name": "Transformer",
+      "papers": 5
+     },
+     {
+      "name": "Vision Transformer",
+      "papers": 3
+     },
+     {
+      "name": "Convolutional neural networks",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Semi-Supervised Medical Image Segmentation",
+      "papers": 3
+     },
+     {
+      "name": "Image segmentation",
+      "papers": 2
+     }
+    ],
+    "Dataset": []
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2022:20144",
+     "title": "UCTransNet: Rethinking the Skip Connections in U-Net from a Channel-Wise Perspective with Transformer",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Osmar R. Zai͏̈ane",
+      "Haonan Wang"
+     ],
+     "n_authors": 2,
+     "cited": 6,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20144"
+    },
+    {
+     "id": "paper:ijcai:2021:112",
+     "title": "Medical Image Segmentation using Squeeze-and-Expansion Transformers",
+     "year": 2021,
+     "venue": "IJCAI",
+     "authors": [
+      "Rick Siow Mong Goh",
+      "Xiangde Luo",
+      "Xiuchao Sui"
+     ],
+     "n_authors": 5,
+     "cited": 6,
+     "url": "https://www.ijcai.org/proceedings/2021/112"
+    },
+    {
+     "id": "paper:aaai:2022:20098",
+     "title": "Label-Efficient Hybrid-Supervised Learning for Medical Image Segmentation",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Pengfei Zhu",
+      "Qi Bi",
+      "Yanzhan Yang"
+     ],
+     "n_authors": 4,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20098"
+    },
+    {
+     "id": "paper:aaai:2024:28418",
+     "title": "MedSegDiff-V2: Diffusion-Based Medical Image Segmentation with Transformer",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Yanwu Xu",
+      "Huazhu Fu",
+      "Junde Wu"
+     ],
+     "n_authors": 5,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28418"
+    },
+    {
+     "id": "paper:aaai:2022:20068",
+     "title": "Single-Domain Generalization in Medical Image Segmentation via Test-Time Adaptation from Shape Dictionary",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Pheng‐Ann Heng",
+      "Quande Liu",
+      "Qi Dou"
+     ],
+     "n_authors": 4,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20068"
+    }
+   ],
+   "graph_papers": 36
+  },
+  "task:44de33167d1b5101": {
+   "orgs": [
+    {
+     "name": "Beijing Institute of Technology",
+     "id": "organization:I125839683",
+     "papers": 5,
+     "group_papers": 154,
+     "spec": 14.74,
+     "growth": -2.76
+    },
+    {
+     "name": "Huazhong University of Science and Technology",
+     "id": "organization:I47720641",
+     "papers": 4,
+     "group_papers": 173,
+     "spec": 10.49,
+     "growth": -0.86
+    },
+    {
+     "name": "Institute of Automation",
+     "id": "organization:I4210112150",
+     "papers": 4,
+     "group_papers": 187,
+     "spec": 9.71,
+     "growth": 3.36
+    },
+    {
+     "name": "Harbin Institute of Technology",
+     "id": "organization:I204983213",
+     "papers": 4,
+     "group_papers": 282,
+     "spec": 6.44,
+     "growth": 1.91
+    },
+    {
+     "name": "Chinese Academy of Sciences",
+     "id": "organization:I19820366",
+     "papers": 5,
+     "group_papers": 576,
+     "spec": 3.94,
+     "growth": 1.58
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 3,
+   "related": {
+    "Method": [
+     {
+      "name": "Mixture of Experts",
+      "papers": 2
+     },
+     {
+      "name": "LLaVA",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Visual entailment",
+      "papers": 3
+     },
+     {
+      "name": "Referring Expression Comprehension",
+      "papers": 3
+     },
+     {
+      "name": "Image-text retrieval",
+      "papers": 3
+     },
+     {
+      "name": "Visual grounding",
+      "papers": 2
+     }
+    ],
+    "Dataset": []
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2023:26569",
+     "title": "HybridPrompt: Bridging Language Models and Human Priors in Prompt Tuning for Visual Question Answering",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Guohui Li",
+      "Zhiyuan Ma",
+      "Jianjun Li"
+     ],
+     "n_authors": 4,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26569"
+    },
+    {
+     "id": "paper:ijcai:2022:453",
+     "title": "Declaration-based Prompt Tuning for Visual Question Answering",
+     "year": 2022,
+     "venue": "IJCAI",
+     "authors": [
+      "Feida Zhu",
+      "Yuhang Liu",
+      "Daowan Peng"
+     ],
+     "n_authors": 3,
+     "cited": 3,
+     "url": "https://www.ijcai.org/proceedings/2022/453"
+    },
+    {
+     "id": "paper:aaai:2025:32301",
+     "title": "VQA4CIR: Boosting Composed Image Retrieval with Visual Question Answering",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Rick Siow Mong Goh",
+      "Chun-Mei Feng",
+      "Salman Khan"
+     ],
+     "n_authors": 7,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32301"
+    },
+    {
+     "id": "paper:aaai:2024:27999",
+     "title": "BLIVA: A Simple Multimodal LLM for Better Handling of Text-Rich Visual Questions",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Zhuowen Tu",
+      "Weiyue Li",
+      "Wenbo Hu"
+     ],
+     "n_authors": 4,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27999"
+    },
+    {
+     "id": "paper:aaai:2024:29771",
+     "title": "Detecting and Preventing Hallucinations in Large Vision Language Models",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Jihan Yin",
+      "Erhan Bas",
+      "Anisha Gunjal"
+     ],
+     "n_authors": 3,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29771"
+    }
+   ],
+   "graph_papers": 30
+  },
+  "method:3b092cae8d3d0380": {
+   "orgs": [
+    {
+     "name": "Key Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University",
+     "id": "organization:I4405259713",
+     "papers": 3,
+     "group_papers": 35,
+     "spec": 6.31,
+     "growth": 11.81
+    },
+    {
+     "name": "Sensetime",
+     "id": "organization:I4401727009",
+     "papers": 4,
+     "group_papers": 48,
+     "spec": 6.13,
+     "growth": -10.0
+    },
+    {
+     "name": "University of Notre Dame",
+     "id": "organization:I107639228",
+     "papers": 3,
+     "group_papers": 36,
+     "spec": 6.13,
+     "growth": -11.11
+    },
+    {
+     "name": "Shanxi University",
+     "id": "organization:I181877577",
+     "papers": 3,
+     "group_papers": 49,
+     "spec": 4.51,
+     "growth": -2.28
+    },
+    {
+     "name": "Northwestern Polytechnical University",
+     "id": "organization:I17145004",
+     "papers": 7,
+     "group_papers": 123,
+     "spec": 4.19,
+     "growth": 8.03
+    },
+    {
+     "name": "Shandong University",
+     "id": "organization:I154099455",
+     "papers": 5,
+     "group_papers": 94,
+     "spec": 3.92,
+     "growth": 5.52
+    },
+    {
+     "name": "Tsinghua Shenzhen International Graduate School",
+     "id": "organization:I4405263052",
+     "papers": 3,
+     "group_papers": 63,
+     "spec": 3.51,
+     "growth": -2.37
+    },
+    {
+     "name": "Jilin University",
+     "id": "organization:I194450716",
+     "papers": 5,
+     "group_papers": 110,
+     "spec": 3.35,
+     "growth": 4.85
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 2,
+   "related": {
+    "Method": [
+     {
+      "name": "Self-supervised learning",
+      "papers": 11
+     },
+     {
+      "name": "Data augmentation",
+      "papers": 6
+     },
+     {
+      "name": "Graph neural networks",
+      "papers": 4
+     },
+     {
+      "name": "Generative adversarial networks",
+      "papers": 4
+     },
+     {
+      "name": "Diffusion models",
+      "papers": 4
+     },
+     {
+      "name": "Knowledge distillation",
+      "papers": 3
+     }
+    ],
+    "Task": [
+     {
+      "name": "Transfer learning",
+      "papers": 5
+     },
+     {
+      "name": "Node classification",
+      "papers": 5
+     },
+     {
+      "name": "Anomaly Detection",
+      "papers": 3
+     },
+     {
+      "name": "Text classification",
+      "papers": 2
+     },
+     {
+      "name": "Image classification",
+      "papers": 2
+     },
+     {
+      "name": "Classification",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "ImageNet",
+      "papers": 4
+     },
+     {
+      "name": "CIFAR-10",
+      "papers": 3
+     },
+     {
+      "name": "PKU-MMD",
+      "papers": 3
+     },
+     {
+      "name": "MiniImageNet",
+      "papers": 2
+     },
+     {
+      "name": "TieredImageNet",
+      "papers": 2
+     },
+     {
+      "name": "PASCAL VOC",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:16914",
+     "title": "Towards Effective Context for Meta-Reinforcement Learning: an Approach based on Contrastive Learning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Haotian Fu",
+      "Wulong Liu",
+      "Jianye Hao"
+     ],
+     "n_authors": 7,
+     "cited": 6,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16914"
+    },
+    {
+     "id": "paper:aaai:2021:17047",
+     "title": "Learning a Few-shot Embedding Model with Contrastive Learning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Chengjie Wang",
+      "Siqian Yang",
+      "Yanwei Fu"
+     ],
+     "n_authors": 6,
+     "cited": 6,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17047"
+    },
+    {
+     "id": "paper:aaai:2022:20871",
+     "title": "AutoGCL: Automated Graph Contrastive Learning via Learnable View Generators",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Siyu Huang",
+      "X. D. Zhang",
+      "Qingzhong Wang"
+     ],
+     "n_authors": 4,
+     "cited": 5,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20871"
+    },
+    {
+     "id": "paper:ijcai:2021:133",
+     "title": "Unsupervised Hashing with Contrastive Information Bottleneck",
+     "year": 2021,
+     "venue": "IJCAI",
+     "authors": [
+      "Zijing Ou",
+      "Zexuan Qiu",
+      "Qinliang Su"
+     ],
+     "n_authors": 5,
+     "cited": 5,
+     "url": "https://www.ijcai.org/proceedings/2021/133"
+    },
+    {
+     "id": "paper:aaai:2023:26285",
+     "title": "Cluster-Guided Contrastive Graph Clustering Network",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Liming Fang",
+      "Qun Zheng",
+      "En Zhu"
+     ],
+     "n_authors": 7,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26285"
+    }
+   ],
+   "graph_papers": 185
+  },
+  "method:Q107750691": {
+   "orgs": [
+    {
+     "name": "Griffith University",
+     "id": "organization:I11701301",
+     "papers": 7,
+     "group_papers": 38,
+     "spec": 8.47,
+     "growth": 20.94
+    },
+    {
+     "name": "McGill University",
+     "id": "organization:I5023651",
+     "papers": 4,
+     "group_papers": 32,
+     "spec": 5.75,
+     "growth": -20.0
+    },
+    {
+     "name": "University of Illinois Chicago",
+     "id": "organization:I39422238",
+     "papers": 5,
+     "group_papers": 47,
+     "spec": 4.89,
+     "growth": -0.42
+    },
+    {
+     "name": "Université de Montréal",
+     "id": "organization:I70931966",
+     "papers": 3,
+     "group_papers": 30,
+     "spec": 4.6,
+     "growth": -19.64
+    },
+    {
+     "name": "Guangxi Normal University",
+     "id": "organization:I29739308",
+     "papers": 3,
+     "group_papers": 32,
+     "spec": 4.31,
+     "growth": 15.0
+    },
+    {
+     "name": "The University of Texas at Dallas",
+     "id": "organization:I162577319",
+     "papers": 3,
+     "group_papers": 35,
+     "spec": 3.94,
+     "growth": 14.58
+    },
+    {
+     "name": "Fuzhou University",
+     "id": "organization:I80947539",
+     "papers": 3,
+     "group_papers": 36,
+     "spec": 3.83,
+     "growth": 5.0
+    },
+    {
+     "name": "University of Notre Dame",
+     "id": "organization:I107639228",
+     "papers": 3,
+     "group_papers": 36,
+     "spec": 3.83,
+     "growth": -16.67
+    }
+   ],
+   "researchers": [
+    {
+     "name": "Shirui Pan",
+     "papers": 6
+    },
+    {
+     "name": "Chuan Shi",
+     "papers": 5
+    },
+    {
+     "name": "Xingcheng Fu",
+     "papers": 5
+    }
+   ],
+   "max_researcher_papers": 6,
+   "related": {
+    "Method": [
+     {
+      "name": "Graph Transformer",
+      "papers": 10
+     },
+     {
+      "name": "Transformer",
+      "papers": 7
+     },
+     {
+      "name": "Large Language Models (LLMs)",
+      "papers": 7
+     },
+     {
+      "name": "Self-supervised learning",
+      "papers": 6
+     },
+     {
+      "name": "GNN models",
+      "papers": 6
+     },
+     {
+      "name": "GNN",
+      "papers": 6
+     }
+    ],
+    "Task": [
+     {
+      "name": "Node classification",
+      "papers": 14
+     },
+     {
+      "name": "Graph classification",
+      "papers": 7
+     },
+     {
+      "name": "Link prediction",
+      "papers": 6
+     },
+     {
+      "name": "Graph representation learning",
+      "papers": 6
+     },
+     {
+      "name": "Anomaly Detection",
+      "papers": 5
+     },
+     {
+      "name": "Node classification tasks",
+      "papers": 5
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "Pubmed",
+      "papers": 3
+     },
+     {
+      "name": "USPTO-50K",
+      "papers": 2
+     },
+     {
+      "name": "Cora",
+      "papers": 2
+     },
+     {
+      "name": "Open Graph Benchmark",
+      "papers": 2
+     },
+     {
+      "name": "Citeseer",
+      "papers": 2
+     },
+     {
+      "name": "ScanRefer",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:16514",
+     "title": "Beyond Low-frequency Information in Graph Convolutional Networks",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Deyu Bo",
+      "Huawei Shen",
+      "Chuan Shi"
+     ],
+     "n_authors": 3,
+     "cited": 25,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16514"
+    },
+    {
+     "id": "paper:ijcai:2021:214",
+     "title": "Masked Label Prediction: Unified Message Passing Model for Semi-Supervised Classification",
+     "year": 2021,
+     "venue": "IJCAI",
+     "authors": [
+      "Shikun Feng",
+      "Yunsheng Shi",
+      "Hui Zhong"
+     ],
+     "n_authors": 6,
+     "cited": 16,
+     "url": "https://www.ijcai.org/proceedings/2021/214"
+    },
+    {
+     "id": "paper:aaai:2021:17198",
+     "title": "Deep Fusion Clustering Network",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Zhiping Cai",
+      "Xifeng Guo",
+      "Jieren Cheng"
+     ],
+     "n_authors": 6,
+     "cited": 12,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17198"
+    },
+    {
+     "id": "paper:aaai:2021:17332",
+     "title": "Graph Neural Networks with Heterophily",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Tung Mai",
+      "Ryan A. Rossi",
+      "Danai Koutra"
+     ],
+     "n_authors": 7,
+     "cited": 12,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17332"
+    },
+    {
+     "id": "paper:aaai:2023:26187",
+     "title": "Federated Learning on Non-IID Graphs via Structural Knowledge Sharing",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Yue Tan",
+      "Guodong Long",
+      "Yixin Liu"
+     ],
+     "n_authors": 3,
+     "cited": 9,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26187"
+    }
+   ],
+   "graph_papers": 296
+  },
+  "task:4dc772e0ef979847": {
+   "orgs": [
+    {
+     "name": "Huawei Technologies",
+     "id": "organization:I2250955327",
+     "papers": 3,
+     "group_papers": 206,
+     "spec": 7.63,
+     "growth": 0.0
+    },
+    {
+     "name": "Tencent",
+     "id": "organization:I2250653659",
+     "papers": 4,
+     "group_papers": 328,
+     "spec": 6.39,
+     "growth": -1.58
+    },
+    {
+     "name": "University of Science and Technology of China",
+     "id": "organization:I126520041",
+     "papers": 3,
+     "group_papers": 376,
+     "spec": 4.18,
+     "growth": -1.71
+    },
+    {
+     "name": "Chinese Academy of Sciences",
+     "id": "organization:I19820366",
+     "papers": 4,
+     "group_papers": 576,
+     "spec": 3.64,
+     "growth": -2.24
+    },
+    {
+     "name": "University of Chinese Academy of Sciences",
+     "id": "organization:I4210165038",
+     "papers": 3,
+     "group_papers": 436,
+     "spec": 3.6,
+     "growth": -2.11
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 4,
+   "related": {
+    "Method": [
+     {
+      "name": "CLIP",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Machine translation",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "MS-COCO",
+      "papers": 7
+     },
+     {
+      "name": "Flickr30K",
+      "papers": 3
+     },
+     {
+      "name": "MS-COCO dataset",
+      "papers": 2
+     },
+     {
+      "name": "MSCOCO",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:16328",
+     "title": "Dual-level Collaborative Transformer for Image Captioning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Liujuan Cao",
+      "Rongrong Ji",
+      "Yunpeng Luo"
+     ],
+     "n_authors": 8,
+     "cited": 9,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16328"
+    },
+    {
+     "id": "paper:aaai:2021:16258",
+     "title": "Improving Image Captioning by Leveraging Intra- and Inter-layer Global Representation in Transformer Network",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Fuhai Chen",
+      "Rongrong Ji",
+      "Yunpeng Luo"
+     ],
+     "n_authors": 7,
+     "cited": 8,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16258"
+    },
+    {
+     "id": "paper:aaai:2022:19940",
+     "title": "Attention-Aligned Transformer for Image Captioning",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Zhengcong Fei"
+     ],
+     "n_authors": 1,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/19940"
+    },
+    {
+     "id": "paper:aaai:2021:16219",
+     "title": "Partially Non-Autoregressive Image Captioning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Zhengcong Fei"
+     ],
+     "n_authors": 1,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16219"
+    },
+    {
+     "id": "paper:aaai:2021:16249",
+     "title": "VIVO: Visual Vocabulary Pre-Training for Novel Object Captioning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Jianfeng Gao",
+      "Xi Peng Yin",
+      "Lei Zhang"
+     ],
+     "n_authors": 4,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16249"
+    }
+   ],
+   "graph_papers": 26
+  },
+  "method:650b62aa39cbdc7b": {
+   "orgs": [
+    {
+     "name": "Beijing University of Posts and Telecommunications",
+     "id": "organization:I139759216",
+     "papers": 4,
+     "group_papers": 170,
+     "spec": 4.85,
+     "growth": 4.4
+    },
+    {
+     "name": "Carnegie Mellon University",
+     "id": "organization:I74973139",
+     "papers": 4,
+     "group_papers": 189,
+     "spec": 4.37,
+     "growth": -5.33
+    },
+    {
+     "name": "Huawei Technologies",
+     "id": "organization:I2250955327",
+     "papers": 3,
+     "group_papers": 206,
+     "spec": 3.0,
+     "growth": -3.03
+    },
+    {
+     "name": "Shanghai Jiao Tong University",
+     "id": "organization:I183067930",
+     "papers": 4,
+     "group_papers": 364,
+     "spec": 2.27,
+     "growth": -1.21
+    },
+    {
+     "name": "Zhejiang University",
+     "id": "organization:I76130692",
+     "papers": 4,
+     "group_papers": 570,
+     "spec": 1.45,
+     "growth": 0.16
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 2,
+   "related": {
+    "Method": [
+     {
+      "name": "Graph neural networks",
+      "papers": 3
+     },
+     {
+      "name": "Graph attention network",
+      "papers": 3
+     },
+     {
+      "name": "Contrastive learning",
+      "papers": 2
+     },
+     {
+      "name": "Graph convolutional neural network",
+      "papers": 2
+     },
+     {
+      "name": "Transformer",
+      "papers": 2
+     },
+     {
+      "name": "GCN",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Neural architecture search",
+      "papers": 2
+     },
+     {
+      "name": "Traffic Forecasting",
+      "papers": 2
+     },
+     {
+      "name": "Incomplete Multi-view Clustering",
+      "papers": 2
+     },
+     {
+      "name": "Node classification",
+      "papers": 2
+     },
+     {
+      "name": "Knowledge Graph Completion",
+      "papers": 2
+     },
+     {
+      "name": "Link prediction",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "NTU RGB+D 120",
+      "papers": 2
+     },
+     {
+      "name": "NTU RGB+D",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:17206",
+     "title": "Contrastive and Generative Graph Convolutional Networks for Graph-based Semi-Supervised Learning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Shirui Pan",
+      "Jian Jun Yang",
+      "Sheng Wan"
+     ],
+     "n_authors": 3,
+     "cited": 8,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17206"
+    },
+    {
+     "id": "paper:aaai:2021:16591",
+     "title": "Coupled Layer-wise Graph Convolution for Transportation Demand Prediction",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Yanjie Fu",
+      "Junchen Ye",
+      "Leilei Sun"
+     ],
+     "n_authors": 3,
+     "cited": 7,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/16591"
+    },
+    {
+     "id": "paper:aaai:2021:17233",
+     "title": "BANANAS: Bayesian Optimization with Neural Architectures for Neural Architecture Search",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Yash Savani",
+      "Willie Neiswanger",
+      "Colin White"
+     ],
+     "n_authors": 3,
+     "cited": 7,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17233"
+    },
+    {
+     "id": "paper:aaai:2021:17203",
+     "title": "GraphMix: Improved Training of GNNs for Semi-Supervised Learning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Alex Lamb",
+      "Juho Kannala",
+      "Vikas Verma"
+     ],
+     "n_authors": 5,
+     "cited": 6,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17203"
+    },
+    {
+     "id": "paper:aaai:2024:29000",
+     "title": "Incomplete Contrastive Multi-View Clustering with High-Confidence Guiding",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Guoqing Chao",
+      "Yi Jiang"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29000"
+    }
+   ],
+   "graph_papers": 66
+  },
+  "task:f1456901921cb85b": {
+   "orgs": [
+    {
+     "name": "University of California, Los Angeles",
+     "id": "organization:I161318765",
+     "papers": 2,
+     "group_papers": 67,
+     "spec": 11.96,
+     "growth": -4.67
+    },
+    {
+     "name": "Tianjin University",
+     "id": "organization:I162868743",
+     "papers": 2,
+     "group_papers": 169,
+     "spec": 4.74,
+     "growth": -1.19
+    },
+    {
+     "name": "Huawei Technologies",
+     "id": "organization:I2250955327",
+     "papers": 2,
+     "group_papers": 206,
+     "spec": 3.89,
+     "growth": -1.52
+    },
+    {
+     "name": "Fudan University",
+     "id": "organization:I24943067",
+     "papers": 2,
+     "group_papers": 233,
+     "spec": 3.44,
+     "growth": -4.0
+    },
+    {
+     "name": "Beihang University",
+     "id": "organization:I82880672",
+     "papers": 2,
+     "group_papers": 260,
+     "spec": 3.08,
+     "growth": -1.32
+    },
+    {
+     "name": "Zhejiang University",
+     "id": "organization:I76130692",
+     "papers": 2,
+     "group_papers": 570,
+     "spec": 1.41,
+     "growth": 0.36
+    },
+    {
+     "name": "Chinese Academy of Sciences",
+     "id": "organization:I19820366",
+     "papers": 2,
+     "group_papers": 576,
+     "spec": 1.39,
+     "growth": -0.62
+    }
+   ],
+   "researchers": [],
+   "max_researcher_papers": 2,
+   "related": {
+    "Method": [
+     {
+      "name": "BERT",
+      "papers": 5
+     },
+     {
+      "name": "Adversarial training",
+      "papers": 3
+     },
+     {
+      "name": "CNN",
+      "papers": 2
+     },
+     {
+      "name": "RNNs",
+      "papers": 2
+     },
+     {
+      "name": "Transformer",
+      "papers": 2
+     },
+     {
+      "name": "Contrastive learning",
+      "papers": 2
+     }
+    ],
+    "Task": [
+     {
+      "name": "Image classification",
+      "papers": 2
+     },
+     {
+      "name": "Learning with Noisy Labels",
+      "papers": 2
+     }
+    ],
+    "Dataset": [
+     {
+      "name": "GLUE",
+      "papers": 2
+     }
+    ]
+   },
+   "top_papers": [
+    {
+     "id": "paper:aaai:2021:17319",
+     "title": "Meta Label Correction for Noisy Label Learning",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Ahmed Hassan Awadallah",
+      "Susan Dumais"
+     ],
+     "n_authors": 2,
+     "cited": 8,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17319"
+    },
+    {
+     "id": "paper:aaai:2021:17651",
+     "title": "Robustness to Spurious Correlations in Text Classification via Automatically Generated Counterfactuals",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Aron Culotta",
+      "Zhao Wang"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17651"
+    },
+    {
+     "id": "paper:aaai:2021:17595",
+     "title": "Generating Natural Language Attacks in a Hard Label Black Box Setting",
+     "year": 2021,
+     "venue": "AAAI",
+     "authors": [
+      "Saket Maheshwary",
+      "Vikram Pudi",
+      "Rishabh Maheshwary"
+     ],
+     "n_authors": 3,
+     "cited": 3,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/17595"
+    },
+    {
+     "id": "paper:aaai:2022:21362",
+     "title": "Improved Text Classification via Contrastive Adversarial Training",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Chung-Wei Hang",
+      "Saloni Potdar",
+      "Lin Pan"
+     ],
+     "n_authors": 4,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/21362"
+    },
+    {
+     "id": "paper:aaai:2022:21391",
+     "title": "Contrast-Enhanced Semi-supervised Text Classification with Few Labels",
+     "year": 2022,
+     "venue": "AAAI",
+     "authors": [
+      "Austin Cheng-Yun Tsai",
+      "Sheng-Ya Lin",
+      "Li‐Chen Fu"
+     ],
+     "n_authors": 3,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/21391"
+    }
+   ],
+   "graph_papers": 34
+  }
+ },
+ "leaders": [
+  {
+   "id": "method:Q3621696",
+   "name": "Large language models",
+   "class": "rising",
+   "t": 0.926,
+   "orgs": [
+    {
+     "name": "Agency for Science, Technology and Research",
+     "id": "organization:I115228651",
+     "papers": 4,
+     "group_papers": 74,
+     "spec": 5.41,
+     "growth": 7.67
+    },
+    {
+     "name": "City University of Hong Kong",
+     "id": "organization:I168719708",
+     "papers": 5,
+     "group_papers": 115,
+     "spec": 4.35,
+     "growth": 4.63
+    },
+    {
+     "name": "Shenzhen University",
+     "id": "organization:I180726961",
+     "papers": 5,
+     "group_papers": 134,
+     "spec": 3.74,
+     "growth": 3.85
+    }
+   ]
+  },
+  {
+   "id": "method:Q114617315",
+   "name": "Diffusion models",
+   "class": "emerging",
+   "t": 1.0,
+   "orgs": [
+    {
+     "name": "Megvii",
+     "id": "organization:I4401726805",
+     "papers": 4,
+     "group_papers": 34,
+     "spec": 10.75,
+     "growth": 22.22
+    },
+    {
+     "name": "University College London",
+     "id": "organization:I45129253",
+     "papers": 3,
+     "group_papers": 37,
+     "spec": 7.41,
+     "growth": 22.22
+    },
+    {
+     "name": "Zhejiang University of Technology",
+     "id": "organization:I55712492",
+     "papers": 3,
+     "group_papers": 37,
+     "spec": 7.41,
+     "growth": 6.0
+    }
+   ]
+  },
+  {
+   "id": "method:f58ca558af650e28",
+   "name": "CLIP",
+   "class": "emerging",
+   "t": 0.667,
+   "orgs": [
+    {
+     "name": "Dalian University of Technology",
+     "id": "organization:I27357992",
+     "papers": 3,
+     "group_papers": 101,
+     "spec": 5.39,
+     "growth": 3.33
+    },
+    {
+     "name": "Shenzhen University",
+     "id": "organization:I180726961",
+     "papers": 3,
+     "group_papers": 134,
+     "spec": 4.06,
+     "growth": 1.54
+    },
+    {
+     "name": "Peng Cheng Laboratory",
+     "id": "organization:I4210136793",
+     "papers": 5,
+     "group_papers": 244,
+     "spec": 3.72,
+     "growth": 3.08
+    }
+   ]
+  },
+  {
+   "id": "method:Q124362453",
+   "name": "Mamba",
+   "class": "emerging",
+   "t": 0.452,
+   "orgs": [
+    {
+     "name": "Westlake University",
+     "id": "organization:I3133055985",
+     "papers": 2,
+     "group_papers": 46,
+     "spec": 21.14,
+     "growth": 6.25
+    },
+    {
+     "name": "Tsinghua Shenzhen International Graduate School",
+     "id": "organization:I4405263052",
+     "papers": 2,
+     "group_papers": 63,
+     "spec": 15.44,
+     "growth": 5.0
+    },
+    {
+     "name": "Dalian University of Technology",
+     "id": "organization:I27357992",
+     "papers": 2,
+     "group_papers": 101,
+     "spec": 9.63,
+     "growth": 2.22
+    }
+   ]
+  },
+  {
+   "id": "task:d10fb5b5f0862622",
+   "name": "Medical image segmentation",
+   "class": "rising",
+   "t": 0.337,
+   "orgs": [
+    {
+     "name": "Agency for Science, Technology and Research",
+     "id": "organization:I115228651",
+     "papers": 4,
+     "group_papers": 74,
+     "spec": 20.45,
+     "growth": -0.3
+    },
+    {
+     "name": "Zhejiang Lab",
+     "id": "organization:I4210123185",
+     "papers": 3,
+     "group_papers": 64,
+     "spec": 17.73,
+     "growth": -6.48
+    },
+    {
+     "name": "Sun Yat-sen University",
+     "id": "organization:I157773358",
+     "papers": 3,
+     "group_papers": 241,
+     "spec": 4.71,
+     "growth": 2.38
+    }
+   ]
+  }
+ ],
+ "demos": [
+  {
+   "id": "demo-01-worked-example",
+   "title": "Tsinghua's collaborators and language models",
+   "question": "Which organizations collaborating with Tsinghua University increased their share of large-language-model papers after 2022?",
+   "mode": "multi_hop",
+   "latency": 14.793,
+   "plan": [
+    {
+     "text": "Read the question and find the names it mentions",
+     "result": "Recognised Tsinghua University (organization), large language models (method), after 2022"
+    },
+    {
+     "text": "Find organizations that co-authored with Tsinghua University",
+     "result": "100 collaborators found",
+     "step": 1
+    },
+    {
+     "text": "Compare each collaborator's share of language-model papers up to 2022 and after",
+     "result": "37 organizations had enough papers; 15 grew the most",
+     "step": 2
+    },
+    {
+     "text": "Write the answer and check every number against the results",
+     "result": "All numbers matched"
+    }
+   ],
+   "blocks": [
+    {
+     "type": "p",
+     "segs": [
+      "The organizations collaborating with Tsinghua University that increased their share of large language model papers after 2022 are ranked by share change. The top 15 ranked organizations are",
+      {
+       "fn": 1
+      },
+      ":"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Beijing National Research Center for Information Science and Technology: 2 of 41 papers after 2022, share change +4.9 points",
+      {
+       "fn": 2
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Shenzhen Institutes of Advanced Technology: 3 of 62 papers after 2022, share change +4.8 points",
+      {
+       "fn": 3
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Chinese University of Hong Kong: 7 of 169 papers after 2022, share change +4.1 points",
+      {
+       "fn": 4
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "City University of Hong Kong: 5 of 124 papers after 2022, share change +4.0 points",
+      {
+       "fn": 5
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "University of Hong Kong: 3 of 81 papers after 2022, share change +3.7 points",
+      {
+       "fn": 6
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "The Hong Kong University of Science and Technology (Guangzhou): 3 of 82 papers after 2022, share change +3.7 points",
+      {
+       "fn": 7
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Shenzhen University: 5 of 140 papers after 2022, share change +3.6 points",
+      {
+       "fn": 8
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "ShanghaiTech University: 2 of 57 papers after 2022, share change +3.5 points",
+      {
+       "fn": 9
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "University of Science and Technology of China: 10 of 348 papers after 2022, share change +2.9 points",
+      {
+       "fn": 10
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Nanyang Technological University: 6 of 214 papers after 2022, share change +2.8 points",
+      {
+       "fn": 11
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Shanghai Artificial Intelligence Laboratory: 4 of 146 papers after 2022, share change +2.7 points",
+      {
+       "fn": 12
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Harbin Institute of Technology: 7 of 286 papers after 2022, share change +2.5 points",
+      {
+       "fn": 13
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Beijing Institute of Technology: 3 of 135 papers after 2022, share change +2.2 points",
+      {
+       "fn": 14
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Beijing University of Posts and Telecommunications: 3 of 152 papers after 2022, share change +2.0 points",
+      {
+       "fn": 15
+      }
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Institute of Information Engineering: 2 of 106 papers after 2022, share change +1.9 points",
+      {
+       "fn": 16
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "segs": [
+      "A total of 37 organizations qualified for the share growth calculation (at least 10 papers after 2022, two of them on the subject), with 27 excluded below the threshold."
+     ]
+    }
+   ],
+   "footnotes": [
+    {
+     "n": 1,
+     "label": "Step 2: compare each collaborator's share of language-model papers up to 2022 and after",
+     "papers": [],
+     "step": 2
+    },
+    {
+     "n": 2,
+     "label": "Beijing National Research Center for Information Science and Technology",
+     "papers": [
+      "paper:ijcai:2025:12",
+      "paper:aaai:2025:32681"
+     ],
+     "step": null
+    },
+    {
+     "n": 3,
+     "label": "Shenzhen Institutes of Advanced Technology",
+     "papers": [
+      "paper:aaai:2024:29726",
+      "paper:ijcai:2025:537",
+      "paper:aaai:2025:32135"
+     ],
+     "step": null
+    },
+    {
+     "n": 4,
+     "label": "Chinese University of Hong Kong",
+     "papers": [
+      "paper:aaai:2024:28567",
+      "paper:ijcai:2025:537",
+      "paper:aaai:2025:34671"
+     ],
+     "step": null
+    },
+    {
+     "n": 5,
+     "label": "City University of Hong Kong",
+     "papers": [
+      "paper:aaai:2025:33571",
+      "paper:aaai:2025:34447",
+      "paper:aaai:2025:34922"
+     ],
+     "step": null
+    },
+    {
+     "n": 6,
+     "label": "University of Hong Kong",
+     "papers": [
+      "paper:ijcai:2024:78",
+      "paper:ijcai:2025:537",
+      "paper:aaai:2025:34671"
+     ],
+     "step": null
+    },
+    {
+     "n": 7,
+     "label": "The Hong Kong University of Science and Technology (Guangzhou)",
+     "papers": [
+      "paper:aaai:2024:28769",
+      "paper:aaai:2025:34447",
+      "paper:aaai:2025:34067"
+     ],
+     "step": null
+    },
+    {
+     "n": 8,
+     "label": "Shenzhen University",
+     "papers": [
+      "paper:aaai:2025:34796",
+      "paper:aaai:2025:33597",
+      "paper:ijcai:2025:354"
+     ],
+     "step": null
+    },
+    {
+     "n": 9,
+     "label": "ShanghaiTech University",
+     "papers": [
+      "paper:aaai:2025:32594",
+      "paper:aaai:2025:32612"
+     ],
+     "step": null
+    },
+    {
+     "n": 10,
+     "label": "University of Science and Technology of China",
+     "papers": [
+      "paper:ijcai:2024:460",
+      "paper:ijcai:2024:579",
+      "paper:aaai:2024:28769"
+     ],
+     "step": null
+    },
+    {
+     "n": 11,
+     "label": "Nanyang Technological University",
+     "papers": [
+      "paper:aaai:2024:27832",
+      "paper:aaai:2024:29730",
+      "paper:aaai:2025:34518"
+     ],
+     "step": null
+    },
+    {
+     "n": 12,
+     "label": "Shanghai Artificial Intelligence Laboratory",
+     "papers": [
+      "paper:aaai:2023:25386",
+      "paper:aaai:2024:28567",
+      "paper:aaai:2025:33814"
+     ],
+     "step": null
+    },
+    {
+     "n": 13,
+     "label": "Harbin Institute of Technology",
+     "papers": [
+      "paper:aaai:2024:29772",
+      "paper:aaai:2024:29726",
+      "paper:aaai:2025:34656"
+     ],
+     "step": null
+    },
+    {
+     "n": 14,
+     "label": "Beijing Institute of Technology",
+     "papers": [
+      "paper:aaai:2024:29823",
+      "paper:ijcai:2025:537",
+      "paper:aaai:2025:32135"
+     ],
+     "step": null
+    },
+    {
+     "n": 15,
+     "label": "Beijing University of Posts and Telecommunications",
+     "papers": [
+      "paper:ijcai:2025:745",
+      "paper:aaai:2025:33351",
+      "paper:aaai:2025:33421"
+     ],
+     "step": null
+    },
+    {
+     "n": 16,
+     "label": "Institute of Information Engineering",
+     "papers": [
+      "paper:aaai:2025:32584",
+      "paper:aaai:2025:32224"
+     ],
+     "step": null
+    }
+   ],
+   "tables": [
+    {
+     "step": 1,
+     "title": "Tsinghua University's collaborators",
+     "columns": [
+      "Organization",
+      "Sector",
+      "Country",
+      "Shared papers"
+     ],
+     "rows": [
+      [
+       "Tsinghua Shenzhen International Graduate School",
+       "academia",
+       "CN",
+       49
+      ],
+      [
+       "Tencent (China)",
+       "industry",
+       "CN",
+       43
+      ],
+      [
+       "Chinese Academy of Sciences",
+       "government",
+       "CN",
+       41
+      ],
+      [
+       "Peng Cheng Laboratory",
+       "unknown",
+       "CN",
+       38
+      ],
+      [
+       "University of Chinese Academy of Sciences",
+       "academia",
+       "CN",
+       33
+      ],
+      [
+       "Peking University",
+       "academia",
+       "CN",
+       22
+      ],
+      [
+       "Beijing National Research Center for Information Science and Technology",
+       "unknown",
+       "CN",
+       21
+      ],
+      [
+       "Huawei Technologies (China)",
+       "industry",
+       "CN",
+       20
+      ],
+      [
+       "Harbin Institute of Technology",
+       "academia",
+       "CN",
+       18
+      ],
+      [
+       "Alibaba Group (China)",
+       "industry",
+       "CN",
+       16
+      ],
+      [
+       "Shenzhen University",
+       "academia",
+       "CN",
+       15
+      ],
+      [
+       "Institute of Automation",
+       "unknown",
+       "CN",
+       14
+      ],
+      [
+       "Shanghai Jiao Tong University",
+       "academia",
+       "CN",
+       13
+      ],
+      [
+       "Chinese University of Hong Kong",
+       "academia",
+       "HK",
+       12
+      ],
+      [
+       "Hong Kong University of Science and Technology",
+       "academia",
+       "HK",
+       12
+      ],
+      [
+       "Beijing Institute of Technology",
+       "academia",
+       "CN",
+       11
+      ],
+      [
+       "Institute of Software",
+       "unknown",
+       "CN",
+       11
+      ],
+      [
+       "Shanghai Artificial Intelligence Laboratory",
+       "unknown",
+       "CN",
+       10
+      ],
+      [
+       "Sun Yat-sen University",
+       "academia",
+       "CN",
+       9
+      ],
+      [
+       "National University of Singapore",
+       "academia",
+       "SG",
+       9
+      ],
+      [
+       "Microsoft Research Asia (China)",
+       "industry",
+       "CN",
+       9
+      ],
+      [
+       "Carnegie Mellon University",
+       "academia",
+       "US",
+       9
+      ],
+      [
+       "Zhejiang University",
+       "academia",
+       "CN",
+       9
+      ],
+      [
+       "Beijing Jiaotong University",
+       "academia",
+       "CN",
+       8
+      ],
+      [
+       "Chinese University of Hong Kong, Shenzhen",
+       "academia",
+       "CN",
+       8
+      ],
+      [
+       "ByteDance (China)",
+       "industry",
+       "CN",
+       8
+      ],
+      [
+       "Renmin University of China",
+       "academia",
+       "CN",
+       8
+      ],
+      [
+       "Microsoft (United States)",
+       "industry",
+       "US",
+       7
+      ],
+      [
+       "Beijing University of Posts and Telecommunications",
+       "academia",
+       "CN",
+       7
+      ],
+      [
+       "Beihang University",
+       "academia",
+       "CN",
+       7
+      ],
+      [
+       "Xi'an Jiaotong University",
+       "academia",
+       "CN",
+       7
+      ],
+      [
+       "University of Macau",
+       "academia",
+       "MO",
+       6
+      ],
+      [
+       "Institute of Information Engineering",
+       "unknown",
+       "CN",
+       6
+      ],
+      [
+       "Shanghai Qi Zhi Institute",
+       "unknown",
+       "CN",
+       6
+      ],
+      [
+       "Ant Group (China)",
+       "industry",
+       "CN",
+       6
+      ],
+      [
+       "Huazhong University of Science and Technology",
+       "academia",
+       "CN",
+       6
+      ],
+      [
+       "Nanjing University",
+       "academia",
+       "CN",
+       6
+      ],
+      [
+       "Nanyang Technological University",
+       "academia",
+       "SG",
+       5
+      ],
+      [
+       "Xiamen University",
+       "academia",
+       "CN",
+       5
+      ],
+      [
+       "Nankai University",
+       "academia",
+       "CN",
+       5
+      ],
+      [
+       "Beijing Normal University",
+       "academia",
+       "CN",
+       5
+      ],
+      [
+       "Institute of Computing Technology",
+       "unknown",
+       "CN",
+       5
+      ],
+      [
+       "State Key Laboratory of Intelligent Technology and Systems",
+       "unknown",
+       "CN",
+       5
+      ],
+      [
+       "East China Normal University",
+       "academia",
+       "CN",
+       5
+      ],
+      [
+       "University of Hong Kong",
+       "academia",
+       "HK",
+       5
+      ],
+      [
+       "University of Science and Technology of China",
+       "academia",
+       "CN",
+       4
+      ],
+      [
+       "Anhui University",
+       "academia",
+       "CN",
+       4
+      ],
+      [
+       "Northwestern Polytechnical University",
+       "academia",
+       "CN",
+       4
+      ],
+      [
+       "Fudan University",
+       "academia",
+       "CN",
+       4
+      ],
+      [
+       "Westlake University",
+       "academia",
+       "CN",
+       4
+      ]
+     ]
+    },
+    {
+     "step": 2,
+     "title": "Share of language-model papers, up to 2022 and after",
+     "columns": [
+      "Organization",
+      "Up to 2022",
+      "After 2022",
+      "Share after",
+      "Change"
+     ],
+     "rows": [
+      [
+       "Beijing National Research Center for Information Science and Technology",
+       "0 of 19",
+       "2 of 41",
+       0.0488,
+       0.0488
+      ],
+      [
+       "Shenzhen Institutes of Advanced Technology",
+       "0 of 28",
+       "3 of 62",
+       0.0484,
+       0.0484
+      ],
+      [
+       "Chinese University of Hong Kong",
+       "0 of 73",
+       "7 of 169",
+       0.0414,
+       0.0414
+      ],
+      [
+       "City University of Hong Kong",
+       "0 of 27",
+       "5 of 124",
+       0.0403,
+       0.0403
+      ],
+      [
+       "University of Hong Kong",
+       "0 of 38",
+       "3 of 81",
+       0.037,
+       0.037
+      ],
+      [
+       "The Hong Kong University of Science and Technology (Guangzhou)",
+       "0 of 9",
+       "3 of 82",
+       0.0366,
+       0.0366
+      ],
+      [
+       "Shenzhen University",
+       "0 of 29",
+       "5 of 140",
+       0.0357,
+       0.0357
+      ],
+      [
+       "ShanghaiTech University",
+       "0 of 15",
+       "2 of 57",
+       0.0351,
+       0.0351
+      ],
+      [
+       "University of Science and Technology of China",
+       "0 of 120",
+       "10 of 348",
+       0.0287,
+       0.0287
+      ],
+      [
+       "Nanyang Technological University",
+       "0 of 94",
+       "6 of 214",
+       0.028,
+       0.028
+      ],
+      [
+       "Shanghai Artificial Intelligence Laboratory",
+       "0 of 46",
+       "4 of 146",
+       0.0274,
+       0.0274
+      ],
+      [
+       "Harbin Institute of Technology",
+       "0 of 75",
+       "7 of 286",
+       0.0245,
+       0.0245
+      ],
+      [
+       "Beijing Institute of Technology",
+       "0 of 53",
+       "3 of 135",
+       0.0222,
+       0.0222
+      ],
+      [
+       "Beijing University of Posts and Telecommunications",
+       "0 of 61",
+       "3 of 152",
+       0.0197,
+       0.0197
+      ],
+      [
+       "Institute of Information Engineering",
+       "0 of 39",
+       "2 of 106",
+       0.0189,
+       0.0189
+      ]
+     ],
+     "pre": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "formats": [
+      "text",
+      "text",
+      "text",
+      "pct",
+      "pp"
+     ]
+    }
+   ],
+   "papers": {
+    "paper:aaai:2024:29726": {
+     "id": "paper:aaai:2024:29726",
+     "title": "Counterfactual-Enhanced Information Bottleneck for Aspect-Based Sentiment Analysis",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Ruifeng Xu",
+      "Qingshan Jiang"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29726"
+    },
+    "paper:aaai:2025:33421": {
+     "id": "paper:aaai:2025:33421",
+     "title": "Harnessing Language Model for Cross-Heterogeneity Graph Knowledge Transfer",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Juan Yang",
+      "Ruijia Wang",
+      "Cheng Yang"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33421"
+    },
+    "paper:aaai:2025:33814": {
+     "id": "paper:aaai:2025:33814",
+     "title": "Large Language Models Enhanced Personalized Graph Neural Architecture Search in Federated Learning",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Hongyang Chen",
+      "Haishuai Wang",
+      "Yang Gao"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33814"
+    },
+    "paper:ijcai:2024:78": {
+     "id": "paper:ijcai:2024:78",
+     "title": "Imperio: Language-Guided Backdoor Attacks for Arbitrary Model Control",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [
+      "Ka-Ho Chow",
+      "Lei Yu",
+      "Wenqi Wei"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/78"
+    },
+    "paper:aaai:2025:32612": {
+     "id": "paper:aaai:2025:32612",
+     "title": "SCOPE: Sign Language Contextual Processing with Embedding from LLMs",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Zhang Wenqian",
+      "Lan Xu",
+      "Sihan Ren"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32612"
+    },
+    "paper:aaai:2025:34796": {
+     "id": "paper:aaai:2025:34796",
+     "title": "Mixture of Knowledge Minigraph Agents for Literature Review Generation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Gong Chen",
+      "Sheng-hua Zhong",
+      "Yan Liu"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34796"
+    },
+    "paper:aaai:2025:34656": {
+     "id": "paper:aaai:2025:34656",
+     "title": "BeyondGender: A Multifaceted Bilingual Dataset for Practical Sexism Detection",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Ruifeng Xu",
+      "Chuang Fan",
+      "Xuan Luo"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34656"
+    },
+    "paper:aaai:2024:29823": {
+     "id": "paper:aaai:2024:29823",
+     "title": "FlexKBQA: A Flexible LLM-Powered Framework for Few-Shot Knowledge Base Question Answering",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xiuxing Li",
+      "Zhichao Duan",
+      "Ning Liu"
+     ],
+     "n_authors": 7,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29823"
+    },
+    "paper:ijcai:2025:537": {
+     "id": "paper:ijcai:2025:537",
+     "title": "DERI: Cross-Modal ECG Representation Learning with Deep ECG-Report Interaction",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Xiping Hu",
+      "Lequan Yu",
+      "Shaorui Zhou"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/537"
+    },
+    "paper:aaai:2025:34067": {
+     "id": "paper:aaai:2025:34067",
+     "title": "TimeCMA: Towards LLM-Empowered Multivariate Time Series Forecasting via Cross-Modality Alignment",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Qianxiong Xu",
+      "Cheng Long",
+      "Lingzheng Zhang"
+     ],
+     "n_authors": 5,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34067"
+    },
+    "paper:aaai:2025:34922": {
+     "id": "paper:aaai:2025:34922",
+     "title": "Multi-Objective Evolution of Heuristic Using Large Language Model",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Qingfu Zhang",
+      "Zhichao Lu",
+      "Shunyu Yao"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34922"
+    },
+    "paper:aaai:2025:34447": {
+     "id": "paper:aaai:2025:34447",
+     "title": "STEM-LTS: Integrating Semantic-Temporal Dynamics in LLM-driven Time Series Analysis",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Haibin Wen",
+      "Yang Wang",
+      "Shuang Wang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34447"
+    },
+    "paper:aaai:2024:29730": {
+     "id": "paper:aaai:2024:29730",
+     "title": "Is a Large Language Model a Good Annotator for Event Extraction?",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Weifeng Jiang",
+      "Dongkyu Choi",
+      "Chengwei Qin"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29730"
+    },
+    "paper:aaai:2025:34671": {
+     "id": "paper:aaai:2025:34671",
+     "title": "DECT: Harnessing LLM-assisted Fine-Grained Linguistic Knowledge and Label-Switched and Label-Preserved Data Generation for Diagnosis of Alzheimer’s Disease",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Jacqueline C. K. Lam",
+      "Tingyu Mo",
+      "Lawrence Y. L. Cheung"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34671"
+    },
+    "paper:aaai:2025:32594": {
+     "id": "paper:aaai:2025:32594",
+     "title": "Relation-aware Hierarchical Prompt for Open-vocabulary Scene Graph Generation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Rongjie Li",
+      "Chongyu Wang"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32594"
+    },
+    "paper:ijcai:2024:460": {
+     "id": "paper:ijcai:2024:460",
+     "title": "LeRet: Language-Empowered Retentive Network for Time Series Forecasting",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [
+      "Yang Wang",
+      "Zhongchao Yi",
+      "Gengyu Lin"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/460"
+    },
+    "paper:aaai:2025:33597": {
+     "id": "paper:aaai:2025:33597",
+     "title": "Efficient Language-instructed Skill Acquisition via Reward-Policy Co-Evolution",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Junfan Lin",
+      "Yanbin Chang",
+      "Jianqiang Li"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33597"
+    },
+    "paper:aaai:2025:32681": {
+     "id": "paper:aaai:2025:32681",
+     "title": "Modular-Cam: Modular Dynamic Camera-view Video Generation with LLM",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Zirui Pan",
+      "Wenwu Zhu",
+      "Xin Wang"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32681"
+    },
+    "paper:aaai:2025:32135": {
+     "id": "paper:aaai:2025:32135",
+     "title": "Understanding Emotional Body Expressions via Large Language Models",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Xiping Hu",
+      "Hai‐Feng Lu",
+      "Mingkui Tan"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32135"
+    },
+    "paper:aaai:2025:33351": {
+     "id": "paper:aaai:2025:33351",
+     "title": "DOGE: LLMs-Enhanced Hyper-Knowledge Graph Recommender for Multimodal Recommendation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Fanshen Meng",
+      "Rongheng Lin",
+      "Budan Wu"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33351"
+    },
+    "paper:aaai:2024:28769": {
+     "id": "paper:aaai:2024:28769",
+     "title": "Exploring Large Language Model for Graph Data Understanding in Online Job Recommendations",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Enhong Chen",
+      "Hengshu Zhu",
+      "Likang Wu"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28769"
+    },
+    "paper:ijcai:2025:12": {
+     "id": "paper:ijcai:2025:12",
+     "title": "L2M2: A Hierarchical Framework Integrating Large Language Model and Multi-agent Reinforcement Learning",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Ah‐Hwee Tan",
+      "Minghong Geng",
+      "Budhitama Subagdja"
+     ],
+     "n_authors": 6,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/12"
+    },
+    "paper:aaai:2024:29772": {
+     "id": "paper:aaai:2024:29772",
+     "title": "MolTailor: Tailoring Chemical Molecular Representation to Specific Tasks via Text Prompts",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Haoqiang Guo",
+      "Bing Qin",
+      "Sendong Zhao"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29772"
+    },
+    "paper:aaai:2024:28567": {
+     "id": "paper:aaai:2024:28567",
+     "title": "MotionGPT: Finetuned LLMs Are General-Purpose Motion Generators",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Lei Bai",
+      "Shixiang Tang",
+      "Qi Chu"
+     ],
+     "n_authors": 8,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28567"
+    },
+    "paper:aaai:2025:32584": {
+     "id": "paper:aaai:2025:32584",
+     "title": "Union Is Strength! Unite the Power of LLMs and MLLMs for Chart Question Answering",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Can Ma",
+      "Li Liang",
+      "Bing Li"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32584"
+    },
+    "paper:ijcai:2024:579": {
+     "id": "paper:ijcai:2024:579",
+     "title": "Large Language Model-Enhanced Algorithm Selection: Towards Comprehensive Algorithm Representation",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [
+      "Jibin Wu",
+      "Kay Chen Tan",
+      "Yan Zhong"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/579"
+    },
+    "paper:aaai:2025:34518": {
+     "id": "paper:aaai:2025:34518",
+     "title": "MEDSAGE: Enhancing Robustness of Medical Dialogue Summarization to ASR Errors with LLM-generated Synthetic Dialogues",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Nancy F. Chen",
+      "STEFAN S. WINKLER",
+      "Andy T. Liu"
+     ],
+     "n_authors": 9,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34518"
+    },
+    "paper:aaai:2023:25386": {
+     "id": "paper:aaai:2023:25386",
+     "title": "Revisiting Classifier: Transferring Vision-Language Models for Video Recognition",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Zhun Sun",
+      "Wanli Ouyang"
+     ],
+     "n_authors": 2,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25386"
+    },
+    "paper:aaai:2025:32224": {
+     "id": "paper:aaai:2025:32224",
+     "title": "Ultra-High-Definition Dynamic Multi-Exposure Image Fusion via Infinite Pixel Learning",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Xingchi Chen",
+      "Wenqi Ren",
+      "Zhuoran Zheng"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32224"
+    },
+    "paper:aaai:2025:33571": {
+     "id": "paper:aaai:2025:33571",
+     "title": "Moonshine: Distilling Game Content Generators into Steerable Generative Models",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Yuhe Nie",
+      "Timothy Merino",
+      "Ashutosh Kumar"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33571"
+    },
+    "paper:aaai:2024:27832": {
+     "id": "paper:aaai:2024:27832",
+     "title": "Omnipotent Distillation with LLMs for Weakly-Supervised Natural Language Video Localization: When Divergence Meets Consistency",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "M.H. Er",
+      "Peijun Bao",
+      "Zihao Shao"
+     ],
+     "n_authors": 4,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27832"
+    },
+    "paper:ijcai:2025:745": {
+     "id": "paper:ijcai:2025:745",
+     "title": "Beyond Statistical Analysis: Multimodal Framework for Time Series Forecasting with LLM-Driven Temporal Pattern",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Haifeng Sun",
+      "Chengsen Wang",
+      "Yuhan Jing"
+     ],
+     "n_authors": 7,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/745"
+    },
+    "paper:ijcai:2025:354": {
+     "id": "paper:ijcai:2025:354",
+     "title": "STLSP: Integrating Structure and Text with Large Language Models for Link Sign Prediction of Networks",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Xiongnan Jin",
+      "Haoyang Fu",
+      "Qiuzhen Lin"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/354"
+    }
+   },
+   "cited": [
+    "paper:ijcai:2025:12",
+    "paper:aaai:2025:32681",
+    "paper:aaai:2024:29726",
+    "paper:ijcai:2025:537",
+    "paper:aaai:2025:32135",
+    "paper:aaai:2024:28567",
+    "paper:aaai:2025:34671",
+    "paper:aaai:2025:33571",
+    "paper:aaai:2025:34447",
+    "paper:aaai:2025:34922",
+    "paper:ijcai:2024:78",
+    "paper:aaai:2024:28769",
+    "paper:aaai:2025:34067",
+    "paper:aaai:2025:34796",
+    "paper:aaai:2025:33597",
+    "paper:ijcai:2025:354",
+    "paper:aaai:2025:32594",
+    "paper:aaai:2025:32612",
+    "paper:ijcai:2024:460",
+    "paper:ijcai:2024:579",
+    "paper:aaai:2024:27832",
+    "paper:aaai:2024:29730",
+    "paper:aaai:2025:34518",
+    "paper:aaai:2023:25386",
+    "paper:aaai:2025:33814",
+    "paper:aaai:2024:29772",
+    "paper:aaai:2025:34656",
+    "paper:aaai:2024:29823",
+    "paper:ijcai:2025:745",
+    "paper:aaai:2025:33351",
+    "paper:aaai:2025:33421",
+    "paper:aaai:2025:32584",
+    "paper:aaai:2025:32224"
+   ],
+   "result_ids": [
+    "paper:ijcai:2025:12",
+    "paper:aaai:2025:32681",
+    "paper:aaai:2024:29726",
+    "paper:ijcai:2025:537",
+    "paper:aaai:2025:32135",
+    "paper:aaai:2024:28567",
+    "paper:aaai:2025:34671",
+    "paper:aaai:2025:33571",
+    "paper:aaai:2025:34447",
+    "paper:aaai:2025:34922",
+    "paper:ijcai:2024:78",
+    "paper:aaai:2024:28769",
+    "paper:aaai:2025:34067",
+    "paper:aaai:2025:34796",
+    "paper:aaai:2025:33597",
+    "paper:ijcai:2025:354",
+    "paper:aaai:2025:32594",
+    "paper:aaai:2025:32612",
+    "paper:ijcai:2024:460",
+    "paper:ijcai:2024:579",
+    "paper:aaai:2024:27832",
+    "paper:aaai:2024:29730",
+    "paper:aaai:2025:34518",
+    "paper:aaai:2023:25386",
+    "paper:aaai:2025:33814",
+    "paper:aaai:2024:29772",
+    "paper:aaai:2025:34656",
+    "paper:aaai:2024:29823",
+    "paper:ijcai:2025:745",
+    "paper:aaai:2025:33351",
+    "paper:aaai:2025:33421",
+    "paper:aaai:2025:32584",
+    "paper:aaai:2025:32224"
+   ],
+   "result_count": 33,
+   "nodes": [
+    {
+     "id": "organization:I99065089",
+     "name": "Tsinghua University",
+     "label": "Organization",
+     "hop": 0
+    },
+    {
+     "id": "organization:I4405271667",
+     "name": "Beijing National Research Center for Information Science and Technology",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0488
+    },
+    {
+     "id": "organization:I204983213",
+     "name": "Harbin Institute of Technology",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0245
+    },
+    {
+     "id": "organization:I180726961",
+     "name": "Shenzhen University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0357
+    },
+    {
+     "id": "organization:I177725633",
+     "name": "Chinese University of Hong Kong",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0414
+    },
+    {
+     "id": "organization:I125839683",
+     "name": "Beijing Institute of Technology",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0222
+    },
+    {
+     "id": "organization:I4391012619",
+     "name": "Shanghai Artificial Intelligence Laboratory",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0274
+    },
+    {
+     "id": "organization:I139759216",
+     "name": "Beijing University of Posts and Telecommunications",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0197
+    },
+    {
+     "id": "organization:I4210156404",
+     "name": "Institute of Information Engineering",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0189
+    },
+    {
+     "id": "organization:I172675005",
+     "name": "Nanyang Technological University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.028
+    },
+    {
+     "id": "organization:I889458895",
+     "name": "University of Hong Kong",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.037
+    },
+    {
+     "id": "organization:I126520041",
+     "name": "University of Science and Technology of China",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0287
+    },
+    {
+     "id": "organization:I4405263052",
+     "name": "Tsinghua Shenzhen International Graduate School",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I2250653659",
+     "name": "Tencent",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I19820366",
+     "name": "Chinese Academy of Sciences",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210136793",
+     "name": "Peng Cheng Laboratory",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210165038",
+     "name": "University of Chinese Academy of Sciences",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I20231570",
+     "name": "Peking University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I2250955327",
+     "name": "Huawei Technologies",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I45928872",
+     "name": "Alibaba Group",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210112150",
+     "name": "Institute of Automation",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I183067930",
+     "name": "Shanghai Jiao Tong University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I200769079",
+     "name": "Hong Kong University of Science and Technology",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210128818",
+     "name": "Institute of Software",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I157773358",
+     "name": "Sun Yat-sen University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I165932596",
+     "name": "National University of Singapore",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210113369",
+     "name": "Microsoft Research Asia",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I74973139",
+     "name": "Carnegie Mellon University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I76130692",
+     "name": "Zhejiang University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I21193070",
+     "name": "Beijing Jiaotong University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210116924",
+     "name": "Chinese University of Hong Kong, Shenzhen",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4405256866",
+     "name": "ByteDance",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": false,
+     "delta": null
+    },
+    {
+     "id": "organization:I4210145761",
+     "name": "Shenzhen Institutes of Advanced Technology",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0484
+    },
+    {
+     "id": "organization:I168719708",
+     "name": "City University of Hong Kong",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0403
+    },
+    {
+     "id": "organization:I4405261251",
+     "name": "The Hong Kong University of Science and Technology (Guangzhou)",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0366
+    },
+    {
+     "id": "organization:I30809798",
+     "name": "ShanghaiTech University",
+     "label": "Organization",
+     "hop": 1,
+     "highlight": true,
+     "delta": 0.0351
+    },
+    {
+     "id": "method:Q3621696",
+     "name": "Large language models",
+     "label": "Method",
+     "hop": 2
+    }
+   ],
+   "edges": [
+    {
+     "source": "organization:I4405271667",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 21,
+     "label": "21 shared papers"
+    },
+    {
+     "source": "organization:I204983213",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 18,
+     "label": "18 shared papers"
+    },
+    {
+     "source": "organization:I180726961",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 15,
+     "label": "15 shared papers"
+    },
+    {
+     "source": "organization:I177725633",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 12,
+     "label": "12 shared papers"
+    },
+    {
+     "source": "organization:I125839683",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 11,
+     "label": "11 shared papers"
+    },
+    {
+     "source": "organization:I4391012619",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 10,
+     "label": "10 shared papers"
+    },
+    {
+     "source": "organization:I139759216",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 7,
+     "label": "7 shared papers"
+    },
+    {
+     "source": "organization:I4210156404",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 6,
+     "label": "6 shared papers"
+    },
+    {
+     "source": "organization:I172675005",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 5,
+     "label": "5 shared papers"
+    },
+    {
+     "source": "organization:I889458895",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 5,
+     "label": "5 shared papers"
+    },
+    {
+     "source": "organization:I126520041",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 4,
+     "label": "4 shared papers"
+    },
+    {
+     "source": "organization:I4405263052",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 49,
+     "label": "49 shared papers"
+    },
+    {
+     "source": "organization:I2250653659",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 43,
+     "label": "43 shared papers"
+    },
+    {
+     "source": "organization:I19820366",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 41,
+     "label": "41 shared papers"
+    },
+    {
+     "source": "organization:I4210136793",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 38,
+     "label": "38 shared papers"
+    },
+    {
+     "source": "organization:I4210165038",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 33,
+     "label": "33 shared papers"
+    },
+    {
+     "source": "organization:I20231570",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 22,
+     "label": "22 shared papers"
+    },
+    {
+     "source": "organization:I2250955327",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 20,
+     "label": "20 shared papers"
+    },
+    {
+     "source": "organization:I45928872",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 16,
+     "label": "16 shared papers"
+    },
+    {
+     "source": "organization:I4210112150",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 14,
+     "label": "14 shared papers"
+    },
+    {
+     "source": "organization:I183067930",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 13,
+     "label": "13 shared papers"
+    },
+    {
+     "source": "organization:I200769079",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 12,
+     "label": "12 shared papers"
+    },
+    {
+     "source": "organization:I4210128818",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 11,
+     "label": "11 shared papers"
+    },
+    {
+     "source": "organization:I157773358",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 9,
+     "label": "9 shared papers"
+    },
+    {
+     "source": "organization:I165932596",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 9,
+     "label": "9 shared papers"
+    },
+    {
+     "source": "organization:I4210113369",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 9,
+     "label": "9 shared papers"
+    },
+    {
+     "source": "organization:I74973139",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 9,
+     "label": "9 shared papers"
+    },
+    {
+     "source": "organization:I76130692",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 9,
+     "label": "9 shared papers"
+    },
+    {
+     "source": "organization:I21193070",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 8,
+     "label": "8 shared papers"
+    },
+    {
+     "source": "organization:I4210116924",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 8,
+     "label": "8 shared papers"
+    },
+    {
+     "source": "organization:I4405256866",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 8,
+     "label": "8 shared papers"
+    },
+    {
+     "source": "organization:I4210145761",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 1,
+     "label": "collaborator"
+    },
+    {
+     "source": "organization:I168719708",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 1,
+     "label": "collaborator"
+    },
+    {
+     "source": "organization:I4405261251",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 1,
+     "label": "collaborator"
+    },
+    {
+     "source": "organization:I30809798",
+     "target": "organization:I99065089",
+     "hop": 1,
+     "weight": 1,
+     "label": "collaborator"
+    },
+    {
+     "source": "organization:I4405271667",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 2,
+     "label": "2 papers after 2022"
+    },
+    {
+     "source": "organization:I4210145761",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 3,
+     "label": "3 papers after 2022"
+    },
+    {
+     "source": "organization:I177725633",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 7,
+     "label": "7 papers after 2022"
+    },
+    {
+     "source": "organization:I168719708",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 5,
+     "label": "5 papers after 2022"
+    },
+    {
+     "source": "organization:I889458895",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 3,
+     "label": "3 papers after 2022"
+    },
+    {
+     "source": "organization:I4405261251",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 3,
+     "label": "3 papers after 2022"
+    },
+    {
+     "source": "organization:I180726961",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 5,
+     "label": "5 papers after 2022"
+    },
+    {
+     "source": "organization:I30809798",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 2,
+     "label": "2 papers after 2022"
+    },
+    {
+     "source": "organization:I126520041",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 10,
+     "label": "10 papers after 2022"
+    },
+    {
+     "source": "organization:I172675005",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 6,
+     "label": "6 papers after 2022"
+    },
+    {
+     "source": "organization:I4391012619",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 4,
+     "label": "4 papers after 2022"
+    },
+    {
+     "source": "organization:I204983213",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 7,
+     "label": "7 papers after 2022"
+    },
+    {
+     "source": "organization:I125839683",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 3,
+     "label": "3 papers after 2022"
+    },
+    {
+     "source": "organization:I139759216",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 3,
+     "label": "3 papers after 2022"
+    },
+    {
+     "source": "organization:I4210156404",
+     "target": "method:Q3621696",
+     "hop": 2,
+     "weight": 2,
+     "label": "2 papers after 2022"
+    }
+   ],
+   "chart": "slope",
+   "checked": true,
+   "follow": [
+    "Which Tsinghua collaborators lost share?",
+    "Show the papers behind Chinese University of Hong Kong",
+    "Compare with Peking University's collaborators"
+   ],
+   "raw_answer": "The organizations collaborating with Tsinghua University that increased their share of large-language-model papers after 2022 are ranked by share change. The top 15 ranked organizations are [step 2]:\n- Name: Beijing National Research Center for Information Science and Technology: 2 of 41 papers after cutoff, share change 0.0488\n- Name: Shenzhen Institutes of Advanced Technology: 3 of 62 papers after cutoff, share change 0.0484\n- Name: Chinese University of Hong Kong: 7 of 169 papers after cutoff, share change 0.0414\n- Name: City University of Hong Kong: 5 of 124 papers after cutoff, share change 0.0403\n- Name: University of Hong Kong: 3 of 81 papers after cutoff, share change 0.037\n- Name: The Hong Kong University of Science and Technology (Guangzhou): 3 of 82 papers after cutoff, share change 0.0366\n- Name: Shenzhen University: 5 of 140 papers after cutoff, share change 0.0357\n- Name: ShanghaiTech University: 2 of 57 papers after cutoff, share change 0.0351\n- Name: University of Science and Technology of China: 10 of 348 papers after cutoff, share change 0.0287\n- Name: Nanyang Technological University: 6 of 214 papers after cutoff, share change 0.028\n- Name: Shanghai Artificial Intelligence Laboratory: 4 of 146 papers after cutoff, share change 0.0274\n- Name: Harbin Institute of Technology: 7 of 286 papers after cutoff, share change 0.0245\n- Name: Beijing Institute of Technology: 3 of 135 papers after cutoff, share change 0.0222\n- Name: Beijing University of Posts and Telecommunications: 3 of 152 papers after cutoff, share change 0.0197\n- Name: Institute of Information Engineering: 2 of 106 papers after cutoff, share change 0.0189\n\nA total of 37 organizations qualified for the share growth calculation (threshold: post_total >= 10, post_subject >= 2), with 27 excluded below the threshold."
+  },
+  {
+   "id": "demo-02-rising-methods-diffusion-orgs",
+   "title": "Fastest-growing methods",
+   "question": "Which methods grew fastest as a share of AAAI and IJCAI papers from 2021 to 2025?",
+   "mode": "multi_hop",
+   "latency": 5.138,
+   "plan": [
+    {
+     "text": "Read the question and find the names it mentions",
+     "result": "Recognised the subject and the question type"
+    },
+    {
+     "text": "Rank methods by how fast their share of papers grew, 2021 to 2025",
+     "result": "5 methods are rising",
+     "step": 1
+    },
+    {
+     "text": "Write the answer and check every number against the results",
+     "result": "All numbers matched"
+    }
+   ],
+   "blocks": [
+    {
+     "type": "p",
+     "segs": [
+      "The methods ranked by annual share growth (2021 to 2025) are",
+      {
+       "fn": 1
+      },
+      ":"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Large language models: 136 total papers, share up 91% a year"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Answer Set Programming: 17 total papers, share up 40% a year"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Graph Contrastive Learning: 31 total papers, share up 38% a year"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Federated Learning: 27 total papers, share up 32% a year"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "U-Net: 29 total papers, share up 24% a year"
+     ]
+    },
+    {
+     "type": "p",
+     "segs": [
+      "The fastest-growing method as a share of AAAI and IJCAI papers from 2021 to 2025 is Large language models growing 91% a year, followed by Answer Set Programming growing 40% a year."
+     ]
+    }
+   ],
+   "footnotes": [
+    {
+     "n": 1,
+     "label": "Step 1: rank methods by how fast their share of papers grew, 2021 to 2025",
+     "papers": [],
+     "step": 1
+    }
+   ],
+   "tables": [
+    {
+     "step": 1,
+     "title": "Rising methods",
+     "columns": [
+      "Method",
+      "Papers",
+      "Share 2021",
+      "Share 2025",
+      "Growth a year"
+     ],
+     "rows": [
+      [
+       "Large language models",
+       136,
+       0.0017857142857142857,
+       0.023998020781791193,
+       0.9146564672442798
+      ],
+      [
+       "U-Net",
+       29,
+       0.0013392857142857143,
+       0.0032162295893122216,
+       0.2448540933091885
+      ],
+      [
+       "Graph Contrastive Learning",
+       31,
+       0.0008928571428571428,
+       0.0032162295893122216,
+       0.37765751773021594
+      ],
+      [
+       "Federated Learning",
+       27,
+       0.0008928571428571428,
+       0.0027214250371103412,
+       0.3213065858287554
+      ],
+      [
+       "Answer Set Programming",
+       17,
+       0.0004464285714285714,
+       0.0017318159327065809,
+       0.40341927604070604
+      ]
+     ],
+     "formats": [
+      "text",
+      "int",
+      "pct",
+      "pct",
+      "pct0"
+     ],
+     "series": [
+      {
+       "name": "Large language models",
+       "share": [
+        0.17857142857142858,
+        0.15022533800701052,
+        0.13531799729364005,
+        0.9291893623838513,
+        2.3998020781791194
+       ]
+      },
+      {
+       "name": "U-Net",
+       "share": [
+        0.13392857142857142,
+        0.050075112669003496,
+        0.13531799729364005,
+        0.28836911246395386,
+        0.32162295893122217
+       ]
+      },
+      {
+       "name": "Graph Contrastive Learning",
+       "share": [
+        0.08928571428571429,
+        0.20030045067601399,
+        0.2255299954894001,
+        0.2242870874719641,
+        0.32162295893122217
+       ]
+      },
+      {
+       "name": "Federated Learning",
+       "share": [
+        0.08928571428571429,
+        0.20030045067601399,
+        0.13531799729364005,
+        0.2242870874719641,
+        0.2721425037110341
+       ]
+      },
+      {
+       "name": "Answer Set Programming",
+       "share": [
+        0.044642857142857144,
+        0.10015022533800699,
+        0.13531799729364005,
+        0.12816404998397948,
+        0.17318159327065807
+       ]
+      }
+     ]
+    }
+   ],
+   "papers": {},
+   "cited": [],
+   "result_ids": [],
+   "result_count": 0,
+   "nodes": [],
+   "edges": [],
+   "chart": "lines",
+   "checked": true,
+   "follow": [
+    "Who leads large language model research?",
+    "Which methods are cooling down?",
+    "Show diffusion models over time"
+   ],
+   "raw_answer": "The methods ranked by annual share growth (CAGR 2021-2025) are [step 1]:\n- Large Language Models (LLMs): 136 total papers, 0.9146564672442798 CAGR\n- Answer Set Programming: 17 total papers, 0.40341927604070604 CAGR\n- Graph Contrastive Learning: 31 total papers, 0.37765751773021594 CAGR\n- Federated Learning: 27 total papers, 0.3213065858287554 CAGR\n- U-Net: 29 total papers, 0.2448540933091885 CAGR\n\nThe fastest-growing method as a share of AAAI and IJCAI papers from 2021 to 2025 is Large Language Models (LLMs) with a CAGR of 0.9146564672442798, followed by Answer Set Programming with a CAGR of 0.40341927604070604."
+  },
+  {
+   "id": "demo-03-method-task-cooccurrence",
+   "title": "What diffusion models are used for",
+   "question": "Which tasks co-occur most with diffusion models, and what datasets are used with diffusion models?",
+   "mode": "multi_hop",
+   "latency": 5.591,
+   "plan": [
+    {
+     "text": "Read the question and find the names it mentions",
+     "result": "Recognised diffusion models (method)"
+    },
+    {
+     "text": "Find tasks that appear in the same papers as diffusion models",
+     "result": "20 tasks found",
+     "step": 1
+    },
+    {
+     "text": "Find datasets that appear in the same papers as diffusion models",
+     "result": "15 datasets found",
+     "step": 2
+    },
+    {
+     "text": "Write the answer and check every number against the results",
+     "result": "All numbers matched"
+    }
+   ],
+   "blocks": [
+    {
+     "type": "p",
+     "segs": [
+      "The tasks that co-occur most with diffusion models are Sequential Recommendation (4 shared papers)",
+      {
+       "fn": 1
+      },
+      ", image editing (4 shared papers)",
+      {
+       "fn": 2
+      },
+      ", low-light image enhancement (3 shared papers)",
+      {
+       "fn": 3
+      },
+      ", motion generation (2 shared papers)",
+      {
+       "fn": 4
+      },
+      ", Unsupervised Anomaly Detection (2 shared papers)",
+      {
+       "fn": 5
+      },
+      ", image generation (2 shared papers)",
+      {
+       "fn": 6
+      },
+      ", Speech Enhancement (2 shared papers)",
+      {
+       "fn": 7
+      },
+      ", and image super-resolution (2 shared papers)",
+      {
+       "fn": 8
+      },
+      ", with additional co-occurrences for super-resolution",
+      ", conditional generation",
+      ", text-to-image generation",
+      ", and event causality identification. The datasets used with diffusion models are MVTec AD (2 shared papers)",
+      {
+       "fn": 9
+      },
+      ", nuScenes",
+      ", DIV2K",
+      ", ActivityNet-1.3",
+      ", Visual Genome",
+      ", LaSOT",
+      ", real-world datasets",
+      ", CIFAR-100",
+      ", StarCraft Multi-Agent Challenge",
+      ", KITTI dataset",
+      ", SEED",
+      ", MVTec",
+      ", HO3D",
+      ", ETH-UCY",
+      ", and CelebA-HQ",
+      "."
+     ]
+    }
+   ],
+   "footnotes": [
+    {
+     "n": 1,
+     "label": "Sequential Recommendation",
+     "papers": [
+      "paper:aaai:2025:33370",
+      "paper:ijcai:2025:346"
+     ],
+     "step": null
+    },
+    {
+     "n": 2,
+     "label": "image editing",
+     "papers": [
+      "paper:aaai:2025:32901"
+     ],
+     "step": null
+    },
+    {
+     "n": 3,
+     "label": "low-light image enhancement",
+     "papers": [
+      "paper:ijcai:2023:199",
+      "paper:aaai:2024:28273",
+      "paper:aaai:2025:32565"
+     ],
+     "step": null
+    },
+    {
+     "n": 4,
+     "label": "motion generation",
+     "papers": [
+      "paper:aaai:2024:27988",
+      "paper:aaai:2025:32561"
+     ],
+     "step": null
+    },
+    {
+     "n": 5,
+     "label": "Unsupervised Anomaly Detection",
+     "papers": [
+      "paper:ijcai:2024:270",
+      "paper:aaai:2024:27910"
+     ],
+     "step": null
+    },
+    {
+     "n": 6,
+     "label": "image generation",
+     "papers": [
+      "paper:aaai:2024:28155",
+      "paper:aaai:2024:28074"
+     ],
+     "step": null
+    },
+    {
+     "n": 7,
+     "label": "Speech Enhancement",
+     "papers": [
+      "paper:ijcai:2025:713",
+      "paper:aaai:2023:26597"
+     ],
+     "step": null
+    },
+    {
+     "n": 8,
+     "label": "image super-resolution",
+     "papers": [
+      "paper:aaai:2024:28746"
+     ],
+     "step": null
+    },
+    {
+     "n": 9,
+     "label": "MVTec AD",
+     "papers": [
+      "paper:aaai:2024:27910",
+      "paper:aaai:2024:28690"
+     ],
+     "step": null
+    }
+   ],
+   "tables": [
+    {
+     "step": 1,
+     "title": "Tasks used with diffusion models",
+     "kind": "Task",
+     "columns": [
+      "Task",
+      "Shared papers",
+      "Link"
+     ],
+     "rows": [
+      [
+       "Sequential Recommendation",
+       4,
+       "same paper"
+      ],
+      [
+       "Image editing",
+       4,
+       "same paper"
+      ],
+      [
+       "Low-light image enhancement",
+       3,
+       "same paper"
+      ],
+      [
+       "Image super-resolution",
+       2,
+       "same paper"
+      ],
+      [
+       "Motion generation",
+       2,
+       "same paper"
+      ],
+      [
+       "Unsupervised Anomaly Detection",
+       2,
+       "same paper"
+      ],
+      [
+       "Image generation",
+       2,
+       "same paper"
+      ],
+      [
+       "Speech Enhancement",
+       2,
+       "same paper"
+      ],
+      [
+       "Text-to-image generation",
+       1,
+       "stated in a paper"
+      ],
+      [
+       "Event Causality Identification",
+       1,
+       "stated in a paper"
+      ],
+      [
+       "Super-resolution",
+       1,
+       "same paper"
+      ],
+      [
+       "Conditional generation",
+       1,
+       "same paper"
+      ],
+      [
+       "3D Object Detection",
+       1,
+       "same paper"
+      ],
+      [
+       "Camouflaged Object Detection",
+       1,
+       "same paper"
+      ],
+      [
+       "Visual Information Extraction",
+       1,
+       "same paper"
+      ],
+      [
+       "Novel View Synthesis",
+       1,
+       "same paper"
+      ],
+      [
+       "Image classification",
+       1,
+       "same paper"
+      ]
+     ]
+    },
+    {
+     "step": 2,
+     "title": "Datasets used with diffusion models",
+     "kind": "Dataset",
+     "columns": [
+      "Dataset",
+      "Shared papers",
+      "Link"
+     ],
+     "rows": [
+      [
+       "MVTec AD",
+       2,
+       "same paper"
+      ],
+      [
+       "nuScenes",
+       1,
+       "same paper"
+      ],
+      [
+       "DIV2K",
+       1,
+       "same paper"
+      ],
+      [
+       "ActivityNet-1.3",
+       1,
+       "same paper"
+      ],
+      [
+       "Visual Genome",
+       1,
+       "same paper"
+      ],
+      [
+       "LaSOT",
+       1,
+       "same paper"
+      ],
+      [
+       "Real-world datasets",
+       1,
+       "same paper"
+      ],
+      [
+       "CIFAR-100",
+       1,
+       "same paper"
+      ],
+      [
+       "StarCraft Multi-Agent Challenge",
+       1,
+       "same paper"
+      ],
+      [
+       "KITTI dataset",
+       1,
+       "same paper"
+      ],
+      [
+       "SEED",
+       1,
+       "same paper"
+      ],
+      [
+       "MVTec",
+       1,
+       "same paper"
+      ],
+      [
+       "HO3D",
+       1,
+       "same paper"
+      ],
+      [
+       "ETH-UCY",
+       1,
+       "same paper"
+      ],
+      [
+       "CelebA-HQ",
+       1,
+       "same paper"
+      ]
+     ]
+    }
+   ],
+   "papers": {
+    "paper:aaai:2024:28074": {
+     "id": "paper:aaai:2024:28074",
+     "title": "Spectrum Translation for Refinement of Image Generation (STIG) Based on Contrastive Learning and Spectral Filter Profile",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Seung‐Won Jung",
+      "Seok-Jun Lee",
+      "Hyunseok Seo"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28074"
+    },
+    "paper:aaai:2025:32469": {
+     "id": "paper:aaai:2025:32469",
+     "title": "Exploiting Diffusion Prior for Real-World Image Dehazing with Unpaired Training",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Zhigao Cui",
+      "Jialun Peng",
+      "Chang Liu"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32469"
+    },
+    "paper:aaai:2024:27833": {
+     "id": "paper:aaai:2024:27833",
+     "title": "Improving Diffusion-Based Image Restoration with Error Contraction and Error Correction",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Qiqi Bao",
+      "Wenming Yang",
+      "Rui Zhu"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27833"
+    },
+    "paper:aaai:2024:28690": {
+     "id": "paper:aaai:2024:28690",
+     "title": "A Diffusion-Based Framework for Multi-Class Anomaly Detection",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xuhai Chen",
+      "Chengjie Wang",
+      "Yabiao Wang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28690"
+    },
+    "paper:ijcai:2025:346": {
+     "id": "paper:ijcai:2025:346",
+     "title": "Flow Matching Based Sequential Recommender Model",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Min Tang",
+      "Dan Luo",
+      "Feng Liu"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/346"
+    },
+    "paper:aaai:2023:26597": {
+     "id": "paper:aaai:2023:26597",
+     "title": "Revisiting Denoising Diffusion Probabilistic Models for Speech Enhancement: Condition Collapse, Efficiency and Refinement",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Ting Zhong",
+      "Goce Trajcevski",
+      "Wenxin Tai"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/26597"
+    },
+    "paper:aaai:2025:32730": {
+     "id": "paper:aaai:2025:32730",
+     "title": "LDP: Generalizing to Multilingual Visual Information Extraction by Language Decoupled Pretraining",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Huawen James Shen",
+      "Jinwen Zhong",
+      "Gengluo Li"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32730"
+    },
+    "paper:ijcai:2023:199": {
+     "id": "paper:ijcai:2023:199",
+     "title": "Pyramid Diffusion Models for Low-light Image Enhancement",
+     "year": 2023,
+     "venue": "IJCAI",
+     "authors": [
+      "Zongxin Yang",
+      "Dewei Zhou"
+     ],
+     "n_authors": 2,
+     "cited": 4,
+     "url": "https://www.ijcai.org/proceedings/2023/199"
+    },
+    "paper:aaai:2024:28084": {
+     "id": "paper:aaai:2024:28084",
+     "title": "Semantic-Guided Generative Image Augmentation Method with Diffusion Models for Image Classification",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xuanliang Zhang",
+      "Yutai Hou",
+      "Wanxiang Che"
+     ],
+     "n_authors": 8,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28084"
+    },
+    "paper:ijcai:2025:713": {
+     "id": "paper:ijcai:2025:713",
+     "title": "An Association-based Fusion Method for Speech Enhancement",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Liang Du",
+      "Zikun Jin",
+      "Xinyan Liang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/713"
+    },
+    "paper:aaai:2024:28620": {
+     "id": "paper:aaai:2024:28620",
+     "title": "DiffBEV: Conditional Diffusion Model for Bird’s Eye View Perception",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Kun Tian",
+      "Yun Ye"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28620"
+    },
+    "paper:ijcai:2025:981": {
+     "id": "paper:ijcai:2025:981",
+     "title": "DiffSQL: Leveraging Diffusion Model for Zero-Shot Self-Supervised Monocular Depth Estimation",
+     "year": 2025,
+     "venue": "IJCAI",
+     "authors": [
+      "Yunji Liang",
+      "Lei Liu"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2025/981"
+    },
+    "paper:aaai:2024:27910": {
+     "id": "paper:aaai:2024:27910",
+     "title": "Generating and Reweighting Dense Contrastive Patterns for Unsupervised Anomaly Detection",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xiangyang Xue",
+      "Songmin Dai",
+      "Yifan Wu"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27910"
+    },
+    "paper:aaai:2025:33341": {
+     "id": "paper:aaai:2025:33341",
+     "title": "Enhancing Sequential Recommendation with Global Diffusion",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Yang Li",
+      "Lin Chen"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33341"
+    },
+    "paper:aaai:2025:32360": {
+     "id": "paper:aaai:2025:32360",
+     "title": "BUFF: Bayesian Uncertainty Guided Diffusion Probabilistic Model for Single Image Super-Resolution",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Runze Hu",
+      "Yunhang Shen"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32360"
+    },
+    "paper:ijcai:2024:251": {
+     "id": "paper:ijcai:2024:251",
+     "title": "SeeDRec: Sememe-based Diffusion for Sequential Recommendation",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [],
+     "n_authors": 0,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/251"
+    },
+    "paper:aaai:2024:28746": {
+     "id": "paper:aaai:2024:28746",
+     "title": "ResDiff: Combining CNN and Diffusion Model for Image Super-resolution",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Guangxing Liu",
+      "Shuyao Shang",
+      "Zekai Zhang"
+     ],
+     "n_authors": 4,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28746"
+    },
+    "paper:ijcai:2024:125": {
+     "id": "paper:ijcai:2024:125",
+     "title": "DifTraj: Diffusion Inspired by Intrinsic Intention and Extrinsic Interaction for Multi-Modal Trajectory Prediction",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [
+      "Mang Ye",
+      "Xingping Dong",
+      "Yanghong Liu"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/125"
+    },
+    "paper:aaai:2024:27988": {
+     "id": "paper:aaai:2024:27988",
+     "title": "MotionMix: Weakly-Supervised Diffusion for Controllable Motion Generation",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Kehong Gong",
+      "Nhat M. Hoang",
+      "Michael Bi Mi"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27988"
+    },
+    "paper:aaai:2025:32565": {
+     "id": "paper:aaai:2025:32565",
+     "title": "DPLUT: Unsupervised Low-light Image Enhancement with Lookup Tables and Diffusion Priors",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Yunlong Lin",
+      "Yue Huang",
+      "Xinghao Ding"
+     ],
+     "n_authors": 7,
+     "cited": 2,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32565"
+    },
+    "paper:aaai:2024:29840": {
+     "id": "paper:aaai:2024:29840",
+     "title": "Mastering Context-to-Label Representation Transformation for Event Causality Identification with Diffusion Models",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Franck Dernoncourt",
+      "Hieu Man"
+     ],
+     "n_authors": 2,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29840"
+    },
+    "paper:aaai:2024:29698": {
+     "id": "paper:aaai:2024:29698",
+     "title": "Imagine, Initialize, and Explore: An Effective Exploration Method in Multi-Agent Reinforcement Learning",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Xuguang Lan",
+      "Zeyang Liu",
+      "Lipeng Wan"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29698"
+    },
+    "paper:aaai:2025:33370": {
+     "id": "paper:aaai:2025:33370",
+     "title": "Enhancing Diffusion Model with Auxiliary Information Mining-Exploration and Efficient Sampling Mechanism for Sequential Recommendation",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Te Song",
+      "Wanchun Dou",
+      "Amin Beheshti"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33370"
+    },
+    "paper:aaai:2025:32221": {
+     "id": "paper:aaai:2025:32221",
+     "title": "DiffDVC: Accurate Event Detection for Dense Video Captioning via Diffusion Models",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Jianwei Niu",
+      "Guogang Zhu",
+      "Zhendong Wang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32221"
+    },
+    "paper:aaai:2025:32725": {
+     "id": "paper:aaai:2025:32725",
+     "title": "FunEditor: Achieving Complex Image Edits via Function Aggregation with Diffusion Models",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Mohammad Salameh",
+      "Mohammadreza Samadi",
+      "Chunhua Zhou"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32725"
+    },
+    "paper:aaai:2024:27890": {
+     "id": "paper:aaai:2024:27890",
+     "title": "CamoDiffusion: Camouflaged Object Detection via Conditional Diffusion Models",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Zhongxi Chen",
+      "Xianming Lin",
+      "Ke Sun"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/27890"
+    },
+    "paper:aaai:2025:32073": {
+     "id": "paper:aaai:2025:32073",
+     "title": "Vision Transformers Beat WideResNets on Small Scale Datasets Adversarial Robustness",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Juntao Wu",
+      "Ziyu Song",
+      "Xiaoyu Zhang"
+     ],
+     "n_authors": 5,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32073"
+    },
+    "paper:aaai:2025:33128": {
+     "id": "paper:aaai:2025:33128",
+     "title": "Single-view Image to Novel-view Generation for Hand-Object Interactions",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Hyung Jin Chang",
+      "Eduardo Pérez-Pellitero",
+      "Zhongqun Zhang"
+     ],
+     "n_authors": 6,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33128"
+    },
+    "paper:aaai:2024:28155": {
+     "id": "paper:aaai:2024:28155",
+     "title": "R3CD: Scene Graph to Image Generation with Relation-Aware Compositional Contrastive Control Diffusion",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [],
+     "n_authors": 0,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28155"
+    },
+    "paper:aaai:2025:32945": {
+     "id": "paper:aaai:2025:32945",
+     "title": "Expand VSR Benchmark for VLLM to Expertize in Spatial Rules",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Bingquan Liu",
+      "Chengjie Sun",
+      "Dexin Wang"
+     ],
+     "n_authors": 6,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32945"
+    },
+    "paper:aaai:2024:28255": {
+     "id": "paper:aaai:2024:28255",
+     "title": "BARET: Balanced Attention Based Real Image Editing Driven by Target-Text Inversion",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Fanyi Wang",
+      "Jingwen Su",
+      "Yunjie Yu"
+     ],
+     "n_authors": 7,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28255"
+    },
+    "paper:aaai:2025:33187": {
+     "id": "paper:aaai:2025:33187",
+     "title": "MultiBooth: Towards Generating All Your Concepts in an Image from Text",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Chenyang Zhu",
+      "Chunming He",
+      "Kai Li"
+     ],
+     "n_authors": 3,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33187"
+    },
+    "paper:aaai:2024:28273": {
+     "id": "paper:aaai:2024:28273",
+     "title": "Multi-Domain Multi-Scale Diffusion Model for Low-Light Image Enhancement",
+     "year": 2024,
+     "venue": "AAAI",
+     "authors": [
+      "Yuanshuo Cheng",
+      "Mingwen Shao",
+      "Shuigen Wang"
+     ],
+     "n_authors": 5,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28273"
+    },
+    "paper:aaai:2025:32561": {
+     "id": "paper:aaai:2025:32561",
+     "title": "HandDiffuse: Generative Controllers for Two-Hand Interactions via Diffusion Models",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [],
+     "n_authors": 0,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32561"
+    },
+    "paper:aaai:2025:33819": {
+     "id": "paper:aaai:2025:33819",
+     "title": "An Item Is Worth a Prompt: Versatile Image Editing with Disentangled Control",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Leandros Tassiulas",
+      "Xiao Zhang",
+      "Jinbin Bai"
+     ],
+     "n_authors": 6,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33819"
+    },
+    "paper:aaai:2025:32247": {
+     "id": "paper:aaai:2025:32247",
+     "title": "Effective Diffusion Transformer Architecture for Image Super-Resolution",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Mingrui Zhu",
+      "Liyu Chen",
+      "Lei Yu"
+     ],
+     "n_authors": 7,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32247"
+    },
+    "paper:aaai:2025:32901": {
+     "id": "paper:aaai:2025:32901",
+     "title": "Spin: Diffusion-based Semantic Image Painting Through Independent Information Injection",
+     "year": 2025,
+     "venue": "AAAI",
+     "authors": [
+      "Peipei Ran",
+      "Mengchao Bai",
+      "Kai Zhang"
+     ],
+     "n_authors": 4,
+     "cited": 0,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32901"
+    },
+    "paper:ijcai:2024:183": {
+     "id": "paper:ijcai:2024:183",
+     "title": "Diffusion Mask-Driven Visual-language Tracking",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [],
+     "n_authors": 0,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/183"
+    },
+    "paper:ijcai:2024:270": {
+     "id": "paper:ijcai:2024:270",
+     "title": "Unsupervised Anomaly Detection via Masked Diffusion Posterior Sampling",
+     "year": 2024,
+     "venue": "IJCAI",
+     "authors": [
+      "Yuzhong Deng",
+      "Di Wu",
+      "Xue Zhou"
+     ],
+     "n_authors": 6,
+     "cited": 0,
+     "url": "https://www.ijcai.org/proceedings/2024/270"
+    },
+    "paper:aaai:2023:25639": {
+     "id": "paper:aaai:2023:25639",
+     "title": "MDM: Molecular Diffusion Model for 3D Molecule Generation",
+     "year": 2023,
+     "venue": "AAAI",
+     "authors": [
+      "Tingyang Xu",
+      "Ka‐Chun Wong",
+      "Hengtong Zhang"
+     ],
+     "n_authors": 3,
+     "cited": 1,
+     "url": "https://ojs.aaai.org/index.php/AAAI/article/view/25639"
+    }
+   },
+   "cited": [
+    "paper:aaai:2025:33370",
+    "paper:ijcai:2025:346",
+    "paper:aaai:2025:32901",
+    "paper:ijcai:2023:199",
+    "paper:aaai:2024:28273",
+    "paper:aaai:2025:32565",
+    "paper:aaai:2024:27988",
+    "paper:aaai:2025:32561",
+    "paper:ijcai:2024:270",
+    "paper:aaai:2024:27910",
+    "paper:aaai:2024:28155",
+    "paper:aaai:2024:28074",
+    "paper:ijcai:2025:713",
+    "paper:aaai:2023:26597",
+    "paper:aaai:2024:28746",
+    "paper:aaai:2024:28690"
+   ],
+   "result_ids": [
+    "paper:aaai:2025:33370",
+    "paper:ijcai:2025:346",
+    "paper:aaai:2025:33187",
+    "paper:aaai:2025:32901",
+    "paper:aaai:2024:28746",
+    "paper:aaai:2024:29840",
+    "paper:aaai:2025:33819",
+    "paper:aaai:2024:28255",
+    "paper:aaai:2025:32725",
+    "paper:ijcai:2024:251",
+    "paper:aaai:2025:33341",
+    "paper:ijcai:2023:199",
+    "paper:aaai:2024:28273",
+    "paper:aaai:2025:32565",
+    "paper:aaai:2024:27988",
+    "paper:aaai:2025:32561",
+    "paper:ijcai:2024:270",
+    "paper:aaai:2024:27910",
+    "paper:aaai:2024:28155",
+    "paper:aaai:2024:28074",
+    "paper:ijcai:2025:713",
+    "paper:aaai:2023:26597",
+    "paper:aaai:2025:32247",
+    "paper:aaai:2024:27833",
+    "paper:aaai:2023:25639",
+    "paper:aaai:2024:28620",
+    "paper:aaai:2024:27890",
+    "paper:aaai:2025:32730",
+    "paper:aaai:2025:33128",
+    "paper:aaai:2024:28084",
+    "paper:aaai:2024:28690",
+    "paper:aaai:2025:32360",
+    "paper:aaai:2025:32221",
+    "paper:ijcai:2024:183",
+    "paper:aaai:2025:32469",
+    "paper:aaai:2025:32073",
+    "paper:aaai:2024:29698",
+    "paper:ijcai:2025:981",
+    "paper:aaai:2025:32945",
+    "paper:ijcai:2024:125",
+    "paper:aaai:2025:34472"
+   ],
+   "result_count": 41,
+   "nodes": [
+    {
+     "id": "method:Q114617315",
+     "name": "Diffusion models",
+     "label": "Method",
+     "hop": 0
+    },
+    {
+     "id": "task:dbe4691e5c878c5f",
+     "name": "Sequential Recommendation",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:41820fea855290aa",
+     "name": "Text-to-image generation",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:Q545981",
+     "name": "Image editing",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:b55616419cdbc810",
+     "name": "Image super-resolution",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:e2b7808dae2a765d",
+     "name": "Event Causality Identification",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:4fb6c23edf82feab",
+     "name": "Low-light image enhancement",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:071c4cb2e1b71877",
+     "name": "Motion generation",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:272049ef15fcde06",
+     "name": "Unsupervised Anomaly Detection",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:57818a3c494e3a6f",
+     "name": "Image generation",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:Q7575395",
+     "name": "Speech Enhancement",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:0139c13eca32e028",
+     "name": "Super-resolution",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:0397a7f56aa5f060",
+     "name": "Conditional generation",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:061857179e1a8023",
+     "name": "3D Object Detection",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:0d8f270442b65e07",
+     "name": "Camouflaged Object Detection",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:1609ac0964e7a3a6",
+     "name": "Visual Information Extraction",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:19f4ef447a84cc67",
+     "name": "Novel View Synthesis",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "task:1fa654aed2b0ed89",
+     "name": "Image classification",
+     "label": "Task",
+     "hop": 1
+    },
+    {
+     "id": "dataset:e914e29fce31429d",
+     "name": "MVTec AD",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:0633a5703a78bd81",
+     "name": "nuScenes",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:1044c1ac256f50e6",
+     "name": "DIV2K",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:2315797f6e55f906",
+     "name": "ActivityNet-1.3",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:2adbfdeff23e2b72",
+     "name": "Visual Genome",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:398b78d80fccad0b",
+     "name": "LaSOT",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:4a1d01406e8765fa",
+     "name": "Real-world datasets",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:4f1f711b796b295b",
+     "name": "CIFAR-100",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:5493e6c120b3985b",
+     "name": "StarCraft Multi-Agent Challenge",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:64f89a6260ba11d7",
+     "name": "KITTI dataset",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:65f53374a0ecaa90",
+     "name": "SEED",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:6b2badb23067a86f",
+     "name": "MVTec",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:764cafafd1bc8f05",
+     "name": "HO3D",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:7e90ee78828a15fb",
+     "name": "ETH-UCY",
+     "label": "Dataset",
+     "hop": 2
+    },
+    {
+     "id": "dataset:9125fc2c27d0e2c5",
+     "name": "CelebA-HQ",
+     "label": "Dataset",
+     "hop": 2
+    }
+   ],
+   "edges": [
+    {
+     "source": "method:Q114617315",
+     "target": "task:dbe4691e5c878c5f",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:41820fea855290aa",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:Q545981",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:b55616419cdbc810",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:e2b7808dae2a765d",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:Q545981",
+     "hop": 1,
+     "weight": 4,
+     "label": "4 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:dbe4691e5c878c5f",
+     "hop": 1,
+     "weight": 4,
+     "label": "4 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:4fb6c23edf82feab",
+     "hop": 1,
+     "weight": 3,
+     "label": "3 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:071c4cb2e1b71877",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:272049ef15fcde06",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:57818a3c494e3a6f",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:Q7575395",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:b55616419cdbc810",
+     "hop": 1,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:0139c13eca32e028",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:0397a7f56aa5f060",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:061857179e1a8023",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:0d8f270442b65e07",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:1609ac0964e7a3a6",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:19f4ef447a84cc67",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "task:1fa654aed2b0ed89",
+     "hop": 1,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:e914e29fce31429d",
+     "hop": 2,
+     "weight": 2,
+     "label": "2 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:0633a5703a78bd81",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:1044c1ac256f50e6",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:2315797f6e55f906",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:2adbfdeff23e2b72",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:398b78d80fccad0b",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:4a1d01406e8765fa",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:4f1f711b796b295b",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:5493e6c120b3985b",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:64f89a6260ba11d7",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:65f53374a0ecaa90",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:6b2badb23067a86f",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:764cafafd1bc8f05",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:7e90ee78828a15fb",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    },
+    {
+     "source": "method:Q114617315",
+     "target": "dataset:9125fc2c27d0e2c5",
+     "hop": 2,
+     "weight": 1,
+     "label": "1 shared papers"
+    }
+   ],
+   "chart": "bars",
+   "checked": true,
+   "follow": [
+    "Which organizations publish most on diffusion models?",
+    "How did image editing change over time?",
+    "Compare with GANs"
+   ],
+   "raw_answer": "The tasks that co-occur most with diffusion models are Sequential Recommendation (4 shared papers), image editing (4 shared papers), low-light image enhancement (3 shared papers), motion generation (2 shared papers), Unsupervised Anomaly Detection (2 shared papers), image generation (2 shared papers), Speech Enhancement (2 shared papers), and image super-resolution (2 shared papers), with additional co-occurrences for super-resolution, conditional generation, text-to-image generation, and event causality identification. The datasets used with diffusion models are MVTec AD (2 shared papers), nuScenes, DIV2K, ActivityNet-1.3, Visual Genome, LaSOT, real-world datasets, CIFAR-100, StarCraft Multi-Agent Challenge, KITTI dataset, SEED, MVTec, HO3D, ETH-UCY, and CelebA-HQ."
+  },
+  {
+   "id": "demo-05-causal-lift",
+   "title": "Who specialises in causal inference",
+   "question": "Which organizations specialize most in Causal inference by lift?",
+   "mode": "multi_hop",
+   "latency": 11.408,
+   "plan": [
+    {
+     "text": "Read the question and find the names it mentions",
+     "result": "Recognised Causal inference (topic)"
+    },
+    {
+     "text": "Rank organizations by how concentrated their work is on causal inference",
+     "result": "15 organizations ranked",
+     "step": 1
+    },
+    {
+     "text": "Write the answer and check every number against the results",
+     "result": "All numbers matched"
+    }
+   ],
+   "blocks": [
+    {
+     "type": "p",
+     "segs": [
+      "The organizations ranked by specialisation in causal inference are",
+      {
+       "fn": 1
+      },
+      ":"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "University of Lübeck: specialisation 22.1×, 4 of its 6 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Yokohama National University: specialisation 16.8×, 4 of its 8 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "University of South Australia: specialisation 12.0×, 9 of its 13 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Guangdong University of Technology: specialisation 6.9×, 13 of its 50 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Shantou University: specialisation 6.6×, 4 of its 11 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Ludwig-Maximilians-Universität München: specialisation 4.4×, 4 of its 29 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Helmholtz Center for Information Security: specialisation 3.6×, 3 of its 22 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Saarland University: specialisation 3.5×, 4 of its 43 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "École Polytechnique Fédérale de Lausanne: specialisation 3.5×, 3 of its 37 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Columbia University: specialisation 3.3×, 8 of its 66 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "University of California, Los Angeles: specialisation 2.6×, 5 of its 67 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Mohamed bin Zayed University of Artificial Intelligence: specialisation 2.5×, 6 of its 56 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Arizona State University: specialisation 2.0×, 3 of its 49 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Anhui University: specialisation 1.9×, 4 of its 68 papers on the topic"
+     ]
+    },
+    {
+     "type": "li",
+     "segs": [
+      "Hefei University of Technology: specialisation 1.8×, 5 of its 61 papers on the topic"
+     ]
+    },
+    {
+     "type": "p",
+     "segs": [
+      "The ranking is based on specialisation for 182 papers on causal inference, showing top 15 of 15 organizations."
+     ]
+    }
+   ],
+   "footnotes": [
+    {
+     "n": 1,
+     "label": "Step 1: rank organizations by how concentrated their work is on causal inference",
+     "papers": [],
+     "step": 1
+    }
+   ],
+   "tables": [
+    {
+     "step": 1,
+     "title": "Organizations most specialised in causal inference",
+     "columns": [
+      "Organization",
+      "Specialisation",
+      "Papers on the topic",
+      "All papers"
+     ],
+     "rows": [
+      [
+       "University of Lübeck",
+       22.1088,
+       4,
+       6
+      ],
+      [
+       "Yokohama National University",
+       16.8449,
+       4,
+       8
+      ],
+      [
+       "University of South Australia",
+       11.9827,
+       9,
+       13
+      ],
+      [
+       "Guangdong University of Technology",
+       6.8939,
+       13,
+       50
+      ],
+      [
+       "Shantou University",
+       6.5699,
+       4,
+       11
+      ],
+      [
+       "Ludwig-Maximilians-Universität München",
+       4.3705,
+       4,
+       29
+      ],
+      [
+       "Helmholtz Center for Information Security",
+       3.5939,
+       3,
+       22
+      ],
+      [
+       "Saarland University",
+       3.5173,
+       4,
+       43
+      ],
+      [
+       "École Polytechnique Fédérale de Lausanne",
+       3.4568,
+       3,
+       37
+      ],
+      [
+       "Columbia University",
+       3.2682,
+       8,
+       66
+      ],
+      [
+       "University of California, Los Angeles",
+       2.6186,
+       5,
+       67
+      ],
+      [
+       "Mohamed bin Zayed University of Artificial Intelligence",
+       2.479,
+       6,
+       56
+      ],
+      [
+       "Arizona State University",
+       1.9614,
+       3,
+       49
+      ],
+      [
+       "Anhui University",
+       1.9139,
+       4,
+       68
+      ],
+      [
+       "Hefei University of Technology",
+       1.8083,
+       5,
+       61
+      ]
+     ],
+     "formats": [
+      "text",
+      "x",
+      "int",
+      "int"
+     ]
+    }
+   ],
+   "papers": {},
+   "cited": [],
+   "result_ids": [],
+   "result_count": 0,
+   "nodes": [],
+   "edges": [],
+   "chart": "bars",
+   "checked": true,
+   "follow": [
+    "How has causal inference changed since 2021?",
+    "Show Columbia University's causal inference papers",
+    "Which researchers connect these groups?"
+   ],
+   "raw_answer": "The organizations ranked by lift for the topic 'Causal inference' are [step 1]:\n- University of Lübeck: lift 22.1088, subject papers 4, total papers 6\n- Yokohama National University: lift 16.8449, subject papers 4, total papers 8\n- University of South Australia: lift 11.9827, subject papers 9, total papers 13\n- Guangdong University of Technology: lift 6.8939, subject papers 13, total papers 50\n- Shantou University: lift 6.5699, subject papers 4, total papers 11\n- Ludwig-Maximilians-Universität München: lift 4.3705, subject papers 4, total papers 29\n- Helmholtz Center for Information Security: lift 3.5939, subject papers 3, total papers 22\n- Saarland University: lift 3.5173, subject papers 4, total papers 43\n- École Polytechnique Fédérale de Lausanne: lift 3.4568, subject papers 3, total papers 37\n- Columbia University: lift 3.2682, subject papers 8, total papers 66\n- University of California, Los Angeles: lift 2.6186, subject papers 5, total papers 67\n- Mohamed bin Zayed University of Artificial Intelligence: lift 2.479, subject papers 6, total papers 56\n- Arizona State University: lift 1.9614, subject papers 3, total papers 49\n- Anhui University: lift 1.9139, subject papers 4, total papers 68\n- Hefei University of Technology: lift 1.8083, subject papers 5, total papers 61\n\nThe ranking is based on personalized PageRank lift for 182 papers on 'Causal inference', showing top 15 of 15 organizations."
+  }
+ ],
+ "demo_model": "qwen3.5-4b-q4_k_m",
+ "demo_generated_at": "2026-11-26T20:43:25+0700",
+ "trend_note": "descriptive (p <= 0.10 per subject, no multiple-testing correction)"
+}
