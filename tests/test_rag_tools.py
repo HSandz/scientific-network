@@ -128,6 +128,30 @@ def test_tools_all_nine_on_synthetic_fixture(tmp_path: Path):
     assert ts.rank("N2").rows[0]["id"] == "organization:1"
     assert ts.rank("N2", scope="method:llm").rows[0]["lift"] == 2.5
 
+    # 6b. rank on-demand PPR + lift for a subject outside precomputed top 30 (and cached on repeat)
+    res_od_first = ts.rank("N2", scope="task:nc1")
+    assert not res_od_first.empty
+    assert res_od_first.source_kind == "on_demand_ppr"
+    assert res_od_first.rows[0]["id"] == "organization:1"
+    assert "lift" in res_od_first.rows[0]
+    assert "on-demand" in res_od_first.note.lower()
+    res_od_second = ts.rank("N2", scope="task:nc1")
+    assert "cached" in res_od_second.note.lower()
+
+    # 6c. rank RCA fallback from trends/group-interest.csv when on-demand PPR is unavailable
+    (a_dir / "trends" / "group-interest.csv").write_text(
+        "group,subject,subject_name,group_papers,group_papers_in_subject,share_of_group,rca,first_active_year,share_2021_2022_mean,share_2024_2025_mean,growth_late_minus_early,kind\n"
+        "organization:Tsinghua University (organization:1),task:orphan,orphan task,10,4,0.4,5.2,2023,0.0,0.4,0.4,Task\n",
+        encoding="utf-8",
+    )
+    ts_rca = RAGToolset(InMemoryGraphBackend({"nodes": [], "edges": []}), analysis_dir=a_dir, rag_dir=r_dir, graph_path=None)
+    res_rca = ts_rca.rank("N2", scope="orphan task")
+    assert not res_rca.empty
+    assert res_rca.source_kind == "rca_fallback_group_interest"
+    assert res_rca.rows[0]["id"] == "organization:1"
+    assert res_rca.rows[0]["rca"] == 5.2
+    assert "revealed comparative advantage" in res_rca.note.lower()
+
     # 7. community
     res_comm = ts.community("researcher:1", network="N1")
     assert not res_comm.empty and res_comm.rows[0]["community"] == 0

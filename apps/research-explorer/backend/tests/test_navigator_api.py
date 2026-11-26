@@ -150,8 +150,18 @@ def test_trends_subjects_and_aliases(nav_client: TestClient):
     assert det.status_code == 200
     d = det.json()
     assert d["ppr_primary_rank_by"] == "lift"
+    assert d["ppr_source"] == "precomputed"
+    assert "analysis-final-exam-v2" in (d.get("ppr_method_note") or "")
     assert len(d["top_organizations"]) > 0
     assert "lift" in d["top_organizations"][0]
+
+    # Subject outside precomputed top-30 falls back to on-demand PPR or RCA
+    det_od = nav_client.get("/api/subjects/method:Q50818671")
+    assert det_od.status_code == 200
+    d_od = det_od.json()
+    assert d_od["ppr_source"] in {"on_demand", "rca_fallback"}
+    assert d_od["ppr_method_note"]
+    assert len(d_od["top_organizations"]) > 0
 
 
 def test_groups_communities_network_science_and_about(nav_client: TestClient):

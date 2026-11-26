@@ -195,8 +195,74 @@ def _resolve_unlinked_ids(tool_name: str, call_args: dict[str, Any], toolset: RA
     return args
 
 
-def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset):
-    """Yield incremental trace updates after each of 1-4 steps; stop immediately if any step returns empty."""
+def _build_alt_lookup(linked: list[dict[str, Any]] | None) -> dict[str, list[dict[str, Any]]]:
+    alts: dict[str, list[dict[str, Any]]] = {}
+    for item in linked or []:
+        cid = item.get("id")
+        cand_list = [
+            a for a in (item.get("alternatives") or [])
+            if isinstance(a, dict) and a.get("id") and a.get("id") != cid
+        ]
+        if cid and cand_list:
+            alts[str(cid)] = cand_list
+    return alts
+
+
+def _substitute_alt_in_args(
+    call_args: dict[str, Any],
+    alt_lookup: dict[str, list[dict[str, Any]]],
+    tried_ids: set[str],
+) -> tuple[dict[str, Any], str, dict[str, Any]] | None:
+    """Replace one entity ID in ``call_args`` with its next untried alternative candidate."""
+    new_args = dict(call_args)
+
+    def _pick(old_id: str) -> dict[str, Any] | None:
+        for alt in alt_lookup.get(old_id, []):
+            aid = str(alt["id"])
+            if aid not in tried_ids:
+                return alt
+        return None
+
+    for key in ("node_id", "scope", "source_id", "target_id"):
+        val = new_args.get(key)
+        if isinstance(val, str) and val in alt_lookup:
+            alt = _pick(val)
+            if alt is not None:
+                new_args[key] = str(alt["id"])
+                return new_args, val, alt
+
+    if isinstance(new_args.get("entity_ids"), list):
+        for idx, val in enumerate(new_args["entity_ids"]):
+            if isinstance(val, str) and val in alt_lookup:
+                alt = _pick(val)
+                if alt is not None:
+                    updated = list(new_args["entity_ids"])
+                    updated[idx] = str(alt["id"])
+                    new_args["entity_ids"] = updated
+                    return new_args, val, alt
+
+    if isinstance(new_args.get("filters"), dict):
+        flt = dict(new_args["filters"])
+        for fk, fv in list(flt.items()):
+            if fk in _FLT_KEY_TO_LABEL and isinstance(fv, str) and fv in alt_lookup:
+                alt = _pick(fv)
+                if alt is not None:
+                    del flt[fk]
+                    new_lbl = str(alt.get("label") or "")
+                    new_fk = _LABEL_TO_FLT_KEY.get(new_lbl, fk)
+                    flt[new_fk] = str(alt["id"])
+                    new_args["filters"] = flt
+                    return new_args, fv, alt
+    return None
+
+
+def iter_execute_plan(
+    steps: list[str] | list[dict[str, Any]],
+    toolset: RAGToolset,
+    *,
+    linked: list[dict[str, Any]] | None = None,
+):
+    """Yield incremental trace updates after each of 1-4 steps; retry once on alternative subject kind if empty."""
     step_results: list[ToolResult] = []
     trace_steps: list[dict[str, Any]] = []
     union_nodes: dict[str, dict[str, Any]] = {}
@@ -205,6 +271,8 @@ def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGTools
     all_evidence_ids: list[str] = []
     stopped_reason: str | None = None
     stopped_at_step: int | None = None
+    alt_lookup = _build_alt_lookup(linked)
+    tried_ids: set[str] = set()
 
     for step_idx, step in enumerate(steps, start=1):
         tool_name = step["tool"]
@@ -243,6 +311,28 @@ def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGTools
             }
             break
 
+        retry_info: dict[str, Any] | None = None
+        if res.empty and alt_lookup:
+            sub = _substitute_alt_in_args(call_args, alt_lookup, tried_ids)
+            if sub is not None:
+                retry_args, old_id, alt = sub
+                tried_ids.add(old_id)
+                tried_ids.add(str(alt["id"]))
+                try:
+                    retry_res = toolset.call(tool_name, **retry_args)
+                except Exception:
+                    retry_res = None
+                retry_info = {
+                    "from_id": old_id,
+                    "to_id": str(alt["id"]),
+                    "to_label": alt.get("label"),
+                    "to_name": alt.get("name"),
+                    "succeeded": bool(retry_res is not None and not retry_res.empty),
+                }
+                if retry_res is not None and not retry_res.empty:
+                    call_args = retry_args
+                    res = retry_res
+
         step_results.append(res)
         for n in res.subgraph_nodes:
             nid = n["id"]
@@ -255,7 +345,16 @@ def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGTools
         all_paper_ids.extend(res.paper_ids)
         all_evidence_ids.extend(res.evidence_ids)
 
-        step_entry = {
+        note_text = res.note
+        if retry_info is not None:
+            outcome = "matched" if retry_info["succeeded"] else "still empty"
+            note_text = (
+                f"{note_text} (Initial candidate {retry_info['from_id']} returned empty; "
+                f"retried once with {retry_info['to_label']} {retry_info['to_name']!r} "
+                f"[{retry_info['to_id']}] -> {outcome}.)"
+            ).strip()
+
+        step_entry: dict[str, Any] = {
             "step": step_idx,
             "tool": tool_name,
             "purpose": step.get("purpose", ""),
@@ -264,10 +363,12 @@ def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGTools
             "row_count": len(res.rows),
             "rows": res.rows[:50],
             "source_kind": res.source_kind,
-            "note": res.note,
+            "note": note_text,
             "paper_ids": res.paper_ids[:30],
             "evidence_ids": res.evidence_ids[:30],
         }
+        if retry_info is not None:
+            step_entry["retry"] = retry_info
         trace_steps.append(step_entry)
 
         if res.empty:
@@ -289,7 +390,12 @@ def iter_execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGTools
             break
 
 
-def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -> dict[str, Any]:
+def execute_plan(
+    steps: list[str] | list[dict[str, Any]],
+    toolset: RAGToolset,
+    *,
+    linked: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     """Execute 1-4 steps sequentially; stop immediately if any step returns empty."""
     final_state: dict[str, Any] = {
         "steps": [],
@@ -300,6 +406,6 @@ def execute_plan(steps: list[str] | list[dict[str, Any]], toolset: RAGToolset) -
         "paper_ids": [],
         "evidence_ids": [],
     }
-    for state in iter_execute_plan(steps, toolset):
+    for state in iter_execute_plan(steps, toolset, linked=linked):
         final_state = {k: v for k, v in state.items() if k != "step"}
     return final_state

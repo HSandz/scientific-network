@@ -78,6 +78,8 @@ export interface SubjectDetailResponse {
   classification_note: string;
   display_aliases: string[];
   ppr_primary_rank_by: string;
+  ppr_source?: "precomputed" | "on_demand" | "rca_fallback" | null;
+  ppr_method_note?: string | null;
   filter_notes: Record<string, string>;
   top_organizations: Array<{
     id: string;
@@ -282,6 +284,7 @@ export interface AskCitationsEvent {
 }
 
 export interface AskResult {
+  question?: string;
   mode: string;
   answer: string;
   plan: Array<{ tool: string; args: Record<string, unknown>; purpose?: string }>;

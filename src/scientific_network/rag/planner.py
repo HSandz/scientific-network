@@ -11,7 +11,7 @@ import re
 from typing import Any
 
 from scientific_network.rag.llm import LLMClient, LLMError
-from scientific_network.rag.tools import ALLOWED_LABELS, RAGToolset
+from scientific_network.rag.tools import ALLOWED_LABELS, RAGToolset, _stem_variants
 
 PARSE_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -152,13 +152,66 @@ def parse_question(question: str, llm: LLMClient | None = None) -> dict[str, Any
     return parsed
 
 
+SUBJECT_LABELS: frozenset[str] = frozenset({"Method", "Task", "Topic", "Dataset"})
+
+_KIND_CUES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("Dataset", ("dataset", "datasets", "benchmark", "benchmarks", "corpus")),
+    ("Method", ("method", "methods", "algorithm", "algorithms", "architecture", "technique", "techniques")),
+    ("Task", ("task", "tasks", "problem", "problems")),
+    ("Topic", ("topic", "topics", "research area", "research field")),
+)
+
+
+def _infer_implied_subject_kind(question: str, mention: str) -> str | None:
+    """Infer whether the question implies Method, Task, Topic, or Dataset for ``mention``."""
+    if not question or not mention:
+        return None
+    q_low = " ".join(re.sub(r"[-_]+", " ", question.lower()).split())
+    m_low = " ".join(re.sub(r"[-_]+", " ", mention.lower()).split())
+    m_esc = re.escape(m_low)
+    for kind, words in _KIND_CUES:
+        w_alt = "|".join(re.escape(w) for w in words)
+        if re.search(rf"\b(?:{w_alt})\s+(?:of|for|called|named|on)?\s*{m_esc}\b", q_low):
+            return kind
+        if re.search(rf"\b{m_esc}\s+(?:{w_alt})\b", q_low):
+            return kind
+    # Strip interrogative targets ("which methods...", "what tasks...") before checking standalone cues
+    q_stripped = re.sub(
+        r"\b(?:which|what)\s+(?:top\s+\d+\s+)?(?:methods?|tasks?|topics?|datasets?|benchmarks?)\b",
+        " ",
+        q_low,
+    )
+    hits = [
+        kind
+        for kind, words in _KIND_CUES
+        if any(re.search(rf"\b{re.escape(w)}\b", q_stripped) for w in words)
+    ]
+    return hits[0] if len(hits) == 1 else None
+
+
+def _candidate_paper_count(row: dict[str, Any], toolset: RAGToolset) -> int:
+    pc = int(row.get("paper_count") or 0)
+    if pc > 0:
+        return pc
+    return toolset.subject_paper_count(str(row["id"]))
+
+
+def _is_exact_subject_match(row: dict[str, Any], mention: str, variants: set[str]) -> bool:
+    m_low = " ".join(re.sub(r"[-_]+", " ", mention.strip().lower()).split())
+    nm_l = " ".join(re.sub(r"[-_]+", " ", str(row.get("name") or "").strip().lower()).split())
+    key_l = " ".join(re.sub(r"[-_]+", " ", str(row.get("key") or "").strip().lower()).split())
+    surfs = {" ".join(re.sub(r"[-_]+", " ", str(s).strip().lower()).split()) for s in (row.get("surfaces") or [])}
+    return nm_l == m_low or nm_l in variants or key_l in variants or bool(surfs & variants)
+
+
 def link_entities(
     parsed: dict[str, Any],
     toolset: RAGToolset,
     *,
     resolved_overrides: dict[str, str] | None = None,
+    question: str = "",
 ) -> dict[str, Any]:
-    """Link parsed entities to graph IDs via toolset.find; flag ambiguous Researchers."""
+    """Link parsed entities to graph IDs via toolset.find; handle multi-kind subjects & ambiguous Researchers."""
     overrides = resolved_overrides or {}
     linked: list[dict[str, Any]] = []
     disambiguation: list[dict[str, Any]] = []
@@ -179,7 +232,71 @@ def link_entities(
             chosen_id = overrides[text]
             nodes = toolset.backend.get_nodes_by_ids([chosen_id])
             if nodes:
-                linked.append({"text": text, "entity_type": nodes[0]["label"], "id": nodes[0]["id"], "name": nodes[0]["name"]})
+                n = nodes[0]
+                linked.append({
+                    "text": text,
+                    "entity_type": n["label"],
+                    "id": n["id"],
+                    "name": n["name"],
+                    "selection_reason": "user_override",
+                })
+                continue
+
+        # Subject entities (Method, Task, Topic, Dataset): search across all subject kinds so
+        # parser type guesses do not hide exact matches of another kind (e.g. Method vs Task).
+        if etype is None or etype in SUBJECT_LABELS:
+            res = toolset.find(None, text, limit=20)
+            subj_rows = [r for r in res.rows if r.get("label") in SUBJECT_LABELS]
+            if not subj_rows and etype is not None:
+                res_typed = toolset.find(etype, text, limit=10)
+                subj_rows = [r for r in res_typed.rows if r.get("label") in SUBJECT_LABELS]
+            if not subj_rows:
+                alias_hits = toolset.display_alias_candidates(text)
+                if alias_hits:
+                    subj_rows = [
+                        r for r in toolset.backend.get_nodes_by_ids([m["id"] for m in alias_hits[:8]])
+                        if r.get("label") in SUBJECT_LABELS
+                    ]
+            if subj_rows:
+                variants = _stem_variants(text)
+                enriched: list[dict[str, Any]] = []
+                for r in subj_rows:
+                    item = dict(r)
+                    item["paper_count"] = _candidate_paper_count(item, toolset)
+                    item["_exact"] = _is_exact_subject_match(item, text, variants)
+                    enriched.append(item)
+                exact_pool = [r for r in enriched if r["_exact"]]
+                pool = exact_pool if exact_pool else enriched
+                implied_kind = _infer_implied_subject_kind(question, text)
+
+                if implied_kind and any(r["label"] == implied_kind for r in pool):
+                    pool.sort(key=lambda r: (0 if r["label"] == implied_kind else 1, -int(r["paper_count"]), str(r["id"])))
+                    reason = f"implied_kind:{implied_kind}"
+                else:
+                    pool.sort(key=lambda r: (-int(r["paper_count"]), str(r["id"])))
+                    reason = "most_papers" if len(pool) > 1 else "only_match"
+
+                top = pool[0]
+                rest_all = [r for r in (pool[1:] + [r for r in enriched if not r["_exact"] and r not in pool]) if r["id"] != top["id"]]
+                clean_alts = [
+                    {"id": r["id"], "label": r["label"], "name": r["name"], "paper_count": int(r["paper_count"])}
+                    for r in rest_all[:5]
+                ]
+                kind_choices = [a for a in clean_alts if a["label"] != top["label"]]
+                linked.append({
+                    "text": text,
+                    "entity_type": top["label"],
+                    "id": top["id"],
+                    "name": top["name"],
+                    "paper_count": int(top["paper_count"]),
+                    "selection_reason": reason,
+                    "implied_kind": implied_kind,
+                    "alternatives": clean_alts,
+                    "kind_choices": kind_choices,
+                })
+                continue
+            if etype in SUBJECT_LABELS:
+                linked.append({"text": text, "entity_type": etype, "id": None, "name": None})
                 continue
 
         res = toolset.find(etype, text, limit=5)

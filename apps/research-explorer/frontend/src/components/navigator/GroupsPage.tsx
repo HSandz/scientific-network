@@ -215,6 +215,9 @@ export const GroupsPage: React.FC<GroupsPageProps> = ({ selectedGroupId, onSelec
                   )}
                   <div>
                     <h4 className="font-semibold mb-1">Top Topic Specializations (RCA & Entry Year)</h4>
+                    <p className="text-[11px] text-muted mb-1.5">
+                      Subject pages rank specialized groups for every subject using the same N4 personalized PageRank lift definition (precomputed for top subjects, computed on demand for all others) alongside RCA.
+                    </p>
                     <ul className="space-y-1">
                       {gd.specializations.slice(0, 8).map((sp) => (
                         <li key={sp.subject} className="flex justify-between border-b border-rule pb-0.5 tabular-nums">

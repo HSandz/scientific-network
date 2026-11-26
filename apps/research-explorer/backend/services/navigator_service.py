@@ -579,12 +579,26 @@ class NavigatorService:
     def get_subject_detail(self, subject_id: str) -> dict[str, Any] | None:
         trend = self.subject_trend_index.get(subject_id)
         ppr_entry = None
+        ppr_source: str | None = None
+        ppr_method_note: str | None = None
         subject_kind = trend["kind"] if trend else None
         for k, kmap in (self.ppr_data.get("subjects", {}) or {}).items():
             if subject_id in kmap:
                 ppr_entry = kmap[subject_id]
                 subject_kind = subject_kind or k
+                ppr_source = "precomputed"
+                ppr_method_note = "Precomputed in analysis-final-exam-v2 (N4, damping=0.85)."
                 break
+        if ppr_entry is None:
+            on_demand = self._get_toolset().compute_subject_ppr(subject_id, kind=subject_kind)
+            if on_demand is not None:
+                ppr_entry = on_demand
+                subject_kind = subject_kind or on_demand.get("kind")
+                ppr_source = "on_demand"
+                ppr_method_note = on_demand.get(
+                    "method_note",
+                    "Computed on demand on N4 (damping=0.85, uniform restart over subject papers, same definition as analysis-final-exam-v2).",
+                )
         if trend is None and ppr_entry is None:
             return None
 
@@ -593,6 +607,22 @@ class NavigatorService:
             top_block.get("Organization", []),
             key=lambda x: (-_as_float(x.get("lift")), -_as_float(x.get("ppr_score"))),
         )
+        if not top_orgs:
+            gi_rows = [r for r in self.group_interest_rows if r.get("subject") == subject_id and str(r.get("group", "")).startswith("organization:")]
+            for r in sorted(gi_rows, key=lambda x: (-_as_float(x.get("rca")), -_as_int(x.get("group_papers_in_subject"))))[:20]:
+                grp = str(r.get("group") or "")
+                org_id = grp.rsplit("(", 1)[-1].rstrip(")") if "(organization:" in grp else grp
+                org_name = grp[len("organization:"):].rsplit(" (", 1)[0].strip() if "(organization:" in grp else grp
+                top_orgs.append({
+                    "id": org_id,
+                    "name": org_name,
+                    "rca": round(_as_float(r.get("rca")), 4),
+                    "subject_papers": _as_int(r.get("group_papers_in_subject")),
+                    "total_papers": _as_int(r.get("group_papers")),
+                })
+            if top_orgs:
+                ppr_source = "rca_fallback"
+                ppr_method_note = "Revealed comparative advantage (RCA) fallback from trends/group-interest.csv."
         top_res = sorted(
             top_block.get("Researcher", []),
             key=lambda x: (-_as_float(x.get("lift")), -_as_float(x.get("ppr_score"))),
@@ -693,6 +723,8 @@ class NavigatorService:
             "classification_note": self.trends_summary.get("classification_note", ""),
             "display_aliases": self.alias_lookup.get(subject_id, []),
             "ppr_primary_rank_by": self.ppr_data.get("primary_rank_by", "lift"),
+            "ppr_source": ppr_source,
+            "ppr_method_note": ppr_method_note,
             "filter_notes": (ppr_entry or {}).get("filter_notes", {}),
             "top_organizations": top_orgs,
             "top_researchers": top_res,

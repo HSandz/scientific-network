@@ -228,3 +228,51 @@ def test_worked_example_multihop_end_to_end(tmp_path: Path):
     assert res["status"] == "ok" and res["mode"] == "multi_hop" and res["faithfulness_passed"]
     assert len(res["steps"]) == 2
     assert res["subgraph_nodes"] and res["subgraph_nodes"][0]["hop"] == 1
+
+
+def test_multikind_subject_linking_and_empty_step_retry(tmp_path: Path):
+    from scientific_network.rag.planner import link_entities
+
+    # Both a Method and a Task share the name "clustering", plus a Dataset; Task has more papers,
+    # while Method has an organization-linked paper and Task has none (forcing empty-step retry).
+    graph = {
+        "nodes": [
+            {"id": "organization:pku", "label": "Organization", "name": "Peking University", "properties": {}},
+            {"id": "researcher:1", "label": "Researcher", "name": "Alice", "properties": {}},
+            {"id": "paper:aaai:2024:1", "label": "Paper", "name": "Clustering Method Study", "properties": {"year": 2024}},
+            {"id": "method:clust", "label": "Method", "name": "clustering", "properties": {"paper_count": 5}},
+            {"id": "task:clust", "label": "Task", "name": "clustering", "properties": {"paper_count": 12}},
+        ],
+        "edges": [
+            {"edge_id": "e1", "relation": "AUTHORED", "source_id": "researcher:1", "target_id": "paper:aaai:2024:1", "evidence_ids": ["ev1"], "properties": {}},
+            {"edge_id": "e2", "relation": "AFFILIATED_WITH", "source_id": "researcher:1", "target_id": "organization:pku", "evidence_ids": ["ev2"], "properties": {}},
+            {"edge_id": "e3", "relation": "USES_METHOD", "source_id": "paper:aaai:2024:1", "target_id": "method:clust", "evidence_ids": ["ev3"], "properties": {}},
+        ],
+    }
+    ts = RAGToolset(InMemoryGraphBackend(graph), analysis_dir=tmp_path, rag_dir=tmp_path, graph_path=None)
+
+    # 1. Unclear kind picks node with most papers (task:clust, 12) and exposes Method alternative
+    parsed = {"entities": [{"text": "clustering", "entity_type": "Method"}], "intent": "ranking"}
+    res_unclear = link_entities(parsed, ts, question="Which organizations specialize most in clustering?")
+    lk = res_unclear["linked"][0]
+    assert lk["id"] == "task:clust"
+    assert lk["selection_reason"] == "most_papers"
+    assert any(a["id"] == "method:clust" for a in lk["kind_choices"])
+
+    # 2. Implied kind overrides paper count ("clustering method")
+    res_implied = link_entities(parsed, ts, question="Which organizations work on the clustering method?")
+    assert res_implied["linked"][0]["id"] == "method:clust"
+    assert res_implied["linked"][0]["selection_reason"] == "implied_kind:Method"
+
+    # 3. Empty step retries once with the next candidate (task:clust -> method:clust) and records in trace
+    out = execute_plan(
+        [{"tool": "papers", "args": {"filters": {"task_id": "task:clust"}}}],
+        ts,
+        linked=res_unclear["linked"],
+    )
+    assert out["stopped_reason"] is None
+    assert out["steps"][0]["row_count"] == 1
+    assert out["steps"][0]["retry"]["from_id"] == "task:clust"
+    assert out["steps"][0]["retry"]["to_id"] == "method:clust"
+    assert out["steps"][0]["retry"]["succeeded"] is True
+    assert "retried once" in out["steps"][0]["note"].lower()

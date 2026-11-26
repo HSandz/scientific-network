@@ -211,7 +211,7 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Panel title="Specialized Organizations (Ranked by PPR Lift)">
-              <div className="text-xs text-muted mb-2">
+              <div className="text-xs text-muted mb-2 flex flex-wrap items-center gap-1.5">
                 <MetricTooltip
                   label="PPR Lift & RCA"
                   definition={d.metric_definitions?.ppr_lift?.definition || "Topic PPR / global PPR"}
@@ -219,6 +219,16 @@ export const SubjectPage: React.FC<SubjectPageProps> = ({
                   network={d.metric_definitions?.ppr_lift?.network}
                   graphVersion={d.metric_definitions?.ppr_lift?.graph_version}
                 />
+                {d.ppr_source && (
+                  <span className="px-1.5 py-0.5 rounded bg-raised text-[10px] font-medium text-ink">
+                    {d.ppr_source === "on_demand"
+                      ? "On-demand (same N4 lift definition)"
+                      : d.ppr_source === "rca_fallback"
+                        ? "RCA fallback"
+                        : "Precomputed"}
+                  </span>
+                )}
+                {d.ppr_method_note && <span>· {d.ppr_method_note}</span>}
                 {d.filter_notes?.Organization ? ` · ${d.filter_notes.Organization}` : ""}
               </div>
               <div className="overflow-x-auto">

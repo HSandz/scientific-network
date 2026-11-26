@@ -679,7 +679,7 @@ def stream_ask(
     """
     yield {"event": "stage", "data": {"stage": "parsing", "mode": mode}}
     parsed = parse_question(question, llm)
-    link_res = link_entities(parsed, toolset, resolved_overrides=resolved_overrides)
+    link_res = link_entities(parsed, toolset, resolved_overrides=resolved_overrides, question=question)
     yield {
         "event": "parsed",
         "data": {"parsed": parsed, "linked": link_res["linked"]},
@@ -811,7 +811,7 @@ def stream_ask(
         "paper_ids": [],
         "evidence_ids": [],
     }
-    for inc in iter_execute_plan(plan, toolset):
+    for inc in iter_execute_plan(plan, toolset, linked=link_res["linked"]):
         exec_res = {k: v for k, v in inc.items() if k != "step"}
         yield {"event": "step", "data": inc["step"]}
         yield {"event": "subgraph", "data": {"nodes": inc["subgraph_nodes"], "edges": inc["subgraph_edges"]}}

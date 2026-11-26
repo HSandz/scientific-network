@@ -26,6 +26,7 @@ from neo4j import Query
 from pydantic import BaseModel, Field
 
 from scientific_network.enrich.load5 import ENRICHED_BOLT_PORT
+from scientific_network.rag.on_demand_ppr import OnDemandPPRCompute
 
 ALLOWED_LABELS: frozenset[str] = frozenset({
     "Researcher", "Paper", "Organization", "Topic", "Venue", "Method", "Task", "Dataset",
@@ -951,6 +952,8 @@ class RAGToolset:
         *,
         analysis_dir: Path = Path("reports/final-exam/analysis-v2"),
         rag_dir: Path = Path("reports/final-exam/rag-v1"),
+        graph_path: Path | None = Path("data/processed/enriched-graph-v3/graph.json"),
+        ppr_compute: OnDemandPPRCompute | None = None,
         vector_search_fn: Callable[[str, str | None, int], list[dict[str, Any]]] | None = None,
         min_post_total_papers: int = 10,
         min_post_subject_papers: int = 2,
@@ -958,14 +961,60 @@ class RAGToolset:
         self.backend = backend
         self.analysis_dir = analysis_dir
         self.rag_dir = rag_dir
+        self.graph_path = graph_path
+        self._ppr_compute = ppr_compute
         self.vector_search_fn = vector_search_fn
         self.min_post_total_papers = int(min_post_total_papers)
         self.min_post_subject_papers = int(min_post_subject_papers)
         self._aliases: dict[str, list[dict[str, Any]]] | None = None
         self._ppr_cache: dict[str, Any] | None = None
         self._trends_cache: dict[str, list[dict[str, Any]]] = {}
+        self._subject_paper_counts: dict[str, int] | None = None
+        self._group_interest_cache: list[dict[str, str]] | None = None
         self._reports_cache: dict[str, dict[str, Any]] | None = None
         self._research_comms_cache: dict[str, Any] | None = None
+
+    def _get_ppr_compute(self) -> OnDemandPPRCompute:
+        if self._ppr_compute is None:
+            self._ppr_compute = OnDemandPPRCompute(
+                graph_path=self.graph_path,
+                analysis_dir=self.analysis_dir,
+                backend=self.backend,
+            )
+        return self._ppr_compute
+
+    def subject_paper_count(self, subject_id: str) -> int:
+        """Return total papers for a subject ID from precomputed trend CSVs when node.paper_count is unset."""
+        if self._subject_paper_counts is None:
+            counts: dict[str, int] = {}
+            for kind in ("topic", "method", "task", "dataset"):
+                for r in self._load_csv(self.analysis_dir / "trends" / f"trends-{kind}.csv"):
+                    sid = r.get("id")
+                    if sid:
+                        try:
+                            counts[sid] = int(float(r.get("total_papers") or 0))
+                        except ValueError:
+                            pass
+            self._subject_paper_counts = counts
+        return self._subject_paper_counts.get(subject_id, 0)
+
+    def display_alias_candidates(self, text: str) -> list[dict[str, Any]]:
+        """Return display-alias group members for ``text`` (if any)."""
+        return list(self._display_alias_map().get(text.strip().lower(), []))
+
+    def compute_subject_ppr(self, subject_id: str, *, kind: str | None = None) -> dict[str, Any] | None:
+        """Return precomputed personalized PageRank entry or compute it on demand on N4."""
+        if self._ppr_cache is None:
+            self._ppr_cache = self._load_json(self.analysis_dir / "ranking" / "personalized-pagerank.json") or {}
+        for k, items in (self._ppr_cache.get("subjects") or {}).items():
+            if subject_id in items:
+                return {**items[subject_id], "kind": k, "computed_on_demand": False}
+        return self._get_ppr_compute().compute(subject_id, kind=kind)
+
+    def _load_group_interest(self) -> list[dict[str, str]]:
+        if self._group_interest_cache is None:
+            self._group_interest_cache = self._load_csv(self.analysis_dir / "trends" / "group-interest.csv")
+        return self._group_interest_cache
 
     def _load_json(self, path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
@@ -1358,6 +1407,86 @@ class RAGToolset:
         )
 
     # 6. rank(network, scope, measure)
+    def _resolve_scope_subject(self, scope: str) -> tuple[str | None, str | None, str]:
+        """Resolve a scope ID or free-text subject name to (subject_id, subject_kind, subject_name)."""
+        if ":" in scope:
+            nodes = self.backend.get_nodes_by_ids([scope])
+            if nodes:
+                n = nodes[0]
+                return str(n["id"]), str(n.get("label") or ""), str(n.get("name") or scope)
+            return scope, None, scope
+        raw_hits = self.backend.find_nodes(None, scope, limit=15)
+        subj_hits = [r for r in raw_hits if r.get("label") in ("Topic", "Method", "Task", "Dataset")]
+        if not subj_hits:
+            alias_hits = self.display_alias_candidates(scope)
+            if alias_hits:
+                subj_hits = self.backend.get_nodes_by_ids([m["id"] for m in alias_hits[:5]])
+        if not subj_hits and self.vector_search_fn is not None:
+            vec_hits = self.vector_search_fn(scope, None, 10)
+            subj_hits = [r for r in vec_hits if r.get("label") in ("Topic", "Method", "Task", "Dataset")]
+        if not subj_hits:
+            return None, None, scope
+        variants = _stem_variants(scope)
+
+        def _score(r: dict[str, Any]) -> tuple[int, int, str]:
+            nm_l = str(r.get("name") or "").strip().lower()
+            key_l = str(r.get("key") or "").strip().lower()
+            exact = 0 if (nm_l == scope.strip().lower() or nm_l in variants or key_l in variants) else 1
+            pc = int(r.get("paper_count") or 0) or self.subject_paper_count(str(r["id"]))
+            return (exact, -pc, str(r["id"]))
+
+        subj_hits.sort(key=_score)
+        best = subj_hits[0]
+        return str(best["id"]), str(best.get("label") or ""), str(best.get("name") or scope)
+
+    def _rca_fallback_rows(
+        self,
+        *,
+        subject_id: str | None,
+        candidate_names: set[str],
+        limit: int,
+    ) -> tuple[list[dict[str, Any]], str | None]:
+        """Look up organization specialization in trends/group-interest.csv."""
+        rows = self._load_group_interest()
+        if not rows:
+            return [], None
+        org_re = re.compile(r"^organization:(.+?)\s*\((organization:[^)]+)\)$")
+        matched_rows: list[dict[str, Any]] = []
+        matched_name: str | None = None
+        for r in rows:
+            sid = str(r.get("subject") or "")
+            sname = str(r.get("subject_name") or "").strip()
+            if (subject_id and sid == subject_id) or (sname.lower() in candidate_names):
+                grp = str(r.get("group") or "")
+                m = org_re.match(grp)
+                if m:
+                    org_name, org_id = m.group(1).strip(), m.group(2).strip()
+                elif grp.startswith("organization:"):
+                    org_name, org_id = grp, grp
+                else:
+                    continue
+                matched_name = matched_name or sname or sid
+                try:
+                    rca = round(float(r.get("rca") or 0.0), 4)
+                    share = round(float(r.get("share_of_group") or 0.0), 4)
+                    sp_cnt = int(float(r.get("group_papers_in_subject") or 0))
+                    tot_cnt = int(float(r.get("group_papers") or 0))
+                    fay_raw = r.get("first_active_year")
+                    fay = int(float(fay_raw)) if fay_raw else None
+                except (TypeError, ValueError):
+                    continue
+                matched_rows.append({
+                    "id": org_id,
+                    "name": org_name,
+                    "rca": rca,
+                    "share_of_group": share,
+                    "subject_papers": sp_cnt,
+                    "total_papers": tot_cnt,
+                    "first_active_year": fay,
+                })
+        matched_rows.sort(key=lambda x: (-x["rca"], -x["subject_papers"], x["id"]))
+        return matched_rows[:limit], matched_name
+
     def rank(self, network: str = "N1", scope: str | None = None, measure: str = "pagerank", limit: int = 20) -> ToolResult:
         lim = max(1, min(int(limit), 50))
         if scope:
@@ -1377,29 +1506,89 @@ class RAGToolset:
             matched_subj = None
             matched_kind = None
             matched_id = None
-            for kind, items in subjects.items():
-                if scope in items:
-                    matched_kind, matched_id, matched_subj = kind, scope, items[scope]
-                    break
-                for sid, sdata in items.items():
-                    if sdata.get("name", "").strip().lower() in candidate_names:
-                        matched_kind, matched_id, matched_subj = kind, sid, sdata
+            if measure != "rca":
+                for kind, items in subjects.items():
+                    if scope in items:
+                        matched_kind, matched_id, matched_subj = kind, scope, items[scope]
                         break
-                if matched_subj:
-                    break
-            if not matched_subj:
-                return ToolResult(tool="rank", args={"network": network, "scope": scope, "measure": measure},
-                                  empty=True, note=f"No precomputed personalized PageRank entry for scope {scope!r}.")
+                if matched_subj is None and ":" not in scope:
+                    for kind, items in subjects.items():
+                        for sid, sdata in items.items():
+                            if sdata.get("name", "").strip().lower() in candidate_names:
+                                matched_kind, matched_id, matched_subj = kind, sid, sdata
+                                break
+                        if matched_subj:
+                            break
+
             target_label = "Organization" if network == "N2" else ("Researcher" if network == "N1" else "Organization")
-            rows = list(matched_subj.get("top", {}).get(target_label, []))[:lim]
+            if matched_subj is not None:
+                rows = list(matched_subj.get("top", {}).get(target_label, []))[:lim]
+                return ToolResult(
+                    tool="rank",
+                    args={"network": network, "scope": scope, "measure": "lift" if measure == "pagerank" else measure},
+                    rows=rows,
+                    ids=[r["id"] for r in rows],
+                    source_kind="precomputed_analysis_v2",
+                    empty=len(rows) == 0,
+                    note=(
+                        f"Precomputed personalized PageRank lift (analysis-final-exam-v2) for "
+                        f"{matched_kind} {matched_subj['name']!r} ({matched_subj['papers']} papers)."
+                    ),
+                )
+
+            # On-demand personalized PageRank + lift for any subject outside precomputed top 30
+            subj_id, subj_kind, subj_name = self._resolve_scope_subject(scope)
+            if measure != "rca" and subj_id:
+                ppr_calc = self._get_ppr_compute()
+                was_cached = ppr_calc.is_cached(subj_id)
+                on_demand = ppr_calc.compute(subj_id, kind=subj_kind)
+                if on_demand:
+                    rows = list(on_demand.get("top", {}).get(target_label, []))[:lim]
+                    if rows:
+                        cache_tag = ", cached" if was_cached else ""
+                        return ToolResult(
+                            tool="rank",
+                            args={"network": network, "scope": scope, "measure": "lift" if measure == "pagerank" else measure},
+                            rows=rows,
+                            ids=[r["id"] for r in rows],
+                            source_kind="on_demand_ppr",
+                            empty=False,
+                            note=(
+                                f"On-demand personalized PageRank lift on N4 (damping=0.85, same definition as "
+                                f"analysis-final-exam-v2{cache_tag}) for {on_demand['kind']} {on_demand['name']!r} "
+                                f"({on_demand['papers']} papers)."
+                            ),
+                        )
+
+            # Fallback to revealed comparative advantage (RCA) in trends/group-interest.csv
+            if target_label == "Organization":
+                if subj_name:
+                    candidate_names.add(subj_name.strip().lower())
+                rca_rows, rca_subj_name = self._rca_fallback_rows(
+                    subject_id=subj_id,
+                    candidate_names=candidate_names,
+                    limit=lim,
+                )
+                if rca_rows:
+                    label_name = rca_subj_name or subj_name or scope
+                    return ToolResult(
+                        tool="rank",
+                        args={"network": network, "scope": scope, "measure": "rca"},
+                        rows=rca_rows,
+                        ids=[r["id"] for r in rca_rows],
+                        source_kind="rca_fallback_group_interest",
+                        empty=False,
+                        note=(
+                            f"Fallback to revealed comparative advantage (RCA) from trends/group-interest.csv "
+                            f"for {label_name!r} (no personalized PageRank rows available)."
+                        ),
+                    )
+
             return ToolResult(
                 tool="rank",
-                args={"network": network, "scope": scope, "measure": "lift" if measure == "pagerank" else measure},
-                rows=rows,
-                ids=[r["id"] for r in rows],
-                source_kind="precomputed_analysis_v2",
-                empty=len(rows) == 0,
-                note=f"Subject-specific ranking for {matched_kind} {matched_subj['name']!r} ({matched_subj['papers']} papers), ranked by lift.",
+                args={"network": network, "scope": scope, "measure": measure},
+                empty=True,
+                note=f"No specialization records (precomputed, on-demand PPR, or RCA) found for scope {scope!r}.",
             )
 
         data = self._load_json(self.analysis_dir / "ranking" / f"ranking-{network}.json")

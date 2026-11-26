@@ -521,11 +521,31 @@ export const AskPage: React.FC<AskPageProps> = ({ onOpenNode360 }) => {
               {linkedList.length > 0 && (
                 <div className="mb-2 flex flex-wrap gap-1.5 text-[11px]">
                   <span className="text-muted">Linked:</span>
-                  {linkedList.map((lk: Record<string, unknown>, idx) => (
-                    <span key={idx} className="px-1.5 py-0.5 rounded bg-ground border border-rule font-mono">
-                      {String(lk.name || lk.text)} ({String(lk.id || "unlinked")})
-                    </span>
-                  ))}
+                  {linkedList.map((lk: Record<string, unknown>, idx) => {
+                    const choices = Array.isArray(lk.kind_choices)
+                      ? (lk.kind_choices as Array<{ id: string; label: string; name: string; paper_count?: number }>)
+                      : [];
+                    return (
+                      <span key={idx} className="inline-flex flex-wrap items-center gap-1">
+                        <span className="px-1.5 py-0.5 rounded bg-ground border border-rule font-mono">
+                          {lk.entity_type ? `${String(lk.entity_type)}: ` : ""}
+                          {String(lk.name || lk.text)} ({String(lk.id || "unlinked")})
+                        </span>
+                        {choices.map((alt) => (
+                          <button
+                            key={alt.id}
+                            type="button"
+                            data-testid="ask-kind-choice"
+                            onClick={() => void runQuestion(result?.question || question, mode, false, { [String(lk.text)]: alt.id })}
+                            className="px-1.5 py-0.5 rounded border border-control text-[10px] hover:bg-raised"
+                            title={`Re-run using ${alt.label} ${alt.name} (${alt.paper_count ?? 0} papers)`}
+                          >
+                            Use {alt.label}: {alt.name} ({alt.paper_count ?? 0})
+                          </button>
+                        ))}
+                      </span>
+                    );
+                  })}
                 </div>
               )}
               <div data-testid="ask-trace" className="space-y-2.5 text-xs max-h-96 overflow-y-auto">
