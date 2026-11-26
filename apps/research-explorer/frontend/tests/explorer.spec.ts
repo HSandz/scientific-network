@@ -341,7 +341,7 @@ test.describe("Scientific Network Explorer E2E Verification", () => {
       const el = document.querySelector(".bg-ground");
       return el ? window.getComputedStyle(el).backgroundColor : "";
     });
-    expect(groundBg).toBe("rgb(30, 30, 30)");
+    expect(groundBg).toBe("rgb(22, 32, 43)");
 
     // Verify phone viewport (390x844) keeps full workspace width and compact layout
     await page.setViewportSize({ width: 390, height: 844 });

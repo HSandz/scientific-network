@@ -1,4 +1,4 @@
-import { EvidenceKind, GraphNode, NodeLabel, RelationType, ViewMode } from "../types/explorer";
+import { GraphNode, NodeLabel, RelationType, ViewMode } from "../types/explorer";
 
 /**
  * Perceptually balanced scientific cartographic palette.
@@ -54,15 +54,15 @@ export interface ThemeTokens {
 export function getThemeTokens(darkMode: boolean): ThemeTokens {
   if (darkMode) {
     return {
-      ground: "#1e1e1e",
-      surface: "#252525",
-      raised: "#2d2d2d",
-      active: "#363636",
-      border: "#373737",
-      rule: "#323232",
+      ground: "#16202b",
+      surface: "#1f2b38",
+      raised: "#253342",
+      active: "#2c3b4b",
+      border: "#2f3e4e",
+      rule: "#2f3e4e",
       control: "#5b5b5b",
-      text: "#cecece",
-      muted: "#b0b0b0",
+      text: "#e5eaf0",
+      muted: "#a9b5c2",
       faint: "#9f9f9f",
       accent: "#7fa6cc",
       positive: "#3fc07a",
@@ -72,34 +72,34 @@ export function getThemeTokens(darkMode: boolean): ThemeTokens {
       chart2: "#9f9f9f",
       chart3: "#7fa6cc",
       chart4: "#3fc07a",
-      chartGrid: "#323232",
-      chartAxis: "#b0b0b0",
+      chartGrid: "#2f3e4e",
+      chartAxis: "#a9b5c2",
       chartPrimarySeries: "#7fa6cc",
       chartInkSeries: "#cecece",
       chartSecondarySeries: "#9f9f9f",
-      heatmapScale: ["#1e1e1e", "#243d54", "#2e5d8a", "#7fa6cc"],
+      heatmapScale: ["#16202b", "#243d54", "#2e5d8a", "#7fa6cc"],
       contextEdge: "#626a73",
-      dimmedEdge: "#2c3035",
+      dimmedEdge: "#26333f",
       focusedEdge: "#7fa6cc",
-      dimmedNode: "#323539",
-      labelPillBg: "rgba(30, 30, 30, 0.88)",
-      labelInk: "#cecece",
-      hoverBg: "#252525",
+      dimmedNode: "#2f3c49",
+      labelPillBg: "rgba(22, 32, 43, 0.88)",
+      labelInk: "#e5eaf0",
+      hoverBg: "#1f2b38",
       hoverStroke: "#5b5b5b",
-      hoverInk: "#cecece",
+      hoverInk: "#e5eaf0",
       focusRing: "#7fa6cc",
     };
   }
   return {
-    ground: "#f5f4f1",
+    ground: "#f4f6f8",
     surface: "#ffffff",
-    raised: "#ecebe7",
-    active: "#e2e0da",
-    border: "#dfddd7",
-    rule: "#ecebe7",
+    raised: "#eef1f4",
+    active: "#e2e7ec",
+    border: "#d5dce3",
+    rule: "#d5dce3",
     control: "#c7c5be",
-    text: "#111111",
-    muted: "#504f4c",
+    text: "#1c2733",
+    muted: "#526070",
     faint: "#64635e",
     accent: "#1d5fbf",
     positive: "#247b50",
@@ -109,22 +109,22 @@ export function getThemeTokens(darkMode: boolean): ThemeTokens {
     chart2: "#767570",
     chart3: "#1d5fbf",
     chart4: "#247b50",
-    chartGrid: "#e8e7e2",
-    chartAxis: "#504f4c",
+    chartGrid: "#e2e7ec",
+    chartAxis: "#526070",
     chartPrimarySeries: "#1d5fbf",
     chartInkSeries: "#141414",
     chartSecondarySeries: "#767570",
-    heatmapScale: ["#ecebe7", "#b8cde6", "#3d73b5", "#1d5fbf"],
+    heatmapScale: ["#eef1f4", "#b8cde6", "#3d73b5", "#1d5fbf"],
     contextEdge: "#8f969e",
-    dimmedEdge: "#dedcd6",
+    dimmedEdge: "#dde2e8",
     focusedEdge: "#1d5fbf",
-    dimmedNode: "#d5d3cd",
-    labelPillBg: "rgba(245, 244, 241, 0.88)",
-    labelInk: "#111111",
+    dimmedNode: "#d2d9e0",
+    labelPillBg: "rgba(244, 246, 248, 0.88)",
+    labelInk: "#1c2733",
     hoverBg: "#ffffff",
     hoverStroke: "#c7c5be",
-    hoverInk: "#111111",
-    focusRing: "#111111",
+    hoverInk: "#1c2733",
+    focusRing: "#1c2733",
   };
 }
 
@@ -158,26 +158,6 @@ export const COMMUNITY_PALETTE: string[] = [
   "#8a5a44", // Umber
   "#5c768d", // Steel blue
 ];
-
-export const EVIDENCE_KIND_COLORS: Record<EvidenceKind, string> = {
-  observed: "#1f7a5c",         // Mineral teal (factual R1-R4)
-  inferred_topic: "#b86b1b",   // Ochre amber (embedding R5)
-  curated_taxonomy: "#a34857", // Terracotta rose (taxonomy R6)
-  derived: "#2b6cb0",          // Cobalt slate (derived R7-R10)
-};
-
-export const PREDICATE_COLORS: Record<RelationType, string> = {
-  AUTHORED: "#1f7a5c",
-  AFFILIATED_WITH: "#287d67",
-  PUBLISHED_IN: "#5a6570",
-  CITES: "#c2593f",
-  HAS_TOPIC: "#b86b1b",
-  SUBTOPIC_OF: "#a34857",
-  COAUTHORED_WITH: "#2b6cb0",
-  COLLABORATED_WITH: "#3b7a8c",
-  RESEARCHES_TOPIC: "#7a6f28",
-  CONTRIBUTES_TO_TOPIC: "#8a5a44",
-};
 
 export const PREDICATE_R_CODE: Record<RelationType, string> = {
   AUTHORED: "R1",
@@ -228,24 +208,6 @@ export function getNodeColor(node: GraphNode, mode: ViewMode): string {
     return YEAR_COLORS[yr] || "#b86b1b";
   }
   return LABEL_COLORS[node.label] || "#6e7681";
-}
-
-export function getNodeRadius(node: GraphNode, mode: ViewMode): number {
-  const baseScore = Math.max(0, node.score || node.displayed_degree || 1);
-  if (mode === "citations") {
-    return Math.min(20, Math.max(5.5, 5.5 + Math.sqrt(baseScore) * 2.0));
-  }
-  if (mode === "organizations") {
-    return Math.min(22, Math.max(6, 6 + Math.log1p(baseScore) * 3.0));
-  }
-  if (mode === "researchers") {
-    return Math.min(20, Math.max(5.5, 5.5 + Math.log1p(baseScore) * 3.0));
-  }
-  if (node.label === "Venue") return 14;
-  if (node.label === "Topic") return node.properties.level === "parent" ? 13 : 9.5;
-  if (node.label === "Organization") return 10;
-  if (node.label === "Researcher") return 8;
-  return 6.5;
 }
 
 export function truncateCanvasLabel(label: string, maxChars = 36): string {

@@ -51,7 +51,21 @@ export const AppShell: React.FC<AppShellProps> = ({ route, fullBleed, children }
     const onDown = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMoreOpen(false);
+    // Menu keyboard pattern: focus moves in on open, arrows cycle, Escape returns to the button.
+    const items = () => Array.from(moreRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') || []);
+    items()[0]?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMoreOpen(false);
+        moreRef.current?.querySelector<HTMLElement>('[data-testid="tabbar-more"]')?.focus();
+        return;
+      }
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      const list = items();
+      const at = list.indexOf(document.activeElement as HTMLElement);
+      e.preventDefault();
+      list[(at + (e.key === "ArrowDown" ? 1 : -1) + list.length) % list.length]?.focus();
+    };
     document.addEventListener("mousedown", onDown);
     document.addEventListener("keydown", onKey);
     return () => {
@@ -72,6 +86,7 @@ export const AppShell: React.FC<AppShellProps> = ({ route, fullBleed, children }
         onClick={(e) => linkClick(e, href)}
         className="nav-item"
         data-testid={`nav-${key}`}
+        title={label}
         aria-current={active === key ? "page" : undefined}
       >
         <Icon name={key} />
@@ -81,7 +96,7 @@ export const AppShell: React.FC<AppShellProps> = ({ route, fullBleed, children }
   };
 
   return (
-    <div className="app-shell">
+    <div className={route.page === "explore" ? "app-shell app-shell--tool" : "app-shell"}>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -175,6 +190,7 @@ export const AppShell: React.FC<AppShellProps> = ({ route, fullBleed, children }
           <button
             type="button"
             aria-expanded={moreOpen}
+            aria-haspopup="menu"
             aria-controls="more-sheet"
             aria-current={MORE.some(([k]) => k === active) ? "page" : undefined}
             onClick={() => setMoreOpen((v) => !v)}

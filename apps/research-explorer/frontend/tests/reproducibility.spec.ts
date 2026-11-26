@@ -252,9 +252,9 @@ test("topic-cell chart actions open the correct venue/year/topic and expose sour
       .every((e: any) => e.target === "topic:causal-inference"),
   ).toBe(true);
   await expect(
-    page.getByRole("button", { name: "← Back to finding" }),
+    page.getByRole("button", { name: "Back to the finding" }),
   ).toBeVisible();
-  await page.getByRole("button", {name: "← Back to finding"}).click();
+  await page.getByRole("button", {name: "Back to the finding"}).click();
   await expect(page.getByRole("button", {name: "Topic evolution", exact: true})).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByLabel("Topic venue")).toHaveValue("venue:ijcai");
   await expect(page.getByLabel("Topic first year")).toHaveValue("2023");

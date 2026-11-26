@@ -180,8 +180,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .tabular-nums,
 table,
 td,
-th,
-.kpi-value {
+th {
   font-variant-numeric: tabular-nums;
 }
 
@@ -283,11 +282,6 @@ th,
   .ledger-pill-pos {
     background-color: var(--pill-positive-bg);
     color: var(--pill-positive-ink);
-  }
-
-  .ledger-pill-neg {
-    background-color: var(--pill-negative-bg);
-    color: var(--pill-negative-ink);
   }
 
   .ledger-pill-warn {

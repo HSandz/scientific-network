@@ -13,10 +13,16 @@ import { GraphEdge, GraphNode } from "../../types/explorer";
 
 const SigmaGraphCanvas = React.lazy(() => import("../graph/SigmaGraphCanvas").then((m) => ({ default: m.SigmaGraphCanvas })));
 const TableView = React.lazy(() => import("../table/TableView").then((m) => ({ default: m.TableView })));
-const PathFinderModal = React.lazy(() => import("../modals/PathFinderModal").then((m) => ({ default: m.PathFinderModal })));
-const CompareModal = React.lazy(() => import("../modals/CompareModal").then((m) => ({ default: m.CompareModal })));
 
-const RAIL_WIDTH = 232;
+/** Shortcuts from the graph to sections of the v4 analysis. */
+const FINDINGS = [
+  ["robustness", "Fragile bridges"],
+  ["sectors", "Academia–industry"],
+  ["topics", "Inferred topic trends"],
+] as const;
+
+/** The shell's rail beside the Explorer: none on phones, icons only below 1280px (shell.css). */
+const railWidth = (viewport: number) => (viewport <= 768 ? 0 : viewport < 1280 ? 64 : 232);
 
 /**
  * Explore: the Sigma graph Explorer (v4 behaviour unchanged) inside the Navigator shell.
@@ -49,7 +55,7 @@ export const ExplorePage: React.FC = () => {
 
   const [isExpanding, setIsExpanding] = useState(false);
   const prevViewportWidthRef = useRef<number>(
-    typeof window !== "undefined" ? window.innerWidth - (window.innerWidth > 768 ? RAIL_WIDTH : 0) : 1440,
+    typeof window !== "undefined" ? window.innerWidth - railWidth(window.innerWidth) : 1440,
   );
   const anyModalOpen = searchModalOpen || pathFinderOpen || compareModalOpen || caveatsModalOpen;
 
@@ -57,8 +63,7 @@ export const ExplorePage: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       // Thresholds are for the Explore area, so the shell's rail width is taken off on desktop.
-      const rail = window.innerWidth > 768 ? RAIL_WIDTH : 0;
-      const w = window.innerWidth - rail;
+      const w = window.innerWidth - railWidth(window.innerWidth);
       const prevW = prevViewportWidthRef.current;
       prevViewportWidthRef.current = w;
 
@@ -431,12 +436,26 @@ export const ExplorePage: React.FC = () => {
             </p>
           )}
           {workspaceTab === "graph" && (
-            <div className="px-4 py-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-border">
+            <div className="explore-findings px-4 py-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-border">
               {useExplorerStore.getState().insightReturn && (
                 <button className="textlink" onClick={() => navigate(pathFor("network", "release"))}>
                   Back to the finding
                 </button>
               )}
+              <span className="text-muted">Explore findings</span>
+              {FINDINGS.map(([id, label]) => (
+                <button
+                  key={id}
+                  type="button"
+                  className="textlink"
+                  onClick={() => {
+                    useExplorerStore.setState({ analyticsSection: id });
+                    setWorkspaceTab("analytics");
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
               <EnrichedExplorerBar onOpenNode360={openNode360} />
             </div>
           )}
@@ -470,10 +489,6 @@ export const ExplorePage: React.FC = () => {
           isExpanding={isExpanding}
         />
       </div>
-      <React.Suspense fallback={<p role="status" className="fixed bottom-4 right-4 ledger-panel p-3 z-50">Loading dialog…</p>}>
-        {pathFinderOpen && <PathFinderModal />}
-        {compareModalOpen && <CompareModal />}
-      </React.Suspense>
     </div>
   );
 };

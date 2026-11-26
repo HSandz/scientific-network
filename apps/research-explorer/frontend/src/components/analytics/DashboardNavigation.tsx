@@ -90,6 +90,9 @@ export const DashboardNav: React.FC<{ section: string }> = ({ section }) => {
     const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
+        // While the next page loads, Suspense hides this view and every section measures as zero;
+        // leaving the view must not overwrite the section the reader was on.
+        if (!root.getClientRects().length || useExplorerStore.getState().workspaceTab !== "analytics") return;
         const top =
           root.getBoundingClientRect().top +
           (nav.current?.offsetHeight || 0) +

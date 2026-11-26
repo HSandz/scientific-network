@@ -65,7 +65,7 @@
 @media (max-width: 768px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); }
   .rail { display: none; }
-  .topbar { padding: 10px 16px; }
+  .topbar { padding: 7px 16px; }
   .topbar-spacer { display: none; }
   .search-trigger { max-width: none; }
   .search-trigger kbd { display: none; }
@@ -136,3 +136,34 @@
 .network-views a { text-decoration: none; display: inline-block; padding: 4px 12px; border-radius: 6px; color: var(--muted); }
 .network-views a[aria-current="page"] { background: var(--surface); box-shadow: 0 0 0 1px var(--rule); color: var(--ink); font-weight: 700; }
 .release-wrap { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+/* The v4 dashboard is its own scroll container at every width; its section navigation follows it. */
+.main-content.main-content--bleed:has(> .release-wrap) { display: flex; flex-direction: column; overflow: hidden; }
+
+.explore-toolbar .network-views { margin: 0; padding: 0; border: 0; }
+
+/* Explore needs the width for its canvas, filters and inspector: on mid-size screens the rail
+   shows icons only. Labels stay available to screen readers and as titles. */
+@media (min-width: 769px) and (max-width: 1279px) {
+  .app-shell--tool { grid-template-columns: 64px minmax(0, 1fr); }
+  .app-shell--tool .rail { padding-inline: 10px; }
+  .app-shell--tool .brand { padding-inline: 8px; }
+  .app-shell--tool .nav-item { justify-content: center; }
+  .app-shell--tool .brand-name,
+  .app-shell--tool .nav-item span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (max-width: 768px) {
+  .explore-toolbar:has(.network-views) { flex-wrap: wrap; height: auto; row-gap: 6px; padding-block: 6px; }
+  .explore-toolbar .network-views { flex: 1 0 100%; }
+  .explore-toolbar:has(.network-views) .explore-toolbar-spacer { display: none; }
+  .explore-toolbar .network-views a { white-space: nowrap; font-size: 0.875rem; padding-inline: 10px; }
+  .explore-toolbar:has(.network-views) .explore-version { display: none; }
+}
+@media (max-width: 768px) {
+  /* One line that scrolls sideways, so the graph canvas keeps half the phone screen. */
+  .explore-page .explore-findings { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; padding-block: 6px; }
+  .explore-page .explore-findings:has([data-testid="enriched-explorer-panel"]) { flex-wrap: wrap; white-space: normal; }
+}
+@media (max-width: 768px) {
+  .explore-page .explore-findings > * { flex: none; }
+  .explore-page .explore-findings > .enriched-panel { flex: 1 0 100%; }
+}

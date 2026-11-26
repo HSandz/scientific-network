@@ -93,7 +93,7 @@ test("chart filters preserve instance, correct data/keyboard actions and reduced
   await expect(page.getByTestId("projection-title")).toContainText(
     "Heterogeneous",
   );
-  await page.getByRole("button", { name: "← Back to finding" }).click();
+  await page.getByRole("button", { name: "Back to the finding" }).click();
   await expect(page.getByLabel("Topic first year")).toHaveValue("2023");
   await expect(
     page.getByRole("button", { name: "Topic evolution", exact: true }),
@@ -346,8 +346,8 @@ test("rendered heatmap values match the API and a real canvas click opens the ex
       el.__chart.getOption().series[0].data[0].slice(0, 2),
     ),
   );
-  const box = (await plot.boundingBox())!;
-  await page.mouse.click(box.x + point[0], box.y + point[1]);
+  // Positioned click: Playwright scrolls the target point into view before clicking the canvas.
+  await plot.click({ position: { x: point[0], y: point[1] } });
   await expect(page.getByTestId("projection-title")).toContainText(
     "Heterogeneous",
   );

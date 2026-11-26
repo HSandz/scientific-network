@@ -133,7 +133,7 @@ export const BridgeMatrix: React.FC<{
                   rank == null
                     ? undefined
                     : {
-                        background: `color-mix(in srgb, var(--accent) ${Math.round(12 + (21 - rank) * 1.8)}%, var(--surface))`,
+                        background: `color-mix(in srgb, var(--accent) ${Math.round(8 + (21 - rank) * 1.35)}%, var(--surface))`,
                       }
                 }
               >

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { cellColor, cssVar, fmtPct, readPalette, thermal, withAlpha } from "../../lib/thermal";
 import { EntityDot } from "../ui/primitives";
 
@@ -311,8 +311,4 @@ function cellColorCached(hue: string, k: number, p: ReturnType<typeof readPalett
     cellCache.set(key, c);
   }
   return c;
-}
-
-export function useStableYears(): string[] {
-  return useMemo(() => ["2021", "2022", "2023", "2024", "2025"], []);
 }

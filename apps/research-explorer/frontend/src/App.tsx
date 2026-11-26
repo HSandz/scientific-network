@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ExploreToolbar } from "./components/explore/ExploreToolbar";
 import { useQuery } from "@tanstack/react-query";
 import { AppShell } from "./components/shell/AppShell";
 import { explorerApi } from "./lib/api";
@@ -63,6 +64,9 @@ const NetworkViews: React.FC<{ current: "enriched" | "release" }> = ({ current }
 const RELEASE_ONLY_SECTIONS = ["robustness", "sectors", "trajectories"];
 const ABOUT_RELEASE_SECTIONS = ["quality"];
 
+const PathFinderModal = React.lazy(() => import("./components/modals/PathFinderModal").then((m) => ({ default: m.PathFinderModal })));
+const CompareModal = React.lazy(() => import("./components/modals/CompareModal").then((m) => ({ default: m.CompareModal })));
+
 const EXPLORE_TABS = new Set<WorkspaceTab>(["graph", "table"]);
 
 /** Apply a route to the store: page tab plus the selected subject, group, community or node. */
@@ -119,9 +123,6 @@ export const App: React.FC = () => {
   const pathFinderOpen = useExplorerStore((s) => s.pathFinderOpen);
   const compareModalOpen = useExplorerStore((s) => s.compareModalOpen);
   const darkMode = useExplorerStore((s) => s.darkMode);
-  const selectedSubjectId = useExplorerStore((s) => s.selectedSubjectId);
-  const selectedGroupId = useExplorerStore((s) => s.selectedGroupId);
-  const selectedCommunityId = useExplorerStore((s) => s.selectedCommunityId);
   const openSubject = useExplorerStore((s) => s.openSubject);
   const openGroup = useExplorerStore((s) => s.openGroup);
   const openCommunity = useExplorerStore((s) => s.openCommunity);
@@ -257,7 +258,8 @@ export const App: React.FC = () => {
     case "network":
       page = isRelease ? (
         <div className="release-wrap">
-        <NetworkViews current="release" />
+        {/* Saved views, sharing, paths, compare and caveats stay reachable from the v4 analysis. */}
+        <ExploreToolbar summary={summaryQuery.data} displayedNodes={[]} displayedEdges={[]} leading={<NetworkViews current="release" />} />
         <AnalyticsView
           summary={summaryQuery.data}
           onFocusNodeInGraph={focusInGraph}
@@ -316,6 +318,8 @@ export const App: React.FC = () => {
             <NavigatorSearchModal />
           ))}
         {caveatsModalOpen && <CaveatsModal summary={summaryQuery.data} />}
+        {pathFinderOpen && <PathFinderModal />}
+        {compareModalOpen && <CompareModal />}
       </React.Suspense>
     </>
   );

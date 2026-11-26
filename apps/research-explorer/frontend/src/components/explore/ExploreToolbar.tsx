@@ -26,6 +26,8 @@ interface ExploreToolbarProps {
   summary?: GraphSummaryResponse;
   displayedNodes: GraphNode[];
   displayedEdges: GraphEdge[];
+  /** Shown first in the row, e.g. the Network page's view switcher. */
+  leading?: React.ReactNode;
 }
 
 
@@ -33,6 +35,7 @@ export const ExploreToolbar: React.FC<ExploreToolbarProps> = ({
   summary,
   displayedNodes,
   displayedEdges,
+  leading,
 }) => {
   const {
     workspaceTab,
@@ -169,6 +172,7 @@ export const ExploreToolbar: React.FC<ExploreToolbarProps> = ({
       aria-label="Explore tools"
       data-testid="explore-toolbar"
     >
+      {leading}
       {workspaceTab === "graph" && (
         <button
           type="button"
@@ -341,6 +345,8 @@ export const ExploreToolbar: React.FC<ExploreToolbarProps> = ({
                     />
                   </label>
                 )}
+                {workspaceTab !== "analytics" && (
+                <>
                 <button
                   type="button"
                   onClick={handleExportEdgesCsv}
@@ -367,6 +373,8 @@ export const ExploreToolbar: React.FC<ExploreToolbarProps> = ({
                   <Download className="w-3.5 h-3.5 text-muted" />
                   <span>Export displayed nodes CSV</span>
                 </button>
+                </>
+                )}
                 {workspaceTab === "graph" && (
                   <>
                     <div className="my-1 border-t border-rule" />

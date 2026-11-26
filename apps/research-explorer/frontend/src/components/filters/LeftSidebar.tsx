@@ -314,7 +314,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
                     <Icon className="w-4 h-4 shrink-0 text-faint" />
                     <span className="truncate">{m.title}</span>
                   </span>
-                  <span className="text-[13px] text-faint tabular-nums shrink-0">
+                  <span className={`text-[13px] tabular-nums shrink-0 ${active ? "text-ink" : "text-faint"}`}>
                     {(m.id === "heterogeneous"
                       ? summary?.total_nodes
                       : summary?.nodes_by_label[
